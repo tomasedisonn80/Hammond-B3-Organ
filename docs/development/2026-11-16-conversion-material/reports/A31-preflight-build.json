@@ -1,0 +1,42 @@
+{
+  "purpose": "Private source-only pinned-SDL preflight before production edit; no application or shared build mutation",
+  "compile_argv": [
+    "/usr/bin/c++",
+    "-DSDL_MAIN_HANDLED",
+    "-O3",
+    "-DNDEBUG",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "-I/workspace/scratch/0d55e62af118/build-native/_sdl2/include",
+    "-I/workspace/scratch/0d55e62af118/build-native/_sdl2/include/SDL2",
+    "-I/workspace/scratch/0d55e62af118/build-native/_sdl2/include-config-release/SDL2",
+    "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A31-sdl-copy-preflight.cpp",
+    "/workspace/scratch/0d55e62af118/build-native/_sdl2/libSDL2.a",
+    "-lm",
+    "-pthread",
+    "-o",
+    "/workspace/scratch/0d55e62af118/A31-rim-preflight/sdl-copy-preflight"
+  ],
+  "compile_exit": 0,
+  "run_argv": [
+    "/workspace/scratch/0d55e62af118/A31-rim-preflight/sdl-copy-preflight",
+    "/workspace/scratch/0d55e62af118/A31-rim-preflight/keyboard-rim.rgb"
+  ],
+  "run_exit": 0,
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "probe_source_sha256": "6b225ac53e40d5017e1488f81331787c4847f4dc668e800b2e4f4b147ee62fbf",
+  "probe_executable_sha256": "4e10ad738847a80307a75dd2ccaa8a34364c2810614a659008f0b38deefc2e4a",
+  "sdl_static_sha256": "99c128d680ca704056dc09ff3b47c8f5374485e98f1202e687ceb9770002849b",
+  "sdl_checkout": "/workspace/scratch/ade21b726509/SDL2",
+  "sdl_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+  "sdl_version": "2.32.10",
+  "flags_source": "existing build.ninja standalone native fixture flags/link libraries",
+  "corrected_readback": "SDL_LockSurface, copy physical backing rows using pitch, SDL_UnlockSurface",
+  "invalid_v0": "Retained v0 used viewport-relative SDL_RenderReadPixels(nullptr) into full-output storage; its counts are invalid and not acceptance evidence."
+}

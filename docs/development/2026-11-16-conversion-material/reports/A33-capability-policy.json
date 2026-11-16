@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "source_sha256": "1030e5439a34d29e680e3dfa08b752dad036dcda53d1c92477dfc549cd94a1e1",
+  "cases": [
+    {
+      "leaf": "input-\udcff.json",
+      "errno": 84,
+      "name": "EILSEQ",
+      "outcome": "capability-skip",
+      "subprocess_calls": 0,
+      "diagnostic": "filesystem rejects this non-UTF8 byte filename (EILSEQ)"
+    },
+    {
+      "leaf": "input-\udcff.json",
+      "errno": 13,
+      "name": "EACCES",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "PermissionError: [Errno 13] injected fixture preparation error: '/tmp/contact-grid-adversary-bl0cc645/input-\\udcff.json'"
+    },
+    {
+      "leaf": "input-\udcff.json",
+      "errno": 28,
+      "name": "ENOSPC",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "OSError: [Errno 28] injected fixture preparation error: '/tmp/contact-grid-adversary-a78cnv40/input-\\udcff.json'"
+    },
+    {
+      "leaf": "input-\udcff.json",
+      "errno": 5,
+      "name": "EIO",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "OSError: [Errno 5] injected fixture preparation error: '/tmp/contact-grid-adversary-asep3b3r/input-\\udcff.json'"
+    },
+    {
+      "leaf": "input-\udcff.json",
+      "errno": 22,
+      "name": "EINVAL",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "OSError: [Errno 22] injected fixture preparation error: '/tmp/contact-grid-adversary-2n53s0at/input-\\udcff.json'"
+    },
+    {
+      "leaf": "certificate-\udcfe.json",
+      "errno": 84,
+      "name": "EILSEQ",
+      "outcome": "capability-skip",
+      "subprocess_calls": 0,
+      "diagnostic": "filesystem rejects this non-UTF8 byte filename (EILSEQ)"
+    },
+    {
+      "leaf": "certificate-\udcfe.json",
+      "errno": 13,
+      "name": "EACCES",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "PermissionError: [Errno 13] injected fixture preparation error: '/tmp/contact-grid-adversary-3i8jf9ai/certificate-\\udcfe.json'"
+    },
+    {
+      "leaf": "certificate-\udcfe.json",
+      "errno": 28,
+      "name": "ENOSPC",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "OSError: [Errno 28] injected fixture preparation error: '/tmp/contact-grid-adversary-pt8a93en/certificate-\\udcfe.json'"
+    },
+    {
+      "leaf": "certificate-\udcfe.json",
+      "errno": 5,
+      "name": "EIO",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "OSError: [Errno 5] injected fixture preparation error: '/tmp/contact-grid-adversary-wgkvgr0o/certificate-\\udcfe.json'"
+    },
+    {
+      "leaf": "certificate-\udcfe.json",
+      "errno": 22,
+      "name": "EINVAL",
+      "outcome": "test-error-retained",
+      "subprocess_calls": 0,
+      "diagnostic": "OSError: [Errno 22] injected fixture preparation error: '/tmp/contact-grid-adversary-rrl7dxun/certificate-\\udcfe.json'"
+    }
+  ],
+  "seconds": 0.007666902001801645,
+  "counts": {
+    "cases": 10,
+    "capability_skips": 2,
+    "other_errors_retained": 8
+  },
+  "scope": "Injected preparation errno checks only; no CLI child is launched and no suite is skipped. Full repaired suites and real Unicode/alias journeys are separate local runs."
+}

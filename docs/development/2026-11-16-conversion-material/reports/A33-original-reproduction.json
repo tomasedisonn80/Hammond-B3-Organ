@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "status": "both-original-premises-reproduced",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "seconds": 0.007025023001915542,
+  "cases": [
+    {
+      "case": "real-directory-alias",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "kind": "actual local filesystem alias; original assertion fails"
+    },
+    {
+      "case": "filesystem-EILSEQ",
+      "tests": 1,
+      "failures": 0,
+      "errors": 1,
+      "kind": "injected exact error family; not a native macOS run"
+    }
+  ],
+  "log_sha256": "bf0f7962de30800a73495ebf477612846af3f7e66531c30749737916528c87c1",
+  "scope": "Two expected failures of retained original test code. Production unchanged. Hosted macOS evidence remains the original job log; local injection is not that execution."
+}

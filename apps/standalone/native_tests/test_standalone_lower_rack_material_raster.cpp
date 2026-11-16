@@ -1,4 +1,5 @@
 #include "InstrumentView.h"
+#include "FontData.h"
 
 #include <SDL.h>
 
@@ -26,17 +27,16 @@
 #include <io.h>
 #endif
 
-// Frozen supplemental fixtures for LOWER_RACK_MATERIAL_CONTRACT.md v1.
-// Build this same source against the genuine before painter before changing
-// production paint. Streams carry observations, never material allowances or
-// an alternative material implementation. The paired checker owns its mask,
-// before/after opaque-child equality and numerical reference screens.
+// Versioned T1 footage-assertion transition; original lower-rack-material-v1
+// source/results remain archived. Cases, material support and frame generation
+// are unchanged; only the admitted footage glyph expectation is replaced.
+// Historical material comparators require their original protocol/binaries.
 namespace {
 using namespace hammond;
 using namespace hammond::standalone;
 using Pixel = std::array<std::uint8_t, 4>;
 static_assert(sizeof(Pixel) == 4);
-constexpr std::string_view protocol = "lower-rack-material-v1";
+constexpr std::string_view protocol = "lower-rack-material-v1.1";
 constexpr std::array<float, 9> centers{685, 734, 782, 830, 878, 927, 975, 1024, 1074};
 constexpr std::array<std::string_view, 9> footage{
     "16'", "5 1/3'", "8'", "4'", "2 2/3'", "2'", "1 3/5'", "1 1/3'", "1'"};
@@ -525,6 +525,71 @@ public:
         return read(coordinates);
     }
 
+    // Expected T1 layout is declared independently by musical-label index.
+    // It does not call or copy the private production footage helper.
+    Frame footage_text(std::size_t index, UiRect box, float sx, float sy,
+                       std::vector<UiRect>& glyphs) {
+        constexpr std::array<std::array<std::string_view, 5>, 9> words{{
+            {{"16'", "", "", "", ""}},
+            {{"5", "1", "/", "3", "'"}},
+            {{"8'", "", "", "", ""}},
+            {{"4'", "", "", "", ""}},
+            {{"2", "2", "/", "3", "'"}},
+            {{"2'", "", "", "", ""}},
+            {{"1", "3", "/", "5", "'"}},
+            {{"1", "1", "/", "3", "'"}},
+            {{"1'", "", "", "", ""}},
+        }};
+        constexpr std::array<std::size_t, 9> counts{1, 5, 1, 1, 5, 1, 5, 5, 1};
+        constexpr std::array<float, 5> heights{20.5F, 13.0F, 16.0F, 13.0F, 20.5F};
+        constexpr std::array<float, 5> baselines{21.5F, 15.5F, 19.5F, 21.5F, 21.5F};
+        require(index < words.size(), "declared footage index");
+        const auto count = counts[index];
+        std::string complete(words[index][0]);
+        if (count == 5) {
+            complete += ' ';
+            for (std::size_t part = 1; part < count; ++part) complete += words[index][part];
+        }
+        require(complete == footage[index], "independent runs reproduce the complete correct footage");
+        const auto coordinates = transform(renderer_.get());
+        drawing_.clear({0, 0, 0, 0});
+        const float font_scale = std::min(sx, sy);
+        const float gap = f32(0.5F * sx);
+        std::array<float, 5> sizes{};
+        float extent = 0.0F;
+        for (std::size_t part = 0; part < count; ++part) {
+            sizes[part] = f32(heights[part] * font_scale);
+            extent = f32(extent + drawing_.text_width(words[index][part], sizes[part], TextFace::Serif));
+            if (count == 5 && (part == 0 || part == 3)) extent = f32(extent + gap);
+        }
+        const float left = f32(box.x + f32(f32(box.width - extent) / 2.0F));
+        float cursor = left;
+        for (std::size_t part = 0; part < count; ++part) {
+            const float requested_baseline = f32(box.y + f32(baselines[part] * sy));
+            const float top = f32(requested_baseline - f32(f32(38.0F * sizes[part]) / 40.0F));
+            drawing_.text(words[index][part], cursor, top, sizes[part], {255, 255, 255}, TextFace::Serif);
+            const auto& atlas = font_data::kSerif;
+            const float factor = sizes[part] / static_cast<float>(atlas.pixel_height);
+            const float actual_baseline = top + static_cast<float>(atlas.ascent) * factor;
+            float glyph_cursor = cursor;
+            for (const char character : words[index][part]) {
+                const auto& glyph = font_data::glyph(atlas, static_cast<unsigned char>(character));
+                require(glyph.width != 0 && glyph.height != 0, "every declared footage character has literal ink");
+                const int pad_x = static_cast<float>(glyph.width) * factor < 1.0F ? 2 : 0;
+                const int pad_y = static_cast<float>(glyph.height) * factor < 1.0F ? 2 : 0;
+                glyphs.push_back({glyph_cursor + static_cast<float>(glyph.bearing_x - pad_x) * factor,
+                    actual_baseline + static_cast<float>(glyph.bearing_y - pad_y) * factor,
+                    static_cast<float>(glyph.width + 2 * pad_x) * factor,
+                    static_cast<float>(glyph.height + 2 * pad_y) * factor});
+                glyph_cursor += static_cast<float>(glyph.advance_64) * factor / 64.0F;
+            }
+            cursor = f32(cursor + drawing_.text_width(words[index][part], sizes[part], TextFace::Serif));
+            if (count == 5 && (part == 0 || part == 3)) cursor = f32(cursor + gap);
+        }
+        require(equal(coordinates, transform(renderer_.get())), "footage ink render preserves transform");
+        return read(coordinates);
+    }
+
     Frame focus(UiRect bounds, float sx, float sy) {
         const auto coordinates = transform(renderer_.get());
         drawing_.clear({0, 0, 0, 0});
@@ -582,6 +647,30 @@ void literal_ink(Target& target, const Frame& actual, std::string_view value, Ui
     }
 }
 
+void footage_ink(Target& target, const Frame& actual, std::size_t index, UiRect box,
+                 float sx, float sy) {
+    std::vector<UiRect> glyphs;
+    const auto expected = target.footage_text(index, box, sx, sy, glyphs);
+    const auto& t = actual.coordinates;
+    for (const auto& glyph : glyphs) {
+        std::size_t samples = 0, matches = 0;
+        const int left = std::max(0, static_cast<int>(std::floor(glyph.x * t.sx + static_cast<float>(t.viewport.x))));
+        const int right = std::min(actual.width, static_cast<int>(std::ceil((glyph.x + glyph.width) * t.sx + static_cast<float>(t.viewport.x))));
+        const int top = std::max(0, static_cast<int>(std::floor(glyph.y * t.sy + static_cast<float>(t.viewport.y))));
+        const int bottom = std::min(actual.height, static_cast<int>(std::ceil((glyph.y + glyph.height) * t.sy + static_cast<float>(t.viewport.y))));
+        for (int y = top; y < bottom; ++y)
+            for (int x = left; x < right; ++x) {
+                const auto at = actual.at(x, y);
+                if (light(expected.pixels[at]) < 180) continue;
+                ++samples;
+                if (light(actual.pixels[at]) > 90) ++matches;
+            }
+        require(samples > 0 && samples == matches, "every literal glyph retains all strong contrasting ink");
+        ++totals.glyphs;
+        totals.ink_pixels += samples;
+    }
+}
+
 void opaque_probe(const Case& test, const Frame& frame, UiRect canonical_probe) {
     const auto box = canonical(test, canonical_probe.x, canonical_probe.y, canonical_probe.width, canonical_probe.height);
     const auto& t = frame.coordinates;
@@ -611,8 +700,7 @@ void full_frame_children(const Case& test, const UiModel& model, Target& target,
         const float center = centers[index];
         opaque_probe(test, frame, {center - 12, 320, 4, 130});
         opaque_probe(test, frame, {center - 10, 327 + 118 * static_cast<float>(test.level) / 8 - 10, 20, 12});
-        literal_ink(target, frame, footage[index], canonical(test, center - 23, 467, 46, 23),
-                    19 * font_scale, TextFace::Serif, 2 * sx);
+        footage_ink(target, frame, index, canonical(test, center - 23, 467, 46, 23), sx, sy);
         literal_ink(target, frame, value, canonical(test, center - 23, 491, 46, 15),
                     12 * font_scale, TextFace::Sans, 3 * sx);
     }

@@ -1,0 +1,321 @@
+# Exact decorative keyboard rim — W1 admitted implementation contract
+
+**Contract/fixture `keyboard-rim-art-v1.1`; A31 source and preflight admission,
+with root independently corroborating the SDL correction, 16 November 2026.**
+The asset identity remains version 1. Root must preserve the genuine pre-edit
+binary before implementation; this document does not claim candidate acceptance.
+A26’s original proposal is retained byte-for-byte as
+[original proposal](../development/2026-11-16-conversion-material/reports/A31-proposal-before-admission.txt)
+(SHA-256 `4b06e9d293040ce88082a718f01c7415cd793ec74f38cc5bf1d01bc61ceeaebf`). This is the
+next bounded furniture slice after accepted Lower material and the separately
+owned typography transition. It changes only the existing wide Dimensional Play
+rim call for canonical `(48,510,1074,18)`. It does not admit whole-interface 1:1.
+The [whole-window plan](WHOLE_WINDOW_REFERENCE_NEXT.md),
+[earlier material proposal](REFERENCE_MATERIAL_TYPE_NEXT.md) and its
+[independent review](../reviews/REFERENCE_MATERIAL_NEXT_REVIEW.md) remain history;
+this exact source crop replaces their unimplemented procedural-rim suggestion.
+
+## 1. Identified source and decorative scope
+
+A26 directly inspected the complete original, its rim with surrounding context,
+and the accepted Lower gallery's corresponding actual pixels. The source band
+contains a wood cheek shoulder on the left, the slanted join near x232, a narrow
+polished crest and dark recess. It contains **no text, tablet, label, key or live
+control**. Preserve this complete x-dependent transition rather than stitching
+three quiet patches or repeating a texture tile. The source helper's name
+`reference_wood` does not establish that every illustrated pixel depicts wood.
+
+The [observation receipt](../development/2026-11-16-conversion-material/reports/A26-rim-observations.json)
+and [reproducer](../development/2026-11-16-conversion-material/reports/A26-rim-observations.py)
+record the complete 18-row profiles, three earlier six-row witnesses, identities
+and byte-exact in-memory extraction. No production asset or candidate was made.
+All 19,332 current gallery pixels in this band differ from the source; this is a
+descriptive count, not a material tolerance. The original middle witness has
+bright y518–519 rows followed by a dark recess, absent from the current strip.
+
+| Frozen input or proposed payload | Exact identity |
+| --- | --- |
+| Atlas PDF | `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769` |
+| Original JPEG, 1672×941, 412,664 bytes | `9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187` |
+| Complete decoded RGB | `07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb` |
+| Integer source rectangle | `[48,1122) × [510,528)`, width 1074, height 18, pitch 3222 |
+| Proposed raw RGB24, 57,996 bytes | `dda0291836a4f3b9a5569b0ed29badc7b02d723db8409c9447a1374450c7472a` |
+| Proposed gzip, 34,422 bytes | `91055667f153c277ee693e3b9e14515738c0f0640a96955c809f245c7f22ad83` |
+
+The unchanged [source provenance](atlas-reference.json) identifies atlas pages
+1/409 and image object 3. It is user-supplied generated concept artwork, not a
+calibrated material measurement or application capture. No external image or
+new license is acquired. Retain the existing rights statement: derived only
+from the supplied atlas; upstream publication-rights clearance remains the
+project's existing separate gate. Do not claim new rights clearance from a hash,
+crop or this task. The rejected broad cheek crop and baked lower-plinth lettering
+remain rejected; their exclusion is unchanged.
+
+## 2. Separate, deterministic asset pipeline
+
+Add only `assets/standalone/reference-rim-v1/manifest.json`,
+`keyboard-rim.rgb.gz`, optional authoring requirements/provenance, and a separate
+`tools/compile_keyboard_rim_art.py`. Keep all three original decorative blobs,
+their manifest and `tools/compile_reference_art.py` byte-identical. The original
+manifest remains `bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87`.
+The new identity is `standalone-keyboard-rim-decoration-v1`, schema 1, one asset
+named `keyboard-rim` with generated descriptor `kKeyboardRim`.
+
+A31 froze the exact 2,436-byte
+[manifest](../development/2026-11-16-conversion-material/reports/A31-keyboard-rim-manifest.json)
+before implementation: SHA-256
+`0c13739aa8e16da1c0d3a1b80c2626319ce61e5c3de7202fe33b3442939532cc`.
+The implementation copies those bytes to the asset path and its compiler pins
+that hash. Source, rectangle, raw and gzip identities
+above are fixed before implementation. Replacing both a blob and its advertised
+hash must fail the lock. The manifest records full source/PDF identity, evidence
+and rights, RGB byte order, dimensions, raw/compressed identities, extraction,
+compression and the actual authoring versions. It does not rewrite the original
+three-asset manifest or claim that source images are live controls.
+
+Author with Python 3.12.14, Pillow 13.0.0, libjpeg API 6.2/libjpeg-turbo 3.2.0 and
+zlib compile/runtime 1.3.2. Decode using `Image.open`, `load`, `convert("RGB")`;
+require the full decoded source hash above before the exact integer crop. No
+EXIF transform, color management, gamma adjustment, resampling, retouching or
+compositing is allowed. Pixels are eight-bit R,G,B, row-major, top-to-bottom,
+without padding. Use `gzip.GzipFile(filename="", compresslevel=9, mtime=0)`:
+one member, no name, OS byte 255, header `1f8b08000000000002ff`. Repeat extraction
+must yield identical raw and gzip bytes. Authoring is optional and separate
+from ordinary builds.
+
+The normal compiler uses only the Python standard library. It verifies JPEG
+bytes without decoding, admits the exact manifest/blob, and expands one gzip
+with `zlib.decompressobj(16 + MAX_WBITS)` and an output limit of 57,997 bytes.
+Require exactly 57,996 output bytes, `eof`, valid trailer/CRC and no unused data,
+unconsumed tail, second member or trailing bytes. Bound input reads to 16 KiB
+manifest, 512 KiB source and 64 KiB packed data. Bound emitted ASCII header to 512 KiB.
+Reject malformed/oversized/empty inputs and changed dimensions before output.
+
+Generate `KeyboardRimArtData.h` only in the build directory. Include the existing
+`ReferenceArtData.h` for its unchanged `reference_art::RgbImage` type; do not
+duplicate or alter that type. Emit one `inline constexpr std::uint8_t` array and
+one `inline constexpr RgbImage kKeyboardRim{1074,18,3222,...}` in the existing
+namespace, with a static assertion for 57,996 bytes. Record source/manifest/raw
+identities in comments. Ordinary builds/runtime need neither Pillow, a JPEG
+decoder, a new C++ compression library nor network access.
+
+Provide explicit mutually exclusive `--verify-only`, `--verify-source`,
+`--extract-to` and `--output` modes following the original compiler's interface.
+Use a fresh output directory for extraction. Validate all inputs before writing;
+reject output aliases to compiler/manifest/JPEG/blob and symlink or nonregular
+output files. Publish the header through an owned same-directory temporary and
+atomic replacement, preserving an identical existing header's timestamp. Test
+failure cleanup and destination preservation. Compiler errors are errors, not a
+request to silently regenerate accepted inputs.
+
+Root's custom command must depend on the new compiler, manifest, gzip and original
+JPEG. Add the output to every affected standalone/native fixture source group
+that compiles `Drawing.cpp`. Preserve the original generated-header dependency
+and include path. Freeze the manifest hash at contract admission and bind compiler/header hashes
+at implementation qualification; their future bytes are not fabricated here.
+
+## 3. Native preparation and paint transition
+
+Add only `ReferenceArt::KeyboardRim`, a private `keyboard_rim_` texture pointer,
+one `make_art(renderer_, reference_art::kKeyboardRim)` call after the existing
+three optional images, its switch branch, and destruction with the other owned
+textures. Reuse unchanged `make_art`: RGB24/static, one upload, blend NONE and
+linear scale mode. Default texture modulation remains white/alpha 255. No new
+texture mutation occurs while painting. Existing font/art initialization and
+failure behavior must remain intact.
+
+Preparation/upload/destruction stay on the main/UI thread. Any create, update,
+blend or scale-mode failure destroys the incomplete new texture and leaves its
+pointer null; this optional failure must not fail `Drawing::initialize` or disable
+controls. A later failed `SDL_RenderCopyF` returns false. Both paths select the
+unchanged old `reference_wood` call for exactly this rim. Do not change existing
+assets' behavior, create a global replacement helper, introduce a production
+test hook, or allocate/decode/upload/retry textures per frame. Fresh Drawing
+construction after renderer recreation prepares one new texture through the same
+ownership path. This is not a claim about every OS renderer-reset event.
+
+At the same location in `paint_reference_composition`, replace only:
+
+```cpp
+reference_wood(drawing, mapped({48.0F, 510.0F, 1074.0F, 18.0F}), scale);
+```
+
+with an optional new asset call and that exact fallback. The mapped rectangle
+must use unchanged binary32 endpoint mapping: compute `sx=W/1672`, `sy=H/941`,
+map left 48/right 1122 and top 510/bottom 528, then subtract mapped endpoints for
+width/height. Do not scale 1074/18 separately and assume identical rounding.
+Keep the shared wide predicate, call location and all subsequent painter order.
+
+The successful path has one additional fixed 57,996-byte static payload, one
+texture prepared at initialization and one copy call per active frame; no new
+loop, random source, clock, file access, sound state or audio work. Maximum
+logical dimensions stay 8192. SDL may allocate internally: this source bound is
+not a zero-allocation or frame-deadline claim. The null/failure path retains the
+existing finite procedural work and outcome.
+
+## 4. Source-derived preservation and exactness
+
+Freeze the comparison mask independently before the first painter edit. Let R
+be the endpoint-mapped rectangle. Reconstruct the old `reference_wood` gradient
+spans and all stripe/highlight/underside fills using their actual binary32
+arguments, unchanged `Drawing::gradient` center rules and pinned SDL 2.32.10 fill
+rules. For the new copy, multiply destination components by the actual renderer
+scale pair as SDL does; `SW_QueueCopy` truncates x/y/width/height toward zero and
+does not apply fill rectangles' minimum-one extent. Add the physical viewport
+origin and intersect with output, viewport and the physical caller clip, keeping
+clip-enabled empty distinct from disabled. Use the union of old/new support,
+expanded outward by **at most one device pixel**, then caller intersection. A
+whole-background/manual/panel mask or changed-pixel-derived mask is forbidden.
+
+At canonical scale 1/origin 0, the unexpanded union is `(48,510,1074,18)`, 19,332
+pixels; the one-pixel envelope is `(47,509,1076,20)`, 21,520 pixels before caller
+intersection. Independent fixture admission must verify these and every mapped
+case from actual source operations. Require zero differing RGBA pixels/channels
+outside the frozen mask and exact whole frames for inactive/disjoint/empty
+pairs. Compare clips with their independently rendered full companions and
+report every interior difference. **Do not require scaled copy samples to equal
+a crop of a full render:** A31's pre-implementation pinned-SDL experiment disproved
+that premise. SDL 2.32.10 proportionally clips scaled source/destination rectangles,
+rounds the source rectangle to integers, then linearly rescales that clipped
+source. All four unscaled rim-copy cases were exact; the eight scaled cases had
+7,404 differing interior pixels in total, with **zero caller-exterior changes**
+in all twelve cases. Keep this fixed limitation visible. Canonical isolated copy
+and unoccluded app ROI equality remain exact. Repeated rendering with the same
+clip must be exact. Before/after paired preservation outside the independently
+derived operation support, outside the caller clip and in protected foreground
+remains exact; no changed-pixel mask or support expansion is admitted. Full-scene
+companion differences can also include pre-existing scaled textures or glyphs,
+so they are diagnostic observations, never allowances for paired changes.
+No padding allowance authorizes changes to unchanged opaque foreground that
+happens to touch it.
+
+There are **three distinct equality claims**:
+
+1. **Raw source/transport:** every 57,996 asset byte equals the original crop.
+   An isolated canonical `Drawing::reference_art` copy into RGBA must reproduce
+   all 19,332 RGB pixels and alpha 255. This proves the intended asset/texture path.
+2. **Unoccluded final app rows:** canonical rectangle `(48,515,1073,10)` must
+   equal the corresponding original RGB/alpha 255 at all 10,730 pixels in the
+   fixed scene. The old rack's largest shadow ends at 515; the upper manual's
+   largest shadow starts at 525; the cabinet's largest left shadow starts at 1121.
+   These are source-derived boundaries, subject to independent pre-edit raster
+   confirmation. All three earlier y518–523 witness patches lie inside this ROI
+   and must reproduce their complete original pixels and row profiles exactly.
+3. **Retained final compositing:** rows 510–514,525–527 and the rightmost column
+   can be repainted by unchanged rack/manual/cabinet shadows. The source crop
+   already depicts its own illustrated shading; applying the retained app
+   shadows can darken those pixels again. Report all 19,332 original/before/after
+   differences and row profiles without excluding these differences from the
+   whole-interface result. Independently reconstruct the known later primitive
+   coverage and alpha compositing at these boundaries, and require actual output
+   to follow it. Do not promise whole-band source equality, move the rim later in
+   paint order, erase shadows or tune the image to conceal this distinction.
+
+Preserve all 68 controls, 147 keys, 24 presets, four banks, 71 Play focus stops,
+47 parameters, `B3CONTROLS4`/readers 1–3, note ownership and the nominal dry Engine.
+Complete desired/applied/model/layout snapshots must stay identical. Preserve
+all live labels, values, focus, opaque rack borders and manual/cheek top edges
+including canonical y528, even where they touch the mask envelope. Exact cyan
+focus pixels and neighboring opaque foreground probes remain separate guards.
+No semantic content is sourced from the image. Record scales, physical and
+logical viewport/clip observations, enabled-empty state and blend before/after.
+The new art call itself must preserve all renderer state, including draw color;
+the whole-view painter retains its existing broader state contract.
+
+## 5. Bounded fixture matrix and failure cases
+
+Use the separate frozen `keyboard-rim-art-v1.1` native fixture. Retain all 66 existing
+percussion/layout pairs and the existing Upper, Lower and admitted T1 fixtures
+unchanged. New rim tests must not depend on an obsolete glyph position from
+before T1. Root builds this supplemental fixture against the then-current
+accepted painter/Drawing before any rim edit and preserves that genuine binary,
+source, app, generated headers, SDL identity and build receipt. A branch bypass
+or pre-Lower binary is not the required baseline.
+
+The proposed supplemental matrix is **32 cases**, enumerated before editing. Ordinary-run fixed structural counters
+are 32 cases, 53 paint/state restorations, 15 clip companions, 84 opaque probes,
+14 focused full scenes, and 4 same/fresh-renderer repeat comparisons. Per-pixel
+counts and diagnostic clip differences are recorded by the genuine baseline.
+All nonresource outputs must include a nonempty protected exterior. Use complete
+fixed copied snapshots and output metadata, with counters fixed. At each case,
+record logical dimensions, renderer scales, physical output/viewport/clip,
+workspace/presentation, values, routes, desired/applied/pending/held and focus.
+Use the existing Lower fixture's copied-state construction, with explicit Upper
+or Lower focus, rather than runtime-dependent audio or meter observations.
+
+| IDs | Exact geometry and condition |
+| --- | --- |
+| 0–8 | Cartesian order sizes 1672×941,1400×820,1920×1080; scales 1,1.5,2; viewport origin (13,17). Levels exactly 0,4,8,4,8,0,8,0,4; routes B/A/D/Cancel/B/A/D/Cancel/B, pending false/true/false/true/false/true/true/false/true, held false/true/true/false/false/true/true/false/false. Focus Upper on even IDs, Lower on odd IDs, index=level and edited bank A only for route A, B otherwise. |
+| 9–20 | Left/right/top/bottom edge order, each at scales 1,1.5,2;1672×941; level 4/route B/held true/no pending/Upper focus 4. Scales1/2 use physical four-pixel strips straddling each intrinsic edge, origin (13,17);1.5 uses logical strips below and origin 0. |
+| 21 |1672×941, scale 1, origin (13,17); physical disjoint 8×8 clip starting four pixels beyond rim right/bottom. |
+| 22 |1672×941, scale 1.5, origin (13,17); enabled physical 0×0 clip at rim top-left. |
+| 23 |1672×941, scale 2, origin (13,17); enabled logical 0×0 clip at (48,510); draw blend NONE. |
+| 24–26 |8192×8192 logical, scales 1/1.5/2;64×64 outputs centered on the rim, separately labeled resource crops. No claim of whole-display or exterior preservation if no exterior remains. |
+| 27–28 |1672×941, scale 1, origin 0; level 4/route B/held true/no pending; Upper focus 4 then Lower focus 4. ID 27 is the canonical final-source equality scene. |
+| 29 |1672.25×941.5 logical, renderer scale (1.25,0.75), physical origin (−7,11); level 8/route A/pending true/held true/Upper focus 8. |
+| 30 |1920×820 logical, renderer scale 1, origin (13,17); level 4/route B/held true/no pending/Lower focus 4. |
+| 31 |1400×1080 logical, renderer scale (1.5,2), origin (13,17); level 8/route A/pending true/held true/Upper focus 8. |
+
+Unless specified, IDs 21–26 use level 4/route B/held true/no pending/Lower focus 4;
+clips are disabled and draw blend is BLEND. Logical edge strips at scale 1.5 are
+left `(46,508,4,22)`, right `(1120,508,4,22)`, top `(46,508,1078,4)`, bottom
+`(46,526,1078,4)`; installing these integer logical clips at fractional renderer
+scale exercises their physical mapping. Four-pixel physical strips use the
+independently derived intrinsic union, not a changed-pixel bbox. Full companions
+retain every other state. Independently review/freeze the final metadata and
+output extents before building; any correction remains a versioned admission
+record rather than silent post-failure matrix tuning. Nonresource physical output
+is `(ceil(W*scale_x)+2*abs(origin_x), ceil(H*scale_y)+2*abs(origin_y))`, with
+viewport `(origin_x,origin_y,ceil(W*scale_x),ceil(H*scale_y))`. Resource crops use
+64×64 output and viewport origin `(32-left-floor(width/2),32-top-floor(height/2))`
+for the independently derived intrinsic union; this centers the rim in the small
+output while retaining the full logical viewport dimensions. The negative
+origin case therefore has protected output margins. All state-dependent
+route/edit/pending operations target the declared focus manual; other copied
+snapshot members retain the fixed Lower-fixture construction.
+
+Existing66-case inactive comparisons cover Flat, Rotary, Service, 1399×820,
+1400×819,1280×900 and 960×700; require complete equality for those retained cases.
+Repeat canonical and minimum-active frames with a fresh renderer and repeated
+paint. Test the isolated art copy, each optional preparation failure, copy failure,
+successful recovery on a fresh Drawing, and exactly-once destruction of created
+textures using a test-only interposition or equivalent independently reviewed
+fixture. No production API or live app setting is added for fault injection.
+With only the rim operation failed, all existing artwork/controls remain present
+and full output equals the genuine pre-rim procedural baseline for the same case.
+
+## 6. Acceptance and next owner
+
+Before painter editing, A31 ran an isolated proposed copy through the actual
+pinned SDL static library. The retained
+[preflight](../development/2026-11-16-conversion-material/reports/A31-sdl-copy-preflight.json)
+and [single-file reproducer](../development/2026-11-16-conversion-material/reports/A31-sdl-copy-preflight.cpp)
+record the failed original crop-equivalence premise and the admitted sampling
+limitation above. Root independently inspected these observations and
+`SW_QueueCopy` / `SDL_PrivateUpperBlitScaled` before admitting this narrow
+pre-implementation correction. The original proposal and initial invalid
+viewport-relative readback experiment remain retained and explicitly marked;
+only corrected direct physical surface reads support the conclusion.
+The one-texture/one-copy implementation proposal otherwise remains unchanged.
+
+The independent reviewer must confirm source bytes, no-semantic-content scope,
+unoccluded ROI and shadow coverage, bounded pipeline/native lifecycle, operation
+mask and matrix, then admit a specific contract/manifest/fixture identity. Keep
+all failures. Only after that genuine baseline does a separate owner implement
+the new compiler/asset/texture and one paint-call transition. Root owns CMake,
+coherent builds, hosted inventory, integration and publication.
+
+Require exact asset/source/isolated-copy and canonical unoccluded equality;
+complete outside-mask/foreground/state preservation; all retained relevant
+native gates; compiler malformed-input/transaction tests; lifecycle/fallback
+tests; repeat/clip determinism; and source-qualified before/after comparison.
+Inspect actual complete app frames at 1672×941,1400×820 and an unequal aspect for
+new join seams, double-dark shadow bands, texture stretching and contrast loss.
+If preserved shadow compositing is visually unacceptable, record a failed
+candidate and author a separate reviewed change; do not erase its evidence.
+
+Update the actual-app gallery and README after acceptance. Report remaining
+rim-boundary and whole-frame differences. No resized original, quiet-patch pass,
+resource crop, exact decorative band or record checker closes literal whole
+interface 1:1, actual display/DPI/input, semantic accessibility, audio/host/device,
+physical calibration, rights or signed-distribution gates.

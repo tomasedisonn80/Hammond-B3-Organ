@@ -1,0 +1,24 @@
+{
+  "status": "source-ready-for-root-build",
+  "changes": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
+      "before_sha256": "38a35be03a2b6a346cee13c614b4c7cfe57c0be4fd9e96738910d3181959bdae",
+      "after_sha256": "f247418b3d8767ad2673cf5dd59bb2469fae5bd9f456bddc9682f4a85da241d5",
+      "archive": "docs/development/2026-11-16-conversion-material/reports/A32-upper-material-before-t1.txt",
+      "protocol_before": "upper-rack-material-v1.1",
+      "protocol_after": "upper-rack-material-v1.2",
+      "original_comment": "// Frozen supplemental fixtures for UPPER_RACK_MATERIAL_CONTRACT.md v1.1.\n// Build this same source against the genuine before painter before changing\n// production paint. Streams carry observations, never material allowances or\n// an alternative material implementation. The paired checker owns its mask,\n// before/after opaque-child equality and numerical reference screens.\n"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp",
+      "before_sha256": "281df1de3edce6a91a851d0b5674677646f1741fac1512f474ea7ffda67350e7",
+      "after_sha256": "4c6e4c12afb046507321b4c180232f39d653e978d38f567e171f0d633a2d63b3",
+      "archive": "docs/development/2026-11-16-conversion-material/reports/A32-lower-material-before-t1.txt",
+      "protocol_before": "lower-rack-material-v1",
+      "protocol_after": "lower-rack-material-v1.1",
+      "original_comment": "// Frozen supplemental fixtures for LOWER_RACK_MATERIAL_CONTRACT.md v1.\n// Build this same source against the genuine before painter before changing\n// production paint. Streams carry observations, never material allowances or\n// an alternative material implementation. The paired checker owns its mask,\n// before/after opaque-child equality and numerical reference screens.\n"
+    }
+  ],
+  "scope": "Only FontData include, protocol/comment, local expected footage machinery and sole old footage call. No production, cases, old text/value/heading/focus/material/clip assertions changed."
+}

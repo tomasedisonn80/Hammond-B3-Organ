@@ -1,0 +1,16 @@
+{
+  "scope": "Documentation authoring failure; not a converter or installation failure",
+  "observed_exit": 127,
+  "cause": "An outer quoted shell heredoc used PY, which collided with embedded guide example PY terminators. Python failed before creating the guide; subsequent documentation text was interpreted as shell input.",
+  "retained_observation": "SyntaxError: unterminated triple-quoted string literal (detected at line 93); command-not-found and missing-example-file diagnostics followed. The tool output was truncated, so this is a summary rather than an exact complete raw log.",
+  "recovery": "Checked git status and candidate example paths immediately. No guide, example directory, example install prefix or repeat receipt was created. Rewrote the document with unique quoted A27_GUIDE_DOCUMENT_END delimiter.",
+  "post_failure_paths_absent": [
+    "docs/CONTACT_GRID_CONVERSION_GUIDE.md",
+    "../contact-grid-example",
+    "../hammond-contact-grid-example",
+    "../hammond-contact-grid-moved-example",
+    "../A27-guide-repeat.json"
+  ],
+  "production_files_match_runtime_receipt": true,
+  "initial_link_check": "One nonexistent CONTACT_SWITCHING_IO.md link detected and corrected to the actual FRACTIONAL_CONTACT_REFERENCE.md before handoff."
+}

@@ -1,0 +1,281 @@
+{
+  "cwd": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ",
+  "elapsed_seconds": 0.488785266999912,
+  "head": "a5f222d49559eaead2936b1daf2f496e71a77da5",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "runner": {
+    "bytes": 9806,
+    "sha256": "a865efe7f26026edc30d60c46087e166aa66c4a16424329d4e97a35203049d01"
+  },
+  "runs": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tools/convert_contact_grid.py",
+        "--input",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/input/F02-48000-v1.json",
+        "--output",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/F02-grid-certificate.json"
+      ],
+      "certificate": {
+        "bytes": 33678,
+        "sha256": "77d084d531e81ce17cbde01a1b3d75d5430f95a4b04b6d5df1200b322cd5ba7e"
+      },
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "preorder": 23,
+        "root_bounds": 20
+      },
+      "cwd": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ",
+      "elapsed_seconds": 0.11860528299803264,
+      "exit": 0,
+      "max_position_error_display_only": 2.1267268379024606e-07,
+      "max_root_error_display_only": 6.124973293159086e-06,
+      "name": "source-F02",
+      "provenance": {
+        "contract_sha256": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0",
+        "implementation_sha256": {
+          "tools/contact_grid_conversion.py": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+          "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+          "tools/convert_contact_grid.py": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+          "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23"
+        },
+        "python_version": "3.12.14"
+      },
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": {
+        "max_position_error": {
+          "denominator": "309485010051929342534169375",
+          "numerator": "65819007680595093791"
+        },
+        "max_root_error": {
+          "denominator": "10746007293469769779380224",
+          "numerator": "65819007680595093791"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 611
+      }
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tools/convert_contact_grid.py",
+        "--input",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/input/F09-48000-v1.json",
+        "--output",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/F09-grid-certificate.json"
+      ],
+      "cwd": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ",
+      "destination_after": {
+        "bytes": 45,
+        "sha256": "a7c123386465f1f4cfd2e6313cc006556220384589c08cbc48d02770ac418305"
+      },
+      "destination_before": {
+        "bytes": 45,
+        "sha256": "a7c123386465f1f4cfd2e6313cc006556220384589c08cbc48d02770ac418305"
+      },
+      "elapsed_seconds": 0.10223588000008021,
+      "exit": 2,
+      "name": "source-F09-preserved-destination",
+      "owned_temporaries_remaining": [],
+      "refusal": {
+        "code": "event_order",
+        "conversion_id": "fractional-to-contact-grid-rne-v1",
+        "path": "preorder[5]",
+        "schema_version": 1,
+        "status": "refused",
+        "witness": {
+          "grid_group_count": 30,
+          "grid_group_index": 5,
+          "grid_times": [
+            {
+              "denominator": "32",
+              "numerator": "375"
+            },
+            {
+              "denominator": "91625969",
+              "numerator": "1073741824"
+            }
+          ],
+          "labels": [
+            "C:2",
+            "E:0:4:1:0"
+          ],
+          "source_group_count": 28,
+          "source_group_index": 5,
+          "source_times": [
+            {
+              "denominator": "32",
+              "numerator": "375"
+            },
+            {
+              "denominator": "32",
+              "numerator": "375"
+            }
+          ]
+        }
+      },
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"code\":\"event_order\",\"conversion_id\":\"fractional-to-contact-grid-rne-v1\",\"path\":\"preorder[5]\",\"schema_version\":1,\"status\":\"refused\",\"witness\":{\"grid_group_count\":30,\"grid_group_index\":5,\"grid_times\":[{\"denominator\":\"32\",\"numerator\":\"375\"},{\"denominator\":\"91625969\",\"numerator\":\"1073741824\"}],\"labels\":[\"C:2\",\"E:0:4:1:0\"],\"source_group_count\":28,\"source_group_index\":5,\"source_times\":[{\"denominator\":\"32\",\"numerator\":\"375\"},{\"denominator\":\"32\",\"numerator\":\"375\"}]}}\n",
+      "stdout_bytes": 466,
+      "stdout_sha256": "b290612d0fb756dba89a3a754405b7f4b5e41fa6d332da4f9f88813954616305"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tools/convert_contact_grid.py",
+        "--input",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/input/F09-48000-v1.json",
+        "--output",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/F09-absent-certificate.json"
+      ],
+      "cwd": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ",
+      "destination_exists": false,
+      "elapsed_seconds": 0.07502807600030792,
+      "exit": 2,
+      "name": "source-F09-absent-destination",
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"code\":\"event_order\",\"conversion_id\":\"fractional-to-contact-grid-rne-v1\",\"path\":\"preorder[5]\",\"schema_version\":1,\"status\":\"refused\",\"witness\":{\"grid_group_count\":30,\"grid_group_index\":5,\"grid_times\":[{\"denominator\":\"32\",\"numerator\":\"375\"},{\"denominator\":\"91625969\",\"numerator\":\"1073741824\"}],\"labels\":[\"C:2\",\"E:0:4:1:0\"],\"source_group_count\":28,\"source_group_index\":5,\"source_times\":[{\"denominator\":\"32\",\"numerator\":\"375\"},{\"denominator\":\"32\",\"numerator\":\"375\"}]}}\n",
+      "stdout_bytes": 466,
+      "stdout_sha256": "b290612d0fb756dba89a3a754405b7f4b5e41fa6d332da4f9f88813954616305"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "-E",
+        "-s",
+        "-S",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/moved-prefix/share/hammond-b3-organ/contact-grid-conversion/tools/convert_contact_grid.py",
+        "--input",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/input/F02-48000-v1.json",
+        "--output",
+        "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/F02-relocated-certificate.json"
+      ],
+      "byte_identical_to_source_certificate": true,
+      "certificate": {
+        "bytes": 33678,
+        "sha256": "77d084d531e81ce17cbde01a1b3d75d5430f95a4b04b6d5df1200b322cd5ba7e"
+      },
+      "cwd": "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/foreign-cwd",
+      "elapsed_seconds": 0.18110584899841342,
+      "exit": 0,
+      "method": "Manually copied exact five-file layout then renamed prefix; no CMake installation performed by A27.",
+      "name": "relocated-five-file-layout-F02",
+      "original_copy_stage_exists": false,
+      "package_inventory_after": {
+        "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": {
+          "bytes": 19243,
+          "sha256": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0"
+        },
+        "tools/contact_grid_conversion.py": {
+          "bytes": 46917,
+          "sha256": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797"
+        },
+        "tools/contact_switching_io.py": {
+          "bytes": 24979,
+          "sha256": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6"
+        },
+        "tools/convert_contact_grid.py": {
+          "bytes": 10253,
+          "sha256": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c"
+        },
+        "tools/fractional_contact_reference.py": {
+          "bytes": 29808,
+          "sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23"
+        }
+      },
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/0d55e62af118/build-native/hammond_causal_contact_grid_probe"
+      ],
+      "cwd": "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n/foreign-cwd",
+      "elapsed_seconds": 0.002557412000896875,
+      "exit": 0,
+      "name": "F02-embedded-transport-native-probe",
+      "observed_summary": {
+        "edges": 18,
+        "frames": 256,
+        "model_id": "causal-contact-grid-v1",
+        "phase": "closed"
+      },
+      "probe": {
+        "bytes": 53064,
+        "path": "/workspace/scratch/0d55e62af118/build-native/hammond_causal_contact_grid_probe",
+        "sha256": "191c1179cf5fb6b2059498445651a6a81cc63161aececa8c248a981b0afb306d"
+      },
+      "scope": "smoke observation only; independent 557-process correspondence remains A21's evidence",
+      "stderr": "",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdin": {
+        "bytes": 361,
+        "sha256": "307dadce82ebf0711bcd2da15d6d580198b60e7f7d07907c5ee97ba0b7703abe"
+      },
+      "stdout": "{\"schema_version\":1,\"model_id\":\"causal-contact-grid-v1\",\"edges\":[{\"time\":{\"tick\":150994,\"numerator\":211219557,\"denominator\":223696213},\"key_index\":0,\"contact_index\":0,\"closed_after\":true},{\"time\":{\"tick\":276824,\"numerator\":14408832,\"denominator\":223696213},\"key_index\":0,\"contact_index\":1,\"closed_after\":true},{\"time\":{\"tick\":402653,\"numerator\":41294321,\"denominator\":223696213},\"key_index\":0,\"contact_index\":2,\"closed_after\":true},{\"time\":{\"tick\":528482,\"numerator\":68179810,\"denominator\":223696213},\"key_index\":0,\"contact_index\":3,\"closed_after\":true},{\"time\":{\"tick\":654311,\"numerator\":95065298,\"denominator\":223696213},\"key_index\":0,\"contact_index\":4,\"closed_after\":true},{\"time\":{\"tick\":780140,\"numerator\":121950787,\"denominator\":223696213},\"key_index\":0,\"contact_index\":5,\"closed_after\":true},{\"time\":{\"tick\":905969,\"numerator\":148836275,\"denominator\":223696213},\"key_index\":0,\"contact_index\":6,\"closed_after\":true},{\"time\":{\"tick\":1031798,\"numerator\":175721764,\"denominator\":223696213},\"key_index\":0,\"contact_index\":7,\"closed_after\":true},{\"time\":{\"tick\":1157627,\"numerator\":202607253,\"denominator\":223696213},\"key_index\":0,\"contact_index\":8,\"closed_after\":true},{\"time\":{\"tick\":2818571,\"numerator\":132394604,\"denominator\":149130809},\"key_index\":0,\"contact_index\":8,\"closed_after\":false},{\"time\":{\"tick\":3007315,\"numerator\":84651774,\"denominator\":149130809},\"key_index\":0,\"contact_index\":7,\"closed_after\":false},{\"time\":{\"tick\":3196059,\"numerator\":36908943,\"denominator\":149130809},\"key_index\":0,\"contact_index\":6,\"closed_after\":false},{\"time\":{\"tick\":3384802,\"numerator\":138296922,\"denominator\":149130809},\"key_index\":0,\"contact_index\":5,\"closed_after\":false},{\"time\":{\"tick\":3573546,\"numerator\":90554091,\"denominator\":149130809},\"key_index\":0,\"contact_index\":4,\"closed_after\":false},{\"time\":{\"tick\":3762290,\"numerator\":42811261,\"denominator\":149130809},\"key_index\":0,\"contact_index\":3,\"closed_after\":false},{\"time\":{\"tick\":3951033,\"numerator\":144199240,\"denominator\":149130809},\"key_index\":0,\"contact_index\":2,\"closed_after\":false},{\"time\":{\"tick\":4139777,\"numerator\":96456409,\"denominator\":149130809},\"key_index\":0,\"contact_index\":1,\"closed_after\":false},{\"time\":{\"tick\":4328521,\"numerator\":48713579,\"denominator\":149130809},\"key_index\":0,\"contact_index\":0,\"closed_after\":false}],\"snapshot\":{\"phase\":\"closed\",\"config\":{\"sample_rate_hz\":48000,\"key_count\":1,\"keys\":[{\"press_units_per_tick\":223696213,\"release_units_per_tick\":149130809,\"contacts\":[{\"off\":11258999068426,\"on\":33776997205279},{\"off\":39406496739492,\"on\":61924494876344},{\"off\":67553994410557,\"on\":90071992547410},{\"off\":95701492081623,\"on\":118219490218476},{\"off\":123848989752689,\"on\":146366987889541},{\"off\":151996487423754,\"on\":174514485560607},{\"off\":180143985094820,\"on\":202661983231672},{\"off\":208291482765885,\"on\":230809480902738},{\"off\":236438980436951,\"on\":258956978573804}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]}]},\"cursor_frames\":256,\"command_count\":2,\"edge_count\":18,\"keys\":[{\"position\":0,\"target\":0,\"anchor_position\":281474976710656,\"anchor_tick\":2516582,\"closed\":[false,false,false,false,false,false,false,false,false]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]}]},\"blocks\":[{\"frames\":256,\"cursor_frames\":256,\"edges_written\":18}]}\n",
+      "stdout_bytes": 4175,
+      "stdout_sha256": "b0f66cc5ce1b610ebac55620ca658d235fa2047ea3cd96a3defbdf056bb90f15"
+    }
+  ],
+  "schema": "contact-grid-operating-examples-v1",
+  "scope": "guide command smoke; not independent numerical or install acceptance",
+  "source_inputs": {
+    "data/contact-switching/reference-v1/F02-48000-v1.json": {
+      "bytes": 1238,
+      "sha256": "edf3fddee3ca55d1ebbdf367210b1d032689a467e385cd1c0ecd66f014bad2af"
+    },
+    "data/contact-switching/reference-v1/F09-48000-v1.json": {
+      "bytes": 2522,
+      "sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b"
+    },
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": {
+      "bytes": 19243,
+      "sha256": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0"
+    },
+    "tools/contact_grid_conversion.py": {
+      "bytes": 46917,
+      "sha256": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797"
+    },
+    "tools/contact_switching_io.py": {
+      "bytes": 24979,
+      "sha256": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6"
+    },
+    "tools/convert_contact_grid.py": {
+      "bytes": 10253,
+      "sha256": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c"
+    },
+    "tools/fractional_contact_reference.py": {
+      "bytes": 29808,
+      "sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23"
+    }
+  },
+  "source_inputs_unchanged": true,
+  "status": "passed",
+  "temporary_root": "/workspace/scratch/0d55e62af118/A27-operating-zmlb537n",
+  "temporary_root_removed": true,
+  "tree": "1013bbd914a0957ca2c164ef02ca5410a8dcde6b"
+}

@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
+      "initial_candidate_archive": "docs/development/2026-11-16-conversion-material/reports/A32-upper-material-sign-conversion-failure.txt",
+      "initial_candidate_sha256": "f247418b3d8767ad2673cf5dd59bb2469fae5bd9f456bddc9682f4a85da241d5",
+      "corrected_sha256": "4167125e89fa1289c230b511e0a75a137a83379689ac5cc49362f6c0af2554e3",
+      "correction": "Explicit char-to-unsigned-char conversion for fixed ASCII footage literals; no run, geometry, threshold or assertion changes."
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp",
+      "initial_candidate_archive": "docs/development/2026-11-16-conversion-material/reports/A32-lower-material-sign-conversion-failure.txt",
+      "initial_candidate_sha256": "4c6e4c12afb046507321b4c180232f39d653e978d38f567e171f0d633a2d63b3",
+      "corrected_sha256": "2cc82460d6946ded81f321a3bce74affb61a233339f14e04c0f88e36ec12cf4b",
+      "correction": "Explicit char-to-unsigned-char conversion for fixed ASCII footage literals; no run, geometry, threshold or assertion changes."
+    }
+  ],
+  "initial_build_log": "typography-material-transition-build.log",
+  "stale_binary_test_result": "Excluded: parent reported tests launched after failed build; not evidence for these sources."
+}

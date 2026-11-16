@@ -1,45 +1,113 @@
-# Live manual footage typography — T1 contract candidate
+# Live manual footage typography — T1 contract v1
 
-**Root-authored proposal; independent admission and a genuine pre-edit fixture are required before implementation.** This extends the reviewed [material/type proposal](REFERENCE_MATERIAL_TYPE_NEXT.md), using the unchanged reference JPEG and existing ASCII Serif atlas. It does not admit whole-interface 1:1, alter musical labels, or change a control.
+**Admitted for a bounded candidate by A25's independent [review](../reviews/FOOTAGE_TYPOGRAPHY_ADMISSION.md), subject to a passing genuine pre-edit fixture build.** This extends the reviewed [material/type proposal](REFERENCE_MATERIAL_TYPE_NEXT.md). It uses the unchanged reference JPEG and existing ASCII Serif atlas. It does not admit whole-interface 1:1, alter musical labels, or change a control. Preserve the [original root proposal](../development/2026-11-16-conversion-material/reports/A25-proposal-before-admission.txt) and every observed failure.
 
 ## Scope and source inputs
 
-Only the eighteen manual drawbars in wide Dimensional Play use the new private helper. The existing activation, `UiModel`, label/value/hit rectangles, wells/caps, two pedal-mixture labels, all other text, focus, input routes, fonts and assets remain unchanged. Retain the complete strings from `kUiFootageLabels`: `16'`, `5 1/3'`, `8'`, `4'`, `2 2/3'`, `2'`, `1 3/5'`, `1 1/3'`, `1'`. Never copy the concept image's incorrect musical labels.
+Only the eighteen manual drawbars in active wide Dimensional Play use the new private helper. Activation remains Play, Dimensional, width at least 1400 and height at least 820, bounded by the existing 8192 maximum. Preserve `UiModel`, label/value/hit rectangles, wells/caps, two pedal-mixture labels, all other text, focus, input routes, fonts and assets. Retain these exact complete strings from `kUiFootageLabels`:
 
-The prior source uses Serif19 and `centered`; mixed fractions fit down to15 at canonical size and have a higher baseline. Reference observations retain ordinary-label ink at y473–488, versus current y470–483. These are image observations, not a universal readability metric. Preserve original measurements and every observed failure.
+`16'`, `5 1/3'`, `8'`, `4'`, `2 2/3'`, `2'`, `1 3/5'`, `1 1/3'`, `1'`.
 
-`FontData.h` SHA-256 is `f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802`; Serif pixel height40/ascent38. Digits advance25 atlas pixels, slash13, apostrophe11. `Drawing::text` remains unchanged, including its transparent-gutter handling. The genuine before painter/binaries must be captured after accepted Lower work and before this edit, with source/tree/fixture/dependency hashes. The initial pre-Lower binaries do not substitute for this transition.
+Never copy the concept image's incorrect musical labels. Recognize exactly these nine strings. Unknown future strings use the original fitted complete-string fallback, with Serif size `19*f`, padding `2*sx`, and the unchanged `centered` calculation. Pedal mixtures keep the original Sans path.
 
-## Exact run geometry
+The prior painter uses Serif 19 and `centered`; mixed fractions fit to 15 at canonical size and have a higher baseline. Reference observations place ordinary-label ink around y473–488, versus prior y470–483. These are image observations, not a universal readability metric. The image is design intent, not specimen evidence.
 
-Use existing binary32 composition scales `sx=W/1672`, `sy=H/941`, `f=min(sx,sy)` and binary32 arithmetic in written evaluation order. The unchanged canonical label box is46×23 at y467. All sizes below multiply by f; all baseline offsets from the stored label-box y multiply by sy; the two gaps multiply by sx. Center the measured complete run on the stored label box, not a guessed canonical center.
+`FontData.h` SHA-256 is `f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802`. Serif has pixel height 40 and ascent 38; digits advance 25 atlas pixels, slash 13, apostrophe 11. `Drawing::text` and `text_width` remain unchanged, including bearings, transparent gutters and their arithmetic. The original three decorative assets remain unchanged.
 
-| Run | Serif size | Baseline offset from label-box y | Advance at f=1 |
+The accepted Lower painter SHA is `45b710a9c207f456701732f55ec1086487d63bdb9a8b6ed995f4de12cd5bdb10`. Root must preserve this painter, app and existing raster binaries, then build the exact new fixture source against it before editing production. The [accepted Lower identity receipt](../development/2026-11-16-conversion-material/reports/lower-accepted-baseline.json) records the starting evidence. The initial pre-Lower binaries do not substitute for this transition.
+
+## Exact run geometry and arithmetic
+
+Use existing composition scales `sx=W/1672`, `sy=H/941`, `f=min(sx,sy)` and the stored label box. The canonical label box is 46×23 at y467; its width/height are mapped endpoint differences, not a separately multiplied guessed extent. Font sizes multiply by `f`, baseline offsets multiply by `sy`, and the two gaps multiply by `sx`.
+
+| Run | Serif size | Baseline offset from stored label y | Mathematical advance at f=1 |
 | --- | ---: | ---: | ---: |
-| Whole numeral |20.5|21.5|12.8125 per digit|
-| Fraction numerator |13|15.5|8.125|
-| Slash |16|19.5|5.2|
-| Fraction denominator |13|21.5|8.125|
-| Apostrophe |20.5|21.5|5.6375|
+| Whole numeral | 20.5 | 21.5 | 12.8125 per digit |
+| Fraction numerator | 13 | 15.5 | 8.125 |
+| Slash | 16 | 19.5 | 5.2 |
+| Fraction denominator | 13 | 21.5 | 8.125 |
+| Apostrophe | 20.5 | 21.5 | 5.6375 |
 
-Ordinary complete strings use one20.5-sized text call and baseline21.5. Mixed labels use five consecutive ASCII string-view runs, with a0.5*sx gap after the whole numeral and another before the apostrophe. Measure each run through unchanged `Drawing::text_width`; sum its actual binary32 widths and the two gaps left-to-right. A mixed run is mathematically **39.9*f + sx**, not40.9*sx under unequal composition scales. `16'` is31.2625*f and single-numeral footages18.45*f. Since f≤sx, every recognized run fits the42*sx padded width. These decimal sums explain geometry; actual runtime width uses measured advances.
+Ordinary complete strings use one 20.5-sized text call with baseline offset 21.5. Mixed labels use five consecutive ASCII string-view runs: whole numeral, numerator, slash, denominator, apostrophe. Place a `0.5*sx` gap after the whole numeral and another before the apostrophe. Measure each run through unchanged `Drawing::text_width` at its actual size. Accumulate width in run order, adding each gap at its declared position. Then advance the drawing cursor in exactly the same order.
 
-Set start x=`box.x+(box.width-total_width)/2`. For each run set size=`nominal_size*f`, baseline=`box.y+nominal_offset*sy`, top=`baseline-(38*size)/40` and call unchanged `Drawing::text` in the original ivory color. Advance x by the same measured width, then the explicitly located gap. No independent horizontal stretching, Unicode glyph, font asset, copied image lettering or per-character fitting is allowed. Use string views/fixed local values, no new heap allocation. Recognize only the exact nine current strings; any unknown future label takes the original fitted complete-string fallback. Preserve value text and all subsequent painting.
+Use explicit binary32 rounding boundaries for the new helper's arithmetic. In the pseudocode below, `r(x)` stores to and reads a volatile `float`; it prevents multiply/add contraction or regrouping across the stated boundary. Existing `Drawing`/layout arithmetic is not changed.
 
-## Independent support and fixtures
+```text
+size[i] = r(nominal_size[i] * f)
+advance[i] = Drawing::text_width(run[i], size[i], Serif)
+gap = r(0.5 * sx)
+width = 0
+for each run i:
+    width = r(width + advance[i])
+    after whole or denominator in a mixed label: width = r(width + gap)
+x = r(box.x + r(r(box.width - width) / 2))
+for each run i:
+    baseline = r(box.y + r(nominal_offset[i] * sy))
+    top = r(baseline - r(r(38 * size[i]) / 40))
+    Drawing::text(run[i], x, top, size[i], original_ivory, Serif)
+    x = r(x + advance[i])
+    after whole or denominator in a mixed label: x = r(x + gap)
+```
 
-Freeze and build a new native fixture against the genuine current painter before editing it. It must capture both manuals with the same model state and enumerate all nine strings, all eighteen manual focus identities, values0/4/8 and both registration routes. Keep original66 percussion and32 Lower fixtures unchanged. The independent checker derives old centered-text and new run glyph quads from font metrics and actual binary32 layout. It must not import the painter or derive its mask from changed pixels. Include `Drawing::text` subpixel gutter logic, renderer scale, physical viewport/clip, and at most one device pixel of raster envelope around the old/new union. Every other RGBA pixel must be exact; retain failures as lossless images. A whole-label-box or whole-panel permission mask is insufficient.
+All literals are binary32 constants. `Drawing::text` reconstructs its actual baseline as `top + 38*(size/40)` using its unchanged operations. The requested baseline and this reconstruction must both be represented in independent source-derived support calculations; do not replace actual quads with ideal decimal positions. The admitted finite geometry audit observes zero recomposition difference in its 126 complete-label records, not a universal equality theorem.
 
-The frozen new matrix must cover reference1672×941, minimum1400×820,1920×1080, unequal1920×820 and1400×1080, fractional logical dimensions, renderer scales0.75/1.25 and unequal1.5×2, positive/negative viewports, partial glyph clips, enabled-empty/disjoint clips, Flat/Rotary/Service, widths/heights immediately below wide activation, and64×64 output crops at maximum8192 geometry. A reviewer must spell out exact case inventory and metadata before painter editing. Root coordinates its build and preserves the executable/source.
+A mixed run is mathematically **39.9*f + sx**, not `40.9*sx` under unequal scales. `16'` is mathematically `31.2625*f`, and single-numeral footages `18.45*f`. Runtime values are rounded binary32 measured advances; decimal explanations are not bit-pattern assertions. Since `f <= sx`, recognized complete runs fit the existing padded width. Center on the stored label box. No independent horizontal stretching, Unicode glyph, new font asset, copied image lettering or per-character fitting is allowed. Use string views and fixed local arrays/values; no new heap allocation.
 
-Assert literal complete labels and correct1 3/5', unchanged controls/model/parameters, strong foreground glyph ink, no glyph clipping/collision with values or neighboring labels, all focus outlines, renderer state restoration, deterministic repeats and exact inactive whole frames. Keep fixed transparent-gutter support and retained caption/value geometry. Compare retained Upper/Lower material statistics with the pre-type stage separately; no panel material is modified. Existing fixture expectations must not be weakened to accommodate new typography. If an old fixture hardcodes the old glyph placement, record and independently review a versioned assertion repair retaining the old fixture result.
+## Frozen supplemental fixture
 
-## Visual and resource acceptance
+The new [native source](../../apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp) declares protocol `footage-typography-v1` and **44 cases**. Root builds that same source before and after the painter change. `--before` runs old centered-label expectations. No arguments run the admitted new-run expectations. `--case INDEX` emits one JSON header followed by exact RGBA bytes, with frame generation independent of the assertion mode; `--list` emits the complete static inventory. There is no runtime image allowance or alternative production painter in the fixture.
 
-Inspect actual full frames at reference and minimum active sizes plus an unequal-aspect case; inspect18 live labels at native scale, not only enlarged crops. New ordinary-label ink should occupy the reference-led y473–488 neighborhood at canonical size; report every label's ink bounds and counts instead of concealing different glyphs behind aggregate scores. Legibility, correct full strings and separation from values/focus take precedence over an image silhouette. A numeric containment pass cannot override a clipped or unreadable numerator, denominator, slash or apostrophe. Real display/DPI/accessibility remains a separate observed journey.
+Defaults in the table are logical size 1672×941, renderer scale 1×1, physical viewport origin (13,17), level 4 in all four banks, both manuals sounding Bank B, both editing Bank B, held Upper/Lower/pedal notes, no pending request, focus Upper drawbar 1, Play/Dimensional and disabled caller clip.
 
-The helper performs at most five text calls per mixed label and one per ordinary label: at most90 across eighteen labels (the exact current inventory is50 calls). Work/storage are fixed by the nine recognized strings. No new SDL surface/texture/upload/font allocation, file access, clock, random source or audio/state work occurs. Source bounds do not establish SDL allocation behavior or a frame deadline. Preserve any failing evidence; changes to run metrics/support require a new version and independent review before rerunning. Whole-interface1:1 remains unmet until the full objective passes independently.
+| IDs | Exact variation from defaults |
+| --- | --- |
+| 0–8 | Focus Upper indices 0–8. For index i, level `4*(i%3)`; both applied/edited routes A when i is even, B otherwise; pending opposite route on the focused manual when `i%3==1`; held notes iff `i%3!=0`. |
+| 9–17 | The same index/level/route/pending/held sequence, focused Lower indices 0–8. |
+| 18 | 1400×820. |
+| 19 | 1920×1080. |
+| 20 | 1920×820. |
+| 21 | 1400×1080. |
+| 22 | 1672.5×941.25, renderer 1.25×1.25. |
+| 23 | Renderer 0.75×0.75, origin (−11,−7). |
+| 24 | Renderer 1.25×1.25, origin (29,31). |
+| 25 | Renderer 1.5×2. |
+| 26–29 | Physical clips, in order: (190,469,4,23), (219,469,4,23), (183,475,46,3), (183,485,46,3). Coordinates are relative to the physical viewport. |
+| 30–33 | The same four clip rectangles set in logical coordinates after renderer scale 1.25×1.25. |
+| 34 | Physical disjoint clip (1150,300,8,8). |
+| 35 | Enabled physical empty clip (183,467,0,0). |
+| 36 | Enabled logical empty clip (183,467,0,0), renderer 1.25×1.25. |
+| 37 | Flat presentation. |
+| 38 | Rotary workspace. |
+| 39 | Service workspace. |
+| 40 | Width `nextafter(float(1400),0)`, height 941. |
+| 41 | Width 1672, height `nextafter(float(820),0)`. |
+| 42 | Maximum 8192×8192, only a 64×64 output crop; viewport origin is the negative floor of the mapped Upper drawbar-1 label origin times renderer scale. |
+| 43 | Same maximum/crop rule, renderer scale 1.5×2. |
 
-## Next step
+Ordinary output size is `ceil(W*renderer_sx)+2*abs(origin_x)` by `ceil(H*renderer_sy)+2*abs(origin_y)`; the viewport retains the signed origin and unpadded extent. The maximum ordinary allocation is bounded by 3900×2200 pixels. Resource cases allocate only 64×64 and cannot establish protected exterior containment.
 
-Independent reviewer must verify the source arithmetic and exact current call count, choose/freeze the native matrix, and admit this contract hash or return corrections. No production typography edit is authorized by this proposal alone.
+The fixture serializes every public copied model/layout member independently of structure padding and requires exact preservation around paint. It verifies all complete musical strings, both bank identities, desired/applied/pending state, all 18 focus identities, 68 controls, 147 playing keys and 24 presets where the Play inventory applies. Full active cases require all eighteen independently mapped label/value/hit rectangles, opaque well/cap probes, every literal footage glyph's strong contrasting ink, unchanged value text and complete cyan focus equality. Strong expected white-glyph pixels use encoded-channel `Y' >= 180`; every corresponding actual pixel must have `Y' > 90`, with at least one sample per glyph. These are content/contrast guards, not a visual readability score.
+
+The unchanged baseline exposed a pinned SDL scaled-texture behavior: clipping can round the sampled source rectangle before scaling, so a clipped glyph is not always an exact crop of its unclipped raster. The [original failure and identities](../development/2026-11-16-conversion-material/reports/A25-clip-diagnostic.json) and [failing fixture source](../development/2026-11-16-conversion-material/reports/A25-clip-failure-fixture.txt) remain intact. A29 independently checked the source and destination math before this pre-paint correction.
+
+For the declared glyph clips, require exact clipped/full-companion equality at every visible pixel outside the **current expected typography's independently computed glyph-copy quads with at most one device pixel of envelope**. These clips can intersect only Upper drawbar-1 footage. Count all visible pixels inside those quads and every clipped/full difference there separately; do not declare them equal. Render the expected complete literal label under the identical clip/viewport/scale and require all surviving strong glyph pixels to retain the same contrast guard. A glyph with no surviving strong sample is invisible in that clip and is excluded only from that clipped glyph's nonempty check; full active cases still require every complete glyph. The old baseline's bottom clip may lie below its smaller lettering. Keep unchanged clear-color pixels everywhere outside the caller clip/viewport, and restore both scales, physical/logical viewport and clip, clip-enabled state and blend mode. This correction changes no independent before/after allowance, full-frame glyph criterion or material threshold. Case 1 repeats exactly after cases 0 and 2 on the same renderer and on a fresh renderer.
+
+## Independent paired support and acceptance
+
+The independent checker must derive old centered-text and new run glyph-copy quads from font metrics and actual binary32 layout. It must not import the candidate helper, use a candidate-generated mask, or infer support from changed pixels. Include `Drawing::text` bearings, per-dimension subpixel gutter, SDL copy destination conversion, renderer scaling and caller viewport/clip. Permit at most one device pixel of conservative raster envelope around the independently derived old/new glyph union, intersected with the physical caller domain and output. A whole label box or rack is not an allowance.
+
+Every RGBA pixel/channel outside that support must remain exact. Require exact whole-frame equality for cases 34–41 (disjoint/empty/inactive), and exact copied metadata/model equality for all pairs. Retain all original 66 percussion, 30 Upper-material and 32 Lower-material fixture sources/results. Their old glyph assertions need the explicit transition below; their masks and material thresholds must not widen. Compare retained Upper/Lower quiet material statistics separately with the accepted pre-T1 stage.
+
+The complete correct new strings, foreground ink, values and focus must remain legible without clipping or collision. Source geometry covers true glyph quads, not just nominal advance cells. Inspect complete actual application frames at 1672×941, 1400×820 and an unequal active aspect. Review all eighteen labels at native image scale; report per-label ink bounds/counts, including fractions, rather than hiding failures in an aggregate score. Legibility and correct `1 3/5'` take precedence over silhouette similarity. Native display/DPI and semantic accessibility remain separate observed journeys.
+
+## Retained-material fixture transition
+
+The original Upper and Lower material fixtures each call `literal_ink` with the old Serif `19*f`, `centered` footage geometry in `full_frame_children`. That assertion deliberately becomes obsolete after this separately scoped T1 change. Preserve both original files/hashes and their genuine pre-T1 results. Run both unchanged fixtures against the candidate and retain the expected old-placement failures before a transition.
+
+A separate reviewer must admit a versioned assertion repair for exactly those two footage calls and their necessary local expected-run machinery. Replace their old placement expectation with this contract's full new glyph expectations while retaining every material, value, heading, focus, clipping, state, fixture and resource criterion. Do not skip the calls, accept either placement, lower contrast, remove glyphs, expand a material allowance, or rewrite old reports. Root owns that later handoff; A25 does not modify either old fixture. The percussion fixture needs no footage assertion change.
+
+## Finite work and closure boundary
+
+The helper uses at most five text calls per mixed label and one per ordinary label. The exact current inventory is **50 text calls and 62 nonempty glyph copies** across eighteen labels; conservative bounds are 90 calls and 90 glyph copies for the current fixed string lengths. Fixed local arrays can hold five runs/widths. No new SDL surface/texture/upload/font allocation, file access, clock, random source or audio/state work occurs. Source counts do not establish SDL allocation behavior or a frame deadline.
+
+Any change to metrics, cursor order, allowed support, fixture inventory or criteria requires an explicit new version and independent admission before rerunning. Preserve failures. Candidate acceptance also needs source-qualified builds, paired evidence and actual-frame visual review. **Literal whole-interface 1:1 remains unmet and unwaived** until the full objective passes independently.

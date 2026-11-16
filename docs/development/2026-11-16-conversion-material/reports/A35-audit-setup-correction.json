@@ -1,0 +1,8 @@
+{
+  "schema": "a35-audit-setup-correction-v1",
+  "status": "retained-source-audit-setup-failure",
+  "original_audit_sha256": "06af6e57edd9e1c1ddff88de6af51e42d5ad3424acb73006a7584a49d6ac6327",
+  "failure": "ValueError: Expected exactly one declared delta: escaped == 0,",
+  "reason": "Negative source-audit mutation matched both the literal sampler and historical paired comparison. Exact reversal and original source identity checks had already passed; no output receipt had been created.",
+  "correction": "Make the negative mutation match the complete literal-sampler condition only. No native source or criteria change."
+}

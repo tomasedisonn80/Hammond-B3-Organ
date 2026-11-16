@@ -1,0 +1,99 @@
+{
+  "schema": "a35-product-t1-fixture-transition-audit-v1",
+  "status": "passed",
+  "source": "apps/standalone/native_tests/test_standalone_product_visual.cpp",
+  "reference_commit": "3520c96adcdcf4ce4bcb860082354bf0050a89c3",
+  "original_archive": "docs/development/2026-11-16-conversion-material/reports/A35-product-visual-before-t1.txt",
+  "original_sha256": "97bb4d5afc5d7e72694a522d5b1c1f4bb9c30e51eecf470933865d4323f0697f",
+  "current_sha256": "f9b6d76250cb10d9c75210b8bccae8c426bde079fc49c0b29650952aaa48c040",
+  "reversed_sha256": "97bb4d5afc5d7e72694a522d5b1c1f4bb9c30e51eecf470933865d4323f0697f",
+  "archive_equals_committed_source": true,
+  "exact_reversal_restores_all_original_bytes": true,
+  "strong_ink_sampler_byte_identical": true,
+  "strong_ink_sampler_sha256": "917a0c77d321338ceedb69948174e7c64279e418967644b370da37ee39546214",
+  "expected_footage_helper_sha256": "5157311e79507e79a9eb74e6ac9e35c512ca5d9478fee053d37febea37e7acd2",
+  "old_protocol": "unlabelled schema_version=1; source-bound historical fixture",
+  "new_protocol": "product-visual-t1-v1",
+  "unchanged": [
+    "76-case ordinary matrix",
+    "148 ordinary frames",
+    "all value and route plans",
+    "legacy_digits branch",
+    "historical comparison code and mask",
+    "all cap checks",
+    "focus/pending/inventory",
+    "caller clip/exterior",
+    "nonempty complete glyphs",
+    "expected luma >=160",
+    "actual luma >=90",
+    "padded-row guard"
+  ],
+  "audit_negative_checks": [
+    {
+      "mutation": "expected contrast",
+      "rejected_by_exact_reversal": true
+    },
+    {
+      "mutation": "actual contrast",
+      "rejected_by_exact_reversal": true
+    },
+    {
+      "mutation": "nonempty glyph",
+      "rejected_by_exact_reversal": true
+    },
+    {
+      "mutation": "padded-row containment",
+      "rejected_by_exact_reversal": true
+    },
+    {
+      "mutation": "nine-level matrix",
+      "rejected_by_exact_reversal": true
+    },
+    {
+      "mutation": "focus inventory",
+      "rejected_by_exact_reversal": true
+    },
+    {
+      "mutation": "caller exterior",
+      "rejected_by_exact_reversal": true
+    },
+    {
+      "mutation": "cap assertions",
+      "rejected_by_exact_reversal": true
+    }
+  ],
+  "source_identities": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_product_visual.cpp",
+      "bytes": 42436,
+      "sha256": "f9b6d76250cb10d9c75210b8bccae8c426bde079fc49c0b29650952aaa48c040"
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 162295,
+      "sha256": "a88e7576700ae306769849ceda36993969a61e848c015ba4fb98fa9c4a7e8cfa"
+    },
+    {
+      "path": "apps/standalone/Drawing.cpp",
+      "bytes": 20951,
+      "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f"
+    },
+    {
+      "path": "apps/standalone/Drawing.h",
+      "bytes": 2443,
+      "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188"
+    },
+    {
+      "path": "apps/standalone/FontData.h",
+      "bytes": 204816,
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+    },
+    {
+      "path": "docs/design/FOOTAGE_TYPOGRAPHY_CONTRACT.md",
+      "bytes": 14658,
+      "sha256": "e000682c74c3ef488cf89dd60396a3d129f8c525cf41a049334cc62030cb3f8a"
+    }
+  ],
+  "audit_source_sha256": "bdd856505df7c4fc2fad8da25139c4bb94bf69572a330eec6df0871d23dba620",
+  "scope": "Source-only exact reversal and unchanged assertion criteria. Native build/runtime and production raster preservation require their separate observed evidence."
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "a35-product-t1-native-readback-v1",
+  "status": "passed",
+  "qualified_hashes_verified": [
+    "fixture",
+    "executable",
+    "painter"
+  ],
+  "audit_source_identities_verified": 6,
+  "build_receipt": {
+    "command": [
+      "cmake",
+      "--build",
+      "../build-native",
+      "--target",
+      "test_standalone_product_visual",
+      "--parallel",
+      "3"
+    ],
+    "exit_code": 0,
+    "seconds": 4.250185066997801,
+    "fixture_sha256": "f9b6d76250cb10d9c75210b8bccae8c426bde079fc49c0b29650952aaa48c040",
+    "fixture_unchanged": true
+  },
+  "test_receipt": {
+    "command": [
+      "ctest",
+      "--test-dir",
+      "../build-native",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-R",
+      "^test_standalone_product_visual$"
+    ],
+    "exit_code": 0,
+    "seconds": 18.361137944000802,
+    "fixture_sha256": "f9b6d76250cb10d9c75210b8bccae8c426bde079fc49c0b29650952aaa48c040",
+    "executable_sha256": "f011eeaac97a7de9f552cd0f35b6f8473b0da0768b8403a1ab96d1317efaa675",
+    "fixture_unchanged": true,
+    "executable_unchanged": true,
+    "painter_sha256": "a88e7576700ae306769849ceda36993969a61e848c015ba4fb98fa9c4a7e8cfa"
+  },
+  "original_failed_native_result": {
+    "schema_version": 1,
+    "checks": 12952,
+    "failures": 4464,
+    "cases": 76,
+    "frames": 148,
+    "cap_measurements": 1296,
+    "literal_glyphs": 8717,
+    "strong_text_pixels": 353867,
+    "compared_pairs": 0,
+    "compared_pixels": 0,
+    "changed_pixels": 0,
+    "rack_changes": 0,
+    "idle_top_changes": 0,
+    "escaped_pixels": 0,
+    "byte_identical_pairs": 0,
+    "clipped_cases": 4,
+    "pending_cases": 42,
+    "focused_cases": 76,
+    "changed_idle_keys": 0,
+    "readout_shadow_leaks": 0,
+    "backend": "SDL software surface; fixed copied state; no audio/window"
+  },
+  "fresh_successful_native_result": {
+    "schema_version": 1,
+    "protocol": "product-visual-t1-v1",
+    "checks": 12952,
+    "failures": 0,
+    "cases": 76,
+    "frames": 148,
+    "cap_measurements": 1296,
+    "literal_glyphs": 8717,
+    "strong_text_pixels": 385644,
+    "compared_pairs": 0,
+    "compared_pixels": 0,
+    "changed_pixels": 0,
+    "rack_changes": 0,
+    "idle_top_changes": 0,
+    "escaped_pixels": 0,
+    "byte_identical_pairs": 0,
+    "clipped_cases": 4,
+    "pending_cases": 42,
+    "focused_cases": 76,
+    "changed_idle_keys": 0,
+    "readout_shadow_leaks": 0,
+    "backend": "SDL software surface; fixed copied state; no audio/window"
+  },
+  "case_and_assertion_inventory_unchanged": true,
+  "inputs": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_product_visual.cpp",
+      "bytes": 42436,
+      "sha256": "f9b6d76250cb10d9c75210b8bccae8c426bde079fc49c0b29650952aaa48c040"
+    },
+    {
+      "path": "/workspace/scratch/0d55e62af118/build-native/apps/standalone/test_standalone_product_visual",
+      "bytes": 3443512,
+      "sha256": "f011eeaac97a7de9f552cd0f35b6f8473b0da0768b8403a1ab96d1317efaa675"
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 162295,
+      "sha256": "a88e7576700ae306769849ceda36993969a61e848c015ba4fb98fa9c4a7e8cfa"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/typography-product-transition-qualified.json",
+      "bytes": 556,
+      "sha256": "034d79bdab3c7797d431c56bc74c60b5ccb23d737869b64eba2b6fbc56e69bce"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/typography-product-transition-build.json",
+      "bytes": 321,
+      "sha256": "7ddf7afbbcce7735fe12900bc1c85ca23f5f970ed5b24ce599c4158a287f6a46"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/typography-product-transition-build.log",
+      "bytes": 255,
+      "sha256": "9c4db3509be848501cd8aa0bb59845c36e7c95e6739bfcd3554bb661b8c9b663"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/typography-product-transition-ctest.log",
+      "bytes": 526,
+      "sha256": "4a6eab57d301d4f87c33ef211dc6a00cad7101ea427c56169f922ff115fe9f31"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/typography-product-transition-LastTest.log",
+      "bytes": 1412,
+      "sha256": "2206d636d6bcb0258c0161bf067f84c750244f3aec0b051724d90e9a46374e13"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/wave06-before-rim-ctest.log",
+      "bytes": 36990,
+      "sha256": "41cf23b3b530384b5f63626b7895f038754a83675352377981b0baa3ec7f6ed5"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/wave06-before-rim-qualification.json",
+      "bytes": 57493,
+      "sha256": "96d4bf0fd6ccf7cd10d74222c02e386dcf3b6a2f3960f0054baa412e59f075b3"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/A35-transition-audit.json",
+      "bytes": 3547,
+      "sha256": "7c13ff4deb63513947d2a3d47cd98971dbf5268a39d4bfbc371076a849541b8d"
+    }
+  ],
+  "scope": "Independent readback of root-built/root-executed evidence and current bound bytes; no new native execution, hosted result or historical paired comparison claimed."
+}

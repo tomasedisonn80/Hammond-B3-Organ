@@ -1,5 +1,17 @@
 # Project plan: Hammond B-3 and Leslie
 
+## Active conversion/material continuation — 16 November 2026
+
+This session's source is `/workspace/scratch/0d55e62af118/Hammond-B3-Organ`; root coordinates `../build-native`. The [current handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md) and [actual ledger](development/2026-11-16-conversion-material/assignments.json) supersede the earlier session's workspace and next-task pointers below. This request requires **60 new workers in ten waves**; its own ledger records actual progress. Earlier sixty-worker closures do not count again.
+
+The first four waves are published as **`3520c96adcdcf4ce4bcb860082354bf0050a89c3`**, exact tree `1013bbd914a0957ca2c164ef02ca5410a8dcde6b`, with nonforced expected-head publication and independent Git fetch. They deliver explicit certified fractional-to-grid conversion, a separate five-file installer and accepted Lower material. [Publication receipt](development/2026-11-16-conversion-material/reports/wave04-publication.json). Completed first hosted matrix: **11/13 jobs pass**. macOS core fails two test-only path assumptions and Windows core fails the same unresolved-parent comparison. All five native standalone and all three native VST3 jobs pass. [Initial and completed evidence](development/2026-11-16-conversion-material/reports/wave04-hosted-complete.json) and the [raw macOS log](development/2026-11-16-conversion-material/reports/hosted-3520c96-macos-core.log) are retained. A33 has repaired the test path assumptions, with 46 local methods passing; exact repaired hosted results remain pending. Waves 5–6 add operating/install acceptance and **admitted T1 manual-label typography**, with 110 paired frames and three actual-size visual reviews. The initial coherent run passes 218/219; the sole old-font product expectation was precisely transitioned and rebuilt, and its fresh 76-case test passes. [Composite qualification](development/2026-11-16-conversion-material/reports/rim-before-qualified.json) retains this exact sequence rather than claiming a second full run.
+
+The [operating guide](CONTACT_GRID_CONVERSION_GUIDE.md) explains real conversion/refusal commands and certificate limits. The [actual T1 gallery](../examples/demos/footage-typography-v1/README.md) shows the latest admitted UI stage. The original Lower v1 sampling failure is preserved; independently admitted v2 passes 98 pairs and 35 inequalities. Literal whole-interface 1:1, physical calibration, native accessibility and live contact audio remain open. All M0–M9 exit criteria and musical identities remain binding.
+
+### Retained earlier-session record
+
+The dated streaming-session qualification, workspace and future assignments below are retained history. Use the active handoff above for this session's setup and current work; do not treat the older converter/Lower proposals as still unimplemented.
+
 **Code qualification update, 16 November 2026:** implementation `af2b747` and the
 Windows I/O repair `2f57723` are published and independently fetched. All **13
 hosted jobs pass at `2f57723`**, as recorded in the

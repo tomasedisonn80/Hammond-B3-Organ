@@ -1,5 +1,38 @@
 # Development log
 
+## 2026-11-16 — T1 typography and converter platform-test repair qualified locally
+
+The new continuation admits T1 manual footage typography with complete mixed
+fractions, unchanged musical strings and a private paint-only helper. Its
+independent comparison passes 110 genuine pairs, zero changes outside the
+admitted glyph support and 44 exact whole frames. Independent inspection covers
+all eighteen labels in the three actual full-frame captures now linked from
+README. Upper, Lower and product fixtures explicitly transition only their
+historical footage expectations; original failures and unchanged thresholds
+remain reviewable.
+
+A fresh all-target build and full run passed 218/219 with 506 stable inputs.
+The sole product fixture failure was its historical font placement. After the
+precise transition, a fresh build and 76-case test passed; all other tracked
+inputs remained unchanged. The [composite receipt](development/2026-11-16-conversion-material/reports/rim-before-qualified.json)
+records this sequence. It is not a second 219-test run.
+
+The first published platform matrix completed at 11/13. All native standalone
+and VST3 jobs passed. A33 repaired two test-only filesystem assumptions exposed
+by macOS/Windows; 46 local methods pass, while exact repaired hosted evidence
+remains pending publication. A31 admitted the decorative rim source, manifest,
+32-case fixture and independently corrected scaled-SDL clipping premise. Its
+genuine baseline is retained. A36 froze independent 98-case masks and shadow
+predictions before production changes; A34 implementation follows root's
+checkpoint. All sixty workers and whole-interface 1:1 remain open at this entry.
+
+
+## 2026-11-16 — New conversion/material session published; wave 5 active
+
+The new session freshly read all500 atlas pages and accepted four waves of six actual workers. Explicit certified fractional-to-grid conversion, independent numerical/native/resource/transaction evidence, a separate five-file installer and scoped Lower material are published at `3520c96adcdcf4ce4bcb860082354bf0050a89c3`. Remote tree/parent were independently fetched. Original Lower v1 failure is retained; admitted v2 passes98pairs/35inequalities/166foregroundguards. [Current handoff](CONVERSION_MATERIAL_HANDOFF.md) records exact setup, source/qualification boundaries and publication recovery.
+
+Wave5 adds practical converter guidance,13-method/93-process installation acceptance, and admitted manual-label typography with a genuine44-case pre-edit fixture. Candidate typography and independent paired comparison are in progress; original Upper/Lower old-label assertion failures will be retained before independent transition review. A26's exact decorative rim proposal remains pre-implementation. This session's actual60-worker closure and final whole-interface acceptance are not claimed. Earlier entries below retain their original session identities.
+
 ## 2026-11-16 — All sixty scoped deliveries accepted; final recovery records
 
 All sixty actual workers in ten waves now have accepted scoped deliveries and

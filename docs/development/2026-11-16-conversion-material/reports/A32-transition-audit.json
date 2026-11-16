@@ -1,0 +1,53 @@
+{
+  "schema": "a32-material-fixture-transition-source-audit-v1",
+  "status": "passed",
+  "reference_commit": "3520c96adcdcf4ce4bcb860082354bf0050a89c3",
+  "records": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
+      "original_archive": "docs/development/2026-11-16-conversion-material/reports/A32-upper-material-before-t1.txt",
+      "original_sha256": "38a35be03a2b6a346cee13c614b4c7cfe57c0be4fd9e96738910d3181959bdae",
+      "current_sha256": "4167125e89fa1289c230b511e0a75a137a83379689ac5cc49362f6c0af2554e3",
+      "reversed_sha256": "38a35be03a2b6a346cee13c614b4c7cfe57c0be4fd9e96738910d3181959bdae",
+      "archive_equals_genuine_committed_source": true,
+      "remove_exact_declared_delta_restores_original_bytes": true,
+      "literal_ink_sampling_body_unchanged": true,
+      "expected_helper_sha256": "e6eb8e7b02a2d05ffd81e9be0fccd33ecba5661c1f3f4b62df5c64e8087f886e",
+      "expected_sampler_sha256": "84ed1cf22c1d598e8e4e2f5e212d58b3628fcc68afb55660651389cf4890aa47",
+      "old_protocol": "upper-rack-material-v1.1",
+      "new_protocol": "upper-rack-material-v1.2"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp",
+      "original_archive": "docs/development/2026-11-16-conversion-material/reports/A32-lower-material-before-t1.txt",
+      "original_sha256": "281df1de3edce6a91a851d0b5674677646f1741fac1512f474ea7ffda67350e7",
+      "current_sha256": "2cc82460d6946ded81f321a3bce74affb61a233339f14e04c0f88e36ec12cf4b",
+      "reversed_sha256": "281df1de3edce6a91a851d0b5674677646f1741fac1512f474ea7ffda67350e7",
+      "archive_equals_genuine_committed_source": true,
+      "remove_exact_declared_delta_restores_original_bytes": true,
+      "literal_ink_sampling_body_unchanged": true,
+      "expected_helper_sha256": "e6eb8e7b02a2d05ffd81e9be0fccd33ecba5661c1f3f4b62df5c64e8087f886e",
+      "expected_sampler_sha256": "84ed1cf22c1d598e8e4e2f5e212d58b3628fcc68afb55660651389cf4890aa47",
+      "old_protocol": "lower-rack-material-v1",
+      "new_protocol": "lower-rack-material-v1.1"
+    }
+  ],
+  "upper_lower_expectation_helpers_byte_identical": true,
+  "unchanged_outside_declared_delta": [
+    "cases/inventory",
+    "existing literal_ink",
+    "value/heading expectations",
+    "material probes",
+    "all model/layout/session serialization",
+    "state restoration",
+    "focus",
+    "caller clips",
+    "frame generation",
+    "thresholds",
+    "f32 helper",
+    "repetition checks",
+    "CLI/stream structure"
+  ],
+  "scope": "Exact source reversibility, original-byte archival and unchanged strong-ink criteria; native execution is separate root evidence.",
+  "audit_source_sha256": "2805d47a30c09c910ef8aaebf36e7c027473134a9cc7b2242544e219c2c2977d"
+}

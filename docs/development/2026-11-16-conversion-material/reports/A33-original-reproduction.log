@@ -1,0 +1,42 @@
+test_complete_payload_precedes_all_output_io (__main__.main.<locals>.AliasedParent.test_complete_payload_precedes_all_output_io) ... FAIL
+
+======================================================================
+FAIL: test_complete_payload_precedes_all_output_io (__main__.main.<locals>.AliasedParent.test_complete_payload_precedes_all_output_io)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A33-before-test_contact_grid_conversion_cli.txt", line 307, in test_complete_payload_precedes_all_output_io
+    self.assert_success(self.invoke())
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A33-before-test_contact_grid_conversion_cli.txt", line 112, in assert_success
+    self.assertEqual(result, (0, "", ""))
+AssertionError: Tuples differ: (2, '{"code":"operation","conversion_id":"[267 chars], '') != (0, '', '')
+
+First differing element 0:
+2
+0
+
++ (0, '', '')
+- (2,
+-  '{"code":"operation","conversion_id":"fractional-to-contact-grid-rne-v1","path":"publication","schema_version":1,"status":"refused","witness":{"exception":"AssertionError","reason":"PosixPath(\'/tmp/contact-grid-cli-test-ijswxu_o\') '
+-  '!= PosixPath(\'/tmp/contact-grid-cli-test-ijswxu_o/parent-alias\')"}}\n',
+-  '')
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (failures=1)
+test_valid_input_and_output_accept_non_utf8_posix_path_names (a33_original_test_contact_grid_conversion_adversarial.ProcessPublicationAdversaries.test_valid_input_and_output_accept_non_utf8_posix_path_names) ... ERROR
+
+======================================================================
+ERROR: test_valid_input_and_output_accept_non_utf8_posix_path_names (a33_original_test_contact_grid_conversion_adversarial.ProcessPublicationAdversaries.test_valid_input_and_output_accept_non_utf8_posix_path_names)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A33-before-test_contact_grid_conversion_adversarial.txt", line 269, in test_valid_input_and_output_accept_non_utf8_posix_path_names
+    source.write_bytes(data)
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A33-reproduce-original.py", line 68, in encoding_refusal
+    raise OSError(errno.EILSEQ, "injected filesystem encoding rejection", str(path))
+OSError: [Errno 84] injected filesystem encoding rejection: '/tmp/contact-grid-adversary-vkce8hui/input-\udcff.json'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

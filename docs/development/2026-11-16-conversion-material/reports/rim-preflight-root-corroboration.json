@@ -1,0 +1,12 @@
+{
+  "status": "preimplementation-premise-correction-corroborated",
+  "sources": {
+    "docs/development/2026-11-16-conversion-material/reports/A31-sdl-copy-preflight.json": "8687fe6a89cfc28ff06cf774f370808b7dc22565a7de385f312547af65429794",
+    "docs/development/2026-11-16-conversion-material/reports/A31-sdl-copy-preflight.cpp": "6b225ac53e40d5017e1488f81331787c4847f4dc668e800b2e4f4b147ee62fbf",
+    "/workspace/scratch/ade21b726509/SDL2/src/video/SDL_surface.c": "e2c324858b829a0afebc0ce04c983178347c24adb08d9738118c06fc39f3bbf5",
+    "/workspace/scratch/ade21b726509/SDL2/src/render/software/SDL_render_sw.c": "2e3bbc7ab7d6d59310c634d6374eabb60da185d8c7cfc8526baa45318e6d3257"
+  },
+  "observed": "Root independently read actual12case results and pinned renderer/surface paths. Scale1 uses unscaled blit and all4cases crop-exact. Scaled8cases have7404interior sample differences; all12 havezero caller-exterior changes. Source clips proportional rectangles then rounds before scaling.",
+  "decision": "A31 may correct false scaled full-companion crop-equality premise before implementation, retaining original failures/raw exact/canonicalROI/paired support/exterior/foreground/model and deterministic same-state requirements. No global renderer change or candidate-derived mask allowed.",
+  "limits": "Not candidate implementation acceptance; futureA35 must qualify versioned sampling distinction and actual app output."
+}

@@ -1,0 +1,885 @@
+#include "InstrumentView.h"
+#include "FontData.h"
+
+#include <SDL.h>
+
+#include <algorithm>
+#include <array>
+#include <charconv>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <cstdlib>
+#include <cstring>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <memory>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include <string_view>
+#include <vector>
+
+#ifdef _WIN32
+#include <cstdio>
+#include <fcntl.h>
+#include <io.h>
+#endif
+
+// Frozen T1 footage fixtures, prepared before the production typography edit.
+// Default assertions expect the admitted new runs. --before explicitly selects
+// the preserved old centered-label assertions without changing frame generation.
+// --case streams contain no edit allowance; the independent checker derives it.
+namespace {
+using namespace hammond;
+using namespace hammond::standalone;
+using Pixel = std::array<std::uint8_t, 4>;
+static_assert(sizeof(Pixel) == 4);
+constexpr std::string_view protocol = "footage-typography-v1";
+constexpr std::array<std::array<float, 9>, 2> centers{{
+    {158, 206, 254, 302, 351, 400, 449, 498, 548},
+    {685, 734, 782, 830, 878, 927, 975, 1024, 1074}}};
+constexpr std::array<std::string_view, 9> footage{
+    "16'", "5 1/3'", "8'", "4'", "2 2/3'", "2'", "1 3/5'", "1 1/3'", "1'"};
+
+struct Totals {
+    std::size_t cases{}, checks{}, state_restorations{}, clip_companions{}, clip_pixels{};
+    std::size_t clip_glyph_pixels{}, clip_glyph_differences{};
+    std::size_t child_probes{}, probe_pixels{}, glyphs{}, ink_pixels{}, focus_cases{}, focus_pixels{}, repeats{};
+} totals;
+
+void require(bool condition, std::string_view message) {
+    ++totals.checks;
+    if (!condition) throw std::runtime_error(std::string(message) + ": " + SDL_GetError());
+}
+
+enum class Clip { None, Left, Right, Top, Bottom, Disjoint, PhysicalEmpty, LogicalEmpty };
+struct Case {
+    float width{1672}, height{941}, scale_x{1}, scale_y{1};
+    unsigned level{4};
+    PresetSelection route{PresetSelection::BankB};
+    bool pending{}, held{true};
+    int origin_x{13}, origin_y{17};
+    Clip clip{Clip::None};
+    bool resource{};
+    Manual focus_manual{Manual::Upper};
+    unsigned focus_index{1};
+    UiWorkspace workspace{UiWorkspace::Play};
+    UiPresentation presentation{UiPresentation::Dimensional};
+    bool logical_clip{};
+};
+
+std::vector<Case> cases() {
+    std::vector<Case> result;
+    for (unsigned manual = 0; manual < 2; ++manual)
+        for (unsigned index = 0; index < 9; ++index) {
+            Case c;
+            c.level = (index % 3) * 4;
+            c.route = index % 2 == 0 ? PresetSelection::BankA : PresetSelection::BankB;
+            c.pending = index % 3 == 1;
+            c.held = index % 3 != 0;
+            c.focus_manual = static_cast<Manual>(manual);
+            c.focus_index = index;
+            result.push_back(c);
+        }
+    auto add = [&](float width, float height, float sx, float sy, int ox, int oy) {
+        Case c;
+        c.width = width; c.height = height; c.scale_x = sx; c.scale_y = sy;
+        c.origin_x = ox; c.origin_y = oy;
+        result.push_back(c);
+    };
+    add(1400, 820, 1, 1, 13, 17);                         // 18 minimum active
+    add(1920, 1080, 1, 1, 13, 17);                       // 19 larger
+    add(1920, 820, 1, 1, 13, 17);                        // 20 unequal composition
+    add(1400, 1080, 1, 1, 13, 17);                       // 21 converse unequal
+    add(1672.5F, 941.25F, 1.25F, 1.25F, 13, 17);        // 22 fractional layout
+    add(1672, 941, .75F, .75F, -11, -7);                // 23 negative viewport
+    add(1672, 941, 1.25F, 1.25F, 29, 31);               // 24 positive viewport
+    add(1672, 941, 1.5F, 2.0F, 13, 17);                 // 25 unequal renderer
+    for (bool logical : {false, true})
+        for (const auto clip : {Clip::Left, Clip::Right, Clip::Top, Clip::Bottom}) {
+            Case c;
+            c.clip = clip; c.logical_clip = logical;
+            c.scale_x = c.scale_y = logical ? 1.25F : 1.0F;
+            result.push_back(c);                        // 26..33 partial glyph clips
+        }
+    Case c;
+    c.clip = Clip::Disjoint; result.push_back(c);        // 34 no label intersection
+    c.clip = Clip::PhysicalEmpty; result.push_back(c);   // 35 enabled physical empty
+    c.clip = Clip::LogicalEmpty; c.logical_clip = true;
+    c.scale_x = c.scale_y = 1.25F; result.push_back(c);   // 36 enabled logical empty
+    c = Case{}; c.presentation = UiPresentation::Flat; result.push_back(c); // 37
+    c = Case{}; c.workspace = UiWorkspace::Rotary; result.push_back(c);     // 38
+    c = Case{}; c.workspace = UiWorkspace::Service; result.push_back(c);    // 39
+    c = Case{}; c.width = std::nextafter(1400.0F, 0.0F); result.push_back(c); // 40
+    c = Case{}; c.height = std::nextafter(820.0F, 0.0F); result.push_back(c); // 41
+    c = Case{}; c.width = c.height = 8192; c.resource = true;
+    c.origin_x = c.origin_y = 0; result.push_back(c);    // 42 maximum, 64x64 crop
+    c.scale_x = 1.5F; c.scale_y = 2; result.push_back(c);// 43 maximum unequal scale
+    require(result.size() == 44, "exactly 44 frozen supplemental indices");
+    return result;
+}
+
+bool active(const Case& c) {
+    return c.workspace == UiWorkspace::Play && c.presentation == UiPresentation::Dimensional &&
+           c.width >= 1400 && c.height >= 820;
+}
+
+DrawbarBank edited_bank(const Case& test) {
+    return test.route == PresetSelection::BankA ? DrawbarBank::A : DrawbarBank::B;
+}
+
+std::string_view route_name(PresetSelection route) {
+    switch (route) {
+    case PresetSelection::BankA: return "A";
+    case PresetSelection::BankB: return "B";
+    case PresetSelection::D: return "D";
+    case PresetSelection::Cancel: return "Cancel";
+    default: throw std::runtime_error("undeclared fixture route");
+    }
+}
+
+std::string_view clip_name(const Case& test) {
+    switch (test.clip) {
+    case Clip::None: return "disabled";
+    case Clip::Left: return test.logical_clip ? "logical-glyph-left" : "physical-glyph-left";
+    case Clip::Right: return test.logical_clip ? "logical-glyph-right" : "physical-glyph-right";
+    case Clip::Top: return test.logical_clip ? "logical-glyph-top" : "physical-glyph-top";
+    case Clip::Bottom: return test.logical_clip ? "logical-glyph-bottom" : "physical-glyph-bottom";
+    case Clip::Disjoint: return "physical-disjoint";
+    case Clip::PhysicalEmpty: return "physical-empty";
+    case Clip::LogicalEmpty: return "logical-empty";
+    }
+    throw std::runtime_error("undeclared fixture clip");
+}
+
+template <typename Range, typename Writer>
+void array(std::ostream& out, const Range& values, Writer write) {
+    out << '[';
+    bool first = true;
+    for (const auto& value : values) {
+        if (!first) out << ',';
+        first = false;
+        write(out, value);
+    }
+    out << ']';
+}
+
+void rect(std::ostream& out, UiRect r) {
+    out << '[' << r.x << ',' << r.y << ',' << r.width << ',' << r.height << ']';
+}
+void rect(std::ostream& out, SDL_Rect r) {
+    out << '[' << r.x << ',' << r.y << ',' << r.w << ',' << r.h << ']';
+}
+void control_id(std::ostream& out, UiControlId id) {
+    out << '[' << static_cast<unsigned>(id.kind) << ',' << static_cast<unsigned>(id.manual)
+        << ',' << static_cast<unsigned>(id.bank) << ',' << static_cast<unsigned>(id.index) << ']';
+}
+void quad(std::ostream& out, const UiQuad& value) {
+    array(out, value.points, [](auto& stream, UiPoint point) {
+        stream << '[' << point.x << ',' << point.y << ']';
+    });
+}
+void key_geometry(std::ostream& out, const UiKeyGeometry& key) {
+    out << "{\"note\":[" << static_cast<unsigned>(key.note.target) << ','
+        << static_cast<unsigned>(key.note.value) << "],\"bounds\":";
+    rect(out, key.bounds);
+    out << ",\"accidental\":" << key.accidental << ",\"hit\":";
+    quad(out, key.hit);
+    out << ",\"top\":";
+    quad(out, key.top);
+    out << ",\"front\":";
+    quad(out, key.front);
+    out << '}';
+}
+void controls(std::ostream& out, const ControlSnapshot& value) {
+    const auto number = [](auto& stream, auto v) { stream << static_cast<unsigned>(v); };
+    out << "{\"drawbars\":";
+    array(out, value.drawbars, [&](auto& stream, const auto& manual) {
+        array(stream, manual, [&](auto& bank_stream, const auto& bank) { array(bank_stream, bank, number); });
+    });
+    out << ",\"selected_banks\":";
+    array(out, value.selected_banks, number);
+    out << ",\"route_enabled\":";
+    array(out, value.route_enabled, number);
+    out << ",\"expression\":" << value.expression << ",\"percussion\":[" << value.percussion.enabled
+        << ',' << static_cast<unsigned>(value.percussion.harmonic)
+        << ',' << static_cast<unsigned>(value.percussion.volume)
+        << ',' << static_cast<unsigned>(value.percussion.decay) << "],\"pedal_drawbars\":";
+    array(out, value.pedal_drawbars, number);
+    out << ",\"fixed_registrations\":";
+    array(out, value.fixed_registrations, number);
+    out << '}';
+}
+void session(std::ostream& out, const SessionSnapshot& value) {
+    out << "{\"controls\":";
+    controls(out, value.controls);
+    out << ",\"held_keys\":";
+    array(out, value.held_keys, [](auto& stream, const auto& manual) {
+        array(stream, manual, [](auto& key_stream, bool held) { key_stream << held; });
+    });
+    out << ",\"held_pedals\":";
+    array(out, value.held_pedals, [](auto& stream, bool held) { stream << held; });
+    out << ",\"frame_clock\":" << value.frame_clock << ",\"sample_rate\":" << value.sample_rate
+        << ",\"peak\":" << value.peak << ",\"prepared\":" << value.prepared
+        << ",\"running\":" << value.running << ",\"publication_revision\":" << value.publication_revision
+        << ",\"resolved_sequence\":" << value.resolved_sequence
+        << ",\"last_applied_sequence\":" << value.last_applied_sequence
+        << ",\"recovery_count\":" << value.recovery_count << ",\"queue_overflows\":" << value.queue_overflows
+        << ",\"rejected_commands\":" << value.rejected_commands
+        << ",\"discarded_commands\":" << value.discarded_commands << ",\"fault_flags\":" << value.fault_flags
+        << ",\"last_core_status\":" << static_cast<unsigned>(value.last_core_status) << '}';
+}
+std::string session_record(const SessionSnapshot& value) {
+    std::ostringstream out;
+    out << std::boolalpha << std::setprecision(std::numeric_limits<double>::max_digits10);
+    session(out, value);
+    return out.str();
+}
+
+// Explicit, padding-independent serialization covers every public view/layout
+// member. The same records are compared around paint and across paired streams;
+// no hash collision or implementation-specific struct padding can hide a change.
+std::string model_record(const UiModel& model) {
+    std::ostringstream out;
+    out << std::boolalpha << std::setprecision(std::numeric_limits<double>::max_digits10);
+    const auto& view = model.view();
+    out << "{\"view\":{\"controls\":";
+    controls(out, view.controls);
+    out << ",\"applied\":";
+    session(out, view.applied);
+    const auto number = [](auto& stream, auto v) { stream << static_cast<unsigned>(v); };
+    out << ",\"edited_banks\":";
+    array(out, view.edited_banks, number);
+    out << ",\"focus\":";
+    control_id(out, view.focus);
+    out << ",\"roving_manual_keys\":";
+    array(out, view.roving_manual_keys, number);
+    out << ",\"roving_pedal_key\":" << static_cast<unsigned>(view.roving_pedal_key)
+        << ",\"keyboard_target\":" << static_cast<unsigned>(view.keyboard_target)
+        << ",\"manual_base_midi\":" << static_cast<unsigned>(view.manual_base_midi)
+        << ",\"pedal_octave\":" << static_cast<unsigned>(view.pedal_octave)
+        << ",\"controls_pending\":" << view.controls_pending << ",\"controls_dirty\":" << view.controls_dirty
+        << ",\"text_entry_active\":" << view.text_entry_active << ",\"pointer_captured\":" << view.pointer_captured
+        << ",\"input_recovery\":" << view.input_recovery
+        << ",\"last_submit_status\":" << static_cast<unsigned>(view.last_submit_status)
+        << ",\"workspace\":" << static_cast<unsigned>(view.workspace)
+        << ",\"presentation\":" << static_cast<unsigned>(view.presentation) << ",\"workspace_focus\":";
+    array(out, view.workspace_focus, [](auto& stream, UiControlId id) { control_id(stream, id); });
+    const auto& layout = model.layout();
+    out << "},\"layout\":{" << std::setprecision(std::numeric_limits<float>::max_digits10)
+        << "\"width\":" << layout.width << ",\"height\":" << layout.height
+        << ",\"show_cabinet\":" << layout.show_cabinet
+        << ",\"bank_controls_in_cheeks\":" << layout.bank_controls_in_cheeks
+        << ",\"sidebar_pedals\":" << layout.sidebar_pedals;
+    const auto named_rect = [&](std::string_view name, UiRect bounds) {
+        out << ",\"" << name << "\":";
+        rect(out, bounds);
+    };
+    const auto named_rects = [&](std::string_view name, const auto& bounds) {
+        out << ",\"" << name << "\":";
+        array(out, bounds, [](auto& stream, UiRect r) { rect(stream, r); });
+    };
+    named_rect("header", layout.header);
+    named_rects("registration_panels", layout.registration_panels);
+    named_rect("performance_panel", layout.performance_panel);
+    named_rect("keyboard_toolbar", layout.keyboard_toolbar);
+    named_rects("manual_panels", layout.manual_panels);
+    named_rect("pedal_panel", layout.pedal_panel);
+    named_rect("footer", layout.footer);
+    named_rect("cabinet_panel", layout.cabinet_panel);
+    named_rect("cabinet_art", layout.cabinet_art);
+    named_rects("manual_rail_panels", layout.manual_rail_panels);
+    out << ",\"control_count\":" << layout.control_count << ",\"controls\":";
+    array(out, layout.controls, [](auto& stream, const UiControlGeometry& control) {
+        stream << "{\"id\":";
+        control_id(stream, control.id);
+        stream << ",\"bounds\":";
+        rect(stream, control.bounds);
+        stream << ",\"label_bounds\":";
+        rect(stream, control.label_bounds);
+        stream << ",\"value_bounds\":";
+        rect(stream, control.value_bounds);
+        stream << ",\"track\":";
+        rect(stream, control.track);
+        stream << '}';
+    });
+    out << ",\"manual_keys\":";
+    array(out, layout.manual_keys, [](auto& stream, const auto& manual) {
+        array(stream, manual, [](auto& key_stream, const auto& key) { key_geometry(key_stream, key); });
+    });
+    out << ",\"pedal_keys\":";
+    array(out, layout.pedal_keys, [](auto& stream, const auto& key) { key_geometry(stream, key); });
+    named_rects("preset_key_panels", layout.preset_key_panels);
+    out << ",\"workspace\":" << static_cast<unsigned>(layout.workspace)
+        << ",\"presentation\":" << static_cast<unsigned>(layout.presentation);
+    named_rect("workspace_panel", layout.workspace_panel);
+    out << "}}";
+    return out.str();
+}
+
+UiModel state_for(const Case& test) {
+    UiModel model;
+    require(model.resize(test.width, test.height) && model.set_presentation(test.presentation) &&
+            model.set_workspace(test.workspace), "admitted fixed workspace/presentation geometry");
+    SessionSnapshot snapshot;
+    snapshot.controls = model.view().controls;
+    for (auto& manual : snapshot.controls.drawbars)
+        for (auto& bank : manual) bank.fill(static_cast<std::uint8_t>(test.level));
+    snapshot.controls.expression = 0.625;
+    snapshot.controls.pedal_drawbars = {3, 7};
+    snapshot.controls.percussion = {true, PercussionHarmonic::Second, PercussionVolume::Normal, PercussionDecay::Slow};
+    ControlState applied;
+    require(applied.restore(snapshot.controls) && applied.select_preset(Manual::Upper, test.route) &&
+            applied.select_preset(Manual::Lower, test.route), "fixed applied routes for both manuals");
+    snapshot.controls = applied.snapshot();
+    snapshot.held_keys[0][24] = snapshot.held_keys[1][36] = snapshot.held_pedals[12] = test.held;
+    snapshot.frame_clock = 38400;
+    snapshot.sample_rate = 48000;
+    snapshot.peak = 0.125F;
+    snapshot.prepared = snapshot.running = true;
+    snapshot.publication_revision = 4;
+    model.observe(snapshot);
+    for (const auto manual : {Manual::Upper, Manual::Lower})
+        require(model.activate({UiControlKind::EditBank, manual, edited_bank(test)}).count == 0,
+                "editing either bank emits no musical command");
+    auto expected = snapshot.controls;
+    if (test.pending) {
+        const auto desired = test.route == PresetSelection::BankB ? PresetSelection::BankA : PresetSelection::BankB;
+        require(model.activate({UiControlKind::PresetKey, test.focus_manual, DrawbarBank::A,
+                               static_cast<std::uint8_t>(desired)}).count == 1, "unacknowledged pending route");
+        ControlState requested;
+        require(requested.restore(expected) && requested.select_preset(test.focus_manual, desired), "independent desired snapshot");
+        expected = requested.snapshot();
+    }
+    if (test.workspace == UiWorkspace::Play) {
+        const UiControlId focus{UiControlKind::ManualDrawbar, test.focus_manual, edited_bank(test),
+                                static_cast<std::uint8_t>(test.focus_index)};
+        for (unsigned step = 0; step < 72 && model.view().focus != focus; ++step)
+            require(model.key({UiKey::Tab, true}).count == 0 && model.key({UiKey::Tab, false}).count == 0,
+                    "normal focus traversal emits no commands");
+        require(model.view().focus == focus, "declared manual drawbar focus");
+        require(model.layout().control_count == 68 && model.layout().manual_keys.size() * kManualKeyCount +
+                model.layout().pedal_keys.size() == 147, "complete control and playing-key inventory");
+        std::size_t presets = 0;
+        for (const auto& control : model.layout().controls)
+            if (control.id.kind == UiControlKind::PresetKey) ++presets;
+        require(presets == 24, "complete preset inventory");
+    }
+    require(model.view().edited_banks[0] == edited_bank(test) && model.view().edited_banks[1] == edited_bank(test),
+            "both retained edited-bank identities");
+    require(model.view().controls == expected && session_record(model.view().applied) == session_record(snapshot) &&
+            model.view().controls_pending == test.pending, "identical complete desired/applied copied snapshots");
+    require(kUiFootageLabels == footage && footage[6] == "1 3/5'", "all correct complete musical strings");
+    return model;
+}
+
+// These calculations configure declared fixtures only. The checker must derive
+// glyph support separately; no support or mask is emitted in a stream.
+float f32(float value) {
+    volatile float rounded = value;
+    return rounded;
+}
+UiRect canonical(const Case& test, float left, float top, float width, float height) {
+    const float sx = f32(test.width / 1672.0F), sy = f32(test.height / 941.0F);
+    const float x = f32(left * sx), y = f32(top * sy);
+    return {x, y, f32(f32(f32(left + width) * sx) - x),
+                  f32(f32(f32(top + height) * sy) - y)};
+}
+SDL_Rect crop_origin(const Case& test) {
+    const auto label = canonical(test, 183, 467, 46, 23);
+    return {static_cast<int>(std::floor(label.x * test.scale_x)),
+            static_cast<int>(std::floor(label.y * test.scale_y)), 64, 64};
+}
+
+bool equal(SDL_Rect a, SDL_Rect b) { return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h; }
+bool equal(UiRect a, UiRect b) {
+    return a.x == b.x && a.y == b.y && a.width == b.width && a.height == b.height;
+}
+struct Transform {
+    float sx{}, sy{};
+    SDL_Rect viewport{}, clip{}, logical_viewport{}, logical_clip{};
+    bool clipped{};
+    SDL_BlendMode blend{};
+};
+Transform transform(SDL_Renderer* renderer) {
+    Transform result;
+    SDL_RenderGetScale(renderer, &result.sx, &result.sy);
+    SDL_RenderGetViewport(renderer, &result.logical_viewport);
+    SDL_RenderGetClipRect(renderer, &result.logical_clip);
+    result.clipped = SDL_RenderIsClipEnabled(renderer) == SDL_TRUE;
+    require(SDL_GetRenderDrawBlendMode(renderer, &result.blend) == 0, "query blend mode");
+    require(SDL_RenderSetScale(renderer, 1, 1) == 0, "query exact physical observations");
+    SDL_RenderGetViewport(renderer, &result.viewport);
+    SDL_RenderGetClipRect(renderer, &result.clip);
+    require(SDL_RenderSetScale(renderer, result.sx, result.sy) == 0, "restore scale after query");
+    return result;
+}
+bool equal(const Transform& a, const Transform& b) {
+    return a.sx == b.sx && a.sy == b.sy && equal(a.viewport, b.viewport) && equal(a.clip, b.clip) &&
+           equal(a.logical_viewport, b.logical_viewport) && equal(a.logical_clip, b.logical_clip) &&
+           a.clipped == b.clipped && a.blend == b.blend;
+}
+bool visible(const Transform& t, int x, int y) {
+    const int xx = x - t.viewport.x, yy = y - t.viewport.y;
+    return xx >= 0 && yy >= 0 && xx < t.viewport.w && yy < t.viewport.h &&
+           (!t.clipped || (xx >= t.clip.x && yy >= t.clip.y &&
+                          xx < t.clip.x + t.clip.w && yy < t.clip.y + t.clip.h));
+}
+
+struct Frame {
+    int width{}, height{};
+    Transform coordinates;
+    std::vector<Pixel> pixels;
+    std::string model;
+    std::size_t at(int x, int y) const {
+        return static_cast<std::size_t>(y) * static_cast<std::size_t>(width) + static_cast<std::size_t>(x);
+    }
+};
+struct SurfaceSpec {
+    int width{}, height{};
+    SDL_Rect viewport{};
+};
+SurfaceSpec surface_spec(const Case& test) {
+    const int width = static_cast<int>(std::ceil(test.width * test.scale_x));
+    const int height = static_cast<int>(std::ceil(test.height * test.scale_y));
+    const auto crop = crop_origin(test);
+    if (test.resource) return {64, 64, {-crop.x, -crop.y, width, height}};
+    return {width + 2 * std::abs(test.origin_x), height + 2 * std::abs(test.origin_y),
+            {test.origin_x, test.origin_y, width, height}};
+}
+
+class Target {
+public:
+    explicit Target(const Case& test, bool full_clip_companion = false) :
+        spec_(surface_spec(test)),
+        surface_(SDL_CreateRGBSurfaceWithFormat(0, spec_.width, spec_.height, 32, SDL_PIXELFORMAT_RGBA32), SDL_FreeSurface),
+        renderer_(surface_ ? SDL_CreateSoftwareRenderer(surface_.get()) : nullptr, SDL_DestroyRenderer),
+        drawing_(renderer_.get()) {
+        require(spec_.width > 0 && spec_.height > 0 && spec_.width <= 3900 && spec_.height <= 2200 &&
+                surface_ && renderer_, "bounded software output allocation");
+        require(!test.resource || (spec_.width == 64 && spec_.height == 64), "maximum geometry has 64x64 output");
+        std::string error;
+        require(drawing_.initialize(error), "initialize unchanged fonts/art");
+        require(SDL_RenderSetScale(renderer_.get(), 1, 1) == 0 &&
+                SDL_RenderSetViewport(renderer_.get(), &spec_.viewport) == 0, "install physical viewport");
+        require(SDL_RenderSetClipRect(renderer_.get(), nullptr) == 0, "start with disabled clip");
+        const auto selected_clip = [&]() {
+            switch (test.clip) {
+            case Clip::Left: return SDL_Rect{190, 469, 4, 23};
+            case Clip::Right: return SDL_Rect{219, 469, 4, 23};
+            case Clip::Top: return SDL_Rect{183, 475, 46, 3};
+            case Clip::Bottom: return SDL_Rect{183, 485, 46, 3};
+            case Clip::Disjoint: return SDL_Rect{1150, 300, 8, 8};
+            case Clip::PhysicalEmpty: case Clip::LogicalEmpty: return SDL_Rect{183, 467, 0, 0};
+            default: return SDL_Rect{};
+            }
+        };
+        if (!full_clip_companion && test.clip != Clip::None && !test.logical_clip) {
+            const auto clip = selected_clip();
+            require(SDL_RenderSetClipRect(renderer_.get(), &clip) == 0, "install exact physical glyph/empty clip");
+        }
+        require(SDL_RenderSetScale(renderer_.get(), test.scale_x, test.scale_y) == 0, "install incoming scale pair");
+        if (!full_clip_companion && test.clip != Clip::None && test.logical_clip) {
+            const auto clip = selected_clip();
+            require(SDL_RenderSetClipRect(renderer_.get(), &clip) == 0, "install exact logical glyph/empty clip");
+        }
+        const auto blend = test.clip == Clip::LogicalEmpty ? SDL_BLENDMODE_NONE : SDL_BLENDMODE_BLEND;
+        require(SDL_SetRenderDrawBlendMode(renderer_.get(), blend) == 0, "install declared incoming blend");
+        const auto actual = transform(renderer_.get());
+        require(actual.sx == test.scale_x && actual.sy == test.scale_y && equal(actual.viewport, spec_.viewport) &&
+                actual.clipped == (!full_clip_companion && test.clip != Clip::None) && actual.blend == blend,
+                "actual physical viewport, scale, clip-enabled and blend match fixture");
+        if (!full_clip_companion && (test.clip == Clip::PhysicalEmpty || test.clip == Clip::LogicalEmpty))
+            require(actual.clipped && actual.clip.w == 0 && actual.clip.h == 0, "empty clips remain enabled");
+    }
+
+    Frame paint(const UiModel& model) {
+        const auto before = transform(renderer_.get());
+        const auto copied_model = model_record(model);
+        InstrumentViewInfo info;
+        info.audio_running = true;
+        info.sample_rate = 48000;
+        info.buffer_frames = 512;
+        info.audio_driver = "fixed-software-fixture";
+        info.device_name = "fixed copied state";
+        info.status_message = "Frozen footage typography qualification";
+        paint_instrument(drawing_, model, info);
+        require(equal(before, transform(renderer_.get())), "paint restores physical/logical viewport, clip, scale and blend");
+        require(copied_model == model_record(model), "paint preserves every copied view/state and geometry member");
+        ++totals.state_restorations;
+        auto frame = read(before);
+        frame.model = copied_model;
+        return frame;
+    }
+
+    Frame text(std::string_view value, UiRect box, float requested, TextFace face,
+               std::vector<UiRect>& glyphs, float padding) {
+        const auto coordinates = transform(renderer_.get());
+        drawing_.clear({0, 0, 0, 0});
+        float size = std::min(requested, box.height / 1.2F);
+        const float width = drawing_.text_width(value, size, face);
+        if (width > box.width - 2 * padding && width > 0)
+            size *= std::max(0.1F, box.width - 2 * padding) / width;
+        const float left = box.x + (box.width - drawing_.text_width(value, size, face)) / 2;
+        const float top = box.y + (box.height - size * 1.2F) / 2;
+        append_text(value, left, top, size, face, glyphs);
+        require(equal(coordinates, transform(renderer_.get())), "literal ink render preserves transform");
+        return read(coordinates);
+    }
+
+    Frame footage_text(std::string_view value, UiRect box, float sx, float sy,
+                       bool before, std::vector<UiRect>& glyphs) {
+        const float font_scale = std::min(sx, sy);
+        if (before) return text(value, box, 19.0F * font_scale, TextFace::Serif, glyphs, 2.0F * sx);
+        const auto coordinates = transform(renderer_.get());
+        drawing_.clear({0, 0, 0, 0});
+        struct Run { std::string_view text; float size, offset; };
+        std::array<Run, 5> runs{};
+        std::size_t count = 1;
+        runs[0] = {value, 20.5F, 21.5F};
+        if (value.size() == 6) {
+            count = 5;
+            runs = {{{value.substr(0, 1), 20.5F, 21.5F}, {value.substr(2, 1), 13.0F, 15.5F},
+                     {value.substr(3, 1), 16.0F, 19.5F}, {value.substr(4, 1), 13.0F, 21.5F},
+                     {value.substr(5, 1), 20.5F, 21.5F}}};
+        }
+        std::array<float, 5> widths{};
+        float width = 0;
+        for (std::size_t i = 0; i < count; ++i) {
+            widths[i] = drawing_.text_width(runs[i].text, f32(runs[i].size * font_scale), TextFace::Serif);
+            width = f32(width + widths[i]);
+            if (count == 5 && (i == 0 || i == 3)) width = f32(width + f32(0.5F * sx));
+        }
+        require(width <= box.width - 4.0F * sx, "complete recognized run fits unchanged padded label");
+        float x = f32(box.x + f32(f32(box.width - width) / 2.0F));
+        for (std::size_t i = 0; i < count; ++i) {
+            const float size = f32(runs[i].size * font_scale);
+            const float baseline = f32(box.y + f32(runs[i].offset * sy));
+            const float top = f32(baseline - f32(f32(38.0F * size) / 40.0F));
+            append_text(runs[i].text, x, top, size, TextFace::Serif, glyphs);
+            x = f32(x + widths[i]);
+            if (count == 5 && (i == 0 || i == 3)) x = f32(x + f32(0.5F * sx));
+        }
+        for (const auto& glyph : glyphs)
+            require(glyph.x >= box.x && glyph.y >= box.y &&
+                    glyph.x + glyph.width <= box.x + box.width &&
+                    glyph.y + glyph.height < box.y + box.height,
+                    "actual texture glyph quads stay in footage row, clear of value row");
+        require(equal(coordinates, transform(renderer_.get())), "new literal run rendering preserves transform");
+        return read(coordinates);
+    }
+
+    Frame focus(UiRect bounds, float sx, float sy) {
+        const auto coordinates = transform(renderer_.get());
+        drawing_.clear({0, 0, 0, 0});
+        const float x = std::min(2.0F * sx, bounds.width / 2.0F);
+        const float y = std::min(2.0F * sy, bounds.height / 2.0F);
+        drawing_.rect({bounds.x, bounds.y, bounds.width, y}, {165, 228, 223});
+        drawing_.rect({bounds.x, bounds.y + bounds.height - y, bounds.width, y}, {165, 228, 223});
+        drawing_.rect({bounds.x, bounds.y + y, x, bounds.height - 2.0F * y}, {165, 228, 223});
+        drawing_.rect({bounds.x + bounds.width - x, bounds.y + y, x, bounds.height - 2.0F * y}, {165, 228, 223});
+        require(equal(coordinates, transform(renderer_.get())), "independent focus render preserves transform");
+        return read(coordinates);
+    }
+
+private:
+    void append_text(std::string_view value, float x, float top, float size, TextFace face,
+                     std::vector<UiRect>& glyphs) {
+        const auto& atlas = face == TextFace::Serif ? font_data::kSerif : font_data::kSans;
+        const float scale = size / static_cast<float>(atlas.pixel_height);
+        const float baseline = top + static_cast<float>(atlas.ascent) * scale;
+        drawing_.text(value, x, top, size, {255, 255, 255}, face);
+        for (const char character : value) {
+            const auto& glyph = font_data::glyph(atlas, static_cast<unsigned char>(character));
+            if (glyph.width && glyph.height) {
+                const int px = static_cast<float>(glyph.width) * scale < 1 ? 2 : 0;
+                const int py = static_cast<float>(glyph.height) * scale < 1 ? 2 : 0;
+                glyphs.push_back({x + static_cast<float>(glyph.bearing_x - px) * scale,
+                                  baseline + static_cast<float>(glyph.bearing_y - py) * scale,
+                                  static_cast<float>(glyph.width + 2 * px) * scale,
+                                  static_cast<float>(glyph.height + 2 * py) * scale});
+            }
+            x += static_cast<float>(glyph.advance_64) * scale / 64.0F;
+        }
+    }
+    Frame read(const Transform& coordinates) {
+        require(SDL_RenderFlush(renderer_.get()) == 0 && SDL_LockSurface(surface_.get()) == 0, "read exact RGBA bytes");
+        Frame frame{spec_.width, spec_.height, coordinates, std::vector<Pixel>(
+            static_cast<std::size_t>(spec_.width) * static_cast<std::size_t>(spec_.height)), {}};
+        const auto* input = static_cast<const std::uint8_t*>(surface_->pixels);
+        for (int y = 0; y < spec_.height; ++y)
+            std::memcpy(frame.pixels.data() + frame.at(0, y),
+                input + static_cast<std::size_t>(y) * static_cast<std::size_t>(surface_->pitch),
+                static_cast<std::size_t>(spec_.width) * sizeof(Pixel));
+        SDL_UnlockSurface(surface_.get());
+        return frame;
+    }
+    SurfaceSpec spec_;
+    std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surface_;
+    std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> renderer_;
+    Drawing drawing_;
+};
+
+double light(Pixel pixel) { return .2126 * pixel[0] + .7152 * pixel[1] + .0722 * pixel[2]; }
+void compare_literal_ink(const Frame& actual, const Frame& expected, const std::vector<UiRect>& glyphs,
+                         bool permit_invisible = false) {
+    const auto& t = actual.coordinates;
+    for (const auto& glyph : glyphs) {
+        std::size_t samples = 0, matches = 0;
+        const int left = std::max(0, static_cast<int>(std::floor(glyph.x * t.sx + static_cast<float>(t.viewport.x))) - 1);
+        const int right = std::min(actual.width, static_cast<int>(std::ceil((glyph.x + glyph.width) * t.sx + static_cast<float>(t.viewport.x))) + 1);
+        const int top = std::max(0, static_cast<int>(std::floor(glyph.y * t.sy + static_cast<float>(t.viewport.y))) - 1);
+        const int bottom = std::min(actual.height, static_cast<int>(std::ceil((glyph.y + glyph.height) * t.sy + static_cast<float>(t.viewport.y))) + 1);
+        for (int y = top; y < bottom; ++y)
+            for (int x = left; x < right; ++x) {
+                const auto at = actual.at(x, y);
+                if (light(expected.pixels[at]) < 180) continue;
+                ++samples;
+                if (light(actual.pixels[at]) > 90) ++matches;
+            }
+        if (permit_invisible && samples == 0) continue;
+        require(samples > 0 && samples == matches, "every literal glyph retains all strong contrasting ink");
+        ++totals.glyphs;
+        totals.ink_pixels += samples;
+    }
+}
+void literal_ink(Target& target, const Frame& actual, std::string_view value, UiRect box,
+                 float size, TextFace face, float padding) {
+    std::vector<UiRect> glyphs;
+    const auto expected = target.text(value, box, size, face, glyphs, padding);
+    compare_literal_ink(actual, expected, glyphs);
+}
+
+void opaque_probe(const Case& test, const Frame& frame, UiRect canonical_probe) {
+    const auto box = canonical(test, canonical_probe.x, canonical_probe.y, canonical_probe.width, canonical_probe.height);
+    const auto& t = frame.coordinates;
+    const int left = static_cast<int>(std::ceil(static_cast<double>(box.x) * t.sx - 0.5)) + t.viewport.x + 1;
+    const int top = static_cast<int>(std::ceil(static_cast<double>(box.y) * t.sy - 0.5)) + t.viewport.y + 1;
+    const int right = static_cast<int>(std::ceil((static_cast<double>(box.x) + box.width) * t.sx - 0.5)) + t.viewport.x - 1;
+    const int bottom = static_cast<int>(std::ceil((static_cast<double>(box.y) + box.height) * t.sy - 0.5)) + t.viewport.y - 1;
+    require(right > left && bottom > top, "independent eroded child probe is nonempty");
+    for (int y = top; y < bottom; ++y)
+        for (int x = left; x < right; ++x) {
+            require(x >= 0 && y >= 0 && x < frame.width && y < frame.height && visible(t, x, y),
+                    "full-frame child probe is visible");
+            require(frame.pixels[frame.at(x, y)][3] == 255, "child probe retains opaque RGBA");
+            ++totals.probe_pixels;
+        }
+    ++totals.child_probes;
+}
+
+void full_frame_children(const Case& test, const UiModel& model, Target& target, const Frame& frame, bool before) {
+    const float sx = test.width / 1672.0F, sy = test.height / 941.0F, font_scale = std::min(sx, sy);
+    const auto value = std::to_string(test.level);
+    for (std::size_t manual = 0; manual < 2; ++manual)
+        for (std::size_t index = 0; index < 9; ++index) {
+            const float center = centers[manual][index];
+            const auto label = canonical(test, center - 23, 467, 46, 23);
+            const UiControlId identity{UiControlKind::ManualDrawbar, static_cast<Manual>(manual), edited_bank(test),
+                                       static_cast<std::uint8_t>(index)};
+            const auto found = std::find_if(model.layout().controls.begin(), model.layout().controls.end(),
+                [&](const auto& control) { return control.id == identity; });
+            require(found != model.layout().controls.end() && equal(found->label_bounds, label) &&
+                    equal(found->value_bounds, canonical(test, center - 23, 491, 46, 15)) &&
+                    equal(found->bounds, canonical(test, center - 23, 309, 46, 197)),
+                    "all eighteen label/value/hit rectangles retain independent canonical endpoints");
+            opaque_probe(test, frame, {center - 12, 320, 4, 130});
+            opaque_probe(test, frame, {center - 10, 327 + 118 * static_cast<float>(test.level) / 8 - 10, 20, 12});
+            std::vector<UiRect> glyphs;
+            const auto expected = target.footage_text(footage[index], label, sx, sy, before, glyphs);
+            require(glyphs.size() == (footage[index].size() == 6 ? 5 : footage[index].size()),
+                    "complete literal footage glyph count including slash and apostrophe");
+            compare_literal_ink(frame, expected, glyphs);
+            literal_ink(target, frame, value, canonical(test, center - 23, 491, 46, 15),
+                        12 * font_scale, TextFace::Sans, 3 * sx);
+        }
+    const auto expected_bounds = canonical(test, centers[static_cast<std::size_t>(test.focus_manual)][test.focus_index] - 23,
+                                            309, 46, 197);
+    const auto& layout = model.layout();
+    const auto found = std::find_if(layout.controls.begin(), layout.controls.end(), [&](const auto& control) {
+        return control.id == model.view().focus;
+    });
+    require(found != layout.controls.end() && equal(found->bounds, expected_bounds), "focus uses independently mapped control bounds");
+    const auto expected_focus = target.focus(expected_bounds, sx, sy);
+    const auto& t = frame.coordinates;
+    const int left = std::max(0, static_cast<int>(std::floor(expected_bounds.x * t.sx)) + t.viewport.x - 1);
+    const int top = std::max(0, static_cast<int>(std::floor(expected_bounds.y * t.sy)) + t.viewport.y - 1);
+    const int right = std::min(frame.width, static_cast<int>(std::ceil((expected_bounds.x + expected_bounds.width) * t.sx)) + t.viewport.x + 1);
+    const int bottom = std::min(frame.height, static_cast<int>(std::ceil((expected_bounds.y + expected_bounds.height) * t.sy)) + t.viewport.y + 1);
+    std::size_t count = 0;
+    for (int y = top; y < bottom; ++y)
+        for (int x = left; x < right; ++x) {
+            const auto at = frame.at(x, y);
+            const bool actual = frame.pixels[at] == Pixel{165, 228, 223, 255};
+            const bool expected = expected_focus.pixels[at] == Pixel{165, 228, 223, 255};
+            require(actual == expected, "actual cyan focus positions equal complete independent outline");
+            if (actual) ++count;
+        }
+    require(count > 0, "declared focus retains nonempty cyan ink");
+    ++totals.focus_cases;
+    totals.focus_pixels += count;
+}
+
+void ordinary_acceptance(const Case& test, const UiModel& model, Target& target, const Frame& frame, bool before) {
+    if (test.clip != Clip::None) {
+        Target companion(test, true);
+        const auto full = companion.paint(model);
+        require(full.width == frame.width && full.height == frame.height &&
+                equal(full.coordinates.viewport, frame.coordinates.viewport) && full.model == frame.model,
+                "full-clip companion retains output, viewport and complete model");
+        // SDL's scaled-copy clipping rounds a new source rectangle before
+        // scaling. Thus a clipped glyph need not equal a crop of its uncut
+        // raster. Independently compute this one label's true copy quads,
+        // verify its surviving literal ink using the identical caller clip,
+        // and retain exact full-companion equality everywhere else. This is
+        // not the separate before/after edit mask and never comes from diffs.
+        std::vector<UiRect> glyphs;
+        const auto label = canonical(test, 183, 467, 46, 23);
+        const auto expected = target.footage_text(footage[1], label, test.width / 1672.0F,
+                                                   test.height / 941.0F, before, glyphs);
+        compare_literal_ink(frame, expected, glyphs, true);
+        const auto& t = frame.coordinates;
+        const auto inside_glyph = [&](int x, int y) {
+            return std::any_of(glyphs.begin(), glyphs.end(), [&](UiRect g) {
+                const int left = static_cast<int>(std::floor(g.x * t.sx + static_cast<float>(t.viewport.x))) - 1;
+                const int right = static_cast<int>(std::ceil((g.x + g.width) * t.sx + static_cast<float>(t.viewport.x))) + 1;
+                const int top = static_cast<int>(std::floor(g.y * t.sy + static_cast<float>(t.viewport.y))) - 1;
+                const int bottom = static_cast<int>(std::ceil((g.y + g.height) * t.sy + static_cast<float>(t.viewport.y))) + 1;
+                return x >= left && x < right && y >= top && y < bottom;
+            });
+        };
+        for (int y = 0; y < frame.height; ++y)
+            for (int x = 0; x < frame.width; ++x) {
+                const auto at = frame.at(x, y);
+                if (visible(frame.coordinates, x, y)) {
+                    if (inside_glyph(x, y)) {
+                        ++totals.clip_glyph_pixels;
+                        if (frame.pixels[at] != full.pixels[at]) ++totals.clip_glyph_differences;
+                    } else {
+                        require(frame.pixels[at] == full.pixels[at],
+                                "clipping preserves every visible non-glyph scene pixel exactly");
+                        ++totals.clip_pixels;
+                    }
+                } else require(frame.pixels[at] == Pixel{85, 54, 36, 255}, "no paint escapes caller clip/viewport");
+            }
+        ++totals.clip_companions;
+    } else if (!test.resource && active(test)) full_frame_children(test, model, target, frame, before);
+}
+
+void stream(std::size_t index, const Case& test, const UiModel& model, const Frame& frame) {
+    const auto& t = frame.coordinates;
+    std::ostringstream out;
+    out << std::boolalpha << std::setprecision(std::numeric_limits<float>::max_digits10)
+        << "{\"schema\":1,\"protocol\":\"" << protocol << "\",\"case\":" << index
+        << ",\"logical_size\":[" << test.width << ',' << test.height << ']'
+        << ",\"width\":" << frame.width << ",\"height\":" << frame.height
+        << ",\"output_size\":[" << frame.width << ',' << frame.height << ']'
+        << ",\"scale\":[" << t.sx << ',' << t.sy << "],\"viewport\":";
+    rect(out, t.viewport);
+    out << ",\"clip\":";
+    rect(out, t.clip);
+    out << ",\"logical_viewport\":";
+    rect(out, t.logical_viewport);
+    out << ",\"logical_clip\":";
+    rect(out, t.logical_clip);
+    out << ",\"clip_enabled\":" << t.clipped << ",\"blend\":" << static_cast<unsigned>(t.blend)
+        << ",\"clip_kind\":\"" << clip_name(test) << "\",\"level\":" << test.level
+        << ",\"route\":\"" << route_name(test.route) << "\",\"route_index\":" << static_cast<unsigned>(test.route)
+        << ",\"pending\":" << test.pending << ",\"held\":" << test.held
+        << ",\"edited_bank\":\"" << (edited_bank(test) == DrawbarBank::A ? 'A' : 'B') << "\",\"focus\":";
+    control_id(out, model.view().focus);
+    out << ",\"resource_crop\":" << test.resource << ",\"active_typography\":" << active(test)
+        << ",\"workspace\":" << static_cast<unsigned>(test.workspace)
+        << ",\"presentation\":" << static_cast<unsigned>(test.presentation) << ",\"model\":" << frame.model
+        << ",\"bytes\":" << frame.pixels.size() * sizeof(Pixel) << "}\n";
+    std::cout << out.str();
+    std::cout.write(reinterpret_cast<const char*>(frame.pixels.data()),
+                    static_cast<std::streamsize>(frame.pixels.size() * sizeof(Pixel)));
+    std::cout.flush();
+    require(static_cast<bool>(std::cout), "write JSON header and exact bounded RGBA bytes");
+}
+} // namespace
+
+int main(int argc, char* argv[]) {
+    SDL_SetMainReady();
+    std::size_t current_case = 44;
+    try {
+        const auto fixtures = cases();
+        if (argc == 2 && std::string_view(argv[1]) == "--list") {
+            std::cout << std::boolalpha << std::setprecision(std::numeric_limits<float>::max_digits10)
+                << "{\"schema\":1,\"protocol\":\"" << protocol << "\",\"cases\":" << fixtures.size() << ",\"inventory\":[";
+            for (std::size_t i = 0; i < fixtures.size(); ++i) {
+                const auto& c = fixtures[i];
+                if (i) std::cout << ',';
+                std::cout << "{\"case\":" << i << ",\"logical_size\":[" << c.width << ',' << c.height
+                    << "],\"scale\":[" << c.scale_x << ',' << c.scale_y << "],\"origin\":[" << c.origin_x << ',' << c.origin_y
+                    << "],\"level\":" << c.level << ",\"route\":\"" << route_name(c.route)
+                    << "\",\"pending\":" << c.pending << ",\"held\":" << c.held
+                    << ",\"focus_manual\":" << static_cast<unsigned>(c.focus_manual) << ",\"focus_index\":" << c.focus_index
+                    << ",\"clip_kind\":\"" << clip_name(c) << "\",\"resource_crop\":" << c.resource
+                    << ",\"workspace\":" << static_cast<unsigned>(c.workspace) << ",\"presentation\":" << static_cast<unsigned>(c.presentation)
+                    << ",\"active_typography\":" << active(c) << '}';
+            }
+            std::cout << "]}\n";
+            return 0;
+        }
+        const bool before = argc == 2 && std::string_view(argv[1]) == "--before";
+        std::size_t selected = fixtures.size();
+        if (argc != 1 && !before) {
+            require(argc == 3 && std::string_view(argv[1]) == "--case", "expected --case INDEX, --list or --before");
+            const std::string_view value(argv[2]);
+            const auto parsed = std::from_chars(value.data(), value.data() + value.size(), selected);
+            require(parsed.ec == std::errc{} && parsed.ptr == value.data() + value.size() && selected < fixtures.size(),
+                    "bounded supplemental case index");
+#ifdef _WIN32
+            require(_setmode(_fileno(stdout), _O_BINARY) != -1, "binary frame stdout");
+#endif
+        }
+        require(SDL_Init(0) == 0, "initialize SDL without window or audio");
+        for (std::size_t index = 0; index < fixtures.size(); ++index) {
+            if (selected != fixtures.size() && index != selected) continue;
+            current_case = index;
+            const auto& test = fixtures[index];
+            const auto model = state_for(test);
+            Target target(test);
+            const auto frame = target.paint(model);
+            if (selected != fixtures.size()) stream(index, test, model, frame);
+            else {
+                ordinary_acceptance(test, model, target, frame, before);
+                if (index == 1) {
+                    (void)target.paint(state_for(fixtures[0]));
+                    (void)target.paint(state_for(fixtures[2]));
+                    const auto repeated = target.paint(model);
+                    require(repeated.pixels == frame.pixels && repeated.model == frame.model &&
+                            equal(repeated.coordinates, frame.coordinates), "case 1 repeats exactly after other states on same renderer");
+                    Target fresh(test);
+                    const auto recreated = fresh.paint(model);
+                    require(recreated.pixels == frame.pixels && recreated.model == frame.model &&
+                            equal(recreated.coordinates, frame.coordinates), "case 1 repeats exactly on fresh renderer");
+                    totals.repeats += 2;
+                }
+            }
+            ++totals.cases;
+        }
+        SDL_Quit();
+        if (selected == fixtures.size())
+            std::cout << "{\"schema\":1,\"protocol\":\"" << protocol << "\",\"status\":\"passed\",\"cases\":" << totals.cases
+                << ",\"checks\":" << totals.checks << ",\"state_restorations\":" << totals.state_restorations
+                << ",\"clip_companions\":" << totals.clip_companions << ",\"visible_clip_pixels\":" << totals.clip_pixels
+                << ",\"clip_glyph_pixels\":" << totals.clip_glyph_pixels
+                << ",\"clip_glyph_differences\":" << totals.clip_glyph_differences
+                << ",\"opaque_child_probes\":" << totals.child_probes << ",\"opaque_probe_pixels\":" << totals.probe_pixels
+                << ",\"literal_glyphs\":" << totals.glyphs << ",\"strong_ink_pixels\":" << totals.ink_pixels
+                << ",\"focus_cases\":" << totals.focus_cases << ",\"cyan_focus_pixels\":" << totals.focus_pixels
+                << ",\"case_1_repeats\":" << totals.repeats
+                << ",\"expected_typography\":\"" << (before ? "before-centered" : "admitted-runs")
+                << "\",\"backend\":\"SDL software surface; fixed copied state; no audio/window\"}\n";
+        return EXIT_SUCCESS;
+    } catch (const std::exception& error) {
+        std::cerr << "Footage typography raster acceptance failed in case " << current_case << ": " << error.what() << '\n';
+        SDL_Quit();
+        return EXIT_FAILURE;
+    }
+}

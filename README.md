@@ -6,14 +6,14 @@ A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the reposito
 has completed a fresh reading of all 500 atlas pages and implemented an explicit,
 certified offline conversion from the fractional-contact model to the native
 integer grid. The Lower drawbar rack now has its own directional material field;
-the next visual slice addresses live footage typography. The requested sixty
+both manual racks now use measured mixed-fraction footage typography. The requested sixty
 workers in ten waves are tracked in the [actual ledger](docs/development/2026-11-16-conversion-material/assignments.json),
 with recoverable progress in the [checkpoint](docs/development/2026-11-16-conversion-material/CHECKPOINT.md).
 This continuation is still in progress; the ledger records actual accepted work.
 
 [Conversion contract](docs/CONTACT_GRID_CONVERSION_CONTRACT.md) ·
 [Install the converter](docs/CONTACT_GRID_CONVERSION_INSTALL.md) ·
-[Latest Lower-stage captures](examples/demos/lower-rack-material-v2/README.md) ·
+[Current application captures](examples/demos/footage-typography-v1/README.md) ·
 [Current scope](docs/development/2026-11-16-conversion-material/SCOPE.md) ·
 [Full M0–M9 plan](docs/PLAN.md).
 
@@ -287,7 +287,7 @@ geometry and behavior. The [two-size gallery](examples/demos/lower-rack-material
 and [capture provenance](examples/demos/lower-rack-material-v2/provenance.json)
 bind the executable, source overlay, copied state, replay, diagnostics and pixels.
 
-![Actual native Play at 1672 by 941 with independent Upper and Lower material fields and live controls](examples/demos/lower-rack-material-v2/images/play-reference-1672x941.png)
+![Actual native Play at 1672 by 941 with independent Upper and Lower material fields and live controls](examples/demos/footage-typography-v1/images/play-reference-1672x941.png)
 
 | Design evidence | View |
 | --- | --- |
@@ -301,6 +301,28 @@ pixels and scripted input, with their own source identities. Physical displays,
 DPI, audio hardware and semantic accessibility require separate observed journeys.
 Runtime counters vary between captures; identical-state raster fixtures supply
 the preservation evidence.
+
+### Current manual footage typography
+
+The [three actual T1 views](examples/demos/footage-typography-v1/README.md) show
+1672×941, minimum-active 1400×820 and wide 1920×820 layouts. All eighteen manual
+labels retain their correct musical strings. Mixed fractions use separate whole
+numeral, raised numerator, slash, denominator and apostrophe runs. This changes
+painted text only; control geometry and audio state remain unchanged.
+
+The [independent comparison](docs/reviews/FOOTAGE_TYPOGRAPHY_COMPARISON.md)
+passes 110 paired frames with zero changed pixels outside the admitted glyph
+support, 44 exact whole frames, preserved focus pixels and unchanged material
+samples. The [visual admission](docs/reviews/FOOTAGE_TYPOGRAPHY_VISUAL_ADMISSION.md)
+checks every label at all three sizes. The [material fixtures](docs/reviews/FOOTAGE_MATERIAL_FIXTURE_TRANSITION.md)
+and [product fixture](docs/reviews/FOOTAGE_PRODUCT_FIXTURE_TRANSITION.md)
+explicitly version their affected expectations while retaining their original
+contrast, state, geometry and other visual requirements. Their original failures
+remain available.
+
+The earlier Lower gallery and its failed v1/corrected v2 sampling results remain
+historical evidence. The decorative keyboard rim has a separate admitted
+contract and genuine pre-edit baseline. Whole-interface 1:1 remains unmet.
 
 ### Lower-rack material and measurement correction
 
@@ -468,10 +490,12 @@ M0–M9 milestones and development staffing waves are distinct.
 | [Resource boundary review](docs/reviews/CONTACT_GRID_CONVERSION_RESOURCE_REVIEW.md) | Actual 4,608 edges, 512 arrivals, 5,634 labels and 4,096 union knots exercised; larger admitted-input knot demand refuses within its bound. |
 | [Transaction review](docs/reviews/CONTACT_GRID_CONVERSION_TRANSACTION_REVIEW.md) | Real process interruption and closed-output-pipe checks, strict certificate forgeries and preserved initial failures. |
 | [Compatibility](docs/reviews/CONVERSION_MATERIAL_COMPATIBILITY.md) | Original core/state/plugin/reference-package identities preserved; a genuine before/current dry WAV is byte-identical with zero difference across 16,384 PCM samples. |
-| [Separate installation](docs/CONTACT_GRID_CONVERSION_INSTALL.md) | Initial five-file copy/relocation smoke passes; independent installation and exact published-source platform qualification remain separate gates. |
+| [Separate installation](docs/reviews/CONTACT_GRID_CONVERSION_INSTALL_REVIEW.md) | 13 methods and 93 processes pass, including a relocated converter after deleting its private source/build fixture. The original 48-file component remains isolated. |
+| [T1 composite local qualification](docs/development/2026-11-16-conversion-material/reports/rim-before-qualified.json) | Fresh all-target build; 218/219 in the initial full run. The sole historical product-label assertion was precisely transitioned, rebuilt, then passed all 76 cases. Every other tracked input remained unchanged. |
+| [First published platform matrix](docs/development/2026-11-16-conversion-material/reports/wave04-hosted-complete.json) | 11/13 jobs pass at `3520c96`. All native standalone and VST3 jobs pass; two core jobs expose test path assumptions. [A33 repair](docs/reviews/CONTACT_GRID_CONVERSION_PLATFORM_REPAIR.md) passes locally; exact repaired hosted results are pending. |
 
 The current local build uses Linux GCC Release, SDL 2.32.10 dummy audio/video,
-and MIDI/VST3/sanitizers OFF. Current-source hosted qualification will be recorded
+and MIDI/VST3/sanitizers OFF. Subsequent exact-source hosted qualification will be recorded
 after publication. These local results do not imply physical fidelity, native
 accessibility, callback deadlines or literal whole-interface 1:1.
 

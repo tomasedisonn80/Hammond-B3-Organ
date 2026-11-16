@@ -1,0 +1,9 @@
+{
+  "status": "test-authoring-failure",
+  "script_sha256_before_fix": "8678650fb3835a3195ffd58b5c379a4abb6cd885d376207ef1dd4f77708e60ea",
+  "command": "python3 -B docs/development/2026-11-16-conversion-material/reports/A25-typography-audit.py",
+  "exit_code": 1,
+  "failure": "assert width(\"16'\", f(20.5)) == 31.2625",
+  "reason": "The audit compared rounded binary32 width against an unrounded binary64 decimal literal. The contract explicitly labels decimal sums explanatory, not runtime bit patterns.",
+  "repair": "Compare against f(31.2625), preserving runtime binary32 arithmetic and all geometry criteria."
+}

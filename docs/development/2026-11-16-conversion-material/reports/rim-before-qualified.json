@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "qualification": "composite full gate plus precise rebuilt failed-test transition; not a second full-suite run",
+  "baseline_receipt_sha256": "93effbb76fac750616feecb50c64e64dd3ccb2bedbc4fa14120e2fc9bc5b943e",
+  "painter_sha256": "a88e7576700ae306769849ceda36993969a61e848c015ba4fb98fa9c4a7e8cfa",
+  "rim_fixture_sha256": "d860e19665bd806b5ef05770ecbb89109f79d782cc31d4e3341e9d825d5011ad",
+  "original_full_result": {
+    "passed": 218,
+    "total": 219,
+    "inputs": 506,
+    "inputs_unchanged_during_execution": true,
+    "sha256": "96d4bf0fd6ccf7cd10d74222c02e386dcf3b6a2f3960f0054baa412e59f075b3"
+  },
+  "later_changed_inputs": [
+    "apps/standalone/native_tests/test_standalone_product_visual.cpp"
+  ],
+  "focused_repair": {
+    "command": [
+      "ctest",
+      "--test-dir",
+      "../build-native",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-R",
+      "^test_standalone_product_visual$"
+    ],
+    "exit_code": 0,
+    "seconds": 18.361137944000802,
+    "fixture_sha256": "f9b6d76250cb10d9c75210b8bccae8c426bde079fc49c0b29650952aaa48c040",
+    "executable_sha256": "f011eeaac97a7de9f552cd0f35b6f8473b0da0768b8403a1ab96d1317efaa675",
+    "fixture_unchanged": true,
+    "executable_unchanged": true,
+    "painter_sha256": "a88e7576700ae306769849ceda36993969a61e848c015ba4fb98fa9c4a7e8cfa"
+  },
+  "evidence_sha256": {
+    "wave06-before-rim-build-qualification.json": "c7a10bf69d87f09848764592488cf2ce46c073b148af1ea66c1b7d69711d1560",
+    "wave06-before-rim-ctest.log": "41cf23b3b530384b5f63626b7895f038754a83675352377981b0baa3ec7f6ed5",
+    "wave06-before-rim-LastTest.log": "e33fd01f3ea7c908a3529c3d24bd1fd395b294874b9c0349475643d25f054650",
+    "typography-product-transition-build.json": "7ddf7afbbcce7735fe12900bc1c85ca23f5f970ed5b24ce599c4158a287f6a46",
+    "typography-product-transition-build.log": "9c4db3509be848501cd8aa0bb59845c36e7c95e6739bfcd3554bb661b8c9b663",
+    "typography-product-transition-ctest.log": "4a6eab57d301d4f87c33ef211dc6a00cad7101ea427c56169f922ff115fe9f31",
+    "typography-product-transition-LastTest.log": "2206d636d6bcb0258c0161bf067f84c750244f3aec0b051724d90e9a46374e13",
+    "typography-product-transition-qualified.json": "034d79bdab3c7797d431c56bc74c60b5ccb23d737869b64eba2b6fbc56e69bce"
+  },
+  "limits": "Local Linux Release/dummy SDL software evidence. Hosted repair, physical device/DPI and whole-interface1:1 remain separate."
+}

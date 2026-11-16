@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "worker": "/root/w06_a33",
+  "status": "local-repair-qualified-native-rerun-pending",
+  "created_utc": "2026-11-16T04:21:39.608907+00:00",
+  "cwd": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ",
+  "original_head": "3520c96adcdcf4ce4bcb860082354bf0050a89c3",
+  "original_tree": "1013bbd914a0957ca2c164ef02ca5410a8dcde6b",
+  "observed_head_at_receipt": "3520c96adcdcf4ce4bcb860082354bf0050a89c3",
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "sources": {
+    "tests/test_contact_grid_conversion_cli.py": {
+      "before": {
+        "bytes": 22972,
+        "sha256": "06c37b7cf0bd67c164001ff325e0589e6419d89b19d9653b9960fe7bfa97900f"
+      },
+      "after": {
+        "bytes": 23715,
+        "sha256": "03b3311910ec016dd5254a22f59e88afab070e7885337894b46c303e4a5dad12"
+      },
+      "original_test_methods_preserved": 33,
+      "current_test_methods": 34,
+      "new_test_methods": [
+        "test_complete_payload_precedes_output_io_through_parent_alias"
+      ]
+    },
+    "tests/test_contact_grid_conversion_adversarial.py": {
+      "before": {
+        "bytes": 15617,
+        "sha256": "1fc0724282b3a2fd4b00f04a9046b849882a8f02f437be5184868939498006aa"
+      },
+      "after": {
+        "bytes": 18504,
+        "sha256": "1030e5439a34d29e680e3dfa08b752dad036dcda53d1c92477dfc549cd94a1e1"
+      },
+      "original_test_methods_preserved": 11,
+      "current_test_methods": 12,
+      "new_test_methods": [
+        "test_unicode_paths_preserve_input_and_publication_on_success_and_refusal"
+      ]
+    }
+  },
+  "unchanged_watched_production_contract_corpus": {
+    "tools/convert_contact_grid.py": {
+      "bytes": 10253,
+      "sha256": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c"
+    },
+    "tools/contact_grid_conversion.py": {
+      "bytes": 46917,
+      "sha256": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797"
+    },
+    "tools/contact_switching_io.py": {
+      "bytes": 24979,
+      "sha256": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6"
+    },
+    "tools/fractional_contact_reference.py": {
+      "bytes": 29808,
+      "sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23"
+    },
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": {
+      "bytes": 19243,
+      "sha256": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0"
+    },
+    "data/contact-grid-conversion/v1/manifest.json": {
+      "bytes": 24227,
+      "sha256": "b2e9b99b00b1263aed49eb967e85ceab9f1cb0e4989f70c9a82f7b9f4374dfdb"
+    }
+  },
+  "original_hosted_failures": [
+    {
+      "platform": "macOS AppleClang",
+      "run_id": 43801643469,
+      "job_id": 133083059424,
+      "head": "3520c96adcdcf4ce4bcb860082354bf0050a89c3",
+      "passed": 188,
+      "registered": 190,
+      "log": "hosted-3520c96-macos-core.log",
+      "log_identity": {
+        "bytes": 393620,
+        "sha256": "0c601ad964eb8dccca3a1a9258b6c7dcaec9c4fd0d39b4fa68afe5f1aa83916d"
+      }
+    },
+    {
+      "platform": "Windows MSVC",
+      "run_id": 43801643469,
+      "job_id": 133083060473,
+      "head": "3520c96adcdcf4ce4bcb860082354bf0050a89c3",
+      "passed": 189,
+      "registered": 190,
+      "log": "hosted-3520c96-windows-core.raw.log",
+      "log_identity": {
+        "bytes": 531305,
+        "sha256": "befe13e974d32638eb34d00fc715ba154b16c90b2125c12754914a8ac1556e3a"
+      }
+    }
+  ],
+  "local_suites": [
+    {
+      "command": "python3 -B tests/test_contact_grid_conversion_cli.py -v",
+      "exit_code": 0,
+      "tests": 34,
+      "skips": 0,
+      "unittest_seconds": 0.261,
+      "log": "docs/development/2026-11-16-conversion-material/reports/A33-cli-initial-local.log",
+      "log_identity": {
+        "bytes": 5209,
+        "sha256": "73bc5a6e71abbe50822638acd9cf73e7795212fb2a7d69dd9539edd20864dc66"
+      }
+    },
+    {
+      "command": "python3 -B tests/test_contact_grid_conversion_adversarial.py -v",
+      "exit_code": 0,
+      "tests": 12,
+      "skips": 0,
+      "unittest_seconds": 0.871,
+      "log": "docs/development/2026-11-16-conversion-material/reports/A33-adversarial-initial-local.log",
+      "log_identity": {
+        "bytes": 2162,
+        "sha256": "6eed9e090764449db6db60136a83c3db01f48f7e6d85651f42008a9c38597830"
+      }
+    }
+  ],
+  "original_reproduction": {
+    "receipt": "A33-original-reproduction.json",
+    "identity": {
+      "bytes": 861,
+      "sha256": "06479d562b12300cb4bfcb1cd11617aed007abc82ed3c1e6c03f22bcc0bb7ee7"
+    },
+    "cases": [
+      {
+        "case": "real-directory-alias",
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "kind": "actual local filesystem alias; original assertion fails"
+      },
+      {
+        "case": "filesystem-EILSEQ",
+        "tests": 1,
+        "failures": 0,
+        "errors": 1,
+        "kind": "injected exact error family; not a native macOS run"
+      }
+    ]
+  },
+  "injected_capability_policy": {
+    "receipt": "A33-capability-policy.json",
+    "identity": {
+      "bytes": 3404,
+      "sha256": "3c021256c202b1d1ab415b65ca9f2066bdd70acf825cbff328fe7a667935107f"
+    },
+    "counts": {
+      "cases": 10,
+      "capability_skips": 2,
+      "other_errors_retained": 8
+    },
+    "seconds": 0.007666902001801645
+  },
+  "scope": [
+    "Two test files changed; all original test methods retained.",
+    "Actual local directory-alias and Unicode CLI success/refusal journeys pass.",
+    "EILSEQ is injected only in preparation-policy checks; no native macOS replay claimed.",
+    "No native Windows 8.3 replay; hosted raw log supplies the original path-prefix evidence.",
+    "No production, CMake, workflow, shared native build, commit or push by A33.",
+    "Root must publish and observe repaired exact-source macOS and Windows jobs separately."
+  ]
+}

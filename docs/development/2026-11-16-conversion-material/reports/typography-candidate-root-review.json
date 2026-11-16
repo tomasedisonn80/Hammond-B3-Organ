@@ -1,0 +1,52 @@
+{
+  "status": "candidate-scope-partial",
+  "inputs": {
+    "apps/standalone/InstrumentView.cpp": "a88e7576700ae306769849ceda36993969a61e848c015ba4fb98fa9c4a7e8cfa",
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+    "../build-native/apps/standalone/hammond_standalone": "e62d62109c76890e7b471b486cfc2f69929d0dcec4570e070b2da06da22e1012",
+    "../build-native/apps/standalone/test_standalone_footage_typography_raster": "1220cfa7a48cfe0ff1a9948a455ba9bc4111f8c090e0f2cd632d05fa2244c720",
+    "../build-native/apps/standalone/test_standalone_percussion_raster": "8edf87754277d2d5b34b9fd8ae8dbad67916a78340ff344c9e2c772f7f854a9d",
+    "../build-native/apps/standalone/test_standalone_upper_rack_material_raster": "d2207c7023c3f68e7e19f970b0bb0fbafd473da186318ade8ac5fb592e0380bc",
+    "../build-native/apps/standalone/test_standalone_lower_rack_material_raster": "0aee09cc6175a0c1660e2b92fa81d78d1f1139ef8ca201e28c5e51a54d8937e5"
+  },
+  "native_results": [
+    {
+      "target": "test_standalone_footage_typography_raster",
+      "exit_code": 0,
+      "seconds": 9.634758527001395,
+      "log": "typography-candidate-test_standalone_footage_typography_raster.log",
+      "sha256": "6d2ae06b440e92ec35bd877bebaefa6b6e15fcb3be36aba91bd97a92dd33d1ac"
+    },
+    {
+      "target": "test_standalone_percussion_raster",
+      "exit_code": 0,
+      "seconds": 11.126984276997973,
+      "log": "typography-candidate-test_standalone_percussion_raster.log",
+      "sha256": "2d24b709a24635195ea2277b4481eb8f22f4adf56e6f2bd06962afca186c0c00"
+    },
+    {
+      "target": "test_standalone_upper_rack_material_raster",
+      "exit_code": 1,
+      "seconds": 0.1415965829983179,
+      "log": "typography-candidate-test_standalone_upper_rack_material_raster.log",
+      "sha256": "b68b0877b19ed1a53f7df70e10dd918775f1d06072e79fad0bdc6a8523e70010"
+    },
+    {
+      "target": "test_standalone_lower_rack_material_raster",
+      "exit_code": 1,
+      "seconds": 0.15094535300158896,
+      "log": "typography-candidate-test_standalone_lower_rack_material_raster.log",
+      "sha256": "d137d2f95c662724df7963d6a165c726b89d5dbae893c69fab44073a752f5681"
+    }
+  ],
+  "root_actual_visual_review": {
+    "images": [
+      "../typography-preview/play-1672x941.png",
+      "../typography-preview/play-1400x820.png",
+      "../typography-preview/play-1920x820.png"
+    ],
+    "observed": "Viewed all three complete changed-app frames. Correct complete ordinary/fractional labels remain separated from values and focus; no new clipping/collision seen at these three sizes. The wider composition keeps scale-aware centering. This root review is scoped; A32 independent per-label/full-frame admission pending.",
+    "remaining": "Reference material/shadow/key/cap/heading/rim differences remain; real display/DPI/semantic accessibility unobserved."
+  },
+  "gate_state": "New44case and percussion pass; originalUpper/Lower old-placement failures retained for A32 independent versioned transition. A29 paired comparison in progress."
+}

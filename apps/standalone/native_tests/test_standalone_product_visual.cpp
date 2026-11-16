@@ -1,4 +1,5 @@
 #include "InstrumentView.h"
+#include "FontData.h"
 
 #include <SDL.h>
 
@@ -21,6 +22,9 @@
 // Ordinary CTest needs only current source. The one-time qualification links
 // the source-identified af006b0 painter with its three public names renamed.
 // No historical renderer is shipped or included in the ordinary target.
+// Product-visual T1 v1 replaces only active-wide manual footage expectations.
+// Original source/results remain archived; historical paired qualifications
+// require their original source and binaries, not this versioned assertion.
 #ifdef HAMMOND_PRODUCT_BASELINE
 namespace hammond::standalone {
 void paint_instrument_product_before(Drawing&, const UiModel&, const InstrumentViewInfo&);
@@ -64,6 +68,10 @@ bool whole_composition(const UiLayout& layout) {
     return layout.workspace == UiWorkspace::Play &&
         layout.presentation == UiPresentation::Dimensional &&
         layout.width >= 1400 && layout.height >= 820;
+}
+float footage_f32(float value) {
+    volatile float rounded = value;
+    return rounded;
 }
 UiRect canonical(const UiLayout& layout, float left, float top, float width, float height) {
     // Independently map the admitted specification, not production geometry.
@@ -151,6 +159,9 @@ struct Text {
     float size{}, padding{};
     TextFace face{TextFace::Sans};
     bool fit{true};
+    bool manual_footage{};
+    std::size_t footage_index{};
+    float sx{1}, sy{1};
 };
 struct Glyph {
     UiRect advance{}, permitted{};
@@ -190,6 +201,10 @@ public:
         const auto transform = observe_transform(renderer_.get());
         drawing_.clear({0, 0, 0, 0});
         for (const auto& plan : plans) {
+            if (plan.manual_footage) {
+                footage_text(plan, glyphs);
+                continue;
+            }
             float size = plan.fit ? std::min(plan.size, plan.box.height / 1.2F) : plan.size;
             const float advance = drawing_.text_width(plan.value, size, plan.face);
             const float available = plan.box.width - 2 * plan.padding;
@@ -209,6 +224,73 @@ public:
         return read(transform);
     }
 private:
+    // Declare complete musical strings and the five-run T1 geometry here;
+    // no production footage helper or painter-generated mask is consulted.
+    void footage_text(const Text& plan, std::vector<Glyph>& glyphs) {
+        constexpr std::array<std::array<std::string_view, 5>, 9> runs{{
+            {{"16'", "", "", "", ""}},
+            {{"5", "1", "/", "3", "'"}},
+            {{"8'", "", "", "", ""}},
+            {{"4'", "", "", "", ""}},
+            {{"2", "2", "/", "3", "'"}},
+            {{"2'", "", "", "", ""}},
+            {{"1", "3", "/", "5", "'"}},
+            {{"1", "1", "/", "3", "'"}},
+            {{"1'", "", "", "", ""}},
+        }};
+        constexpr std::array<std::size_t, 9> counts{1, 5, 1, 1, 5, 1, 5, 5, 1};
+        constexpr std::array<float, 5> sizes{20.5F, 13.0F, 16.0F, 13.0F, 20.5F};
+        constexpr std::array<float, 5> offsets{21.5F, 15.5F, 19.5F, 21.5F, 21.5F};
+        require(plan.footage_index < runs.size(), "independent manual footage index");
+        const auto& words = runs[plan.footage_index];
+        const auto count = counts[plan.footage_index];
+        std::string complete(words[0]);
+        if (count == 5) {
+            complete += ' ';
+            for (std::size_t part = 1; part < count; ++part) complete += words[part];
+        }
+        require(complete == footage[plan.footage_index] && complete == plan.value,
+                "all independently declared footage characters retain musical identity");
+        const float font_scale = std::min(plan.sx, plan.sy);
+        const float gap = footage_f32(0.5F * plan.sx);
+        std::array<float, 5> height{}, width{};
+        float extent = 0;
+        for (std::size_t part = 0; part < count; ++part) {
+            height[part] = footage_f32(sizes[part] * font_scale);
+            width[part] = drawing_.text_width(words[part], height[part], TextFace::Serif);
+            extent = footage_f32(extent + width[part]);
+            if (count == 5 && (part == 0 || part == 3)) extent = footage_f32(extent + gap);
+        }
+        float cursor = footage_f32(plan.box.x + footage_f32(footage_f32(plan.box.width - extent) / 2.0F));
+        const UiRect permitted{plan.box.x + plan.padding, plan.box.y,
+            plan.box.width - 2 * plan.padding, plan.box.height};
+        for (std::size_t part = 0; part < count; ++part) {
+            const float baseline = footage_f32(plan.box.y + footage_f32(offsets[part] * plan.sy));
+            const float top = footage_f32(baseline - footage_f32(footage_f32(38.0F * height[part]) / 40.0F));
+            drawing_.text(words[part], cursor, top, height[part], {255, 255, 255}, TextFace::Serif);
+            // Actual atlas copy bounds include bearings and the unchanged
+            // conditional transparent gutter, not only nominal advance cells.
+            const auto& atlas = font_data::kSerif;
+            const float factor = height[part] / static_cast<float>(atlas.pixel_height);
+            const float actual_baseline = top + static_cast<float>(atlas.ascent) * factor;
+            float glyph_cursor = cursor;
+            for (const char character : words[part]) {
+                const auto& glyph = font_data::glyph(atlas, static_cast<unsigned char>(character));
+                require(glyph.width != 0 && glyph.height != 0, "every declared footage character has ink");
+                const int pad_x = static_cast<float>(glyph.width) * factor < 1.0F ? 2 : 0;
+                const int pad_y = static_cast<float>(glyph.height) * factor < 1.0F ? 2 : 0;
+                glyphs.push_back({{
+                    glyph_cursor + static_cast<float>(glyph.bearing_x - pad_x) * factor,
+                    actual_baseline + static_cast<float>(glyph.bearing_y - pad_y) * factor,
+                    static_cast<float>(glyph.width + 2 * pad_x) * factor,
+                    static_cast<float>(glyph.height + 2 * pad_y) * factor}, permitted, character});
+                glyph_cursor += static_cast<float>(glyph.advance_64) * factor / 64.0F;
+            }
+            cursor = footage_f32(cursor + width[part]);
+            if (count == 5 && (part == 0 || part == 3)) cursor = footage_f32(cursor + gap);
+        }
+    }
+
     Frame read(const Transform& transform) {
         require(SDL_RenderFlush(renderer_.get()) == 0 && SDL_LockSurface(surface_.get()) == 0, "read software pixels");
         Frame frame{surface_->w, surface_->h, transform, std::vector<Pixel>(
@@ -292,7 +374,8 @@ std::vector<Text> plans_for(const FixedState& state, int value, bool legacy_digi
             for (std::size_t index = 0; index < 9; ++index) {
                 const float left = rail_centers[manual][index] - 23;
                 plans.push_back({std::string(footage[index]),
-                    canonical(layout, left, 467, 46, 23), 19 * font_scale, 2 * sx, TextFace::Serif});
+                    canonical(layout, left, 467, 46, 23), 20.5F * font_scale, 2 * sx,
+                    TextFace::Serif, true, true, index, sx, sy});
                 plans.push_back({std::to_string(value),
                     canonical(layout, left, 491, 46, 15), 12 * font_scale, 3 * sx, TextFace::Sans});
             }
@@ -663,7 +746,7 @@ int main() {
         SDL_Quit();
         return EXIT_FAILURE;
     }
-    std::cout << "{\"schema_version\":1,\"checks\":" << totals.checks << ",\"failures\":" << totals.failures
+    std::cout << "{\"schema_version\":1,\"protocol\":\"product-visual-t1-v1\",\"checks\":" << totals.checks << ",\"failures\":" << totals.failures
         << ",\"cases\":" << totals.cases << ",\"frames\":" << totals.frames << ",\"cap_measurements\":" << totals.caps
         << ",\"literal_glyphs\":" << totals.glyphs << ",\"strong_text_pixels\":" << totals.text_pixels
         << ",\"compared_pairs\":" << totals.compared << ",\"compared_pixels\":" << totals.pixels

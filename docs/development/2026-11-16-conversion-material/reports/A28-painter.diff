@@ -1,0 +1,78 @@
+diff --git a/apps/standalone/InstrumentView.cpp b/apps/standalone/InstrumentView.cpp
+index 15d3607..8cdb2e3 100644
+--- a/apps/standalone/InstrumentView.cpp
++++ b/apps/standalone/InstrumentView.cpp
+@@ -1827,6 +1827,58 @@ void reference_button(Drawing& drawing, const UiControlGeometry& geometry,
+              face, 3.0F * scale.sx);
+ }
+ 
++[[nodiscard]] float reference_footage_round(float value) noexcept {
++    // Keep the admitted binary32 operation boundaries even when contraction is enabled.
++    volatile float rounded = value;
++    return rounded;
++}
++
++void reference_manual_footage(Drawing& drawing, std::string_view label, UiRect bounds,
++                              ReferenceCompositionScale scale) {
++    if (!(bounds.width > 0.0F && bounds.height > 0.0F)) return;
++    const bool mixed = label == "5 1/3'" || label == "2 2/3'" ||
++        label == "1 3/5'" || label == "1 1/3'";
++    const bool ordinary = label == "16'" || label == "8'" || label == "4'" ||
++        label == "2'" || label == "1'";
++    if (!mixed && !ordinary) {
++        centered(drawing, label, bounds, 19.0F * scale.f,
++                 kUiIvory, TextFace::Serif, 2.0F * scale.sx);
++        return;
++    }
++
++    // Mixed footages keep their complete ASCII identity in five measured runs.
++    // Only font size uses f; vertical baselines use sy and the two gaps use sx.
++    std::array<std::string_view, 5> runs{label, {}, {}, {}, {}};
++    if (mixed) {
++        runs = {label.substr(0, 1), label.substr(2, 1), label.substr(3, 1),
++                label.substr(4, 1), label.substr(5, 1)};
++    }
++    constexpr std::array<float, 5> nominal_sizes{20.5F, 13.0F, 16.0F, 13.0F, 20.5F};
++    constexpr std::array<float, 5> baseline_offsets{21.5F, 15.5F, 19.5F, 21.5F, 21.5F};
++    std::array<float, 5> sizes{};
++    std::array<float, 5> advances{};
++    const std::size_t count = mixed ? 5U : 1U;
++    const float gap = reference_footage_round(0.5F * scale.sx);
++    float width = 0.0F;
++    for (std::size_t i = 0; i < count; ++i) {
++        sizes[i] = reference_footage_round(nominal_sizes[i] * scale.f);
++        advances[i] = drawing.text_width(runs[i], sizes[i], TextFace::Serif);
++        width = reference_footage_round(width + advances[i]);
++        if (mixed && (i == 0 || i == 3)) width = reference_footage_round(width + gap);
++    }
++    float x = reference_footage_round(bounds.x + reference_footage_round(
++        reference_footage_round(bounds.width - width) / 2.0F));
++    for (std::size_t i = 0; i < count; ++i) {
++        const float baseline = reference_footage_round(bounds.y +
++            reference_footage_round(baseline_offsets[i] * scale.sy));
++        const float top = reference_footage_round(baseline - reference_footage_round(
++            reference_footage_round(38.0F * sizes[i]) / 40.0F));
++        drawing.text(runs[i], x, top, sizes[i], kUiIvory, TextFace::Serif);
++        x = reference_footage_round(x + advances[i]);
++        if (mixed && (i == 0 || i == 3)) x = reference_footage_round(x + gap);
++    }
++}
++
+ void reference_drawbar(Drawing& drawing, const UiControlGeometry& geometry,
+                        std::uint8_t value, std::string_view label, UiColor cap,
+                        ReferenceCompositionScale scale) {
+@@ -1892,8 +1944,12 @@ void reference_drawbar(Drawing& drawing, const UiControlGeometry& geometry,
+     drawing.rect({surface.x + scale.sx, surface.y + surface.height,
+                   surface.width - 2.0F * scale.sx, scale.sy},
+                  ivory ? UiColor{244, 224, 186} : shade(cap, 34));
+-    centered(drawing, label, geometry.label_bounds, (mixture ? 11.0F : 19.0F) * scale.f,
+-             kUiIvory, mixture ? TextFace::Sans : TextFace::Serif, 2.0F * scale.sx);
++    if (mixture) {
++        centered(drawing, label, geometry.label_bounds, 11.0F * scale.f,
++                 kUiIvory, TextFace::Sans, 2.0F * scale.sx);
++    } else {
++        reference_manual_footage(drawing, label, geometry.label_bounds, scale);
++    }
+     centered(drawing, std::to_string(value), geometry.value_bounds, (mixture ? 13.0F : 12.0F) * scale.f,
+              kUiBrass, TextFace::Sans, 3.0F * scale.sx);
+ }

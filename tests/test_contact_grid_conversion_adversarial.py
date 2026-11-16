@@ -9,6 +9,7 @@ Run: python3 -B tests/test_contact_grid_conversion_adversarial.py -v
 from __future__ import annotations
 
 import copy
+import errno
 import hashlib
 import json
 import os
@@ -266,7 +267,17 @@ class ProcessPublicationAdversaries(unittest.TestCase):
         source = self.root / os.fsdecode(b"input-\xff.json")
         destination = self.root / os.fsdecode(b"certificate-\xfe.json")
         data = input_bytes("time-midpoint-even")
-        source.write_bytes(data)
+        # POSIX alone does not promise arbitrary-byte filenames: the hosted
+        # macOS filesystem rejects these names before the CLI can run. Probe
+        # both exact names and skip only that demonstrated encoding limitation.
+        for path, payload in ((source, data), (destination, PRIOR)):
+            try:
+                path.write_bytes(payload)
+            except OSError as error:
+                if error.errno == errno.EILSEQ:
+                    self.skipTest("filesystem rejects this non-UTF8 byte filename (EILSEQ)")
+                raise
+        destination.unlink()  # Preserve the original absent-output CLI journey.
         result = subprocess.run([sys.executable, "-B", str(REPO / "tools/convert_contact_grid.py"),
                                  "--input", str(source), "--output", str(destination)],
                                 capture_output=True, timeout=10, check=False)
@@ -274,6 +285,40 @@ class ProcessPublicationAdversaries(unittest.TestCase):
         certificate = json.loads(destination.read_bytes())
         self.assertEqual(certificate["input_sha256"], hashlib.sha256(data).hexdigest())
         self.assertEqual(source.read_bytes(), data)
+
+    def test_unicode_paths_preserve_input_and_publication_on_success_and_refusal(self):
+        # This journey is not restricted to POSIX or arbitrary-byte filesystems.
+        parent = self.root / "\u6f14\u594f"
+        parent.mkdir()
+        self.source = parent / "\u5165\u529b-\u03a9.json"
+        self.destination = parent / "\u8a3c\u660e-\u03bb.json"
+        data = input_bytes("time-midpoint-even")
+        self.source.write_bytes(data)
+        self.destination.write_bytes(PRIOR)
+        ascii_source, ascii_destination = self.root / "ascii-input.json", self.root / "ascii-output.json"
+        ascii_source.write_bytes(data)
+        for source, destination in ((self.source, self.destination), (ascii_source, ascii_destination)):
+            result = subprocess.run([sys.executable, "-B", str(REPO / "tools/convert_contact_grid.py"),
+                                     "--input", str(source), "--output", str(destination)],
+                                    capture_output=True, timeout=10, check=False)
+            self.assertEqual((result.returncode, result.stdout, result.stderr), (0, b"", b""))
+            self.assertEqual(source.read_bytes(), data)
+            self.assertEqual(list(destination.parent.glob(".contact-grid-*.tmp")), [])
+        self.assertEqual(self.destination.read_bytes(), ascii_destination.read_bytes())
+        certificate = json.loads(self.destination.read_bytes())
+        self.assertEqual(certificate["status"], "accepted")
+        self.assertEqual(certificate["input_sha256"], hashlib.sha256(data).hexdigest())
+        self.assertEqual(certificate["input_bytes"], len(data))
+        refused = input_bytes("reviewed-f09-equality")
+        self.source.write_bytes(refused)
+        self.destination.write_bytes(PRIOR)
+        result = subprocess.run([sys.executable, "-B", str(REPO / "tools/convert_contact_grid.py"),
+                                 "--input", str(self.source), "--output", str(self.destination)],
+                                capture_output=True, timeout=10, check=False)
+        value = self.assert_refusal(result)
+        self.assertEqual(value["code"], "event_order")
+        self.assertEqual(self.source.read_bytes(), refused)
+        self.assertEqual(list(parent.glob(".contact-grid-*.tmp")), [])
 
     @unittest.skipUnless(os.name == "posix", "OS-delivered SIGINT journey is POSIX-specific")
     def test_real_sigint_before_commit_during_acquisition_and_after_replace(self):

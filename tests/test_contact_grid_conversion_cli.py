@@ -285,7 +285,7 @@ class ConversionCliTests(unittest.TestCase):
             self.assert_refused(self.invoke(), code="certificate")
             create.assert_not_called()
 
-    def test_complete_payload_precedes_all_output_io(self):
+    def assert_complete_payload_precedes_all_output_io(self):
         original = conversion.encode_certificate
         events = []
 
@@ -298,7 +298,10 @@ class ConversionCliTests(unittest.TestCase):
 
         def created(*args, **kwargs):
             self.assertEqual(events, ["encoded"])
-            self.assertEqual(Path(kwargs["dir"]), self.destination.parent)
+            # Admission resolves the output parent, including /var aliases and
+            # Windows short names. Keep the actual argument canonical, rather
+            # than comparing it with the caller's possibly aliased spelling.
+            self.assertEqual(Path(kwargs["dir"]), self.destination.parent.resolve(strict=True))
             events.append("temporary")
             return real_create(*args, **kwargs)
 
@@ -306,6 +309,16 @@ class ConversionCliTests(unittest.TestCase):
                 patch.object(command.tempfile, "mkstemp", side_effect=created):
             self.assert_success(self.invoke())
         self.assertEqual(events, ["encoded", "temporary"])
+
+    def test_complete_payload_precedes_all_output_io(self):
+        self.assert_complete_payload_precedes_all_output_io()
+
+    def test_complete_payload_precedes_output_io_through_parent_alias(self):
+        alias = self.root / "parent-alias"
+        self.make_symlink(alias, self.root, directory=True)
+        self.assertNotEqual(alias, alias.resolve(strict=True))
+        self.destination = alias / self.destination.name
+        self.assert_complete_payload_precedes_all_output_io()
 
     def test_temporary_creation_and_fdopen_failures_preserve_destination(self):
         real_open = command.os.fdopen

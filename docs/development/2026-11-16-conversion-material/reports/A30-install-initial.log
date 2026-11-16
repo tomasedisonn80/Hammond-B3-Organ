@@ -1,0 +1,107 @@
+test_all_empty_and_directory_payloads_refuse_before_copy (__main__.ContactGridConversionInstallTests.test_all_empty_and_directory_payloads_refuse_before_copy) ... ok
+test_all_linked_payloads_and_source_ancestors_refuse (__main__.ContactGridConversionInstallTests.test_all_linked_payloads_and_source_ancestors_refuse) ... ok
+test_all_missing_payloads_preserve_absent_and_existing_destinations (__main__.ContactGridConversionInstallTests.test_all_missing_payloads_preserve_absent_and_existing_destinations) ... ok
+test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) ... 
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='/absolute') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='C:/absolute') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='C:relative') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='C:\\absolute') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='\\absolute') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='..') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='a/../b') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='a\\..\\b') ... FAIL
+  test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='a;b') ... FAIL
+test_default_unknown_and_original_components_remain_independent (__main__.ContactGridConversionInstallTests.test_default_unknown_and_original_components_remain_independent) ... ok
+test_destdir_uses_the_effective_prefix_for_copy_and_refusal (__main__.ContactGridConversionInstallTests.test_destdir_uses_the_effective_prefix_for_copy_and_refusal) ... ok
+test_destination_links_cannot_redirect_a_write (__main__.ContactGridConversionInstallTests.test_destination_links_cannot_redirect_a_write) ... ok
+test_exact_five_files_copy_modes_and_existing_prefix (__main__.ContactGridConversionInstallTests.test_exact_five_files_copy_modes_and_existing_prefix) ... ok
+test_existing_package_and_file_ancestors_are_never_replaced (__main__.ContactGridConversionInstallTests.test_existing_package_and_file_ancestors_are_never_replaced) ... ok
+test_multi_configuration_copy_requires_no_build (__main__.ContactGridConversionInstallTests.test_multi_configuration_copy_requires_no_build) ... ok
+test_noncopy_modes_refuse_without_destination_changes (__main__.ContactGridConversionInstallTests.test_noncopy_modes_refuse_without_destination_changes) ... ok
+test_relocated_execution_without_source_build_or_working_directory_imports (__main__.ContactGridConversionInstallTests.test_relocated_execution_without_source_build_or_working_directory_imports) ... ok
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='/absolute')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='C:/absolute')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='C:relative')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='C:\\absolute')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='\\absolute')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='..')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='a/../b')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='a\\..\\b')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+======================================================================
+FAIL: test_custom_and_invalid_data_directories (__main__.ContactGridConversionInstallTests.test_custom_and_invalid_data_directories) (invalid='a;b')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_install.py", line 410, in test_custom_and_invalid_data_directories
+    self.assertIn("nonempty relative CMAKE_INSTALL_DATADIR", diagnostic(result))
+AssertionError: 'nonempty relative CMAKE_INSTALL_DATADIR' not found in '-- Configuring incomplete, errors occurred!\nCMake Error at cmake/InstallHammondTools.cmake:8 (message):\n  ContactGridConversionTools requires a nonempty relative\n  CMAKE_INSTALL_DATADIR without parent traversal or list separators.\nCall Stack (most recent call first):\n  cmake/InstallContactGridConversionTools.cmake:6 (hammond_require_relative_install_dir)\n  CMakeLists.txt:5 (include)\n\n\n'
+
+----------------------------------------------------------------------
+Ran 12 tests in 10.059s
+
+FAILED (failures=10)

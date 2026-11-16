@@ -268,6 +268,34 @@ if(HAMMOND_BUILD_STANDALONE)
             set_tests_properties(test_standalone_lower_rack_material_raster PROPERTIES TIMEOUT 240)
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_lower_rack_material_raster)
+        add_executable(test_standalone_footage_typography_raster
+            native_tests/test_standalone_footage_typography_raster.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_footage_typography_raster PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_footage_typography_raster PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_footage_typography_raster)
+        add_test(NAME test_standalone_footage_typography_raster
+            COMMAND test_standalone_footage_typography_raster)
+        set_tests_properties(test_standalone_footage_typography_raster PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;typography;geometry")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_footage_typography_raster PROPERTIES TIMEOUT 240)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_footage_typography_raster)
+        add_executable(test_standalone_keyboard_rim_raster
+            native_tests/test_standalone_keyboard_rim_raster.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_keyboard_rim_raster PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_keyboard_rim_raster PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_keyboard_rim_raster)
+        add_test(NAME test_standalone_keyboard_rim_raster
+            COMMAND test_standalone_keyboard_rim_raster)
+        set_tests_properties(test_standalone_keyboard_rim_raster PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;rim;geometry")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_keyboard_rim_raster PROPERTIES TIMEOUT 240)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_keyboard_rim_raster)
         add_executable(test_standalone_scaled_view
             native_tests/test_standalone_scaled_view.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_scaled_view PRIVATE

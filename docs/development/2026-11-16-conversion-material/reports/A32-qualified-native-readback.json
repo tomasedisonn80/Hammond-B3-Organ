@@ -1,0 +1,54 @@
+{
+  "schema": "a32-root-qualification-readback-v1",
+  "status": "passed",
+  "root_receipt_sha256": "d0adf518db46c6c72e3334874d53f5c66eb936e195b05033b2704c4eed3812c8",
+  "checks": {
+    "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp": true,
+    "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp": true,
+    "apps/standalone/InstrumentView.cpp": true,
+    "../build-native/apps/standalone/test_standalone_upper_rack_material_raster": true,
+    "../build-native/apps/standalone/test_standalone_lower_rack_material_raster": true,
+    "typography-material-transition-fixed-build.log": true,
+    "typography-material-transition-fixed-ctest.log": true,
+    "typography-material-transition-LastTest.log": true
+  },
+  "native_results": [
+    {
+      "schema": 1,
+      "protocol": "upper-rack-material-v1.2",
+      "status": "passed",
+      "cases": 30,
+      "checks": 58877477,
+      "state_restorations": 49,
+      "clip_companions": 15,
+      "visible_clip_pixels": 29916,
+      "opaque_child_probes": 216,
+      "opaque_probe_pixels": 121526,
+      "literal_glyphs": 708,
+      "strong_ink_pixels": 36526,
+      "focus_cases": 12,
+      "cyan_focus_pixels": 21864,
+      "case_28_repeats": 2,
+      "backend": "SDL software surface; fixed copied state; no audio/window"
+    },
+    {
+      "schema": 1,
+      "protocol": "lower-rack-material-v1.1",
+      "status": "passed",
+      "cases": 32,
+      "checks": 58958029,
+      "state_restorations": 51,
+      "clip_companions": 15,
+      "visible_clip_pixels": 29340,
+      "opaque_child_probes": 252,
+      "opaque_probe_pixels": 142099,
+      "literal_glyphs": 826,
+      "strong_ink_pixels": 42526,
+      "focus_cases": 14,
+      "cyan_focus_pixels": 25508,
+      "case_28_repeats": 2,
+      "backend": "SDL software surface; fixed copied state; no audio/window"
+    }
+  ],
+  "scope": "Independent readback of root-owned successful-build/fresh-run source/executable/log bindings. No duplicate native run."
+}

@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""Verify the narrow product-visual T1 assertion transition, without building.
+
+The output is exclusive-create evidence. Exact source reversibility is separate
+from native execution and from the independent production-pixel comparison.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+
+
+SOURCE = "apps/standalone/native_tests/test_standalone_product_visual.cpp"
+ARCHIVE = "A35-product-visual-before-t1.txt"
+BEFORE_SHA = "97bb4d5afc5d7e72694a522d5b1c1f4bb9c30e51eecf470933865d4323f0697f"
+COMMIT = "3520c96adcdcf4ce4bcb860082354bf0050a89c3"
+
+
+def sha(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def once(text: str, old: str, new: str) -> str:
+    if text.count(old) != 1:
+        raise ValueError(f"Expected exactly one declared delta: {old[:100]!r}")
+    return text.replace(old, new, 1)
+
+
+def section(text: str, start: str, following: str) -> str:
+    left = text.index(start)
+    return text[left:text.index(following, left)]
+
+
+def restore(current: str) -> str:
+    current = once(current, '#include "FontData.h"\n', "")
+    current = once(current,
+        "// Product-visual T1 v1 replaces only active-wide manual footage expectations.\n"
+        "// Original source/results remain archived; historical paired qualifications\n"
+        "// require their original source and binaries, not this versioned assertion.\n", "")
+    rounding = section(current, "float footage_f32(float value) {\n", "UiRect canonical(")
+    current = once(current, rounding, "")
+    current = once(current,
+        "    bool manual_footage{};\n"
+        "    std::size_t footage_index{};\n"
+        "    float sx{1}, sy{1};\n", "")
+    current = once(current,
+        "            if (plan.manual_footage) {\n"
+        "                footage_text(plan, glyphs);\n"
+        "                continue;\n"
+        "            }\n", "")
+    helper = section(current,
+        "    // Declare complete musical strings and the five-run T1 geometry here;\n",
+        "    Frame read(const Transform& transform) {\n")
+    current = once(current, helper, "")
+    current = once(current,
+        "                    canonical(layout, left, 467, 46, 23), 20.5F * font_scale, 2 * sx,\n"
+        "                    TextFace::Serif, true, true, index, sx, sy});\n",
+        "                    canonical(layout, left, 467, 46, 23), 19 * font_scale, 2 * sx, TextFace::Serif});\n")
+    current = once(current, '\\"protocol\\":\\"product-visual-t1-v1\\",', "")
+    return current
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", required=True, type=Path)
+    args = parser.parse_args()
+    reports = Path(__file__).resolve().parent
+    repo = reports.parents[3]
+    original_bytes = (reports / ARCHIVE).read_bytes()
+    current_bytes = (repo / SOURCE).read_bytes()
+    committed = subprocess.run(["git", "show", f"{COMMIT}:{SOURCE}"], cwd=repo,
+                               check=True, capture_output=True).stdout
+    assert sha(original_bytes) == BEFORE_SHA
+    assert original_bytes == committed
+    original, current = original_bytes.decode(), current_bytes.decode()
+    reversed_bytes = restore(current).encode()
+    assert reversed_bytes == original_bytes, "undeclared assertion/source delta"
+    sampler = section(original, "void text_acceptance(", "double middle(")
+    assert sampler == section(current, "void text_acceptance(", "double middle(")
+    assert 'if (light(expected.pixels[at]) < 160) return;' in sampler
+    assert 'if (light(actual.pixels[at]) >= 90) ++matches;' in sampler
+    assert 'samples > 0 && matches == samples && escaped == 0' in sampler
+    helper = section(current,
+        "    // Declare complete musical strings and the five-run T1 geometry here;\n",
+        "    Frame read(const Transform& transform) {\n")
+    assert "reference_manual_footage" not in helper
+    assert "reference_footage_round" not in helper
+    assert "complete == footage[plan.footage_index] && complete == plan.value" in helper
+    assert "plan.box.width - 2 * plan.padding, plan.box.height" in helper
+    assert "static_cast<unsigned char>(character)" in helper
+    assert "const float font_scale = std::min(plan.sx, plan.sy);" in helper
+    assert "footage_f32(0.5F * plan.sx)" in helper
+    # A restored old file must still catch unrelated changes. These probes
+    # exercise the audit itself; they do not run a modified native fixture.
+    negative_results = []
+    for old, new, description in (
+        ("< 160) return;", "< 159) return;", "expected contrast"),
+        (">= 90) ++matches;", ">= 89) ++matches;", "actual contrast"),
+        ("samples > 0 &&", "samples >= 0 &&", "nonempty glyph"),
+        ("escaped == 0,", "escaped <= 1,", "padded-row containment"),
+        ("value <= 8;", "value <= 7;", "nine-level matrix"),
+        ("sequence.size() == 71", "sequence.size() == 70", "focus inventory"),
+        ("outside == 0,", "outside <= 1,", "caller exterior"),
+        ("caps(model, after, test.value);", "/* caps omitted */", "cap assertions"),
+    ):
+        mutated = once(current, old, new)
+        assert restore(mutated).encode() != original_bytes, description
+        negative_results.append({"mutation": description, "rejected_by_exact_reversal": True})
+    identities = []
+    for name in (SOURCE, "apps/standalone/InstrumentView.cpp", "apps/standalone/Drawing.cpp",
+                 "apps/standalone/Drawing.h", "apps/standalone/FontData.h",
+                 "docs/design/FOOTAGE_TYPOGRAPHY_CONTRACT.md"):
+        raw = (repo / name).read_bytes()
+        identities.append({"path": name, "bytes": len(raw), "sha256": sha(raw)})
+    result = {
+        "schema": "a35-product-t1-fixture-transition-audit-v1",
+        "status": "passed",
+        "source": SOURCE,
+        "reference_commit": COMMIT,
+        "original_archive": str((reports / ARCHIVE).relative_to(repo)),
+        "original_sha256": BEFORE_SHA,
+        "current_sha256": sha(current_bytes),
+        "reversed_sha256": sha(reversed_bytes),
+        "archive_equals_committed_source": True,
+        "exact_reversal_restores_all_original_bytes": True,
+        "strong_ink_sampler_byte_identical": True,
+        "strong_ink_sampler_sha256": sha(sampler.encode()),
+        "expected_footage_helper_sha256": sha(helper.encode()),
+        "old_protocol": "unlabelled schema_version=1; source-bound historical fixture",
+        "new_protocol": "product-visual-t1-v1",
+        "unchanged": ["76-case ordinary matrix", "148 ordinary frames", "all value and route plans",
+                      "legacy_digits branch", "historical comparison code and mask", "all cap checks",
+                      "focus/pending/inventory", "caller clip/exterior", "nonempty complete glyphs",
+                      "expected luma >=160", "actual luma >=90", "padded-row guard"],
+        "audit_negative_checks": negative_results,
+        "source_identities": identities,
+        "audit_source_sha256": sha(Path(__file__).read_bytes()),
+        "scope": "Source-only exact reversal and unchanged assertion criteria. Native build/runtime and production raster preservation require their separate observed evidence.",
+    }
+    with args.output.open("x") as output:
+        json.dump(result, output, indent=2)
+        output.write("\n")
+    print(json.dumps({"status": "passed", "source_sha256": sha(current_bytes),
+                      "negative_checks": len(negative_results), "output": str(args.output)}))
+
+
+if __name__ == "__main__":
+    main()
