@@ -1,0 +1,49 @@
+{
+  "schema": "a58-config-observer-error-v1",
+  "observed_utc": "2026-11-16T13:02:45.238832+00:00",
+  "scope": "Audit parser error only; no configure/build/test execution or product failure.",
+  "observer_error": "A multiline regular expression permitted newlines within the option-name match, so most actual CMake cache keys were missed and settings appeared null.",
+  "incorrect_observation": {
+    "a38-headless": {
+      "cache_matches_a47": true,
+      "cache_sha256": "b7b0ee59c6bee32be51e4ad14c9e100d49f8e2e53916ac32d696cf9603f403f9",
+      "settings": {
+        "BUILD_TESTING": null,
+        "CMAKE_BUILD_TYPE": null,
+        "CMAKE_HOME_DIRECTORY": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+        "HAMMOND_BUILD_STANDALONE": null,
+        "HAMMOND_BUILD_VST3": null,
+        "HAMMOND_ENABLE_MIDI": null,
+        "HAMMOND_ENABLE_SANITIZERS": null,
+        "HAMMOND_RTMIDI_ROOT": null,
+        "HAMMOND_SDL2_ROOT": null,
+        "HAMMOND_VST3_SDK_ROOT": null
+      },
+      "settings_match_a47": false
+    },
+    "build-native": {
+      "cache_matches_a47": true,
+      "cache_sha256": "10aa2ad2bc556fc174ce2a0363f99cc5e65a2a8e1fab0cb189ee46c0a9bd6118",
+      "settings": {
+        "BUILD_TESTING": null,
+        "CMAKE_BUILD_TYPE": null,
+        "CMAKE_HOME_DIRECTORY": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+        "HAMMOND_BUILD_STANDALONE": null,
+        "HAMMOND_BUILD_VST3": null,
+        "HAMMOND_ENABLE_MIDI": null,
+        "HAMMOND_ENABLE_SANITIZERS": null,
+        "HAMMOND_RTMIDI_ROOT": null,
+        "HAMMOND_SDL2_ROOT": null,
+        "HAMMOND_VST3_SDK_ROOT": null,
+        "SDL_ALSA": null,
+        "SDL_JACK": null,
+        "SDL_PULSEAUDIO": null,
+        "SDL_WAYLAND": null,
+        "SDL_X11": null
+      },
+      "settings_match_a47": false
+    }
+  },
+  "unchanged_raw_cache_hashes_match_a47": true,
+  "correction": "Parse each noncomment cache line independently by the first equals sign and type separator, then repeat the read-only comparison."
+}

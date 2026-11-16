@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "observer": "root",
+  "observed_at": "2026-11-16 13:05:38 UTC",
+  "jobs": [
+    {
+      "run_id": 43869771157,
+      "id": 133307537267,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Release (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001262,
+      "steps": 18
+    },
+    {
+      "run_id": 43869771157,
+      "id": 133307537675,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001263,
+      "steps": 11
+    },
+    {
+      "run_id": 43869771157,
+      "id": 133307537794,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Release (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "runner_id": 0,
+      "steps": 0
+    },
+    {
+      "run_id": 43869771157,
+      "id": 133307537876,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001266,
+      "steps": 12
+    },
+    {
+      "run_id": 43869771157,
+      "id": 133307538161,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Release (Windows MSVC)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001270,
+      "steps": 18
+    },
+    {
+      "run_id": 43869771215,
+      "id": 133307538255,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001268,
+      "steps": 15
+    },
+    {
+      "run_id": 43869771215,
+      "id": 133307538521,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001269,
+      "steps": 20
+    },
+    {
+      "run_id": 43869771215,
+      "id": 133307538550,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "runner_id": 0,
+      "steps": 0
+    },
+    {
+      "run_id": 43869771215,
+      "id": 133307538750,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001271,
+      "steps": 20
+    },
+    {
+      "run_id": 43869771215,
+      "id": 133307538963,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001274,
+      "steps": 20
+    },
+    {
+      "run_id": 43869771192,
+      "id": 133307537890,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001265,
+      "steps": 15
+    },
+    {
+      "run_id": 43869771192,
+      "id": 133307538216,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native VST3 (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001267,
+      "steps": 15
+    },
+    {
+      "run_id": 43869771192,
+      "id": 133307538317,
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "name": "Native VST3 (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "runner_id": 0,
+      "steps": 0
+    }
+  ],
+  "runs": [
+    {
+      "id": 43869771192,
+      "name": "Native VST3",
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 43869771157,
+      "name": "CI",
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "id": 43869771215,
+      "name": "Native standalone",
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  ],
+  "scope": "Independent read-only provider observation at exact published implementation source. This does not qualify macOS or a later documentation commit.",
+  "counts": {
+    "successful_jobs": 10,
+    "cancelled_without_runner_or_steps": 3,
+    "failed_executed_jobs": 0,
+    "aggregate_failed_workflows": 3
+  },
+  "limitations": [
+    "All three workflow aggregates conclude failure; the complete required matrix is not green.",
+    "All three macOS jobs are cancelled, runner_id 0, with zero steps. No macOS execution or cancellation cause is established.",
+    "Production/build/workflow/test/data paths have no later working-tree changes; later documentary delivery receives its own integrity and publication checks."
+  ]
+}

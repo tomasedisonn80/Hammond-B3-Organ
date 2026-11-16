@@ -1,0 +1,1226 @@
+{
+  "schema": "a47-resource-recovery-v1",
+  "worker": "A47",
+  "agent": "/root/w08_a47",
+  "wave": 8,
+  "observed_utc": "2026-11-16T12:39:50.510295+00:00",
+  "finished_utc": "2026-11-16T12:41:00.021823+00:00",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "execution_boundary": "Read-only inspection plus the three assigned audit files. No native build, capture, benchmark, renderer, test suite, staging, commit, push, cleanup or subagent. Git inspections use GIT_OPTIONAL_LOCKS=0 in this audit.",
+  "resource": {
+    "measurement_scope": "This session root only; shared filesystem free space is aggregate. No other-session file contents or sizes were read. Sizes are file bytes, with directory blocks reported separately.",
+    "filesystem_total_bytes": 67586535424,
+    "filesystem_available_bytes": 43169308672,
+    "session_directories": {
+      "Hammond-B3-Organ": {
+        "file_count": 5461,
+        "apparent_file_bytes": 315995434,
+        "allocated_file_bytes": 327389184,
+        "allocated_directory_bytes": 2256896
+      },
+      "a22-apron": {
+        "file_count": 6,
+        "apparent_file_bytes": 4455101,
+        "allocated_file_bytes": 4464640,
+        "allocated_directory_bytes": 8192
+      },
+      "a23-apron": {
+        "file_count": 9,
+        "apparent_file_bytes": 19025671,
+        "allocated_file_bytes": 19046400,
+        "allocated_directory_bytes": 4096
+      },
+      "a26-guide": {
+        "file_count": 10,
+        "apparent_file_bytes": 235466,
+        "allocated_file_bytes": 266240,
+        "allocated_directory_bytes": 16384
+      },
+      "a34-resources": {
+        "file_count": 12,
+        "apparent_file_bytes": 41583,
+        "allocated_file_bytes": 61440,
+        "allocated_directory_bytes": 4096
+      },
+      "a38-headless": {
+        "file_count": 114,
+        "apparent_file_bytes": 5716878,
+        "allocated_file_bytes": 5984256,
+        "allocated_directory_bytes": 1064960
+      },
+      "a43-first-use": {
+        "file_count": 80,
+        "apparent_file_bytes": 359031,
+        "allocated_file_bytes": 495616,
+        "allocated_directory_bytes": 36864
+      },
+      "a44-installed-flow": {
+        "file_count": 57,
+        "apparent_file_bytes": 1360100,
+        "allocated_file_bytes": 1536000,
+        "allocated_directory_bytes": 73728
+      },
+      "baseline-audio": {
+        "file_count": 6,
+        "apparent_file_bytes": 100959,
+        "allocated_file_bytes": 114688,
+        "allocated_directory_bytes": 4096
+      },
+      "baseline-gallery": {
+        "file_count": 13,
+        "apparent_file_bytes": 7853897,
+        "allocated_file_bytes": 7884800,
+        "allocated_directory_bytes": 36864
+      },
+      "baseline-gallery-v3": {
+        "file_count": 58,
+        "apparent_file_bytes": 5613725,
+        "allocated_file_bytes": 5677056,
+        "allocated_directory_bytes": 16384
+      },
+      "baseline-native": {
+        "file_count": 7,
+        "apparent_file_bytes": 10837737,
+        "allocated_file_bytes": 10850304,
+        "allocated_directory_bytes": 4096
+      },
+      "build-native": {
+        "file_count": 667,
+        "apparent_file_bytes": 150030166,
+        "allocated_file_bytes": 151396352,
+        "allocated_directory_bytes": 1544192
+      },
+      "candidate-audio": {
+        "file_count": 6,
+        "apparent_file_bytes": 100959,
+        "allocated_file_bytes": 114688,
+        "allocated_directory_bytes": 4096
+      },
+      "first-ci-failures": {
+        "file_count": 6,
+        "apparent_file_bytes": 2996742,
+        "allocated_file_bytes": 3010560,
+        "allocated_directory_bytes": 4096
+      },
+      "publication-d281d4e": {
+        "file_count": 44,
+        "apparent_file_bytes": 10204728,
+        "allocated_file_bytes": 10313728,
+        "allocated_directory_bytes": 4096
+      },
+      "registration-moved": {
+        "file_count": 28,
+        "apparent_file_bytes": 294453,
+        "allocated_file_bytes": 389120,
+        "allocated_directory_bytes": 28672
+      },
+      "starter-generated-v1": {
+        "file_count": 24,
+        "apparent_file_bytes": 10954,
+        "allocated_file_bytes": 98304,
+        "allocated_directory_bytes": 4096
+      },
+      "tmp": {
+        "file_count": 8,
+        "apparent_file_bytes": 2813733,
+        "allocated_file_bytes": 2834432,
+        "allocated_directory_bytes": 12288
+      }
+    },
+    "session_loose_files": {
+      "count": 42,
+      "bytes": 228136
+    },
+    "session_visible_total_file_bytes": 538275453,
+    "active_build_roots": [
+      "build-native",
+      "a38-headless"
+    ],
+    "configuration": {
+      "build-native": {
+        "cache_sha256": "10aa2ad2bc556fc174ce2a0363f99cc5e65a2a8e1fab0cb189ee46c0a9bd6118",
+        "settings": {
+          "BUILD_TESTING": "ON",
+          "CMAKE_BUILD_TYPE": "Release",
+          "HAMMOND_BUILD_STANDALONE": "ON",
+          "HAMMOND_BUILD_VST3": "OFF",
+          "HAMMOND_ENABLE_MIDI": "OFF",
+          "HAMMOND_ENABLE_SANITIZERS": "OFF",
+          "HAMMOND_RTMIDI_ROOT": "",
+          "HAMMOND_SDL2_ROOT": "/workspace/scratch/ade21b726509/SDL2",
+          "HAMMOND_VST3_SDK_ROOT": "",
+          "SDL_ALSA": "OFF",
+          "SDL_JACK": "OFF",
+          "SDL_PULSEAUDIO": "OFF",
+          "SDL_WAYLAND": "OFF",
+          "SDL_X11": "OFF",
+          "CMAKE_HOME_DIRECTORY": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ"
+        }
+      },
+      "a38-headless": {
+        "cache_sha256": "b7b0ee59c6bee32be51e4ad14c9e100d49f8e2e53916ac32d696cf9603f403f9",
+        "settings": {
+          "BUILD_TESTING": "ON",
+          "CMAKE_BUILD_TYPE": "Release",
+          "HAMMOND_BUILD_STANDALONE": "OFF",
+          "HAMMOND_BUILD_VST3": "OFF",
+          "HAMMOND_ENABLE_MIDI": "OFF",
+          "HAMMOND_ENABLE_SANITIZERS": "OFF",
+          "HAMMOND_RTMIDI_ROOT": "",
+          "HAMMOND_SDL2_ROOT": "",
+          "HAMMOND_VST3_SDK_ROOT": "",
+          "CMAKE_HOME_DIRECTORY": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ"
+        }
+      }
+    },
+    "headless_justification": "Explicit A38 SDK-free configuration, standalone/MIDI/VST3 OFF and all SDK roots empty; the native configuration cannot prove this property. A38 receipt records 12 selected tests, not a second full suite.",
+    "bounded_out": {
+      "a27-starter-auditions": {
+        "file_count": 101,
+        "apparent_file_bytes": 6300666,
+        "allocated_file_bytes": 6393856,
+        "allocated_directory_bytes": 16384
+      },
+      "a27-starter-tests.txt": {
+        "file_count": 1,
+        "apparent_file_bytes": 2349,
+        "allocated_file_bytes": 4096,
+        "allocated_directory_bytes": 0
+      },
+      "a40-failure-boundaries-original": {
+        "file_count": 30,
+        "apparent_file_bytes": 116743,
+        "allocated_file_bytes": 212992,
+        "allocated_directory_bytes": 28672
+      },
+      "a40-targeted-test-tmp": {
+        "file_count": 0,
+        "apparent_file_bytes": 0,
+        "allocated_file_bytes": 0,
+        "allocated_directory_bytes": 4096
+      }
+    }
+  },
+  "source_and_generated_boundaries": {
+    "head": "503ed724eaeb3c31eae3c6f31b31cc9a2acd9eb3",
+    "head_tree": "201e38b05901fa30e3d053b9c245829818a5b52e",
+    "cached_origin_main": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+    "fresh_remote_query_performed": false,
+    "index_sha256_before": "a2fec4d28def1b11b3b1dd7717592ae678aedca384f681e935378d8c6f0de579",
+    "staged_path_count": 0,
+    "staged_paths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "active_workers_in_index": [],
+    "unstaged_paths": [],
+    "session_delta_path_count": 376,
+    "tracked_session_delta_suffix_counts": {
+      ".b3controls": 1,
+      ".b3performance": 12,
+      ".b3registration": 12,
+      ".b3uireplay": 6,
+      ".cmake": 2,
+      ".cpp": 12,
+      ".diff.gz": 1,
+      ".events": 3,
+      ".h": 2,
+      ".json": 82,
+      ".json.gz": 3,
+      ".log": 3,
+      ".log.gz": 75,
+      ".md": 89,
+      ".md.gz": 1,
+      ".patch.gz": 1,
+      ".png": 13,
+      ".py": 20,
+      ".raw.json.gz": 1,
+      ".rgba.gz": 1,
+      ".stderr.txt": 13,
+      ".stdout.txt": 13,
+      ".tar.gz": 5,
+      ".txt": 3,
+      ".yml": 2
+    },
+    "suspect_generated_or_temporary_tracked_paths": [],
+    "compiled_binary_magic_in_session_delta": [],
+    "core_and_existing_data": {
+      "core_headers": {
+        "files": 31,
+        "mismatches": [],
+        "inventory_sha256": "4c15882f009a142a2421d10b977b6ee2a6ed5b9c7ea3683cd5260c2e8fda324f"
+      },
+      "core_sources": {
+        "files": 30,
+        "mismatches": [],
+        "inventory_sha256": "ce9c3ae38ed0c2ec42cb13a81ba5cd33f7a94e9a135774f6a53a2b4fba141aca"
+      },
+      "plugins": {
+        "files": 20,
+        "mismatches": [],
+        "inventory_sha256": "ce952a8180774d9e2e4e16d7d480b08be7652d30d160af61e4d7644f9e949aec"
+      },
+      "preexisting_data": {
+        "files": 72,
+        "mismatches": [],
+        "inventory_sha256": "0ece59c1373ec6f48bd803f4ee47dc85355720c8f2b10136925244fe0e47d4e4"
+      }
+    },
+    "other_owner_sources": [
+      {
+        "path": "apps/standalone/main.cpp",
+        "same_as_base": true
+      },
+      {
+        "path": "apps/standalone/UiModel.cpp",
+        "same_as_base": true
+      },
+      {
+        "path": "apps/standalone/UiModel.h",
+        "same_as_base": true
+      }
+    ],
+    "scope": "Inspect session delta against its base, not classify unrelated inherited evidence. Native artifacts/generated headers stay in the two owned build trees; ignored auditions stay under out/. Canonical registrations, masked asset, gallery and compressed evidence are intentional tracked products.",
+    "index_sha256_after": "a2fec4d28def1b11b3b1dd7717592ae678aedca384f681e935378d8c6f0de579",
+    "index_unchanged_during_audit": true,
+    "publication_transition": "The initial 108-path staged follow-up was committed by root during this audit. At the final measurement local HEAD is 503ed724eaeb3c31eae3c6f31b31cc9a2acd9eb3, tree 201e38b05901fa30e3d053b9c245829818a5b52e, sole parent 20739f6280b95e567e84615d5c5aee443fc3b93d; the index is empty, active reviews remain untracked, and no fresh remote publication is inferred."
+  },
+  "ledger": {
+    "sha256": "44db4f4f612c1abcbb2aca445567d466b8decda1beedd2a7321905453860bc5f",
+    "workers": 48,
+    "statuses": {
+      "accepted": 45,
+      "running": 3
+    },
+    "distinct_agent_count": 48,
+    "accepted_note_checks": [
+      {
+        "worker": "A01",
+        "wave": 1,
+        "agent": "/root/w01_a01",
+        "sha256": "26330b1f944d689edb59f1bba5ffc66e7d21efdb419d1ddfa51880ffe42810af",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A02",
+        "wave": 1,
+        "agent": "/root/w01_a02",
+        "sha256": "1dfb5840e5b25c224d1f884f375c08331ea91d9c5a6aa12907b799703ec825fb",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A03",
+        "wave": 1,
+        "agent": "/root/w01_a03",
+        "sha256": "29234bd652f1393665ecf7de13eb8103b785887f88984215a28399bba5bbae17",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A04",
+        "wave": 1,
+        "agent": "/root/w01_a04",
+        "sha256": "17b28c980007a93e4bb68056dc6990917aa7f13ab4edd4bc2b9f6b647d2034f0",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A05",
+        "wave": 1,
+        "agent": "/root/w01_a05",
+        "sha256": "8d18690dda838147b59c828ad6ebd8913f2fd5fc024c406caebccf3f080e6a9e",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A06",
+        "wave": 1,
+        "agent": "/root/w01_a06",
+        "sha256": "2752657adad778f4df77bab42c7d0d88b1721ebfefd2f3eb3cac89648d3478d8",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A07",
+        "wave": 2,
+        "agent": "/root/w02_a07",
+        "sha256": "c0a7a8f8545325a809f79e3f8d8dadf27b37697e9f546f31debf55bc7f9c86b9",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A08",
+        "wave": 2,
+        "agent": "/root/w02_a08",
+        "sha256": "f75607c9bec37ab9b2295c0eb67003feb7accaf76254fd7379671650a87d3e05",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A09",
+        "wave": 2,
+        "agent": "/root/w02_a09",
+        "sha256": "b8e17578458682548f5028c0c83e14696496f83f1bda86d04521197ffedeb7da",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A10",
+        "wave": 2,
+        "agent": "/root/w02_a10",
+        "sha256": "4afdb1321665d23b79510909235f1a249d6ba9e73135795306d55a429a6d1292",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A11",
+        "wave": 2,
+        "agent": "/root/w02_a11",
+        "sha256": "0282c699221582e9d103ec8656d1fbf47454a68296d8ada7181625ec2dc72e35",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A12",
+        "wave": 2,
+        "agent": "/root/w02_a12",
+        "sha256": "ada9fef44b8b2bc2ddc75e367421d7d6e3dadeeda8f795d887a416c16879545e",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A13",
+        "wave": 3,
+        "agent": "/root/w03_a13",
+        "sha256": "3be94d5ce66af31ca6bf31814c6cd59efe4c0d8a88ebab815c3875a065b30686",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A14",
+        "wave": 3,
+        "agent": "/root/w03_a14",
+        "sha256": "701ca5e5d36f2264c7e23e3aacecab9e88d1a9da8fe9619ec566f4734f328bee",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A15",
+        "wave": 3,
+        "agent": "/root/w03_a15",
+        "sha256": "96de3b96c3fbe07d275f19406fe0c7c764cd8add7393f1e02749252de4ac0526",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A16",
+        "wave": 3,
+        "agent": "/root/w03_a16",
+        "sha256": "50ff346e50e62018584e1ab5aa482e45de9f911f21b9258fa56f799a9355cb1e",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A17",
+        "wave": 3,
+        "agent": "/root/w03_a17",
+        "sha256": "79056640e72f6866c35b2a04b26a9f793da61cf5db7834ad4abcae53dd5dad3f",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A18",
+        "wave": 3,
+        "agent": "/root/w03_a18",
+        "sha256": "688fd33b714214548498e890e025a112a71b065bcfb758dfb49ef8d93c583da7",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A19",
+        "wave": 4,
+        "agent": "/root/w04_a19",
+        "sha256": "7efc522bc0cac9243df21a824e2f1ff9cf2732dc5d9cf159fe88823e5ad7be41",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A20",
+        "wave": 4,
+        "agent": "/root/w04_a20",
+        "sha256": "77c7ac9584050c308419a0af3eb95b42e706a8f68cdac9a66570402a9de5cc8d",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A21",
+        "wave": 4,
+        "agent": "/root/w04_a21",
+        "sha256": "5a7bc9ada2d6093c74de378be34bbf3023ec7ac8405a6e805f473389f45d8e0d",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A22",
+        "wave": 4,
+        "agent": "/root/w04_a22",
+        "sha256": "4b59b0d23fdd0e894a3b92aa288ef6b7698ba78655c012ffb851a1811a7354fa",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A23",
+        "wave": 4,
+        "agent": "/root/w04_a23",
+        "sha256": "d6e91a2c09e3aeb2a404cdace9b59c3e5a1ab61dc9d743b675adc2f5e36b753d",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A24",
+        "wave": 4,
+        "agent": "/root/w04_a24",
+        "sha256": "813bab55c2f830ebcbc1523bdc88fa2eaa86c4d2dcfb48beb9be837ebbd9d1c9",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A25",
+        "wave": 5,
+        "agent": "/root/w05_a25",
+        "sha256": "4da863c406ee9cef2ac7f211dfcbe6a6a7dd35eb272cff77d663d541d62862c3",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A26",
+        "wave": 5,
+        "agent": "/root/w05_a26",
+        "sha256": "a64fbc84bdd7ee81a1de6e583605817acf2a6c212f11d9eb38ab1b077273ad6d",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A27",
+        "wave": 5,
+        "agent": "/root/w05_a27",
+        "sha256": "2c951bdb976cb64ba8d5d2b9b257c3bdead2381baf7fd0065ec4535ca6ef6c3a",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A28",
+        "wave": 5,
+        "agent": "/root/w05_a28",
+        "sha256": "18d8abc1b466cf6b9a4a2066475570c702d15e7a4f678baf2159663986597cd7",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A29",
+        "wave": 5,
+        "agent": "/root/w05_a29",
+        "sha256": "79e15bc65812874c80252ad64e232c60b496b5779a9f886c9384088f33d094a3",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A30",
+        "wave": 5,
+        "agent": "/root/w05_a30",
+        "sha256": "9085ef9911e3085b5effd74e5469b016d76cad6c84576c9df485fe36367687dd",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A31",
+        "wave": 6,
+        "agent": "/root/w06_a31",
+        "sha256": "b458be9efc8855a7bcbbaee6422b6e7854e8d80de5059f16cbd6dc9fe27930af",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A32",
+        "wave": 6,
+        "agent": "/root/w06_a32",
+        "sha256": "1495d2d9598626a0735a8926e2d294e33cb605d7a1bb5a631c54e71dab498114",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A33",
+        "wave": 6,
+        "agent": "/root/w06_a33",
+        "sha256": "c0e42e87a2c0005b042354b88d5a0866da6dda092ac36b553277d3b00da7d3e9",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A34",
+        "wave": 6,
+        "agent": "/root/w06_a34",
+        "sha256": "b2ed4020c359f2316de1fcecbe045f127ca7237e2bc728b5c7a6f84ab91818b1",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A35",
+        "wave": 6,
+        "agent": "/root/w06_a35",
+        "sha256": "6623c313441b61e9a810c428047c7779d7b40a83aee59968aed6d131574efe2e",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A36",
+        "wave": 6,
+        "agent": "/root/w06_a36",
+        "sha256": "fefc68054b1b5d796eb90d1f01cab8ba0ab46fc6374deb1a47b43f7af0e6851e",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A37",
+        "wave": 7,
+        "agent": "/root/w07_a37",
+        "sha256": "72f849034e66251e1780db7469c3598d7b8ed6491bc3567de0c0e98c1b37bddc",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A38",
+        "wave": 7,
+        "agent": "/root/w07_a38",
+        "sha256": "06335ae23c217fe360f23e219d03fa8ee8f8e6314d36375b32573ee8a8c3493b",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A39",
+        "wave": 7,
+        "agent": "/root/w07_a39",
+        "sha256": "1e8515aca159c699b6ab16e7428ff5a4ea0492c8a37fa44e88d506cfd7f51b38",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A40",
+        "wave": 7,
+        "agent": "/root/w07_a40",
+        "sha256": "cf11a77d5c18d4aa0583751387b3f8ccc2e7e9713499f636de88fb5fa450fee8",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A41",
+        "wave": 7,
+        "agent": "/root/w07_a41",
+        "sha256": "82f61cadf69defa91446e9ca32950bf7d4d6b54b7d60c6fdc684718549e990f3",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A42",
+        "wave": 7,
+        "agent": "/root/w07_a42",
+        "sha256": "2449e304d963b9a9d6edb5db5e55df6e157fe94736d3fc20ebad31c844676ee0",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A43",
+        "wave": 8,
+        "agent": "/root/w08_a43",
+        "sha256": "8c8f956eb77fe07153354a445c6dee65b7486d30713eb352cea2701b5b7831e8",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A44",
+        "wave": 8,
+        "agent": "/root/w08_a44",
+        "sha256": "587efca8aacef7bd807cff2f4ded72b42e21245a0127f70b9ba6ad5b00075d45",
+        "matches_ledger": true
+      },
+      {
+        "worker": "A45",
+        "wave": 8,
+        "agent": "/root/w08_a45",
+        "sha256": "e5b2321e01a17f6692c266c58f25bbeba3fd26e5bdf7c285051046dc518779a5",
+        "matches_ledger": true
+      }
+    ],
+    "actual_a47_assignment": {
+      "id": "A47",
+      "wave": 8,
+      "agent": "/root/w08_a47",
+      "task": "Independent storage, generated-file, ownership and durable recovery audit",
+      "status": "running",
+      "owned_paths": [
+        "docs/reviews/PRESET_RESOURCE_RECOVERY_ADMISSION.md",
+        "reports/a47-resource-recovery.json",
+        "notes/A47.md"
+      ]
+    },
+    "closure_claim": false
+  },
+  "preserved_evidence": {
+    "baseline_items": [
+      {
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_render",
+        "bytes": 172528,
+        "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf",
+        "role": "hammond_render",
+        "matches_receipt": true
+      },
+      {
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_standalone",
+        "bytes": 3733912,
+        "sha256": "e62d62109c76890e7b471b486cfc2f69929d0dcec4570e070b2da06da22e1012",
+        "role": "hammond_standalone",
+        "matches_receipt": true
+      },
+      {
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_standalone_paint_benchmark",
+        "bytes": 3395520,
+        "sha256": "f80e261f8001df5099d8c824194c621dea42672db33434e4973e19e230cda492",
+        "role": "hammond_standalone_paint_benchmark",
+        "matches_receipt": true
+      },
+      {
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/test_standalone_reference_apron_raster",
+        "bytes": 3448400,
+        "sha256": "8391cb06222f7f9eb61381f86631dce364752022dbc4faa14c22fab4ae7f35e6",
+        "role": "genuine_apron_raster_binary",
+        "matches_receipt": true
+      },
+      {
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/reference-apron-fixture.before.cpp",
+        "bytes": 51184,
+        "sha256": "59cecf6ba99bf9361f506954758a500845f2298bf934ceef27ba69d995743f73",
+        "role": "frozen_fixture_source",
+        "matches_receipt": true
+      },
+      {
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/reference-apron-fixtures.before.json",
+        "bytes": 23704,
+        "sha256": "6a75548862cd7d313e07b7a21827f5acfd3d97533e02e7fccecf73611d7d832e",
+        "role": "frozen_fixture_manifest",
+        "matches_receipt": true
+      },
+      {
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/reference-apron-list.json",
+        "bytes": 12489,
+        "sha256": "be9bacfd9bfa3b53a0f60eaaf37fd5ccb811babcf556ad94b9c79fe536c51793",
+        "role": "frozen_case_list",
+        "matches_receipt": true
+      }
+    ],
+    "original_log_checks": [
+      {
+        "path": "baseline-build.log.gz",
+        "compressed_match": true,
+        "raw_match": true
+      },
+      {
+        "path": "baseline-configure.log.gz",
+        "compressed_match": true,
+        "raw_match": true
+      },
+      {
+        "path": "baseline-ctest.log.gz",
+        "compressed_match": true,
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-configure.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-build.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-ctest.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-ctest-detail.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-integrity-repair.log.gz",
+        "raw_match": true
+      }
+    ],
+    "original_failure_records": [
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/a38-headless-graph-observer-failure.json",
+        "bytes": 853,
+        "sha256": "62172a1296a3408aab98d5c3d6752e742658dc783f27772cd3d10f3f0b59a132"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/a38-headless-install-observer-failure.json",
+        "bytes": 1025,
+        "sha256": "2a1de557775b7a191991077b80b0b1a2d80975e48b3bb7b390433a4bc1249267"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/a40-failure-boundaries-original.json",
+        "bytes": 18036,
+        "sha256": "5b750507885c2fdfbabd006ab6a6f79550e0c9f2cb441341f8e680da64e6ce37"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/a40-failure-boundaries-original.tar.gz",
+        "bytes": 13467,
+        "sha256": "69dc78b34b9199cc3e196dff1e75afd5b5f3372fb6af3541d8a1838b3e1b0e82"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/baseline-gallery-v3-missing-source.log",
+        "bytes": 130,
+        "sha256": "e569c1dec80981cfe67ad4f836583a8f43fbed8caca6dc6b7eb9b3ac6e76de47"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777556-original-decoded.log.gz",
+        "bytes": 41439,
+        "sha256": "d91a235ff343cf5a720cf075ec65db11b61a3c8a9c26040eaac80a534b2f6c7e"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777556.log.gz",
+        "bytes": 41439,
+        "sha256": "d91a235ff343cf5a720cf075ec65db11b61a3c8a9c26040eaac80a534b2f6c7e"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777882-original-decoded.log.gz",
+        "bytes": 40939,
+        "sha256": "9a43a72fc40cf6550e1b34bb6243c2a4a14b315a5d256e6768e3b84a1312bcb0"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777882.log.gz",
+        "bytes": 40939,
+        "sha256": "9a43a72fc40cf6550e1b34bb6243c2a4a14b315a5d256e6768e3b84a1312bcb0"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777970-original-decoded.log.gz",
+        "bytes": 55942,
+        "sha256": "439cdd8f6c239ecb234c4cca9e847fc371bea865e27e590e8e7e96cacb2720ef"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777970.log.gz",
+        "bytes": 55905,
+        "sha256": "18c2142cbb3e8c01b0b2be100b279945f132f1914a590686fe31c2360bcb29bf"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/w03-apron-baseline-tests-first-failure.log.gz",
+        "bytes": 109,
+        "sha256": "a507ef85012b8bcd89043deed37039b312501319909e9ed532bced2a0a245a6b"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/w03-generator-build-first-failure.log.gz",
+        "bytes": 2600,
+        "sha256": "70026294ed3d774e93161b60455d59b54fe12bc13eebec933185353e28ffe6b0"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/w03-generator-tests-first-failure.log.gz",
+        "bytes": 1156,
+        "sha256": "102eaba43d8339cbe56953f291c491958782557e3262311e3aef057853df40f8"
+      }
+    ],
+    "integrated_result": {
+      "tests": 235,
+      "passed": 234,
+      "failed": [
+        "python_test_repository_integrity"
+      ],
+      "elapsed_seconds": 225.77,
+      "reason": "Copied audition Markdown links pointed to absent sibling WAVs; original complete audio retained elsewhere."
+    },
+    "focused_documentation_repair": {
+      "ctest": "python_test_repository_integrity",
+      "result": "passed",
+      "elapsed_seconds": 3.37,
+      "raw_log_sha256": "949e31b4410643d2329ff998d3816e66e6a2ce343160e43b8c8e99442588b78f",
+      "archive": "w07-integrity-repair.log.gz",
+      "scope": "Documentation/artifact delivery changed only; no native source changed, original234passes remain source-bound. The full235run was not relabeled as all-pass."
+    },
+    "current_windows_guard_repair": {
+      "receipt": "w08-windows-guard-source.json",
+      "sha256": "b9ae89e156523f86373bff39fb7916e9021bbde902e63555a8fdffd6b5402ee3",
+      "source_hashes_match": true,
+      "local_qualification_recorded": {
+        "build": "succeeded",
+        "ctest_total": 6,
+        "passed": 6,
+        "elapsed_seconds": 11.33,
+        "scope": "Linux affected gates; Windows-specific spelling regression must run on hosted Windows."
+      },
+      "logs": [
+        {
+          "path": "w08-path-build.log.gz",
+          "raw_hash_and_size_match": true
+        },
+        {
+          "path": "w08-path-tests.log.gz",
+          "raw_hash_and_size_match": true
+        }
+      ],
+      "observed_binaries_match_recorded_after": true,
+      "limit": "Root ran these six Linux tests; A47 inspected source, preserved logs and hashes only. Actual Windows qualification remains source-bound to a later hosted run."
+    }
+  },
+  "audition_archive": {
+    "path": "docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions-originals.tar.gz",
+    "bytes": 1698038,
+    "sha256": "e61f5ff3b95966504f4261914339bc0eee759db1837993bbf9d29742b81f9858",
+    "matches_recorded_archive": true,
+    "member_count": 101,
+    "member_names_match_receipt": true,
+    "member_byte_hash_and_original_matches": 101,
+    "unsafe_paths_or_links": [],
+    "wav_count": 32,
+    "equal_complete_wav_pairs": 16,
+    "original_report_gzip_matches_archive": true,
+    "original_report_links_resolve_in_archive": true,
+    "original_report_link_count": 32,
+    "original_output_usage": {
+      "file_count": 101,
+      "apparent_file_bytes": 6300666,
+      "allocated_file_bytes": 6393856,
+      "allocated_directory_bytes": 16384
+    },
+    "inputs": "Original manifest and archive retain original argv, file hashes, scores, stdout/stderr and source tool identity. A40 later tool repair is separately source-bound."
+  },
+  "gallery": {
+    "directory": "docs/design/native-gallery-preset-v1",
+    "usage": {
+      "file_count": 63,
+      "apparent_file_bytes": 6635660,
+      "allocated_file_bytes": 6709248,
+      "allocated_directory_bytes": 16384
+    },
+    "view_count": 13,
+    "png_count": 13,
+    "manifest_files": 61,
+    "manifest_files_matching": 61,
+    "source_files": 148,
+    "published_source_mismatches": [],
+    "current_source_differences": [
+      "apps/standalone/RegistrationLibrary.cpp",
+      "assets/standalone/reference-apron-v1/README.md"
+    ],
+    "current_executable_matches_capture": true,
+    "executable": {
+      "after": {
+        "bytes": 4094520,
+        "sha256": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8"
+      },
+      "before": {
+        "bytes": 4094520,
+        "sha256": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8"
+      },
+      "path": "/workspace/scratch/3edffb787db3/build-native/apps/standalone/hammond_standalone"
+    },
+    "native_bmp_removal_count": 13,
+    "recovery_command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "tools/capture_standalone_interface.py",
+      "--exe",
+      "../build-native/apps/standalone/hammond_standalone",
+      "--source-root",
+      ".",
+      "--build-root",
+      "../build-native",
+      "--source-qualification",
+      "docs/development/2026-11-16-preset-library-continuation/reports/apron-gallery-qualification.json",
+      "--expected-exe-sha256",
+      "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8",
+      "--output",
+      "docs/design/native-gallery-preset-v1",
+      "--dummy-sdl"
+    ],
+    "scope": "Lossless PNGs, state/replays, diagnostics, source/build identities and manifest preserved; old BMPs were deliberately removed after verified lossless conversion, not claimed present. Reproduction is a new capture, not the original."
+  },
+  "publication": {
+    "receipt_sha256": "caae45770dd03c0837d1603330cb49d08bff7121a72e7f566cc2ba4d11c1ac05",
+    "local_reviewed_commit": "d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93",
+    "published_commit": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+    "recorded_tree": "1e59776459a05a9d934d0b519a45cd4c61b13ae9",
+    "local_tree_matches": true,
+    "published_tree_matches": true,
+    "published_parent_matches": true,
+    "retained_local_branch": "d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93",
+    "provider_observation": "No new provider call by A47. first-publication.json and A42 receipts preserve independent provider checks; cached origin/main is not a fresh remote query.",
+    "publication_directory_usage": {
+      "file_count": 44,
+      "apparent_file_bytes": 10204728,
+      "allocated_file_bytes": 10313728,
+      "allocated_directory_bytes": 4096
+    },
+    "tree_elements": 251,
+    "tree_elements_matching_committed_objects": 251,
+    "encoding_checks": [
+      {
+        "name": "b8325f25cf93a3958ec32c45f6cb90ce6825c059.b64",
+        "bytes": 81552,
+        "sha256": "560983be057068d218ada0f8af87b20464e51e220dc6792529b9d14f9d55bb9a",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "1df833b887c1aa9f9e4804308b8d166046d50083.b64",
+        "bytes": 473936,
+        "sha256": "6df0dd73a09980875b2721b2f4b04cd2b8f6b415f72b303ffb4b2bf9150314b7",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "af934126d0e1e89090f61cedbbc4fa5545a689b3.b64",
+        "bytes": 779684,
+        "sha256": "415cbbaf70fdccaf0af152796b41b25b167b81dfb4399c6789ff1aa2584a3ef3",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "da685c85808a02ed2ed388caa2aceea1816490a9.b64",
+        "bytes": 1023776,
+        "sha256": "34c9e9e7622ad4ac139acc04b1c49f46aa632b9b734d24622de7ef76dedc12a8",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "34cc12d86c90cd3d1150eb785885b3848cd18b72.b64",
+        "bytes": 1023660,
+        "sha256": "cc044d70d7e1ad123f08474ca3dc5468e1f21bf4013e44810cf16e03fb57f2c5",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "c22d0b5dc02e58cdefc50f01eee725b4d475566a.b64",
+        "bytes": 1023072,
+        "sha256": "572775b0aca62f4b4d1aa7ebb18fb0f59dfecd4405dde5156f9ff68433cd9e62",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "4e2a863a1a8087cb52d74d375b0bf208c47d61e8.b64",
+        "bytes": 1219468,
+        "sha256": "c3a640571ae479b897fd2217d7a2d631253cce263768dfd2fb0c90f425107479",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "1f6bf501ae7f3ef609ee16777abe71db43ee5861.b64",
+        "bytes": 1032744,
+        "sha256": "3a869e32d978e8acd0f744167b16ff3220ef8d7dab72740dc01d155cad70c7e2",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "9ac00a1c18c950ff1c318a3ece7e681581639ddd.b64",
+        "bytes": 233656,
+        "sha256": "9c6c25c606d47deeda9897f12a1a8599a355709e1cf84eb547738de05070b258",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "e873c417f3708559c5a030467a6c12a35ed03554.b64",
+        "bytes": 549656,
+        "sha256": "b88e981061fcb1929a7aa9726a612c490415b8ca938a705d934ee8d0f4f3a13b",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "32924fa57e6e593fa4b10d8b64e3b227d6ad213e.b64",
+        "bytes": 1160,
+        "sha256": "3439d385b8dd6a13752814bfd5e655e0cf4849c276704d09d4750b01de1c9e7f",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "4cf7bcf8c91d9a33df62a83f4c625c64130fa2fa.b64",
+        "bytes": 2760,
+        "sha256": "55ec45d0798a7cd065debee029c8cf20cbd9c6d262715fb3c303b7325f125b24",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "765ec23678941d0f9ddaed3a19068ec333934fe2.b64",
+        "bytes": 772,
+        "sha256": "661ed4c10b2cd0fdef60f13cae6a3519d9f98273e13e7137ccdaa5e15556efc6",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "13eb0533a2ece062a1e13c6d12d7bdf1a11ea606.b64",
+        "bytes": 864,
+        "sha256": "b158fe78aa79caa2b90cc79ab503bd9391bb3e43f5fe290707e66b7a686e40ec",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "439a3970585a2e413cfc2b3ec70427f99877b76a.b64",
+        "bytes": 768,
+        "sha256": "443f00ac69f630ba051bfa1ae60af18d2214c6d3e3cbe52dc52e61958c098cff",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "abeb1f18354547e3b3cd6414793602e962d02be2.b64",
+        "bytes": 8812,
+        "sha256": "ba9980285e3ad4872c13715d6c683a9b557bc117895daf6b515e6f5ea19e1064",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "dcd6b2faf64c77274fa6f364b6e84306914bc3b1.b64",
+        "bytes": 5568,
+        "sha256": "b3bbdad58e265630699ecf368b7845e75db524cd3f0e8e12106571435978d7b0",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "4f010e4ab00ba3fb779eb93fd0fcd01168f3e3f9.b64",
+        "bytes": 6648,
+        "sha256": "ff9ce957724a9df530c716f8108e1230e65cedf9f0f03aa81c7492b049233c95",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "18f827342e058e69f84b1b8864736069a939de09.b64",
+        "bytes": 792,
+        "sha256": "9869c8ad1d61164412278828a609958d747aea92b2df92ca702ef8b2da7733f3",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "1c21afd0943746dde409e8917e8a4de63013c617.b64",
+        "bytes": 296,
+        "sha256": "f99708e2551fef41d6692b91b22d1787c9d135f9462971a54327e83d75a16d3b",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "50b1e59e89296935f844d63eb7e8874d2d096c44.b64",
+        "bytes": 148,
+        "sha256": "3b718c39594f9baff64e552928eaa76108be8a6ed122838a50c99813e5bb952e",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "bd6acf12e95ae0292bbe3b14060fbe8b9266ec83.b64",
+        "bytes": 332,
+        "sha256": "8c38e0705ca75793d4a61ead528da1376fd7003e9778d6896db6715042deecbe",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "f9b6dd09ca1b572f84b559f87fef30275db496eb.b64",
+        "bytes": 344,
+        "sha256": "5aa1a1fc2803507686e162c31a17fdee8b277353acac05549e6df637e673a15a",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "1062e0e8d8c59c5a1cb5d7b3b8493ee09bb47349.b64",
+        "bytes": 3956,
+        "sha256": "26d713e1c3310a95611b25c0b7f3946fbe32f6cdbc0bd2e4c59b447816c7fa2a",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "4f23fb45dfab5ffe8638e360bd8321e36e886f2c.b64",
+        "bytes": 360,
+        "sha256": "a5fd5ae7cdd031ef5022715f567805270859c4e997ba7e147c0dadf49fdc3ea3",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "d4e4cf8ae0f00263b1d559e33d8840476a1624da.b64",
+        "bytes": 416,
+        "sha256": "bb68544c6a60d777c61bcb56bbd1f3697c8980e52c2687ec808d23308274cf3f",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "2e9e330a31a1934280acc72333c3ad83935a8521.b64",
+        "bytes": 796,
+        "sha256": "fa42d9a3884425a019224483d243c60ed17b21410988402d4ac97b54d1372986",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "631d84f06675fe7ce8f90b184378253a79ad0ef1.b64",
+        "bytes": 796,
+        "sha256": "742d0a4397182479d9b166f7c6be39186422be381cacfe826517a13f1ddbe83b",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "ddbe040d01b807d863183e10e8bd31c425ad4a38.b64",
+        "bytes": 3940,
+        "sha256": "a35bac77cac429ed1e0f2dfed38dda802b06500380bb5ce8456171b76e34de28",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "69018ebb27ac78155a0f5d9ca4a59f38b42ab830.b64",
+        "bytes": 3468,
+        "sha256": "2b16d9090aaa2efa5e43570e779c0d4b3f7b4490fa12267c80f9fb6cc860db46",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "20a4420414e8f5054ce92e24c06ba75218c25d88.b64",
+        "bytes": 1544,
+        "sha256": "839036b5fac304daabdc4acbca11a02b8ff5469599956e89e263b550d85b17e5",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "6154f29ed706d63ef2ac590420b060f0ab34458a.b64",
+        "bytes": 1004,
+        "sha256": "24f2c4689d115cafc4265a68725b3cb0f5d51da9d3cc0dcf64b852f97e4510b5",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "fda70b7851cff777e3853949fcbd0c9b28048411.b64",
+        "bytes": 1356,
+        "sha256": "c898be02e071bd9fca306552500478ee25dd9fc4908ca07e679f941a11b97cde",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "83b0b87c03e7daaac5aec5e46cc968dfb1ac6e17.b64",
+        "bytes": 10796,
+        "sha256": "662fbd4838d47b5a9b60bf8072770536f4cf9a74469b3e07fb538b910597b147",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "4b9d810716068489bf1960d680a24c4e046601fe.b64",
+        "bytes": 7192,
+        "sha256": "1ec415cada021783a17b66d26cf5d11f006d0416bce3688ccf840c7eb96bdc1c",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "4e087d4cf4477cd7e152da7d62c540d3a4554547.b64",
+        "bytes": 3092,
+        "sha256": "5938a021960d1424e6d823634c2140fab8da1787348c2912beea8e889de4fb7f",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "5b90ffd194fa770a9257183f6191896eae49007b.b64",
+        "bytes": 588,
+        "sha256": "2ef787a8df576c8eb124ee2b01d7e9c70225f529f9477880524af79d72e7f00a",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "22ac58619daf78c0cc3e03d40687c8a3d454d033.b64",
+        "bytes": 360,
+        "sha256": "7fa873af4d414762eac5e1fb67a0ef6ebfa91a9fa43c5e5fd5aba2a7b5fe247e",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "58a5399c09fb845954548064a6710375ddb9f5ab.b64",
+        "bytes": 464,
+        "sha256": "4f0f1f95356b3e9ff75fd725a325bf77e7990e445fbd02ffc65773892ba9468f",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "d1e98febfc82f63b8cf8615944d821b2811066bd.b64",
+        "bytes": 2768,
+        "sha256": "270d938015adaae0d996d6b1d43464275aa33b538d948c1e2b30801c216c3d05",
+        "reproducible_exactly": true
+      },
+      {
+        "name": "c28c491efafb1c3dd05ed5fce8d0e779f66706ea.b64",
+        "bytes": 524,
+        "sha256": "49a915bea11ecf86e965f114e6b92b66f34879f87b770e393eb478cbb929c99e",
+        "reproducible_exactly": true
+      }
+    ],
+    "optional_cleanup_proposal": {
+      "after": "Root independently verifies final nonforced publication commit/tree/sole parent and preserves final source/hosted receipts.",
+      "only_candidates": "../publication-d281d4e/*.b64; each of the 41 explicitly enumerated identities above, with a fresh equality check before removal.",
+      "candidate_count": 41,
+      "candidate_bytes": 7513888,
+      "recreate": "base64.b64encode(git cat-file blob OBJECT_ID bytes); do not use a changed worktree file.",
+      "retain": "manifest.json, verified-objects.json, tree-elements.json, all publication failure/receipt records, genuine baseline binaries, original auditions and logs, source, galleries and accepted notes.",
+      "action_performed": "None; no files deleted."
+    }
+  },
+  "context_recovery": {
+    "entrypoints": [
+      {
+        "path": "AGENTS.md",
+        "bytes": 14958,
+        "sha256": "1d2420d1bebdcddbe4bf0cc3ba5a8f08176d5c0a8b43e0aa6f454a83df564142"
+      },
+      {
+        "path": "docs/PLAN.md",
+        "bytes": 36992,
+        "sha256": "25364ea291a07a6a77b84c87b0cdb466af2b43035a8519108ca202287694a845"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/README.md",
+        "bytes": 3468,
+        "sha256": "d69b6cf096505e01dbfaf015bae722382632417273ca87595f40581c1dbc90d4"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md",
+        "bytes": 7583,
+        "sha256": "caa7a9046af1d348332f26a904345820f07feb4f1eb000371fe4b47b97f1cda4"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/assignments.json",
+        "bytes": 28902,
+        "sha256": "44db4f4f612c1abcbb2aca445567d466b8decda1beedd2a7321905453860bc5f"
+      },
+      {
+        "path": "docs/development/2026-11-16-preset-library-continuation/reports/first-publication.json",
+        "bytes": 4025,
+        "sha256": "caae45770dd03c0837d1603330cb49d08bff7121a72e7f566cc2ba4d11c1ac05"
+      }
+    ],
+    "next_actions": [
+      "Recover AGENTS.md, this session README, CHECKPOINT, assignments and first-publication receipts; then query live HEAD, index and provider main before resuming.",
+      "Root must observe exact published-source Windows execution for its guard repair; six affected Linux CTests and identical Linux binaries are recorded separately. Preserve original hosted failures and do not relabel the 234/235 full run or documentation-only repair.",
+      "Wave 9 must update global README/STATUS/NEXT_STEPS/PLAN/PRODUCT_HANDOFF current-session navigation; these currently lead with older runtime/conversion authorities, while AGENTS and the session entry give this checkout.",
+      "Keep notes immutable after acceptance. Rehash staged paths and accepted records, complete actual remaining workers, then run this session strict checker only when all 60 are accepted.",
+      "Publish a reviewed source tree via verified immutable blobs and a SHA-only tree with a freshly observed expected parent and force=false; preserve connector/local commit distinction and observe hosted jobs at the exact published commit.",
+      "Before any reset/long operation, checkpoint source, staged/unfinished paths, ownership, latest tests/failures, publication expectation, storage and next worker set. Keep outputs concise and only material evidence."
+    ],
+    "closure": "48 recorded workers (45 accepted) at this audit snapshot; later roots may advance it. No final 60, clean checkout, fresh hosted success, physical fidelity or whole-interface parity claim.",
+    "raw_baseline_portability_limit": "All seven genuine baseline binary/fixture/list files remain locally present and hash-matched in ../baseline-native. They are not Git-tracked clone contents; preserve this directory through handoff. Rebuilding source does not recreate an original execution artifact. Any later workspace retirement needs an explicit retained-copy plan before deleting this directory.",
+    "pdf_identity": {
+      "path": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+      "bytes": 21248265,
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+      "matches_unchanged_reference": true
+    }
+  },
+  "result": "Admit bounded session resource use and retained original evidence. Keep publication/Windows repair/global-navigation/actual worker closure as explicit pending work."
+}

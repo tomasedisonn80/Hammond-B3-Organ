@@ -1,5 +1,156 @@
 # Development status
 
+## Portable registrations and reference apron — 16 November 2026
+
+This is the current continuation and recovery entry. Read its
+[session scope](development/2026-11-16-preset-library-continuation/README.md),
+[checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-16-preset-library-continuation/assignments.json).
+**All 60 distinct new workers are accepted in ten complete waves of six.**
+The [strict record result](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json)
+passes with zero errors. This closes the requested staffing record, not the
+remaining product gates. Its six fresh readers covered all 500 atlas pages under the retained
+[reading receipt](development/2026-11-16-preset-library-continuation/reports/atlas-reading-coverage.json).
+The earlier dated sections below preserve their original evidence and ownership;
+their “current” paths, counts and proposed next work describe those snapshots.
+
+### Delivered behavior and scope
+
+The [headless registration tool](REGISTRATION_GUIDE.md) lists, inspects, imports
+and materializes existing control snapshots through the published storage/state
+APIs. Its [shared safe reader](REGISTRATION_CLI_CONTRACT.md) accepts bounded
+regular files of at most 16,384 bytes, rejects leaf symlinks/reparse points and
+nonregular inputs, and preserves the destination on failure. Import/materialize
+are explicit, create-only operations; read-only inspection creates nothing.
+The [first-use admission](reviews/REGISTRATION_FIRST_USE_ADMISSION.md) retains
+the conservative Unicode-sibling refusal: put both library and current snapshot
+under an ASCII `inputs/` branch and new results under `outputs/`.
+
+| Operation | Expression and complete saved state |
+| --- | --- |
+| Registration materialization | Requires `--current`; keeps its expression and takes every other saved field from the entry. |
+| Performance materialization | Forbids `--current`; restores the complete saved snapshot, including expression. |
+| `hammond_render --controls FILE` or generic native Load | Restores every saved field regardless of filename suffix. Renderer score events then apply after restoration. |
+
+The [renderer contract](REGISTRATION_RENDER_CONTRACT.md) preserves the original
+no-controls invocation. Saved files contain no note, phase, contact or percussion
+history. Existing LibraryModel/browser integration retains its earlier owner.
+The nominal dry Engine, 91 shared free-running sources, 47 parameter identities,
+`B3CONTROLS4`, readers 1–3 and plugin identities remain preserved under the
+[compatibility admission](reviews/REGISTRATION_COMPATIBILITY_ADMISSION.md).
+
+The [proposed starter pack](../data/registrations/starter-v1/README.md) contains
+**12 original software recipes / 24 canonical paired files**, with separate
+provenance. These are not factory or measured registrations. The retained
+[audio admission](reviews/STARTER_AUDIO_PROVENANCE_ADMISSION.md) checks all
+**32 original one-second, 48 kHz clips**, 16 identical whole-WAV suffix pairs
+and zero reported clipping. All 101 original audition files survive in the
+[archive](development/2026-11-16-preset-library-continuation/reports/starter-auditions-originals.tar.gz);
+the [reader](development/2026-11-16-preset-library-continuation/reports/starter-auditions.md)
+explains extraction. These synthetic fixtures establish their bounded software
+behavior; physical sound and listening acceptance remain separate.
+
+[Explicit installers](reviews/REGISTRATION_INSTALL_ADMISSION.md) provide
+**2 RegistrationTools files + 26 StarterRegistrations files**. Both components
+are opt-in, copy-only and create-only: existing targets refuse replacement or
+merging. Sequential copying can leave partial output after failure. The
+[installed journey](reviews/INSTALLED_REGISTRATION_RENDER_ADMISSION.md) additionally
+uses OfflineTools after relocation and private-input removal; it does not import
+entries automatically into a user library. The [native Load journey](reviews/STARTER_NATIVE_LOAD_ADMISSION.md)
+uses four actual Linux dummy-SDL processes, acknowledged edits and Ctrl+O
+restoration, including materialized expressions 0.625/0.5. It qualifies generic
+Load, without transferring native browser acceptance.
+
+### Source, publication and qualification
+
+The [first independently verified publication](development/2026-11-16-preset-library-continuation/reports/first-publication.json)
+is **`20739f6280b95e567e84615d5c5aee443fc3b93d`**, tree
+`1e59776459a05a9d934d0b519a45cd4c61b13ae9`, parent `54df95f`.
+The reviewed follow-up is local commit
+**`503ed724eaeb3c31eae3c6f31b31cc9a2acd9eb3`**, exact tree
+`201e38b05901fa30e3d053b9c245829818a5b52e`, parent `20739f6`.
+The [independently verified follow-up publication](development/2026-11-16-preset-library-continuation/reports/followup-publication.json)
+is **`cc6be852d616ec5887485e3fccc39ddb1db22006`**, with exactly that tree and sole
+parent. Provider metadata differs. Root fetched it and aligned local HEAD only
+after verifying tree equality and preserving the original commit on a branch;
+index bytes and working files were preserved. The closing documentation/reviews
+are a separate change set with production, build, workflow, test, asset and data
+inputs unchanged from that implementation. Recover the actual containing commit
+and fresh remote state through Git; do not assume the code revision is the latest
+documentary revision.
+
+| Retained local qualification | Observed result |
+| --- | --- |
+| [Initial native baseline](development/2026-11-16-preset-library-continuation/CHECKPOINT.md#qualified-evidence) | 220/220 CTests, 216.89 seconds, before this continuation. |
+| [Earlier coherent implementation](development/2026-11-16-preset-library-continuation/reports/w04-coherent-qualification.json) | 230/230 CTests, 229.18 seconds, at its recorded inputs. |
+| [Full integrated run and repair](development/2026-11-16-preset-library-continuation/reports/w07-integrated-qualification.json) | **234/235 passed**, 225.77 seconds. Repository integrity failed on 32 copied relative audition links. The later documentation repair passed its focused integrity gate in 3.37 seconds. The original full-run failure remains preserved. |
+| [Windows guard rebuild](development/2026-11-16-preset-library-continuation/reports/w08-windows-guard-source.json) | Six affected Linux gates passed in 11.33 seconds; Linux CLI, renderer and app binaries remain byte-identical. |
+
+The [final first-head hosted observation](development/2026-11-16-preset-library-continuation/reports/first-ci-final-observation.json)
+records **6 successful jobs, 4 failures and 3 cancellations**. The
+[original failures](development/2026-11-16-preset-library-continuation/reports/first-ci-failure-logs.json)
+include copied audition links and Windows Release/native ambiguous-path checks.
+All three macOS jobs were cancelled with `runner_id: 0` and no steps; no macOS
+execution or cancellation cause is established. The
+[reviewed raw-spelling guard](reviews/WINDOWS_REGISTRATION_PATH_ADMISSION.md)
+checks both native storage entry points before normalization while retaining
+resolved checks and the conservative Unicode policy. The [final follow-up
+admission](reviews/PRESET_FINAL_HOSTED_ADMISSION.md) now observes **202/202 Windows
+core tests, 61/61 native tests and actual Unicode-checkout generation** passing
+at `cc6be852`. Both guard tests and native starter Load pass. Ten Linux/Windows
+jobs succeed, including both sanitizer jobs and native/VST3 configurations.
+Three macOS jobs are cancelled with runner 0 and no steps. All three workflow
+aggregates report failure; no macOS execution or cancellation cause is established.
+The complete required platform matrix remains unqualified.
+
+### Actual interface evidence
+
+The [13-view native gallery](design/native-gallery-preset-v1/README.md) includes
+canonical 1672×941, minimum active 1400×820, compact 960×700 and 1920×1080
+captures. The masked lower wooden apron preserves live footer text and excludes
+baked concept lettering. Its [paired raster admission](reviews/REFERENCE_APRON_RASTER_ADMISSION.md)
+covers 25 cases / 61,780,011 pixels, zero forbidden/footer changes, eight exact
+hidden/inactive frames and exact creation-failure fallbacks. **32,544 exposed
+source pixels match at canonical 1672×941**; resized views use the frozen nearest
+mapping. The [whole-interface review](reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md)
+retains title, tracking, caps, panels, furniture, manuals and layout differences.
+**Literal whole-interface 1:1 remains unmet and unwaived.** Software captures
+establish no real-display/DPI or native-accessibility acceptance.
+
+### Current workspace and setup
+
+Use `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`, root's coordinated
+`../build-native`, and read-only SDL 2.32.10 at
+`/workspace/scratch/ade21b726509/SDL2`. The qualification configuration is Ninja
+Release, standalone/tests ON, MIDI/VST3 OFF, with dummy SDL and native backends
+disabled. Use the [normal desktop instructions](../README.md#build-and-launch-the-native-application)
+for real-device work. The distinct authorized
+[SDK-free build](reviews/HEADLESS_REGISTRATION_BUILD_ADMISSION.md) passed 12/12
+focused CTests in 5.50 seconds. The [resource audit](reviews/PRESET_RESOURCE_RECOVERY_ADMISSION.md)
+retains genuine baselines, original failures and all audition/gallery identities;
+about 40 GiB was free at its recorded sample. Other sessions remain read-only.
+
+### Prioritized next actions and retained gates
+
+1. Obtain actual macOS execution at the intended source and complete the required
+   platform matrix. Preserve ten successful executed jobs and three unexecuted
+   cancellations separately. Recover and verify the latest documentary commit
+   against fresh remote state before assigning successor work.
+2. Coordinate separately frozen T2 rack-heading tracking/baseline, then T3 title
+   weight/highlight/shadow work from genuine current baselines, followed by one
+   bounded panel-material slice. Preserve manual/rim/cap and semantic owners.
+3. Preserve every [M0–M9 exit](PLAN.md#milestones-and-exit-evidence) and the
+   [atlas delivery crosswalk](reviews/ATLAS_DELIVERY_CROSSWALK.md). Identified
+   captures, complete loaded AO-28/Leslie graphs, scanner G5/ScannerLineFoh,
+   R4 owner acceptance, R5/R6, native accessibility, real devices/DAWs, callback
+   deadlines/retirement, licenses, packaging and signed release remain separately
+   evidenced work. Consult [next actions](NEXT_STEPS.md) before assigning paths.
+
+## Preserved dated status records
+
+The following body is retained unchanged from the previous status revision.
+Use the current entry above for this continuation's recovery and priorities.
+
 ## Runtime and interface continuation — 16 November 2026
 
 Current recovery: [session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-runtime-continuation/assignments.json). Initial source `3520c96` passed 216/216 local tests. The completed conversion/typography work was recovered without touching other dirty checkouts, qualified with eight affected tests and archive integrity, and published with the identical tree as `f56b0f3`. Exact-source hosted qualification is pending. New causal-audio and key-material contracts are undergoing independent preimplementation admission; no new numerical or visual pass is inferred.

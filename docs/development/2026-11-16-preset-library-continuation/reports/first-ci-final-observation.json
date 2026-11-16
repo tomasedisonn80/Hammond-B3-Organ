@@ -1,0 +1,820 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-16 12:46:58 UTC",
+  "head": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+  "scope": "Final first-publication hosted observation. Does not qualify later repaired source.",
+  "counts": {
+    "success": 6,
+    "failure": 4,
+    "cancelled": 3
+  },
+  "jobs": [
+    {
+      "run_id": 43866056134,
+      "id": 133294777556,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "status": "completed",
+      "conclusion": "failure",
+      "runner_id": 1000001246,
+      "runner_name": "GitHub Actions 1000001246",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:28:57Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision and tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Debug with ASan and UBSan",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build with sanitizers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run every registered test with leak checking",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056134,
+      "id": 133294777821,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001248,
+      "runner_name": "GitHub Actions 1000001248",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:32:44Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record source and tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure the independent core qualification",
+          "conclusion": "success"
+        },
+        {
+          "name": "Require strict report admission",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and run all full waveform experiments",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain exact complete waveform evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056134,
+      "id": 133294777851,
+      "name": "Release (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "runner_id": 0,
+      "runner_name": "",
+      "started_at": "2026-11-16T12:22:58Z",
+      "completed_at": "2026-11-16T12:37:59Z",
+      "steps": []
+    },
+    {
+      "run_id": 43866056134,
+      "id": 133294777882,
+      "name": "Release (Linux GCC)",
+      "status": "completed",
+      "conclusion": "failure",
+      "runner_id": 1000001247,
+      "runner_name": "GitHub Actions 1000001247",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:28:11Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision and tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Build Release",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run every registered Release test",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056134,
+      "id": 133294777970,
+      "name": "Release (Windows MSVC)",
+      "status": "completed",
+      "conclusion": "failure",
+      "runner_id": 1000001254,
+      "runner_name": "GitHub Actions 1000001254",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:31:46Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision and tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build Release",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run every registered Release test",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056023,
+      "id": 133294777475,
+      "name": "Native VST3 (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001249,
+      "runner_name": "GitHub Actions 1000001249",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:24:24Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056023,
+      "id": 133294777771,
+      "name": "Native VST3 (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "runner_id": 0,
+      "runner_name": "",
+      "started_at": "2026-11-16T12:22:58Z",
+      "completed_at": "2026-11-16T12:37:59Z",
+      "steps": []
+    },
+    {
+      "run_id": 43866056023,
+      "id": 133294777802,
+      "name": "Native VST3 (Windows MSVC x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001255,
+      "runner_name": "GitHub Actions 1000001255",
+      "started_at": "2026-11-16T12:22:59Z",
+      "completed_at": "2026-11-16T12:24:34Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "conclusion": "success"
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056058,
+      "id": 133294777497,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001245,
+      "runner_name": "GitHub Actions 1000001245",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:31:57Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run all required standalone acceptance tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056058,
+      "id": 133294777699,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001243,
+      "runner_name": "GitHub Actions 1000001243",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:33:30Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run all required standalone acceptance tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056058,
+      "id": 133294777792,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "completed",
+      "conclusion": "failure",
+      "runner_id": 1000001253,
+      "runner_name": "GitHub Actions 1000001253",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:35:25Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run all required standalone acceptance tests",
+          "conclusion": "failure"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43866056058,
+      "id": 133294777808,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "runner_id": 0,
+      "runner_name": "",
+      "started_at": "2026-11-16T12:22:58Z",
+      "completed_at": "2026-11-16T12:37:59Z",
+      "steps": []
+    },
+    {
+      "run_id": 43866056058,
+      "id": 133294777810,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001244,
+      "runner_name": "GitHub Actions 1000001244",
+      "started_at": "2026-11-16T12:23:00Z",
+      "completed_at": "2026-11-16T12:41:04Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision, sanitizer policy and tools",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release with project and SDL sanitizers",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build only the twenty-five selected acceptance inputs",
+          "conclusion": "success"
+        },
+        {
+          "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+          "conclusion": "success"
+        },
+        {
+          "name": "Discover exactly twenty-five gates and run with leak checking",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reverify source and locked SDL2 after acceptance",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain native sanitizer diagnostics",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "Linux Release and Linux sanitizers each failed repository integrity because copied audition Markdown referenced uncommitted WAV paths; exact original logs are retained separately.",
+    "Windows Release additionally failed the existing protected ambiguous-path assertion. Windows native failed only that same test out of 60 selected standalone tests.",
+    "All three macOS jobs ended cancelled with runner_id 0, an empty runner name and no steps. No macOS execution is claimed; this response does not establish why a runner was not assigned.",
+    "The locally reviewed follow-up repairs documentation/archive delivery and raw Windows spellings before normalization, retains all thresholds and must receive its own exact-source hosted execution."
+  ],
+  "additional_original_log": {
+    "file": "first-ci-job-133294777792-original-decoded.log.gz",
+    "decoded_bytes": 560219,
+    "decoded_sha256": "932450155351a14326ac7e449b5d105c6a5dcceb45207a2ad451af362285c489",
+    "gzip_bytes": 78115,
+    "gzip_sha256": "8643000f9278fd295e2d3f69c6e147b751966b222eba16f37fe200e2a25f94b4"
+  }
+}

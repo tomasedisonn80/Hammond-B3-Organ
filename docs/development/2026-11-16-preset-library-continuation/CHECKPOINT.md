@@ -2,12 +2,15 @@
 
 ## Current stage
 
-**A01–A45 accepted; A46–A48 running: 48 actual distinct workers dispatched.**
-Waves 1–7 are complete. Wave 7 added CI, headless configuration, compatibility,
-failure-path, provenance and publication admission. A01–A06 freshly read all
+**All 60 actual distinct workers, A01–A60, are accepted in ten complete waves.**
+The [strict record result](reports/final-session-validation.json) passes with zero
+errors. Every assigned path has returned to root. Final command, source, visual,
+recovery, hosted and handoff reviews are admitted within their recorded scopes.
+A01–A06 freshly read all
 500 atlas pages; the [coverage receipt](reports/atlas-reading-coverage.json)
 binds exact ranges and notes. The [actual ledger](assignments.json) records
-successful dispatches; [remaining assignments](NEXT_ASSIGNMENTS.md) are plans.
+successful dispatches and accepted note hashes; the [original dispatch plan](NEXT_ASSIGNMENTS.md)
+is retained as history, with no worker left to dispatch.
 
 Implemented: safe headless registration CLI, shared regular-file input, additive
 renderer `--controls`, twelve original proposed recipes/24 canonical files,
@@ -20,13 +23,14 @@ state formats, UUIDs and unrelated app/browser owners remain preserved.
 Wave 7's concrete fixes and admission are accepted. Wave 8 independently ran
 first-use and installed materialize/render journeys and audited every original
 audition byte. A43 retains a genuine conservative Unicode sibling refusal and
-a successful documented ASCII `inputs`/`outputs` layout. A44 installed51 files,
+a successful documented ASCII `inputs`/`outputs` layout. A44 installed 51 files,
 removed only private installer inputs and rendered two complete scoped outputs.
-A45 independently passed400 read-only audio/archive/provenance checks. A46–A48
-review whole-interface residuals, storage/recovery and the complete atlas plan.
+A45 independently passed 400 read-only audio/archive/provenance checks. Accepted
+A46–A48 reviews preserve whole-interface residuals, bounded storage/recovery and
+the complete M0–M9 plan. A49–A51 updated the README, status and next actions.
 
-The integrated235-test run completed234pass/1failure from copied audition report
-links. Root preserved all101 original files in a1.7MB archive, the exact original
+The integrated 235-test run completed 234 passes and one failure from copied audition report
+links. Root preserved all 101 original files in a 1.7 MB archive, the exact original
 report gzip and original manifest, and made an explicitly derived reader. The
 focused repository-integrity gate then passed. Original logs remain unchanged.
 
@@ -36,8 +40,21 @@ added requested-spelling guards before normalization at both native storage entr
 points, preserving resolved checks and exact navigation components. A43 reviewed
 the proposal; original/refined refusals and positive navigation cases remain.
 Six affected Linux CTests pass, and CLI/renderer/app binary hashes are unchanged.
-Windows-specific execution awaits the follow-up published source. Read the
+Windows-specific execution is now separately qualified at the published follow-up. Read the
 [repair admission](../../reviews/WINDOWS_REGISTRATION_PATH_ADMISSION.md).
+
+The [final first-head hosted snapshot](reports/first-ci-final-observation.json)
+contains six successful jobs, four failures from the known link/path issues, and
+three cancelled macOS jobs with no assigned runner or executed steps. No macOS
+execution or cancellation cause is inferred. The new source has separate runs:
+CI `43869771157`, native standalone `43869771215`, native VST3 `43869771192`.
+The [independent final admission](../../reviews/PRESET_FINAL_HOSTED_ADMISSION.md)
+and [fresh root observation](reports/root-final-hosted-observation.json) now record
+ten successful Linux/Windows jobs at `cc6be852`: Windows core 202/202, native
+61/61, actual Unicode-checkout generation, and native sanitizer 28/28, alongside
+the other required executed jobs. Three macOS jobs ended cancelled with runner 0
+and no steps. All three workflow aggregates report failure. The complete required
+matrix remains open; no macOS execution or cancellation cause is established.
 
 ## Qualified evidence
 
@@ -71,21 +88,34 @@ Windows-specific execution awaits the follow-up published source. Read the
 
 ## Publication and recovery
 
-[First publication](reports/first-publication.json): main is independently read
-at **`20739f6280b95e567e84615d5c5aee443fc3b93d`**, parent `54df95f`, tree
+[First publication](reports/first-publication.json): the initial main update was
+independently read at **`20739f6280b95e567e84615d5c5aee443fc3b93d`**, parent `54df95f`, tree
 `1e59776459a05a9d934d0b519a45cd4c61b13ae9`. This tree exactly matches authored
 local commit `d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93`, retained under local
 branch `local-reviewed-implementation-d281d4e`. Connector commit metadata differs.
 After verifying tree equality and an empty index, root aligned HEAD with a soft
-reset; no working-file/index bytes were discarded. Current changes are the
-subsequent CI/Load/review/failure/provenance work and must be committed/published.
+reset; no working-file/index bytes were discarded.
+
+The [reviewed implementation follow-up](reports/followup-publication.json) is
+independently verified as **`cc6be852d616ec5887485e3fccc39ddb1db22006`**, tree
+`201e38b05901fa30e3d053b9c245829818a5b52e`, sole parent `20739f6`. It has the
+exact tree of authored local commit `503ed724eaeb3c31eae3c6f31b31cc9a2acd9eb3`,
+preserved on `local-reviewed-followup-503ed724`. All 129 new blobs and 137 changed
+tree entries were checked before a guarded nonforced update. Independent provider
+reads and local fetch verified the result. Local HEAD was aligned only after
+tree equality and an empty index were checked; index bytes remained identical.
+The closing change set contains later accepted reviews, documentation and
+publication receipts. Production, build, workflow, test, asset and data inputs
+remain identical to `cc6be852`; source-specific CI retains that revision. Recover
+the actual documentary HEAD and fresh remote state through Git rather than
+assuming the implementation commit remains the latest commit.
 
 The ordinary shell push failed for absent HTTPS credentials. The connected
 GitHub account succeeded. Two inline-content tree requests timed out; recovery
 uploaded immutable blobs, checked every returned Git object identity, created a
 SHA-only tree, verified exact tree equality, and made one `force:false` update
 with the freshly observed expected parent. Post-update provider reads confirmed
-commit/tree/sole parent. Hosted execution is separate and being observed by A42.
+commit/tree/sole parent. Hosted execution is separately source-qualified.
 For later publication use immutable blobs plus a SHA-only tree; do not repeat
 large inline-content requests, force-push, lose pending files or claim local
 commit metadata equals connector metadata. Root alone publishes.
@@ -107,11 +137,12 @@ commit metadata equals connector metadata. Root alone publishes.
 
 ## Immediate next actions
 
-The integrated gate and focused documentation repair are complete. Publish the
-reviewed follow-up source and evidence, then continue all six workers in wave 8, then the six documentation owners in wave 9 and six final reviewers in
-wave 10. Publish reviewable source changes while later reviews run, observe exact
-hosted jobs and fix concrete failures. Later doc owners must preserve frozen
-contracts/notes/evidence and write current facts separately. Final closure needs
-60 accepted distinct workers, ten groups of six, passing strict record validation,
-all accepted work committed/published and a clean own checkout. No count or
-ledger check can close physical, product, UI or platform gates by itself.
+All sixty requested workers and their strict record check are complete. Recover
+the actual containing documentary commit and fresh remote state before further
+work. Obtain actual macOS execution at the intended revision; the complete
+platform matrix remains open despite ten successful executed jobs. Continue
+separately frozen T2 rack-heading tracking/baselines, then T3 title treatment,
+then one panel-material slice, preserving existing owners and genuine before
+artifacts. Read NEXT_STEPS for identified device/accessibility, scanner, AO-28,
+Leslie and acquisition/calibration dependencies. The whole-interface 1:1,
+physical, device, rights and signed-release gates remain unmet and unwaived.

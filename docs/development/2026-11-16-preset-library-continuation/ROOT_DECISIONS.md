@@ -92,3 +92,44 @@ The configured Windows Unicode-generator journey now uses distinct ASCII
 admitted layout. Both source root and output leaf still contain Unicode.
 Python UTF-8 mode is scoped to that step's diagnostic transport. All actual
 generator, exact-file, source-protection and compiled `/utf-8` gates remain.
+
+## Follow-up publication and current documentation
+
+Root published reviewed local `503ed724` as provider `cc6be852`, verifying all
+129 new blob identities, the identical `201e38b0` tree, the sole `20739f6` parent
+and a fresh guarded nonforced main update. Independent provider reads and local
+fetch agree; the authored local commit remains on a preservation branch. A soft
+alignment preserved index bytes and working files. Later documentation/reviews
+remain a separate overlay until their final commit.
+
+Wave 9 returned README, STATUS, NEXT_STEPS, PLAN, AGENTS and handoff/log ownership.
+Root independently verified all ten original milestone rows and the AGENTS
+historical obligations suffix unchanged; earlier handoff/log bytes also survive.
+The first root milestone extraction accidentally included a new prose row beginning
+with “Masked”; its assertion stopped before edits. Restricting the observation to
+M0–M9 rows confirmed the expected original hash without changing any criteria.
+This was an observer selection error, not a plan or product failure.
+
+Current-source hosted execution remains separate from the retained first-head
+six-success/four-failure/three-cancellation snapshot. The final wave must admit
+actual documented use, source and visual identities, recovery records, exact
+hosted outcomes and the final handoff. No worker count or metadata alignment
+supplies physical, whole-interface or unavailable platform evidence.
+
+## Final accepted record and platform boundary
+
+A01–A60 are all accepted. The matching strict checker returns zero with sixty
+accepted distinct identities and ten six-worker waves; original note bytes stay
+frozen. Final command, code, visual, recovery, hosted and handoff reviews are
+complete. Root refreshed current navigation without rewriting historical notes,
+source receipts, failures or milestone criteria.
+
+At `cc6be852`, independent A59 and root provider reads confirm ten successful
+Linux/Windows jobs and three unexecuted macOS cancellations; all three workflow
+aggregates report failure. Windows core 202/202, native 61/61 and the actual
+Unicode generator pass. Linux native sanitizer passes 28/28. The complete matrix
+remains unqualified; no cancellation cause is established. Production inputs in
+the closing documentary change set remain identical to that implementation.
+Root performs final documentary integrity and guarded publication separately,
+without manufacturing a self-referential commit identity or calling absent
+macOS execution a pass. A later agent must inspect actual Git/remote state.

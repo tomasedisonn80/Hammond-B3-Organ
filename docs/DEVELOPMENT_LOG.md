@@ -1,5 +1,84 @@
 # Development log
 
+## 2026-11-16 — Sixty-worker handoff and exact-source hosted outcomes
+
+All sixty distinct new workers are accepted across ten complete waves of six.
+The [strict record check](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json)
+passes with zero errors. Six fresh readers covered all 500 atlas pages; the
+complete M0–M9 milestone rows and retained owner boundaries remain unchanged.
+Current README/setup/design, STATUS, NEXT_STEPS, PLAN, AGENTS and the focused
+handoff now describe the delivered registration CLI, full-state renderer,
+proposed twelve-recipe pack, explicit installation and reference apron.
+
+The [final hosted admission](reviews/PRESET_FINAL_HOSTED_ADMISSION.md) and
+[independent root observation](development/2026-11-16-preset-library-continuation/reports/root-final-hosted-observation.json)
+qualify implementation `cc6be852`: ten Linux/Windows jobs succeed, including
+202/202 Windows core tests, 61/61 Windows native tests, actual Unicode-checkout
+generation, and 28/28 Linux native sanitizer gates. Three macOS jobs ended
+cancelled with runner 0 and no steps. All three workflow aggregates report
+failure; the complete required matrix remains unqualified. Cancellation cause
+and macOS execution are not inferred. Three complete decoded logs are preserved.
+
+A55 independently exercised the README workflow with eight native calls and two
+half-second renders. Registration materialization changed only expression from
+0.625 to 0.5; duplicate output refused without modification. Both full-state
+renders had exact provenance and no clipping. Final source, visual, recovery and
+handoff admissions preserve original failures, baselines and all 32 original
+clips. The original local 234/235 run remains distinct from its focused repair
+and subsequent successful hosted source. About 40 GiB remains free.
+
+This closing change set contains documentation, reviews, actual records and
+compact evidence; production/build/workflow/test/data inputs remain unchanged
+from the qualified implementation. Publication uses a fresh expected parent and
+independent remote tree/parent verification. Future agents recover the actual
+containing commit through Git and follow the permanent instructions. Actual
+macOS execution, T2 headings then separate T3 title work, remaining whole-interface
+1:1, identified physical models, native accessibility/devices, rights and signed
+release remain concrete next work; staffing completion waives none of them.
+
+## 2026-11-16 — Portable registration delivery and reference apron follow-up published
+
+This continuation adds the headless registration CLI and safe bounded control
+input, full-state renderer `--controls`, twelve original proposed recipes in
+24 canonical files, explicit copy-only installation and the masked reference
+apron. Registration materialization preserves only supplied current expression;
+Performance restores the stored value. Generic native Load and rendering restore
+the complete file regardless of suffix, before score events. The nominal dry
+Engine, 91 sources, 47 parameter identities, state4/readers 1–3 and existing
+browser ownership remain intact. The [focused handoff](PRESET_LIBRARY_CONTINUATION_HANDOFF.md)
+provides setup, source, recovery and next-owner routes.
+
+The [verified follow-up](development/2026-11-16-preset-library-continuation/reports/followup-publication.json)
+is `cc6be852d616ec5887485e3fccc39ddb1db22006`, tree
+`201e38b05901fa30e3d053b9c245829818a5b52e`, sole parent `20739f6`, with the
+same content as reviewed local `503ed724`. Provider metadata differs; new-source
+CI is triggered and pending. The [first-head final observation](development/2026-11-16-preset-library-continuation/reports/first-ci-final-observation.json)
+retains six successful jobs, four failures and three macOS cancellations with
+runner 0/no steps. This establishes neither macOS execution nor its cancellation
+cause. Original report-link and Windows ambiguity failures remain preserved.
+
+The earlier coherent run passed 230/230; the later complete run passed **234/235**
+and exposed copied audition-report links. All 101 originals now survive in a
+1.7 MB archive, with exact original report/manifest and a derived reader. The
+focused integrity repair passed; it is not a new 235/235 run. The reviewed
+Windows requested-spelling guard passed six affected Linux gates, leaving all
+three Linux binaries byte-identical. Its conditional Windows body awaits exact
+repaired-source execution. Separately, the SDK-free build passed 12 focused
+CTests; native Load used four real dummy-SDL processes; installed use relocated
+51 files and rendered two complete materialized snapshots.
+
+Thirty-two original auditions and sixteen whole-WAV suffix pairs remain bounded
+software evidence. The apron comparison covers 25 cases and 61,780,011 pixels;
+canonical 1672×941 alone has 32,544 exact source pixels. Thirteen actual app
+captures retain identities and explicit residuals. **Literal whole-interface
+1:1 remains unmet and unwaived.** Conservative Unicode sibling refusal remains;
+the documented supported layout separates `inputs/` and `outputs/` with ASCII
+components. About 40 GiB remains free; genuine baseline origins and all other
+sessions' read-only work remain protected. The actual sixty-worker closure,
+platform acceptance, physical fidelity, native accessibility, rights, devices
+and release gates remain separate. Root continues current-source observation,
+remaining reviews and guarded publication through the live checkpoint.
+
 ## 2026-11-16 — T1 typography and converter platform-test repair qualified locally
 
 The new continuation admits T1 manual footage typography with complete mixed

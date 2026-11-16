@@ -7,19 +7,89 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 **Portable registrations and reference apron, 16 November 2026**, base
 `54df95fe343d417dd89bb7a91f85e4f51c08dfe7`: this request's writable checkout is
-`/workspace/scratch/3edffb787db3/Hammond-B3-Organ`, with one root-coordinated
-`../build-native`. Read its [scope and wave plan](docs/development/2026-11-16-preset-library-continuation/README.md),
-[checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md)
-and [actual worker ledger](docs/development/2026-11-16-preset-library-continuation/assignments.json).
-This complementary scope adds headless registration preparation/export and a
-proposed pack, plus the lower wooden apron in wide Play. Existing LibraryModel,
-browser, native app integration, contact/audio, manual/rim/cap and semantic-entry
-work retain the owners below. Shared painter/build edits are root-assigned and
-sequential; preserve published advances at integration. Every future agent must
-recover current source/remote state, update setup/status/next actions with actual
-evidence, and commit/push accepted authorized work without recounting old workers.
-The request has its own sixty workers and fresh complete PDF coverage; its
-matching checker is record validation only. All existing obligations below bind.
+`/workspace/scratch/3edffb787db3/Hammond-B3-Organ`. Root coordinates
+`../build-native`; A38's explicitly authorized `../a38-headless` is the distinct
+SDK-free configuration. The pinned borrowed SDL source and every other session's
+checkout, index, build, dependencies and evidence remain read-only.
+
+**Every future agent recovers the whole plan before choosing work or resuming
+after a context reset.** Use this order:
+
+1. Read this entire file and the complete [M0–M9 plan](docs/PLAN.md), including
+   every exit and owner boundary. A current summary does not replace the plan.
+2. Read the [current handoff](docs/PRESET_LIBRARY_CONTINUATION_HANDOFF.md),
+   [session scope](docs/development/2026-11-16-preset-library-continuation/README.md),
+   [checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
+   [decisions](docs/development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md)
+   and [actual ledger](docs/development/2026-11-16-preset-library-continuation/assignments.json).
+3. Recover [README/setup](README.md), [status](docs/STATUS.md),
+   [next actions](docs/NEXT_STEPS.md), latest [log](docs/DEVELOPMENT_LOG.md),
+   [atlas crosswalk](docs/reviews/ATLAS_DELIVERY_CROSSWALK.md),
+   [resource admission](docs/reviews/PRESET_RESOURCE_RECOVERY_ADMISSION.md) and
+   [whole-interface residuals](docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md),
+   then the assigned work's contracts, source and original evidence.
+4. Inspect live HEAD/tree, index, dirty files, source/dependency identities and
+   fresh remote state. Reconcile dated statements through the responsible owner;
+   preserve unpublished overlays. Confirm exclusive paths and acceptance before
+   changing shared source, painter, navigation or build inputs.
+5. Continue authorized dependency-ready work. Document where we are, setup and
+   commands, implemented/verified behavior, failed/unrun gates, ownership and
+   concrete next inputs/modules/acceptance. Checkpoint every wave and before long
+   operations or context changes. Workers hand off; root reviews, commits and
+   pushes accepted chunks without requesting renewed permission for this scope.
+
+The complementary CLI/renderer/proposed-pack/apron scope preserves existing
+LibraryModel/browser/native-integration, contact/audio, manual/rim/cap and semantic
+owners. Preserve **47 parameter identities, `B3CONTROLS4`, readers 1–3, 91 shared
+free-running sources, plugin UUIDs and the nominal dry Engine**. **Literal
+whole-interface 1:1 remains unmet and unwaived**; canonical apron pixels, limited
+crops, software captures and successful numerical gates cannot establish it.
+
+The [verified follow-up publication](docs/development/2026-11-16-preset-library-continuation/reports/followup-publication.json)
+records `cc6be852d616ec5887485e3fccc39ddb1db22006`, tree
+`201e38b05901fa30e3d053b9c245829818a5b52e`, sole parent
+`20739f6280b95e567e84615d5c5aee443fc3b93d`; authored local
+`503ed724eaeb3c31eae3c6f31b31cc9a2acd9eb3` has the same tree. The
+[source-specific hosted admission](docs/reviews/PRESET_FINAL_HOSTED_ADMISSION.md)
+records ten successful Linux/Windows jobs and three macOS cancellations without
+a runner or steps. All three workflow aggregates report failure; complete platform
+acceptance remains open. Later documentary commits preserve this implementation
+source and require their own integrity/publication verification. Shell HTTPS credentials were absent;
+the connected Git Data API succeeded with verified immutable blobs and a SHA-only
+tree. Root alone publishes: inspect fresh advances, use the fresh expected head
+without force, then independently verify remote commit/tree/parent/contents and
+observe hosted outcomes at the exact published source.
+
+Retain immutable original receipts, failures, thresholds, notes, galleries,
+auditions and genuine baseline binaries; label derived readers separately.
+Later passes cannot rewrite earlier failures or qualify changed inputs. About
+40 GiB was free at the resource audit. After independently verified publication,
+cleanup is optional and limited to owned reproducible intermediates; preserve
+recovery manifests and originals. Never clean another workspace.
+
+This continuation workflow still requires **60 actual new distinct workers in
+ten waves of six, at most three dispatched concurrently**, unless the user changes
+it; it does not govern unrelated tasks. Read actual progress from the ledger;
+never count planned workers, follow-ups or historical sessions. From this checkout:
+
+```sh
+python3 -B docs/development/2026-11-16-preset-library-continuation/check_session.py
+python3 -B docs/development/2026-11-16-preset-library-continuation/check_session.py --strict
+```
+
+The second command is the closure check; this checker has no `--repo` option.
+It validates records only. Strict closure requires all sixty accepted notes and
+ten complete waves; it proves neither dispatch, product quality nor publication.
+This request now has [sixty accepted records and a passing strict result](docs/development/2026-11-16-preset-library-continuation/reports/final-session-validation.json).
+A future continuation must retain its own actual assignments; these workers cannot
+be counted again.
+
+### Read-only historical session entries
+
+The following dated entries preserve their original owners, workspaces and
+wording. Their historical “current” or “writable” labels grant no write authority
+here; their separate owners and unfinished acceptance remain intact. All standing
+obligations below continue to bind.
 
 **Usable values, semantics and drawbar surfaces, 16 November 2026**, base `0865bc1584e4bda569fe2ccacfac87b842b8d906`: writable checkout `/workspace/scratch/db310007a069/Hammond-B3-Organ`; one coordinated `../build-native`. Read this session's [scope](docs/development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](docs/development/2026-11-16-accessibility-continuation/CHECKPOINT.md) and [actual assignments](docs/development/2026-11-16-accessibility-continuation/assignments.json). This request has its own 60 workers and fresh full atlas coverage. Existing other sessions remain read-only; reconcile their published advances without claiming their pending scope. Semantic inspection alone is not a native accessibility provider. Preserve the existing controls/state/Engine and all acceptance requirements below.
 

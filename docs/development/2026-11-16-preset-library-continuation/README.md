@@ -6,8 +6,14 @@ root coordinates `../build-native`. The pinned SDL source at
 `/workspace/scratch/ade21b726509/SDL2` is read-only. Other sessions' dirty
 checkouts, indexes, builds and evidence remain untouched.
 
-This request receives sixty **new distinct workers**, in ten waves of six,
-dispatched in batches of at most three. [Assignments](assignments.json) record
+This request completed sixty **new distinct workers**, in ten waves of six,
+dispatched in batches of at most three. All sixty deliveries are accepted and
+the [strict record check](reports/final-session-validation.json) passes with zero
+errors. The implementation is published as `cc6be852`; the closing documentation
+retains identical production/build/workflow/data inputs. Ten Linux/Windows hosted
+jobs pass; three macOS jobs were cancelled without execution and all workflow
+aggregates report failure. See the [final hosted admission](../../reviews/PRESET_FINAL_HOSTED_ADMISSION.md)
+and [focused handoff](../../PRESET_LIBRARY_CONTINUATION_HANDOFF.md). [Assignments](assignments.json) record
 actual identities and accepted note hashes. [Checkpoint](CHECKPOINT.md) records
 progress, tests, source identities and the next action. The matching
 [read-only checker](check_session.py) validates these records; it cannot prove

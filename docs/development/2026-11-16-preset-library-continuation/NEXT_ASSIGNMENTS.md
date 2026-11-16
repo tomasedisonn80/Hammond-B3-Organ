@@ -5,13 +5,14 @@ enter `assignments.json`; a completed note and independent root review are neede
 before acceptance. Six distinct workers belong to each numbered wave. Dependent
 reviews wait for their actual inputs; unrelated work may overlap at wave boundaries.
 
-At this checkpoint A01–A39 are accepted; A40 is repairing a concrete late
-aggregate-report failure, A41 is completing installed apron provenance, and A42
-is independently reviewing the first published implementation. Main is observed
-at `20739f6280b95e567e84615d5c5aee443fc3b93d`, whose tree exactly matches the
-reviewed local `d281d4e` implementation. Later source/CI changes are not yet
-published. The assignments below retain the original planning sequence; actual
-ownership and dispatch status belong to the ledger.
+All A01–A60 assignments were actually dispatched and their substantive deliveries
+are accepted: ten complete waves of six. The [strict record check](reports/final-session-validation.json)
+passes with zero errors. The table below preserves the original dispatch plan;
+actual final tasks, paths, note hashes and root admissions belong to the ledger.
+No worker remains to dispatch. Source-specific hosted admission is ten successful
+Linux/Windows jobs and three unexecuted macOS cancellations at `cc6be852`; all
+workflow aggregates report failure. Future development follows the current
+handoff and NEXT_STEPS without recounting these workers.
 
 | Worker | Planned exclusive deliverable or review |
 | --- | --- |

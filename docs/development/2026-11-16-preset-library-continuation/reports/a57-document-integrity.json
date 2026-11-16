@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "worker": "A57",
+  "agent": "/root/w10_a57",
+  "recorded_utc": "2026-11-16T12:57:49.541820+00:00",
+  "kind": "Derived compact summary of observed read-only checker output; original output also remains in session tool transcript.",
+  "command": "python3 -B tools/check_repository.py --json",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "exit_code": 1,
+  "status": "failed",
+  "scope": "source_archive_integrity_only",
+  "source_identity": {
+    "status": "passed",
+    "bytes": 21248265,
+    "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+  },
+  "other_passed_groups": [
+    "agent_notes",
+    "chapter_index",
+    "data_references"
+  ],
+  "markdown_links": {
+    "files": 1521,
+    "local_links": 8350,
+    "external_links_skipped": 693,
+    "status": "failed"
+  },
+  "error_count": 2,
+  "errors": [
+    {
+      "source": "docs/reviews/PRESET_FINAL_CODE_ADMISSION.md",
+      "line": 9,
+      "missing_target": "docs/development/2026-11-16-preset-library-continuation/reports/a56-final-code-audit.json"
+    },
+    {
+      "source": "docs/development/2026-11-16-preset-library-continuation/notes/A56.md",
+      "line": 8,
+      "missing_target": "docs/development/2026-11-16-preset-library-continuation/reports/a56-final-code-audit.json"
+    }
+  ],
+  "interpretation": "The missing report is another active worker's in-progress artifact. No A57/current visual route failed. This is not an overall passing repository-integrity claim.",
+  "root_direction": "Preserve observed bounded result, finish without waiting on A56, and leave final integrated document check to root after all owned reports are present. No A56 file changes.",
+  "rerun_by_A57": false,
+  "git_diff_check": {
+    "command": "git diff --check -- docs/reviews/PRESET_FINAL_VISUAL_ADMISSION.md docs/development/2026-11-16-preset-library-continuation/reports/a57-final-visual-identity.json",
+    "exit_code": 0,
+    "limit": "These newly created outputs are untracked; explicit owned-file whitespace checks accompany handoff."
+  }
+}

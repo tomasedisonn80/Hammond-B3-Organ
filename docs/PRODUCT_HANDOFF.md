@@ -1,3 +1,30 @@
+# Current portable registration and apron handoff
+
+For this 16 November continuation, start with the
+[focused handoff](PRESET_LIBRARY_CONTINUATION_HANDOFF.md),
+[session checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
+[actual worker ledger](development/2026-11-16-preset-library-continuation/assignments.json)
+and [operator guide](REGISTRATION_GUIDE.md). The writable checkout is
+`/workspace/scratch/3edffb787db3/Hammond-B3-Organ`; root coordinates `../build-native`.
+This delivery includes headless registration preparation, full-state rendering,
+the proposed starter pack, explicit installation, native Load evidence and the
+thirteen-view apron gallery. Registration preserves current expression only
+through explicit materialization; generic Load/render restores the whole file.
+
+The [verified follow-up](development/2026-11-16-preset-library-continuation/reports/followup-publication.json)
+is `cc6be852d616ec5887485e3fccc39ddb1db22006`, tree `201e38b05901fa30e3d053b9c245829818a5b52e`;
+ten Linux/Windows hosted jobs pass, while three macOS jobs were cancelled without
+execution and all three workflow aggregates report failure. See the
+[source-specific admission](reviews/PRESET_FINAL_HOSTED_ADMISSION.md). The
+234/235 full run, focused repair and six Linux guard passes retain distinct
+identities. All sixty distinct workers are accepted across ten waves, with a
+[passing strict record check](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json). **Literal whole-interface 1:1 remains unmet and unwaived.** Physical,
+device, accessibility, rights and release gates remain open. The complete older
+body below is preserved exactly as dated history; its workspace and “current”
+pointers do not supersede this entry or transfer another owner's unfinished work.
+
+---
+
 # Product continuation: setup and recovery handoff
 
 ## Active conversion/material continuation — 16 November 2026

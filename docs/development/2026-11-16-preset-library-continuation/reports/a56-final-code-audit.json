@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "worker": "A56",
+  "agent": "/root/w10_a56",
+  "wave": 10,
+  "observed_at_utc": "2026-11-16T12:57:18.255151+00:00",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "scope": "Independent final code/diff and retained-evidence inspection. No build, unit test, suite, renderer, capture or provider-status query executed.",
+  "verdict": "Source implementation admitted in reviewed scope; no remaining concrete code defect identified; external product/platform gates remain separate.",
+  "source": {
+    "base_commit": "54df95fe343d417dd89bb7a91f85e4f51c08dfe7",
+    "reviewed_published_commit": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+    "reviewed_published_tree": "201e38b05901fa30e3d053b9c245829818a5b52e",
+    "parent": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+    "index_paths": [],
+    "documentation_overlay_paths": [
+      "AGENTS.md",
+      "README.md",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/NEXT_STEPS.md",
+      "docs/PLAN.md",
+      "docs/PRODUCT_HANDOFF.md",
+      "docs/STATUS.md",
+      "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md",
+      "docs/development/2026-11-16-preset-library-continuation/NEXT_ASSIGNMENTS.md",
+      "docs/development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md",
+      "docs/development/2026-11-16-preset-library-continuation/assignments.json"
+    ],
+    "all_named_source_and_contract_inputs_match_published": true
+  },
+  "input_identities": {
+    "apps/standalone/RegistrationLibrary.cpp": {
+      "bytes": 39180,
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+      "published_blob": "a80f0e43cdf323dfd49c91a91e999bb4b8631271",
+      "matches_published": true
+    },
+    "apps/standalone/RegistrationLibrary.h": {
+      "bytes": 5982,
+      "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+      "published_blob": "dcd2879268c8d490440248a2ee46e5b4f23afc7b",
+      "matches_published": true
+    },
+    "apps/standalone/tests/test_standalone_registration_library.cpp": {
+      "bytes": 32521,
+      "sha256": "7197b14bed6687612d0640726c75e713d9bdb5b0e92984bb26dc70e6b001b3fd",
+      "published_blob": "986c9999cf25be1f8379b2de8302c7962c0e91e6",
+      "matches_published": true
+    },
+    "tools/ControlFileInput.cpp": {
+      "bytes": 9209,
+      "sha256": "0a174b171dfb3f0253cd6beb12707fda4da5ffb88c898727fb80ca111049cf5d",
+      "published_blob": "7f8683397a45fe4e386dbc6e8b8f42e73dadfbca",
+      "matches_published": true
+    },
+    "tools/ControlFileInput.h": {
+      "bytes": 895,
+      "sha256": "74fe88ed36c8b00b56f3a3f15874f22ec418ce4ea8932995c7829b68c4f02ade",
+      "published_blob": "41522a821464d3336d8dc6b62688a0ad6436287c",
+      "matches_published": true
+    },
+    "tools/registration.cpp": {
+      "bytes": 36175,
+      "sha256": "4fbf8f9e9a8c04713ee7aa28e089e02dbd5955ceb38e478673aa1f5da2f37ff3",
+      "published_blob": "4cb64d559f64a20411d8dd2a95947298aba9f55f",
+      "matches_published": true
+    },
+    "tools/render.cpp": {
+      "bytes": 50112,
+      "sha256": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928",
+      "published_blob": "42625f99d90c7f4293efe26132104301e22fcebf",
+      "matches_published": true
+    },
+    "tools/generate_starter_registrations.cpp": {
+      "bytes": 25103,
+      "sha256": "dd93af18acd911cc6f0420314d0811c34adaaddf496e86e9df120f3576382e91",
+      "published_blob": "c44d9eb5e1d69df9d4c6bdea5cc7cf868c385877",
+      "matches_published": true
+    },
+    "tools/audition_starter_registrations.py": {
+      "bytes": 21687,
+      "sha256": "1ff78d28e74c7556aa525f5eb779d40ced76b7f913c1ec38085b4c2def216157",
+      "published_blob": "659ed14841c39cce9b4ed6f8400167e1cd9fe416",
+      "matches_published": true
+    },
+    "tests/test_control_file_input.cpp": {
+      "bytes": 10412,
+      "sha256": "ed1df67d1d95f597113139bbefab2b92488b990e2171a86cb309d53227957642",
+      "published_blob": "bf086dc3214413d30b7c5ba033dbf2b75e98372d",
+      "matches_published": true
+    },
+    "tests/test_registration_cli.py": {
+      "bytes": 20947,
+      "sha256": "0e2ba105dc464edc7044f03533ed24abf02da7c39e2c75fed549935e56cc0466",
+      "published_blob": "3d15d7a8a5c821c89a88ba22f35478b1953c20c5",
+      "matches_published": true
+    },
+    "tests/test_registration_cli_admission.py": {
+      "bytes": 19175,
+      "sha256": "4744251a68772fe171ed1ab3ec1105ffbe32c89061e6da9a7fc3de322dcf8afe",
+      "published_blob": "5e8bc7734202bf26cd2e7db7fa871c229f0052e4",
+      "matches_published": true
+    },
+    "tests/test_render_controls.py": {
+      "bytes": 26477,
+      "sha256": "bd6665e140bc0406b6e2b34d1d5f5c5148c7fe2af7640d9cbcd4a7a32becd4ce",
+      "published_blob": "2d6352fddcc77a79910201e01f66a2602d236f01",
+      "matches_published": true
+    },
+    "tests/test_render_controls_admission.py": {
+      "bytes": 18514,
+      "sha256": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411",
+      "published_blob": "cbac36a263ae80c663c1e984d9c79d6486ff5119",
+      "matches_published": true
+    },
+    "tests/test_starter_auditions.py": {
+      "bytes": 26407,
+      "sha256": "5fea287ed572de6ca2fd62e34e7113ab5878ea44e16d92849d81c34d4a16431d",
+      "published_blob": "1eb579b184b09612c0858919f7afc63ae02c89ed",
+      "matches_published": true
+    },
+    "tests/test_registration_install.py": {
+      "bytes": 30985,
+      "sha256": "0fc305b1fff1b89de670c336f544ff0314d88a788256ce9ff1d7917786946219",
+      "published_blob": "65def692ae05bd9de302609c18c550d1cf33d19d",
+      "matches_published": true
+    },
+    "apps/standalone/native_tests/test_standalone_install.py": {
+      "bytes": 44926,
+      "sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+      "published_blob": "856eb6f6c0ead362c6baf78ec599c96f0be81a0a",
+      "matches_published": true
+    },
+    "cmake/InstallRegistrationTools.cmake": {
+      "bytes": 10701,
+      "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+      "published_blob": "d43c39671d159e250b5663809585278ff3aa97fe",
+      "matches_published": true
+    },
+    "cmake/InstallStandalone.cmake": {
+      "bytes": 17817,
+      "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+      "published_blob": "c4962a18870bbc3e64abc377f0daa9c86b7a53ff",
+      "matches_published": true
+    },
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+      "published_blob": "153dab88317650f34f93aeff52b968845418f82e",
+      "matches_published": true
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 38556,
+      "sha256": "8c9083d5de40ab398c224e61550f5b218b02ebe7c8d7cc0bc94078e92dff99cf",
+      "published_blob": "85a7fab36582d3decd4b4801e40c9bcd6a319c61",
+      "matches_published": true
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 20268,
+      "sha256": "4897404caa25c874c112c1f985f417a2bb262241fb14d395ae9aa5072c0a56a3",
+      "published_blob": "da557d92d8e680295af9e978454186e2983697f4",
+      "matches_published": true
+    },
+    ".github/workflows/standalone.yml": {
+      "bytes": 66952,
+      "sha256": "e17541f3960472eeaea239c3dbbaadb71c776698c44f428a0925e40ae19c3803",
+      "published_blob": "8ec4f3668a49ad202a5e979395afddffdfdc8259",
+      "matches_published": true
+    },
+    ".github/workflows/native-vst3.yml": {
+      "bytes": 8261,
+      "sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+      "published_blob": "701e750bd13c6a763cf69b3a0a3b2607a8a088b1",
+      "matches_published": true
+    },
+    "assets/standalone/reference-apron-v1/manifest.json": {
+      "bytes": 2416,
+      "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+      "published_blob": "9a88b776892b4864f9486fad8ef5b094cdf1c8a5",
+      "matches_published": true
+    },
+    "data/registrations/starter-v1/recipes.json": {
+      "bytes": 9955,
+      "sha256": "665e6098928d845c1302642f89a109dc8f2be8500f9eb49d33111ba37d468051",
+      "published_blob": "5a171d3158bdfdc688caa642e2c4f2fc4a848b42",
+      "matches_published": true
+    },
+    "docs/REGISTRATION_CLI_CONTRACT.md": {
+      "bytes": 14096,
+      "sha256": "cab55c11a1f211e47e73b18db5f5f33cfd5b3fa2d066361f0842c9ea3b0041fa",
+      "published_blob": "f96e5c011d9a2fed59e13e4f18007e07406cc494",
+      "matches_published": true
+    },
+    "docs/REGISTRATION_RENDER_CONTRACT.md": {
+      "bytes": 7728,
+      "sha256": "cd81f83ef069215044117c139d318fe49caeffb1bd30bd038eaf62dc9528fc57",
+      "published_blob": "a22d5fbc09428d47f69ee62b47728975ec6e55aa",
+      "matches_published": true
+    },
+    "docs/STARTER_REGISTRATION_PACK_CONTRACT.md": {
+      "bytes": 8265,
+      "sha256": "f6390633160dc0dc643344fa6316fb26b3376216e535eb7d1b976f1f2dcffbf2",
+      "published_blob": "06e3563c1bbfd9cb6e0180e1476a1e1522928f14",
+      "matches_published": true
+    }
+  },
+  "documentary_snapshot_identities": {
+    "AGENTS.md": {
+      "bytes": 18785,
+      "sha256": "91e68df96eb4f8a25a0e7b5e7991f47399046c44bbfecca2c18dc46d0c81419c"
+    },
+    "docs/PLAN.md": {
+      "bytes": 46884,
+      "sha256": "ce45d1d557777cecb08885c9fec6adde0940f23fc3207d09901556a6fe7052ca"
+    },
+    "README.md": {
+      "bytes": 68021,
+      "sha256": "975fa10747188222f0f16b01e0cf7552a4b8eb00bbf98c374b28c4f60ce8eb21"
+    },
+    "docs/STATUS.md": {
+      "bytes": 126704,
+      "sha256": "527d6550c193ca81fed150453d3cdd1cf4c12a238c62a74ad138e51bb58fe658"
+    },
+    "docs/NEXT_STEPS.md": {
+      "bytes": 44759,
+      "sha256": "cf48c888c001d53940c8e82c55a2dea53c1d5b09645d9c59dd6bc128b42ab7f4"
+    },
+    "docs/DEVELOPMENT_LOG.md": {
+      "bytes": 284072,
+      "sha256": "857c27a1aa4da7e52b1f86bc954308d4594eb66aa83e7174770d7b4794e83b6e"
+    },
+    "docs/PRESET_LIBRARY_CONTINUATION_HANDOFF.md": {
+      "bytes": 12611,
+      "sha256": "52984e89acce1096caefa6cea6cfa41fd8fa801a24206dfaa20bb0bb1de728e7"
+    },
+    "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md": {
+      "bytes": 8830,
+      "sha256": "b473a7d0f8f79a4dd956c7f535716a7faa9d55afeab010af845c8ce54dc61827"
+    },
+    "docs/development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md": {
+      "bytes": 7101,
+      "sha256": "10306af82d3cf080b961780cafdf1b040d15de7ca812d8094d63dd05d29d0121"
+    },
+    "docs/reviews/WINDOWS_REGISTRATION_PATH_ADMISSION.md": {
+      "bytes": 3771,
+      "sha256": "59995faaeeb284f434cb4c8f55d815c448732698da81eb40e310a9788ffa83e2"
+    },
+    "docs/reviews/REGISTRATION_COMPATIBILITY_ADMISSION.md": {
+      "bytes": 6610,
+      "sha256": "f49b2096bfcecbe54c1e65e396bfc292721eaa80ec3ff60e864a95746145a5ed"
+    },
+    "docs/reviews/STARTER_FAILURE_BOUNDARY_ADMISSION.md": {
+      "bytes": 6673,
+      "sha256": "d45d797602b0ab7c8d05e37be45638859c25dab19ba0ac2031e5aeb1057cc41f"
+    },
+    "docs/reviews/PRESET_ASSET_PROVENANCE_ADMISSION.md": {
+      "bytes": 6581,
+      "sha256": "e1fc63f8f6ebd09c65bcbac3517d968529c39d06f934e7e9691a08b320d9c820"
+    },
+    "docs/reviews/REGISTRATION_INSTALL_ADMISSION.md": {
+      "bytes": 7988,
+      "sha256": "3e24f60052b2f0f5de8c4e97679a354f8377e9b590872b9b5e9935fa9cd5e050"
+    },
+    "docs/reviews/REGISTRATION_CI_ADMISSION.md": {
+      "bytes": 6789,
+      "sha256": "c8cefc5ea9e6dc7050a941acb80d71553746e20bbed4e66c360c8b5dbd6bcb57"
+    }
+  },
+  "receipt_identities": {
+    "w08-windows-guard-source.json": {
+      "bytes": 3037,
+      "sha256": "b9ae89e156523f86373bff39fb7916e9021bbde902e63555a8fdffd6b5402ee3"
+    },
+    "w07-integrated-qualification.json": {
+      "bytes": 20452,
+      "sha256": "eb47f470845d836c3b4a36a742c9340babf874c9cb05f7a6b03744a63ae33d25"
+    },
+    "a40-failure-targeted-tests.json": {
+      "bytes": 2743,
+      "sha256": "fd603329bd8ac1c42a3af02d1ddf8f124f2d027f820c61a031e4dafb887e0e5a"
+    },
+    "a41-installer-private-fixtures.json": {
+      "bytes": 2536,
+      "sha256": "46a66b62eeded012cd83bd0c15113ddec460a961f6f61ecb3b375d844754ed19"
+    },
+    "a39-compatibility.json": {
+      "bytes": 16352,
+      "sha256": "e55a2b8d8d6e211f3c4fb0aa01012403cc4859c2c241691ac218d20a372cd1cd"
+    },
+    "renderer-legacy-comparison.json": {
+      "bytes": 1949,
+      "sha256": "e831218f75377f8d075eda3678700537b47558ed3db7a7cd0f80c5a3177a8a27"
+    },
+    "first-ci-final-observation.json": {
+      "bytes": 24182,
+      "sha256": "16edacd87b0cfd49d43e3ef9400d3b6d87b2cc32985a93f264580de25e2e4126"
+    },
+    "followup-publication.json": {
+      "bytes": 9833,
+      "sha256": "c60b4ad470760d4c81b4bd0a7dc02d3a4f26bc21e0b123702e157e32941d6039"
+    },
+    "followup-windows-step-observation.json": {
+      "bytes": 5569,
+      "sha256": "c1b98af34e6a00c8ad10a429a01632ab43615e74a78c948b8fe3ede80d75ea8b"
+    }
+  },
+  "compatibility": {
+    "unchanged_core_trees": {
+      "include": {
+        "base_tree": "9a3c71eacf360e9dab78e74c0e675cd74e778f2c",
+        "published_tree": "9a3c71eacf360e9dab78e74c0e675cd74e778f2c",
+        "equal": true
+      },
+      "src": {
+        "base_tree": "09948c8801c1f37c0eb3bde7700234a16adaed97",
+        "published_tree": "09948c8801c1f37c0eb3bde7700234a16adaed97",
+        "equal": true
+      },
+      "plugins": {
+        "base_tree": "b13032ad4419df067f3a2ce65dc92ed17fd854c4",
+        "published_tree": "b13032ad4419df067f3a2ce65dc92ed17fd854c4",
+        "equal": true
+      }
+    },
+    "preexisting_file_comparison": {
+      "include": {
+        "baseline_file_count": 31,
+        "worktree_and_published_equal_to_base": true,
+        "different": []
+      },
+      "src": {
+        "baseline_file_count": 30,
+        "worktree_and_published_equal_to_base": true,
+        "different": []
+      },
+      "plugins": {
+        "baseline_file_count": 20,
+        "worktree_and_published_equal_to_base": true,
+        "different": []
+      },
+      "data": {
+        "baseline_file_count": 72,
+        "worktree_and_published_equal_to_base": true,
+        "different": []
+      }
+    },
+    "public_registration_header_unchanged": true,
+    "legacy_binaries": {
+      "../baseline-native/hammond_render": {
+        "bytes": 172528,
+        "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf"
+      },
+      "../build-native/hammond_render": {
+        "bytes": 212888,
+        "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263"
+      }
+    },
+    "retained_legacy_output_comparisons": [
+      {
+        "fixture": "default",
+        "kind": "wav",
+        "before": "/workspace/scratch/3edffb787db3/baseline-audio/default.wav",
+        "after": "/workspace/scratch/3edffb787db3/candidate-audio/default.wav",
+        "bytes": 32812,
+        "sha256": "35a460e99da4c9354e23ec13bb53a70c99f5cd5b70ecf337ec3926c422c7025d",
+        "whole_bytes_equal": true,
+        "matches_retained_receipt": true
+      },
+      {
+        "fixture": "default",
+        "kind": "stdout",
+        "before": "/workspace/scratch/3edffb787db3/baseline-audio/default.stdout",
+        "after": "/workspace/scratch/3edffb787db3/candidate-audio/default.stdout",
+        "bytes": 1278,
+        "sha256": "889706eeefcc459a832553e1624b3f9a507f43c7605b02e1b0ca872a62134e85",
+        "whole_bytes_equal": true,
+        "matches_retained_receipt": true
+      },
+      {
+        "fixture": "default",
+        "kind": "stderr",
+        "before": "/workspace/scratch/3edffb787db3/baseline-audio/default.stderr",
+        "after": "/workspace/scratch/3edffb787db3/candidate-audio/default.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "whole_bytes_equal": true
+      },
+      {
+        "fixture": "nominal",
+        "kind": "wav",
+        "before": "/workspace/scratch/3edffb787db3/baseline-audio/nominal.wav",
+        "after": "/workspace/scratch/3edffb787db3/candidate-audio/nominal.wav",
+        "bytes": 65580,
+        "sha256": "7cbe9d547a23a3b6d696e75652064c4c8aacc0ffe4d4cf385b889e9206f41630",
+        "whole_bytes_equal": true,
+        "matches_retained_receipt": true
+      },
+      {
+        "fixture": "nominal",
+        "kind": "stdout",
+        "before": "/workspace/scratch/3edffb787db3/baseline-audio/nominal.stdout",
+        "after": "/workspace/scratch/3edffb787db3/candidate-audio/nominal.stdout",
+        "bytes": 1289,
+        "sha256": "847fa985f66e1818fdce35e35d9bca4c8840f201f6a16c12ce0406a4138172d8",
+        "whole_bytes_equal": true,
+        "matches_retained_receipt": true
+      },
+      {
+        "fixture": "nominal",
+        "kind": "stderr",
+        "before": "/workspace/scratch/3edffb787db3/baseline-audio/nominal.stderr",
+        "after": "/workspace/scratch/3edffb787db3/candidate-audio/nominal.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "whole_bytes_equal": true
+      }
+    ]
+  },
+  "linux_binary_identities": {
+    "../build-native/hammond_registration": {
+      "bytes": 253280,
+      "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+      "matches_prior_qualified_binary": true
+    },
+    "../build-native/hammond_render": {
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "matches_prior_qualified_binary": true
+    },
+    "../build-native/apps/standalone/hammond_standalone": {
+      "bytes": 4094520,
+      "sha256": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8",
+      "matches_prior_qualified_binary": true
+    }
+  },
+  "original_log_identities": {
+    "w08-path-build.log.gz": {
+      "packed_sha256": "0fd799e1612991221d58aff4028a970f40ab4b8455138289ed2f24491f71c150",
+      "raw_bytes": 4260,
+      "raw_sha256": "cbe73d427560297d0084ff6f403acfa463f26c4830d6f9e96548919750083cf3",
+      "matches_receipt": true
+    },
+    "w08-path-tests.log.gz": {
+      "packed_sha256": "1c9ecdddff57abe96fc6e35559956ffb12f84bce366c849b05ff092399e06c7c",
+      "raw_bytes": 1311,
+      "raw_sha256": "4bffa89c159271898f222877265e966d8ed34de2958b9e513bde7ff32b3a7848",
+      "matches_receipt": true
+    },
+    "w07-final-ctest.log.gz": {
+      "packed_sha256": "c13137e8c27adf4017f08731ba8f0a7d3658adea97e223bbefcbcec41225a4a6",
+      "raw_bytes": 47266,
+      "raw_sha256": "8fae602a0bdb7292894cbacea58d4c3ca2ecb36bc32be0d43b37c13658fe1ce5",
+      "matches_receipt": true
+    },
+    "w07-final-ctest-detail.log.gz": {
+      "packed_sha256": "a39cf506dd511b2d762856358614f243b180766bbc7be4bf0bc0a4ec7b648c51",
+      "raw_bytes": 392412,
+      "raw_sha256": "8d65ecc9c49df311cdd3fca6b96bab94f0d20a0f46892a3204041dc06917f3b2",
+      "matches_receipt": true
+    },
+    "w07-integrity-repair.log.gz": {
+      "packed_sha256": "e76bbeb0e814ba5a77a49219481c7705e7434bbfa49ea95922a2847aeb402fb5",
+      "raw_bytes": 345,
+      "raw_sha256": "949e31b4410643d2329ff998d3816e66e6a2ce343160e43b8c8e99442588b78f",
+      "matches_receipt": true
+    }
+  },
+  "retained_audition_originals": {
+    "starter-auditions-originals.tar.gz": {
+      "bytes": 1698038,
+      "sha256": "e61f5ff3b95966504f4261914339bc0eee759db1837993bbf9d29742b81f9858",
+      "matches_original_receipt": true
+    },
+    "starter-auditions.json": {
+      "bytes": 80972,
+      "sha256": "01ae18231688c215512059850a7784c4451e502b37a640b2ef34934d55e3160d",
+      "matches_original_receipt": true
+    },
+    "starter-auditions-original.md.gz": {
+      "raw_bytes": 5396,
+      "raw_sha256": "8960f21cf554e7f82210b6984bcd08de00878626804507d38a9a7768f40b7b8b",
+      "matches_original_receipt": true
+    }
+  },
+  "qualification_boundaries": {
+    "original_full_run": {
+      "tests": 235,
+      "passed": 234,
+      "failed": [
+        "python_test_repository_integrity"
+      ],
+      "elapsed_seconds": 225.77,
+      "reason": "Copied audition Markdown links pointed to absent sibling WAVs; original complete audio retained elsewhere."
+    },
+    "focused_report_link_repair": {
+      "ctest": "python_test_repository_integrity",
+      "result": "passed",
+      "elapsed_seconds": 3.37,
+      "raw_log_sha256": "949e31b4410643d2329ff998d3816e66e6a2ce343160e43b8c8e99442588b78f",
+      "archive": "w07-integrity-repair.log.gz",
+      "scope": "Documentation/artifact delivery changed only; no native source changed, original234passes remain source-bound. The full235run was not relabeled as all-pass."
+    },
+    "linux_guard_only": {
+      "build": "succeeded",
+      "ctest_total": 6,
+      "passed": 6,
+      "elapsed_seconds": 11.33,
+      "scope": "Linux affected gates; Windows-specific spelling regression must run on hosted Windows."
+    },
+    "windows_body_qualified_by_linux": false,
+    "root_reported_hosted_snapshot": {
+      "source_receipt": "followup-windows-step-observation.json",
+      "observer": "root",
+      "independently_queried_by_a56": false,
+      "observed_at": "2026-11-16 12:54:48 UTC",
+      "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+      "job_id": 133307538161,
+      "job_status": "in_progress",
+      "job_conclusion": null,
+      "steps": [
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-16T12:50:38Z",
+          "completed_at": "2026-11-16T12:54:05Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-16T12:54:05Z",
+          "completed_at": "2026-11-16T12:54:46Z"
+        }
+      ],
+      "limit": "Two successful exact-source Windows steps; no completed-job/native-Windows/all-platform inference."
+    }
+  },
+  "configured_ci": {
+    "required_core_suites": [
+      "test_control_file_input",
+      "test_standalone_registration_library",
+      "python_test_registration_cli",
+      "python_test_registration_cli_admission",
+      "python_test_render_controls",
+      "python_test_render_controls_admission",
+      "python_test_starter_registration_generator",
+      "python_test_starter_registration_oracle",
+      "python_test_starter_auditions",
+      "python_test_registration_install",
+      "python_test_reference_apron_art",
+      "python_test_reference_apron_raster_checker"
+    ],
+    "native_sanitizer_pairs": [
+      "test_standalone_ui=test_standalone_ui",
+      "test_standalone_preset_ui=test_standalone_preset_ui",
+      "test_standalone_workspaces_author=test_standalone_workspaces_author",
+      "test_standalone_workspace_acceptance=test_standalone_workspace_acceptance",
+      "test_standalone_projection=test_standalone_projection",
+      "test_standalone_inspection_author=test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance=test_standalone_inspection_acceptance",
+      "test_standalone_workspace_continuity=test_standalone_workspace_continuity",
+      "test_standalone_drawing=test_standalone_drawing",
+      "test_standalone_quad_drawing=test_standalone_quad_drawing",
+      "test_standalone_workspace_raster=test_standalone_workspace_raster",
+      "test_standalone_scaled_view=test_standalone_scaled_view",
+      "test_standalone_preset_raster=test_standalone_preset_raster",
+      "test_standalone_reference_layout=test_standalone_reference_layout",
+      "test_standalone_inspection_raster=test_standalone_inspection_raster",
+      "test_standalone_material_acceptance=test_standalone_material_acceptance",
+      "test_standalone_channel_modes=test_standalone_channel_modes",
+      "test_standalone_expression_calibration=test_standalone_expression_calibration",
+      "test_standalone_channel_acceptance=test_standalone_channel_acceptance",
+      "test_standalone_product_visual=test_standalone_product_visual",
+      "test_standalone_upper_rack_material_raster=test_standalone_upper_rack_material_raster",
+      "test_standalone_lower_rack_material_raster=test_standalone_lower_rack_material_raster",
+      "test_standalone_footage_typography_raster=test_standalone_footage_typography_raster",
+      "test_standalone_manual_key_material_raster=test_standalone_manual_key_material_raster",
+      "test_standalone_reference_apron_art=test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster=test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable=test_standalone_reference_apron_unavailable",
+      "test_standalone_native_calibration=hammond_standalone_calibration_probe"
+    ],
+    "native_release_requires_actual_starter_load": true,
+    "windows_unicode_actual_generator_checks_retained": true,
+    "limits": "Static workflow inspection and extracted inventories; not hosted execution by A56."
+  },
+  "source_inspection_observations": [
+    "Raw ambiguity checks precede absolute/weakly_canonical in identify_path and resolve_root; resolved checks remain.",
+    "Only exact dot/dot-dot components bypass Windows trailing-dot/space/colon ambiguity refusal.",
+    "Original three Windows refusal spellings retained and three variants added; statuses, zero authorization, no staging, inventory and protected bytes checked.",
+    "Two raw navigation positives traverse root and protected-path entry points and require one authorization plus literal bytes.",
+    "Whole corresponding ASCII component proof retains fallback Unicode uncertainty, native equivalent, ancestor/suffix and unresolved-link checks.",
+    "CLI retains invocation/root checks; complete catalog, exact key and full snapshot revalidation preserve Registration expression admission.",
+    "Shared input reads original leaf through bounded no-follow/type admission; candidate assignment occurs only after parse, serialization and close succeed.",
+    "Registration merge preserves supplied current expression; Performance and generic renderer/Load restore complete state.",
+    "Renderer restores at frame zero, skips default setters on controls branch and applies score events afterward.",
+    "Aggregate audition report errors identify observed report state and preserve partial bytes without retry/cleanup.",
+    "Registration installer explicitly excludes ordinary installation and copies fixed 2+26 inventories; partial sequential copies remain documented.",
+    "Standalone installer appends apron manifest/reference_apron provenance with configured metadata hashes; inventories remain 17 MIDI-off/21 MIDI-on.",
+    "Physical fidelity, literal whole-interface 1:1, device/host, callback deadlines/retirement, native accessibility, rights and signed distribution remain open."
+  ],
+  "deliverables": {
+    "docs/reviews/PRESET_FINAL_CODE_ADMISSION.md": {
+      "bytes": 8050,
+      "sha256": "5c1c647de6a539deb085fce4fbfea1fd1d53f24241807ffb77e3908aec857e54",
+      "whitespace_word_count": 934
+    },
+    "docs/development/2026-11-16-preset-library-continuation/notes/A56.md": {
+      "bytes": 3085,
+      "sha256": "6018554c0aa767956178fabb1658daa754656c8ccf9bb2cc35cf4e158263cb64",
+      "whitespace_word_count": 362
+    }
+  }
+}

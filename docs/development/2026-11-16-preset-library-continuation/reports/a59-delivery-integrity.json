@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-16T13:07:02.656025+00:00",
+  "scope": "Document/receipt/archive integrity inspection only; no software tests or product qualification executed by A59.",
+  "documents": [
+    {
+      "file": "docs/reviews/PRESET_FINAL_HOSTED_ADMISSION.md",
+      "words": 822,
+      "bytes": 6876,
+      "sha256": "913a5afcaf1e16f1ac418ac90382c06530071294d5abf45d748d6ee48b5c3075"
+    },
+    {
+      "file": "docs/development/2026-11-16-preset-library-continuation/notes/A59.md",
+      "words": 345,
+      "bytes": 2850,
+      "sha256": "eef81620406420ac05640bcf9ee5687ecdae4dc4290b18d10acdf11fd330f4d5"
+    }
+  ],
+  "relative_links_checked": 8,
+  "all_relative_links_resolve": true,
+  "exact_source_jobs": 13,
+  "successful_non_macos_jobs": 10,
+  "macos_cancelled_without_execution": 3,
+  "aggregate_workflow_conclusions": [
+    {
+      "run_id": 43869771157,
+      "conclusion": "failure"
+    },
+    {
+      "run_id": 43869771215,
+      "conclusion": "failure"
+    },
+    {
+      "run_id": 43869771192,
+      "conclusion": "failure"
+    }
+  ],
+  "original_decoded_logs": [
+    {
+      "file": "a59-native-sanitizer-original-decoded.log.gz",
+      "raw_sha256": "eaa64a6ed3ab91c0b59d9511938f86ae7937b305e3b7f6b34d768becc8714247",
+      "gzip_bytes": 90454,
+      "raw_bytes": 1132640,
+      "bom": true,
+      "crlf_lines": 0,
+      "lf_lines": 5356
+    },
+    {
+      "file": "a59-windows-core-original-decoded.log.gz",
+      "raw_sha256": "bababd7c21119341496da9a7e267fb655b62c21c6f770d99a9d21ab1bde008dc",
+      "gzip_bytes": 63602,
+      "raw_bytes": 596791,
+      "bom": true,
+      "crlf_lines": 3818,
+      "lf_lines": 3826
+    },
+    {
+      "file": "a59-windows-native-original-decoded.log.gz",
+      "raw_sha256": "40eb13170ceaad99803313442014ea49e2825433fa80643f73b56b5a528e959e",
+      "gzip_bytes": 87216,
+      "raw_bytes": 602449,
+      "bom": true,
+      "crlf_lines": 4340,
+      "lf_lines": 4352
+    }
+  ],
+  "retained_gzip_total_bytes": 241272,
+  "local_head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+  "non_documentary_changes": [],
+  "final_hosted_receipt_sha256": "d16b9b13bdf5fc57f1f670a188ef69d9afaacbdb6440612802fc315ba8de1f3e",
+  "observer_recovery": "One intermediate report replacement patch rejected multiple operations on the same file before applying changes. A single safe quoted-input overwrite completed the final receipt; all final JSON and log hashes checked."
+}

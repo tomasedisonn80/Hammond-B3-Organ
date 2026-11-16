@@ -1,60 +1,96 @@
 # Project plan: Hammond B-3 and Leslie
 
-## Runtime and interface continuation — 16 November 2026
+<!-- preset-plan-current:start -->
+## Current portable registrations and reference apron — 16 November 2026
 
-The [current session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md) and [actual worker ledger](development/2026-11-16-runtime-continuation/assignments.json) identify the active checkout and ownership. All 500 PDF pages have been freshly covered by six readers. Selected next work is isolated causal contact audio and the live manual key materials, governed by independently reviewed contracts before implementation. The exact recovered conversion/typography tree is published as `f56b0f3`; its dated earlier evidence remains below. The nominal dry Engine and every M0–M9 exit remain binding.
+The [session scope](development/2026-11-16-preset-library-continuation/README.md),
+[checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-preset-library-continuation/assignments.json)
+and [integration decisions](development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md)
+govern this continuation. Its writable checkout is
+`/workspace/scratch/3edffb787db3/Hammond-B3-Organ`; root coordinates
+`../build-native`. **All 60 new distinct workers are accepted across ten complete
+staffing waves of six**, with a passing [strict record check](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json).
+Earlier sessions supply no worker credit or unfinished-owner
+closure; each accepted delivery retains its own identity and evidence.
 
-## Earlier conversion/material continuation — 16 November 2026
+The team's A01–A06 freshly covered all **500 atlas pages**, with exact ranges in
+this session's [coverage receipt](development/2026-11-16-preset-library-continuation/reports/atlas-reading-coverage.json).
+The [atlas delivery crosswalk](reviews/ATLAS_DELIVERY_CROSSWALK.md) maps these
+additions to the complete plan. The atlas's **80 chapters / ten research waves**,
+this request's staffing waves and **M0–M9 product milestones** organize different
+work. Reading and staffing completion cannot satisfy product exits or create
+missing measurements. Every milestone row below remains unchanged and binding.
 
-This session's source is `/workspace/scratch/0d55e62af118/Hammond-B3-Organ`; root coordinates `../build-native`. The [current handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md) and [actual ledger](development/2026-11-16-conversion-material/assignments.json) supersede the earlier session's workspace and next-task pointers below. This request requires **60 new workers in ten waves**; its own ledger records actual progress. Earlier sixty-worker closures do not count again.
+[Operator guide](REGISTRATION_GUIDE.md) · [Current status](STATUS.md) ·
+[Next actions](NEXT_STEPS.md) · [Current native gallery](design/native-gallery-preset-v1/README.md) ·
+[Milestone exits](#milestones-and-exit-evidence) · [Owner recovery](#current-ownership-and-source).
 
-The first four waves are published as **`3520c96adcdcf4ce4bcb860082354bf0050a89c3`**, exact tree `1013bbd914a0957ca2c164ef02ca5410a8dcde6b`, with nonforced expected-head publication and independent Git fetch. They deliver explicit certified fractional-to-grid conversion, a separate five-file installer and accepted Lower material. [Publication receipt](development/2026-11-16-conversion-material/reports/wave04-publication.json). Completed first hosted matrix: **11/13 jobs pass**. macOS core fails two test-only path assumptions and Windows core fails the same unresolved-parent comparison. All five native standalone and all three native VST3 jobs pass. [Initial and completed evidence](development/2026-11-16-conversion-material/reports/wave04-hosted-complete.json) and the [raw macOS log](development/2026-11-16-conversion-material/reports/hosted-3520c96-macos-core.log) are retained. A33 has repaired the test path assumptions, with 46 local methods passing; exact repaired hosted results remain pending. Waves 5–6 add operating/install acceptance and **admitted T1 manual-label typography**, with 110 paired frames and three actual-size visual reviews. The initial coherent run passes 218/219; the sole old-font product expectation was precisely transitioned and rebuilt, and its fresh 76-case test passes. [Composite qualification](development/2026-11-16-conversion-material/reports/rim-before-qualified.json) retains this exact sequence rather than claiming a second full run.
+### Bounded M3 and M9 progress
 
-The [operating guide](CONTACT_GRID_CONVERSION_GUIDE.md) explains real conversion/refusal commands and certificate limits. The [actual T1 gallery](../examples/demos/footage-typography-v1/README.md) shows the latest admitted UI stage. The original Lower v1 sampling failure is preserved; independently admitted v2 passes 98 pairs and 35 inequalities. Literal whole-interface 1:1, physical calibration, native accessibility and live contact audio remain open. All M0–M9 exit criteria and musical identities remain binding.
+| Delivered work | Evidence and boundary |
+| --- | --- |
+| **Portable console state — M3/M9** | The headless CLI lists, inspects, imports and materializes published saved controls. Registration materialization preserves supplied current expression; Performance restores saved expression. [First-use admission](reviews/REGISTRATION_FIRST_USE_ADMISSION.md) retains collision/refusal behavior and the conservative Unicode-sibling limit; use distinct ASCII `inputs`/`outputs` branches. Existing LibraryModel/browser integration retains its owner. |
+| **Direct audition — M3/M9** | Additive `hammond_render --controls FILE` restores the complete file regardless of suffix, then applies score events. The [renderer contract](REGISTRATION_RENDER_CONTRACT.md) preserves the no-controls path. Saved controls contain no note, phase, contact or percussion history. |
+| **Proposed pack — M9** | Twelve original software recipes produce 24 canonical files. The [audio admission](reviews/STARTER_AUDIO_PROVENANCE_ADMISSION.md) preserves all 32 original one-second 48 kHz clips and 16 equal whole-WAV suffix pairs. These are proposed-unmeasured nominal fixtures; documentary factory registrations and physical calibration remain separate. |
+| **Installation and native recall — M9** | Explicit copy-only installation provides [2 RegistrationTools + 26 StarterRegistrations files](reviews/REGISTRATION_INSTALL_ADMISSION.md); importing remains explicit. [Installed use](reviews/INSTALLED_REGISTRATION_RENDER_ADMISSION.md) covers relocation and scoped rendering. [Generic native Load](reviews/STARTER_NATIVE_LOAD_ADMISSION.md) restores complete controls in four Linux dummy-SDL processes, including expression; native browser completion and real-device journeys remain separate. |
+| **Masked lower apron — M9** | The [25-case comparison](reviews/REFERENCE_APRON_RASTER_ADMISSION.md) checks 61,780,011 pixels with zero forbidden/footer changes and exact creation-failure fallbacks. At canonical 1672×941, 32,544 exposed source pixels and 56,016 live-footer pixels match exactly. Resizes follow the frozen mapping; eight hidden/inactive cases remain exact. The thirteen-view gallery records actual software-rendered application frames. |
 
-### Retained earlier-session record
+The [compatibility admission](reviews/REGISTRATION_COMPATIBILITY_ADMISSION.md)
+preserves the **nominal dry Engine**, 91 shared free-running sources, 47 parameter
+identities, `B3CONTROLS4` with readers 1–3, plugin UUIDs, musical ownership and
+phase/percussion histories. The interface retains 147 playing keys, 24 presets,
+four banks and 68 controls including presets. Presentation never changes sound
+state, routing or clocks.
 
-The dated streaming-session qualification, workspace and future assignments below are retained history. Use the active handoff above for this session's setup and current work; do not treat the older converter/Lower proposals as still unimplemented.
+### Source-specific qualification and publication
 
-**Code qualification update, 16 November 2026:** implementation `af2b747` and the
-Windows I/O repair `2f57723` are published and independently fetched. All **13
-hosted jobs pass at `2f57723`**, as recorded in the
-[completed platform receipt](development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json).
-The original `af2b747` Windows failure remains separate. Local qualification is
-[210/210 in 191.90 seconds](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json),
-then the [sole EOF cleanup](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json),
-then [3/3 affected I/O suites](development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json).
-Earlier receipts keep their original inputs and timings. The
-[session checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
-records completed worker closure and source-qualified publication history.
-[All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
-Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
+The [first publication](development/2026-11-16-preset-library-continuation/reports/first-publication.json)
+is `20739f6280b95e567e84615d5c5aee443fc3b93d`. The independently verified
+[follow-up publication](development/2026-11-16-preset-library-continuation/reports/followup-publication.json)
+is **`cc6be852d616ec5887485e3fccc39ddb1db22006`**, with that first commit as sole
+parent. Its exact tree `201e38b05901fa30e3d053b9c245829818a5b52e` equals authored
+local `503ed724eaeb3c31eae3c6f31b31cc9a2acd9eb3`; commit metadata differs.
+Later documentation overlays require their own publication.
 
-**Current streaming/material continuation — 15–16 November 2026:** the
-[session](development/2026-11-15-streaming-continuation/README.md) completed six
-readings covering all 500 atlas pages and implements the **isolated M3 causal
-integer-grid contact trajectory** plus **M9 Upper-rack inner-metal material**.
-The [causal-grid guide](CAUSAL_CONTACT_GRID_GUIDE.md) and
-[twelve actual native views](../examples/demos/upper-rack-material-v1/README.md)
-route to their independent, source-bound evidence. The default dry Engine and
-established musical identities are preserved. The
-[coherent local gate](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
-passed **210/210 CTests in 191.89 seconds** at its original inputs; the update
-above records the later local and published-platform results. The initial base
-is `4aac394`, the implementation is `af2b747`, and the repaired code is `2f57723`.
-All 60 scoped deliveries are accepted and strict record validation passes; use the
-[live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
-and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json).
+The [integrated local run](development/2026-11-16-preset-library-continuation/reports/w07-integrated-qualification.json)
+remains **234/235**, followed by a separately passing report-link integrity
+repair. Original audition bytes, reports and failures are retained. The
+[Windows path-guard repair](reviews/WINDOWS_REGISTRATION_PATH_ADMISSION.md)
+has six affected Linux passes and unchanged CLI/renderer/app binaries; this does
+not execute the Windows body. The [completed first-head matrix](development/2026-11-16-preset-library-continuation/reports/first-ci-final-observation.json)
+has **6 successes, 4 failures and 3 macOS cancellations**. The failures include
+copied audition links and Windows ambiguous paths, repaired in the follow-up.
+All cancelled macOS jobs had `runner_id: 0` and no steps; their cause remains
+unestablished. The [final follow-up observation](reviews/PRESET_FINAL_HOSTED_ADMISSION.md)
+now records **ten successful Linux/Windows jobs**, including 202/202 Windows core,
+61/61 Windows native, actual Unicode-checkout generation and 28/28 native
+sanitizer gates. Three macOS jobs are cancelled without a runner or steps; all
+three workflow aggregates report failure. No macOS execution or cancellation
+cause is established, so the complete required matrix remains open. Older results
+do not qualify the changed source.
 
-The earlier offline contact reference and canonical wide composition remain
-implemented baselines. Additive source leakage, harmonic-source work,
-scanner/library work, crossover/native-retirement work and R4 retain their
-separate ownership and source-specific evidence below. The older percussion-only
-layout is historical; its allocation residual was superseded by the wide
-composition.
-**All M0–M9 exit criteria remain in force.** Numerical acceptance, software
-composition, physical fidelity, accessibility and literal whole-interface 1:1
-are separate gates.
+### Remaining gates and continuation order
+
+Obtain actual macOS execution and preserve source-specific publication evidence. Follow
+[NEXT_STEPS](NEXT_STEPS.md) for admitted native journeys and separately reviewed
+visual slices; recover each owner before touching shared paths. M3 full-organ
+scheduling, lifecycle, contact captures, tap loading and expression/percussion
+circuits remain open. Preserve scanner G5 same-Hz failure and ScannerLineFoh
+gates; complete revision-specific AO-28/Leslie graphs and dry G–G validation
+before downstream fitting. R4 acceptance stays with its waveform owner; R5
+audible policy and R6 runtime/Engine integration remain separate.
+
+M8 still requires identified immutable measurements, uncertainty, held-out
+validation and retained failures. M9 still requires actual platform/host/device
+journeys, callback deadlines/retirement, native accessibility, rights and signed
+packaging. **Literal whole-interface 1:1 remains unmet and unwaived**; narrow
+apron equality does not close it. Root preserves concurrent advances, runs
+affected coherent gates, updates recovery records and publishes accepted work
+with a fresh expected parent and no force. Historical sections below retain
+earlier sources and obligations; their old next-task wording is not a current
+assignment.
+<!-- preset-plan-current:end -->
 
 ## Product objective and evidence boundary
 
@@ -76,7 +112,7 @@ included no newly acquired instrument measurements (p. 2). New implementations a
 reconstructions retain their own provenance; absent companion results are not tests
 that this repository has executed.
 
-The streaming session's six new A01–A06 readers retain complete textual coverage
+The historical streaming session's six new A01–A06 readers retain complete textual coverage
 of pages 1–500, with individual page ranges and extract hashes in its
 [coverage receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
 The earlier execution session's distinct
@@ -119,9 +155,18 @@ adapter smoke test may start after M1/M2; that does not complete product release
 
 ## Current ownership and source
 
+Recover these authorities before assigning overlapping paths. Root retains shared
+integration, the coordinated build, acceptance and publication; worker ownership
+ends at handoff. Earlier completion counts remain historical, and no row transfers
+unfinished owner-local work or permits edits to another checkout.
+
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| **Streaming/material continuation**, base `4aac394cde4da40906b615573a8779aee2d9a37a` | Current isolated M3 integer-grid trajectory and narrow M9 Upper-rack material; [scope](development/2026-11-15-streaming-continuation/SCOPE.md), [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md), [actual ledger](development/2026-11-15-streaming-continuation/assignments.json). The requested sixty-worker session has 60 accepted deliveries and passing strict records. Root owns its coordinated build, acceptance and publication; the [closure handoff](STREAMING_CONTINUATION_CLOSURE.md) records scope and next work. |
+| **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Current complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
+| Accessibility continuation, base `0865bc1584e4bda569fe2ccacfac87b842b8d906` | Usable numeric values, semantics and drawbar/cap surfaces; [scope](development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](development/2026-11-16-accessibility-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-accessibility-continuation/assignments.json). Semantic inspection does not establish a native accessibility provider. |
+| Runtime/interface continuation, base `3520c96` | Isolated causal contact audio and live manual key materials; [session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-runtime-continuation/assignments.json). Recover current accepted source before extending these scopes. |
+| Conversion/material continuation, base `a411268fd498f65c083203137831bf5afed83bd8` | Certified fractional-to-grid conversion, Lower rack, T1 typography and retained rim/material work; [handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md), [ledger](development/2026-11-16-conversion-material/assignments.json). Published delivery does not transfer unfinished acceptance. |
+| Historical **Streaming/material continuation**, base `4aac394cde4da40906b615573a8779aee2d9a37a` | Retained isolated M3 integer-grid trajectory and narrow M9 Upper-rack material; [scope](development/2026-11-15-streaming-continuation/SCOPE.md), [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md), [actual ledger](development/2026-11-15-streaming-continuation/assignments.json). The requested sixty-worker session has 60 accepted deliveries and passing strict records. Root owns its coordinated build, acceptance and publication; the [closure handoff](STREAMING_CONTINUATION_CLOSURE.md) records scope and next work. |
 | Earlier execution continuation, base `33fa95d51e44234eef47ee21c03d29b2b311a5ee` | Delivered M3 offline contact reference and M9 canonical wide Play. Preserve its [scope](development/2026-11-15-execution-continuation/SCOPE.md), [checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md), [actual ledger](development/2026-11-15-execution-continuation/assignments.json) and source results as history. Their presence in the new base does not close the earlier ledger or transfer unfinished owner-local work. |
 | Audio continuation | Delivered additive M2 sparse source leakage and its explicit offline audition; earlier percussion-stage captures retain their identity. Preserve remaining owner-local work under its [checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md). |
 | Playable continuation | Separate harmonic-source/offline and reference-rack work; recover actual implementation/publication state from its [checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md) before integration. |
@@ -130,7 +175,9 @@ adapter smoke test may start after M1/M2; that does not complete product release
 | Waveform continuation | Separate R4 implementation and remaining acceptance; [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md) and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). |
 | Completed product and reference-refinement sessions | Their [product closure](PRODUCT_CONTINUATION_CLOSURE.md) and [refinement closure](REFERENCE_REFINEMENT_CLOSURE.md) preserve accepted work, original failures and exact published/hosted identities. Their sixty-worker records are historical. |
 
-The initial base tree was `3605c9ce098a052afc10b2969fefe31e15644fe9` at
+### Historical source and qualification records
+
+The streaming session's initial base tree was `3605c9ce098a052afc10b2969fefe31e15644fe9` at
 `4aac394cde4da40906b615573a8779aee2d9a37a`. The
 [implementation publication](development/2026-11-15-streaming-continuation/reports/implementation-publication.json)
 verifies `af2b74760ee195c9497b314a1a29172f5238dd44`; the
@@ -165,7 +212,69 @@ workflows. Claim paths before editing; do not operate another session's build or
 replace its evidence. Fresh remote advances must be inspected and reconciled
 before guarded, nonforced publication.
 
-## Current implementation design choices
+## Historical session snapshots
+
+These dated entries preserve their original qualification sequences, failures,
+workspaces and duties. Use the current opening and owner checkpoints for new
+assignments; the older converter, Lower and T1 proposals have since advanced.
+
+### Retained runtime and interface continuation — 16 November 2026
+
+The [current session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md) and [actual worker ledger](development/2026-11-16-runtime-continuation/assignments.json) identify the active checkout and ownership. All 500 PDF pages have been freshly covered by six readers. Selected next work is isolated causal contact audio and the live manual key materials, governed by independently reviewed contracts before implementation. The exact recovered conversion/typography tree is published as `f56b0f3`; its dated earlier evidence remains below. The nominal dry Engine and every M0–M9 exit remain binding.
+
+### Retained conversion/material continuation — 16 November 2026
+
+This session's source is `/workspace/scratch/0d55e62af118/Hammond-B3-Organ`; root coordinates `../build-native`. The [current handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md) and [actual ledger](development/2026-11-16-conversion-material/assignments.json) supersede the earlier session's workspace and next-task pointers below. This request requires **60 new workers in ten waves**; its own ledger records actual progress. Earlier sixty-worker closures do not count again.
+
+The first four waves are published as **`3520c96adcdcf4ce4bcb860082354bf0050a89c3`**, exact tree `1013bbd914a0957ca2c164ef02ca5410a8dcde6b`, with nonforced expected-head publication and independent Git fetch. They deliver explicit certified fractional-to-grid conversion, a separate five-file installer and accepted Lower material. [Publication receipt](development/2026-11-16-conversion-material/reports/wave04-publication.json). Completed first hosted matrix: **11/13 jobs pass**. macOS core fails two test-only path assumptions and Windows core fails the same unresolved-parent comparison. All five native standalone and all three native VST3 jobs pass. [Initial and completed evidence](development/2026-11-16-conversion-material/reports/wave04-hosted-complete.json) and the [raw macOS log](development/2026-11-16-conversion-material/reports/hosted-3520c96-macos-core.log) are retained. A33 has repaired the test path assumptions, with 46 local methods passing; exact repaired hosted results remain pending. Waves 5–6 add operating/install acceptance and **admitted T1 manual-label typography**, with 110 paired frames and three actual-size visual reviews. The initial coherent run passes 218/219; the sole old-font product expectation was precisely transitioned and rebuilt, and its fresh 76-case test passes. [Composite qualification](development/2026-11-16-conversion-material/reports/rim-before-qualified.json) retains this exact sequence rather than claiming a second full run.
+
+The [operating guide](CONTACT_GRID_CONVERSION_GUIDE.md) explains real conversion/refusal commands and certificate limits. The [actual T1 gallery](../examples/demos/footage-typography-v1/README.md) shows the latest admitted UI stage. The original Lower v1 sampling failure is preserved; independently admitted v2 passes 98 pairs and 35 inequalities. Literal whole-interface 1:1, physical calibration, native accessibility and live contact audio remain open. All M0–M9 exit criteria and musical identities remain binding.
+
+### Retained streaming-session record
+
+The dated streaming-session qualification, workspace and future assignments below are retained history. Use the active handoff above for this session's setup and current work; do not treat the older converter/Lower proposals as still unimplemented.
+
+**Code qualification update, 16 November 2026:** implementation `af2b747` and the
+Windows I/O repair `2f57723` are published and independently fetched. All **13
+hosted jobs pass at `2f57723`**, as recorded in the
+[completed platform receipt](development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json).
+The original `af2b747` Windows failure remains separate. Local qualification is
+[210/210 in 191.90 seconds](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json),
+then the [sole EOF cleanup](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json),
+then [3/3 affected I/O suites](development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json).
+Earlier receipts keep their original inputs and timings. The
+[session checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+records completed worker closure and source-qualified publication history.
+[All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
+Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
+
+**Historical streaming/material continuation — 15–16 November 2026:** the
+[session](development/2026-11-15-streaming-continuation/README.md) completed six
+readings covering all 500 atlas pages and implements the **isolated M3 causal
+integer-grid contact trajectory** plus **M9 Upper-rack inner-metal material**.
+The [causal-grid guide](CAUSAL_CONTACT_GRID_GUIDE.md) and
+[twelve actual native views](../examples/demos/upper-rack-material-v1/README.md)
+route to their independent, source-bound evidence. The default dry Engine and
+established musical identities are preserved. The
+[coherent local gate](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
+passed **210/210 CTests in 191.89 seconds** at its original inputs; the update
+above records the later local and published-platform results. The initial base
+is `4aac394`, the implementation is `af2b747`, and the repaired code is `2f57723`.
+All 60 scoped deliveries are accepted and strict record validation passes; use the
+[live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json).
+
+The earlier offline contact reference and canonical wide composition remain
+implemented baselines. Additive source leakage, harmonic-source work,
+scanner/library work, crossover/native-retirement work and R4 retain their
+separate ownership and source-specific evidence below. The older percussion-only
+layout is historical; its allocation residual was superseded by the wide
+composition.
+**All M0–M9 exit criteria remain in force.** Numerical acceptance, software
+composition, physical fidelity, accessibility and literal whole-interface 1:1
+are separate gates.
+
+## Standing implementation design choices
 
 See [IMPLEMENTATION_CONTRACT.md](IMPLEMENTATION_CONTRACT.md) for the initial API and
 model scope. Use C++20 standard-library code without host or UI dependencies in the
@@ -187,7 +296,7 @@ polyphony-dependent normalization must not disguise source-sharing mistakes.
 Data loading and profile replacement happen with processing stopped until a
 separately tested publication/retirement protocol exists.
 
-## Current M3 reference and next streaming phase
+## Historical M3 reference and continuation proposals
 
 The [isolated causal-grid contract](CAUSAL_CONTACT_GRID_CONTRACT.md) is now
 implemented as `causal-contact-grid-v1`. Its exact rational edges, persistent
@@ -261,7 +370,7 @@ synchronized identified contact/source/dry captures; see
 [next actions](NEXT_STEPS.md) and the
 [reviewed streaming proposal](CONTACT_STREAMING_NEXT_DESIGN.md).
 
-### Prepared continuation routes
+### Historical prepared continuation routes
 
 The [reviewed next-proposal table](NEXT_STEPS.md#reviewed-next-proposals-and-decisions)
 records concrete blockers and exclusive-owner boundaries. Start from
@@ -278,7 +387,7 @@ correspondence as well as scalar error; audio needs bounded wider-rational
 arithmetic, atomic history and full-window grading. Capacity, native semantics
 and physical acquisition keep separate exits.
 
-## Current M6 foundation and next numerical phase
+## Retained M6 foundation and numerical ownership
 
 The [ideal Leslie crossover](LESLIE_CROSSOVER_CONTRACT.md) is implemented as an
 independent four-state electrical module, with fixed documentary L/C values,
@@ -306,7 +415,7 @@ Root's [plot refresh](development/2026-11-15-product-continuation/reports/crosso
 changes only generator-hash metadata; every decoded pixel remains identical.
 This is evidence admission, not a new numerical realization or physical result.
 
-## Current rotary implementation and remaining model gates
+## Retained rotary implementation and remaining model gates
 
 Native [R2 motion](ROTARY_MOTION.md) and
 [R3 historical propagation](ROTARY_PROPAGATION.md) are implemented and
@@ -341,7 +450,7 @@ the [physical acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md) remain
 separate dependencies. Numerical primitives and documentary artwork do not
 close M5–M8 fidelity gates.
 
-## User interface direction and current implementation
+## Retained interface direction and earlier implementation evidence
 
 The art direction on pp. 409-444 specifies a walnut/charcoal/brass instrument,
 readable drawbars and manuals, a cabinet view, player and service workspaces,
@@ -442,11 +551,11 @@ primary logs own detailed test/instrumentation claims. Preserve original failure
 source-bound timings and the [completed refinement evidence](REFERENCE_REFINEMENT_CLOSURE.md).
 Later documentation or ledger changes require their affected integrity checks,
 and changed build/test sources require appropriate coherent qualification.
-The current streaming session has sixty accepted scoped deliveries in ten waves;
+The historical streaming session has sixty accepted scoped deliveries in ten waves;
 its own [strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
 verifies all sixty retained identities and note hashes. The completed product
 batch's strict checker and thirteen jobs at 80b8cce remain historical evidence,
-not validation of this session; the previous execution ledger is not declared
+not validation of the current portable-registration session; the previous execution ledger is not declared
 complete. [Record guidance](NEXT_STEPS.md#validate-this-sessions-actual-records)
 keeps the distinction explicit. Planned assignments, earlier workers and repeated
 followups cannot create new worker credit or close unfinished product gates.

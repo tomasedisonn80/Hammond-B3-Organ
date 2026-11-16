@@ -1,5 +1,166 @@
 # Next steps
 
+<!-- preset-library-next:start -->
+## Current portable registration/apron continuation — 16 November 2026
+
+Resume this [session](development/2026-11-16-preset-library-continuation/README.md),
+[checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-preset-library-continuation/assignments.json)
+and [integration decisions](development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md).
+The sole writable checkout is `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`;
+root coordinates `../build-native`. This opening governs this continuation;
+older instructions below retain their dated evidence and separate owners.
+The [atlas crosswalk](reviews/ATLAS_DELIVERY_CROSSWALK.md) preserves every
+[M0–M9 exit](PLAN.md#milestones-and-exit-evidence). No milestone is declared complete.
+
+### Delivered scope and current qualification
+
+Completed bounded work includes the headless inspection/import/materialization
+CLI, renderer `--controls`, twelve proposed-unmeasured recipes in 24 canonical
+files, explicit copy-only installation and independent first-use/installed
+journeys. Registration materialization preserves supplied current expression;
+Performance restores saved expression. Generic Load and rendering restore the
+complete file regardless of suffix. The [operator guide](REGISTRATION_GUIDE.md),
+[installed admission](reviews/INSTALLED_REGISTRATION_RENDER_ADMISSION.md) and
+[native Load admission](reviews/STARTER_NATIVE_LOAD_ADMISSION.md) state the limits.
+The CLI and admitted T1 footage typography are implemented, not next proposals.
+
+The [masked apron](reviews/REFERENCE_APRON_RASTER_ADMISSION.md) has 25 paired
+cases, 61,780,011 checked pixels, zero forbidden/footer changes and exact
+creation-failure fallbacks. Canonical 1672×941 alone has 32,544 exact exposed
+source pixels; resizing uses the frozen mapping. The [thirteen-view gallery](design/native-gallery-preset-v1/README.md)
+and [whole-interface residuals](reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md)
+remain the current visual inputs. **Literal whole-interface 1:1 remains unmet
+and unwaived.**
+
+### 1. Finish exact-source platform and publication acceptance
+
+The [first verified publication](development/2026-11-16-preset-library-continuation/reports/first-publication.json)
+is `20739f6280b95e567e84615d5c5aee443fc3b93d`. Reviewed local follow-up
+`503ed724eaeb3c31eae3c6f31b31cc9a2acd9eb3`, tree
+`201e38b05901fa30e3d053b9c245829818a5b52e`, is published as
+[`cc6be852d616ec5887485e3fccc39ddb1db22006`](development/2026-11-16-preset-library-continuation/reports/followup-publication.json)
+with independently verified identical tree and sole parent. Provider commit
+metadata differs. The retained
+[full local run](development/2026-11-16-preset-library-continuation/reports/w07-integrated-qualification.json)
+is **234/235**: copied audition-report links failed, then the focused integrity
+repair passed. The [Windows requested-spelling guard](reviews/WINDOWS_REGISTRATION_PATH_ADMISSION.md)
+has **six affected Linux passes** and identical Linux binaries. Those facts
+do not execute its conditional Windows body or replace the original failures.
+The [final first-head observation](development/2026-11-16-preset-library-continuation/reports/first-ci-final-observation.json)
+records **six successes, four failures** (report links and Windows ambiguity),
+and **three macOS cancellations** with `runner_id: 0` and no steps. It establishes
+neither macOS execution nor the cancellation cause.
+
+The [final repaired-source admission](reviews/PRESET_FINAL_HOSTED_ADMISSION.md)
+now observes ten successful Linux/Windows jobs: Windows core 202/202, native
+61/61 and actual Unicode-checkout generation, plus 28/28 Linux native sanitizer
+gates. Three macOS jobs again ended cancelled with no runner or steps; all three
+workflow aggregates report failure. The next platform action is actual macOS
+execution at the intended source, followed by complete-matrix verification.
+Do not infer a cancellation cause or replace absent execution with earlier passes.
+
+Root must preserve concurrent advances, publish accepted paths with a fresh
+expected parent and no force, then independently verify remote commit/tree/parent
+and contents. Observe every required [13-job matrix](reviews/REGISTRATION_CI_ADMISSION.md)
+outcome at that exact source, including Windows raw-path/Unicode-generator
+execution, macOS, native sanitizers and VST3. Keep queued/unacquired, cancelled
+and failed jobs distinct; stop the platform claim on any missing or failing
+required result. Rebuild changed coherent inputs before affected tests. For a
+justified full local qualification, root uses:
+
+```sh
+cmake --build ../build-native --config Release --parallel 3
+ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error --parallel 3
+```
+
+### 2. Carry documented installed use into real native journeys
+
+Use [guide sections 2–7](REGISTRATION_GUIDE.md#2-inspect-and-import-selected-recipes)
+with a fresh destination, explicit RegistrationTools/StarterRegistrations
+installation and OfflineTools when rendering. Confirm exact 2+26 payloads,
+relocation, read-only inspection, collision refusal, scope-correct expression,
+full-state restoration and score precedence against the retained independent
+admissions. Preserve conservative Unicode refusal: put library/current inputs
+beneath ASCII `inputs/` and destinations beneath `outputs/`; never weaken alias
+protection to make a journey pass. A late copy/report failure needs inspection
+of committed/partial output before retry.
+
+Next execute [native display/device journeys](design/NATIVE_ACCESSIBILITY_JOURNEY_NEXT.md)
+on identified OS/backend/display/DPI/audio/MIDI hardware: pre-held notes,
+bidirectional resize/navigation, off-window release/fresh press, focus loss,
+modal cleanup, Save/Load and joined shutdown. Retain actual frames, diagnostics
+and numeric exits. Dummy SDL and Linux relocation establish their recorded
+software scopes only. Stop any broader claim without actual platform evidence.
+
+### 3. Propose T2, then separately T3
+
+Root first checks owner ledgers and assigns exclusive shared-painter paths.
+Use the [material/type authoring inputs](design/REFERENCE_MATERIAL_TYPE_NEXT.md)
+and current residual review, preserving original art, T1 and current baseline
+binaries. **T2 changes only the two rack headings' tracking/baseline** and their
+measured side-rule gaps. Independently freeze glyph bearings, anchors, support
+and criteria before painting; no global font/helper change is implied.
+**T3 separately studies title weight/highlight/shadow**, preserving its layout
+anchors, truthful subtitle and live utilities. Freeze every offset, alpha/color
+and support union; any new font needs pinned provenance and rights.
+
+Each slice requires genuine same-state before/after binaries, reference,
+minimum-active, compact, Flat and supported-scale comparisons, exact inactive
+frames, zero changes outside admitted support, preserved focus/input/state,
+independent full-frame visual admission and updated actual README captures.
+Stop on missing baseline, unsupported masks, clipping or illegibility. Only
+after separate admission should a header/performance material slice proceed.
+Apron pixels, small crops and type improvements cannot close whole-interface 1:1.
+
+### 4. Preserve dependent engineering and release work
+
+Recover [existing owners](../AGENTS.md#ownership): next-phase retains
+ScannerLineFoh/LibraryModel/browser/native integration; runtime/conversion retain
+contact/audio/manual/rim work; accessibility retains numeric/semantic/cap work;
+audio/playable retain leakage/harmonic sources; fidelity retains crossover/MIDI
+retirement; waveform retains R4. Check their checkpoints before overlap.
+M4 needs revision-correct loaded topology, independent same-Hz/transient/mode
+acceptance and actual scanner captures, retaining G5 failure. M5 needs a reviewed
+complete AO-28 graph, transformer/loading/operating-point inputs and complete
+dry G–G validation before cabinet fitting. M6 keeps 122/147 separate and needs
+coupled amplifier/crossover/driver loads, polarity, AC/nonlinear stability and
+electrical captures. R5 policy/R6 integration retain separate gates.
+
+Follow [A1–A6 acquisition](CALIBRATION_NEXT_ACQUISITION.md): identified specimen,
+permissions, calibrated chain/clock, immutable originals, uncertainty and frozen
+held-out groups precede fitting. Synthetic auditions close no physical gate.
+Preserve 91 sources, 47 parameters, state4/readers 1–3, four banks, 147 keys,
+24 presets and nominal dry Engine. Native semantic/screen-reader journeys,
+callback deadlines/retirement, real DAW use, [rights](DEPENDENCIES_AND_RIGHTS.md)
+and [qualified signed distribution](RELEASE_READINESS.md) remain open.
+
+### Record and recovery stop conditions
+
+Retain genuine baseline binaries and original failures/auditions/gallery
+identities under the [recovery admission](reviews/PRESET_RESOURCE_RECOVERY_ADMISSION.md).
+From the repository root, progress validation is:
+
+```sh
+python3 -B docs/development/2026-11-16-preset-library-continuation/check_session.py
+```
+
+All ten groups now have six accepted distinct new workers and matching notes;
+the [strict result](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json)
+passes with zero errors. Record validation establishes consistency, not external
+participation or product quality. Future sessions must recover the actual
+containing commit and fresh remote state, inspect their own checkout, and retain
+source-specific hosted outcomes. Missing macOS execution and product gates remain
+separate from this completed staffing record.
+<!-- preset-library-next:end -->
+
+## Retained dated session history and owner routes
+
+The following text is preserved as earlier-session history. Its words “current”
+and “next” refer to those dated sources; completed CLI/T1/conversion/material
+work is not reassigned by these older proposals. Recover each owner's live
+checkpoint before continuing its unfinished scope.
+
 ## Runtime and interface continuation — 16 November 2026
 
 Resume the [current checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md) and [actual ledger](development/2026-11-16-runtime-continuation/assignments.json), then read the [selected scope](development/2026-11-16-runtime-continuation/SCOPE.md). Finish independent admission of the [causal audio contract](CAUSAL_CONTACT_AUDIO_CONTRACT.md), [validation inputs](CAUSAL_CONTACT_AUDIO_VALIDATION.md) and [manual materials](design/MANUAL_KEY_MATERIAL_CONTRACT.md). Retain the new genuine-before fixture before any painter edit. Implement the admitted fixed-storage audio wrapper and isolated idle-manual branch; independent numerical, lifecycle, resource and visual reviews follow. Root owns coherent builds, shared navigation and non-force publication. Earlier next-task proposals below remain historical where superseded.

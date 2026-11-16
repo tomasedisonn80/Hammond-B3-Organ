@@ -1,0 +1,963 @@
+{
+  "agent": "/root/w10_a58",
+  "atlas": {
+    "full_extract": {
+      "bytes": 1298588,
+      "matches_receipt": true,
+      "path": "/workspace/scratch/3edffb787db3/tmp/pdfs/atlas.txt",
+      "sha256": "e6ed8ed76663a8f12c487ae1e4d3ab69facc36971df240a15b1ba36eeb22485d"
+    },
+    "limit": "Checks retained range and note identities; does not claim this worker reread 500 pages or verified every cited external source.",
+    "pdf": {
+      "bytes": 21248265,
+      "matches_receipt": true,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+    },
+    "ranges_exactly_once_1_through_500": true,
+    "readers": [
+      {
+        "agent": "/root/w01_a01",
+        "agent_matches_ledger": true,
+        "extract_with_final_formfeed_matches": true,
+        "extract_without_final_formfeed_matches": true,
+        "first_page": 1,
+        "last_page": 84,
+        "note_matches_coverage_and_ledger": true,
+        "note_sha256": "26330b1f944d689edb59f1bba5ffc66e7d21efdb419d1ddfa51880ffe42810af",
+        "pages": 84,
+        "worker": "A01"
+      },
+      {
+        "agent": "/root/w01_a02",
+        "agent_matches_ledger": true,
+        "extract_with_final_formfeed_matches": true,
+        "extract_without_final_formfeed_matches": true,
+        "first_page": 85,
+        "last_page": 168,
+        "note_matches_coverage_and_ledger": true,
+        "note_sha256": "1dfb5840e5b25c224d1f884f375c08331ea91d9c5a6aa12907b799703ec825fb",
+        "pages": 84,
+        "worker": "A02"
+      },
+      {
+        "agent": "/root/w01_a03",
+        "agent_matches_ledger": true,
+        "extract_with_final_formfeed_matches": true,
+        "extract_without_final_formfeed_matches": true,
+        "first_page": 169,
+        "last_page": 252,
+        "note_matches_coverage_and_ledger": true,
+        "note_sha256": "29234bd652f1393665ecf7de13eb8103b785887f88984215a28399bba5bbae17",
+        "pages": 84,
+        "worker": "A03"
+      },
+      {
+        "agent": "/root/w01_a04",
+        "agent_matches_ledger": true,
+        "extract_with_final_formfeed_matches": true,
+        "extract_without_final_formfeed_matches": true,
+        "first_page": 253,
+        "last_page": 336,
+        "note_matches_coverage_and_ledger": true,
+        "note_sha256": "17b28c980007a93e4bb68056dc6990917aa7f13ab4edd4bc2b9f6b647d2034f0",
+        "pages": 84,
+        "worker": "A04"
+      },
+      {
+        "agent": "/root/w01_a05",
+        "agent_matches_ledger": true,
+        "extract_with_final_formfeed_matches": true,
+        "extract_without_final_formfeed_matches": true,
+        "first_page": 337,
+        "last_page": 418,
+        "note_matches_coverage_and_ledger": true,
+        "note_sha256": "8d18690dda838147b59c828ad6ebd8913f2fd5fc024c406caebccf3f080e6a9e",
+        "pages": 82,
+        "worker": "A05"
+      },
+      {
+        "agent": "/root/w01_a06",
+        "agent_matches_ledger": true,
+        "extract_with_final_formfeed_matches": true,
+        "extract_without_final_formfeed_matches": true,
+        "first_page": 419,
+        "last_page": 500,
+        "note_matches_coverage_and_ledger": true,
+        "note_sha256": "2752657adad778f4df77bab42c7d0d88b1721ebfefd2f3eb3cac89648d3478d8",
+        "pages": 82,
+        "worker": "A06"
+      }
+    ],
+    "receipt": {
+      "bytes": 3065,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/atlas-reading-coverage.json",
+      "sha256": "9d1ff6a1e9990c816986bbc33868029dd9ea5068c7ba7eef0b4350708cc669ac"
+    }
+  },
+  "auditions": {
+    "archive": {
+      "bytes": 1698038,
+      "matches_receipt": true,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions-originals.tar.gz",
+      "sha256": "e61f5ff3b95966504f4261914339bc0eee759db1837993bbf9d29742b81f9858"
+    },
+    "exact_whole_wav_pairs": 16,
+    "expected_members": 101,
+    "ignored_original_mismatches": [],
+    "integrated_original_result": {
+      "elapsed_seconds": 225.77,
+      "failed": [
+        "python_test_repository_integrity"
+      ],
+      "passed": 234,
+      "reason": "Copied audition Markdown links pointed to absent sibling WAVs; original complete audio retained elsewhere.",
+      "tests": 235
+    },
+    "limit": "Archive inspection only, no new audio rendering or physical/audio quality acceptance.",
+    "member_mismatches": [],
+    "member_names_match": true,
+    "members": 101,
+    "original_report_sha256_matches": true,
+    "unsafe_members": [],
+    "wav_count": 32
+  },
+  "checker": {
+    "command": [
+      "python3",
+      "-B",
+      "docs/development/2026-11-16-preset-library-continuation/check_session.py"
+    ],
+    "exit_code": 0,
+    "result": {
+      "accepted": 57,
+      "dispatched": 60,
+      "errors": [],
+      "schema_version": 1,
+      "scope": "Record consistency only; not dispatch, code, fidelity or publication proof.",
+      "strict": false,
+      "waves": {
+        "1": 6,
+        "10": 6,
+        "2": 6,
+        "3": 6,
+        "4": 6,
+        "5": 6,
+        "6": 6,
+        "7": 6,
+        "8": 6,
+        "9": 6
+      }
+    },
+    "stderr": "",
+    "strict_executed": false,
+    "strict_owner": "Root after every real final note is accepted and rehashed."
+  },
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "deliverables": [
+    {
+      "bytes": 6074,
+      "path": "docs/reviews/PRESET_FINAL_RECOVERY_ADMISSION.md",
+      "sha256": "799b670279d523147aa89a4d37d60026f349a1fe40eebd703b3c3f60dc43e4ed"
+    },
+    {
+      "bytes": 2921,
+      "path": "docs/development/2026-11-16-preset-library-continuation/notes/A58.md",
+      "sha256": "5a8a2dd286185db476e757fb75150b8304fb0acc9586216c03858eef061b0b63"
+    },
+    {
+      "bytes": 25396,
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/a58-audit.py",
+      "sha256": "f26922d94eacb4996acaa63fd60f207c9ce073192e8bbfa474391c1e9f7585b6"
+    },
+    {
+      "bytes": 327,
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/a58-ledger-progress.json",
+      "sha256": "695764e2e71d7524f18c2ce43b14708ea66b7361da81de8b35cd7a943e7bdaab"
+    },
+    {
+      "bytes": 2001,
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/a58-config-observer-failure.json",
+      "sha256": "05052a4df7b58b18c1bd589339aa7ec315d67655bad49e8a82f5718494874602"
+    }
+  ],
+  "finished_utc": "2026-11-16T13:03:05.337621+00:00",
+  "gallery": {
+    "current_source_differences_from_capture": [
+      "apps/standalone/RegistrationLibrary.cpp",
+      "assets/standalone/reference-apron-v1/README.md"
+    ],
+    "executable": {
+      "bytes": 4094520,
+      "matches_receipt": true,
+      "path": "/workspace/scratch/3edffb787db3/build-native/apps/standalone/hammond_standalone",
+      "sha256": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8"
+    },
+    "first_published_source_mismatches": [],
+    "limit": "Hashes preserve prior actual captures; no new capture or visual acceptance is claimed.",
+    "manifest": {
+      "bytes": 10126,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/design/native-gallery-preset-v1/manifest.json",
+      "sha256": "a403767e0863f7aacf4c900ef24e289b582b2e5d0c108b97ecd64cb7fe18115b"
+    },
+    "manifest_payloads": 61,
+    "payload_mismatches": [],
+    "recorded_source_files": 148,
+    "representative_png": {
+      "bytes": 767744,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/design/native-gallery-preset-v1/images/play-reference-1672x941.png",
+      "sha256": "6ac89798b41026533b474bbd523424134873af903a7bd1f9a58d09a583e0923a"
+    },
+    "views": 13
+  },
+  "handoff": "A58 returns its exclusive paths to root for independent acceptance; all-sixty strict, hosted/publication reconciliation and final clean checkout remain root-owned.",
+  "handoff_utc": "2026-11-16T13:04:46.637353+00:00",
+  "ledger": {
+    "accepted": 57,
+    "accepted_owned_path_missing": [],
+    "active_exclusive_paths": {
+      "A58": [
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/reviews/PRESET_FINAL_RECOVERY_ADMISSION.md",
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a58-*",
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/notes/A58.md"
+      ],
+      "A59": [
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/reviews/PRESET_FINAL_HOSTED_ADMISSION.md",
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a59-*",
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/notes/A59.md"
+      ],
+      "A60": [
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/reviews/PRESET_FINAL_HANDOFF_ADMISSION.md",
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a60-*",
+        "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/notes/A60.md"
+      ]
+    },
+    "all_accepted_note_sha256": {
+      "A01": "26330b1f944d689edb59f1bba5ffc66e7d21efdb419d1ddfa51880ffe42810af",
+      "A02": "1dfb5840e5b25c224d1f884f375c08331ea91d9c5a6aa12907b799703ec825fb",
+      "A03": "29234bd652f1393665ecf7de13eb8103b785887f88984215a28399bba5bbae17",
+      "A04": "17b28c980007a93e4bb68056dc6990917aa7f13ab4edd4bc2b9f6b647d2034f0",
+      "A05": "8d18690dda838147b59c828ad6ebd8913f2fd5fc024c406caebccf3f080e6a9e",
+      "A06": "2752657adad778f4df77bab42c7d0d88b1721ebfefd2f3eb3cac89648d3478d8",
+      "A07": "c0a7a8f8545325a809f79e3f8d8dadf27b37697e9f546f31debf55bc7f9c86b9",
+      "A08": "f75607c9bec37ab9b2295c0eb67003feb7accaf76254fd7379671650a87d3e05",
+      "A09": "b8e17578458682548f5028c0c83e14696496f83f1bda86d04521197ffedeb7da",
+      "A10": "4afdb1321665d23b79510909235f1a249d6ba9e73135795306d55a429a6d1292",
+      "A11": "0282c699221582e9d103ec8656d1fbf47454a68296d8ada7181625ec2dc72e35",
+      "A12": "ada9fef44b8b2bc2ddc75e367421d7d6e3dadeeda8f795d887a416c16879545e",
+      "A13": "3be94d5ce66af31ca6bf31814c6cd59efe4c0d8a88ebab815c3875a065b30686",
+      "A14": "701ca5e5d36f2264c7e23e3aacecab9e88d1a9da8fe9619ec566f4734f328bee",
+      "A15": "96de3b96c3fbe07d275f19406fe0c7c764cd8add7393f1e02749252de4ac0526",
+      "A16": "50ff346e50e62018584e1ab5aa482e45de9f911f21b9258fa56f799a9355cb1e",
+      "A17": "79056640e72f6866c35b2a04b26a9f793da61cf5db7834ad4abcae53dd5dad3f",
+      "A18": "688fd33b714214548498e890e025a112a71b065bcfb758dfb49ef8d93c583da7",
+      "A19": "7efc522bc0cac9243df21a824e2f1ff9cf2732dc5d9cf159fe88823e5ad7be41",
+      "A20": "77c7ac9584050c308419a0af3eb95b42e706a8f68cdac9a66570402a9de5cc8d",
+      "A21": "5a7bc9ada2d6093c74de378be34bbf3023ec7ac8405a6e805f473389f45d8e0d",
+      "A22": "4b59b0d23fdd0e894a3b92aa288ef6b7698ba78655c012ffb851a1811a7354fa",
+      "A23": "d6e91a2c09e3aeb2a404cdace9b59c3e5a1ab61dc9d743b675adc2f5e36b753d",
+      "A24": "813bab55c2f830ebcbc1523bdc88fa2eaa86c4d2dcfb48beb9be837ebbd9d1c9",
+      "A25": "4da863c406ee9cef2ac7f211dfcbe6a6a7dd35eb272cff77d663d541d62862c3",
+      "A26": "a64fbc84bdd7ee81a1de6e583605817acf2a6c212f11d9eb38ab1b077273ad6d",
+      "A27": "2c951bdb976cb64ba8d5d2b9b257c3bdead2381baf7fd0065ec4535ca6ef6c3a",
+      "A28": "18d8abc1b466cf6b9a4a2066475570c702d15e7a4f678baf2159663986597cd7",
+      "A29": "79e15bc65812874c80252ad64e232c60b496b5779a9f886c9384088f33d094a3",
+      "A30": "9085ef9911e3085b5effd74e5469b016d76cad6c84576c9df485fe36367687dd",
+      "A31": "b458be9efc8855a7bcbbaee6422b6e7854e8d80de5059f16cbd6dc9fe27930af",
+      "A32": "1495d2d9598626a0735a8926e2d294e33cb605d7a1bb5a631c54e71dab498114",
+      "A33": "c0e42e87a2c0005b042354b88d5a0866da6dda092ac36b553277d3b00da7d3e9",
+      "A34": "b2ed4020c359f2316de1fcecbe045f127ca7237e2bc728b5c7a6f84ab91818b1",
+      "A35": "6623c313441b61e9a810c428047c7779d7b40a83aee59968aed6d131574efe2e",
+      "A36": "fefc68054b1b5d796eb90d1f01cab8ba0ab46fc6374deb1a47b43f7af0e6851e",
+      "A37": "72f849034e66251e1780db7469c3598d7b8ed6491bc3567de0c0e98c1b37bddc",
+      "A38": "06335ae23c217fe360f23e219d03fa8ee8f8e6314d36375b32573ee8a8c3493b",
+      "A39": "1e8515aca159c699b6ab16e7428ff5a4ea0492c8a37fa44e88d506cfd7f51b38",
+      "A40": "cf11a77d5c18d4aa0583751387b3f8ccc2e7e9713499f636de88fb5fa450fee8",
+      "A41": "82f61cadf69defa91446e9ca32950bf7d4d6b54b7d60c6fdc684718549e990f3",
+      "A42": "2449e304d963b9a9d6edb5db5e55df6e157fe94736d3fc20ebad31c844676ee0",
+      "A43": "8c8f956eb77fe07153354a445c6dee65b7486d30713eb352cea2701b5b7831e8",
+      "A44": "587efca8aacef7bd807cff2f4ded72b42e21245a0127f70b9ba6ad5b00075d45",
+      "A45": "e5b2321e01a17f6692c266c58f25bbeba3fd26e5bdf7c285051046dc518779a5",
+      "A46": "ac0b81c8ed1c14f6a4e7ed2741c17c8be7a2a5f71d0b001822bd9a4ee0f493da",
+      "A47": "e73a338b01b2ebd4126365a98f5afe71efaaca585f4302c6008057fe5ff3c2ca",
+      "A48": "1a1df8b1d204287680e175db9b9ffc3fef169e1fbe77811e10e4b17365d91080",
+      "A49": "cc28ea58cfb6738d8ef6e9129e6e35a4e2347d7b4231d4149616b45a9c51eef6",
+      "A50": "f4e4353cb805b91661f9c9269685e77ec6c15385d137ed477b91aff38834b91a",
+      "A51": "49c8e4197fcffafe05f24af14ff2f36a03806f44db5afc9fa3085ecf6f478d49",
+      "A52": "2c52381d640c3c261b6fc7621e3bce6dfa969e73ca8b8f650f5219aaa0377c19",
+      "A53": "ac82a429a3aa3801506898d07edd2327ed7862d9021ef025f85a6b390426cc0d",
+      "A54": "6a71cc4a7e751138125c6869b1334f917ee7e3b5df78b8265c621349cbce6f41",
+      "A55": "48312b8aa2b41e09f30e668da7abc6f8a579835242d26143173a98255a124e61",
+      "A56": "6018554c0aa767956178fabb1658daa754656c8ccf9bb2cc35cf4e158263cb64",
+      "A57": "1319739a29a6f2f29042b9e55c40a34ecfea3271063e05497992af86d620e8fb"
+    },
+    "distinct_agent_identities": 60,
+    "distinct_worker_ids": 60,
+    "interpretation": "These are actual-ledger records, not independent authentication of external dispatch. Planned/follow-up/historical workers are not added.",
+    "invalid_wave_ids": [],
+    "note_mismatches": [],
+    "owned_path_count": 175,
+    "owned_path_invalid": [],
+    "records": 60,
+    "root_acceptance_missing": [],
+    "sha256": "bb40065087c691771977ba4e9f5f792326ada4f1448e2c992118d8b5eef79319",
+    "statuses": {
+      "accepted": 57,
+      "running": 3
+    },
+    "unchanged_during_observation": true,
+    "waves_accepted": {
+      "1": 6,
+      "10": 3,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 6,
+      "6": 6,
+      "7": 6,
+      "8": 6,
+      "9": 6
+    },
+    "waves_recorded": {
+      "1": 6,
+      "10": 6,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 6,
+      "6": 6,
+      "7": 6,
+      "8": 6,
+      "9": 6
+    }
+  },
+  "next_root_checks": [
+    "Review and accept every actual A58-A60 note; rehash all sixty and run the matching checker --strict, retaining the result.",
+    "Reconcile current navigation counts and exact hosted outcomes from their responsible independent reviewer; retain dated originals and failed/unrun states.",
+    "Verify all accepted files and links, fresh remote source/tree/parent, guarded nonforced publication and an inspected clean own checkout.",
+    "Preserve local genuine baselines and recovery manifests; root explicitly directed that the small ignored Python caches remain in place, with no cleanup required."
+  ],
+  "observed_utc": "2026-11-16T13:03:04.130230+00:00",
+  "observer_errors": [
+    {
+      "bytes": 2001,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a58-config-observer-failure.json",
+      "sha256": "05052a4df7b58b18c1bd589339aa7ec315d67655bad49e8a82f5718494874602"
+    }
+  ],
+  "preservation": {
+    "a47_receipt": {
+      "bytes": 46228,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a47-resource-recovery.json",
+      "sha256": "49b546cea4371031167bd274323172841ce2deb8be4f185b0010f131229ec5e8"
+    },
+    "baseline_portability_limit": "Genuine baseline binaries remain local preservation files; source rebuilds are not original artifacts. Preserve before any workspace retirement.",
+    "fixture_cases": 25,
+    "frozen_contracts": [
+      {
+        "path": "docs/REGISTRATION_CLI_CONTRACT.md",
+        "same_as_first_publication": true,
+        "same_as_followup": true,
+        "sha256": "cab55c11a1f211e47e73b18db5f5f33cfd5b3fa2d066361f0842c9ea3b0041fa"
+      },
+      {
+        "path": "docs/REGISTRATION_RENDER_CONTRACT.md",
+        "same_as_first_publication": true,
+        "same_as_followup": true,
+        "sha256": "cd81f83ef069215044117c139d318fe49caeffb1bd30bd038eaf62dc9528fc57"
+      },
+      {
+        "path": "docs/STARTER_REGISTRATION_PACK_CONTRACT.md",
+        "same_as_first_publication": true,
+        "same_as_followup": true,
+        "sha256": "f6390633160dc0dc643344fa6316fb26b3376216e535eb7d1b976f1f2dcffbf2"
+      },
+      {
+        "path": "docs/design/REFERENCE_APRON_CONTRACT.md",
+        "same_as_first_publication": true,
+        "same_as_followup": true,
+        "sha256": "c07c08895d8f985a95c34630ddc19c51ed1a3d3771cac4918a614de90bc879d0"
+      }
+    ],
+    "frozen_fixture": [
+      {
+        "bytes": 51184,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp",
+        "sha256": "59cecf6ba99bf9361f506954758a500845f2298bf934ceef27ba69d995743f73"
+      },
+      {
+        "bytes": 23704,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/design/reference-apron-fixtures.json",
+        "sha256": "6a75548862cd7d313e07b7a21827f5acfd3d97533e02e7fccecf73611d7d832e"
+      }
+    ],
+    "original_failure_records": [
+      {
+        "bytes": 853,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a38-headless-graph-observer-failure.json",
+        "sha256": "62172a1296a3408aab98d5c3d6752e742658dc783f27772cd3d10f3f0b59a132"
+      },
+      {
+        "bytes": 1025,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a38-headless-install-observer-failure.json",
+        "sha256": "2a1de557775b7a191991077b80b0b1a2d80975e48b3bb7b390433a4bc1249267"
+      },
+      {
+        "bytes": 18036,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a40-failure-boundaries-original.json",
+        "sha256": "5b750507885c2fdfbabd006ab6a6f79550e0c9f2cb441341f8e680da64e6ce37"
+      },
+      {
+        "bytes": 13467,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a40-failure-boundaries-original.tar.gz",
+        "sha256": "69dc78b34b9199cc3e196dff1e75afd5b5f3372fb6af3541d8a1838b3e1b0e82"
+      },
+      {
+        "bytes": 130,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/baseline-gallery-v3-missing-source.log",
+        "sha256": "e569c1dec80981cfe67ad4f836583a8f43fbed8caca6dc6b7eb9b3ac6e76de47"
+      },
+      {
+        "bytes": 41439,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777556-original-decoded.log.gz",
+        "sha256": "d91a235ff343cf5a720cf075ec65db11b61a3c8a9c26040eaac80a534b2f6c7e"
+      },
+      {
+        "bytes": 41439,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777556.log.gz",
+        "sha256": "d91a235ff343cf5a720cf075ec65db11b61a3c8a9c26040eaac80a534b2f6c7e"
+      },
+      {
+        "bytes": 40939,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777882-original-decoded.log.gz",
+        "sha256": "9a43a72fc40cf6550e1b34bb6243c2a4a14b315a5d256e6768e3b84a1312bcb0"
+      },
+      {
+        "bytes": 40939,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777882.log.gz",
+        "sha256": "9a43a72fc40cf6550e1b34bb6243c2a4a14b315a5d256e6768e3b84a1312bcb0"
+      },
+      {
+        "bytes": 55942,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777970-original-decoded.log.gz",
+        "sha256": "439cdd8f6c239ecb234c4cca9e847fc371bea865e27e590e8e7e96cacb2720ef"
+      },
+      {
+        "bytes": 55905,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/first-ci-job-133294777970.log.gz",
+        "sha256": "18c2142cbb3e8c01b0b2be100b279945f132f1914a590686fe31c2360bcb29bf"
+      },
+      {
+        "bytes": 109,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/w03-apron-baseline-tests-first-failure.log.gz",
+        "sha256": "a507ef85012b8bcd89043deed37039b312501319909e9ed532bced2a0a245a6b"
+      },
+      {
+        "bytes": 2600,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/w03-generator-build-first-failure.log.gz",
+        "sha256": "70026294ed3d774e93161b60455d59b54fe12bc13eebec933185353e28ffe6b0"
+      },
+      {
+        "bytes": 1156,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/w03-generator-tests-first-failure.log.gz",
+        "sha256": "102eaba43d8339cbe56953f291c491958782557e3262311e3aef057853df40f8"
+      }
+    ],
+    "original_qualification_log_checks": [
+      {
+        "compressed_match": true,
+        "path": "baseline-build.log.gz",
+        "raw_match": true
+      },
+      {
+        "compressed_match": true,
+        "path": "baseline-configure.log.gz",
+        "raw_match": true
+      },
+      {
+        "compressed_match": true,
+        "path": "baseline-ctest.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-configure.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-build.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-ctest.log.gz",
+        "raw_match": true
+      },
+      {
+        "path": "w07-final-ctest-detail.log.gz",
+        "raw_match": true
+      }
+    ],
+    "paired_executable_hash_checks": [
+      {
+        "bytes": 3448400,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/test_standalone_reference_apron_raster",
+        "sha256": "8391cb06222f7f9eb61381f86631dce364752022dbc4faa14c22fab4ae7f35e6"
+      },
+      {
+        "bytes": 3800816,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/build-native/apps/standalone/test_standalone_reference_apron_raster",
+        "sha256": "0a7b2d506edbf8bc47ddbda8592d59b721e60e050d487b89cb0da6a2c1117ac3"
+      },
+      {
+        "bytes": 3800936,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/build-native/apps/standalone/test_standalone_reference_apron_unavailable",
+        "sha256": "2577977a4e95049a1f072c03c9210dd4113047eabe99a4176ab886154d1aa83f"
+      }
+    ],
+    "paired_receipt": {
+      "bytes": 63003,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/apron-paired-final.json",
+      "sha256": "5305e9d2d339c327c860d00fbb00f7ba0679c03dccc92d95f62c44fe4b65b896"
+    },
+    "paired_reported_totals": {
+      "allowed_pixels": 1753028,
+      "apron_center_pixels": 1738688,
+      "changed_pixels": 638929,
+      "checked_cases": 25,
+      "footer_center_pixels": 1851123,
+      "footer_changed_pixels": 0,
+      "frame_pixels": 61780011,
+      "outside_allowed_changed_pixels": 0,
+      "passed_cases": 25,
+      "protected_outside_pixels": 60026983,
+      "required_whole_equal_cases": 8,
+      "unavailable_changed_pixels": 0,
+      "visible_exterior_pixels": 37923667
+    },
+    "seven_genuine_baseline_items": [
+      {
+        "bytes": 172528,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_render",
+        "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf"
+      },
+      {
+        "bytes": 3733912,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_standalone",
+        "sha256": "e62d62109c76890e7b471b486cfc2f69929d0dcec4570e070b2da06da22e1012"
+      },
+      {
+        "bytes": 3395520,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_standalone_paint_benchmark",
+        "sha256": "f80e261f8001df5099d8c824194c621dea42672db33434e4973e19e230cda492"
+      },
+      {
+        "bytes": 3448400,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/test_standalone_reference_apron_raster",
+        "sha256": "8391cb06222f7f9eb61381f86631dce364752022dbc4faa14c22fab4ae7f35e6"
+      },
+      {
+        "bytes": 51184,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/reference-apron-fixture.before.cpp",
+        "sha256": "59cecf6ba99bf9361f506954758a500845f2298bf934ceef27ba69d995743f73"
+      },
+      {
+        "bytes": 23704,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/reference-apron-fixtures.before.json",
+        "sha256": "6a75548862cd7d313e07b7a21827f5acfd3d97533e02e7fccecf73611d7d832e"
+      },
+      {
+        "bytes": 12489,
+        "matches_receipt": true,
+        "path": "/workspace/scratch/3edffb787db3/baseline-native/reference-apron-list.json",
+        "sha256": "be9bacfd9bfa3b53a0f60eaaf37fd5ccb811babcf556ad94b9c79fe536c51793"
+      }
+    ]
+  },
+  "recovery": {
+    "current_count_lines": {
+      "docs/PLAN.md": [
+        {
+          "line": 12,
+          "text": "`../build-native`. Waves 1\u20139 are complete; **A01\u2013A57 are accepted and A58\u2013A60"
+        },
+        {
+          "line": 13,
+          "text": "are running**. All **60 new distinct workers in ten staffing waves of six**"
+        },
+        {
+          "line": 14,
+          "text": "have been dispatched; final acceptance and strict closure remain pending."
+        },
+        {
+          "line": 16,
+          "text": "closure; each accepted delivery retains its own identity and evidence."
+        },
+        {
+          "line": 41,
+          "text": "preserves the **nominal dry Engine**, 91 shared free-running sources, 47 parameter"
+        }
+      ],
+      "docs/STATUS.md": [
+        {
+          "line": 9,
+          "text": "At this documentation snapshot, **A01\u2013A57 are accepted and A58\u2013A60 are running:"
+        },
+        {
+          "line": 10,
+          "text": "all 60 actual distinct workers dispatched**. This request requires 60 new workers"
+        },
+        {
+          "line": 38,
+          "text": "The nominal dry Engine, 91 shared free-running sources, 47 parameter identities,"
+        }
+      ],
+      "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md": [
+        {
+          "line": 5,
+          "text": "**A01\u2013A57 accepted; A58\u2013A60 running: all 60 actual distinct workers dispatched.**"
+        },
+        {
+          "line": 8,
+          "text": "final reviews are accepted. A58\u2013A60 audit recovery, exact-source hosted results"
+        },
+        {
+          "line": 22,
+          "text": "Wave 7's concrete fixes and admission are accepted. Wave 8 independently ran"
+        }
+      ],
+      "docs/development/2026-11-16-preset-library-continuation/NEXT_ASSIGNMENTS.md": [
+        {
+          "line": 8,
+          "text": "At this checkpoint A01\u2013A57 are accepted, including the documented-command,"
+        },
+        {
+          "line": 9,
+          "text": "source and visual admissions. A58\u2013A60 are running: all sixty actual workers"
+        },
+        {
+          "line": 10,
+          "text": "have now been dispatched across ten waves. Main is independently verified at"
+        }
+      ]
+    },
+    "early_superseded_counts": [
+      {
+        "observed_before_root_refresh": "48 accepted; wave 9 underway",
+        "path": "docs/PLAN.md"
+      },
+      {
+        "observed_before_root_refresh": "A01-A51 accepted; A52-A54 running; 54 recorded",
+        "path": "docs/STATUS.md"
+      },
+      {
+        "observed_before_root_refresh": "54 accepted; 57 recorded; A58-A60 undispatched",
+        "path": "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md"
+      }
+    ],
+    "local_link_targets_checked": 1150,
+    "milestones": {
+      "base_rows": 10,
+      "byte_identical_to_base": true,
+      "current_rows": 10,
+      "rows_sha256": "bfa15a63565e95773bee8c5c6215c55dee131318a60beb4944fc0f6c22bde3f9"
+    },
+    "missing_local_link_targets": [],
+    "navigation": [
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "AGENTS.md",
+        "sha256": "91e68df96eb4f8a25a0e7b5e7991f47399046c44bbfecca2c18dc46d0c81419c"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "README.md",
+        "sha256": "975fa10747188222f0f16b01e0cf7552a4b8eb00bbf98c374b28c4f60ce8eb21"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "docs/PLAN.md",
+        "sha256": "1f242a910b300cc07b2b5d321734638e0f8f08123015a993b8f0424edd1df178"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "docs/STATUS.md",
+        "sha256": "317b057cdc50bc1219c2948512e423e4295b31a74b25cf5fd649f10a4ad639fd"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "docs/NEXT_STEPS.md",
+        "sha256": "cf48c888c001d53940c8e82c55a2dea53c1d5b09645d9c59dd6bc128b42ab7f4"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "docs/PRODUCT_HANDOFF.md",
+        "sha256": "11bafa91b667f5e8ce9c77fcffc28ffa35783bad232fc4668f959aaf742f1940"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "docs/PRESET_LIBRARY_CONTINUATION_HANDOFF.md",
+        "sha256": "52984e89acce1096caefa6cea6cfa41fd8fa801a24206dfaa20bb0bb1de728e7"
+      },
+      {
+        "exact_source_present": false,
+        "exact_tree_present": false,
+        "path": "docs/development/2026-11-16-preset-library-continuation/README.md",
+        "sha256": "d69b6cf096505e01dbfaf015bae722382632417273ca87595f40581c1dbc90d4"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md",
+        "sha256": "0f123b4f8012a11f461b1fc697fb522b8c7650a2a41890b53bd6ea7af98162a2"
+      },
+      {
+        "exact_source_present": false,
+        "exact_tree_present": false,
+        "path": "docs/development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md",
+        "sha256": "10306af82d3cf080b961780cafdf1b040d15de7ca812d8094d63dd05d29d0121"
+      },
+      {
+        "exact_source_present": true,
+        "exact_tree_present": true,
+        "path": "docs/development/2026-11-16-preset-library-continuation/NEXT_ASSIGNMENTS.md",
+        "sha256": "675148ab631bdcfb59f456fbcc8fe43d80d2567bd403234d3550e087055c7c60"
+      }
+    ],
+    "scope": "All file links are checked for existence; this is not a complete Markdown fragment renderer. Historical snapshots remain historical. Exact current source is reached from README, AGENTS, PLAN, STATUS, NEXT_STEPS and focused handoff; session README routes through checkpoint."
+  },
+  "resources": {
+    "baseline_preservation_required": true,
+    "cleanup_performed": false,
+    "configuration": {
+      "a38-headless": {
+        "cache_matches_a47": true,
+        "cache_sha256": "b7b0ee59c6bee32be51e4ad14c9e100d49f8e2e53916ac32d696cf9603f403f9",
+        "settings": {
+          "BUILD_TESTING": "ON",
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_HOME_DIRECTORY": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+          "HAMMOND_BUILD_STANDALONE": "OFF",
+          "HAMMOND_BUILD_VST3": "OFF",
+          "HAMMOND_ENABLE_MIDI": "OFF",
+          "HAMMOND_ENABLE_SANITIZERS": "OFF",
+          "HAMMOND_RTMIDI_ROOT": "",
+          "HAMMOND_SDL2_ROOT": "",
+          "HAMMOND_VST3_SDK_ROOT": ""
+        },
+        "settings_match_a47": true
+      },
+      "build-native": {
+        "cache_matches_a47": true,
+        "cache_sha256": "10aa2ad2bc556fc174ce2a0363f99cc5e65a2a8e1fab0cb189ee46c0a9bd6118",
+        "settings": {
+          "BUILD_TESTING": "ON",
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_HOME_DIRECTORY": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+          "HAMMOND_BUILD_STANDALONE": "ON",
+          "HAMMOND_BUILD_VST3": "OFF",
+          "HAMMOND_ENABLE_MIDI": "OFF",
+          "HAMMOND_ENABLE_SANITIZERS": "OFF",
+          "HAMMOND_RTMIDI_ROOT": "",
+          "HAMMOND_SDL2_ROOT": "/workspace/scratch/ade21b726509/SDL2",
+          "HAMMOND_VST3_SDK_ROOT": "",
+          "SDL_ALSA": "OFF",
+          "SDL_JACK": "OFF",
+          "SDL_PULSEAUDIO": "OFF",
+          "SDL_WAYLAND": "OFF",
+          "SDL_X11": "OFF"
+        },
+        "settings_match_a47": true
+      }
+    },
+    "filesystem_available_bytes": 42834960384,
+    "owned_directories": {
+      "a38-headless": {
+        "allocated_file_bytes": 5984256,
+        "apparent_file_bytes": 5716878,
+        "files": 114
+      },
+      "baseline-native": {
+        "allocated_file_bytes": 10850304,
+        "apparent_file_bytes": 10837737,
+        "files": 7
+      },
+      "build-native": {
+        "allocated_file_bytes": 151396352,
+        "apparent_file_bytes": 150030166,
+        "files": 667
+      }
+    },
+    "repository": {
+      "allocated_file_bytes": 330981376,
+      "apparent_file_bytes": 319482828,
+      "files": 5510
+    },
+    "scope": "This repository and explicitly owned sibling native/headless/baseline directories only; free space is aggregate. No other workspace inspection or deletion.",
+    "top_level_live_build_roots": [
+      "a38-headless",
+      "build-native"
+    ]
+  },
+  "schema": "a58-final-record-recovery-v1",
+  "scope": "Read-only Git/filesystem/hash inspection and matching progress checker; no external dispatch proof, build, suite, render, capture, cleanup, staging or publication.",
+  "source": {
+    "accidental_generated_paths": [],
+    "archived_cache_evidence": [
+      {
+        "bytes": 54451,
+        "ignored": false,
+        "path": "examples/demos/standalone-midi-ui-v1/metadata/CMakeCache.txt",
+        "tracked": true
+      }
+    ],
+    "authored_local_tree": "201e38b05901fa30e3d053b9c245829818a5b52e",
+    "cache_interpretation": "Seven ignored Python cache files are existing local intermediates, not tracked deliverables. The tracked historical gallery CMakeCache snapshot is intentional evidence. No removal is performed.",
+    "cached_origin_main": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+    "checkout_build_cache_object_paths": [
+      "tests/__pycache__",
+      "tests/__pycache__/test_chapel_controls.cpython-312.pyc",
+      "apps/standalone/native_tests/__pycache__",
+      "apps/standalone/native_tests/__pycache__/test_standalone_app.cpython-312.pyc",
+      "apps/standalone/native_tests/__pycache__/test_standalone_midi_replay.cpython-312.pyc",
+      "apps/standalone/native_tests/__pycache__/test_standalone_workflows.cpython-312.pyc",
+      "examples/demos/standalone-midi-ui-v1/metadata/CMakeCache.txt",
+      "tools/__pycache__",
+      "tools/__pycache__/validate_factory_reference.cpython-312.pyc",
+      "tools/__pycache__/validate_rotary_profile.cpython-312.pyc",
+      "tools/__pycache__/validate_pedal_map.cpython-312.pyc"
+    ],
+    "compiled_magic_paths": [],
+    "delta_and_untracked_files_inspected": 425,
+    "expected_source": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+    "expected_tree": "201e38b05901fa30e3d053b9c245829818a5b52e",
+    "followup_publication_receipt": {
+      "bytes": 9833,
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/followup-publication.json",
+      "sha256": "c60b4ad470760d4c81b4bd0a7dc02d3a4f26bc21e0b123702e157e32941d6039"
+    },
+    "fresh_remote_query_performed": false,
+    "head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+    "head_tree": "201e38b05901fa30e3d053b9c245829818a5b52e",
+    "ignored_python_cache_bytes": 321482,
+    "ignored_python_cache_files": [
+      {
+        "bytes": 52778,
+        "ignored": true,
+        "path": "tests/__pycache__/test_chapel_controls.cpython-312.pyc",
+        "tracked": false
+      },
+      {
+        "bytes": 80991,
+        "ignored": true,
+        "path": "apps/standalone/native_tests/__pycache__/test_standalone_app.cpython-312.pyc",
+        "tracked": false
+      },
+      {
+        "bytes": 71659,
+        "ignored": true,
+        "path": "apps/standalone/native_tests/__pycache__/test_standalone_midi_replay.cpython-312.pyc",
+        "tracked": false
+      },
+      {
+        "bytes": 53050,
+        "ignored": true,
+        "path": "apps/standalone/native_tests/__pycache__/test_standalone_workflows.cpython-312.pyc",
+        "tracked": false
+      },
+      {
+        "bytes": 28989,
+        "ignored": true,
+        "path": "tools/__pycache__/validate_factory_reference.cpython-312.pyc",
+        "tracked": false
+      },
+      {
+        "bytes": 24647,
+        "ignored": true,
+        "path": "tools/__pycache__/validate_rotary_profile.cpython-312.pyc",
+        "tracked": false
+      },
+      {
+        "bytes": 9368,
+        "ignored": true,
+        "path": "tools/__pycache__/validate_pedal_map.cpython-312.pyc",
+        "tracked": false
+      }
+    ],
+    "index_sha256_after": "a2fec4d28def1b11b3b1dd7717592ae678aedca384f681e935378d8c6f0de579",
+    "index_sha256_before": "a2fec4d28def1b11b3b1dd7717592ae678aedca384f681e935378d8c6f0de579",
+    "index_unchanged": true,
+    "preserved_from_session_base": {
+      "core_headers": {
+        "files": 31,
+        "mismatches": []
+      },
+      "core_sources": {
+        "files": 30,
+        "mismatches": []
+      },
+      "plugins": {
+        "files": 20,
+        "mismatches": []
+      },
+      "preexisting_data": {
+        "files": 72,
+        "mismatches": []
+      }
+    },
+    "production_build_workflow_test_data_changes_since_source": [],
+    "published_commit_parent": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+    "retained_other_owner_sources": {
+      "apps/standalone/UiModel.cpp": true,
+      "apps/standalone/UiModel.h": true,
+      "apps/standalone/main.cpp": true
+    },
+    "staged_paths": [],
+    "tracked_overlay_paths": [
+      "AGENTS.md",
+      "README.md",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/NEXT_STEPS.md",
+      "docs/PLAN.md",
+      "docs/PRODUCT_HANDOFF.md",
+      "docs/STATUS.md",
+      "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md",
+      "docs/development/2026-11-16-preset-library-continuation/NEXT_ASSIGNMENTS.md",
+      "docs/development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md",
+      "docs/development/2026-11-16-preset-library-continuation/assignments.json"
+    ],
+    "untracked_path_count": 49
+  },
+  "wave": 10,
+  "worker": "A58"
+}

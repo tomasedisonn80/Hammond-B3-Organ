@@ -1,0 +1,227 @@
+{
+  "archive_member_count": 28,
+  "checks": {
+    "01-list_exact_README_tokens_after_declared_path_substitution": true,
+    "04-materialize_exact_README_tokens_after_declared_path_substitution": true,
+    "07-render-current_exact_README_tokens_after_declared_path_substitution": true,
+    "Performance_scope_forbids_current_source_only": true,
+    "SDK_gates_are_explicit": true,
+    "Windows_unicode_transport_is_explicit_source_only": true,
+    "all_archive_members_reopened_safe_and_matching": true,
+    "archive_hash_matches_receipt": true,
+    "compiler_cmake_python_minima_match": true,
+    "copy_only_fresh_install_preflight_matches": true,
+    "guide_Unicode_conservative_layout_matches_source": true,
+    "headless_option_names_exist": true,
+    "multi_configuration_guidance_matches_target_and_profile_placement": true,
+    "native_binary_hashes_match_A38_receipt": true,
+    "observed_README_and_guide_still_current": true,
+    "raw_and_resolved_windows_guards_present": true,
+    "score_after_full_restore_source_only": true,
+    "targets_and_profile_dependency_match": true,
+    "two_installer_components_and_24_plus_two_pack_inventory": true
+  },
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "evidence": {
+    "01-list": {
+      "documented_argv": [
+        "./build-registration/hammond_registration",
+        "list",
+        "--library",
+        "data/registrations/starter-v1/entries"
+      ],
+      "executed_argv": [
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_registration",
+        "list",
+        "--library",
+        "data/registrations/starter-v1/entries"
+      ]
+    },
+    "04-materialize": {
+      "documented_argv": [
+        "./build-registration/hammond_registration",
+        "materialize",
+        "--library",
+        "data/registrations/starter-v1/entries",
+        "--key",
+        "02 Warm Comp.b3registration",
+        "--current",
+        "data/registrations/starter-v1/entries/01 Quiet Foundation.b3performance",
+        "--destination",
+        "registration-demo/prepared",
+        "--name",
+        "Warm Current"
+      ],
+      "executed_argv": [
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_registration",
+        "materialize",
+        "--library",
+        "data/registrations/starter-v1/entries",
+        "--key",
+        "02 Warm Comp.b3registration",
+        "--current",
+        "data/registrations/starter-v1/entries/01 Quiet Foundation.b3performance",
+        "--destination",
+        "/workspace/scratch/3edffb787db3/a55-documentation-smoke/prepared",
+        "--name",
+        "Warm Current"
+      ]
+    },
+    "07-render-current": {
+      "documented_argv": [
+        "./build-registration/hammond_render",
+        "--profile",
+        "build-registration/nominal.b3p",
+        "--controls",
+        "registration-demo/prepared/Warm Current.b3performance",
+        "--output",
+        "registration-demo/warm.wav",
+        "--frames",
+        "24000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "64",
+        "--seed",
+        "0",
+        "--note",
+        "60",
+        "--fail-on-clip"
+      ],
+      "executed_argv": [
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/a38-headless/nominal.b3p",
+        "--controls",
+        "/workspace/scratch/3edffb787db3/a55-documentation-smoke/prepared/Warm Current.b3performance",
+        "--output",
+        "/workspace/scratch/3edffb787db3/a55-documentation-smoke/warm.wav",
+        "--frames",
+        "24000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "64",
+        "--seed",
+        "0",
+        "--note",
+        "60",
+        "--fail-on-clip"
+      ]
+    },
+    "a38_links_outputs": {
+      "apps/standalone/libhammond_standalone_support.a": {
+        "bytes": 421086,
+        "sha256": "9e1046e988d3b7d05b4c09d34243aebb95f8648fd175987ee06e59f375d78be9"
+      },
+      "apps/standalone/test_standalone_registration_library": {
+        "bytes": 288272,
+        "sha256": "73a68e0daea47718a684e577a4aa231f2d5fdb91a0a182ed34c5f9033573fcf1"
+      },
+      "apps/standalone/test_standalone_state_files": {
+        "bytes": 152720,
+        "sha256": "71af31f5ebe911d904a40d64451664ebc37703953baf2c910064cd9caa3873de"
+      },
+      "hammond_generate_starter_registrations": {
+        "bytes": 216408,
+        "interpreter": [
+          "/lib64/ld-linux-x86-64.so.2"
+        ],
+        "needed": [
+          "libstdc++.so.6",
+          "libm.so.6",
+          "libgcc_s.so.1",
+          "libc.so.6"
+        ],
+        "rpath_runpath": [],
+        "sha256": "7cbe11d52810f2d0d7c23c25ed35178740975b65e9c621e6825b74aa4bf97dff"
+      },
+      "hammond_registration": {
+        "bytes": 253280,
+        "interpreter": [
+          "/lib64/ld-linux-x86-64.so.2"
+        ],
+        "needed": [
+          "libstdc++.so.6",
+          "libm.so.6",
+          "libgcc_s.so.1",
+          "libc.so.6"
+        ],
+        "rpath_runpath": [],
+        "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f"
+      },
+      "hammond_render": {
+        "bytes": 212888,
+        "interpreter": [
+          "/lib64/ld-linux-x86-64.so.2"
+        ],
+        "needed": [
+          "libstdc++.so.6",
+          "libm.so.6",
+          "libgcc_s.so.1",
+          "libc.so.6"
+        ],
+        "rpath_runpath": [],
+        "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263"
+      },
+      "libhammond_control_file_input.a": {
+        "bytes": 20490,
+        "sha256": "5ee3bc3f59784a57fc13fe182b9fc04b9d5127f8b113af701527868ac3d9bc11"
+      },
+      "libhammond_core.a": {
+        "bytes": 460336,
+        "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+      },
+      "nominal.b3p": {
+        "bytes": 4545,
+        "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+      },
+      "test_control_file_input": {
+        "bytes": 110112,
+        "sha256": "4fb4b5bf0cda56e709763c1d31f5be93be11588f332fcd5d9ee59ccb9d554f71"
+      },
+      "test_control_io": {
+        "bytes": 178496,
+        "sha256": "498cd701994b9f3f4a8ef9e7c5f603727c448f3397dd87b3bf88f3735c2d101b"
+      }
+    },
+    "manual_source_conclusions": {
+      "Unicode": "No fresh Unicode or Windows command executed. The shared native transport and conservative ASCII-component distinctness proof support the bounded documented paths; arbitrary Unicode siblings remain refused when uncertain.",
+      "build": "No configure or build executed. The existing Ninja Release cache has BUILD_TESTING ON, unlike the documented fresh-build OFF example; standalone/MIDI/VST3 are OFF and SDK roots empty. The guide keeps the profile at build root while changing executable paths for multiconfiguration generators.",
+      "current_source": "Seven of A38's 540 watched paths differ at current source; exact differences are retained in smoke receipt. Existing binary identity is verified directly, not inferred from current HEAD.",
+      "install": "No installation executed. Source selects copy-only 2-file RegistrationTools and 24+2-file StarterRegistrations through EXCLUDE_FROM_ALL with create-only preflight and target-derived executable names. A38/A44 retain independent executed installations.",
+      "remote": "No independent remote or CI query in A55. Root owns live exact-source platform and publication observation.",
+      "score": "No score rendered here. Source restores complete controls before score processing and preserves equal-frame input order; existing guide/A26 evidence owns execution."
+    },
+    "path_substitutions": {
+      "./build-registration/hammond_registration": "/workspace/scratch/3edffb787db3/a38-headless/hammond_registration",
+      "./build-registration/hammond_render": "/workspace/scratch/3edffb787db3/a38-headless/hammond_render",
+      "build-registration/nominal.b3p": "/workspace/scratch/3edffb787db3/a38-headless/nominal.b3p",
+      "registration-demo/prepared": "/workspace/scratch/3edffb787db3/a55-documentation-smoke/prepared",
+      "registration-demo/prepared/Warm Current.b3performance": "/workspace/scratch/3edffb787db3/a55-documentation-smoke/prepared/Warm Current.b3performance",
+      "registration-demo/warm.wav": "/workspace/scratch/3edffb787db3/a55-documentation-smoke/warm.wav"
+    },
+    "unexecuted_documented_setup": [
+      "cmake -S . -B build-registration -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DHAMMOND_BUILD_STANDALONE=OFF -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_ENABLE_MIDI=OFF",
+      "cmake --build build-registration --config Release --target hammond_registration hammond_render --parallel 2",
+      "mkdir registration-demo"
+    ]
+  },
+  "result": "pass",
+  "schema": "a55-documentation-inspection-v1",
+  "smoke_receipt_sha256": "3f09178b6b54f151b51012e4330fb67f4f3687bd1fbf0d7ff88ea487d3c818ea",
+  "source_hashes": {
+    "CMakeLists.txt": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+    "README.md": "975fa10747188222f0f16b01e0cf7552a4b8eb00bbf98c374b28c4f60ce8eb21",
+    "apps/standalone/CMakeLists.txt": "8c9083d5de40ab398c224e61550f5b218b02ebe7c8d7cc0bc94078e92dff99cf",
+    "apps/standalone/RegistrationLibrary.cpp": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+    "cmake/InstallRegistrationTools.cmake": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+    "docs/REGISTRATION_GUIDE.md": "e844bacd28e7e30a1c3ad90c46189162cb9fffcd5e61d64f17bb6ad0027402b3",
+    "tools/CliArguments.h": "8ac5d91ebf66c31456159f028bce3c1c4b0dcd0c09118ac8c8d55c53a8912a47",
+    "tools/registration.cpp": "4fbf8f9e9a8c04713ee7aa28e089e02dbd5955ceb38e478673aa1f5da2f37ff3",
+    "tools/render.cpp": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928"
+  },
+  "source_head": "cc6be852d616ec5887485e3fccc39ddb1db22006",
+  "source_tree": "201e38b05901fa30e3d053b9c245829818a5b52e",
+  "utc": "2026-11-16T12:56:14.640149+00:00"
+}
