@@ -5,6 +5,10 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
+**Usable values, semantics and drawbar surfaces, 16 November 2026**, base `0865bc1584e4bda569fe2ccacfac87b842b8d906`: writable checkout `/workspace/scratch/db310007a069/Hammond-B3-Organ`; one coordinated `../build-native`. Read this session's [scope](docs/development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](docs/development/2026-11-16-accessibility-continuation/CHECKPOINT.md) and [actual assignments](docs/development/2026-11-16-accessibility-continuation/assignments.json). This request has its own 60 workers and fresh full atlas coverage. Existing other sessions remain read-only; reconcile their published advances without claiming their pending scope. Semantic inspection alone is not a native accessibility provider. Preserve the existing controls/state/Engine and all acceptance requirements below.
+
+### Retained runtime session
+
 **Runtime and interface continuation, 16 November 2026**, base `3520c96`: current writable checkout `/workspace/scratch/edcadc57554d/Hammond-B3-Organ`, one coordinated build `../build-native`. Recover the [session](docs/development/2026-11-16-runtime-continuation/README.md), [checkpoint](docs/development/2026-11-16-runtime-continuation/CHECKPOINT.md) and [actual worker ledger](docs/development/2026-11-16-runtime-continuation/assignments.json). This request has its own sixty workers and full atlas coverage. Other checkouts, builds and unpublished work are read-only; reconcile published remote advances without discarding either session. The entries below retain their historical ownership and evidence.
 
 ## Earlier conversion session

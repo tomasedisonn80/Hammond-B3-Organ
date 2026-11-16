@@ -1,0 +1,65 @@
+{
+  "base_commit": "0865bc1584e4bda569fe2ccacfac87b842b8d906",
+  "steps": [
+    {
+      "step": "baseline-configure",
+      "command": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "/workspace/scratch/db310007a069/build-native",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_TESTING=ON",
+        "-DHAMMOND_BUILD_STANDALONE=ON",
+        "-DHAMMOND_BUILD_VST3=OFF",
+        "-DHAMMOND_ENABLE_MIDI=OFF",
+        "-DHAMMOND_ENABLE_SANITIZERS=OFF",
+        "-DHAMMOND_SDL2_ROOT=/workspace/scratch/ade21b726509/SDL2",
+        "-DSDL_X11=OFF",
+        "-DSDL_WAYLAND=OFF",
+        "-DSDL_ALSA=OFF",
+        "-DSDL_PULSEAUDIO=OFF",
+        "-DSDL_JACK=OFF"
+      ],
+      "cwd": "/workspace/scratch/db310007a069/Hammond-B3-Organ",
+      "exit_code": 0,
+      "wall_seconds": 14.333,
+      "log_sha256": "2cdea5be18bfe3cf7670f14b2993dca472bce5c30896b279acb1da6f11bcca97"
+    },
+    {
+      "step": "baseline-build",
+      "command": [
+        "cmake",
+        "--build",
+        "/workspace/scratch/db310007a069/build-native",
+        "--parallel",
+        "3"
+      ],
+      "cwd": "/workspace/scratch/db310007a069/Hammond-B3-Organ",
+      "exit_code": 0,
+      "wall_seconds": 169.002,
+      "log_sha256": "23947cd3e57fba69d309426b5ab7beb859fae38d8fb15abed41b961287a8e8db"
+    },
+    {
+      "step": "baseline-ctest",
+      "command": [
+        "ctest",
+        "--test-dir",
+        "/workspace/scratch/db310007a069/build-native",
+        "-C",
+        "Release",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "3"
+      ],
+      "cwd": "/workspace/scratch/db310007a069/Hammond-B3-Organ",
+      "exit_code": 0,
+      "wall_seconds": 226.141,
+      "log_sha256": "4a41e35e55bd4269a3b842684428dd006a09c9227298c6100844b1cfddcf4a73"
+    }
+  ]
+}

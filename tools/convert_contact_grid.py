@@ -23,6 +23,12 @@ import tempfile
 import threading
 import time
 
+# An isolated launcher can omit the automatic script-directory search entry.
+# The installed executable owns these sibling modules, independently of the
+# caller's working directory, Python startup flags, or relocated prefix.
+if __name__ == "__main__":
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import contact_grid_conversion as conversion
 import contact_switching_io as contact_io
 

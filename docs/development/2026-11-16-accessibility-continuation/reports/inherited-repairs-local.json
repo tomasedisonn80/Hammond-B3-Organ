@@ -1,0 +1,21 @@
+{
+  "command": [
+    "ctest",
+    "--test-dir",
+    "../build-native",
+    "-R",
+    "python_test_contact_grid_conversion_(install|cli|resources|adversarial)$",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "3"
+  ],
+  "exit_code": 0,
+  "seconds": 3.47,
+  "sanitizer_unique_required_tests": 25,
+  "files": {
+    "tools/convert_contact_grid.py": "4935513f9b9b4890fbadb4ca53839f0956b59f08257d77a0a3884ae70599afb9",
+    "tests/test_contact_grid_conversion_install.py": "7e9a650411a2e8b37bdc1fcf308868a49edac8196535d1bde1472009df0f6971",
+    ".github/workflows/standalone.yml": "438534ddd687391d1e43aa5adeabdf95f6ebc5607f021537169bd5593fd2e2a1"
+  }
+}

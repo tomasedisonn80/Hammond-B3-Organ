@@ -1,0 +1,17 @@
+# Scope: usable values, semantic snapshots and drawbar surfaces
+
+## M9 implementation selected after current plan/ownership review
+
+1. A standalone SDK-free, main-thread semantic snapshot based on stable UiControlId, copied UiViewState and InspectionDocument. Expose complete identities/names/roles/ranges, desired/applied/unknown state, EDIT versus SOUNDING, note numeric IDs, visibility and focus. Include a bounded JSON diagnostic export so the implemented model has a usable inspection path. This phase does not implement or claim native AT-SPI, UIA, NSAccessibility, speech or momentary accessible note actions.
+2. A real numeric text-entry dialog for the existing manual drawbars, pedal mixtures and expression. Press Enter on a focused range control; type a bounded value, Apply/Enter or Cancel/Escape. Drawbars accept integers 0–8; expression uses a clearly labeled percentage 0–100. Preserve stable captured parameter identity, the existing control publication/acknowledgment path, modal note cleanup and release suppression. Reject malformed/range input without changing sound controls. No parameter or saved-state migration. Freeze detailed edit/cancel/focus/retirement policy before implementation.
+3. Exact original-reference drawbar-cap surfaces in wide Dimensional Play. Preserve track/cap/hit geometry, typography, value/focus/pending cues, colors by footage and all inactive layout pixels. Use immutable source extraction/provenance and a small reproducible embedded asset. A genuine before fixture must be retained before painting changes; independent comparison checks support and original-reference style. This scope cannot establish whole-interface 1:1.
+
+## Ownership
+
+Our only writable checkout is `/workspace/scratch/db310007a069/Hammond-B3-Organ`. One root-coordinated Release build is `../build-native`. The SDL dependency in `/workspace/scratch/ade21b726509/SDL2` is read-only. Other checkouts, dirty work and builds are untouched. Other sessions own causal contact audio, manual key materials, decorative rim and their research/integration tasks. Root owns CMake, shared navigation, README, AGENTS, PLAN, STATUS, NEXT_STEPS, DEVELOPMENT_LOG, ledger, checkpoint, acceptance and publication. Worker source paths receive explicit exclusive assignments; adjacent painter/main integrations are sequential.
+
+## Acceptance and preserved identities
+
+Independently review each concrete contract before source implementation. Verify copied-only semantics, identity/range/value correctness, stale/hidden and unavailable state, modal key release, no unintentional notes, exact parameter capture, rejected-input rollback, real native replay of text entry, state compatibility, reference source/pixel provenance, bounded image support and native platform builds. Retain genuine original failures. Preserve the nominal dry Engine, 91 continuing sources, 47 parameters, B3CONTROLS4/readers1–3, UUIDs, 147 playing keys, 24 presets, four banks and 68 existing controls. Modal controls are a separate transient inventory.
+
+This request has 60 new distinct workers in ten waves of six, at most three simultaneously; the ledger records actual dispatch and note acceptance. Reading the full 500-page PDF, testing software or inspecting pixels does not supply physical measurements. All M0–M9 exit criteria, native accessibility/device/DAW/release gates and literal whole-interface1:1 remain binding.

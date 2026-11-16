@@ -507,6 +507,23 @@ class ContactGridConversionInstallTests(unittest.TestCase):
         self.ok(simulated_run)
         self.assertEqual((simulated_run.stdout, simulated_run.stderr), (b"", b""))
         self.assertEqual(simulated.read_bytes(), initial.read_bytes())
+        # Some isolated launchers omit the script directory altogether. The
+        # executable CLI must recover its own sibling modules from __file__,
+        # without importing the caller's decoy modules or changing the package.
+        missing_directory = foreign / "missing script directory certificate.json"
+        isolated_bootstrap = (
+            "import sys;script=sys.argv[1];directory=sys.argv[2];"
+            "sys.argv=[script]+sys.argv[3:];"
+            "sys.path[:]=['']+[p for p in sys.path if p and p!=directory];"
+            "exec(compile(open(script,'rb').read(),script,'exec'),"
+            "{'__name__':'__main__','__file__':script})"
+        )
+        isolated_run = process("relocated CLI without automatic script directory",
+            [*python, "-c", isolated_bootstrap, installed / "tools/convert_contact_grid.py",
+             installed / "tools", "--input", fixture, "--output", missing_directory], foreign, env)
+        self.ok(isolated_run)
+        self.assertEqual((isolated_run.stdout, isolated_run.stderr), (b"", b""))
+        self.assertEqual(missing_directory.read_bytes(), initial.read_bytes())
         certificate = json.loads(output.read_bytes())
         self.assertEqual((certificate["status"], certificate["conversion_id"], certificate["audio_accuracy"]),
                          ("accepted", "fractional-to-contact-grid-rne-v1", "unqualified"))

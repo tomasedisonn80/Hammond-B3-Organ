@@ -670,9 +670,9 @@ jobs:
           assert all(len(pair) == 2 and all(re.fullmatch(r"[a-z][a-z0-9_]*", name) for name in pair)
                      for pair in pairs), pairs
           test_targets = dict(pairs)
-          assert len(test_targets) == len(pairs) == 24, "Required CTest names must be unique"
+          assert len(test_targets) == len(pairs) == 25, "Required CTest names must be unique"
           build_targets = sorted(set(test_targets.values()))
-          assert len(build_targets) == 24
+          assert len(build_targets) == 25
           (logs / "build-targets.txt").write_text(" ".join(build_targets) + "\n")
           sources = (".github/workflows/standalone.yml", "CMakeLists.txt",
                      "apps/standalone/CMakeLists.txt", "cmake/VerifySdl2.cmake",
@@ -765,11 +765,11 @@ jobs:
             '-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' \
             2>&1 | tee standalone-sanitizer-logs/configure.log
 
-      - name: Build only the twenty-four selected acceptance inputs
+      - name: Build only the twenty-five selected acceptance inputs
         run: |
           set -euo pipefail
           read -r -a targets < standalone-sanitizer-logs/build-targets.txt
-          [[ ${#targets[@]} -eq 24 ]]
+          [[ ${#targets[@]} -eq 25 ]]
           cmake --build build-standalone-sanitizers --config Release \
             --target "${targets[@]}" --parallel 2 --verbose \
             2>&1 | tee standalone-sanitizer-logs/build.log
@@ -784,7 +784,7 @@ jobs:
           provenance = json.loads((logs / "provenance.json").read_text())
           test_targets = provenance["test_targets"]
           required = provenance["build_targets"]
-          assert len(test_targets) == len(required) == 24 and set(required) == set(test_targets.values())
+          assert len(test_targets) == len(required) == 25 and set(required) == set(test_targets.values())
           libraries = {"SDL2-static": "_sdl2/libSDL2.a", "hammond_core": "libhammond_core.a",
                        "hammond_standalone_support": "apps/standalone/libhammond_standalone_support.a",
                        "hammond_standalone_drawing": "apps/standalone/libhammond_standalone_drawing.a",
@@ -877,7 +877,7 @@ jobs:
           (logs / "instrumentation.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
           PY
 
-      - name: Discover exactly twenty-four gates and run with leak checking
+      - name: Discover exactly twenty-five gates and run with leak checking
         env:
           HAMMOND_NATIVE_CALIBRATION_EVIDENCE: ${{ github.workspace }}/standalone-sanitizer-logs/native-calibration
         run: |
@@ -888,7 +888,7 @@ jobs:
           provenance = json.loads((logs / "provenance.json").read_text())
           test_targets = provenance["test_targets"]
           required = provenance["required_tests"]
-          assert len(required) == len(set(required)) == 24 and set(required) == set(test_targets)
+          assert len(required) == len(set(required)) == 25 and set(required) == set(test_targets)
           selection = "^(" + "|".join(re.escape(name) for name in required) + ")$"
           (logs / "ctest-filter.txt").write_text(selection + "\n")
           command = ["ctest", "--test-dir", "build-standalone-sanitizers", "-C", "Release",
@@ -928,7 +928,7 @@ jobs:
               overrides = properties.get("ENVIRONMENT", []) + properties.get("ENVIRONMENT_MODIFICATION", []) + command
               assert not any(value.startswith(("ASAN_OPTIONS=", "UBSAN_OPTIONS=", "LSAN_OPTIONS="))
                              for value in overrides), (test["name"], overrides)
-          print("Discovered exactly 24 built interface, channel, calibration and product paint gates; job sanitizer policy applies to every gate.", flush=True)
+          print("Discovered exactly 25 built interface, channel, calibration and product paint gates; job sanitizer policy applies to every gate.", flush=True)
           PY
           ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \
             --no-tests=error --timeout 180 -R "$(cat standalone-sanitizer-logs/ctest-filter.txt)" \
