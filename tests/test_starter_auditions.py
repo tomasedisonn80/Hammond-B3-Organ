@@ -7,8 +7,11 @@ Failure/timeout/race injections are author checks, not observed native failures.
 """
 
 from array import array
+from contextlib import redirect_stderr, redirect_stdout
+import errno
 import hashlib
 import importlib.util
+import io
 import json
 import os
 from pathlib import Path
@@ -375,6 +378,112 @@ class StarterAuditionTests(unittest.TestCase):
         self.assert_record(failed["outputs"]["wav"])
         self.assert_record(failed["outputs"]["stdout_json"])
         self.assertTrue(any(pcm(failed["outputs"]["wav"]["path"])))
+
+
+class StarterAuditionReportFailureTests(unittest.TestCase):
+    """Exercise reporting failures without rerunning the 32-render native batch."""
+
+    @classmethod
+    def setUpClass(cls):
+        name = "hammond_render.exe" if os.name == "nt" else "hammond_render"
+        cls.renderer = Path(os.environ.get("HAMMOND_RENDER_EXECUTABLE", ROOT / "build" / name)).resolve()
+        cls.profile = Path(os.environ.get("HAMMOND_TEST_PROFILE", cls.renderer.parent / "nominal.b3p")).resolve()
+        for label, path in (("renderer", cls.renderer), ("profile", cls.profile)):
+            if not path.is_file():
+                raise RuntimeError(f"missing coherent {label}: {path}; build before testing")
+
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="starter-audition-report-")
+        self.addCleanup(temporary.cleanup)
+        self.work = Path(temporary.name).resolve()
+
+    def arguments(self, output):
+        return dict(renderer=self.renderer, profile=self.profile,
+                    pack=ROOT / "data/registrations/starter-v1", output=output)
+
+    @staticmethod
+    def failed_child(argv, **kwargs):
+        Path(argv[argv.index("--output") + 1]).write_bytes(b"RIFFpartial")
+        kwargs["stdout"].write(b'{"injected_failure":true}\n')
+        kwargs["stderr"].write(b"injected renderer failure\n")
+        return subprocess.CompletedProcess(argv, 3)
+
+    def test_aggregate_report_failures_identify_retained_and_missing_files(self):
+        original_write = auditions._write_new
+        for report_name in ("manifest.json", "report.md"):
+            for partial in (False, True):
+                with self.subTest(report=report_name, partial=partial):
+                    output = self.work / f"{report_name}-{partial}"
+                    writes = []
+
+                    def fail_report(path, raw):
+                        writes.append(path.name)
+                        if path.name == report_name:
+                            if partial:
+                                with path.open("xb") as stream:
+                                    stream.write(b"retained partial report\n")
+                            raise OSError(errno.ENOSPC, "injected aggregate report failure")
+                        original_write(path, raw)
+
+                    argv = [value for name, path in self.arguments(output).items()
+                            for value in (f"--{name}", str(path))]
+                    stdout, stderr = io.StringIO(), io.StringIO()
+                    with mock.patch.object(auditions.subprocess, "run", side_effect=self.failed_child) as runner, \
+                            mock.patch.object(auditions, "_write_new", side_effect=fail_report), \
+                            redirect_stdout(stdout), redirect_stderr(stderr):
+                        result = auditions.main(argv)
+                    self.assertEqual(result, 1)
+                    runner.assert_called_once()
+                    self.assertEqual(stdout.getvalue(), "")
+                    self.assertIn(f"audition report failed: {report_name} creation failed", stderr.getvalue())
+                    self.assertIn(f"Output directory retained at {output}", stderr.getvalue())
+                    failed_state = "present (completeness unverified)" if partial else "absent"
+                    self.assertIn(f"{report_name}={failed_state}", stderr.getvalue())
+                    self.assertEqual(writes.count(report_name), 1)
+                    if partial:
+                        self.assertEqual((output / report_name).read_bytes(), b"retained partial report\n")
+                    else:
+                        self.assertFalse((output / report_name).exists())
+                    if report_name == "manifest.json":
+                        self.assertIn("report.md=absent", stderr.getvalue())
+                        self.assertNotIn("report.md", writes)
+                        self.assertFalse((output / "report.md").exists())
+                    else:
+                        self.assertIn("manifest.json=present (write completed)", stderr.getvalue())
+                        manifest = json.loads((output / "manifest.json").read_bytes())
+                        self.assertEqual((manifest["status"], manifest["attempted_jobs"],
+                                          manifest["completed_jobs"]), ("failed", 1, 0))
+                    self.assertEqual((output / "01-audition-registration.wav").read_bytes(), b"RIFFpartial")
+                    self.assertEqual((output / "01-audition-registration.stdout.json").read_bytes(),
+                                     b'{"injected_failure":true}\n')
+                    self.assertEqual((output / "01-audition-registration.stderr.txt").read_bytes(),
+                                     b"injected renderer failure\n")
+                    retained = {path.relative_to(output): path.read_bytes()
+                                for path in output.rglob("*") if path.is_file()}
+                    with mock.patch.object(auditions.subprocess, "run") as retry:
+                        with self.assertRaises(auditions.AuditionError):
+                            auditions.run_auditions(**self.arguments(output))
+                        retry.assert_not_called()
+                    self.assertEqual(retained, {path.relative_to(output): path.read_bytes()
+                                               for path in output.rglob("*") if path.is_file()})
+
+    def test_failed_job_report_distinguishes_partial_wav_from_successful_clips(self):
+        output = self.work / "partial-child"
+        with mock.patch.object(auditions.subprocess, "run", side_effect=self.failed_child) as runner:
+            manifest = auditions.run_auditions(**self.arguments(output))
+        runner.assert_called_once()
+        self.assertEqual((manifest["status"], manifest["attempted_jobs"],
+                          manifest["completed_jobs"]), ("failed", 1, 0))
+        self.assertTrue(manifest["inputs_unchanged"])
+        self.assertEqual(manifest["jobs"][0]["outputs"]["wav"]["sha256"],
+                         hashlib.sha256(b"RIFFpartial").hexdigest())
+        self.assertTrue(all(job["status"] == "not-run" for job in manifest["jobs"][1:]))
+        report = (output / "report.md").read_text(encoding="utf-8")
+        self.assertIn("Successful WAVs are stereo PCM16", report)
+        self.assertIn("Failed jobs may retain incomplete or invalid WAVs", report)
+        self.assertNotIn("Each WAV is", report)
+        self.assertEqual((output / "01-audition-registration.wav").read_bytes(), b"RIFFpartial")
+        self.assertEqual(json.loads((output / "manifest.json").read_bytes()), manifest)
 
 
 if __name__ == "__main__":

@@ -296,6 +296,9 @@ enum class NativeComparison { Same, Different, Uncertain };
 #ifdef _WIN32
     for (const auto& component : path.relative_path()) {
         const auto& text = component.native();
+        // Navigation components are resolved normally; they are not native
+        // filenames whose trailing characters could conceal another spelling.
+        if (text == L"." || text == L"..") continue;
         if (!text.empty() && (text.back() == L'.' || text.back() == L' ' ||
                 text.find(L':') != std::wstring::npos)) return true;
     }
@@ -313,6 +316,12 @@ struct PathIdentity {
 };
 
 [[nodiscard]] bool identify_path(const fs::path& requested, PathIdentity& identity, std::string& error) {
+    // Win32 normalization can remove a trailing dot or space. Inspect the
+    // caller's spelling before absolute/weakly_canonical can erase it.
+    if (ambiguous_native_path(requested)) {
+        error = "Cannot establish distinctness for a native path with ambiguous components";
+        return false;
+    }
     std::error_code code;
     const auto absolute = fs::absolute(requested, code);
     if (code) {
@@ -596,6 +605,11 @@ namespace {
     if (requested.empty()) {
         failure = LibraryCatalogStatus::InvalidRoot;
         error = "Choose a library directory";
+        return false;
+    }
+    if (ambiguous_native_path(requested)) {
+        failure = LibraryCatalogStatus::InvalidRoot;
+        error = "Library root has ambiguous native path components";
         return false;
     }
     std::error_code code;

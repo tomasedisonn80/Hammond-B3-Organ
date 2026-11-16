@@ -1,0 +1,22 @@
+{
+  "schema": "a38-observer-failure-v1",
+  "classification": "A38 receipt-wrapper error after successful installation and native inspection; no product failure",
+  "exception_type": "KeyError",
+  "exception_key": "canonical_b3controls4",
+  "incorrect_expression": "parsed['entry']['canonical_b3controls4'].splitlines()[-1]=='expression 0.625'",
+  "correction": "Read CLI entry.canonical_controls and compare the whole canonical payload; canonical_b3controls4 belongs to renderer provenance.",
+  "wrapper_exit_code": 1,
+  "native_inspect_exit_code_checked_before_exception": 0,
+  "native_inspect_stderr_bytes": 0,
+  "successful_prior_component_counts": [
+    2,
+    28
+  ],
+  "originals_retained": [
+    "a38-headless-install-RegistrationTools.log.gz",
+    "a38-headless-install-StarterRegistrations.log.gz",
+    "a38-headless-installed-inspect-stdout.log.gz",
+    "a38-headless-installed-inspect-stderr.log.gz"
+  ],
+  "commands_repeated": "Only one bounded read-only native inspect; neither install component was retried."
+}

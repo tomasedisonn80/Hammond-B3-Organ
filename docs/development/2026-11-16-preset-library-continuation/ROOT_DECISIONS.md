@@ -55,3 +55,40 @@ The original failure is retained. Root's strict rebuild and six affected CTests
 pass, including all 20 generator methods and new store/shared-reader regressions:
 [qualification](reports/w04-path-qualification.json). This narrowly justified
 published-store correction does not transfer browser/LibraryModel ownership.
+
+## Later delivery admission and first-use limits
+
+The final integrated 235-test run passed 234 checks and exposed 32 broken WAV
+links in the copied audition Markdown. Original full logs remain in the
+[qualification receipt](reports/w07-integrated-qualification.json). Root retained
+all 101 original audition files in a single deterministic archive, preserved the
+exact original report gzip and manifest, and replaced the copied Markdown with
+a clearly identified reader version. No original WAV, report, manifest or
+source-bound receipt was rewritten. The focused repository-integrity gate then
+passed; this does not relabel the original full run.
+
+A43 independently found that distinct Unicode-named sibling directories can be
+refused by the deliberately conservative protected-path comparator. Its earlier
+ASCII-component proof never promised complete Unicode equivalence handling. Root
+preserved that policy and corrected the operator guide's unqualified claim. A
+shared Unicode working directory with distinct ASCII `inputs` and `outputs`
+branches admits the documented workflow when both the library and `--current`
+file are under `inputs/`; A43 ran the bounded repeat and retains
+the original refusals separately. Do not weaken alias protection merely to remove
+a false-positive refusal or silently infer all Unicode layouts are supported.
+
+## Hosted Windows normalization failure
+
+Exact first-head Windows execution failed the existing ambiguous-path refusal
+assertion. Root's [repair admission](../../reviews/WINDOWS_REGISTRATION_PATH_ADMISSION.md)
+records original provider logs, primary normalization references, A43's independent
+proposal review, the minimal two-entry-point guard and strengthened regressions.
+No Unicode-equivalence policy or refusal threshold was weakened. Six affected
+Linux gates pass and Linux application/tool binaries remain byte-identical; only
+exact follow-up Windows execution can qualify the conditional Windows body.
+
+The configured Windows Unicode-generator journey now uses distinct ASCII
+`source`/`outputs` branches before differing Unicode names, matching A43's
+admitted layout. Both source root and output leaf still contain Unicode.
+Python UTF-8 mode is scoped to that step's diagnostic transport. All actual
+generator, exact-file, source-protection and compiled `/utf-8` gates remain.

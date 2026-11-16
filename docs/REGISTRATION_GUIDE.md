@@ -220,8 +220,16 @@ installation, with no automatic cleanup. Keep `CMAKE_INSTALL_MODE` unset or
 and touches no user library/preferences.
 
 Move the complete prefix to a new location on a compatible system, then invoke
-the executable and `--library` using their new paths. Spaces and Unicode paths
-are supported; keep shell quotes. POSIX package staging supports, for example,
+the executable and `--library` using their new paths. Quote paths containing
+spaces. Native paths can contain Unicode, but the conservative alias protection
+can refuse distinct Unicode-named sibling directories with `ProtectedPath` when
+it cannot prove that the destination differs from protected input locations.
+Use distinct ASCII directory components before the differing Unicode names:
+put both the library and any `--current` file beneath `inputs/`, for example
+`inputs/Ma bibliothèque Ω` and `inputs/Current état.b3controls`, and put the
+destination beneath `outputs/`, such as `outputs/Auditions été`, in the same
+working directory. This layout has independent first-use qualification;
+do not disable protection to bypass a refusal. POSIX package staging supports, for example,
 `DESTDIR="$PWD/stage" cmake --install "$build" --prefix /opt/hammond --component StarterRegistrations`.
 Import selected installed entries using section 2, with `pack` set to their
 installed `entries/` directory.
@@ -232,8 +240,11 @@ score precedence checked. Root also executed both actual installation components
 renamed the prefix and used the relocated native tool; the ten-method installer
 suite covers custom directories, staging, relocation and partial-copy refusal.
 The original installation receipt retains the guide text from before this
-qualification update. A clean no-SDL build and Windows/macOS execution remain
-separate pending gates; installation does not qualify live-browser or physical
-behavior. Repository details are
+qualification update. An independent clean Linux build with standalone, MIDI
+and VST3 disabled passed twelve focused CTests, installed the exact 2+26 files,
+and ran the installed tool without a display or tool-search environment. Its
+source and original logs are recorded in `docs/reviews/HEADLESS_REGISTRATION_BUILD_ADMISSION.md`.
+Windows/macOS execution remains a separate gate; installation does not qualify
+live-browser or physical behavior. Repository details are
 in `docs/REGISTRATION_CLI_CONTRACT.md`, `docs/REGISTRATION_RENDER_CONTRACT.md`
 and `docs/CONTROL_STATE_FORMAT.md`.

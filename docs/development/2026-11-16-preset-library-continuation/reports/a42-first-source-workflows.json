@@ -1,0 +1,265 @@
+{
+  "schema": "a42-first-source-workflow-inventory-v1",
+  "local_commit": "d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93",
+  "tree": "1e59776459a05a9d934d0b519a45cd4c61b13ae9",
+  "parent": "54df95fe343d417dd89bb7a91f85e4f51c08dfe7",
+  "workflows_changed_from_parent": false,
+  "expected_job_count": 13,
+  "workflows": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "name": "CI",
+      "source_blob": "8c26076259a40b9cae542a66c9c4a204c7dd1dd3",
+      "source_sha256": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+      "source_bytes": 9253,
+      "triggers": {
+        "push": {
+          "branches": [
+            "main"
+          ]
+        },
+        "pull_request": null,
+        "workflow_dispatch": null
+      },
+      "concurrency": {
+        "group": "${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+        "cancel-in-progress": true
+      },
+      "jobs": [
+        {
+          "job_id": "release",
+          "name": "Release (Linux GCC)",
+          "runs_on": "ubuntu-24.04",
+          "matrix": {
+            "platform": "Linux GCC",
+            "os": "ubuntu-24.04",
+            "compiler": "g++"
+          },
+          "timeout_minutes": 20
+        },
+        {
+          "job_id": "release",
+          "name": "Release (macOS AppleClang)",
+          "runs_on": "macos-15",
+          "matrix": {
+            "platform": "macOS AppleClang",
+            "os": "macos-15",
+            "compiler": "clang++"
+          },
+          "timeout_minutes": 20
+        },
+        {
+          "job_id": "release",
+          "name": "Release (Windows MSVC)",
+          "runs_on": "windows-2022",
+          "matrix": {
+            "platform": "Windows MSVC",
+            "os": "windows-2022",
+            "compiler": "cl"
+          },
+          "timeout_minutes": 20
+        },
+        {
+          "job_id": "rotary-waveform",
+          "name": "Complete R4 waveform qualification (Linux GCC)",
+          "runs_on": "ubuntu-24.04",
+          "matrix": {},
+          "timeout_minutes": 35
+        },
+        {
+          "job_id": "sanitizers",
+          "name": "Linux GCC ASan + UBSan + leaks",
+          "runs_on": "ubuntu-24.04",
+          "matrix": {},
+          "timeout_minutes": 25
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/native-vst3.yml",
+      "name": "Native VST3",
+      "source_blob": "701e750bd13c6a763cf69b3a0a3b2607a8a088b1",
+      "source_sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+      "source_bytes": 8261,
+      "triggers": {
+        "push": {
+          "branches": [
+            "main"
+          ]
+        },
+        "pull_request": null,
+        "workflow_dispatch": null
+      },
+      "concurrency": {
+        "group": "${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+        "cancel-in-progress": true
+      },
+      "jobs": [
+        {
+          "job_id": "native",
+          "name": "Native VST3 (Linux GCC)",
+          "runs_on": "ubuntu-24.04",
+          "matrix": {
+            "platform": "Linux GCC",
+            "os": "ubuntu-24.04",
+            "compiler": "g++"
+          },
+          "timeout_minutes": 35
+        },
+        {
+          "job_id": "native",
+          "name": "Native VST3 (macOS AppleClang)",
+          "runs_on": "macos-15",
+          "matrix": {
+            "platform": "macOS AppleClang",
+            "os": "macos-15",
+            "compiler": "clang++"
+          },
+          "timeout_minutes": 35
+        },
+        {
+          "job_id": "native",
+          "name": "Native VST3 (Windows MSVC x64)",
+          "runs_on": "windows-2022",
+          "matrix": {
+            "platform": "Windows MSVC x64",
+            "os": "windows-2022",
+            "compiler": "cl"
+          },
+          "timeout_minutes": 35
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/standalone.yml",
+      "name": "Native standalone",
+      "source_blob": "54f1dc87a5b97870308f54e4ab8f18a0477f05a2",
+      "source_sha256": "438534ddd687391d1e43aa5adeabdf95f6ebc5607f021537169bd5593fd2e2a1",
+      "source_bytes": 62610,
+      "triggers": {
+        "push": {
+          "branches": [
+            "main"
+          ]
+        },
+        "pull_request": null,
+        "workflow_dispatch": null
+      },
+      "concurrency": {
+        "group": "${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+        "cancel-in-progress": true
+      },
+      "jobs": [
+        {
+          "job_id": "native",
+          "name": "Native standalone (Linux GCC, MIDI ON)",
+          "runs_on": "ubuntu-24.04",
+          "matrix": {
+            "platform": "Linux GCC",
+            "os": "ubuntu-24.04",
+            "c_compiler": "gcc",
+            "cxx_compiler": "g++",
+            "midi": "ON",
+            "midi_backend": "ALSA"
+          },
+          "timeout_minutes": 40
+        },
+        {
+          "job_id": "native",
+          "name": "Native standalone (macOS AppleClang, MIDI ON)",
+          "runs_on": "macos-15",
+          "matrix": {
+            "platform": "macOS AppleClang",
+            "os": "macos-15",
+            "c_compiler": "clang",
+            "cxx_compiler": "clang++",
+            "midi": "ON",
+            "midi_backend": "CoreMIDI"
+          },
+          "timeout_minutes": 40
+        },
+        {
+          "job_id": "native",
+          "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+          "runs_on": "windows-2022",
+          "matrix": {
+            "platform": "Windows MSVC x64",
+            "os": "windows-2022",
+            "c_compiler": "cl",
+            "cxx_compiler": "cl",
+            "midi": "ON",
+            "midi_backend": "WinMM"
+          },
+          "timeout_minutes": 40
+        },
+        {
+          "job_id": "native",
+          "name": "Native standalone (Linux GCC, MIDI OFF)",
+          "runs_on": "ubuntu-24.04",
+          "matrix": {
+            "platform": "Linux GCC",
+            "os": "ubuntu-24.04",
+            "c_compiler": "gcc",
+            "cxx_compiler": "g++",
+            "midi": "OFF",
+            "midi_backend": "unavailable"
+          },
+          "timeout_minutes": 40
+        },
+        {
+          "job_id": "native-sanitizers",
+          "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+          "runs_on": "ubuntu-24.04",
+          "matrix": {},
+          "timeout_minutes": 20
+        }
+      ]
+    }
+  ],
+  "execution_claim": "Source-derived expected coverage only; no hosted pass inferred. Later A37 changes and native starter Load wiring are absent from this reviewed first tree.",
+  "first_tree_coverage": {
+    "core_release_and_sanitizer": "Build all preset targets, then unfiltered CTest with --no-tests=error. Top-level CMake registers tests/test_*.py and tests/test_*.cpp and supplies native executable paths to registration suites.",
+    "native_release": "Build hammond_standalone_test_inputs then run every ^test_standalone_ CTest; the three apron executables are in the aggregate and selected. The existing required-name assertion does not explicitly name them.",
+    "native_sanitizer_test_to_target": {
+      "test_standalone_ui": "test_standalone_ui",
+      "test_standalone_preset_ui": "test_standalone_preset_ui",
+      "test_standalone_workspaces_author": "test_standalone_workspaces_author",
+      "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+      "test_standalone_projection": "test_standalone_projection",
+      "test_standalone_inspection_author": "test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+      "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+      "test_standalone_drawing": "test_standalone_drawing",
+      "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+      "test_standalone_scaled_view": "test_standalone_scaled_view",
+      "test_standalone_preset_raster": "test_standalone_preset_raster",
+      "test_standalone_reference_layout": "test_standalone_reference_layout",
+      "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+      "test_standalone_channel_modes": "test_standalone_channel_modes",
+      "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+      "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+      "test_standalone_product_visual": "test_standalone_product_visual",
+      "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+      "test_standalone_lower_rack_material_raster": "test_standalone_lower_rack_material_raster",
+      "test_standalone_footage_typography_raster": "test_standalone_footage_typography_raster",
+      "test_standalone_manual_key_material_raster": "test_standalone_manual_key_material_raster",
+      "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
+    },
+    "native_sanitizer_apron_targeted_gates_absent": [
+      "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable"
+    ],
+    "native_vst3": "Build hammond_vst3_test_inputs and run ^(hammond_vst3_validator|test_native_); no registration-specific CTest selection.",
+    "r4": "Independent full waveform target check_rotary_waveform_full; no registration or apron acceptance inferred.",
+    "optional_decoders": "Pillow source decoding and NumPy pixel comparisons can skip when optional dependencies are absent. The workflows do not install them; actual test skips must remain separate from software passes.",
+    "later_changes_excluded": [
+      "A37 mandatory core discovery of 12 suites",
+      "A37 Windows Unicode source-root qualification",
+      "A37 native sanitizer expansion from 25 to 28 targeted gates and fallback archive instrumentation",
+      "A36/root actual generic starter Load CTest and native aggregate wiring"
+    ]
+  }
+}

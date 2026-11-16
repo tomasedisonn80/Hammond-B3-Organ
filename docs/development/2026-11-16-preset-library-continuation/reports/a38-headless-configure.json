@@ -1,0 +1,31 @@
+{
+  "schema": "a38-headless-command-v1",
+  "argv": [
+    "cmake",
+    "-S",
+    ".",
+    "-B",
+    "../a38-headless",
+    "-G",
+    "Ninja",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DBUILD_TESTING=ON",
+    "-DHAMMOND_BUILD_STANDALONE=OFF",
+    "-DHAMMOND_ENABLE_MIDI=OFF",
+    "-DHAMMOND_BUILD_VST3=OFF",
+    "-DHAMMOND_SDL2_ROOT=",
+    "-DHAMMOND_RTMIDI_ROOT=",
+    "-DHAMMOND_VST3_SDK_ROOT="
+  ],
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "LC_ALL": "C"
+  },
+  "returncode": 0,
+  "elapsed_seconds": 0.6712361600002623,
+  "log": "a38-headless-configure.log.gz",
+  "log_sha256": "06b89bc3f48fe8061e86ced427d41de4d50f1ea21cd46671c7da5469d9e44f39",
+  "uncompressed_sha256": "3dbb96bc8ada4cde54d560f135dae231a174975029a13808b6f075cfdf103e5d",
+  "uncompressed_bytes": 701
+}

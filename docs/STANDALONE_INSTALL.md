@@ -3,10 +3,11 @@
 The optional `Standalone` component stages the built native instrument and its
 fixed documentation, capability and notice payload. Ordinary installation
 continues to select `OfflineTools` only. A fresh standalone destination contains
-**16 files with MIDI disabled, or 20 with MIDI enabled**.
+**17 files with MIDI disabled, or 21 with MIDI enabled**.
 
 The executable embeds the nominal profile, generated DejaVu glyph atlases and
-three decorative regions from the supplied atlas reference. Installed execution
+the historical three decorative regions and separate masked lower apron from
+the supplied atlas reference. Installed execution
 does not read a source checkout, SDL2/RtMidi source, an SDK, `nominal.b3p`, TTFs,
 the atlas PDF/JPEG, Python, Pillow or FreeType. Platform runtime libraries,
 SDL drivers and any enabled native MIDI service still come from the selected
@@ -193,7 +194,7 @@ its RPATH.
 
 ## Exact payload
 
-The common payload contains the executable plus fifteen metadata files.
+The common payload contains the executable plus sixteen metadata files.
 In the table, `metadata/` means `share/hammond-b3-organ/standalone/`; replace
 `bin` and `share` with the configured relative directories.
 
@@ -215,6 +216,7 @@ In the table, `metadata/` means `share/hammond-b3-organ/standalone/`; replace
 | `metadata/atlas-reference.json` | `docs/design/atlas-reference.json` |
 | `metadata/standalone-capabilities.json` | Configure-generated capability and dependency/asset identities; independent of build configuration name |
 | `metadata/MIDI_EXPRESSION_GUIDE.md` | `docs/MIDI_EXPRESSION_GUIDE.md`; current calibration and channel-mode operator workflow |
+| `metadata/reference-apron-manifest.json` | `assets/standalone/reference-apron-v1/manifest.json`; separate masked apron identity, pixels, authoring and rights limits |
 
 MIDI-enabled installations add exactly four files:
 
@@ -232,6 +234,13 @@ manifests describe authoring inputs; their listed source paths are provenance,
 not additional runtime files. No source font, source artwork, PDF, raw crop,
 RtMidi source/header or dependency checkout is installed. Embedded-art
 publication rights remain unresolved as stated in the retained notices.
+
+Capability schema 1 retains `reference_art` for the historical three-crop package
+and adds `reference_apron` for `standalone-reference-apron-v1`. Each separately
+binds its installed manifest hash, the unchanged atlas provenance/source hash
+and the common unresolved-rights notice. The additional record changes no
+runtime asset loading or physical-evidence claim. Earlier 16/20-file installation
+results retain their historical payload identities.
 
 ## Preflight and destination preservation
 

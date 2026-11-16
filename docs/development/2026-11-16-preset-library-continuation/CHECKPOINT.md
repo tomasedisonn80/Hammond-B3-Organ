@@ -2,72 +2,116 @@
 
 ## Current stage
 
-Waves1–5 are accepted: **30 actual distinct workers**. A01–A06 freshly read all
-500 atlas pages; the [coverage receipt](reports/atlas-reading-coverage.json) binds
-all ranges and notes. Four frozen contracts received independent admission before
-implementation. Wave6 A31–A33 delivered or are finishing gallery, visual and
-footer/input admission. Their actual dispatches are in [assignments](assignments.json).
-The [remaining dispatch plan](NEXT_ASSIGNMENTS.md) is not participation evidence.
+**A01–A45 accepted; A46–A48 running: 48 actual distinct workers dispatched.**
+Waves 1–7 are complete. Wave 7 added CI, headless configuration, compatibility,
+failure-path, provenance and publication admission. A01–A06 freshly read all
+500 atlas pages; the [coverage receipt](reports/atlas-reading-coverage.json)
+binds exact ranges and notes. The [actual ledger](assignments.json) records
+successful dispatches; [remaining assignments](NEXT_ASSIGNMENTS.md) are plans.
 
 Implemented: safe headless registration CLI, shared regular-file input, additive
-renderer `--controls`,12 original recipes/24 canonical files, native generator,
-explicit copy-only installation, bounded32-clip auditions, and exact masked
-reference apron. The unrelated Unicode-path false refusal is repaired with an
-aligned ASCII-component proof; original alias protections and failures remain.
-Native UI/browser, physical models and other owner-local work are not taken over.
+renderer `--controls`, twelve original proposed recipes/24 canonical files,
+native generator, explicit copy-only installation, bounded 32-clip auditions,
+and the exact masked lower reference apron. The Unicode-path false refusal was
+repaired by a reviewed corresponding ASCII-component proof. Generic native Load
+now has an actual full-state regression. Existing sound Engine, parameters,
+state formats, UUIDs and unrelated app/browser owners remain preserved.
+
+Wave 7's concrete fixes and admission are accepted. Wave 8 independently ran
+first-use and installed materialize/render journeys and audited every original
+audition byte. A43 retains a genuine conservative Unicode sibling refusal and
+a successful documented ASCII `inputs`/`outputs` layout. A44 installed51 files,
+removed only private installer inputs and rendered two complete scoped outputs.
+A45 independently passed400 read-only audio/archive/provenance checks. A46–A48
+review whole-interface residuals, storage/recovery and the complete atlas plan.
+
+The integrated235-test run completed234pass/1failure from copied audition report
+links. Root preserved all101 original files in a1.7MB archive, the exact original
+report gzip and original manifest, and made an explicitly derived reader. The
+focused repository-integrity gate then passed. Original logs remain unchanged.
+
+First-head hosted Linux Release/sanitizer and Windows exposed that same link
+failure. Windows also failed an existing native ambiguous-path assertion. Root
+added requested-spelling guards before normalization at both native storage entry
+points, preserving resolved checks and exact navigation components. A43 reviewed
+the proposal; original/refined refusals and positive navigation cases remain.
+Six affected Linux CTests pass, and CLI/renderer/app binary hashes are unchanged.
+Windows-specific execution awaits the follow-up published source. Read the
+[repair admission](../../reviews/WINDOWS_REGISTRATION_PATH_ADMISSION.md).
 
 ## Qualified evidence
 
-- Genuine initial native baseline: **220/220 CTests in216.89s** at `54df95f`.
-  [Baseline receipt](reports/baseline-qualification.json) retains source/toolchain/logs.
-- Root complete implementation build: **230/230 configured CTests in229.18s**.
-  [Coherent receipt](reports/w04-coherent-qualification.json) pins exact inputs,
-  test inventory, binaries and compressed original logs. Later delivery tests
-  have separate scoped qualification; do not mislabel the earlier inventory.
-- CLI14/76 and independent10/46, renderer18/109 and independent5/45, generator20,
-  recipe oracle8/122, installer10, auditions14 and later portability fixtures pass.
-  Two original no-controls WAV/stdout fixtures remain byte-identical.
-- Actual two-component install and renamed-prefix native use pass with28 files:
-  [receipt](reports/w05-actual-install.json). Auditions complete32 one-second clips
-  and16 whole-WAV equal pairs; [observed manifest](reports/starter-auditions.json).
-- Genuine pre-edit25-case painter binary is retained in `../baseline-native`;
-  [receipt](reports/apron-genuine-baseline.json). Candidate/direct/fault native gates
-  pass. Independent [paired report](reports/apron-paired-final.json) checks61,780,011
-  pixels, no forbidden/footer changes, all25 fallback frames exact and eight
-  inactive/hidden frames exact. The checker remains stdlib-importable; offline
-  pixel admission explicitly requires optional NumPy/Pillow.
+- Genuine initial native baseline: **220/220 CTests in 216.89 s** at `54df95f`.
+- Earlier coherent implementation build: **230/230 CTests in 229.18 s**. The
+  [source-bound receipt](reports/w04-coherent-qualification.json) retains inputs,
+  inventory, binaries and original logs. Later tests have separate qualification.
+- Current configured inventory is 235 tests. Root's added native Load CTest
+  passed in **11.38 s**, with four actual dummy-SDL processes and two CLI
+  materializations: [receipt](reports/w07-native-load-qualification.json).
+- Independent clean Linux SDK-free build: eight targets, 59 compilation steps,
+  **12/12 focused CTests in 5.50 s**, 124 Python methods without skips, exact
+  2+26 actual installed files and restricted-environment installed inspection:
+  [A38 receipt](reports/a38-headless-qualification.json). Private build/package
+  occupies about 6.7 MiB. Original observer mistakes remain recorded.
+- The original 32 one-second auditions and 16 whole-WAV equal pairs remain
+  source-bound [evidence](reports/starter-auditions.json), not physical samples.
+  Two original no-controls WAV/stdout fixtures remain byte-identical; A39
+  independently rehashed actual binaries, files and source boundaries.
+- The independent apron [paired report](reports/apron-paired-final.json) checks
+  61,780,011 pixels across 25 cases: no forbidden/footer changes, all fallback
+  frames exact, eight hidden/inactive frames exact. Canonical 32,544 source
+  pixels and 56,016 footer pixels match exactly. Creation failure is injected;
+  other optional preparation failures are source-reviewed.
 - The [actual native gallery](../../design/native-gallery-preset-v1/README.md)
-  contains13 views, preserving the earlier12 and adding1920×1080. A31 froze
-  executable/source/build/Git identity before final visual reviews. No synthetic
-  compositing was used. Whole-interface1:1, real display/DPI/accessibility,
-  physical fidelity and actual device/host deadlines remain open.
+  contains 13 software-rendered app captures, including 1920×1080. Source,
+  executable, state and pixel identities are frozen; no compositing was used.
+  Whole-interface 1:1, real display/DPI/accessibility and physical fidelity remain
+  open. A34's one bounded before/after software paint observation establishes
+  neither timing deadlines nor incremental texture-memory cost.
 
-## Source, resources and publication
+## Publication and recovery
 
-- Initial/latest observed remote main: `54df95fe343d417dd89bb7a91f85e4f51c08dfe7`.
-  Its three historical hosted workflows succeeded; this does not qualify new code.
+[First publication](reports/first-publication.json): main is independently read
+at **`20739f6280b95e567e84615d5c5aee443fc3b93d`**, parent `54df95f`, tree
+`1e59776459a05a9d934d0b519a45cd4c61b13ae9`. This tree exactly matches authored
+local commit `d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93`, retained under local
+branch `local-reviewed-implementation-d281d4e`. Connector commit metadata differs.
+After verifying tree equality and an empty index, root aligned HEAD with a soft
+reset; no working-file/index bytes were discarded. Current changes are the
+subsequent CI/Load/review/failure/provenance work and must be committed/published.
+
+The ordinary shell push failed for absent HTTPS credentials. The connected
+GitHub account succeeded. Two inline-content tree requests timed out; recovery
+uploaded immutable blobs, checked every returned Git object identity, created a
+SHA-only tree, verified exact tree equality, and made one `force:false` update
+with the freshly observed expected parent. Post-update provider reads confirmed
+commit/tree/sole parent. Hosted execution is separate and being observed by A42.
+For later publication use immutable blobs plus a SHA-only tree; do not repeat
+large inline-content requests, force-push, lose pending files or claim local
+commit metadata equals connector metadata. Root alone publishes.
+
+## Workspace and resource boundaries
+
 - Sole writable checkout: `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`.
-- Sole native build: `/workspace/scratch/3edffb787db3/build-native` (Ninja Release,
-  tests/standalone ON; MIDI/VST3 OFF; X11/Wayland/ALSA/PulseAudio/JACK OFF).
-- SDL2.32.10 is reused read-only from `/workspace/scratch/ade21b726509/SDL2`,
-  commit `5d249570393f7a37e037abf22cd6012a4cc56a71`.
-- PDF500 pages, unchanged SHA256
-  `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
-  Fresh complete extraction is `../tmp/pdfs/atlas.txt`.
-- About42GiB remains free. One shallow checkout and one native build; baseline
-  binaries, galleries and ignored auditions remain bounded. Do not delete them
-  or touch other sessions' workspaces.
-- No commit/push yet. Root is preparing the first reviewable implementation
-  publication after capture freeze and final focused delivery tests.
+- Coordinated native build: `../build-native`, Ninja Release, tests/standalone
+  ON, MIDI/VST3 OFF; X11/Wayland/ALSA/PulseAudio/JACK OFF.
+- SDL 2.32.10 is read-only at `/workspace/scratch/ade21b726509/SDL2`, commit
+  `5d249570393f7a37e037abf22cd6012a4cc56a71`.
+- A38's explicitly authorized distinct SDK-free configuration is `../a38-headless`.
+  Other sessions/checkouts/builds/indexes/dependencies remain read-only.
+- Unchanged PDF SHA-256:
+  `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`;
+  fresh complete text is `../tmp/pdfs/atlas.txt`.
+- About 40 GiB remains free. Preserve genuine baseline binaries, compact original
+  failures, galleries and bounded ignored auditions. Do not delete other work.
 
 ## Immediate next actions
 
-Finish accepting A31–A33, dispatch A34–A36 and continue all remaining waves.
-Commit/push accepted implementation with ordinary nonforced Git after checking
-fresh remote HEAD; preserve and reconcile any remote advance. Observe exact-head
-hosted jobs, fix concrete failures, then complete CI, end-to-end, documentation
-and final handoff waves. Root alone integrates shared files, builds, publication
-and this ledger. Each new agent owns only explicitly assigned paths; every note
-records actual work/checks/limits and the next action. Final closure requires60
-accepted distinct workers, ten groups of six, strict record validation, all
-accepted source/docs committed and pushed, and a clean own checkout.
+The integrated gate and focused documentation repair are complete. Publish the
+reviewed follow-up source and evidence, then continue all six workers in wave 8, then the six documentation owners in wave 9 and six final reviewers in
+wave 10. Publish reviewable source changes while later reviews run, observe exact
+hosted jobs and fix concrete failures. Later doc owners must preserve frozen
+contracts/notes/evidence and write current facts separately. Final closure needs
+60 accepted distinct workers, ten groups of six, passing strict record validation,
+all accepted work committed/published and a clean own checkout. No count or
+ledger check can close physical, product, UI or platform gates by itself.

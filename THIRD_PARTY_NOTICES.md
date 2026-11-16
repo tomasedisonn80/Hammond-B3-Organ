@@ -341,9 +341,9 @@ inventories remain platform-specific work.
 
 ## Embedded reference decoration
 
-The standalone embeds three decorative pixel regions derived from the supplied
-atlas cover/page 409 concept: the cabinet/microphones and two control-free wood
-edges. They remain separate from the implemented, dynamic controls. The source
+The historical reference package embeds three decorative pixel regions derived
+from the supplied atlas cover/page 409 concept: the cabinet/microphones and two
+control-free wood edges. They remain separate from the implemented, dynamic controls. The source
 is a user-supplied generated design concept; it is not an actual application
 capture, a factory construction drawing or calibrated physical geometry.
 
@@ -358,8 +358,22 @@ source/pixel hashes, integer crop rectangles, authoring versions and intended
 roles. These local retained identities were inspected on 2026-11-14; no new
 external artwork was acquired.
 
+The separate **`standalone-reference-apron-v1`** package, added on 16 November
+2026, derives its lower wooden apron from that same unchanged JPEG. Its exact
+`(16,887,1640,54)` crop preserves source RGB outside a transparent rectangle;
+all four RGBA bytes inside crop-local `(32,2,1556,36)` are zero, removing the
+baked concept lettering beneath the live footer. Its separate
+[manifest](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/assets/standalone/reference-apron-v1/manifest.json)
+records the 354,240-byte RGBA stream, packed/source hashes, mask and authoring
+versions. The three historical crops and their manifest are unchanged. No
+external artwork, photograph, font or hardware recording is added by this
+derivative, and its source-art rights remain the same unresolved gate.
+
 Every standalone installation, with or without MIDI, includes those records as
 `atlas-reference.json` and `reference-source-manifest.json`, plus this notice.
+The updated installation additionally includes `reference-apron-manifest.json`;
+capability metadata retains the original `reference_art` field and separately
+identifies the embedded apron as `reference_apron`.
 The executable embeds the derived pixels; installation does not copy the PDF,
 source JPEG or authoring crop files as separate runtime resources.
 

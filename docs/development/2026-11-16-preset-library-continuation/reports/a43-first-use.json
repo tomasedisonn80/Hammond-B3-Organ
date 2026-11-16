@@ -1,0 +1,717 @@
+{
+  "schema": "a43-first-use-summary-v1",
+  "worker": "/root/w08_a43",
+  "wave": 8,
+  "result": "conditionally-admitted-supported-layout",
+  "condition": "Library and any current input under ASCII inputs/, destination under a distinct ASCII outputs/ branch; Unicode paths may follow those components.",
+  "assembled_utc": "2026-11-16T12:33:51.765015+00:00",
+  "source": {
+    "head": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+    "tree": "1e59776459a05a9d934d0b519a45cd4c61b13ae9",
+    "tool": "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+    "tool_sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+    "tool_bytes": 253280,
+    "same_tool_across_both_journeys": true,
+    "eleven_relevant_sources_sha256": {
+      "tools/registration.cpp": "4fbf8f9e9a8c04713ee7aa28e089e02dbd5955ceb38e478673aa1f5da2f37ff3",
+      "tools/ControlFileInput.cpp": "0a174b171dfb3f0253cd6beb12707fda4da5ffb88c898727fb80ca111049cf5d",
+      "tools/ControlFileInput.h": "74fe88ed36c8b00b56f3a3f15874f22ec418ce4ea8932995c7829b68c4f02ade",
+      "apps/standalone/RegistrationLibrary.cpp": "e45fd2671558e0725468c18b59dc5ef8e7436600910633f73035ce81da4d3a4a",
+      "apps/standalone/RegistrationLibrary.h": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+      "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "src/ControlState.cpp": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "src/FixedRegistration.cpp": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+      "include/hammond/ControlStateIO.h": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+      "include/hammond/ControlState.h": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "include/hammond/FixedRegistration.h": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0"
+    },
+    "all_eleven_unchanged_and_matching_HEAD": true
+  },
+  "environment": {
+    "cwd": "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω",
+    "system": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "python": "3.12.14",
+    "LC_ALL": "C.UTF-8",
+    "LANG": "C.UTF-8",
+    "build_configuration_observed": {
+      "BUILD_TESTING": "ON",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_BUILD_VST3": "OFF",
+      "HAMMOND_ENABLE_MIDI": "OFF",
+      "CMAKE_GENERATOR": "Ninja",
+      "CMAKE_HOME_DIRECTORY": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ"
+    },
+    "configure_or_build_performed_by_A43": false
+  },
+  "process_total": 28,
+  "original_journey": {
+    "result": "blocked",
+    "native_processes": 14,
+    "started_utc": "2026-11-16T12:28:32.680811+00:00",
+    "library": "Ma bibliothèque Ω",
+    "current": "Current état.b3controls",
+    "destination": "Auditions été",
+    "finding": "A43-F1: both materializations refused ProtectedPath for distinct Unicode siblings; no destination created.",
+    "expected_codes_not_observed": [
+      {
+        "process": 9,
+        "expected": "Saved",
+        "actual": "ProtectedPath"
+      },
+      {
+        "process": 10,
+        "expected": "Saved",
+        "actual": "ProtectedPath"
+      },
+      {
+        "process": 11,
+        "expected": "Valid",
+        "actual": "NotFound"
+      },
+      {
+        "process": 12,
+        "expected": "Valid",
+        "actual": "NotFound"
+      },
+      {
+        "process": 14,
+        "expected": "NameExists after successful first materialization",
+        "actual": "ProtectedPath; no initial output exists"
+      }
+    ],
+    "observer_failure": {
+      "type": "FileNotFoundError",
+      "stage": "post-process complete-output byte comparison",
+      "after_cli_process": 14,
+      "missing_path": "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Auditions été/Warm Current.b3performance",
+      "tool_result_chunk_id": "cf83a0",
+      "explanation": "The observer did not guard the output read after unsuccessful materialization. All native stdout/stderr and incremental command records had already been saved. This observer failure is separate from the native ProtectedPath outcomes."
+    },
+    "final_checks": {
+      "pack_26_files_unchanged": true,
+      "current_unchanged": true,
+      "selected_library_unchanged_since_import": true,
+      "library_exact_import_bytes": true,
+      "destination_not_created": true,
+      "same_native_tool": true,
+      "eleven_source_files_unchanged": true,
+      "fresh_listing_created_no_library": true,
+      "import_create_only_refused_nameexists": true
+    },
+    "commands": [
+      {
+        "number": 1,
+        "name": "help",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "--help"
+        ],
+        "returncode": 0,
+        "code": "Help",
+        "committed": false,
+        "stdout_sha256": "d284d734e6d3f542be34998a2ad9b96bec75da1dd15ef9b31f2e295972e903e8",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 2,
+        "name": "discover-pack",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "list",
+          "--library",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries"
+        ],
+        "returncode": 0,
+        "code": "Ready",
+        "committed": false,
+        "stdout_sha256": "d3837267b869363d0671b2980f5c6356b96e0dfbfbb26b4bcfc128b5d52e125a",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 3,
+        "name": "inspect-pack-registration",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries",
+          "--key",
+          "02 Warm Comp.b3registration"
+        ],
+        "returncode": 0,
+        "code": "Valid",
+        "committed": false,
+        "stdout_sha256": "74284781b66376319a7419347c094879a4b12c1ed504642a227dfbbdb732a0f3",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 4,
+        "name": "inspect-pack-performance",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries",
+          "--key",
+          "02 Warm Comp.b3performance"
+        ],
+        "returncode": 0,
+        "code": "Valid",
+        "committed": false,
+        "stdout_sha256": "336f61e64e6378c3ee6b9c49abb16553f3619cb828f4f5e6004d1fb0bcc67292",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 5,
+        "name": "list-fresh-library",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "list",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω"
+        ],
+        "returncode": 0,
+        "code": "MissingDirectory",
+        "committed": false,
+        "stdout_sha256": "5a1d80f6381365e2ad0fa6dea6bee6218eff51c8ef8b603122d001fdb4568012",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 6,
+        "name": "import-registration",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "import",
+          "--input",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3registration",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω",
+          "--name",
+          "Warm Comp",
+          "--scope",
+          "registration"
+        ],
+        "returncode": 0,
+        "code": "Saved",
+        "committed": true,
+        "stdout_sha256": "be1fe186c9e00a6e74e1f107f946100a358e436594e8545c19f881c0ec78462a",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 7,
+        "name": "import-performance",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "import",
+          "--input",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3performance",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω",
+          "--name",
+          "Warm Performance",
+          "--scope",
+          "performance"
+        ],
+        "returncode": 0,
+        "code": "Saved",
+        "committed": true,
+        "stdout_sha256": "64c2c77341e0f01c42506f27f20c9fa911e164aaf7d74136d6a559f137bee117",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 8,
+        "name": "list-selected-library",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "list",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω"
+        ],
+        "returncode": 0,
+        "code": "Ready",
+        "committed": false,
+        "stdout_sha256": "64d31a814f7d37bd41cd0011917015446eb2526468db4be27cbcd570669e386c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 9,
+        "name": "materialize-current",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "materialize",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω",
+          "--key",
+          "Warm Comp.b3registration",
+          "--current",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Current état.b3controls",
+          "--destination",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Auditions été",
+          "--name",
+          "Warm Current"
+        ],
+        "returncode": 3,
+        "code": "ProtectedPath",
+        "committed": false,
+        "stdout_sha256": "dc9ae737065c2651d6e1f5f8872a4eee1e8af9718283ad451e4f28114c678212",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 10,
+        "name": "materialize-saved",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "materialize",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω",
+          "--key",
+          "Warm Performance.b3performance",
+          "--destination",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Auditions été",
+          "--name",
+          "Warm Saved"
+        ],
+        "returncode": 3,
+        "code": "ProtectedPath",
+        "committed": false,
+        "stdout_sha256": "90eeaf9aed3d66bc7222100192428663ac39cf227f77624596fb90dfdde77a82",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 11,
+        "name": "inspect-prepared-current",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Auditions été",
+          "--key",
+          "Warm Current.b3performance"
+        ],
+        "returncode": 3,
+        "code": "NotFound",
+        "committed": false,
+        "stdout_sha256": "1b279a7aed0740725732140fbd79ef1f223133776c9caf11a9c6c72bd6385174",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 12,
+        "name": "inspect-prepared-saved",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Auditions été",
+          "--key",
+          "Warm Saved.b3performance"
+        ],
+        "returncode": 3,
+        "code": "NotFound",
+        "committed": false,
+        "stdout_sha256": "1b279a7aed0740725732140fbd79ef1f223133776c9caf11a9c6c72bd6385174",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 13,
+        "name": "refuse-repeated-import",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "import",
+          "--input",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3registration",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω",
+          "--name",
+          "Warm Comp",
+          "--scope",
+          "registration"
+        ],
+        "returncode": 3,
+        "code": "NameExists",
+        "committed": false,
+        "stdout_sha256": "a2cc212a6fe217e0eb23f5635d1a9471b0c51fe5f96bdba3133c3cc4678556cb",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 14,
+        "name": "refuse-repeated-materialize",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "materialize",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Ma bibliothèque Ω",
+          "--key",
+          "Warm Comp.b3registration",
+          "--current",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Current état.b3controls",
+          "--destination",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/Auditions été",
+          "--name",
+          "Warm Current"
+        ],
+        "returncode": 3,
+        "code": "ProtectedPath",
+        "committed": false,
+        "stdout_sha256": "dc9ae737065c2651d6e1f5f8872a4eee1e8af9718283ad451e4f28114c678212",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "detailed_receipt_member": "original/receipt.json"
+  },
+  "supported_journey": {
+    "result": "pass within stated layout",
+    "native_processes": 14,
+    "started_utc": "2026-11-16T12:30:44.741105+00:00",
+    "completed_utc": "2026-11-16T12:30:44.836511+00:00",
+    "library": "inputs/Ma bibliothèque Ω",
+    "current": "inputs/Current état.b3controls",
+    "destination": "outputs/Auditions été",
+    "observer_conditions_passed": 100,
+    "failed_conditions": [],
+    "commands": [
+      {
+        "number": 1,
+        "name": "help",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "--help"
+        ],
+        "returncode": 0,
+        "code": "Help",
+        "committed": false,
+        "stdout_sha256": "d284d734e6d3f542be34998a2ad9b96bec75da1dd15ef9b31f2e295972e903e8",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 2,
+        "name": "discover-pack",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "list",
+          "--library",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries"
+        ],
+        "returncode": 0,
+        "code": "Ready",
+        "committed": false,
+        "stdout_sha256": "d3837267b869363d0671b2980f5c6356b96e0dfbfbb26b4bcfc128b5d52e125a",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 3,
+        "name": "inspect-pack-registration",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries",
+          "--key",
+          "02 Warm Comp.b3registration"
+        ],
+        "returncode": 0,
+        "code": "Valid",
+        "committed": false,
+        "stdout_sha256": "74284781b66376319a7419347c094879a4b12c1ed504642a227dfbbdb732a0f3",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 4,
+        "name": "inspect-pack-performance",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries",
+          "--key",
+          "02 Warm Comp.b3performance"
+        ],
+        "returncode": 0,
+        "code": "Valid",
+        "committed": false,
+        "stdout_sha256": "336f61e64e6378c3ee6b9c49abb16553f3619cb828f4f5e6004d1fb0bcc67292",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 5,
+        "name": "list-fresh-library",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "list",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω"
+        ],
+        "returncode": 0,
+        "code": "MissingDirectory",
+        "committed": false,
+        "stdout_sha256": "5a1d80f6381365e2ad0fa6dea6bee6218eff51c8ef8b603122d001fdb4568012",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 6,
+        "name": "import-registration",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "import",
+          "--input",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3registration",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω",
+          "--name",
+          "Warm Comp",
+          "--scope",
+          "registration"
+        ],
+        "returncode": 0,
+        "code": "Saved",
+        "committed": true,
+        "stdout_sha256": "e10936f2808f06c1f3c310135da9a01f79d0b302030474162094c34a323c0b2b",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 7,
+        "name": "import-performance",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "import",
+          "--input",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3performance",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω",
+          "--name",
+          "Warm Performance",
+          "--scope",
+          "performance"
+        ],
+        "returncode": 0,
+        "code": "Saved",
+        "committed": true,
+        "stdout_sha256": "e87fe07df3edce15cfc451c51216c00e8fcb40c5e48b63795ec57af26e03192a",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 8,
+        "name": "list-selected-library",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "list",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω"
+        ],
+        "returncode": 0,
+        "code": "Ready",
+        "committed": false,
+        "stdout_sha256": "64d31a814f7d37bd41cd0011917015446eb2526468db4be27cbcd570669e386c",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 9,
+        "name": "materialize-current",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "materialize",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω",
+          "--key",
+          "Warm Comp.b3registration",
+          "--current",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Current état.b3controls",
+          "--destination",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/outputs/Auditions été",
+          "--name",
+          "Warm Current"
+        ],
+        "returncode": 0,
+        "code": "Saved",
+        "committed": true,
+        "stdout_sha256": "f31d2ba617756c50569e95613afe269c62bf7b06156c84a79e47133d600c02e3",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 10,
+        "name": "materialize-saved",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "materialize",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω",
+          "--key",
+          "Warm Performance.b3performance",
+          "--destination",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/outputs/Auditions été",
+          "--name",
+          "Warm Saved"
+        ],
+        "returncode": 0,
+        "code": "Saved",
+        "committed": true,
+        "stdout_sha256": "9493410f1012ffc23c9f07c794d71bbceef0152169e9a65d7da04e638029ad2e",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 11,
+        "name": "inspect-prepared-current",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/outputs/Auditions été",
+          "--key",
+          "Warm Current.b3performance"
+        ],
+        "returncode": 0,
+        "code": "Valid",
+        "committed": false,
+        "stdout_sha256": "d205ebf4025b8bad00a9bc29e69ca5c781d42862c71afd440bade07a75dba1c2",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 12,
+        "name": "inspect-prepared-saved",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "inspect",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/outputs/Auditions été",
+          "--key",
+          "Warm Saved.b3performance"
+        ],
+        "returncode": 0,
+        "code": "Valid",
+        "committed": false,
+        "stdout_sha256": "306344139066e4a3fba54eeefa30dadc5355cd31412862c1eba6e002862bd6e0",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 13,
+        "name": "refuse-repeated-import",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "import",
+          "--input",
+          "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3registration",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω",
+          "--name",
+          "Warm Comp",
+          "--scope",
+          "registration"
+        ],
+        "returncode": 3,
+        "code": "NameExists",
+        "committed": false,
+        "stdout_sha256": "945a1b319dcf2845e4a671be14434e23b46c7eaa41ed20ed4430292ac37d1064",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "number": 14,
+        "name": "refuse-repeated-materialize",
+        "argv": [
+          "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+          "materialize",
+          "--library",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Ma bibliothèque Ω",
+          "--key",
+          "Warm Comp.b3registration",
+          "--current",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/inputs/Current état.b3controls",
+          "--destination",
+          "/workspace/scratch/3edffb787db3/a43-first-use/First session Ω/outputs/Auditions été",
+          "--name",
+          "Warm Current"
+        ],
+        "returncode": 3,
+        "code": "NameExists",
+        "committed": false,
+        "stdout_sha256": "ddfc792885c0fb4de0eda117933e1c99038d10f90add318c5855789ed65d0ef2",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "detailed_receipt_member": "supported/receipt.json"
+  },
+  "literal_oracle": {
+    "basis": "Literal bytes, documented B3CONTROLS4 grammar and independent recipes.json Warm Comp values; no production parser/generator used as an oracle.",
+    "current_input_sha256": "1ab70b1d108b855fb1c4e4420d267188f091bf4c9be023d66df15ae7cb704a1e",
+    "saved_warm_comp_sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+    "registration_materialized_sha256": "3589dec7a97f04fcab2e0356d0e1a70f57b32e4675b0f6ecbc1f7d368cfc565a",
+    "current_expression": 0.375,
+    "saved_expression": 0.625,
+    "materialized_file_bytes": 459,
+    "all_other_fields_compared_as_complete_bytes": true,
+    "production_parser_or_generator_used_as_oracle": false
+  },
+  "immutability": {
+    "supplied_pack_26_files_unchanged_in_both_journeys": true,
+    "supported_current_unchanged": true,
+    "supported_library_unchanged_after_import": true,
+    "supported_outputs_unchanged_after_materialization": true,
+    "original_files_still_unchanged_after_repeat": {
+      "Current état.b3controls": true,
+      "Ma bibliothèque Ω/Warm Comp.b3registration": true,
+      "Ma bibliothèque Ω/Warm Performance.b3performance": true
+    }
+  },
+  "final_inventory": {
+    "Current état.b3controls": {
+      "bytes": 451,
+      "sha256": "1ab70b1d108b855fb1c4e4420d267188f091bf4c9be023d66df15ae7cb704a1e"
+    },
+    "Ma bibliothèque Ω/Warm Comp.b3registration": {
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+    },
+    "Ma bibliothèque Ω/Warm Performance.b3performance": {
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+    },
+    "inputs/Current état.b3controls": {
+      "bytes": 451,
+      "sha256": "1ab70b1d108b855fb1c4e4420d267188f091bf4c9be023d66df15ae7cb704a1e"
+    },
+    "inputs/Ma bibliothèque Ω/Warm Comp.b3registration": {
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+    },
+    "inputs/Ma bibliothèque Ω/Warm Performance.b3performance": {
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+    },
+    "outputs/Auditions été/Warm Current.b3performance": {
+      "bytes": 459,
+      "sha256": "3589dec7a97f04fcab2e0356d0e1a70f57b32e4675b0f6ecbc1f7d368cfc565a"
+    },
+    "outputs/Auditions été/Warm Saved.b3performance": {
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+    }
+  },
+  "guide_correction": {
+    "owner": "root",
+    "original_read_sha256": "9d81031355ecbf6df378abcdb125a31324af630dc7a55759c299e46e37b66bdd",
+    "reviewed_correction_sha256": "e844bacd28e7e30a1c3ad90c46189162cb9fffcd5e61d64f17bb6ad0027402b3",
+    "archive_member": "source/guide-after-root-correction.md",
+    "reviewed": true,
+    "wording": "Explicitly warns of ProtectedPath for Unicode siblings; puts both library and --current beneath inputs/ and destination beneath outputs/.",
+    "production_policy_changed": false
+  },
+  "evidence_archive": {
+    "file": "a43-first-use-originals.tar.gz",
+    "sha256": "8c0123dcd8c41aa43f37cfab86a2e323a4660bfc0a0113f27d8a05209dd45574",
+    "bytes": 60965,
+    "member_count": 83,
+    "member_index": "evidence-index.json",
+    "original_receipt_sha256": "c0ac2c245a50935b83b71fe1d8bc2d6052dfd5579d3e7c0b779c008871b4a39e",
+    "supported_receipt_sha256": "87ac77ec73ca29533c79559be53906905e84926913968b8c5054e1e3ede7df3f",
+    "contents": "Both observers, literal input/expected bytes, 28 original native stdout/stderr pairs, full command records, both detailed receipts, original observer failure, final actual files, independent recipe manifest and reviewed guide correction."
+  },
+  "limitations": [
+    "Linux x86_64 only; no Windows/macOS execution.",
+    "Original Unicode sibling journey remains failed-path evidence; supported repeat is conditional and does not broaden alias admission.",
+    "No CTest, generator, renderer, installer, native browser or device invocation.",
+    "Known executable/source observation does not qualify concurrent unrelated source overlays, publication or hosted CI.",
+    "Literal whole-interface 1:1, physical fidelity, live-library and device acceptance remain open."
+  ],
+  "next_action": "Root publishes the corrected guide and conditional receipts; later platform owners can qualify the same bounded layout at exact sources."
+}

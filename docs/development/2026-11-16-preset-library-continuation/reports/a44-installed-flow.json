@@ -1,0 +1,1587 @@
+{
+  "schema": "a44-installed-registration-render-v1",
+  "outcome": "pass",
+  "agent": "/root/w08_a44",
+  "wave": 8,
+  "started_at_utc": "2026-11-16T12:31:41.045994+00:00",
+  "repo": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "genuine_build": "/workspace/scratch/3edffb787db3/build-native",
+  "private_root": "/workspace/scratch/3edffb787db3/a44-installed-flow",
+  "relocated_prefix": "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音",
+  "execution_cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+  "native_environment": {
+    "PATH": "",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "TZ": "UTC"
+  },
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "harness_sha256": "c89f8675d25b319e930474fcb8e572669a5e478169d12a5feab7b5de656d01ce",
+  "commands": [
+    {
+      "label": "head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.002915023003879469,
+      "stdout_sha256": "75be08a858398e16c487b99af85b48914a21338c1460c925a2408d90da0939f4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/00-head.stdout",
+      "stderr_member": "commands/00-head.stderr"
+    },
+    {
+      "label": "head-tree",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD^{tree}"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.0026252609968651086,
+      "stdout_sha256": "da55cc027e216118d4eebe3c8ade39a048feb2f177ea1eb8a8eb1e89e971ae91",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/01-head-tree.stdout",
+      "stderr_member": "commands/01-head-tree.stderr"
+    },
+    {
+      "label": "pending",
+      "argv": [
+        "git",
+        "diff",
+        "--name-only"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.008592913000029512,
+      "stdout_sha256": "3d27cb0cc633fa5e988c81b4860915b93a3f81c2827e46cc49b39803805a2705",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/02-pending.stdout",
+      "stderr_member": "commands/02-pending.stderr"
+    },
+    {
+      "label": "cmake-version",
+      "argv": [
+        "/home/agent/.local/bin/cmake",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.12339726799837081,
+      "stdout_sha256": "f6e81c2559f3ce00c5fdad01d7b226c301f5d6b07ee04f65db6dbfdc1cc5970b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/03-cmake-version.stdout",
+      "stderr_member": "commands/03-cmake-version.stderr"
+    },
+    {
+      "label": "install-OfflineTools",
+      "argv": [
+        "/home/agent/.local/bin/cmake",
+        "-DCMAKE_INSTALL_PREFIX=/workspace/scratch/3edffb787db3/a44-installed-flow/initial-prefix",
+        "-DCMAKE_INSTALL_COMPONENT=OfflineTools",
+        "-DCMAKE_INSTALL_CONFIG_NAME=Release",
+        "-DCMAKE_INSTALL_LOCAL_ONLY=1",
+        "-P",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/build/cmake_install.cmake"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.17749011799605796,
+      "stdout_sha256": "0ac9a513c122b671c88c1de830438ff6c4836442306822aea6b48cf21716dedf",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/04-install-OfflineTools.stdout",
+      "stderr_member": "commands/04-install-OfflineTools.stderr"
+    },
+    {
+      "label": "install-RegistrationTools",
+      "argv": [
+        "/home/agent/.local/bin/cmake",
+        "-DCMAKE_INSTALL_PREFIX=/workspace/scratch/3edffb787db3/a44-installed-flow/initial-prefix",
+        "-DCMAKE_INSTALL_COMPONENT=RegistrationTools",
+        "-DCMAKE_INSTALL_CONFIG_NAME=Release",
+        "-DCMAKE_INSTALL_LOCAL_ONLY=1",
+        "-P",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/build/cmake_install.cmake"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.11366335400089156,
+      "stdout_sha256": "1beff684791c9b19d00ee0a16c98dd846668d74abf0af7a24cd391248e8b045d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/05-install-RegistrationTools.stdout",
+      "stderr_member": "commands/05-install-RegistrationTools.stderr"
+    },
+    {
+      "label": "install-StarterRegistrations",
+      "argv": [
+        "/home/agent/.local/bin/cmake",
+        "-DCMAKE_INSTALL_PREFIX=/workspace/scratch/3edffb787db3/a44-installed-flow/initial-prefix",
+        "-DCMAKE_INSTALL_COMPONENT=StarterRegistrations",
+        "-DCMAKE_INSTALL_CONFIG_NAME=Release",
+        "-DCMAKE_INSTALL_LOCAL_ONLY=1",
+        "-P",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/build/cmake_install.cmake"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.11635861000104342,
+      "stdout_sha256": "79be9d0b19527deff5ed72bcd21dc280a6afb677534c10ebeec7d43f13dc9210",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/06-install-StarterRegistrations.stdout",
+      "stderr_member": "commands/06-install-StarterRegistrations.stderr"
+    },
+    {
+      "label": "installed-list",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_registration",
+        "list",
+        "--library",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/share/hammond/registrations/starter-v1/entries"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "minimal-native",
+      "exit": 0,
+      "seconds": 0.0023705209969193675,
+      "stdout_sha256": "d3837267b869363d0671b2980f5c6356b96e0dfbfbb26b4bcfc128b5d52e125a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/07-installed-list.stdout",
+      "stderr_member": "commands/07-installed-list.stderr"
+    },
+    {
+      "label": "inspect-registration",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_registration",
+        "inspect",
+        "--library",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/share/hammond/registrations/starter-v1/entries",
+        "--key",
+        "12 Manual Return.b3registration"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "minimal-native",
+      "exit": 0,
+      "seconds": 0.0024195099977077916,
+      "stdout_sha256": "841f24a6bb6b3264f6446d1919c5b385384e7d97051013465b887012e3c1bf36",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/08-inspect-registration.stdout",
+      "stderr_member": "commands/08-inspect-registration.stderr"
+    },
+    {
+      "label": "materialize-registration",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_registration",
+        "materialize",
+        "--library",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/share/hammond/registrations/starter-v1/entries",
+        "--key",
+        "12 Manual Return.b3registration",
+        "--destination",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/controls",
+        "--name",
+        "Prepared registration",
+        "--current",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/inputs/current.b3controls"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "minimal-native",
+      "exit": 0,
+      "seconds": 0.005341537005733699,
+      "stdout_sha256": "aaa2f60bda41508a1f376b4e116438eddc52ff4fd4dc91586a34854e96da379c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/09-materialize-registration.stdout",
+      "stderr_member": "commands/09-materialize-registration.stderr"
+    },
+    {
+      "label": "render-registration",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/share/hammond-b3-organ/nominal.b3p",
+        "--controls",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/controls/Prepared registration.b3performance",
+        "--events",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/inputs/phrase.events",
+        "--output",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/audio/registration.wav",
+        "--sample-rate",
+        "48000",
+        "--frames",
+        "48000",
+        "--block-size",
+        "64",
+        "--seed",
+        "44",
+        "--contacts",
+        "ideal",
+        "--fail-on-clip"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "minimal-native",
+      "exit": 0,
+      "seconds": 0.07120395400124835,
+      "stdout_sha256": "2c7d1e0fbf9e81820810dcb0f9d628af2393603c7deabebca9c450ed557ad20b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/10-render-registration.stdout",
+      "stderr_member": "commands/10-render-registration.stderr"
+    },
+    {
+      "label": "inspect-performance",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_registration",
+        "inspect",
+        "--library",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/share/hammond/registrations/starter-v1/entries",
+        "--key",
+        "12 Manual Return.b3performance"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "minimal-native",
+      "exit": 0,
+      "seconds": 0.0035157410020474344,
+      "stdout_sha256": "fc6669b6c1d9e1120b7203ea8c63a9cb18aa6af019fd23867fe0845326b68f78",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/11-inspect-performance.stdout",
+      "stderr_member": "commands/11-inspect-performance.stderr"
+    },
+    {
+      "label": "materialize-performance",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_registration",
+        "materialize",
+        "--library",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/share/hammond/registrations/starter-v1/entries",
+        "--key",
+        "12 Manual Return.b3performance",
+        "--destination",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/controls",
+        "--name",
+        "Prepared performance"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "minimal-native",
+      "exit": 0,
+      "seconds": 0.004361610001069494,
+      "stdout_sha256": "39713c426e61092fb36a1b58a5a795ab1dcf6ccb9c7fd6554c4fabfec8aedc25",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/12-materialize-performance.stdout",
+      "stderr_member": "commands/12-materialize-performance.stderr"
+    },
+    {
+      "label": "render-performance",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/share/hammond-b3-organ/nominal.b3p",
+        "--controls",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/controls/Prepared performance.b3performance",
+        "--events",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/inputs/phrase.events",
+        "--output",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/audio/performance.wav",
+        "--sample-rate",
+        "48000",
+        "--frames",
+        "48000",
+        "--block-size",
+        "64",
+        "--seed",
+        "44",
+        "--contacts",
+        "ideal",
+        "--fail-on-clip"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "minimal-native",
+      "exit": 0,
+      "seconds": 0.07141115100239404,
+      "stdout_sha256": "43550f0fa774d48363c2f9dec1dbfd00bdfbedc35988871b5dabe67d6f1f1e5d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/13-render-performance.stdout",
+      "stderr_member": "commands/13-render-performance.stderr"
+    },
+    {
+      "label": "runtime-hammond_registration",
+      "argv": [
+        "/usr/bin/ldd",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_registration"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.008956563004176132,
+      "stdout_sha256": "251c7e3fdff7fac75fcabf3d36f5727aee9dcd38e85b287b42a86001ec55d0b3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/14-runtime-hammond_registration.stdout",
+      "stderr_member": "commands/14-runtime-hammond_registration.stderr"
+    },
+    {
+      "label": "runtime-hammond_render",
+      "argv": [
+        "/usr/bin/ldd",
+        "/workspace/scratch/3edffb787db3/a44-installed-flow/installed/package é音/bin/hammond_render"
+      ],
+      "cwd": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音",
+      "environment": "install-sanitized",
+      "exit": 0,
+      "seconds": 0.008632814999145921,
+      "stdout_sha256": "77c1d88278b60843b08d02825f3808a1b46d4245a64c73d4da58c845a07d15e9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_member": "commands/15-runtime-hammond_render.stdout",
+      "stderr_member": "commands/15-runtime-hammond_render.stderr"
+    }
+  ],
+  "boundary": "Only private copied installer source/build inputs are removed. Genuine checkout, build, dependencies and system runtime remain accessible. This is compatible Linux execution, not cross-host isolation or physical/UI acceptance.",
+  "head": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+  "head_tree": "1e59776459a05a9d934d0b519a45cd4c61b13ae9",
+  "pending_tracked_paths": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/standalone.yml",
+    "THIRD_PARTY_NOTICES.md",
+    "apps/standalone/CMakeLists.txt",
+    "apps/standalone/native_tests/test_standalone_install.py",
+    "assets/standalone/reference-apron-v1/README.md",
+    "cmake/InstallStandalone.cmake",
+    "docs/DEPENDENCIES_AND_RIGHTS.md",
+    "docs/REGISTRATION_GUIDE.md",
+    "docs/STANDALONE_INSTALL.md",
+    "docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md",
+    "docs/development/2026-11-16-preset-library-continuation/NEXT_ASSIGNMENTS.md",
+    "docs/development/2026-11-16-preset-library-continuation/assignments.json",
+    "docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions.md",
+    "tests/test_starter_auditions.py",
+    "tools/audition_starter_registrations.py"
+  ],
+  "cmake": "cmake version 3.31.6",
+  "genuine_configuration": {
+    "build_type": "Release",
+    "generator": "Ninja",
+    "compiler_id": "GNU",
+    "compiler_version": "14.2.0",
+    "CMakeCache": {
+      "bytes": 47961,
+      "sha256": "10aa2ad2bc556fc174ce2a0363f99cc5e65a2a8e1fab0cb189ee46c0a9bd6118",
+      "mode": "0o644"
+    },
+    "compiler_record": {
+      "bytes": 6288,
+      "sha256": "e4e56540cb8482e54327df05547ea2682f316cb0dcd65b257b2d8298a24c4dd8",
+      "mode": "0o644"
+    }
+  },
+  "installer": {
+    "method": "generated root script; only source/build root substitutions",
+    "original": {
+      "bytes": 101879,
+      "sha256": "48d2c710732215065b8d6d5db5887c081c8df0658fef18b840f9777760741a6f",
+      "mode": "0o644"
+    },
+    "private": {
+      "bytes": 104834,
+      "sha256": "3e34fc9ee867f435ae3f3b17c699c3cabc9c572553bb092242f04f128e4b4ac9",
+      "mode": "0o644"
+    },
+    "CMAKE_INSTALL_LOCAL_ONLY": 1,
+    "configure_calls": 0,
+    "build_calls": 0
+  },
+  "genuine_inputs_before": {
+    "/workspace/scratch/3edffb787db3/build-native/hammond_render": {
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "mode": "0o755"
+    },
+    "/workspace/scratch/3edffb787db3/build-native/hammond_model_info": {
+      "bytes": 46976,
+      "sha256": "3471217c9f35530ea19c10fcff8508fa6a8dd4ae29c920e6ef5e8d1cb6bcc991",
+      "mode": "0o755"
+    },
+    "/workspace/scratch/3edffb787db3/build-native/hammond_parameter_info": {
+      "bytes": 41248,
+      "sha256": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+      "mode": "0o755"
+    },
+    "/workspace/scratch/3edffb787db3/build-native/hammond_console_trace": {
+      "bytes": 132568,
+      "sha256": "283d9c35332a515f13033c2abe99abba9b2463f1e8c7fe8a7f97bade13c33059",
+      "mode": "0o755"
+    },
+    "/workspace/scratch/3edffb787db3/build-native/hammond_pedal_trace": {
+      "bytes": 136720,
+      "sha256": "e4a511ff714ed844fc94976d2a62a7b94ff7f47fd248efc1065c580cd8b9e3fe",
+      "mode": "0o755"
+    },
+    "/workspace/scratch/3edffb787db3/build-native/hammond_registration": {
+      "bytes": 253280,
+      "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+      "mode": "0o755"
+    },
+    "/workspace/scratch/3edffb787db3/build-native/nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/plot_console_trace.py": {
+      "bytes": 22430,
+      "sha256": "e7cf4603acbf2707b7752f781314a97293b89567675eb19cae772f4db37d3720",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/plot_pedal_trace.py": {
+      "bytes": 25610,
+      "sha256": "45b28978924e88ac09b95bc6e5c9671e2b2f5059f9bd79df47565e8659f10f15",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/catalog-v1.json": {
+      "bytes": 15544,
+      "sha256": "98ffa2c3bc30f60ceb839e1fc2ab978e45dcf5f2cb4970fe77f91894344c34f8",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/a4-fundamental-v1.events": {
+      "bytes": 480,
+      "sha256": "c3295b7a060b7af68c6e3d43198a54cbe33ee26b6bc8e3c2cd1a76b80cfeb59f",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/two-manual-changes-v1.events": {
+      "bytes": 1607,
+      "sha256": "d86b7fb3e3a62865b218400828aaef7ee176c39da7f08ef29aed5ae5b0627ae8",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/low-fold-coherent-v1.events": {
+      "bytes": 671,
+      "sha256": "3ae330fbdf6f789dcd0533c521c63dce855e743000ecc283fae565009726ddea",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/held-bank-cancel-v1.events": {
+      "bytes": 1010,
+      "sha256": "fbd3060bdcae1bb7e4701de92799dca8ae0e4f92c5efedc84b450794c7e5ef5c",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/high-fold-coherent-v1.events": {
+      "bytes": 537,
+      "sha256": "0431c06df58e4b66decf385f6fdbb4e89b146dcd80efaa0dc23d2d3155b120c0",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-catalog-v1.json": {
+      "bytes": 12216,
+      "sha256": "f66d31d43e67b52fb2044a680c9c6ca6f02608bd94eac1988ed56edc1f28a27b",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-travel-v1.events": {
+      "bytes": 396,
+      "sha256": "9147e5bb93d701ad0cee516cf28509a685f2791fefb19218a70c12dacd9d9806",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-percussion-legato-v1.events": {
+      "bytes": 515,
+      "sha256": "48f95b03561e48b13b1899203632a420d45f2283d1c293093c0236afde8e5ac9",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-routing-mask-v1.events": {
+      "bytes": 565,
+      "sha256": "3f654665fd74bc26fe2cb42bf597adb2b68f4485c7a47c89c0a4f0a84ae52318",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-catalog-v1.json": {
+      "bytes": 20057,
+      "sha256": "f064cdda432791703f1853d9cde52faa3cd5bf9899b999ad5b38ee64bb1ed5b7",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-mixtures-v1.events": {
+      "bytes": 238,
+      "sha256": "0adc929a3cde2f834f6d368dbd49e5441b636c2a933880144a8988033b45ba4d",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-shared-source-v1.events": {
+      "bytes": 356,
+      "sha256": "b0390f58fed9f91509089d8782a4d22ea5374070a2689fdeab5641a4d582cfb2",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-held-routing-v1.events": {
+      "bytes": 447,
+      "sha256": "71acf2756109509c81fa5e48d0ee7ef4d321f53e29d233ad2c60c3451f2ccdfa",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-phrase-v1.events": {
+      "bytes": 1246,
+      "sha256": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/REGISTRATION_GUIDE.md": {
+      "bytes": 12736,
+      "sha256": "f2ab71ca14d25b3f17c00368dcb807b5633bdf67b634b951ac28693943fbf61a",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/01 Quiet Foundation.b3registration": {
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/01 Quiet Foundation.b3performance": {
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3registration": {
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3performance": {
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/03 Clear Lead.b3registration": {
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/03 Clear Lead.b3performance": {
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/04 Reed Edge.b3registration": {
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/04 Reed Edge.b3performance": {
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/05 Bright Ensemble.b3registration": {
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/05 Bright Ensemble.b3performance": {
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/06 High Shimmer.b3registration": {
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/06 High Shimmer.b3performance": {
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/07 Percussive Pair.b3registration": {
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/07 Percussive Pair.b3performance": {
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/08 Slow Accent.b3registration": {
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/08 Slow Accent.b3performance": {
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/09 Split Dialogue.b3registration": {
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/09 Split Dialogue.b3performance": {
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/10 Pedal Study.b3registration": {
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/10 Pedal Study.b3performance": {
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/11 Fixed Contrast.b3registration": {
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/11 Fixed Contrast.b3performance": {
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/12 Manual Return.b3registration": {
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/12 Manual Return.b3performance": {
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "mode": "0o600"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/README.md": {
+      "bytes": 8566,
+      "sha256": "b5353cf54e5aeb259e2ab16735a2449385144e013bc736c38623c64162f45234",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/recipes.json": {
+      "bytes": 9955,
+      "sha256": "665e6098928d845c1302642f89a109dc8f2be8500f9eb49d33111ba37d468051",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/cmake/InstallHammondTools.cmake": {
+      "bytes": 10971,
+      "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/cmake/InstallRegistrationTools.cmake": {
+      "bytes": 10701,
+      "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/build-native/cmake_install.cmake": {
+      "bytes": 101879,
+      "sha256": "48d2c710732215065b8d6d5db5887c081c8df0658fef18b840f9777760741a6f",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/registration.cpp": {
+      "bytes": 36175,
+      "sha256": "4fbf8f9e9a8c04713ee7aa28e089e02dbd5955ceb38e478673aa1f5da2f37ff3",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/render.cpp": {
+      "bytes": 50112,
+      "sha256": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/ControlFileInput.cpp": {
+      "bytes": 9209,
+      "sha256": "0a174b171dfb3f0253cd6beb12707fda4da5ffb88c898727fb80ca111049cf5d",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/ControlFileInput.h": {
+      "bytes": 895,
+      "sha256": "74fe88ed36c8b00b56f3a3f15874f22ec418ce4ea8932995c7829b68c4f02ade",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/apps/standalone/RegistrationLibrary.cpp": {
+      "bytes": 38466,
+      "sha256": "e45fd2671558e0725468c18b59dc5ef8e7436600910633f73035ce81da4d3a4a",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/apps/standalone/RegistrationLibrary.h": {
+      "bytes": 5982,
+      "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/src/ControlStateIO.cpp": {
+      "bytes": 13152,
+      "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/src/ControlState.cpp": {
+      "bytes": 7673,
+      "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/src/Engine.cpp": {
+      "bytes": 28448,
+      "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+      "mode": "0o644"
+    },
+    "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/src/FixedRegistration.cpp": {
+      "bytes": 1630,
+      "sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+      "mode": "0o644"
+    }
+  },
+  "expected_installed_files": {
+    "bin/hammond_render": {
+      "source": "/workspace/scratch/3edffb787db3/build-native/hammond_render",
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "mode": "0o755"
+    },
+    "bin/hammond_model_info": {
+      "source": "/workspace/scratch/3edffb787db3/build-native/hammond_model_info",
+      "bytes": 46976,
+      "sha256": "3471217c9f35530ea19c10fcff8508fa6a8dd4ae29c920e6ef5e8d1cb6bcc991",
+      "mode": "0o755"
+    },
+    "bin/hammond_parameter_info": {
+      "source": "/workspace/scratch/3edffb787db3/build-native/hammond_parameter_info",
+      "bytes": 41248,
+      "sha256": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+      "mode": "0o755"
+    },
+    "bin/hammond_console_trace": {
+      "source": "/workspace/scratch/3edffb787db3/build-native/hammond_console_trace",
+      "bytes": 132568,
+      "sha256": "283d9c35332a515f13033c2abe99abba9b2463f1e8c7fe8a7f97bade13c33059",
+      "mode": "0o755"
+    },
+    "bin/hammond_pedal_trace": {
+      "source": "/workspace/scratch/3edffb787db3/build-native/hammond_pedal_trace",
+      "bytes": 136720,
+      "sha256": "e4a511ff714ed844fc94976d2a62a7b94ff7f47fd248efc1065c580cd8b9e3fe",
+      "mode": "0o755"
+    },
+    "bin/hammond_registration": {
+      "source": "/workspace/scratch/3edffb787db3/build-native/hammond_registration",
+      "bytes": 253280,
+      "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+      "mode": "0o755"
+    },
+    "share/hammond-b3-organ/nominal.b3p": {
+      "source": "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "mode": "0o600"
+    },
+    "bin/plot_console_trace.py": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/plot_console_trace.py",
+      "bytes": 22430,
+      "sha256": "e7cf4603acbf2707b7752f781314a97293b89567675eb19cae772f4db37d3720",
+      "mode": "0o644"
+    },
+    "bin/plot_pedal_trace.py": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/plot_pedal_trace.py",
+      "bytes": 25610,
+      "sha256": "45b28978924e88ac09b95bc6e5c9671e2b2f5059f9bd79df47565e8659f10f15",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/catalog-v1.json": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/catalog-v1.json",
+      "bytes": 15544,
+      "sha256": "98ffa2c3bc30f60ceb839e1fc2ab978e45dcf5f2cb4970fe77f91894344c34f8",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/a4-fundamental-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/a4-fundamental-v1.events",
+      "bytes": 480,
+      "sha256": "c3295b7a060b7af68c6e3d43198a54cbe33ee26b6bc8e3c2cd1a76b80cfeb59f",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/two-manual-changes-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/two-manual-changes-v1.events",
+      "bytes": 1607,
+      "sha256": "d86b7fb3e3a62865b218400828aaef7ee176c39da7f08ef29aed5ae5b0627ae8",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/low-fold-coherent-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/low-fold-coherent-v1.events",
+      "bytes": 671,
+      "sha256": "3ae330fbdf6f789dcd0533c521c63dce855e743000ecc283fae565009726ddea",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/held-bank-cancel-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/held-bank-cancel-v1.events",
+      "bytes": 1010,
+      "sha256": "fbd3060bdcae1bb7e4701de92799dca8ae0e4f92c5efedc84b450794c7e5ef5c",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/high-fold-coherent-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/high-fold-coherent-v1.events",
+      "bytes": 537,
+      "sha256": "0431c06df58e4b66decf385f6fdbb4e89b146dcd80efaa0dc23d2d3155b120c0",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-catalog-v1.json": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-catalog-v1.json",
+      "bytes": 12216,
+      "sha256": "f66d31d43e67b52fb2044a680c9c6ca6f02608bd94eac1988ed56edc1f28a27b",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-travel-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-travel-v1.events",
+      "bytes": 396,
+      "sha256": "9147e5bb93d701ad0cee516cf28509a685f2791fefb19218a70c12dacd9d9806",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-percussion-legato-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-percussion-legato-v1.events",
+      "bytes": 515,
+      "sha256": "48f95b03561e48b13b1899203632a420d45f2283d1c293093c0236afde8e5ac9",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-routing-mask-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/console/console-routing-mask-v1.events",
+      "bytes": 565,
+      "sha256": "3f654665fd74bc26fe2cb42bf597adb2b68f4485c7a47c89c0a4f0a84ae52318",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-catalog-v1.json": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-catalog-v1.json",
+      "bytes": 20057,
+      "sha256": "f064cdda432791703f1853d9cde52faa3cd5bf9899b999ad5b38ee64bb1ed5b7",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-mixtures-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-mixtures-v1.events",
+      "bytes": 238,
+      "sha256": "0adc929a3cde2f834f6d368dbd49e5441b636c2a933880144a8988033b45ba4d",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-shared-source-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-shared-source-v1.events",
+      "bytes": 356,
+      "sha256": "b0390f58fed9f91509089d8782a4d22ea5374070a2689fdeab5641a4d582cfb2",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-held-routing-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-held-routing-v1.events",
+      "bytes": 447,
+      "sha256": "71acf2756109509c81fa5e48d0ee7ef4d321f53e29d233ad2c60c3451f2ccdfa",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-phrase-v1.events": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/examples/fixtures/pedals/pedal-phrase-v1.events",
+      "bytes": 1246,
+      "sha256": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5",
+      "mode": "0o644"
+    },
+    "share/hammond/REGISTRATION_GUIDE.md": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/REGISTRATION_GUIDE.md",
+      "bytes": 12736,
+      "sha256": "f2ab71ca14d25b3f17c00368dcb807b5633bdf67b634b951ac28693943fbf61a",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/01 Quiet Foundation.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/01 Quiet Foundation.b3registration",
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/01 Quiet Foundation.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/01 Quiet Foundation.b3performance",
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/02 Warm Comp.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3registration",
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/02 Warm Comp.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/02 Warm Comp.b3performance",
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/03 Clear Lead.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/03 Clear Lead.b3registration",
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/03 Clear Lead.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/03 Clear Lead.b3performance",
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/04 Reed Edge.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/04 Reed Edge.b3registration",
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/04 Reed Edge.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/04 Reed Edge.b3performance",
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/05 Bright Ensemble.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/05 Bright Ensemble.b3registration",
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/05 Bright Ensemble.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/05 Bright Ensemble.b3performance",
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/06 High Shimmer.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/06 High Shimmer.b3registration",
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/06 High Shimmer.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/06 High Shimmer.b3performance",
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/07 Percussive Pair.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/07 Percussive Pair.b3registration",
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/07 Percussive Pair.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/07 Percussive Pair.b3performance",
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/08 Slow Accent.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/08 Slow Accent.b3registration",
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/08 Slow Accent.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/08 Slow Accent.b3performance",
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/09 Split Dialogue.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/09 Split Dialogue.b3registration",
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/09 Split Dialogue.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/09 Split Dialogue.b3performance",
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/10 Pedal Study.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/10 Pedal Study.b3registration",
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/10 Pedal Study.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/10 Pedal Study.b3performance",
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/11 Fixed Contrast.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/11 Fixed Contrast.b3registration",
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/11 Fixed Contrast.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/11 Fixed Contrast.b3performance",
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/12 Manual Return.b3registration": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/12 Manual Return.b3registration",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/entries/12 Manual Return.b3performance": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/entries/12 Manual Return.b3performance",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "mode": "0o600"
+    },
+    "share/hammond/registrations/starter-v1/README.md": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/README.md",
+      "bytes": 8566,
+      "sha256": "b5353cf54e5aeb259e2ab16735a2449385144e013bc736c38623c64162f45234",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/recipes.json": {
+      "source": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/data/registrations/starter-v1/recipes.json",
+      "bytes": 9955,
+      "sha256": "665e6098928d845c1302642f89a109dc8f2be8500f9eb49d33111ba37d468051",
+      "mode": "0o644"
+    }
+  },
+  "private_removal_before_native_use": {
+    "removed": [
+      "/workspace/scratch/3edffb787db3/a44-installed-flow/source",
+      "/workspace/scratch/3edffb787db3/a44-installed-flow/build"
+    ],
+    "old_prefix_absent": true,
+    "genuine_checkout_accessible": true,
+    "genuine_build_accessible": true
+  },
+  "installed_inventory_before_use": {
+    ".": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "bin": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "bin/hammond_console_trace": {
+      "type": "file",
+      "bytes": 132568,
+      "sha256": "283d9c35332a515f13033c2abe99abba9b2463f1e8c7fe8a7f97bade13c33059",
+      "mode": "0o755"
+    },
+    "bin/hammond_model_info": {
+      "type": "file",
+      "bytes": 46976,
+      "sha256": "3471217c9f35530ea19c10fcff8508fa6a8dd4ae29c920e6ef5e8d1cb6bcc991",
+      "mode": "0o755"
+    },
+    "bin/hammond_parameter_info": {
+      "type": "file",
+      "bytes": 41248,
+      "sha256": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+      "mode": "0o755"
+    },
+    "bin/hammond_pedal_trace": {
+      "type": "file",
+      "bytes": 136720,
+      "sha256": "e4a511ff714ed844fc94976d2a62a7b94ff7f47fd248efc1065c580cd8b9e3fe",
+      "mode": "0o755"
+    },
+    "bin/hammond_registration": {
+      "type": "file",
+      "bytes": 253280,
+      "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+      "mode": "0o755"
+    },
+    "bin/hammond_render": {
+      "type": "file",
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "mode": "0o755"
+    },
+    "bin/plot_console_trace.py": {
+      "type": "file",
+      "bytes": 22430,
+      "sha256": "e7cf4603acbf2707b7752f781314a97293b89567675eb19cae772f4db37d3720",
+      "mode": "0o755"
+    },
+    "bin/plot_pedal_trace.py": {
+      "type": "file",
+      "bytes": 25610,
+      "sha256": "45b28978924e88ac09b95bc6e5c9671e2b2f5059f9bd79df47565e8659f10f15",
+      "mode": "0o755"
+    },
+    "share": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond/REGISTRATION_GUIDE.md": {
+      "type": "file",
+      "bytes": 12736,
+      "sha256": "f2ab71ca14d25b3f17c00368dcb807b5633bdf67b634b951ac28693943fbf61a",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond/registrations/starter-v1": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond/registrations/starter-v1/README.md": {
+      "type": "file",
+      "bytes": 8566,
+      "sha256": "b5353cf54e5aeb259e2ab16735a2449385144e013bc736c38623c64162f45234",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond/registrations/starter-v1/entries/01 Quiet Foundation.b3performance": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/01 Quiet Foundation.b3registration": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/02 Warm Comp.b3performance": {
+      "type": "file",
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/02 Warm Comp.b3registration": {
+      "type": "file",
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/03 Clear Lead.b3performance": {
+      "type": "file",
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/03 Clear Lead.b3registration": {
+      "type": "file",
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/04 Reed Edge.b3performance": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/04 Reed Edge.b3registration": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/05 Bright Ensemble.b3performance": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/05 Bright Ensemble.b3registration": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/06 High Shimmer.b3performance": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/06 High Shimmer.b3registration": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/07 Percussive Pair.b3performance": {
+      "type": "file",
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/07 Percussive Pair.b3registration": {
+      "type": "file",
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/08 Slow Accent.b3performance": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/08 Slow Accent.b3registration": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/09 Split Dialogue.b3performance": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/09 Split Dialogue.b3registration": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/10 Pedal Study.b3performance": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/10 Pedal Study.b3registration": {
+      "type": "file",
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/11 Fixed Contrast.b3performance": {
+      "type": "file",
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/11 Fixed Contrast.b3registration": {
+      "type": "file",
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/12 Manual Return.b3performance": {
+      "type": "file",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/entries/12 Manual Return.b3registration": {
+      "type": "file",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "mode": "0o644"
+    },
+    "share/hammond/registrations/starter-v1/recipes.json": {
+      "type": "file",
+      "bytes": 9955,
+      "sha256": "665e6098928d845c1302642f89a109dc8f2be8500f9eb49d33111ba37d468051",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond-b3-organ/fixtures": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond-b3-organ/fixtures/a4-fundamental-v1.events": {
+      "type": "file",
+      "bytes": 480,
+      "sha256": "c3295b7a060b7af68c6e3d43198a54cbe33ee26b6bc8e3c2cd1a76b80cfeb59f",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/catalog-v1.json": {
+      "type": "file",
+      "bytes": 15544,
+      "sha256": "98ffa2c3bc30f60ceb839e1fc2ab978e45dcf5f2cb4970fe77f91894344c34f8",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-catalog-v1.json": {
+      "type": "file",
+      "bytes": 12216,
+      "sha256": "f66d31d43e67b52fb2044a680c9c6ca6f02608bd94eac1988ed56edc1f28a27b",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-percussion-legato-v1.events": {
+      "type": "file",
+      "bytes": 515,
+      "sha256": "48f95b03561e48b13b1899203632a420d45f2283d1c293093c0236afde8e5ac9",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-routing-mask-v1.events": {
+      "type": "file",
+      "bytes": 565,
+      "sha256": "3f654665fd74bc26fe2cb42bf597adb2b68f4485c7a47c89c0a4f0a84ae52318",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-travel-v1.events": {
+      "type": "file",
+      "bytes": 396,
+      "sha256": "9147e5bb93d701ad0cee516cf28509a685f2791fefb19218a70c12dacd9d9806",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/held-bank-cancel-v1.events": {
+      "type": "file",
+      "bytes": 1010,
+      "sha256": "fbd3060bdcae1bb7e4701de92799dca8ae0e4f92c5efedc84b450794c7e5ef5c",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/high-fold-coherent-v1.events": {
+      "type": "file",
+      "bytes": 537,
+      "sha256": "0431c06df58e4b66decf385f6fdbb4e89b146dcd80efaa0dc23d2d3155b120c0",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/low-fold-coherent-v1.events": {
+      "type": "file",
+      "bytes": 671,
+      "sha256": "3ae330fbdf6f789dcd0533c521c63dce855e743000ecc283fae565009726ddea",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-catalog-v1.json": {
+      "type": "file",
+      "bytes": 20057,
+      "sha256": "f064cdda432791703f1853d9cde52faa3cd5bf9899b999ad5b38ee64bb1ed5b7",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-held-routing-v1.events": {
+      "type": "file",
+      "bytes": 447,
+      "sha256": "71acf2756109509c81fa5e48d0ee7ef4d321f53e29d233ad2c60c3451f2ccdfa",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-mixtures-v1.events": {
+      "type": "file",
+      "bytes": 238,
+      "sha256": "0adc929a3cde2f834f6d368dbd49e5441b636c2a933880144a8988033b45ba4d",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-phrase-v1.events": {
+      "type": "file",
+      "bytes": 1246,
+      "sha256": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-shared-source-v1.events": {
+      "type": "file",
+      "bytes": 356,
+      "sha256": "b0390f58fed9f91509089d8782a4d22ea5374070a2689fdeab5641a4d582cfb2",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/fixtures/two-manual-changes-v1.events": {
+      "type": "file",
+      "bytes": 1607,
+      "sha256": "d86b7fb3e3a62865b218400828aaef7ee176c39da7f08ef29aed5ae5b0627ae8",
+      "mode": "0o644"
+    },
+    "share/hammond-b3-organ/nominal.b3p": {
+      "type": "file",
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "mode": "0o644"
+    }
+  },
+  "results": {
+    "registration": {
+      "expression": "0.25",
+      "all_other_control_bytes_exact": true,
+      "prepared": {
+        "bytes": 453,
+        "sha256": "5bc3fc477d59e1c136ec18c319125ec711eba3d9d79532c557a442dccf07e2f0",
+        "mode": "0o600"
+      },
+      "wav": {
+        "bytes": 192044,
+        "sha256": "e21c3ff2d789cb18302ce4529c6de57c144751647ec6167469c28a06665af259",
+        "mode": "0o644"
+      },
+      "pcm_sha256": "3b782c21025a67652e19853049a51ce6eacdf095c3f13ec3df0f420d4c1fdc05",
+      "frames": 48000,
+      "samples": 96000,
+      "nonzero_samples": 79930,
+      "peak_pcm16": 1158,
+      "peak": 0.035344198346138,
+      "rms": 0.010922684753209845,
+      "clipped_frames": 0,
+      "render_schema_version": 6
+    },
+    "performance": {
+      "expression": "0.5",
+      "all_other_control_bytes_exact": true,
+      "prepared": {
+        "bytes": 452,
+        "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+        "mode": "0o600"
+      },
+      "wav": {
+        "bytes": 192044,
+        "sha256": "7bebf5342b247221c4ae4441dbeb70103e71e681144287688b4d695a079602a1",
+        "mode": "0o644"
+      },
+      "pcm_sha256": "7d74f22b5e6328312b337b36543a21f8c3af2e97e0acad13c9c48fa5e5e6bf82",
+      "frames": 48000,
+      "samples": 96000,
+      "nonzero_samples": 79966,
+      "peak_pcm16": 2316,
+      "peak": 0.070688396692276,
+      "rms": 0.02184536950641969,
+      "clipped_frames": 0,
+      "render_schema_version": 6
+    }
+  },
+  "render_provenance": {
+    "registration": {
+      "status": "ok",
+      "model": "ideal-shared-sine-v1",
+      "render_schema_version": 6,
+      "contact_model": "ideal-contacts-v1",
+      "percussion_model": "shared-readiness-v1",
+      "pedal_routing_model": "linear-pedal-bus-reference-v1",
+      "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+      "pedal_gain_law": "linear-pedal-position-v1",
+      "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+      "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+      "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+      "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+      "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+      "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+      "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+      "pedal_mixture_denominator": 8,
+      "pedal_gain_denominator": 8,
+      "pedal_weight_policy": "all-200-unit-positive-v1",
+      "evidence_status": "unmeasured",
+      "profile_id": "nominal-unmeasured-v1",
+      "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+      "sample_rate": 48000,
+      "block_size": 64,
+      "frames": 48000,
+      "seed": 44,
+      "channels": 2,
+      "sample_format": "pcm_s16le",
+      "peak": 0.035344198346138,
+      "rms": 0.010922684753209845,
+      "clipped_frames": 0,
+      "clipped_channel_samples": 0,
+      "controls": {
+        "schema_version": 1,
+        "restore_policy": "full-state-including-expression",
+        "path": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/controls/Prepared registration.b3performance",
+        "source_version": 4,
+        "source_bytes": 453,
+        "canonical_b3controls4": "B3CONTROLS4\nregistration_catalog atlas-chapel-nominal-v1 sha256 c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\nexpression 0.25\npercussion enabled 1 harmonic third volume soft decay fast\npedal drawbars 4 0\nmanual upper selected A fixed_registration G# route_enabled 0\nbank A 8 0 8 0 0 0 0 0 0\nbank B 8 0 8 6 0 0 0 0 0\nmanual lower selected B fixed_registration none route_enabled 1\nbank A 0 0 8 4 0 0 0 0 0\nbank B 0 0 8 4 4 0 0 0 0\nend\n"
+      }
+    },
+    "performance": {
+      "status": "ok",
+      "model": "ideal-shared-sine-v1",
+      "render_schema_version": 6,
+      "contact_model": "ideal-contacts-v1",
+      "percussion_model": "shared-readiness-v1",
+      "pedal_routing_model": "linear-pedal-bus-reference-v1",
+      "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+      "pedal_gain_law": "linear-pedal-position-v1",
+      "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+      "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+      "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+      "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+      "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+      "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+      "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+      "pedal_mixture_denominator": 8,
+      "pedal_gain_denominator": 8,
+      "pedal_weight_policy": "all-200-unit-positive-v1",
+      "evidence_status": "unmeasured",
+      "profile_id": "nominal-unmeasured-v1",
+      "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+      "sample_rate": 48000,
+      "block_size": 64,
+      "frames": 48000,
+      "seed": 44,
+      "channels": 2,
+      "sample_format": "pcm_s16le",
+      "peak": 0.070688396692276,
+      "rms": 0.02184536950641969,
+      "clipped_frames": 0,
+      "clipped_channel_samples": 0,
+      "controls": {
+        "schema_version": 1,
+        "restore_policy": "full-state-including-expression",
+        "path": "/workspace/scratch/3edffb787db3/a44-installed-flow/work/use é音/controls/Prepared performance.b3performance",
+        "source_version": 4,
+        "source_bytes": 452,
+        "canonical_b3controls4": "B3CONTROLS4\nregistration_catalog atlas-chapel-nominal-v1 sha256 c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\nexpression 0.5\npercussion enabled 1 harmonic third volume soft decay fast\npedal drawbars 4 0\nmanual upper selected A fixed_registration G# route_enabled 0\nbank A 8 0 8 0 0 0 0 0 0\nbank B 8 0 8 6 0 0 0 0 0\nmanual lower selected B fixed_registration none route_enabled 1\nbank A 0 0 8 4 0 0 0 0 0\nbank B 0 0 8 4 4 0 0 0 0\nend\n"
+      }
+    }
+  },
+  "output_inventory": {
+    ".": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "audio": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "audio/performance.wav": {
+      "type": "file",
+      "bytes": 192044,
+      "sha256": "7bebf5342b247221c4ae4441dbeb70103e71e681144287688b4d695a079602a1",
+      "mode": "0o644"
+    },
+    "audio/registration.wav": {
+      "type": "file",
+      "bytes": 192044,
+      "sha256": "e21c3ff2d789cb18302ce4529c6de57c144751647ec6167469c28a06665af259",
+      "mode": "0o644"
+    },
+    "controls": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "controls/Prepared performance.b3performance": {
+      "type": "file",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "mode": "0o600"
+    },
+    "controls/Prepared registration.b3performance": {
+      "type": "file",
+      "bytes": 453,
+      "sha256": "5bc3fc477d59e1c136ec18c319125ec711eba3d9d79532c557a442dccf07e2f0",
+      "mode": "0o600"
+    },
+    "inputs": {
+      "type": "directory",
+      "mode": "0o755"
+    },
+    "inputs/current.b3controls": {
+      "type": "file",
+      "bytes": 458,
+      "sha256": "80dd84708c0a65b4d3485b6e6177be3cb83521678d8d460fd6e368129d766ed8",
+      "mode": "0o644"
+    },
+    "inputs/phrase.events": {
+      "type": "file",
+      "bytes": 288,
+      "sha256": "4e44af99063ca727b1b3ffbcad4a201075db0456f2ccc6576672d1442eb28eb6",
+      "mode": "0o644"
+    }
+  },
+  "installed_inventory_unchanged": true,
+  "genuine_input_changes_observed": {},
+  "original_inputs_remain_accessible": true,
+  "finished_at_utc": "2026-11-16T12:31:41.843762+00:00",
+  "originals_archive": {
+    "path": "docs/development/2026-11-16-preset-library-continuation/reports/a44-installed-flow-originals.tar.gz",
+    "bytes": 162084,
+    "sha256": "5548cc25f3851b73dc3009f3bd9ecb41fd54c40ec950b2ec9073c686d1e731a9",
+    "mode": "0o644",
+    "members": 40
+  }
+}

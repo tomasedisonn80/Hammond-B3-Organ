@@ -1,0 +1,43 @@
+{
+  "scope": "Three existing private LANGUAGES NONE/imported-target installer fixtures only; no shared configure, build, application execution or capture. Actual native installer gate is root-owned and unrun here.",
+  "command": [
+    "python3",
+    "-B",
+    "apps/standalone/native_tests/test_standalone_install.py",
+    "-v",
+    "StandaloneInstallTests.test_disabled_midi_inventory_requires_no_rtmidi_input_or_sdk_lookup",
+    "StandaloneInstallTests.test_preflight_rejects_private_bad_inputs_before_any_destination_write",
+    "StandaloneInstallTests.test_reference_capability_and_midi_records_reject_nonregular_inputs"
+  ],
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "HAMMOND_TEST_CMAKE": "/home/agent/.local/lib/python3.12/site-packages/cmake/data/bin/cmake",
+    "HAMMOND_TEST_BUILD_DIR": "/workspace/scratch/3edffb787db3/build-native",
+    "HAMMOND_TEST_CONFIG": "Release",
+    "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/3edffb787db3/build-native/apps/standalone/hammond_standalone",
+    "HAMMOND_SDL2_ROOT": "/workspace/scratch/ade21b726509/SDL2",
+    "HAMMOND_INSTALL_BINDIR": "bin",
+    "HAMMOND_INSTALL_DATADIR": "share",
+    "HAMMOND_TEST_ENABLE_MIDI": "0",
+    "HAMMOND_STANDALONE_CAPABILITIES": "/workspace/scratch/3edffb787db3/build-native/generated/standalone-capabilities.json",
+    "HAMMOND_RTMIDI_PREPARED_ROOT": "",
+    "HAMMOND_RTMIDI_BACKEND": ""
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 3.723286286003713,
+  "log": {
+    "path": "docs/development/2026-11-16-preset-library-continuation/reports/a41-installer-private-fixtures.log.gz",
+    "raw_bytes": 635,
+    "raw_sha256": "016d84d2160530d7e9420ddd01f4434e68e06138617b4f6ad503e6e265118bf8",
+    "packed_sha256": "f832929453713ee13fe6fe647ffe29c4f61ca6f77ba6f74809195899c7302884"
+  },
+  "sources": {
+    "cmake/InstallStandalone.cmake": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+    "apps/standalone/native_tests/test_standalone_install.py": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+    ".github/workflows/standalone.yml": "e17541f3960472eeaea239c3dbbaadb71c776698c44f428a0925e40ae19c3803",
+    "docs/STANDALONE_INSTALL.md": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba",
+    "THIRD_PARTY_NOTICES.md": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+    "assets/standalone/reference-apron-v1/README.md": "c7912e6f61dd57642a3a0ad19f619fdf640b1272aa6c63438f7711ab1c41fa9d"
+  }
+}

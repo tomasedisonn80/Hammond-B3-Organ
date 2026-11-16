@@ -462,33 +462,210 @@
       "wave": 6,
       "agent": "/root/w06_a34",
       "task": "Independent optional texture lifecycle, failure and bounded paint-resource admission",
-      "status": "running",
+      "status": "accepted",
       "owned_paths": [
         "docs/reviews/REFERENCE_APRON_RESOURCE_ADMISSION.md",
         "notes/A34.md"
-      ]
+      ],
+      "acceptance": "Independent lifecycle/resource audit and one bounded before/after paint observation admitted; backend and deadline limits remain explicit.",
+      "note_sha256": "b2ed4020c359f2316de1fcecbe045f127ca7237e2bc728b5c7a6f84ab91818b1"
     },
     {
       "id": "A35",
       "wave": 6,
       "agent": "/root/w06_a35",
       "task": "Independent copy-only installation, relocation and installed documentation admission",
-      "status": "running",
+      "status": "accepted",
       "owned_paths": [
         "docs/reviews/REGISTRATION_INSTALL_ADMISSION.md",
         "notes/A35.md"
-      ]
+      ],
+      "acceptance": "Independent exact 28-file installation and relocated native inspection admitted; original guide receipt preserved and stale source guide statement corrected.",
+      "note_sha256": "6623c313441b61e9a810c428047c7779d7b40a83aee59968aed6d131574efe2e"
     },
     {
       "id": "A36",
       "wave": 6,
       "agent": "/root/w06_a36",
       "task": "Actual standalone generic Load workflow over starter and materialized controls",
-      "status": "running",
+      "status": "accepted",
       "owned_paths": [
         "apps/standalone/native_tests/test_standalone_starter_load.py",
         "docs/reviews/STARTER_NATIVE_LOAD_ADMISSION.md",
         "notes/A36.md"
+      ],
+      "acceptance": "Actual generic Load acceptance admitted: two methods, four native processes and two materializations exercise full state and both scope semantics; root wired CTest separately.",
+      "note_sha256": "fefc68054b1b5d796eb90d1f01cab8ba0ab46fc6374deb1a47b43f7af0e6851e"
+    },
+    {
+      "id": "A37",
+      "wave": 7,
+      "agent": "/root/w07_a37",
+      "task": "CI coverage and bounded Windows Unicode generator qualification",
+      "status": "accepted",
+      "owned_paths": [
+        ".github/workflows/",
+        "docs/reviews/REGISTRATION_CI_ADMISSION.md",
+        "notes/A37.md"
+      ],
+      "acceptance": "CI review admitted: all existing jobs and original gates retained; explicit discovery, standard-library tooling and bounded Windows Unicode generator qualification added. Hosted execution remains separate.",
+      "note_sha256": "72f849034e66251e1780db7469c3598d7b8ed6491bc3567de0c0e98c1b37bddc"
+    },
+    {
+      "id": "A38",
+      "wave": 7,
+      "agent": "/root/w07_a38",
+      "task": "Independent clean SDK-free headless build and packaging qualification",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/HEADLESS_REGISTRATION_BUILD_ADMISSION.md",
+        "reports/a38-*",
+        "notes/A38.md"
+      ],
+      "acceptance": "Clean Linux headless configuration admitted: eight built targets, 12 focused CTests, exact 2+26 installed inventory and installed inspection without tool/display environment; original observer failures preserved.",
+      "note_sha256": "06335ae23c217fe360f23e219d03fa8ee8f8e6314d36375b32573ee8a8c3493b"
+    },
+    {
+      "id": "A39",
+      "wave": 7,
+      "agent": "/root/w07_a39",
+      "task": "Independent state, parameter, plugin, Engine and owner-source compatibility admission",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/REGISTRATION_COMPATIBILITY_ADMISSION.md",
+        "reports/a39-compatibility.json",
+        "notes/A39.md"
+      ],
+      "acceptance": "Independent Git/source and artifact review admitted unchanged parameters/state/core/plugin/owner boundaries, exact two legacy WAV/stdout pairs and native Load CMake wiring.",
+      "note_sha256": "1e8515aca159c699b6ab16e7428ff5a4ea0492c8a37fa44e88d506cfd7f51b38"
+    },
+    {
+      "id": "A40",
+      "wave": 7,
+      "agent": "/root/w07_a40",
+      "task": "Audit and repair truthful late audition report failures and partial artifacts",
+      "status": "accepted",
+      "owned_paths": [
+        "tools/audition_starter_registrations.py",
+        "tests/test_starter_auditions.py",
+        "docs/reviews/STARTER_FAILURE_BOUNDARY_ADMISSION.md",
+        "reports/a40-*",
+        "notes/A40.md"
+      ],
+      "acceptance": "Concrete late aggregate-report error repaired and independently reviewed; two isolated failure methods pass, original residue retained; integrated gate remains root-owned.",
+      "note_sha256": "cf11a77d5c18d4aa0583751387b3f8ccc2e7e9713499f636de88fb5fa450fee8"
+    },
+    {
+      "id": "A41",
+      "wave": 7,
+      "agent": "/root/w07_a41",
+      "task": "Audit asset provenance and repair installed apron metadata and notices",
+      "status": "accepted",
+      "owned_paths": [
+        "cmake/InstallStandalone.cmake",
+        "apps/standalone/native_tests/test_standalone_install.py",
+        ".github/workflows/standalone.yml",
+        "THIRD_PARTY_NOTICES.md",
+        "docs/DEPENDENCIES_AND_RIGHTS.md",
+        "docs/STANDALONE_INSTALL.md",
+        "assets/standalone/reference-apron-v1/README.md",
+        "docs/reviews/PRESET_ASSET_PROVENANCE_ADMISSION.md",
+        "reports/a41-*",
+        "notes/A41.md"
+      ],
+      "acceptance": "Independent asset/source audit admitted; installed apron provenance, exact17/21 inventory, notices and license label repaired with bounded fixture checks. Root reviewed combined delta and current integrated installer test passed.",
+      "note_sha256": "82f61cadf69defa91446e9ca32950bf7d4d6b54b7d60c6fdc684718549e990f3"
+    },
+    {
+      "id": "A42",
+      "wave": 7,
+      "agent": "/root/w07_a42",
+      "task": "Independently verify first publication and exact-source hosted coverage",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/INITIAL_PRESET_PUBLICATION_ADMISSION.md",
+        "reports/a42-*",
+        "notes/A42.md"
+      ],
+      "acceptance": "Independent provider GETs admit exact first publication tree/sole parent and all21 root entries. Exact13-job snapshot retained: two nativeVST3 passes, eight running, three macOS unacquired; final hosted closure remains separate.",
+      "note_sha256": "2449e304d963b9a9d6edb5db5e55df6e157fe94736d3fc20ebad31c844676ee0"
+    },
+    {
+      "id": "A43",
+      "wave": 8,
+      "agent": "/root/w08_a43",
+      "task": "Independent first-time CLI workflow in unrelated Unicode and space paths",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/REGISTRATION_FIRST_USE_ADMISSION.md",
+        "reports/a43-*",
+        "notes/A43.md"
+      ],
+      "acceptance": "Original Unicode-sibling refusals retained; supported ASCII-separated layout passed14calls and100conditions. Guide clarified and Windows guard proposal independently admitted with actual execution kept separate.",
+      "note_sha256": "8c8f956eb77fe07153354a445c6dee65b7486d30713eb352cea2701b5b7831e8"
+    },
+    {
+      "id": "A44",
+      "wave": 8,
+      "agent": "/root/w08_a44",
+      "task": "Independent installed pack-to-materialize-to-render flow after private installer input removal",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/INSTALLED_REGISTRATION_RENDER_ADMISSION.md",
+        "reports/a44-*",
+        "notes/A44.md"
+      ],
+      "acceptance": "Installed51-file three-component flow admitted after relocation/private input removal, with two full-state materializations and exact one-second renderer provenance; original outputs retained.",
+      "note_sha256": "587efca8aacef7bd807cff2f4ded72b42e21245a0127f70b9ba6ad5b00075d45"
+    },
+    {
+      "id": "A45",
+      "wave": 8,
+      "agent": "/root/w08_a45",
+      "task": "Independent retained32-clip and16-pair numerical/provenance admission",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/STARTER_AUDIO_PROVENANCE_ADMISSION.md",
+        "reports/a45-*",
+        "notes/A45.md"
+      ],
+      "acceptance": "Independent400-check read-only audit admitted32 originalWAVs,16 direct bytepairs, all101 archive members, source/provenance identities and scoped note-event windows; no new rendering claimed.",
+      "note_sha256": "e5b2321e01a17f6692c266c58f25bbeba3fd26e5bdf7c285051046dc518779a5"
+    },
+    {
+      "id": "A46",
+      "wave": 8,
+      "agent": "/root/w08_a46",
+      "task": "Independent whole-interface claims, actual gallery and visual residual admission",
+      "status": "running",
+      "owned_paths": [
+        "docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md",
+        "reports/a46-*",
+        "notes/A46.md"
+      ]
+    },
+    {
+      "id": "A47",
+      "wave": 8,
+      "agent": "/root/w08_a47",
+      "task": "Independent storage, generated-file, ownership and durable recovery audit",
+      "status": "running",
+      "owned_paths": [
+        "docs/reviews/PRESET_RESOURCE_RECOVERY_ADMISSION.md",
+        "reports/a47-resource-recovery.json",
+        "notes/A47.md"
+      ]
+    },
+    {
+      "id": "A48",
+      "wave": 8,
+      "agent": "/root/w08_a48",
+      "task": "Crosswalk all M0\u2013M9 exits and complete atlas plan to actual continuation and next dependencies",
+      "status": "running",
+      "owned_paths": [
+        "docs/reviews/ATLAS_DELIVERY_CROSSWALK.md",
+        "reports/a48-*",
+        "notes/A48.md"
       ]
     }
   ]

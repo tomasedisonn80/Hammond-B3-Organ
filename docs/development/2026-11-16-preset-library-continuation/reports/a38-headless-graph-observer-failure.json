@@ -1,0 +1,13 @@
+{
+  "schema": "a38-observer-failure-v1",
+  "classification": "A38 optional metadata-equivalence assertion, not a product/test failure",
+  "exception_type": "AssertionError",
+  "failed_assumption": "The complete ninja -t targets all listing would remain byte-identical after CMake regeneration.",
+  "observed_difference": "60 first-configure compiler-detection CMake-module phony prerequisites disappear after cached regeneration; no entries are added.",
+  "removed_count": 60,
+  "added_count": 0,
+  "correction": "Retain both complete listings and their diff; compare actual selected build/link commands and compile_commands.json separately, both byte-identical. No acceptance test changed.",
+  "original_before": "a38-headless-graph-05.log.gz",
+  "original_after": "a38-headless-graph-final.log.gz",
+  "diff": "a38-headless-graph-transition.diff.gz"
+}

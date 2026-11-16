@@ -1,6 +1,14 @@
 # Dependencies, distributed material and rights handoff
 
-**Current scoped update: 2026-11-15, product assignment A44.** The
+**Current scoped update: 2026-11-16, preset continuation A41.** The
+[asset/provenance admission](reviews/PRESET_ASSET_PROVENANCE_ADMISSION.md) and
+[additive inventory below](#preset-and-apron-update--2026-11-16) identify the
+separate masked apron and proposed software recipes. Updated Standalone rules
+carry **17 files with MIDI OFF, 21 with MIDI ON**, including the new apron
+manifest. This source inventory preserves the existing rights gates; it is not
+an executed installation or distribution clearance.
+
+**Historical scoped update: 2026-11-15, product assignment A44.** The
 [product provenance review](reviews/PRODUCT_PROVENANCE_LICENSE_REVIEW.md) checks
 the independent M6 model, actual native gallery, unchanged dependency/asset
 identities and the current local component rules. The Standalone rules include
@@ -300,3 +308,47 @@ These existing decisions remain separate from authorized development, local
 staging and source-bound verification; this update creates no license grant or
 additional approval requirement. A future distribution claim still belongs to
 the actual intended payload and its retained evidence.
+
+## Preset and apron update — 2026-11-16
+
+The separate [apron package](../assets/standalone/reference-apron-v1/README.md)
+uses the unchanged user-supplied generated concept JPEG, SHA-256
+`9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187`.
+It is a masked decorative derivative, with 32,544 exact source-RGB texels and
+56,016 zero-RGBA texels. It supplies no photograph, calibrated geometry or
+application capture. The original PDF, JPEG, three-crop manifest/compiler and
+their provenance remain unchanged. No new external artwork is acquired.
+
+Ordinary apron compilation uses Python's standard library; the native program
+embeds the frozen pixels and needs no JPEG decoder or asset files. Optional
+source authoring/verification uses the recorded Pillow 13.0.0 and JPEG/zlib
+toolchain. The inspected Pillow 13.0.0 primary license identifies **MIT-CMU**;
+the earlier apron README's HPND label is corrected without changing pixels,
+the frozen manifest or historical capture hashes. Optional NumPy/Pillow pixel
+checking remains offline work. These tools are not copied into the application
+or new registration components, and their licenses do not cover source artwork.
+
+The [Standalone inventory](STANDALONE_INSTALL.md#exact-payload) now appends
+`reference-apron-manifest.json` and a separate `reference_apron` capability field,
+preserving the existing `reference_art` meaning and all historical records.
+The source rules specify 17/21 files with MIDI OFF/ON and retain configured-hash
+preflight, fixed inventory and explicit opt-in installation. No source JPEG,
+PDF, packed/raw crop or third-party package tree becomes a runtime file. Earlier
+16/20-file executed results remain history; updated execution has its own gate.
+
+The [starter pack](../data/registrations/starter-v1/README.md) contains twelve
+original proposed software recipes, 24 canonical control files and two separate
+documentation/provenance files. The literal contract/JSON and independently
+transcribed native generator retain distinct roles. These are
+`proposed-unmeasured` settings for the nominal dry Engine, with no artist,
+factory-recipe, hardware-recording or physical-expression attribution. Selecting
+existing fixed modes in two recipes creates no new documentary recipe source.
+The generator uses existing project APIs and introduces no runtime JSON library.
+
+The thirteen [native gallery views](design/native-gallery-preset-v1/README.md)
+are retained dummy-SDL application captures, separate from their embedded concept
+art. Original BMPs are unavailable after recorded lossless conversion; PNGs,
+diagnostics and source/executable identities remain. No physical-device,
+accessibility or literal whole-interface 1:1 claim follows. The unresolved
+[source-art permissions](research/RIGHTS_AND_SOURCES.md), missing project-wide
+license selection and actual release-payload review remain open.

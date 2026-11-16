@@ -1,0 +1,148 @@
+{
+  "schema": "a38-headless-links-v1",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "outputs": {
+    "hammond_registration": {
+      "bytes": 253280,
+      "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "rpath_runpath": [],
+      "interpreter": [
+        "/lib64/ld-linux-x86-64.so.2"
+      ]
+    },
+    "hammond_render": {
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "rpath_runpath": [],
+      "interpreter": [
+        "/lib64/ld-linux-x86-64.so.2"
+      ]
+    },
+    "hammond_generate_starter_registrations": {
+      "bytes": 216408,
+      "sha256": "7cbe11d52810f2d0d7c23c25ed35178740975b65e9c621e6825b74aa4bf97dff",
+      "needed": [
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "rpath_runpath": [],
+      "interpreter": [
+        "/lib64/ld-linux-x86-64.so.2"
+      ]
+    },
+    "test_control_file_input": {
+      "bytes": 110112,
+      "sha256": "4fb4b5bf0cda56e709763c1d31f5be93be11588f332fcd5d9ee59ccb9d554f71"
+    },
+    "test_control_io": {
+      "bytes": 178496,
+      "sha256": "498cd701994b9f3f4a8ef9e7c5f603727c448f3397dd87b3bf88f3735c2d101b"
+    },
+    "apps/standalone/test_standalone_registration_library": {
+      "bytes": 288272,
+      "sha256": "73a68e0daea47718a684e577a4aa231f2d5fdb91a0a182ed34c5f9033573fcf1"
+    },
+    "apps/standalone/test_standalone_state_files": {
+      "bytes": 152720,
+      "sha256": "71af31f5ebe911d904a40d64451664ebc37703953baf2c910064cd9caa3873de"
+    },
+    "nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    "libhammond_core.a": {
+      "bytes": 460336,
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+    },
+    "libhammond_control_file_input.a": {
+      "bytes": 20490,
+      "sha256": "5ee3bc3f59784a57fc13fe182b9fc04b9d5127f8b113af701527868ac3d9bc11"
+    },
+    "apps/standalone/libhammond_standalone_support.a": {
+      "bytes": 421086,
+      "sha256": "9e1046e988d3b7d05b4c09d34243aebb95f8648fd175987ee06e59f375d78be9"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "readelf",
+        "--dynamic",
+        "--program-headers",
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_registration"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-hammond_registration-readelf.log.gz",
+      "sha256": "f2e93fc4eac2e854c701a146b6fcfe6831ad4eb7444c65905b87bbb67dc0444a",
+      "uncompressed_sha256": "10b4b92f427449cf1387e184195e3c719d92209f28b5c82ad64714bc8bd2e398"
+    },
+    {
+      "argv": [
+        "ldd",
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_registration"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-hammond_registration-ldd.log.gz",
+      "sha256": "06babfa864fe029332945e1171b5517291624200531546da659899120d1fe3b8",
+      "uncompressed_sha256": "e15fd07a167f9d783ce982830df849a57d76a6f8dad976c1ea06cca1034e9e42"
+    },
+    {
+      "argv": [
+        "readelf",
+        "--dynamic",
+        "--program-headers",
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_render"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-hammond_render-readelf.log.gz",
+      "sha256": "5bfa75eb64172f4c5009584d974eb05a0dff84fda4bff10ba71f765ee97cd9ea",
+      "uncompressed_sha256": "352543623e585a68a9d2f8d42ae8d23fbc6fa9057dd7546de68fc45b0e129273"
+    },
+    {
+      "argv": [
+        "ldd",
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_render"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-hammond_render-ldd.log.gz",
+      "sha256": "27c24366c7fbae5753278857ba697ad99502b64867b071cbcc10b8df3fb25f91",
+      "uncompressed_sha256": "efa4654d0ed1b396eed3886e3ec30f37296b868006771e4ee79053b2ae104b03"
+    },
+    {
+      "argv": [
+        "readelf",
+        "--dynamic",
+        "--program-headers",
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_generate_starter_registrations"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-hammond_generate_starter_registrations-readelf.log.gz",
+      "sha256": "7a6542855e98204f7c8d6d06fb41e01979c776ee26558e8ceea223107699873a",
+      "uncompressed_sha256": "6aa7637c4dbba1f0143343fd96125ffb5aef9672f21a46d7004e561c39a8e759"
+    },
+    {
+      "argv": [
+        "ldd",
+        "/workspace/scratch/3edffb787db3/a38-headless/hammond_generate_starter_registrations"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-hammond_generate_starter_registrations-ldd.log.gz",
+      "sha256": "604e2216b129cafaab16ae2374258b452d96f22d0b58d4be0346d86494d311dc",
+      "uncompressed_sha256": "8385773bfc6092176f7b1782c7ea1e7b3cc9b3eee889cba302cb34c009c11505"
+    }
+  ]
+}

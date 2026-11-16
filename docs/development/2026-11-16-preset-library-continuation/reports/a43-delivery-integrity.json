@@ -1,0 +1,66 @@
+{
+  "schema": "a43-delivery-integrity-v1",
+  "worker": "/root/w08_a43",
+  "checks": {
+    "review_under_900_words": true,
+    "note_300_to_450_words": true,
+    "local_links_exist": true,
+    "two_distinct_14_process_journeys_recorded": true,
+    "original_failed_path_and_observer_failure_retained": true,
+    "supported_100_conditions_pass": true,
+    "all_83_archive_members_and_28_native_logs_verified": true,
+    "archive_hash_matches_compact_receipt": true
+  },
+  "review_words": 846,
+  "note_words": 426,
+  "links": [
+    {
+      "document": "docs/reviews/REGISTRATION_FIRST_USE_ADMISSION.md",
+      "target": "REGISTRATION_PATH_ADMISSION.md",
+      "exists": true
+    },
+    {
+      "document": "docs/reviews/REGISTRATION_FIRST_USE_ADMISSION.md",
+      "target": "../REGISTRATION_GUIDE.md#7-install-explicitly-and-relocate",
+      "exists": true
+    },
+    {
+      "document": "docs/reviews/REGISTRATION_FIRST_USE_ADMISSION.md",
+      "target": "../development/2026-11-16-preset-library-continuation/reports/a43-first-use.json",
+      "exists": true
+    },
+    {
+      "document": "docs/reviews/REGISTRATION_FIRST_USE_ADMISSION.md",
+      "target": "../development/2026-11-16-preset-library-continuation/reports/a43-first-use-originals.tar.gz",
+      "exists": true
+    },
+    {
+      "document": "docs/reviews/REGISTRATION_FIRST_USE_ADMISSION.md",
+      "target": "../development/2026-11-16-preset-library-continuation/reports/a43-windows-path-proposal.json",
+      "exists": true
+    }
+  ],
+  "files": {
+    "docs/reviews/REGISTRATION_FIRST_USE_ADMISSION.md": {
+      "bytes": 6618,
+      "sha256": "5ec172677052284c47c026e0ad01a8590dee0060df184338f8168ba845ae7f7d"
+    },
+    "docs/development/2026-11-16-preset-library-continuation/notes/A43.md": {
+      "bytes": 3368,
+      "sha256": "8c8f956eb77fe07153354a445c6dee65b7486d30713eb352cea2701b5b7831e8"
+    },
+    "docs/development/2026-11-16-preset-library-continuation/reports/a43-first-use.json": {
+      "bytes": 29860,
+      "sha256": "a42bfd03c694517de2d75b84251c0f8dcaf73983a934c0bbe87b886b80bfc1a5"
+    },
+    "docs/development/2026-11-16-preset-library-continuation/reports/a43-first-use-originals.tar.gz": {
+      "bytes": 60965,
+      "sha256": "8c0123dcd8c41aa43f37cfab86a2e323a4660bfc0a0113f27d8a05209dd45574"
+    },
+    "docs/development/2026-11-16-preset-library-continuation/reports/a43-windows-path-proposal.json": {
+      "bytes": 5156,
+      "sha256": "cbe3432a9c8496b00703d27b9dca5429388977bdeb6805a3487948b9837c5c2c"
+    }
+  },
+  "scope": "Document and evidence integrity only; no additional native processes, CTest or platform acceptance."
+}

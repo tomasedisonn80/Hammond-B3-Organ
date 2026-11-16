@@ -1,0 +1,59 @@
+{
+  "schema": "a43-windows-path-proposal-review-v1",
+  "worker": "/root/w08_a43",
+  "reviewed_utc": "2026-11-16T12:35:50.699810+00:00",
+  "assessment": "Admit bounded source proposal before implementation; runtime/Windows acceptance remains separate.",
+  "scope": "Read-only follow-up requested by root after first-use evidence was frozen; no additional CLI calls, production edits or tests by A43.",
+  "trigger": {
+    "source": "Root-reported exact-head Windows CI failure at test_standalone_registration_library.cpp line 463; A43 did not independently inspect the hosted log.",
+    "relation_to_first_use": "Separate from A43-F1 conservative Unicode sibling refusal. No change to Unicode equivalence or ASCII distinction proof is proposed."
+  },
+  "read_source": {
+    "base_head": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+    "files_sha256": {
+      "apps/standalone/RegistrationLibrary.cpp": "e45fd2671558e0725468c18b59dc5ef8e7436600910633f73035ce81da4d3a4a",
+      "apps/standalone/tests/test_standalone_registration_library.cpp": "841f21c17f6fab449e8ce8ac345cf5af17257a17f5266afe6ffd372708f204cc",
+      "tools/registration.cpp": "4fbf8f9e9a8c04713ee7aa28e089e02dbd5955ceb38e478673aa1f5da2f37ff3",
+      "docs/REGISTRATION_LIBRARY_CONTRACT.md": "4760d65b27aa154fd86ee09c2cda87bd30f532874cc1a35c62a5b359889703fa"
+    },
+    "all_four_working_files_matched_base_when_inspected": true
+  },
+  "source_findings": [
+    "identify_path performs fs::absolute and fs::weakly_canonical before its ambiguous_native_path guard. A guard at that point cannot reject suffix characters already removed by native normalization.",
+    "resolve_root has the same ordering despite its existing InvalidRoot policy for ambiguous components. It also normalizes the caller root before save passes that root to identify_path.",
+    "The CLI preserves both invocation and resolved input/source paths in protected_paths. The raw-parameter guard therefore has meaningful original spellings to inspect at that boundary.",
+    "The existing helper inspects relative components, leaving the drive/root-name syntax outside the colon check. An exact dot-navigation exemption does not relax colon or ambiguous filename checks."
+  ],
+  "admitted_proposal": [
+    "Before native normalization in identify_path, reject ambiguous_native_path(requested); retain the resolved-path check and the existing ProtectedPath propagation.",
+    "Before native normalization in resolve_root, reject ambiguous_native_path(requested) using existing InvalidRoot status; retain the resolved-path check.",
+    "In ambiguous_native_path, skip only components whose complete native text equals a single dot or two dots. Continue rejecting three dots, dot-space, two-dots-space, other trailing dot/ASCII space, and colon.",
+    "Leave portable_path_compare, filesystem-equivalence checks, ancestor/suffix proof, staging checks, authorization order and no-replace publication otherwise unchanged."
+  ],
+  "required_regressions": [
+    "Retain all three original Windows protected spellings: ambiguous., ambiguous<space>, and ambiguous:stream.",
+    "Add three-dots, dot-space and two-dots-space cases; each must return ProtectedPath, remain uncommitted, invoke authorization zero times and create no output or staging leftovers.",
+    "Exercise each ambiguous root spelling through raw root resolution; it must return InvalidRoot without root/file creation or authorization.",
+    "Pass raw single-dot and double-dot navigation components through protected_paths, not only a root already normalized by resolve_root. Both should permit an otherwise valid save.",
+    "Exercise raw single-dot and double-dot root arguments as positive cases, and preserve source/target bytes and no-replace checks.",
+    "Run actual Windows regression at the repaired source; Linux does not execute the _WIN32-specific helper branch."
+  ],
+  "resolved_concern": "The initial identify_path-only proposal would not address the same ordering inside resolve_root. Root explicitly expanded the proposal to both entry points before this admission.",
+  "primary_context_sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file",
+      "supports": "Windows names ending in space/period are problematic; exact dot and double-dot components designate current/parent directories."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/pathcch/nf-pathcch-pathcchcanonicalizeex",
+      "supports": "Win32 path normalization can remove trailing dots/spaces. This documentation does not prove which API MSVC std::filesystem used in the reported run."
+    }
+  ],
+  "not_claimed": [
+    "Independent observation of the hosted failure log.",
+    "Execution or acceptance of the eventual source patch.",
+    "Windows runtime, library-root namespace completeness or broader alias-policy qualification.",
+    "Any repair of the intentionally conservative Unicode sibling refusal."
+  ],
+  "next_action": "Root implements and coherently qualifies the bounded guards and regressions, then observes exact repaired-source Windows results while preserving the original failure."
+}

@@ -100,6 +100,7 @@ jobs:
               ("fonts", "assets/standalone/fonts/source-manifest.json", "font-source-manifest.json"),
               ("font_atlases", "assets/standalone/fonts/atlas-manifest.json", "font-atlas-manifest.json"),
               ("reference_art", "assets/standalone/reference/manifest.json", "reference-source-manifest.json"),
+              ("reference_apron", "assets/standalone/reference-apron-v1/manifest.json", "reference-apron-manifest.json"),
               ("atlas_reference", "docs/design/atlas-reference.json", "atlas-reference.json"),
           ):
               data = pathlib.Path(source).read_bytes()
@@ -123,10 +124,16 @@ jobs:
           assert atlas["source_sha256"] == reference["source"]["pdf_sha256"]
           for asset in reference["assets"]:
               identify("assets/standalone/reference/" + asset["file"], asset)
+          apron = dependencies["reference_apron"]["identity"]
+          assert apron["source"]["sha256"] == atlas["sha256"]
+          assert apron["source"]["pdf_sha256"] == atlas["source_sha256"]
+          identify("assets/standalone/reference-apron-v1/" + apron["asset"]["file"], apron["asset"])
           for source in ("tools/acquire_sdl2.py", "tools/acquire_rtmidi.py",
                          "tools/compile_reference_art.py", "tools/generate_standalone_font.py",
                          "assets/standalone/fonts/requirements-authoring.txt",
-                         "assets/standalone/reference/requirements-authoring.txt"):
+                         "assets/standalone/reference/requirements-authoring.txt",
+                         "tools/compile_reference_apron.py",
+                         "assets/standalone/reference-apron-v1/requirements-authoring.txt"):
               identify(source)
           record = {
               "source_commit": revision, "source_tree": git("rev-parse", "HEAD^{tree}"),
@@ -378,7 +385,7 @@ jobs:
           SDL_VIDEODRIVER: dummy
         run: |
           set -euo pipefail
-          ctest --test-dir build-standalone -C Release --show-only=json-v1 \
+          ctest --test-dir build-standalone -C Release --show-only=json-v1 --no-tests=error \
             -R '^test_standalone_' > standalone-ci-logs/ctest-discovered.json
           python - <<'PY'
           import json, pathlib
@@ -402,9 +409,22 @@ jobs:
                       "test_standalone_lower_rack_material_raster",
                       "test_standalone_footage_typography_raster",
                       "test_standalone_manual_key_material_raster",
+                      "test_standalone_reference_apron_art", "test_standalone_reference_apron_raster",
+                      "test_standalone_reference_apron_unavailable", "test_standalone_starter_load",
                       "test_standalone_expression_diagnostics", "test_standalone_native_calibration"}
           assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
-          print("Discovered", len(names), "standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates.", flush=True)
+          by_name = {test["name"]: test for test in tests["tests"]}
+          for name in sorted(required):
+              properties = {item["name"]: item["value"] for item in by_name[name].get("properties", [])}
+              assert by_name[name].get("command") and not properties.get("DISABLED", False), name
+          command = by_name["test_standalone_starter_load"]["command"]
+          assert len(command) == 7 and command[1:3] == ["-E", "env"], command
+          executables = dict(value.split("=", 1) for value in command[3:5])
+          assert set(executables) == {"HAMMOND_STANDALONE_EXECUTABLE", "HAMMOND_REGISTRATION_EXECUTABLE"}
+          assert all(pathlib.Path(value).is_file() for value in executables.values()), executables
+          assert pathlib.Path(command[-1]).resolve() == pathlib.Path(
+              "apps/standalone/native_tests/test_standalone_starter_load.py").resolve(), command
+          print("Discovered", len(names), "standalone tests, including required MIDI, calibration, workspace, inspection, apron and actual starter Load gates.", flush=True)
           PY
           ctest --test-dir build-standalone -C Release -V --parallel 1 \
             --no-tests=error --timeout 180 -R '^test_standalone_' \
@@ -464,6 +484,7 @@ jobs:
               metadata + "sdl2-lock.json": repo / "data/dependencies/sdl2-lock.json",
               metadata + "font-source-manifest.json": repo / "assets/standalone/fonts/source-manifest.json",
               metadata + "reference-source-manifest.json": repo / "assets/standalone/reference/manifest.json",
+              metadata + "reference-apron-manifest.json": repo / "assets/standalone/reference-apron-v1/manifest.json",
               metadata + "atlas-reference.json": repo / "docs/design/atlas-reference.json",
               metadata + "standalone-capabilities.json": capability_path,
               metadata + "MIDI_EXPRESSION_GUIDE.md": repo / "docs/MIDI_EXPRESSION_GUIDE.md",
@@ -476,7 +497,7 @@ jobs:
                   metadata + "rtmidi-prepared-source.json": prepared / "prepared-source.json",
                   metadata + "rtmidi-coremidi-zero-init.patch": prepared / "rtmidi-coremidi-zero-init.patch",
               })
-          assert len(expected) == (20 if enabled else 16)
+          assert len(expected) == (21 if enabled else 17)
           expected_directories = {
               parent.as_posix() for name in expected
               for parent in pathlib.PurePosixPath(name).parents if parent.as_posix() != "."
@@ -641,6 +662,9 @@ jobs:
         test_standalone_lower_rack_material_raster=test_standalone_lower_rack_material_raster
         test_standalone_footage_typography_raster=test_standalone_footage_typography_raster
         test_standalone_manual_key_material_raster=test_standalone_manual_key_material_raster
+        test_standalone_reference_apron_art=test_standalone_reference_apron_art
+        test_standalone_reference_apron_raster=test_standalone_reference_apron_raster
+        test_standalone_reference_apron_unavailable=test_standalone_reference_apron_unavailable
         test_standalone_native_calibration=hammond_standalone_calibration_probe
     steps:
       - name: Check out the exact tested revision
@@ -670,9 +694,9 @@ jobs:
           assert all(len(pair) == 2 and all(re.fullmatch(r"[a-z][a-z0-9_]*", name) for name in pair)
                      for pair in pairs), pairs
           test_targets = dict(pairs)
-          assert len(test_targets) == len(pairs) == 25, "Required CTest names must be unique"
+          assert len(test_targets) == len(pairs) == 28, "Required CTest names must be unique"
           build_targets = sorted(set(test_targets.values()))
-          assert len(build_targets) == 25
+          assert len(build_targets) == 28
           (logs / "build-targets.txt").write_text(" ".join(build_targets) + "\n")
           sources = (".github/workflows/standalone.yml", "CMakeLists.txt",
                      "apps/standalone/CMakeLists.txt", "cmake/VerifySdl2.cmake",
@@ -680,6 +704,7 @@ jobs:
                      "apps/standalone/main.cpp", "apps/standalone/MidiDevice.cpp",
                      "apps/standalone/MidiInput.cpp", "apps/standalone/Session.cpp",
                      "apps/standalone/InstrumentView.cpp", "apps/standalone/AudioDevice.cpp",
+                     "apps/standalone/Drawing.cpp", "apps/standalone/Drawing.h",
                      "apps/standalone/ScriptedInput.cpp",
                      "apps/standalone/tests/test_standalone_channel_modes.cpp",
                      "apps/standalone/tests/test_standalone_expression_calibration.cpp",
@@ -689,6 +714,12 @@ jobs:
                      "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp",
                      "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
                      "apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp",
+                     "apps/standalone/native_tests/test_standalone_reference_apron_art.cpp",
+                     "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp",
+                     "apps/standalone/native_tests/reference_apron_unavailable_texture.cpp",
+                     "tools/compile_reference_apron.py",
+                     "assets/standalone/reference-apron-v1/manifest.json",
+                     "assets/standalone/reference-apron-v1/apron.rgba.gz",
                      "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
                      "apps/standalone/native_tests/fake_calibration/RtMidi.h",
                      "apps/standalone/native_tests/test_standalone_native_calibration.py",
@@ -765,11 +796,11 @@ jobs:
             '-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' \
             2>&1 | tee standalone-sanitizer-logs/configure.log
 
-      - name: Build only the twenty-five selected acceptance inputs
+      - name: Build only the twenty-eight selected acceptance inputs
         run: |
           set -euo pipefail
           read -r -a targets < standalone-sanitizer-logs/build-targets.txt
-          [[ ${#targets[@]} -eq 25 ]]
+          [[ ${#targets[@]} -eq 28 ]]
           cmake --build build-standalone-sanitizers --config Release \
             --target "${targets[@]}" --parallel 2 --verbose \
             2>&1 | tee standalone-sanitizer-logs/build.log
@@ -784,12 +815,16 @@ jobs:
           provenance = json.loads((logs / "provenance.json").read_text())
           test_targets = provenance["test_targets"]
           required = provenance["build_targets"]
-          assert len(test_targets) == len(required) == 25 and set(required) == set(test_targets.values())
+          assert len(test_targets) == len(required) == 28 and set(required) == set(test_targets.values())
           libraries = {"SDL2-static": "_sdl2/libSDL2.a", "hammond_core": "libhammond_core.a",
                        "hammond_standalone_support": "apps/standalone/libhammond_standalone_support.a",
                        "hammond_standalone_drawing": "apps/standalone/libhammond_standalone_drawing.a",
                        "hammond_standalone_audio": "apps/standalone/libhammond_standalone_audio.a",
                        "hammond_standalone_replay": "apps/standalone/libhammond_standalone_replay.a"}
+          probe_libraries = {pathlib.Path(path).name for path in libraries.values()}
+          assert len(probe_libraries) == 6
+          libraries["hammond_standalone_drawing_apron_unavailable"] = \
+              "apps/standalone/libhammond_standalone_drawing_apron_unavailable.a"
           expected = set(required) | set(libraries)
           commands = json.loads((build / "compile_commands.json").read_text())
           counts = collections.Counter()
@@ -813,6 +848,8 @@ jobs:
                   fake = "-I" + str(repo / "apps/standalone/native_tests/fake_calibration")
                   ordinary = "-I" + str(repo / "apps/standalone")
                   assert fake in args and ordinary in args and args.index(fake) < args.index(ordinary), entry
+              if target == "hammond_standalone_drawing_apron_unavailable":
+                  assert "-DSDL_CreateTexture=hammond_test_create_texture" in args, entry
           assert set(counts) == expected, "Missing instrumented build inputs: " + str(expected - set(counts))
           required_sources = {
               "test_standalone_channel_modes": {"apps/standalone/tests/test_standalone_channel_modes.cpp"},
@@ -832,6 +869,16 @@ jobs:
               "test_standalone_manual_key_material_raster": {
                   "apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp",
                   "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_reference_apron_art": {
+                  "apps/standalone/native_tests/test_standalone_reference_apron_art.cpp"},
+              "test_standalone_reference_apron_raster": {
+                  "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_reference_apron_unavailable": {
+                  "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp",
+                  "apps/standalone/native_tests/reference_apron_unavailable_texture.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "hammond_standalone_drawing_apron_unavailable": {"apps/standalone/Drawing.cpp"},
               probe: {"apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
                       "apps/standalone/MidiDevice.cpp", "apps/standalone/InstrumentView.cpp"},
               "hammond_standalone_support": {"apps/standalone/Session.cpp", "apps/standalone/MidiInput.cpp"},
@@ -856,8 +903,11 @@ jobs:
               link_arguments = shlex.split(link.read_text())
               assert "-fsanitize=address,undefined" in link_arguments, name
               if name == probe:
-                  assert {pathlib.Path(path).name for path in libraries.values()} <= {
+                  assert probe_libraries <= {
                       pathlib.Path(arg).name for arg in link_arguments}, "Native probe must link all six instrumented archives"
+              if name == "test_standalone_reference_apron_unavailable":
+                  assert "libhammond_standalone_drawing_apron_unavailable.a" in {
+                      pathlib.Path(arg).name for arg in link_arguments}, "Fallback gate must link the instrumented fault seam"
               runtimes = subprocess.check_output(["ldd", str(executable)], text=True)
               assert "libasan.so" in runtimes and "libubsan.so" in runtimes, (name, runtimes)
               (logs / (name + "-runtimes.txt")).write_text(runtimes)
@@ -877,7 +927,7 @@ jobs:
           (logs / "instrumentation.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
           PY
 
-      - name: Discover exactly twenty-five gates and run with leak checking
+      - name: Discover exactly twenty-eight gates and run with leak checking
         env:
           HAMMOND_NATIVE_CALIBRATION_EVIDENCE: ${{ github.workspace }}/standalone-sanitizer-logs/native-calibration
         run: |
@@ -888,7 +938,7 @@ jobs:
           provenance = json.loads((logs / "provenance.json").read_text())
           test_targets = provenance["test_targets"]
           required = provenance["required_tests"]
-          assert len(required) == len(set(required)) == 25 and set(required) == set(test_targets)
+          assert len(required) == len(set(required)) == 28 and set(required) == set(test_targets)
           selection = "^(" + "|".join(re.escape(name) for name in required) + ")$"
           (logs / "ctest-filter.txt").write_text(selection + "\n")
           command = ["ctest", "--test-dir", "build-standalone-sanitizers", "-C", "Release",
@@ -897,7 +947,7 @@ jobs:
               subprocess.run(command, stdout=output, check=True)
           discovered = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
           names = [test["name"] for test in discovered]
-          assert len(names) == len(set(names)) == 25 and set(names) == set(required), names
+          assert len(names) == len(set(names)) == 28 and set(names) == set(required), names
           sanitizer_limits = {"test_standalone_workspace_raster": 180,
                               "test_standalone_scaled_view": 360,
                               "test_standalone_preset_raster": 300,
@@ -908,6 +958,9 @@ jobs:
                               "test_standalone_lower_rack_material_raster": 240,
                               "test_standalone_footage_typography_raster": 240,
                               "test_standalone_manual_key_material_raster": 240,
+                              "test_standalone_reference_apron_art": 30,
+                              "test_standalone_reference_apron_raster": 60,
+                              "test_standalone_reference_apron_unavailable": 60,
                               "test_standalone_native_calibration": 180}
           for test in discovered:
               assert test.get("command"), "Missing built test command: " + test["name"]
@@ -928,7 +981,7 @@ jobs:
               overrides = properties.get("ENVIRONMENT", []) + properties.get("ENVIRONMENT_MODIFICATION", []) + command
               assert not any(value.startswith(("ASAN_OPTIONS=", "UBSAN_OPTIONS=", "LSAN_OPTIONS="))
                              for value in overrides), (test["name"], overrides)
-          print("Discovered exactly 25 built interface, channel, calibration and product paint gates; job sanitizer policy applies to every gate.", flush=True)
+          print("Discovered exactly 28 built interface, channel, calibration, product paint and apron gates; job sanitizer policy applies to every gate.", flush=True)
           PY
           ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \
             --no-tests=error --timeout 180 -R "$(cat standalone-sanitizer-logs/ctest-filter.txt)" \

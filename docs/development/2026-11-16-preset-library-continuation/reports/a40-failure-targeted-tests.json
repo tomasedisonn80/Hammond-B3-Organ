@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "worker": "A40",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "argv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "tests/test_starter_auditions.py",
+    "StarterAuditionReportFailureTests.test_aggregate_report_failures_identify_retained_and_missing_files",
+    "StarterAuditionReportFailureTests.test_failed_job_report_distinguishes_partial_wav_from_successful_clips",
+    "-v"
+  ],
+  "environment": {
+    "HAMMOND_SOURCE_DIR": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+    "HAMMOND_RENDER_EXECUTABLE": "/workspace/scratch/3edffb787db3/build-native/hammond_render",
+    "HAMMOND_TEST_PROFILE": "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+    "TMPDIR": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/out/a40-targeted-test-tmp",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "head": "d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93",
+  "input_files": [
+    {
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tools/audition_starter_registrations.py",
+      "size_bytes": 21687,
+      "sha256": "1ff78d28e74c7556aa525f5eb779d40ced76b7f913c1ec38085b4c2def216157"
+    },
+    {
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/tests/test_starter_auditions.py",
+      "size_bytes": 26407,
+      "sha256": "5fea287ed572de6ca2fd62e34e7113ab5878ea44e16d92849d81c34d4a16431d"
+    },
+    {
+      "path": "/workspace/scratch/3edffb787db3/build-native/hammond_render",
+      "size_bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263"
+    },
+    {
+      "path": "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+      "size_bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    }
+  ],
+  "inputs_unchanged": true,
+  "returncode": 0,
+  "elapsed_seconds": 0.227372066998214,
+  "logs": {
+    "stdout": {
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a40-failure-targeted-tests-stdout.log.gz",
+      "size_bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ/docs/development/2026-11-16-preset-library-continuation/reports/a40-failure-targeted-tests-stderr.log.gz",
+      "size_bytes": 200,
+      "sha256": "5edecc41c4a1f62d8f25f9cd0f132d2ab884f62eaaa8dd996c69a83e59cdcff0"
+    }
+  },
+  "scope": "Two named new regression methods, five injected child failures, zero native renderer invocations; no all-audition batch or full suite."
+}

@@ -5,9 +5,13 @@ enter `assignments.json`; a completed note and independent root review are neede
 before acceptance. Six distinct workers belong to each numbered wave. Dependent
 reviews wait for their actual inputs; unrelated work may overlap at wave boundaries.
 
-At this checkpoint A01–A22 are delivered; A23/A24 admit raster/data and A25 writes
-installation. Root's first coherent 230-test gate is running. The standalone and
-paint benchmark have been rebuilt. No publication has occurred yet.
+At this checkpoint A01–A39 are accepted; A40 is repairing a concrete late
+aggregate-report failure, A41 is completing installed apron provenance, and A42
+is independently reviewing the first published implementation. Main is observed
+at `20739f6280b95e567e84615d5c5aee443fc3b93d`, whose tree exactly matches the
+reviewed local `d281d4e` implementation. Later source/CI changes are not yet
+published. The assignments below retain the original planning sequence; actual
+ownership and dispatch status belong to the ledger.
 
 | Worker | Planned exclusive deliverable or review |
 | --- | --- |
@@ -16,7 +20,7 @@ paint benchmark have been rebuilt. No publication has occurred yet.
 | A28 | Starter pack README, immutable source/data provenance and current payload hash receipt |
 | A29 | Windows/macOS CLI/shared-reader/generator portability review and concrete fixes requested from root |
 | A30 | Filesystem/report failure review focused on remaining publication-status and bounded-resource risks |
-| A31 | Capture utility input inventory update for new apron compiler; qualified actual 12-view native gallery |
+| A31 | Capture utility input inventory update for new apron compiler; qualified actual 13-view native gallery |
 | A32 | Independent visual review of reference/minimum/1920 captures, seams, exact surface and residual differences |
 | A33 | Footer/status/input and inactive-layout preservation review against real paired evidence |
 | A34 | Texture lifecycle/fallback and bounded paint-resource review; measured baseline/candidate timing without a deadline claim |

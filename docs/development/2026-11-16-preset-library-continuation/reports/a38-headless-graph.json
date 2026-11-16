@@ -1,0 +1,158 @@
+{
+  "schema": "a38-headless-graph-v1",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-graph-01.log.gz",
+      "sha256": "1419492e13ed3ccf01c92d6f7791eedd1af3d6df097e2646e9080cf81b2fee1d",
+      "uncompressed_sha256": "f6e81c2559f3ce00c5fdad01d7b226c301f5d6b07ee04f65db6dbfdc1cc5970b",
+      "uncompressed_bytes": 91
+    },
+    {
+      "argv": [
+        "ctest",
+        "--version"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-graph-02.log.gz",
+      "sha256": "c9c6a4d5f080bf3cdc27d82ea28012796f8b3f290493feb537a07c240a4beaf2",
+      "uncompressed_sha256": "42e8719fdb276c17aa4ca6285e9a53c8b68553216f532b8a60643f76a1148b60",
+      "uncompressed_bytes": 91
+    },
+    {
+      "argv": [
+        "ninja",
+        "--version"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-graph-03.log.gz",
+      "sha256": "94beaf38150777e2e0ce6b880b5006ab996f9f5acce4e41044e2e323d60c638b",
+      "uncompressed_sha256": "e0f607ba3199c51172ae8a793ec2348f4a0550c7d5039a6800d38d64b8efccc3",
+      "uncompressed_bytes": 31
+    },
+    {
+      "argv": [
+        "/usr/bin/c++",
+        "--version"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-graph-04.log.gz",
+      "sha256": "1446696d31a68e6230b357f8e9302c9c8eee011340133ec9d3a867a2d3aafd86",
+      "uncompressed_sha256": "00f7e3c3e6a0308d7b60cc02429720ef6000d84c0add523f7dc030058d19961b",
+      "uncompressed_bytes": 232
+    },
+    {
+      "argv": [
+        "ninja",
+        "-C",
+        "/workspace/scratch/3edffb787db3/a38-headless",
+        "-t",
+        "targets",
+        "all"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-graph-05.log.gz",
+      "sha256": "b9ae376644520c1cbf5637683f21bcc8d635b349bce8b08b8f6c7ab6227f570b",
+      "uncompressed_sha256": "cc358ebfbba313002f6136544150e32c76b9d67f5437fa8756fcaf0ae53d8b66",
+      "uncompressed_bytes": 66933
+    },
+    {
+      "argv": [
+        "ninja",
+        "-C",
+        "/workspace/scratch/3edffb787db3/a38-headless",
+        "-t",
+        "commands",
+        "hammond_registration",
+        "hammond_render",
+        "hammond_generate_starter_registrations",
+        "test_control_file_input",
+        "test_control_io",
+        "test_standalone_registration_library",
+        "test_standalone_state_files"
+      ],
+      "returncode": 0,
+      "log": "a38-headless-graph-06.log.gz",
+      "sha256": "0faf04b2aaa3a83a1f041b194bec5bf295d499ca19b218689f5f33de6b9a51b8",
+      "uncompressed_sha256": "8f389daa885c3ca36e37f16e957f6c4ae820ddac5cfc403c49ed86040929be45",
+      "uncompressed_bytes": 31345
+    }
+  ],
+  "cache_selection": {
+    "BUILD_TESTING": "ON",
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "CMAKE_CXX_COMPILER_AR": "/usr/bin/gcc-ar-14",
+    "CMAKE_CXX_COMPILER_RANLIB": "/usr/bin/gcc-ranlib-14",
+    "CMAKE_INSTALL_BINDIR": "bin",
+    "CMAKE_INSTALL_DATADIR": "share",
+    "CMAKE_INSTALL_DATAROOTDIR": "share",
+    "CMAKE_INSTALL_DOCDIR": "",
+    "CMAKE_INSTALL_INCLUDEDIR": "include",
+    "CMAKE_INSTALL_INFODIR": "",
+    "CMAKE_INSTALL_LIBDIR": "lib",
+    "CMAKE_INSTALL_LIBEXECDIR": "libexec",
+    "CMAKE_INSTALL_LOCALEDIR": "",
+    "CMAKE_INSTALL_LOCALSTATEDIR": "var",
+    "CMAKE_INSTALL_MANDIR": "",
+    "CMAKE_INSTALL_OLDINCLUDEDIR": "/usr/include",
+    "CMAKE_INSTALL_PREFIX": "/usr/local",
+    "CMAKE_INSTALL_RUNSTATEDIR": "",
+    "CMAKE_INSTALL_SBINDIR": "sbin",
+    "CMAKE_INSTALL_SHAREDSTATEDIR": "com",
+    "CMAKE_INSTALL_SYSCONFDIR": "etc",
+    "CMAKE_MAKE_PROGRAM": "/home/agent/.local/bin/ninja",
+    "HAMMOND_BUILD_STANDALONE": "OFF",
+    "HAMMOND_BUILD_VST3": "OFF",
+    "HAMMOND_ENABLE_MIDI": "OFF",
+    "HAMMOND_ENABLE_SANITIZERS": "OFF",
+    "HAMMOND_RTMIDI_ROOT": "",
+    "HAMMOND_SDL2_ROOT": "",
+    "HAMMOND_VST3_SDK_ROOT": "",
+    "CMAKE_CXX_COMPILER-ADVANCED": "1",
+    "CMAKE_CXX_COMPILER_AR-ADVANCED": "1",
+    "CMAKE_CXX_COMPILER_RANLIB-ADVANCED": "1",
+    "CMAKE_GENERATOR": "Ninja",
+    "CMAKE_GENERATOR_INSTANCE": "",
+    "CMAKE_GENERATOR_PLATFORM": "",
+    "CMAKE_GENERATOR_TOOLSET": "",
+    "CMAKE_INSTALL_BINDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_DATADIR-ADVANCED": "1",
+    "CMAKE_INSTALL_DATAROOTDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_DOCDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_INCLUDEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_INFODIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LIBDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LIBEXECDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LOCALEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_MANDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_RUNSTATEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_SBINDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_SO_NO_EXE": "1",
+    "CMAKE_INSTALL_SYSCONFDIR-ADVANCED": "1",
+    "CMAKE_MAKE_PROGRAM-ADVANCED": "1",
+    "_Python3_EXECUTABLE": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12"
+  },
+  "all_compile_command_count": 154,
+  "compile_inputs_outside_source": [],
+  "forbidden_optional_targets_absent": true,
+  "selected_archive_and_executable_link_commands": [
+    ": && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/hammond_registration.dir/link.d CMakeFiles/hammond_registration.dir/tools/registration.cpp.o -o hammond_registration  apps/standalone/libhammond_standalone_support.a  libhammond_control_file_input.a  libhammond_core.a && :",
+    ": && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/hammond_render.dir/link.d CMakeFiles/hammond_render.dir/tools/render.cpp.o -o hammond_render  libhammond_core.a  libhammond_control_file_input.a  libhammond_core.a && :",
+    ": && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/hammond_generate_starter_registrations.dir/link.d CMakeFiles/hammond_generate_starter_registrations.dir/tools/generate_starter_registrations.cpp.o -o hammond_generate_starter_registrations  apps/standalone/libhammond_standalone_support.a  libhammond_core.a && :",
+    ": && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/test_control_file_input.dir/link.d CMakeFiles/test_control_file_input.dir/tests/test_control_file_input.cpp.o -o test_control_file_input  libhammond_core.a  libhammond_control_file_input.a  libhammond_core.a && :",
+    ": && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/test_control_io.dir/link.d CMakeFiles/test_control_io.dir/tests/test_control_io.cpp.o -o test_control_io  libhammond_core.a && :",
+    ": && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=apps/standalone/CMakeFiles/test_standalone_registration_library.dir/link.d apps/standalone/CMakeFiles/test_standalone_registration_library.dir/tests/test_standalone_registration_library.cpp.o -o apps/standalone/test_standalone_registration_library  apps/standalone/libhammond_standalone_support.a  libhammond_core.a && :",
+    ": && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=apps/standalone/CMakeFiles/test_standalone_state_files.dir/link.d apps/standalone/CMakeFiles/test_standalone_state_files.dir/tests/test_standalone_state_files.cpp.o -o apps/standalone/test_standalone_state_files  apps/standalone/libhammond_standalone_support.a  libhammond_core.a && :"
+  ],
+  "cache_sha256": "b7b0ee59c6bee32be51e4ad14c9e100d49f8e2e53916ac32d696cf9603f403f9",
+  "compile_commands_sha256": "96633d2dffae5195528ec3264b3eb971907c0d063c932ee5ead0bfef68456ce1"
+}

@@ -456,12 +456,43 @@ void unicode_path_protection() {
         ++link_skips;
     }
 #ifdef _WIN32
-    for (const auto* spelling : {L"ambiguous.", L"ambiguous ", L"ambiguous:stream"}) {
+    const auto initial_items = std::distance(fs::recursive_directory_iterator(tree.path()),
+        fs::recursive_directory_iterator{});
+    for (const auto* spelling : {L"ambiguous.", L"ambiguous ", L"ambiguous:stream",
+            L"...", L". ", L".. "}) {
         const std::array<fs::path, 1> ambiguous{source / spelling};
+        std::size_t authorizations = 0;
         const auto refused = save_registration_entry_new(root, "Ambiguous", RegistrationScope::Registration,
-            expected_controls(), ambiguous, permit);
+            expected_controls(), ambiguous, [&]() { ++authorizations; return permit(); });
         REQUIRE(refused.status == LibrarySaveStatus::ProtectedPath && !refused.committed());
+        REQUIRE(authorizations == 0);
         REQUIRE(!fs::exists(root / "Ambiguous.b3registration") && staging_count(root) == 0);
+        const auto ambiguous_root = unicode_parent / spelling;
+        const auto root_refused = save_registration_entry_new(ambiguous_root, "Ambiguous root",
+            RegistrationScope::Registration, expected_controls(), {},
+            [&]() { ++authorizations; return permit(); });
+        REQUIRE(root_refused.status == LibrarySaveStatus::InvalidRoot && !root_refused.committed());
+        REQUIRE(scan_registration_library(ambiguous_root).status == LibraryCatalogStatus::InvalidRoot);
+        REQUIRE(authorizations == 0);
+        REQUIRE(std::distance(fs::recursive_directory_iterator(tree.path()),
+            fs::recursive_directory_iterator{}) == initial_items);
+        REQUIRE(read_bytes(protected_source[0]) == "protected source bytes\n");
+    }
+    // Raw navigation must reach each entry point, rather than relying on a
+    // caller that has already normalized it. Both legal spellings remain usable.
+    const std::array<fs::path, 2> navigation_roots{root / ".", root / ".." / "entries"};
+    const std::array<fs::path, 2> navigation_sources{
+        source / "." / "reference.controls", source / ".." / "source" / "reference.controls"};
+    for (std::size_t index = 0; index < navigation_roots.size(); ++index) {
+        const std::array<fs::path, 1> reserved{navigation_sources[index]};
+        const auto name = "Navigation " + std::to_string(index);
+        std::size_t authorizations = 0;
+        const auto navigation = save_registration_entry_new(navigation_roots[index], name,
+            RegistrationScope::Registration, expected_controls(), reserved,
+            [&]() { ++authorizations; return permit(); });
+        REQUIRE(navigation.status == LibrarySaveStatus::Saved && navigation.committed());
+        REQUIRE(authorizations == 1 && read_bytes(root / (name + ".b3registration")) == kDocument);
+        REQUIRE(read_bytes(protected_source[0]) == "protected source bytes\n" && staging_count(root) == 0);
     }
 #endif
 }

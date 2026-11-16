@@ -31,6 +31,7 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
     set(_hammond_standalone_lock "${_hammond_standalone_source}/data/dependencies/sdl2-lock.json")
     set(_hammond_standalone_fonts "${_hammond_standalone_source}/assets/standalone/fonts")
     set(_hammond_standalone_reference "${_hammond_standalone_source}/assets/standalone/reference/manifest.json")
+    set(_hammond_standalone_apron "${_hammond_standalone_source}/assets/standalone/reference-apron-v1/manifest.json")
     set(_hammond_standalone_atlas "${_hammond_standalone_source}/docs/design/atlas-reference.json")
     # Retain configured identities. Installation never discovers a backend,
     # acquires an SDK, or silently substitutes changed notices for the build.
@@ -46,6 +47,10 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
     string(JSON _hammond_standalone_reference_id GET "${_hammond_standalone_reference_json}" identity)
     string(JSON _hammond_standalone_reference_image_hash GET "${_hammond_standalone_reference_json}" source sha256)
     file(SHA256 "${_hammond_standalone_reference}" _hammond_standalone_reference_hash)
+    file(READ "${_hammond_standalone_apron}" _hammond_standalone_apron_json)
+    string(JSON _hammond_standalone_apron_id GET "${_hammond_standalone_apron_json}" identity)
+    string(JSON _hammond_standalone_apron_image_hash GET "${_hammond_standalone_apron_json}" source sha256)
+    file(SHA256 "${_hammond_standalone_apron}" _hammond_standalone_apron_hash)
     file(SHA256 "${_hammond_standalone_atlas}" _hammond_standalone_atlas_hash)
     set(_hammond_standalone_metadata_sources
         "${_hammond_standalone_source}/docs/STANDALONE_INSTALL.md"
@@ -144,6 +149,14 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
     "source_image_sha256": "@_hammond_standalone_reference_image_hash@",
     "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration"
   },
+  "reference_apron": {
+    "embedded": true,
+    "identity": "@_hammond_standalone_apron_id@",
+    "manifest_sha256": "@_hammond_standalone_apron_hash@",
+    "provenance_sha256": "@_hammond_standalone_atlas_hash@",
+    "source_image_sha256": "@_hammond_standalone_apron_image_hash@",
+    "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration"
+  },
   "profile": "embedded nominal-unmeasured-v1",
   "qualification": "Local staging metadata; no physical-device, timing, fidelity or release-distribution claim."
 }
@@ -157,6 +170,10 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
     list(APPEND _hammond_standalone_metadata_sources
         "${_hammond_standalone_source}/docs/MIDI_EXPRESSION_GUIDE.md")
     list(APPEND _hammond_standalone_metadata_names MIDI_EXPRESSION_GUIDE.md)
+    # The apron is a separately admitted derivative. Preserve the historical
+    # three-crop record and append its own fixed, configured-hash provenance.
+    list(APPEND _hammond_standalone_metadata_sources "${_hammond_standalone_apron}")
+    list(APPEND _hammond_standalone_metadata_names reference-apron-manifest.json)
     set(_hammond_standalone_metadata_hashes)
     list(LENGTH _hammond_standalone_metadata_sources _hammond_standalone_metadata_count)
     math(EXPR _hammond_standalone_metadata_last "${_hammond_standalone_metadata_count} - 1")

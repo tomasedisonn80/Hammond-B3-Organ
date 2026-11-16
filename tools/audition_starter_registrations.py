@@ -8,7 +8,9 @@ STATE INCLUDING EXPRESSION, not Registration's expression-preserving recall.
 
 run_auditions returns the saved manifest. Only status == 'succeeded' is success.
 Preflight errors create nothing. After output creation, failures retain their
-actual partial files and reports; this batch is not atomic and never resumes.
+actual partial files. Aggregate report creation can itself fail, leaving missing
+or incomplete reports; the CLI identifies that failure and observed report state.
+This batch is not atomic and never resumes.
 This is proposed nominal dry Engine software evidence, not specimen evidence.
 """
 
@@ -47,6 +49,10 @@ RESTORE_POLICY = "full-state-including-expression"
 
 class AuditionError(ValueError):
     """Refused input or incomplete audition evidence."""
+
+
+class AuditionReportError(AuditionError):
+    """Aggregate reporting failed after the output directory was created."""
 
 
 def _object(pairs):
@@ -287,7 +293,7 @@ def _report(manifest):
              f"{len(manifest['jobs'])} renders succeeded.", "",
              "These are proposed, unmeasured recipes for the nominal dry Engine. "
              "They are not specimen measurements, factory recipes, or live-app evidence.", "",
-             "Each WAV is stereo PCM16, 48 kHz, exactly one second, with nominal contacts, "
+             "Successful WAVs are stereo PCM16, 48 kHz, exactly one second, with nominal contacts, "
              "seed 73, block size 64 and fail-on-clip. No normalization is applied.", "",
              "Both suffixes use `--controls`: full state **including saved expression**. "
              "This does not perform Registration's expression-preserving library recall. "
@@ -313,6 +319,8 @@ def _report(manifest):
               "SHA-256, raw stdout JSON/stderr and WAV identities, input recheck, and each "
               "attempt's status. A failed JSON capture may contain incomplete/non-JSON bytes; "
               "`stdout_is_json` states what was observed. Hashes identify files, not physical fidelity.",
+              "", "Failed jobs may retain incomplete or invalid WAVs. A file link or hash does "
+              "not establish a complete clip.",
               "", "The batch stops on its first failure and retains actual partial outputs. "
               "There is no overwrite, rollback, automatic retry, or resume; choose another fresh "
               "output directory for a new run.", ""]
@@ -375,9 +383,31 @@ def run_auditions(*, renderer, profile, pack, output, timeout_seconds=15):
         manifest["status"] = "failed"
         manifest["changed_inputs"] = changed
         manifest.setdefault("error", "one or more input files changed during the batch")
-    _write_new(destination / "manifest.json", (json.dumps(
-        manifest, ensure_ascii=False, indent=2, allow_nan=False) + "\n").encode("utf-8"))
-    _write_new(destination / "report.md", _report(manifest))
+    written_reports = set()
+    report_names = ("manifest.json", "report.md")
+    for report_name in report_names:
+        try:
+            raw = ((json.dumps(manifest, ensure_ascii=False, indent=2, allow_nan=False)
+                    + "\n").encode("utf-8") if report_name == "manifest.json" else _report(manifest))
+            _write_new(destination / report_name, raw)
+        except (OSError, ValueError, KeyboardInterrupt) as error:
+            states = []
+            for name in report_names:
+                try:
+                    (destination / name).lstat()
+                except FileNotFoundError:
+                    state = "absent"
+                except OSError:
+                    state = "presence unknown"
+                else:
+                    state = ("present (write completed)" if name in written_reports
+                             else "present (completeness unverified)")
+                states.append(f"{name}={state}")
+            raise AuditionReportError(
+                f"{report_name} creation failed: {str(error) or 'interrupted'}. "
+                f"Output directory retained at {destination}. Aggregate reports: "
+                + "; ".join(states)) from error
+        written_reports.add(report_name)
     return manifest
 
 
@@ -390,6 +420,9 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         manifest = run_auditions(**vars(args))
+    except AuditionReportError as error:
+        print(f"audition report failed: {error}", file=sys.stderr)
+        return 1
     except (OSError, ValueError, RuntimeError) as error:
         print(f"audition refused: {error}", file=sys.stderr)
         return 1

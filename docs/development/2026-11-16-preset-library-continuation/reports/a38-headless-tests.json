@@ -1,0 +1,59 @@
+{
+  "schema": "a38-headless-ctest-v1",
+  "inventory_argv": [
+    "ctest",
+    "--test-dir",
+    "../a38-headless",
+    "-C",
+    "Release",
+    "--no-tests=error",
+    "-R",
+    "^(test_control_file_input|test_control_io|test_standalone_registration_library|test_standalone_state_files|python_test_registration_cli|python_test_registration_cli_admission|python_test_render_controls|python_test_render_controls_admission|python_test_starter_registration_generator|python_test_starter_registration_oracle|python_test_registration_install|python_test_render)$",
+    "--show-only=json-v1"
+  ],
+  "argv": [
+    "ctest",
+    "--test-dir",
+    "../a38-headless",
+    "-C",
+    "Release",
+    "--no-tests=error",
+    "-R",
+    "^(test_control_file_input|test_control_io|test_standalone_registration_library|test_standalone_state_files|python_test_registration_cli|python_test_registration_cli_admission|python_test_render_controls|python_test_render_controls_admission|python_test_starter_registration_generator|python_test_starter_registration_oracle|python_test_registration_install|python_test_render)$",
+    "--parallel",
+    "2",
+    "--output-on-failure"
+  ],
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "LC_ALL": "C",
+    "TMPDIR": "/workspace/scratch/3edffb787db3/a38-headless/tmp"
+  },
+  "selected_tests": [
+    "test_control_file_input",
+    "test_control_io",
+    "python_test_registration_cli",
+    "python_test_registration_cli_admission",
+    "python_test_registration_install",
+    "python_test_render",
+    "python_test_render_controls",
+    "python_test_render_controls_admission",
+    "python_test_starter_registration_generator",
+    "python_test_starter_registration_oracle",
+    "test_standalone_registration_library",
+    "test_standalone_state_files"
+  ],
+  "selection_count": 12,
+  "returncode": 0,
+  "elapsed_seconds": 5.605912120001449,
+  "log": "a38-headless-tests.log.gz",
+  "log_sha256": "b6101fd0f11043d1fbbbecdee3a609dd507078d69db89469d28ed9468ae80a49",
+  "uncompressed_sha256": "a4e698c2950bfe4020623e1970d88f2c4777b8b3db7bddd5e45024eb64122e5c",
+  "detail_log": "a38-headless-tests-detail.log.gz",
+  "detail_sha256": "d4e0a808d52b383234f9198dad5306b930651ed208d894fa7666c8e8f9fcb4c5",
+  "detail_uncompressed_sha256": "654f0332b2f0161676967c4b574719934573b3cbb4714b4f550606d9c6e6b754",
+  "inventory_log": "a38-headless-tests-inventory.json.gz",
+  "inventory_sha256": "18e440d588ef3cd39b73479559aff8ecf374c5d68b6eaf9a4ae38f886283ff88",
+  "omitted_audition_reason": "python_test_starter_auditions setup renders all 32 clips; root explicitly prohibited repeating that complete audition run."
+}

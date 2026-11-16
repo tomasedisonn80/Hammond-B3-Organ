@@ -1,0 +1,412 @@
+{
+  "schema": "a39-registration-compatibility-v1",
+  "worker": "/root/w07_a39",
+  "observed_utc": "2026-11-16T12:15:37.326923+00:00",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "result": "admitted_with_stated_evidence_limits",
+  "base": "54df95fe343d417dd89bb7a91f85e4f51c08dfe7",
+  "local_implementation": "d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93",
+  "implementation_tree": "1e59776459a05a9d934d0b519a45cd4c61b13ae9",
+  "observed_local_head": "d281d4e3063f44b9eda6b5bc4ea44fc99a6c7f93",
+  "publication_verified_by_this_worker": false,
+  "execution_boundary": "Read-only Git/source/hash/byte comparisons. No configure, build, suite, renderer, benchmark, commit or push. Root native CTest and A38 headless observations are inspected evidence, not A39 executions.",
+  "commands": [
+    "git diff --name-status 54df95fe343d417dd89bb7a91f85e4f51c08dfe7 d281d4e",
+    "git diff -- tools/render.cpp apps/standalone/CMakeLists.txt",
+    "git ls-tree -r --name-only 54df95fe343d417dd89bb7a91f85e4f51c08dfe7",
+    "git show REV:PATH; Python hashlib.sha256 and full byte comparison",
+    "Python re.findall native parameter ID/path entries; compare data/parameter-registry.json",
+    "Read generated build-native CTestTestfile.cmake, build.ninja and Testing/Temporary/LastTest.log"
+  ],
+  "source_trees": {
+    "include": {
+      "base": "9a3c71eacf360e9dab78e74c0e675cd74e778f2c",
+      "implementation": "9a3c71eacf360e9dab78e74c0e675cd74e778f2c",
+      "equal": true
+    },
+    "src": {
+      "base": "09948c8801c1f37c0eb3bde7700234a16adaed97",
+      "implementation": "09948c8801c1f37c0eb3bde7700234a16adaed97",
+      "equal": true
+    },
+    "plugins": {
+      "base": "b13032ad4419df067f3a2ce65dc92ed17fd854c4",
+      "implementation": "b13032ad4419df067f3a2ce65dc92ed17fd854c4",
+      "equal": true
+    }
+  },
+  "unchanged_categories": {
+    "core_headers": {
+      "files": 31,
+      "base_implementation_worktree_mismatches": [],
+      "base_inventory_sha256": "4c15882f009a142a2421d10b977b6ee2a6ed5b9c7ea3683cd5260c2e8fda324f"
+    },
+    "core_sources": {
+      "files": 30,
+      "base_implementation_worktree_mismatches": [],
+      "base_inventory_sha256": "ce9c3ae38ed0c2ec42cb13a81ba5cd33f7a94e9a135774f6a53a2b4fba141aca"
+    },
+    "plugin": {
+      "files": 20,
+      "base_implementation_worktree_mismatches": [],
+      "base_inventory_sha256": "ce952a8180774d9e2e4e16d7d480b08be7652d30d160af61e4d7644f9e949aec"
+    },
+    "pre_existing_data": {
+      "files": 72,
+      "base_implementation_worktree_mismatches": [],
+      "base_inventory_sha256": "0ece59c1373ec6f48bd803f4ee47dc85355720c8f2b10136925244fe0e47d4e4"
+    },
+    "other_top_level_application": {
+      "files": 24,
+      "base_implementation_worktree_mismatches": [],
+      "base_inventory_sha256": "486a6a9d21158933966e56a7801695fbbde0207970876e4b9096d608468c1b6f"
+    }
+  },
+  "baseline_manifest_check": {
+    "entries": 507,
+    "git_base_mismatches": [],
+    "receipt_sha256": "02f23b90cfca20f56de59b1dff5e491f780ade0f39703ccb71ad2a7381014ac7"
+  },
+  "earlier_coherent_manifest": {
+    "entries": 534,
+    "later_input_changes": [
+      "CMakeLists.txt",
+      "apps/standalone/CMakeLists.txt",
+      "tests/test_capture_standalone_interface.py",
+      "tests/test_registration_cli.py",
+      "tests/test_registration_cli_admission.py",
+      "tests/test_render_controls.py",
+      "tools/capture_standalone_interface.py"
+    ],
+    "limit": "230/230 applies to its frozen inputs, not a new full run after later test/build changes."
+  },
+  "parameter_registry": {
+    "native_count": 47,
+    "unique_ids": 47,
+    "registry_count": 47,
+    "id_path_mapping_equal": true,
+    "ids": [
+      4096,
+      4097,
+      4098,
+      4099,
+      4100,
+      4101,
+      4102,
+      4103,
+      4104,
+      4112,
+      4113,
+      4114,
+      4115,
+      4116,
+      4117,
+      4118,
+      4119,
+      4120,
+      4128,
+      4129,
+      4130,
+      4131,
+      4132,
+      4133,
+      4134,
+      4135,
+      4136,
+      4144,
+      4145,
+      4146,
+      4147,
+      4148,
+      4149,
+      4150,
+      4151,
+      4152,
+      8192,
+      8208,
+      8209,
+      12288,
+      12289,
+      12290,
+      12291,
+      16384,
+      16385,
+      20480,
+      20481
+    ]
+  },
+  "source_sha256": {
+    "apps/standalone/CMakeLists.txt": "8c9083d5de40ab398c224e61550f5b218b02ebe7c8d7cc0bc94078e92dff99cf",
+    "apps/standalone/native_tests/test_standalone_starter_load.py": "22285ddcaec03adf61f97b1d65c7e70de4ee6c6437480267b4784ab8d360f5c7",
+    "apps/standalone/main.cpp": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/RegistrationLibrary.cpp": "e45fd2671558e0725468c18b59dc5ef8e7436600910633f73035ce81da4d3a4a",
+    "tools/render.cpp": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928",
+    "tools/ControlFileInput.cpp": "0a174b171dfb3f0253cd6beb12707fda4da5ffb88c898727fb80ca111049cf5d",
+    "tools/ControlFileInput.h": "74fe88ed36c8b00b56f3a3f15874f22ec418ce4ea8932995c7829b68c4f02ade",
+    "include/hammond/ParameterBridge.h": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+    "src/ParameterBridge.cpp": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+    "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+    "src/Engine.cpp": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+    "src/TonewheelBank.cpp": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+    "plugins/vst3/PluginIds.h": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+    "data/parameter-registry.json": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+    "data/profile.schema.json": "064beb58d186bb9ace5b2271c00c1b6f7d06c5ef43a403b6319344d92c1057af",
+    "data/profiles/nominal-unmeasured-v1.json": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+    "docs/development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md": "e673f5cdf2563ecce2e20c3bdd4ea43d1b8ee77f12821b56409201527ec8b604",
+    "docs/reviews/STARTER_NATIVE_LOAD_ADMISSION.md": "e6fcc10748086c817e7b3b19919126cd37d5e32270737f693f27105167f86bc8"
+  },
+  "legacy_receipts": {
+    "baseline_audio_sha256": "a150dba272c9eb9578f85500497966b5bfe425ee8791f163865b7e2f089c46d7",
+    "renderer_legacy_comparison_sha256": "e831218f75377f8d075eda3678700537b47558ed3db7a7cd0f80c5a3177a8a27",
+    "baseline_source_qualification_sha256": "ea83cef66c1b6eb5b7337a0872846ba6e9128b625c96aaa9f0e4e363d87b9dbc"
+  },
+  "legacy_binaries_and_profile": [
+    {
+      "path": "../baseline-native/hammond_render",
+      "bytes": 172528,
+      "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf",
+      "receipt_sha256_matches": true
+    },
+    {
+      "path": "../build-native/hammond_render",
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "receipt_sha256_matches": true
+    },
+    {
+      "path": "../build-native/nominal.b3p",
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "receipt_sha256_matches": true
+    }
+  ],
+  "legacy_fixture_byte_checks": [
+    {
+      "name": "default",
+      "baseline_argv": [
+        "/workspace/scratch/3edffb787db3/baseline-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+        "--output",
+        "/workspace/scratch/3edffb787db3/baseline-audio/default.wav",
+        "--frames",
+        "8192",
+        "--seed",
+        "0"
+      ],
+      "candidate_argv": [
+        "/workspace/scratch/3edffb787db3/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+        "--output",
+        "/workspace/scratch/3edffb787db3/candidate-audio/default.wav",
+        "--frames",
+        "8192",
+        "--seed",
+        "0"
+      ],
+      "identical_arguments_except_executable_output": true,
+      "recorded_exits": [
+        0,
+        0
+      ],
+      "stderr_empty": [
+        true,
+        true
+      ],
+      "artifacts": [
+        {
+          "kind": "wav",
+          "baseline": {
+            "path": "../baseline-audio/default.wav",
+            "bytes": 32812,
+            "sha256": "35a460e99da4c9354e23ec13bb53a70c99f5cd5b70ecf337ec3926c422c7025d"
+          },
+          "candidate": {
+            "path": "../candidate-audio/default.wav",
+            "bytes": 32812,
+            "sha256": "35a460e99da4c9354e23ec13bb53a70c99f5cd5b70ecf337ec3926c422c7025d"
+          },
+          "baseline_receipt_matches": true,
+          "candidate_receipt_matches": true,
+          "complete_bytes_equal": true
+        },
+        {
+          "kind": "stdout",
+          "baseline": {
+            "path": "../baseline-audio/default.stdout",
+            "bytes": 1278,
+            "sha256": "889706eeefcc459a832553e1624b3f9a507f43c7605b02e1b0ca872a62134e85"
+          },
+          "candidate": {
+            "path": "../candidate-audio/default.stdout",
+            "bytes": 1278,
+            "sha256": "889706eeefcc459a832553e1624b3f9a507f43c7605b02e1b0ca872a62134e85"
+          },
+          "baseline_receipt_matches": true,
+          "candidate_receipt_matches": true,
+          "complete_bytes_equal": true
+        }
+      ]
+    },
+    {
+      "name": "nominal",
+      "baseline_argv": [
+        "/workspace/scratch/3edffb787db3/baseline-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+        "--output",
+        "/workspace/scratch/3edffb787db3/baseline-audio/nominal.wav",
+        "--frames",
+        "16384",
+        "--seed",
+        "1934",
+        "--note",
+        "36",
+        "--drawbars",
+        "808400008",
+        "--sample-rate",
+        "44100",
+        "--block-size",
+        "17",
+        "--contacts",
+        "nominal",
+        "--percussion",
+        "third",
+        "--percussion-volume",
+        "soft",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "40"
+      ],
+      "candidate_argv": [
+        "/workspace/scratch/3edffb787db3/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+        "--output",
+        "/workspace/scratch/3edffb787db3/candidate-audio/nominal.wav",
+        "--frames",
+        "16384",
+        "--seed",
+        "1934",
+        "--note",
+        "36",
+        "--drawbars",
+        "808400008",
+        "--sample-rate",
+        "44100",
+        "--block-size",
+        "17",
+        "--contacts",
+        "nominal",
+        "--percussion",
+        "third",
+        "--percussion-volume",
+        "soft",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "40"
+      ],
+      "identical_arguments_except_executable_output": true,
+      "recorded_exits": [
+        0,
+        0
+      ],
+      "stderr_empty": [
+        true,
+        true
+      ],
+      "artifacts": [
+        {
+          "kind": "wav",
+          "baseline": {
+            "path": "../baseline-audio/nominal.wav",
+            "bytes": 65580,
+            "sha256": "7cbe9d547a23a3b6d696e75652064c4c8aacc0ffe4d4cf385b889e9206f41630"
+          },
+          "candidate": {
+            "path": "../candidate-audio/nominal.wav",
+            "bytes": 65580,
+            "sha256": "7cbe9d547a23a3b6d696e75652064c4c8aacc0ffe4d4cf385b889e9206f41630"
+          },
+          "baseline_receipt_matches": true,
+          "candidate_receipt_matches": true,
+          "complete_bytes_equal": true
+        },
+        {
+          "kind": "stdout",
+          "baseline": {
+            "path": "../baseline-audio/nominal.stdout",
+            "bytes": 1289,
+            "sha256": "847fa985f66e1818fdce35e35d9bca4c8840f201f6a16c12ce0406a4138172d8"
+          },
+          "candidate": {
+            "path": "../candidate-audio/nominal.stdout",
+            "bytes": 1289,
+            "sha256": "847fa985f66e1818fdce35e35d9bca4c8840f201f6a16c12ce0406a4138172d8"
+          },
+          "baseline_receipt_matches": true,
+          "candidate_receipt_matches": true,
+          "complete_bytes_equal": true
+        }
+      ]
+    }
+  ],
+  "root_native_load": {
+    "source_cmake_sha256": "8c9083d5de40ab398c224e61550f5b218b02ebe7c8d7cc0bc94078e92dff99cf",
+    "native_test_sha256": "22285ddcaec03adf61f97b1d65c7e70de4ee6c6437480267b4784ab8d360f5c7",
+    "generated_ctest_sha256": "95917feb94e3502496798ce50e9bdd3736facc6c3b09ebe0038971c23312367b",
+    "generated_ninja_sha256": "6ab5feea1685e5cec0b896b90dd5f9b54d55bd710090e1ea3f3be33ae54a40ed",
+    "generated_test_lines": [
+      "add_test([=[test_standalone_starter_load]=] \"/home/agent/.local/lib/python3.12/site-packages/cmake/data/bin/cmake\" \"-E\" \"env\" \"HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/3edffb787db3/build-native/apps/standalone/hammond_standalone\" \"HAMMOND_REGISTRATION_EXECUTABLE=/workspace/scratch/3edffb787db3/build-native/hammond_registration\" \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12\" \"/workspace/scratch/3edffb787db3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_starter_load.py\")",
+      "set_tests_properties([=[test_standalone_starter_load]=] PROPERTIES  LABELS \"standalone;native;registration\" TIMEOUT \"60\" _BACKTRACE_TRIPLES \"/workspace/scratch/3edffb787db3/Hammond-B3-Organ/apps/standalone/CMakeLists.txt;527;add_test;/workspace/scratch/3edffb787db3/Hammond-B3-Organ/apps/standalone/CMakeLists.txt;0;\")"
+    ],
+    "input_target_has_registration": true,
+    "root_ctest_log_path": "/workspace/scratch/3edffb787db3/build-native/Testing/Temporary/LastTest.log",
+    "root_ctest_log_sha256": "7e6f7cbfdfba25dc8a5fa40a72766c6322522a989e4d5c315d14823542d970e4",
+    "root_ctest_log_original_text": "Start testing: Nov 16 05:15 MST\n----------------------------------------------------------\nEnd testing: Nov 16 05:15 MST\n",
+    "observed_ctest_passed": false,
+    "ctest_seconds": 11.38,
+    "methods": 2,
+    "actual_native_processes": 4,
+    "actual_materialize_processes": 2,
+    "app": {
+      "path": "../build-native/apps/standalone/hammond_standalone",
+      "bytes": 4094520,
+      "sha256": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8"
+    },
+    "registration": {
+      "path": "../build-native/hammond_registration",
+      "bytes": 253280,
+      "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f"
+    },
+    "limit": "Linux dummy-SDL, generic startup/Ctrl+O and explicit CLI materialization; no live browser/LibraryModel recall, musical note/audio comparison, physical hardware or native accessibility qualification."
+  },
+  "headless_observed_receipts": {
+    "a38-headless-configure.json": {
+      "sha256": "b12364cb6c1a86cc258cac0a507d119bb8ebc4d88e39af58510b17dae52678c5",
+      "returncode": 0,
+      "log_sha256_matches": true,
+      "raw_sha256_matches": true,
+      "scope": "A38 initial clean Linux no-SDL configure/build; final regeneration/tests retained by A38 separately."
+    },
+    "a38-headless-build.json": {
+      "sha256": "b6b2a254f66c90459821e680fe5dea0aa634dacf164ecaae1986b13c03868edb",
+      "returncode": 0,
+      "log_sha256_matches": true,
+      "raw_sha256_matches": true,
+      "scope": "A38 initial clean Linux no-SDL configure/build; final regeneration/tests retained by A38 separately."
+    }
+  },
+  "finding": "No production compatibility defect found. Narrow store Unicode-path proof is expressly authorized; default renderer setters are exclusive with full controls restore; local native-Load wiring is additive and correctly gated.",
+  "limits": [
+    "No new runtime execution by A39.",
+    "No remote publication or exact-source hosted result independently verified by A39.",
+    "No Windows/macOS/MinGW, actual display/DPI/audio/MIDI/DAW, native accessibility, callback deadlines or signed distribution qualification.",
+    "Two retained WAV/stdout fixtures do not prove universal binary or physical equivalence.",
+    "Nominal dry Engine, physical fidelity and literal whole-interface 1:1 remain separate; physical fidelity and full 1:1 stay open."
+  ]
+}

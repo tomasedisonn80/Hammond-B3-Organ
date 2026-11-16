@@ -524,6 +524,13 @@ if(HAMMOND_BUILD_STANDALONE)
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_chapel.py")
         set_tests_properties(test_standalone_chapel PROPERTIES TIMEOUT 90 LABELS "standalone;native")
+        add_test(NAME test_standalone_starter_load
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "HAMMOND_REGISTRATION_EXECUTABLE=$<TARGET_FILE:hammond_registration>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_starter_load.py")
+        set_tests_properties(test_standalone_starter_load PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;registration")
         add_executable(test_standalone_input_replay native_tests/test_standalone_input_replay.cpp)
         target_link_libraries(test_standalone_input_replay PRIVATE hammond_standalone_replay)
         target_compile_definitions(test_standalone_input_replay PRIVATE SDL_MAIN_HANDLED)
@@ -535,7 +542,7 @@ if(HAMMOND_BUILD_STANDALONE)
             test_standalone_audio_device test_standalone_device_removal test_standalone_callback_allocation
             test_standalone_input_replay hammond_standalone)
         add_custom_target(hammond_standalone_test_inputs
-            DEPENDS hammond_profile ${HAMMOND_STANDALONE_TEST_TARGETS})
+            DEPENDS hammond_profile hammond_registration ${HAMMOND_STANDALONE_TEST_TARGETS})
     endif()
 
     if(MINGW)

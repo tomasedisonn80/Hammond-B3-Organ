@@ -1,0 +1,59 @@
+{
+  "source_files": {
+    "apps/standalone/RegistrationLibrary.cpp": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+    "apps/standalone/tests/test_standalone_registration_library.cpp": "7197b14bed6687612d0640726c75e713d9bdb5b0e92984bb26dc70e6b001b3fd"
+  },
+  "prior_linux_binaries": {
+    "../build-native/hammond_registration": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+    "../build-native/hammond_render": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+    "../build-native/apps/standalone/hammond_standalone": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8"
+  },
+  "cause": "Raw native ambiguity was checked only after normalization could erase its spelling.",
+  "preserved_policy": "Whole ASCII component proof and Unicode uncertainty unchanged. Existing post-resolution checks remain.",
+  "primary_references": [
+    "https://learn.microsoft.com/en-us/dotnet/standard/io/file-path-formats#path-normalization",
+    "https://learn.microsoft.com/en-us/windows/win32/api/pathcch/nf-pathcch-pathcchcanonicalizeex"
+  ],
+  "review": "A43 independently admitted proposal before implementation; Windows execution must be qualified by hosted exact-source gates.",
+  "linux_binary_comparison": {
+    "../build-native/hammond_registration": {
+      "before": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+      "after": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+      "identical": true
+    },
+    "../build-native/hammond_render": {
+      "before": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "after": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "identical": true
+    },
+    "../build-native/apps/standalone/hammond_standalone": {
+      "before": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8",
+      "after": "82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8",
+      "identical": true
+    }
+  },
+  "local_qualification": {
+    "build": "succeeded",
+    "ctest_total": 6,
+    "passed": 6,
+    "elapsed_seconds": 11.33,
+    "scope": "Linux affected gates; Windows-specific spelling regression must run on hosted Windows."
+  },
+  "w08-path-build": {
+    "archive": "w08-path-build.log.gz",
+    "raw_sha256": "cbe73d427560297d0084ff6f403acfa463f26c4830d6f9e96548919750083cf3",
+    "bytes": 4260
+  },
+  "w08-path-tests": {
+    "archive": "w08-path-tests.log.gz",
+    "raw_sha256": "4bffa89c159271898f222877265e966d8ed34de2958b9e513bde7ff32b3a7848",
+    "bytes": 1311
+  },
+  "later_ci_fixture": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "4897404caa25c874c112c1f985f417a2bb262241fb14d395ae9aa5072c0a56a3",
+    "changes": "Unicode Windows source fixture uses distinct ASCII source/outputs branches per observed conservative path policy; Python UTF-8 mode scopes Unicode diagnostic transport to this step. No gate is skipped or relaxed.",
+    "syntax_bash_blocks": 20,
+    "syntax_python_blocks": 3
+  }
+}

@@ -55,7 +55,7 @@ Both require the full decoded source RGB hash before cropping. Verification
 reports the actual decoder versions and requires exact pixels; extraction also
 requires every authoring version to match the frozen manifest and the canonical
 gzip bytes to match exactly. Original authoring used Python 3.12.14, Pillow
-13.0.0 (HPND), libjpeg API 6.2 / libjpeg-turbo 3.2.0 (IJG/BSD-3-Clause/zlib), and
+13.0.0 (MIT-CMU), libjpeg API 6.2 / libjpeg-turbo 3.2.0 (IJG/BSD-3-Clause/zlib), and
 zlib 1.3.2 (zlib license). These optional tools are not bundled runtime dependencies.
 The gzip uses level 9, mtime 0, empty filename, OS byte 255 and one member.
 

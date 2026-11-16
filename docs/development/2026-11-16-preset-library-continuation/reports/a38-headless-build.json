@@ -1,0 +1,32 @@
+{
+  "schema": "a38-headless-command-v1",
+  "argv": [
+    "cmake",
+    "--build",
+    "../a38-headless",
+    "--config",
+    "Release",
+    "--parallel",
+    "2",
+    "--target",
+    "hammond_registration",
+    "hammond_render",
+    "hammond_generate_starter_registrations",
+    "hammond_profile",
+    "test_control_file_input",
+    "test_control_io",
+    "test_standalone_registration_library",
+    "test_standalone_state_files"
+  ],
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "LC_ALL": "C"
+  },
+  "returncode": 0,
+  "elapsed_seconds": 26.53528406500118,
+  "log": "a38-headless-build.log.gz",
+  "log_sha256": "1d079e984f8bd3f13fb8c9aeb7edcccdb32755531d88b084a329c8126d61e141",
+  "uncompressed_sha256": "9487bfaa902085ba4c4088512d7974b41a60c0813b8ea927982c37129cc20b46",
+  "uncompressed_bytes": 5179
+}

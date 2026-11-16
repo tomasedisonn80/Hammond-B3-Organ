@@ -1,0 +1,2256 @@
+{
+  "schema": "starter-audio-provenance-admission-v1",
+  "worker": {
+    "id": "A45",
+    "agent": "/root/w08_a45",
+    "wave": 8
+  },
+  "recorded_utc": "2026-11-16T12:33:05.768987+00:00",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "observed_head": "20739f6280b95e567e84615d5c5aee443fc3b93d",
+  "method": {
+    "command": [
+      "python3",
+      "-B",
+      "-"
+    ],
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "stdlib": [
+      "pathlib",
+      "hashlib",
+      "json",
+      "wave",
+      "array",
+      "struct",
+      "math",
+      "ast",
+      "gzip",
+      "tarfile",
+      "subprocess"
+    ],
+    "scope": "Read retained original bytes and archive in memory; no helper import, render, capture, native executable, build, configure, test suite or perceptual listening. subprocess only reads Git HEAD/object.",
+    "hash": "SHA-256 of complete raw file bytes",
+    "pair_comparison": "Direct bytes equality for 16 independently enumerated full WAV pairs",
+    "quantization_relation": "Renderer rounds sample*32768; decoded PCM peak/RMS each differ from retained prequantization metrics by at most 0.5/32768. This does not recover individual float samples.",
+    "observer_failure": "First inline audit computed measurements but report assembly raised TypeError: string indices must be integers, not str, because pair IDs shadowed AST dictionaries. No report or source was written. Corrected observer rerun produced this receipt; no native process was involved."
+  },
+  "summary": {
+    "checks": 400,
+    "passed_checks": 400,
+    "failed_checks": [],
+    "wav_count": 32,
+    "direct_equal_pair_count": 16,
+    "wav_bytes_total": 6145408,
+    "pcm_channel_samples_total": 3072000,
+    "original_file_count": 101,
+    "original_bytes_total": 6300666,
+    "pcm_peak_min": 682,
+    "pcm_peak_max": 2201,
+    "reported_float_peak_min": 0.02080640383064747,
+    "reported_float_peak_max": 0.06717231124639511,
+    "all_channels_identical": true,
+    "all_pcm_finite": true,
+    "pcm_rail_channel_samples": 0,
+    "all_archive_member_bytes_equal": true,
+    "all_original_files_unchanged": true
+  },
+  "common_pcm_format": {
+    "riff": "RIFF/WAVE",
+    "format_tag": 1,
+    "channels": 2,
+    "bits_per_sample": 16,
+    "byte_order": "little",
+    "sample_rate_hz": 48000,
+    "frames": 48000,
+    "duration_seconds": 1,
+    "data_bytes": 192000,
+    "wav_bytes": 192044,
+    "normalization": "No post-render normalization in inspected helper/renderer. Nominal profile output_gain 0.03 belongs to the model; WAV bytes alone cannot establish absence of arbitrary prior gain."
+  },
+  "historical_reports": [
+    {
+      "path": "out/a27-starter-auditions/manifest.json",
+      "bytes": 80972,
+      "sha256": "01ae18231688c215512059850a7784c4451e502b37a640b2ef34934d55e3160d"
+    },
+    {
+      "path": "out/a27-starter-auditions/report.md",
+      "bytes": 5396,
+      "sha256": "8960f21cf554e7f82210b6984bcd08de00878626804507d38a9a7768f40b7b8b"
+    },
+    {
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions.json",
+      "bytes": 80972,
+      "sha256": "01ae18231688c215512059850a7784c4451e502b37a640b2ef34934d55e3160d"
+    },
+    {
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/starter-provenance.json",
+      "bytes": 37558,
+      "sha256": "7c002890c7c24e57193d77ebc44249f777bd933f103a32ebbb830714c75e1df4"
+    },
+    {
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/starter-generation.json",
+      "bytes": 3135,
+      "sha256": "9de500bdea1d3be9ff55e9a44f299b5dac1f700b3b8fc6050471040aaa79933f"
+    },
+    {
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/a40-failure-targeted-tests.json",
+      "bytes": 2743,
+      "sha256": "fd603329bd8ac1c42a3af02d1ddf8f124f2d027f820c61a031e4dafb887e0e5a"
+    }
+  ],
+  "helper_lineage": {
+    "historical_git_locator": "20739f6280b95e567e84615d5c5aee443fc3b93d:tools/audition_starter_registrations.py",
+    "historical": {
+      "bytes": 20121,
+      "sha256": "60a2e20d0a60a6e6e18ea55913e69fd1bedb81f52ae8ae0558cacf0ac09a173a"
+    },
+    "matches_original_manifest": true,
+    "current": {
+      "path": "tools/audition_starter_registrations.py",
+      "bytes": 21687,
+      "sha256": "1ff78d28e74c7556aa525f5eb779d40ced76b7f913c1ec38085b4c2def216157"
+    },
+    "unchanged_function_asts": [
+      "_object",
+      "_nonfinite",
+      "_number",
+      "_json",
+      "_stamp",
+      "_file",
+      "_fresh_output",
+      "_preflight",
+      "_write_new",
+      "_artifact",
+      "_check_wav",
+      "_jobs",
+      "_execute"
+    ],
+    "changed_function_asts": [
+      "_report",
+      "run_auditions",
+      "main"
+    ],
+    "explanation": "A40 changes aggregate-report failure handling and prose only. Historical manifest retains original helper hash; actual audio was not rerun by A45."
+  },
+  "inputs": [
+    {
+      "role": "renderer",
+      "path": "/workspace/scratch/3edffb787db3/build-native/hammond_render",
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "matches_original_manifest": true
+    },
+    {
+      "role": "profile",
+      "path": "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "matches_original_manifest": true
+    },
+    {
+      "role": "pack_manifest",
+      "path": "data/registrations/starter-v1/recipes.json",
+      "bytes": 9955,
+      "sha256": "665e6098928d845c1302642f89a109dc8f2be8500f9eb49d33111ba37d468051",
+      "matches_original_manifest": true
+    }
+  ],
+  "profile_metadata": {
+    "profile_id": "nominal-unmeasured-v1",
+    "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+    "output_gain": "0.03"
+  },
+  "scores": [
+    {
+      "name": "audition",
+      "path": "examples/registrations/starter-audition.events",
+      "bytes": 665,
+      "sha256": "767e4c0ce5aacfa4c1f443f0aaf77e16c6ac25dbd0090f6f68931d5d8581941e",
+      "copied_member": "scores/starter-audition.events",
+      "source_copy_exact": true,
+      "events": [
+        [
+          0,
+          "note_on",
+          "upper",
+          60,
+          100.0
+        ],
+        [
+          7200,
+          "note_off",
+          "upper",
+          60,
+          0.0
+        ],
+        [
+          9000,
+          "note_on",
+          "upper",
+          67,
+          100.0
+        ],
+        [
+          14400,
+          "note_off",
+          "upper",
+          67,
+          0.0
+        ],
+        [
+          16000,
+          "note_on",
+          "lower",
+          48,
+          100.0
+        ],
+        [
+          24000,
+          "note_off",
+          "lower",
+          48,
+          0.0
+        ],
+        [
+          26000,
+          "pedal_on",
+          "lower",
+          1,
+          100.0
+        ],
+        [
+          34000,
+          "pedal_off",
+          "lower",
+          1,
+          0.0
+        ],
+        [
+          36000,
+          "note_on",
+          "upper",
+          64,
+          100.0
+        ],
+        [
+          36000,
+          "note_on",
+          "lower",
+          55,
+          100.0
+        ],
+        [
+          36000,
+          "pedal_on",
+          "lower",
+          8,
+          100.0
+        ],
+        [
+          44000,
+          "note_off",
+          "upper",
+          64,
+          0.0
+        ],
+        [
+          44000,
+          "note_off",
+          "lower",
+          55,
+          0.0
+        ],
+        [
+          44000,
+          "pedal_off",
+          "lower",
+          8,
+          0.0
+        ]
+      ]
+    },
+    {
+      "name": "banks-reveal",
+      "path": "examples/registrations/starter-banks-reveal.events",
+      "bytes": 827,
+      "sha256": "5c14b6b1a55d9a95081353db7a8f4315ec9770741c9da1ee0125101e16fc58b6",
+      "copied_member": "scores/starter-banks-reveal.events",
+      "source_copy_exact": true,
+      "events": [
+        [
+          0,
+          "note_on",
+          "upper",
+          60,
+          100.0
+        ],
+        [
+          0,
+          "note_on",
+          "lower",
+          48,
+          100.0
+        ],
+        [
+          10000,
+          "note_off",
+          "upper",
+          60,
+          0.0
+        ],
+        [
+          10000,
+          "note_off",
+          "lower",
+          48,
+          0.0
+        ],
+        [
+          12000,
+          "select_bank",
+          "upper",
+          0,
+          0.0
+        ],
+        [
+          12000,
+          "select_bank",
+          "lower",
+          0,
+          0.0
+        ],
+        [
+          12000,
+          "note_on",
+          "upper",
+          64,
+          100.0
+        ],
+        [
+          12000,
+          "note_on",
+          "lower",
+          52,
+          100.0
+        ],
+        [
+          22000,
+          "note_off",
+          "upper",
+          64,
+          0.0
+        ],
+        [
+          22000,
+          "note_off",
+          "lower",
+          52,
+          0.0
+        ],
+        [
+          24000,
+          "select_bank",
+          "upper",
+          0,
+          1.0
+        ],
+        [
+          24000,
+          "select_bank",
+          "lower",
+          0,
+          1.0
+        ],
+        [
+          24000,
+          "note_on",
+          "upper",
+          67,
+          100.0
+        ],
+        [
+          24000,
+          "note_on",
+          "lower",
+          55,
+          100.0
+        ],
+        [
+          34000,
+          "note_off",
+          "upper",
+          67,
+          0.0
+        ],
+        [
+          34000,
+          "note_off",
+          "lower",
+          55,
+          0.0
+        ],
+        [
+          36000,
+          "pedal_on",
+          "lower",
+          1,
+          100.0
+        ],
+        [
+          44000,
+          "pedal_off",
+          "lower",
+          1,
+          0.0
+        ]
+      ]
+    },
+    {
+      "name": "manual-return",
+      "path": "examples/registrations/starter-manual-return.events",
+      "bytes": 898,
+      "sha256": "7f8cccb219e1416f06122332efb9decb6eb1b5acf00b62cd63b87df7b0a48005",
+      "copied_member": "scores/starter-manual-return.events",
+      "source_copy_exact": true,
+      "events": [
+        [
+          0,
+          "note_on",
+          "upper",
+          60,
+          100.0
+        ],
+        [
+          8000,
+          "select_preset",
+          "upper",
+          0,
+          8.0
+        ],
+        [
+          16000,
+          "note_off",
+          "upper",
+          60,
+          0.0
+        ],
+        [
+          18000,
+          "select_bank",
+          "upper",
+          0,
+          0.0
+        ],
+        [
+          18000,
+          "select_bank",
+          "lower",
+          0,
+          0.0
+        ],
+        [
+          18000,
+          "note_on",
+          "upper",
+          64,
+          100.0
+        ],
+        [
+          18000,
+          "note_on",
+          "lower",
+          48,
+          100.0
+        ],
+        [
+          28000,
+          "note_off",
+          "upper",
+          64,
+          0.0
+        ],
+        [
+          28000,
+          "note_off",
+          "lower",
+          48,
+          0.0
+        ],
+        [
+          30000,
+          "select_bank",
+          "upper",
+          0,
+          1.0
+        ],
+        [
+          30000,
+          "select_bank",
+          "lower",
+          0,
+          1.0
+        ],
+        [
+          30000,
+          "note_on",
+          "upper",
+          67,
+          100.0
+        ],
+        [
+          30000,
+          "note_on",
+          "lower",
+          55,
+          100.0
+        ],
+        [
+          42000,
+          "note_off",
+          "upper",
+          67,
+          0.0
+        ],
+        [
+          42000,
+          "note_off",
+          "lower",
+          55,
+          0.0
+        ],
+        [
+          44000,
+          "pedal_on",
+          "lower",
+          8,
+          100.0
+        ],
+        [
+          47000,
+          "pedal_off",
+          "lower",
+          8,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "payloads": [
+    {
+      "path": "data/registrations/starter-v1/entries/01 Quiet Foundation.b3registration",
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/01 Quiet Foundation.b3performance",
+      "bytes": 457,
+      "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/02 Warm Comp.b3registration",
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/02 Warm Comp.b3performance",
+      "bytes": 459,
+      "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/03 Clear Lead.b3registration",
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/03 Clear Lead.b3performance",
+      "bytes": 459,
+      "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/04 Reed Edge.b3registration",
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/04 Reed Edge.b3performance",
+      "bytes": 457,
+      "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/05 Bright Ensemble.b3registration",
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/05 Bright Ensemble.b3performance",
+      "bytes": 457,
+      "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/06 High Shimmer.b3registration",
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/06 High Shimmer.b3performance",
+      "bytes": 457,
+      "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/07 Percussive Pair.b3registration",
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/07 Percussive Pair.b3performance",
+      "bytes": 456,
+      "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/08 Slow Accent.b3registration",
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/08 Slow Accent.b3performance",
+      "bytes": 457,
+      "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/09 Split Dialogue.b3registration",
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/09 Split Dialogue.b3performance",
+      "bytes": 457,
+      "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/10 Pedal Study.b3registration",
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/10 Pedal Study.b3performance",
+      "bytes": 457,
+      "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/11 Fixed Contrast.b3registration",
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/11 Fixed Contrast.b3performance",
+      "bytes": 452,
+      "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/12 Manual Return.b3registration",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/12 Manual Return.b3performance",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "literal_fields_match": true,
+      "a27_a28_hashes_match": true
+    }
+  ],
+  "payload_aggregate": {
+    "sha256": "8618b545b1c04bdf1370478259967125cb63b09a81bbb6748f6990788578de11",
+    "rule": "Ascending ASCII basename order; append basename bytes, one NUL byte and complete raw payload bytes for each file, then SHA-256.",
+    "bytes_total": 10954
+  },
+  "special_literal_states": {
+    "10": {
+      "expression": 0.5,
+      "percussion": {
+        "enabled": false,
+        "harmonic": "second",
+        "volume": "normal",
+        "decay": "slow"
+      },
+      "pedal_drawbars": [
+        6,
+        2
+      ],
+      "selected_banks": [
+        "A",
+        "B"
+      ],
+      "fixed_registrations": [
+        "none",
+        "none"
+      ],
+      "route_enabled": [
+        false,
+        false
+      ],
+      "drawbars": [
+        [
+          "008000000",
+          "008400000"
+        ],
+        [
+          "008000000",
+          "008200000"
+        ]
+      ]
+    },
+    "12": {
+      "expression": 0.5,
+      "percussion": {
+        "enabled": true,
+        "harmonic": "third",
+        "volume": "soft",
+        "decay": "fast"
+      },
+      "pedal_drawbars": [
+        4,
+        0
+      ],
+      "selected_banks": [
+        "A",
+        "B"
+      ],
+      "fixed_registrations": [
+        "G#",
+        "none"
+      ],
+      "route_enabled": [
+        false,
+        true
+      ],
+      "drawbars": [
+        [
+          "808000000",
+          "808600000"
+        ],
+        [
+          "008400000",
+          "008440000"
+        ]
+      ]
+    }
+  },
+  "source_files_inspected": [
+    {
+      "path": "tools/render.cpp",
+      "bytes": 50112,
+      "sha256": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928"
+    },
+    {
+      "path": "src/Engine.cpp",
+      "bytes": 28448,
+      "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3"
+    },
+    {
+      "path": "src/ControlState.cpp",
+      "bytes": 7673,
+      "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d"
+    },
+    {
+      "path": "include/hammond/FixedRegistration.h",
+      "bytes": 1822,
+      "sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0"
+    },
+    {
+      "path": "tools/audition_starter_registrations.py",
+      "bytes": 21687,
+      "sha256": "1ff78d28e74c7556aa525f5eb779d40ced76b7f913c1ec38085b4c2def216157"
+    },
+    {
+      "path": "tests/test_starter_auditions.py",
+      "bytes": 26407,
+      "sha256": "5fea287ed572de6ca2fd62e34e7113ab5878ea44e16d92849d81c34d4a16431d"
+    },
+    {
+      "path": "docs/STARTER_REGISTRATION_PACK_CONTRACT.md",
+      "bytes": 8265,
+      "sha256": "f6390633160dc0dc643344fa6316fb26b3376216e535eb7d1b976f1f2dcffbf2"
+    },
+    {
+      "path": "docs/REGISTRATION_RENDER_CONTRACT.md",
+      "bytes": 7728,
+      "sha256": "cd81f83ef069215044117c139d318fe49caeffb1bd30bd038eaf62dc9528fc57"
+    },
+    {
+      "path": "docs/REGISTRATION_GUIDE.md",
+      "bytes": 12884,
+      "sha256": "e844bacd28e7e30a1c3ad90c46189162cb9fffcd5e61d64f17bb6ad0027402b3"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "01-audition-registration",
+      "peak_pcm16": 828,
+      "nonzero_channel_samples": 75810,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.007635801681795469,
+      "reported_float_peak": 0.025270337238907814,
+      "reported_float_rms": 0.007635880045508921,
+      "peak_quantization_error": 1.7825514078140259e-06,
+      "rms_quantization_error": 7.836371345142784e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "01-audition-performance",
+      "peak_pcm16": 828,
+      "nonzero_channel_samples": 75810,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.007635801681795469,
+      "reported_float_peak": 0.025270337238907814,
+      "reported_float_rms": 0.007635880045508921,
+      "peak_quantization_error": 1.7825514078140259e-06,
+      "rms_quantization_error": 7.836371345142784e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "02-audition-registration",
+      "peak_pcm16": 1957,
+      "nonzero_channel_samples": 76886,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.015342093438945277,
+      "reported_float_peak": 0.05972335860133171,
+      "reported_float_rms": 0.015342067997447481,
+      "peak_quantization_error": 4.5821070671081543e-07,
+      "rms_quantization_error": 2.544149779563909e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "02-audition-performance",
+      "peak_pcm16": 1957,
+      "nonzero_channel_samples": 76886,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.015342093438945277,
+      "reported_float_peak": 0.05972335860133171,
+      "reported_float_rms": 0.015342067997447481,
+      "peak_quantization_error": 4.5821070671081543e-07,
+      "rms_quantization_error": 2.544149779563909e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "03-audition-registration",
+      "peak_pcm16": 1638,
+      "nonzero_channel_samples": 76862,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.014185042341971743,
+      "reported_float_peak": 0.04997639358043671,
+      "reported_float_rms": 0.01418503409094765,
+      "peak_quantization_error": 1.1399388313293457e-05,
+      "rms_quantization_error": 8.251024093131054e-09,
+      "all_checks_pass": true
+    },
+    {
+      "id": "03-audition-performance",
+      "peak_pcm16": 1638,
+      "nonzero_channel_samples": 76862,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.014185042341971743,
+      "reported_float_peak": 0.04997639358043671,
+      "reported_float_rms": 0.01418503409094765,
+      "peak_quantization_error": 1.1399388313293457e-05,
+      "rms_quantization_error": 8.251024093131054e-09,
+      "all_checks_pass": true
+    },
+    {
+      "id": "04-audition-registration",
+      "peak_pcm16": 1378,
+      "nonzero_channel_samples": 75810,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.010665023064188733,
+      "reported_float_peak": 0.04205979034304619,
+      "reported_float_rms": 0.010664949308722471,
+      "peak_quantization_error": 6.5676867961883545e-06,
+      "rms_quantization_error": 7.37554662622042e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "04-audition-performance",
+      "peak_pcm16": 1378,
+      "nonzero_channel_samples": 75810,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.010665023064188733,
+      "reported_float_peak": 0.04205979034304619,
+      "reported_float_rms": 0.010664949308722471,
+      "peak_quantization_error": 6.5676867961883545e-06,
+      "rms_quantization_error": 7.37554662622042e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "05-audition-registration",
+      "peak_pcm16": 2201,
+      "nonzero_channel_samples": 76894,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.01466481159638207,
+      "reported_float_peak": 0.06717231124639511,
+      "reported_float_rms": 0.014664774927838516,
+      "peak_quantization_error": 3.121793270111084e-06,
+      "rms_quantization_error": 3.666854355398319e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "05-audition-performance",
+      "peak_pcm16": 2201,
+      "nonzero_channel_samples": 76894,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.01466481159638207,
+      "reported_float_peak": 0.06717231124639511,
+      "reported_float_rms": 0.014664774927838516,
+      "peak_quantization_error": 3.121793270111084e-06,
+      "rms_quantization_error": 3.666854355398319e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "06-audition-registration",
+      "peak_pcm16": 1848,
+      "nonzero_channel_samples": 75742,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.012374823716339255,
+      "reported_float_peak": 0.05638669431209564,
+      "reported_float_rms": 0.012374759960393788,
+      "peak_quantization_error": 9.79006290435791e-06,
+      "rms_quantization_error": 6.375594546748076e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "06-audition-performance",
+      "peak_pcm16": 1848,
+      "nonzero_channel_samples": 75742,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.012374823716339255,
+      "reported_float_peak": 0.05638669431209564,
+      "reported_float_rms": 0.012374759960393788,
+      "peak_quantization_error": 9.79006290435791e-06,
+      "rms_quantization_error": 6.375594546748076e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "07-audition-registration",
+      "peak_pcm16": 2040,
+      "nonzero_channel_samples": 76880,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.014265481303630475,
+      "reported_float_peak": 0.06225110962986946,
+      "reported_float_rms": 0.014265456345924283,
+      "peak_quantization_error": 4.7497451305389404e-06,
+      "rms_quantization_error": 2.495770619163895e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "07-audition-performance",
+      "peak_pcm16": 2040,
+      "nonzero_channel_samples": 76880,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.014265481303630475,
+      "reported_float_peak": 0.06225110962986946,
+      "reported_float_rms": 0.014265456345924283,
+      "peak_quantization_error": 4.7497451305389404e-06,
+      "rms_quantization_error": 2.495770619163895e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "08-audition-registration",
+      "peak_pcm16": 1943,
+      "nonzero_channel_samples": 76864,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.01570945938181406,
+      "reported_float_peak": 0.05929829925298691,
+      "reported_float_rms": 0.01570951202211152,
+      "peak_quantization_error": 2.644956111907959e-06,
+      "rms_quantization_error": 5.264029745780108e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "08-audition-performance",
+      "peak_pcm16": 1943,
+      "nonzero_channel_samples": 76864,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.01570945938181406,
+      "reported_float_peak": 0.05929829925298691,
+      "reported_float_rms": 0.01570951202211152,
+      "peak_quantization_error": 2.644956111907959e-06,
+      "rms_quantization_error": 5.264029745780108e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "09-audition-registration",
+      "peak_pcm16": 1653,
+      "nonzero_channel_samples": 76508,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.012326709619151995,
+      "reported_float_peak": 0.05043387413024902,
+      "reported_float_rms": 0.012326664404960599,
+      "peak_quantization_error": 1.1682510375976562e-05,
+      "rms_quantization_error": 4.521419139612293e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "09-audition-performance",
+      "peak_pcm16": 1653,
+      "nonzero_channel_samples": 76508,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44552,
+      "pcm_rms_div32768": 0.012326709619151995,
+      "reported_float_peak": 0.05043387413024902,
+      "reported_float_rms": 0.012326664404960599,
+      "peak_quantization_error": 1.1682510375976562e-05,
+      "rms_quantization_error": 4.521419139612293e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "09-banks-reveal-registration",
+      "peak_pcm16": 1579,
+      "nonzero_channel_samples": 78990,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.016161500831933427,
+      "reported_float_peak": 0.048173047602176666,
+      "reported_float_rms": 0.016161570226115085,
+      "peak_quantization_error": 1.420825719833374e-05,
+      "rms_quantization_error": 6.939418165791134e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "09-banks-reveal-performance",
+      "peak_pcm16": 1579,
+      "nonzero_channel_samples": 78990,
+      "first_nonzero_frame": 47,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.016161500831933427,
+      "reported_float_peak": 0.048173047602176666,
+      "reported_float_rms": 0.016161570226115085,
+      "peak_quantization_error": 1.420825719833374e-05,
+      "rms_quantization_error": 6.939418165791134e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "10-audition-registration",
+      "peak_pcm16": 682,
+      "nonzero_channel_samples": 31946,
+      "first_nonzero_frame": 26000,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.004958112380336575,
+      "reported_float_peak": 0.02080640383064747,
+      "reported_float_rms": 0.0049580979723348635,
+      "peak_quantization_error": 6.584450602531433e-06,
+      "rms_quantization_error": 1.4408001711846419e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "10-audition-performance",
+      "peak_pcm16": 682,
+      "nonzero_channel_samples": 31946,
+      "first_nonzero_frame": 26000,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.004958112380336575,
+      "reported_float_peak": 0.02080640383064747,
+      "reported_float_rms": 0.0049580979723348635,
+      "peak_quantization_error": 6.584450602531433e-06,
+      "rms_quantization_error": 1.4408001711846419e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "10-banks-reveal-registration",
+      "peak_pcm16": 982,
+      "nonzero_channel_samples": 57140,
+      "first_nonzero_frame": 12123,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.011007586282072256,
+      "reported_float_peak": 0.029973730444908142,
+      "reported_float_rms": 0.011007640367561734,
+      "peak_quantization_error": 5.46872615814209e-06,
+      "rms_quantization_error": 5.4085489477675996e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "10-banks-reveal-performance",
+      "peak_pcm16": 982,
+      "nonzero_channel_samples": 57140,
+      "first_nonzero_frame": 12123,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.011007586282072256,
+      "reported_float_peak": 0.029973730444908142,
+      "reported_float_rms": 0.011007640367561734,
+      "peak_quantization_error": 5.46872615814209e-06,
+      "rms_quantization_error": 5.4085489477675996e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "11-audition-registration",
+      "peak_pcm16": 1470,
+      "nonzero_channel_samples": 75866,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.010670754188768092,
+      "reported_float_peak": 0.04486404359340668,
+      "reported_float_rms": 0.010670775910367095,
+      "peak_quantization_error": 3.203749656677246e-06,
+      "rms_quantization_error": 2.1721599002128e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "11-audition-performance",
+      "peak_pcm16": 1470,
+      "nonzero_channel_samples": 75866,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.010670754188768092,
+      "reported_float_peak": 0.04486404359340668,
+      "reported_float_rms": 0.010670775910367095,
+      "peak_quantization_error": 3.203749656677246e-06,
+      "rms_quantization_error": 2.1721599002128e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "11-banks-reveal-registration",
+      "peak_pcm16": 1612,
+      "nonzero_channel_samples": 78206,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.017019639682952413,
+      "reported_float_peak": 0.04920375347137451,
+      "reported_float_rms": 0.017019626101936153,
+      "peak_quantization_error": 9.417533874511719e-06,
+      "rms_quantization_error": 1.3581016259506251e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "11-banks-reveal-performance",
+      "peak_pcm16": 1612,
+      "nonzero_channel_samples": 78206,
+      "first_nonzero_frame": 123,
+      "last_nonzero_frame": 43999,
+      "pcm_rms_div32768": 0.017019639682952413,
+      "reported_float_peak": 0.04920375347137451,
+      "reported_float_rms": 0.017019626101936153,
+      "peak_quantization_error": 9.417533874511719e-06,
+      "rms_quantization_error": 1.3581016259506251e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "12-audition-registration",
+      "peak_pcm16": 938,
+      "nonzero_channel_samples": 49438,
+      "first_nonzero_frame": 16123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.007503582533697868,
+      "reported_float_peak": 0.028612054884433746,
+      "reported_float_rms": 0.0075035709141462285,
+      "peak_quantization_error": 1.3433396816253662e-05,
+      "rms_quantization_error": 1.1619551639439896e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "12-audition-performance",
+      "peak_pcm16": 938,
+      "nonzero_channel_samples": 49438,
+      "first_nonzero_frame": 16123,
+      "last_nonzero_frame": 44437,
+      "pcm_rms_div32768": 0.007503582533697868,
+      "reported_float_peak": 0.028612054884433746,
+      "reported_float_rms": 0.0075035709141462285,
+      "peak_quantization_error": 1.3433396816253662e-05,
+      "rms_quantization_error": 1.1619551639439896e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "12-manual-return-registration",
+      "peak_pcm16": 1887,
+      "nonzero_channel_samples": 68864,
+      "first_nonzero_frame": 8000,
+      "last_nonzero_frame": 46999,
+      "pcm_rms_div32768": 0.017180858612110942,
+      "reported_float_peak": 0.05758814513683319,
+      "reported_float_rms": 0.01718087609791069,
+      "peak_quantization_error": 1.475214958190918e-06,
+      "rms_quantization_error": 1.7485799749111797e-08,
+      "all_checks_pass": true
+    },
+    {
+      "id": "12-manual-return-performance",
+      "peak_pcm16": 1887,
+      "nonzero_channel_samples": 68864,
+      "first_nonzero_frame": 8000,
+      "last_nonzero_frame": 46999,
+      "pcm_rms_div32768": 0.017180858612110942,
+      "reported_float_peak": 0.05758814513683319,
+      "reported_float_rms": 0.01718087609791069,
+      "peak_quantization_error": 1.475214958190918e-06,
+      "rms_quantization_error": 1.7485799749111797e-08,
+      "all_checks_pass": true
+    }
+  ],
+  "pairs": [
+    {
+      "ids": [
+        "01-audition-registration",
+        "01-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "f81d790a1bfa07540aa64a5d3b4187d87de3a4a33b9a99f186136055757f1d06"
+    },
+    {
+      "ids": [
+        "02-audition-registration",
+        "02-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "4ba847635769e94dc1456bf78e32ed015f7c0af2c5bdb46007400b9b1ce688e1"
+    },
+    {
+      "ids": [
+        "03-audition-registration",
+        "03-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "930be0aa2a1c7b5cbbd688f5cdb66fbb21a0b4c126c470256dcc22ae4d6de692"
+    },
+    {
+      "ids": [
+        "04-audition-registration",
+        "04-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "2f03dc0975dc6be9270e8e3b4dccf20f1cd377fb38f075213c549a1e8b169261"
+    },
+    {
+      "ids": [
+        "05-audition-registration",
+        "05-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "5e7b630b3a2f68fb1116b8c24c0f59bc6c4d73695cfdf0467ca54a6ae5b45a46"
+    },
+    {
+      "ids": [
+        "06-audition-registration",
+        "06-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "e30cd8ad4535f888348ba9fbda22c346b69c1c0379c0072650ad1f408dfe71b8"
+    },
+    {
+      "ids": [
+        "07-audition-registration",
+        "07-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "b638c52b9ee6d8dd9c451519ddd46a98814961cf45ecefbddd4e136a4bebbd90"
+    },
+    {
+      "ids": [
+        "08-audition-registration",
+        "08-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "f36401af650e8e6e7e61c4655e963a52f4195b7305d4ca2c65042f2b22fea355"
+    },
+    {
+      "ids": [
+        "09-audition-registration",
+        "09-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "4e5f7f4e05b4dd798fc8414ce5c8e6d1ca99b59f6c7c310bd92dbf990a0bb810"
+    },
+    {
+      "ids": [
+        "09-banks-reveal-registration",
+        "09-banks-reveal-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "bd9f6941b5e95ab76e8d58ffe9ac21c895d0169ca4fe314869d766eb6d285d1c"
+    },
+    {
+      "ids": [
+        "10-audition-registration",
+        "10-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "6b08e5c103404226720dbb4ba3f4a5bc42d4f09914bdab38d71e57ad177912e4"
+    },
+    {
+      "ids": [
+        "10-banks-reveal-registration",
+        "10-banks-reveal-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "6310dad799781d46cc50c430bd0ada75ad64667b76bac8256856c2823e11a937"
+    },
+    {
+      "ids": [
+        "11-audition-registration",
+        "11-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "598104fddf1d62e84d5e2b35d9d0d51dbd60994b0f116a2f86916ed5ca7e0b8f"
+    },
+    {
+      "ids": [
+        "11-banks-reveal-registration",
+        "11-banks-reveal-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "c54d96ccdb5113c537f735fc952fb9655329462cf42d6e0b93f119658d004e1c"
+    },
+    {
+      "ids": [
+        "12-audition-registration",
+        "12-audition-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "a803d2ff0afbf086edfa78a134a03ae6dd036a7e00b0b4864cf4a5d5934a5bc8"
+    },
+    {
+      "ids": [
+        "12-manual-return-registration",
+        "12-manual-return-performance"
+      ],
+      "direct_bytes_equal": true,
+      "bytes_each": 192044,
+      "sha256_each": "f37679db79b57ce48c4ff36ca3c14cd517c97c91c3d3facdee8699c704cada76"
+    }
+  ],
+  "score_window_checks": [
+    {
+      "id": "10-audition-registration",
+      "frames_half_open": [
+        0,
+        26000
+      ],
+      "score_state_relation": "cancelled Upper/Lower only",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-audition-registration",
+      "frames_half_open": [
+        26000,
+        34000
+      ],
+      "score_state_relation": "pedal ID 1",
+      "nonzero_mono_frames": 7991,
+      "peak_pcm16": 682,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-audition-registration",
+      "frames_half_open": [
+        34000,
+        36000
+      ],
+      "score_state_relation": "pedals released",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-audition-registration",
+      "frames_half_open": [
+        36000,
+        44000
+      ],
+      "score_state_relation": "cancelled manuals plus pedal ID 8",
+      "nonzero_mono_frames": 7982,
+      "peak_pcm16": 523,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-audition-registration",
+      "frames_half_open": [
+        44000,
+        48000
+      ],
+      "score_state_relation": "all released",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-audition-performance",
+      "frames_half_open": [
+        0,
+        26000
+      ],
+      "score_state_relation": "cancelled Upper/Lower only",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-audition-performance",
+      "frames_half_open": [
+        26000,
+        34000
+      ],
+      "score_state_relation": "pedal ID 1",
+      "nonzero_mono_frames": 7991,
+      "peak_pcm16": 682,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-audition-performance",
+      "frames_half_open": [
+        34000,
+        36000
+      ],
+      "score_state_relation": "pedals released",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-audition-performance",
+      "frames_half_open": [
+        36000,
+        44000
+      ],
+      "score_state_relation": "cancelled manuals plus pedal ID 8",
+      "nonzero_mono_frames": 7982,
+      "peak_pcm16": 523,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-audition-performance",
+      "frames_half_open": [
+        44000,
+        48000
+      ],
+      "score_state_relation": "all released",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-registration",
+      "frames_half_open": [
+        0,
+        12000
+      ],
+      "score_state_relation": "both saved routes cancelled",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-registration",
+      "frames_half_open": [
+        12000,
+        22000
+      ],
+      "score_state_relation": "explicit A selections",
+      "nonzero_mono_frames": 9826,
+      "peak_pcm16": 982,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-registration",
+      "frames_half_open": [
+        24000,
+        34000
+      ],
+      "score_state_relation": "explicit B selections",
+      "nonzero_mono_frames": 9877,
+      "peak_pcm16": 946,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-registration",
+      "frames_half_open": [
+        36000,
+        44000
+      ],
+      "score_state_relation": "pedal ID 1",
+      "nonzero_mono_frames": 7993,
+      "peak_pcm16": 660,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-performance",
+      "frames_half_open": [
+        0,
+        12000
+      ],
+      "score_state_relation": "both saved routes cancelled",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-performance",
+      "frames_half_open": [
+        12000,
+        22000
+      ],
+      "score_state_relation": "explicit A selections",
+      "nonzero_mono_frames": 9826,
+      "peak_pcm16": 982,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-performance",
+      "frames_half_open": [
+        24000,
+        34000
+      ],
+      "score_state_relation": "explicit B selections",
+      "nonzero_mono_frames": 9877,
+      "peak_pcm16": 946,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "10-banks-reveal-performance",
+      "frames_half_open": [
+        36000,
+        44000
+      ],
+      "score_state_relation": "pedal ID 1",
+      "nonzero_mono_frames": 7993,
+      "peak_pcm16": 660,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-audition-registration",
+      "frames_half_open": [
+        0,
+        16000
+      ],
+      "score_state_relation": "cancelled Upper only",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "12-audition-registration",
+      "frames_half_open": [
+        16000,
+        24000
+      ],
+      "score_state_relation": "enabled Lower",
+      "nonzero_mono_frames": 7875,
+      "peak_pcm16": 678,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-audition-registration",
+      "frames_half_open": [
+        26000,
+        34000
+      ],
+      "score_state_relation": "pedal ID 1",
+      "nonzero_mono_frames": 7978,
+      "peak_pcm16": 346,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-audition-performance",
+      "frames_half_open": [
+        0,
+        16000
+      ],
+      "score_state_relation": "cancelled Upper only",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "12-audition-performance",
+      "frames_half_open": [
+        16000,
+        24000
+      ],
+      "score_state_relation": "enabled Lower",
+      "nonzero_mono_frames": 7875,
+      "peak_pcm16": 678,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-audition-performance",
+      "frames_half_open": [
+        26000,
+        34000
+      ],
+      "score_state_relation": "pedal ID 1",
+      "nonzero_mono_frames": 7978,
+      "peak_pcm16": 346,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-registration",
+      "frames_half_open": [
+        0,
+        8000
+      ],
+      "score_state_relation": "held Upper with route cancelled",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-registration",
+      "frames_half_open": [
+        8000,
+        16000
+      ],
+      "score_state_relation": "explicit same G# selection code 8",
+      "nonzero_mono_frames": 7997,
+      "peak_pcm16": 1200,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-registration",
+      "frames_half_open": [
+        18000,
+        28000
+      ],
+      "score_state_relation": "explicit A selections",
+      "nonzero_mono_frames": 9948,
+      "peak_pcm16": 1592,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-registration",
+      "frames_half_open": [
+        30000,
+        42000
+      ],
+      "score_state_relation": "explicit B selections",
+      "nonzero_mono_frames": 11950,
+      "peak_pcm16": 1887,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-registration",
+      "frames_half_open": [
+        44000,
+        47000
+      ],
+      "score_state_relation": "pedal ID 8",
+      "nonzero_mono_frames": 2994,
+      "peak_pcm16": 255,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-performance",
+      "frames_half_open": [
+        0,
+        8000
+      ],
+      "score_state_relation": "held Upper with route cancelled",
+      "nonzero_mono_frames": 0,
+      "peak_pcm16": 0,
+      "expected_nonzero": false,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-performance",
+      "frames_half_open": [
+        8000,
+        16000
+      ],
+      "score_state_relation": "explicit same G# selection code 8",
+      "nonzero_mono_frames": 7997,
+      "peak_pcm16": 1200,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-performance",
+      "frames_half_open": [
+        18000,
+        28000
+      ],
+      "score_state_relation": "explicit A selections",
+      "nonzero_mono_frames": 9948,
+      "peak_pcm16": 1592,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-performance",
+      "frames_half_open": [
+        30000,
+        42000
+      ],
+      "score_state_relation": "explicit B selections",
+      "nonzero_mono_frames": 11950,
+      "peak_pcm16": 1887,
+      "expected_nonzero": true,
+      "passed": true
+    },
+    {
+      "id": "12-manual-return-performance",
+      "frames_half_open": [
+        44000,
+        47000
+      ],
+      "score_state_relation": "pedal ID 8",
+      "nonzero_mono_frames": 2994,
+      "peak_pcm16": 255,
+      "expected_nonzero": true,
+      "passed": true
+    }
+  ],
+  "original_file_identities": {
+    "01-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "01-audition-performance.stdout.json": {
+      "bytes": 2083,
+      "sha256": "2f1ff60aa184626154b994ca7d169635fddc272bd04806783cc886880c22e8c4"
+    },
+    "01-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "f81d790a1bfa07540aa64a5d3b4187d87de3a4a33b9a99f186136055757f1d06"
+    },
+    "01-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "01-audition-registration.stdout.json": {
+      "bytes": 2084,
+      "sha256": "df072a0b6e5f6e4324e022393ea92f192a9544eeaac189399cfe2b8a73a74b1d"
+    },
+    "01-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "f81d790a1bfa07540aa64a5d3b4187d87de3a4a33b9a99f186136055757f1d06"
+    },
+    "02-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "02-audition-performance.stdout.json": {
+      "bytes": 2077,
+      "sha256": "cfd2a37e46607769556ab82558e38da729efb5b9c78986e3b7c0a8501eb31ffb"
+    },
+    "02-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "4ba847635769e94dc1456bf78e32ed015f7c0af2c5bdb46007400b9b1ce688e1"
+    },
+    "02-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "02-audition-registration.stdout.json": {
+      "bytes": 2078,
+      "sha256": "482935c6a05462150b4098d489db04d163185aa381d12e0ed8444cc856baf133"
+    },
+    "02-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "4ba847635769e94dc1456bf78e32ed015f7c0af2c5bdb46007400b9b1ce688e1"
+    },
+    "03-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "03-audition-performance.stdout.json": {
+      "bytes": 2077,
+      "sha256": "89e16b8ab21cf2ef5bbd5d423e52b87d386a5028d348f5c08a93c00f511e3a59"
+    },
+    "03-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "930be0aa2a1c7b5cbbd688f5cdb66fbb21a0b4c126c470256dcc22ae4d6de692"
+    },
+    "03-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "03-audition-registration.stdout.json": {
+      "bytes": 2078,
+      "sha256": "219c5d6ca4d553d07eb006e3d265591c676f90dc7be0208149b7adecaff695c0"
+    },
+    "03-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "930be0aa2a1c7b5cbbd688f5cdb66fbb21a0b4c126c470256dcc22ae4d6de692"
+    },
+    "04-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "04-audition-performance.stdout.json": {
+      "bytes": 2075,
+      "sha256": "fc160f053dff75b5a019ce7b363e25672d40b263bb9f36ec9f332fd77afd7992"
+    },
+    "04-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "2f03dc0975dc6be9270e8e3b4dccf20f1cd377fb38f075213c549a1e8b169261"
+    },
+    "04-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "04-audition-registration.stdout.json": {
+      "bytes": 2076,
+      "sha256": "9205c2ca07305124284979b1440c117e3948c56a227d863d062b23fe47f6b613"
+    },
+    "04-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "2f03dc0975dc6be9270e8e3b4dccf20f1cd377fb38f075213c549a1e8b169261"
+    },
+    "05-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "05-audition-performance.stdout.json": {
+      "bytes": 2081,
+      "sha256": "54c292c0a6639c47c8fdebcdbb981b3e22d5d15c84575e4f7c480de727f0c361"
+    },
+    "05-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "5e7b630b3a2f68fb1116b8c24c0f59bc6c4d73695cfdf0467ca54a6ae5b45a46"
+    },
+    "05-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "05-audition-registration.stdout.json": {
+      "bytes": 2082,
+      "sha256": "6a9e6781d726d1e7a573f7e8727e5edebfea9526e30a4938238ce1a4a8a2380e"
+    },
+    "05-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "5e7b630b3a2f68fb1116b8c24c0f59bc6c4d73695cfdf0467ca54a6ae5b45a46"
+    },
+    "06-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "06-audition-performance.stdout.json": {
+      "bytes": 2078,
+      "sha256": "981b83f2f292e96932c52d749eb63511c87e3fc5ead8b41622d91850824b01e4"
+    },
+    "06-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "e30cd8ad4535f888348ba9fbda22c346b69c1c0379c0072650ad1f408dfe71b8"
+    },
+    "06-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "06-audition-registration.stdout.json": {
+      "bytes": 2079,
+      "sha256": "71b78e9aec85b01132da9d27033066553c907e823d7ca8a78870edd9a6085de8"
+    },
+    "06-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "e30cd8ad4535f888348ba9fbda22c346b69c1c0379c0072650ad1f408dfe71b8"
+    },
+    "07-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "07-audition-performance.stdout.json": {
+      "bytes": 2080,
+      "sha256": "26aae43acc3b56e02b39a70af99419c3c6e753af3bbaa013731f8cae845166ce"
+    },
+    "07-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "b638c52b9ee6d8dd9c451519ddd46a98814961cf45ecefbddd4e136a4bebbd90"
+    },
+    "07-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "07-audition-registration.stdout.json": {
+      "bytes": 2081,
+      "sha256": "11807258798fa6e096a82cf810c9b47bd9cbd23d1216f5f0ab87eec9bf51af3f"
+    },
+    "07-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "b638c52b9ee6d8dd9c451519ddd46a98814961cf45ecefbddd4e136a4bebbd90"
+    },
+    "08-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "08-audition-performance.stdout.json": {
+      "bytes": 2077,
+      "sha256": "158e27fe0a19b11c3ac87484f67552b0c2b9c0b0e440d567454d98d8e737e2c6"
+    },
+    "08-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "f36401af650e8e6e7e61c4655e963a52f4195b7305d4ca2c65042f2b22fea355"
+    },
+    "08-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "08-audition-registration.stdout.json": {
+      "bytes": 2078,
+      "sha256": "908c3fae2fc4d8852a63195a9a027b4e974bf4ed8e1d8e158526dd3141106fdf"
+    },
+    "08-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "f36401af650e8e6e7e61c4655e963a52f4195b7305d4ca2c65042f2b22fea355"
+    },
+    "09-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "09-audition-performance.stdout.json": {
+      "bytes": 2080,
+      "sha256": "d4ea758e125dd9feb9ba65a1f3907fe194a3cec251b63ea4fefb788b1838a009"
+    },
+    "09-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "4e5f7f4e05b4dd798fc8414ce5c8e6d1ca99b59f6c7c310bd92dbf990a0bb810"
+    },
+    "09-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "09-audition-registration.stdout.json": {
+      "bytes": 2081,
+      "sha256": "3bd03f9779fbb7c8babe5f6e2a6a9d20e6930a85af89731c04f7546508d28a69"
+    },
+    "09-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "4e5f7f4e05b4dd798fc8414ce5c8e6d1ca99b59f6c7c310bd92dbf990a0bb810"
+    },
+    "09-banks-reveal-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "09-banks-reveal-performance.stdout.json": {
+      "bytes": 2080,
+      "sha256": "42ee7f785e230a83bb2e44a4e5008cc52d5cc172f129176f0bb9eab20fe937d4"
+    },
+    "09-banks-reveal-performance.wav": {
+      "bytes": 192044,
+      "sha256": "bd9f6941b5e95ab76e8d58ffe9ac21c895d0169ca4fe314869d766eb6d285d1c"
+    },
+    "09-banks-reveal-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "09-banks-reveal-registration.stdout.json": {
+      "bytes": 2081,
+      "sha256": "b2c1156e85df0db1a51d4e59c5e2be857aa1e998b7b78cd1cd46cc2d9cefea3c"
+    },
+    "09-banks-reveal-registration.wav": {
+      "bytes": 192044,
+      "sha256": "bd9f6941b5e95ab76e8d58ffe9ac21c895d0169ca4fe314869d766eb6d285d1c"
+    },
+    "10-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "10-audition-performance.stdout.json": {
+      "bytes": 2078,
+      "sha256": "42d629869da4b50244277180c690debbd5cb3b6ad3e81c057121ed806b6e2fbe"
+    },
+    "10-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "6b08e5c103404226720dbb4ba3f4a5bc42d4f09914bdab38d71e57ad177912e4"
+    },
+    "10-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "10-audition-registration.stdout.json": {
+      "bytes": 2079,
+      "sha256": "cfc6c9a37374187ae782c38a7f917687188778d86e1ffcc45a7260050ff9ec47"
+    },
+    "10-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "6b08e5c103404226720dbb4ba3f4a5bc42d4f09914bdab38d71e57ad177912e4"
+    },
+    "10-banks-reveal-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "10-banks-reveal-performance.stdout.json": {
+      "bytes": 2077,
+      "sha256": "9b928f7ef02c73f8fc50607f60aab35b043850f7de7cada4c6e156ecb545f5db"
+    },
+    "10-banks-reveal-performance.wav": {
+      "bytes": 192044,
+      "sha256": "6310dad799781d46cc50c430bd0ada75ad64667b76bac8256856c2823e11a937"
+    },
+    "10-banks-reveal-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "10-banks-reveal-registration.stdout.json": {
+      "bytes": 2078,
+      "sha256": "516e1b0ce0a285bf881fbcd2070cf1cb7d69a8e5fb637f213d3743ee0edb06de"
+    },
+    "10-banks-reveal-registration.wav": {
+      "bytes": 192044,
+      "sha256": "6310dad799781d46cc50c430bd0ada75ad64667b76bac8256856c2823e11a937"
+    },
+    "11-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "11-audition-performance.stdout.json": {
+      "bytes": 2075,
+      "sha256": "653bfb35fad617c653fd973c89b9ee28592d63440f3d46d02cd460dd7068d5c3"
+    },
+    "11-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "598104fddf1d62e84d5e2b35d9d0d51dbd60994b0f116a2f86916ed5ca7e0b8f"
+    },
+    "11-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "11-audition-registration.stdout.json": {
+      "bytes": 2076,
+      "sha256": "19a78388c5b04b1fb1486f8f36ee14bfbdc3c4a1b5ee797cc3b2454c5205d9ff"
+    },
+    "11-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "598104fddf1d62e84d5e2b35d9d0d51dbd60994b0f116a2f86916ed5ca7e0b8f"
+    },
+    "11-banks-reveal-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "11-banks-reveal-performance.stdout.json": {
+      "bytes": 2075,
+      "sha256": "f03dc5f595c4ca455231983a7b1179247b4e66c8f24e2aeb974e9d1c87b1c017"
+    },
+    "11-banks-reveal-performance.wav": {
+      "bytes": 192044,
+      "sha256": "c54d96ccdb5113c537f735fc952fb9655329462cf42d6e0b93f119658d004e1c"
+    },
+    "11-banks-reveal-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "11-banks-reveal-registration.stdout.json": {
+      "bytes": 2076,
+      "sha256": "660482981ef2fae74d9a3e435d033c2d621382af389eeb96ddf21d026af02e66"
+    },
+    "11-banks-reveal-registration.wav": {
+      "bytes": 192044,
+      "sha256": "c54d96ccdb5113c537f735fc952fb9655329462cf42d6e0b93f119658d004e1c"
+    },
+    "12-audition-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "12-audition-performance.stdout.json": {
+      "bytes": 2075,
+      "sha256": "3b22914dc4da835307779aa4b572246055918c9e531281443bda91a53211e0a5"
+    },
+    "12-audition-performance.wav": {
+      "bytes": 192044,
+      "sha256": "a803d2ff0afbf086edfa78a134a03ae6dd036a7e00b0b4864cf4a5d5934a5bc8"
+    },
+    "12-audition-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "12-audition-registration.stdout.json": {
+      "bytes": 2076,
+      "sha256": "e979e30a3ae4882e56e2925a0e007763e1777946a356a3ce951b5c14b2ab95c4"
+    },
+    "12-audition-registration.wav": {
+      "bytes": 192044,
+      "sha256": "a803d2ff0afbf086edfa78a134a03ae6dd036a7e00b0b4864cf4a5d5934a5bc8"
+    },
+    "12-manual-return-performance.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "12-manual-return-performance.stdout.json": {
+      "bytes": 2074,
+      "sha256": "02f6dd1c5ded64df2be0a585a7e15c9a045c79fba45413c348d0a716e94d6e3d"
+    },
+    "12-manual-return-performance.wav": {
+      "bytes": 192044,
+      "sha256": "f37679db79b57ce48c4ff36ca3c14cd517c97c91c3d3facdee8699c704cada76"
+    },
+    "12-manual-return-registration.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "12-manual-return-registration.stdout.json": {
+      "bytes": 2075,
+      "sha256": "03aecc1e2f43ff5d690427ecee5333f528123caecd2b16d33f31e36504933bb3"
+    },
+    "12-manual-return-registration.wav": {
+      "bytes": 192044,
+      "sha256": "f37679db79b57ce48c4ff36ca3c14cd517c97c91c3d3facdee8699c704cada76"
+    },
+    "manifest.json": {
+      "bytes": 80972,
+      "sha256": "01ae18231688c215512059850a7784c4451e502b37a640b2ef34934d55e3160d"
+    },
+    "report.md": {
+      "bytes": 5396,
+      "sha256": "8960f21cf554e7f82210b6984bcd08de00878626804507d38a9a7768f40b7b8b"
+    },
+    "scores/starter-audition.events": {
+      "bytes": 665,
+      "sha256": "767e4c0ce5aacfa4c1f443f0aaf77e16c6ac25dbd0090f6f68931d5d8581941e"
+    },
+    "scores/starter-banks-reveal.events": {
+      "bytes": 827,
+      "sha256": "5c14b6b1a55d9a95081353db7a8f4315ec9770741c9da1ee0125101e16fc58b6"
+    },
+    "scores/starter-manual-return.events": {
+      "bytes": 898,
+      "sha256": "7f8cccb219e1416f06122332efb9decb6eb1b5acf00b62cd63b87df7b0a48005"
+    }
+  },
+  "archive_delivery": {
+    "archive": {
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions-originals.tar.gz",
+      "bytes": 1698038,
+      "sha256": "e61f5ff3b95966504f4261914339bc0eee759db1837993bbf9d29742b81f9858"
+    },
+    "member_count": 101,
+    "all_member_names_and_bytes_equal_original": true,
+    "original_report_gzip": {
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions-original.md.gz",
+      "bytes": 1514,
+      "sha256": "2e524374fad3ae6da857fc453dccda986288178f43e62d0e8013f70c2dc64991"
+    },
+    "decompressed_original_report": {
+      "bytes": 5396,
+      "sha256": "8960f21cf554e7f82210b6984bcd08de00878626804507d38a9a7768f40b7b8b"
+    },
+    "derived_reader": {
+      "path": "docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions.md",
+      "bytes": 5064,
+      "sha256": "e3477f7b6352bc7b5f1130e5bc81b49da034cfe7e20064cd478e85c67c62f075"
+    },
+    "reader_is_new_document_not_original_report": true,
+    "raw_before_after_equal": true,
+    "archive_extracted_to_disk": false
+  },
+  "assertion_groups": [
+    "All 32 file/manifest SHA-256 and byte counts, each WAV/stdout/stderr separately",
+    "Every raw payload field against independently authored literal manifest and A27/A28 input identities",
+    "Each exact 44-byte RIFF header, PCM16 format, duration, decoded counts, equal channels, finite integers, headroom, nonzero content",
+    "Each raw stdout JSON schema 6, full initial canonical controls, bytes/version/path, sample rate/frame/block/seed/contact/profile/model identifiers, finite metrics and zero clipping counts",
+    "Each exact recorded argv including --fail-on-clip, successful historical return code and empty retained stderr",
+    "All 16 whole-WAV direct comparisons and 34 half-open score-window checks",
+    "All 101 original/archived files, original Markdown gzip and separate derived reader; original inputs and files unchanged"
+  ],
+  "inference_limits": [
+    "Historical returncode 0 is retained manifest evidence, not a new A45 process observation.",
+    "Raw prequantization float sample buffers were not retained. PCM values and JSON metrics are finite; inspected renderer rejects nonfinite samples; reported zero clipping is corroborated by PCM headroom and metric rounding bounds.",
+    "Recipe 12 retains cancelled G# in its initial payload; the score explicitly selects G# code 8 at frame 8000. Sound onset supports route reconnection, not implicit last-preset recall or independent validation of G# timbre.",
+    "Upper B makes retained percussion eligible by inspected Engine rule; no new counterrender isolates its amplitude.",
+    "A28 provenance gives per-inspection stdout hashes without separate retained-file paths; A45 uses independent literal parsing of every actual payload instead.",
+    "All expected original A27 WAV/stdout/stderr/score/report bytes are present. No factory/artist/specimen attribution, listening preference, live browser/device/DAW, other-platform determinism, physical fidelity or whole-interface acceptance follows."
+  ]
+}

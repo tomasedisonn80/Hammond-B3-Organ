@@ -35,6 +35,7 @@ SOURCE_FILES = {
     "reference-source-manifest.json": Path("assets/standalone/reference/manifest.json"),
     "atlas-reference.json": Path("docs/design/atlas-reference.json"),
     "MIDI_EXPRESSION_GUIDE.md": Path("docs/MIDI_EXPRESSION_GUIDE.md"),
+    "reference-apron-manifest.json": Path("assets/standalone/reference-apron-v1/manifest.json"),
 }
 
 MIDI_FILES = {"LICENSE-RtMidi.txt", "rtmidi-lock.json", "rtmidi-prepared-source.json",
@@ -209,6 +210,7 @@ class StandaloneInstallTests(unittest.TestCase):
         sdl = json.loads(metadata["sdl2-lock.json"].read_text(encoding="utf-8"))
         fonts = json.loads(metadata["font-source-manifest.json"].read_text(encoding="utf-8"))
         reference = json.loads(metadata["reference-source-manifest.json"].read_text(encoding="utf-8"))
+        apron = json.loads(metadata["reference-apron-manifest.json"].read_text(encoding="utf-8"))
         atlas = json.loads(metadata["atlas-reference.json"].read_text(encoding="utf-8"))
         self.assertEqual(document["sdl2"], {
             "version": sdl["version"], "commit": sdl["commit"], "linkage": "static",
@@ -232,9 +234,24 @@ class StandaloneInstallTests(unittest.TestCase):
         self.assertEqual(reference["source"]["pdf_sha256"], atlas["source_sha256"])
         self.assertEqual(reference["source"]["pdf_pages"], [1, 409])
         self.assertTrue(reference["rights"])
+        self.assertEqual(document["reference_apron"], {
+            "embedded": True, "identity": apron["identity"],
+            "manifest_sha256": sha256(metadata["reference-apron-manifest.json"]),
+            "provenance_sha256": sha256(metadata["atlas-reference.json"]),
+            "source_image_sha256": apron["source"]["sha256"],
+            "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration",
+        })
+        self.assertEqual(apron["identity"], "standalone-reference-apron-v1")
+        self.assertNotEqual(apron["identity"], reference["identity"])
+        self.assertEqual(apron["source"]["sha256"], atlas["sha256"])
+        self.assertEqual(apron["source"]["pdf_sha256"], atlas["source_sha256"])
+        self.assertEqual(apron["source"]["pdf_pages"], [1, 409])
+        self.assertEqual(apron["source"]["pdf_image_object"], atlas["pdf_image_object"])
+        self.assertTrue(apron["rights"])
         notices = metadata["THIRD_PARTY_NOTICES.md"].read_text(encoding="utf-8")
         self.assertIn("## Embedded reference decoration", notices)
         self.assertIn(reference["source"]["sha256"], notices)
+        self.assertIn(apron["identity"], notices)
         midi = document["midi"]
         self.assertIs(midi["enabled"], midi_enabled)
         self.assertEqual(midi["backend"], backend)
@@ -282,7 +299,7 @@ class StandaloneInstallTests(unittest.TestCase):
 
     def test_configured_capabilities_identify_exact_payload(self):
         self.assert_capabilities(self.metadata, self.midi_enabled, self.backend)
-        self.assertEqual(len(self.metadata) + 1, 20 if self.midi_enabled else 16)
+        self.assertEqual(len(self.metadata) + 1, 21 if self.midi_enabled else 17)
 
     def test_actual_component_relocates_and_runs(self):
         with tempfile.TemporaryDirectory(prefix="hammond standalone install ") as temporary:
@@ -560,7 +577,7 @@ class StandaloneInstallTests(unittest.TestCase):
             prefix = work / "installed without MIDI"
             self.assert_success(self.invoke(self.install_command(fixture.build, prefix), work))
             self.assertEqual(tree_state(prefix), expected_tree(self.payload(Path("bin"), Path("share"), fixture.hashes)))
-            self.assertEqual(len(fixture.hashes) + 1, 16)
+            self.assertEqual(len(fixture.hashes) + 1, 17)
             install_text = (fixture.build / "cmake_install.cmake").read_text(encoding="utf-8")
             self.assertNotIn("prepared RtMidi", install_text)
             self.assertNotIn("rtmidi-lock.json", install_text)
@@ -578,7 +595,8 @@ class StandaloneInstallTests(unittest.TestCase):
             (prefix / "empty sentinel").mkdir(parents=True)
             (prefix / "sentinel.bin").write_bytes(b"preserve identity preflight\x00\xff")
             before = tree_state(prefix)
-            names = {"reference-source-manifest.json", "atlas-reference.json", "standalone-capabilities.json",
+            names = {"reference-source-manifest.json", "reference-apron-manifest.json",
+                     "atlas-reference.json", "standalone-capabilities.json",
                      "MIDI_EXPRESSION_GUIDE.md"}
             names.update(MIDI_FILES.intersection(fixture.metadata))
             for name in sorted(names):
