@@ -44,6 +44,12 @@ jobs:
             cxx_compiler: clang++
             midi: "ON"
             midi_backend: CoreMIDI
+          - platform: macOS Intel AppleClang
+            os: macos-15-intel
+            c_compiler: clang
+            cxx_compiler: clang++
+            midi: "ON"
+            midi_backend: CoreMIDI
           - platform: Windows MSVC x64
             os: windows-2022
             c_compiler: cl
