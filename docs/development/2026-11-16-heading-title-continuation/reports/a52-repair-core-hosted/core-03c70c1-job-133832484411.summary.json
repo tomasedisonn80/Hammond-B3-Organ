@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "job_id": 133832484411,
+  "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "run_id": 44021714612,
+  "run_attempt": 1,
+  "retained_utc": "2026-11-17T05:22:01.207739+00:00",
+  "decoded_complete_log": {
+    "bytes": 68759,
+    "characters": 68757,
+    "lines": 495,
+    "sha256": "e1797f699faf51185df47d7d83bf872fc2bd0746f898bde80c15a38682c31d22",
+    "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/core-03c70c1-job-133832484411.log.gz",
+    "compressed_bytes": 11036,
+    "compressed_sha256": "434c355a548e1daf49b225dfd81cc8bc315a60a8f19a9137548760883ab477d5",
+    "round_trip_verified": true
+  },
+  "source_revision_stdout": [
+    {
+      "line": 111,
+      "text": "03c70c103a4a0dd72b323529416b909c19a4e139"
+    },
+    {
+      "line": 145,
+      "text": "03c70c103a4a0dd72b323529416b909c19a4e139"
+    },
+    {
+      "line": 207,
+      "text": "03c70c103a4a0dd72b323529416b909c19a4e139"
+    }
+  ],
+  "toolchain": [
+    {
+      "line": 208,
+      "text": "cmake version 3.31.6"
+    },
+    {
+      "line": 211,
+      "text": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+    },
+    {
+      "line": 216,
+      "text": "Python 3.12.16"
+    },
+    {
+      "line": 236,
+      "text": "-- The CXX compiler identification is GNU 13.3.0"
+    }
+  ],
+  "ctest_outcomes": [],
+  "ctest_outcome_count": 0,
+  "nonpassing_ctest_outcomes": [],
+  "ctest_ordinals_complete": false,
+  "ctest_distinct_names": 0,
+  "ctest_distinct_numbers": 0,
+  "ctest_total_fields": [],
+  "required_tests_observed": [],
+  "required_tests_missing": [],
+  "ctest_inventory_applicable": false,
+  "inventory_scope": "Dedicated full R4 target: CTest inventory requirements do not apply.",
+  "summary_lines": [
+    {
+      "line": 279,
+      "text": "Ran 14 tests in 0.619s"
+    },
+    {
+      "line": 281,
+      "text": "OK"
+    }
+  ],
+  "instrumentation_flags_examples": [],
+  "instrumentation_link_examples": [],
+  "sanitizer_policy_lines": [],
+  "invocation_lines": [
+    {
+      "line": 250,
+      "text": "python tests/test_rotary_waveform_acceptance.py --self-test \\"
+    },
+    {
+      "line": 284,
+      "text": "cmake --build build-waveform --target check_rotary_waveform_full \\"
+    }
+  ],
+  "required_inventory_stdout": [],
+  "error_lines": [],
+  "optional_skip_lines": [],
+  "full_waveform_results": [
+    {
+      "line": 433,
+      "status": "pass",
+      "mode": "full",
+      "qualification_json": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T050705.001351Z-817cc491/qualification.json",
+      "wall_seconds": 724.2499095390001,
+      "failures": []
+    }
+  ],
+  "windows_unicode_generator_records": [],
+  "windows_unicode_compile_lines": [],
+  "architecture_evidence": [
+    {
+      "line": 200,
+      "text": "  pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64"
+    },
+    {
+      "line": 228,
+      "text": "  pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64"
+    },
+    {
+      "line": 256,
+      "text": "  pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64"
+    },
+    {
+      "line": 290,
+      "text": "  pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64"
+    },
+    {
+      "line": 458,
+      "text": "  pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64"
+    }
+  ],
+  "uploaded_artifact_lines": [
+    {
+      "line": 468,
+      "text": "Artifact name is valid!"
+    },
+    {
+      "line": 474,
+      "text": "SHA256 digest of uploaded artifact is 22a6d91d738734de36210b34b5afd50c15f8d572d72c8096aa68c5da28748c83"
+    },
+    {
+      "line": 475,
+      "text": "Finalizing artifact upload"
+    },
+    {
+      "line": 476,
+      "text": "Artifact rotary-waveform-full-linux-1 successfully finalized. Artifact ID 14302066281"
+    },
+    {
+      "line": 477,
+      "text": "Artifact rotary-waveform-full-linux-1 has been successfully uploaded! Final size is 111737 bytes. Artifact ID is 14302066281"
+    },
+    {
+      "line": 478,
+      "text": "Artifact download URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714612/artifacts/14302066281"
+    }
+  ],
+  "detailed_artifact_contents_independently_downloaded": false,
+  "artifact_scope": "The complete decoded job log is inspected and retained. Detailed uploaded artifact bodies are not independently downloaded; no further numerical/hash-content claim is made from unread members.",
+  "full_waveform_actual_invocation_and_admission": [
+    {
+      "line": 263,
+      "text": "test_actual_hosted_binary64_cancellation (__main__.ReportAdmissionTests.test_actual_hosted_binary64_cancellation) ... ok"
+    },
+    {
+      "line": 264,
+      "text": "test_binary64_convergence_rejects_one_ulp_change (__main__.ReportAdmissionTests.test_binary64_convergence_rejects_one_ulp_change) ... ok"
+    },
+    {
+      "line": 265,
+      "text": "test_binary64_difference_rejects_changed_and_coarse_tokens (__main__.ReportAdmissionTests.test_binary64_difference_rejects_changed_and_coarse_tokens) ... ok"
+    },
+    {
+      "line": 266,
+      "text": "test_binary64_precision_metadata_cannot_inflate_allowance (__main__.ReportAdmissionTests.test_binary64_precision_metadata_cannot_inflate_allowance) ... ok"
+    },
+    {
+      "line": 267,
+      "text": "test_complete_schema_fixture_for_each_mode (__main__.ReportAdmissionTests.test_complete_schema_fixture_for_each_mode) ... ok"
+    },
+    {
+      "line": 268,
+      "text": "test_counts_modes_failures_and_nonfinite_budgets_fail (__main__.ReportAdmissionTests.test_counts_modes_failures_and_nonfinite_budgets_fail) ... ok"
+    },
+    {
+      "line": 269,
+      "text": "test_exact_replay_events_state_diagnostics_and_traces_fail_closed (__main__.ReportAdmissionTests.test_exact_replay_events_state_diagnostics_and_traces_fail_closed) ... ok"
+    },
+    {
+      "line": 270,
+      "text": "test_full_requires_recorded_actual_build_options (__main__.ReportAdmissionTests.test_full_requires_recorded_actual_build_options) ... ok"
+    },
+    {
+      "line": 271,
+      "text": "test_json_requires_one_record_duplicate_free_finite_numbers (__main__.ReportAdmissionTests.test_json_requires_one_record_duplicate_free_finite_numbers) ... ok"
+    },
+    {
+      "line": 272,
+      "text": "test_missing_duplicate_rate_partition_and_channel_fail (__main__.ReportAdmissionTests.test_missing_duplicate_rate_partition_and_channel_fail) ... ok"
+    },
+    {
+      "line": 273,
+      "text": "test_native_capture_retains_missing_executable_failure (__main__.ReportAdmissionTests.test_native_capture_retains_missing_executable_failure) ... ok"
+    },
+    {
+      "line": 274,
+      "text": "test_nonzero_timeout_and_missing_native_cannot_pass (__main__.ReportAdmissionTests.test_nonzero_timeout_and_missing_native_cannot_pass) ... ok"
+    },
+    {
+      "line": 275,
+      "text": "test_source_receipts_detect_changed_inputs (__main__.ReportAdmissionTests.test_source_receipts_detect_changed_inputs) ... ok"
+    },
+    {
+      "line": 276,
+      "text": "test_wider_precision_keeps_original_difference_floors (__main__.ReportAdmissionTests.test_wider_precision_keeps_original_difference_floors) ... ok"
+    },
+    {
+      "line": 432,
+      "text": "cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ && /opt/hostedtoolcache/Python/3.12.16/x64/bin/python /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_rotary_waveform_acceptance.py --mode full --probe /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/hammond_rotary_waveform_probe --report-dir /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full --timeout-seconds 1500"
+    },
+    {
+      "line": 435,
+      "text": "[100%] Built target check_rotary_waveform_full"
+    }
+  ],
+  "report_admission_self_test": {
+    "methods": 14,
+    "seconds": 0.619,
+    "result": "OK"
+  },
+  "uploaded_artifact": {
+    "id": 14302066281,
+    "name": "rotary-waveform-full-linux-1",
+    "bytes": 111737,
+    "sha256": "22a6d91d738734de36210b34b5afd50c15f8d572d72c8096aa68c5da28748c83",
+    "metadata_matches_api": true,
+    "body_independently_downloaded": false,
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714612/artifacts/14302066281"
+  }
+}

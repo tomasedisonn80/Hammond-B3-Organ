@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T05:44:14.655384+00:00",
+  "checked_staged_tree": "20553210c1d42b18ccac016a544aede35a51f2f2",
+  "source_base": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "exact_staged_archive": true,
+  "commands": [
+    {
+      "gate": "repository",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_repository.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 4.13764935799918,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/helper-branch-repository-integrity.log",
+      "bytes": 1167,
+      "sha256": "e908f5c5d4e5e45ef27c84ff623feaba7031f0c7e1d9542248a7920e43ba3207"
+    },
+    {
+      "gate": "session",
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-heading-title-continuation/check_session.py",
+        "--strict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.08881627099981415,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/helper-branch-session-integrity.log",
+      "bytes": 1222,
+      "sha256": "cee2198fb1b50a56d6c069a5c9187d327e79181cddc7c98214b4485fd1151627"
+    }
+  ],
+  "original_frozen_code_inputs": 475,
+  "changed_inputs": [
+    {
+      "path": ".github/workflows/standalone.yml",
+      "original": {
+        "bytes": 71269,
+        "sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c"
+      },
+      "staged": {
+        "bytes": 71269,
+        "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319"
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "original": {
+        "bytes": 61218,
+        "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+      },
+      "staged": {
+        "bytes": 61275,
+        "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "original": {
+        "bytes": 34239,
+        "sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509"
+      },
+      "staged": {
+        "bytes": 34239,
+        "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+      }
+    }
+  ],
+  "other_code_inputs_unchanged": 472,
+  "live_code_and_documentation_whitespace_passed": true,
+  "retained_evidence_whitespace_paths": [
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811-final-test-failure.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811-preset-timeout.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484867-build-summary.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-proposal.diff"
+  ],
+  "retained_evidence_whitespace_warning_count": 14,
+  "original_whitespace_output": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/helper-branch-whitespace-original.log.gz",
+    "decoded_bytes": 2603,
+    "decoded_sha256": "4d5d685ad18a37fa56e3e73ad812608a907b81aa2da82a63f3acf10795ca3c53",
+    "gzip_bytes": 364,
+    "gzip_sha256": "f4f3778c9b8ac8908b453899e3bbd0be66d3c18e6451d8b1f2b64a80a7f02cb7"
+  },
+  "temporary_view_removed_after_checks": true,
+  "free_disk_bytes_before_removal": 45387997184,
+  "seconds": 8.54711514399969,
+  "scope": "Existing repository and strict 60-worker record checks on exact staged archive. Original logs and numerical evidence retain their bytes. No native tests rerun; source-specific repaired Windows and full sanitizer CI remain the next required execution."
+}

@@ -10,7 +10,7 @@ All **60 distinct workers were dispatched in ten waves of six;
 60 deliveries are accepted**.
 All ten waves have six accepted deliveries.
 Follow-ups retain their original worker identities and create no additional credit.
-The [executed strict record check](docs/development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+The [executed strict record check](docs/development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
 passes with zero pending workers/errors; it verifies record consistency only.
 The [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json) and [checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
 retain accepted work and concrete next assignments.
@@ -34,7 +34,32 @@ MIDI-dialog focus; the separate 23-method dialog suite passes. Its
 [compatibility audit](docs/reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md)
 retain the musical/state boundary and additive diagnostics exception.
 
-The [verified source publication](docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+The [current verified publication](docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-publication.json) is
+`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
+`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
+and independent API/Git checks verify the exact commit, tree, parent and contents.
+This is the published three-input repair, separate from the next locally
+qualified helper correction, which is not yet published.
+
+The [complete published-source matrix](docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json)
+contains **14 successes and two failures**, with all sixteen attempt-one jobs
+terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
+Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
+job executes and passes **34/34 gates**. Windows job `133832484867` fails
+C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
+`133832484811` completes **67/68**, with preset raster timing out at **30.05
+seconds** under its unchanged **30-second** guard; post-acceptance source/
+dependency verification and relocated executable packaging remain skipped.
+The [independent Intel review](docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](docs/development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+are complete. They retain that failed gate, its full workload and unchanged
+guard, and permit only the separately qualified Windows helper publication
+with complete evidence and current documentation. The timeout supplies no
+completed counters or measured remaining runtime; no timing fix, specific
+cause or repeated stability is claimed. No local or CI retry is admitted.
+
+The [original source publication](docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
 `fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
 `b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
 `9d60dbf462a90fe422fd4e69757fe202264acb7c` and
@@ -48,16 +73,39 @@ Windows standalone fails fixture compilation, and standalone sanitizer is
 cancelled after 30 of 34 selected tests pass. All are original attempt 1.
 The cancellation's originating cause is unproven; incomplete tests are not passes.
 
-The [two-file Windows fixture correction](docs/development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
-passes both affected CTests locally. Its Linux binary, all 48 case descriptions,
-10,542-check result and canonical numerical/pixel outputs are unchanged apart
-from two recorded source hashes. Production app `1fa2a247…` is unchanged.
-The [separate sanitizer-budget implementation](docs/development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json)
-changes only that job's overall allowance from 20 to 35 minutes, preserving
-all test bounds, workloads, instrumentation and leak checks. The final successor
-has exactly **three changed inputs and 472 unchanged**; publication and all
-successor hosted results remain pending. [Next actions](docs/NEXT_STEPS.md)
-define the exact publication and qualification sequence.
+The [first Windows casts/hash correction](docs/development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
+and [separate 20 → 35-minute sanitizer job allowance](docs/development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json)
+entered published `03c70c1`. Their original equivalence and orchestration
+receipts remain unchanged; the later C4702 failure has its own evidence.
+
+The [next two-file helper correction](docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json)
+is implemented and locally qualified. It moves the same false return into an
+explicit `else` for the dependent `if constexpr` helper predicate and updates
+the one active fixture-hash literal. Both existing affected CTests pass
+**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
+48 actual cases, the exact **10,542-check/163-painting** default result and
+**103/103** canonical criteria. Complete statistics differ only in the two
+recorded source identities; canonical pixels and historical comparators are
+unchanged. Both helper-present and helper-absent specializations are preserved
+by independent source/instantiation review; **no new helper-absent runtime
+execution is claimed**.
+
+Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
+remain unchanged**. Relative to original `fba1911`, the total is still **three
+changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
+`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
+sanitizer job allowance remain unchanged. Every test/child bound, workload,
+instrumented input and leak policy is preserved. **The next helper-source
+publication and all of its exact-source hosted results remain pending; no
+publication SHA is recorded for it.** Local Linux equivalence is not MSVC
+compilation or execution evidence. The [independent Intel review](docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](docs/development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+permit publishing only this separately qualified helper pair with complete
+evidence and current documentation. The preset raster retains its failed
+Intel result, unchanged 30-second guard and full workload; the helper pair
+is not admitted as a timing fix.
+
+[Next actions](docs/NEXT_STEPS.md) define the remaining publication and qualification sequence.
 
 The [qualified-final local suite](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
 remains **240/242**, retaining its preset-raster timeout and two native-MIDI
@@ -736,7 +784,7 @@ M0–M9 milestones and development staffing waves are distinct.
 | [Qualified-final full result](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json) | 240/242, exit 8, 740.263707625 s; 475 code inputs and recorded build inputs unchanged, six serialized tests nonoverlapping. Preset raster times out at 30 s; native MIDI has two missing acknowledgment-window cases. The earlier semantic 240/242 is a different run. |
 | [Preset isolated diagnostic](docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json) and [two MIDI isolated diagnostics](docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json) | Exactly one unchanged invocation each passes: 27.517879209 s, 2.031860108 s and 2.037485655 s. Original 30 s / 9 s limits remain. No green full-suite aggregate or exact scheduling cause is inferred. |
 | [Fresh installed captures](docs/reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md) and [relocated installation](docs/reviews/FINAL_NATIVE_INSTALL_REVIEW.md) | A55/A56 independently admit two actual current-app captures and the 17-file package at their recorded scope; the original H1 gallery and short-smoke failure remain historical evidence. |
-| [Current recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) | `fba1911…` is published and independently verified. Its original attempt-one matrix has 14 successes, one Windows compilation failure and one standalone sanitizer cancellation. All 60 deliveries are accepted and the strict record check passes. The reviewed three-input repair is implemented; successor publication and exact-source hosted qualification are the next gates. |
+| [Current recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) | `03c70c1…` is published and independently verified. All sixteen attempt-one jobs are terminal: 14 successes, two standalone failures (Windows C4702 and Intel preset timeout), and no cancellations. Core 6/6, VST3 4/4 and standalone sanitizer 34/34 pass. Intel review is complete: preserve its 67/68 result and unchanged 30-second guard/workload; no timing-fix claim. All 60 deliveries and strict record closure remain complete. The next two-file constexpr-else/hash correction is locally qualified, with 473/475 inputs unchanged relative to `03c70c1`; its publication and exact-source CI remain pending. The [completed Intel review](docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json) and [root admission](docs/development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json) permit only this helper publication with evidence/current docs; preserve the preset timeout, unchanged 30-second guard/workload, original failures and 35-minute job allowance. |
 
 The [test-only completion-guard review](docs/reviews/RENDER_RACE_COMPLETION_REVIEW.md)
 retains the original sanitizer timeout and measured 45-second repair without

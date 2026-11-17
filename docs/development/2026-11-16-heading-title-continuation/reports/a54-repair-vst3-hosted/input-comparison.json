@@ -1,0 +1,1473 @@
+{
+  "schema_version": 1,
+  "original_source": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+  "successor_source": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "scope": [
+    ".github/workflows/native-vst3.yml",
+    "CMakeLists.txt",
+    "CMakePresets.json",
+    "cmake",
+    "plugins/vst3",
+    "src",
+    "include",
+    "tools",
+    "data",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "tracked_blob_count": 290,
+  "all_selected_modes_paths_and_blob_ids_identical": true,
+  "git_ls_tree_sha256": "86b219a2a2d253fba73adac12465999ff37bd1208ee70f7156cb3e94b447b0c8",
+  "records": [
+    {
+      "path": ".github/workflows/native-vst3.yml",
+      "mode": "100644",
+      "git_blob": "fa778bc85f8d4d737286259223dbdbe6ca2e808f"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "mode": "100644",
+      "git_blob": "153dab88317650f34f93aeff52b968845418f82e"
+    },
+    {
+      "path": "CMakePresets.json",
+      "mode": "100644",
+      "git_blob": "a13ed53b2590e2858032ebaaf6f6db874c91bfb0"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "mode": "100644",
+      "git_blob": "ade9657de405eb20268c9adb5e012793173c0a8c"
+    },
+    {
+      "path": "cmake/CompileChapelCatalog.cmake",
+      "mode": "100644",
+      "git_blob": "99d67beb5d97f9562c20182cc654c87cbe14783b"
+    },
+    {
+      "path": "cmake/CompileFixedRegistrations.cmake",
+      "mode": "100644",
+      "git_blob": "edc630caa0a66042750bcc16e624338fb32ae870"
+    },
+    {
+      "path": "cmake/InstallCaptureTools.cmake",
+      "mode": "100644",
+      "git_blob": "88762e77ffd2bcd806149c7fb311d092a77beb34"
+    },
+    {
+      "path": "cmake/InstallContactGridConversionTools.cmake",
+      "mode": "100644",
+      "git_blob": "d6b5e8cda0eb38b131f9598e7bcac7b90d34921d"
+    },
+    {
+      "path": "cmake/InstallContactReferenceTools.cmake",
+      "mode": "100644",
+      "git_blob": "6465b0a8e7b62c83deb1069be3f19afa49fc144e"
+    },
+    {
+      "path": "cmake/InstallCrossoverTools.cmake",
+      "mode": "100644",
+      "git_blob": "a64acbedab3d809b074368a62b226e15fa81038b"
+    },
+    {
+      "path": "cmake/InstallHammondTools.cmake",
+      "mode": "100644",
+      "git_blob": "677a72906d3c1c47468e786dd0777d764df88c2d"
+    },
+    {
+      "path": "cmake/InstallRegistrationTools.cmake",
+      "mode": "100644",
+      "git_blob": "d43c39671d159e250b5663809585278ff3aa97fe"
+    },
+    {
+      "path": "cmake/InstallSourceLeakageTools.cmake",
+      "mode": "100644",
+      "git_blob": "44d6a5bafd81a6c281171138fc6542649e69e45b"
+    },
+    {
+      "path": "cmake/InstallStandalone.cmake",
+      "mode": "100644",
+      "git_blob": "c4962a18870bbc3e64abc377f0daa9c86b7a53ff"
+    },
+    {
+      "path": "cmake/StandaloneBenchmark.cmake",
+      "mode": "100644",
+      "git_blob": "3e32db0a76f9e429e221f7a106227786f108a933"
+    },
+    {
+      "path": "cmake/VerifyRtMidi.cmake",
+      "mode": "100644",
+      "git_blob": "cc58a4267c753584ff136956dcefeb948d59ad86"
+    },
+    {
+      "path": "cmake/VerifySdl2.cmake",
+      "mode": "100644",
+      "git_blob": "26e3452943ab5b7932ca3f7ef04b74b9aa42749e"
+    },
+    {
+      "path": "cmake/VerifyVst3Sdk.cmake",
+      "mode": "100644",
+      "git_blob": "40950fdb6695d6e69bbf53cce42e9f1c4fc25951"
+    },
+    {
+      "path": "data/capture-corpus.schema.json",
+      "mode": "100644",
+      "git_blob": "22a231646688103ae9397419a356271dc62586bb"
+    },
+    {
+      "path": "data/capture-job.schema.json",
+      "mode": "100644",
+      "git_blob": "5fbdcc71fcd14ede0b5b461b20194bc38e9c156b"
+    },
+    {
+      "path": "data/capture-planned-example.json",
+      "mode": "100644",
+      "git_blob": "087bc5261f97259e6d2d88d3d51aaabaa2e9d2fc"
+    },
+    {
+      "path": "data/capture-policy-synthetic-example.json",
+      "mode": "100644",
+      "git_blob": "1ee7775dc5d0e539421dc8afccad2cb38e0d98f2"
+    },
+    {
+      "path": "data/capture-policy.schema.json",
+      "mode": "100644",
+      "git_blob": "4aba1c34553f8cded99e6c88f37b1caf6cda0d39"
+    },
+    {
+      "path": "data/capture-study.schema.json",
+      "mode": "100644",
+      "git_blob": "ef84bd3f8d56c030a2b649875cdb1918300f1e59"
+    },
+    {
+      "path": "data/capture.schema.json",
+      "mode": "100644",
+      "git_blob": "7a0d8ae4c1586916edbd3662158f03a155375f9a"
+    },
+    {
+      "path": "data/chapel-presets.schema.json",
+      "mode": "100644",
+      "git_blob": "7d022d2b7e8a1bb1f04f68845f5b1dc5d01efcd0"
+    },
+    {
+      "path": "data/contact-grid-conversion/v1/manifest.json",
+      "mode": "100644",
+      "git_blob": "23d6cb7ced23fc1e15fb815eeb64196d2182dfdc"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F00-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "ad069abcd9bf0d41d777bc3c7c9987006a3c6b00"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F00-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "a657f41218a14e097c07a72055850cd8c8389976"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F00-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "f3f0d4a7bddfed46c25ebdc4c50d8a82e9da2f6e"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F01-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "75bd67a6c7504b63b1f76c37ea9667ba4d7978ae"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F01-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "52e05e4db4099fb1b41050eddb228e087811225e"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F01-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "e88be64a89711eec16b4c61337df5032db8ce677"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F02-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "ac1ff783a5323f885bdff17c0ff3e1d6adccd925"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F02-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "6e01766eab3ff00da21a7c93b1c7fe9d2f80eab0"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F02-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "4b8c02e9718f3c9f4d680c604b8f1ea1eeaec9b2"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F03-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "8375f6630c5207a9ed1a5bc0edf26ddde0990b50"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F03-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "618af3cce084efde6f15f0e4d903e962456940bf"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F03-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "805ba7a8aa15de4815439f542bd01dbd135f2821"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F04-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "3174cd71737dc7596cf956d9a7f1f508016a6456"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F04-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "e6cd4077c13b5f7bd04fbc93798e28b7c427fa86"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F04-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "4d8e9e0d28c809d3e1d3e895fbf8d61d195d5dca"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F05-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "e7c900003b5f49b3e80cdae45467e0ef739686ab"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F05-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "027d5b252c0ba16672d7863eada5366b55a8a29a"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F05-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "a645cdd81cb8d9d346ebcd7674390c41b3ce1c78"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F06-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "7d9141b0fa97c24dd4e5b6fa42829df7470d33fd"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F06-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "0cab20fce11ed3aa42fdaf1ae9479b4e566d1c76"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F06-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "4317d61e9c3a61b1779fbc5191aca82f58e8f3c4"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F07-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "cbc34f70865ab66468fc7d60f8795067673afb6d"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F07-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "6f038805bc11e559a595d9b60a086c2c9a64024e"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F07-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "234619d707fd3ceef6650ab12b7fe6946e951a88"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F08-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "7fbd35b8e236323a1f91c5de6eea39db668c4ded"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F08-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "47b2575c1ae28ef4c9a1208c55dc028e29aa6f40"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F08-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "2b02325e67e27cda469c0b8acfde02d0fc2536fc"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F09-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "abd75a28c27ffb1ff5279d6074baf02530afa575"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F09-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "42986030b40cec95e6b2e17decc5f7128cab6c21"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F09-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "6d6501ff19763650571850aaef0bf022a47b65a1"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F10-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "4c5c341dd0877d145845f5c56077cb67e0bb7aca"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F10-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "3215b7584294ec0d427a8471aa255fb27e33114e"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F10-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "5cbb43da64739aadcd4bf8cca50108579b2788d5"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F11-44100-v1.json",
+      "mode": "100644",
+      "git_blob": "e397dd72f54474a615f13d0e2be0b9d542825d58"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F11-48000-v1.json",
+      "mode": "100644",
+      "git_blob": "5d13cff8373a26719a8abd0d9cdb9c53090585b4"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F11-96000-v1.json",
+      "mode": "100644",
+      "git_blob": "d50d0d6eb6fa399cbb3183d421efba912ab4a7a7"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/manifest.json",
+      "mode": "100644",
+      "git_blob": "fa37be2220c1b6ff0038386b73092a4bf27bde84"
+    },
+    {
+      "path": "data/contact-switching/reference-v1/probes.json",
+      "mode": "100644",
+      "git_blob": "d4cafb0eea06a561ccbcff7ebf277a68ef0d96c7"
+    },
+    {
+      "path": "data/corpus-planned-example.json",
+      "mode": "100644",
+      "git_blob": "023673e467b07608950af1197daa371b2a260351"
+    },
+    {
+      "path": "data/crossover/leslie-122-ideal-v1.json",
+      "mode": "100644",
+      "git_blob": "80f4ea8bfffd1ff28e9066379241e67d5c0731da"
+    },
+    {
+      "path": "data/dependencies/rtmidi-lock.json",
+      "mode": "100644",
+      "git_blob": "322dacda39fe5a4a36edbac0d0657252b3f87c53"
+    },
+    {
+      "path": "data/dependencies/sdl2-lock.json",
+      "mode": "100644",
+      "git_blob": "97bf77a4fed594821b5e9478b4efe14bfa607880"
+    },
+    {
+      "path": "data/dependencies/vst3-sdk-lock.json",
+      "mode": "100644",
+      "git_blob": "9e3e71e20348281b0c60cf8b40226ede54105377"
+    },
+    {
+      "path": "data/parameter-registry.json",
+      "mode": "100644",
+      "git_blob": "feed84d239cdd7bc47b9d2b8e50e73616010d070"
+    },
+    {
+      "path": "data/pedal-map.json",
+      "mode": "100644",
+      "git_blob": "5074b218ef825fb0abcb97ef61c7b01226915219"
+    },
+    {
+      "path": "data/profile.schema.json",
+      "mode": "100644",
+      "git_blob": "7171c9c9cda271531bf16765ea0a1a49be6c2883"
+    },
+    {
+      "path": "data/profiles/nominal-unmeasured-v1.json",
+      "mode": "100644",
+      "git_blob": "c1e5eaf60d5dfbd00ba2113270d43b86912aa2db"
+    },
+    {
+      "path": "data/references/factory-table-iii.json",
+      "mode": "100644",
+      "git_blob": "50ef310a2485f238bd287be2d58b941d44179aae"
+    },
+    {
+      "path": "data/references/parameter-registry-v2.json",
+      "mode": "100644",
+      "git_blob": "775e337cfe69ea58f547dceafe11cc7bd65efba2"
+    },
+    {
+      "path": "data/references/review-a-manual.csv",
+      "mode": "100644",
+      "git_blob": "850c8edcac81c93a031bfed674f5f1136101ff42"
+    },
+    {
+      "path": "data/references/review-a-pedal.csv",
+      "mode": "100644",
+      "git_blob": "61fe9dba1d2f80fb406fbcc66fda37eecfd34041"
+    },
+    {
+      "path": "data/references/review-b-manual.csv",
+      "mode": "100644",
+      "git_blob": "850c8edcac81c93a031bfed674f5f1136101ff42"
+    },
+    {
+      "path": "data/references/review-b-pedal.csv",
+      "mode": "100644",
+      "git_blob": "61fe9dba1d2f80fb406fbcc66fda37eecfd34041"
+    },
+    {
+      "path": "data/registrations/atlas-chapel-nominal-v1.json",
+      "mode": "100644",
+      "git_blob": "11c6e5690769c7daea0218c994a71812793b0fbc"
+    },
+    {
+      "path": "data/registrations/review-a-chapel.csv",
+      "mode": "100644",
+      "git_blob": "043102ecb3f2d7b74e3cfe68ab6106f4a2354fcd"
+    },
+    {
+      "path": "data/registrations/review-b-chapel.csv",
+      "mode": "100644",
+      "git_blob": "043102ecb3f2d7b74e3cfe68ab6106f4a2354fcd"
+    },
+    {
+      "path": "data/registrations/starter-v1/README.md",
+      "mode": "100644",
+      "git_blob": "565970f4ee8cce1e110f07b3dff4b79a9e68f807"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/01 Quiet Foundation.b3performance",
+      "mode": "100644",
+      "git_blob": "4a30b948933a78a49adf7adecf69c0b8fab49dc7"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/01 Quiet Foundation.b3registration",
+      "mode": "100644",
+      "git_blob": "4a30b948933a78a49adf7adecf69c0b8fab49dc7"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/02 Warm Comp.b3performance",
+      "mode": "100644",
+      "git_blob": "ff501f37571a9f14c6ffdbbf1df545584c6364f5"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/02 Warm Comp.b3registration",
+      "mode": "100644",
+      "git_blob": "ff501f37571a9f14c6ffdbbf1df545584c6364f5"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/03 Clear Lead.b3performance",
+      "mode": "100644",
+      "git_blob": "a6b79385c646931f48711c7f7fcacf7cb4f8e421"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/03 Clear Lead.b3registration",
+      "mode": "100644",
+      "git_blob": "a6b79385c646931f48711c7f7fcacf7cb4f8e421"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/04 Reed Edge.b3performance",
+      "mode": "100644",
+      "git_blob": "9569337e887e34afe77fae4ed8d0644ef0e21b21"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/04 Reed Edge.b3registration",
+      "mode": "100644",
+      "git_blob": "9569337e887e34afe77fae4ed8d0644ef0e21b21"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/05 Bright Ensemble.b3performance",
+      "mode": "100644",
+      "git_blob": "b73b9c1d71ee9bacddf1b433ed50b8d09817942b"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/05 Bright Ensemble.b3registration",
+      "mode": "100644",
+      "git_blob": "b73b9c1d71ee9bacddf1b433ed50b8d09817942b"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/06 High Shimmer.b3performance",
+      "mode": "100644",
+      "git_blob": "47d410f06d594d7b44bd9357ff0917c2c41ef9e3"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/06 High Shimmer.b3registration",
+      "mode": "100644",
+      "git_blob": "47d410f06d594d7b44bd9357ff0917c2c41ef9e3"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/07 Percussive Pair.b3performance",
+      "mode": "100644",
+      "git_blob": "391e73db0edb59659b846ab9e7f1f533f2f64f34"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/07 Percussive Pair.b3registration",
+      "mode": "100644",
+      "git_blob": "391e73db0edb59659b846ab9e7f1f533f2f64f34"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/08 Slow Accent.b3performance",
+      "mode": "100644",
+      "git_blob": "aa7cafb163d82e063e68ff4289e85f544a1e06d6"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/08 Slow Accent.b3registration",
+      "mode": "100644",
+      "git_blob": "aa7cafb163d82e063e68ff4289e85f544a1e06d6"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/09 Split Dialogue.b3performance",
+      "mode": "100644",
+      "git_blob": "ac24963c6b21c5093631bfeb0a0af09f03e364e4"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/09 Split Dialogue.b3registration",
+      "mode": "100644",
+      "git_blob": "ac24963c6b21c5093631bfeb0a0af09f03e364e4"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/10 Pedal Study.b3performance",
+      "mode": "100644",
+      "git_blob": "9d6e80ffe15ef1b6ef14b89326129c3689b9ee56"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/10 Pedal Study.b3registration",
+      "mode": "100644",
+      "git_blob": "9d6e80ffe15ef1b6ef14b89326129c3689b9ee56"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/11 Fixed Contrast.b3performance",
+      "mode": "100644",
+      "git_blob": "9c1943a16e05d4bf03678dd3f08529612b5c68df"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/11 Fixed Contrast.b3registration",
+      "mode": "100644",
+      "git_blob": "9c1943a16e05d4bf03678dd3f08529612b5c68df"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/12 Manual Return.b3performance",
+      "mode": "100644",
+      "git_blob": "64c21cfc468e1fcd26abccda942c9b25b9829902"
+    },
+    {
+      "path": "data/registrations/starter-v1/entries/12 Manual Return.b3registration",
+      "mode": "100644",
+      "git_blob": "64c21cfc468e1fcd26abccda942c9b25b9829902"
+    },
+    {
+      "path": "data/registrations/starter-v1/recipes.json",
+      "mode": "100644",
+      "git_blob": "5a171d3158bdfdc688caa642e2c4f2fc4a848b42"
+    },
+    {
+      "path": "data/rotary-profile.schema.json",
+      "mode": "100644",
+      "git_blob": "abc157b7a91137294b4ce9f218ba3d4113dde2e2"
+    },
+    {
+      "path": "data/rotary/nominal-research-v1.json",
+      "mode": "100644",
+      "git_blob": "c208b4e4cc27435966316981ccd5002ffff831d5"
+    },
+    {
+      "path": "data/scanner-line.schema.json",
+      "mode": "100644",
+      "git_blob": "22942cb770e9732bde4c24a459307b49b3b2117b"
+    },
+    {
+      "path": "data/scanner/atlas-late-b3-nominal-v1.json",
+      "mode": "100644",
+      "git_blob": "8a79c3a37b83f74ed30ca29b842df7160d5943ed"
+    },
+    {
+      "path": "data/source-leakage.schema.json",
+      "mode": "100644",
+      "git_blob": "1d4a3b944c61fc7e7a3af342f161f68fd8d531f3"
+    },
+    {
+      "path": "data/source-leakage/synthetic-identity-v1.json",
+      "mode": "100644",
+      "git_blob": "55fd3e000b270aec5bda260d515049888f09d125"
+    },
+    {
+      "path": "data/source-leakage/synthetic-pair-demo-v1.json",
+      "mode": "100644",
+      "git_blob": "7a6ff8ab2122d4d98e1f9d09c10aa135f0a4aa71"
+    },
+    {
+      "path": "include/hammond/ConsoleModel.h",
+      "mode": "100644",
+      "git_blob": "0411c93e18d6b91d255a590d4b58a3e695e4ebf1"
+    },
+    {
+      "path": "include/hammond/ContactBank.h",
+      "mode": "100644",
+      "git_blob": "737ed7f08511728a014e2c289d9b4ff32570d308"
+    },
+    {
+      "path": "include/hammond/ControlState.h",
+      "mode": "100644",
+      "git_blob": "b6563e6f16c35cee18ac9e20ac533bcdb7ff782e"
+    },
+    {
+      "path": "include/hammond/ControlStateIO.h",
+      "mode": "100644",
+      "git_blob": "c6d3e4bfa22fdc11e506ad009764da72e8902beb"
+    },
+    {
+      "path": "include/hammond/Engine.h",
+      "mode": "100644",
+      "git_blob": "62f5513ea131b48742b88ec911e7a0c04111858a"
+    },
+    {
+      "path": "include/hammond/FixedRegistration.h",
+      "mode": "100644",
+      "git_blob": "460470552bc2342d0adc40e3bae6b182d31821bd"
+    },
+    {
+      "path": "include/hammond/HostTimeline.h",
+      "mode": "100644",
+      "git_blob": "c065e31e783cae1cd34b7d5c25cb0f6707971a42"
+    },
+    {
+      "path": "include/hammond/InputProcessor.h",
+      "mode": "100644",
+      "git_blob": "2ba54388f8d06a2a8ae4b24ee52b1879bf927e74"
+    },
+    {
+      "path": "include/hammond/LeslieCrossover.h",
+      "mode": "100644",
+      "git_blob": "374be6f6c2c44708dc6a17cf6b0802d6a0bb0250"
+    },
+    {
+      "path": "include/hammond/NoteOwnership.h",
+      "mode": "100644",
+      "git_blob": "402796b446e5386561602a640395dea17910ba9d"
+    },
+    {
+      "path": "include/hammond/ParameterBridge.h",
+      "mode": "100644",
+      "git_blob": "c8e75c6cd4faa52afbd80d722ba2f50bf1325d1d"
+    },
+    {
+      "path": "include/hammond/PedalNoteOwnership.h",
+      "mode": "100644",
+      "git_blob": "203b4d4756b08933fa382cdb79d4b83606d5a2b8"
+    },
+    {
+      "path": "include/hammond/PedalRouting.h",
+      "mode": "100644",
+      "git_blob": "fc37eafb14a97d7aca37107981e0feb733e264e6"
+    },
+    {
+      "path": "include/hammond/PedalVoice.h",
+      "mode": "100644",
+      "git_blob": "6bd5c7763ad8d40fa01a042b089c847e25d50397"
+    },
+    {
+      "path": "include/hammond/Percussion.h",
+      "mode": "100644",
+      "git_blob": "25f9ae2fb58955674464ea9752d1e8abdc41ef80"
+    },
+    {
+      "path": "include/hammond/PerformanceInput.h",
+      "mode": "100644",
+      "git_blob": "2ed074ee66ad171a2572e0fd9af78742e0a9b120"
+    },
+    {
+      "path": "include/hammond/Profile.h",
+      "mode": "100644",
+      "git_blob": "7af2338a9230ad627fc8e8f4c4fcc3409e149df2"
+    },
+    {
+      "path": "include/hammond/RotaryHistory.h",
+      "mode": "100644",
+      "git_blob": "edc4dd03c04ae9676594172e41ca15c8efae8e59"
+    },
+    {
+      "path": "include/hammond/RotaryMotion.h",
+      "mode": "100644",
+      "git_blob": "dac7f902599f8b6256361d1d5b2cc8ce8fe6930a"
+    },
+    {
+      "path": "include/hammond/RotaryPropagation.h",
+      "mode": "100644",
+      "git_blob": "5b432db7b63715786e69563462e1fd1d987aeb7e"
+    },
+    {
+      "path": "include/hammond/RotaryRenderer.h",
+      "mode": "100644",
+      "git_blob": "2cb2879a407d6ec847442fa13aa7974984441f85"
+    },
+    {
+      "path": "include/hammond/RotaryTypes.h",
+      "mode": "100644",
+      "git_blob": "7731c8aee10020c2bb9b4fc11d647cd9bc1fbb88"
+    },
+    {
+      "path": "include/hammond/ScannerLine.h",
+      "mode": "100644",
+      "git_blob": "e217d2dcdd57021db5b24c65b1f8a711c8de2b50"
+    },
+    {
+      "path": "include/hammond/ScannerLineFoh.h",
+      "mode": "100644",
+      "git_blob": "5f43aaa9e01ebb775febf3b9b0557d52113aa3e5"
+    },
+    {
+      "path": "include/hammond/ScannerRotor.h",
+      "mode": "100644",
+      "git_blob": "1abdd20e0aad31a40c6cc7969966b601bcc538c8"
+    },
+    {
+      "path": "include/hammond/SourceLeakage.h",
+      "mode": "100644",
+      "git_blob": "5e8a6bf46d1a78660e6521887d1833fd8860676d"
+    },
+    {
+      "path": "include/hammond/StateExchange.h",
+      "mode": "100644",
+      "git_blob": "1ee1a926028e74e28f96dc4d36fe51396261534e"
+    },
+    {
+      "path": "include/hammond/TonewheelBank.h",
+      "mode": "100644",
+      "git_blob": "7ec35afd15d944fa9730bef3111380aa828aac38"
+    },
+    {
+      "path": "include/hammond/Types.h",
+      "mode": "100644",
+      "git_blob": "6c5bbbcd57e6eb0359c8401f11c3f26f618e85d0"
+    },
+    {
+      "path": "include/hammond/detail/Decimal.h",
+      "mode": "100644",
+      "git_blob": "6847e6215f129486af0f667d1ac12340485fdad0"
+    },
+    {
+      "path": "include/hammond/research/CausalContactGrid.h",
+      "mode": "100644",
+      "git_blob": "27520433781d2a7b4811a3ae45e782ab7e394266"
+    },
+    {
+      "path": "plugins/vst3/CMakeLists.txt",
+      "mode": "100644",
+      "git_blob": "203b41fb97684545da18fe98d46ca9277f4b8412"
+    },
+    {
+      "path": "plugins/vst3/Controller.cpp",
+      "mode": "100644",
+      "git_blob": "1c319c7d705d19bada01e041915c4a993787ec6f"
+    },
+    {
+      "path": "plugins/vst3/Controller.h",
+      "mode": "100644",
+      "git_blob": "a2bd6b84343b6b913fb56a4b42969c42eb7c2b7b"
+    },
+    {
+      "path": "plugins/vst3/Factory.cpp",
+      "mode": "100644",
+      "git_blob": "c8bbcbde9ef8eef27a100ba72b7de37cc6971fd4"
+    },
+    {
+      "path": "plugins/vst3/PluginIds.h",
+      "mode": "100644",
+      "git_blob": "100ae32acb21c15432fdefdec2e40d26a99669aa"
+    },
+    {
+      "path": "plugins/vst3/Processor.cpp",
+      "mode": "100644",
+      "git_blob": "d25ea10fbf1a359e117d57b465e39f95be85e698"
+    },
+    {
+      "path": "plugins/vst3/Processor.h",
+      "mode": "100644",
+      "git_blob": "df2d450de076cd893e40c4f461d8d0907aea24cb"
+    },
+    {
+      "path": "plugins/vst3/StateStream.cpp",
+      "mode": "100644",
+      "git_blob": "3589b99c4e1a765fb4e87b526a00a2157c3eea74"
+    },
+    {
+      "path": "plugins/vst3/StateStream.h",
+      "mode": "100644",
+      "git_blob": "b56bf09056a554386474542b60c8e47a0d1f192a"
+    },
+    {
+      "path": "plugins/vst3/tests/NativeAllocationProbe.h",
+      "mode": "100644",
+      "git_blob": "1309479898949410782ee6375eb1d0a1ae203244"
+    },
+    {
+      "path": "plugins/vst3/tests/NativeHarness.cpp",
+      "mode": "100644",
+      "git_blob": "58b19fccbdb8d61093f0da29cb4d2cc48dc69a7c"
+    },
+    {
+      "path": "plugins/vst3/tests/NativeHarness.h",
+      "mode": "100644",
+      "git_blob": "3ce67bc92b0e2549dd7a5ffedf0e6fa488c9110f"
+    },
+    {
+      "path": "plugins/vst3/tests/NativePresetOracle.h",
+      "mode": "100644",
+      "git_blob": "ae1cfaa743fb8f56f3eb25467475aa1d2173e0a1"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_abi.cpp",
+      "mode": "100644",
+      "git_blob": "0a9e145a6c97baaa7973f38489a7190cbd4b6dea"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_automation.cpp",
+      "mode": "100644",
+      "git_blob": "413b55bb49cb5e313919899d45f98dad786519f3"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_behavior.cpp",
+      "mode": "100644",
+      "git_blob": "402bc2b1a68256d104e6a28be8725a0d676f6a63"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_concurrency.cpp",
+      "mode": "100644",
+      "git_blob": "0f041b7737025aecf2eb6cb99369d1236affe4cf"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_controller.cpp",
+      "mode": "100644",
+      "git_blob": "35f1749d3d44ae3153d1e43ffa55fa562ae65c65"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_install.py",
+      "mode": "100644",
+      "git_blob": "c258cbcd029031096d662bde44adb66a3d44f44e"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_realtime.cpp",
+      "mode": "100644",
+      "git_blob": "5b73d598091fdfb1252cae5984c58a5a6ee116a3"
+    },
+    {
+      "path": "src/ContactBank.cpp",
+      "mode": "100644",
+      "git_blob": "b4ada52978aa342f86d82250eb6d477c51a9732c"
+    },
+    {
+      "path": "src/ControlState.cpp",
+      "mode": "100644",
+      "git_blob": "2041989eceb1c519323d374a874bfe6ce356403a"
+    },
+    {
+      "path": "src/ControlStateIO.cpp",
+      "mode": "100644",
+      "git_blob": "6fcec8fd5cc71be5ce76cbab6b08b1cd4a50e948"
+    },
+    {
+      "path": "src/Engine.cpp",
+      "mode": "100644",
+      "git_blob": "fa123b882736d4f9492ac9c2c28d7965bfe36bd6"
+    },
+    {
+      "path": "src/FixedRegistration.cpp",
+      "mode": "100644",
+      "git_blob": "3d22bc88389175691f245dea64c1131b02d05433"
+    },
+    {
+      "path": "src/HostTimeline.cpp",
+      "mode": "100644",
+      "git_blob": "50c981e9601afbeae49d1ff203dea4481c618c4f"
+    },
+    {
+      "path": "src/InputProcessor.cpp",
+      "mode": "100644",
+      "git_blob": "6c6d67f34a1cee6c3132c4954c9dbb3f85d65398"
+    },
+    {
+      "path": "src/LeslieCrossover.cpp",
+      "mode": "100644",
+      "git_blob": "4e29fff8906dc36e4d2089ca082aba083148c755"
+    },
+    {
+      "path": "src/NoteOwnership.cpp",
+      "mode": "100644",
+      "git_blob": "54613163fff3d3ebd61f48c8454cbb5583b85e3a"
+    },
+    {
+      "path": "src/ParameterBridge.cpp",
+      "mode": "100644",
+      "git_blob": "7896111e5f007f6a7db2c4b6e2407fa57089f459"
+    },
+    {
+      "path": "src/PedalNoteOwnership.cpp",
+      "mode": "100644",
+      "git_blob": "8d30cf0c52e15d42912b62d9e41726ff50e7ce58"
+    },
+    {
+      "path": "src/PedalRouting.cpp",
+      "mode": "100644",
+      "git_blob": "a89ff69f0acd4fb667d30442278cd1b4c09a97c1"
+    },
+    {
+      "path": "src/PedalVoice.cpp",
+      "mode": "100644",
+      "git_blob": "27de4a3e0bd34ee8ea8bc15264ea232b9981bb3a"
+    },
+    {
+      "path": "src/Percussion.cpp",
+      "mode": "100644",
+      "git_blob": "3bf89614341890bdf82465a56b3e4755a28e41b1"
+    },
+    {
+      "path": "src/PerformanceInput.cpp",
+      "mode": "100644",
+      "git_blob": "a71ecd92ac896169949c4f33a8447dac1919e4e4"
+    },
+    {
+      "path": "src/Profile.cpp",
+      "mode": "100644",
+      "git_blob": "7e5939678bbee778ad6e0db5ace18486a3dcbee1"
+    },
+    {
+      "path": "src/RotaryHistory.cpp",
+      "mode": "100644",
+      "git_blob": "b9e5a6517a4f7705e25e2b35b289f1e0f7d5a20b"
+    },
+    {
+      "path": "src/RotaryMotion.cpp",
+      "mode": "100644",
+      "git_blob": "6dc2285ea79caaa26e8dd8262b625d70588ad117"
+    },
+    {
+      "path": "src/RotaryPropagation.cpp",
+      "mode": "100644",
+      "git_blob": "62963f16e1d7f336bb088ce8d0361ff7ba1fabd4"
+    },
+    {
+      "path": "src/RotaryRenderer.cpp",
+      "mode": "100644",
+      "git_blob": "076b8b6938cf31ab2625cfefed7874601b8eee94"
+    },
+    {
+      "path": "src/RotaryRendererInternal.h",
+      "mode": "100644",
+      "git_blob": "95c036353c68655d265d5578256a70fb42ae16c3"
+    },
+    {
+      "path": "src/RotaryStreamingPath.cpp",
+      "mode": "100644",
+      "git_blob": "da2e89f2c484b8b604f2fddd1d7aa56f3051a87f"
+    },
+    {
+      "path": "src/ScannerLine.cpp",
+      "mode": "100644",
+      "git_blob": "b82b21f5289eee8f09aaba22afeb88c961394afa"
+    },
+    {
+      "path": "src/ScannerLineFoh.cpp",
+      "mode": "100644",
+      "git_blob": "3eefcdc4166d42dcdddf15f7189ba5165fda1b61"
+    },
+    {
+      "path": "src/ScannerRotor.cpp",
+      "mode": "100644",
+      "git_blob": "dd5bbebe753ed9f805b73530dc574830219c7608"
+    },
+    {
+      "path": "src/SourceLeakage.cpp",
+      "mode": "100644",
+      "git_blob": "35ccd7fa81b2da7d3f737153a95ddb241f2eccef"
+    },
+    {
+      "path": "src/SourceLeakageIO.cpp",
+      "mode": "100644",
+      "git_blob": "9a2d5386280dd59644d28290acd7452a93c43108"
+    },
+    {
+      "path": "src/StateExchange.cpp",
+      "mode": "100644",
+      "git_blob": "9e21010b543cb954c19c793510f5f8e8a2923ce4"
+    },
+    {
+      "path": "src/TonewheelBank.cpp",
+      "mode": "100644",
+      "git_blob": "3a601121f67a1d2f8e73d0f4d05dc6baee9c9b80"
+    },
+    {
+      "path": "src/research/CausalContactGrid.cpp",
+      "mode": "100644",
+      "git_blob": "4b5d80984e754218affe582c4b522c0c5bf9a600"
+    },
+    {
+      "path": "tools/CliArguments.h",
+      "mode": "100644",
+      "git_blob": "cfa80a288ebdd814bbff59dbf9ef6b305e64697d"
+    },
+    {
+      "path": "tools/ControlFileInput.cpp",
+      "mode": "100644",
+      "git_blob": "7f8683397a45fe4e386dbc6e8b8f42e73dadfbca"
+    },
+    {
+      "path": "tools/ControlFileInput.h",
+      "mode": "100644",
+      "git_blob": "41522a821464d3336d8dc6b62688a0ad6436287c"
+    },
+    {
+      "path": "tools/acquire_rtmidi.py",
+      "mode": "100644",
+      "git_blob": "225e132b7d5c8b9acab6e118466764b427e11743"
+    },
+    {
+      "path": "tools/acquire_sdl2.py",
+      "mode": "100644",
+      "git_blob": "b9103dc8edfc62c31a1dbd946393cadc56209a98"
+    },
+    {
+      "path": "tools/acquire_vst3_sdk.py",
+      "mode": "100644",
+      "git_blob": "36205705d73f291ad58266e1e251bcfc0472def7"
+    },
+    {
+      "path": "tools/analyze_wav.py",
+      "mode": "100644",
+      "git_blob": "dbe6b2ef671625300ff43b7f26b6517b44c5c49a"
+    },
+    {
+      "path": "tools/audition_starter_registrations.py",
+      "mode": "100644",
+      "git_blob": "659ed14841c39cce9b4ed6f8400167e1cd9fe416"
+    },
+    {
+      "path": "tools/benchmark.cpp",
+      "mode": "100644",
+      "git_blob": "26f0c1df900cdce902418995b7d1d5359ef272de"
+    },
+    {
+      "path": "tools/build_source_leakage_demo.py",
+      "mode": "100644",
+      "git_blob": "fcb8f977c19ec5ce0a4d4eed0996dd7576ebb1d3"
+    },
+    {
+      "path": "tools/capture_audio.py",
+      "mode": "100644",
+      "git_blob": "93dc63bae5df5e1853c3b016668ed7af1ca863b5"
+    },
+    {
+      "path": "tools/capture_common.py",
+      "mode": "100644",
+      "git_blob": "ed8bb4962f4093676b588f64976386162b191013"
+    },
+    {
+      "path": "tools/capture_corpus.py",
+      "mode": "100644",
+      "git_blob": "d8236eb246a96691a73af27f1172f289f63ff4c1"
+    },
+    {
+      "path": "tools/capture_job.py",
+      "mode": "100644",
+      "git_blob": "311c9172b109a437e069bef4a0631960a4fdc31d"
+    },
+    {
+      "path": "tools/capture_readiness.py",
+      "mode": "100644",
+      "git_blob": "d2305b79df854563dd51c1ec73668bcb03bc3835"
+    },
+    {
+      "path": "tools/capture_standalone_interface.py",
+      "mode": "100644",
+      "git_blob": "731f5d35f10917b94a1c4d7a1eb7a62818384523"
+    },
+    {
+      "path": "tools/capture_standalone_reference.py",
+      "mode": "100644",
+      "git_blob": "b9eb73dc8c5a669f99f1eca9e9fff497fdeabc94"
+    },
+    {
+      "path": "tools/capture_study.py",
+      "mode": "100644",
+      "git_blob": "2698922b22d9362aef96b9ed12ede653788252b5"
+    },
+    {
+      "path": "tools/causal_contact_grid_probe.cpp",
+      "mode": "100644",
+      "git_blob": "e7f842c37ca428ec952e85589c60b5229caddb82"
+    },
+    {
+      "path": "tools/causal_contact_grid_work_receipt.py",
+      "mode": "100644",
+      "git_blob": "8de7a1aa4ed852275e463e57dde94c42afde83b1"
+    },
+    {
+      "path": "tools/chapel_controls.py",
+      "mode": "100644",
+      "git_blob": "81e093b091c6718e3005244f0e285360558fb838"
+    },
+    {
+      "path": "tools/check_calibration_session.py",
+      "mode": "100644",
+      "git_blob": "ce572abdd9a2fdedbf51d5b2473eb150bce44d02"
+    },
+    {
+      "path": "tools/check_continuation.py",
+      "mode": "100644",
+      "git_blob": "d79aefddba35740b2dd5b165737d97ce0f26f3a1"
+    },
+    {
+      "path": "tools/check_interface_session.py",
+      "mode": "100644",
+      "git_blob": "057d8f8adf7e4bb01e5d8eec70d0d2fd149ed669"
+    },
+    {
+      "path": "tools/check_pedal_session.py",
+      "mode": "100644",
+      "git_blob": "47556461e94ed24f001a94684a7f7bece09a5c61"
+    },
+    {
+      "path": "tools/check_product_session.py",
+      "mode": "100644",
+      "git_blob": "d22bef12e008ab905ac468d881931135e0aa9bb6"
+    },
+    {
+      "path": "tools/check_reference_apron_raster.py",
+      "mode": "100644",
+      "git_blob": "c599bb89a0ca17a057e9ced0f54703a916f63a83"
+    },
+    {
+      "path": "tools/check_refinement_session.py",
+      "mode": "100644",
+      "git_blob": "b227122ce3a30cb3fcdbd0408ee49f55df4f4422"
+    },
+    {
+      "path": "tools/check_repository.py",
+      "mode": "100644",
+      "git_blob": "c7da1c50f4129672bd7c58c6a704fb9d6fad99b3"
+    },
+    {
+      "path": "tools/check_rotary_session.py",
+      "mode": "100644",
+      "git_blob": "9c3e2f9dcaf8cc9d1f13e6bea6b234f746373ce4"
+    },
+    {
+      "path": "tools/check_standalone_session.py",
+      "mode": "100644",
+      "git_blob": "6a35e6f180ce75891126cbd9cf8c0de36b7665d1"
+    },
+    {
+      "path": "tools/compare_capture.py",
+      "mode": "100644",
+      "git_blob": "8ea9a8ca023b295d734a0e3752900de8c1dfe4de"
+    },
+    {
+      "path": "tools/compare_footage_typography.py",
+      "mode": "100644",
+      "git_blob": "66a585c9ce8beb45bc1a86429eae7a8aefc62302"
+    },
+    {
+      "path": "tools/compare_header_material.py",
+      "mode": "100644",
+      "git_blob": "a9f1a29f03d9ea1b35c26f1d96dbd1c09767b83d"
+    },
+    {
+      "path": "tools/compare_heading_typography.py",
+      "mode": "100644",
+      "git_blob": "4e2765857d6bc4669a71f8977ca2852b823d4e1b"
+    },
+    {
+      "path": "tools/compare_legacy_renders.py",
+      "mode": "100644",
+      "git_blob": "b0497034d1ad820320da1bb13991031c4cfcd601"
+    },
+    {
+      "path": "tools/compare_lower_rack_material.py",
+      "mode": "100644",
+      "git_blob": "79efceae082fce48b7d7ec1cb4602ce0e4089380"
+    },
+    {
+      "path": "tools/compare_title_typography.py",
+      "mode": "100644",
+      "git_blob": "a52ab7a384857bf174dd6ebe52dd53692f02bbe1"
+    },
+    {
+      "path": "tools/compare_upper_rack_material.py",
+      "mode": "100644",
+      "git_blob": "e1dc6ccef0c88c11992b88f86460951f3a01ce77"
+    },
+    {
+      "path": "tools/compare_whole_reference_rasters.py",
+      "mode": "100644",
+      "git_blob": "a1df0699d29dd5af60866c92edb6ac1f235fe69a"
+    },
+    {
+      "path": "tools/compare_whole_reference_rasters_v2.py",
+      "mode": "100644",
+      "git_blob": "22fa6b75f099b46ffeb7f932201b36d13a85cbcd"
+    },
+    {
+      "path": "tools/compile_chapel_presets.py",
+      "mode": "100644",
+      "git_blob": "5a810f1a5c748bb1b82f0535d34daf823178149c"
+    },
+    {
+      "path": "tools/compile_fixed_registrations.py",
+      "mode": "100644",
+      "git_blob": "c8970be8471ebe598ef6b9a5c084f6699dfa92b0"
+    },
+    {
+      "path": "tools/compile_pedal_routing.py",
+      "mode": "100644",
+      "git_blob": "873b051dfaabded44d3afa0778eaf4deccc24dba"
+    },
+    {
+      "path": "tools/compile_profile.py",
+      "mode": "100644",
+      "git_blob": "f67edde277d30809e21e66e37fd15e5ca08c2c5c"
+    },
+    {
+      "path": "tools/compile_reference_apron.py",
+      "mode": "100644",
+      "git_blob": "82fc92d18555dc5a7968b46af25a2ba28c6a5bad"
+    },
+    {
+      "path": "tools/compile_reference_art.py",
+      "mode": "100644",
+      "git_blob": "99b0f792ef076b1d77c85c38d396b6bc9a9e90e0"
+    },
+    {
+      "path": "tools/compile_rotary_profile.py",
+      "mode": "100644",
+      "git_blob": "8519cb820e4a9f54c8a7f33051befa3b78d09e26"
+    },
+    {
+      "path": "tools/compile_scanner_line.py",
+      "mode": "100644",
+      "git_blob": "58920c96e9d474aeea6e0d4c422f613f8c2d15de"
+    },
+    {
+      "path": "tools/compile_source_leakage.py",
+      "mode": "100644",
+      "git_blob": "abf57372b0c341da8bc97d4f51c6aab2ab52a469"
+    },
+    {
+      "path": "tools/console_trace.cpp",
+      "mode": "100644",
+      "git_blob": "86cd9adda7680737201aa1d9b2da651ca78d1f32"
+    },
+    {
+      "path": "tools/contact_grid_conversion.py",
+      "mode": "100644",
+      "git_blob": "300f222330eec5e0d24800ca819cd8956d9dac38"
+    },
+    {
+      "path": "tools/contact_switching_io.py",
+      "mode": "100644",
+      "git_blob": "e783369087b7269082736c16538b9302a9db4302"
+    },
+    {
+      "path": "tools/contact_switching_oracle.py",
+      "mode": "100644",
+      "git_blob": "52acdcc4be521dcaff6efaad3ccb8ee885ddda93"
+    },
+    {
+      "path": "tools/contact_switching_reference.py",
+      "mode": "100644",
+      "git_blob": "29b3cf0a4a7da4c66e6f00e602a31251235bf1c4"
+    },
+    {
+      "path": "tools/contact_switching_study.py",
+      "mode": "100644",
+      "git_blob": "b7afce5ef3148a36ea0e61b0829a756289c00a8b"
+    },
+    {
+      "path": "tools/convert_contact_grid.py",
+      "mode": "100644",
+      "git_blob": "3061f5d87f56d93026967c0403845a24fde1698d"
+    },
+    {
+      "path": "tools/crossover_probe.cpp",
+      "mode": "100644",
+      "git_blob": "2c2607d3e6477ff26ba77b89692415fe55e551a0"
+    },
+    {
+      "path": "tools/crossover_reference.py",
+      "mode": "100644",
+      "git_blob": "b67fc1580fbfaebb517a174ba0e7669dfbabefe5"
+    },
+    {
+      "path": "tools/embed_profile.py",
+      "mode": "100644",
+      "git_blob": "7c800a3eca374ad20a63f698c620fb837d75a856"
+    },
+    {
+      "path": "tools/fractional_contact_reference.py",
+      "mode": "100644",
+      "git_blob": "a1e80a90fe087f7fff3e3c9fd27f3aa612970913"
+    },
+    {
+      "path": "tools/generate_standalone_font.py",
+      "mode": "100644",
+      "git_blob": "0db3ba60e24e5cccf3b58af704f3d1260bbe37c7"
+    },
+    {
+      "path": "tools/generate_starter_registrations.cpp",
+      "mode": "100644",
+      "git_blob": "c44d9eb5e1d69df9d4c6bdea5cc7cf868c385877"
+    },
+    {
+      "path": "tools/make_capture_demo.py",
+      "mode": "100644",
+      "git_blob": "8a73c6751bd44a92043d42fa0124de37590f6477"
+    },
+    {
+      "path": "tools/make_contact_switching_fixtures.py",
+      "mode": "100644",
+      "git_blob": "992513c1b074ba3b7ba9d27736914a31513cbe7e"
+    },
+    {
+      "path": "tools/model_info.cpp",
+      "mode": "100644",
+      "git_blob": "a4701207e768e39a600b9e11c02b0796626c6863"
+    },
+    {
+      "path": "tools/native_bundle_inventory.py",
+      "mode": "100644",
+      "git_blob": "32254dc98c09c7826034769d392d16afbf44f312"
+    },
+    {
+      "path": "tools/parameter_info.cpp",
+      "mode": "100644",
+      "git_blob": "9f460683c09cf15fe19f448604db8237316bba48"
+    },
+    {
+      "path": "tools/pedal_trace.cpp",
+      "mode": "100644",
+      "git_blob": "06c4c38a09bac21372ccadfd656256b79e07540b"
+    },
+    {
+      "path": "tools/plot_console_trace.py",
+      "mode": "100644",
+      "git_blob": "9297ae246b885b7cc6c167fac0d45f8c901e730f"
+    },
+    {
+      "path": "tools/plot_crossover_characterization.py",
+      "mode": "100644",
+      "git_blob": "8fa13909a3ee4543463297b1bb08830959eb0486"
+    },
+    {
+      "path": "tools/plot_pedal_trace.py",
+      "mode": "100644",
+      "git_blob": "3f19dd01d462cfc11743c9b2a979f040de4d0ce0"
+    },
+    {
+      "path": "tools/qualify_percussion_raster.py",
+      "mode": "100644",
+      "git_blob": "002a553783e054681da3f15f30dad039d8fe19ca"
+    },
+    {
+      "path": "tools/qualify_scanner_ac.py",
+      "mode": "100644",
+      "git_blob": "a470b57a20715ba08da815b67e395403607020d4"
+    },
+    {
+      "path": "tools/registration.cpp",
+      "mode": "100644",
+      "git_blob": "4cb64d559f64a20411d8dd2a95947298aba9f55f"
+    },
+    {
+      "path": "tools/render.cpp",
+      "mode": "100644",
+      "git_blob": "42625f99d90c7f4293efe26132104301e22fcebf"
+    },
+    {
+      "path": "tools/render_fixture.py",
+      "mode": "100644",
+      "git_blob": "809e9d737c9f5e6953fc135f6e823f2677318712"
+    },
+    {
+      "path": "tools/rotary_reference.py",
+      "mode": "100644",
+      "git_blob": "5a140860887a2027f7fa6950ec4f226193bb37c9"
+    },
+    {
+      "path": "tools/rotary_render.cpp",
+      "mode": "100644",
+      "git_blob": "cf9cb584ae74a16eb9506f532a994f93e273d2b8"
+    },
+    {
+      "path": "tools/scanner_ac_reference.py",
+      "mode": "100644",
+      "git_blob": "1ebcb7886b967f42511ea90453263b802fc6f75d"
+    },
+    {
+      "path": "tools/scanner_line_foh_probe.cpp",
+      "mode": "100644",
+      "git_blob": "709ba54a02411b7ddb5d1a72f37a9fde5589662c"
+    },
+    {
+      "path": "tools/scanner_line_probe.cpp",
+      "mode": "100644",
+      "git_blob": "b9839d846042101092e404544f195c0305e8031c"
+    },
+    {
+      "path": "tools/scanner_transient_reference.py",
+      "mode": "100644",
+      "git_blob": "be331f071d8a081f42d82796175d66d5e7929686"
+    },
+    {
+      "path": "tools/source_leakage_benchmark.cpp",
+      "mode": "100644",
+      "git_blob": "fa994760c2c97762e9448dc6037d74ae97ba116d"
+    },
+    {
+      "path": "tools/source_leakage_probe.cpp",
+      "mode": "100644",
+      "git_blob": "30bdcd1890813ed7eb718f81b25bbc662f250ac1"
+    },
+    {
+      "path": "tools/standalone_paint_benchmark.cpp",
+      "mode": "100644",
+      "git_blob": "e88133695a5be4c34136c1dc9f23b110bfd4082b"
+    },
+    {
+      "path": "tools/validate_capture.py",
+      "mode": "100644",
+      "git_blob": "c0c37846f4ea01033296bb81291f8277671fd040"
+    },
+    {
+      "path": "tools/validate_factory_reference.py",
+      "mode": "100644",
+      "git_blob": "cb0affbb592f3a7ab6ccd94745e502a5f5b60f67"
+    },
+    {
+      "path": "tools/validate_parameters.py",
+      "mode": "100644",
+      "git_blob": "f420840b300eea560ae9ada401a577f788d61689"
+    },
+    {
+      "path": "tools/validate_pedal_map.py",
+      "mode": "100644",
+      "git_blob": "97876890e681bbec7b10e8403df20d9283f41d43"
+    },
+    {
+      "path": "tools/validate_rotary_profile.py",
+      "mode": "100644",
+      "git_blob": "3fa0952bd67fc663b300995aecabb6f4ca7bcfad"
+    },
+    {
+      "path": "tools/verify_capture_report.py",
+      "mode": "100644",
+      "git_blob": "db3ccf7a0895c7e180867ce0a4d97123509c9131"
+    },
+    {
+      "path": "tools/verify_render.py",
+      "mode": "100644",
+      "git_blob": "00c5ab7adb0262f4cb81e46e7236a1aae6571d13"
+    }
+  ],
+  "limitation": "This unchanged-input comparison is scoped to the listed paths; successor acceptance also requires its own actual hosted results."
+}

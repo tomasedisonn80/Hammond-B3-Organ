@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "worker": "A53",
+  "wave": 9,
+  "followup": "Same accepted worker; no additional staffing credit",
+  "observed_utc": "2026-11-17 05:09:09 UTC",
+  "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "tree": "f639acf69061a4b66a0bd3d2219b1ed890e74e42",
+  "parents": [
+    "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+  ],
+  "run_id": 44021714635,
+  "attempt": 1,
+  "workflow": {
+    "bytes": 71269,
+    "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319"
+  },
+  "source_inputs": [
+    {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 71269,
+      "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319",
+      "git_blob": "e542a38d85213459cbcc286ab5ce89e621c442d3"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61258,
+      "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "git_blob": "183594e23fb63b189330350473dee70ddbf965b8"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+      "git_blob": "19d3763e0b3a82efa651093860b0b0f7d272aab9"
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+      "git_blob": "4b8e01bb7efed934dff514640f29a0c41b57a667"
+    },
+    {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+      "git_blob": "324fb10f608712c701e4c4e0a8445b44e67a7af8"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+      "bytes": 47128,
+      "sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+      "git_blob": "7ea030bcfcf6833e1db483d1e1980b26c28120cb"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+      "bytes": 16743,
+      "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048",
+      "git_blob": "eb4e0cdb3186db97ab0aa2fff9602eb214a6df40"
+    }
+  ],
+  "publication_receipt": {
+    "publication_receipt_bytes": 4359,
+    "publication_receipt_sha256": "faccf900b229baf87cac6115b4f3d2c051dd4177082eadd75bfab19697c47cf5",
+    "receipt_keys": [
+      "schema_version",
+      "recorded_utc",
+      "repository",
+      "branch",
+      "published_commit",
+      "tree",
+      "parents",
+      "local_authored_commit",
+      "local_tree",
+      "publication",
+      "independent_verification",
+      "local_alignment",
+      "qualification",
+      "hosted",
+      "free_disk_bytes"
+    ]
+  },
+  "admitted_workflow_transition": {
+    "only_difference": "jobs.native-sanitizers.timeout-minutes: 20 -> 35",
+    "exact_other_bytes_unchanged": true,
+    "normal_required_count": 45,
+    "sanitizer_gates": 34,
+    "targets": 31,
+    "individual_limits_instrumentation_and_leak_policy_unchanged": true
+  },
+  "jobs": [
+    {
+      "id": 133832484541,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001397,
+      "runner_name": "GitHub Actions 1000001397",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T05:06:21Z",
+      "active_steps": [
+        "Build the application and every standalone acceptance input"
+      ]
+    },
+    {
+      "id": 133832484738,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001402,
+      "runner_name": "GitHub Actions 1000001402",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T05:06:22Z",
+      "active_steps": [
+        "Build the application and every standalone acceptance input"
+      ]
+    },
+    {
+      "id": 133832484806,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001400,
+      "runner_name": "GitHub Actions 1000001400",
+      "labels": [
+        "macos-15"
+      ],
+      "started_at": "2026-11-17T05:06:22Z",
+      "active_steps": [
+        "Build the application and every standalone acceptance input"
+      ]
+    },
+    {
+      "id": 133832484811,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001406,
+      "runner_name": "GitHub Actions 1000001406",
+      "labels": [
+        "macos-15-intel"
+      ],
+      "started_at": "2026-11-17T05:06:24Z",
+      "active_steps": [
+        "Configure native Release on Linux or macOS"
+      ]
+    },
+    {
+      "id": 133832484818,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001403,
+      "runner_name": "GitHub Actions 1000001403",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T05:06:21Z",
+      "active_steps": [
+        "Build the thirty-one selected acceptance inputs"
+      ]
+    },
+    {
+      "id": 133832484867,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001408,
+      "runner_name": "GitHub Actions 1000001408",
+      "labels": [
+        "windows-2022"
+      ],
+      "started_at": "2026-11-17T05:06:22Z",
+      "active_steps": [
+        "Build the application and every standalone acceptance input"
+      ]
+    }
+  ],
+  "limits": [
+    "Initial observation only; no terminal source acceptance claimed.",
+    "Original fba1911 failures and all frozen A53 notes/reviews remain unchanged.",
+    "Read-only GitHub/source observation; no native execution, build, rerun or remote mutation."
+  ]
+}

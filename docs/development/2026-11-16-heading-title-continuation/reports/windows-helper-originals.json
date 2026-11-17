@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T05:16:19.104158+00:00",
+  "source_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "admission": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-admission.json",
+  "preserved": [
+    {
+      "source": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "preserved": "../windows-helper-before-native/test_standalone_header_material.cpp",
+      "bytes": 61258,
+      "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+    },
+    {
+      "source": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "preserved": "../windows-helper-before-native/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f"
+    },
+    {
+      "source": "../build-native/apps/standalone/test_standalone_header_material",
+      "preserved": "../windows-helper-before-native/test_standalone_header_material",
+      "bytes": 3817680,
+      "sha256": "5dca7e7d05ba1143fd740894b62a87056b96c8a471980fac1e792bbb269ca397"
+    }
+  ],
+  "code_inputs_match_published_source_before_edit": 475,
+  "helper_absent_semantics_review": "Independent A53 and root source/instantiation review: false specialization discards the same dependent call and returns false; true specialization calls the same helper once and returns true; exceptions and callsite guards unchanged. No new helper-absent runtime experiment is claimed."
+}

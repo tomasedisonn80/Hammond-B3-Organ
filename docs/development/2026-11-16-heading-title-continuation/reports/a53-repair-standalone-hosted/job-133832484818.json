@@ -1,0 +1,715 @@
+{
+  "schema_version": 1,
+  "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "run_id": 44021714635,
+  "attempt": 1,
+  "job_id": 133832484818,
+  "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+  "runner_name": "GitHub Actions 1000001403",
+  "runner_id": 1000001403,
+  "runner_group_name": "GitHub Actions",
+  "labels": [
+    "ubuntu-24.04"
+  ],
+  "status": "completed",
+  "conclusion": "success",
+  "started_at": "2026-11-17T05:06:21Z",
+  "completed_at": "2026-11-17T05:25:46Z",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-11-17T05:06:22Z",
+      "completed_at": "2026-11-17T05:06:23Z"
+    },
+    {
+      "name": "Check out the exact tested revision",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-11-17T05:06:23Z",
+      "completed_at": "2026-11-17T05:06:47Z"
+    },
+    {
+      "name": "Set up Python 3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-11-17T05:06:47Z",
+      "completed_at": "2026-11-17T05:06:48Z"
+    },
+    {
+      "name": "Record the revision, sanitizer policy and tools",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-11-17T05:06:48Z",
+      "completed_at": "2026-11-17T05:06:50Z"
+    },
+    {
+      "name": "Explicitly acquire and locally verify locked external SDL2",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-11-17T05:06:50Z",
+      "completed_at": "2026-11-17T05:06:52Z"
+    },
+    {
+      "name": "Install Ubuntu desktop and audio development headers",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-11-17T05:06:52Z",
+      "completed_at": "2026-11-17T05:07:12Z"
+    },
+    {
+      "name": "Configure native Release with project and SDL sanitizers",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7,
+      "started_at": "2026-11-17T05:07:12Z",
+      "completed_at": "2026-11-17T05:07:34Z"
+    },
+    {
+      "name": "Build the thirty-one selected acceptance inputs",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-11-17T05:07:34Z",
+      "completed_at": "2026-11-17T05:13:54Z"
+    },
+    {
+      "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-11-17T05:13:54Z",
+      "completed_at": "2026-11-17T05:13:56Z"
+    },
+    {
+      "name": "Discover exactly thirty-four gates and run with leak checking",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-11-17T05:13:56Z",
+      "completed_at": "2026-11-17T05:25:42Z"
+    },
+    {
+      "name": "Reverify source and locked SDL2 after acceptance",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-11-17T05:25:42Z",
+      "completed_at": "2026-11-17T05:25:43Z"
+    },
+    {
+      "name": "Retain native sanitizer diagnostics",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 12,
+      "started_at": "2026-11-17T05:25:43Z",
+      "completed_at": "2026-11-17T05:25:44Z"
+    },
+    {
+      "name": "Post Set up Python 3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 23,
+      "started_at": "2026-11-17T05:25:44Z",
+      "completed_at": "2026-11-17T05:25:44Z"
+    },
+    {
+      "name": "Post Check out the exact tested revision",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 24,
+      "started_at": "2026-11-17T05:25:44Z",
+      "completed_at": "2026-11-17T05:25:44Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 25,
+      "started_at": "2026-11-17T05:25:44Z",
+      "completed_at": "2026-11-17T05:25:44Z"
+    }
+  ],
+  "complete_log": {
+    "job_id": 133832484818,
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484818-complete.log.gz",
+    "stored_bytes": 116834,
+    "stored_sha256": "3aaef3de594e44ad2f227bf6597c85edf46168c8371447ed4d26f24d87d5b0a0",
+    "decoded_bytes": 1332434,
+    "decoded_sha256": "f057bb5b91ff67c4cf8dbb018fd0da8ee61a5842aed80bb6751175c5afa38099",
+    "gzip_mtime": 0,
+    "round_trip_verified": true
+  },
+  "summary": {
+    "lines": 6940,
+    "results": [
+      {
+        "ordinal": 1,
+        "total": 34,
+        "test_number": 176,
+        "name": "test_standalone_channel_acceptance",
+        "status": "Passed",
+        "seconds": 0.32,
+        "line": 5229
+      },
+      {
+        "ordinal": 2,
+        "total": 34,
+        "test_number": 177,
+        "name": "test_standalone_channel_modes",
+        "status": "Passed",
+        "seconds": 0.02,
+        "line": 5237
+      },
+      {
+        "ordinal": 3,
+        "total": 34,
+        "test_number": 179,
+        "name": "test_standalone_expression_calibration",
+        "status": "Passed",
+        "seconds": 0.02,
+        "line": 5245
+      },
+      {
+        "ordinal": 4,
+        "total": 34,
+        "test_number": 181,
+        "name": "test_standalone_inspection_acceptance",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 5253
+      },
+      {
+        "ordinal": 5,
+        "total": 34,
+        "test_number": 182,
+        "name": "test_standalone_inspection_author",
+        "status": "Passed",
+        "seconds": 0.02,
+        "line": 5261
+      },
+      {
+        "ordinal": 6,
+        "total": 34,
+        "test_number": 190,
+        "name": "test_standalone_preset_ui",
+        "status": "Passed",
+        "seconds": 3.11,
+        "line": 5269
+      },
+      {
+        "ordinal": 7,
+        "total": 34,
+        "test_number": 191,
+        "name": "test_standalone_projection",
+        "status": "Passed",
+        "seconds": 2.09,
+        "line": 5278
+      },
+      {
+        "ordinal": 8,
+        "total": 34,
+        "test_number": 192,
+        "name": "test_standalone_reference_layout",
+        "status": "Passed",
+        "seconds": 0.2,
+        "line": 5286
+      },
+      {
+        "ordinal": 9,
+        "total": 34,
+        "test_number": 196,
+        "name": "test_standalone_ui",
+        "status": "Passed",
+        "seconds": 0.28,
+        "line": 5294
+      },
+      {
+        "ordinal": 10,
+        "total": 34,
+        "test_number": 198,
+        "name": "test_standalone_workspace_acceptance",
+        "status": "Passed",
+        "seconds": 0.28,
+        "line": 5302
+      },
+      {
+        "ordinal": 11,
+        "total": 34,
+        "test_number": 199,
+        "name": "test_standalone_workspace_continuity",
+        "status": "Passed",
+        "seconds": 7.25,
+        "line": 5373
+      },
+      {
+        "ordinal": 12,
+        "total": 34,
+        "test_number": 200,
+        "name": "test_standalone_workspaces_author",
+        "status": "Passed",
+        "seconds": 0.02,
+        "line": 5381
+      },
+      {
+        "ordinal": 13,
+        "total": 34,
+        "test_number": 204,
+        "name": "test_standalone_reference_apron_raster",
+        "status": "Passed",
+        "seconds": 18.36,
+        "line": 5389
+      },
+      {
+        "ordinal": 14,
+        "total": 34,
+        "test_number": 205,
+        "name": "test_standalone_reference_apron_art",
+        "status": "Passed",
+        "seconds": 0.15,
+        "line": 5398
+      },
+      {
+        "ordinal": 15,
+        "total": 34,
+        "test_number": 206,
+        "name": "test_standalone_reference_apron_unavailable",
+        "status": "Passed",
+        "seconds": 18.34,
+        "line": 5406
+      },
+      {
+        "ordinal": 16,
+        "total": 34,
+        "test_number": 207,
+        "name": "test_standalone_drawing",
+        "status": "Passed",
+        "seconds": 0.48,
+        "line": 5415
+      },
+      {
+        "ordinal": 17,
+        "total": 34,
+        "test_number": 208,
+        "name": "test_standalone_quad_drawing",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 5423
+      },
+      {
+        "ordinal": 18,
+        "total": 34,
+        "test_number": 209,
+        "name": "test_standalone_workspace_raster",
+        "status": "Passed",
+        "seconds": 40.07,
+        "line": 5431
+      },
+      {
+        "ordinal": 19,
+        "total": 34,
+        "test_number": 210,
+        "name": "test_standalone_inspection_raster",
+        "status": "Passed",
+        "seconds": 2.92,
+        "line": 5440
+      },
+      {
+        "ordinal": 20,
+        "total": 34,
+        "test_number": 211,
+        "name": "test_standalone_material_acceptance",
+        "status": "Passed",
+        "seconds": 33.64,
+        "line": 5448
+      },
+      {
+        "ordinal": 21,
+        "total": 34,
+        "test_number": 213,
+        "name": "test_standalone_product_visual",
+        "status": "Passed",
+        "seconds": 104.22,
+        "line": 5456
+      },
+      {
+        "ordinal": 22,
+        "total": 34,
+        "test_number": 215,
+        "name": "test_standalone_upper_rack_material_raster",
+        "status": "Passed",
+        "seconds": 46.19,
+        "line": 5464
+      },
+      {
+        "ordinal": 23,
+        "total": 34,
+        "test_number": 216,
+        "name": "test_standalone_lower_rack_material_raster",
+        "status": "Passed",
+        "seconds": 49.25,
+        "line": 5472
+      },
+      {
+        "ordinal": 24,
+        "total": 34,
+        "test_number": 217,
+        "name": "test_standalone_footage_typography_raster",
+        "status": "Passed",
+        "seconds": 42.15,
+        "line": 5480
+      },
+      {
+        "ordinal": 25,
+        "total": 34,
+        "test_number": 218,
+        "name": "test_standalone_title_density",
+        "status": "Passed",
+        "seconds": 14.09,
+        "line": 6651
+      },
+      {
+        "ordinal": 26,
+        "total": 34,
+        "test_number": 220,
+        "name": "test_standalone_header_material",
+        "status": "Passed",
+        "seconds": 121.05,
+        "line": 6659
+      },
+      {
+        "ordinal": 27,
+        "total": 34,
+        "test_number": 221,
+        "name": "test_standalone_header_statistics",
+        "status": "Passed",
+        "seconds": 1.74,
+        "line": 6667
+      },
+      {
+        "ordinal": 28,
+        "total": 34,
+        "test_number": 222,
+        "name": "test_standalone_header_grain_bounds",
+        "status": "Passed",
+        "seconds": 0.08,
+        "line": 6675
+      },
+      {
+        "ordinal": 29,
+        "total": 34,
+        "test_number": 223,
+        "name": "test_standalone_manual_key_material_raster",
+        "status": "Passed",
+        "seconds": 20,
+        "line": 6683
+      },
+      {
+        "ordinal": 30,
+        "total": 34,
+        "test_number": 225,
+        "name": "test_standalone_scaled_view",
+        "status": "Passed",
+        "seconds": 84.53,
+        "line": 6748
+      },
+      {
+        "ordinal": 31,
+        "total": 34,
+        "test_number": 226,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 70.71,
+        "line": 6756
+      },
+      {
+        "ordinal": 32,
+        "total": 34,
+        "test_number": 233,
+        "name": "test_standalone_native_calibration",
+        "status": "Passed",
+        "seconds": 21.24,
+        "line": 6779
+      },
+      {
+        "ordinal": 33,
+        "total": 34,
+        "test_number": 237,
+        "name": "test_standalone_replay_paint_boundary",
+        "status": "Passed",
+        "seconds": 1.03,
+        "line": 6789
+      },
+      {
+        "ordinal": 34,
+        "total": 34,
+        "test_number": 238,
+        "name": "test_standalone_semantic_paint_boundary",
+        "status": "Passed",
+        "seconds": 1.18,
+        "line": 6799
+      }
+    ],
+    "evidence_lines": [
+      {
+        "line": 116,
+        "text": "03c70c103a4a0dd72b323529416b909c19a4e139"
+      },
+      {
+        "line": 150,
+        "text": "HEAD is now at 03c70c1 Fix MSVC header fixture and budget the complete native sanitizer gate"
+      },
+      {
+        "line": 153,
+        "text": "03c70c103a4a0dd72b323529416b909c19a4e139"
+      },
+      {
+        "line": 682,
+        "text": "-- The CXX compiler identification is GNU 13.3.0"
+      },
+      {
+        "line": 696,
+        "text": "-- The C compiler identification is GNU 13.3.0"
+      },
+      {
+        "line": 5209,
+        "text": "Discovered exactly 34 gates from 31 built interface, channel, calibration, product paint, title, header, replay and apron inputs; job sanitizer policy applies to every gate."
+      },
+      {
+        "line": 6763,
+        "text": "233: Native calibration fixture SHA-256: 0b947b543db3b928df6993e01a9adb98dd4c99d3e8ae1f24b325d8e8418e49cb"
+      },
+      {
+        "line": 6773,
+        "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+      },
+      {
+        "line": 6776,
+        "text": "233: Ran 9 tests in 21.097s"
+      },
+      {
+        "line": 6778,
+        "text": "233: OK"
+      },
+      {
+        "line": 6788,
+        "text": "237: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+      },
+      {
+        "line": 6798,
+        "text": "238: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+      },
+      {
+        "line": 6837,
+        "text": "100% tests passed, 0 tests failed out of 34"
+      },
+      {
+        "line": 6851,
+        "text": "Total Test time (real) = 705.12 sec"
+      },
+      {
+        "line": 6852,
+        "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+      },
+      {
+        "line": 6919,
+        "text": "SHA256 digest of uploaded artifact is cc4f00842a5288c895b5b32586c9bb87d9753dc1ae28dc1b8dd9387ca64fb297"
+      },
+      {
+        "line": 6921,
+        "text": "Artifact standalone-linux-gcc-sanitizers-03c70c103a4a0dd72b323529416b909c19a4e139-1 successfully finalized. Artifact ID 14301692882"
+      },
+      {
+        "line": 6922,
+        "text": "Artifact standalone-linux-gcc-sanitizers-03c70c103a4a0dd72b323529416b909c19a4e139-1 has been successfully uploaded! Final size is 238265 bytes. Artifact ID is 14301692882"
+      },
+      {
+        "line": 6923,
+        "text": "Artifact download URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714635/artifacts/14301692882"
+      }
+    ],
+    "native_invocation_lines": [
+      {
+        "line": 6773,
+        "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+      },
+      {
+        "line": 6788,
+        "text": "237: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+      },
+      {
+        "line": 6798,
+        "text": "238: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+      }
+    ],
+    "unicode_install_method_lines": []
+  },
+  "header_actuals": [
+    {
+      "test_number": 220,
+      "line": 6658,
+      "status": "passed",
+      "cases": 48,
+      "checks": 10542,
+      "paintings": 163
+    },
+    {
+      "test_number": 221,
+      "line": 6666,
+      "status": "passed",
+      "fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "test_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+      "criteria": 103,
+      "rgba": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+      "header": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac"
+    },
+    {
+      "test_number": 222,
+      "line": 6674,
+      "status": "passed",
+      "cases": 4,
+      "checks": 170
+    }
+  ],
+  "retained_evidence": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484818-evidence.log",
+    "bytes": 6096,
+    "sha256": "0842e5a39e05397ca4159933c4eb0dc9d2c281720b038f3695854ac3c72692e7",
+    "source_line_numbers": [
+      116,
+      150,
+      153,
+      682,
+      696,
+      5209,
+      5229,
+      5237,
+      5245,
+      5253,
+      5261,
+      5269,
+      5278,
+      5286,
+      5294,
+      5302,
+      5373,
+      5381,
+      5389,
+      5398,
+      5406,
+      5415,
+      5423,
+      5431,
+      5440,
+      5448,
+      5456,
+      5464,
+      5472,
+      5480,
+      6651,
+      6659,
+      6667,
+      6675,
+      6683,
+      6748,
+      6756,
+      6763,
+      6773,
+      6776,
+      6778,
+      6779,
+      6788,
+      6789,
+      6798,
+      6799,
+      6837,
+      6851,
+      6852,
+      6919,
+      6921,
+      6922,
+      6923
+    ],
+    "description": "Exact original selected LF log lines, noncontiguous; complete log separately retained as gzip."
+  },
+  "sanitizer_test_result": "34/34 passed",
+  "ctest_seconds": 705.12,
+  "discovery": {
+    "gates": 34,
+    "build_targets": 31,
+    "exact_selected_names_match_results": true
+  },
+  "policy": {
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "per_test_overrides": false,
+    "job_timeout_minutes": 35,
+    "individual_child_and_ctest_limits_unchanged": true,
+    "child_environment": "Calibration and both paint scripts inherit os.environ and set SDL driver values only; statistics child inherits its parent environment."
+  },
+  "instrumentation": {
+    "step": 9,
+    "status": "success",
+    "source_checks": [
+      "Address/undefined sanitizer and frame-pointer flags on project C++ and SDL C",
+      "ASan/UBSan object/archive symbols and linked runtimes for 31 built targets",
+      "Real app main and painter; real painter exactly once in grain fixture",
+      "Private support MIDI=0 and calibration probe MIDI=1 with fake-header precedence",
+      "Both app/probe entry paths link all six instrumented archives"
+    ],
+    "instrumentation_artifact_independently_downloaded": false
+  },
+  "actual_postcheck": [
+    {
+      "line": 6773,
+      "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+    },
+    {
+      "line": 6788,
+      "text": "237: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+    },
+    {
+      "line": 6798,
+      "text": "238: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+    },
+    {
+      "line": 6837,
+      "text": "100% tests passed, 0 tests failed out of 34"
+    },
+    {
+      "line": 6851,
+      "text": "Total Test time (real) = 705.12 sec"
+    },
+    {
+      "line": 6852,
+      "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+    }
+  ],
+  "native_calibration": {
+    "actual_children": 10,
+    "lifecycles": 7,
+    "deliberately_failed_replays": 2,
+    "matching_instrumented_probe_identity_assertion_passed": true,
+    "all_child_stderr_sanitizer_scan_passed": true
+  },
+  "real_app_paint": {
+    "replay_children": 2,
+    "semantic_children": 2,
+    "instrumented_app_sha256": "866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+  },
+  "source_and_SDL_post_acceptance_reverification": "success",
+  "sanitizer_diagnostic_observed": false,
+  "artifact_bytes_independently_downloaded": false,
+  "limits": [
+    "Only this exact 03c70c1 source is qualified by these results; later helper-branch source is not automatically qualified.",
+    "The original fba1911 cancellation remains unchanged; this success does not establish its originating cause."
+  ]
+}

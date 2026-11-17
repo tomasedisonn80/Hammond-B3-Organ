@@ -25,15 +25,40 @@ All **60 distinct workers were dispatched in ten waves of six;
 60 deliveries are accepted**.
 All ten waves have six accepted deliveries.
 Follow-ups retain their original worker identities and create no additional credit.
-The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
 passes with zero pending workers/errors; it verifies record consistency only.
-Current main/app remain `0c02c619…` / `1fa2a247…`, with painter `0bf731a6…`.
+Current `main.cpp`/app remain `0c02c619…` / `1fa2a247…`, with painter `0bf731a6…`.
 The [two installed captures](design/native-heading-final/README.md) use that
 application; the historical fifteen-view gallery retains `bfe8e36d…`.
 The [qualified-final local run](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
 remains **240/242**, with exactly three separate unchanged diagnostics passing.
 
-The [verified source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+The [current verified publication](development/2026-11-16-heading-title-continuation/reports/hosted-repair-publication.json) is
+`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
+`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
+and independent API/Git checks verify the exact commit, tree, parent and contents.
+This is the published three-input repair, separate from the next locally
+qualified helper correction, which is not yet published.
+
+The [complete published-source matrix](development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json)
+contains **14 successes and two failures**, with all sixteen attempt-one jobs
+terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
+Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
+job executes and passes **34/34 gates**. Windows job `133832484867` fails
+C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
+`133832484811` completes **67/68**, with preset raster timing out at **30.05
+seconds** under its unchanged **30-second** guard; post-acceptance source/
+dependency verification and relocated executable packaging remain skipped.
+The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+are complete. They retain that failed gate, its full workload and unchanged
+guard, and permit only the separately qualified Windows helper publication
+with complete evidence and current documentation. The timeout supplies no
+completed counters or measured remaining runtime; no timing fix, specific
+cause or repeated stability is claimed. No local or CI retry is admitted.
+
+The [original source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
 `fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
 `b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
 `9d60dbf462a90fe422fd4e69757fe202264acb7c` and
@@ -45,47 +70,72 @@ The [original hosted record](development/2026-11-16-heading-title-continuation/r
 Core 6/6 and VST3 4/4 successful; standalone has four normal 68/68 successes,
 one Windows fixture compile failure and one sanitizer cancellation after 30/34
 selected passes. The cancellation's originating cause is unproven. The
-[two-file Windows correction](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
-is locally qualified: affected tests 2/2; identical Linux binary, all 48 cases,
-default result and canonical pixels; 103/103 criteria, complete statistics
-identical except two source hashes. At that stage, 473 of 475 inputs are unchanged.
-Root [separately implemented the sanitizer job budget](development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json),
-20 → 35 minutes overall, with all test/child bounds, workload, instrumentation
-and leak policy unchanged. The final successor changes three inputs and leaves
-472 unchanged. Successor publication and CI remain pending.
+[first Windows casts/hash correction](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
+and the separate 35-minute sanitizer job budget entered published `03c70c1`.
+Both original receipts stay intact.
+
+The [next two-file helper correction](development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json)
+is implemented and locally qualified. It moves the same false return into an
+explicit `else` for the dependent `if constexpr` helper predicate and updates
+the one active fixture-hash literal. Both existing affected CTests pass
+**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
+48 actual cases, the exact **10,542-check/163-painting** default result and
+**103/103** canonical criteria. Complete statistics differ only in the two
+recorded source identities; canonical pixels and historical comparators are
+unchanged. Both helper-present and helper-absent specializations are preserved
+by independent source/instantiation review; **no new helper-absent runtime
+execution is claimed**.
+
+Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
+remain unchanged**. Relative to original `fba1911`, the total is still **three
+changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
+`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
+sanitizer job allowance remain unchanged. Every test/child bound, workload,
+instrumented input and leak policy is preserved. **The next helper-source
+publication and all of its exact-source hosted results remain pending; no
+publication SHA is recorded for it.** Local Linux equivalence is not MSVC
+compilation or execution evidence. The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+permit publishing only this separately qualified helper pair with complete
+evidence and current documentation. The preset raster retains its failed
+Intel result, unchanged 30-second guard and full workload; the helper pair
+is not admitted as a timing fix.
 
 ### 1. Complete the current source's integration and delivery gates
 
-1. **Preserve completed evidence and implemented repair boundaries.** Keep
-   the failed full run, its unchanged preset/MIDI diagnostics and all original
-   hosted attempts immutable. A46/A48/A60 repairs, the startup-prefix oracle,
-   current package and two actual captures already have scoped admission.
-   The separate 20 → 35-minute sanitizer job allowance is admitted and
-   implemented, with its own three-input receipt; retain the earlier two-file
-   Windows receipt at its original scope. No originating cancellation cause
-   is proven; no test deadline, workload or sanitizer policy changed. No
-   aggregate-only full rerun is authorized.
-2. **Root publishes the qualified successor.** Read the completed admissions and
-   actual implementation/equivalence receipts; preserve production app and all
-   unchanged inputs. Inspect a fresh remote head, perform a guarded nonforced
-   update, then independently verify exact commit/tree/parent/contents. The
-   successor is not yet published; no commit identity or passing CI is assumed.
-3. **The same A52–A54 review all sixteen successor families.** Bind actual jobs,
-   runner assignment, toolchains, executed tests and complete logs to the new
-   source. A52 owns Core, A53 standalone and A54 VST3. Core/VST3 successes at
-   `fba1911…` do not automatically qualify changed inputs; original Windows
-   failure and sanitizer cancellation remain retained. Do not push another
-   commit while the successor jobs run because same-ref concurrency cancels them.
-4. **Root preserves record closure and publishes final recovery.**
-   Accept only actual reviewed deliveries; freeze accepted notes and use separate
-   follow-up receipts. After all successor jobs are terminal/reviewed, commit
-   and push accepted evidence/documentation and verify the resulting source.
-   Record any remaining failures without manufacturing a green aggregate.
+1. **Preserve exact previous evidence.** Keep the failed local 240/242 run,
+   three unchanged isolated diagnostics, all original `fba1911` attempts,
+   published `03c70c1` results and both Windows failures immutable. Staffing
+   and strict sixty-record closure are complete; accepted notes stay frozen.
+2. **Apply the completed Intel review and root publication admission.**
+   The [independent review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+   and [root disposition](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json) preserve
+   the Intel **67/68** result and preset timeout at **30.05 seconds** under the
+   unchanged **30-second** guard. All 256 paints/272 readbacks and assertions
+   remain intact. No completed counters or remaining-work duration were
+   observed; no timing fix or specific cause is claimed. Publish only the
+   separately qualified Windows helper pair with evidence/current documents.
+   No local or CI retry, timeout/oracle change or broader repair is admitted.
+3. **Root publishes and qualifies the next two-file helper source.**
+   Preserve the 473 unchanged inputs relative to `03c70c1`, production app,
+   both helper specializations, historical comparators, all bounds and
+   sanitizer/leak policy. Use a fresh expected remote head, no force and
+   independent exact commit/tree/parent/content verification. Publication
+   and all next-source CI are pending; no SHA or MSVC success is assumed.
+4. **The same A52–A54 observe all sixteen new-source families, then root
+   publishes final recovery.** Bind actual runners, toolchains, tests,
+   complete logs and artifacts to that new source, especially Windows
+   fixture compilation. Earlier passes cannot be silently transferred.
+   Wait for all jobs before another same-ref push. Preserve failed outcomes
+   and use separate follow-up receipts without adding worker credit.
+   Root commits/pushes accepted final evidence and current documentation,
+   verifies remote contents and records concrete remaining work.
 
 The [original local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
 retains the qualified-final **240/242** and three passing diagnostics. The
-original published tree and hosted outcomes are complete; successor publication
-and acceptance remain pending. Current captures keep their actual app identity,
+original and published `03c70c1` trees retain their own results. The next helper
+publication and its exact-source qualification remain pending. Current captures
+keep their actual app identity,
 and historical H1 comparator pins remain binding under the
 [reconciliation instructions](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md).
 

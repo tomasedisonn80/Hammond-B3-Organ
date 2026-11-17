@@ -1,5 +1,100 @@
 # Development log
 
+## 2026-11-17 — Published repair and locally qualified constexpr-else correction
+
+The [current verified publication](development/2026-11-16-heading-title-continuation/reports/hosted-repair-publication.json) is
+`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
+`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
+and independent API/Git checks verify the exact commit, tree, parent and contents.
+This is the published three-input repair, separate from the next locally
+qualified helper correction, which is not yet published.
+
+The [complete published-source matrix](development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json)
+contains **14 successes and two failures**, with all sixteen attempt-one jobs
+terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
+Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
+job executes and passes **34/34 gates**. Windows job `133832484867` fails
+C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
+`133832484811` completes **67/68**, with preset raster timing out at **30.05
+seconds** under its unchanged **30-second** guard; post-acceptance source/
+dependency verification and relocated executable packaging remain skipped.
+The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+are complete. They retain that failed gate, its full workload and unchanged
+guard, and permit only the separately qualified Windows helper publication
+with complete evidence and current documentation. The timeout supplies no
+completed counters or measured remaining runtime; no timing fix, specific
+cause or repeated stability is claimed. No local or CI retry is admitted.
+
+The [next two-file helper correction](development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json)
+is implemented and locally qualified. It moves the same false return into an
+explicit `else` for the dependent `if constexpr` helper predicate and updates
+the one active fixture-hash literal. Both existing affected CTests pass
+**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
+48 actual cases, the exact **10,542-check/163-painting** default result and
+**103/103** canonical criteria. Complete statistics differ only in the two
+recorded source identities; canonical pixels and historical comparators are
+unchanged. Both helper-present and helper-absent specializations are preserved
+by independent source/instantiation review; **no new helper-absent runtime
+execution is claimed**.
+
+Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
+remain unchanged**. Relative to original `fba1911`, the total is still **three
+changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
+`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
+sanitizer job allowance remain unchanged. Every test/child bound, workload,
+instrumented input and leak policy is preserved. **The next helper-source
+publication and all of its exact-source hosted results remain pending; no
+publication SHA is recorded for it.** Local Linux equivalence is not MSVC
+compilation or execution evidence. The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+permit publishing only this separately qualified helper pair with complete
+evidence and current documentation. The preset raster retains its failed
+Intel result, unchanged 30-second guard and full workload; the helper pair
+is not admitted as a timing fix.
+
+The complete published `03c70c1` matrix remains **14 successes and two
+failures**, including Windows C4702 and the Intel preset-raster timeout.
+The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+is complete, and [root's publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+permits publishing only the separately reviewed, locally qualified two-file
+Windows helper correction with complete evidence and current documentation.
+Preserve the normal preset **30-second guard**, all **256 paints/272 readbacks**,
+every assertion and the original failed result. The timeout provides no
+completed counters or measured remaining runtime; no timing fix or specific
+cause is claimed. A later pass would be a separate source/runner observation,
+not proof of repaired cause or repeated stability.
+
+Root must check the exact staged repository and strict worker records, publish
+with a fresh expected remote head and no force, independently verify the exact
+commit/tree/parent/contents, and release the same A52 Core, A53 standalone and
+A54 VST3 reviewers for **all sixteen new-source families**. The next helper
+publication and its CI remain pending; do not invent a SHA or transfer earlier
+passes. Preserve both earlier Windows failures, the Intel failure and its
+skipped post-acceptance/package steps, and the original sanitizer cancellation.
+Keep both helper specializations and do not claim a new helper-absent runtime
+run. Wait for all next-source jobs before another same-ref push, because
+workflow concurrency cancels older runs. All 60 deliveries and strict record
+closure remain complete; follow-ups add no worker credit. Root then commits
+and pushes accepted final evidence, README/current-plan/status/handoff and
+concrete next actions, and verifies remote contents. No local test or CI retry,
+aggregate-only rerun, timeout/oracle change or broader source repair is admitted.
+
+The [fresh strict record check](development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
+passes after the [exclusive follow-up ownership update](development/2026-11-16-heading-title-continuation/reports/helper-review-ownership.json).
+Only future evidence paths were added to the same A52/A53/A54 rows; accepted
+notes, statuses and acceptance fields remain unchanged. All 60 accepted
+deliveries and ten complete six-worker waves remain intact. The original
+strict receipt remains immutable.
+
+All 60 distinct worker deliveries and strict record closure remain complete.
+The original fba attempt outcomes, later C4702 failure and local 240/242 are
+retained separately; no clean aggregate or absent-helper runtime is invented.
+The standing M0–M9, reference UI, setup, future-agent, commit/push and storage
+rules are unchanged. Whole-interface 1:1 remains unmet and unwaived.
+
+
 ## 2026-11-17 — Original hosted qualification and locally qualified Windows repair
 
 All **60 distinct workers were dispatched in ten waves of six;

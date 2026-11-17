@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17 05:07:23 UTC",
+  "repository": "tomasedisonn80/Hammond-B3-Organ",
+  "branch": "main",
+  "published_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "tree": "f639acf69061a4b66a0bd3d2219b1ed890e74e42",
+  "parents": [
+    "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+  ],
+  "local_authored_commit": "17457e4ba905323f26c34c21063b7240284eb047",
+  "local_tree": "f639acf69061a4b66a0bd3d2219b1ed890e74e42",
+  "publication": {
+    "transport": "Connected Git Data API",
+    "guarded_expected_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "force": false,
+    "changed_entries": 154,
+    "deleted_entries": 0,
+    "uploaded_new_blobs": 142,
+    "uploaded_bytes": 3420430
+  },
+  "independent_verification": {
+    "api_commit_tree_and_parent_before_update": true,
+    "api_main_ref_after_update": true,
+    "git_fetch_origin_main": true,
+    "fetched_tree_and_parent_exact": true,
+    "all_local_vs_fetched_tree_contents_identical": true
+  },
+  "local_alignment": {
+    "backup_branch": "session/heading-repair-local-17457",
+    "same_tree_ref_update_without_reset": true,
+    "clean_after_alignment": true
+  },
+  "qualification": {
+    "frozen_original_inputs": 475,
+    "changed_input_paths": [
+      ".github/workflows/standalone.yml",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "other_inputs_unchanged": 472,
+    "production_unchanged": true,
+    "production_application_sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+    "windows_affected_local_tests": {
+      "passed": 2,
+      "total": 2,
+      "seconds": 43.59351938499822
+    },
+    "strict_workers": {
+      "recorded": 60,
+      "accepted": 60,
+      "waves": 10,
+      "pending": 0,
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json"
+    },
+    "original_hosted": {
+      "source": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "success": 14,
+      "failure": 1,
+      "cancelled": 1,
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json"
+    },
+    "exact_staged_archive_integrity": "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-integrity.json",
+    "only_post_integrity_additions": [
+      "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-integrity.json",
+      "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-repository-integrity.log",
+      "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-session-integrity.log",
+      "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-whitespace-original.log.gz"
+    ],
+    "original_windows_artifact_bytes_preserved": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/git-byte-retention.json"
+  },
+  "hosted": {
+    "status": "Three successor workflows triggered. All sixteen exact-source outcomes pending same-worker review; no success inferred from original source.",
+    "initial_runs": [
+      {
+        "id": 44021714635,
+        "name": "Native standalone",
+        "path": ".github/workflows/standalone.yml",
+        "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_attempt": 1,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714635"
+      },
+      {
+        "id": 44021714612,
+        "name": "CI",
+        "path": ".github/workflows/ci.yml",
+        "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "status": "queued",
+        "conclusion": null,
+        "run_attempt": 1,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714612"
+      },
+      {
+        "id": 44021714644,
+        "name": "Native VST3",
+        "path": ".github/workflows/native-vst3.yml",
+        "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "status": "in_progress",
+        "conclusion": null,
+        "run_attempt": 1,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714644"
+      }
+    ]
+  },
+  "free_disk_bytes": 47869566976
+}

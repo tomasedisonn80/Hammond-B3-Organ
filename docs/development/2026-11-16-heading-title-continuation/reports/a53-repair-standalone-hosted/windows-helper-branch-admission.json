@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "worker": "A53",
+  "same_worker_followup": true,
+  "status": "Prospective narrow admission; no source implementation or native verification by A53",
+  "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "run_id": 44021714635,
+  "attempt": 1,
+  "job_id": 133832484867,
+  "original_failure_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484867.json",
+  "original_complete_log": {
+    "job_id": 133832484867,
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484867-complete.log.gz",
+    "stored_bytes": 49118,
+    "stored_sha256": "7d327483d9860cb7868bf36a80866da678a4b779f5d40fc187ce69086b10cbd4",
+    "decoded_bytes": 427593,
+    "decoded_sha256": "2baf47b7abb1f7c294e0d47639304a9f8bd68620e449ffe599669c9987a769bf",
+    "gzip_mtime": 0,
+    "round_trip_verified": true
+  },
+  "scope": "Move only the helper-absent return into an explicit constexpr else, then transition the one active fixture SHA literal to the new complete C++ bytes.",
+  "files": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "old_bytes": 61258,
+      "old_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "proposed_bytes": 61275,
+      "proposed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "old_bytes": 34239,
+      "old_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+      "proposed_bytes": 34239,
+      "proposed_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+    }
+  ],
+  "exact_before_helper": "    if constexpr (h1_fixture_helper_present<Drawer>) {\n        reference_header_h1_material(drawing, bounds, scale);\n        return true;\n    }\n    return false;\n",
+  "exact_after_helper": "    if constexpr (h1_fixture_helper_present<Drawer>) {\n        reference_header_h1_material(drawing, bounds, scale);\n        return true;\n    } else {\n        return false;\n    }\n",
+  "proposed_patch": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-proposal.diff",
+  "proposed_patch_identity": {
+    "bytes": 1096,
+    "sha256": "4314f7ff9add1b0b22b2d3b0c94624b3bc56b1083da3c6eca8e628ec81ee047d"
+  },
+  "semantic_proof": {
+    "helper_present": "Both versions evaluate the same dependent compile-time presence predicate, invoke reference_header_h1_material exactly once with the identical drawing/bounds/scale references, and return true. The after version discards the false branch at instantiation.",
+    "helper_absent": "Both versions discard the helper call, perform no helper operation and return false. The explicit else preserves genuine pre-H1 helper absence rather than assuming every painter contains H1.",
+    "exceptions": "An exception from the same helper call propagates unchanged; no catch or cleanup path changes.",
+    "callsite": "The existing probe_helper && eligible(test_) && frame.helper.present guard, assignment to frame.helper.invoked, require(invoked), increment of helper_probes and exact renderer-state restoration assertion are unchanged.",
+    "entire_fixture_suffix_after_helper_unchanged": true
+  },
+  "preserved": [
+    "All 48 cases, dimensions and the previously admitted two explicit casts",
+    "All values, rendering operations, control flow after the helper, output formatting, helper counts and assertions",
+    "103 canonical statistics criteria and every numerical/image expectation",
+    "Individual child/CTest limits and workloads",
+    "CMake, /W4 /WX and all compiler warning options",
+    "35-minute overall sanitizer job budget, 34 gates, 31 targets, instrumentation and ASan/UBSan/LSan policy",
+    "Production sources, app, painter and existing captures",
+    "Historical comparator pins and all original failure/admission/conformance records"
+  ],
+  "active_statistics_transition": "Replace exactly one FIXTURE_SHA256 literal; retain the exact before/after native identity checks, no allowlist or bypass.",
+  "required_next_validation": [
+    "Root independently verifies exact proposed two-file bytes before applying.",
+    "Retain the original fixture source and executable identities before any rebuild.",
+    "Verify all 48 descriptions/default output and canonical statistics are unchanged except the two new source identities; run the two affected native CTests under existing bounds.",
+    "Exercise both helper-present and helper-absent semantics through independent source/instantiation review; do not disable the absence branch or change the historical comparator.",
+    "Only a new exact-source hosted Windows build and native/package results can qualify MSVC; this source failure remains unchanged."
+  ],
+  "ownership": "A53 only reviewed and wrote assigned evidence/proposal files; root owns implementation, builds, native execution and guarded publication."
+}

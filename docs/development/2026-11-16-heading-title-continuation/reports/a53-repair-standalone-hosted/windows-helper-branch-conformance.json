@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "worker": "A53",
+  "same_worker_followup": true,
+  "status": "Independent source and retained actual-result conformance passed; no A53 native execution and no repaired-source MSVC qualification claimed.",
+  "source_base": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "frozen_admission": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-admission.json",
+    "bytes": 5109,
+    "sha256": "2dae9fba2d0a3f36f5d66ef061940f37d42918dd2958ca301fa938aba9c1b35a"
+  },
+  "exact_proposed_two_files_match_current_bytes": true,
+  "files": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "old_bytes": 61258,
+      "old_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "proposed_bytes": 61275,
+      "proposed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "old_bytes": 34239,
+      "old_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+      "proposed_bytes": 34239,
+      "proposed_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+    }
+  ],
+  "entire_fixture_suffix_after_helper_byte_unchanged": true,
+  "original_sources_verified_against_immutable_git": true,
+  "binary_comparison": {
+    "original": {
+      "path": "../windows-helper-before-native/test_standalone_header_material",
+      "bytes": 3817680,
+      "sha256": "5dca7e7d05ba1143fd740894b62a87056b96c8a471980fac1e792bbb269ca397"
+    },
+    "candidate": {
+      "path": "../build-native/apps/standalone/test_standalone_header_material",
+      "bytes": 3817680,
+      "sha256": "5dca7e7d05ba1143fd740894b62a87056b96c8a471980fac1e792bbb269ca397"
+    },
+    "byte_identical": true
+  },
+  "actual_inventory": {
+    "prior": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-candidate-inventory.json",
+      "bytes": 24054,
+      "sha256": "feba3c0358c376de2026a91fb419a9f741f8f31ad93062a907f1116cb1597558"
+    },
+    "candidate_stdout_bytes": 24054,
+    "candidate_stdout_sha256": "feba3c0358c376de2026a91fb419a9f741f8f31ad93062a907f1116cb1597558",
+    "byte_identical": true,
+    "structurally_identical": true,
+    "cases": 48,
+    "observed_command": [
+      "../build-native/apps/standalone/test_standalone_header_material",
+      "--list"
+    ],
+    "exit_code": 0
+  },
+  "default_output": {
+    "complete_object_equal": true,
+    "actual_native_payload_byte_identical": true,
+    "actual_payload_bytes": 430,
+    "actual_payload_sha256": "7297ef381afddcda2eb1de1cfa9a4594fcd77ad953c5eb20d9cf4380e068699f",
+    "cases": 48,
+    "checks": 10542,
+    "paintings": 163,
+    "helper_probes": 95
+  },
+  "complete_statistics": {
+    "recursive_difference_count": 2,
+    "differences": [
+      {
+        "path": "identities.frozen_fixture_source_sha256",
+        "before": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+        "after": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+      },
+      {
+        "path": "identities.test_source_sha256",
+        "before": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+        "after": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+      }
+    ],
+    "native_log_payload_matches_retained_complete_output": true,
+    "numerical_criteria_passed": 103,
+    "numerical_criteria_failed": 0,
+    "canonical_rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+    "canonical_header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+    "all_other_fields_equal": true
+  },
+  "actual_root_ctests": {
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-native",
+      "-R",
+      "^test_standalone_header_(material|statistics)$",
+      "--parallel",
+      "1",
+      "--verbose",
+      "--output-on-failure",
+      "--no-tests=error",
+      "--output-junit",
+      "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-affected.xml"
+    ],
+    "exit_code": 0,
+    "seconds": 38.72569345900047,
+    "tests": [
+      {
+        "name": "test_standalone_header_material",
+        "classname": "test_standalone_header_material",
+        "time": "38.0277",
+        "status": "run"
+      },
+      {
+        "name": "test_standalone_header_statistics",
+        "classname": "test_standalone_header_statistics",
+        "time": "0.61727",
+        "status": "run"
+      }
+    ],
+    "passed": 2,
+    "total": 2,
+    "repeated_by_A53": false
+  },
+  "complete_475_input_review": {
+    "method": "Recompute current SHA-256 and Git blob identities for all 475 frozen paths; compare with both immutable published Git trees and independently verify the qualified original SHA-256 baseline.",
+    "changed_from_03c70c1": [
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "unchanged_from_03c70c1": 473,
+    "changed_from_fba1911": [
+      ".github/workflows/standalone.yml",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "unchanged_from_fba1911": 472
+  },
+  "production_application": {
+    "path": "../build-native/apps/standalone/hammond_standalone",
+    "bytes": 4103352,
+    "sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+  },
+  "workflow_and_historical_comparator_unchanged": true,
+  "helper_absence_review": {
+    "method": "Independent source and template-instantiation reasoning only; no new helper-absent runtime experiment.",
+    "present": "Same dependent constexpr predicate; identical helper call once, identical arguments, true return; false branch is discarded.",
+    "absent": "The helper call remains discarded; explicit else returns the same false with no helper side effect. The requires expression and return type are unchanged.",
+    "exceptions_and_callsite": "Same exception propagation, eligibility/presence guards, invoked assertion, probe increment and full renderer-state assertion; all callsites are in the byte-identical suffix."
+  },
+  "preserved_boundaries": [
+    "All dimensions and explicit casts, 48-case data, 103 criteria, formatting and workload remain unchanged.",
+    "Individual test/child bounds, compiler warnings, 35-minute overall sanitizer budget, instrumentation and leak policy unchanged.",
+    "Original 03c70c1 Windows failure and ongoing original jobs are separate; no retry, cancellation or source relabeling.",
+    "Actual new-source Windows compilation and all subsequent hosted gates remain required.",
+    "Frozen A53 notes, original admissions and comparator pins remain unchanged."
+  ],
+  "evidence": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-admission.json",
+      "bytes": 5109,
+      "sha256": "2dae9fba2d0a3f36f5d66ef061940f37d42918dd2958ca301fa938aba9c1b35a"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-proposal.diff",
+      "bytes": 1096,
+      "sha256": "4314f7ff9add1b0b22b2d3b0c94624b3bc56b1083da3c6eca8e628ec81ee047d"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-originals.json",
+      "bytes": 1568,
+      "sha256": "7ae891b4388ca03b362bd597997881b2731c1bd943267c87137279fbb97d5261"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-fixture-build.json",
+      "bytes": 563,
+      "sha256": "a737f868d247fd923b6f5f45192f6f7ab2fcc92a54891c6caf40845d9160a782"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-fixture-equivalence.json",
+      "bytes": 28021,
+      "sha256": "19b3c85d2eaaea0e3cbc69baf4a15efa15e713b38b79e78b13d12c226eae7fce"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json",
+      "bytes": 2875,
+      "sha256": "b0b39536d7025541d8e5a47930a2acea21d2fa34edf636f19f12ac1b3573f858"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-affected.json",
+      "bytes": 963,
+      "sha256": "59603ef7b99c70b701172252c44d6bac008f47d68bb2f309d9445bc23ac23a06"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-affected.xml",
+      "bytes": 2294,
+      "sha256": "b808cb838dc16ddc3c3037737d1033b29c57ac82a406ff18829e9795d536f7f3"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-affected.log",
+      "bytes": 60410,
+      "sha256": "98cb032db05005d9d20fed62dd8a6bc80838814d53561021b06e4c4ef65383c3"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-candidate-inventory.json",
+      "bytes": 24054,
+      "sha256": "feba3c0358c376de2026a91fb419a9f741f8f31ad93062a907f1116cb1597558"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-material-after.json",
+      "bytes": 430,
+      "sha256": "7297ef381afddcda2eb1de1cfa9a4594fcd77ad953c5eb20d9cf4380e068699f"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-material-after.json",
+      "bytes": 507,
+      "sha256": "d3bc403b1debb83aeb2557a447bf9b44e653525422dbcba789b6fc4bc9b82fe3"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-statistics-after.json",
+      "bytes": 58181,
+      "sha256": "ecacc6c3bd9dab63ad2fc550d8b4a63622d8354dd1e4560e7bb6b66c6c4d39d4"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-statistics-after.json",
+      "bytes": 87929,
+      "sha256": "3d511dc9ac8ae6541fec932ced7161f82afdd3b209297e17b5c43ebb05d54f7c"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-inputs.json",
+      "bytes": 76573,
+      "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+    }
+  ]
+}

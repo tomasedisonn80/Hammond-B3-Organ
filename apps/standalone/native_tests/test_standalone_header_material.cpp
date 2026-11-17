@@ -45,8 +45,9 @@ bool h1_fixture_invoke_helper(Drawer& drawing, UiRect bounds, ReferenceCompositi
     if constexpr (h1_fixture_helper_present<Drawer>) {
         reference_header_h1_material(drawing, bounds, scale);
         return true;
+    } else {
+        return false;
     }
-    return false;
 }
 } // namespace hammond::standalone
 

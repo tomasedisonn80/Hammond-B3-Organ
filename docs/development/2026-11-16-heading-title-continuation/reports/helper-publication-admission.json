@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T05:39:05.399719+00:00",
+  "integrator": "root",
+  "current_published_source": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "decision": "Publish only the independently reviewed and locally qualified Windows helper pair, with current documentation and complete terminal evidence. Observe all sixteen required hosted families at the new exact source.",
+  "adopted_evidence": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json",
+      "bytes": 2875,
+      "sha256": "b0b39536d7025541d8e5a47930a2acea21d2fa34edf636f19f12ac1b3573f858"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-conformance.json",
+      "bytes": 10628,
+      "sha256": "32a63c23dc2c7603242fa6fdf75c7b0b87c903059ed12ead2c791a9fb5e824f2"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json",
+      "bytes": 35308,
+      "sha256": "1979a6f3e44fb011a0e94ccacedee8c9182f0760deb1324d2ee2c85aa280ee7b"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json",
+      "bytes": 8609,
+      "sha256": "0b88099e3653db82d19a9dc1cd05d7bc424dde61f30d7de4a712dbd451e15379"
+    }
+  ],
+  "code_scope": [
+    "apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "apps/standalone/native_tests/test_standalone_header_statistics.py"
+  ],
+  "unchanged_other_frozen_inputs_from_03c70c1": 473,
+  "current_hosted_outcomes": {
+    "success": 14,
+    "failure": 2,
+    "cancelled": 0
+  },
+  "preset_disposition": {
+    "original_job": 133832484811,
+    "original_result": "67/68, CTest exit 8; preset raster timeout after 30.05 s under the unchanged 30 s guard",
+    "source_or_timing_fix_claimed": false,
+    "property_workload_assertions_changed": false,
+    "native_test_or_ci_retry_requested": false,
+    "later_pass_limit": "A separate source/runner observation cannot erase this timeout, prove repeated stability or establish its cause.",
+    "intel_skipped_workflow_tails": [
+      "post-acceptance source and dependency verification",
+      "relocated installed executable package and archive"
+    ]
+  },
+  "helper_scope": "2/2 affected local tests; byte-identical Linux fixture and 48-case inventory, exact default output, canonical numerical/pixel output unchanged except two source identities. Actual MSVC compile and native acceptance remain pending.",
+  "publication_requirements": [
+    "Completed scoped reports only; keep all accepted notes and original evidence unchanged.",
+    "Exact staged repository and strict worker checks.",
+    "Fresh expected main head; no force; independent API and Git tree/parent/content verification.",
+    "Same accepted A52/A53/A54 reviewers; no new worker credit.",
+    "No next same-ref push until the new matrix is terminal."
+  ],
+  "product_limits": "Literal whole-interface 1:1, physical calibration, live scanner/AO-28/Leslie integration, devices/DAWs, native accessibility and release gates remain separate."
+}

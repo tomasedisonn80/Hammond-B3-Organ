@@ -1,0 +1,811 @@
+{
+  "schema_version": 2,
+  "worker": "A53",
+  "same_worker_followup": true,
+  "recorded_utc": "2026-11-17 05:37:33 UTC",
+  "status": "Completed 03c70c1 standalone run: four job successes and two failures. Three normal jobs pass 68/68; macOS Intel has 67 passes and one preset-raster timeout; Windows fails C4702 compilation; sanitizer passes 34/34. No overall standalone acceptance.",
+  "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "tree": "f639acf69061a4b66a0bd3d2219b1ed890e74e42",
+  "parents": [
+    "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+  ],
+  "run_id": 44021714635,
+  "attempt": 1,
+  "run_conclusion": "failure",
+  "run_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/run-44021714635.json",
+  "initial_observation": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/initial-observation.json",
+  "source_inputs": [
+    {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 71269,
+      "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319",
+      "git_blob": "e542a38d85213459cbcc286ab5ce89e621c442d3"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61258,
+      "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "git_blob": "183594e23fb63b189330350473dee70ddbf965b8"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+      "git_blob": "19d3763e0b3a82efa651093860b0b0f7d272aab9"
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+      "git_blob": "4b8e01bb7efed934dff514640f29a0c41b57a667"
+    },
+    {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+      "git_blob": "324fb10f608712c701e4c4e0a8445b44e67a7af8"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+      "bytes": 47128,
+      "sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+      "git_blob": "7ea030bcfcf6833e1db483d1e1980b26c28120cb"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+      "bytes": 16743,
+      "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048",
+      "git_blob": "eb4e0cdb3186db97ab0aa2fff9602eb214a6df40"
+    }
+  ],
+  "published_workflow": {
+    "bytes": 71269,
+    "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319",
+    "only_difference_from_fba_workflow": "jobs.native-sanitizers.timeout-minutes: 20 -> 35; every other workflow byte identical."
+  },
+  "normal_required_count": 45,
+  "normal_required_tests": [
+    "test_standalone_channel_acceptance",
+    "test_standalone_channel_modes",
+    "test_standalone_drawing",
+    "test_standalone_expression_calibration",
+    "test_standalone_expression_diagnostics",
+    "test_standalone_footage_typography_raster",
+    "test_standalone_header_grain_bounds",
+    "test_standalone_header_material",
+    "test_standalone_header_statistics",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_inspection_raster",
+    "test_standalone_install",
+    "test_standalone_lower_rack_material_raster",
+    "test_standalone_manual_key_material_raster",
+    "test_standalone_material_acceptance",
+    "test_standalone_midi_backend",
+    "test_standalone_midi_backend_quarantine",
+    "test_standalone_midi_cli",
+    "test_standalone_midi_concurrency",
+    "test_standalone_midi_discovery",
+    "test_standalone_midi_input",
+    "test_standalone_midi_replay",
+    "test_standalone_midi_session",
+    "test_standalone_native_calibration",
+    "test_standalone_native_midi_replay",
+    "test_standalone_product_visual",
+    "test_standalone_projection",
+    "test_standalone_quad_drawing",
+    "test_standalone_reference_apron_art",
+    "test_standalone_reference_apron_raster",
+    "test_standalone_reference_apron_unavailable",
+    "test_standalone_reference_layout",
+    "test_standalone_replay_paint_boundary",
+    "test_standalone_scaled_view",
+    "test_standalone_semantic_paint_boundary",
+    "test_standalone_starter_load",
+    "test_standalone_title_density",
+    "test_standalone_upper_rack_material_raster",
+    "test_standalone_waveform_material",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspace_replay",
+    "test_standalone_workspaces_author"
+  ],
+  "normal_discovered_count": 68,
+  "normal_actual_name_sets_identical": true,
+  "sanitizer_required_count": 34,
+  "sanitizer_build_target_count": 31,
+  "sanitizer_test_targets": {
+    "test_standalone_ui": "test_standalone_ui",
+    "test_standalone_preset_ui": "test_standalone_preset_ui",
+    "test_standalone_workspaces_author": "test_standalone_workspaces_author",
+    "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+    "test_standalone_projection": "test_standalone_projection",
+    "test_standalone_inspection_author": "test_standalone_inspection_author",
+    "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+    "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+    "test_standalone_drawing": "test_standalone_drawing",
+    "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+    "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+    "test_standalone_scaled_view": "test_standalone_scaled_view",
+    "test_standalone_preset_raster": "test_standalone_preset_raster",
+    "test_standalone_reference_layout": "test_standalone_reference_layout",
+    "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+    "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+    "test_standalone_channel_modes": "test_standalone_channel_modes",
+    "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+    "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+    "test_standalone_product_visual": "test_standalone_product_visual",
+    "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+    "test_standalone_lower_rack_material_raster": "test_standalone_lower_rack_material_raster",
+    "test_standalone_footage_typography_raster": "test_standalone_footage_typography_raster",
+    "test_standalone_title_density": "test_standalone_footage_typography_raster",
+    "test_standalone_header_material": "test_standalone_header_material",
+    "test_standalone_header_statistics": "test_standalone_header_material",
+    "test_standalone_header_grain_bounds": "test_standalone_header_grain_bounds",
+    "test_standalone_replay_paint_boundary": "hammond_standalone",
+    "test_standalone_semantic_paint_boundary": "hammond_standalone",
+    "test_standalone_manual_key_material_raster": "test_standalone_manual_key_material_raster",
+    "test_standalone_reference_apron_art": "test_standalone_reference_apron_art",
+    "test_standalone_reference_apron_raster": "test_standalone_reference_apron_raster",
+    "test_standalone_reference_apron_unavailable": "test_standalone_reference_apron_unavailable",
+    "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
+  },
+  "sanitizer_build_targets": [
+    "hammond_standalone",
+    "hammond_standalone_calibration_probe",
+    "test_standalone_channel_acceptance",
+    "test_standalone_channel_modes",
+    "test_standalone_drawing",
+    "test_standalone_expression_calibration",
+    "test_standalone_footage_typography_raster",
+    "test_standalone_header_grain_bounds",
+    "test_standalone_header_material",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_inspection_raster",
+    "test_standalone_lower_rack_material_raster",
+    "test_standalone_manual_key_material_raster",
+    "test_standalone_material_acceptance",
+    "test_standalone_preset_raster",
+    "test_standalone_preset_ui",
+    "test_standalone_product_visual",
+    "test_standalone_projection",
+    "test_standalone_quad_drawing",
+    "test_standalone_reference_apron_art",
+    "test_standalone_reference_apron_raster",
+    "test_standalone_reference_apron_unavailable",
+    "test_standalone_reference_layout",
+    "test_standalone_scaled_view",
+    "test_standalone_ui",
+    "test_standalone_upper_rack_material_raster",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspaces_author"
+  ],
+  "jobs": [
+    {
+      "job_id": 133832484738,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "runner_name": "GitHub Actions 1000001402",
+      "runner_id": 1000001402,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "conclusion": "success",
+      "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484738.json",
+      "ctest_seconds": 363.64,
+      "ctest_result": "68/68 passed",
+      "native_invocations": [
+        {
+          "line": 5043,
+          "text": "230: Actual native application subprocesses: 184"
+        },
+        {
+          "line": 5080,
+          "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 26; successful UI replays: 0; expected failed UI replays: 23"
+        },
+        {
+          "line": 5098,
+          "text": "232: Actual expression diagnostics subprocesses: 3"
+        },
+        {
+          "line": 5121,
+          "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        },
+        {
+          "line": 5150,
+          "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+        },
+        {
+          "line": 5177,
+          "text": "235: Actual native workflow subprocesses: 52"
+        },
+        {
+          "line": 5197,
+          "text": "236: Actual native workspace subprocesses: 37"
+        },
+        {
+          "line": 5225,
+          "text": "237: Actual native subprocesses: 2; executable SHA-256: 3fd8cd110146e06dce87b943a34db95734384e4fff2e92a2652dfb05b9183f41"
+        },
+        {
+          "line": 5235,
+          "text": "238: Actual native subprocesses: 2; executable SHA-256: 3fd8cd110146e06dce87b943a34db95734384e4fff2e92a2652dfb05b9183f41"
+        },
+        {
+          "line": 5253,
+          "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+        }
+      ],
+      "header_actuals": [
+        {
+          "number": 220,
+          "line": 4841,
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163
+        },
+        {
+          "number": 221,
+          "line": 4849,
+          "status": "passed",
+          "fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+          "test_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+          "criteria": 103,
+          "rgba": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "header": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac"
+        },
+        {
+          "number": 222,
+          "line": 4857,
+          "status": "passed",
+          "cases": 4,
+          "checks": 170
+        }
+      ],
+      "workflow_post_source_verification": "success",
+      "workflow_package_verification": "success",
+      "complete_log": {
+        "job_id": 133832484738,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484738-complete.log.gz",
+        "stored_bytes": 119267,
+        "stored_sha256": "86c5f0056399fcc5472fae2ea1575f9cacddff7e7a745665ac1808da0a70e99c",
+        "decoded_bytes": 1036438,
+        "decoded_sha256": "73065af37a926eb68d56017687d2e1eca6ce9145a3bfcfe5f4f83fee1aaba131",
+        "gzip_mtime": 0,
+        "round_trip_verified": true
+      }
+    },
+    {
+      "job_id": 133832484541,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "runner_name": "GitHub Actions 1000001397",
+      "runner_id": 1000001397,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "conclusion": "success",
+      "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484541.json",
+      "ctest_seconds": 425.53,
+      "ctest_result": "68/68 passed",
+      "native_invocations": [
+        {
+          "line": 4994,
+          "text": "230: Actual native application subprocesses: 184"
+        },
+        {
+          "line": 5031,
+          "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 0; successful UI replays: 19; expected failed UI replays: 4"
+        },
+        {
+          "line": 5049,
+          "text": "232: Actual expression diagnostics subprocesses: 3"
+        },
+        {
+          "line": 5072,
+          "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        },
+        {
+          "line": 5101,
+          "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+        },
+        {
+          "line": 5128,
+          "text": "235: Actual native workflow subprocesses: 52"
+        },
+        {
+          "line": 5148,
+          "text": "236: Actual native workspace subprocesses: 37"
+        },
+        {
+          "line": 5176,
+          "text": "237: Actual native subprocesses: 2; executable SHA-256: 3f60af50763c9e55a6b8a2d5634479a41a14a6ae5f4aa62c022e9d0c6e095b99"
+        },
+        {
+          "line": 5186,
+          "text": "238: Actual native subprocesses: 2; executable SHA-256: 3f60af50763c9e55a6b8a2d5634479a41a14a6ae5f4aa62c022e9d0c6e095b99"
+        },
+        {
+          "line": 5204,
+          "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+        }
+      ],
+      "header_actuals": [
+        {
+          "test_number": 220,
+          "line": 4792,
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163
+        },
+        {
+          "test_number": 221,
+          "line": 4800,
+          "status": "passed",
+          "fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+          "test_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+          "criteria": 103,
+          "rgba": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "header": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac"
+        },
+        {
+          "test_number": 222,
+          "line": 4808,
+          "status": "passed",
+          "cases": 4,
+          "checks": 170
+        }
+      ],
+      "workflow_post_source_verification": "success",
+      "workflow_package_verification": "success",
+      "complete_log": {
+        "job_id": 133832484541,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484541-complete.log.gz",
+        "stored_bytes": 117903,
+        "stored_sha256": "6d8bb89bad100386a7e868b59438cb9b4f95f4b8699e33e867798d0a6324e90a",
+        "decoded_bytes": 1023871,
+        "decoded_sha256": "725c12c1645b8eacc2460f9a918f950c2ed94738f67452bb303c354cfac4a36e",
+        "gzip_mtime": 0,
+        "round_trip_verified": true
+      }
+    },
+    {
+      "job_id": 133832484806,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "runner_name": "GitHub Actions 1000001400",
+      "runner_id": 1000001400,
+      "labels": [
+        "macos-15"
+      ],
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "conclusion": "success",
+      "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484806.json",
+      "ctest_seconds": 426.12,
+      "ctest_result": "68/68 passed",
+      "native_invocations": [
+        {
+          "line": 4510,
+          "text": "230: Actual native application subprocesses: 184"
+        },
+        {
+          "line": 4547,
+          "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 0; successful UI replays: 19; expected failed UI replays: 4"
+        },
+        {
+          "line": 4565,
+          "text": "232: Actual expression diagnostics subprocesses: 3"
+        },
+        {
+          "line": 4588,
+          "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        },
+        {
+          "line": 4617,
+          "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+        },
+        {
+          "line": 4644,
+          "text": "235: Actual native workflow subprocesses: 52"
+        },
+        {
+          "line": 4664,
+          "text": "236: Actual native workspace subprocesses: 37"
+        },
+        {
+          "line": 4692,
+          "text": "237: Actual native subprocesses: 2; executable SHA-256: c42a9a2e7f76b8aa4b99ea7977116a90edc29ad799b174bb328ee213b52579d9"
+        },
+        {
+          "line": 4702,
+          "text": "238: Actual native subprocesses: 2; executable SHA-256: c42a9a2e7f76b8aa4b99ea7977116a90edc29ad799b174bb328ee213b52579d9"
+        },
+        {
+          "line": 4720,
+          "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+        }
+      ],
+      "header_actuals": [
+        {
+          "test_number": 220,
+          "line": 4308,
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163
+        },
+        {
+          "test_number": 221,
+          "line": 4316,
+          "status": "passed",
+          "fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+          "test_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+          "criteria": 103,
+          "rgba": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "header": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac"
+        },
+        {
+          "test_number": 222,
+          "line": 4324,
+          "status": "passed",
+          "cases": 4,
+          "checks": 170
+        }
+      ],
+      "workflow_post_source_verification": "success",
+      "workflow_package_verification": "success",
+      "complete_log": {
+        "job_id": 133832484806,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484806-complete.log.gz",
+        "stored_bytes": 112061,
+        "stored_sha256": "d4f2d51c8c7871d4592cc1fefee0898654ae5621585b494b6ed3895ce3e967d4",
+        "decoded_bytes": 1020577,
+        "decoded_sha256": "9808fca23b39a712df9b7defebf108aa3f2d21a474d657d87cf5063ea97748d7",
+        "gzip_mtime": 0,
+        "round_trip_verified": true
+      }
+    },
+    {
+      "job_id": 133832484811,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "runner_name": "GitHub Actions 1000001406",
+      "runner_id": 1000001406,
+      "labels": [
+        "macos-15-intel"
+      ],
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "conclusion": "failure",
+      "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811.json",
+      "ctest_seconds": 770.85,
+      "ctest_result": "67 passed; test_standalone_preset_raster timed out; 68 attempted",
+      "native_invocations": [
+        {
+          "line": 4608,
+          "text": "230: Actual native application subprocesses: 184"
+        },
+        {
+          "line": 4645,
+          "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 0; successful UI replays: 19; expected failed UI replays: 4"
+        },
+        {
+          "line": 4663,
+          "text": "232: Actual expression diagnostics subprocesses: 3"
+        },
+        {
+          "line": 4686,
+          "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        },
+        {
+          "line": 4715,
+          "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+        },
+        {
+          "line": 4742,
+          "text": "235: Actual native workflow subprocesses: 52"
+        },
+        {
+          "line": 4762,
+          "text": "236: Actual native workspace subprocesses: 37"
+        },
+        {
+          "line": 4790,
+          "text": "237: Actual native subprocesses: 2; executable SHA-256: 3457aa8b38393272b41e90943342f117b9e2da0fb0da4e80c407b5315dbde2f8"
+        },
+        {
+          "line": 4800,
+          "text": "238: Actual native subprocesses: 2; executable SHA-256: 3457aa8b38393272b41e90943342f117b9e2da0fb0da4e80c407b5315dbde2f8"
+        },
+        {
+          "line": 4818,
+          "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+        }
+      ],
+      "header_actuals": [
+        {
+          "test_number": 220,
+          "line": 4407,
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163
+        },
+        {
+          "test_number": 221,
+          "line": 4415,
+          "status": "passed",
+          "fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+          "test_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+          "criteria": 103,
+          "rgba": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "header": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac"
+        },
+        {
+          "test_number": 222,
+          "line": 4423,
+          "status": "passed",
+          "cases": 4,
+          "checks": 170
+        }
+      ],
+      "workflow_post_source_verification": "skipped",
+      "workflow_package_verification": "skipped",
+      "complete_log": {
+        "job_id": 133832484811,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811-complete.log.gz",
+        "stored_bytes": 108687,
+        "stored_sha256": "bbdbe84b6ac9ff78d787118c0f6e4367a2436c5478a83181e5b1ce0b13935933",
+        "decoded_bytes": 1001243,
+        "decoded_sha256": "d784acb29532c6e5fba48ee750851af7149f6dd5637074b372836e88a9b6cc07",
+        "gzip_mtime": 0,
+        "round_trip_verified": true
+      }
+    },
+    {
+      "job_id": 133832484867,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "runner_name": "GitHub Actions 1000001408",
+      "runner_id": 1000001408,
+      "labels": [
+        "windows-2022"
+      ],
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "conclusion": "failure",
+      "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484867.json",
+      "ctest_seconds": null,
+      "ctest_result": "unreached",
+      "native_invocations": [],
+      "header_actuals": [],
+      "workflow_post_source_verification": "skipped",
+      "workflow_package_verification": "skipped",
+      "complete_log": {
+        "job_id": 133832484867,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484867-complete.log.gz",
+        "stored_bytes": 49118,
+        "stored_sha256": "7d327483d9860cb7868bf36a80866da678a4b779f5d40fc187ce69086b10cbd4",
+        "decoded_bytes": 427593,
+        "decoded_sha256": "2baf47b7abb1f7c294e0d47639304a9f8bd68620e449ffe599669c9987a769bf",
+        "gzip_mtime": 0,
+        "round_trip_verified": true
+      }
+    },
+    {
+      "job_id": 133832484818,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "runner_name": "GitHub Actions 1000001403",
+      "runner_id": 1000001403,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "attempt": 1,
+      "conclusion": "success",
+      "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484818.json",
+      "ctest_seconds": 705.12,
+      "ctest_result": "34/34 passed",
+      "native_invocations": [
+        {
+          "line": 6773,
+          "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        },
+        {
+          "line": 6788,
+          "text": "237: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+        },
+        {
+          "line": 6798,
+          "text": "238: Actual native subprocesses: 2; executable SHA-256: 866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+        }
+      ],
+      "header_actuals": [
+        {
+          "test_number": 220,
+          "line": 6658,
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163
+        },
+        {
+          "test_number": 221,
+          "line": 6666,
+          "status": "passed",
+          "fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+          "test_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+          "criteria": 103,
+          "rgba": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "header": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac"
+        },
+        {
+          "test_number": 222,
+          "line": 6674,
+          "status": "passed",
+          "cases": 4,
+          "checks": 170
+        }
+      ],
+      "workflow_post_source_verification": "success",
+      "workflow_package_verification": "not a sanitizer job step",
+      "complete_log": {
+        "job_id": 133832484818,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484818-complete.log.gz",
+        "stored_bytes": 116834,
+        "stored_sha256": "3aaef3de594e44ad2f227bf6597c85edf46168c8371447ed4d26f24d87d5b0a0",
+        "decoded_bytes": 1332434,
+        "decoded_sha256": "f057bb5b91ff67c4cf8dbb018fd0da8ee61a5842aed80bb6751175c5afa38099",
+        "gzip_mtime": 0,
+        "round_trip_verified": true
+      }
+    }
+  ],
+  "windows_failure": {
+    "job_id": 133832484867,
+    "file": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "line": 49,
+    "warning": "C4702: unreachable code",
+    "error": "C2220 under unchanged /W4 /WX",
+    "C4244_occurrences": 0,
+    "scope": "The admitted two casts are present and prior conversion diagnostics are absent, but the translation unit fails and no successful fixture executable/native result is established.",
+    "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484867.json",
+    "all_native_and_package_gates": "unreached"
+  },
+  "intel_failure": {
+    "job_id": 133832484811,
+    "test": "test_standalone_preset_raster",
+    "configured_seconds": 30,
+    "observed_seconds": 30.05,
+    "other_tests_passed": 67,
+    "ctest_total_seconds": 770.85,
+    "ctest_exit_code": 8,
+    "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811.json",
+    "fixture_sha256": "5733e529ecb06609d2e19fa9a367450a66ca8a2a41d99b5b7d42bfbbebe210eb",
+    "preset_and_painter_build_sources_unchanged_from_fba": true,
+    "prior_fba_intel_pass_seconds": 21.31,
+    "no_fixture_stdout_before_timeout": true,
+    "completed_case_and_assertion_count_unknown": true,
+    "root_cause_unproven": true,
+    "install_CTest": "eight methods passed",
+    "workflow_source_reverification": "skipped",
+    "workflow_packaging": "skipped",
+    "independent_assessment_owner": "Same A52; separate assessment does not alter this source-specific failure.",
+    "independent_review": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json",
+      "sha256": "1979a6f3e44fb011a0e94ccacedee8c9182f0760deb1324d2ee2c85aa280ee7b",
+      "disposition": "Keep the ordinary 30-second guard/workload and the failed 03c70c1 result; separately qualified helper-only publication with its own matrix is supported."
+    }
+  },
+  "sanitizer": {
+    "job_id": 133832484818,
+    "result": "34/34 passed",
+    "ctest_seconds": 705.12,
+    "instrumentation_step": "success",
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "job_budget_minutes": 35,
+    "individual_child_and_CTest_limits_unchanged": true,
+    "per_test_overrides": false,
+    "native_calibration": {
+      "actual_children": 10,
+      "lifecycles": 7,
+      "deliberately_failed_replays": 2,
+      "explicit_postcheck_passed": true
+    },
+    "real_app_paint": {
+      "replay_children": 2,
+      "semantic_children": 2,
+      "app_sha256": "866a126b9b42e9e1a0602b6e874276a63698ed981c6469d25259190c6a185d5a"
+    },
+    "source_and_SDL_post_verification": "success",
+    "actual_sanitizer_diagnostic_observed": false,
+    "original_fba_cancellation_cause_proven": false,
+    "record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484818.json"
+  },
+  "installation_and_packages": {
+    "successful_normal_workflow_jobs": [
+      133832484738,
+      133832484541,
+      133832484806
+    ],
+    "payload_files": {
+      "linux_midi_on": 21,
+      "linux_midi_off": 17,
+      "macos_arm_midi_on": 21
+    },
+    "installer_CTest_success_jobs": [
+      133832484738,
+      133832484541,
+      133832484806,
+      133832484811
+    ],
+    "installer_tests_each": 8,
+    "immutable_installer_source_sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+    "Unicode_coverage": "Complete unfiltered installer script passed; source includes Unicode/space prefixes, custom directories, private copy relocation, removed private source/build and 800 ms inverted CC11 replay. Method names are not individually printed.",
+    "successful_workflow_assertions": [
+      "Exact 21/17 file inventory, hashes and modes",
+      "Moved-prefix help and 600 ms default-size dummy smoke outside repository",
+      "Closed/unavailable quiescent MIDI and unchanged payload",
+      "Archive member, byte and mode equality"
+    ],
+    "Intel_limit": "Installer CTest passed, but final workflow staging, archive checks and package upload were skipped after the preset timeout.",
+    "Windows_limit": "No native installer or workflow package execution.",
+    "artifacts": {
+      "diagnostics": 6,
+      "packages": 3,
+      "total": 9,
+      "independently_downloaded_by_A53": false
+    }
+  },
+  "complete_logs": {
+    "manifest": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/complete-log-archives.json",
+    "count": 6,
+    "total_stored_bytes": 623870,
+    "total_decoded_bytes": 5842156,
+    "all_round_trips_verified": true
+  },
+  "helper_followup": {
+    "status": "Root applied only the separately admitted helper-branch and active fixture-pin correction, with independent local conformance. It is not part of 03c70c1 and has no hosted result in this receipt.",
+    "admission": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-admission.json",
+    "admission_sha256": "2dae9fba2d0a3f36f5d66ef061940f37d42918dd2958ca301fa938aba9c1b35a",
+    "proposal": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-proposal.diff",
+    "proposal_sha256": "4314f7ff9add1b0b22b2d3b0c94624b3bc56b1083da3c6eca8e628ec81ee047d",
+    "conformance": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/windows-helper-branch-conformance.json",
+    "conformance_sha256": "32a63c23dc2c7603242fa6fdf75c7b0b87c903059ed12ead2c791a9fb5e824f2",
+    "root_qualification": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json",
+    "new_fixture_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+    "new_statistics_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+    "local_affected_CTests": "2/2 passed once in 38.725693459 s",
+    "local_binary_inventory_and_default_stdout": "byte-identical originals versus rebuilt",
+    "complete_statistics": "Only the two admitted source identity values differ; all 103 criteria and pixels identical.",
+    "changed_inputs_from_03": 2,
+    "unchanged_inputs_from_03": 473,
+    "changed_inputs_from_fba": 3,
+    "unchanged_inputs_from_fba": 472,
+    "helper_absent_evidence": "Source/template-instantiation reasoning only; no new helper-absent runtime experiment."
+  },
+  "preserved_original_report": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted.json",
+  "unchanged_accepted_note": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/notes/A53.md",
+    "sha256": "6d2aa0f8944129595a750c152cd2e7c7599ef4710300256d491249df1f29f954",
+    "words": 833
+  },
+  "next": "Root publishes only the reviewed helper correction, leaving preset source and its ordinary 30-second bound unchanged with this timeout explicitly open; independently verify the next exact source and all required jobs. No automatic retry of this run.",
+  "limits": [
+    "This exact run failed overall; later observations cannot replace either original failure.",
+    "Actual passed installer coverage is distinct from skipped Intel workflow packaging and source reverification.",
+    "Artifact metadata and executed CI archive assertions were inspected; A53 did not independently download those archives.",
+    "Complete decoded logs are retained losslessly; Windows CRLF blocks also have distinct normalized readable views.",
+    "No performance, hardware, scheduling or original cancellation cause is inferred from elapsed times.",
+    "Dummy/software SDL, fake and synthetic MIDI, copied semantics and scoped header images do not establish physical devices, real displays, native accessibility or whole-interface 1:1.",
+    "All accepted A53 notes and prior frozen admissions/conformance/outcomes remain unchanged. No source edits, builds/native executions, retries or remote mutations by A53."
+  ]
+}

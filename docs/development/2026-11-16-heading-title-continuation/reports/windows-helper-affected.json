@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "-R",
+    "^test_standalone_header_(material|statistics)$",
+    "--parallel",
+    "1",
+    "--verbose",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-affected.xml"
+  ],
+  "returncode": 0,
+  "seconds": 38.72569345900047,
+  "log": {
+    "bytes": 60410,
+    "sha256": "98cb032db05005d9d20fed62dd8a6bc80838814d53561021b06e4c4ef65383c3"
+  },
+  "junit": {
+    "bytes": 2294,
+    "sha256": "b808cb838dc16ddc3c3037737d1033b29c57ac82a406ff18829e9795d536f7f3"
+  },
+  "scope": "Two existing affected gates once, unchanged limits/workload. Source branch and active exact-hash transition only; current production executable and all other 473 inputs relative to 03c70c1 unchanged."
+}

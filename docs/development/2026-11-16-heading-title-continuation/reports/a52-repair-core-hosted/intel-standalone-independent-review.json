@@ -1,0 +1,1027 @@
+{
+  "schema_version": 1,
+  "reviewer": "A52, same accepted worker; independent read-only Intel standalone failure review",
+  "reviewed_utc": "2026-11-17T05:37:58.870780+00:00",
+  "decision": "Retain the unchanged preset-raster timing gate as failed/open. Proceed only with the separately qualified Windows helper correction and a new exact-source hosted matrix.",
+  "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+  "source_tree": "f639acf69061a4b66a0bd3d2219b1ed890e74e42",
+  "workflow_run_id": 44021714635,
+  "run_attempt": 1,
+  "job_id": 133832484811,
+  "independent_api_metadata": {
+    "id": 133832484811,
+    "run_id": 44021714635,
+    "run_attempt": 1,
+    "head_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+    "status": "completed",
+    "conclusion": "failure",
+    "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+    "started_at": "2026-11-17T05:06:24Z",
+    "completed_at": "2026-11-17T05:29:41Z",
+    "runner_id": 1000001406,
+    "labels": [
+      "macos-15-intel"
+    ],
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714635/job/133832484811"
+  },
+  "relevant_actual_steps": [
+    {
+      "name": "Run all required standalone acceptance tests",
+      "status": "completed",
+      "conclusion": "failure",
+      "number": 13,
+      "started_at": "2026-11-17T05:16:27Z",
+      "completed_at": "2026-11-17T05:29:18Z"
+    },
+    {
+      "name": "Reverify source and dependencies after acceptance",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 14,
+      "started_at": "2026-11-17T05:29:18Z",
+      "completed_at": "2026-11-17T05:29:18Z"
+    },
+    {
+      "name": "Stage, relocate, smoke and archive the exact installed payload",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 15,
+      "started_at": "2026-11-17T05:29:18Z",
+      "completed_at": "2026-11-17T05:29:18Z"
+    },
+    {
+      "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 16,
+      "started_at": "2026-11-17T05:29:18Z",
+      "completed_at": "2026-11-17T05:29:21Z"
+    },
+    {
+      "name": "Retain the successful executable package and byte inventory",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 17,
+      "started_at": "2026-11-17T05:29:21Z",
+      "completed_at": "2026-11-17T05:29:21Z"
+    }
+  ],
+  "actual_failure": {
+    "ctest_name": "test_standalone_preset_raster",
+    "test_number": 226,
+    "ordinal": 52,
+    "selected_tests": 68,
+    "passed": 67,
+    "nonpassing": 1,
+    "total_ctest_seconds": 770.85,
+    "ctest_exit_code": 8,
+    "failure_kind": "CTest timeout",
+    "configured_limit_seconds": 30,
+    "reported_elapsed_seconds": 30.05,
+    "start_utc": "2026-11-17T05:23:47.0723260Z",
+    "timeout_result_utc": "2026-11-17T05:24:17.1204410Z",
+    "ctest_parallelism": 1,
+    "all_68_distinct_result_rows_and_ordinals_checked": true,
+    "only_nonpassing_row": {
+      "line": 4512,
+      "ordinal": 52,
+      "total": 68,
+      "test_number": 226,
+      "name": "test_standalone_preset_raster",
+      "result": "***Timeout  30.05 sec"
+    },
+    "fixture_assertion_output_observed": false,
+    "fixture_completed_case_counters_observed": false,
+    "completed_paint_count_at_termination": null,
+    "termination_operation": null
+  },
+  "evidence": {
+    "complete_log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811-complete.log.gz",
+      "gzip_bytes": 108687,
+      "gzip_sha256": "bbdbe84b6ac9ff78d787118c0f6e4367a2436c5478a83181e5b1ce0b13935933",
+      "decoded_bytes": 1001243,
+      "decoded_sha256": "d784acb29532c6e5fba48ee750851af7149f6dd5637074b372836e88a9b6cc07",
+      "independently_decompressed_and_inspected": true
+    },
+    "exact_blocks_verified_against_complete_log": [
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811-preset-timeout.log",
+        "original_start_line": 4503,
+        "original_end_line": 4512,
+        "bytes": 1019,
+        "sha256": "663f272071e6e9686d018f3c12126acb808c6afbf45e8e76eab60fdb55248a37"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811-final-test-failure.log",
+        "original_start_line": 4946,
+        "original_end_line": 4976,
+        "bytes": 2407,
+        "sha256": "d63c5d59904c22e5ebeedc07393db78a1b6d1ddc3894a8df95e962ead5dd1803"
+      }
+    ],
+    "a53_job_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811.json",
+      "sha256": "0eddb4b23691e10abd1bc85f0a85aa19b4ee99f1a67bfbcdf0de6ac0b02e41a1"
+    },
+    "all_result_rows": [
+      {
+        "line": 2780,
+        "ordinal": 1,
+        "total": 68,
+        "test_number": 175,
+        "name": "test_standalone_install",
+        "result": "Passed   22.33 sec"
+      },
+      {
+        "line": 2788,
+        "ordinal": 2,
+        "total": 68,
+        "test_number": 176,
+        "name": "test_standalone_channel_acceptance",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 2796,
+        "ordinal": 3,
+        "total": 68,
+        "test_number": 177,
+        "name": "test_standalone_channel_modes",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 2814,
+        "ordinal": 4,
+        "total": 68,
+        "test_number": 178,
+        "name": "test_standalone_concurrency",
+        "result": "Passed    0.18 sec"
+      },
+      {
+        "line": 2822,
+        "ordinal": 5,
+        "total": 68,
+        "test_number": 179,
+        "name": "test_standalone_expression_calibration",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 2830,
+        "ordinal": 6,
+        "total": 68,
+        "test_number": 180,
+        "name": "test_standalone_external_control",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 2838,
+        "ordinal": 7,
+        "total": 68,
+        "test_number": 181,
+        "name": "test_standalone_inspection_acceptance",
+        "result": "Passed    0.02 sec"
+      },
+      {
+        "line": 2846,
+        "ordinal": 8,
+        "total": 68,
+        "test_number": 182,
+        "name": "test_standalone_inspection_author",
+        "result": "Passed    0.10 sec"
+      },
+      {
+        "line": 2856,
+        "ordinal": 9,
+        "total": 68,
+        "test_number": 183,
+        "name": "test_standalone_midi_concurrency",
+        "result": "Passed    0.08 sec"
+      },
+      {
+        "line": 2864,
+        "ordinal": 10,
+        "total": 68,
+        "test_number": 184,
+        "name": "test_standalone_midi_discovery",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 2872,
+        "ordinal": 11,
+        "total": 68,
+        "test_number": 185,
+        "name": "test_standalone_midi_input",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 2880,
+        "ordinal": 12,
+        "total": 68,
+        "test_number": 186,
+        "name": "test_standalone_midi_replay",
+        "result": "Passed    0.02 sec"
+      },
+      {
+        "line": 2888,
+        "ordinal": 13,
+        "total": 68,
+        "test_number": 187,
+        "name": "test_standalone_midi_session",
+        "result": "Passed    0.05 sec"
+      },
+      {
+        "line": 2896,
+        "ordinal": 14,
+        "total": 68,
+        "test_number": 188,
+        "name": "test_standalone_percussion_reference",
+        "result": "Passed    0.02 sec"
+      },
+      {
+        "line": 2904,
+        "ordinal": 15,
+        "total": 68,
+        "test_number": 189,
+        "name": "test_standalone_preset_concurrency",
+        "result": "Passed    0.03 sec"
+      },
+      {
+        "line": 2912,
+        "ordinal": 16,
+        "total": 68,
+        "test_number": 190,
+        "name": "test_standalone_preset_ui",
+        "result": "Passed    0.74 sec"
+      },
+      {
+        "line": 2921,
+        "ordinal": 17,
+        "total": 68,
+        "test_number": 191,
+        "name": "test_standalone_projection",
+        "result": "Passed    0.54 sec"
+      },
+      {
+        "line": 2929,
+        "ordinal": 18,
+        "total": 68,
+        "test_number": 192,
+        "name": "test_standalone_reference_layout",
+        "result": "Passed    0.05 sec"
+      },
+      {
+        "line": 2937,
+        "ordinal": 19,
+        "total": 68,
+        "test_number": 193,
+        "name": "test_standalone_registration_library",
+        "result": "Passed    0.41 sec"
+      },
+      {
+        "line": 2945,
+        "ordinal": 20,
+        "total": 68,
+        "test_number": 194,
+        "name": "test_standalone_session",
+        "result": "Passed    0.45 sec"
+      },
+      {
+        "line": 2956,
+        "ordinal": 21,
+        "total": 68,
+        "test_number": 195,
+        "name": "test_standalone_state_files",
+        "result": "Passed    0.05 sec"
+      },
+      {
+        "line": 2964,
+        "ordinal": 22,
+        "total": 68,
+        "test_number": 196,
+        "name": "test_standalone_ui",
+        "result": "Passed    0.09 sec"
+      },
+      {
+        "line": 2972,
+        "ordinal": 23,
+        "total": 68,
+        "test_number": 197,
+        "name": "test_standalone_whole_reference",
+        "result": "Passed    0.27 sec"
+      },
+      {
+        "line": 2980,
+        "ordinal": 24,
+        "total": 68,
+        "test_number": 198,
+        "name": "test_standalone_workspace_acceptance",
+        "result": "Passed    0.08 sec"
+      },
+      {
+        "line": 3051,
+        "ordinal": 25,
+        "total": 68,
+        "test_number": 199,
+        "name": "test_standalone_workspace_continuity",
+        "result": "Passed    6.99 sec"
+      },
+      {
+        "line": 3059,
+        "ordinal": 26,
+        "total": 68,
+        "test_number": 200,
+        "name": "test_standalone_workspaces_author",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 3082,
+        "ordinal": 27,
+        "total": 68,
+        "test_number": 201,
+        "name": "test_standalone_midi_backend",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 3093,
+        "ordinal": 28,
+        "total": 68,
+        "test_number": 202,
+        "name": "test_standalone_midi_backend_quarantine",
+        "result": "Passed    0.01 sec"
+      },
+      {
+        "line": 3106,
+        "ordinal": 29,
+        "total": 68,
+        "test_number": 203,
+        "name": "test_standalone_benchmark",
+        "result": "Passed    5.43 sec"
+      },
+      {
+        "line": 3114,
+        "ordinal": 30,
+        "total": 68,
+        "test_number": 204,
+        "name": "test_standalone_reference_apron_raster",
+        "result": "Passed    8.92 sec"
+      },
+      {
+        "line": 3123,
+        "ordinal": 31,
+        "total": 68,
+        "test_number": 205,
+        "name": "test_standalone_reference_apron_art",
+        "result": "Passed    0.06 sec"
+      },
+      {
+        "line": 3131,
+        "ordinal": 32,
+        "total": 68,
+        "test_number": 206,
+        "name": "test_standalone_reference_apron_unavailable",
+        "result": "Passed    8.84 sec"
+      },
+      {
+        "line": 3140,
+        "ordinal": 33,
+        "total": 68,
+        "test_number": 207,
+        "name": "test_standalone_drawing",
+        "result": "Passed    0.23 sec"
+      },
+      {
+        "line": 3148,
+        "ordinal": 34,
+        "total": 68,
+        "test_number": 208,
+        "name": "test_standalone_quad_drawing",
+        "result": "Passed    0.02 sec"
+      },
+      {
+        "line": 3156,
+        "ordinal": 35,
+        "total": 68,
+        "test_number": 209,
+        "name": "test_standalone_workspace_raster",
+        "result": "Passed   18.38 sec"
+      },
+      {
+        "line": 3165,
+        "ordinal": 36,
+        "total": 68,
+        "test_number": 210,
+        "name": "test_standalone_inspection_raster",
+        "result": "Passed    1.40 sec"
+      },
+      {
+        "line": 3173,
+        "ordinal": 37,
+        "total": 68,
+        "test_number": 211,
+        "name": "test_standalone_material_acceptance",
+        "result": "Passed   15.37 sec"
+      },
+      {
+        "line": 3181,
+        "ordinal": 38,
+        "total": 68,
+        "test_number": 212,
+        "name": "test_standalone_waveform_material",
+        "result": "Passed   23.41 sec"
+      },
+      {
+        "line": 3189,
+        "ordinal": 39,
+        "total": 68,
+        "test_number": 213,
+        "name": "test_standalone_product_visual",
+        "result": "Passed   53.74 sec"
+      },
+      {
+        "line": 3197,
+        "ordinal": 40,
+        "total": 68,
+        "test_number": 214,
+        "name": "test_standalone_percussion_raster",
+        "result": "Passed   29.67 sec"
+      },
+      {
+        "line": 3205,
+        "ordinal": 41,
+        "total": 68,
+        "test_number": 215,
+        "name": "test_standalone_upper_rack_material_raster",
+        "result": "Passed   30.02 sec"
+      },
+      {
+        "line": 3213,
+        "ordinal": 42,
+        "total": 68,
+        "test_number": 216,
+        "name": "test_standalone_lower_rack_material_raster",
+        "result": "Passed   27.55 sec"
+      },
+      {
+        "line": 3221,
+        "ordinal": 43,
+        "total": 68,
+        "test_number": 217,
+        "name": "test_standalone_footage_typography_raster",
+        "result": "Passed   22.23 sec"
+      },
+      {
+        "line": 4392,
+        "ordinal": 44,
+        "total": 68,
+        "test_number": 218,
+        "name": "test_standalone_title_density",
+        "result": "Passed   12.00 sec"
+      },
+      {
+        "line": 4400,
+        "ordinal": 45,
+        "total": 68,
+        "test_number": 219,
+        "name": "test_standalone_typography_clips",
+        "result": "Passed    8.40 sec"
+      },
+      {
+        "line": 4408,
+        "ordinal": 46,
+        "total": 68,
+        "test_number": 220,
+        "name": "test_standalone_header_material",
+        "result": "Passed   69.44 sec"
+      },
+      {
+        "line": 4416,
+        "ordinal": 47,
+        "total": 68,
+        "test_number": 221,
+        "name": "test_standalone_header_statistics",
+        "result": "Passed    1.50 sec"
+      },
+      {
+        "line": 4424,
+        "ordinal": 48,
+        "total": 68,
+        "test_number": 222,
+        "name": "test_standalone_header_grain_bounds",
+        "result": "Passed    0.04 sec"
+      },
+      {
+        "line": 4432,
+        "ordinal": 49,
+        "total": 68,
+        "test_number": 223,
+        "name": "test_standalone_manual_key_material_raster",
+        "result": "Passed    7.76 sec"
+      },
+      {
+        "line": 4440,
+        "ordinal": 50,
+        "total": 68,
+        "test_number": 224,
+        "name": "test_standalone_keyboard_rim_raster",
+        "result": "Passed   22.73 sec"
+      },
+      {
+        "line": 4505,
+        "ordinal": 51,
+        "total": 68,
+        "test_number": 225,
+        "name": "test_standalone_scaled_view",
+        "result": "Passed   39.62 sec"
+      },
+      {
+        "line": 4512,
+        "ordinal": 52,
+        "total": 68,
+        "test_number": 226,
+        "name": "test_standalone_preset_raster",
+        "result": "***Timeout  30.05 sec"
+      },
+      {
+        "line": 4538,
+        "ordinal": 53,
+        "total": 68,
+        "test_number": 227,
+        "name": "test_standalone_audio_device",
+        "result": "Passed    3.24 sec"
+      },
+      {
+        "line": 4549,
+        "ordinal": 54,
+        "total": 68,
+        "test_number": 228,
+        "name": "test_standalone_device_removal",
+        "result": "Passed    0.32 sec"
+      },
+      {
+        "line": 4578,
+        "ordinal": 55,
+        "total": 68,
+        "test_number": 229,
+        "name": "test_standalone_callback_allocation",
+        "result": "Passed    1.07 sec"
+      },
+      {
+        "line": 4614,
+        "ordinal": 56,
+        "total": 68,
+        "test_number": 230,
+        "name": "test_standalone_app",
+        "result": "Passed   20.09 sec"
+      },
+      {
+        "line": 4651,
+        "ordinal": 57,
+        "total": 68,
+        "test_number": 231,
+        "name": "test_standalone_midi_cli",
+        "result": "Passed   40.20 sec"
+      },
+      {
+        "line": 4669,
+        "ordinal": 58,
+        "total": 68,
+        "test_number": 232,
+        "name": "test_standalone_expression_diagnostics",
+        "result": "Passed    3.32 sec"
+      },
+      {
+        "line": 4692,
+        "ordinal": 59,
+        "total": 68,
+        "test_number": 233,
+        "name": "test_standalone_native_calibration",
+        "result": "Passed   21.00 sec"
+      },
+      {
+        "line": 4721,
+        "ordinal": 60,
+        "total": 68,
+        "test_number": 234,
+        "name": "test_standalone_native_midi_replay",
+        "result": "Passed   43.14 sec"
+      },
+      {
+        "line": 4748,
+        "ordinal": 61,
+        "total": 68,
+        "test_number": 235,
+        "name": "test_standalone_workflows",
+        "result": "Passed   67.38 sec"
+      },
+      {
+        "line": 4781,
+        "ordinal": 62,
+        "total": 68,
+        "test_number": 236,
+        "name": "test_standalone_workspace_replay",
+        "result": "Passed   55.27 sec"
+      },
+      {
+        "line": 4791,
+        "ordinal": 63,
+        "total": 68,
+        "test_number": 237,
+        "name": "test_standalone_replay_paint_boundary",
+        "result": "Passed    1.44 sec"
+      },
+      {
+        "line": 4801,
+        "ordinal": 64,
+        "total": 68,
+        "test_number": 238,
+        "name": "test_standalone_semantic_paint_boundary",
+        "result": "Passed    1.63 sec"
+      },
+      {
+        "line": 4824,
+        "ordinal": 65,
+        "total": 68,
+        "test_number": 239,
+        "name": "test_standalone_replay_boundaries",
+        "result": "Passed    6.44 sec"
+      },
+      {
+        "line": 4839,
+        "ordinal": 66,
+        "total": 68,
+        "test_number": 240,
+        "name": "test_standalone_chapel",
+        "result": "Passed   24.54 sec"
+      },
+      {
+        "line": 4865,
+        "ordinal": 67,
+        "total": 68,
+        "test_number": 241,
+        "name": "test_standalone_starter_load",
+        "result": "Passed   12.10 sec"
+      },
+      {
+        "line": 4875,
+        "ordinal": 68,
+        "total": 68,
+        "test_number": 242,
+        "name": "test_standalone_input_replay",
+        "result": "Passed    0.09 sec"
+      }
+    ],
+    "preset_command_and_guard_lines": [
+      {
+        "line": 4509,
+        "text": "226: Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/test_standalone_preset_raster"
+      },
+      {
+        "line": 4510,
+        "text": "226: Working Directory: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone"
+      },
+      {
+        "line": 4511,
+        "text": "226: Test timeout computed to be: 30"
+      }
+    ]
+  },
+  "independent_source_comparison": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_preset_raster.cpp",
+      "bytes": 19942,
+      "sha256": "5733e529ecb06609d2e19fa9a367450a66ca8a2a41d99b5b7d42bfbbebe210eb",
+      "compared_revisions": [
+        "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "current worktree"
+      ],
+      "all_byte_identical": true
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+      "compared_revisions": [
+        "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "current worktree"
+      ],
+      "all_byte_identical": true
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+      "compared_revisions": [
+        "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "current worktree"
+      ],
+      "all_byte_identical": true
+    },
+    {
+      "path": "apps/standalone/Drawing.cpp",
+      "bytes": 22378,
+      "sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a",
+      "compared_revisions": [
+        "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "current worktree"
+      ],
+      "all_byte_identical": true
+    },
+    {
+      "path": "apps/standalone/FontData.h",
+      "bytes": 204816,
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "compared_revisions": [
+        "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "current worktree"
+      ],
+      "all_byte_identical": true
+    }
+  ],
+  "workload_analysis": {
+    "fixture_read_in_full": true,
+    "source_lines": 396,
+    "dimensions": [
+      [
+        960,
+        700
+      ],
+      [
+        1280,
+        900
+      ],
+      [
+        1672,
+        941
+      ],
+      [
+        1400,
+        820
+      ]
+    ],
+    "presentations": [
+      "Dimensional",
+      "Flat"
+    ],
+    "combinations": 8,
+    "full_paints_per_combination": 32,
+    "full_paints_total": 256,
+    "readbacks_per_combination": 34,
+    "readbacks_total": 272,
+    "count_derivation": "Each combination: focus baseline plus 24 focused paints, seven pending/applied/Cancel/rejection paints = 32 full paints; independent glyph mask and material template add two readbacks. Eight combinations produce 256 paints and 272 readbacks.",
+    "expected_complete_counters": {
+      "label_focus": 192,
+      "accidental_glyph": 160,
+      "isolation": 752,
+      "state": 96,
+      "failures": 0
+    },
+    "software_only": true,
+    "creates_window": false,
+    "opens_audio_device": false,
+    "launches_child": false,
+    "internal_duration_assertion": false,
+    "ordinary_ctest_guard_seconds": 30,
+    "existing_sanitizer_only_guard_seconds": 300,
+    "timed_out_run_completion_counters_unknown": true,
+    "assertion_reporting": "check() writes FAIL to stderr when a condition fails; require() throws and main reports setup errors. Complete counters are printed only after all combinations finish. The failed stream contains none of these fixture outputs."
+  },
+  "independently_reproduced_historical_and_sibling_observations": [
+    {
+      "job_id": 133814025354,
+      "source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "family": "macOS Intel ordinary Release",
+      "configured_test_limit_seconds": 30,
+      "reported_seconds": 21.31,
+      "result": "Passed",
+      "complete_case_counters_observed": true,
+      "complete_log": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025354-complete.log.gz",
+      "complete_decoded_bytes": 1034185,
+      "complete_decoded_sha256": "2dd81d27781e71ad44a3a476826345c2e34d843035070d52e814f889cdd01428",
+      "exact_relevant_lines": [
+        {
+          "line": 4566,
+          "text": "226: Test timeout computed to be: 30"
+        },
+        {
+          "line": 4567,
+          "text": "226: Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio"
+        },
+        {
+          "line": 4568,
+          "text": "52/68 Test #226: test_standalone_preset_raster .................   Passed   21.31 sec"
+        }
+      ]
+    },
+    {
+      "job_id": 133832484738,
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "family": "Linux MIDI ON ordinary Release",
+      "configured_test_limit_seconds": 30,
+      "reported_seconds": 8.51,
+      "result": "Passed",
+      "complete_case_counters_observed": true,
+      "complete_log": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484738-complete.log.gz",
+      "complete_decoded_bytes": 1036438,
+      "complete_decoded_sha256": "73065af37a926eb68d56017687d2e1eca6ce9145a3bfcfe5f4f83fee1aaba131",
+      "exact_relevant_lines": [
+        {
+          "line": 4945,
+          "text": "226: Test timeout computed to be: 30"
+        },
+        {
+          "line": 4946,
+          "text": "226: Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio"
+        },
+        {
+          "line": 4947,
+          "text": "52/68 Test #226: test_standalone_preset_raster .................   Passed    8.51 sec"
+        }
+      ]
+    },
+    {
+      "job_id": 133832484541,
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "family": "Linux MIDI OFF ordinary Release",
+      "configured_test_limit_seconds": 30,
+      "reported_seconds": 13.02,
+      "result": "Passed",
+      "complete_case_counters_observed": true,
+      "complete_log": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484541-complete.log.gz",
+      "complete_decoded_bytes": 1023871,
+      "complete_decoded_sha256": "725c12c1645b8eacc2460f9a918f950c2ed94738f67452bb303c354cfac4a36e",
+      "exact_relevant_lines": [
+        {
+          "line": 4896,
+          "text": "226: Test timeout computed to be: 30"
+        },
+        {
+          "line": 4897,
+          "text": "226: Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio"
+        },
+        {
+          "line": 4898,
+          "text": "52/68 Test #226: test_standalone_preset_raster .................   Passed   13.02 sec"
+        }
+      ]
+    },
+    {
+      "job_id": 133832484806,
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "family": "macOS ARM64 ordinary Release",
+      "configured_test_limit_seconds": 30,
+      "reported_seconds": 11.27,
+      "result": "Passed",
+      "complete_case_counters_observed": true,
+      "complete_log": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484806-complete.log.gz",
+      "complete_decoded_bytes": 1020577,
+      "complete_decoded_sha256": "9808fca23b39a712df9b7defebf108aa3f2d21a474d657d87cf5063ea97748d7",
+      "exact_relevant_lines": [
+        {
+          "line": 4412,
+          "text": "226: Test timeout computed to be: 30"
+        },
+        {
+          "line": 4413,
+          "text": "226: Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio"
+        },
+        {
+          "line": 4414,
+          "text": "52/68 Test #226: test_standalone_preset_raster .................   Passed   11.27 sec"
+        }
+      ]
+    },
+    {
+      "job_id": 133832484818,
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "family": "Linux ASan/UBSan/leaks",
+      "configured_test_limit_seconds": 300,
+      "reported_seconds": 70.71,
+      "result": "Passed",
+      "complete_case_counters_observed": true,
+      "complete_log": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484818-complete.log.gz",
+      "complete_decoded_bytes": 1332434,
+      "complete_decoded_sha256": "f057bb5b91ff67c4cf8dbb018fd0da8ee61a5842aed80bb6751175c5afa38099",
+      "exact_relevant_lines": [
+        {
+          "line": 6754,
+          "text": "226: Test timeout computed to be: 300"
+        },
+        {
+          "line": 6755,
+          "text": "226: Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio"
+        },
+        {
+          "line": 6756,
+          "text": "31/34 Test #226: test_standalone_preset_raster .................   Passed   70.71 sec"
+        }
+      ]
+    },
+    {
+      "job_id": 133832484811,
+      "source_sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "family": "macOS Intel ordinary Release",
+      "configured_test_limit_seconds": 30,
+      "reported_seconds": 30.05,
+      "result": "***Timeout",
+      "complete_case_counters_observed": false,
+      "complete_log": "docs/development/2026-11-16-heading-title-continuation/reports/a53-repair-standalone-hosted/job-133832484811-complete.log.gz",
+      "complete_decoded_bytes": 1001243,
+      "complete_decoded_sha256": "d784acb29532c6e5fba48ee750851af7149f6dd5637074b372836e88a9b6cc07",
+      "exact_relevant_lines": [
+        {
+          "line": 4511,
+          "text": "226: Test timeout computed to be: 30"
+        },
+        {
+          "line": 4512,
+          "text": "52/68 Test #226: test_standalone_preset_raster .................***Timeout  30.05 sec"
+        }
+      ]
+    }
+  ],
+  "timing_interpretation": [
+    "The hosted failure establishes noncompletion before the existing ordinary CTest guard. It does not establish a completed runtime of 30.05 seconds; 30.05 is the timeout disposition duration.",
+    "The previous Intel source ran the byte-identical fixture/painter/CMake/Drawing/font inputs to completion in 21.31 seconds under the same 30-second test guard. Current Linux and ARM ordinary completions have complete counters. Source equality does not assert identical binaries, host conditions or dependency execution behavior across runners.",
+    "The 70.71-second sanitizer pass uses separate instrumentation and an existing 300-second property. It cannot set a normal Intel Release timeout.",
+    "There is no measured remaining work, intermediate progress, completed counter set or asserted raster mismatch in the timed-out Intel process. A specific CPU, scheduler, machine-load, lockup or rendering-defect cause is unproven.",
+    "The fixture is finite raster correctness work under an external guard, with no internal real-time performance assertion. That distinction makes a separately justified guard review possible, but supplies no particular safe replacement number on its own.",
+    "The earlier local timing review was read as historical source-bound evidence. Its previous no-change admission is not treated as a binding veto on fresh evidence; the present no-change conclusion follows from the newly inspected hosted record and source comparison."
+  ],
+  "correction_disposition": {
+    "source_or_assertion_defect_identified": false,
+    "fresh_guard_change_admitted": false,
+    "new_timeout_value_proposed": null,
+    "reason": "The only new failure is censored at the existing bound. Neither its stream nor sibling timings establish the remaining work or a defensible replacement allowance. Selecting a larger number merely for a pass would not resolve the observed uncertainty.",
+    "preserve": [
+      "ordinary TIMEOUT 30",
+      "existing sanitizer-only TIMEOUT 300",
+      "all 256 paints and 272 readbacks",
+      "all dimensions, presentations, values and assertions",
+      "original timeout and aggregate failure",
+      "original complete log and exact blocks"
+    ],
+    "future_review_prerequisite": "A fresh prospective review may consider separately authorized, bounded evidence of complete runtime or phase/work-cost on the intended Intel configuration, with an explicit finite allowance and unchanged workload/criteria. No such experiment or retry is authorized or performed by this review."
+  },
+  "publication_disposition": {
+    "helper_only_publication_supported": true,
+    "helper_qualification_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json",
+    "helper_qualification_sha256": "b0b39536d7025541d8e5a47930a2acea21d2fa34edf636f19f12ac1b3573f858",
+    "qualified_affected_tests": "2/2 local Linux; exact binary/inventory/default/numerical equivalence at the recorded scope",
+    "candidate_fixture_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+    "candidate_statistics_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+    "preset_and_workflow_changed_by_helper_correction": false,
+    "all_sixteen_required_families_must_be_observed_at_new_source": true,
+    "successor_sha": null,
+    "successor_outcome": null,
+    "claim_limits": [
+      "The helper correction addresses the separate MSVC C4702 compilation diagnostic at its independently admitted scope. It is not a preset-raster timing fix.",
+      "The current Intel job remains 67/68 with exit 8. Its post-acceptance source/dependency check and relocated executable package workflow steps remain skipped; earlier install CTest success does not substitute for them.",
+      "A later unchanged-preset pass is a separate exact-source/runner observation. It does not erase this timeout, prove repeated stability or establish a repaired cause.",
+      "Current Core and VST3 successes and standalone sanitizer completion remain their own results; future source is not automatically qualified.",
+      "Do not retry solely to obtain a green aggregate. Preserve original outcomes and inspect each required successor job and unreached tail honestly."
+    ]
+  },
+  "frozen_a52_records_verified": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/notes/A52.md",
+      "sha256": "d2f1a24a5a242c8753773f765d557579e2f148751c4379149b5156065b1735e1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted.json",
+      "sha256": "8f6a0889ea7e88db535c332930d82e6b5970a62f56c79a1d7c719ec73a901336",
+      "unchanged": true
+    },
+    {
+      "path": "docs/reviews/HEADING_HEADER_CORE_HOSTED.md",
+      "sha256": "c38e1200775190b34a00eb14be7d971c0bb61c7c74881602eb160a60671538d0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted.json",
+      "sha256": "e4240e0dd1700c7b28ef7ab5fc0124e514c46ced2be76af7fe1ec2bc5cfb1726",
+      "unchanged": true
+    },
+    {
+      "path": "docs/reviews/HEADING_HEADER_REPAIR_CORE_HOSTED.md",
+      "sha256": "2c549eaeb4ef0f1ab0a729e9d552359a3fee0adf89ee9695626b1fdef02f94be",
+      "unchanged": true
+    }
+  ],
+  "actions": {
+    "native_runs": 0,
+    "builds": 0,
+    "tests_executed": 0,
+    "ci_retries": 0,
+    "source_workflow_or_existing_document_edits": 0,
+    "remote_mutations": 0,
+    "new_workers": 0,
+    "only_new_output": "docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json"
+  },
+  "product_limits": "Literal whole-interface 1:1 and physical/hardware/DAW/accessibility/release gates remain separately open."
+}

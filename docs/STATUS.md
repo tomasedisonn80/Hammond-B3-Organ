@@ -13,7 +13,7 @@ All **60 distinct workers were dispatched in ten waves of six;
 60 deliveries are accepted**.
 All ten waves have six accepted deliveries.
 Follow-ups retain their original worker identities and create no additional credit.
-The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
 passes with zero pending workers/errors; it verifies record consistency only.
 Use the live ledger for subsequent follow-up ownership.
 
@@ -77,8 +77,8 @@ is `6047723b595259de355c74342e48a8ae2ee1e228`, tree
 all pass, including both macOS architectures, after one unchanged core-sanitizer
 retry. The original first-attempt 15 successes / one completion timeout remains
 retained. T2 hosted results do not qualify the changed T3/H1/test sources.
-The current `fba1911…` publication and original hosted outcomes are recorded
-below; T2 remains historical evidence, not successor qualification.
+The original `fba1911…` and current published `03c70c1…` outcomes are recorded
+below; T2 remains historical evidence, not qualification of either later source.
 
 The [test-only race repair](reviews/RENDER_RACE_COMPLETION_REVIEW.md) changes only
 the post-resume completion guard from 15 to 45 seconds, preserving its workload,
@@ -178,7 +178,32 @@ and [two actual current-app captures](reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md)
 are independently accepted by A56 and A55. They use `1fa2a247…` and leave the
 historical fifteen-view H1 gallery and original 600 ms smoke failure intact.
 
-The [verified source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+The [current verified publication](development/2026-11-16-heading-title-continuation/reports/hosted-repair-publication.json) is
+`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
+`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
+and independent API/Git checks verify the exact commit, tree, parent and contents.
+This is the published three-input repair, separate from the next locally
+qualified helper correction, which is not yet published.
+
+The [complete published-source matrix](development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json)
+contains **14 successes and two failures**, with all sixteen attempt-one jobs
+terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
+Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
+job executes and passes **34/34 gates**. Windows job `133832484867` fails
+C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
+`133832484811` completes **67/68**, with preset raster timing out at **30.05
+seconds** under its unchanged **30-second** guard; post-acceptance source/
+dependency verification and relocated executable packaging remain skipped.
+The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+are complete. They retain that failed gate, its full workload and unchanged
+guard, and permit only the separately qualified Windows helper publication
+with complete evidence and current documentation. The timeout supplies no
+completed counters or measured remaining runtime; no timing fix, specific
+cause or repeated stability is claimed. No local or CI retry is admitted.
+
+The [original source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
 `fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
 `b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
 `9d60dbf462a90fe422fd4e69757fe202264acb7c` and
@@ -200,7 +225,7 @@ later tests incomplete. No sanitizer finding or originating cancellation cause
 is established. It is not a successful sanitizer gate. Original logs, failures
 and cancelled/unreached work remain retained.
 
-The [independently reviewed Windows fixture correction](reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md)
+The [first independently reviewed Windows fixture correction](reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md)
 is [locally qualified](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json):
 two explicit float casts plus one active fixture-hash literal across two files.
 Both affected CTests pass **2/2 in 43.593519385 seconds**. The Linux fixture
@@ -209,19 +234,47 @@ are identical. All **103/103** canonical criteria pass; complete statistics
 differ only in the two source identity values, with unchanged canonical pixels.
 At this Windows-only stage, **473 of 475 qualified code inputs are unchanged**.
 Production app `1fa2a247…`, painter, workloads, criteria and historical comparators
-are unchanged. This is local equivalence evidence; successor MSVC compilation
-and hosted acceptance remain pending.
+are unchanged. This first local correction entered published `03c70c1`;
+its Windows job subsequently failed C4702 at the optional-helper fallback.
+That actual compilation failure remains retained separately.
 
 Root [implemented the separately admitted sanitizer job budget](development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json):
 only `jobs.native-sanitizers.timeout-minutes` changes **20 → 35 minutes**.
 Every other workflow byte, all 34 selected tests, 31 build inputs, individual
 test/child limits, workloads, instrumentation and leak policies are unchanged.
-The final successor changes only the Windows fixture pair and workflow scalar:
+Published `03c70c1` changed only the Windows fixture pair and workflow scalar:
 **exactly three of 475 inputs change; 472 remain unchanged**. Production
 sources and app `1fa2a247…` are unchanged. The observed prefix plus existing
 tail-limit envelope is 1,823.666679 seconds; this supports the job allowance
-without proving what caused the original cancellation. Successor publication
-and all exact-source hosted results remain pending; no successor SHA is recorded.
+without proving what caused the original cancellation. Publication is verified
+at `03c70c1`; its actual hosted outcomes are identified above.
+
+The [next two-file helper correction](development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json)
+is implemented and locally qualified. It moves the same false return into an
+explicit `else` for the dependent `if constexpr` helper predicate and updates
+the one active fixture-hash literal. Both existing affected CTests pass
+**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
+48 actual cases, the exact **10,542-check/163-painting** default result and
+**103/103** canonical criteria. Complete statistics differ only in the two
+recorded source identities; canonical pixels and historical comparators are
+unchanged. Both helper-present and helper-absent specializations are preserved
+by independent source/instantiation review; **no new helper-absent runtime
+execution is claimed**.
+
+Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
+remain unchanged**. Relative to original `fba1911`, the total is still **three
+changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
+`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
+sanitizer job allowance remain unchanged. Every test/child bound, workload,
+instrumented input and leak policy is preserved. **The next helper-source
+publication and all of its exact-source hosted results remain pending; no
+publication SHA is recorded for it.** Local Linux equivalence is not MSVC
+compilation or execution evidence. The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
+permit publishing only this separately qualified helper pair with complete
+evidence and current documentation. The preset raster retains its failed
+Intel result, unchanged 30-second guard and full workload; the helper pair
+is not admitted as a timing fix.
 
 The adopted comparators retain their historical protected-main pin; the
 [reconciliation review](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md)
@@ -231,8 +284,9 @@ runtime sources.
 
 The [original local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
 retains the failed full-run result and three separate passing diagnostics.
-Publication is complete at `fba1911…`; its original standalone failure and
-cancellation remain open qualification evidence. Successor acceptance is pending.
+Original `fba1911…` and published `03c70c1…` keep their separate source-bound
+outcomes. Their failures are retained; the next helper-corrected publication
+and its own hosted qualification remain pending.
 
 The [independent actual-workspace review](reviews/WORKSPACE_STARTUP_ACTUAL_QUALIFICATION.md)
 verifies all 37 children, 101 painted visits, 37 saved files and 150 retained member files. Root separately verifies the
@@ -270,9 +324,13 @@ if needed.
 ### Current next actions and product boundaries
 
 Follow [the current next-step sequence](NEXT_STEPS.md#current-heading-title-and-header-continuation--17-november-2026)
-and [complete milestone exits](PLAN.md#milestones-and-exit-evidence). Complete
-guarded publication of the implemented three-input successor and all sixteen
-successor hosted reviews, then final evidence/recovery publication. Strict
+and [complete milestone exits](PLAN.md#milestones-and-exit-evidence). Preserve
+the complete `03c70c1` terminal record and the admitted Intel disposition:
+retain the preset timeout and unchanged 30-second guard, publish only the
+locally qualified two-file helper correction with evidence/current documentation,
+and observe all sixteen new-source hosted families before final
+evidence/recovery publication. The helper publication/CI are pending;
+its 2/475 input delta preserves production and the 35-minute job budget. Strict
 sixty-record closure has passed. Recover
 the manual/rim/cap, browser/semantic and contact/scanner owners before assigning
 overlapping paths. Complete loaded AO-28/Leslie graphs, identified raw captures,

@@ -1,3 +1,201 @@
+# Published outcomes retained; helper publication admitted — 17 November 2026
+
+The [current verified publication](reports/hosted-repair-publication.json) is
+`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
+`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
+and independent API/Git checks verify the exact commit, tree, parent and contents.
+This is the published three-input repair, separate from the next locally
+qualified helper correction, which is not yet published.
+
+The [complete published-source matrix](reports/hosted-repair-ci-complete.json)
+contains **14 successes and two failures**, with all sixteen attempt-one jobs
+terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
+Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
+job executes and passes **34/34 gates**. Windows job `133832484867` fails
+C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
+`133832484811` completes **67/68**, with preset raster timing out at **30.05
+seconds** under its unchanged **30-second** guard; post-acceptance source/
+dependency verification and relocated executable packaging remain skipped.
+The [independent Intel review](reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](reports/helper-publication-admission.json)
+are complete. They retain that failed gate, its full workload and unchanged
+guard, and permit only the separately qualified Windows helper publication
+with complete evidence and current documentation. The timeout supplies no
+completed counters or measured remaining runtime; no timing fix, specific
+cause or repeated stability is claimed. No local or CI retry is admitted.
+
+The [next two-file helper correction](reports/windows-helper-local-qualification.json)
+is implemented and locally qualified. It moves the same false return into an
+explicit `else` for the dependent `if constexpr` helper predicate and updates
+the one active fixture-hash literal. Both existing affected CTests pass
+**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
+48 actual cases, the exact **10,542-check/163-painting** default result and
+**103/103** canonical criteria. Complete statistics differ only in the two
+recorded source identities; canonical pixels and historical comparators are
+unchanged. Both helper-present and helper-absent specializations are preserved
+by independent source/instantiation review; **no new helper-absent runtime
+execution is claimed**.
+
+Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
+remain unchanged**. Relative to original `fba1911`, the total is still **three
+changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
+`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
+sanitizer job allowance remain unchanged. Every test/child bound, workload,
+instrumented input and leak policy is preserved. **The next helper-source
+publication and all of its exact-source hosted results remain pending; no
+publication SHA is recorded for it.** Local Linux equivalence is not MSVC
+compilation or execution evidence. The [independent Intel review](reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+and [root publication admission](reports/helper-publication-admission.json)
+permit publishing only this separately qualified helper pair with complete
+evidence and current documentation. The preset raster retains its failed
+Intel result, unchanged 30-second guard and full workload; the helper pair
+is not admitted as a timing fix.
+
+## Dependency-ready next action
+
+The complete published `03c70c1` matrix remains **14 successes and two
+failures**, including Windows C4702 and the Intel preset-raster timeout.
+The [independent Intel review](reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
+is complete, and [root's publication admission](reports/helper-publication-admission.json)
+permits publishing only the separately reviewed, locally qualified two-file
+Windows helper correction with complete evidence and current documentation.
+Preserve the normal preset **30-second guard**, all **256 paints/272 readbacks**,
+every assertion and the original failed result. The timeout provides no
+completed counters or measured remaining runtime; no timing fix or specific
+cause is claimed. A later pass would be a separate source/runner observation,
+not proof of repaired cause or repeated stability.
+
+Root must check the exact staged repository and strict worker records, publish
+with a fresh expected remote head and no force, independently verify the exact
+commit/tree/parent/contents, and release the same A52 Core, A53 standalone and
+A54 VST3 reviewers for **all sixteen new-source families**. The next helper
+publication and its CI remain pending; do not invent a SHA or transfer earlier
+passes. Preserve both earlier Windows failures, the Intel failure and its
+skipped post-acceptance/package steps, and the original sanitizer cancellation.
+Keep both helper specializations and do not claim a new helper-absent runtime
+run. Wait for all next-source jobs before another same-ref push, because
+workflow concurrency cancels older runs. All 60 deliveries and strict record
+closure remain complete; follow-ups add no worker credit. Root then commits
+and pushes accepted final evidence, README/current-plan/status/handoff and
+concrete next actions, and verifies remote contents. No local test or CI retry,
+aggregate-only rerun, timeout/oracle change or broader source repair is admitted.
+
+The [fresh strict record check](reports/helper-worker-strict.json)
+passes after the [exclusive follow-up ownership update](reports/helper-review-ownership.json).
+Only future evidence paths were added to the same A52/A53/A54 rows; accepted
+notes, statuses and acceptance fields remain unchanged. All 60 accepted
+deliveries and ten complete six-worker waves remain intact. The original
+strict receipt remains immutable.
+
+All 60 accepted records and notes remain frozen. Read the complete AGENTS/PLAN,
+current session and actual ledger before acting. Preserve every M0–M9 exit,
+future-agent setup/checkpoint/commit/push obligation, ownership and bounded
+storage cleanup rule. Current app captures and admitted T2/T3/H1 remain
+source-specific; **literal whole-interface 1:1 remains unmet and unwaived**.
+
+---
+
+## Retained source/helper preparation checkpoints
+
+The complete entries below are dated snapshots. Their former pending/current
+claims describe those snapshots; the current publication and next action are above.
+
+# Windows constexpr follow-up in qualification — 17 November 2026
+
+Published main remains `03c70c103a4a0dd72b323529416b909c19a4e139`; its three
+workflows are still being observed by the same A52/A53/A54 workers. Windows
+standalone job `133832484867` failed compilation with C4702 unreachable code
+at fixture line 49, promoted under the unchanged `/W4 /WX` policy. Its previous
+C4244 conversion diagnostics are absent, but the translation unit still failed;
+there is no successful MSVC fixture-object/binary claim. A53 retained its exact
+complete CRLF log and original failure blocks.
+
+The [separate prospective admission](reports/a53-repair-standalone-hosted/windows-helper-branch-admission.json)
+permits only moving the same false return into an explicit constexpr else and
+updating the one active statistics fixture hash. Both helper specializations,
+exceptions, caller guards, all 48 cases, assertions, values, workloads and bounds
+remain unchanged. Historical comparator pins remain untouched. Root applied the
+exact reviewed bytes: fixture SHA `86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6`,
+active statistics SHA `3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3`.
+Both original sources and the genuine old executable are preserved under
+`../windows-helper-before-native`, bound by [the original-identity receipt](reports/windows-helper-originals.json).
+
+The [target-only rebuild](reports/windows-helper-fixture-build.json) passed in
+15.443207377 seconds. Both existing affected CTests passed once, **2/2 in
+38.725693459 seconds**, under unchanged limits. The [complete qualification](reports/windows-helper-local-qualification.json)
+confirms byte-identical original/rebuilt Linux fixture, the same actual 48-case
+inventory, exact 10,542-check/163-painting default result and all 103 canonical
+criteria. Every complete statistics field is unchanged except the two new
+source identities. Production app `1fa2a247…`, painter, workflow and other
+473 code inputs relative to `03c70c1` are unchanged (472 relative to `fba1911`).
+Helper-absent preservation is an independent source/instantiation review;
+no new helper-absent runtime execution is claimed. No further local native
+execution is needed for this two-file fix; actual new-source MSVC acceptance
+remains the required hosted gate.
+
+Do not publish while the remaining original `03c70c1` jobs run: same-ref
+concurrency would cancel them. Preserve their complete outcomes before the next
+reviewed two-file correction is published and observed at its own exact source.
+The previous publication/checkpoint below retains its source-specific state.
+All 60 accepted notes and strict accounting remain complete and frozen.
+
+---
+
+# Repair published; successor CI in progress — 17 November 2026
+
+**Main is published at `03c70c103a4a0dd72b323529416b909c19a4e139`, tree
+`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, parent `fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`.**
+The [publication receipt](reports/hosted-repair-publication.json) records the
+nonforced expected-head update, independent API verification and successful Git
+fetch/content comparison. Local main follows the published commit without a
+reset; backup branch `session/heading-repair-local-17457` preserves the same-tree
+local authored commit. The worktree was clean immediately after alignment.
+
+The successor contains exactly the admitted three changed code/build inputs:
+two explicit fixture casts, its active hash transition, and only the native
+sanitizer job's 20 → 35-minute overall budget. The other 472 frozen inputs,
+production sources and app `1fa2a247…` are unchanged. Both affected local tests
+pass with exact binary/inventory/numerical equivalence. Every test deadline,
+workload, instrumented target and leak policy remains unchanged. Original
+`fba1911` results remain 14 successes, one Windows failure and one sanitizer
+cancellation; its incomplete gates are not passes.
+
+All **60 actual distinct workers and their notes are accepted in ten waves of
+six**. The [strict record check](reports/sixty-worker-strict.json) passes. Original
+notes and source-specific reviews are frozen; the same three workers use new
+follow-up reports, with no additional worker credit.
+
+| Same reviewer | Successor run, attempt 1 | Required jobs |
+| --- | --- | ---: |
+| A52 Core | [44021714612](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714612) | 6 |
+| A53 standalone | [44021714635](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714635) | 6 |
+| A54 VST3 | [44021714644](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44021714644) | 4 |
+
+**Next:** inspect all sixteen actual successor outcomes, especially Windows
+compilation/native packaging and the complete 34-gate instrumented sanitizer
+execution. Preserve failures and unreached gates if any; do not rerun merely to
+obtain a green aggregate. Do not push while these jobs run: same-ref workflow
+concurrency would cancel them. After all terminal outcomes are independently
+reviewed, root updates current README/plan/status/next actions/handoff, records
+source equivalence and repository integrity, commits/pushes the final evidence,
+and independently verifies the final remote tree. Source qualification and the
+later documentation/evidence closure must retain their distinct commit IDs.
+
+The exact staged archive passed repository links/PDF identity and strict worker
+records. Independent artifact review also verified original bytes for all five
+Windows VST3 members; narrow evidence-only attributes preserve them in Git.
+Free disk at publication was 47,869,566,976 bytes, about 44.6 GiB. No large new
+local build or full local test run is needed. Current installed captures and
+all M0–M9, literal UI 1:1, physical/device and native-accessibility gates retain
+their stated scope.
+
+## Retained earlier checkpoints
+
+The entries below are dated historical states. This opening owns current recovery.
+
+---
+
 # Original hosted results complete; successor ready for publication — 17 November 2026
 
 All **60 distinct workers were dispatched in ten waves of six;
