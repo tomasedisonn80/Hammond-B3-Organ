@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "exit_code": 0,
+  "ctests_passed": 5,
+  "ctests_failed": 0,
+  "elapsed_seconds": 0.12,
+  "sources": [
+    {
+      "path": "apps/standalone/LibraryModel.h",
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2"
+    },
+    {
+      "path": "apps/standalone/LibraryModel.cpp",
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98"
+    },
+    {
+      "path": "apps/standalone/UiModel.h",
+      "bytes": 18956,
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+    },
+    {
+      "path": "apps/standalone/UiModel.cpp",
+      "bytes": 83993,
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+    },
+    {
+      "path": "apps/standalone/Session.h",
+      "bytes": 8982,
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929"
+    },
+    {
+      "path": "apps/standalone/Session.cpp",
+      "bytes": 31176,
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3"
+    },
+    {
+      "path": "apps/standalone/RegistrationLibrary.h",
+      "bytes": 5982,
+      "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb"
+    },
+    {
+      "path": "apps/standalone/RegistrationLibrary.cpp",
+      "bytes": 39180,
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc"
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_model.cpp",
+      "bytes": 79171,
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d"
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_session.cpp",
+      "bytes": 47769,
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279"
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_storage.cpp",
+      "bytes": 39345,
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793"
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_recall.cpp",
+      "bytes": 44191,
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae"
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "bytes": 34998,
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0"
+    }
+  ],
+  "executables": [
+    {
+      "path": "../build-native/apps/standalone/test_standalone_library_model",
+      "bytes": 511808,
+      "sha256": "537eb1991309100d47a76030a735fd4cae344fa493b037f7ec1ec7011099fbda"
+    },
+    {
+      "path": "../build-native/apps/standalone/test_standalone_library_session",
+      "bytes": 437192,
+      "sha256": "bd69fd1e323a25eecd6cd4f0953a5707a2c3eb0a63770a9f277085ede448c0ad"
+    },
+    {
+      "path": "../build-native/apps/standalone/test_standalone_library_storage",
+      "bytes": 371304,
+      "sha256": "3d65bcfc3f34b20cf9bfa488f409d5d0423416ec6e1bd7695788b75d975b3860"
+    },
+    {
+      "path": "../build-native/apps/standalone/test_standalone_library_recall",
+      "bytes": 183320,
+      "sha256": "4e638e36a7fa2f17a91f12a5af986e29e7a652276e5cb4f9e2d41720ea88bdd4"
+    },
+    {
+      "path": "../build-native/apps/standalone/test_standalone_library_roundtrip",
+      "bytes": 522112,
+      "sha256": "25cd8602575047273696509e03321bbf243ea51969aa2a91d0a6d1164a3b06b0"
+    }
+  ],
+  "output": {
+    "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-first-test.log",
+    "bytes": 743,
+    "sha256": "d94fb82fd724241e88053b3f29d9a190700c7781f178b054d6d7dff299447389"
+  },
+  "detail": {
+    "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-ctest-detail.log",
+    "bytes": 4735,
+    "sha256": "b9ecd02d4e257ddb35f25481834b518b18132654574962553812e7db7c33158d"
+  },
+  "counts": {
+    "model": {
+      "groups": 32,
+      "assertions": 3250
+    },
+    "recall": {
+      "groups": 9,
+      "assertions": 743728,
+      "invalid_snapshots": 98,
+      "presentation_owner_contexts": 72,
+      "observations": "synthetic"
+    },
+    "roundtrip": {
+      "groups": 4,
+      "checks": 1489,
+      "snapshots": 138,
+      "renders": 20,
+      "posts": 24,
+      "library_reports": 24,
+      "ui_reports": 24,
+      "storage_calls": 7,
+      "authorizer_calls": 7,
+      "Session": "real",
+      "storage": "real"
+    },
+    "session": {
+      "groups": 12,
+      "assertions": 42634
+    },
+    "storage": {
+      "groups": 9,
+      "checks": 1115,
+      "control_proof": "synthetic",
+      "filesystem": "real"
+    }
+  },
+  "meaning": "All selected targets had completed compilation/link against the updated support library. The wider native all-target build is still in progress; full-suite and platform qualification remain separate."
+}

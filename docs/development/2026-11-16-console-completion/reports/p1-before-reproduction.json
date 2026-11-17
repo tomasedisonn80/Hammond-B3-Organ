@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-17T03:46:31.900871+00:00",
+  "purpose": "Supplement genuine retained before binary with reproducible source/object/link ancestry; this is not an original-object receipt and executes no timing samples.",
+  "preflight_correction": "Initial inventory check stopped before compilation because it included the unrelated reviewed header fixture repair; both actual changes are now explicitly checked, and that fixture is absent from benchmark link inputs.",
+  "compile_command": [
+    "/usr/bin/c++",
+    "-DSDL_MAIN_HANDLED",
+    "-I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone",
+    "-I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include",
+    "-I/workspace/scratch/21cce69f7784/build-native/_sdl2/include",
+    "-I/workspace/scratch/21cce69f7784/build-native/_sdl2/include/SDL2",
+    "-I/workspace/scratch/21cce69f7784/build-native/_sdl2/include-config-release/SDL2",
+    "-O3",
+    "-DNDEBUG",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "-o",
+    "/workspace/scratch/21cce69f7784/p1-timing-qualification/before-InstrumentView.cpp.o",
+    "-c",
+    "/workspace/scratch/21cce69f7784/baseline-native/InstrumentView.cpp"
+  ],
+  "compile_cwd": "/workspace/scratch/21cce69f7784/build-native",
+  "compile_exit": 0,
+  "original_link_command": [
+    "/usr/bin/c++",
+    "-O3",
+    "-DNDEBUG",
+    "-Wl,--dependency-file=apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/link.d",
+    "apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/__/__/tools/standalone_paint_benchmark.cpp.o",
+    "apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o",
+    "-o",
+    "apps/standalone/hammond_standalone_paint_benchmark",
+    "apps/standalone/libhammond_standalone_drawing.a",
+    "apps/standalone/libhammond_standalone_support.a",
+    "_sdl2/libSDL2.a",
+    "-lm",
+    "-pthread",
+    "libhammond_core.a"
+  ],
+  "link_command": [
+    "/usr/bin/c++",
+    "-O3",
+    "-DNDEBUG",
+    "-Wl,--dependency-file=/workspace/scratch/21cce69f7784/p1-timing-qualification/before-link.d",
+    "apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/__/__/tools/standalone_paint_benchmark.cpp.o",
+    "/workspace/scratch/21cce69f7784/p1-timing-qualification/before-InstrumentView.cpp.o",
+    "-o",
+    "/workspace/scratch/21cce69f7784/p1-timing-qualification/reproduced-before-benchmark",
+    "apps/standalone/libhammond_standalone_drawing.a",
+    "apps/standalone/libhammond_standalone_support.a",
+    "_sdl2/libSDL2.a",
+    "-lm",
+    "-pthread",
+    "libhammond_core.a"
+  ],
+  "link_exit": 0,
+  "original_before": {
+    "path": "/workspace/scratch/21cce69f7784/baseline-native/hammond_standalone_paint_benchmark",
+    "bytes": 3756168,
+    "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+  },
+  "reproduced_before": {
+    "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/reproduced-before-benchmark",
+    "bytes": 3756168,
+    "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+  },
+  "bit_identical_to_genuine_original": true,
+  "link_input_identities": [
+    {
+      "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/__/__/tools/standalone_paint_benchmark.cpp.o",
+      "bytes": 42512,
+      "sha256": "fc20ab5daa4e8878604268c46547f0de85c15e512ae7ce940f4aaca2e3f57a39"
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/before-InstrumentView.cpp.o",
+      "bytes": 287152,
+      "sha256": "aee8d1b133e3fec7d7217a6d45efa7b02f890f23c448285868898f6cfb30fc72"
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/libhammond_standalone_drawing.a",
+      "bytes": 1283262,
+      "sha256": "ffc41ccf55b0268f6b01af36d3e1b97cecb7b79f14e574cb7cc2178c12a853e7"
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/libhammond_standalone_support.a",
+      "bytes": 557694,
+      "sha256": "27581c71dbed789a9c13e0c324500f42a3dd9325086e8ec8c0fdb6a5c992de8c"
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/build-native/_sdl2/libSDL2.a",
+      "bytes": 3245774,
+      "sha256": "383aee215b2eaa4f716623113fc0481af90ac55bfa56fca261c157241a1a1977"
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/build-native/libhammond_core.a",
+      "bytes": 460336,
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+    }
+  ],
+  "source_inputs": {
+    "tools/standalone_paint_benchmark.cpp": "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338",
+    "apps/standalone/InstrumentView.cpp": "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/Drawing.cpp": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a",
+    "apps/standalone/InspectionModel.cpp": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8"
+  },
+  "before_painter": {
+    "path": "/workspace/scratch/21cce69f7784/baseline-native/InstrumentView.cpp",
+    "bytes": 164592,
+    "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+  },
+  "candidate_painter_object": {
+    "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o",
+    "bytes": 301288,
+    "sha256": "5d3d7d40efbac24704c81944a70ffa1b3b1c4710a59556e87fdd96feaf59b790"
+  },
+  "candidate_benchmark": {
+    "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+    "bytes": 3760704,
+    "sha256": "5cf0d9046e05bf10178b70caee1c3996c719956dad364397ad7befbf46544d4e"
+  },
+  "baseline_source_differences": [
+    "apps/standalone/InstrumentView.cpp",
+    "apps/standalone/native_tests/test_standalone_header_material.cpp"
+  ],
+  "finished_utc": "2026-11-17T03:46:43.472105+00:00"
+}

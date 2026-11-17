@@ -1,0 +1,30 @@
+diff --git a/apps/standalone/UiModel.h b/apps/standalone/UiModel.h
+--- a/apps/standalone/UiModel.h
++++ b/apps/standalone/UiModel.h
+@@ -381,6 +381,11 @@
+     // no action and preserves state. Does not resurrect/release notes or change
+     // the edited bank. The loaded snapshot becomes the clean-file reference.
+     [[nodiscard]] UiActions load_controls(const ControlSnapshot& controls) noexcept;
++    // Named-library recall validates and emits one copied whole ControlSnapshot
++    // even when unchanged. Unlike legacy file Load, it retains the clean-file
++    // reference. Invalid input emits nothing and preserves state. Presentation
++    // and held-note owners are preserved; normal submission/observation applies.
++    [[nodiscard]] UiActions recall_controls(const ControlSnapshot& controls) noexcept;
+     // Main-thread external controller edit. Uses the same desired snapshot and
+     // acknowledgment path as native gestures, so a pending MIDI edit is retained
+     // by subsequent unrelated UI changes. Invalid/unchanged values emit nothing;
+diff --git a/apps/standalone/UiModel.cpp b/apps/standalone/UiModel.cpp
+--- a/apps/standalone/UiModel.cpp
++++ b/apps/standalone/UiModel.cpp
+@@ -1476,6 +1476,11 @@
+     return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);
+ }
+ 
++UiActions UiModel::recall_controls(const ControlSnapshot& controls) noexcept {
++    if (!is_valid_control_snapshot(controls)) return {};
++    return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);
++}
++
+ UiActions UiModel::external_parameter(std::uint32_t parameter_id,
+                                     double normalized) noexcept {
+     if (!std::isfinite(normalized) || normalized < 0.0 || normalized > 1.0) return {};

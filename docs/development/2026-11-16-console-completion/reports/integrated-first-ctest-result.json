@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "ctest_exit_code": 8,
+  "tests": 247,
+  "passed": 246,
+  "failed": [
+    "python_test_repository_integrity"
+  ],
+  "skipped": [],
+  "elapsed_seconds": 1005.02,
+  "command": [
+    "env",
+    "SDL_AUDIODRIVER=dummy",
+    "SDL_VIDEODRIVER=dummy",
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "1",
+    "--output-junit",
+    "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.xml"
+  ],
+  "artifacts": {
+    "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.xml": {
+      "sha256": "63cb6f9fffd3c466652ab2d38c32d86d9865d35d222c5ee3fcab88eddbae03c7",
+      "bytes": 140936
+    },
+    "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.log": {
+      "sha256": "bbdfff3343bde52dabfb1ce80bb2d14df62514cadadb912fdc1989c522b4df8f",
+      "bytes": 38319
+    },
+    "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest-detail.log": {
+      "sha256": "419df2387557a54727187a603e3766ea693e15e48952aced8549cbf47884b98b",
+      "bytes": 424723
+    }
+  },
+  "failure": "Repository integrity observed an A33 note link before A33-native-next.json was written during concurrent documentation authoring. The report now exists; do not rewrite this failure. Only the affected document integrity gate needs a subsequent run after document completion.",
+  "missing_then_present_report": {
+    "path": "docs/development/2026-11-16-console-completion/reports/A33-native-next.json",
+    "sha256": "7338155b1c2f2c57b945a1e7ab3e505b6348e5f28ebf4365bc2f1da1539892ce"
+  },
+  "all_other_registered_gates_passed": true,
+  "platform_limits": "Release Linux dummy-SDL; MIDI/VST3 OFF. SDK-free and hosted matrices are separate."
+}

@@ -1,0 +1,231 @@
+#!/usr/bin/env python3
+"""Inspect retained A32 command evidence; this script runs no build or tests."""
+
+from __future__ import annotations
+
+import datetime
+import hashlib
+import json
+from pathlib import Path
+import re
+import shlex
+import xml.etree.ElementTree as ET
+
+
+REPORTS = Path(__file__).resolve().parent
+REPO = Path("/workspace/scratch/21cce69f7784/Hammond-B3-Organ")
+BUILD = REPO.parent / "a32-headless"
+
+
+def digest(path: Path) -> dict[str, object]:
+    return {"bytes": path.stat().st_size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+
+
+def write_new(name: str, value: object) -> None:
+    with (REPORTS / name).open("x", encoding="utf-8") as stream:
+        json.dump(value, stream, indent=2, sort_keys=True)
+        stream.write("\n")
+
+
+def under(path: Path, root: Path) -> bool:
+    return path.is_relative_to(root)
+
+
+def main() -> None:
+    plan = json.loads((REPORTS / "plan.json").read_text())
+    required = plan["required_tests"]
+    prior = json.loads((REPORTS / "source-before.json").read_text())["files"]
+    preflight_hashes = json.loads((REPORTS / "preflight.json").read_text())["admitted_sources_actual_sha256"]
+    configuration = json.loads((REPORTS / "configuration-verification.json").read_text())
+    discovered = json.loads((REPORTS / "08-ctest-discover.stdout.log").read_text())["tests"]
+    assert len(required) == len(set(required)) == len(discovered) == 12
+    assert {test["name"] for test in discovered} == set(required)
+
+    commands = []
+    for path in sorted(REPORTS.glob("[0-9][0-9]-*.json")):
+        if int(path.name[:2]) > 14:
+            continue
+        record = json.loads(path.read_text())
+        assert record["exit_code"] == 0, path
+        for stream in ("stdout", "stderr"):
+            evidence = record[stream]
+            assert digest(REPORTS / evidence["path"]) == {
+                "bytes": evidence["bytes"], "sha256": evidence["sha256"]}, path
+        commands.append({"record": path.name, **record})
+    assert len(commands) == 14, len(commands)
+
+    command_lines = (REPORTS / "09-ninja-commands.stdout.log").read_text().splitlines()
+    actual_compile = []
+    built_objects = set()
+    source_paths = {REPO / "CMakeLists.txt", REPO / "apps/standalone/CMakeLists.txt"}
+    for entry in json.loads((REPORTS / "configured-compile-commands.json").read_text()):
+        arguments = shlex.split(entry["command"])
+        output = entry.get("output") or arguments[arguments.index("-o") + 1]
+        object_path = (Path(entry["directory"]) / output).resolve()
+        if not object_path.is_file():
+            continue
+        assert under(object_path, BUILD), object_path
+        source = Path(entry["file"]).resolve()
+        source_paths.add(source)
+        built_objects.add(object_path)
+        needed_flags = {"-O3", "-DNDEBUG", "-std=c++20", "-Wall", "-Wextra", "-Wpedantic",
+                        "-Wconversion", "-Wsign-conversion", "-Wshadow", "-Werror"}
+        assert needed_flags <= set(arguments), entry
+        assert arguments[0] == "/usr/bin/g++", entry
+        if "hammond_standalone_support.dir" in str(object_path):
+            assert "-DHAMMOND_HAS_RTMIDI=0" in arguments, entry
+        actual_compile.append({"source": source.relative_to(REPO).as_posix(),
+                               "object": object_path.relative_to(BUILD).as_posix(),
+                               "command": entry["command"], **digest(object_path)})
+    assert len(actual_compile) == len(built_objects) == 50
+    compiled_sources = {entry["source"] for entry in actual_compile}
+    for source in ("LibraryModel.cpp", "UiModel.cpp", "Session.cpp", "RegistrationLibrary.cpp"):
+        assert "apps/standalone/" + source in compiled_sources, source
+    for name in required:
+        assert "apps/standalone/tests/" + name + ".cpp" in compiled_sources, name
+
+    dep_groups = {}
+    current = None
+    for line in (REPORTS / "12-ninja-deps.stdout.log").read_text().splitlines():
+        match = re.fullmatch(r"(.+): #deps ([0-9]+), deps mtime ([0-9]+) \(([^)]+)\)", line)
+        if match:
+            assert match[4] == "VALID", line
+            current = match[1]
+            dep_groups[current] = {"expected_count": int(match[2]), "paths": []}
+        elif line.startswith("    "):
+            assert current is not None, line
+            dep_groups[current]["paths"].append(line.strip())
+        else:
+            assert not line.strip(), line
+    for group in dep_groups.values():
+        assert len(group["paths"]) == group["expected_count"], group
+    for object_path in built_objects:
+        assert object_path.relative_to(BUILD).as_posix() in dep_groups, object_path
+    for name in required:
+        assert "apps/standalone/" + name in dep_groups, name
+    all_dependencies = sorted({value for group in dep_groups.values() for value in group["paths"]})
+    for value in all_dependencies:
+        path = (BUILD / value).resolve()
+        assert path.is_file(), path
+        if under(path, REPO):
+            source_paths.add(path)
+
+    graph_inputs = (REPORTS / "11-ninja-inputs.stdout.log").read_text().splitlines()
+    generated_files = set()
+    nonfile_graph_nodes = []
+    for value in graph_inputs:
+        path = (BUILD / value).resolve()
+        if not path.is_file():
+            nonfile_graph_nodes.append(value)
+        elif under(path, REPO):
+            source_paths.add(path)
+        elif under(path, BUILD) and (path.suffix == ".b3p" or "generated" in path.parts):
+            generated_files.add(path)
+
+    forbidden = re.compile(r"(?:SDL(?:2)?[./_-]|libSDL|_sdl2|RtMidi\.h|libhammond_rtmidi|"
+                           r"HAMMOND_HAS_RTMIDI=1|vst3[-_/]?sdk|steinberg|pluginterfaces/|public\.sdk/)",
+                           re.IGNORECASE)
+    sdk_hits = [value for value in command_lines + all_dependencies + graph_inputs if forbidden.search(value)]
+    assert not sdk_hits, sdk_hits
+
+    links = {}
+    for line in command_lines:
+        arguments = shlex.split(line)
+        if "-o" not in arguments:
+            continue
+        output = arguments[arguments.index("-o") + 1]
+        name = Path(output).name
+        if name in required:
+            assert name not in links, name
+            archives = [argument for argument in arguments if argument.endswith(".a")]
+            assert archives == ["apps/standalone/libhammond_standalone_support.a", "libhammond_core.a"], archives
+            links[name] = {"command": line, "archives": archives}
+    assert set(links) == set(required), links
+    members = (REPORTS / "14-support-members.stdout.log").read_text().splitlines()
+    assert len(members) == 9 and {"LibraryModel.cpp.o", "UiModel.cpp.o"} <= set(members), members
+
+    dynamic = {}
+    current = None
+    for line in (REPORTS / "13-elf-dynamic.stdout.log").read_text().splitlines():
+        if line.startswith("File: "):
+            current = Path(line[6:]).name
+            assert current in required and current not in dynamic, line
+            dynamic[current] = []
+        match = re.search(r"\(NEEDED\).*Shared library: \[([^]]+)\]", line)
+        if match:
+            assert current is not None, line
+            dynamic[current].append(match[1])
+    assert set(dynamic) == set(required), dynamic
+    allowed_runtime = {"libstdc++.so.6", "libm.so.6", "libgcc_s.so.1", "libc.so.6"}
+    assert all(set(libraries) == allowed_runtime for libraries in dynamic.values()), dynamic
+
+    source_after = {}
+    baseline_records = {}
+    for path in sorted(source_paths):
+        relative = path.relative_to(REPO).as_posix()
+        source_after[relative] = digest(path)
+        if relative in prior:
+            assert source_after[relative] == prior[relative], relative
+            baseline_records[relative] = "source-before.json"
+        else:
+            assert relative in preflight_hashes, relative
+            assert source_after[relative]["sha256"] == preflight_hashes[relative], relative
+            baseline_records[relative] = "preflight.json:admitted_sources_actual_sha256"
+    assert digest(BUILD / "CMakeCache.txt")["sha256"] == configuration["cache_sha256"]
+    archives = {path.relative_to(BUILD).as_posix(): digest(path) for path in
+                [BUILD / "libhammond_core.a", BUILD / "apps/standalone/libhammond_standalone_support.a"]}
+    binaries = {name: {"path": str(BUILD / "apps/standalone" / name),
+                       **digest(BUILD / "apps/standalone" / name)} for name in required}
+    generated = {path.relative_to(BUILD).as_posix(): digest(path) for path in sorted(generated_files)}
+
+    junit = ET.parse(REPORTS / "ctest-first.xml").getroot()
+    assert junit.tag == "testsuite" and int(junit.attrib["tests"]) == 12, junit.attrib
+    assert int(junit.attrib["failures"]) == int(junit.attrib.get("disabled", "0")) == 0, junit.attrib
+    cases = junit.findall("testcase")
+    assert len(cases) == 12 and {case.attrib["name"] for case in cases} == set(required)
+    results = []
+    for case in cases:
+        assert case.attrib["status"] == "run", case.attrib
+        assert case.find("failure") is None and case.find("skipped") is None, case.attrib
+        results.append({"name": case.attrib["name"], "time_seconds": float(case.attrib["time"]),
+                        "output": case.findtext("system-out", default=""), "status": "PASSED"})
+
+    for source, name in [(BUILD / ".ninja_log", "completed-ninja-log.txt"),
+                         (BUILD / "Testing/Temporary/LastTest.log", "ctest-original-LastTest.log")]:
+        with (REPORTS / name).open("xb") as stream:
+            stream.write(source.read_bytes())
+    write_new("qualified-source-identities.json", {"files": source_after, "baseline_records": baseline_records,
+                                                  "unchanged_from_before_configure": True})
+    write_new("built-identities.json", {"objects": actual_compile, "archives": archives,
+                                        "executables": binaries, "generated_inputs": generated})
+    write_new("sdk-independence.json", {
+        "status": "PASSED", "compiled_translation_units": len(actual_compile),
+        "source_and_config_inputs_unchanged": len(source_after), "dependency_groups": len(dep_groups),
+        "unique_actual_dependency_paths": len(all_dependencies), "sdk_dependency_hits": sdk_hits,
+        "support_archive_members": members, "link_commands": links, "elf_needed": dynamic,
+        "actual_dependencies": all_dependencies, "nonfile_graph_nodes": nonfile_graph_nodes,
+        "empty_sdk_roots": ["HAMMOND_SDL2_ROOT", "HAMMOND_RTMIDI_ROOT", "HAMMOND_VST3_SDK_ROOT"],
+        "limits": "The system compiler, C++/C runtime, math library and Threads support remain required. No SDL, RtMidi, VST3 or host SDK is needed by this configured and built selection."})
+    write_new("qualification.json", {
+        "schema_version": 1, "worker": "A32", "agent": "/root/w06_a32", "wave": 6,
+        "recorded_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "status": "PASSED_DISTINCT_LINUX_SDK_FREE_SELECTION",
+        "checkout": str(REPO), "build_directory": str(BUILD), "configuration": "Release/Ninja/GNU 14.2.0/C++20",
+        "selected_count": 12, "passed": 12, "failed": 0, "disabled_or_skipped": 0,
+        "first_configure_passed": True, "first_build_passed": True, "first_ctest_passed": True,
+        "build_steps": 68, "parallelism": 2, "compile_units": len(actual_compile),
+        "source_and_config_inputs_unchanged": len(source_after), "source_or_test_repairs": [],
+        "runtime_attempts": 1, "full_suite_executed": False, "native_processes_executed": 0,
+        "evidence_inspection_original_failure": "inspection-v1-failure.json; retained missing-map-key failure recovered only from an existing preconfigure hash, with no source or test repair or rerun",
+        "commands": commands, "results": results,
+        "specific_unrun_fixture": "test_standalone_state_files explicitly did not test POSIX failed replacement after a complete temporary write: no deterministic non-racing fixture.",
+        "remaining_limits": ["Root native/full-suite and sanitizer qualification", "Exact-source Windows/macOS and VST3/host gates", "Native main/browser and modal/gesture integration", "Actual SDL/display/DPI/controller/audio-device journeys", "Native semantic accessibility", "Callback deadlines and OS retirement", "Physical instrument/cabinet fidelity", "Literal whole-interface 1:1", "Root publication and exact-source hosted/release acceptance"],
+        "ownership": "Root retains integration, acceptance, ledger, publication and release; A32 changed only assigned documentation/report artifacts and the distinct headless directory."})
+    print(json.dumps({"status": "PASSED", "tests": len(results), "compile_units": len(actual_compile),
+                      "source_inputs_unchanged": len(source_after), "dependency_groups": len(dep_groups),
+                      "unique_dependency_paths": len(all_dependencies), "generated_inputs": len(generated),
+                      "sdk_hits": len(sdk_hits)}, indent=2))
+
+
+if __name__ == "__main__":
+    main()

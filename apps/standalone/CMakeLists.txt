@@ -2,7 +2,7 @@
 # only when the user explicitly enables the native application.
 find_package(Threads REQUIRED)
 add_library(hammond_standalone_support STATIC
-    Session.cpp UiModel.cpp InspectionModel.cpp StateFiles.cpp RegistrationLibrary.cpp
+    Session.cpp UiModel.cpp InspectionModel.cpp StateFiles.cpp RegistrationLibrary.cpp LibraryModel.cpp
     MidiInput.cpp MidiDevice.cpp MidiReplay.cpp)
 target_link_libraries(hammond_standalone_support PUBLIC hammond_core Threads::Threads)
 target_include_directories(hammond_standalone_support PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
@@ -382,6 +382,32 @@ if(HAMMOND_BUILD_STANDALONE)
             set_tests_properties(test_standalone_header_material PROPERTIES TIMEOUT 480)
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_header_material)
+        # The fixture includes the real painter once, allowing genuine pre-edit
+        # comparisons and private helper-state inspection without a product hook.
+        add_executable(test_standalone_performance_plate
+            native_tests/test_standalone_performance_plate.cpp)
+        target_link_libraries(test_standalone_performance_plate PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_performance_plate PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_performance_plate)
+        add_test(NAME test_standalone_performance_plate COMMAND test_standalone_performance_plate)
+        set_tests_properties(test_standalone_performance_plate PROPERTIES
+            TIMEOUT 180 LABELS "standalone;native;material;geometry;performance-plate")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_performance_plate PROPERTIES TIMEOUT 480)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_performance_plate)
+        # Persistent canonical statistics reuse the built fixture; historical
+        # paired preservation, visual admission and timing remain separate gates.
+        add_test(NAME test_standalone_performance_plate_numerical
+            COMMAND "${Python3_EXECUTABLE}" -B
+                "${PROJECT_SOURCE_DIR}/tools/compare_performance_plate.py"
+                --candidate-only --after "$<TARGET_FILE:test_standalone_performance_plate>")
+        set_tests_properties(test_standalone_performance_plate_numerical PROPERTIES
+            TIMEOUT 180 LABELS "standalone;native;material;performance-plate;numerical")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_performance_plate_numerical PROPERTIES TIMEOUT 480)
+        endif()
         add_executable(test_standalone_manual_key_material_raster
             native_tests/test_standalone_manual_key_material_raster.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_manual_key_material_raster PRIVATE

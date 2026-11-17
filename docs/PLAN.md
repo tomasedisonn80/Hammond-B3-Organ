@@ -1,18 +1,68 @@
 # Project plan: Hammond B-3 and Leslie
 
+<!-- console-plan-current:start -->
+<a id="current-console-continuation--17-november-2026"></a>
+## Current console continuation — 16 November 2026
+
+Recover the [console scope](development/2026-11-16-console-completion/README.md),
+[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-console-completion/assignments.json) and
+[root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
+Starting source is `9d60dbf462a90fe422fd4e69757fe202264acb7c`; the writable
+checkout is `/workspace/scratch/21cce69f7784/Hammond-B3-Organ`. Root owns its
+single coordinated `../build-native`, integration, acceptance and publication.
+Every other workspace and its unfinished work remain read-only.
+
+The copied-state LibraryModel and `UiModel::recall_controls` are implemented;
+[five passing foundation suites](development/2026-11-16-console-completion/reports/library-integrated-result.json)
+cover model, Session, storage, helper and combined roundtrips. The
+[developer guide](LIBRARY_MODEL_GUIDE.md) distinguishes their real and synthetic
+boundaries. Native browser and `main.cpp` integration remain absent. The separate
+P1 percussion/expression plate has bounded paired, visual and timing evidence
+in [current status](STATUS.md#current-console-continuation--16-november-2026);
+its [actual capture record](design/native-gallery-console-p1/provenance.json)
+retains the pre-helper application identity. The [first full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json)
+is 246/247, with its report-link integrity failure preserved. The [final integrated
+gallery](design/native-gallery-console-integrated/manifest.json) now passes all
+fifteen captures at its [qualified source](development/2026-11-16-console-completion/reports/integrated-application-qualification.json),
+and README displays those images. Independent final-gallery review, affected
+document qualification and publication remain with root.
+
+The next implementation is the [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md):
+independently admit model-owned Save availability and a new post-Start control
+proof before wiring browser/main effects and held-input routing. Recover the
+separate H1/UI-delivery owner and historical source pins before any shared
+header/painter change. This foundation does not transfer unfinished browser,
+ScannerLineFoh, contact/audio, R4 or other owners' acceptance.
+
+This request requires **60 actual new distinct workers in ten waves of six**;
+only its actual ledger and matching closure evidence establish progress. Its
+[fresh reading receipt](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json)
+covers all 500 pages; the [console atlas crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md)
+preserves every [M0–M9 exit](#milestones-and-exit-evidence). Research waves,
+staffing waves and product milestones remain different structures. Preserve
+47 parameter identities, `B3CONTROLS4`/readers 1–3, 91 shared free-running
+sources, plugin UUIDs and the nominal dry Engine. **Literal whole-interface
+1:1 remains unmet and unwaived**; physical, device, accessibility and release
+acceptance each require their own evidence. Follow [next actions](NEXT_STEPS.md)
+and [owner recovery](#current-ownership-and-source) before assigning paths.
+<!-- console-plan-current:end -->
+
 <!-- preset-plan-current:start -->
-## Current portable registrations and reference apron — 16 November 2026
+<a id="current-portable-registrations-and-reference-apron--16-november-2026"></a>
+## Historical portable registrations and reference apron — 16 November 2026
 
 The [session scope](development/2026-11-16-preset-library-continuation/README.md),
 [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
 [actual ledger](development/2026-11-16-preset-library-continuation/assignments.json)
 and [integration decisions](development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md)
-govern this continuation. Its writable checkout is
+governed that continuation. Its historical writable checkout is
 `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`; root coordinates
-`../build-native`. **All 60 new distinct workers are accepted across ten complete
+that session's `../build-native`. **All 60 new distinct workers are accepted across ten complete
 staffing waves of six**, with a passing [strict record check](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json).
 Earlier sessions supply no worker credit or unfinished-owner
-closure; each accepted delivery retains its own identity and evidence.
+closure; each accepted delivery retains its own identity and evidence. The dated
+instructions and results in this section do not assign current console work.
 
 The team's A01–A06 freshly covered all **500 atlas pages**, with exact ranges in
 this session's [coverage receipt](development/2026-11-16-preset-library-continuation/reports/atlas-reading-coverage.json).
@@ -162,7 +212,10 @@ unfinished owner-local work or permits edits to another checkout.
 
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Current complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
+| **Current console continuation**, base `9d60dbf462a90fe422fd4e69757fe202264acb7c` | Copied-state LibraryModel/recall foundation and separate P1 plate material; [scope](development/2026-11-16-console-completion/README.md), [checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md), [ledger](development/2026-11-16-console-completion/assignments.json). Root assigns future native/browser integration only after recovering existing owners; model tests do not complete that scope. |
+| UI-delivery continuation, base `6047723b595259de355c74342e48a8ae2ee1e228` | Separate H1/header work, original timing investigation and source-specific acceptance; [session](development/2026-11-16-ui-delivery/README.md), [checkpoint](development/2026-11-16-ui-delivery/CHECKPOINT.md), [ledger](development/2026-11-16-ui-delivery/assignments.json). Historical H1/T3 pins are not qualified by the P1-only recall transition. |
+| Heading/title continuation, base `113c29b7b14c8fde0859bc405ef8e4141a131ea6` | Retained T2/T3 work and original delivery qualification; [session](development/2026-11-16-heading-title-continuation/README.md), [checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-heading-title-continuation/assignments.json). Its earlier workspace and remaining acceptance stay with that owner. |
+| **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Retained complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
 | Accessibility continuation, base `0865bc1584e4bda569fe2ccacfac87b842b8d906` | Usable numeric values, semantics and drawbar/cap surfaces; [scope](development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](development/2026-11-16-accessibility-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-accessibility-continuation/assignments.json). Semantic inspection does not establish a native accessibility provider. |
 | Runtime/interface continuation, base `3520c96` | Isolated causal contact audio and live manual key materials; [session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-runtime-continuation/assignments.json). Recover current accepted source before extending these scopes. |
 | Conversion/material continuation, base `a411268fd498f65c083203137831bf5afed83bd8` | Certified fractional-to-grid conversion, Lower rack, T1 typography and retained rim/material work; [handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md), [ledger](development/2026-11-16-conversion-material/assignments.json). Published delivery does not transfer unfinished acceptance. |
@@ -555,7 +608,7 @@ The historical streaming session has sixty accepted scoped deliveries in ten wav
 its own [strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
 verifies all sixty retained identities and note hashes. The completed product
 batch's strict checker and thirteen jobs at 80b8cce remain historical evidence,
-not validation of the current portable-registration session; the previous execution ledger is not declared
+not validation of the current console session; the previous execution ledger is not declared
 complete. [Record guidance](NEXT_STEPS.md#validate-this-sessions-actual-records)
 keeps the distinction explicit. Planned assignments, earlier workers and repeated
 followups cannot create new worker credit or close unfinished product gates.

@@ -1,5 +1,39 @@
 # Development log
 
+## 2026-11-16 — Console foundation and P1 evidence; native integration remains next
+
+The [console continuation](development/2026-11-16-console-completion/README.md)
+starts from `9d60dbf462a90fe422fd4e69757fe202264acb7c` in the
+`21cce69f7784` workspace. Its [actual ledger](development/2026-11-16-console-completion/assignments.json)
+tracks the required sixty new workers/ten waves; no closure is inferred from
+the completed earlier sessions. The [fresh coverage receipt](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json)
+and [M0–M9 crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md) preserve every exit.
+
+The copied-state LibraryModel and baseline-preserving UiModel recall helper
+pass [five integrated foundation suites](development/2026-11-16-console-completion/reports/library-integrated-result.json);
+the [fresh SDK-free configuration](reviews/CONSOLE_HEADLESS_ADMISSION.md)
+passes 12/12 selected tests. The strict candidate-only P1 source transition and
+finite-JSON capture repair each pass 45 Python methods. P1 paired v2 passes
+62 screens, 34 pairs and 74,008,097 pixel positions with zero forbidden changes;
+A24 admits the fifteen-view P1 full-frame comparison. One frozen eight-process,
+2,400-sample timing batch has no investigation signal and passes its exact Flat
+cross-witness gate. [Current status](STATUS.md#current-console-continuation--16-november-2026)
+links the separate original receipts, failures and pre-helper capture identities.
+
+The native all-target build passed; the [first full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json)
+is **246/247**, exit 8, with repository integrity failing on A33's then-unwritten
+report. All other registered gates passed. The final integrated capture now
+passes all fifteen views; all 69 manifest entries and production input identities
+are verified, and README displays those actual frames. The [capture receipt](development/2026-11-16-console-completion/reports/integrated-capture-result.json)
+preserves the pre-helper comparison and original capture. Independent final-gallery
+review, the affected document check, publication and hosted outcomes remain root's
+separate duties. The [next native plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+requires model-owned Save availability and post-Start proof before browser/main
+wiring. H1/header and other owners retain their scopes and source pins.
+Top-level recovery now leads to the console session and labels older workspace
+instructions as history. Literal whole-interface 1:1 remains unmet; physical,
+device, accessibility and release acceptance remain separate.
+
 ## 2026-11-16 — Sixty-worker handoff and exact-source hosted outcomes
 
 All sixty distinct new workers are accepted across ten complete waves of six.

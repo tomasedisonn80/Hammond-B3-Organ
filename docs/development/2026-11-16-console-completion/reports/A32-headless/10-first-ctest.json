@@ -1,0 +1,40 @@
+{
+  "argv": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/21cce69f7784/a32-headless",
+    "-C",
+    "Release",
+    "-V",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "2",
+    "--timeout",
+    "180",
+    "-R",
+    "^(test_standalone_library_model|test_standalone_library_session|test_standalone_library_storage|test_standalone_library_recall|test_standalone_library_roundtrip|test_standalone_ui|test_standalone_preset_ui|test_standalone_external_control|test_standalone_workspace_continuity|test_standalone_session|test_standalone_registration_library|test_standalone_state_files)$",
+    "--output-junit",
+    "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/A32-headless/ctest-first.xml"
+  ],
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "elapsed_seconds": 5.699448762999964,
+  "ended_utc": "2026-11-17T04:36:22.650674+00:00",
+  "environment_override": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "schema_version": 1,
+  "started_utc": "2026-11-17T04:36:16.951240+00:00",
+  "stderr": {
+    "bytes": 0,
+    "path": "10-first-ctest.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 20494,
+    "path": "10-first-ctest.stdout.log",
+    "sha256": "f94a12bbb8f9be87e355f83a5d7d2fd6243c5896feb72c63af50f1a4eb36ad37"
+  },
+  "worker": "A32"
+}

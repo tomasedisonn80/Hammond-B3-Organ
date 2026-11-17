@@ -1,15 +1,88 @@
 # Next steps
 
-<!-- preset-library-next:start -->
-## Current portable registration/apron continuation — 16 November 2026
+<!-- console-next-current:start -->
+<a id="current-console-continuation--17-november-2026"></a>
+## Current console continuation — 16 November 2026
 
-Resume this [session](development/2026-11-16-preset-library-continuation/README.md),
+Read the complete [M0–M9 plan](PLAN.md), [standing instructions](../AGENTS.md),
+[console scope](development/2026-11-16-console-completion/README.md),
+[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-console-completion/assignments.json) and
+[root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
+Work only in `/workspace/scratch/21cce69f7784/Hammond-B3-Organ`; root owns
+integration, the coordinated `../build-native`, acceptance and publication.
+Older workspace commands below are historical. This session's required sixty
+new workers and ten waves are counted only through its actual records.
+
+### 1. Finish current source qualification and delivery
+
+Preserve the [five library passes](development/2026-11-16-console-completion/reports/library-integrated-result.json),
+[SDK-free admission](reviews/CONSOLE_HEADLESS_ADMISSION.md), original failed
+receipts, genuine binaries and bounded P1 evidence in [current status](STATUS.md#current-console-continuation--16-november-2026).
+The [first full native/core run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json)
+is **246/247**, with only repository integrity failing on A33's then-unwritten
+report. Root reruns that affected document gate after authoring finishes and
+records it separately; the original run must not become an all-pass claim.
+The [final integrated capture](development/2026-11-16-console-completion/reports/integrated-capture-result.json)
+now passes all fifteen views using the admitted scale-3, 30-second protocol, with
+source/executable/state/pixel identities retained and 69 manifest entries verified.
+README now displays that gallery. Complete its independent all-frame review.
+The existing [P1 capture record](design/native-gallery-console-p1/provenance.json)
+stays unchanged.
+
+Root reconciles fresh remote advances, commits accepted paths and publishes
+with the exact fresh expected parent and no force. Independently fetch and verify
+remote commit/tree/parent/contents, then observe required hosted jobs at that
+source. A18's Windows fixture repair and existing source inspections do not
+supply new Windows/macOS execution. Retain cancelled, failed, unrun and passing
+outcomes separately. Final worker closure needs the actual sixty accepted notes
+and this session's matching strict check; plans and old workers supply no credit.
+
+### 2. Admit native library integration in dependency order
+
+The [concrete next implementation](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+owns the detailed hook map and acceptance cases; use the
+[LibraryModel guide](LIBRARY_MODEL_GUIDE.md) for the implemented foundation.
+First freeze and independently review a model-owned read-only Save-availability
+projection and real post-Start proof. Current `controls_pending == false` alone
+does not establish a proved copy, and a queued pre-Start restore is insufficient.
+Next assign input/gesture/focus hooks, then `main.cpp` lifecycle/submission/storage
+routing, then browser model/view and shared painter changes. Keep one assigned
+owner per shared file and recover existing native/browser owners first.
+
+Acceptance must exercise actual app routing: startup/restart/stopped Load,
+original held-note releases across modal open/close, pending CC11 and both scopes,
+timeout/recovery, fresh final storage authorization, create-only collisions and
+protected paths. Add independent full-frame capture/input and exact-source
+platform admission. The five harnesses do not complete this native journey.
+
+### 3. Preserve separate owners and product exits
+
+H1/header work and its original timing investigation remain with the
+[UI-delivery owner](development/2026-11-16-ui-delivery/CHECKPOINT.md). Respect the
+[H1/T3 old-source pin boundary](reviews/CONSOLE_PORTABILITY_ADMISSION.md); the
+P1-only recall transition cannot qualify those older comparisons. Recover all
+[other owners](PLAN.md#current-ownership-and-source) before overlap. Preserve
+47 parameters, state4/readers 1–3, 91 sources, UUIDs, 147 keys, 24 presets,
+four banks and the nominal dry Engine. The [console atlas crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md)
+retains M0–M9 dependencies, physical acquisition, scanner G5/ScannerLineFoh,
+M5/M6 graphs and dry validation, R4/R5/R6, native accessibility, device/DAW
+journeys, callback deadlines/retirement, rights and signed release. **Literal
+whole-interface 1:1 remains unmet and unwaived.**
+<!-- console-next-current:end -->
+
+<!-- preset-library-next:start -->
+<a id="current-portable-registrationapron-continuation--16-november-2026"></a>
+## Historical portable registration/apron continuation — 16 November 2026
+
+The dated [session](development/2026-11-16-preset-library-continuation/README.md),
 [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
 [actual ledger](development/2026-11-16-preset-library-continuation/assignments.json)
-and [integration decisions](development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md).
-The sole writable checkout is `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`;
-root coordinates `../build-native`. This opening governs this continuation;
-older instructions below retain their dated evidence and separate owners.
+and [integration decisions](development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md)
+retain the earlier continuation's authority and evidence.
+Its historical writable checkout is `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`;
+its root coordinated `../build-native`. The instructions below describe that
+source and do not assign current console work; separate owners remain intact.
 The [atlas crosswalk](reviews/ATLAS_DELIVERY_CROSSWALK.md) preserves every
 [M0–M9 exit](PLAN.md#milestones-and-exit-evidence). No milestone is declared complete.
 
@@ -191,7 +264,8 @@ records completed worker closure and source-qualified publication history.
 [All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
 Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
 
-## Continue from the completed streaming/material scope
+<a id="continue-from-the-completed-streamingmaterial-scope"></a>
+## Historical streaming continuation route
 
 The [active scope](development/2026-11-15-streaming-continuation/SCOPE.md)
 delivers the isolated `causal-contact-grid-v1` trajectory and the Upper-rack
@@ -236,7 +310,11 @@ execution workspace's authentication observations are historical; inspect the
 actual current publication path instead of assuming that its access state
 applies here.
 
-## Resume this workspace and its delivered tools
+<a id="resume-this-workspace-and-its-delivered-tools"></a>
+## Historical streaming workspace and delivered tools
+
+These paths and commands describe the streaming source only. They grant no
+write authority to that earlier workspace during the console continuation.
 
 Writable source is **`/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`**; the
 single coordinated Release build is
@@ -244,7 +322,7 @@ single coordinated Release build is
 `/workspace/scratch/ade21b726509/SDL2` is a **read-only dependency**. That other
 workspace's checkout, index and build remain outside this session's ownership.
 
-[Current workspace and setup](STATUS.md#current-workspace-and-setup) contains
+[Historical streaming setup](STATUS.md#historical-streaming-workspace-and-setup) contains
 the exact dependency verification and CMake configuration. This local build is
 Ninja Release with testing/standalone ON, MIDI/VST3/sanitizers OFF and native
 X11/Wayland/ALSA/PulseAudio/JACK backends disabled. To reproduce its completed
@@ -279,7 +357,8 @@ evidence. The current actual-app gallery is
 the [whole-reference gallery](../examples/demos/whole-reference-layout-v1/README.md)
 is the genuine prior baseline.
 
-## Next engineering assignments
+<a id="next-engineering-assignments"></a>
+## Historical streaming engineering assignments
 
 The isolated integer-grid trajectory and narrow Upper finish are implemented
 and tested; repeating those tasks would not advance the remaining gates.
@@ -389,7 +468,8 @@ unmet and unwaived.** A whole-interface comparison needs its own complete
 reference/source/state/dimension criteria; a protected crop, patch statistic or
 decorative cabinet equality cannot close it.
 
-### Validate this session's actual records
+<a id="validate-this-sessions-actual-records"></a>
+### Validate the historical streaming records
 
 Use only this streaming session's
 [actual assignments](development/2026-11-15-streaming-continuation/assignments.json).
@@ -435,7 +515,8 @@ and thirteen successful hosted jobs at `80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe
 qualify only that ledger/source. They neither count workers nor qualify hosted
 execution for this continuation.
 
-## Next dependency-ready phase after session closure
+<a id="next-dependency-ready-phase-after-session-closure"></a>
+## Historical dependency-ready phase after session closure
 
 **Retained independent M6 sequence:** the
 [fidelity continuation](development/2026-11-15-fidelity-continuation/CHECKPOINT.md)

@@ -1,0 +1,1693 @@
+{
+  "schema_version": 1,
+  "reviewer": "A11",
+  "phase": "independent pre-implementation design admission; no candidate painting/build/benchmark run",
+  "created_utc": "2026-11-17T03:16:32.431784+00:00",
+  "authoring_report_sha256": "f25c5c479c6c1ffb304028c8a306a7873f155eec6f6d5f9831ed6e93862290e2",
+  "contract_sha256": "20c8839d38229bf24d983eac0baad7381f601c4e6763bbbe556bcdfa6c75ae45",
+  "inputs": {
+    "reference": {
+      "path": "docs/design/atlas-cover-reference.jpg",
+      "file_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+      "decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    "native_before": {
+      "path": "docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png",
+      "file_sha256": "1df7d50cda9b61640702a4c4b516be1ae1b7be9879aa6bba0feb06c0bf9e5e60",
+      "decoded_rgb_sha256": "955980a7c40e1315a9768ad97d88ea61c87fc1756a7a2d0571cb36c8e9049e59",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  },
+  "decoder": {
+    "pillow": "13.0.0",
+    "libjpeg_turbo": "3.2.0"
+  },
+  "method": "Literal frozen rectangles; independently accumulated integer sufficient sums; Fraction orthogonal centered-plane projection; sqrt once after exact population mean-square conversion. Mean-error aggregate remains exact rational. No producer functions imported.",
+  "patches": {
+    "TL": {
+      "reference": {
+        "rect": [
+          110,
+          134,
+          96,
+          9
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          27576,
+          26521,
+          26333
+        ],
+        "rgb_mean": [
+          31.916666666666668,
+          30.69560185185185,
+          30.47800925925926
+        ],
+        "luma_numerator_sum": 267317194,
+        "luma_mean": 30.939490046296296,
+        "luma_mean_ratio": [
+          133658597,
+          4320000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 267317194,
+          "z_square_sum": 83582588242148,
+          "x2_z_sum": 1068097298,
+          "y2_z_sum": -37053552,
+          "x2_square_sum": 2653920,
+          "y2_square_sum": 23040
+        },
+        "luma_slope_x": 0.08049204934587327,
+        "luma_slope_y": -0.3216454166666667,
+        "residual_mean_square_ratio": [
+          384706654577211569,
+          85987008000000000
+        ],
+        "residual_rms": 2.1151853536438745,
+        "decoded_rgb_sha256": "b381f821a04ce9bf18207f6e24f429e7bb0849a6b9ca3be3b111af6595fa1766"
+      },
+      "native_t3_before": {
+        "rect": [
+          110,
+          134,
+          96,
+          9
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          35753,
+          34217,
+          31725
+        ],
+        "rgb_mean": [
+          41.38078703703704,
+          39.60300925925926,
+          36.71875
+        ],
+        "luma_numerator_sum": 343636312,
+        "luma_mean": 39.7727212962963,
+        "luma_mean_ratio": [
+          42954539,
+          1080000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 343636312,
+          "z_square_sum": 136713474612224,
+          "x2_z_sum": -2568840,
+          "y2_z_sum": -15139608,
+          "x2_square_sum": 2653920,
+          "y2_square_sum": 23040
+        },
+        "luma_slope_x": -0.00019358835232410925,
+        "luma_slope_y": -0.13142020833333334,
+        "residual_mean_square_ratio": [
+          59735550487692991,
+          171974016000000000
+        ],
+        "residual_rms": 0.5893659190619973,
+        "decoded_rgb_sha256": "51fac79038af434a4df87c1306561fe0d00e40c5f530878709afa97b2e2ad920"
+      }
+    },
+    "L": {
+      "reference": {
+        "rect": [
+          100,
+          165,
+          48,
+          64
+        ],
+        "pixels": 3072,
+        "rgb_sum": [
+          74152,
+          71848,
+          71960
+        ],
+        "rgb_mean": [
+          24.138020833333332,
+          23.388020833333332,
+          23.424479166666668
+        ],
+        "luma_numerator_sum": 723459168,
+        "luma_mean": 23.550103125,
+        "luma_mean_ratio": [
+          7536033,
+          320000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 723459168,
+          "z_square_sum": 171575019478336,
+          "x2_z_sum": 1030244832,
+          "y2_z_sum": -228487424,
+          "x2_square_sum": 2358272,
+          "y2_square_sum": 4193280
+        },
+        "luma_slope_x": 0.08737285877116804,
+        "luma_slope_y": -0.010897789987789988,
+        "residual_mean_square_ratio": [
+          496538998812454457,
+          206938368000000000
+        ],
+        "residual_rms": 1.549016957914647,
+        "decoded_rgb_sha256": "f1eea385a54893c621361b0fbcf8ced47edf727188b29b9df0563a462b1dd183"
+      },
+      "native_t3_before": {
+        "rect": [
+          100,
+          165,
+          48,
+          64
+        ],
+        "pixels": 3072,
+        "rgb_sum": [
+          96943,
+          95647,
+          89559
+        ],
+        "rgb_mean": [
+          31.556966145833332,
+          31.135091145833332,
+          29.1533203125
+        ],
+        "luma_numerator_sum": 954829760,
+        "luma_mean": 31.081697916666666,
+        "luma_mean_ratio": [
+          2983843,
+          96000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 954829760,
+          "z_square_sum": 299220110189712,
+          "x2_z_sum": 1623144,
+          "y2_z_sum": -3140993888,
+          "x2_square_sum": 2358272,
+          "y2_square_sum": 4193280
+        },
+        "luma_slope_x": 0.00013765536799826314,
+        "luma_slope_y": -0.14981083485958485,
+        "residual_mean_square_ratio": [
+          1940755697813021311,
+          6622027776000000000
+        ],
+        "residual_rms": 0.5413647024569759,
+        "decoded_rgb_sha256": "5c1856a7615d60d3939f839000831ccfc164f553df7c02d0751f4e3ab00e26fa"
+      }
+    },
+    "LB": {
+      "reference": {
+        "rect": [
+          100,
+          233,
+          48,
+          14
+        ],
+        "pixels": 672,
+        "rgb_sum": [
+          15282,
+          15274,
+          15278
+        ],
+        "rgb_mean": [
+          22.741071428571427,
+          22.729166666666668,
+          22.735119047619047
+        ],
+        "luma_numerator_sum": 152759896,
+        "luma_mean": 22.73212738095238,
+        "luma_mean_ratio": [
+          19094987,
+          840000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 152759896,
+          "z_square_sum": 34930948522704,
+          "x2_z_sum": 157155424,
+          "y2_z_sum": 741352,
+          "x2_square_sum": 515872,
+          "y2_square_sum": 43680
+        },
+        "luma_slope_x": 0.06092806897835122,
+        "luma_slope_y": 0.0033944688644688644,
+        "residual_mean_square_ratio": [
+          13751997924787229,
+          5868044000000000
+        ],
+        "residual_rms": 1.530862618264816,
+        "decoded_rgb_sha256": "e9a914df2e1deff10badbe8da438bbb50a7aa7245f6714a4e25553de51e1a839"
+      },
+      "native_t3_before": {
+        "rect": [
+          100,
+          233,
+          48,
+          14
+        ],
+        "pixels": 672,
+        "rgb_sum": [
+          16301,
+          16685,
+          15773
+        ],
+        "rgb_mean": [
+          24.257440476190474,
+          24.828869047619047,
+          23.47172619047619
+        ],
+        "luma_numerator_sum": 165375152,
+        "luma_mean": 24.60939761904762,
+        "luma_mean_ratio": [
+          10335947,
+          420000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 165375152,
+          "z_square_sum": 40745872224768,
+          "x2_z_sum": 1650000,
+          "y2_z_sum": -35972688,
+          "x2_square_sum": 515872,
+          "y2_square_sum": 43680
+        },
+        "luma_slope_x": 0.0006396935673965635,
+        "luma_slope_y": -0.1647101098901099,
+        "residual_mean_square_ratio": [
+          7235338153680743,
+          26406198000000000
+        ],
+        "residual_rms": 0.5234515365079582,
+        "decoded_rgb_sha256": "f6e14ba64d201b0f872a55007f2acb1b9ce3f1c9eb518ee126c0b75831238466"
+      }
+    },
+    "CL": {
+      "reference": {
+        "rect": [
+          505,
+          166,
+          32,
+          68
+        ],
+        "pixels": 2176,
+        "rgb_sum": [
+          71863,
+          70911,
+          71387
+        ],
+        "rgb_mean": [
+          33.025275735294116,
+          32.587775735294116,
+          32.806525735294116
+        ],
+        "luma_numerator_sum": 711477624,
+        "luma_mean": 32.69658198529412,
+        "luma_mean_ratio": [
+          88934703,
+          2720000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 711477624,
+          "z_square_sum": 233615532001776,
+          "x2_z_sum": -10500600,
+          "y2_z_sum": -397630000,
+          "x2_square_sum": 742016,
+          "y2_square_sum": 3353216
+        },
+        "luma_slope_x": -0.002830289373814042,
+        "luma_slope_y": -0.023716336794289423,
+        "residual_mean_square_ratio": [
+          30514664870884501,
+          7068579328000000
+        ],
+        "residual_rms": 2.0777258074272864,
+        "decoded_rgb_sha256": "ddf1213d4b6cb68205e16623ddfa152cde0ba8236562d0accdb59d23d46f8ab8"
+      },
+      "native_t3_before": {
+        "rect": [
+          505,
+          166,
+          32,
+          68
+        ],
+        "pixels": 2176,
+        "rgb_sum": [
+          67540,
+          66744,
+          62592
+        ],
+        "rgb_mean": [
+          31.03860294117647,
+          30.672794117647058,
+          28.764705882352942
+        ],
+        "luma_numerator_sum": 666134552,
+        "luma_mean": 30.612801102941177,
+        "luma_mean_ratio": [
+          83266819,
+          2720000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 666134552,
+          "z_square_sum": 205873032177856,
+          "x2_z_sum": 268312,
+          "y2_z_sum": -2509351232,
+          "x2_square_sum": 742016,
+          "y2_square_sum": 3353216
+        },
+        "luma_slope_x": 7.231973434535104e-05,
+        "luma_slope_y": -0.14966833225178455,
+        "residual_mean_square_ratio": [
+          59068220523861203,
+          176714483200000000
+        ],
+        "residual_rms": 0.5781504544057197,
+        "decoded_rgb_sha256": "df6a4291094c02e7c863cad68621cf715a416c8f441c6a3b8630198ae6cfd245"
+      }
+    },
+    "DIVL": {
+      "reference": {
+        "rect": [
+          535,
+          166,
+          12,
+          72
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          27585,
+          27584,
+          27391
+        ],
+        "rgb_mean": [
+          31.927083333333332,
+          31.925925925925927,
+          31.702546296296298
+        ],
+        "luma_numerator_sum": 275702780,
+        "luma_mean": 31.910043981481483,
+        "luma_mean_ratio": [
+          13785139,
+          432000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 275702780,
+          "z_square_sum": 88406119933736,
+          "x2_z_sum": -11339916,
+          "y2_z_sum": -335527452,
+          "x2_square_sum": 41184,
+          "y2_square_sum": 1492704
+        },
+        "luma_slope_x": -0.05506952214452215,
+        "luma_slope_y": -0.04495565792012348,
+        "residual_mean_square_ratio": [
+          14036105165954765501,
+          3457998086400000000
+        ],
+        "residual_rms": 2.014702533006556,
+        "decoded_rgb_sha256": "569aaa49aed8e6a6a270924019dcb606683d6004bbe09d66502c67a852818dcd"
+      },
+      "native_t3_before": {
+        "rect": [
+          535,
+          166,
+          12,
+          72
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          26554,
+          26280,
+          24649
+        ],
+        "rgb_mean": [
+          30.733796296296298,
+          30.416666666666668,
+          28.528935185185187
+        ],
+        "luma_numerator_sum": 262204942,
+        "luma_mean": 30.347794212962963,
+        "luma_mean_ratio": [
+          131102471,
+          4320000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 262204942,
+          "z_square_sum": 80427731275812,
+          "x2_z_sum": 5514578,
+          "y2_z_sum": -1117350590,
+          "x2_square_sum": 41184,
+          "y2_square_sum": 1492704
+        },
+        "luma_slope_x": 0.02678019619269619,
+        "luma_slope_y": -0.14970825964156323,
+        "residual_mean_square_ratio": [
+          550513066020367873,
+          2766398469120000000
+        ],
+        "residual_rms": 0.44609406754626474,
+        "decoded_rgb_sha256": "f55f11484e674990eb5c84ab4625f4fd830286171ddfa9e32d1d3fa691f6ce3d"
+      }
+    },
+    "CT": {
+      "reference": {
+        "rect": [
+          580,
+          134,
+          96,
+          9
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          39260,
+          38148,
+          39240
+        ],
+        "rgb_mean": [
+          45.43981481481482,
+          44.15277777777778,
+          45.416666666666664
+        ],
+        "luma_numerator_sum": 384632536,
+        "luma_mean": 44.51765462962963,
+        "luma_mean_ratio": [
+          48079067,
+          1080000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 384632536,
+          "z_square_sum": 172301058066672,
+          "x2_z_sum": 634521312,
+          "y2_z_sum": -71318128,
+          "x2_square_sum": 2653920,
+          "y2_square_sum": 23040
+        },
+        "luma_slope_x": 0.0478176668475312,
+        "luma_slope_y": -0.6190809722222222,
+        "residual_mean_square_ratio": [
+          347933377246225147,
+          42993504000000000
+        ],
+        "residual_rms": 2.8447665020556534,
+        "decoded_rgb_sha256": "b11e0bfd9d63672996fd324aeda4d46f97fcec63aadd3d5c11eeb202a84abaf3"
+      },
+      "native_t3_before": {
+        "rect": [
+          580,
+          134,
+          96,
+          9
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          35753,
+          34217,
+          31725
+        ],
+        "rgb_mean": [
+          41.38078703703704,
+          39.60300925925926,
+          36.71875
+        ],
+        "luma_numerator_sum": 343636312,
+        "luma_mean": 39.7727212962963,
+        "luma_mean_ratio": [
+          42954539,
+          1080000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 343636312,
+          "z_square_sum": 136711674612224,
+          "x2_z_sum": 2893616,
+          "y2_z_sum": -15079608,
+          "x2_square_sum": 2653920,
+          "y2_square_sum": 23040
+        },
+        "luma_slope_x": 0.00021806354373907276,
+        "luma_slope_y": -0.130899375,
+        "residual_mean_square_ratio": [
+          56308067349170599,
+          171974016000000000
+        ],
+        "residual_rms": 0.5722079588277,
+        "decoded_rgb_sha256": "1513b1279cef87d73a330c038d9690a42d12d857b4a850f9548ff271f7890a48"
+      }
+    },
+    "CR": {
+      "reference": {
+        "rect": [
+          576,
+          169,
+          12,
+          69
+        ],
+        "pixels": 828,
+        "rgb_sum": [
+          26618,
+          26218,
+          26418
+        ],
+        "rgb_mean": [
+          32.14734299516908,
+          31.664251207729468,
+          31.905797101449274
+        ],
+        "luma_numerator_sum": 263174800,
+        "luma_mean": 31.784396135265702,
+        "luma_mean_ratio": [
+          657937,
+          20700
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 263174800,
+          "z_square_sum": 84166715135200,
+          "x2_z_sum": -888320,
+          "y2_z_sum": -375581040,
+          "x2_square_sum": 39468,
+          "y2_square_sum": 1313760
+        },
+        "luma_slope_x": -0.004501469544947806,
+        "luma_slope_y": -0.057176507124588966,
+        "residual_mean_square_ratio": [
+          36176456932047239,
+          7291614330000000
+        ],
+        "residual_rms": 2.227415155680501,
+        "decoded_rgb_sha256": "cc21e21113025b2221c7c55df6f72b604429e33a8e4aefcf5d9b4349a89a6ce6"
+      },
+      "native_t3_before": {
+        "rect": [
+          576,
+          169,
+          12,
+          69
+        ],
+        "pixels": 828,
+        "rgb_sum": [
+          25193,
+          24965,
+          23427
+        ],
+        "rgb_mean": [
+          30.42632850241546,
+          30.15096618357488,
+          28.293478260869566
+        ],
+        "luma_numerator_sum": 249024292,
+        "luma_mean": 30.07539758454106,
+        "luma_mean_ratio": [
+          62256073,
+          2070000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 249024292,
+          "z_square_sum": 75655488426760,
+          "x2_z_sum": 158232,
+          "y2_z_sum": -979739104,
+          "x2_square_sum": 39468,
+          "y2_square_sum": 1313760
+        },
+        "luma_slope_x": 0.0008018242626938279,
+        "luma_slope_y": -0.1491503933747412,
+        "residual_mean_square_ratio": [
+          7718338360375421,
+          21445924500000000
+        ],
+        "residual_rms": 0.5999147228966785,
+        "decoded_rgb_sha256": "b59ac6827ed299ff14b1cc11b2000908e725868f4202a59799166be15dfa6c23"
+      }
+    },
+    "BL": {
+      "reference": {
+        "rect": [
+          98,
+          250,
+          112,
+          6
+        ],
+        "pixels": 672,
+        "rgb_sum": [
+          16118,
+          15908,
+          15696
+        ],
+        "rgb_mean": [
+          23.985119047619047,
+          23.672619047619047,
+          23.357142857142858
+        ],
+        "luma_numerator_sum": 159373396,
+        "luma_mean": 23.716279166666666,
+        "luma_mean_ratio": [
+          5691907,
+          240000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 159373396,
+          "z_square_sum": 37982601815824,
+          "x2_z_sum": 412721588,
+          "y2_z_sum": -678064,
+          "x2_square_sum": 2809632,
+          "y2_square_sum": 7840
+        },
+        "luma_slope_x": 0.029379049498297286,
+        "luma_slope_y": -0.017297551020408163,
+        "residual_mean_square_ratio": [
+          42502402392781279,
+          22945328000000000
+        ],
+        "residual_rms": 1.3610046349512945,
+        "decoded_rgb_sha256": "56cbb6935f5b3eddd91b0d0161e76bc1ab34397c1a5174a1d193000da54a1f78"
+      },
+      "native_t3_before": {
+        "rect": [
+          98,
+          250,
+          112,
+          6
+        ],
+        "pixels": 672,
+        "rgb_sum": [
+          14889,
+          15449,
+          14777
+        ],
+        "rgb_mean": [
+          22.15625,
+          22.989583333333332,
+          21.989583333333332
+        ],
+        "luma_numerator_sum": 152814256,
+        "luma_mean": 22.740216666666665,
+        "luma_mean_ratio": [
+          1364413,
+          60000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 152814256,
+          "z_square_sum": 34762257082048,
+          "x2_z_sum": 610000,
+          "y2_z_sum": -1820560,
+          "x2_square_sum": 2809632,
+          "y2_square_sum": 7840
+        },
+        "luma_slope_x": 4.342205669639298e-05,
+        "luma_slope_y": -0.04644285714285714,
+        "residual_mean_square_ratio": [
+          8444464299731,
+          49168560000000
+        ],
+        "residual_rms": 0.4144215276984855,
+        "decoded_rgb_sha256": "e1d3f9974dad88fcffd9d2de85f973b7fa67d6b45099de14b9d03ecfdbb7b313"
+      }
+    },
+    "BC": {
+      "reference": {
+        "rect": [
+          580,
+          250,
+          128,
+          6
+        ],
+        "pixels": 768,
+        "rgb_sum": [
+          28088,
+          25976,
+          25112
+        ],
+        "rgb_mean": [
+          36.572916666666664,
+          33.822916666666664,
+          32.697916666666664
+        ],
+        "luma_numerator_sum": 263626304,
+        "luma_mean": 34.326341666666664,
+        "luma_mean_ratio": [
+          4119161,
+          120000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 263626304,
+          "z_square_sum": 90782394990208,
+          "x2_z_sum": 188695424,
+          "y2_z_sum": 24428768,
+          "x2_square_sum": 4194048,
+          "y2_square_sum": 8960
+        },
+        "luma_slope_x": 0.008998248184093267,
+        "luma_slope_y": 0.545285,
+        "residual_mean_square_ratio": [
+          4383196101566771,
+          1572768000000000
+        ],
+        "residual_rms": 1.6694104142883937,
+        "decoded_rgb_sha256": "9f2f3233253f56b3190c4374028af6aa9d786a3c0156fc979b9dd3ebdc22c7cb"
+      },
+      "native_t3_before": {
+        "rect": [
+          580,
+          250,
+          128,
+          6
+        ],
+        "pixels": 768,
+        "rgb_sum": [
+          17016,
+          17656,
+          16888
+        ],
+        "rgb_mean": [
+          22.15625,
+          22.989583333333332,
+          21.989583333333332
+        ],
+        "luma_numerator_sum": 174644864,
+        "luma_mean": 22.740216666666665,
+        "luma_mean_ratio": [
+          1364413,
+          60000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 174644864,
+          "z_square_sum": 39728350950912,
+          "x2_z_sum": 3100000,
+          "y2_z_sum": -2080640,
+          "x2_square_sum": 4194048,
+          "y2_square_sum": 8960
+        },
+        "luma_slope_x": 0.00014782854178111457,
+        "luma_slope_y": -0.04644285714285714,
+        "residual_mean_square_ratio": [
+          75947689689629,
+          440375040000000
+        ],
+        "residual_rms": 0.41528470456336,
+        "decoded_rgb_sha256": "c755f682ed65db2c5a3d00a2245e067f47d6384ace93c11eff77db35b9d247db"
+      }
+    },
+    "RM": {
+      "reference": {
+        "rect": [
+          1074,
+          165,
+          16,
+          70
+        ],
+        "pixels": 1120,
+        "rgb_sum": [
+          30903,
+          29513,
+          30207
+        ],
+        "rgb_mean": [
+          27.591964285714287,
+          26.350892857142856,
+          26.970535714285713
+        ],
+        "luma_numerator_sum": 298586208,
+        "luma_mean": 26.65948285714286,
+        "luma_mean_ratio": [
+          9330819,
+          350000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 298586208,
+          "z_square_sum": 79938845169664,
+          "x2_z_sum": -52657712,
+          "y2_z_sum": 32236864,
+          "x2_square_sum": 95200,
+          "y2_square_sum": 1828960
+        },
+        "luma_slope_x": -0.11062544537815126,
+        "luma_slope_y": 0.0035251579039454117,
+        "residual_mean_square_ratio": [
+          186803885078224403,
+          68014450000000000
+        ],
+        "residual_rms": 1.657266520181634,
+        "decoded_rgb_sha256": "351a00858671452333d95c1bd5c5abb94dce2c5d8354f4a4a74fc92e99bcb14b"
+      },
+      "native_t3_before": {
+        "rect": [
+          1074,
+          165,
+          16,
+          70
+        ],
+        "pixels": 1120,
+        "rgb_sum": [
+          34759,
+          34359,
+          32204
+        ],
+        "rgb_mean": [
+          31.03482142857143,
+          30.677678571428572,
+          28.75357142857143
+        ],
+        "luma_numerator_sum": 342884490,
+        "luma_mean": 30.614686607142858,
+        "luma_mean_ratio": [
+          34288449,
+          1120000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 342884490,
+          "z_square_sum": 106040135351620,
+          "x2_z_sum": 5961262,
+          "y2_z_sum": -1372011830,
+          "x2_square_sum": 95200,
+          "y2_square_sum": 1828960
+        },
+        "luma_slope_x": 0.012523659663865545,
+        "luma_slope_y": -0.15003191212492345,
+        "residual_mean_square_ratio": [
+          1458316787718086837,
+          4352924800000000000
+        ],
+        "residual_rms": 0.578809106616597,
+        "decoded_rgb_sha256": "455567d28e9339e181631353f4cc53bd05c1d2dafd88b580db553b72533f0eb3"
+      }
+    },
+    "RB": {
+      "reference": {
+        "rect": [
+          944,
+          242,
+          40,
+          12
+        ],
+        "pixels": 480,
+        "rgb_sum": [
+          14487,
+          13623,
+          12791
+        ],
+        "rgb_mean": [
+          30.18125,
+          28.38125,
+          26.647916666666667
+        ],
+        "luma_numerator_sum": 137466160,
+        "luma_mean": 28.638783333333333,
+        "luma_mean_ratio": [
+          1718327,
+          60000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 137466160,
+          "z_square_sum": 39784469062720,
+          "x2_z_sum": -47290800,
+          "y2_z_sum": 86271600,
+          "x2_square_sum": 255840,
+          "y2_square_sum": 22880
+        },
+        "luma_slope_x": -0.03696904315196998,
+        "luma_slope_y": 0.7541223776223777,
+        "residual_mean_square_ratio": [
+          1438694804891,
+          844272000000
+        ],
+        "residual_rms": 1.3053986058765823,
+        "decoded_rgb_sha256": "a8a4bfef2bc7976af604412834f99f3bc9010014943a9762f31308552b3463bb"
+      },
+      "native_t3_before": {
+        "rect": [
+          944,
+          242,
+          40,
+          12
+        ],
+        "pixels": 480,
+        "rgb_sum": [
+          11051,
+          11331,
+          10811
+        ],
+        "rgb_mean": [
+          23.022916666666667,
+          23.60625,
+          22.522916666666667
+        ],
+        "luma_numerator_sum": 112339280,
+        "luma_mean": 23.404016666666667,
+        "luma_mean_ratio": [
+          1404241,
+          60000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 112339280,
+          "z_square_sum": 26315451357760,
+          "x2_z_sum": 1850000,
+          "y2_z_sum": -15054640,
+          "x2_square_sum": 255840,
+          "y2_square_sum": 22880
+        },
+        "luma_slope_x": 0.0014462163852407754,
+        "luma_slope_y": -0.1315965034965035,
+        "residual_mean_square_ratio": [
+          1997593857697,
+          7035600000000
+        ],
+        "residual_rms": 0.532847615765798,
+        "decoded_rgb_sha256": "1a9dc667576754a0c1386802d8bb49c4611d92e3b3c39ba6b83826308e313ec1"
+      }
+    },
+    "RT": {
+      "reference": {
+        "rect": [
+          988,
+          134,
+          96,
+          9
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          31575,
+          31263,
+          32791
+        ],
+        "rgb_mean": [
+          36.545138888888886,
+          36.18402777777778,
+          37.9525462962963
+        ],
+        "luma_numerator_sum": 314396528,
+        "luma_mean": 36.38848703703704,
+        "luma_mean_ratio": [
+          19649783,
+          540000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 314396528,
+          "z_square_sum": 115374385456960,
+          "x2_z_sum": 203007088,
+          "y2_z_sum": -87117408,
+          "x2_square_sum": 2653920,
+          "y2_square_sum": 23040
+        },
+        "luma_slope_x": 0.015298659190932658,
+        "luma_slope_y": -0.7562275,
+        "residual_mean_square_ratio": [
+          77790630014190103,
+          10748376000000000
+        ],
+        "residual_rms": 2.6902473924830055,
+        "decoded_rgb_sha256": "a954aefe2c9be61f6bc20fdb8a0cc46bebe9a4384c19637b02ceb91073d98c52"
+      },
+      "native_t3_before": {
+        "rect": [
+          988,
+          134,
+          96,
+          9
+        ],
+        "pixels": 864,
+        "rgb_sum": [
+          35766,
+          34230,
+          31734
+        ],
+        "rgb_mean": [
+          41.395833333333336,
+          39.61805555555556,
+          36.729166666666664
+        ],
+        "luma_numerator_sum": 343763424,
+        "luma_mean": 39.78743333333333,
+        "luma_mean_ratio": [
+          1193623,
+          30000
+        ],
+        "plane_sufficient_sums": {
+          "z_sum": 343763424,
+          "z_square_sum": 136809159258240,
+          "x2_z_sum": 620000,
+          "y2_z_sum": -15610944,
+          "x2_square_sum": 2653920,
+          "y2_square_sum": 23040
+        },
+        "luma_slope_x": 4.6723337553505756e-05,
+        "luma_slope_y": -0.13551166666666667,
+        "residual_mean_square_ratio": [
+          248168886634757,
+          895698000000000
+        ],
+        "residual_rms": 0.526372102655834,
+        "decoded_rgb_sha256": "3e239299741dd2e47a7e1e765eef1dd3f97051f220850bc4ab1152dffb483505"
+      }
+    }
+  },
+  "frozen_checks_recomputed": [
+    {
+      "id": "TL:Ymean",
+      "difference": 8.83323125,
+      "limit": 3.0,
+      "pass": false
+    },
+    {
+      "id": "TL:Rmean",
+      "difference": 9.46412037037037,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "TL:Gmean",
+      "difference": 8.907407407407408,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "TL:Bmean",
+      "difference": 6.2407407407407405,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "TL:RMS",
+      "difference": 1.5258194345818772,
+      "limit": 1.2,
+      "pass": false
+    },
+    {
+      "id": "L:Ymean",
+      "difference": 7.531594791666667,
+      "limit": 3.0,
+      "pass": false
+    },
+    {
+      "id": "L:Rmean",
+      "difference": 7.4189453125,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "L:Gmean",
+      "difference": 7.7470703125,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "L:Bmean",
+      "difference": 5.728841145833332,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "L:RMS",
+      "difference": 1.0076522554576712,
+      "limit": 1.2,
+      "pass": true
+    },
+    {
+      "id": "LB:Ymean",
+      "difference": 1.8772702380952389,
+      "limit": 3.0,
+      "pass": true
+    },
+    {
+      "id": "LB:Rmean",
+      "difference": 1.5163690476190474,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "LB:Gmean",
+      "difference": 2.0997023809523796,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "LB:Bmean",
+      "difference": 0.7366071428571423,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "LB:RMS",
+      "difference": 1.0074110817568578,
+      "limit": 1.2,
+      "pass": true
+    },
+    {
+      "id": "CL:Ymean",
+      "difference": 2.08378088235294,
+      "limit": 3.0,
+      "pass": true
+    },
+    {
+      "id": "CL:Rmean",
+      "difference": 1.986672794117645,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "CL:Gmean",
+      "difference": 1.914981617647058,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "CL:Bmean",
+      "difference": 4.041819852941174,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "CL:RMS",
+      "difference": 1.4995753530215667,
+      "limit": 1.2,
+      "pass": false
+    },
+    {
+      "id": "DIVL:Ymean",
+      "difference": 1.5622497685185195,
+      "limit": 3.0,
+      "pass": true
+    },
+    {
+      "id": "DIVL:Rmean",
+      "difference": 1.1932870370370345,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "DIVL:Gmean",
+      "difference": 1.5092592592592595,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "DIVL:Bmean",
+      "difference": 3.1736111111111107,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "DIVL:RMS",
+      "difference": 1.5686084654602912,
+      "limit": 1.2,
+      "pass": false
+    },
+    {
+      "id": "CT:Ymean",
+      "difference": 4.744933333333336,
+      "limit": 3.0,
+      "pass": false
+    },
+    {
+      "id": "CT:Rmean",
+      "difference": 4.059027777777779,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "CT:Gmean",
+      "difference": 4.549768518518519,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "CT:Bmean",
+      "difference": 8.697916666666664,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "CT:RMS",
+      "difference": 2.2725585432279534,
+      "limit": 1.2,
+      "pass": false
+    },
+    {
+      "id": "CR:Ymean",
+      "difference": 1.7089985507246404,
+      "limit": 3.0,
+      "pass": true
+    },
+    {
+      "id": "CR:Rmean",
+      "difference": 1.7210144927536248,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "CR:Gmean",
+      "difference": 1.5132850241545874,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "CR:Bmean",
+      "difference": 3.6123188405797073,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "CR:RMS",
+      "difference": 1.6275004327838225,
+      "limit": 1.2,
+      "pass": false
+    },
+    {
+      "id": "BL:Ymean",
+      "difference": 0.9760625000000012,
+      "limit": 3.0,
+      "pass": true
+    },
+    {
+      "id": "BL:Rmean",
+      "difference": 1.8288690476190474,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "BL:Gmean",
+      "difference": 0.6830357142857153,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "BL:Bmean",
+      "difference": 1.3675595238095255,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "BL:RMS",
+      "difference": 0.946583107252809,
+      "limit": 1.2,
+      "pass": true
+    },
+    {
+      "id": "BC:Ymean",
+      "difference": 11.586125,
+      "limit": 3.0,
+      "pass": false
+    },
+    {
+      "id": "BC:Rmean",
+      "difference": 14.416666666666664,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "BC:Gmean",
+      "difference": 10.833333333333332,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "BC:Bmean",
+      "difference": 10.708333333333332,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "BC:RMS",
+      "difference": 1.2541257097250336,
+      "limit": 1.2,
+      "pass": false
+    },
+    {
+      "id": "RM:Ymean",
+      "difference": 3.955203749999999,
+      "limit": 3.0,
+      "pass": false
+    },
+    {
+      "id": "RM:Rmean",
+      "difference": 3.442857142857143,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "RM:Gmean",
+      "difference": 4.326785714285716,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "RM:Bmean",
+      "difference": 1.7830357142857167,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "RM:RMS",
+      "difference": 1.0784574135650369,
+      "limit": 1.2,
+      "pass": true
+    },
+    {
+      "id": "RB:Ymean",
+      "difference": 5.2347666666666655,
+      "limit": 3.0,
+      "pass": false
+    },
+    {
+      "id": "RB:Rmean",
+      "difference": 7.158333333333331,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "RB:Gmean",
+      "difference": 4.775000000000002,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "RB:Bmean",
+      "difference": 4.125,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "RB:RMS",
+      "difference": 0.7725509901107843,
+      "limit": 1.2,
+      "pass": true
+    },
+    {
+      "id": "RT:Ymean",
+      "difference": 3.3989462962962946,
+      "limit": 3.0,
+      "pass": false
+    },
+    {
+      "id": "RT:Rmean",
+      "difference": 4.85069444444445,
+      "limit": 4.0,
+      "pass": false
+    },
+    {
+      "id": "RT:Gmean",
+      "difference": 3.4340277777777786,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "RT:Bmean",
+      "difference": 1.2233796296296333,
+      "limit": 4.0,
+      "pass": true
+    },
+    {
+      "id": "RT:RMS",
+      "difference": 2.1638752898271716,
+      "limit": 1.2,
+      "pass": false
+    },
+    {
+      "id": "aggregate:Ymean",
+      "difference": 4.457763585637858,
+      "limit": 2.228881792818929,
+      "pass": false
+    },
+    {
+      "id": "aggregate:RMS",
+      "difference": 1.393726506397573,
+      "limit": 0.6968632531987865,
+      "pass": false
+    }
+  ],
+  "validations": {
+    "62_criteria": true,
+    "fixed_patch_order": true,
+    "exact_mean_mae_ratio": true,
+    "exact_mean_threshold_ratio": true,
+    "mean_mae_display": true,
+    "rms_mae": true,
+    "mean_threshold_display": true,
+    "rms_threshold": true,
+    "all_patch_statistics_and_criteria_identical": true,
+    "all_statistics_comparison_note": "Exact rational value equality; the author report leaves 16 residual ratios unreduced, which does not change their value or rounded RMS."
+  },
+  "total": 62,
+  "passed": 28,
+  "failed": 34,
+  "equal_patch_mean_mae": 4.457763585637858,
+  "equal_patch_mean_mae_ratio": [
+    6324946007329,
+    1418860800000
+  ],
+  "equal_patch_residual_rms_mae": 1.393726506397573,
+  "mismatches": [],
+  "resource_arithmetic": {
+    "fixed_array_payload_bytes": 13096,
+    "draw_bound_canonical": 20899,
+    "draw_bound_2300_rows": 231292,
+    "draw_bound_64_rows": 14400,
+    "grain_mix_calls": 16384,
+    "maximum_composition_sy_float32": 8.705632209777832,
+    "maximum_height_corner_inset_float32": 1140.4378662109375,
+    "maximum_height_corner_full_rows_scale2": 2281,
+    "conservative_inset_height_upper_bound": 1140.438819480896,
+    "derived_full_domain_row_upper_bound": 2281,
+    "contract_row_upper_bound": 2300,
+    "row_bound_method": "At logical height <=8192, float32 sy<=fl(8192/941). Public mapped endpoint/inset operations have total absolute rounding error below .001 logical unit, so inset height <=131*sy+.001<1140.5. For renderer scale<=2, center-span row count <=ceil(2*height)<=2281, hence <=2300. Clipping only decreases row count."
+  },
+  "limitations": [
+    "Only source/reference statistics and design arithmetic audited; current genuine before fixture binding remains required.",
+    "No candidate observation, native execution, allocation observation or timing acceptance."
+  ],
+  "equivalent_unreduced_report_ratios": [
+    {
+      "patch": "L",
+      "input": "reference",
+      "reported_ratio": [
+        993077997624908914,
+        413876736000000000
+      ],
+      "independent_reduced_ratio": [
+        496538998812454457,
+        206938368000000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "LB",
+      "input": "reference",
+      "reported_ratio": [
+        165023975097446748,
+        70416528000000000
+      ],
+      "independent_reduced_ratio": [
+        13751997924787229,
+        5868044000000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "CL",
+      "input": "reference",
+      "reported_ratio": [
+        762866621772112525,
+        176714483200000000
+      ],
+      "independent_reduced_ratio": [
+        30514664870884501,
+        7068579328000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "CR",
+      "input": "reference",
+      "reported_ratio": [
+        1447058277281889560,
+        291664573200000000
+      ],
+      "independent_reduced_ratio": [
+        36176456932047239,
+        7291614330000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "BL",
+      "input": "reference",
+      "reported_ratio": [
+        127507207178343837,
+        68835984000000000
+      ],
+      "independent_reduced_ratio": [
+        42502402392781279,
+        22945328000000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "BC",
+      "input": "reference",
+      "reported_ratio": [
+        17532784406267084,
+        6291072000000000
+      ],
+      "independent_reduced_ratio": [
+        4383196101566771,
+        1572768000000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "RM",
+      "input": "reference",
+      "reported_ratio": [
+        1494431080625795224,
+        544115600000000000
+      ],
+      "independent_reduced_ratio": [
+        186803885078224403,
+        68014450000000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "RB",
+      "input": "reference",
+      "reported_ratio": [
+        1438694804891000,
+        844272000000000
+      ],
+      "independent_reduced_ratio": [
+        1438694804891,
+        844272000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "RT",
+      "input": "reference",
+      "reported_ratio": [
+        155581260028380206,
+        21496752000000000
+      ],
+      "independent_reduced_ratio": [
+        77790630014190103,
+        10748376000000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "LB",
+      "input": "native_t3_before",
+      "reported_ratio": [
+        57882705229445944,
+        211249584000000000
+      ],
+      "independent_reduced_ratio": [
+        7235338153680743,
+        26406198000000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "DIVL",
+      "input": "native_t3_before",
+      "reported_ratio": [
+        2752565330101839365,
+        13831992345600000000
+      ],
+      "independent_reduced_ratio": [
+        550513066020367873,
+        2766398469120000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "CR",
+      "input": "native_t3_before",
+      "reported_ratio": [
+        30873353441501684,
+        85783698000000000
+      ],
+      "independent_reduced_ratio": [
+        7718338360375421,
+        21445924500000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "BL",
+      "input": "native_t3_before",
+      "reported_ratio": [
+        337778571989240,
+        1966742400000000
+      ],
+      "independent_reduced_ratio": [
+        8444464299731,
+        49168560000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "BC",
+      "input": "native_t3_before",
+      "reported_ratio": [
+        1518953793792580,
+        8807500800000000
+      ],
+      "independent_reduced_ratio": [
+        75947689689629,
+        440375040000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "RB",
+      "input": "native_t3_before",
+      "reported_ratio": [
+        79903754307880,
+        281424000000000
+      ],
+      "independent_reduced_ratio": [
+        1997593857697,
+        7035600000000
+      ],
+      "equal_exact_value": true
+    },
+    {
+      "patch": "RT",
+      "input": "native_t3_before",
+      "reported_ratio": [
+        1985351093078056,
+        7165584000000000
+      ],
+      "independent_reduced_ratio": [
+        248168886634757,
+        895698000000000
+      ],
+      "equal_exact_value": true
+    }
+  ],
+  "field_contract_checks": {
+    "literal_rgb_table": true,
+    "x_knots": true,
+    "y_knots": true,
+    "columns": true,
+    "grain_pairs": true,
+    "seed": true,
+    "payload": true
+  },
+  "decision": "ADMIT the frozen design for implementation after root verifies genuine pre-P1 fixture identity and canonical quiet-patch bytes; no candidate acceptance.",
+  "editorial_corrections": [
+    {
+      "reported_by": "A11",
+      "applied_by": "root",
+      "change": "Remove stray plus in accents,+screws; no semantic change."
+    },
+    {
+      "reported_by": "A11",
+      "applied_by": "root",
+      "change": "Use actual caller name paint_reference_composition, replacing nonexistent paint_reference_instrument."
+    }
+  ],
+  "comparison_discipline": {
+    "exact_mean_mae": "Aggregate exact Fraction luma differences before converting the displayed decimal; summing binary64 mean differences produces 4.457763585637859 instead of the contract-owned exact-ratio display 4.457763585637858. The contract criterion and producer were not changed.",
+    "rational_representation": "Compare rational numerical values, not whether numerator/denominator pairs were reduced."
+  }
+}

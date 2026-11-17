@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "worker": "A18",
+  "wave": 3,
+  "session": "2026-11-16-console-completion",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "observed_utc": "2026-11-17T03:37:41.419717+00:00",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "retained_evidence": {
+    "docs/development/2026-11-16-console-completion/reports/delivery-audit.json": {
+      "bytes": 13229,
+      "sha256": "30dc3dd6277327913469d041e5982f2474f5a34052533c86f58f916ee88c87d3"
+    },
+    "docs/development/2026-11-16-ui-delivery/reports/h1-baseline-identity.json": {
+      "bytes": 38893,
+      "sha256": "eaf89814ff181b2c8559fccc00c1f001d25fa8d8a81d1021d38aca00530dc2d2"
+    },
+    "docs/development/2026-11-16-ui-delivery/reports/h1-fixture-baseline-identity.json": {
+      "bytes": 6077,
+      "sha256": "7ca076951bb48ec62dfda051f816a4b6be8c8049405335167b3a7838a289f420"
+    },
+    "docs/development/2026-11-16-ui-delivery/reports/h1-baseline-demonstration/report.json": {
+      "bytes": 1269465,
+      "sha256": "c779d7baf0a8c6a940b77c13ef292ef075e0ee8c9a01a0bcf80f97e0a26509a5"
+    }
+  },
+  "status": "source-ready; focused Python and static checks passed; native and Windows qualification pending",
+  "failure_preserved": {
+    "source_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+    "workflow_run": 44000895418,
+    "job_id": 133764382636,
+    "step_number": 11,
+    "fixture_line": 156,
+    "diagnostics": [
+      "C4244 int-to-float conversion in both conditional assignments",
+      "C2220 warnings treated as errors"
+    ],
+    "audit": "docs/development/2026-11-16-console-completion/reports/delivery-audit.json",
+    "original_result": "Windows native build failed; downstream native tests and packaging skipped"
+  },
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "files": {
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "current_bytes": 61230,
+      "current_sha256": "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d",
+      "original_bytes": 61218,
+      "original_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+      "original_git_blob": "14eb3d4bc64db7384f7cc5c91811824cbfa9f0a4"
+    },
+    "tools/compare_header_material.py": {
+      "current_bytes": 95967,
+      "current_sha256": "7ee9e6ef3dd4719f539faa1397b8faa6b19d992951bb11d4ff26cadb6b7e58e5",
+      "original_bytes": 93670,
+      "original_sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+      "original_git_blob": "a9f1a29f03d9ea1b35c26f1d96dbd1c09767b83d"
+    },
+    "tests/test_compare_header_material.py": {
+      "current_bytes": 10007,
+      "current_sha256": "dbb903ac7bb6f9ec6f98e488f84592d04bcba3fc287058f9284ff56703c571dd"
+    }
+  },
+  "fixture_exact_reverse_bytes": true,
+  "binary32_dimensions": {
+    "820": {
+      "little_endian_hex": "00004d44",
+      "exact": true
+    },
+    "1080": {
+      "little_endian_hex": "00008744",
+      "exact": true
+    },
+    "1400": {
+      "little_endian_hex": "0000af44",
+      "exact": true
+    },
+    "1920": {
+      "little_endian_hex": "0000f044",
+      "exact": true
+    }
+  },
+  "comparator_ast": {
+    "changed_existing_definitions": [
+      "baseline_inputs",
+      "static_checks",
+      "main"
+    ],
+    "added_definitions": [
+      "fixture_portability_transition"
+    ],
+    "unchanged_definitions_count": 54
+  },
+  "all_existing_comparator_top_level_assignments_unchanged": true,
+  "new_comparator_top_level_assignments": [
+    "BASELINE_COMPARATOR_SHA",
+    "PORTABLE_FIXTURE_SHA"
+  ],
+  "original_source_recovery": "Both original blobs remain at the named immutable base commit and paths. No original receipt or other checkout was rewritten; no unrelated H1 painter, acceptance or finite-JSON change was imported.",
+  "transition": {
+    "baseline_comparator_sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+    "baseline_fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+    "case_values_preserved": true,
+    "current_fixture_sha256": "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d",
+    "exact_single_line_reversal": true,
+    "method": "Four exactly representable dimensions use float literals in two assignments; reversing the sole complete source line reproduces the original pinned fixture SHA-256.",
+    "source_bytes_identical": false
+  },
+  "fixture_change": {
+    "changed_lines": 1,
+    "conditional_assignments": 2,
+    "float_literals": 4,
+    "before": "            c.width = shape == 0 ? 1920 : 1400; c.height = shape == 0 ? 820 : 1080;",
+    "after": "            c.width = shape == 0 ? 1920.0F : 1400.0F; c.height = shape == 0 ? 820.0F : 1080.0F;",
+    "assertions_and_warning_policy_unchanged": true
+  },
+  "focused_tests": {
+    "command": "python3 -S -B tests/test_compare_header_material.py -v",
+    "exit_code": 0,
+    "methods": 9,
+    "refusal_cases": 22,
+    "elapsed_reported_seconds": 0.143,
+    "standard_library_only": true,
+    "stdout_and_stderr": "test_changed_retained_fixture_and_object_identities_are_rejected (__main__.BaselineTransitionTests.test_changed_retained_fixture_and_object_identities_are_rejected) ... ok\ntest_missing_current_or_arbitrary_baseline_identities_are_rejected (__main__.BaselineTransitionTests.test_missing_current_or_arbitrary_baseline_identities_are_rejected) ... ok\ntest_missing_retained_original_fixture_is_rejected (__main__.BaselineTransitionTests.test_missing_retained_original_fixture_is_rejected) ... ok\ntest_original_baseline_identities_are_admitted_with_exact_transition (__main__.BaselineTransitionTests.test_original_baseline_identities_are_admitted_with_exact_transition) ... ok\ntest_stale_current_fixture_identity_is_rejected (__main__.BaselineTransitionTests.test_stale_current_fixture_identity_is_rejected) ... ok\ntest_exact_transition_preserves_original_pin (__main__.FixtureTransitionTests.test_exact_transition_preserves_original_pin) ... ok\ntest_original_partial_and_unrelated_source_edits_are_rejected (__main__.FixtureTransitionTests.test_original_partial_and_unrelated_source_edits_are_rejected) ... ok\ntest_repinning_does_not_admit_missing_duplicate_or_changed_line (__main__.FixtureTransitionTests.test_repinning_does_not_admit_missing_duplicate_or_changed_line) ... ok\ntest_repinning_does_not_admit_unrelated_edits (__main__.FixtureTransitionTests.test_repinning_does_not_admit_unrelated_edits) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.143s\n\nOK\n",
+    "scope": "Actual comparator source admission functions with inert optional image imports; baseline file identities are simulated. No native executable, image, CTest or build was run."
+  },
+  "static_checks": {
+    "command": "python3 -B tools/compare_header_material.py --static-check",
+    "before_exit_code": 0,
+    "after_exit_code": 0,
+    "before": {
+      "candidate_colors_evaluated": 0,
+      "canonical_support_box": [
+        76,
+        14,
+        1596,
+        108
+      ],
+      "canonical_support_pixels": 142880,
+      "declaration_sha256": "f79e6f564b8d289b98f7eb8278bbe1c9df5d327044a4023e43ef1305468446ca",
+      "empty_allowance_cases": 13,
+      "limits": "Static arithmetic/parser/source checks only; no native preservation, H1 numerical acceptance, actual-frame visual or whole-interface claim.",
+      "main_cases": 48,
+      "main_output_pixels": 131641918,
+      "native_executions": 0,
+      "original_grid_cells_per_image": 24,
+      "original_numerical_failed": 59,
+      "original_numerical_passed": 44,
+      "original_scalar_planes": 200,
+      "parser_negative_cases_rejected": 7,
+      "resource_outputs": [
+        [
+          64,
+          64
+        ],
+        [
+          64,
+          64
+        ],
+        [
+          64,
+          64
+        ]
+      ],
+      "status": "static-checks-passed",
+      "uncut_companions": 16
+    },
+    "after": {
+      "candidate_colors_evaluated": 0,
+      "canonical_support_box": [
+        76,
+        14,
+        1596,
+        108
+      ],
+      "canonical_support_pixels": 142880,
+      "declaration_sha256": "f79e6f564b8d289b98f7eb8278bbe1c9df5d327044a4023e43ef1305468446ca",
+      "empty_allowance_cases": 13,
+      "fixture_portability_transition": {
+        "baseline_comparator_sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+        "baseline_fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+        "case_values_preserved": true,
+        "current_fixture_sha256": "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d",
+        "exact_single_line_reversal": true,
+        "method": "Four exactly representable dimensions use float literals in two assignments; reversing the sole complete source line reproduces the original pinned fixture SHA-256.",
+        "source_bytes_identical": false
+      },
+      "limits": "Static arithmetic/parser/source checks only; no native preservation, H1 numerical acceptance, actual-frame visual or whole-interface claim.",
+      "main_cases": 48,
+      "main_output_pixels": 131641918,
+      "native_executions": 0,
+      "original_grid_cells_per_image": 24,
+      "original_numerical_failed": 59,
+      "original_numerical_passed": 44,
+      "original_scalar_planes": 200,
+      "parser_negative_cases_rejected": 7,
+      "resource_outputs": [
+        [
+          64,
+          64
+        ],
+        [
+          64,
+          64
+        ],
+        [
+          64,
+          64
+        ]
+      ],
+      "status": "static-checks-passed",
+      "uncut_companions": 16
+    },
+    "all_preexisting_result_fields_identical": true
+  },
+  "whitespace_check": {
+    "command": "git diff --check -- apps/standalone/native_tests/test_standalone_header_material.cpp tools/compare_header_material.py",
+    "exit_code": 0
+  },
+  "native_executions": 0,
+  "builds": 0,
+  "remaining": [
+    "Root review and coherent rebuild of the repaired fixture and affected inputs.",
+    "Exact published-commit Windows native compile, acceptance tests and package result; all sixteen required hosted jobs remain source-specific.",
+    "Existing H1 comparisons and timing remain bound to their own inputs; no new H1 acceptance, whole-interface 1:1, physical, device or accessibility claim."
+  ]
+}

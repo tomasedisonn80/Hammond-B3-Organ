@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-16-console-completion",
+  "worker": "A34",
+  "agent": "/root/w06_a34",
+  "wave": 6,
+  "observed_utc": "2026-11-17T04:41:51.704982+00:00",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "base_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "status": "SOURCE_ADMITTED_HOSTED_QUALIFICATION_PENDING",
+  "decision": "No new blocking C++ portability defect identified; no source patch recommended.",
+  "method": [
+    "Complete source reads: LibraryModel.h/.cpp, five library tests, native P1 fixture, capture-only Flat companion.",
+    "Actual UiModel/A18/CMake/workflow diffs and relevant storage, source-pin and included benchmark paths inspected.",
+    "Read-only SHA-256, Git attributes, literal A18/A26 source reversal and document-integrity checks only."
+  ],
+  "source_files": {
+    ".gitattributes": {
+      "bytes": 1788,
+      "sha256": "cf3b4abf5a14565327f0dda04ff385525a890794ae8fa25e02fdfb66eb798c43"
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 20374,
+      "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+    },
+    ".github/workflows/standalone.yml": {
+      "bytes": 75638,
+      "sha256": "c949a1d20debec4970cff0f5a2bdaa0e54e01b358eb600a8bb241522dffd34ca"
+    },
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 43107,
+      "sha256": "c2da131f35b6f8e3827f8cef93244d997f0921c60de9235ad4e88775702cf690"
+    },
+    "apps/standalone/LibraryModel.cpp": {
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98"
+    },
+    "apps/standalone/LibraryModel.h": {
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2"
+    },
+    "apps/standalone/RegistrationLibrary.cpp": {
+      "bytes": 39180,
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc"
+    },
+    "apps/standalone/RegistrationLibrary.h": {
+      "bytes": 5982,
+      "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb"
+    },
+    "apps/standalone/StateFiles.cpp": {
+      "bytes": 4844,
+      "sha256": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6"
+    },
+    "apps/standalone/UiModel.cpp": {
+      "bytes": 83993,
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+    },
+    "apps/standalone/UiModel.h": {
+      "bytes": 18956,
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61230,
+      "sha256": "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75570,
+      "sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    },
+    "apps/standalone/tests/test_standalone_library_model.cpp": {
+      "bytes": 79171,
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d"
+    },
+    "apps/standalone/tests/test_standalone_library_recall.cpp": {
+      "bytes": 44191,
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae"
+    },
+    "apps/standalone/tests/test_standalone_library_roundtrip.cpp": {
+      "bytes": 34998,
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0"
+    },
+    "apps/standalone/tests/test_standalone_library_session.cpp": {
+      "bytes": 47769,
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279"
+    },
+    "apps/standalone/tests/test_standalone_library_storage.cpp": {
+      "bytes": 39345,
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 95967,
+      "sha256": "7ee9e6ef3dd4719f539faa1397b8faa6b19d992951bb11d4ff26cadb6b7e58e5"
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 84566,
+      "sha256": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923"
+    },
+    "tools/compare_title_typography.py": {
+      "bytes": 55125,
+      "sha256": "a3e6d7f6dcb6b11b1281b69c866e2b044f76eacffc05b5375b4936c77650704c"
+    },
+    "tools/standalone_flat_pixel_capture.cpp": {
+      "bytes": 8293,
+      "sha256": "af2a675a5aeb7925d2a752f9897eca7bf5d70aa0b55aac1c1476d869c0e227ad"
+    },
+    "tools/standalone_paint_benchmark.cpp": {
+      "bytes": 30354,
+      "sha256": "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338"
+    }
+  },
+  "source_byte_checks": {
+    "inspected_files": 24,
+    "all_git_attributes_text_auto_eol_lf": true,
+    "all_crlf_counts_zero": true,
+    "all_nul_counts_zero": true,
+    "a18_exact_single_line_reversal": {
+      "all_four_dimensions_binary32_exact": true,
+      "corrected_line_occurrences": 1,
+      "original_line_present": false,
+      "original_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+      "reverse_equals_base": true
+    },
+    "a26_exact_coherent_pair_reversal": {
+      "apps/standalone/UiModel.cpp": {
+        "block_occurrences": 1,
+        "current_matches_a30_pin": true,
+        "original_sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+        "reverse_equals_base": true
+      },
+      "apps/standalone/UiModel.h": {
+        "block_occurrences": 1,
+        "current_matches_a30_pin": true,
+        "original_sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+        "reverse_equals_base": true
+      }
+    },
+    "p1_max_packed_rgba_bytes": 33928016,
+    "flat_fixed_packed_rgba_bytes": 6293408
+  },
+  "findings": [
+    {
+      "id": "A34-P1",
+      "severity": "admitted_by_inspection",
+      "topic": "Integer and copy boundaries",
+      "detail": "Bounded 128-row/512-item catalogs, checked uint64 issuance/deadline arithmetic, int64 relative-selection clamp, out-of-line PIMPL destruction and owned copied views; allocating methods are not noexcept."
+    },
+    {
+      "id": "A34-P2",
+      "severity": "admitted_by_inspection",
+      "topic": "Filesystem portability",
+      "detail": "ASCII names, native path code units, explicit char8_t UTF-8 construction, binary fixture streams, bounded exclusive temporary directories and actual create-only helpers; no case-distinct-sibling or temporary-path-spelling assumption found."
+    },
+    {
+      "id": "A34-P3",
+      "severity": "admitted_by_inspection",
+      "topic": "Compiler and optional dependencies",
+      "detail": "C++20/extensions-off and strict GCC/Clang/AppleClang/MSVC policies retained. Five tests use SDK-free support; SDL/P1 stay optional. Bit casts target the matrix's binary32/binary64 ABIs. ASan+UBSan intentionally rejects MSVC/clang-cl."
+    },
+    {
+      "id": "A34-P4",
+      "severity": "qualification_open",
+      "topic": "Binary Windows stdout and Flat companion",
+      "detail": "Both raw exporters check _setmode(_fileno(stdout), _O_BINARY) before stream output. The Flat companion is outside ordinary CMake/CTest; its manual SDL_MAIN_HANDLED build and Linux evidence do not execute Windows/macOS."
+    },
+    {
+      "id": "A34-P5",
+      "severity": "historical_protocol_boundary",
+      "topic": "H1/T3 old UiModel pins",
+      "detail": "compare_header_material.py inherits the original UiModel.cpp/h hashes from compare_title_typography.py; full static/paired admission refuses the A26 helper tree. Focused A18 tests are unaffected. Next H1 session needs owner recovery, source rebase and independently admitted exact transition/coherent inputs. No repinning or H1 edit made."
+    },
+    {
+      "id": "A34-P6",
+      "severity": "admitted_by_inspection",
+      "topic": "Exact repairs and old evidence",
+      "detail": "A18 reverses to the complete original fixture; four dimension values are exactly binary32. A26 reverses to the complete original UiModel pair, matching A30 candidate-only pins. P1 paired and H1 historical pins remain unchanged."
+    }
+  ],
+  "blocking_source_defects_identified": [],
+  "patches_recommended": [],
+  "retained_evidence_files": {
+    "docs/development/2026-11-16-console-completion/reports/A18-source-transition.json": {
+      "bytes": 10363,
+      "sha256": "8c54e2ccc7a0c18db0a97a71bde2868bf3471671bba082ea975187f79b9b4a74"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A30-source-transition.json": {
+      "bytes": 10071,
+      "sha256": "c8df08ff11d57164188f76777edc84f265273fbbaed256120665e9d42ff4d52a"
+    },
+    "docs/development/2026-11-16-console-completion/reports/delivery-audit.json": {
+      "bytes": 13229,
+      "sha256": "30dc3dd6277327913469d041e5982f2474f5a34052533c86f58f916ee88c87d3"
+    },
+    "docs/development/2026-11-16-console-completion/reports/integrated-build-result.json": {
+      "bytes": 1274,
+      "sha256": "42a0240ab165e820b0ca673e69ce6fd285a79ca4f6d073d0f47358f7a1d95ff5"
+    },
+    "docs/development/2026-11-16-console-completion/reports/library-integrated-result.json": {
+      "bytes": 4857,
+      "sha256": "40356a2591f05c01da66dc899306e397d0cf6587c3541e0bf9c9e4e6a342d060"
+    },
+    "docs/development/2026-11-16-console-completion/reports/library-model-first-test-receipt.json": {
+      "bytes": 629,
+      "sha256": "6e29eb62917aad77655f0dafd662d32d5570c813ce59485df755fbab8c737a7b"
+    },
+    "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-build/report.json": {
+      "bytes": 7260,
+      "sha256": "bb35f32a2c39b74a310cdb357333c3f989724b7ced19c7d6502f69dba50b7eba"
+    },
+    "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v1/report.json": {
+      "bytes": 17674,
+      "sha256": "02646a116a93a234ac7826d00a65bf1a8e7811a8f54bda21bac7c0402b75a521"
+    },
+    "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/report.json": {
+      "bytes": 180107,
+      "sha256": "4895fdbb8f79e07cc4ad2b6d672807433a98e5a08689c323547432ca88725ab7"
+    }
+  },
+  "other_owner_execution": {
+    "root_complete_gcc_native_build": {
+      "receipt": "reports/integrated-build-result.json",
+      "exit_code": 0,
+      "scope": "Complete coherent native all-target build; reviewed retained receipt."
+    },
+    "root_five_library_ctests": {
+      "receipt": "reports/library-integrated-result.json",
+      "passed": 5,
+      "failed": 0,
+      "scope": "Reviewed retained root execution; no A34 rerun."
+    },
+    "whole_current_ctest_run": "Still active at review drafting; no full-suite pass claimed by A34.",
+    "sdk_free_execution": "Separate A32 ownership; this review admits source isolation only.",
+    "windows_macos_sanitizers": "Pending exact-source execution; no new result claimed."
+  },
+  "preserved_failures": [
+    "Starting-source Windows native job 133764382636: C4244/C2220 fixture build failure and skipped downstream work; A18-source-transition.json.",
+    "Original pure-model oracle failure: library-model-first-test-receipt.json; corrected result remains separately sourced.",
+    "P1 paired-v1 metadata failures: p1-paired-v1/report.json; no rewrite by this review.",
+    "Flat-v1 setup failure: p1-flat-witness-v1/report.json; one failed before process, after unrun; no timing result."
+  ],
+  "remaining_gates": [
+    "Exact published-source Windows MSVC x64 core/native compilation, five library suites, P1 ordinary/numerical exports, corrected header fixture and packaging.",
+    "Actual AppleClang core/native execution on both existing macOS architectures, including real filesystem Unicode and collision paths.",
+    "Required native ASan+UBSan job: 37 CTest names / 35 binaries with five library targets and P1 painter/support/core instrumentation verified.",
+    "Flat companion Windows/macOS compilation and raw-output execution remains unrun unless independently admitted; retain separate Linux-only claim.",
+    "Next-session H1 owner recovery/rebase and independent exact source-transition admission before changed-input H1/T3 comparison reuse.",
+    "Root's complete source-specific workflow/publication matrix remains authoritative; this report does not duplicate or close it."
+  ],
+  "execution_by_a34": {
+    "builds": 0,
+    "test_suites": 0,
+    "native_processes": 0,
+    "sanitizer_runs": 0,
+    "subagents": 0,
+    "production_test_build_workflow_edits": false,
+    "other_workspace_access": false
+  },
+  "owned_paths": [
+    "docs/reviews/CONSOLE_PORTABILITY_ADMISSION.md",
+    "docs/development/2026-11-16-console-completion/notes/A34.md",
+    "docs/development/2026-11-16-console-completion/reports/A34-portability.json"
+  ],
+  "record_verification": {
+    "passed": true,
+    "source_files_unchanged": 24,
+    "evidence_files_unchanged": 9,
+    "all_source_cr_and_nul_counts_zero": true,
+    "matching_root_library_receipt_sources": 11,
+    "relative_links_resolved": 7,
+    "document_utf8_final_newline_and_whitespace_valid": true,
+    "documents": {
+      "docs/reviews/CONSOLE_PORTABILITY_ADMISSION.md": {
+        "bytes": 8988,
+        "words": 1149,
+        "sha256": "b03c37bbd1052d88ab85758c24e6377728f4cceea8932959fefa2acf5283a411"
+      },
+      "docs/development/2026-11-16-console-completion/notes/A34.md": {
+        "bytes": 3186,
+        "words": 399,
+        "sha256": "5558cbdeb167e4ee7cb5041a32d52828e8100377125345227f83fc818f280c9a"
+      }
+    },
+    "meaning": "Read-only source/evidence/document integrity, not a build or product test."
+  },
+  "limits": "Source admission only. No native browser, device, callback, accessibility, physical fidelity, whole-interface 1:1, release or changed-platform qualification."
+}

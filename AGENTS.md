@@ -3,6 +3,26 @@
 Applies to all future sessions. This archival reorganization grants no permissions
 and changes no authorities, approvals, obligations or frozen criteria.
 
+## Current console continuation
+
+**Console continuation, 16 November 2026**, base
+`9d60dbf462a90fe422fd4e69757fe202264acb7c`: this request owns
+`/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and the single coordinated
+`../build-native`. Read its [scope](docs/development/2026-11-16-console-completion/README.md),
+[checkpoint](docs/development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](docs/development/2026-11-16-console-completion/assignments.json)
+and fresh [all-500-page coverage](docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
+This request has its own 60 distinct workers in ten waves. Its complementary
+scope is the copied registration-library model and independently reviewed P1
+percussion/expression plate material. The UI-delivery continuation below retains
+its H1/header work and original timing investigation. Other workspaces remain
+read-only; inspect and reconcile their published advances before publication.
+Every future session must recover the complete plan, record setup and actual
+progress, distinguish tested/failed/unrun gates, state concrete next work,
+update README with real captures after UI changes, and commit/push accepted
+authorized work with independent remote and source-specific CI verification.
+All standing compatibility, ownership and literal 1:1 obligations below remain.
+
 ## Current session and recovery
 
 **UI delivery continuation, 16 November 2026**, base

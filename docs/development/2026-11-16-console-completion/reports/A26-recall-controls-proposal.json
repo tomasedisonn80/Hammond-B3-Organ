@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-16-console-completion",
+  "worker": "A26",
+  "agent": "/root/w05_a26",
+  "wave": 5,
+  "date_utc": "2026-11-17",
+  "status": "SOURCE_READY_PATCH_ONLY_PENDING_ROOT_ADMISSION_AND_EXECUTION",
+  "checkout": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "base_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "baseline_sha256": {
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+  },
+  "prospective_patched_sha256": {
+    "apps/standalone/UiModel.h": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+    "apps/standalone/UiModel.cpp": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+  },
+  "production_files_edited": false,
+  "patch": "docs/development/2026-11-16-console-completion/reports/UiModel-recall-controls.patch",
+  "patch_sha256": "d4fadc8ae85d9f3dd2aedb6cccc63977fe1c4516dcca47b758a0ec18c7792cf8",
+  "patch_added_lines": 10,
+  "patch_removed_lines": 0,
+  "note": "docs/development/2026-11-16-console-completion/notes/A26.md",
+  "note_sha256": "75cf4229f7e5669599b0bb7f0133627f08cb7ee5ba956d0e2d920309975bf76d",
+  "textual_patch_check": {
+    "status": "PASSED",
+    "command": "git apply --check --whitespace=error-all docs/development/2026-11-16-console-completion/reports/UiModel-recall-controls.patch",
+    "exit_code": 0,
+    "production_inputs_unchanged_after_check": true,
+    "tracked_production_diff_empty": true,
+    "limit": "Read-only applicability and whitespace inspection; no patch application, build or runtime execution"
+  },
+  "build_or_runtime_tests_executed": false,
+  "timing_processes_executed": 0,
+  "subagents_spawned": false,
+  "other_workspace_writes": false,
+  "remaining_gates": [
+    "Root release of prospective timing input freeze",
+    "Independent source and A27 test review",
+    "Exact patch application and prospective hash verification by root",
+    "Root-coordinated coherent affected build and runtime tests",
+    "Separate native adapter, browser, gesture closure and lifecycle-proof integration"
+  ],
+  "owned_documentation_checks": {
+    "local_markdown_links_resolved": 5,
+    "patch_changed_paths": 2,
+    "patch_added_lines": 10,
+    "patch_removed_lines": 0,
+    "trailing_whitespace": "none (unified-diff empty context markers excluded)"
+  }
+}

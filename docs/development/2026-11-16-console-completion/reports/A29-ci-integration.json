@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "worker": "A29",
+  "wave": 5,
+  "utc_created": "2026-11-17T04:23:07.758071+00:00",
+  "status": "source_ready_patch_only",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "head_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "patch": {
+    "path": "docs/development/2026-11-16-console-completion/reports/A29-ci-integration.patch",
+    "bytes": 23457,
+    "sha256": "438a4659fb9ffce01e36572bd39d51d2eafa2553721632b00b9714a76da72942"
+  },
+  "files": {
+    "apps/standalone/CMakeLists.txt": {
+      "before_sha256": "f42b3aa0a339011d5d60f12036328d7bc36738ed091d8c5abef8e4a14c08b35a",
+      "proposed_after_sha256": "c2da131f35b6f8e3827f8cef93244d997f0921c60de9235ad4e88775702cf690",
+      "before_bytes": 42338,
+      "proposed_after_bytes": 43107,
+      "live_file_unchanged": true
+    },
+    ".github/workflows/standalone.yml": {
+      "before_sha256": "59423f01dc5811d2f8146e06cb939fd9f96295c0e818a74c387519f7fe824e9c",
+      "proposed_after_sha256": "c949a1d20debec4970cff0f5a2bdaa0e54e01b358eb600a8bb241522dffd34ca",
+      "before_bytes": 68503,
+      "proposed_after_bytes": 75638,
+      "live_file_unchanged": true
+    }
+  },
+  "sanitizer_map": {
+    "before": {
+      "ctest_names": 30,
+      "build_targets": 29
+    },
+    "after": {
+      "ctest_names": 37,
+      "build_targets": 35
+    },
+    "calculation": "30 + 5 library + 1 P1 fixture + 1 P1 numerical wrapper = 37; 29 + 5 library + 1 P1 fixture = 35",
+    "added": {
+      "test_standalone_library_model": "test_standalone_library_model",
+      "test_standalone_library_session": "test_standalone_library_session",
+      "test_standalone_library_storage": "test_standalone_library_storage",
+      "test_standalone_library_recall": "test_standalone_library_recall",
+      "test_standalone_library_roundtrip": "test_standalone_library_roundtrip",
+      "test_standalone_performance_plate": "test_standalone_performance_plate",
+      "test_standalone_performance_plate_numerical": "test_standalone_performance_plate"
+    },
+    "all_30_existing_pairs_preserved": true,
+    "shared_targets": {
+      "test_standalone_footage_typography_raster": [
+        "test_standalone_footage_typography_raster",
+        "test_standalone_title_density"
+      ],
+      "test_standalone_performance_plate": [
+        "test_standalone_performance_plate",
+        "test_standalone_performance_plate_numerical"
+      ]
+    },
+    "before_map_sha256": "f142dc828b60cb2708c211840c0693550381893874c1ffd1eb7987615045cdb3",
+    "after_map_sha256": "6fbf15974e6f1f048e61aa441e1afd9a26d9370f71694255a537591d109d21ac"
+  },
+  "native_platform_selection": {
+    "filter": "^(test_standalone_|python_test_(compare_performance_plate|compare_header_material|capture_standalone_interface)$)",
+    "source_only_python_tests": [
+      "python_test_compare_performance_plate",
+      "python_test_compare_header_material",
+      "python_test_capture_standalone_interface"
+    ],
+    "native_matrix_entries_unchanged": 5
+  },
+  "numerical_gate": {
+    "name": "test_standalone_performance_plate_numerical",
+    "command": [
+      "${Python3_EXECUTABLE}",
+      "-B",
+      "${PROJECT_SOURCE_DIR}/tools/compare_performance_plate.py",
+      "--candidate-only",
+      "--after",
+      "$<TARGET_FILE:test_standalone_performance_plate>"
+    ],
+    "labels": [
+      "standalone",
+      "native",
+      "material",
+      "performance-plate",
+      "numerical"
+    ],
+    "release_timeout_seconds": 180,
+    "sanitizer_timeout_seconds": 480,
+    "sanitizer_multiplier": "8/3",
+    "existing_runner_process_timeout_seconds_unchanged": 60,
+    "scope": "Canonical candidate case 0, exact frozen 62 screens and existing inventory/metadata/transport checks; no historical binary or SDL path required."
+  },
+  "source_inputs": {
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 20374,
+      "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+    },
+    "CMakePresets.json": {
+      "bytes": 1711,
+      "sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8"
+    },
+    "apps/standalone/LibraryModel.h": {
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2"
+    },
+    "apps/standalone/LibraryModel.cpp": {
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98"
+    },
+    "apps/standalone/UiModel.h": {
+      "bytes": 18547,
+      "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1"
+    },
+    "apps/standalone/UiModel.cpp": {
+      "bytes": 83758,
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+    },
+    "apps/standalone/RegistrationLibrary.cpp": {
+      "bytes": 39180,
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc"
+    },
+    "apps/standalone/StateFiles.cpp": {
+      "bytes": 4844,
+      "sha256": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75570,
+      "sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 79058,
+      "sha256": "e7a810e21099e346ec4ab86097cba6552cde497fcfd22be659907efeb2c80344"
+    },
+    "tests/test_compare_performance_plate.py": {
+      "bytes": 17687,
+      "sha256": "b368e9277b306c807672acfa1b200c4fc4eda358c03b3e4e9b3bfe90b21af526"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 95967,
+      "sha256": "7ee9e6ef3dd4719f539faa1397b8faa6b19d992951bb11d4ff26cadb6b7e58e5"
+    },
+    "tests/test_compare_header_material.py": {
+      "bytes": 10007,
+      "sha256": "dbb903ac7bb6f9ec6f98e488f84592d04bcba3fc287058f9284ff56703c571dd"
+    },
+    "tools/capture_standalone_interface.py": {
+      "bytes": 41284,
+      "sha256": "975aee1c2261114bb5e899a336567a47b7b3541eac5c75fe1b055244d9c1975f"
+    },
+    "tests/test_capture_standalone_interface.py": {
+      "bytes": 52759,
+      "sha256": "40035a5aceda7b13392d35fd1a81f3e2190d4994e94604273dfc9c65a882fd81"
+    },
+    "docs/design/PERFORMANCE_PLATE_P1_CONTRACT.md": {
+      "bytes": 18037,
+      "sha256": "20c8839d38229bf24d983eac0baad7381f601c4e6763bbbe556bcdfa6c75ae45"
+    },
+    "apps/standalone/tests/test_standalone_library_model.cpp": {
+      "bytes": 79171,
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d"
+    },
+    "apps/standalone/tests/test_standalone_library_session.cpp": {
+      "bytes": 47769,
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279"
+    },
+    "apps/standalone/tests/test_standalone_library_storage.cpp": {
+      "bytes": 39345,
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793"
+    },
+    "apps/standalone/tests/test_standalone_library_recall.cpp": {
+      "bytes": 44191,
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae"
+    },
+    "apps/standalone/tests/test_standalone_library_roundtrip.cpp": {
+      "bytes": 34998,
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0",
+      "status": "observed during A28 authorship; source hash is provisional, not root acceptance"
+    }
+  },
+  "checks": {
+    "git_apply_check_whitespace_error_all": {
+      "exit_code": 0,
+      "stderr": "",
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "--whitespace=error-all",
+        "docs/development/2026-11-16-console-completion/reports/A29-ci-integration.patch"
+      ]
+    },
+    "embedded_python_ast_blocks": 11,
+    "workflow_yaml": "parsed; two jobs and five native matrix entries retained",
+    "map_and_selection_integrity": "passed source-only checks",
+    "active_cmake_and_workflow_unchanged": true,
+    "old_action_pins_job_budgets_and_sanitizer_policy_preserved": true,
+    "native_required_gates": {
+      "before": 41,
+      "after": 51,
+      "all_existing_retained": true,
+      "exact_additions": 10
+    },
+    "unified_diff_reconstruction_matches_both_proposed_sha256": true,
+    "owned_note_links_and_sha256": "passed"
+  },
+  "integration_prerequisites": [
+    "Root ends frozen timing batch before applying any source/build change.",
+    "Root admits and applies A26 recall helper, accepts A27/A28 sources and configures/builds coherent headers, support and tests.",
+    "Unchanged comparator pins UiModel.h 6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1 and UiModel.cpp 0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd; helper changes require separate independent exact source-transition admission. This patch adds no exception.",
+    "Publish required retained P1 authoring/admission/metadata/failed-v1 streams with the source; Python tests and numerical gate use repository-relative immutable inputs."
+  ],
+  "unrun": [
+    "CMake configure/discovery",
+    "C++ build",
+    "Python test suites",
+    "all CTests",
+    "native Linux/Windows/macOS execution",
+    "ASan/UBSan/leak execution and job wall-budget verification",
+    "hosted CI",
+    "timing or benchmark execution",
+    "paired/visual/product/platform admission"
+  ],
+  "scope_limits": [
+    "No active source/build/workflow edit; only the patch, receipt and note are authored.",
+    "No comparator threshold, source pin, intentional-quarantine policy or existing gate weakened.",
+    "No timing CTest, new SDK dependency, native browser or live integration is added."
+  ],
+  "note": {
+    "path": "docs/development/2026-11-16-console-completion/notes/A29.md",
+    "sha256": "0655a0a4b316be3b151913bc4c1e9cfa272cc12f696b4a0ce9a3cc5472210202"
+  },
+  "source_review_tooling": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "git": "git version 2.52.0",
+    "yaml_parser": "6.0.3",
+    "runtime_configuration": "source-only; no configured build touched"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "worker": "A15",
+  "agent": "/root/w03_a15",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "command": ["python3", "-B", "tests/test_capture_standalone_interface.py", "-v"],
+  "python": "3.12.14",
+  "runs": [
+    {
+      "status": "failed",
+      "exit_code": 1,
+      "test_methods": 39,
+      "failures": 12,
+      "subtest_errors": 597,
+      "unittest_elapsed_seconds": 1.506,
+      "process_wall_seconds": 1.92754739,
+      "source_sha256": {
+        "tools/capture_standalone_interface.py": "975aee1c2261114bb5e899a336567a47b7b3541eac5c75fe1b055244d9c1975f",
+        "tests/test_capture_standalone_interface.py": "4368de0197fd2bcaa0a22180d0b302476a623fb1c322d447c5cdd965722f24aa"
+      },
+      "failure": "New contract_variant test helper tried to scale replay.before_shutdown.elapsed_ms, which does not exist. KeyError propagated through synthetic diagnostics; dependent CLI assertions failed.",
+      "repair": "Removed replay.before_shutdown from the test-only elapsed_ms iteration; kept all production assertions unchanged."
+    },
+    {
+      "status": "passed",
+      "exit_code": 0,
+      "test_methods": 39,
+      "failures": 0,
+      "errors": 0,
+      "unittest_elapsed_seconds": 1.661,
+      "process_wall_seconds": 1.913728376,
+      "source_sha256": {
+        "tools/capture_standalone_interface.py": "975aee1c2261114bb5e899a336567a47b7b3541eac5c75fe1b055244d9c1975f",
+        "tests/test_capture_standalone_interface.py": "40035a5aceda7b13392d35fd1a81f3e2190d4994e94604273dfc9c65a882fd81"
+      }
+    }
+  ],
+  "diff_check": "passed for both owned Python files",
+  "coverage": {
+    "case_identities": 15,
+    "supported_scales": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "frozen_default_replay_hashes": 6,
+    "native_diagnostic_fixtures_retained": 8,
+    "default_duration_ms": 1800,
+    "selected_root_scale": 3,
+    "selected_root_duration_ms": 5400,
+    "selected_root_timeout_seconds": 30
+  },
+  "meaning": "Focused Python validation and mocked CLI-boundary tests only. No new native process, screenshot, build, benchmark, CTest, visual result or native capture acceptance. Timing selection is explicit; semantic assertions and original failed baseline remain intact."
+}

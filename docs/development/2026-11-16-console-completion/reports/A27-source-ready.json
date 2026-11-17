@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "worker": "A27",
+  "agent": "/root/w05_a27",
+  "wave": 5,
+  "session": "2026-11-16-console-completion",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "base_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "source": "apps/standalone/tests/test_standalone_library_recall.cpp",
+  "source_sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae",
+  "status": "source_ready_uncompiled",
+  "required_api": "UiActions UiModel::recall_controls(const ControlSnapshot&) noexcept",
+  "production_api_present_at_handoff": false,
+  "compilation_attempted": false,
+  "runtime_execution_attempted": false,
+  "reason_unrun": "Root owns coherent builds and applies the separately authored helper only after the frozen timing batch. The prospective API is absent from the inspected production header/source.",
+  "authored_groups": 9,
+  "authored_invalid_snapshots": 98,
+  "authored_presentation_owner_contexts": 72,
+  "observation_provenance": "Explicitly synthetic SessionSnapshot and SubmitResult inputs; no Session or storage instance, parser, browser, SDL or device execution.",
+  "source_whitespace_check": {
+    "command": "git diff --no-index --check /dev/null apps/standalone/tests/test_standalone_library_recall.cpp",
+    "exit_code": 1,
+    "diagnostics": "",
+    "interpretation": "No whitespace diagnostics; exit 1 records new nonempty file difference."
+  },
+  "production_inputs": {
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/LibraryModel.h": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2",
+    "docs/LIBRARY_MODEL_DESIGN.md": "b85e37d18725b8b357460a5a9caaa58f38cb0114573ae7c1c1266ce72b150852",
+    "docs/REGISTRATION_LIBRARY_CONTRACT.md": "4760d65b27aa154fd86ee09c2cda87bd30f532874cc1a35c62a5b359889703fa"
+  },
+  "limits": [
+    "No actual sequence allocation or callback/Engine evidence",
+    "No external-owner coexistence or phase/percussion continuity claim",
+    "No LibraryModel plus Session plus storage transaction execution",
+    "No native input, platform, device, visual or release acceptance"
+  ]
+}

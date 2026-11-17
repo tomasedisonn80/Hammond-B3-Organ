@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "reviewer": "A43 /root/w08_a43",
+  "observed_utc": "2026-11-17T05:08:13.811384+00:00",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "observed_head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "base_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "decision": "ADMIT exact-source compatibility; no new build, native, test, timing, visual or release acceptance",
+  "method": {
+    "performed": [
+      "Read complete standing AGENTS, M0-M9 plan, current console scope/checkpoint/ledger, baseline inventory, current library/P1 admissions and original result records",
+      "Enumerate full tracked diff and all untracked paths; compare every protected starting Git blob directly with working bytes",
+      "Independently reverse only complete reviewed additions/replacements in memory; do not alter source",
+      "Compare all 47 compiled descriptor projections with registry JSON; inspect conversion, state reader/writer and whole-command paths",
+      "Inspect complete new LibraryModel header/implementation and relevant real A19/A28 harness paths; parse retained JUnit and logs; rehash in-repository source/evidence"
+    ],
+    "git_commands": [
+      "git status --short",
+      "git diff --name-only 9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "git diff --cached --name-only 9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "git ls-tree -r --name-only 9d60dbf462a90fe422fd4e69757fe202264acb7c include src plugins",
+      "git show 9d60dbf462a90fe422fd4e69757fe202264acb7c:<each compared path>"
+    ],
+    "new_builds": 0,
+    "new_test_runs": 0,
+    "new_native_processes": 0,
+    "nested_agents": 0,
+    "binary_rehash_outside_checkout": false
+  },
+  "full_diff_scope": {
+    "index_changes": [],
+    "tracked_paths": [
+      ".github/workflows/standalone.yml",
+      "AGENTS.md",
+      "README.md",
+      "apps/standalone/CMakeLists.txt",
+      "apps/standalone/InstrumentView.cpp",
+      "apps/standalone/UiModel.cpp",
+      "apps/standalone/UiModel.h",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/NEXT_STEPS.md",
+      "docs/PLAN.md",
+      "docs/STATUS.md",
+      "tests/test_capture_standalone_interface.py",
+      "tools/capture_standalone_interface.py",
+      "tools/compare_header_material.py"
+    ],
+    "untracked_source_tool_paths": [
+      "apps/standalone/LibraryModel.cpp",
+      "apps/standalone/LibraryModel.h",
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "apps/standalone/tests/test_standalone_library_model.cpp",
+      "apps/standalone/tests/test_standalone_library_recall.cpp",
+      "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "apps/standalone/tests/test_standalone_library_session.cpp",
+      "apps/standalone/tests/test_standalone_library_storage.cpp",
+      "tests/test_compare_header_material.py",
+      "tests/test_compare_performance_plate.py",
+      "tools/compare_performance_plate.py",
+      "tools/standalone_flat_pixel_capture.cpp"
+    ],
+    "protected_tracked_files": 81,
+    "protected_different_or_missing": [],
+    "untracked_protected_sources": [],
+    "protected_inventory_sha256": "86ef79dd2c92f70abd9ee8fc5d53a96b5be85f316ef9063708ac10faa0be9035",
+    "protected_inventory_encoding": "Sorted Git path order, UTF-8 lines: path TAB base Git blob SHA-1 TAB current SHA-256 LF",
+    "baseline_manifest": {
+      "path": "docs/development/2026-11-16-console-completion/reports/baseline-source.json",
+      "bytes": 18622,
+      "sha256": "1e868bfa515d522857b137a681e7ffb8260e21e22c2f396975eacd96029c8fe3"
+    },
+    "baseline_manifest_count": 160,
+    "baseline_manifest_vs_starting_git_mismatches": [],
+    "baseline_manifest_unchanged_count": 156,
+    "baseline_manifest_changed_paths": [
+      "apps/standalone/InstrumentView.cpp",
+      "apps/standalone/UiModel.cpp",
+      "apps/standalone/UiModel.h",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp"
+    ]
+  },
+  "unchanged_source_identities": {
+    "include/hammond/Types.h": {
+      "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "git_blob": "6c5bbbcd57e6eb0359c8401f11c3f26f618e85d0"
+    },
+    "include/hammond/ParameterBridge.h": {
+      "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "git_blob": "c8e75c6cd4faa52afbd80d722ba2f50bf1325d1d"
+    },
+    "src/ParameterBridge.cpp": {
+      "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "git_blob": "7896111e5f007f6a7db2c4b6e2407fa57089f459"
+    },
+    "data/parameter-registry.json": {
+      "sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+      "git_blob": "feed84d239cdd7bc47b9d2b8e50e73616010d070"
+    },
+    "include/hammond/ControlState.h": {
+      "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "git_blob": "b6563e6f16c35cee18ac9e20ac533bcdb7ff782e"
+    },
+    "src/ControlState.cpp": {
+      "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "git_blob": "2041989eceb1c519323d374a874bfe6ce356403a"
+    },
+    "src/ControlStateIO.cpp": {
+      "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "git_blob": "6fcec8fd5cc71be5ce76cbab6b08b1cd4a50e948"
+    },
+    "src/Engine.cpp": {
+      "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+      "git_blob": "fa123b882736d4f9492ac9c2c28d7965bfe36bd6"
+    },
+    "src/TonewheelBank.cpp": {
+      "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "git_blob": "3a601121f67a1d2f8e73d0f4d05dc6baee9c9b80"
+    },
+    "src/Percussion.cpp": {
+      "sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+      "git_blob": "3bf89614341890bdf82465a56b3e4755a28e41b1"
+    },
+    "src/NoteOwnership.cpp": {
+      "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "git_blob": "54613163fff3d3ebd61f48c8454cbb5583b85e3a"
+    },
+    "src/PedalNoteOwnership.cpp": {
+      "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+      "git_blob": "8d30cf0c52e15d42912b62d9e41726ff50e7ce58"
+    },
+    "plugins/vst3/PluginIds.h": {
+      "sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+      "git_blob": "100ae32acb21c15432fdefdec2e40d26a99669aa"
+    },
+    "apps/standalone/Session.cpp": {
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+      "git_blob": "1062c25ad8d35fba1a084aef4b2eda8259b7a022"
+    },
+    "apps/standalone/Session.h": {
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+      "git_blob": "ea5a5f1f503cad2ef86b674e777806853109ec95"
+    },
+    "apps/standalone/RegistrationLibrary.cpp": {
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+      "git_blob": "a80f0e43cdf323dfd49c91a91e999bb4b8631271"
+    },
+    "apps/standalone/StateFiles.cpp": {
+      "sha256": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6",
+      "git_blob": "4745e19869904735a46ed3982bf2b58e6e63923b"
+    },
+    "apps/standalone/main.cpp": {
+      "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+      "git_blob": "42b2f76b91fbca3a5dfce1f458e7a19082f2cc73"
+    },
+    "data/profiles/nominal-unmeasured-v1.json": {
+      "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+      "git_blob": "c1e5eaf60d5dfbd00ba2113270d43b86912aa2db"
+    },
+    "data/registrations/atlas-chapel-nominal-v1.json": {
+      "sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+      "git_blob": "11c6e5690769c7daea0218c994a71812793b0fbc"
+    },
+    "CMakeLists.txt": {
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+      "git_blob": "153dab88317650f34f93aeff52b968845418f82e"
+    }
+  },
+  "changed_source_identities": {
+    "apps/standalone/InstrumentView.cpp": {
+      "base": {
+        "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+        "git_blob": "211a2326cdc4fc9f238d7e46452ea3139124fe15"
+      },
+      "current_sha256": "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927"
+    },
+    "apps/standalone/UiModel.cpp": {
+      "base": {
+        "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+        "git_blob": "8045397ccfc52231fd1f32c805eed267726037c7"
+      },
+      "current_sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+    },
+    "apps/standalone/UiModel.h": {
+      "base": {
+        "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+        "git_blob": "2ebb0fbbfc2de63649fa221c45b989cc20b17101"
+      },
+      "current_sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "base": {
+        "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+        "git_blob": "14eb3d4bc64db7384f7cc5c91811824cbfa9f0a4"
+      },
+      "current_sha256": "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d"
+    }
+  },
+  "new_source_identities": [
+    {
+      "path": "apps/standalone/LibraryModel.h",
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2"
+    },
+    {
+      "path": "apps/standalone/LibraryModel.cpp",
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98"
+    }
+  ],
+  "exact_source_reversals": [
+    {
+      "path": "apps/standalone/UiModel.h",
+      "added_lines": 5,
+      "inserted_bytes": 409,
+      "block_sha256": "435d8af677b4c1e65ea2166ac34f12cb70e036f3e6df9210d01a87b9d182832d",
+      "reconstructed_sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "byte_equal_to_starting_git_blob": true
+    },
+    {
+      "path": "apps/standalone/UiModel.cpp",
+      "added_lines": 5,
+      "inserted_bytes": 235,
+      "block_sha256": "92819dd1ff71a2394bcff46011a7ce591bc3b5fe9c20b86a83afe3f1800d98cf",
+      "reconstructed_sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "byte_equal_to_starting_git_blob": true
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "removed_new_function_bytes": 7701,
+      "function_sha256": "87b18ac0fd233c9c8aea34f142157a09f2d475173339628869ef32b08ecbae37",
+      "scope": "Remove only P1 helper, enum member, scale guard, selector branch and performance-panel call replacement",
+      "reconstructed_sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+      "byte_equal_to_starting_git_blob": true
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "scope": "Four exactly representable dimension literals in one complete line; test only",
+      "reconstructed_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+      "byte_equal_to_starting_git_blob": true
+    }
+  ],
+  "compatibility": {
+    "parameters": {
+      "count": 47,
+      "compiled_and_json_projection_equal": true,
+      "schema_version": 4,
+      "model": "exclusive-fixed-percussion-pedal-console-v4",
+      "id_groups": [
+        "4096-4104",
+        "4112-4120",
+        "4128-4136",
+        "4144-4152",
+        "8192",
+        "8208-8209",
+        "12288-12291",
+        "16384-16385",
+        "20480-20481"
+      ],
+      "preserved": "IDs, paths, ranges, defaults, kinds, units, steps, event/manual/index routing and conversion source including signed-zero and preset threshold laws"
+    },
+    "saved_controls": {
+      "writer": "B3CONTROLS4",
+      "readers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "migration_changed": false,
+      "transients_serialized": false,
+      "preserved": "Entire serializer/parser and mandatory fixed-catalog identity; existing v1 percussion defaults, v1/v2 muted pedals and v1-v3 fixed None migration"
+    },
+    "plugin_ids": {
+      "processor_words": [
+        "19F9ADC0",
+        "533F42B4",
+        "B96BD51D",
+        "6547E838"
+      ],
+      "controller_words": [
+        "0DEE76AB",
+        "26BC475A",
+        "BF64F138",
+        "C89FB0E0"
+      ],
+      "all_plugin_source_unchanged": true,
+      "new_ABI_or_host_execution": false
+    },
+    "musical_inventory": {
+      "shared_free_running_sources": 91,
+      "drawbar_banks": 4,
+      "playing_keys": 147,
+      "upper_keys": 61,
+      "lower_keys": 61,
+      "pedals": 25,
+      "preset_keys": 24,
+      "ui_control_records_including_presets": 68
+    },
+    "whole_command_route": "LibraryRecallIntent copied complete expected_controls -> UiModel::recall_controls -> existing forced publish_controls -> one UiActions SessionCommand{ControlSnapshot} -> Session::post/apply -> Engine::restore_controls -> validated ControlState::restore; no per-field replay",
+    "helper": "Invalid input returns before mutation; valid equal input still emits one snapshot, marks desired pending, clears only pending control sequence, computes dirty against unchanged saved_controls_; no new data member, gesture/note release, phase/percussion reset, time advance or effect connection",
+    "model": "Main-thread copied state and receipt authority; complete source has no Session/Engine handle, post/read call, filesystem/SDL/clock operation, audio callback or legacy mark_saved call. Owned copies may allocate. Caller supplies fresh observations, lifecycle and effect execution.",
+    "scope_semantics": "Unchanged merge helper preserves explicit latest desired expression for Registration and saved expression for Performance. Named reference and legacy file clean baseline remain independent.",
+    "runtime_boundary": "main.cpp, Session, StateFiles, RegistrationLibrary, ownership and core unchanged. No main/browser instance or recall_controls call; nominal dry path has no new scanner/AO-28/Leslie/rotary connection. Existing failure recovery semantics remain intact."
+  },
+  "retained_execution_evidence": {
+    "A19": {
+      "source": {
+        "path": "apps/standalone/tests/test_standalone_library_session.cpp",
+        "bytes": 47769,
+        "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279"
+      },
+      "original_log": {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-session-ctest-detail.log",
+        "bytes": 1040,
+        "sha256": "f267c956b2288a247eeb47dee17cac471ebb799041634476568ef37a3738d64b"
+      },
+      "groups": 12,
+      "assertions": 42634,
+      "real_snapshots": 696,
+      "renders": 150,
+      "bit_exact_paired_stereo_samples": 6252,
+      "source_phase_checks": 10101,
+      "percussion_history_checks": 60,
+      "rates_hz": [
+        44100,
+        48000,
+        96000
+      ],
+      "limit": "Two real Sessions and a physical-event Engine oracle; hidden Session phases are not read directly; literal catalog, manual test-thread rendering, no native device/browser/physical fidelity"
+    },
+    "A28": {
+      "source": {
+        "path": "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+        "bytes": 34998,
+        "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0"
+      },
+      "integrated_detail": {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-ctest-detail.log",
+        "bytes": 4735,
+        "sha256": "b9ecd02d4e257ddb35f25481834b518b18132654574962553812e7db7c33158d"
+      },
+      "groups": 4,
+      "checks": 1489,
+      "real_snapshots": 138,
+      "renders": 20,
+      "posts": 24,
+      "library_reports": 24,
+      "ui_reports": 24,
+      "recall_dispatches": 4,
+      "storage_calls": 7,
+      "authorizer_calls": 7,
+      "limit": "Real UiModel/LibraryModel/Session and create-only storage; one whole snapshot, preserved baseline/owners, post-Start proof, stale Save and late collision; SDK-free harness, not main/browser integration"
+    },
+    "library_integrated": {
+      "receipt": {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-result.json",
+        "bytes": 4857,
+        "sha256": "40356a2591f05c01da66dc899306e397d0cf6587c3541e0bf9c9e4e6a342d060"
+      },
+      "passed": 5,
+      "failed": 0,
+      "all_13_recorded_sources_match_current": true,
+      "limits": "A27 observations synthetic; A20 control proof synthetic/filesystem real; A19/A28 real Session boundaries"
+    },
+    "coherent_full_suite": {
+      "receipt": {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json",
+        "bytes": 1920,
+        "sha256": "c40a47471efb8862f2b6d6ebc921f207b7b99ea5858856bc4c16b9b1c57a6823"
+      },
+      "junit": {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.xml",
+        "bytes": 140936,
+        "sha256": "63cb6f9fffd3c466652ab2d38c32d86d9865d35d222c5ee3fcab88eddbae03c7"
+      },
+      "tests": 247,
+      "passed": 246,
+      "failed": [
+        "python_test_repository_integrity"
+      ],
+      "all_other_registered_gates_passed": true,
+      "elapsed_seconds": 1005.02,
+      "retained_failure": "A33 note linked its not-yet-written report during concurrent authoring. The report now exists; only root can rerun the affected integrity gate after documents finish. Original full run remains failed."
+    },
+    "p1_paired": {
+      "receipt": {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v2/report.json",
+        "bytes": 179829,
+        "sha256": "f64b634d5455e69e506730acac036e6b3764804d775ff4bdabb4d0a4e0abe1d4"
+      },
+      "passed": true,
+      "pairs": 34,
+      "native_processes": 70,
+      "compared_pixels": 74008097,
+      "forbidden_pixel_changes": 0,
+      "candidate_screens": 62,
+      "source_boundary": "Frozen original pre-helper UiModel pair; source-only exact reversal does not relabel this as a new paired run"
+    },
+    "p1_timing": {
+      "receipt": {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-timing-summary.json",
+        "bytes": 6310,
+        "sha256": "e4e8066d6a5473756097a2c426a5601ff5a1a566c95d873872ffff94cdeb2a16"
+      },
+      "status": "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH",
+      "processes": 8,
+      "samples": 2400,
+      "mandatory_cross_witness_gate_passed": true,
+      "source_boundary": "Frozen pre-helper binaries, one descriptive shared-host batch; no current-binary timing/equivalence/deadline claim"
+    },
+    "final_capture": {
+      "receipt": {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-capture-result.json",
+        "bytes": 7359,
+        "sha256": "3da35376eb7774f82a8616c5e241f0c694ea8902d5b49385a88ab97b97bace4d"
+      },
+      "captures_passed": 15,
+      "all_recorded_inputs_unchanged": true,
+      "gallery_manifest": {
+        "path": "docs/design/native-gallery-console-integrated/manifest.json",
+        "bytes": 11442,
+        "sha256": "8700c6b96578174c21eb2eb67aefdce9d0ff44efb9f3801fb41c15db002768f5"
+      },
+      "manifest_entries_independently_rehashed": 69,
+      "manifest_mismatches": [],
+      "binary_sha256": "7f8996cdd062907a8ad4f47021a32ef28a5f5b9753ac9bf7b16cc4849dc77ba3",
+      "limits": "Root actual Linux dummy-SDL/software capture evidence; A43 rehashed files only, performed no new capture or visual admission"
+    }
+  },
+  "build_identity_boundary": {
+    "qualification": {
+      "path": "docs/development/2026-11-16-console-completion/reports/integrated-application-qualification.json",
+      "bytes": 17505,
+      "sha256": "0fb1c8a6ac94b22351be40e71c6f6772ebf6aebd3b2349180ee69f71925e5b9a"
+    },
+    "all_150_recorded_sources_match_current": true,
+    "baseline_app_sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3",
+    "pre_helper_app_sha256": "7b812bbbfd86779bb01cb76fe225309dd2d3101d08c6bb7fe2d6730e9d02c2c9",
+    "integrated_app_sha256": "7f8996cdd062907a8ad4f47021a32ef28a5f5b9753ac9bf7b16cc4849dc77ba3",
+    "current_configuration": "Root coherent Linux x86-64 Release, GCC 14.2, SDL 2.32.10, MIDI/VST3 OFF",
+    "interpretation": "Unchanged core source is not an unchanged executable or new plugin ABI proof. P1/helper required a coherent rebuild. Binary identities and source-to-build attestations are retained root receipts, not A43 binary execution or out-of-checkout rehash."
+  },
+  "remaining_gates": [
+    "Complete native browser/main wiring, model-owned Save availability and fresh post-Start proof with all real submission/lifecycle hooks",
+    "Native held-input/modal/gesture journeys, real display/DPI/audio/MIDI devices and platform callback retirement/deadlines",
+    "Exact-source hosted Linux/Windows/macOS and required sanitizer/host/VST3 qualification; original starting-source Windows failure remains historical",
+    "Physical AO-28/scanner/Leslie acquisition/calibration and separately owned effect connection gates",
+    "Native accessibility provider and physical accessibility journeys; literal whole-interface 1:1 remains unmet and unwaived",
+    "Rights/licensing, signed packaging/release; root document integrity, acceptance, guarded publication and independent remote/CI verification"
+  ],
+  "remote_scope": {
+    "admitted_source": "Only the inspected local overlay against starting 9d60dbf462a90fe422fd4e69757fe202264acb7c",
+    "root_advisory_remote_head": "03c70c103a4a0dd72b323529416b909c19a4e139",
+    "advisory_provenance": "Root message during A43 review; A43 did not query or admit the remote source",
+    "later_reconciliation_covered": false
+  }
+}

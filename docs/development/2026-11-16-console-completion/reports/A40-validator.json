@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "worker": "A40",
+  "agent": "/root/w07_a40",
+  "scope": "Read-only console-session validator; isolated synthetic tests only",
+  "recorded_utc": "2026-11-17T05:01:38.067467+00:00",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "repository_head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "repository_head_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "working_source_sha256": {
+    "docs/development/2026-11-16-console-completion/check_session.py": "50696f60274204f1c0f592710291ab143d8de9e0c8615b7b786d80af0f15bf4e",
+    "docs/development/2026-11-16-console-completion/reports/A40-validator-tests.py": "cc19c68f603eea9c308349a16abe0222a4c1133efbce7705383f91b0aeb226ca"
+  },
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-console-completion/reports/A40-validator-tests.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_assignment_shapes_are_checked_without_tracebacks (__main__.SyntheticSessionTests.test_assignment_shapes_are_checked_without_tracebacks) ... ok\ntest_bad_json_nonfinite_unicode_and_root_shapes_are_rejected (__main__.SyntheticSessionTests.test_bad_json_nonfinite_unicode_and_root_shapes_are_rejected) ... ok\ntest_cli_infers_own_session_from_another_cwd_and_does_not_write (__main__.SyntheticSessionTests.test_cli_infers_own_session_from_another_cwd_and_does_not_write) ... ok\ntest_duplicate_keys_are_rejected_at_root_record_and_ignored_metadata (__main__.SyntheticSessionTests.test_duplicate_keys_are_rejected_at_root_record_and_ignored_metadata) ... ok\ntest_four_current_running_records_exceed_declared_limit (__main__.SyntheticSessionTests.test_four_current_running_records_exceed_declared_limit) ... ok\ntest_malformed_ids_and_duplicate_worker_or_agent_are_refused (__main__.SyntheticSessionTests.test_malformed_ids_and_duplicate_worker_or_agent_are_refused) ... ok\ntest_metadata_requires_exact_integer_counts_and_session_identity (__main__.SyntheticSessionTests.test_metadata_requires_exact_integer_counts_and_session_identity) ... ok\ntest_missing_bad_and_changed_hashes_are_refused (__main__.SyntheticSessionTests.test_missing_bad_and_changed_hashes_are_refused) ... ok\ntest_missing_directory_empty_and_non_utf8_final_notes_are_refused (__main__.SyntheticSessionTests.test_missing_directory_empty_and_non_utf8_final_notes_are_refused) ... ok\ntest_missing_ledger_returns_structured_error (__main__.SyntheticSessionTests.test_missing_ledger_returns_structured_error) ... ok\ntest_note_paths_cannot_escape_alias_or_belong_to_another_worker (__main__.SyntheticSessionTests.test_note_paths_cannot_escape_alias_or_belong_to_another_worker) ... ok\ntest_note_symlink_escape_and_internal_alias_are_refused (__main__.SyntheticSessionTests.test_note_symlink_escape_and_internal_alias_are_refused) ... ok\ntest_notes_directory_symlink_escape_and_ledger_symlink_are_refused (__main__.SyntheticSessionTests.test_notes_directory_symlink_escape_and_ledger_symlink_are_refused) ... ok\ntest_owned_paths_remain_optional_but_cannot_carry_bad_paths (__main__.SyntheticSessionTests.test_owned_paths_remain_optional_but_cannot_carry_bad_paths) ... ok\ntest_pinned_running_note_is_checked_without_acceptance (__main__.SyntheticSessionTests.test_pinned_running_note_is_checked_without_acceptance) ... ok\ntest_plans_history_followups_and_old_workers_are_never_counted (__main__.SyntheticSessionTests.test_plans_history_followups_and_old_workers_are_never_counted) ... ok\ntest_progress_allows_empty_or_incomplete_actual_dispatch (__main__.SyntheticSessionTests.test_progress_allows_empty_or_incomplete_actual_dispatch) ... ok\ntest_record_order_and_optional_owned_paths_are_preserved (__main__.SyntheticSessionTests.test_record_order_and_optional_owned_paths_are_preserved) ... ok\ntest_running_unpinned_partial_note_is_not_accepted (__main__.SyntheticSessionTests.test_running_unpinned_partial_note_is_not_accepted) ... ok\ntest_strict_sixty_record_fixture_is_explicitly_synthetic (__main__.SyntheticSessionTests.test_strict_sixty_record_fixture_is_explicitly_synthetic) ... ok\ntest_strict_sixty_records_still_require_all_acceptances (__main__.SyntheticSessionTests.test_strict_sixty_records_still_require_all_acceptances) ... ok\ntest_undefined_states_tasks_and_review_semantics_are_refused (__main__.SyntheticSessionTests.test_undefined_states_tasks_and_review_semantics_are_refused) ... ok\ntest_wave_and_canonical_agent_mapping_are_enforced (__main__.SyntheticSessionTests.test_wave_and_canonical_agent_mapping_are_enforced) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 0.418s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-console-completion/check_session.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"schema_version\": 1,\n  \"session\": \"2026-11-16-console-completion\",\n  \"strict\": false,\n  \"ledger\": \"/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/assignments.json\",\n  \"ledger_sha256\": \"2ef0af2229f08394e88f22d7ab0fd3fa002bb723ac1bd370f87468fcf0676f8e\",\n  \"dispatched\": 40,\n  \"accepted\": 37,\n  \"running\": 3,\n  \"accepted_notes_verified\": 37,\n  \"waves\": {\n    \"1\": 6,\n    \"2\": 6,\n    \"3\": 6,\n    \"4\": 6,\n    \"5\": 6,\n    \"6\": 6,\n    \"7\": 4\n  },\n  \"record_order\": [\n    \"A01\",\n    \"A02\",\n    \"A03\",\n    \"A04\",\n    \"A05\",\n    \"A06\",\n    \"A07\",\n    \"A08\",\n    \"A09\",\n    \"A10\",\n    \"A11\",\n    \"A12\",\n    \"A13\",\n    \"A15\",\n    \"A14\",\n    \"A16\",\n    \"A17\",\n    \"A18\",\n    \"A19\",\n    \"A20\",\n    \"A21\",\n    \"A22\",\n    \"A23\",\n    \"A24\",\n    \"A25\",\n    \"A26\",\n    \"A27\",\n    \"A28\",\n    \"A29\",\n    \"A30\",\n    \"A31\",\n    \"A32\",\n    \"A33\",\n    \"A34\",\n    \"A35\",\n    \"A36\",\n    \"A37\",\n    \"A38\",\n    \"A39\",\n    \"A40\"\n  ],\n  \"complete\": false,\n  \"errors\": [],\n  \"scope\": \"Local record and note-byte consistency only; no proof of external dispatch, historical concurrency, review quality, product quality, fidelity or publication.\",\n  \"repository\": \"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "self_tests": {
+    "methods": 23,
+    "result": "pass",
+    "fixtures": "SYNTHETIC temporary ledgers and notes only; all deleted after tests; no actual worker records generated"
+  },
+  "progress_result": {
+    "schema_version": 1,
+    "session": "2026-11-16-console-completion",
+    "strict": false,
+    "ledger": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/assignments.json",
+    "ledger_sha256": "2ef0af2229f08394e88f22d7ab0fd3fa002bb723ac1bd370f87468fcf0676f8e",
+    "dispatched": 40,
+    "accepted": 37,
+    "running": 3,
+    "accepted_notes_verified": 37,
+    "waves": {
+      "1": 6,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 6,
+      "6": 6,
+      "7": 4
+    },
+    "record_order": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A15",
+      "A14",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "A20",
+      "A21",
+      "A22",
+      "A23",
+      "A24",
+      "A25",
+      "A26",
+      "A27",
+      "A28",
+      "A29",
+      "A30",
+      "A31",
+      "A32",
+      "A33",
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A38",
+      "A39",
+      "A40"
+    ],
+    "complete": false,
+    "errors": [],
+    "scope": "Local record and note-byte consistency only; no proof of external dispatch, historical concurrency, review quality, product quality, fidelity or publication.",
+    "repository": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ"
+  },
+  "actual_ledger_before_sha256": "2ef0af2229f08394e88f22d7ab0fd3fa002bb723ac1bd370f87468fcf0676f8e",
+  "actual_ledger_after_sha256": "2ef0af2229f08394e88f22d7ab0fd3fa002bb723ac1bd370f87468fcf0676f8e",
+  "actual_ledger_bytes_unchanged": true,
+  "actual_strict_run": "UNRUN: root must run --strict only after sixty actual reviewed handoffs",
+  "synthetic_strict_coverage": "An isolated explicitly synthetic sixty-record fixture passed strict validation; a sixty-record fixture with one running record was refused",
+  "mechanical_note_floor": {
+    "minimum_bytes": 300,
+    "minimum_non_whitespace_characters": 200,
+    "minimum_whitespace_separated_tokens": 30,
+    "root_review": "nonblank string; substance remains root judgment"
+  },
+  "state_semantics": {
+    "accepted": "requires safe ordinary UTF-8 note, exact hash and nonblank root_review",
+    "running": "incomplete note may be absent or unpinned; any supplied final hash is checked and never auto-accepts"
+  },
+  "limitations": [
+    "Only assignments are counted; planned queue, historical sessions and followups supply no worker credit.",
+    "Default progress permits incomplete dispatch. Strict requires all A01..A60 accepted in ten waves of six.",
+    "The checker validates requested 60/10/max3 and current running-record count, not external dispatch or historical concurrency.",
+    "Hashes and text floors establish a local byte snapshot, not independent review quality or substantive task completion.",
+    "No production quality, build, native execution, fidelity, accessibility, publication or hosted-CI result is established.",
+    "Optional owned_paths receive relative syntax checks only; neither existence nor authority is inferred.",
+    "Acceptance and final ledger updates remain with root."
+  ]
+}

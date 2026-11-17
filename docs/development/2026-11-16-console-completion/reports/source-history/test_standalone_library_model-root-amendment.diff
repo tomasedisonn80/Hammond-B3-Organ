@@ -1,0 +1,43 @@
+--- A16-original
++++ root-reviewed-amendment
+@@ -601,16 +601,33 @@
+     REQUIRE(operation(model).phase == LibraryOperationPhase::AwaitingAcknowledgment);
+     model.observe(observed(before), 11);
+     REQUIRE(!model.view().current_reference && model.view().controls_pending);
++    auto still_queued = before;
++    still_queued.publication_revision = 4;
++    model.observe(observed(still_queued), 12);
++    REQUIRE(!model.view().current_reference);
++    REQUIRE(operation(model).phase == LibraryOperationPhase::AwaitingAcknowledgment);
++    const auto after = acknowledged(still_queued, before.controls, 1);
++    model.observe(observed(after), 13);
++    terminal(model, LibraryOutcome::Applied);
++    REQUIRE(reference(model).key == target.key);
++
++    // Session resolves consumed commands, including rejected/discarded ones.
++    // Once this command is resolved without application, a later applied
++    // sequence cannot establish that the original command ever applied.
++    LibraryModel consumed;
++    initialize(consumed, before, {target});
++    const auto original = recall(consumed, target, before, before.controls);
++    REQUIRE(consumed.submitted({SessionStatus::Ok, 1}, original.control_intent) == LibraryOutcome::Accepted);
+     auto resolved_only = before;
+     resolved_only.publication_revision = 4;
+     resolved_only.resolved_sequence = 1;
+-    model.observe(observed(resolved_only), 12);
+-    REQUIRE(!model.view().current_reference);
+-    REQUIRE(operation(model).phase == LibraryOperationPhase::AwaitingAcknowledgment);
+-    const auto after = acknowledged(resolved_only, before.controls, 1);
+-    model.observe(observed(after), 13);
+-    terminal(model, LibraryOutcome::Applied);
+-    REQUIRE(reference(model).key == target.key);
++    consumed.observe(observed(resolved_only), 12);
++    terminal(consumed, LibraryOutcome::Unconfirmed);
++    REQUIRE(!consumed.view().current_reference && !consumed.view().controls_pending);
++    const auto unrelated_later = acknowledged(resolved_only, before.controls, 2);
++    consumed.observe(observed(unrelated_later), 13);
++    terminal(consumed, LibraryOutcome::Unconfirmed);
++    REQUIRE(!consumed.view().current_reference);
+ }
+ 
+ void same_value_intent_supersedes_without_revival() {

@@ -1,8 +1,75 @@
 # Development status
 
-## Portable registrations and reference apron — 16 November 2026
+<!-- console-status-current:start -->
+<a id="current-console-continuation--17-november-2026"></a>
+## Current console continuation — 16 November 2026
 
-This is the current continuation and recovery entry. Read its
+The [console scope](development/2026-11-16-console-completion/README.md),
+[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual assignments](development/2026-11-16-console-completion/assignments.json)
+and [root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md)
+govern current recovery. Starting source is
+`9d60dbf462a90fe422fd4e69757fe202264acb7c`; the working additions require their
+own recorded hashes. The required sixty new workers/ten waves remain tracked
+only by this session's actual ledger; no closure is claimed here. Its six new
+readers covered [all 500 atlas pages](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
+
+### Implemented console foundation and observed evidence
+
+LibraryModel owns copied catalog/selection/draft state and named-operation
+receipts. Registration recall preserves latest desired expression; Performance
+restores saved expression. The validated `UiModel::recall_controls` publishes
+one whole-control action even for equal values and preserves the legacy saved
+baseline. Use the [developer guide](LIBRARY_MODEL_GUIDE.md) and
+[independent source admission](reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md).
+Native browser and `main.cpp` hooks remain absent.
+
+| Recorded gate | Observed result and limit |
+| --- | --- |
+| [Integrated library suites](development/2026-11-16-console-completion/reports/library-integrated-result.json) | **5/5 pass**: pure model, real Session, real filesystem with synthetic control proof, public-API recall and four combined real UiModel/LibraryModel/Session/storage journeys. These do not execute native browser routing. |
+| [Coherent native build](development/2026-11-16-console-completion/reports/integrated-build-result.json) and [first full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json) | All-target Release build passed; the first full run is **246/247**, exit 8, with one repository-integrity failure. Every other registered gate passed. |
+| [Strict P1 source transition](development/2026-11-16-console-completion/reports/p1-source-transition-result.json) and [finite-JSON capture repair](development/2026-11-16-console-completion/reports/capture-finite-json-result.json) | **45 Python methods pass in each suite**. A30 admits only the exact recall-helper pair in candidate-only mode; original paired pins and evidence remain unchanged. A31 rejects decoded nonfinite numeric evidence. |
+| [Distinct SDK-free admission](reviews/CONSOLE_HEADLESS_ADMISSION.md) | Fresh Linux Release configuration and first build pass **12/12 selected tests** without SDL, RtMidi or VST3 dependencies. Native/device/sanitizer/platform acceptance remains separate. |
+| [P1 paired v2](development/2026-11-16-console-completion/reports/p1-paired-v2-summary.json) | **62 numerical screens, 34 pairs, 74,008,097 pixel positions**, zero forbidden changes. The original v1 metadata-oracle failure remains retained. |
+| [P1 full-frame visual admission](reviews/PERFORMANCE_PLATE_P1_VISUAL_ADMISSION.md) | A24 inspected all fifteen P1 and fifteen preceding actual app frames plus the reference. The [P1 capture record](design/native-gallery-console-p1/provenance.json) is bound to its original pre-helper source/application. |
+| [Frozen P1 timing and Flat witness](development/2026-11-16-console-completion/reports/p1-timing-summary.json) | One eight-process, **2,400-sample** batch reports no investigation signal; the exact same-scene Flat witness and cross-witness gate pass. This descriptive shared-host batch establishes neither performance equivalence nor a display/audio deadline. |
+
+The [first full-run log](development/2026-11-16-console-completion/reports/integrated-first-ctest.log)
+records the repository-integrity failure while A33's linked report was not yet
+written; that report now exists. Preserve the original failure and record the
+affected document gate separately after authoring finishes. The [final integrated
+capture result](development/2026-11-16-console-completion/reports/integrated-capture-result.json)
+passes all fifteen views with 69 manifest entries verified; README now displays
+those actual images. Independent final-gallery review, publication and exact-source
+hosted outcomes remain root's checkpoint duties; this entry makes no all-pass or
+publication claim.
+
+### Current workspace and setup
+
+Use `/workspace/scratch/21cce69f7784/Hammond-B3-Organ`; root owns the single
+coordinated `../build-native`. Pinned SDL and build tools under
+`/workspace/scratch/3edffb787db3` are read-only dependencies. The separate
+`../a32-headless` was explicitly assigned for the SDK-free configuration.
+Use [normal desktop setup](../README.md#build-and-launch-the-native-application)
+or the [foundation developer guide](LIBRARY_MODEL_GUIDE.md) for their respective
+workflows. Other sessions' checkouts, indexes, builds and evidence stay read-only.
+
+Next follow the [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md):
+model-owned Save availability and real post-Start proof precede browser/main
+wiring. H1 retains its separate [owner checkpoint](development/2026-11-16-ui-delivery/CHECKPOINT.md)
+and [old-source pin limits](reviews/CONSOLE_PORTABILITY_ADMISSION.md).
+Every [M0–M9 exit](PLAN.md#milestones-and-exit-evidence) and
+[existing owner boundary](PLAN.md#current-ownership-and-source) remains binding.
+**Literal whole-interface 1:1 remains unmet and unwaived**; physical fidelity,
+real device/display/DPI/DAW journeys, callback retirement/deadlines, native
+accessibility, rights and signed release remain separate gates.
+<!-- console-status-current:end -->
+
+<a id="portable-registrations-and-reference-apron--16-november-2026"></a>
+## Historical portable registrations and reference apron — 16 November 2026
+
+This is the retained portable-registration continuation record. Its workspace,
+counts and next actions describe that dated source, not current console work. Read its
 [session scope](development/2026-11-16-preset-library-continuation/README.md),
 [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md)
 and [actual ledger](development/2026-11-16-preset-library-continuation/assignments.json).
@@ -117,7 +184,7 @@ retains title, tracking, caps, panels, furniture, manuals and layout differences
 **Literal whole-interface 1:1 remains unmet and unwaived.** Software captures
 establish no real-display/DPI or native-accessibility acceptance.
 
-### Current workspace and setup
+### Historical portable-registration workspace and setup
 
 Use `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`, root's coordinated
 `../build-native`, and read-only SDL 2.32.10 at
@@ -148,7 +215,8 @@ about 40 GiB was free at its recorded sample. Other sessions remain read-only.
 
 ## Preserved dated status records
 
-The following body is retained unchanged from the previous status revision.
+The following body retains earlier source-specific evidence and owner duties;
+historical navigation labels are clarified without changing those results.
 Use the current entry above for this continuation's recovery and priorities.
 
 ## Runtime and interface continuation — 16 November 2026
@@ -181,7 +249,8 @@ records completed worker closure and source-qualified publication history.
 [All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
 Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
 
-## Current streaming/material continuation — 16 November 2026
+<a id="current-streamingmaterial-continuation--16-november-2026"></a>
+## Historical streaming/material continuation — 16 November 2026
 
 The [active session](development/2026-11-15-streaming-continuation/README.md),
 started 15 November, implements the isolated **M3 causal integer-grid contact
@@ -204,7 +273,8 @@ for accepted counts. Six new readers covered all 500 atlas pages under the
 [coverage receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
 Previous sessions and repeated followups supply no worker credit here.
 
-### Implemented current behavior
+<a id="implemented-current-behavior"></a>
+### Historical streaming implementation
 
 [`CausalContactGrid`](../include/hammond/research/CausalContactGrid.h) is a separate
 C++20 research API, `causal-contact-grid-v1`. It retains nine independent
@@ -233,7 +303,8 @@ meanings, `B3CONTROLS4` and readers 1–3**, plugin identities and musical owner
 The earlier offline contact reference and canonical wide layout remain their
 own source-bound deliveries; they have not been replaced or regraded.
 
-### Current tested evidence and limits
+<a id="current-tested-evidence-and-limits"></a>
+### Historical streaming evidence and limits
 
 | Evidence | Observed result and scope |
 | --- | --- |
@@ -255,7 +326,8 @@ Other panel/wood illumination, key/cap bevels, shadows and typography still need
 work, followed by actual display/DPI/input and native semantic-accessibility
 journeys. Dummy SDL and local resource bounds qualify none of those gates.
 
-### Current workspace and setup
+<a id="current-workspace-and-setup-1"></a>
+### Historical streaming workspace and setup
 
 Root coordinates the single build, captures and publication. Other sessions'
 checkouts, indexes, builds and evidence are read-only to this session. In
@@ -312,7 +384,8 @@ journey. Keyboard/pointer builds may leave MIDI OFF; Windows executable paths
 and PowerShell commands are in the same guide. Launching at the default
 1280×900 shows the established compact layout.
 
-### Remaining current acceptance and engineering work
+<a id="remaining-current-acceptance-and-engineering-work"></a>
+### Historical streaming acceptance and engineering work
 
 All 60 scoped worker deliveries are accepted; the
 [strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
@@ -565,7 +638,8 @@ The portable checker repair is published and fully qualified as `80b8cce`.
 The closing commit retains documentation/evidence only; subsequent development
 starts from the concrete next assignments.
 
-### Current repaired-source qualification
+<a id="current-repaired-source-qualification"></a>
+### Historical repaired-source qualification
 
 Published **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**, tree
 `d310be065db2bb9b0012c11a0c5ec2beda4c9384`, has verified parent c4486ba in the
@@ -1100,7 +1174,8 @@ The [actual manifest](development/2026-11-14-preset-continuation/assignments.jso
 records this session's dispatched identities and acceptance. Earlier and parallel
 tracks below retain their source identities and separate evidence gates.
 
-## Active MIDI and native visual continuation
+<a id="active-midi-and-native-visual-continuation"></a>
+## Historical MIDI and native visual continuation
 
 A new [sixty-worker session](development/2026-11-14-midi-ui/README.md), starting at `0f7b900`, advances the next independent M9 external-MIDI input and native visual slice under [its scope](MIDI_UI_SCOPE.md). All 500 atlas pages have been read in six disjoint assignments. The bounded decoder/inbox, optional pinned RtMidi backend, native device modal, synthetic replay path and reference-led renderer are implemented. All 45 public parameters, `B3CONTROLS3`, the nominal Engine and the separate model tracks retain their identities.
 
@@ -1212,7 +1287,8 @@ separate edited/sounding banks, pedals, percussion, expression, Audio/Help
 panels and explicit saved controls. Follow the [operational handoff](STANDALONE_HANDOFF.md)
 and actual manifest. The scanner continuation below remains a separate track.
 
-### Final code and current evidence
+<a id="final-code-and-current-evidence"></a>
+### Historical final code and evidence
 
 Standalone package-audit checkpoint: `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
 `10f070c54d176571f1919d8141d24dd82db0e41c`. Root fetched it and verified exact
@@ -1414,7 +1490,8 @@ The wave-1 published tree and both successful hosted workflows are recorded
 there. Scanner and native standalone development retain their separate ownership;
 M5/M6 and measured-capture dependencies remain open under [ROTARY_SCOPE.md](ROTARY_SCOPE.md).
 
-## Active scanner continuation
+<a id="active-scanner-continuation"></a>
+## Historical scanner continuation
 
 The new [scanner session](development/2026-11-13-scanner/README.md) has completed its first 20 distinct assignments; the combined stage and its independent tests are in progress in wave 4. Six fresh readers covered every atlas page; follow its [handoff](SCANNER_HANDOFF.md), actual manifest and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Frequency/process and rotor qualification are complete; full matched-step stage qualification is in progress.
 
@@ -1511,7 +1588,8 @@ not a warning-free log or DAW qualification. The independent harness separately
 checks the supported lifecycle. Allocation/concurrency results do not establish
 all allocations, locks, scheduler histories or audio-device deadlines.
 
-## Next implementation and remaining product gates
+<a id="next-implementation-and-remaining-product-gates"></a>
+## Historical next implementation and retained product gates
 
 The graph/compiler, independent AC/transient references and prepared line modules now exist. The next scanner decision must resolve the observed G5 same-hertz failure under the frozen budgets before Engine integration. Its exact numerical evidence and separate rotor/integration ownership are in [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md). [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) separates discrete parity, full-band audible policy and later Engine/native integration. The original [scanner gate](M3_REMAINING_AND_SCANNER_GATE.md) retains the detailed physical and architectural requirements.
 

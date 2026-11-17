@@ -1,0 +1,321 @@
+{
+  "agent": "/root/w07_a42",
+  "audit_method": "Read-only JSON/XML, every JUnit testcase, full detailed/summary log comparison, source/configuration inspection and SHA-256 checks; no build, test, native process or external-workspace access.",
+  "build": {
+    "all_numbered_steps_present_once_in_order": true,
+    "all_target_command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--parallel",
+      "3"
+    ],
+    "configuration": "Ordinary Release Linux / GCC 14.2 / SDL 2.32.10; MIDI and VST3 disabled. No sanitizer execution claimed.",
+    "exit_code": 0,
+    "numbered_steps": 127
+  },
+  "capture_metadata": {
+    "all_recorded_inputs_unchanged": true,
+    "app_identity_matches_integrated_receipt": true,
+    "captures_passed": 15,
+    "exit_code": 0,
+    "images_visually_reviewed_by_A42": false,
+    "manifest_entries_hash_verified": 69,
+    "provenance_and_manifest_hashes_match": true,
+    "replay_time_scale": 3,
+    "visual_owner": "Separate A46 review; this audit admits metadata consistency only."
+  },
+  "failure": {
+    "affected_document_gate_rerun_observed": false,
+    "gate": "python_test_repository_integrity",
+    "inner_failures": 1,
+    "inner_suite_methods": 41,
+    "integrity_gate_local_minute": "2026-11-16 21:42 MST (2026-11-17 04:42 UTC)",
+    "next_owner": "Root, after final documentation authoring; retain first-run failure.",
+    "note_mtime_utc": "2026-11-17T04:42:43.077338+00:00",
+    "reason": "A33 note linked A33-native-next.json before that report existed during concurrent authoring. The preserved output names only that missing link.",
+    "report_exists_now": true,
+    "report_mtime_utc": "2026-11-17T04:43:49.781361+00:00",
+    "report_sha256": "7338155b1c2f2c57b945a1e7ab3e505b6348e5f28ebf4365bc2f1da1539892ce",
+    "timestamp_limit": "Current filesystem mtimes corroborate sequence; raw failure is the primary evidence."
+  },
+  "full_ctest": {
+    "a_second_247_test_run_observed": false,
+    "all_other_registered_gates_passed": true,
+    "disabled": 0,
+    "discovered": 247,
+    "elapsed_seconds": 1005.02,
+    "enabled": 247,
+    "error_nodes": 0,
+    "executed": 247,
+    "exit_code": 8,
+    "failed": 1,
+    "failed_names": [
+      "python_test_repository_integrity"
+    ],
+    "full_run_passed": false,
+    "junit_reported_time_seconds": 1005,
+    "name_order_and_command_matches": 247,
+    "ordered_names_sha256": "9e5ff234f14ee31c9b233fa5c1dea181ce169cd82d7d2dee7f0c01ddaef1e147",
+    "passed": 246,
+    "registration_categories": {
+      "core": 69,
+      "python": 107,
+      "standalone": 71
+    },
+    "skipped_registrations": 0,
+    "sum_testcase_seconds": 1004.84224617,
+    "summary_and_detail_result_matches": 247,
+    "unique_names": 247
+  },
+  "headless": {
+    "build_steps": 68,
+    "compile_commands_inspected": 50,
+    "dependency_paths_inspected": 531,
+    "disabled_or_skipped": 0,
+    "elapsed_seconds": 5.69,
+    "elf_runtime_dependencies": [
+      "libc.so.6",
+      "libgcc_s.so.1",
+      "libm.so.6",
+      "libstdc++.so.6"
+    ],
+    "exact_support_core_archive_links": 12,
+    "executed": 12,
+    "failed": 0,
+    "full_suite_executed": false,
+    "original_report_inspector_failure": [
+      {
+        "exit_code": 1,
+        "record": "15-inspect-result.json"
+      }
+    ],
+    "passed": 12,
+    "report_failure_did_not_change_build_or_runtime_results": true,
+    "runtime_attempts": 1,
+    "sdk_dependency_hits": 0,
+    "selected_discovered": 12,
+    "source_inputs_verified": 112,
+    "strict_cxx20_commands": 50,
+    "support_objects_with_midi_disabled": 9
+  },
+  "input_receipts_relative_to_session_reports": {
+    "A32-headless/08-ctest-discover.stdout.log": {
+      "bytes": 7406,
+      "sha256": "8c4a48c290a036b1203ecc5da31e038f70318f58bc85cff871dee443a466b799"
+    },
+    "A32-headless/ctest-first.xml": {
+      "bytes": 5728,
+      "sha256": "7ee88d1daf361607c6c25cedb192e547d6a027a7c424e89e6ded2e7ebb4680a4"
+    },
+    "A32-headless/qualification.json": {
+      "bytes": 24486,
+      "sha256": "81052af68844da6c89414103205acfe437158eb0c82a8905be8ec1a8da35d24e"
+    },
+    "A32-headless/qualified-source-identities.json": {
+      "bytes": 24034,
+      "sha256": "3cd13ff7e9807b1e7da26f2024a5d0d3e22b09f9498e6e9dcf25b6ba0696de7b"
+    },
+    "A32-headless/sdk-independence.json": {
+      "bytes": 39671,
+      "sha256": "5ff3a9611cc89930b524c6a1936af138f92b689c9bf1e7a12d4725717a9ddc72"
+    },
+    "A33-native-next.json": {
+      "bytes": 5215,
+      "sha256": "7338155b1c2f2c57b945a1e7ab3e505b6348e5f28ebf4365bc2f1da1539892ce"
+    },
+    "capture-finite-json-result.json": {
+      "bytes": 545,
+      "sha256": "d1ade6a11a0f6e34b04be4dd7ac90e9b706a928c2eefa6f762e7ebe7fdcc243d"
+    },
+    "capture-finite-json-test.log": {
+      "bytes": 8341,
+      "sha256": "e67196a38c332b2e17c893afe3742639f9ee76e938a883f743bd09626bc0fc99"
+    },
+    "integrated-application-qualification.json": {
+      "bytes": 17505,
+      "sha256": "0fb1c8a6ac94b22351be40e71c6f6772ebf6aebd3b2349180ee69f71925e5b9a"
+    },
+    "integrated-build-result.json": {
+      "bytes": 1274,
+      "sha256": "42a0240ab165e820b0ca673e69ce6fd285a79ca4f6d073d0f47358f7a1d95ff5"
+    },
+    "integrated-capture-result.json": {
+      "bytes": 7359,
+      "sha256": "3da35376eb7774f82a8616c5e241f0c694ea8902d5b49385a88ab97b97bace4d"
+    },
+    "integrated-first-build.log": {
+      "bytes": 22622,
+      "sha256": "80ab5f651eb888ea8927384492ceef7a6dfcc6e1940a6af0c47d862c3b2039e3"
+    },
+    "integrated-first-ctest-detail.log": {
+      "bytes": 424723,
+      "sha256": "419df2387557a54727187a603e3766ea693e15e48952aced8549cbf47884b98b"
+    },
+    "integrated-first-ctest-result.json": {
+      "bytes": 1920,
+      "sha256": "c40a47471efb8862f2b6d6ebc921f207b7b99ea5858856bc4c16b9b1c57a6823"
+    },
+    "integrated-first-ctest.log": {
+      "bytes": 38319,
+      "sha256": "bbdfff3343bde52dabfb1ce80bb2d14df62514cadadb912fdc1989c522b4df8f"
+    },
+    "integrated-first-ctest.xml": {
+      "bytes": 140936,
+      "sha256": "63cb6f9fffd3c466652ab2d38c32d86d9865d35d222c5ee3fcab88eddbae03c7"
+    },
+    "integrated-test-discovery.json": {
+      "bytes": 269087,
+      "sha256": "ad12b13689bb58f9ee8b1faa60a38c215b29e1efcb6ebc143249afda3d1bd34a"
+    },
+    "library-integrated-ctest-detail.log": {
+      "bytes": 4735,
+      "sha256": "b9ecd02d4e257ddb35f25481834b518b18132654574962553812e7db7c33158d"
+    },
+    "library-integrated-first-test.log": {
+      "bytes": 743,
+      "sha256": "d94fb82fd724241e88053b3f29d9a190700c7781f178b054d6d7dff299447389"
+    },
+    "library-integrated-result.json": {
+      "bytes": 4857,
+      "sha256": "40356a2591f05c01da66dc899306e397d0cf6587c3541e0bf9c9e4e6a342d060"
+    },
+    "p1-source-transition-result.json": {
+      "bytes": 536,
+      "sha256": "63b4d5f8560b18bf2a3df7e47dae0020a82a04ef2e81b7aedabfc7c591014737"
+    },
+    "p1-source-transition-test.log": {
+      "bytes": 6526,
+      "sha256": "c78c02038c8aae526cde34cc7b1bfadc51b67595d70689b3ae56a1091127ab3b"
+    }
+  },
+  "internal_exclusions": {
+    "explicit_untested_branch": "test_standalone_state_files: POSIX failed replacement after a complete temporary write has no deterministic non-racing fixture.",
+    "identified_methods": [
+      "FilesystemAdmission.test_native_windows_reparse_fixture",
+      "FilesystemAdmission.test_real_unix_socket_is_rejected_before_open",
+      "FilesystemBoundaryTests.test_socket_input_and_output_are_unsupported_special_files"
+    ],
+    "method_mapping": "Static AST method order, no added inherited test methods, default unittest.main and retained progress tokens identify Windows reparse and two Unix socket methods; not a fresh execution.",
+    "passing_ctests_with_internal_skips": {
+      "python_test_capture_audio_admission": 2,
+      "python_test_contact_switching_io": 1
+    },
+    "python_method_skips": 3,
+    "reason_limit": "The nonverbose streams omit exact native socket exceptions; source identifies platform/facility skips."
+  },
+  "limits": [
+    "Root retains acceptance and publication.",
+    "No new hosted, Windows/macOS, native MIDI/VST3/DAW, sanitizer or real display/device result.",
+    "Ordinary dummy/software passes and elapsed times do not qualify callback deadlines or OS callback retirement.",
+    "Inherited H1/T3 strict historical source pins and paired P1 evidence are not requalified by candidate-only recall transition.",
+    "No native browser completion, physical fidelity, native semantic accessibility, signed release or literal whole-interface 1:1 claim.",
+    "Changed relevant source or final documentation requires its affected coherent gates."
+  ],
+  "new_gates": {
+    "library": {
+      "boundary": "Copied model/public UiModel and real Session/storage harnesses; native browser/main integration absent.",
+      "complete_outputs": {
+        "test_standalone_library_model": "Independent LibraryModel contract: 32 groups, 3250 assertions, 0 failed groups",
+        "test_standalone_library_recall": "PASS complete snapshot and copied lifetime\nPASS clean equal recall and sequence\nPASS dirty equal recall and supersession\nPASS retained baseline and legacy Load/Save\nPASS invalid complete snapshot atomicity\nPASS presentation and original UI owners\nPASS active parameter and pointer gestures\nPASS synchronous recall rejection\nPASS resolved rejection and recovery observations\nStandalone named recall: 9 groups, 743728 assertions, 98 invalid snapshots, 72 presentation/owner contexts, 0 failures (synthetic UiModel boundary inputs)",
+        "test_standalone_library_roundtrip": "library_roundtrip groups=4 checks=1489 snapshots=138 renders=20 posts=24 library_reports=24 ui_reports=24 ordinary_intents=12 recall_dispatches=4 storage_calls=7 authorizer_calls=7 failures=0 Session=real storage=real native_browser=unqualified",
+        "test_standalone_library_session": "Real Session LibraryModel boundary: 12 groups, 42634 assertions, 696 real snapshots, 150 renders, 428 accepted posts, 6252 bit-exact paired stereo samples, 10101 source-phase checks, 60 percussion-history checks, 0 failed groups",
+        "test_standalone_library_storage": "library_storage groups=9 checks=1115 failures=0 control_proof=synthetic filesystem=real"
+      },
+      "counts": {
+        "model": {
+          "assertions": 3250,
+          "groups": 32
+        },
+        "recall": {
+          "assertions": 743728,
+          "groups": 9,
+          "invalid_snapshots": 98,
+          "observations": "synthetic",
+          "presentation_owner_contexts": 72
+        },
+        "roundtrip": {
+          "Session": "real",
+          "authorizer_calls": 7,
+          "checks": 1489,
+          "groups": 4,
+          "library_reports": 24,
+          "posts": 24,
+          "renders": 20,
+          "snapshots": 138,
+          "storage": "real",
+          "storage_calls": 7,
+          "ui_reports": 24
+        },
+        "session": {
+          "assertions": 42634,
+          "groups": 12
+        },
+        "storage": {
+          "checks": 1115,
+          "control_proof": "synthetic",
+          "filesystem": "real",
+          "groups": 9
+        }
+      },
+      "focused_ctests_passed": 5,
+      "focused_elapsed_seconds": 0.12,
+      "same_complete_outputs_in_full_run": true
+    },
+    "p1_numerical": {
+      "boundary": "Canonical candidate-only checks accept the exact reviewed recall source pair. This is not a new paired baseline, timing, visual or whole-interface admission.",
+      "checks_evaluated": 191,
+      "failed_checks": 0,
+      "mode": "candidate-only-frozen62",
+      "passed": true,
+      "screens_parsed": 62,
+      "screens_passed": 62
+    },
+    "p1_ordinary": {
+      "cases": 34,
+      "checks": 53648,
+      "paintings": 111,
+      "passed": true,
+      "scope": "SDL software surface; fixed copied state; no audio/window"
+    },
+    "python": [
+      {
+        "ctest": "python_test_compare_performance_plate",
+        "focused_methods_passed": 45,
+        "full_run_methods_passed": 45,
+        "receipt": "p1-source-transition-result.json",
+        "source_hashes_match": true
+      },
+      {
+        "ctest": "python_test_capture_standalone_interface",
+        "focused_methods_passed": 45,
+        "full_run_methods_passed": 45,
+        "receipt": "capture-finite-json-result.json",
+        "source_hashes_match": true
+      }
+    ]
+  },
+  "recorded_utc": "2026-11-17T05:07:09.771378+00:00",
+  "schema_version": 1,
+  "source": {
+    "audited_boundary": "Frozen pre-reconciliation overlay in these original receipts only. Later remote advances and their combination require separate source review and affected qualification.",
+    "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+    "executable_identity_from_retained_receipts": "7f8996cdd062907a8ad4f47021a32ef28a5f5b9753ac9bf7b16cc4849dc77ba3",
+    "executable_not_reread_or_executed_by_auditor": true,
+    "headless_source_paths_verified": 112,
+    "identity_mismatches": [],
+    "native_source_references_verified": 174,
+    "qualification_is_working_overlay_not_base_commit_alone": true,
+    "unique_native_source_paths_verified": 161
+  },
+  "status": "CONSISTENT_EVIDENCE_WITH_RETAINED_FAILED_FULL_RUN",
+  "verification": {
+    "capture_manifest_entries_verified": 69,
+    "headless_command_stream_records_verified": 16,
+    "integrity_inconsistencies": [],
+    "native_source_reference_checks": 174,
+    "retained_artifact_and_headless_source_checks": 160
+  },
+  "wave": 7,
+  "worker": "A42"
+}

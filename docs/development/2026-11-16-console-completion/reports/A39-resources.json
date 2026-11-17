@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "reviewer": "A39 /root/w07_a39",
+  "audit": "console resource, storage and dependency preservation",
+  "started_utc": "2026-11-17T04:58:25.113164+00:00",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "observed_head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "scope": "Only this repository and the six explicitly authorized sibling directories; no traversal of borrowed dependencies or unrelated workspaces. Sizes include concurrent root work and are dated observations, not final-gallery sizes.",
+  "actions": {
+    "builds": 0,
+    "tests": 0,
+    "native_runs": 0,
+    "deletions": 0,
+    "archives_created": 0,
+    "git_object_writes": 0
+  },
+  "filesystem": {
+    "capacity_bytes": 67586535424,
+    "free_bytes": 51739545600,
+    "available_bytes": 48286797824,
+    "inodes": 4194304,
+    "free_inodes": 4040789
+  },
+  "owned_sizes": [
+    {
+      "path": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "allocated_bytes": 531681280,
+      "apparent_bytes": 517365787
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/build-native",
+      "allocated_bytes": 169836544,
+      "apparent_bytes": 166831817
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/a32-headless",
+      "allocated_bytes": 10498048,
+      "apparent_bytes": 9231009
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/baseline-native",
+      "allocated_bytes": 15687680,
+      "apparent_bytes": 15673464
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/qualified-p1-before-recall",
+      "allocated_bytes": 11722752,
+      "apparent_bytes": 11713496
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification",
+      "allocated_bytes": 24285184,
+      "apparent_bytes": 24242908
+    },
+    {
+      "path": "/workspace/scratch/21cce69f7784/atlas-text",
+      "allocated_bytes": 3129344,
+      "apparent_bytes": 3105793
+    }
+  ],
+  "artifact_sizes_nested_in_repository": [
+    {
+      "path": ".git",
+      "allocated_bytes": 114675712,
+      "apparent_bytes": 114521463
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion",
+      "allocated_bytes": 150945792,
+      "apparent_bytes": 149438466
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports",
+      "allocated_bytes": 150401024,
+      "apparent_bytes": 148992204
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1",
+      "allocated_bytes": 65638400,
+      "apparent_bytes": 65202620
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v2",
+      "allocated_bytes": 65638400,
+      "apparent_bytes": 65202342
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-timing-v1",
+      "allocated_bytes": 4718592,
+      "apparent_bytes": 4689064
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history",
+      "allocated_bytes": 724992,
+      "apparent_bytes": 681866
+    },
+    {
+      "path": "docs/design/native-gallery-console-p1",
+      "allocated_bytes": 8376320,
+      "apparent_bytes": 8283027
+    }
+  ],
+  "new_files": {
+    "count": 725,
+    "bytes": 166747396,
+    "largest_six": [
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/after-25.stdout.zlib",
+        "bytes": 3273075
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v2/after-25.stdout.zlib",
+        "bytes": 3273075
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/after-06.stdout.zlib",
+        "bytes": 3258000
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v2/after-06.stdout.zlib",
+        "bytes": 3258000
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/before-25.stdout.zlib",
+        "bytes": 3223040
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v2/before-25.stdout.zlib",
+        "bytes": 3223040
+      }
+    ]
+  },
+  "git": {
+    "count_objects_v": [
+      "count: 0",
+      "size: 0",
+      "in-pack: 5048",
+      "packs: 1",
+      "size-pack: 111035",
+      "prune-packable: 0",
+      "garbage: 0",
+      "size-garbage: 0"
+    ],
+    "paired_stream_files": 280,
+    "paired_stream_bytes": 130045026,
+    "same_named_pairs": 140,
+    "identical_same_named_pairs": 140,
+    "cross_version_duplicate_bytes": 65022513,
+    "unique_git_blob_contents": 70,
+    "unique_blob_payload_bytes": 65019549,
+    "duplicate_payload_bytes": 65025477,
+    "interpretation": "Identical contents can share Git blobs while both original run paths and reports remain. This predicts content deduplication only, not packed size or publication. No add, gc, hardlinking, archive or removal performed."
+  },
+  "source_sha256": {
+    "apps/standalone/InstrumentView.cpp": "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927",
+    "apps/standalone/LibraryModel.h": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2",
+    "apps/standalone/LibraryModel.cpp": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98",
+    "tools/compare_performance_plate.py": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923",
+    "tools/capture_standalone_interface.py": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487",
+    "docs/development/2026-11-16-console-completion/run_p1_timing.py": "0a5b7a42a17a93bc44f0abab0d26ce0d05c955c511d0bb34fbf399fd611ffedb",
+    "docs/development/2026-11-16-console-completion/run_p1_flat_witness.py": "a504823e3e517cc116e8ff2ca80267b9e5e95b9294e13b5f1229687305b15164"
+  },
+  "unchanged_reference_and_dependency_identities": [
+    {
+      "path": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+      "bytes": 21248265,
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+      "same_as_base": true
+    },
+    {
+      "path": "docs/design/atlas-cover-reference.jpg",
+      "bytes": 412664,
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+      "same_as_base": true
+    },
+    {
+      "path": "docs/design/atlas-reference.json",
+      "bytes": 811,
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "same_as_base": true
+    },
+    {
+      "path": "data/dependencies/sdl2-lock.json",
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "same_as_base": true
+    },
+    {
+      "path": "cmake/VerifySdl2.cmake",
+      "bytes": 1334,
+      "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e",
+      "same_as_base": true
+    },
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+      "same_as_base": true
+    }
+  ],
+  "dependencies": {
+    "sdl_version": "2.32.10",
+    "sdl_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+    "sdl_root_recorded_in_native_cache": "/workspace/scratch/3edffb787db3/SDL2",
+    "cmake_version_recorded": "4.0.3",
+    "compiler_version_recorded": "GNU 14.2.0",
+    "reused_cmake": "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+    "reused_ninja": "/workspace/scratch/3edffb787db3/build-tools/bin/ninja",
+    "native_midi_vst3": false,
+    "a32_standalone_midi_vst3": false,
+    "added_third_party_runtime_dependency": false,
+    "added_runtime_art": false,
+    "dependency_asset_tracked_changes": [],
+    "dependency_asset_untracked_files": [],
+    "qualification": "Own caches, compiler-identification files, unchanged lock/verifier and reviewed CMake/workflow diff; borrowed dependency/tool binaries were not rehashed outside the assigned scope. Existing optional Pillow is capture authoring only."
+  },
+  "source_bounds": {
+    "p1": {
+      "named_array_bytes_supported_abi": 13096,
+      "named_array_formula": "98*4 + (1455+120+8+5)*8",
+      "grain_marks": 8192,
+      "mixer_calls": 16384,
+      "draw_primitives": "97*visible_rows+8192",
+      "canonical_rows": 131,
+      "canonical_primitives": 20899,
+      "conservative_full_domain_rows": 2300,
+      "conservative_full_domain_primitives": 231292,
+      "bounded_64_row_crop_primitives": 14400,
+      "allocation_claim": "No application-owned heap, texture, persistent cache or I/O in the inserted P1 path. Fixed payload excludes scalar/guard/compiler overhead and SDL internals; not a measured stack/RSS/allocation/deadline result."
+    },
+    "library_model": {
+      "catalog_entries": 128,
+      "directory_items": 512,
+      "name_bytes": 48,
+      "diagnostic_bytes": 256,
+      "storage_temporary_attempts": 32,
+      "acknowledgment_wait_ms": 2000,
+      "counter_type": "uint64_t; configurable ceilings default to UINT64_MAX, checked before increment; time checked before deadline addition",
+      "retained_state": "One catalog, one current operation, one reference, one receipt basis and one pending catalog request; no unbounded history. view() returns copies.",
+      "thread_and_io": "Main-thread copied-state model; no Session post/read, filesystem, clocks or audio callback work. Pimpl, strings and vectors allocate on this UI/control path. Native main has not yet integrated the browser/model. No fixed ABI byte-size or allocation-free claim."
+    },
+    "comparator": {
+      "processes_max": 70,
+      "process_seconds_max": 120,
+      "launch_run_seconds_max": 1800,
+      "header_bytes": 2097152,
+      "frame_stdout_bytes_max": 36025169,
+      "stderr_bytes_each": 65536,
+      "report_bytes_max": 16777216,
+      "artifact_files_max": 160,
+      "artifact_storage_bytes_max": 2147483648,
+      "limits_scope": "Explicit pipe, decompression and retained-artifact ceilings; not whole-process RSS or a hard serialization/hash wall-clock guarantee."
+    },
+    "timing": {
+      "processes": 8,
+      "warmups_each": 30,
+      "samples_each": 300,
+      "process_seconds": 180,
+      "batch_seconds": 1500,
+      "kill_reap_seconds": 2,
+      "stdout_bytes_each": 131072,
+      "stderr_bytes_each": 65536,
+      "raw_stream_bytes_batch": 1572864,
+      "identity_files": 4096,
+      "identity_file_bytes": 67108864,
+      "identity_total_bytes": 536870912,
+      "claim_boundary": "One descriptive shared-host batch; no audio/display deadline, equivalence or full-domain performance result."
+    },
+    "flat_capture": {
+      "processes": 2,
+      "process_seconds": 180,
+      "batch_seconds": 370,
+      "stdout_bytes_each": 6358945,
+      "stderr_bytes_each": 65536,
+      "pixel_bytes_each": 6293408,
+      "timing_samples": 0
+    },
+    "interface_gallery": {
+      "cases_max": 15,
+      "replay_scale": [
+        1,
+        10
+      ],
+      "replay_duration_ms": [
+        1800,
+        18000
+      ],
+      "timeout_seconds": [
+        4,
+        60
+      ],
+      "root_final_selection": {
+        "scale": 3,
+        "timeout_seconds": 30
+      },
+      "pipe_byte_ceiling": null,
+      "limitation": "Existing subprocess.run(capture_output=True) has no explicit stdout/stderr byte cap. Unexpected output is rejected after collection. Source-qualified SHA-pinned native app, fixed cases/replay and timeout limit scope; no arbitrary-child memory bound or whole-process RSS claim."
+    }
+  },
+  "preservation": {
+    "baseline_receipt_entries_checked": 4,
+    "baseline_receipt_matches": true,
+    "pre_integration_retained_files_checked": 11,
+    "pre_integration_retained_files_match": true,
+    "p1_original_fixture_sha256": "65d0cc74e53faf2d655cba5f6254d5087715c730f22556ec81940195ad18149e",
+    "original_before_object_retained": false,
+    "reconstructed_before_binary_equal_now": true,
+    "original_and_reconstructed_binary_bytes": 3756168,
+    "original_and_reconstructed_binary_sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f",
+    "reconstructed_before_object_sha256": "aee8d1b133e3fec7d7217a6d45efa7b02f890f23c448285868898f6cfb30fc72",
+    "required_retention": "Original failures, raw/compressed receipts, both paired runs, baseline-native, qualified-p1-before-recall, source-history, original and reconstructed binaries/objects with distinct ancestry, Flat raw streams and all publication/recovery manifests. The missing historical before object cannot be relabeled as recovered."
+  },
+  "optional_cleanup_after_verified_publication_only": {
+    "condition": "Root first verifies publication and recovery manifests, completes active qualification/capture, confirms no reader needs these derived files, and preserves binaries/raw receipts/source snapshots. Nothing is deleted or marked disposable by this audit. No whole-build or other-workspace cleanup.",
+    "atlas_extraction_files": [
+      "/workspace/scratch/21cce69f7784/atlas-text/full.txt",
+      "/workspace/scratch/21cce69f7784/atlas-text/A01.txt",
+      "/workspace/scratch/21cce69f7784/atlas-text/A02.txt",
+      "/workspace/scratch/21cce69f7784/atlas-text/A03.txt",
+      "/workspace/scratch/21cce69f7784/atlas-text/A04.txt",
+      "/workspace/scratch/21cce69f7784/atlas-text/A05.txt",
+      "/workspace/scratch/21cce69f7784/atlas-text/A06.txt",
+      "/workspace/scratch/21cce69f7784/atlas-text/a02-page122.png",
+      "/workspace/scratch/21cce69f7784/atlas-text/a02-page166.png"
+    ],
+    "atlas_extraction_file_bytes": 3105793,
+    "reproducible_test_object_files": [
+      {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o",
+        "bytes": 409088
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o",
+        "bytes": 159104
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o",
+        "bytes": 201496
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o",
+        "bytes": 127632
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o",
+        "bytes": 181032
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o",
+        "bytes": 409088
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o",
+        "bytes": 159104
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o",
+        "bytes": 201496
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o",
+        "bytes": 127632
+      },
+      {
+        "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o",
+        "bytes": 181032
+      }
+    ],
+    "test_object_file_bytes": 2156704
+  },
+  "concurrent_root_work_boundary": "Root reports original full-suite 246/247 with the sole documentation-link race failure retained; final 15-view source-qualified capture is active. A39 executes/accepts neither gate and makes no final capture size/result claim.",
+  "finished_utc": "2026-11-17T04:58:26.524663+00:00"
+}

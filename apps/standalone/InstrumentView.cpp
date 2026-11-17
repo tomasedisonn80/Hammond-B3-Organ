@@ -1685,7 +1685,133 @@ void reference_lower_rack_material(Drawing& drawing, UiRect bounds,
     }
 }
 
-enum class ReferencePanelMaterial { Original, UpperRack, LowerRack };
+// P1 keeps the frozen x-then-y interpolation order, with only the horizontal
+// field values cached. Its raster and canonical grain share the color guard.
+void reference_performance_p1_material(Drawing& drawing, UiRect bounds,
+                                       ReferenceCompositionScale scale) noexcept {
+    if (!material_surface(bounds) || drawing.renderer() == nullptr) return;
+    auto* renderer = drawing.renderer();
+    const UpperRackColorGuard color_guard(renderer);
+    if (!color_guard.saved()) return;
+    const auto r = upper_rack_binary64;
+    constexpr std::array<double, 8> x_knots{76.0, 124.0, 312.0, 520.0, 600.0, 828.0, 1036.0, 1112.0};
+    constexpr std::array<double, 5> y_knots{129.0, 155.0, 210.0, 239.0, 259.0};
+    constexpr double field[8][5][3]{
+        {{25.0, 24.0, 24.0}, {19.0, 19.0, 19.0}, {19.0, 19.0, 20.0},
+         {21.0, 21.0, 21.0}, {22.0, 22.0, 22.0}},
+        {{37.0, 36.0, 36.0}, {26.0, 25.0, 25.0}, {24.0, 23.0, 23.0},
+         {23.0, 23.0, 23.0}, {24.0, 24.0, 23.0}},
+        {{38.0, 36.0, 34.0}, {31.0, 31.0, 30.0}, {30.0, 30.0, 30.0},
+         {28.0, 28.0, 27.0}, {31.0, 30.0, 28.0}},
+        {{45.0, 45.0, 47.0}, {34.0, 34.0, 34.0}, {33.0, 32.0, 33.0},
+         {31.0, 30.0, 30.0}, {36.0, 34.0, 32.0}},
+        {{52.0, 50.0, 52.0}, {36.0, 35.0, 36.0}, {31.0, 31.0, 31.0},
+         {30.0, 29.0, 27.0}, {39.0, 36.0, 34.0}},
+        {{45.0, 43.0, 44.0}, {33.0, 32.0, 33.0}, {29.0, 28.0, 29.0},
+         {28.0, 27.0, 25.0}, {37.0, 34.0, 32.0}},
+        {{43.0, 42.0, 44.0}, {28.0, 27.0, 28.0}, {28.0, 27.0, 28.0},
+         {24.0, 23.0, 21.0}, {33.0, 31.0, 29.0}},
+        {{30.0, 29.0, 29.0}, {22.0, 21.0, 21.0}, {24.0, 23.0, 24.0},
+         {24.0, 23.0, 21.0}, {25.0, 24.0, 22.0}},
+    };
+    const auto interval = [](double value, const auto& knots) noexcept {
+        std::size_t index = 0;
+        while (index + 2 < knots.size() && value >= knots[index + 1]) ++index;
+        return index;
+    };
+    const auto lerp = [r](double first, double last, double fraction) noexcept {
+        return r(first + r(r(last - first) * fraction));
+    };
+    const auto channel = [](double value) noexcept {
+        return static_cast<std::uint8_t>(std::clamp(std::round(value), 0.0, 255.0));
+    };
+    {
+        const UpperRackRaster raster(renderer);
+        if (!raster.visible()) return;
+        std::array<int, 98> edges{};
+        for (std::size_t column = 0; column < edges.size(); ++column) {
+            const double product = r(static_cast<double>(bounds.width) * static_cast<double>(column));
+            const double offset = r(product / 97.0);
+            edges[column] = raster.x_boundary(r(static_cast<double>(bounds.x) + offset));
+        }
+        const int first_row = raster.y_boundary(bounds.y);
+        const int end_row = raster.y_boundary(r(static_cast<double>(bounds.y) +
+                                                static_cast<double>(bounds.height)));
+        if (edges.front() >= edges.back() || first_row >= end_row) return;
+        std::array<std::array<std::array<double, 3>, 5>, 97> horizontal{};
+        for (std::size_t column = 0; column < horizontal.size(); ++column) {
+            const double u = r(r(static_cast<double>(column) + 0.5) / 97.0);
+            const double x = std::clamp(r(76.0 + r(1036.0 * u)), x_knots.front(), x_knots.back());
+            const std::size_t x_interval = interval(x, x_knots);
+            const double fraction = r(r(x - x_knots[x_interval]) /
+                                      r(x_knots[x_interval + 1] - x_knots[x_interval]));
+            for (std::size_t knot = 0; knot < y_knots.size(); ++knot) {
+                for (std::size_t component = 0; component < 3; ++component) {
+                    horizontal[column][knot][component] = lerp(
+                        field[x_interval][knot][component],
+                        field[x_interval + 1][knot][component], fraction);
+                }
+            }
+        }
+        const double height = r(static_cast<double>(bounds.height) - 1.0);
+        for (int row = first_row; row < end_row; ++row) {
+            const double offset = r(raster.logical_y(row) - static_cast<double>(bounds.y));
+            const double center = r(offset - 0.5);
+            const double v = bounds.height <= 1.0F ? 0.0 : std::clamp(r(center / height), 0.0, 1.0);
+            const double y = std::clamp(r(129.0 + r(130.0 * v)), y_knots.front(), y_knots.back());
+            const std::size_t y_interval = interval(y, y_knots);
+            const double fraction = r(r(y - y_knots[y_interval]) /
+                                      r(y_knots[y_interval + 1] - y_knots[y_interval]));
+            for (std::size_t column = 0; column < horizontal.size(); ++column) {
+                if (edges[column] >= edges[column + 1]) continue;
+                const auto& first = horizontal[column][y_interval];
+                const auto& last = horizontal[column][y_interval + 1];
+                const UiColor color{channel(lerp(first[0], last[0], fraction)),
+                                    channel(lerp(first[1], last[1], fraction)),
+                                    channel(lerp(first[2], last[2], fraction)), 255};
+                SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+                raster.span(edges[column], edges[column + 1], row);
+            }
+        }
+    }
+    // The raster has restored the caller's scale. Every visible inset visits
+    // all 4,096 bright-then-dark pairs in order, including clipped-out marks.
+    const auto grain_color = [&](double u, double v, double grain) noexcept {
+        const double x = std::clamp(r(76.0 + r(1036.0 * u)), x_knots.front(), x_knots.back());
+        const double y = std::clamp(r(129.0 + r(130.0 * v)), y_knots.front(), y_knots.back());
+        const std::size_t x_interval = interval(x, x_knots);
+        const std::size_t y_interval = interval(y, y_knots);
+        const double x_fraction = r(r(x - x_knots[x_interval]) /
+                                    r(x_knots[x_interval + 1] - x_knots[x_interval]));
+        const double y_fraction = r(r(y - y_knots[y_interval]) /
+                                    r(y_knots[y_interval + 1] - y_knots[y_interval]));
+        const auto component = [&](std::size_t index) noexcept {
+            const double first = lerp(field[x_interval][y_interval][index],
+                                      field[x_interval + 1][y_interval][index], x_fraction);
+            const double last = lerp(field[x_interval][y_interval + 1][index],
+                                     field[x_interval + 1][y_interval + 1][index], x_fraction);
+            return channel(r(lerp(first, last, y_fraction) + grain));
+        };
+        return UiColor{component(0), component(1), component(2), 255};
+    };
+    constexpr std::uint32_t seed = 0xB3A09C21U;
+    for (std::uint32_t pair = 0; pair < 4096U; ++pair) {
+        for (std::uint32_t mark = 0; mark < 2U; ++mark) {
+            const std::uint32_t k = 4U * pair + 2U * mark;
+            const std::uint32_t cx = 78U + upper_rack_mix(seed ^ k) % 1032U;
+            const std::uint32_t cy = 131U + upper_rack_mix(seed ^ (k + 1U)) % 127U;
+            const double u = r(r(r(static_cast<double>(cx) + 0.5) - 76.0) / 1036.0);
+            const double v = r(r(static_cast<double>(cy) - 129.0) / 130.0);
+            const double amplitude = r(12.0 - r(6.0 * v));
+            const auto color = grain_color(u, v, mark == 0U ? amplitude : -amplitude);
+            const auto origin = reference_composition_point(
+                {static_cast<float>(cx), static_cast<float>(cy)}, scale);
+            drawing.rect({origin.x, origin.y, scale.sx, scale.sy}, color);
+        }
+    }
+}
+
+enum class ReferencePanelMaterial { Original, UpperRack, LowerRack, PerformanceP1 };
 
 void reference_panel(Drawing& drawing, UiRect bounds, ReferenceCompositionScale scale,
                      bool screws = true, ReferencePanelMaterial material = ReferencePanelMaterial::Original) {
@@ -1700,10 +1826,22 @@ void reference_panel(Drawing& drawing, UiRect bounds, ReferenceCompositionScale 
     drawing.rounded(bounds, 6.0F * scale.f, {7, 7, 7});
     drawing.rounded(reference_inset(bounds, 1.0F, scale), 5.0F * scale.f, kMetalEdge);
     drawing.rounded(reference_inset(bounds, 2.0F, scale), 4.0F * scale.f, {14, 14, 14});
+    if (material == ReferencePanelMaterial::PerformanceP1) {
+        float renderer_scale_x = 0.0F;
+        float renderer_scale_y = 0.0F;
+        if (drawing.renderer() != nullptr)
+            SDL_RenderGetScale(drawing.renderer(), &renderer_scale_x, &renderer_scale_y);
+        if (!std::isfinite(renderer_scale_x) || !std::isfinite(renderer_scale_y) ||
+            renderer_scale_x <= 0.0F || renderer_scale_y <= 0.0F ||
+            renderer_scale_x > 2.0F || renderer_scale_y > 2.0F)
+            material = ReferencePanelMaterial::Original;
+    }
     if (material == ReferencePanelMaterial::UpperRack) {
         reference_upper_rack_material(drawing, reference_inset(bounds, 4.0F, scale), scale);
     } else if (material == ReferencePanelMaterial::LowerRack) {
         reference_lower_rack_material(drawing, reference_inset(bounds, 4.0F, scale), scale);
+    } else if (material == ReferencePanelMaterial::PerformanceP1) {
+        reference_performance_p1_material(drawing, reference_inset(bounds, 4.0F, scale), scale);
     } else {
         drawing.gradient(reference_inset(bounds, 4.0F, scale), {43, 41, 38}, {21, 22, 21});
         constexpr std::size_t maximum_grain_pairs = 2048;
@@ -2446,7 +2584,7 @@ void paint_reference_composition(Drawing& drawing, const UiModel& model, const I
         reference_wood(drawing, mapped({16.0F, 887.0F, 1640.0F, 54.0F}), scale);
     reference_wood(drawing, mapped({48.0F, 510.0F, 1074.0F, 18.0F}), scale);
     reference_header(drawing, layout, scale);
-    reference_panel(drawing, layout.performance_panel, scale);
+    reference_panel(drawing, layout.performance_panel, scale, true, ReferencePanelMaterial::PerformanceP1);
     reference_panel(drawing, layout.registration_panels[0], scale, true, ReferencePanelMaterial::UpperRack);
     for (std::size_t manual = 1; manual < layout.registration_panels.size(); ++manual)
         reference_panel(drawing, layout.registration_panels[manual], scale, true,

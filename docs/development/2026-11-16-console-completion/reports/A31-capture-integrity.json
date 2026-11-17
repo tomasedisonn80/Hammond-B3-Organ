@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "worker": "A31",
+  "agent": "/root/w06_a31",
+  "wave": 6,
+  "session": "2026-11-16-console-completion",
+  "status": "patch-ready-source-inspection-only",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "committed_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "scope": {
+    "owned_outputs": [
+      "docs/development/2026-11-16-console-completion/reports/A31-capture-finite-json.patch",
+      "docs/development/2026-11-16-console-completion/reports/A31-capture-integrity.json",
+      "docs/development/2026-11-16-console-completion/notes/A31.md",
+      "docs/reviews/CONSOLE_CAPTURE_JSON_ADMISSION.md"
+    ],
+    "candidate_source_targets": [
+      "tools/capture_standalone_interface.py",
+      "tests/test_capture_standalone_interface.py"
+    ],
+    "production_function_changed": "read_json",
+    "live_source_files_changed": false,
+    "shared_records_or_index_changed": false,
+    "other_workspace_read_or_modified": false,
+    "nested_agents_dispatched": false
+  },
+  "source_before_sha256": {
+    "tools/capture_standalone_interface.py": "975aee1c2261114bb5e899a336567a47b7b3541eac5c75fe1b055244d9c1975f",
+    "tests/test_capture_standalone_interface.py": "40035a5aceda7b13392d35fd1a81f3e2190d4994e94604273dfc9c65a882fd81"
+  },
+  "source_after_inspection_sha256": {
+    "tools/capture_standalone_interface.py": "975aee1c2261114bb5e899a336567a47b7b3541eac5c75fe1b055244d9c1975f",
+    "tests/test_capture_standalone_interface.py": "40035a5aceda7b13392d35fd1a81f3e2190d4994e94604273dfc9c65a882fd81"
+  },
+  "candidate_after_application_sha256": {
+    "tools/capture_standalone_interface.py": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487",
+    "tests/test_capture_standalone_interface.py": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56"
+  },
+  "delivery_artifacts": {
+    "docs/development/2026-11-16-console-completion/reports/A31-capture-finite-json.patch": {
+      "bytes": 6741,
+      "sha256": "7b53d360c1aaa73e6e87a8bdd6a4793127135cbd44e8317e494f1d07e2e2b268"
+    },
+    "docs/development/2026-11-16-console-completion/notes/A31.md": {
+      "bytes": 4971,
+      "sha256": "8e62321da13a648340181233cc43d683dc92ca62e8dd82506ae2e6d3724fe77c"
+    },
+    "docs/reviews/CONSOLE_CAPTURE_JSON_ADMISSION.md": {
+      "bytes": 8845,
+      "sha256": "ac1462ea55de38e1b3ff2838520686ee6d77c30b4b4c78ba00800374dbe1d6d2"
+    }
+  },
+  "source_recovery": {
+    "read_entire": [
+      "AGENTS.md",
+      "docs/PLAN.md",
+      "docs/development/2026-11-16-console-completion/README.md",
+      "docs/development/2026-11-16-console-completion/CHECKPOINT.md",
+      "docs/development/2026-11-16-console-completion/assignments.json",
+      "docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json",
+      "docs/development/2026-11-16-console-completion/notes/A15.md",
+      "docs/development/2026-11-16-console-completion/reports/A15-capture-tests.json",
+      "tools/capture_standalone_interface.py",
+      "tests/test_capture_standalone_interface.py"
+    ],
+    "live_git_head_tree_and_dirty_paths_inspected": true,
+    "a15_note_sha256": "f881018419e2b42da6d95ede7deceb76ee6bd1e285ac0dd7d7e288db94c2a19a",
+    "a15_test_receipt_sha256": "5f7e6fcf8430dfa2253f4787f0401a101d00dd165433a11de2cf5c1d6c5f7848",
+    "prior_39_method_pass_qualifies_candidate": false
+  },
+  "finding": {
+    "evidence_kind": "source-derived risk analysis; no demonstration was executed during the freeze",
+    "cause": "parse_constant rejects NaN and Infinity spellings but does not see ordinary JSON float tokens whose conversion overflows",
+    "possible_false_acceptance_fields": [
+      {
+        "field": "runtime.rendered_images",
+        "token": "1e999",
+        "comparison": "positive progress count and upper bound on finite painted frame ordinal"
+      },
+      {
+        "field": "replay.before_shutdown.resolved_sequence",
+        "token": "1e999",
+        "comparison": ">= last_submitted_sequence"
+      },
+      {
+        "field": "replay.before_shutdown.last_applied_sequence",
+        "token": "1e999",
+        "comparison": ">= last_submitted_sequence"
+      },
+      {
+        "field": "replay.last_submitted_sequence",
+        "token": "-1e999",
+        "comparison": "lowers both finite acknowledgement sequence thresholds"
+      }
+    ],
+    "later_writer_limit": "These fields are omitted from the validation result, so allow_nan=False on the provenance writer cannot supply their missing decode check.",
+    "observed_native_invalid_emission_claim": false,
+    "observed_original_gallery_invalidity_claim": false
+  },
+  "candidate": {
+    "behavior": "Parse every JSON floating token with built-in float; reject its nonfinite result with ValueError naming the literal; return every finite result unchanged.",
+    "overflow_error_example": "non-finite JSON numeric token: -1e999",
+    "reused_dependency": "existing math import",
+    "preserved": [
+      "all production definitions outside read_json",
+      "all existing test/helper source segments",
+      "integer parsing",
+      "finite rounding and signed zero",
+      "subnormals and underflow behavior",
+      "duplicate decoded member names rejected",
+      "NaN/Infinity/-Infinity rejected with original error",
+      "top-level object required",
+      "all replay/state bytes",
+      "all capture assertions",
+      "replay scale integer 1..10; default 1",
+      "default duration 1800 ms",
+      "independent finite timeout 4..60 seconds; default 12",
+      "no capture retry"
+    ],
+    "direct_in_memory_validate_recursive_finiteness_added": false
+  },
+  "source_only_verification": {
+    "candidate_python_ast_parse": "passed",
+    "production_ast_except_read_json": "identical",
+    "all_existing_test_and_helper_method_source_segments": "identical",
+    "patch_applicability": {
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "--whitespace=error",
+        "docs/development/2026-11-16-console-completion/reports/A31-capture-finite-json.patch"
+      ],
+      "exit_code": 0,
+      "mutation_performed": false
+    },
+    "live_source_before_hashes_still_match": true,
+    "owned_markdown_whitespace": "passed",
+    "owned_markdown_local_links": "passed; all targets resolve after receipt creation"
+  },
+  "test_delivery": {
+    "historical_methods_retained": 39,
+    "added_methods": 6,
+    "prospective_total_methods": 45,
+    "added_names": [
+      "test_json_rejects_overflow_in_objects_and_arrays",
+      "test_json_preserves_finite_float_boundaries_and_exponents",
+      "test_json_preserves_other_types_member_scopes_and_object_boundary",
+      "test_json_retains_duplicate_member_refusal",
+      "test_json_retains_nonstandard_constant_refusal",
+      "test_json_rejects_overflow_before_capture_evidence_validation"
+    ],
+    "literal_overflow_cases": 24,
+    "finite_literal_cases": 15,
+    "finite_values_checked_per_case": 2,
+    "retained_duplicate_refusal_cases": 3,
+    "retained_nonstandard_constant_cases": 6,
+    "top_level_non_object_refusal_cases": 6,
+    "diagnostic_overflow_cases": 4,
+    "original_fixture_mutations": false,
+    "execution_status": "unrun"
+  },
+  "execution": {
+    "root_timing_freeze_respected": true,
+    "python_test_suite_run": false,
+    "native_process_run": false,
+    "build_run": false,
+    "benchmark_run": false,
+    "capture_run": false,
+    "ctest_run": false,
+    "hosted_run": false,
+    "publication_performed": false,
+    "timing_freeze_at_preparation": "active",
+    "root_reported_freeze_release_before_handoff": true,
+    "root_reported_patch_source_review": true
+  },
+  "root_next_actions": [
+    "Root reports the timing freeze released and the source-ready patch reviewed; verify both pinned source-before hashes before applying.",
+    "Apply the patch and verify both candidate-after-application hashes.",
+    "Run python3 -B tests/test_capture_standalone_interface.py -v and retain the actual result for the prospective 45 methods.",
+    "Preserve original captures, failures, thresholds and source-specific evidence; do not change defaults, weaken assertions or retry captures."
+  ],
+  "ownership": {
+    "handoff_to": "/root",
+    "release": "All four A31 output paths return to root on final handoff.",
+    "further_a31_edits_or_execution": "none"
+  },
+  "meaning": "Patch delivery and static integrity only. This receipt proves no new Python execution, native/UI acceptance, platform qualification, source-to-binary attestation, physical result or publication."
+}

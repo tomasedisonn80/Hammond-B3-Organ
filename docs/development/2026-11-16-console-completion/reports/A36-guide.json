@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "worker": "A36",
+  "agent": "/root/w06_a36",
+  "wave": 6,
+  "date_utc": "2026-11-17",
+  "checkout": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "review_kind": "documentation/source inspection only; no build, project test or native execution",
+  "guide": {
+    "path": "docs/LIBRARY_MODEL_GUIDE.md",
+    "bytes": 11397,
+    "sha256": "f53ce88c7d82a797d7727c60a8feea3bcc8449e115bd7070c5de5eeb89273629",
+    "word_count_whitespace": 1315,
+    "word_limit": 1500
+  },
+  "checks": {
+    "relative_links": 17,
+    "all_links_and_anchors_valid": true,
+    "api_symbols_present": 55,
+    "api_sources": {
+      "apps/standalone/LibraryModel.h": [
+        "LibraryModel",
+        "LibraryObservation",
+        "LibraryControlIntent",
+        "note_control_intent",
+        "request_recall",
+        "request_save_new",
+        "take_save_intent",
+        "authorize_save",
+        "complete_save",
+        "audio_lifecycle_changed",
+        "request_refresh",
+        "replace_catalog",
+        "submitted",
+        "selected_key",
+        "selected_preview",
+        "name_draft",
+        "save_scope",
+        "current_reference",
+        "controls_pending",
+        "observation_fresh",
+        "modified",
+        "missing",
+        "control_intent",
+        "expected_controls",
+        "acknowledged_controls",
+        "operation_id",
+        "Saved",
+        "SavedWithWarning",
+        "SaveFailed",
+        "StaleResult",
+        "InvalidInput",
+        "EntryChanged",
+        "Applied",
+        "Unconfirmed"
+      ],
+      "apps/standalone/RegistrationLibrary.h": [
+        "scan_registration_library",
+        "read_registration_entry",
+        "save_registration_entry_new",
+        "RegistrationScope",
+        "NameExists",
+        "NotAuthorized"
+      ],
+      "apps/standalone/UiModel.h": [
+        "recall_controls",
+        "load_controls",
+        "mark_saved",
+        "controls_dirty",
+        "submitted",
+        "observe",
+        "span"
+      ],
+      "apps/standalone/Session.h": [
+        "SessionSnapshot",
+        "SessionCommand",
+        "read_snapshot",
+        "post",
+        "SubmitResult",
+        "NotRunning",
+        "resolved_sequence",
+        "last_applied_sequence"
+      ]
+    },
+    "real_targets_and_registered_ctest_names": [
+      "test_standalone_library_model",
+      "test_standalone_library_session",
+      "test_standalone_library_storage",
+      "test_standalone_library_recall",
+      "test_standalone_library_roundtrip"
+    ],
+    "all_integrated_source_identities_match": true,
+    "native_main_library_wiring_absent": true,
+    "generic_load_call_present": true,
+    "guide_and_note_whitespace_clean": true
+  },
+  "links": [
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "REGISTRATION_GUIDE.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "design/LIBRARY_NATIVE_INTEGRATION_NEXT.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "../apps/standalone/LibraryModel.h",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "../apps/standalone/LibraryModel.cpp",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "LIBRARY_MODEL_DESIGN.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "../apps/standalone/CMakeLists.txt",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "REGISTRATION_LIBRARY_CONTRACT.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "../apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "../apps/standalone/UiModel.cpp",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "REGISTRATION_LIBRARY_CONTRACT.md#4-finite-names-scan-and-validation",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "development/2026-11-16-console-completion/reports/library-integrated-result.json",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "reviews/CONSOLE_HEADLESS_ADMISSION.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "development/2026-11-16-console-completion/CHECKPOINT.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/LIBRARY_MODEL_GUIDE.md",
+      "target": "design/LIBRARY_NATIVE_INTEGRATION_NEXT.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/development/2026-11-16-console-completion/notes/A36.md",
+      "target": "../../../LIBRARY_MODEL_GUIDE.md",
+      "exists": true,
+      "anchor_valid": true
+    },
+    {
+      "document": "docs/development/2026-11-16-console-completion/notes/A36.md",
+      "target": "../reports/A36-guide.json",
+      "exists": true,
+      "anchor_valid": true
+    }
+  ],
+  "qualified_sources": [
+    {
+      "path": "apps/standalone/LibraryModel.h",
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/LibraryModel.cpp",
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/UiModel.h",
+      "bytes": 18956,
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/UiModel.cpp",
+      "bytes": 83993,
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/Session.h",
+      "bytes": 8982,
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/Session.cpp",
+      "bytes": 31176,
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/RegistrationLibrary.h",
+      "bytes": 5982,
+      "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/RegistrationLibrary.cpp",
+      "bytes": 39180,
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_model.cpp",
+      "bytes": 79171,
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_session.cpp",
+      "bytes": 47769,
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_storage.cpp",
+      "bytes": 39345,
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_recall.cpp",
+      "bytes": 44191,
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "bytes": 34998,
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0",
+      "matches_integrated_receipt": true
+    }
+  ],
+  "evidence_inspected": [
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-result.json",
+      "bytes": 4857,
+      "sha256": "40356a2591f05c01da66dc899306e397d0cf6587c3541e0bf9c9e4e6a342d060"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-ctest-detail.log",
+      "bytes": 4735,
+      "sha256": "b9ecd02d4e257ddb35f25481834b518b18132654574962553812e7db7c33158d"
+    },
+    {
+      "path": "docs/reviews/CONSOLE_HEADLESS_ADMISSION.md",
+      "bytes": 10918,
+      "sha256": "0624bf65caf114b736dda34c048f6eb91e92f32b7ee790465ed0a73bb310bccc"
+    }
+  ],
+  "evidence_boundary": {
+    "integrated_library": {
+      "passed": 5,
+      "failed": 0,
+      "counts": {
+        "model": {
+          "groups": 32,
+          "assertions": 3250
+        },
+        "recall": {
+          "groups": 9,
+          "assertions": 743728,
+          "invalid_snapshots": 98,
+          "presentation_owner_contexts": 72,
+          "observations": "synthetic"
+        },
+        "roundtrip": {
+          "groups": 4,
+          "checks": 1489,
+          "snapshots": 138,
+          "renders": 20,
+          "posts": 24,
+          "library_reports": 24,
+          "ui_reports": 24,
+          "storage_calls": 7,
+          "authorizer_calls": 7,
+          "Session": "real",
+          "storage": "real"
+        },
+        "session": {
+          "groups": 12,
+          "assertions": 42634
+        },
+        "storage": {
+          "groups": 9,
+          "checks": 1115,
+          "control_proof": "synthetic",
+          "filesystem": "real"
+        }
+      }
+    },
+    "sdk_free_selected": {
+      "passed": 12,
+      "failed": 0,
+      "executor": "A32, independently admitted by root"
+    },
+    "full_247": "running/pending at A36 assignment; no outcome claimed by this guide",
+    "hosted_ci": "exact-source results pending at A36 assignment",
+    "native_browser_and_main": "absent; future integration separately planned",
+    "new_execution_by_A36": false
+  },
+  "next_action": "Root reviews documentation and retains acceptance/publication; independently admit and implement the native integration sequence before native completion claims."
+}

@@ -1,0 +1,938 @@
+#!/usr/bin/env python3
+"""Freeze, then explicitly execute, the single prospective P1 timing batch.
+
+Python standard library only; Linux affinity and /proc are required. Preflight
+reads files and starts no subprocess. Execution starts only the eight unchanged
+benchmarks, sequentially. This is a manual investigation, never a CTest gate.
+No original baseline object is claimed: the retained genuine binary is executed;
+the bit-identical reconstruction and its new object are supplemental ancestry.
+"""
+
+from __future__ import annotations
+
+import argparse
+from datetime import datetime, timezone
+from decimal import Decimal
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import selectors
+import shlex
+import signal
+import stat
+import struct
+import subprocess
+import sys
+import time
+import zlib
+
+
+ROOT = Path(__file__).resolve().parents[3]
+SESSION = ROOT / "docs/development/2026-11-16-console-completion"
+REPORTS = SESSION / "reports"
+BUILD = ROOT.parent / "build-native"
+BASELINE = ROOT.parent / "baseline-native"
+REPRO = ROOT.parent / "p1-timing-qualification"
+SCHEMA = "p1-prospective-eight-process-timing-v1"
+BEFORE_SHA = "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+AFTER_SHA = "5cf0d9046e05bf10178b70caee1c3996c719956dad364397ad7befbf46544d4e"
+PAINTER_BEFORE_SHA = "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+PAINTER_AFTER_SHA = "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927"
+BENCHMARK_SHA = "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338"
+CONTRACT_SHA = "20c8839d38229bf24d983eac0baad7381f601c4e6763bbbe556bcdfa6c75ae45"
+BINARY_PATHS = {
+    "before": BASELINE / "hammond_standalone_paint_benchmark",
+    "after": BUILD / "apps/standalone/hammond_standalone_paint_benchmark",
+}
+ORDER = (
+    ("canonical", "before", 1672, 941, "dimensional"),
+    ("canonical", "after", 1672, 941, "dimensional"),
+    ("minimum-active", "after", 1400, 820, "dimensional"),
+    ("minimum-active", "before", 1400, 820, "dimensional"),
+    ("wide", "before", 1920, 1080, "dimensional"),
+    ("wide", "after", 1920, 1080, "dimensional"),
+    ("flat-control", "after", 1672, 941, "flat"),
+    ("flat-control", "before", 1672, 941, "flat"),
+)
+CHILD_ENV = {
+    "PATH": "/usr/bin:/bin", "LANG": "C", "LC_ALL": "C", "TZ": "UTC",
+    "SDL_AUDIODRIVER": "dummy", "SDL_VIDEODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+}
+LIMITS = {
+    "processes": 8, "warmups_each": 30, "samples_each": 300,
+    "process_seconds": 180, "batch_seconds": 1500, "kill_reap_seconds": 2,
+    "stdout_bytes_each": 131072, "stderr_bytes_each": 65536,
+    "raw_output_bytes_batch": 8 * (131072 + 65536),
+    "identity_files": 4096, "identity_file_bytes": 64 * 1024 * 1024,
+    "identity_total_bytes": 512 * 1024 * 1024,
+    "flat_decoded_bytes_each": 9 * 1024 * 1024,
+}
+FLAT_BOUNDARY = (
+    "The unchanged timing executable emits an FNV-1a-64 pixel fingerprint, not "
+    "pixel bytes. Its two Flat fingerprints must match exactly; this is not a "
+    "raw-byte comparison. A separate retained real-painter case21 Flat fixture "
+    "is independently decompressed and compared byte for byte. That fixture "
+    "uses all-level-4 banks, expression 0.625, pedals 3/7 and held Upper24, "
+    "Lower36, Pedal12; the benchmark mixed-held scene uses varying banks, "
+    "expression 0.75, pedals 8/0, fixed Upper CSharp, Lower A, held Upper24/25, "
+    "Lower0/60 and Pedal3. The P1 source branch is inactive in Flat, whose "
+    "painter path remains unchanged. These are distinct observations. Independent "
+    "admission must decide whether supplemental same-scene raw capture is "
+    "necessary before timing execution; no criterion is waived."
+)
+LIMITATIONS = [
+    "The original before painter object was not retained. A newly compiled "
+    "object plus recorded current link inputs reproduces the genuine retained "
+    "before executable bit for bit. This supplements provenance; it does not "
+    "recreate an original-object receipt or replace the genuine execution input.",
+    FLAT_BOUNDARY,
+    "Only total-duration samples are emitted. Paint and flush/present summaries "
+    "are supplied by the unchanged executable and cannot be independently "
+    "recomputed from unavailable component samples.",
+    "Scene/state checks combine fixed source, unchanged arguments, emitted "
+    "metadata and the native assertions. The benchmark has a layout fingerprint "
+    "and scenario name, not a complete serialized state witness.",
+    "One shared-host batch gives descriptive comparisons only: no causal "
+    "attribution, confidence, equivalence, display-smoothness, audio/hardware "
+    "deadline, full-domain performance or whole-interface 1:1 conclusion.",
+    "CPU affinity does not reserve a core or establish shared-host isolation. "
+    "Root must reserve a quiet interval and record external workload knowledge.",
+    "No pooled cases, sample trimming, replacement process, retry, adaptive order "
+    "or rerun-to-pass is allowed. Any further batch needs its own prospectively "
+    "reviewed reason and protocol; all original outcomes remain retained.",
+    "Preflight references current compile/dependency databases and retained "
+    "receipts. It does not retrospectively observe original compiler execution.",
+]
+
+
+class Refusal(ValueError):
+    pass
+
+
+def require(condition, message):
+    if not condition:
+        raise Refusal(message)
+
+
+def utc():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def json_bytes(value):
+    return (json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
+
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def read_bytes(path, limit=LIMITS["identity_file_bytes"]):
+    with Path(path).open("rb") as stream:
+        data = stream.read(limit + 1)
+    require(len(data) <= limit, f"file exceeds {limit}-byte ceiling: {path}")
+    return data
+
+
+def unique_pairs(pairs):
+    value = {}
+    for key, item in pairs:
+        require(key not in value, f"duplicate JSON key: {key}")
+        value[key] = item
+    return value
+
+
+def strict_json(data, *, decimals=False):
+    def bad_number(value):
+        raise Refusal(f"nonfinite JSON number: {value}")
+    return json.loads(data, object_pairs_hook=unique_pairs,
+                      parse_float=Decimal if decimals else float,
+                      parse_constant=bad_number)
+
+
+def write_new(path, value):
+    data = value if isinstance(value, bytes) else json_bytes(value)
+    with Path(path).open("xb") as stream:
+        stream.write(data)
+        stream.flush()
+        os.fsync(stream.fileno())
+    return {"path": str(Path(path).resolve()), "bytes": len(data), "sha256": digest(data)}
+
+
+def identity(path):
+    path = Path(path).absolute()
+    before = path.stat()
+    require(stat.S_ISREG(before.st_mode), f"input is not a regular file: {path}")
+    data = read_bytes(path)
+    after = path.stat()
+    require((before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns) ==
+            (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns),
+            f"input changed while hashing: {path}")
+    return {"path": str(path), "resolved_path": str(path.resolve()),
+            "bytes": len(data), "sha256": digest(data)}
+
+
+def snapshot_inputs(paths):
+    require(len(paths) <= LIMITS["identity_files"], "too many identity inputs")
+    result = {}
+    total = 0
+    for name, path in sorted(paths.items()):
+        result[name] = identity(path)
+        total += result[name]["bytes"]
+        require(total <= LIMITS["identity_total_bytes"], "identity bytes exceed ceiling")
+    return result
+
+
+def compare_inputs(expected):
+    actual, errors = {}, []
+    for name, old in sorted(expected.items()):
+        try:
+            actual[name] = identity(old["path"])
+            if actual[name] != old:
+                errors.append("changed input: " + name)
+        except (OSError, ValueError) as error:
+            actual[name] = {"path": old["path"], "error": str(error)}
+            errors.append("unavailable input: " + name)
+    return actual, errors
+
+
+def optional_text(path, limit=32768):
+    try:
+        return read_bytes(path, limit).decode("utf-8", "replace").strip()
+    except (OSError, ValueError) as error:
+        return {"unavailable": str(error)}
+
+
+def host_state(cpu):
+    status = optional_text("/proc/self/status")
+    trace = re.search(r"^TracerPid:\s*(\d+)$", status, re.M) if isinstance(status, str) else None
+    cpu_block = next((block for block in str(optional_text("/proc/cpuinfo", 1024 * 1024)).split("\n\n")
+                      if re.search(rf"^processor\s*:\s*{cpu}$", block, re.M)), "unavailable")
+    relevant_env = {key: value for key, value in os.environ.items()
+                    if key.startswith(("SDL_", "LD_", "ASAN_", "UBSAN_", "LSAN_", "TSAN_",
+                                       "MALLOC_", "LLVM_PROFILE_", "GCOV_", "OMP_"))
+                    or key in ("LANG", "LC_ALL", "TZ", "GLIBC_TUNABLES")}
+    return {
+        "utc": utc(), "load_average_1_5_15": list(os.getloadavg()),
+        "proc_loadavg": optional_text("/proc/loadavg"),
+        "affinity": sorted(os.sched_getaffinity(0)), "selected_cpu": cpu,
+        "selected_cpu_info": cpu_block, "uname": list(os.uname()),
+        "boot_id": optional_text("/proc/sys/kernel/random/boot_id"),
+        "python": sys.version, "python_executable": str(Path(sys.executable).resolve()),
+        "parent_relevant_environment": relevant_env, "child_environment": CHILD_ENV,
+        "tracer_pid": int(trace.group(1)) if trace else None,
+        "scheduler_policy": os.sched_getscheduler(0),
+        "nice": os.getpriority(os.PRIO_PROCESS, 0),
+        "cgroup_cpu_max": optional_text("/sys/fs/cgroup/cpu.max"),
+        "cgroup_cpu_stat": optional_text("/sys/fs/cgroup/cpu.stat"),
+        "cgroup_cpuset": optional_text("/sys/fs/cgroup/cpuset.cpus.effective"),
+        "isolation_established": False,
+    }
+
+
+def ninja_dependencies(path):
+    """Read Ninja v4's retained dependency database; never run Ninja or a build."""
+    data = read_bytes(path)
+    require(data[:12] == b"# ninjadeps\n" and struct.unpack_from("<I", data, 12)[0] == 4,
+            "unsupported Ninja dependency database")
+    paths, dependencies, cursor = [], {}, 16
+    while cursor < len(data):
+        require(cursor + 4 <= len(data), "truncated Ninja record size")
+        size_word = struct.unpack_from("<I", data, cursor)[0]
+        size = size_word & 0x7fffffff
+        cursor += 4
+        require(4 <= size <= 1024 * 1024 and size % 4 == 0 and cursor + size <= len(data),
+                "invalid Ninja record extent")
+        record = data[cursor:cursor + size]
+        cursor += size
+        if size_word & 0x80000000:
+            require(size >= 12, "short Ninja dependency record")
+            output, low, high = struct.unpack_from("<III", record)
+            ids = struct.unpack_from("<" + "I" * ((size - 12) // 4), record, 12)
+            require(output < len(paths) and all(index < len(paths) for index in ids),
+                    "Ninja dependency references unknown path")
+            dependencies[paths[output]] = {"mtime_ns": low | high << 32,
+                                           "inputs": [paths[index] for index in ids]}
+        else:
+            checksum = struct.unpack_from("<I", record, size - 4)[0]
+            require(checksum == (~len(paths) & 0xffffffff), "Ninja path checksum mismatch")
+            paths.append(record[:-4].rstrip(b"\0").decode("utf-8"))
+    return dependencies
+
+
+def ninja_edge(text, target):
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if line.startswith("build " + target + ": "):
+            block = [line]
+            for following in lines[index + 1:]:
+                if not following.startswith("  "):
+                    break
+                block.append(following)
+            require("$" not in line, "unsupported escaped selected Ninja edge")
+            tokens = line.split(": ", 1)[1].split()
+            inputs = []
+            for token in tokens[1:]:
+                if token == "||":
+                    break
+                if token != "|":
+                    inputs.append(token)
+            return {"target": target, "rule": tokens[0], "inputs": inputs,
+                    "retained_recipe": "\n".join(block)}
+    raise Refusal("missing selected Ninja target: " + target)
+
+
+def compile_options(command):
+    tokens = shlex.split(command) if isinstance(command, str) else command
+    result, skip = [], False
+    for token in tokens:
+        if skip:
+            skip = False
+        elif token in ("-o", "-c"):
+            skip = True
+        else:
+            result.append(token)
+    require(not skip, "incomplete compile command")
+    return result
+
+
+def no_instrumentation(commands):
+    forbidden = ("sanitize", "HAMMOND_PAINT_ALLOCATIONS", "HAMMOND_PAINT_BASELINE",
+                 "--coverage", "-fprofile", "-finstrument-functions", "-pg")
+    for command in commands:
+        for token in shlex.split(command) if isinstance(command, str) else command:
+            require(not any(word in token for word in forbidden),
+                    "instrumented or paired compile/link input: " + token)
+
+
+def flat_evidence():
+    """Recheck retained actual bytes; do not run another native process."""
+    directory = REPORTS / "p1-paired-v1"
+    report_raw = read_bytes(directory / "report.json")
+    report = strict_json(report_raw)
+    pixels, headers, records = {}, {}, {}
+    paths = {"flat_original_report": directory / "report.json"}
+    for side in ("before", "after"):
+        name = side + "-21"
+        matches = [row for row in report["commands"] if row["name"] == name]
+        require(len(matches) == 1, "ambiguous retained Flat process")
+        record = matches[0]
+        require(record["exit_code"] == 0 and record["errors"] == [], "failed retained Flat transport")
+        for stream in ("stdout", "stderr"):
+            artifact = record[stream]
+            path = directory / artifact["path"]
+            require(path.parent == directory, "invalid retained Flat artifact path")
+            packed = read_bytes(path, 2 * 1024 * 1024)
+            require(len(packed) == artifact["bytes"] and digest(packed) == artifact["sha256"],
+                    "retained Flat compressed bytes differ")
+            inflater = zlib.decompressobj()
+            raw = inflater.decompress(packed, LIMITS["flat_decoded_bytes_each"] + 1)
+            require(len(raw) <= LIMITS["flat_decoded_bytes_each"] and inflater.eof and
+                    not inflater.unused_data and not inflater.unconsumed_tail,
+                    "invalid or oversized retained Flat stream")
+            require(len(raw) == artifact["raw_bytes"] and digest(raw) == artifact["raw_sha256"],
+                    "retained Flat raw bytes differ from original receipt")
+            paths["flat_" + name + "_" + stream] = path
+            if stream == "stderr":
+                require(raw == b"", "retained Flat stderr is not empty")
+            else:
+                header_raw, separator, rgba = raw.partition(b"\n")
+                require(separator and len(header_raw) < 1024 * 1024, "invalid retained Flat header")
+                header = strict_json(header_raw)
+                expected = {"schema": 1, "protocol": "performance-plate-p1-v1", "case": 21,
+                            "width": 1672, "height": 941, "pixel_format": "RGBA8",
+                            "row_order": "top-to-bottom", "row_stride": 6688,
+                            "presentation": 1, "workspace": 0, "active_reference": False,
+                            "eligible_p1": False, "paired_whole_frame_equality_required": True}
+                require(all(type(header.get(key)) is type(value) and header[key] == value
+                            for key, value in expected.items()), "retained case21 is not frozen Flat")
+                require(len(rgba) == 1672 * 941 * 4 == header["bytes"], "wrong Flat pixel extent")
+                pixels[side], headers[side] = rgba, header
+        records[side] = record
+    require(pixels["before"] == pixels["after"], "retained Flat RGBA bytes differ")
+    for family in ("model", "session", "hit"):
+        require(headers["before"][family + "_before"] == headers["after"][family + "_before"],
+                "retained Flat copied state/geometry differs")
+    return {
+        "method_boundary": FLAT_BOUNDARY,
+        "retained_fixture_case": 21, "exact_rgba_byte_equality": True,
+        "compared_pixels": 1672 * 941, "compared_rgba_bytes": len(pixels["before"]),
+        "rgba_sha256": digest(pixels["before"]), "original_process_records": records,
+        "original_whole_report_passed": report["passed"],
+        "original_report_sha256": digest(report_raw),
+        "original_whole_report_failures_preserved": report["failures"],
+        "benchmark_scene_raw_bytes_available": False,
+        "before_painter_sha256": report["inputs"]["before_painter"]["sha256"],
+        "after_painter_sha256": report["inputs"]["after_painter"]["sha256"],
+    }, paths
+
+
+def freeze_ancestry():
+    paths = {"runner": Path(__file__).resolve(),
+             "contract": ROOT / "docs/design/PERFORMANCE_PLATE_P1_CONTRACT.md",
+             "benchmark_source": ROOT / "tools/standalone_paint_benchmark.cpp",
+             "before_binary": BINARY_PATHS["before"], "after_binary": BINARY_PATHS["after"],
+             "before_painter": BASELINE / "InstrumentView.cpp",
+             "after_painter": ROOT / "apps/standalone/InstrumentView.cpp"}
+    receipt_names = ("baseline-binaries.json", "baseline-source.json", "baseline-configure.log",
+                     "baseline-build.log", "p1-candidate-build.log", "p1-coherent-relink.json",
+                     "p1-coherent-relink.log", "p1-before-reproduction.json")
+    paths.update({"receipt/" + name: REPORTS / name for name in receipt_names})
+    configuration_names = ("CMakeCache.txt", "compile_commands.json", "build.ninja",
+                           "CMakeFiles/rules.ninja", ".ninja_deps")
+    paths.update({"build/" + name: BUILD / name for name in configuration_names})
+    initial_metadata_inputs = snapshot_inputs(paths)
+    reproduction = strict_json(read_bytes(REPORTS / "p1-before-reproduction.json"))
+    baseline = strict_json(read_bytes(REPORTS / "baseline-binaries.json"))
+    relink = strict_json(read_bytes(REPORTS / "p1-coherent-relink.json"))
+    require(reproduction["bit_identical_to_genuine_original"] is True and
+            reproduction["original_before"]["sha256"] == BEFORE_SHA ==
+            reproduction["reproduced_before"]["sha256"], "missing exact before reproduction")
+    require(reproduction["compile_exit"] == reproduction["link_exit"] == 0,
+            "before reconstruction command failed")
+    require(baseline["preserved"]["../baseline-native/hammond_standalone_paint_benchmark"] == BEFORE_SHA,
+            "genuine before receipt does not match")
+    relink_key = "../build-native/apps/standalone/hammond_standalone_paint_benchmark"
+    require(relink["bit_identical"] is True and relink["before"][relink_key] == AFTER_SHA ==
+            relink["after"][relink_key], "coherent candidate relink receipt does not match")
+    known = {"before_binary": BEFORE_SHA, "after_binary": AFTER_SHA,
+             "before_painter": PAINTER_BEFORE_SHA, "after_painter": PAINTER_AFTER_SHA,
+             "benchmark_source": BENCHMARK_SHA, "contract": CONTRACT_SHA}
+    for label, expected in known.items():
+        require(identity(paths[label])["sha256"] == expected, "frozen identity mismatch: " + label)
+    for index, item in enumerate(reproduction["link_input_identities"]):
+        label = "reproduction_link_input/" + str(index)
+        paths[label] = Path(item["path"])
+        require(identity(paths[label])["sha256"] == item["sha256"], "reproduction link input changed")
+    for key in ("candidate_painter_object", "candidate_benchmark", "reproduced_before"):
+        item = reproduction[key]
+        paths[key] = Path(item["path"])
+        require(identity(paths[key])["sha256"] == item["sha256"], key + " identity differs")
+    require(read_bytes(BINARY_PATHS["before"]) == read_bytes(paths["reproduced_before"]),
+            "reproduced before is not byte-identical to genuine original")
+    for name in ("before-link.d", "compile.stdout", "compile.stderr", "link.stdout", "link.stderr"):
+        paths["reproduction/" + name] = REPRO / name
+    link_dependencies = read_bytes(REPRO / "before-link.d").decode().replace("\\\n", " ")
+    first_rule = link_dependencies.split("\n", 1)[0].split(":", 1)[1]
+    system_link_inputs = []
+    for dependency in shlex.split(first_rule):
+        path = Path(dependency)
+        if not path.is_absolute():
+            path = BUILD / path
+        paths["link_dependency/" + dependency] = path
+        system_link_inputs.append(str(path))
+
+    compiler_files = sorted((BUILD / "CMakeFiles").glob("*/CMakeCXXCompiler.cmake"))
+    require(len(compiler_files) == 1, "ambiguous CMake compiler identity")
+    paths["compiler_configuration"] = compiler_files[0]
+    compiler_text = read_bytes(compiler_files[0]).decode()
+    require('set(CMAKE_CXX_COMPILER_ID "GNU")' in compiler_text and
+            'set(CMAKE_CXX_COMPILER_VERSION "14.2.0")' in compiler_text,
+            "toolchain no longer GCC14.2")
+    cache_text = read_bytes(BUILD / "CMakeCache.txt").decode()
+    for setting in ("CMAKE_BUILD_TYPE:STRING=Release", "HAMMOND_ENABLE_SANITIZERS:BOOL=OFF",
+                    "HAMMOND_ENABLE_MIDI:BOOL=OFF", "HAMMOND_BUILD_VST3:BOOL=OFF"):
+        require(setting in cache_text.splitlines(), "configuration mismatch: " + setting)
+    cache = dict(re.findall(r"^([A-Za-z_][A-Za-z_0-9-]*):[^=\n]+=([^\n]*)$", cache_text, re.M))
+    for name in ("CMAKE_CXX_COMPILER", "CMAKE_C_COMPILER", "CMAKE_LINKER", "CMAKE_AR", "CMAKE_RANLIB"):
+        paths["tool/" + name] = Path(cache[name])
+    sdl = Path(cache["SDL2_SOURCE_DIR"])
+    paths["sdl_license"] = sdl / "LICENSE.txt"
+    paths["sdl_version"] = sdl / "include/SDL_version.h"
+
+    ninja_text = read_bytes(BUILD / "build.ninja").decode()
+    targets = ("apps/standalone/hammond_standalone_paint_benchmark",
+               "apps/standalone/libhammond_standalone_drawing.a",
+               "apps/standalone/libhammond_standalone_support.a", "libhammond_core.a", "_sdl2/libSDL2.a")
+    edges = [ninja_edge(ninja_text, target) for target in targets]
+    object_names = {name for edge in edges for name in edge["inputs"] if name.endswith(".o")}
+    commands = strict_json(read_bytes(BUILD / "compile_commands.json"))
+    selected = [row for row in commands if row["output"] in object_names]
+    require(len(selected) == len(object_names), "selected compile command coverage is incomplete")
+    no_instrumentation([row["command"] for row in selected] +
+                       [reproduction["compile_command"], reproduction["link_command"]])
+    deps = ninja_dependencies(BUILD / ".ninja_deps")
+    used_deps = {}
+    for row in selected:
+        require(Path(row["directory"]).resolve() == BUILD.resolve(), "compile cwd differs")
+        name = row["output"]
+        paths["object/" + name] = BUILD / name
+        paths["source/" + row["file"]] = Path(row["file"])
+        require(name in deps, "no retained dependency record for " + name)
+        require((BUILD / name).stat().st_mtime_ns == deps[name]["mtime_ns"],
+                "Ninja dependency record does not match object timestamp: " + name)
+        used_deps[name] = deps[name]
+        for dependency in deps[name]["inputs"]:
+            path = Path(dependency)
+            paths["compile_dependency/" + dependency] = path if path.is_absolute() else BUILD / path
+    painter_command = next(row["command"] for row in selected
+                           if row["output"].endswith("paint_benchmark.dir/InstrumentView.cpp.o"))
+    require(compile_options(painter_command) == compile_options(reproduction["compile_command"]),
+            "before reconstruction and candidate painter compile options differ")
+    for name in ("CMakeLists.txt", "apps/standalone/CMakeLists.txt", "cmake/VerifySdl2.cmake"):
+        paths["configuration_source/" + name] = ROOT / name
+    baseline_inventory = strict_json(read_bytes(REPORTS / "baseline-source.json"))["files"]
+    differences = []
+    for name, expected in baseline_inventory.items():
+        actual = identity(ROOT / name)["sha256"]
+        if actual != expected:
+            differences.append(name)
+    require(sorted(differences) == sorted(reproduction["baseline_source_differences"]),
+            "source delta differs from reviewed before-reproduction receipt")
+
+    flat, flat_paths = flat_evidence()
+    require(flat["before_painter_sha256"] == PAINTER_BEFORE_SHA and
+            flat["after_painter_sha256"] == PAINTER_AFTER_SHA, "Flat evidence painter differs")
+    paths.update(flat_paths)
+    inputs = snapshot_inputs(paths)
+    require(all(inputs[name] == value for name, value in initial_metadata_inputs.items()),
+            "source/receipt/configuration changed during preflight")
+    require(inputs["flat_original_report"]["sha256"] == flat["original_report_sha256"],
+            "original Flat receipt changed during preflight")
+    for side, record in flat["original_process_records"].items():
+        for stream in ("stdout", "stderr"):
+            require(inputs[f"flat_{side}-21_{stream}"]["sha256"] == record[stream]["sha256"],
+                    "retained Flat bytes changed during preflight")
+    for label, expected in known.items():
+        require(inputs[label]["sha256"] == expected, "frozen input drift during preflight: " + label)
+    return {
+        "inputs": inputs, "input_manifest_sha256": digest(json_bytes(inputs)),
+        "retained_reproduction_receipt": reproduction,
+        "selected_compile_commands": selected, "selected_ninja_link_recipes": edges,
+        "selected_compile_dependencies": used_deps,
+        "reproduction_system_and_project_link_dependencies": system_link_inputs,
+        "baseline_source_differences": differences,
+        "flat_preservation_evidence": flat,
+        "instrumentation_compile_scan_passed": True,
+        "original_before_object_retained": False,
+        "executed_before_is_genuine_retained_binary": True,
+    }
+
+
+def protocol_order():
+    return [{"order": index, "case": case, "side": side,
+             "command": [str(BINARY_PATHS[side]), str(width), str(height), presentation, "mixed-held"]}
+            for index, (case, side, width, height, presentation) in enumerate(ORDER, 1)]
+
+
+def make_protocol(cpu):
+    require(hasattr(os, "sched_getaffinity") and hasattr(os, "sched_setaffinity"), "Linux affinity required")
+    require(cpu in os.sched_getaffinity(0), "requested CPU is outside current sched_getaffinity")
+    before = host_state(cpu)
+    require(before["tracer_pid"] == 0, "runner is traced or trace state unavailable")
+    ancestry = freeze_ancestry()
+    _confirmed_inputs, drift = compare_inputs(ancestry["inputs"])
+    require(not drift, "input drift at preflight completion: " + "; ".join(drift))
+    return {
+        "schema": SCHEMA, "status": "PROSPECTIVE_UNRUN_PENDING_INDEPENDENT_ADMISSION",
+        "created_utc": utc(), "cwd": str(ROOT), "cpu": cpu, "order": protocol_order(),
+        "all_input_hashes_rechecked_at_preflight_end": True,
+        "limits": LIMITS, "child_environment": CHILD_ENV,
+        "preflight_host_before": before, "preflight_host_after": host_state(cpu),
+        "ancestry": ancestry, "limitations": LIMITATIONS,
+        "statistics": {"sample_count": 300, "one_based_median_positions": [150, 151],
+                       "one_based_nearest_rank_p95": 285, "median_half_ns_exact": True,
+                       "screen": "HOLD if either total median or total p95 growth is strictly >2ms AND >15%",
+                       "threshold_method": "integer cross multiplication; no rounded-summary decisions",
+                       "supplied_total_summary_tolerance_ms": "0.000000500001",
+                       "paint_flush_samples_available": False},
+        "failure_policy": "Record every attempt; continue fixed order after a reaped process/parse failure. "
+                          "Stop on input drift, affinity loss, unreaped child, interruption or batch deadline. "
+                          "No replacement or resume. Timing HOLD alone never stops remaining fixed cases.",
+        "execution_claim": "An exclusive execution-claim.json beside this protocol is created before launch; "
+                           "it is never removed, even after failure. A claim prevents reuse of this protocol.",
+        "required_next_admission": "Independent A25 must review this exact script/protocol, provenance "
+                                   "limitations and Flat evidence method before root reserves a quiet interval "
+                                   "and invokes --execute with both SHA-256 pins.",
+    }
+
+
+SUMMARY_KEYS = {"median_ms", "p95_ms", "minimum_ms", "maximum_ms"}
+META_KEYS = {
+    "schema", "width", "height", "presentation", "scenario", "overlay", "workspace", "paired",
+    "alternating_order", "warmup_each", "samples_each", "renderer", "renderer_flags", "sdl_version",
+    "surface_format", "surface_bytes", "render_batching", "scale", "viewport", "clip",
+    "layout_fnv1a64", "current_pixels_fnv1a64", "before_pixels_fnv1a64", "measurement",
+    "heap_instrumentation", "clock", "clock_period", "before", "current",
+}
+
+
+def summary_values(value, label):
+    require(type(value) is dict and set(value) == SUMMARY_KEYS, label + " summary fields differ")
+    result = {}
+    for key, number in value.items():
+        require(type(number) in (int, Decimal) and Decimal(number).is_finite() and number >= 0,
+                label + " invalid duration")
+        result[key] = Decimal(number)
+    require(0 <= result["minimum_ms"] <= result["median_ms"] <= result["p95_ms"] <= result["maximum_ms"],
+            label + " summary order differs")
+    return result
+
+
+def validate_stdout(raw, row):
+    data = strict_json(raw, decimals=True)
+    require(type(data) is dict and set(data) == META_KEYS, "benchmark JSON fields differ")
+    width, height = int(row["command"][1]), int(row["command"][2])
+    expected = {
+        "schema": "standalone-paired-paint-v1", "width": width, "height": height,
+        "presentation": row["command"][3], "scenario": "mixed-held", "overlay": "none",
+        "workspace": "Play", "paired": False, "alternating_order": False,
+        "warmup_each": 30, "samples_each": 300, "renderer": "software", "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888", "surface_bytes": width * height * 4,
+        "render_batching": "1", "scale": [1, 1], "viewport": [0, 0, width, height], "clip": None,
+        "before_pixels_fnv1a64": None, "measurement": "software-paint-flush-surface-present",
+        "heap_instrumentation": False, "clock": "std::chrono::steady_clock",
+        "clock_period": [1, 1000000000], "before": None,
+    }
+    for key, value in expected.items():
+        require(type(data[key]) is type(value) and data[key] == value, "metadata mismatch: " + key)
+    require(type(data["renderer_flags"]) is int and data["renderer_flags"] & 1 == 1,
+            "software-renderer flag absent")
+    for name in ("layout_fnv1a64", "current_pixels_fnv1a64"):
+        require(type(data[name]) is str and re.fullmatch(r"[0-9a-f]{1,16}", data[name]),
+                "invalid fingerprint: " + name)
+    current = data["current"]
+    require(type(current) is dict and set(current) ==
+            {"paint", "flush_and_surface_present", "total", "samples_total_ns"}, "current fields differ")
+    samples = current["samples_total_ns"]
+    require(type(samples) is list and len(samples) == 300 and
+            all(type(value) is int and 0 <= value <= (1 << 63) - 1 for value in samples),
+            "expected all 300 nonnegative integer total samples")
+    ordered = sorted(samples)
+    median_twice_ns = ordered[149] + ordered[150]
+    require(median_twice_ns > 0 and ordered[284] > 0, "nonpositive baseline-compatible statistics")
+    recomputed = {"minimum_ms": Decimal(ordered[0]) / 1000000,
+                  "maximum_ms": Decimal(ordered[-1]) / 1000000,
+                  "median_ms": Decimal(median_twice_ns) / 2000000,
+                  "p95_ms": Decimal(ordered[284]) / 1000000}
+    summaries = {name: summary_values(current[name], name)
+                 for name in ("paint", "flush_and_surface_present", "total")}
+    tolerance = Decimal("0.000000500001")  # Native fixed(6), half-ns median ties.
+    for key, value in recomputed.items():
+        require(abs(summaries["total"][key] - value) <= tolerance,
+                "supplied total summary disagrees with all samples: " + key)
+    for name in ("paint", "flush_and_surface_present"):
+        for key in SUMMARY_KEYS:
+            require(summaries[name][key] <= summaries["total"][key] + tolerance,
+                    "component summary exceeds corresponding total quantile: " + name + ":" + key)
+    return {
+        "metadata": {key: value for key, value in data.items() if key not in ("before", "current")},
+        "samples_total_ns": samples,
+        "recomputed_total": {key: str(value) for key, value in recomputed.items()},
+        "median_twice_ns": median_twice_ns, "p95_ns": ordered[284],
+        "median_order_statistics_ns": [ordered[149], ordered[150]],
+        "p95_rank": 285, "minimum_ns": ordered[0], "maximum_ns": ordered[-1],
+        "supplied_summaries": {name: {key: str(value) for key, value in values.items()}
+                               for name, values in summaries.items()},
+        "total_summary_recomputed": True, "component_summaries_recomputed": False,
+    }
+
+
+def metric_comparison(before, after, scale):
+    delta = after - before
+    return {"before_ms": str(Decimal(before) / scale), "after_ms": str(Decimal(after) / scale),
+            "growth_ms": str(Decimal(delta) / scale),
+            "growth_percent": str(Decimal(delta * 100) / before),
+            "growth_percent_exact_ratio": [delta * 100, before],
+            "strictly_greater_than_2ms": delta > 2 * scale,
+            "strictly_greater_than_15percent": delta * 100 > before * 15,
+            "hold": delta > 2 * scale and delta * 100 > before * 15}
+
+
+def comparisons(processes):
+    results = []
+    for case in ("canonical", "minimum-active", "wide", "flat-control"):
+        pair = {row["side"]: row for row in processes if row["case"] == case}
+        missing = [side for side in ("before", "after") if side not in pair or "validated" not in pair[side]]
+        if missing:
+            results.append({"case": case, "status": "UNAVAILABLE", "missing_valid_sides": missing})
+            continue
+        before, after = pair["before"]["validated"], pair["after"]["validated"]
+        excluded = {"current_pixels_fnv1a64"}
+        keys = set(before["metadata"]) - excluded
+        metadata_equal = all(before["metadata"][key] == after["metadata"][key] for key in keys)
+        flat_equal = (before["metadata"]["current_pixels_fnv1a64"] ==
+                      after["metadata"]["current_pixels_fnv1a64"]) if case == "flat-control" else None
+        median = metric_comparison(before["median_twice_ns"], after["median_twice_ns"], 2000000)
+        p95 = metric_comparison(before["p95_ns"], after["p95_ns"], 1000000)
+        hold = median["hold"] or p95["hold"]
+        status = ("HOLD_INVALID_METADATA" if not metadata_equal or flat_equal is False else
+                  "HOLD_FOR_INVESTIGATION" if hold else "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH")
+        results.append({"case": case, "status": status, "metadata_equal": metadata_equal,
+                        "flat_benchmark_fingerprint_equal": flat_equal,
+                        "flat_benchmark_raw_byte_comparison": False,
+                        "median": median, "p95": p95,
+                        "before": {key: value for key, value in before.items() if key != "samples_total_ns"},
+                        "after": {key: value for key, value in after.items() if key != "samples_total_ns"}})
+    return results
+
+
+def run_process(row, output, cpu, deadline):
+    result = dict(row, started_utc=utc(), host_before=host_state(cpu), errors=[])
+    stem = f"{row['order']:02d}-{row['case']}-{row['side']}"
+    stdout_path, stderr_path = output / (stem + ".stdout"), output / (stem + ".stderr")
+    retained, observed = {"stdout": bytearray(), "stderr": bytearray()}, {"stdout": 0, "stderr": 0}
+    truncated = {"stdout": False, "stderr": False}
+    process, selector = None, selectors.DefaultSelector()
+    started = time.monotonic()
+    process_deadline = min(deadline, started + LIMITS["process_seconds"])
+    killed_at = None
+    try:
+        process = subprocess.Popen(row["command"], cwd=ROOT, env=CHILD_ENV,
+                                   stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                   start_new_session=True, close_fds=True)
+        result["pid"] = process.pid
+        result["child_affinity_after_spawn"] = sorted(os.sched_getaffinity(process.pid))
+        require(result["child_affinity_after_spawn"] == [cpu], "child affinity differs")
+        for stream in ("stdout", "stderr"):
+            pipe = getattr(process, stream)
+            os.set_blocking(pipe.fileno(), False)
+            selector.register(pipe, selectors.EVENT_READ, stream)
+        while selector.get_map() or process.poll() is None:
+            now = time.monotonic()
+            if now >= process_deadline and killed_at is None:
+                result["errors"].append("process or batch deadline exceeded; no retry")
+                os.killpg(process.pid, signal.SIGKILL)
+                killed_at = now
+            if killed_at is not None and now - killed_at >= LIMITS["kill_reap_seconds"]:
+                result["errors"].append("post-kill drain/reap deadline reached")
+                break
+            for key, _ in selector.select(timeout=0.1):
+                chunk = os.read(key.fileobj.fileno(), 16384)
+                if not chunk:
+                    selector.unregister(key.fileobj)
+                    continue
+                stream = key.data
+                observed[stream] += len(chunk)
+                cap = LIMITS[stream + "_bytes_each"]
+                room = cap - len(retained[stream])
+                retained[stream].extend(chunk[:max(0, room)])
+                if observed[stream] > cap and not truncated[stream]:
+                    truncated[stream] = True
+                    result["errors"].append(stream + " cap exceeded; exact prefix retained; no retry")
+                    if killed_at is None:
+                        os.killpg(process.pid, signal.SIGKILL)
+                        killed_at = time.monotonic()
+        result["exit_code"] = process.poll()
+        if result["exit_code"] is None:
+            os.killpg(process.pid, signal.SIGKILL)
+            try:
+                result["exit_code"] = process.wait(timeout=LIMITS["kill_reap_seconds"])
+            except subprocess.TimeoutExpired:
+                result["errors"].append("child not reaped; remaining batch forbidden")
+        result["reaped"] = result["exit_code"] is not None
+        if result["exit_code"] != 0:
+            result["errors"].append("benchmark did not exit zero")
+    except BaseException as error:
+        result["errors"].append(type(error).__name__ + ": " + str(error))
+        result["interrupted"] = isinstance(error, (KeyboardInterrupt, SystemExit))
+        if process is not None:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            try:
+                result["exit_code"] = process.wait(timeout=LIMITS["kill_reap_seconds"])
+            except subprocess.TimeoutExpired:
+                result["exit_code"] = None
+            result["reaped"] = result["exit_code"] is not None
+        else:
+            result["exit_code"], result["reaped"] = None, True
+    finally:
+        selector.close()
+        # Exceptions can arrive before registration or between reads. Preserve
+        # all remaining available pipe bytes after the child is killed/reaped;
+        # mark incomplete captures explicitly instead of implying complete raw.
+        complete = {"stdout": process is None, "stderr": process is None}
+        if process is not None:
+            for name in ("stdout", "stderr"):
+                pipe = getattr(process, name)
+                os.set_blocking(pipe.fileno(), False)
+                cap = LIMITS[name + "_bytes_each"]
+                for _ in range(cap // 16384 + 2):
+                    try:
+                        chunk = os.read(pipe.fileno(), 16384)
+                    except BlockingIOError:
+                        break
+                    if not chunk:
+                        complete[name] = True
+                        break
+                    observed[name] += len(chunk)
+                    retained[name].extend(chunk[:max(0, cap - len(retained[name]))])
+                    if observed[name] > cap:
+                        if not truncated[name]:
+                            result["errors"].append(name + " cap exceeded during final drain; prefix retained")
+                        truncated[name] = True
+                pipe.close()
+        result["raw_pipe_eof_observed"] = complete
+        if not all(complete.values()):
+            result["errors"].append("raw pipe capture incomplete; available prefix retained")
+        result["stdout"] = write_new(stdout_path, bytes(retained["stdout"]))
+        result["stderr"] = write_new(stderr_path, bytes(retained["stderr"]))
+        result["observed_bytes"] = observed
+        result["retained_prefix_truncated"] = truncated
+        result["finished_utc"] = utc()
+        result["elapsed_seconds"] = time.monotonic() - started
+        result["host_after"] = host_state(cpu)
+    if not result["errors"]:
+        try:
+            require(not retained["stderr"], "nonempty benchmark stderr")
+            result["validated"] = validate_stdout(bytes(retained["stdout"]), row)
+        except (ValueError, KeyError, TypeError, OverflowError, RecursionError) as error:
+            result["errors"].append("stdout/metadata validation: " + str(error))
+    return result
+
+
+def execute(args, output):
+    protocol_path = args.protocol.resolve()
+    raw = read_bytes(protocol_path)
+    require(digest(raw) == args.protocol_sha256, "prospective protocol SHA-256 differs")
+    protocol = strict_json(raw)
+    require(protocol["schema"] == SCHEMA and protocol["order"] == protocol_order() and
+            protocol["limits"] == LIMITS and protocol["child_environment"] == CHILD_ENV and
+            protocol["cpu"] == args.cpu, "protocol does not match this frozen runner")
+    require(protocol_path == Path(protocol["prospective_output_directory"]) / "protocol.json",
+            "protocol was moved/copied; one-use claim belongs to its frozen original directory")
+    require(protocol["ancestry"]["inputs"]["runner"]["sha256"] == args.runner_sha256 ==
+            identity(Path(__file__))["sha256"], "runner SHA-256 differs")
+    require(args.cpu in os.sched_getaffinity(0), "selected CPU no longer allowed")
+    before = host_state(args.cpu)
+    require(before["tracer_pid"] == 0, "runner is traced or trace state unavailable")
+    require(before["boot_id"] == protocol["preflight_host_before"]["boot_id"], "host boot identity changed")
+    review = identity(args.admission)
+    require(review["sha256"] == args.admission_sha256, "independent admission SHA-256 differs")
+    require(args.protocol_sha256 in read_bytes(args.admission).decode("utf-8"),
+            "admission note does not name the frozen protocol hash")
+    inputs = dict(protocol["ancestry"]["inputs"])
+    inputs["execution_protocol"] = identity(protocol_path)
+    inputs["independent_admission"] = review
+    before_inputs, errors = compare_inputs(inputs)
+    write_new(output / "inputs-before.json", before_inputs)
+    require(not errors, "; ".join(errors))
+    claim = {"protocol": str(protocol_path), "protocol_sha256": args.protocol_sha256,
+             "runner_sha256": args.runner_sha256, "output": str(output), "cpu": args.cpu,
+             "claimed_utc": utc(), "independent_admission": review,
+             "root_quiet_interval_statement": args.quiet_interval_note,
+             "warning": "One use only, including failed/interrupted execution. Never delete this claim to retry."}
+    write_new(protocol_path.parent / "execution-claim.json", claim)
+    write_new(output / "execution-claim-copy.json", claim)
+    write_new(output / "protocol-copy.json", raw)
+    report = {"schema": SCHEMA, "mode": "execute", "protocol_sha256": args.protocol_sha256,
+              "runner_sha256": args.runner_sha256, "started_utc": utc(), "host_before": before,
+              "independent_admission": review, "processes": [], "failures": [],
+              "limitations": LIMITATIONS, "flat_preservation_evidence": protocol["ancestry"]["flat_preservation_evidence"]}
+    original_affinity = os.sched_getaffinity(0)
+    def interrupted(signum, _frame):
+        raise KeyboardInterrupt("signal " + str(signum))
+    original_term = signal.signal(signal.SIGTERM, interrupted)
+    began = time.monotonic()
+    deadline = began + LIMITS["batch_seconds"]
+    try:
+        os.sched_setaffinity(0, {args.cpu})
+        require(os.sched_getaffinity(0) == {args.cpu}, "runner affinity could not be pinned")
+        fast_inputs = {key: inputs[key] for key in ("before_binary", "after_binary", "runner", "contract",
+                                                  "execution_protocol", "independent_admission")}
+        for row in protocol["order"]:
+            require(time.monotonic() < deadline, "batch deadline before next launch")
+            require(os.sched_getaffinity(0) == {args.cpu}, "runner affinity changed")
+            pre, changed = compare_inputs(fast_inputs)
+            require(not changed, "; ".join(changed))
+            print(f"{utc()} starting {row['order']}/8 {row['case']} {row['side']}", flush=True)
+            result = run_process(row, output, args.cpu, deadline)
+            post, changed = compare_inputs(fast_inputs)
+            result["execution_inputs_before"], result["execution_inputs_after"] = pre, post
+            result["errors"].extend(changed)
+            report["processes"].append(result)
+            write_new(output / f"process-{row['order']:02d}.json", result)
+            require(result["reaped"], "unreaped child prohibits another process")
+            require(not result.get("interrupted"), "execution interrupted; no resume")
+            require(not changed, "; ".join(changed))
+    except BaseException as error:
+        report["failures"].append(type(error).__name__ + ": " + str(error))
+    finally:
+        signal.signal(signal.SIGTERM, original_term)
+        try:
+            os.sched_setaffinity(0, original_affinity)
+        except OSError as error:
+            report["failures"].append("affinity restoration: " + str(error))
+        report["inputs_after"], changed = compare_inputs(inputs)
+        report["failures"].extend(changed)
+        report["host_after"] = host_state(args.cpu)
+        report["finished_utc"] = utc()
+        report["elapsed_seconds"] = time.monotonic() - began
+        report["comparisons"] = comparisons(report["processes"])
+        report["attempted_processes"] = len(report["processes"])
+        report["unattempted_order"] = protocol["order"][len(report["processes"]):]
+        invalid = (report["failures"] or len(report["processes"]) != 8 or
+                   any(row["errors"] for row in report["processes"]) or
+                   any(row["status"] in ("UNAVAILABLE", "HOLD_INVALID_METADATA") for row in report["comparisons"]))
+        hold = any(row["status"] == "HOLD_FOR_INVESTIGATION" for row in report["comparisons"])
+        report["status"] = ("HOLD_INVALID_OR_INCOMPLETE_BATCH" if invalid else "HOLD_FOR_INVESTIGATION" if hold
+                            else "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH")
+        report["next_action"] = (
+            "Independent admission of every signal and failure; investigate any HOLD without causal attribution. "
+            "No rerun under this protocol. A new run requires a separately reviewed prospective reason/protocol. "
+            "Full-frame visual acceptance and other product gates remain separate.")
+        report_identity = write_new(output / "report.json", report)
+    print(json.dumps({"status": report["status"], "report": report_identity}, sort_keys=True), flush=True)
+    return 2 if invalid or hold else 0
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--preflight-only", action="store_true", help="read identities; execute no benchmark")
+    mode.add_argument("--execute", action="store_true", help="execute the reviewed frozen batch once")
+    parser.add_argument("--cpu", type=int, required=True, help="explicit allowed logical CPU for all eight processes")
+    parser.add_argument("--output", type=Path, required=True, help="new directory; existing paths always refused")
+    parser.add_argument("--protocol", type=Path)
+    parser.add_argument("--protocol-sha256")
+    parser.add_argument("--runner-sha256")
+    parser.add_argument("--admission", type=Path, help="independent review note naming this exact protocol hash")
+    parser.add_argument("--admission-sha256")
+    parser.add_argument("--quiet-interval-note", help="root's actual workload/reservation statement, not an isolation claim")
+    args = parser.parse_args(argv)
+    if args.execute:
+        required = (args.protocol, args.protocol_sha256, args.runner_sha256, args.admission,
+                    args.admission_sha256, args.quiet_interval_note)
+        if not all(required):
+            parser.error("--execute requires protocol/runner/admission SHA-256 pins and --quiet-interval-note")
+    elif any((args.protocol, args.protocol_sha256, args.runner_sha256, args.admission,
+              args.admission_sha256, args.quiet_interval_note)):
+        parser.error("execution-only arguments supplied with --preflight-only")
+    output = args.output.absolute()
+    require(output.parent.is_dir(), "output parent must already exist")
+    try:
+        output.mkdir(mode=0o755, exist_ok=False)
+    except FileExistsError:
+        print("REFUSED: output already exists; originals are never overwritten", file=sys.stderr)
+        return 2
+    try:
+        if args.preflight_only:
+            protocol = make_protocol(args.cpu)
+            protocol["prospective_output_directory"] = str(output.resolve())
+            protocol_identity = write_new(output / "protocol.json", protocol)
+            write_new(output / "preflight-result.json", {
+                "status": protocol["status"], "timing_processes_executed": 0,
+                "protocol": protocol_identity, "runner": protocol["ancestry"]["inputs"]["runner"],
+                "input_files": len(protocol["ancestry"]["inputs"]),
+                "input_bytes": sum(row["bytes"] for row in protocol["ancestry"]["inputs"].values()),
+                "next_action": protocol["required_next_admission"], "finished_utc": utc(),
+            })
+            print(json.dumps({"status": protocol["status"], "timing_processes_executed": 0,
+                              "protocol": protocol_identity}, sort_keys=True))
+            return 0
+        return execute(args, output)
+    except (OSError, ValueError, KeyError, TypeError, struct.error) as error:
+        refusal = {"status": "REFUSED", "error": type(error).__name__ + ": " + str(error),
+                   "utc": utc(), "mode": "preflight-only" if args.preflight_only else "execute",
+                   "meaning": "No automatic retry. Consult retained raw/process records and one-use claim."}
+        write_new(output / "refusal.json", refusal)
+        print(json.dumps(refusal, sort_keys=True), file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main())

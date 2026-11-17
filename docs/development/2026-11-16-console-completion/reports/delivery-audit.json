@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "worker": "A09",
+  "session": "2026-11-16-console-completion",
+  "observation_utc": "2026-11-17T03:05:20.601Z",
+  "scope": "Read-only source-specific hosted delivery and local configuration audit. No build, native test, source repair, publication or other-workspace mutation performed by this worker.",
+  "source_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "counts": {
+    "required_jobs": 16,
+    "succeeded": 15,
+    "failed": 1,
+    "cancelled": 0
+  },
+  "workflows": [
+    {
+      "id": 44000895497,
+      "name": "CI",
+      "head_sha": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895497",
+      "jobs": [
+        {
+          "id": 133764382348,
+          "name": "Linux GCC ASan + UBSan + leaks",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895497/job/133764382348",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382613,
+          "name": "Release (macOS AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895497/job/133764382613",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382729,
+          "name": "Complete R4 waveform qualification (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895497/job/133764382729",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382775,
+          "name": "Release (Windows MSVC)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895497/job/133764382775",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382786,
+          "name": "Release (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895497/job/133764382786",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382800,
+          "name": "Release (macOS Intel AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895497/job/133764382800",
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 44000895418,
+      "name": "Native standalone",
+      "head_sha": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895418",
+      "jobs": [
+        {
+          "id": 133764382376,
+          "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895418/job/133764382376",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382591,
+          "name": "Native standalone (Linux GCC, MIDI OFF)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895418/job/133764382591",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382602,
+          "name": "Native standalone (Linux GCC, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895418/job/133764382602",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382636,
+          "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895418/job/133764382636",
+          "failed_steps": [
+            {
+              "number": 11,
+              "name": "Build the application and every standalone acceptance input"
+            }
+          ]
+        },
+        {
+          "id": 133764382647,
+          "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895418/job/133764382647",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382873,
+          "name": "Native standalone (macOS AppleClang, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895418/job/133764382873",
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 44000895539,
+      "name": "Native VST3",
+      "head_sha": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895539",
+      "jobs": [
+        {
+          "id": 133764382415,
+          "name": "Native VST3 (macOS AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895539/job/133764382415",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382795,
+          "name": "Native VST3 (Windows MSVC x64)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895539/job/133764382795",
+          "failed_steps": []
+        },
+        {
+          "id": 133764382840,
+          "name": "Native VST3 (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895539/job/133764382840",
+          "failed_steps": []
+        },
+        {
+          "id": 133764383032,
+          "name": "Native VST3 (macOS Intel AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44000895539/job/133764383032",
+          "failed_steps": []
+        }
+      ]
+    }
+  ],
+  "failure": {
+    "job_id": 133764382636,
+    "step_number": 11,
+    "step_name": "Build the application and every standalone acceptance input",
+    "file": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "line": 156,
+    "diagnostics": [
+      "2026-11-17T02:12:13.6729806Z     31>D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\native_tests\\test_standalone_header_material.cpp(156,34): error C2220: the following warning is treated as an error [D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\apps\\standalone\\test_standalone_header_material.vcxproj]",
+      "2026-11-17T02:12:13.6732688Z     31>D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\native_tests\\test_standalone_header_material.cpp(156,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data [D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\apps\\standalone\\test_standalone_header_material.vcxproj]",
+      "2026-11-17T02:12:13.6735509Z     31>D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\native_tests\\test_standalone_header_material.cpp(156,71): warning C4244: '=': conversion from 'int' to 'float', possible loss of data [D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\apps\\standalone\\test_standalone_header_material.vcxproj]"
+    ],
+    "reason": "MSVC /W4 /WX rejects two int-to-float conditional assignments as C4244 and then C2220; downstream native test and packaging steps were skipped.",
+    "minimal_change": {
+      "before": "c.width = shape == 0 ? 1920 : 1400; c.height = shape == 0 ? 820 : 1080;",
+      "after": "c.width = shape == 0 ? 1920.0F : 1400.0F; c.height = shape == 0 ? 820.0F : 1080.0F;",
+      "values": "All four integral dimensions are exactly representable as binary32; preserve every case and assertion, and preserve warning policy."
+    }
+  },
+  "overlap": {
+    "read_only_checkout": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+    "observed_fix": "The exact one-line literal repair exists there as unpublished work. Its paired comparator also records an exact reversible fixture-hash transition and retained original comparator archive.",
+    "authority": "Do not copy its dirty tree, mutate its files, or claim its native/timing results as ours. Root reconciles an accepted published advance or separately admits the minimal repair with affected provenance handling."
+  },
+  "local": {
+    "source": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+    "build": "/workspace/scratch/21cce69f7784/build-native",
+    "configuration": "Release",
+    "build_testing": true,
+    "standalone": true,
+    "midi": false,
+    "vst3": false,
+    "sanitizers": false,
+    "compiler": "GNU C/C++ 14.2.0",
+    "cmake": "4.0.3",
+    "ninja": "1.11.1.git.kitware.jobserver-1",
+    "python": "3.12.14",
+    "sdl2_root": "/workspace/scratch/3edffb787db3/SDL2",
+    "sdl2": {
+      "version": "2.32.10",
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "verification_command": "python3 -B tools/acquire_sdl2.py --verify-existing /workspace/scratch/3edffb787db3/SDL2",
+      "exit_code": 0,
+      "network_used": false,
+      "primary_licenses_verified": 1
+    },
+    "compiled_video_drivers": [
+      "dummy",
+      "offscreen"
+    ],
+    "compiled_audio_drivers": [
+      "disk",
+      "dummy",
+      "OSS"
+    ],
+    "qualification_limit": "No X11/Wayland display, ALSA/PulseAudio, RtMidi or VST3 execution is established by this local build. No local performance/deadline or device claim follows.",
+    "approximate_sizes_mib": {
+      "checkout": 347,
+      "build_at_observation": 149
+    },
+    "free_space_gib_rounded": 50,
+    "generated_sdl_config_sha256": "aaf484912cdee7aa3cef491fc7fbef54ec413cdd40f181e6592e3a3f773bfce3"
+  },
+  "integration_requirements": [
+    "Add LibraryModel.cpp to the explicit hammond_standalone_support source list; tests/test_*.cpp are automatically registered by CONFIGURE_DEPENDS and appended to hammond_standalone_test_inputs.",
+    "Register any new P1 native fixture explicitly with its real painter/link dependencies and append its target to HAMMOND_STANDALONE_TEST_TARGETS.",
+    "Add new required LibraryModel/P1 acceptance names to the normal standalone workflow discovery assertion; regex execution alone should not allow a missing intended test.",
+    "Update the curated native sanitizer name-to-target mapping, source attestations, expected counts and gate-specific timeouts coherently if these new gates are added; retain all existing gates and leak policy.",
+    "Rebuild before CTest. Run meaningful model receipt/state/session tests and P1 containment/numerical/visual gates on coherent source; retain a genuinely frozen pre-P1 baseline.",
+    "After guarded nonforced publication, require all 16 current hosted jobs at the actual published SHA. Existing 9d60dbf passes and old no-runner observations do not qualify changed source.",
+    "Separate installed package/byte-inventory success from signed distribution, actual DAW/controller/display/audio-device/accessibility and physical-fidelity acceptance."
+  ],
+  "inspected_source_sha256": {
+    "CMakeLists.txt": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+    "apps/standalone/CMakeLists.txt": "246acf9b259824d07a9aa9fc8a5177734b65e0e89de3b8f378bd7de609b0d897",
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+    "tools/compare_header_material.py": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+    "cmake/VerifySdl2.cmake": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e",
+    "data/dependencies/sdl2-lock.json": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+    "data/dependencies/rtmidi-lock.json": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+    "data/dependencies/vst3-sdk-lock.json": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965",
+    ".github/workflows/ci.yml": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+    ".github/workflows/standalone.yml": "59423f01dc5811d2f8146e06cb939fd9f96295c0e818a74c387519f7fe824e9c",
+    ".github/workflows/native-vst3.yml": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734"
+  }
+}
