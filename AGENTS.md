@@ -5,6 +5,63 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
+**Active heading/title/header continuation, 17 November 2026.** This user's
+request owns `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ` and root's
+coordinated `../build-native`. Start with the
+[current handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md),
+[session](docs/development/2026-11-16-heading-title-continuation/README.md),
+[latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+and [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json).
+The complete [M0–M9 plan](docs/PLAN.md) and every standing obligation below
+remain binding. Six new readers covered all 500 atlas pages; this continuation
+has its own sixty-worker requirement in ten waves of six. Only its actual
+dispatches and accepted notes count. Read progress from its ledger, and use its
+matching checker below; this opening does not declare sixty-worker closure.
+
+All sixty workers have now been dispatched; 57 notes are accepted. Three
+source-specific hosted reviews remain pending publication. Read the actual ledger
+for later closure; neither a follow-up nor another session counts as a new worker.
+The current installed app and two actual captures use main `0c02c619…` and
+executable `1fa2a247…`; the H1 painter remains `0bf731a6…`. The independently
+reviewed startup-prefix oracle is implemented. The
+[qualified-final full result](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+is **240/242**, exit 8, in 740.263707625 seconds, distinct from the preceding
+semantic 240/242. All 475 code inputs and recorded build inputs stayed unchanged;
+workspace's 37 children and Starter Load passed. Preserve the preset-raster
+30-second timeout and two missing native-MIDI acknowledgment-window cases.
+Exactly one unchanged preset diagnostic and one invocation of each failed MIDI
+method subsequently passed; the checkpoint links all three. The full run stays
+failed. Source/property changes require separate admission; no aggregate retry
+is authorized merely to obtain a green result.
+
+Verified recovery commit `835755a9069c25ce55bc2c231547458b4b3ffce4` preserves the
+local `045c95d…` recovery tree. Its 366 blobs and 141 additional preflight blobs
+are uploaded. Main still points to concurrent UI-delivery commit
+`9d60dbf462a90fe422fd4e69757fe202264acb7c`; **no branch ref has been updated**.
+Root next publishes the final source with a fresh expected head and no force,
+preserving `9d60dbf…` and `835755a9…` as parents, verifies the exact
+tree/parents/contents, and gives that source to A52 core, A53 standalone and
+A54 VST3. All sixteen hosted families and acceptance of those three workers
+remain pending. Inspect fresh HEAD/tree/index/worktree/remote before acting.
+
+The [local publication admission](docs/reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
+accepts the unchanged source for guarded publication with the failed full-run
+result and three passing diagnostics retained. Exact-source hosted acceptance
+remains pending; this is not a green full-suite aggregate.
+
+Every future agent must leave setup, actual progress, evidence, failures and
+unrun gates, ownership and concrete next actions recoverable; update README
+with actual application captures after UI changes; then commit and push accepted
+authorized work through the integrator and verify its remote/source-specific
+results. The literal whole-interface 1:1 requirement remains unmet and unwaived.
+
+### Concurrent UI-delivery entry retained from 9d60dbf
+
+The following dated entry retains that session's own workspace, independent
+workers, evidence and unfinished ownership. Its references to "this request"
+belong to that owner. Do not edit its checkout, recount its workers here, or
+declare its remaining work complete.
+
 **UI delivery continuation, 16 November 2026**, base
 `6047723b595259de355c74342e48a8ae2ee1e228`: this request owns
 `/workspace/scratch/66b061effd9e/Hammond-B3-Organ` and root's single
@@ -22,7 +79,7 @@ with actual app captures after UI changes; then commit and push accepted work
 and verify the remote commit and its source-specific CI. The complete plan,
 compatibility obligations and literal 1:1 target below remain in force.
 
-### Previous heading/title continuation
+### Original heading/title opening retained
 
 **Heading/title and delivery continuation, 16 November 2026**, base
 `113c29b7b14c8fde0859bc405ef8e4141a131ea6`: the writable checkout for this
@@ -56,11 +113,13 @@ after a context reset.** Use this order:
 
 1. Read this entire file and the complete [M0–M9 plan](docs/PLAN.md), including
    every exit and owner boundary. A current summary does not replace the plan.
-2. Read the [current handoff](docs/PRESET_LIBRARY_CONTINUATION_HANDOFF.md),
-   [session scope](docs/development/2026-11-16-preset-library-continuation/README.md),
-   [checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
-   [decisions](docs/development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md)
-   and [actual ledger](docs/development/2026-11-16-preset-library-continuation/assignments.json).
+2. Read the [current handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md),
+   [session scope](docs/development/2026-11-16-heading-title-continuation/README.md),
+   [latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md),
+   [assignment sequence](docs/development/2026-11-16-heading-title-continuation/NEXT_ASSIGNMENTS.md)
+   and [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json).
+   Recover each assigned change's frozen contract, independent admission and
+   original evidence before implementation or acceptance.
 3. Recover [README/setup](README.md), [status](docs/STATUS.md),
    [next actions](docs/NEXT_STEPS.md), latest [log](docs/DEVELOPMENT_LOG.md),
    [atlas crosswalk](docs/reviews/ATLAS_DELIVERY_CROSSWALK.md),
@@ -84,6 +143,12 @@ free-running sources, plugin UUIDs and the nominal dry Engine**. **Literal
 whole-interface 1:1 remains unmet and unwaived**; canonical apron pixels, limited
 crops, software captures and successful numerical gates cannot establish it.
 
+### Retained portable-registration qualification
+
+The following publication, platform and resource observations belong to the
+earlier portable-registration session; current results are in this session's
+checkpoint and source-bound reports.
+
 The [verified follow-up publication](docs/development/2026-11-16-preset-library-continuation/reports/followup-publication.json)
 records `cc6be852d616ec5887485e3fccc39ddb1db22006`, tree
 `201e38b05901fa30e3d053b9c245829818a5b52e`, sole parent
@@ -106,20 +171,24 @@ Later passes cannot rewrite earlier failures or qualify changed inputs. About
 cleanup is optional and limited to owned reproducible intermediates; preserve
 recovery manifests and originals. Never clean another workspace.
 
+### Validate this continuation's actual records
+
 This continuation workflow still requires **60 actual new distinct workers in
 ten waves of six, at most three dispatched concurrently**, unless the user changes
 it; it does not govern unrelated tasks. Read actual progress from the ledger;
 never count planned workers, follow-ups or historical sessions. From this checkout:
 
 ```sh
-python3 -B docs/development/2026-11-16-preset-library-continuation/check_session.py
-python3 -B docs/development/2026-11-16-preset-library-continuation/check_session.py --strict
+python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py
+python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py --strict
 ```
 
 The second command is the closure check; this checker has no `--repo` option.
 It validates records only. Strict closure requires all sixty accepted notes and
 ten complete waves; it proves neither dispatch, product quality nor publication.
-This request now has [sixty accepted records and a passing strict result](docs/development/2026-11-16-preset-library-continuation/reports/final-session-validation.json).
+The earlier portable-registration session has
+[sixty accepted records and a passing strict result](docs/development/2026-11-16-preset-library-continuation/reports/final-session-validation.json).
+That historical receipt does not close this continuation's ledger.
 A future continuation must retain its own actual assignments; these workers cannot
 be counted again.
 

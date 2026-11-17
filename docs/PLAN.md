@@ -1,13 +1,178 @@
 # Project plan: Hammond B-3 and Leslie
 
+<!-- heading-title-plan-current:start -->
+## Current heading, title and header continuation — 17 November 2026
+
+Start with the [session](development/2026-11-16-heading-title-continuation/README.md),
+[checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md),
+[permanent handoff](HEADING_TITLE_HEADER_HANDOFF.md) and
+[actual ledger](development/2026-11-16-heading-title-continuation/assignments.json).
+This request owns `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ`; root alone
+coordinates its `../build-native`, acceptance and publication. Other checkouts,
+indexes, builds and unfinished owners remain separate. **All 60 distinct workers
+have been dispatched in ten waves of six; 57 notes are accepted.** A52–A54 retain
+the exact-published-source core, standalone and VST3 roles and await publication.
+The live ledger owns subsequent progress. Earlier workers and follow-ups do not
+count again; strict record closure still requires all sixty accepted notes.
+
+Six new readers, A01–A06, freshly covered **all 500 atlas pages** in contiguous
+ranges 1–84, 85–168, 169–252, 253–336, 337–420 and 421–500. Their
+[coverage receipt](development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json)
+and [reading map](PROJECT_GUIDE.md#source-and-reading-records) retain the unchanged
+PDF, extraction and note identities. This is complete textual coverage, not
+visual inspection of every figure or independent retrieval of every citation.
+The atlas's 80 chapters / ten research waves, this request's staffing waves and
+M0–M9 product milestones are different organizations of work. **Every milestone
+exit below remains binding.** The atlas explicitly supplies no newly acquired
+instrument measurements (p. 2).
+
+### Implemented scope and observed evidence
+
+This continuation advances bounded M9 interface and delivery work. The playable
+Engine remains **nominal and dry**: 91 shared free-running sources, 47 parameter
+identities, `B3CONTROLS4` with readers 1–3, plugin UUIDs, four retained banks,
+147 playing keys, 24 presets and 68 controls retain their meanings. Isolated
+scanner, AO-28 and Leslie research does not become a live audio route. The
+[original compatibility review](reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md)
+reproduces the 213 protected identities at the named T3/H1 comparison inputs;
+the original-base exception is the separately admitted UI-replay history change
+in `main.cpp`. Later replay changes have their own reviews and qualification
+below. Three additive diagnostics members require accommodation by external
+exact-key UI-replay consumers; saved-control and musical-state formats retain
+their meanings.
+
+| Stage | Actual progress and acceptance boundary |
+| --- | --- |
+| **T2 rack headings** | [Accepted](development/2026-11-16-heading-title-continuation/reports/t2-acceptance.json): 158 genuine pairs, 92 complete-model pairs and zero forbidden pixel changes, with independent full-frame review. Live Upper/Lower text and side rules follow the separately frozen contract. The bounded UI-only replay history retains initial focus without changing the musical acknowledgment guard. |
+| **T3 title, revision 2** | [Accepted within title scope](development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json): 158 pairs, 213 protected inputs at that comparison, zero outside changes, 1,317 material assertions and 18 density cases. At encoded Y′≥100, the title ROI contains 5,512 pixels before H1, versus reference 5,415, with no hue filter. The original revision's two geometry failures remain retained. |
+| **H1 header interior** | The [original complete comparison](development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json) passes 103/103 frozen criteria, 48 main + 16 companion pairs, four repeats, 10,542 candidate fixture checks including 95 helper-restoration probes and 1,317 material assertions. All 213 protected paths match at those frozen inputs; outside changes are zero. Genuine before remains 44 passing / 59 failing criteria. |
+| **Completed H1 visual/resource coverage** | The [15-view captured application](design/native-gallery-header-h1-v1/provenance.json), [independent visual admission](reviews/HEADER_MATERIAL_H1_VISUAL.md), [five-case paint timing](development/2026-11-16-heading-title-continuation/reports/h1-paint-timing/report.json), [permanent statistics](development/2026-11-16-heading-title-continuation/reports/h1-statistics-qualification.json) and [grain bounds](development/2026-11-16-heading-title-continuation/reports/h1-grain-bounds-qualification.json) are complete at their named sources. These are separate from final runtime, publication and hosted gates. |
+
+The H1 gallery retains captured application `bfe8e36d…` and painter `0bf731a6…`.
+The painter remains unchanged. The current semantic-replay candidate uses
+`main.cpp` `0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537`
+and application `1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a`;
+older captures retain their original executable identity. The H1 title ROI has
+**5,499 encoded-Y′≥100 pixels with no hue filter**, compared with the pre-H1
+T3 stage's **5,512** and reference **5,415**. This is a local density metric.
+
+A46's independently reviewed [resize-boundary correction](reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md)
+and A48's [Load observation correction](reviews/STARTER_LOAD_OBSERVATION_DIAGNOSIS.md)
+retain their original failures and separate
+[qualification](development/2026-11-16-heading-title-continuation/reports/replay-load-link-repair-qualification.json).
+A60's independently reviewed [semantic event-drain correction](reviews/SEMANTIC_EVENT_PAINT_ADMISSION.md)
+gives an actual workspace/presentation/overlay transition an ordinary paint
+opportunity before another queued event. In the new regression, both
+[genuine-before children](development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before-root.json)
+exit zero but fail required painted visits; the
+[current candidate](development/2026-11-16-heading-title-continuation/reports/semantic-paint-candidate-root.json)
+passes both six-view cases. The
+[three unchanged boundary CTests](development/2026-11-16-heading-title-continuation/reports/semantic-unchanged-boundaries.json)
+also pass. These targeted results do not complete the coherent gate.
+
+The independently admitted [startup-prefix oracle](reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md)
+is implemented in workspace fixture `38808674…`; standalone CMake is
+`64265511…`. Main, application and painter remain as identified above. A55/A56
+independently accepted the [two current installed captures](reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md)
+and [fresh relocated 17-file package](reviews/FINAL_NATIVE_INSTALL_REVIEW.md).
+
+The [qualified-final full run](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+completed **240/242**, exit 8, in **740.263707625 seconds**. All **475 code inputs
+and recorded build inputs remained unchanged**; six serialized tests had
+verified nonoverlap. Workspace replay passed with **37 actual native children**,
+and Starter Load passed. The two failed CTests were the preset-raster
+**30-second timeout** and native MIDI replay, with two missing
+acknowledgment-window observations. This is distinct from the earlier
+[semantic full run's 240/242](development/2026-11-16-heading-title-continuation/reports/semantic-final-coherent-results.json).
+
+Exactly three bounded, unchanged diagnostics followed. The
+[preset-raster diagnostic](development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json)
+passed once in **27.517879209 seconds**, retaining its 30-second limit.
+The [two failed MIDI methods](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
+each passed once in **2.031860108** and **2.037485655 seconds**, with their
+nine-second child deadlines and all 475 code inputs unchanged. These separate
+passes preserve the original failed full-run outcome; they establish neither
+a green 242-test aggregate nor a particular CPU/scheduler cause. Root proceeds
+to exact-source hosted qualification with this complete local evidence.
+
+The [verified provider recovery object](development/2026-11-16-heading-title-continuation/reports/h1-recovery-provider-checkpoint.json)
+is commit `835755a9069c25ce55bc2c231547458b4b3ffce4`, with recovery tree
+`9faad3ce95cc0f4a5c0fd4113a08f0b0915ef97c` and parent `6047723b…`.
+Its **366 blobs / 51,076,715 bytes** and **141 additional preflight blobs /
+6,399,504 bytes** are uploaded. **Main remains at `9d60dbf…`; no branch ref has
+been updated.** The final guarded, nonforced publication must preserve both
+concurrent `9d60dbf…` and recovery `835755a9…` histories, then independently
+verify its exact tree, parents and contents. A52–A54 still own all sixteen
+required hosted job families; 57 of sixty deliveries are accepted.
+
+The original H1 237/240, combined 239/241, scheduling 238/241 and semantic
+240/242 remain distinct failed runs. Historical comparator pins remain binding
+under the [reconciliation instructions](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md).
+
+
+The [local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
+accepts the unchanged source for guarded publication with the failed full-run
+result and three passing diagnostics retained. Exact-source hosted acceptance
+remains pending; this is not a green full-suite aggregate.
+
+The [verified T2 publication](development/2026-11-16-heading-title-continuation/reports/t2-publication.json)
+is `6047723b595259de355c74342e48a8ae2ee1e228`, tree
+`8bb162b1d5bd153436649339cf9253eaee5c28eb`. Its
+[latest 16 hosted job families](development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json)
+all succeed after one unchanged core-sanitizer retry; the original timeout
+remains. The later [45-second guard repair](reviews/RENDER_RACE_COMPLETION_REVIEW.md)
+preserves assertions and workload. Local ASan/UBSan with leak checking disabled
+for the documented runtime limitation remains separate from hosted leak
+qualification. T2 jobs qualify their published source only.
+
+These results concern named software inputs. Original T3/H1 failures, numerical
+rejections and later replay failures remain preserved. Numeric patch agreement
+does not establish a calibrated instrument or **literal whole-interface 1:1**,
+which remains **unmet and unwaived**. Truthful controls, labels, keyboard
+inventory, focus, Flat presentation and shared hit/paint geometry remain required.
+
+### Dependency-ready continuation
+
+1. Retain the qualified-final 240/242 outcome and three completed unchanged
+   isolated diagnostics as distinct local evidence. The independent source-specific supplements are complete; no source/property change or aggregate-only
+   full rerun is admitted. H1 visual/timing/permanent coverage and the fresh
+   package/two captures already have their scoped evidence.
+2. Publish with a fresh expected remote head and no force, preserving concurrent
+   `9d60dbf…` and verified recovery `835755a9…` as parents. Verify the exact
+   tree/parents/contents, then A52–A54 observe all sixteen core, standalone and
+   VST3 job families at that source. Accept their actual results, run the strict
+   sixty-record checker and publish final recovery documentation.
+3. Reconcile the existing manual/rim/cap, concurrent UI-delivery and native
+   browser/semantic owners before assigning another UI slice. Freeze its support,
+   reference criteria and genuine baseline; follow with full-frame legibility
+   and real display/DPI/input and accessibility journeys. Scoped passes do not
+   close M9.
+4. Recover M3 contact/audio and scanner/crossover/waveform owners before extending
+   their modules. Full-organ capacity, scheduling, lifetime and callback deadlines
+   require their own contracts and executed evidence. Preserve scanner G5
+   same-Hz failure, ScannerLineFoh gates, R4 owner acceptance, R5 audible policy
+   and R6 runtime integration as distinct requirements.
+5. For M5–M8, first identify specimen/revision and independently trace complete
+   loaded AO-28 and Leslie electrical boundaries; obtain transformer, driver,
+   contact, source/scanner and dry G–G captures with units and uncertainty before
+   downstream fitting. Unknown values are not zero. Acquire immutable raw and
+   held-out evidence through the [acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md).
+
+Keep setup, actual commands/results, ownership, missing inputs and concrete next
+steps current after each accepted stage. Checkpoint before long work or context
+changes; retain original evidence and clean only owned reproducible intermediates.
+The dated sections below remain source-specific history and preserve unfinished
+ownership; their former “current” labels are not new assignments.
+<!-- heading-title-plan-current:end -->
+
 <!-- preset-plan-current:start -->
-## Current portable registrations and reference apron — 16 November 2026
+## Retained portable registrations and reference apron — 16 November 2026
 
 The [session scope](development/2026-11-16-preset-library-continuation/README.md),
 [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
 [actual ledger](development/2026-11-16-preset-library-continuation/assignments.json)
 and [integration decisions](development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md)
-govern this continuation. Its writable checkout is
+governed that continuation. Its then-writable checkout was
 `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`; root coordinates
 `../build-native`. **All 60 new distinct workers are accepted across ten complete
 staffing waves of six**, with a passing [strict record check](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json).
@@ -162,7 +327,9 @@ unfinished owner-local work or permits edits to another checkout.
 
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Current complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
+| **Heading/title/header continuation**, base `113c29b7b14c8fde0859bc405ef8e4141a131ea6` | Current bounded T2/T3/H1 interface and delivery scope; [session](development/2026-11-16-heading-title-continuation/README.md), [checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-heading-title-continuation/assignments.json). Root coordinates the sole writable checkout/build and staged acceptance/publication. Existing manual/rim/cap/browser/contact/scanner owners remain separate. |
+| **Concurrent UI-delivery continuation** | Preserve its [session](development/2026-11-16-ui-delivery/README.md), [checkpoint](development/2026-11-16-ui-delivery/CHECKPOINT.md) and [ledger](development/2026-11-16-ui-delivery/assignments.json). The [independent reconciliation](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md) retains its published source, stronger title validation, portable tools and original evidence. Other workers and unfinished ownership stay with that session; none counts toward this continuation. |
+| **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Retained complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
 | Accessibility continuation, base `0865bc1584e4bda569fe2ccacfac87b842b8d906` | Usable numeric values, semantics and drawbar/cap surfaces; [scope](development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](development/2026-11-16-accessibility-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-accessibility-continuation/assignments.json). Semantic inspection does not establish a native accessibility provider. |
 | Runtime/interface continuation, base `3520c96` | Isolated causal contact audio and live manual key materials; [session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-runtime-continuation/assignments.json). Recover current accepted source before extending these scopes. |
 | Conversion/material continuation, base `a411268fd498f65c083203137831bf5afed83bd8` | Certified fractional-to-grid conversion, Lower rack, T1 typography and retained rim/material work; [handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md), [ledger](development/2026-11-16-conversion-material/assignments.json). Published delivery does not transfer unfinished acceptance. |
@@ -486,7 +653,7 @@ source-derived support and **37 exact required whole frames**. Five local
 reference screens pass; genuine baseline failures remain. Resource crops have
 zero protected exterior pixels and supply no external-containment claim.
 
-The [current twelve-frame gallery](../examples/demos/upper-rack-material-v1/README.md)
+The [retained twelve-frame gallery](../examples/demos/upper-rack-material-v1/README.md)
 and [independent 641-check admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md)
 bind actual application `c29495e9…` to its source, state and pixels; direct
 full-frame inspection found no new visual blocker within this scope. The
@@ -555,7 +722,7 @@ The historical streaming session has sixty accepted scoped deliveries in ten wav
 its own [strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
 verifies all sixty retained identities and note hashes. The completed product
 batch's strict checker and thirteen jobs at 80b8cce remain historical evidence,
-not validation of the current portable-registration session; the previous execution ledger is not declared
+not validation of this heading/title/header continuation; the previous execution ledger is not declared
 complete. [Record guidance](NEXT_STEPS.md#validate-this-sessions-actual-records)
 keeps the distinction explicit. Planned assignments, earlier workers and repeated
 followups cannot create new worker credit or close unfinished product gates.

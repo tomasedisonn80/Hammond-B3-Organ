@@ -1,0 +1,775 @@
+{
+  "schema_version": 1,
+  "worker": "A52",
+  "agent": "/root/w09_a52",
+  "wave": 9,
+  "recorded_utc": "2026-11-17T02:45:10.765970+00:00",
+  "status": "original_failure_preserved; isolated_root_probe_pending",
+  "scope": "Independent read-only diagnosis of completed full-suite native MIDI replay failure; no source changes, native processes, retries or GitHub queries performed by A52.",
+  "combined_run": {
+    "result": "239/241; two failures retained",
+    "ctest_exit_code": 8,
+    "ctest_seconds": 502.21,
+    "root_wrapper_seconds": 502.3241684470013,
+    "command_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-results.json",
+      "bytes": 856,
+      "sha256": "428196052978826fec9d55c275dfe10852196f71c29f5b923e703b800abfc7ed"
+    },
+    "log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-ctest.log",
+      "bytes": 125501,
+      "sha256": "e25e8b47838da8998aad0c1fd9df5dfcedcfa496e37b55d468b625355ea53c1c"
+    },
+    "frozen_input_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-inputs.json",
+      "bytes": 76308,
+      "sha256": "35da944f0739fe7fd7e543adb18e502f6789f1c55df0b031e27b5b83cc8b59d0"
+    },
+    "code_input_count": 474,
+    "root_reported_changed_inputs": [],
+    "midi_ctest_seconds": 44.47,
+    "method_count": 15,
+    "native_subprocesses": 33,
+    "expected_interrupted_replays": 2,
+    "python_seconds": 44.254
+  },
+  "original_evidence": {
+    "log_block": {
+      "source": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-ctest.log",
+      "offset_bytes": 725,
+      "end_exclusive_bytes": 45675,
+      "bytes": 44950,
+      "sha256": "599dcd0795390efd46ef206f186567bec7338f55e46e749cc53808316fc3f549",
+      "compressed_copy": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/midi-original-failure.log.gz",
+        "bytes": 4605,
+        "sha256": "237475202f97b260dbd8d5f254373ba344dd8a847f7bec458fd8580bce40f570"
+      }
+    },
+    "diagnostic_json_substring": {
+      "source_offset_bytes": 6704,
+      "bytes": 38853,
+      "sha256": "025c9ee393f96a185670ea4ecb39e19795719a4bac5f0aee31fdc29677533724",
+      "copy_has_appended_lf": true,
+      "copy": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/midi-original-diagnostics.json",
+        "bytes": 38854,
+        "sha256": "14a48dad5790de470e18ea734b4cd045ff171367ad00b4f312347c093880ea6d"
+      }
+    },
+    "midi_input": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/midi-original-input.b3midi",
+      "bytes": 213,
+      "sha256": "b04728c49a8136dd3afdeab35fd9985e8aac99b57aee63d4a9568e2c03c897e2"
+    },
+    "ui_input": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/midi-original-input.b3ui",
+      "bytes": 179,
+      "sha256": "ec8e6680bda9f05d99dda02cbb2e726ad9ab90bf562dcbec36c7a6125d8345f8"
+    }
+  },
+  "executable_sha256": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479",
+  "source_inputs": {
+    ".github/workflows/ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 20374,
+      "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+      "frozen_receipt_entry": {
+        "bytes": 20374,
+        "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+      },
+      "matches_frozen_input": true
+    },
+    ".github/workflows/standalone.yml": {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 70886,
+      "sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e",
+      "frozen_receipt_entry": {
+        "bytes": 70886,
+        "sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e"
+      },
+      "matches_frozen_input": true
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 43921,
+      "sha256": "aae163ac030bacfefe8f8342eaeac11552d2fe97cf45e4b567cc3eb6e8e8f34b",
+      "frozen_receipt_entry": {
+        "bytes": 43921,
+        "sha256": "aae163ac030bacfefe8f8342eaeac11552d2fe97cf45e4b567cc3eb6e8e8f34b"
+      },
+      "matches_frozen_input": true
+    },
+    "apps/standalone/main.cpp": {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 147241,
+      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3",
+      "frozen_receipt_entry": {
+        "bytes": 147241,
+        "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+      },
+      "matches_frozen_input": true
+    },
+    "apps/standalone/UiModel.cpp": {
+      "path": "apps/standalone/UiModel.cpp",
+      "bytes": 83758,
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "frozen_receipt_entry": {
+        "bytes": 83758,
+        "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+      },
+      "matches_frozen_input": true
+    },
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+      "path": "apps/standalone/native_tests/test_standalone_midi_replay.py",
+      "bytes": 54939,
+      "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf",
+      "frozen_receipt_entry": {
+        "bytes": 54939,
+        "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+      },
+      "matches_frozen_input": true
+    },
+    "apps/standalone/MidiReplay.cpp": {
+      "path": "apps/standalone/MidiReplay.cpp",
+      "bytes": 10746,
+      "sha256": "a61047fcb0da050eae35a10e86205a496d13ea7d00fb8b113c8682d1556a88db",
+      "frozen_receipt_entry": {
+        "bytes": 10746,
+        "sha256": "a61047fcb0da050eae35a10e86205a496d13ea7d00fb8b113c8682d1556a88db"
+      },
+      "matches_frozen_input": true
+    },
+    "apps/standalone/MidiReplay.h": {
+      "path": "apps/standalone/MidiReplay.h",
+      "bytes": 2088,
+      "sha256": "c0a62c0d33e7b0c3b90237e82cf631222d3d5274bb6b45fa797906e1e77a3948",
+      "frozen_receipt_entry": {
+        "bytes": 2088,
+        "sha256": "c0a62c0d33e7b0c3b90237e82cf631222d3d5274bb6b45fa797906e1e77a3948"
+      },
+      "matches_frozen_input": true
+    },
+    "docs/MIDI_REPLAY.md": {
+      "path": "docs/MIDI_REPLAY.md",
+      "bytes": 9975,
+      "sha256": "d2d9b579edf6f56cda0ccd95bfa6beef84c71a1c15f2959583d37643c84ebf2b",
+      "frozen_receipt_entry": null
+    },
+    "docs/reviews/NATIVE_SMOKE_SCHEDULING_ADMISSION.md": {
+      "path": "docs/reviews/NATIVE_SMOKE_SCHEDULING_ADMISSION.md",
+      "bytes": 1723,
+      "sha256": "47ec2b4ca6d630277deaa67bc97832466d094e8c80e41e2c24f6c139e38a871e",
+      "frozen_receipt_entry": null
+    }
+  },
+  "failed_method": "test_cc123_releases_only_its_external_division_and_preserves_ui",
+  "failed_predicate": "No acknowledged musical observation in [950, 1230) ms",
+  "duration_ms": 1600,
+  "native_elapsed_seconds": 1.886,
+  "process_timeout_seconds": 9.0,
+  "ctest_timeout_seconds": 90.0,
+  "last_ui_event_ms": 370,
+  "ui_scenario": {
+    "resize": false,
+    "overlay_change": false,
+    "workspace_change": false,
+    "F2": "Lower keyboard target",
+    "F3": "Pedals keyboard target"
+  },
+  "windows": [
+    {
+      "interval_ms": [
+        370,
+        630
+      ],
+      "end_exclusive": true,
+      "expected_held": [
+        [
+          60,
+          64
+        ],
+        [
+          62,
+          65
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "acknowledged_candidate_times_ms": [
+        474
+      ],
+      "actual_last_held": [
+        [
+          60,
+          64
+        ],
+        [
+          62,
+          65
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "predicate_passes": true
+    },
+    {
+      "interval_ms": [
+        650,
+        930
+      ],
+      "end_exclusive": true,
+      "expected_held": [
+        [
+          60
+        ],
+        [
+          62,
+          65
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "acknowledged_candidate_times_ms": [
+        709
+      ],
+      "actual_last_held": [
+        [
+          60
+        ],
+        [
+          62,
+          65
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "predicate_passes": true
+    },
+    {
+      "interval_ms": [
+        950,
+        1230
+      ],
+      "end_exclusive": true,
+      "expected_held": [
+        [
+          60
+        ],
+        [
+          62
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "acknowledged_candidate_times_ms": [],
+      "actual_last_held": null,
+      "predicate_passes": false
+    }
+  ],
+  "midi_observations": [
+    {
+      "elapsed_ms": 250,
+      "last_submitted_sequence": 4,
+      "resolved_sequence": 3,
+      "last_applied_sequence": 3,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": []
+    },
+    {
+      "elapsed_ms": 250,
+      "last_submitted_sequence": 10,
+      "resolved_sequence": 3,
+      "last_applied_sequence": 3,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": []
+    },
+    {
+      "elapsed_ms": 417,
+      "last_submitted_sequence": 11,
+      "resolved_sequence": 3,
+      "last_applied_sequence": 3,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": []
+    },
+    {
+      "elapsed_ms": 417,
+      "last_submitted_sequence": 12,
+      "resolved_sequence": 3,
+      "last_applied_sequence": 3,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": []
+    },
+    {
+      "elapsed_ms": 417,
+      "last_submitted_sequence": 12,
+      "resolved_sequence": 10,
+      "last_applied_sequence": 10,
+      "manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          62,
+          65
+        ]
+      ],
+      "pedal_ids": [
+        5,
+        6
+      ]
+    },
+    {
+      "elapsed_ms": 474,
+      "last_submitted_sequence": 12,
+      "resolved_sequence": 12,
+      "last_applied_sequence": 12,
+      "manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          62,
+          65
+        ]
+      ],
+      "pedal_ids": [
+        5,
+        6
+      ]
+    },
+    {
+      "elapsed_ms": 650,
+      "last_submitted_sequence": 13,
+      "resolved_sequence": 12,
+      "last_applied_sequence": 12,
+      "manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          62,
+          65
+        ]
+      ],
+      "pedal_ids": [
+        5,
+        6
+      ]
+    },
+    {
+      "elapsed_ms": 709,
+      "last_submitted_sequence": 13,
+      "resolved_sequence": 13,
+      "last_applied_sequence": 13,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          62,
+          65
+        ]
+      ],
+      "pedal_ids": [
+        5,
+        6
+      ]
+    },
+    {
+      "elapsed_ms": 1095,
+      "last_submitted_sequence": 14,
+      "resolved_sequence": 13,
+      "last_applied_sequence": 13,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          62,
+          65
+        ]
+      ],
+      "pedal_ids": [
+        5,
+        6
+      ]
+    },
+    {
+      "elapsed_ms": 1259,
+      "last_submitted_sequence": 14,
+      "resolved_sequence": 14,
+      "last_applied_sequence": 14,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          62
+        ]
+      ],
+      "pedal_ids": [
+        5,
+        6
+      ]
+    },
+    {
+      "elapsed_ms": 1259,
+      "last_submitted_sequence": 15,
+      "resolved_sequence": 14,
+      "last_applied_sequence": 14,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          62
+        ]
+      ],
+      "pedal_ids": [
+        5,
+        6
+      ]
+    },
+    {
+      "elapsed_ms": 1381,
+      "last_submitted_sequence": 15,
+      "resolved_sequence": 15,
+      "last_applied_sequence": 15,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          62
+        ]
+      ],
+      "pedal_ids": [
+        5
+      ]
+    }
+  ],
+  "completion": {
+    "completed": true,
+    "delivered": true,
+    "passed": true,
+    "final_acknowledged": true,
+    "scheduled_events": 10,
+    "delivered_events": 10,
+    "scheduled_packets": 9,
+    "accepted_packets": 9,
+    "dropped_packets": 0,
+    "rejected_packets": 0,
+    "failure_count": 0,
+    "maximum_events_per_turn": 6,
+    "last_submitted_sequence": 15,
+    "accepted_note_on_commands": 9,
+    "accepted_note_off_commands": 0,
+    "before_shutdown": {
+      "controls": {
+        "expression": 1,
+        "fixed_registrations": [
+          0,
+          0
+        ],
+        "manual_drawbars": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              8,
+              8,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "decay": 0,
+          "enabled": false,
+          "harmonic": 0,
+          "volume": 0
+        },
+        "preset_selections": [
+          11,
+          11
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "selected_banks": [
+          1,
+          1
+        ]
+      },
+      "last_applied_sequence": 15,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          62
+        ]
+      ],
+      "pedal_ids": [
+        5
+      ],
+      "resolved_sequence": 15
+    }
+  },
+  "runtime": {
+    "drawable_height": 900,
+    "drawable_width": 1280,
+    "rendered_images": 15,
+    "renderer": "software",
+    "screenshot_while_held": false,
+    "screenshot_written": false,
+    "sdl_version": "2.32.10",
+    "video_driver": "dummy",
+    "window_height": 900,
+    "window_width": 1280
+  },
+  "audio": {
+    "buffer_bytes": 4096,
+    "buffer_frames": 512,
+    "callback_count": 150,
+    "channels": 2,
+    "device_name": "Default output",
+    "driver": "dummy",
+    "format_failures": 0,
+    "last_lifecycle_status": "ok",
+    "last_render_status": "ok",
+    "native_float32_format": 33056,
+    "nonfinite_failures": 0,
+    "nonfinite_samples": 0,
+    "open_before_shutdown": true,
+    "overrange_failures": 0,
+    "overrange_samples": 0,
+    "render_failures": 0,
+    "rendered_frames": 76800,
+    "requested_buffer_frames": 512,
+    "requested_device": "",
+    "requested_sample_rate": 48000,
+    "running_before_shutdown": true,
+    "sample_format": 33056,
+    "sample_rate": 48000
+  },
+  "errors": {
+    "count": 0,
+    "last": ""
+  },
+  "independent_tail_predicate_re_evaluation": {
+    "native_test_executed": false,
+    "reason": "The third assert_window raised before these statements; checks below independently evaluate the preserved diagnostic, without executing a native process.",
+    "final_held_matches": true,
+    "accepted_note_on_matches": true,
+    "accepted_note_off_matches": true,
+    "controls_match_default": true,
+    "decoder_actions_match": true,
+    "retirements_match": true
+  },
+  "assertions_before_yield_passed": [
+    "child returncode equals0; stdout/stderr empty",
+    "strict JSON schema and all common replay/audio/shutdown checks",
+    "unchanged literal MIDI and UI files",
+    "no unexpectedly saved controls or unexpected files",
+    "elapsed at least declared duration minus40ms"
+  ],
+  "comparison": {
+    "earlier_log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-final-ctest.log",
+      "bytes": 108503,
+      "sha256": "180864eb1dcea91b268dad7686744802109d7af122735d3216ab184204b7181b"
+    },
+    "earlier_summary_lines": [
+      " 10/240 Test #234: test_standalone_native_midi_replay ................   Passed   41.50 sec",
+      "99% tests passed, 3 tests failed out of 240",
+      "Total Test time (real) = 561.57 sec"
+    ],
+    "earlier_scope": "Earlier complete240-gate source/application; MIDI gate41.50s passed, suite237/240 overall. No detailed successful method observations retained in this log; not same-source qualification.",
+    "prior_23_method_MIDI_CLI": "Different gate; not a rerun or proof of this MIDI replay predicate."
+  },
+  "scheduling": {
+    "combined_ctest_parallelism": 2,
+    "overlapping_ctests_observed": [
+      "test_standalone_scaled_view",
+      "test_standalone_workspace_replay"
+    ],
+    "exact_failed_child_overlap": "Not timestamped at child granularity; no individual co-test claimed for1.886s interval.",
+    "generated_test_properties": [
+      {
+        "backtrace": 462,
+        "command": [
+          "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+          "-E",
+          "env",
+          "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py"
+        ],
+        "name": "test_standalone_app",
+        "properties": [
+          {
+            "name": "LABELS",
+            "value": [
+              "native",
+              "standalone"
+            ]
+          },
+          {
+            "name": "RUN_SERIAL",
+            "value": true
+          },
+          {
+            "name": "TIMEOUT",
+            "value": 60.0
+          },
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+          }
+        ]
+      },
+      {
+        "backtrace": 470,
+        "command": [
+          "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+          "-E",
+          "env",
+          "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py"
+        ],
+        "name": "test_standalone_native_midi_replay",
+        "properties": [
+          {
+            "name": "LABELS",
+            "value": [
+              "midi",
+              "native",
+              "standalone"
+            ]
+          },
+          {
+            "name": "TIMEOUT",
+            "value": 90.0
+          },
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+          }
+        ]
+      },
+      {
+        "backtrace": 474,
+        "command": [
+          "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+          "-E",
+          "env",
+          "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py"
+        ],
+        "name": "test_standalone_workspace_replay",
+        "properties": [
+          {
+            "name": "LABELS",
+            "value": [
+              "native",
+              "standalone",
+              "workspace"
+            ]
+          },
+          {
+            "name": "TIMEOUT",
+            "value": 90.0
+          },
+          {
+            "name": "WORKING_DIRECTORY",
+            "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+          }
+        ]
+      }
+    ],
+    "hosted_standalone_ctest_parallelism": 1,
+    "source_flow": "observe() copies Session snapshot before pump_midi_replay; due events are visited using elapsed wall-clock time and record the currently copied snapshot; end-of-turn records state changes; identical observations deduplicate.",
+    "interpretation": "At1095ms submitted14/applied13 is not acknowledged. At1259ms submitted14/applied14 has the expected Lower-release state,29ms beyond1230; seq15 is then submitted at1259ms. The failed timing window remains failed.",
+    "causal_limits": [
+      "No callback application timestamp or CPU utilization trace retained.",
+      "Concurrent software raster/native work observed; scheduling sensitivity is a hypothesis, not proven CPU cause.",
+      "F2/F3 change keyboard targets; no semantic workspace/presentation/overlay transition in this literal workload.",
+      "The changed wide-title paint path is inactive at1280px; this excludes that path for the scenario, not all source effects.",
+      "Current snapshot guard and replay acknowledgment remain required; no stale-state substitute admitted."
+    ]
+  },
+  "next_step": "Root owns exactly one unchanged isolated failing-method observation after completed full run; preserve original and isolated separately. No source or assertion edits approved."
+}

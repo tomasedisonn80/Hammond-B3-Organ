@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T02:18:54.916582+00:00",
+  "decision": "admit only the independently reviewed conditional semantic-view guard and two comments; execution acceptance remains pending",
+  "before_main_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+  "before_executable_sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b",
+  "review_path": "docs/reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md",
+  "review_sha256": "4ee24912b6eea3bc74e1a221b57ad9ebd389feaa5eabb5a8c8b0a5d1412d19f3",
+  "regression_sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822",
+  "genuine_before_report_sha256": "67daa292be8fb333e7bab9130802b76a87d9f52d5bdc0f0f947c6baf11941645",
+  "before_summary": [
+    {
+      "initial_presentation": "dimensional",
+      "actual_visits": [
+        {
+          "view": [
+            "play",
+            "dimensional",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 1,
+          "elapsed_ms": 2
+        }
+      ],
+      "expected_visits": [
+        [
+          "play",
+          "flat",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "play",
+          "dimensional",
+          960,
+          700,
+          "none"
+        ],
+        [
+          "play",
+          "dimensional",
+          1280,
+          900,
+          "none"
+        ]
+      ],
+      "failure": "AssertionError: Lists differ: [('play', 'dimensional', 1280, 900, 'none')] != [('play', 'flat', 1280, 900, 'none'), ('play', 'dime[67 chars]ne')]\n\nFirst differing element 0:\n('play', 'dimensional', 1280, 900, 'none')\n('play', 'flat', 1280, 900, 'none')\n\nSecond list contains 2 additional elements.\nFirst extra element 1:\n('play', 'dimensional', 960, 700, 'none')\n\n+ [('play', 'flat', 1280, 900, 'none'),\n+  ('play', 'dimensional', 960, 700, 'none'),\n- [('play', 'dimensional', 1280, 900, 'none')]\n? ^\n\n+  ('play', 'dimensional', 1280, 900, 'none')]\n? ^\n : Consumed semantic prefixes must reach real painted images before subsequent resizes"
+    },
+    {
+      "initial_presentation": "flat",
+      "actual_visits": [
+        {
+          "view": [
+            "play",
+            "flat",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 1,
+          "elapsed_ms": 5
+        }
+      ],
+      "expected_visits": [
+        [
+          "play",
+          "dimensional",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "play",
+          "flat",
+          960,
+          700,
+          "none"
+        ],
+        [
+          "play",
+          "flat",
+          1280,
+          900,
+          "none"
+        ]
+      ],
+      "failure": "AssertionError: Lists differ: [('play', 'flat', 1280, 900, 'none')] != [('play', 'dimensional', 1280, 900, 'none'), ('play'[60 chars]ne')]\n\nFirst differing element 0:\n('play', 'flat', 1280, 900, 'none')\n('play', 'dimensional', 1280, 900, 'none')\n\nSecond list contains 2 additional elements.\nFirst extra element 1:\n('play', 'flat', 960, 700, 'none')\n\n+ [('play', 'dimensional', 1280, 900, 'none'),\n+  ('play', 'flat', 960, 700, 'none'),\n- [('play', 'flat', 1280, 900, 'none')]\n? ^\n\n+  ('play', 'flat', 1280, 900, 'none')]\n? ^\n : Consumed semantic prefixes must reach real painted images before subsequent resizes"
+    }
+  ],
+  "admitted_fields": [
+    "workspace",
+    "presentation",
+    "overlay"
+  ],
+  "excluded_gates": [
+    "dimensions",
+    "controls",
+    "pending state",
+    "clock",
+    "held targets",
+    "focus"
+  ],
+  "rejected": "Unconditional prefix deferral, because it can force 256 resize-only paints inside the unchanged 2000ms grace.",
+  "remaining_gates": [
+    "same permanent regression against rebuilt application",
+    "unchanged workspace replay",
+    "maximum repeated and alternating 256-action resize plans",
+    "input replay, workflows, and MIDI",
+    "coherent final suite and independent source audit"
+  ],
+  "limits": "No synthetic paint records, added sleeps, changed parser/action/history/drain caps, musical guard modifications, or physical/UI fidelity closure."
+}

@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "worker": "A58",
+  "agent": "/root/w10_a58",
+  "wave": 10,
+  "recorded_utc": "2026-11-17T03:14:07.488158+00:00",
+  "decision": "admit_run_local_semantic_event_drain_boundary",
+  "status": "source_and_fixture_admitted; genuine_before_confirmed; A60_source_conforms; candidate_runtime_pending",
+  "scope": {
+    "owned_paths": [
+      "docs/reviews/SEMANTIC_EVENT_PAINT_ADMISSION.md",
+      "docs/development/2026-11-16-heading-title-continuation/reports/a58-semantic-paint-admission.json",
+      "docs/development/2026-11-16-heading-title-continuation/notes/A58.md"
+    ],
+    "source_edits_by_a58": false,
+    "native_processes_by_a58": 0,
+    "build_or_cmake_by_a58": false,
+    "remote_or_index_mutation_by_a58": false
+  },
+  "review": {
+    "path": "docs/reviews/SEMANTIC_EVENT_PAINT_ADMISSION.md",
+    "bytes": 18170,
+    "sha256": "885d851fcaef218ec0418b689f8bc36efe8973e7f3f085f61777a57974764f32"
+  },
+  "worker_note": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/notes/A58.md",
+    "bytes": 6592,
+    "sha256": "9d7eff5ce7c3cf56992048464f9eb5f824f8826b45f7e82a14bbf7fbac6e9f54"
+  },
+  "source_inputs_at_diagnosis": {
+    "apps/standalone/main.cpp": {
+      "path": "../semantic-replay-before-native/main.cpp",
+      "bytes": 147241,
+      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "path": "../semantic-replay-before-native/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "path": "../semantic-replay-before-native/CMakeLists.txt",
+      "bytes": 44093,
+      "sha256": "7c7e1b42825d1ecd5b9cdc75508ed44117283dade74c0d473f171d8ab2482bb4"
+    },
+    "application": {
+      "path": "../semantic-replay-before-native/hammond_standalone",
+      "bytes": 4103352,
+      "sha256": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479"
+    },
+    "native_calibration_probe": {
+      "path": "../semantic-replay-before-native/hammond_standalone_calibration_probe",
+      "bytes": 4153784,
+      "sha256": "886aa8eedd7242e35fd5e169fa9aa257bf399c42a7f6d1818f184aad0d22dca3"
+    },
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "bytes": 24722,
+      "sha256": "7cbe378f8fe3a67e13c7211f78548f7f7a7cc369324980d930c50a116140f101"
+    },
+    "docs/PLAN.md": {
+      "path": "docs/PLAN.md",
+      "bytes": 55498,
+      "sha256": "db72a6fd26b097704ba6b7fc1ebd86b4174af55a2b1aca7ecd766f80d1e5cc6d"
+    },
+    "apps/standalone/ScriptedInput.cpp": {
+      "path": "apps/standalone/ScriptedInput.cpp",
+      "bytes": 22586,
+      "sha256": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23"
+    },
+    "apps/standalone/ScriptedInput.h": {
+      "path": "apps/standalone/ScriptedInput.h",
+      "bytes": 4115,
+      "sha256": "294b11d6a2c9b425d766b019b2ff1e7c460a308c93887c648dd7bce1d955c3d5"
+    },
+    "apps/standalone/UiModel.cpp": {
+      "path": "apps/standalone/UiModel.cpp",
+      "bytes": 83758,
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+    },
+    "apps/standalone/Session.cpp": {
+      "path": "apps/standalone/Session.cpp",
+      "bytes": 31176,
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3"
+    },
+    "apps/standalone/AudioDevice.cpp": {
+      "path": "apps/standalone/AudioDevice.cpp",
+      "bytes": 12072,
+      "sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0"
+    },
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": {
+      "path": "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
+      "bytes": 5011,
+      "sha256": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6"
+    },
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+      "bytes": 35691,
+      "sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+    },
+    "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py": {
+      "path": "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py",
+      "bytes": 14225,
+      "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822"
+    },
+    "apps/standalone/native_tests/test_standalone_replay_boundaries.py": {
+      "path": "apps/standalone/native_tests/test_standalone_replay_boundaries.py",
+      "bytes": 19670,
+      "sha256": "b3b36600ac4da2f8619326f73752b885d186fc59e45986ae9f308285cb53b817"
+    },
+    "apps/standalone/native_tests/test_standalone_input_replay.cpp": {
+      "path": "apps/standalone/native_tests/test_standalone_input_replay.cpp",
+      "bytes": 40834,
+      "sha256": "35ccdc0eb81ac0d583776fccc76a86101059f10edb8b36d7dc75ec14391c3c84"
+    },
+    "apps/standalone/native_tests/test_standalone_app.py": {
+      "path": "apps/standalone/native_tests/test_standalone_app.py",
+      "bytes": 63706,
+      "sha256": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236"
+    },
+    "apps/standalone/native_tests/test_standalone_workflows.py": {
+      "path": "apps/standalone/native_tests/test_standalone_workflows.py",
+      "bytes": 41796,
+      "sha256": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+    },
+    "apps/standalone/native_tests/test_standalone_midi_cli.py": {
+      "path": "apps/standalone/native_tests/test_standalone_midi_cli.py",
+      "bytes": 41122,
+      "sha256": "37ecb6bd48017cee656629e3cac51bc5fa3a1979f1bc2c58d8228113debdf18f"
+    },
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+      "path": "apps/standalone/native_tests/test_standalone_midi_replay.py",
+      "bytes": 54939,
+      "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+    }
+  },
+  "original_guard_sections": {
+    "replay_acknowledged": {
+      "bytes": 334,
+      "sha256": "ee11dab51af1478358c30f28c5b89c5993d8e58aee7da78f8442b5bb639bbe6d"
+    },
+    "musical_observation_suffix": {
+      "bytes": 1619,
+      "sha256": "c144fbe8730b0e696681d2f0634e7ace2d476aa10bbb873f3e61acba60fdc1c8"
+    },
+    "handle_event": {
+      "bytes": 5289,
+      "sha256": "becb77f3b735fa10bd4a225477643f428f3300e8efb3dc5106954fc87cc576f3"
+    },
+    "render_frame": {
+      "bytes": 4565,
+      "sha256": "d914dba650fbe531919ef3a08c095c5634163388fb819ceeb367b660166df02b"
+    }
+  },
+  "complete_original_suite": {
+    "passed": 238,
+    "total": 241,
+    "returncode": 8,
+    "root_seconds": 686.4455297099994,
+    "ctest_seconds": 686.18,
+    "frozen_input_count": 474,
+    "changed_code_inputs": [],
+    "failures": [
+      "test_standalone_workspace_replay",
+      "test_standalone_native_calibration",
+      "test_standalone_midi_cli"
+    ],
+    "original_log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-ctest.log",
+      "bytes": 77140,
+      "sha256": "ba6261b1c014a7fb28d01680f74a9de0c6c07e3cab8695931bcb28b3306751b1"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-ctest.xml",
+      "bytes": 175210,
+      "sha256": "3322b61fa78fd72b46b48916465d23bc2cc8c20436d4804bd00c672d0771e5ae"
+    },
+    "results": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-results.json",
+      "bytes": 893,
+      "sha256": "7d8319ee6a2c2354f5e357bc52368a3d14adc9547c554cbc8391ad17a17c05d7"
+    },
+    "inputs": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-inputs.json",
+      "bytes": 75848,
+      "sha256": "ec855549fb1732ed81f06d0bb540952118bddf1758cecf652b79799df769d8d7"
+    },
+    "test_discovery": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-test-discovery.json",
+      "bytes": 255763,
+      "sha256": "6256b643dfe21d86bf9e82c7cb6594c0a2ee8c47fd677660cc33885d6018ebc6"
+    },
+    "observed_scheduling": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-observed-scheduling.json",
+      "bytes": 57734,
+      "sha256": "8f697af08c16c3a3bc1446b64eb80355b55f043cde2b29576b8e9cc9f81768a7"
+    },
+    "workspace_test": {
+      "backtrace": 474,
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py"
+      ],
+      "name": "test_standalone_workspace_replay",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone",
+            "workspace"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    "independent_workspace_active_set_check": [
+      {
+        "event": "start",
+        "line": 4,
+        "other_active": []
+      },
+      {
+        "event": "finish",
+        "line": 5,
+        "other_active": []
+      }
+    ]
+  },
+  "original_workspace_failure": {
+    "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+    "size": [
+      1400,
+      819
+    ],
+    "ctest_seconds": 50.38,
+    "suite_methods": 6,
+    "suite_application_subprocesses": 30,
+    "block": {
+      "encoding": "gzip+base64",
+      "bytes": 32449,
+      "sha256": "1f230e420547b6d974fc439e0261646b5e2520d94b53edf48c03413c9e654d54",
+      "data": "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"
+    },
+    "block_byte_start": 256,
+    "block_byte_end_exclusive": 32705,
+    "block_start_line": 5,
+    "block_end_line": 106,
+    "input_script": "B3UIREPLAY1\nduration_ms 2850\n50 key_down Tab shift 0\n60 key_up Tab shift\n80 key_down Tab shift 0\n90 key_up Tab shift\n180 key_down A none 0\n320 key_down Space none 0\n1100 mouse_down 236 67\n1120 mouse_up 236 67\n1300 mouse_down 1007 80\n1320 mouse_up 1007 80\n1500 mouse_down 356 67\n1520 mouse_up 356 67\n1650 key_down F3 none 0\n1660 key_up F3 none\n1700 key_down RightBracket none 0\n1710 key_up RightBracket none\n1850 mouse_down 116 67\n1870 mouse_up 116 67\n2050 mouse_down 1007 80\n2070 mouse_up 1007 80\n2200 key_up Space ctrl+meta\n2400 key_up A alt+shift\n2550 mouse_down 1099 40\n2570 mouse_up 1099 40\n",
+    "input_script_sha256": "ea3481ec7f87ceb33cca1800a89c28a402fa094d4f96c1589d5acaa5fb72df12",
+    "copied_diagnostics_sha256": "e8347894574cb4fe578c7c4a859ae5b7bf55b3ee3b4fe7173ca214a47c097adf",
+    "actual_visits": [
+      {
+        "view": [
+          "play",
+          "dimensional",
+          1400,
+          819,
+          "none"
+        ],
+        "rendered_image": 1,
+        "elapsed_ms": 0
+      },
+      {
+        "view": [
+          "rotary",
+          "flat",
+          1400,
+          819,
+          "none"
+        ],
+        "rendered_image": 16,
+        "elapsed_ms": 1356
+      },
+      {
+        "view": [
+          "service",
+          "flat",
+          1400,
+          819,
+          "none"
+        ],
+        "rendered_image": 21,
+        "elapsed_ms": 1516
+      },
+      {
+        "view": [
+          "play",
+          "flat",
+          1400,
+          819,
+          "none"
+        ],
+        "rendered_image": 34,
+        "elapsed_ms": 1871
+      },
+      {
+        "view": [
+          "play",
+          "dimensional",
+          1400,
+          819,
+          "none"
+        ],
+        "rendered_image": 37,
+        "elapsed_ms": 2066
+      }
+    ],
+    "missing_visit": [
+      "rotary",
+      "dimensional",
+      1400,
+      819,
+      "none"
+    ],
+    "delivered_events": [
+      24,
+      24
+    ],
+    "final_acknowledged": true,
+    "presentation_history_truncated": false,
+    "rendered_images": 48,
+    "errors": {
+      "count": 0,
+      "last": ""
+    },
+    "audio_failures": {
+      "render_failures": 0,
+      "format_failures": 0,
+      "nonfinite_failures": 0,
+      "overrange_failures": 0
+    },
+    "before_failed_assertion": [
+      "control_path",
+      "header_hold_prefixes",
+      "commands"
+    ],
+    "unreached_tail": [
+      "capture_refusals",
+      "canonical_saved_bytes",
+      "screenshot_not_while_held"
+    ],
+    "inference": "Successive semantic events can share the WaitEventTimeout/PeepEvents drain before ordinary render. Exact OS scheduling cause is not established."
+  },
+  "admitted_change": {
+    "location": "Application::run only",
+    "dispatch_sites": [
+      "SDL_WaitEventTimeout first event",
+      "SDL_PeepEvents SDL_GETEVENT subsequent events"
+    ],
+    "capture_by_value": [
+      "workspace",
+      "presentation",
+      "overlay"
+    ],
+    "handler_invocations_per_event": 1,
+    "gating": "active UI input script and actual before/after semantic change",
+    "effect": "stop remaining bounded event drain; preserve ordinary post-drain rendering",
+    "preserve": [
+      "A46 marker branch",
+      "handle_event",
+      "render_frame",
+      "musical observation guard",
+      "replay_acknowledged",
+      "event counter and error/quit handling",
+      "normal and smoke/MIDI-only batching",
+      "ScriptedInput source/marker protocol",
+      "all deadlines and capacities"
+    ],
+    "reject": [
+      "last_painted-null trigger",
+      "dimension trigger",
+      "explicit extra rendering",
+      "fabricated painted diagnostics",
+      "new heap or persistent state",
+      "test-only production branch",
+      "musical-command changes"
+    ]
+  },
+  "bounds": {
+    "events_per_turn_including_first": 256,
+    "script_actions": 256,
+    "script_bytes": 65536,
+    "duration_ms_minimum": 250,
+    "duration_ms_maximum": 10000,
+    "ui_history_capacity": 512,
+    "painted_history_capacity": 512,
+    "drain_ms": 2000,
+    "new_storage": "three scalar enum snapshots and one loop Boolean; local lambda captures this",
+    "limit": "No guarantee every maximum-size semantic plan can complete all required paints within fixed wall-clock drain; existing failure remains authoritative."
+  },
+  "prospective_fixture": {
+    "source": {
+      "path": "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+      "bytes": 16743,
+      "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048"
+    },
+    "input": "B3UIREPLAY1\nduration_ms 250\n0 key_down F5 none 0\n0 key_up F5 none\n0 key_down F7 none 0\n0 key_up F7 none\n0 key_down Comma ctrl 0\n0 key_up Comma ctrl\n0 key_down Escape none 0\n0 key_up Escape none\n0 key_down F6 none 0\n0 key_up F6 none\n0 key_down F4 none 0\n0 key_up F4 none\n",
+    "input_sha256": "e1926c787b3602ff1e714afac19f8bae7ed265cf05afbb638f800fe3af32b2c2",
+    "literal_controls": {
+      "manual_drawbars": [
+        [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ]
+        ],
+        [
+          [
+            1,
+            3,
+            5,
+            7,
+            0,
+            2,
+            4,
+            6,
+            8
+          ],
+          [
+            8,
+            6,
+            4,
+            2,
+            0,
+            7,
+            5,
+            3,
+            1
+          ]
+        ]
+      ],
+      "selected_banks": [
+        0,
+        1
+      ],
+      "fixed_registrations": [
+        6,
+        8
+      ],
+      "preset_selections": [
+        6,
+        8
+      ],
+      "route_enabled": [
+        true,
+        true
+      ],
+      "expression": 0.375,
+      "pedal_drawbars": [
+        2,
+        7
+      ],
+      "percussion": {
+        "enabled": true,
+        "harmonic": 1,
+        "volume": 1,
+        "decay": 1
+      }
+    },
+    "expected_visits": {
+      "dimensional": [
+        [
+          "rotary",
+          "dimensional",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "rotary",
+          "flat",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "rotary",
+          "flat",
+          1280,
+          900,
+          "audio"
+        ],
+        [
+          "rotary",
+          "flat",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "service",
+          "flat",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "play",
+          "flat",
+          1280,
+          900,
+          "none"
+        ]
+      ],
+      "flat": [
+        [
+          "rotary",
+          "flat",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "rotary",
+          "dimensional",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "rotary",
+          "dimensional",
+          1280,
+          900,
+          "audio"
+        ],
+        [
+          "rotary",
+          "dimensional",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "service",
+          "dimensional",
+          1280,
+          900,
+          "none"
+        ],
+        [
+          "play",
+          "dimensional",
+          1280,
+          900,
+          "none"
+        ]
+      ]
+    },
+    "initial_size": [
+      1280,
+      900
+    ],
+    "overlay": "audio",
+    "initial_midi_proposal": "Valid syntax and overlay midi, but native discovery conflicts with hardware-independent zero-error acceptance.",
+    "selected_refinement": "Ctrl+Comma audio; dummy SDL enumeration; Escape without Apply; no MIDI companion.",
+    "sequence_policy": "Running applied == resolved <= submitted <= final; monotone each; final equality. Opening and Escape retain existing ReleaseUiNotes even with empty owners.",
+    "evidence_policy": "presentation.observations only grades visits; strictly increasing image indices; no invented initial Play frame.",
+    "actual_children": 2,
+    "child_timeout_seconds": 12,
+    "maximum_child_timeout_seconds": 30,
+    "pipe_limit_each_bytes": 65536,
+    "diagnostics_limit_bytes": 2097152,
+    "new_native_execution_by_a58_or_a59": false
+  },
+  "genuine_before": {
+    "report": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before.json",
+      "bytes": 28813,
+      "sha256": "45e4d5bf293d3e02731c2fc7fabc3ca900494814b401ef4f69c93c2d50e4d66a"
+    },
+    "root_report": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before-root.json",
+      "bytes": 2845,
+      "sha256": "fabfb751f84498a1c37298af9bc036a6a1e162e897f153db873918616c820711"
+    },
+    "root_command": [
+      "python3",
+      "-B",
+      "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+      "--executable",
+      "/workspace/scratch/5a28c3564dbf/semantic-replay-before-native/hammond_standalone",
+      "--report",
+      "docs/development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before.json"
+    ],
+    "root_returncode": 1,
+    "root_seconds": 1.0989693039991835,
+    "log_sha256": "2aa87fb46e756e47de695c041ac2356bbacb7e7326f85beccc7363c5cb0a1b27",
+    "changed_inputs": [],
+    "cases": [
+      {
+        "initial_presentation": "dimensional",
+        "status": "failed",
+        "diagnostics_sha256": "ce022fa011740cda055519b8c51601e063ef2776040452c16ebf2c03b6314793",
+        "actual_visits": [
+          {
+            "view": [
+              "play",
+              "flat",
+              1280,
+              900,
+              "none"
+            ],
+            "rendered_image": 1,
+            "elapsed_ms": 1
+          }
+        ],
+        "failure": "AssertionError: Lists differ: [('play', 'flat', 1280, 900, 'none')] != [('rotary', 'dimensional', 1280, 900, 'none'[192 chars]ne')]\n\nFirst differing element 0:\n('play', 'flat', 1280, 900, 'none')\n('rotary', 'dimensional', 1280, 900, 'none')\n\nSecond list contains 5 additional elements.\nFirst extra element 1:\n('rotary', 'flat', 1280, 900, 'none')\n\n+ [('rotary', 'dimensional', 1280, 900, 'none'),\n+  ('rotary', 'flat', 1280, 900, 'none'),\n+  ('rotary', 'flat', 1280, 900, 'audio'),\n+  ('rotary', 'flat', 1280, 900, 'none'),\n+  ('service', 'flat', 1280, 900, 'none'),\n- [('play', 'flat', 1280, 900, 'none')]\n? ^\n\n+  ('play', 'flat', 1280, 900, 'none')]\n? ^\n : Every workspace, presentation, and overlay transition must reach an actual painted image",
+        "process_returncode": 0,
+        "process_elapsed_seconds": 0.3662155830024858
+      },
+      {
+        "initial_presentation": "flat",
+        "status": "failed",
+        "diagnostics_sha256": "9acfc18d0098d11a6dc27a2a1ffac1361a631bb6aa263de10c9bbbba699515c1",
+        "actual_visits": [
+          {
+            "view": [
+              "play",
+              "dimensional",
+              1280,
+              900,
+              "none"
+            ],
+            "rendered_image": 1,
+            "elapsed_ms": 0
+          }
+        ],
+        "failure": "AssertionError: Lists differ: [('play', 'dimensional', 1280, 900, 'none')] != [('rotary', 'flat', 1280, 900, 'none'), ('ro[220 chars]ne')]\n\nFirst differing element 0:\n('play', 'dimensional', 1280, 900, 'none')\n('rotary', 'flat', 1280, 900, 'none')\n\nSecond list contains 5 additional elements.\nFirst extra element 1:\n('rotary', 'dimensional', 1280, 900, 'none')\n\n+ [('rotary', 'flat', 1280, 900, 'none'),\n+  ('rotary', 'dimensional', 1280, 900, 'none'),\n+  ('rotary', 'dimensional', 1280, 900, 'audio'),\n+  ('rotary', 'dimensional', 1280, 900, 'none'),\n+  ('service', 'dimensional', 1280, 900, 'none'),\n- [('play', 'dimensional', 1280, 900, 'none')]\n? ^\n\n+  ('play', 'dimensional', 1280, 900, 'none')]\n? ^\n : Every workspace, presentation, and overlay transition must reach an actual painted image",
+        "process_returncode": 0,
+        "process_elapsed_seconds": 0.5174150420025398
+      }
+    ],
+    "interpretation": "Both genuine children passed earlier strict predicates and failed only required six-visit equality; candidate success remains pending."
+  },
+  "a60_source_conformance": {
+    "candidate": {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    "before": {
+      "path": "../semantic-replay-before-native/main.cpp",
+      "bytes": 147241,
+      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+    },
+    "inspection": "Complete independent source diff: only admitted local dispatcher, both dispatch substitutions, Boolean loop condition and comment.",
+    "unchanged_prefix": {
+      "bytes": 27566,
+      "sha256": "e6f9cf366548013423aa541a910281131cab4f4d397e132bdf6a2446bf69fab3"
+    },
+    "unchanged_post_drain_suffix": {
+      "bytes": 118527,
+      "sha256": "f7e93e097ca042736316c07b670b912800b7ae2a568c40633e0b779c410dba51"
+    },
+    "all_protected_guard_sections_identical": true,
+    "painter": {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    "candidate_native_execution_by_a58": false,
+    "candidate_runtime_status": "pending root evidence"
+  },
+  "existing_resize_evidence": {
+    "review": {
+      "path": "docs/reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md",
+      "bytes": 10431,
+      "sha256": "4ee24912b6eea3bc74e1a221b57ad9ebd389feaa5eabb5a8c8b0a5d1412d19f3"
+    },
+    "a45_before": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a45-before.json",
+      "bytes": 27322,
+      "sha256": "67daa292be8fb333e7bab9130802b76a87d9f52d5bdc0f0f947c6baf11941645"
+    },
+    "a45_after": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a45-after.json",
+      "bytes": 28567,
+      "sha256": "56bcfba70a71d300c9cd12b908206f82d241ea7c6bb7c585818dd081d500ac06"
+    },
+    "affected_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/replay-repair-affected.json",
+      "bytes": 549,
+      "sha256": "0a238e05f729212ee4b922aae302e1ab5ec6873eefb0533268b0cf6b29cb879d"
+    },
+    "require_after_change": [
+      "both A45 zero-time F7/resize cases",
+      "both maximum256resize plans",
+      "tied resize/pointer/owner case",
+      "native ScriptedInput helper"
+    ]
+  },
+  "root_remaining_gates": [
+    "Rebuild real application and calibration probe",
+    "New fixture after at same frozen bytes",
+    "Unchanged resize and input helper gates",
+    "Affected workspace/workflows/native MIDI/MIDI CLI/expression/calibration suites including formerly unreached saved-byte tail",
+    "Full coherent input-bound gate",
+    "Installed and exact-published-source hosted evidence"
+  ],
+  "acceptance_limits": [
+    "No candidate after-native result recorded here",
+    "Other serialized-suite failures remain separate",
+    "No physical/device/callback deadline/accessibility/connected rotary/whole-UI 1:1 acceptance"
+  ]
+}

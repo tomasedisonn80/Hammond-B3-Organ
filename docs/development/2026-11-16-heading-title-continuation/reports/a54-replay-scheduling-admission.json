@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "agent": "A54",
+  "wave": 9,
+  "recorded_utc": "2026-11-17T02:47:32.030200+00:00",
+  "status": "scheduling_correction_admitted_candidate_full_suite_pending",
+  "decision": {
+    "allowed_properties": {
+      "test_standalone_native_midi_replay": {
+        "RUN_SERIAL": true,
+        "TIMEOUT_unchanged": 90
+      },
+      "test_standalone_workspace_replay": {
+        "RUN_SERIAL": true,
+        "TIMEOUT_unchanged": 90
+      }
+    },
+    "retain_existing_serial_test": "test_standalone_app",
+    "broader_family_isolation_admitted": false,
+    "source_fixture_oracle_changes_admitted": false,
+    "exact_cpu_cause_established": false,
+    "root_owns_edit_configure_native_execution_and_publication": true
+  },
+  "original_full_run": {
+    "passed": 239,
+    "total": 241,
+    "returncode": 8,
+    "ctest_seconds": 502.21,
+    "wrapper_seconds": 502.3241684470013,
+    "parallel": 2,
+    "frozen_code_input_count": 474,
+    "changed_code_inputs": [],
+    "log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-ctest.log",
+      "bytes": 125501,
+      "sha256": "e25e8b47838da8998aad0c1fd9df5dfcedcfa496e37b55d468b625355ea53c1c"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-ctest.xml",
+      "bytes": 224763,
+      "sha256": "c9746e39345089626589e0c363cd2d72f3aa935c3f207aad5b387f25571a54bb"
+    },
+    "result_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-results.json",
+      "bytes": 856,
+      "sha256": "428196052978826fec9d55c275dfe10852196f71c29f5b923e703b800abfc7ed"
+    },
+    "input_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-inputs.json",
+      "bytes": 76308,
+      "sha256": "35da944f0739fe7fd7e543adb18e502f6789f1c55df0b031e27b5b83cc8b59d0"
+    },
+    "discovery": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-test-discovery.json",
+      "bytes": 255609,
+      "sha256": "6eceb97218ef5c0bb3de7a79ca4152ce38b9e71a0ce162eec7befe42613dca0e"
+    }
+  },
+  "original_failure_blocks": [
+    {
+      "case": "midi",
+      "source_log_lines_inclusive": [
+        12,
+        89
+      ],
+      "bytes": 44950,
+      "sha256": "599dcd0795390efd46ef206f186567bec7338f55e46e749cc53808316fc3f549",
+      "encoding": "base64(gzip(utf8))",
+      "encoded_data": "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",
+      "compressed_bytes": 4605,
+      "decode_sha256_verified": true
+    },
+    {
+      "case": "workspace",
+      "source_log_lines_inclusive": [
+        94,
+        227
+      ],
+      "bytes": 44315,
+      "sha256": "381253a895692647a2288e0e053a34521474c248c195aca5d923a91ddca10148",
+      "encoding": "base64(gzip(utf8))",
+      "encoded_data": "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",
+      "compressed_bytes": 4554,
+      "decode_sha256_verified": true
+    }
+  ],
+  "observations": {
+    "midi": {
+      "method": "NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui",
+      "suite_methods": 15,
+      "suite_failures": 1,
+      "ctest_seconds": 44.47,
+      "replay_duration_ms": 1600,
+      "required_interval_ms": [
+        950,
+        1230
+      ],
+      "interval_upper_exclusive": true,
+      "acknowledgement_predicate": "last_applied_sequence >= last_submitted_sequence",
+      "relevant_observations": [
+        {
+          "elapsed_ms": 1095,
+          "last_applied_sequence": 13,
+          "last_submitted_sequence": 14,
+          "resolved_sequence": 13
+        },
+        {
+          "elapsed_ms": 1259,
+          "last_applied_sequence": 14,
+          "last_submitted_sequence": 14,
+          "resolved_sequence": 14
+        },
+        {
+          "elapsed_ms": 1259,
+          "last_applied_sequence": 14,
+          "last_submitted_sequence": 15,
+          "resolved_sequence": 14
+        }
+      ],
+      "following_final_assertions_reached_in_original_failure": false
+    },
+    "workspace": {
+      "method": "NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns",
+      "suite_methods": 6,
+      "suite_failures": 1,
+      "ctest_seconds": 50.58,
+      "replay_duration_ms": 3750,
+      "ui_events": 87,
+      "first_observation": {
+        "elapsed_ms": 292,
+        "last_applied_sequence": 3,
+        "last_submitted_sequence": 3,
+        "resolved_sequence": 3
+      },
+      "required_first_observation_strictly_less_than_ms": 180,
+      "control_and_hold_path_checks_returned_before_failure": true,
+      "later_view_saved_byte_assertions_reached_in_original_failure": false
+    },
+    "ctest_overlap_evidence": [
+      "  3/241 Test #213: test_standalone_product_visual ....................   Passed   39.04 sec",
+      "        Start 234: test_standalone_native_midi_replay",
+      "  4/241 Test #225: test_standalone_scaled_view .......................   Passed   29.36 sec",
+      "        Start 236: test_standalone_workspace_replay",
+      "  5/241 Test #234: test_standalone_native_midi_replay ................***Failed   44.47 sec",
+      "        Start 226: test_standalone_preset_raster",
+      "  6/241 Test #226: test_standalone_preset_raster .....................   Passed   18.80 sec",
+      "  7/241 Test #236: test_standalone_workspace_replay ..................***Failed   50.58 sec"
+    ],
+    "inference": "CTest overlap is directly evidenced. An isolated pass is consistent with scheduling sensitivity; no CPU trace establishes a particular cause."
+  },
+  "frozen_relevant_inputs": {
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 43921,
+      "sha256": "aae163ac030bacfefe8f8342eaeac11552d2fe97cf45e4b567cc3eb6e8e8f34b"
+    },
+    "apps/standalone/main.cpp": {
+      "bytes": 147241,
+      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+    },
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+      "bytes": 54939,
+      "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+    },
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": {
+      "bytes": 35691,
+      "sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+    },
+    "apps/standalone/native_tests/test_standalone_workflows.py": {
+      "bytes": 41796,
+      "sha256": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+    },
+    "apps/standalone/native_tests/test_standalone_replay_boundaries.py": {
+      "bytes": 19670,
+      "sha256": "b3b36600ac4da2f8619326f73752b885d186fc59e45986ae9f308285cb53b817"
+    }
+  },
+  "frozen_executable": {
+    "bytes": 4103352,
+    "sha256": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479"
+  },
+  "original_generated_properties": [
+    {
+      "backtrace": 462,
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py"
+      ],
+      "name": "test_standalone_app",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "RUN_SERIAL",
+          "value": true
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 60.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "backtrace": 470,
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py"
+      ],
+      "name": "test_standalone_native_midi_replay",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "midi",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "backtrace": 474,
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py"
+      ],
+      "name": "test_standalone_workspace_replay",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone",
+            "workspace"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    }
+  ],
+  "isolated_diagnostics": {
+    "status": "both_required_single_unchanged_methods_pass",
+    "receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-one-isolated-diagnostics.json",
+      "bytes": 2153,
+      "sha256": "912d1b6c82e56f4a67cba13658a3cd9f79abb0d7d9744c54f30787bd13125a23"
+    },
+    "data": {
+      "schema_version": 1,
+      "recorded_utc": "2026-11-17T02:44:22.341700+00:00",
+      "actual_diagnostic_invocations": 2,
+      "executions": [
+        {
+          "case": "midi",
+          "command": [
+            "python3",
+            "-B",
+            "apps/standalone/native_tests/test_standalone_midi_replay.py",
+            "NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui"
+          ],
+          "returncode": 0,
+          "seconds": 1.904240761003166,
+          "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-midi-one-isolated-diagnostic.log",
+          "log_sha256": "2f549fcf90e282a0bfdb885b68062453a2a2074d3bd3233b7d827a02dcc269a7"
+        },
+        {
+          "case": "workspace",
+          "command": [
+            "python3",
+            "-B",
+            "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+            "NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns"
+          ],
+          "returncode": 0,
+          "seconds": 4.047807788003411,
+          "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-workspace-one-isolated-diagnostic.log",
+          "log_sha256": "1127554e5b1a8f134529e3fcc0185e0b39ab4a8f71263f640e809a5c79a93b7f"
+        }
+      ],
+      "input_sha256": {
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479",
+        "apps/standalone/main.cpp": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3",
+        "apps/standalone/CMakeLists.txt": "aae163ac030bacfefe8f8342eaeac11552d2fe97cf45e4b567cc3eb6e8e8f34b",
+        "apps/standalone/native_tests/test_standalone_midi_replay.py": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf",
+        "apps/standalone/native_tests/test_standalone_workspace_replay.py": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+      },
+      "changed_inputs": [],
+      "scope": "Exactly one unchanged isolated execution per originally failing method, after the complete parallel run. These are separate diagnostics, not replacements for the original failures or proof of a particular CPU/scheduler cause."
+    },
+    "all_log_hashes_verified": true,
+    "previously_unreached_assertions_executed_in_separate_successes": true
+  },
+  "required_candidate_acceptance": {
+    "source_delta": "Exactly two RUN_SERIAL TRUE properties and explanatory comment in apps/standalone/CMakeLists.txt; existing smoke serialization retained.",
+    "unchanged": [
+      "application and fixture bytes",
+      "event counts and timestamps",
+      "1600 ms and 3750 ms workloads",
+      "9-second child process bounds",
+      "90-second CTest timeouts",
+      "all original assertions including <180 and [950,1230)",
+      "commands, environments, labels, targets"
+    ],
+    "generated_metadata": "Capture post-configure ctest --show-only=json-v1; require both boolean RUN_SERIAL true, unchanged commands/labels/timeouts, and identical complete set of 241 test names.",
+    "coherent_execution": "One complete frozen-input --parallel 2 CTest run with original output-on-failure/no-tests=error semantics and distinct original log/JUnit; require 241/241 without exclusions or retries.",
+    "observed_nonoverlap": "Parse start/completion events. Each newly serial test starts with empty active set; no other test begins before it completes. Retain evidence for each.",
+    "no_exact_scheduler_cause_or_repeated_stability_claim": true,
+    "status": "pending_root_candidate"
+  },
+  "limits": [
+    "RUN_SERIAL controls the same CTest invocation only; unrelated processes, OS scheduling and hardware deadlines remain outside this gate.",
+    "Original 239/241 failure remains retained unchanged.",
+    "No native children, builds, CMake edits or remote mutations were performed by A54.",
+    "This admission does not qualify hosted exact-source jobs, all DAWs, hardware, signing, calibration or literal whole-UI 1:1."
+  ]
+}

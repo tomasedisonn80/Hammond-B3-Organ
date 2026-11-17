@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T02:24:47.711793+00:00",
+  "fixture_sha256": "96139c491057d1b3c28e4a79b9ae2b89fb1118b1afcaff4c4dd67c4a0c56f060",
+  "offline_checks": [
+    {
+      "checker": "original",
+      "failure": "full_suite",
+      "result": "expected original assertion reproduced"
+    },
+    {
+      "checker": "original",
+      "failure": "isolated_unchanged_source",
+      "result": "expected original assertion reproduced"
+    },
+    {
+      "checker": "changed",
+      "failure": "full_suite",
+      "result": "all retained diagnostic assertions passed"
+    },
+    {
+      "checker": "changed",
+      "failure": "isolated_unchanged_source",
+      "result": "all retained diagnostic assertions passed"
+    }
+  ],
+  "commands": [
+    {
+      "name": "starter-load-pure",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_starter_load.py",
+        "LoadObservationOrderTests"
+      ],
+      "selected_environment": {},
+      "returncode": 0,
+      "seconds": 0.6089681600024051
+    },
+    {
+      "name": "starter-load-corrected-genuine-original-app",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_starter_load.py"
+      ],
+      "selected_environment": {
+        "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/h1-replay-before-native/hammond_standalone",
+        "HAMMOND_REGISTRATION_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/hammond_registration"
+      },
+      "returncode": 0,
+      "seconds": 12.098139481000544
+    }
+  ],
+  "qualification": "Original failures are retained; offline results do not execute file-tail assertions. The complete genuine-original-app run executes those assertions separately from the paint fix."
+}

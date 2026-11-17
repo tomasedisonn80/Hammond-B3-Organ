@@ -1,0 +1,46 @@
+AssertionError: Lists differ: [('play', 'flat', 1280, 900, 'none')] != [('rotary', 'dimensional', 1280, 900, 'none'[192 chars]ne')]
+
+First differing element 0:
+('play', 'flat', 1280, 900, 'none')
+('rotary', 'dimensional', 1280, 900, 'none')
+
+Second list contains 5 additional elements.
+First extra element 1:
+('rotary', 'flat', 1280, 900, 'none')
+
++ [('rotary', 'dimensional', 1280, 900, 'none'),
++  ('rotary', 'flat', 1280, 900, 'none'),
++  ('rotary', 'flat', 1280, 900, 'audio'),
++  ('rotary', 'flat', 1280, 900, 'none'),
++  ('service', 'flat', 1280, 900, 'none'),
+- [('play', 'flat', 1280, 900, 'none')]
+? ^
+
++  ('play', 'flat', 1280, 900, 'none')]
+? ^
+ : Every workspace, presentation, and overlay transition must reach an actual painted image
+AssertionError: Lists differ: [('play', 'dimensional', 1280, 900, 'none')] != [('rotary', 'flat', 1280, 900, 'none'), ('ro[220 chars]ne')]
+
+First differing element 0:
+('play', 'dimensional', 1280, 900, 'none')
+('rotary', 'flat', 1280, 900, 'none')
+
+Second list contains 5 additional elements.
+First extra element 1:
+('rotary', 'dimensional', 1280, 900, 'none')
+
++ [('rotary', 'flat', 1280, 900, 'none'),
++  ('rotary', 'dimensional', 1280, 900, 'none'),
++  ('rotary', 'dimensional', 1280, 900, 'audio'),
++  ('rotary', 'dimensional', 1280, 900, 'none'),
++  ('service', 'dimensional', 1280, 900, 'none'),
+- [('play', 'dimensional', 1280, 900, 'none')]
+? ^
+
++  ('play', 'dimensional', 1280, 900, 'none')]
+? ^
+ : Every workspace, presentation, and overlay transition must reach an actual painted image
+dimensional: failed; actual visits: [{"view": ["play", "flat", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 1}]
+flat: failed; actual visits: [{"view": ["play", "dimensional", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 0}]
+Actual native subprocesses: 2; executable SHA-256: 2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479
+Evidence report: /workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before.json

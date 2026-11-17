@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "--parallel",
+    "2",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-ctest.xml"
+  ],
+  "returncode": 8,
+  "seconds": 614.4031229270004,
+  "test_count": 242,
+  "failed_tests": [
+    "test_standalone_workspace_replay",
+    "test_standalone_starter_load"
+  ],
+  "changed_code_inputs": [],
+  "changed_build_inputs": [],
+  "serial_nonoverlap_passed": true,
+  "log": {
+    "bytes": 105585,
+    "sha256": "469020395283b24fdcafd76dd97262df67789865e85154b03378e0c21e0cf7ff"
+  },
+  "junit": {
+    "bytes": 206064,
+    "sha256": "6063e75c8beb76ef94d411741f6ab5d25f098ba0d7333f7110d697a1c706eeef"
+  },
+  "coherent_input_receipt": {
+    "bytes": 76524,
+    "sha256": "50d2c18dbedccb2db161f202bed6d9801960f85c43907b2adcc7ca2afb74e16a"
+  }
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "step": "configure",
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+      "-S",
+      ".",
+      "-B",
+      "../build-native"
+    ],
+    "returncode": 0,
+    "seconds": 2.790303876001417,
+    "log_sha256": "98ad80121a2c923aafbda58aad5edf642908a773a2e9bf67d3d0a3c6ff3698a4"
+  },
+  {
+    "step": "build",
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--parallel",
+      "2"
+    ],
+    "returncode": 0,
+    "seconds": 2.2997488159999193,
+    "log_sha256": "793d37ef9c73837ecb9d85b0d9d32dfc1a27740b035d9de37d19188c9daaec0a"
+  }
+]

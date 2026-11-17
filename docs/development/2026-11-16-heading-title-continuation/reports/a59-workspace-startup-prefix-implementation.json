@@ -1,0 +1,990 @@
+{
+  "schema_version": 1,
+  "task": "workspace_startup_prefix_implementation",
+  "worker": "/root/w10_a59",
+  "same_worker_followup_no_new_staffing_credit": true,
+  "created_at_utc": "2026-11-17T03:39:29.229094+00:00",
+  "status": "implemented_pending_independent_conformance_and_native_qualification",
+  "authorization": "Root explicitly released after original-source preservation and frozen A53 admission.",
+  "ownership": [
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a59-workspace-startup-prefix-implementation.json"
+  ],
+  "inputs": {
+    "docs/development/2026-11-16-heading-title-continuation/inputs/test_standalone_workspace_replay-before-startup-prefix.py": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3",
+    "docs/reviews/WORKSPACE_STARTUP_OBSERVATION_ADMISSION.md": "68a13c87bdab02b6a624e7845a6f60ec370fa7fb606554198bca0f9bdc94de56",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-workspace-startup-observation.json": "c92a7d8f4fbd7679dfcd816d49ee04f5f228dda49062fbbb436a2514f582581c"
+  },
+  "candidate": {
+    "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+    "sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+    "bytes": 47128
+  },
+  "unchanged_readonly_inputs": {
+    "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048",
+    "docs/development/2026-11-16-heading-title-continuation/notes/A59.md": "e7887359e42da13106e5d7f4171692a848d7a452330cab6b311e1a58e861f90f",
+    "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822",
+    "apps/standalone/native_tests/test_standalone_app.py": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+  },
+  "production_observed_readonly": {
+    "apps/standalone/main.cpp": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+    "apps/standalone/InstrumentView.cpp": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+  },
+  "predicate": {
+    "prefix": "Fresh matching empty B3UIREPLAY1 duration250 per seven configurations; exact loaded controls, empty musical/painted holds, zero notes, final S>0 with applied=resolved=submitted, exact input bytes.",
+    "full_first_observation": "Must be actual first copy with applied=resolved=independent S, complete CONTROLS and EMPTY holds; contemporaneous submitted may exceed S.",
+    "chronology": "Nondecreasing elapsed/applied/submitted; resolved=applied; S<=applied<=submitted<=final; identical complete musical state at identical applied sequence, including same-sequence final copy.",
+    "retained_accounting": "Exact on/off counts, final-S=on+off+control_changes and final applied/resolved acknowledgment.",
+    "scope_limit": "Unsupported elapsed<180 and submitted=applied inference replaced; no startup-latency guarantee claimed and no missing full-run startup accepted."
+  },
+  "original_native_plan_comparison": {
+    "execution_kind": "Pure AST plan enumeration with native context bodies removed; no subprocess or native assertion execution.",
+    "original_count": 30,
+    "candidate_count": 37,
+    "all_original_plans_exactly_preserved": true,
+    "original_plans": [
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            960,
+            700
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          960,
+          700
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            960,
+            700
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 5,
+        "ui_script_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          960,
+          700
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            960,
+            700
+          ]
+        },
+        "duration_ms": 2850,
+        "ui_actions": 24,
+        "ui_script_sha256": "6c3d6b22b1bf6725e8bb88a83c4459e4b5c36905bf657678ebe74b183830fd47",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          960,
+          700
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "screenshot": true,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1280,
+            900
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1280,
+            900
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 5,
+        "ui_script_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1280,
+            900
+          ]
+        },
+        "duration_ms": 2850,
+        "ui_actions": 24,
+        "ui_script_sha256": "a74e8b9de3109680053c09fd5c0c7e5b9fbcb5675729181ca3737ab9faf86ce5",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": false,
+        "screenshot": true,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1672,
+            941
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1672,
+          941
+        ],
+        "final_size": [
+          1672,
+          941
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1672,
+            941
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 5,
+        "ui_script_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1672,
+          941
+        ],
+        "final_size": [
+          1672,
+          941
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1672,
+            941
+          ]
+        },
+        "duration_ms": 2850,
+        "ui_actions": 24,
+        "ui_script_sha256": "2aca73b41c69205d90e8f4f771c29a8d840bce392ec6a2d882a0630832c829cd",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1672,
+          941
+        ],
+        "final_size": [
+          1672,
+          941
+        ],
+        "flat": false,
+        "screenshot": true,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1399,
+            819
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1399,
+          819
+        ],
+        "final_size": [
+          1399,
+          819
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1399,
+            819
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 5,
+        "ui_script_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1399,
+          819
+        ],
+        "final_size": [
+          1399,
+          819
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1399,
+            819
+          ]
+        },
+        "duration_ms": 2850,
+        "ui_actions": 24,
+        "ui_script_sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1399,
+          819
+        ],
+        "final_size": [
+          1399,
+          819
+        ],
+        "flat": false,
+        "screenshot": true,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1400,
+            819
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1400,
+          819
+        ],
+        "final_size": [
+          1400,
+          819
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1400,
+            819
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 5,
+        "ui_script_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1400,
+          819
+        ],
+        "final_size": [
+          1400,
+          819
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1400,
+            819
+          ]
+        },
+        "duration_ms": 2850,
+        "ui_actions": 24,
+        "ui_script_sha256": "ea3481ec7f87ceb33cca1800a89c28a402fa094d4f96c1589d5acaa5fb72df12",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1400,
+          819
+        ],
+        "final_size": [
+          1400,
+          819
+        ],
+        "flat": false,
+        "screenshot": true,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1399,
+            820
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1399,
+          820
+        ],
+        "final_size": [
+          1399,
+          820
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1399,
+            820
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 5,
+        "ui_script_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1399,
+          820
+        ],
+        "final_size": [
+          1399,
+          820
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1399,
+            820
+          ]
+        },
+        "duration_ms": 2850,
+        "ui_actions": 24,
+        "ui_script_sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1399,
+          820
+        ],
+        "final_size": [
+          1399,
+          820
+        ],
+        "flat": false,
+        "screenshot": true,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1400,
+            820
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1400,
+          820
+        ],
+        "final_size": [
+          1400,
+          820
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1400,
+            820
+          ]
+        },
+        "duration_ms": 250,
+        "ui_actions": 5,
+        "ui_script_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1400,
+          820
+        ],
+        "final_size": [
+          1400,
+          820
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "subtest": {
+          "size": [
+            1400,
+            820
+          ]
+        },
+        "duration_ms": 2850,
+        "ui_actions": 24,
+        "ui_script_sha256": "3a706f55ac143d1bdefe2845146c7b8247da52b9c143956eae79cd4e2a79b721",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1400,
+          820
+        ],
+        "final_size": [
+          1400,
+          820
+        ],
+        "flat": false,
+        "screenshot": true,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "rotary",
+          "flat": false
+        },
+        "duration_ms": 2600,
+        "ui_actions": 50,
+        "ui_script_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "rotary",
+          "flat": true
+        },
+        "duration_ms": 2600,
+        "ui_actions": 50,
+        "ui_script_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": true,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "service",
+          "flat": false
+        },
+        "duration_ms": 2600,
+        "ui_actions": 50,
+        "ui_script_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "service",
+          "flat": true
+        },
+        "duration_ms": 2600,
+        "ui_actions": 50,
+        "ui_script_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": true,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "subtest": {},
+        "duration_ms": 3750,
+        "ui_actions": 87,
+        "ui_script_sha256": "905d176f2fca14799ec78c4d7dc80bb1f7531960094d2b4087a52b57817d4194",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "subtest": {},
+        "duration_ms": 1900,
+        "ui_actions": 16,
+        "ui_script_sha256": "7e19729664960ea9ba97eb38654e9bd76489709f70db048bbbb290604879ae9e",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "subtest": {},
+        "duration_ms": 2250,
+        "ui_actions": 13,
+        "ui_script_sha256": "d00185eb0af35357e993498a4da6560cb42afc24e205d1f8649da8ac6fcb6084",
+        "midi_actions": null,
+        "midi_script_sha256": null,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+        "subtest": {},
+        "duration_ms": 250,
+        "ui_actions": 4,
+        "ui_script_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "midi_actions": 1,
+        "midi_script_sha256": "e219db6661addfa5fb082918bbb5ff5278b295372f89e3cc255f3f697dfabc28",
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          1280,
+          900
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "kind": "original_plan",
+        "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+        "subtest": {},
+        "duration_ms": 3200,
+        "ui_actions": 17,
+        "ui_script_sha256": "9d4770809137535ad3085b2ff07cc0087dc98ce548282996e333e0517f45de43",
+        "midi_actions": 7,
+        "midi_script_sha256": "4cbf9900dd6ee9b32634a4e491cdef4457291e8aed6496e56b2361e1d137cace",
+        "initial_size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "screenshot": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      }
+    ],
+    "new_prefix_bindings": [
+      {
+        "prefix_plan_index": 22,
+        "full_plan_index": 23,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "rotary",
+          "flat": false
+        },
+        "flat": false,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "empty_ui_script_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f"
+      },
+      {
+        "prefix_plan_index": 24,
+        "full_plan_index": 25,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "rotary",
+          "flat": true
+        },
+        "flat": true,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "empty_ui_script_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f"
+      },
+      {
+        "prefix_plan_index": 26,
+        "full_plan_index": 27,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "service",
+          "flat": false
+        },
+        "flat": false,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "empty_ui_script_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f"
+      },
+      {
+        "prefix_plan_index": 28,
+        "full_plan_index": 29,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "subtest": {
+          "workspace": "service",
+          "flat": true
+        },
+        "flat": true,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "empty_ui_script_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f"
+      },
+      {
+        "prefix_plan_index": 30,
+        "full_plan_index": 31,
+        "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "subtest": {},
+        "flat": false,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "empty_ui_script_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f"
+      },
+      {
+        "prefix_plan_index": 32,
+        "full_plan_index": 33,
+        "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "subtest": {},
+        "flat": false,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "empty_ui_script_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f"
+      },
+      {
+        "prefix_plan_index": 34,
+        "full_plan_index": 35,
+        "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "subtest": {},
+        "flat": false,
+        "initial_size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "empty_ui_script_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f"
+      }
+    ],
+    "count_is_prospective_not_actual_native_execution": true
+  },
+  "original_source_invariants": {
+    "unchanged_native_methods_and_helpers": [
+      "setUpClass",
+      "tearDownClass",
+      "setUp",
+      "run_native",
+      "assert_control_path",
+      "assert_hold_path",
+      "assert_views",
+      "assert_capture_refusals",
+      "assert_header_hold_prefixes",
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize"
+    ],
+    "four_modified_method_bodies_after_removing_only_admitted_additions": [
+      {
+        "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "original_body_preserved_after_only_admitted_additions": true,
+        "original_ast_sha256": "465ee9ab5047808d3616609fe39ffb5ce18c4bc744663d3ec1b2c662528e8297"
+      },
+      {
+        "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "original_body_preserved_after_only_admitted_additions": true,
+        "original_ast_sha256": "e90b950fbca2f8ff224d488d507c7a340ca22ea981c641625db5519cc6ed493c"
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "original_body_preserved_after_only_admitted_additions": true,
+        "original_ast_sha256": "db6cd5f30f75abbabbb22caac183f8b027064ef452e7324dff63aa2a4c4408c1"
+      },
+      {
+        "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "original_body_preserved_after_only_admitted_additions": true,
+        "original_ast_sha256": "6ab1b43b6d2c063e8f0093c8c40e7c218ac442c65b3a2edbbe07e39093b0bb85"
+      }
+    ],
+    "assert_commands_original_note_delta_and_final_ack_assertions_preserved": true,
+    "run_native_body_byte_identical": true,
+    "child_timeout_seconds": 9.0,
+    "ctest_timeout_seconds": 90,
+    "ctest_run_serial": true,
+    "header_visual_settle_ms": 600,
+    "original_header_and_mixed_midi_completed_prefixes_preserved": true,
+    "all_original_full_control_hold_painted_capture_saved_byte_assertions_preserved": true,
+    "pointer_final_empty_minimum_elapsed_ms": 2050,
+    "mixed_midi_acknowledged_owner_window_ms": [
+      2100,
+      2350
+    ]
+  },
+  "verification": {
+    "pure_tests": {
+      "command": "python3 -B apps/standalone/native_tests/test_standalone_workspace_replay.py WorkspaceStartupChronology",
+      "returncode": 0,
+      "test_count": 13,
+      "unittest_elapsed_seconds": 0.01,
+      "methods": [
+        "test_queued_ahead_loaded_startup_is_accepted",
+        "test_full_run_must_retain_the_first_loaded_origin",
+        "test_first_loaded_state_requires_full_controls_and_empty_holds",
+        "test_chronology_rejects_regressed_elapsed_time",
+        "test_chronology_rejects_regressed_applied_sequence",
+        "test_chronology_rejects_regressed_submitted_sequence",
+        "test_chronology_rejects_inconsistent_sequences_and_bounds",
+        "test_same_applied_sequence_cannot_change_musical_state",
+        "test_final_copy_cannot_change_state_without_application",
+        "test_command_counts_delta_and_final_acknowledgment_remain_strict",
+        "test_nonpositive_origin_and_empty_chronology_are_rejected",
+        "test_existing_upper_prefix_can_first_copy_after_origin",
+        "test_existing_header_full_prefix_coalescing_remains_legal"
+      ],
+      "native_subprocesses": 0,
+      "synthetic_records_are_oracle_unit_inputs_not_native_evidence": true
+    },
+    "ast_plan_and_preservation_checks": "passed",
+    "git_diff_check": "passed",
+    "actual_native_subprocesses_by_A59": 0,
+    "build_or_configure_by_A59": false,
+    "native_qualification": "unrun; root-owned",
+    "independent_conformance": "A53-owned; pending separate supplement"
+  },
+  "next_actions": [
+    "A53 independently reviews the frozen diff and seven matching prefix/full bindings.",
+    "Root runs pure and full native qualification at the same actual1fa2a247 application, retaining all37 actual children and exact hashes.",
+    "Retain the original failed invocation; verify previously unreached exact views and saved bytes in the new run.",
+    "Root performs coherent qualification, guarded publication and exact-source hosted checks."
+  ]
+}

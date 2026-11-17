@@ -1,5 +1,190 @@
 # Development log
 
+## 2026-11-17 — Qualified-final local evidence and guarded publication preparation
+
+The heading/title/header continuation has **60 actual distinct workers dispatched
+in ten waves and 57 accepted deliveries**. All wave-10 work is accepted; A52
+core, A53 standalone and A54 VST3 retain the three pending exact-source hosted
+reviews. Follow-ups do not create worker credit. The
+[current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+and [ledger](development/2026-11-16-heading-title-continuation/assignments.json)
+own subsequent outcomes.
+
+**The qualified-final complete run finished 240/242, exit 8, in
+740.263707625 seconds.** The
+[full result](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json),
+[log](development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.log)
+and [frozen inputs](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-inputs.json)
+retain all 475 unchanged code inputs, unchanged recorded build inputs and
+observed nonoverlap of six serialized tests. Workspace replay passes with
+**37 actual native children** and Starter Load passes. The two failed CTests
+are preset raster at its unchanged **30-second timeout**, and native MIDI
+replay with two missing acknowledgment-window observations. This result is
+separate from the preceding
+[semantic full run's 240/242](development/2026-11-16-heading-title-continuation/reports/semantic-final-coherent-results.json);
+the earlier H1 237/240, combined 239/241 and scheduling 238/241 remain intact.
+
+The independent [startup-prefix admission](reviews/WORKSPACE_STARTUP_OBSERVATION_ADMISSION.md)
+and [conformance review](reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md)
+cover the implemented acknowledged startup prefixes and stronger copied-state
+chronology. Current workspace fixture `38808674…` and CMake `64265511…` preserve
+the reviewed journey, deadline and scheduling boundaries. The semantic event-drain
+fix remains main `0c02c619…`, application `1fa2a247…` and unchanged H1 painter
+`0bf731a6…`; the production source was not changed for these later test admissions.
+
+Exactly **three bounded unchanged diagnostics** followed the complete run:
+
+| Diagnostic | Actual result and preserved limit |
+| --- | --- |
+| [Preset raster](development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json) | One invocation passes in 27.517879209 s (CTest 27.48 s), retaining the 30-second timeout, unchanged fixture/painter/CMake/binary hashes, 192 label/focus, 160 glyph, 752 isolation and 96 state cases, with zero failures. |
+| [CC120 external-division MIDI method](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json) | One invocation passes in 2.031860108 s; the original nine-second child limit, events, windows and assertions remain unchanged. |
+| [Real-overflow/reconnect MIDI method](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json) | One invocation passes in 2.037485655 s with the same unchanged limits and source inputs; exact member archives are retained. |
+
+These passing diagnostics are separate observations. The complete suite remains
+240/242 with exit 8; neither a green aggregate nor a specific CPU/scheduler cause
+is established. Root retains this finite local evidence and proceeds to
+exact-source hosted qualification with the independent supplements complete. No source or
+property change, or another full run solely for a green aggregate, follows from
+the diagnostics.
+
+A55 independently admits [two fresh actual installed-app captures](reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md);
+A56 admits the [fresh relocated 17-file package](reviews/FINAL_NATIVE_INSTALL_REVIEW.md).
+README now shows the current `1fa2a247…` captures at canonical and minimum sizes.
+The original fifteen-view H1 gallery remains bound to `bfe8e36d…`, and its
+213-protected-input result stays attached to its original comparison. The old
+600 ms smoke failure remains separate from later journeys.
+
+The [provider recovery checkpoint](development/2026-11-16-heading-title-continuation/reports/h1-recovery-provider-checkpoint.json)
+verifies commit `835755a9069c25ce55bc2c231547458b4b3ffce4`, tree
+`9faad3ce95cc0f4a5c0fd4113a08f0b0915ef97c` and parent `6047723b…`.
+All **366 recovery blobs / 51,076,715 bytes** and **141 additional preflight
+blobs / 6,399,504 bytes** are uploaded. **Main remains `9d60dbf…`; no branch ref
+has been updated.** Root's next guarded nonforced publication preserves both
+`9d60dbf…` and `835755a9…` as parents, verifies the exact tree/parents/contents,
+then supplies that source to A52–A54 for all sixteen hosted families. Their
+actual acceptance, the strict sixty-record result and final evidence/docs
+commit and push remain pending.
+
+The [local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
+now accepts the unchanged source for guarded publication at this finite scope.
+A53's [actual-workspace review](reviews/WORKSPACE_STARTUP_ACTUAL_QUALIFICATION.md)
+verifies 37 children, 101 painted visits, all 37 saved files and 150 retained member files. Root separately verifies the
+lossless archive. A52's [MIDI failure review](development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-failure-review.md)
+retains both failed windows and their unchanged isolated successes. The
+[independent preset timing review](reviews/PRESET_RASTER_LOCAL_TIMING_REVIEW.md)
+retains the unchanged 30-second limit and distinct full/isolated outcomes.
+All review supplements are complete. Hosted acceptance remains pending; the
+original 240/242 aggregate stays failed.
+
+About 50 GiB remains at the last root observation. Original evidence, baselines
+and other owners are preserved. Literal whole-interface 1:1 is unmet and
+unwaived; physical acquisition, connected models, real devices/DAWs, native
+accessibility, callback deadlines, rights and signed release retain their
+separate M0–M9 exits.
+
+## 2026-11-17 — Heading, title and header qualification with permanent regressions
+
+The current [heading/title/header session](development/2026-11-16-heading-title-continuation/README.md)
+began at `113c29b7b14c8fde0859bc405ef8e4141a131ea6`. Its six new A01–A06
+readers covered all 500 atlas pages, with original note/extract identities in
+the [reading receipt](development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json).
+The complete M0–M9 exits, independent owners and nominal dry Engine remain
+binding. This session has its own requested sixty-worker/ten-wave ledger;
+earlier staffing closures do not count again. The current checkpoint and actual
+ledger record continuing acceptance, rather than this dated entry implying a
+completed worker or product gate.
+
+**T2 rack headings and the separately admitted UI-replay repair are published**
+as `6047723b595259de355c74342e48a8ae2ee1e228`, independently verified against
+tree `8bb162b1d5bd153436649339cf9253eaee5c28eb`. The
+[T2 acceptance](development/2026-11-16-heading-title-continuation/reports/t2-acceptance.json)
+records 158 paired cases, 92 complete-model pairs, zero forbidden changes and
+independent actual-frame visual review. The new bounded application-thread
+history preserves startup/modal focus while retaining the musical acknowledgment
+guard; the 23-method CLI suite passes. External exact-key consumers must accept
+the three additive UI-replay fields under diagnostics schema 3. The original
+baseline missing-focus failure, invalidated provenance run and stale-probe
+observation remain retained.
+
+T2's [latest sixteen hosted job families](development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json)
+all succeed, including both macOS architectures, after one unchanged core
+sanitizer retry. The original first-attempt timeout remains. A separate
+[test-only completion repair](reviews/RENDER_RACE_COMPLETION_REVIEW.md) changes
+the post-resume guard from 15 to 45 seconds inside the unchanged 90-second
+CTest bound. The five methods / 45 CLI invocations pass Release in 4.253 s and
+local ASan/UBSan in 20.095 s. The local LSan runtime fatal and separately
+authorized no-LSan diagnostic remain distinct; hosted leak checking is still
+required at the changed source.
+
+**T3 title revision 2 is accepted within its independently frozen scope.** The
+original candidate failed two unchanged warm-ink geometry checks and is
+preserved. A separately proposed/reviewed highlight correction from `0.5F` to
+`0.125F` passes the [complete 158-pair matrix](development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json),
+all 213 protected inputs, zero outside changes, 1,317 material assertions and
+18 density cases. Thirteen actual frames received independent visual admission.
+The canonical warm-ink count is 5,512 against reference 5,415, improving from
+3,863 at the genuine before; this local metric is not whole-image parity.
+
+**Corrected H1 has complete numerical and actual-frame visual evidence.** Its
+genuine pre-H1 source and binaries were retained before implementation. Initial
+fixture/checker defects and the field-only early return's tiny-scale grain
+culling rejection were preserved and corrected under separate independent
+admissions. Current painter `0bf731a6…` and application `bfe8e36d…` pass the
+[64-pair comparison](development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json)
+in 233.244 s: 48 main cases, sixteen companions, four repeats, 103/103 material
+criteria, 10,542 candidate fixture checks including 95 direct helper-restoration
+probes, 1,317 material assertions and zero changes outside the admitted support.
+All 213 protected paths match. The genuine before remains 44 pass / 59 fail.
+Equal-patch mean Y′ error improves from 3.7103256072 to 0.3675152801; RMS error
+improves from 1.6673172881 to 0.3182611193.
+
+The [independent H1 visual review](reviews/HEADER_MATERIAL_H1_VISUAL.md) admits
+all fifteen actual software-rendered views, including five active dimensions
+and the unchanged alternate presentations/workspaces. Both galleries' 69
+payloads and fifteen decoded frames verify. No new seam, band, repeated tile,
+distracting grain, lost title/caption/control or misplaced shadow was found in
+scope. H1's current title threshold count is 5,499; the accepted T3-before count
+is 5,512. Both remain within the unchanged band. The
+[five-case timing record](development/2026-11-16-heading-title-continuation/reports/h1-paint-timing/report.json)
+uses genuine separate executables, thirty warmups and 300 samples each.
+Active median growth is 4.47%, 3.24% and 1.26%, with no existing investigation
+flag. Compact/Flat final pixels match. High absolute software paint costs and
+separate-run scheduler drift preclude hardware frame-rate or callback claims.
+
+The new [stdlib numerical regression](development/2026-11-16-heading-title-continuation/reports/h1-statistics-qualification.json)
+executes the real canonical fixture and independently reproduces before 44/59
+and after 103/0, separating transport and helper-presence outcomes. The new
+[grain-bounds qualification](development/2026-11-16-heading-title-continuation/reports/h1-grain-bounds-qualification.json)
+links identical fixture bytes and libraries against genuine archived initial
+H1 source, which fails at pixel (7,1). The corrected painter passes four cases
+and 96,000 exact RGBA pixels, with independent fixed expected colors and
+renderer-state restoration. Root integrated the CMake registrations,
+completed the final coherent build and installed seventeen Standalone payloads
+with an application identical to the captured binary. The current
+[240-test run](development/2026-11-16-heading-title-continuation/reports/h1-final-ctest.log)
+has an observed workspace-replay failure: the focus-memory method's painted
+history omits Play/Flat 1280×900 before its 960×700 resize. The run is still in
+progress at this dated snapshot. Independent replay event/render-order diagnosis
+is assigned; the original failed log and any corrected execution remain separate.
+No whole-suite pass is inferred from the header's scoped passing gates.
+
+The [installed operator journeys](development/2026-11-16-heading-title-continuation/reports/a41-installed-journeys.json)
+retain five expected outcomes and one failed 600 ms canonical smoke: no required
+note/release sequence was sent or observed. One separately authorized 2,000 ms
+diagnostic passes the unchanged note-on/off, held/release, audio and joined
+shutdown assertions. All seventeen payload hashes and thirty-eight guide links
+verify after relocation. The longer diagnostic does not rewrite the short-run
+failure, make the original six journeys 6/6, or establish a real-device result.
+
+Current STATUS, NEXT_STEPS and the complete plan now route recovery to this
+session. The [checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+owns later final integration, guarded publication and exact-source CI; T2 passes
+cannot qualify unpublished changed inputs. Preserve original failures, accepted
+baselines and all other owners. **Literal whole-interface 1:1 remains unmet and
+unwaived.** Identified physical acquisition, connected AO-28/scanner/Leslie
+models, real displays/devices/DAWs, native accessibility, callback deadlines and
+retirement, rights and signed release remain separate M0–M9 exits.
+
 ## 2026-11-16 — Sixty-worker handoff and exact-source hosted outcomes
 
 All sixty distinct new workers are accepted across ten complete waves of six.

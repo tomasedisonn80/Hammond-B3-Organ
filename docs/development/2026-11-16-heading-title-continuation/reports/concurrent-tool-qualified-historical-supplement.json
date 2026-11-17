@@ -1,0 +1,33 @@
+{
+  "executions": [
+    {
+      "name": "reconciled-historical-h1-static",
+      "command": [
+        "python3",
+        "-B",
+        "tools/compare_header_material.py",
+        "--static-check",
+        "--source-root",
+        "/workspace/scratch/5a28c3564dbf/reconciled-historical-static-view"
+      ],
+      "returncode": 0,
+      "seconds": 19.618048729000293,
+      "stdout_sha256": "c530b6fa720020c057ff46b229ea950e6fd62de3050bb6c0083a8dfd745332c9"
+    },
+    {
+      "name": "reconciled-title-density",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_title_density.py",
+        "--executable",
+        "../build-native/apps/standalone/test_standalone_footage_typography_raster"
+      ],
+      "returncode": 0,
+      "seconds": 11.132781619002344,
+      "stdout_sha256": "a1c715a385ee76a964a6c3a9f71c1c44882250c97dc4a35f0e2147ee6eac81a2"
+    }
+  ],
+  "historical_source_view": "docs/development/2026-11-16-heading-title-continuation/reports/historical-static-source-view.json",
+  "scope": "Historical static tool and current actual density qualification; no current full-matrix rerun. Original rejection, matrices and exact pins remain."
+}

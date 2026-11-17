@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "scope": "Actual integrity and57-accepted progress checks over a Git archive of the exact staged source tree, with unfinished hosted paths excluded. No native execution or substitute filesystem oracle. Original source/evidence untouched; temporary owned355MB source view removed afterward.",
+  "source_tree": "5c2f50c61cc81a9702a160685a8a401860247eef",
+  "source_file_count": 6261,
+  "source_bytes": 355639106,
+  "runs": [
+    {
+      "gate": "repository",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_repository.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "returncode": 0,
+      "seconds": 8.741744992999884,
+      "log_bytes": 1173,
+      "log_sha256": "12c1fe81a6987e115c0073e3ba82c292a61991092b4d7c568654396c4f3dc7da"
+    },
+    {
+      "gate": "session",
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-heading-title-continuation/check_session.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.11637193099886645,
+      "log_bytes": 1258,
+      "log_sha256": "7a4ce74d6a895876304b58dfd11bbf02876845bee04162199f96fd0df5081ca2"
+    }
+  ],
+  "seconds": 14.334594328000094,
+  "excluded_pending_paths": [
+    "docs/development/2026-11-16-heading-title-continuation/notes/A52.md",
+    "docs/development/2026-11-16-heading-title-continuation/notes/A53.md",
+    "docs/reviews/HEADING_HEADER_CORE_HOSTED.md",
+    "docs/reviews/HEADING_HEADER_STANDALONE_HOSTED.md",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted.json",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/preparation.json",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/preparation.json"
+  ],
+  "temporary_source_view_removed": true
+}

@@ -97,6 +97,49 @@ def unique(values: list) -> list:
     return [value for index, value in enumerate(values) if index == 0 or value != values[index - 1]]
 
 
+def assert_copied_startup(case: unittest.TestCase, replay: dict, startup_sequence: int) -> None:
+    """Require the full run's actual first copy of an independently proved origin."""
+    case.assertGreater(startup_sequence, 0)
+    case.assertTrue(replay["observations"], "The copied startup observation must be present")
+    initial = replay["observations"][0]
+    case.assertEqual(initial["last_applied_sequence"], startup_sequence)
+    case.assertEqual(initial["resolved_sequence"], startup_sequence)
+    case.assertEqual(initial["controls"], CONTROLS)
+    case.assertEqual(holds(initial), EMPTY)
+    # Queued acceptance may already be ahead of this retained applied copy.
+    case.assertGreaterEqual(initial["last_submitted_sequence"], startup_sequence)
+
+
+def assert_copied_chronology(case: unittest.TestCase, replay: dict, startup_sequence: int) -> None:
+    """Check coherent copied musical state without demanding every FIFO prefix."""
+    case.assertGreater(startup_sequence, 0)
+    case.assertTrue(replay["observations"], "Musical copied observations are required")
+    final = replay["last_submitted_sequence"]
+    case.assertGreaterEqual(final, startup_sequence)
+    previous_elapsed = 0
+    previous_applied = previous_submitted = startup_sequence
+    previous_state = None
+    for item in replay["observations"]:
+        applied, submitted = item["last_applied_sequence"], item["last_submitted_sequence"]
+        musical_state = (item["controls"], item["manual_notes"], item["pedal_ids"])
+        case.assertGreaterEqual(item["elapsed_ms"], previous_elapsed)
+        case.assertGreaterEqual(applied, previous_applied)
+        case.assertGreaterEqual(submitted, previous_submitted)
+        case.assertEqual(item["resolved_sequence"], applied)
+        case.assertLessEqual(applied, submitted)
+        case.assertLessEqual(submitted, final)
+        if previous_state is not None and applied == previous_applied:
+            case.assertEqual(musical_state, previous_state,
+                             "Unchanged applied sequence must preserve the complete copied musical state")
+        previous_elapsed = item["elapsed_ms"]
+        previous_applied, previous_submitted = applied, submitted
+        previous_state = musical_state
+    before = replay["before_shutdown"]
+    if before["last_applied_sequence"] == previous_applied:
+        case.assertEqual((before["controls"], before["manual_notes"], before["pedal_ids"]), previous_state,
+                         "The final copied state cannot change without a newly applied command")
+
+
 class NativeWorkspaceReplayAcceptance(unittest.TestCase):
     invocations = 0
 
@@ -272,30 +315,31 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                          "Painted observations must retain applied held-count changes")
 
     def assert_commands(self, run: workflow_fixture.WorkflowRun, *, on: int, off: int,
-                        control_changes: int = 0, startup_sequence: int | None = None) -> None:
+                        control_changes: int = 0, startup_sequence: int) -> None:
         observed = run.diagnostics["replay"]
         self.assertEqual(observed["accepted_note_on_commands"], on)
         self.assertEqual(observed["accepted_note_off_commands"], off)
-        if startup_sequence is None:
-            initial = observed["observations"][0]
-            self.assertLess(initial["elapsed_ms"], 180, "A pre-action loaded-state observation is required")
-            startup_sequence = initial["last_applied_sequence"]
-            self.assertEqual(initial["last_submitted_sequence"], startup_sequence)
-        else:
-            # A separately completed prefix supplies the acknowledged origin.
-            # The full journey can first sample that applied state while its
-            # first note is already submitted; submission is not application.
-            self.assertGreater(startup_sequence, 0)
-            for item in observed["observations"]:
-                self.assertGreaterEqual(item["last_applied_sequence"], startup_sequence)
-                self.assertEqual(item["resolved_sequence"], item["last_applied_sequence"])
-                self.assertGreaterEqual(item["last_submitted_sequence"], item["last_applied_sequence"])
-                self.assertLessEqual(item["last_submitted_sequence"], observed["last_submitted_sequence"])
+        assert_copied_chronology(self, observed, startup_sequence)
         final = observed["last_submitted_sequence"]
         self.assertEqual(final - startup_sequence, on + off + control_changes,
                          "Navigation must not inject a sound command or release")
         self.assertEqual(observed["before_shutdown"]["last_applied_sequence"], final)
         self.assertEqual(observed["before_shutdown"]["resolved_sequence"], final)
+
+    def assert_startup_prefix(self, *, size: tuple[int, int] = (1280, 900),
+                              flat: bool = False, state: bytes = STATE) -> int:
+        # Each caller gets a fresh matching process, not a cached observation
+        # or an origin inferred from that full journey's final command count.
+        with self.run_native(250, [], size=size, flat=flat, state=state) as startup:
+            self.assert_control_path(startup, [CONTROLS])
+            self.assert_hold_path(startup, [EMPTY])
+            observed = startup.diagnostics["replay"]
+            startup_sequence = observed["last_submitted_sequence"]
+            assert_copied_startup(self, observed, startup_sequence)
+            self.assert_commands(startup, on=0, off=0, startup_sequence=startup_sequence)
+            self.assertEqual(startup.saved_bytes, state,
+                             "The empty startup prefix must preserve its exact input bytes")
+            return startup_sequence
 
     def assert_views(self, run: workflow_fixture.WorkflowRun, expected: list[tuple], *,
                      held_targets: list[tuple[int, int, int]] | None = None) -> None:
@@ -431,12 +475,14 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                     events += [(1490, "key_down S none 0")] + click(1680, play)
                     events += [(1860, "key_down Space none 0"), (2050, "key_up A none"),
                                (2220, "key_up S none"), (2390, "key_up Space alt+meta")]
+                    startup_sequence = self.assert_startup_prefix(flat=flat)
                     with self.run_native(2600, events, flat=flat) as run:
+                        assert_copied_startup(self, run.diagnostics["replay"], startup_sequence)
                         self.assert_control_path(run, [CONTROLS])
                         self.assert_hold_path(run, [EMPTY, ((60,), (), ()), ((60, 62), (), ()),
                                                    ((60, 62), (60,), ()), ((62,), (60,), ()),
                                                    ((), (60,), ()), EMPTY])
-                        self.assert_commands(run, on=3, off=3)
+                        self.assert_commands(run, on=3, off=3, startup_sequence=startup_sequence)
                         mode = "flat" if flat else "dimensional"
                         self.assert_views(run, [(name, mode, 1280, 900) for name in ("play", workspace, "play")])
                         self.assertEqual(run.saved_bytes, STATE)
@@ -458,10 +504,12 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
             controls = deepcopy(CONTROLS)
             controls["manual_drawbars"][0][1][0] = value
             expected.append(controls)
+        startup_sequence = self.assert_startup_prefix()
         with self.run_native(3750, events, final_size=(960, 700)) as run:
+            assert_copied_startup(self, run.diagnostics["replay"], startup_sequence)
             self.assert_control_path(run, expected)
             self.assert_hold_path(run, [EMPTY])
-            self.assert_commands(run, on=0, off=0, control_changes=6)
+            self.assert_commands(run, on=0, off=0, control_changes=6, startup_sequence=startup_sequence)
             self.assert_views(run, [
                 ("play", "dimensional", 1280, 900), ("rotary", "dimensional", 1280, 900),
                 ("service", "dimensional", 1280, 900), ("play", "dimensional", 1280, 900),
@@ -481,10 +529,12 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
         events += click(1450, (48, 338)) + [(1680, "key_up A alt+meta")]
         zero = deepcopy(CONTROLS)
         zero["manual_drawbars"][0][1][0] = 0
+        startup_sequence = self.assert_startup_prefix()
         with self.run_native(1900, events, final_size=(960, 700)) as run:
+            assert_copied_startup(self, run.diagnostics["replay"], startup_sequence)
             self.assert_control_path(run, [CONTROLS, zero, CONTROLS])
             self.assert_hold_path(run, [EMPTY, ((60,), (), ()), EMPTY])
-            self.assert_commands(run, on=1, off=1, control_changes=2)
+            self.assert_commands(run, on=1, off=1, control_changes=2, startup_sequence=startup_sequence)
             self.assert_views(run, [
                 ("play", "dimensional", 1280, 900), ("play", "flat", 1280, 900),
                 ("service", "flat", 1280, 900), ("play", "flat", 1280, 900),
@@ -498,7 +548,9 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
         events += tap(650, "F6") + tap(850, "F7") + [(1050, "mouse_move 625 580")]
         events += tap(1250, "F4") + [(1450, "resize 960 700"), (1650, "mouse_move 230 470"),
                                     (1850, "mouse_up -80 -80"), (2050, "key_up A alt+shift")]
+        startup_sequence = self.assert_startup_prefix()
         with self.run_native(2250, events, final_size=(960, 700)) as run:
+            assert_copied_startup(self, run.diagnostics["replay"], startup_sequence)
             self.assert_control_path(run, [CONTROLS])
             observed = unique([holds(item) for item in run.diagnostics["replay"]["observations"]])
             # Pointer On/Off may share one audio callback; both legal published
@@ -508,7 +560,7 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                 [EMPTY, ((60,), (), ()), ((36, 60), (), ()), ((60,), (), ()), EMPTY],
             ])
             self.assert_hold_path(run, observed)
-            self.assert_commands(run, on=2, off=2)
+            self.assert_commands(run, on=2, off=2, startup_sequence=startup_sequence)
             self.assertGreaterEqual(next(item["elapsed_ms"] for item in reversed(
                 run.diagnostics["replay"]["observations"]) if holds(item) == EMPTY), 2050)
             self.assert_views(run, [
@@ -573,6 +625,160 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
             ], held_targets=[(1, 2, 1)] * 5 + [(0, 0, 0)])
             self.assert_capture_refusals(run, 4)
             self.assertEqual(run.saved_bytes, STATE)
+
+
+class WorkspaceStartupChronology(unittest.TestCase):
+    """Pure oracle checks; these synthetic dictionaries are not native evidence."""
+
+    @staticmethod
+    def observation(elapsed: int, applied: int, submitted: int,
+                    held: tuple = EMPTY) -> dict:
+        return {"elapsed_ms": elapsed, "last_applied_sequence": applied,
+                "resolved_sequence": applied, "last_submitted_sequence": submitted,
+                "controls": deepcopy(CONTROLS),
+                "manual_notes": [list(held[0]), list(held[1])], "pedal_ids": list(held[2])}
+
+    def setUp(self) -> None:
+        self.origin = 3
+        observations = [self.observation(197, 3, 4),
+                        self.observation(283, 4, 4, ((60,), (), ())),
+                        self.observation(500, 5, 5)]
+        self.replay = {"observations": observations, "last_submitted_sequence": 5,
+                       "accepted_note_on_commands": 1, "accepted_note_off_commands": 1,
+                       "before_shutdown": self.before(observations[-1])}
+
+    @staticmethod
+    def before(observation: dict) -> dict:
+        return {key: deepcopy(value) for key, value in observation.items()
+                if key not in ("elapsed_ms", "last_submitted_sequence")}
+
+    def check_commands(self, replay: dict, *, on: int = 1, off: int = 1,
+                       control_changes: int = 0) -> workflow_fixture.WorkflowRun:
+        run = workflow_fixture.WorkflowRun({"replay": replay}, STATE, 0.0)
+        NativeWorkspaceReplayAcceptance.assert_commands(
+            self, run, on=on, off=off, control_changes=control_changes, startup_sequence=self.origin)
+        return run
+
+    def test_queued_ahead_loaded_startup_is_accepted(self) -> None:
+        # The first retained copy is later than 180 ms with its first note
+        # already queued, while the independent loaded origin is still applied.
+        assert_copied_startup(self, self.replay, self.origin)
+        self.check_commands(self.replay)
+
+    def test_full_run_must_retain_the_first_loaded_origin(self) -> None:
+        for kind in ("empty", "omitted", "advanced_but_empty"):
+            with self.subTest(kind=kind):
+                replay = deepcopy(self.replay)
+                if kind == "empty":
+                    replay["observations"] = []
+                elif kind == "omitted":
+                    replay["observations"] = replay["observations"][1:]
+                else:
+                    replay["observations"][0].update(last_applied_sequence=4, resolved_sequence=4)
+                with self.assertRaises(AssertionError):
+                    assert_copied_startup(self, replay, self.origin)
+
+    def test_first_loaded_state_requires_full_controls_and_empty_holds(self) -> None:
+        for kind in ("remembered_bank", "percussion", "upper", "lower", "pedal"):
+            with self.subTest(kind=kind):
+                replay = deepcopy(self.replay)
+                initial = replay["observations"][0]
+                if kind == "remembered_bank":
+                    initial["controls"]["manual_drawbars"][1][0][0] = 8
+                elif kind == "percussion":
+                    initial["controls"]["percussion"]["enabled"] = False
+                elif kind == "pedal":
+                    initial["pedal_ids"] = [1]
+                else:
+                    initial["manual_notes"][0 if kind == "upper" else 1] = [60]
+                with self.assertRaises(AssertionError):
+                    assert_copied_startup(self, replay, self.origin)
+
+    def test_chronology_rejects_regressed_elapsed_time(self) -> None:
+        self.replay["observations"][1]["elapsed_ms"] = 196
+        with self.assertRaises(AssertionError):
+            self.check_commands(self.replay)
+
+    def test_chronology_rejects_regressed_applied_sequence(self) -> None:
+        self.replay["observations"].insert(2, self.observation(400, 3, 5))
+        with self.assertRaises(AssertionError):
+            self.check_commands(self.replay)
+
+    def test_chronology_rejects_regressed_submitted_sequence(self) -> None:
+        self.replay["observations"][0]["last_submitted_sequence"] = 5
+        with self.assertRaises(AssertionError):
+            self.check_commands(self.replay)
+
+    def test_chronology_rejects_inconsistent_sequences_and_bounds(self) -> None:
+        for changes in ({"resolved_sequence": 4},
+                        {"last_applied_sequence": 2, "resolved_sequence": 2},
+                        {"last_submitted_sequence": 2},
+                        {"last_submitted_sequence": 6}):
+            with self.subTest(changes=changes):
+                replay = deepcopy(self.replay)
+                replay["observations"][0].update(changes)
+                with self.assertRaises(AssertionError):
+                    self.check_commands(replay)
+
+    def test_same_applied_sequence_cannot_change_musical_state(self) -> None:
+        for kind in ("controls", "manual_notes", "pedal_ids"):
+            with self.subTest(kind=kind):
+                replay = deepcopy(self.replay)
+                duplicate = self.observation(220, 3, 4)
+                if kind == "controls":
+                    duplicate["controls"]["expression"] = 0.5
+                elif kind == "manual_notes":
+                    duplicate["manual_notes"][1] = [60]
+                else:
+                    duplicate["pedal_ids"] = [1]
+                replay["observations"].insert(1, duplicate)
+                assert_copied_startup(self, replay, self.origin)
+                with self.assertRaises(AssertionError):
+                    self.check_commands(replay)
+
+    def test_final_copy_cannot_change_state_without_application(self) -> None:
+        self.replay["before_shutdown"]["controls"]["pedal_drawbars"][0] = 8
+        with self.assertRaises(AssertionError):
+            self.check_commands(self.replay)
+
+    def test_command_counts_delta_and_final_acknowledgment_remain_strict(self) -> None:
+        for kind in ("on", "off", "delta", "applied", "resolved"):
+            with self.subTest(kind=kind):
+                replay = deepcopy(self.replay)
+                if kind in ("on", "off"):
+                    replay[f"accepted_note_{kind}_commands"] = 2
+                elif kind in ("applied", "resolved"):
+                    key = "last_applied_sequence" if kind == "applied" else "resolved_sequence"
+                    replay["before_shutdown"][key] = 4
+                with self.assertRaises(AssertionError):
+                    self.check_commands(replay, control_changes=1 if kind == "delta" else 0)
+
+    def test_nonpositive_origin_and_empty_chronology_are_rejected(self) -> None:
+        for origin in (0, -1):
+            with self.subTest(origin=origin), self.assertRaises(AssertionError):
+                assert_copied_chronology(self, self.replay, origin)
+        self.replay["observations"] = []
+        with self.assertRaises(AssertionError):
+            assert_copied_chronology(self, self.replay, self.origin)
+
+    def test_existing_upper_prefix_can_first_copy_after_origin(self) -> None:
+        observation = self.observation(283, 4, 4, ((60,), (), ()))
+        replay = {"observations": [observation], "last_submitted_sequence": 4,
+                  "accepted_note_on_commands": 1, "accepted_note_off_commands": 0,
+                  "before_shutdown": self.before(observation)}
+        run = self.check_commands(replay, on=1, off=0)
+        NativeWorkspaceReplayAcceptance.assert_header_hold_prefixes(self, run, self.origin, through=1)
+
+    def test_existing_header_full_prefix_coalescing_remains_legal(self) -> None:
+        observations = [self.observation(197, 3, 4),
+                        self.observation(320, 5, 5, ((60,), (60,), ())),
+                        self.observation(2200, 6, 6, ((60,), (), ())),
+                        self.observation(2400, 7, 7)]
+        replay = {"observations": observations, "last_submitted_sequence": 7,
+                  "accepted_note_on_commands": 2, "accepted_note_off_commands": 2,
+                  "before_shutdown": self.before(observations[-1])}
+        run = self.check_commands(replay, on=2, off=2)
+        NativeWorkspaceReplayAcceptance.assert_header_hold_prefixes(self, run, self.origin, through=4)
 
 
 if __name__ == "__main__":

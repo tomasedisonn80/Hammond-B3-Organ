@@ -1,0 +1,1847 @@
+{
+  "schema": 1,
+  "worker": "/root/w07_a41",
+  "status": "six-journeys-five-expected-one-failed-diagnostic-passed",
+  "started_at_utc": "2026-11-17T01:57:09.638286+00:00",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "runs": [
+    {
+      "name": "01-help",
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω/bin/hammond_standalone",
+        "--help"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/a41-installed/operator-session/01-help",
+      "environment_overrides": {
+        "SDL_AUDIODRIVER": "a41_no_such_sdl_driver",
+        "SDL_VIDEODRIVER": "a41_no_such_sdl_driver",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "timeout_seconds": 12,
+      "elapsed_seconds": 0.016163868000148796,
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 3189,
+        "sha256": "e2d63ebd994dc34090d9be33be30ca91e0ed7b5ca9c162e7a1e8c074f3431466",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA4VWXXPaOBR996+4j9upsQ1J0zSZfSABNnTzNSFpp9PpdBRbYLW25PUHhP76PVcy4JBt1g8Mkn2/js49V2e9A/psyp9Vagrq9UibXGmRUVKuyZQLob2HSizkCaUiz41Ovle10InIjJb01RS1Mrr65nkE21RmBe0/s9SsqE5VRfb1StWpaWpSWtVKZOqX0guajS4D6yFTVd0TTaJMx8MlNvkTgl0B00QuVSyrrSuBfzoxq46LXCWK9l3IJxHXdDUdTRGdHWmRd9z8d0bsqVeYsqbr4dW4dXdTSO1q2vd5SoCvrmVCuRS6Appuv+OsKQpZ9uJUaC0zuqYHXiOLUlK76VM/CPpH9Eci56LJauq/6dhnZvXM/pLXr9sPuvaFxOl17G95/br9gbX/zXOfSmBRSulgaH1UlDfA/FFSAuyVjlsI5FNRyqoCa5CNRnh+zs/7fSrFimxtJHVSGKVrnyLkMXi/SyR689KLeNr3YhF+xQsW/1fQ80S2tTzKzLJZuhgvklF6KUEVPFP3LwahHkvBhLDpJYA55p7ZZaNNmYusLcxxu8s1PGNLsk4HMHH3mda6c24qkReZ7HHgFhw8h4f9KPLp8DiKom34Nz66nD4c8d7FL2f92MznoNi8tP3R2vcHxz4N3h359K4/6Jr3o8GhdTKIDo/b8DUHvh3eX3RgPTe6Lk3WvpyrDD+wwrKsm8KnmVhKn6AtYLRIXjmfkQt9YhEB9MhV6li22JpyHcYuVBU8Hmz/2sRWKqnTHSLumbrGx5kvVGxbAR+dMCZBcNz/MPBpR5zjKGilTi3Ses/TviP30Qm9j154+hC1jlYsvYV4fuYbR0Um1l2oSwOw1hbsSpaWKUslW+GbZ6J+qb6MrpU4su+ZqVLjBEDBU9qAQwLN32hu3YVM2jPMzU/Zy6tnNQ7jurEIsd6GLVntl8wN7rOIiZS3cFvp61VxqYp6S4cz0+gEtD07eJjejW8vh1/6JJdIqjqFnMZZk4B0u/gd5dpzRLO1RivWKoYv1p6Nt1aJO862Ku7/nlad0eFo2MnB4VixlgEzDZrJ1xh6K0DFhB6moZVEl3eriCloTvIfhjFpSnsQbY34TEqNOdwpkT6XCt3Cw/bs6hb6g5aRm1PkQcVaBPonkgPajm2FRImFNlDeuNp5c84+zm6uScxrCFycmYq9cLk/oHQbj+5kA8+7BQOxeUJD+kwzGtOIJnRPf9EXuqAH+kh/0w1d0i2dBjTph5NBODkANzMg5NnBFtrxFNohgwP+akN9I0c1MnENOAJvchhO3oWTo9aUOGx4Z9kezhzTT2nynmqzWGSSzyEHUoBOZCHzOvDuxWM4S9W8fot/lJslq0vcIKQoS7OqfLowOVg6RniR/OCT2EnDzDZgarKksuVbS+BZuOrpp1wH3riKRcFgZ1JUyOFhCumuJchxXpfZ2xlVKAVx7OoGIiCSzQodixtDRUO+2fie3btq95ghjm8u/bDdv+Db0h/nJs/5HcAzZLXCiiZ7wMSw/hzHcN6QneqEngHhP6s+RPGMAE4+tCVjYYsKPOuj4bKYaphomYpV3d6TuHFOaVgU2Zpa+lc249G2HbaweEbjK+vOrLQsAc+QrH75aAutYqte7ooHFlt5KtEOaJhqF9fGAv3GT/bysKAl5mhCbnRYZAli1o6OUzs6SO3sfdJQFA5TmxwtFgfe5+1l0To5QQ+ZwvAhcy52IpdygWiuJdtb2RkdH/O4xON77qJ1RlG02SJ7l6oIUwG3BiSg+MbHQebCTiLXqaDnjJUE7NaJQxhdjsJbClks41TGON1SQhh4sGGAZI+Ct/itG/yBN2ryfI27uUJ5rWxzDRb0VYpb6QYCrF0v4a3SltVSL1VpNDoHMsgswuWVrwkc7vvwYTS9Gd1NP43v/kxsEN79NB2Nn+0G3rWhIl1XPODa24pP6EBMYDeYRGwalp3eXCUyU/Waj5lHHsODcIqV81+uRBshdQwAAA=="
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACAwMAAAAAAAAAAAA="
+      }
+    },
+    {
+      "name": "02-midi-unavailable",
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω/bin/hammond_standalone",
+        "--list-midi"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/a41-installed/operator-session/02-midi-unavailable",
+      "environment_overrides": {
+        "SDL_AUDIODRIVER": "a41_no_such_sdl_driver",
+        "SDL_VIDEODRIVER": "a41_no_such_sdl_driver",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "timeout_seconds": 12,
+      "elapsed_seconds": 0.006903208999574417,
+      "expected_exit_code": 1,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 26,
+        "sha256": "484e5ebe90d21fabfd6ea3b06fa82f95ff6735b2d3cf08a6964a231ac63339db",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA/P1dPFUSEpMzk7NS7FSKM1LLEvMzElMyknlAgAr9wLpGgAAAA=="
+      },
+      "stderr": {
+        "bytes": 62,
+        "sha256": "746fb8d00dcc8eb652bcd3e65863bde72127a0c38b9944ac58f08980803274b0",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA8tIzM3Nz0uJLy5JzEtJzMnPS7VS8PV08VRISkzOTs1LUcgsVijNSyxLzMxJTMpJVcjMUyjJAIollWbmpHABABr3/XQ+AAAA"
+      }
+    },
+    {
+      "name": "03-canonical-smoke",
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω/bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/absent-canonical.b3controls",
+        "--smoke-ms",
+        "600",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/canonical.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/a41-installed/operator-session/03-canonical-smoke",
+      "environment_overrides": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "timeout_seconds": 12,
+      "elapsed_seconds": 2.4654954530014948,
+      "expected_exit_code": 0,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 77,
+        "sha256": "1b6aae77a2b87172088af88d0730a263b57146c17ea55b5e3285b77bcffd5f54",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA/NLLMksS1UIdvFRKM7Nz05VSEvMzElNsVJITszJSUpMzi62NTQ11VFIK0rMTS22Nbc0NjPQUcjMTUwH8ox0FFKKgNqLbFNKc3MruQCNJnAnTQAAAA=="
+      },
+      "stderr": {
+        "bytes": 72,
+        "sha256": "6584bc32fadb8d8322d6e9e6d51295ce648fd6ebb9c350482945ddfff0772c0f",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACAwXB0Q2AMAgFwH+neHPoDq5gSHlaYgtNIM7vXZc5w/XKElcZ4dxxStlH5IyXuMUG9YB5LrZCdaLFMirU5PHIspbbDxZpK81IAAAA"
+      },
+      "diagnostics": {
+        "bytes": 7467,
+        "sha256": "6686521aa55c4ff674f88a6defa5255df48a6da2c9ebc682756dec3a5f8954af",
+        "encoding": "gzip+base64",
+        "content": "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"
+      },
+      "diagnostics_path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/canonical.json"
+    },
+    {
+      "name": "04-generic-load",
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω/bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/12 Manual Return.b3performance",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/generic-load.b3ui",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--workspace",
+        "play",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/generic-load.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/a41-installed/operator-session/04-generic-load",
+      "environment_overrides": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "timeout_seconds": 12,
+      "elapsed_seconds": 2.9371056970012432,
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACAwMAAAAAAAAAAAA="
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACAwMAAAAAAAAAAAA="
+      },
+      "diagnostics": {
+        "bytes": 28412,
+        "sha256": "a0cb229e5497ab8f34ba73cb04a0b796fbc65bfc5932bd546955a5f19a78bb87",
+        "encoding": "gzip+base64",
+        "content": "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"
+      },
+      "diagnostics_path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/generic-load.json",
+      "state_summary": {
+        "events": 152,
+        "startup_controls": {
+          "manual_drawbars": [
+            [
+              [
+                8,
+                0,
+                8,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                8,
+                0,
+                8,
+                6,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                8,
+                4,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                8,
+                4,
+                4,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "selected_banks": [
+            0,
+            1
+          ],
+          "fixed_registrations": [
+            8,
+            0
+          ],
+          "preset_selections": [
+            0,
+            11
+          ],
+          "route_enabled": [
+            false,
+            true
+          ],
+          "expression": 0.5,
+          "pedal_drawbars": [
+            4,
+            0
+          ],
+          "percussion": {
+            "enabled": true,
+            "harmonic": 1,
+            "volume": 1,
+            "decay": 1
+          }
+        },
+        "acknowledged_edited_controls": {
+          "manual_drawbars": [
+            [
+              [
+                8,
+                0,
+                8,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                8,
+                6,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                8,
+                4,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                8,
+                4,
+                4,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "selected_banks": [
+            1,
+            1
+          ],
+          "fixed_registrations": [
+            0,
+            0
+          ],
+          "preset_selections": [
+            11,
+            11
+          ],
+          "route_enabled": [
+            true,
+            true
+          ],
+          "expression": 1,
+          "pedal_drawbars": [
+            8,
+            0
+          ],
+          "percussion": {
+            "enabled": false,
+            "harmonic": 1,
+            "volume": 1,
+            "decay": 1
+          }
+        },
+        "final_controls": {
+          "manual_drawbars": [
+            [
+              [
+                8,
+                0,
+                8,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                8,
+                0,
+                8,
+                6,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                8,
+                4,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                8,
+                4,
+                4,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "selected_banks": [
+            0,
+            1
+          ],
+          "fixed_registrations": [
+            8,
+            0
+          ],
+          "preset_selections": [
+            0,
+            11
+          ],
+          "route_enabled": [
+            false,
+            true
+          ],
+          "expression": 0.5,
+          "pedal_drawbars": [
+            4,
+            0
+          ],
+          "percussion": {
+            "enabled": true,
+            "harmonic": 1,
+            "volume": 1,
+            "decay": 1
+          }
+        },
+        "ui_observations": 1
+      }
+    },
+    {
+      "name": "05-inverted-expression",
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω/bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/absent-expression.b3controls",
+        "--midi-script",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/expression.b3midi",
+        "--expression-min",
+        "20",
+        "--expression-max",
+        "100",
+        "--expression-invert",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/inverted-expression.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/a41-installed/operator-session/05-inverted-expression",
+      "environment_overrides": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "timeout_seconds": 12,
+      "elapsed_seconds": 0.9368013610001071,
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACAwMAAAAAAAAAAAA="
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACAwMAAAAAAAAAAAA="
+      },
+      "diagnostics": {
+        "bytes": 18102,
+        "sha256": "77aad6a69eec462cdb93e741c64b15dc06d3d183faeae3f60821484030e7bf67",
+        "encoding": "gzip+base64",
+        "content": "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"
+      },
+      "diagnostics_path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/inverted-expression.json"
+    },
+    {
+      "name": "06-audio-unavailable",
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω/bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/absent-no-audio.b3controls",
+        "--smoke-ms",
+        "600",
+        "--workspace",
+        "service",
+        "--flat",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/no-audio.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/a41-installed/operator-session/06-audio-unavailable",
+      "environment_overrides": {
+        "SDL_AUDIODRIVER": "a41_no_such_sdl_driver",
+        "SDL_VIDEODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "timeout_seconds": 12,
+      "elapsed_seconds": 0.7371855169985793,
+      "expected_exit_code": 1,
+      "exit_code": 1,
+      "stdout": {
+        "bytes": 67,
+        "sha256": "d80b0214aa0cd9753ba1aebef076a2e815c31a0928ffcc6157e213b20327c2cd",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA/NLLMksS1UIdvFRKM7Nz05VSEvMzElNsVJITszJSUpMzi62NdBRSCtKzE0FszJzE9OBLENDHYWUIqDOIlsuAAXoxPZDAAAA"
+      },
+      "stderr": {
+        "bytes": 199,
+        "sha256": "054c74ea6a3dbd959ccdf97937c82fbc44bc2b65ad05a11237477e4023986f07",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA22OMQ7CQAwE+7zCXWokqlAhUSIaHnAyZ5OzuNhR7KTg9VyUln52ZwpOkyklD1TCasoDPAyuK4kNkFHVAkQlBKt8GZwr52CC5+0OuFNAi2y8DMcGApeRA3o8n5Ja8jWX5FTTQfWw/+GGUvFVuSv/9BgNBZ/sw/BuJNOlJfjcxBCFIdssrYAERzUPyd79ACZKpXzHAAAA"
+      },
+      "diagnostics": {
+        "bytes": 6630,
+        "sha256": "b3ab39c3039cde82115f44752acf803907d48ff4ed1f8c3c8f7147e08d125546",
+        "encoding": "gzip+base64",
+        "content": "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"
+      },
+      "diagnostics_path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/no-audio.json"
+    },
+    {
+      "name": "07-canonical-2000ms-diagnostic",
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω/bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/absent-canonical.b3controls",
+        "--smoke-ms",
+        "2000",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/canonical-2000ms.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/a41-installed/operator-session/07-canonical-2000ms-diagnostic",
+      "environment_overrides": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "timeout_seconds": 12,
+      "elapsed_seconds": 2.3873312809992058,
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": {
+        "bytes": 78,
+        "sha256": "582f8249dd50c9874040419e9ce207a757382d286a11e9c6e64648663c825065",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA/NLLMksS1UIdvFRKM7Nz05VKEgsLk5NsVJITszJSUpMzi62NbQ00VFIK0rMTS22tbQ0NrLQUcjMTUwH8gyBzJQioP4i25TS3NxKLgDzJ6fYTgAAAA=="
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACAwMAAAAAAAAAAAA="
+      },
+      "diagnostics": {
+        "bytes": 9017,
+        "sha256": "fb36612588a14b1fcd8b8b3ed832aeda3d494ec2e0d89e8585d6841013643689",
+        "encoding": "gzip+base64",
+        "content": "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"
+      },
+      "diagnostics_path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/canonical-2000ms.json",
+      "classification": "Separate passed 2000ms diagnostic; original 600ms failure remains open."
+    }
+  ],
+  "checks": [
+    {
+      "check": "root candidate painter still matches admitted source",
+      "passed": true
+    },
+    {
+      "check": "root-installed executable is exact candidate",
+      "passed": true
+    },
+    {
+      "check": "exact MIDI-disabled 17-file installed payload",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: STANDALONE_INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: STANDALONE_APP.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: STANDALONE_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: MIDI_UI_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: THIRD_PARTY_NOTICES.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: LICENSE-SDL2.txt",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: LICENSE-DejaVu.txt",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: sdl2-lock.json",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: font-source-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: reference-source-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: atlas-reference.json",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: standalone-capabilities.json",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: MIDI_EXPRESSION_GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "installed source bytes: reference-apron-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "private copied payload preserves all bytes and modes",
+      "passed": true
+    },
+    {
+      "check": "private payload actually relocated without byte changes",
+      "passed": true
+    },
+    {
+      "check": "capability schema/component",
+      "passed": true
+    },
+    {
+      "check": "MIDI disabled capability explicitly retained",
+      "passed": true
+    },
+    {
+      "check": "profile identity is embedded and nominal",
+      "passed": true
+    },
+    {
+      "check": "capability hash: sdl2.lock_sha256",
+      "passed": true
+    },
+    {
+      "check": "capability hash: sdl2.license_sha256",
+      "passed": true
+    },
+    {
+      "check": "capability hash: fonts.manifest_sha256",
+      "passed": true
+    },
+    {
+      "check": "capability hash: fonts.license_sha256",
+      "passed": true
+    },
+    {
+      "check": "capability hash: reference_art.manifest_sha256",
+      "passed": true
+    },
+    {
+      "check": "capability hash: reference_art.provenance_sha256",
+      "passed": true
+    },
+    {
+      "check": "capability hash: reference_apron.manifest_sha256",
+      "passed": true
+    },
+    {
+      "check": "capability hash: reference_apron.provenance_sha256",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> STANDALONE_APP.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> MIDI_UI_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> MIDI_EXPRESSION_GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> STANDALONE_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> MIDI_EXPRESSION_GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_INSTALL.md -> MIDI_EXPRESSION_GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_APP.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_APP.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_APP.md -> MIDI_UI_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_APP.md -> STANDALONE_INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_APP.md -> STANDALONE_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_APP.md -> MIDI_UI_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_APP.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_MODEL.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_MODEL.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_MODEL.md -> MIDI_UI_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: STANDALONE_MODEL.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_UI_RUNBOOK.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_UI_RUNBOOK.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_UI_RUNBOOK.md -> STANDALONE_APP.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_UI_RUNBOOK.md -> STANDALONE_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_UI_RUNBOOK.md -> STANDALONE_INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_UI_RUNBOOK.md -> STANDALONE_INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_UI_RUNBOOK.md -> STANDALONE_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: PRESET_RUNBOOK.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> STANDALONE_APP.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> STANDALONE_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> MIDI_UI_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> STANDALONE_INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: INTERFACE_RUNBOOK.md -> STANDALONE_APP.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_EXPRESSION_GUIDE.md -> INTERFACE_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_EXPRESSION_GUIDE.md -> PRESET_RUNBOOK.md",
+      "passed": true
+    },
+    {
+      "check": "installed guide link: MIDI_EXPRESSION_GUIDE.md -> STANDALONE_INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "01-help: exact expected exit",
+      "passed": true
+    },
+    {
+      "check": "01-help: no unexpected stderr",
+      "passed": true
+    },
+    {
+      "check": "help: exact supported operator commands before SDL",
+      "passed": true
+    },
+    {
+      "check": "02-midi-unavailable: exact expected exit",
+      "passed": true
+    },
+    {
+      "check": "MIDI unavailable: explicit build boundary, no fallback",
+      "passed": true
+    },
+    {
+      "check": "MIDI unavailable: no SDL initialization",
+      "passed": true
+    },
+    {
+      "check": "03-canonical-smoke: exact expected exit",
+      "passed": false
+    },
+    {
+      "check": "04-generic-load: exact expected exit",
+      "passed": true
+    },
+    {
+      "check": "04-generic-load: no unexpected stderr",
+      "passed": true
+    },
+    {
+      "check": "generic Load: actual diagnostic schema",
+      "passed": true
+    },
+    {
+      "check": "generic Load: unchanged embedded nominal profile",
+      "passed": true
+    },
+    {
+      "check": "generic Load: explicit dummy/software drivers",
+      "passed": true
+    },
+    {
+      "check": "generic Load: actual logical and drawable dimensions",
+      "passed": true
+    },
+    {
+      "check": "generic Load: real SDL frames rendered",
+      "passed": true
+    },
+    {
+      "check": "generic Load: dummy audio executed",
+      "passed": true
+    },
+    {
+      "check": "generic Load: no audio render errors",
+      "passed": true
+    },
+    {
+      "check": "generic Load: no session fault/recovery/rejection",
+      "passed": true
+    },
+    {
+      "check": "generic Load: stopped and released at shutdown",
+      "passed": true
+    },
+    {
+      "check": "generic Load: no application error",
+      "passed": true
+    },
+    {
+      "check": "generic Load: MIDI-OFF runtime agrees with capability",
+      "passed": true
+    },
+    {
+      "check": "generic Load: no physical port or callback",
+      "passed": true
+    },
+    {
+      "check": "generic Load: no native MIDI generation or final activity",
+      "passed": true
+    },
+    {
+      "check": "generic Load: acknowledged replay completion",
+      "passed": true
+    },
+    {
+      "check": "generic Load: no pending operation or history truncation",
+      "passed": true
+    },
+    {
+      "check": "generic Load: complete original bounded event schedule",
+      "passed": true
+    },
+    {
+      "check": "generic Load: exact full controls including expression, banks, presets, routes, pedals and percussion restored",
+      "passed": true
+    },
+    {
+      "check": "generic Load: no held transient state restored",
+      "passed": true
+    },
+    {
+      "check": "generic Load: final full state acknowledged by session",
+      "passed": true
+    },
+    {
+      "check": "generic Load: startup state observed before live edits",
+      "passed": true
+    },
+    {
+      "check": "generic Load: fully altered state acknowledged before Load",
+      "passed": true
+    },
+    {
+      "check": "generic Load: new applied Load observed after edited state",
+      "passed": true
+    },
+    {
+      "check": "05-inverted-expression: exact expected exit",
+      "passed": true
+    },
+    {
+      "check": "05-inverted-expression: no unexpected stderr",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: actual diagnostic schema",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: unchanged embedded nominal profile",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: explicit dummy/software drivers",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: actual logical and drawable dimensions",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: real SDL frames rendered",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: dummy audio executed",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: no audio render errors",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: no session fault/recovery/rejection",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: stopped and released at shutdown",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: no application error",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: MIDI-OFF runtime agrees with capability",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: no physical port or callback",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: no native MIDI generation or final activity",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: actual replay completed and acknowledged",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: CC11 value 40 maps to 0.75, notes released",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: calibration epoch observable then inactive",
+      "passed": true
+    },
+    {
+      "check": "inverted expression: no implicit state save",
+      "passed": true
+    },
+    {
+      "check": "06-audio-unavailable: exact expected exit",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: explicit selected-driver failure",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: no silent driver fallback",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: no callback/frame/format claims",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: unprepared zero-clock session",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: usable Service/Flat UI remains rendered",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: completed failure is not passed audio smoke",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: visible error and no implicit save",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: MIDI-OFF runtime agrees with capability",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: no physical port or callback",
+      "passed": true
+    },
+    {
+      "check": "audio unavailable: no native MIDI generation or final activity",
+      "passed": true
+    },
+    {
+      "check": "unchanged private input: state",
+      "passed": true
+    },
+    {
+      "check": "unchanged private input: load_script",
+      "passed": true
+    },
+    {
+      "check": "unchanged private input: midi_script",
+      "passed": true
+    },
+    {
+      "check": "source starter controls unchanged",
+      "passed": true
+    },
+    {
+      "check": "installed and relocated payloads unchanged after all six runs",
+      "passed": true
+    },
+    {
+      "check": "production painter unchanged throughout installed journeys",
+      "passed": true
+    },
+    {
+      "check": "07-canonical-2000ms-diagnostic: exact expected exit",
+      "passed": true
+    },
+    {
+      "check": "07-canonical-2000ms-diagnostic: no unexpected stderr",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: actual diagnostic schema",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: unchanged embedded nominal profile",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: explicit dummy/software drivers",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: actual logical and drawable dimensions",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: real SDL frames rendered",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: dummy audio executed",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: no audio render errors",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: no session fault/recovery/rejection",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: stopped and released at shutdown",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: no application error",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: MIDI-OFF runtime agrees with capability",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: no physical port or callback",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: no native MIDI generation or final activity",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: every unchanged smoke correctness assertion passes",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: original absent state still absent",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: installed and relocated payloads remain exact",
+      "passed": true
+    },
+    {
+      "check": "canonical 2000ms diagnostic: painter remains exact",
+      "passed": true
+    }
+  ],
+  "source_inputs": {
+    "STANDALONE_INSTALL.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/STANDALONE_INSTALL.md",
+      "bytes": 19010,
+      "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba"
+    },
+    "STANDALONE_APP.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/STANDALONE_APP.md",
+      "bytes": 26725,
+      "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262"
+    },
+    "STANDALONE_MODEL.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/STANDALONE_MODEL.md",
+      "bytes": 9182,
+      "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3"
+    },
+    "MIDI_UI_RUNBOOK.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/MIDI_UI_RUNBOOK.md",
+      "bytes": 29640,
+      "sha256": "e519fec270928c864f358e617a7750de8968ef02786c8c6a7b7261d0031c63e9"
+    },
+    "PRESET_RUNBOOK.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/PRESET_RUNBOOK.md",
+      "bytes": 18545,
+      "sha256": "8a2a8a2eed10ff69871e86a2d914ad9278d03433ed96e8c621fe6730b2e29cde"
+    },
+    "INTERFACE_RUNBOOK.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/INTERFACE_RUNBOOK.md",
+      "bytes": 25156,
+      "sha256": "a9e87298b9ab14564b9799d23b872f978bbda1d759bfe2c9ce85be5f06c00674"
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/THIRD_PARTY_NOTICES.md",
+      "bytes": 23009,
+      "sha256": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b"
+    },
+    "LICENSE-SDL2.txt": {
+      "path": "/workspace/scratch/3edffb787db3/SDL2/LICENSE.txt",
+      "bytes": 884,
+      "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+    },
+    "LICENSE-DejaVu.txt": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/assets/standalone/fonts/LICENSE-DejaVu.txt",
+      "bytes": 2345,
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+    },
+    "sdl2-lock.json": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/data/dependencies/sdl2-lock.json",
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    "font-source-manifest.json": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/assets/standalone/fonts/source-manifest.json",
+      "bytes": 1428,
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+    },
+    "reference-source-manifest.json": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/assets/standalone/reference/manifest.json",
+      "bytes": 3816,
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87"
+    },
+    "atlas-reference.json": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/design/atlas-reference.json",
+      "bytes": 811,
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+    },
+    "standalone-capabilities.json": {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/generated/standalone-capabilities.json",
+      "bytes": 1865,
+      "sha256": "36f1af1f7ef32a312af3bc7c3c010355bdda2156bd0baf0cc807b67a88b761a6"
+    },
+    "MIDI_EXPRESSION_GUIDE.md": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/MIDI_EXPRESSION_GUIDE.md",
+      "bytes": 23478,
+      "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c"
+    },
+    "reference-apron-manifest.json": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/assets/standalone/reference-apron-v1/manifest.json",
+      "bytes": 2416,
+      "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8"
+    }
+  },
+  "source_painter": {
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+    "bytes": 171413,
+    "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+  },
+  "installed_prefix": "/workspace/scratch/5a28c3564dbf/install-header-h1",
+  "installed_tree_before": {
+    "bin": {
+      "kind": "directory"
+    },
+    "bin/hammond_standalone": {
+      "kind": "file",
+      "bytes": 4103352,
+      "sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b",
+      "executable": true
+    },
+    "share": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ/standalone": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 25156,
+      "sha256": "a9e87298b9ab14564b9799d23b872f978bbda1d759bfe2c9ce85be5f06c00674",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+      "kind": "file",
+      "bytes": 2345,
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+      "kind": "file",
+      "bytes": 884,
+      "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/MIDI_EXPRESSION_GUIDE.md": {
+      "kind": "file",
+      "bytes": 23478,
+      "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 29640,
+      "sha256": "e519fec270928c864f358e617a7750de8968ef02786c8c6a7b7261d0031c63e9",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 18545,
+      "sha256": "8a2a8a2eed10ff69871e86a2d914ad9278d03433ed96e8c621fe6730b2e29cde",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+      "kind": "file",
+      "bytes": 26725,
+      "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+      "kind": "file",
+      "bytes": 19010,
+      "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+      "kind": "file",
+      "bytes": 9182,
+      "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+      "kind": "file",
+      "bytes": 23009,
+      "sha256": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/atlas-reference.json": {
+      "kind": "file",
+      "bytes": 811,
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+      "kind": "file",
+      "bytes": 1428,
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/reference-apron-manifest.json": {
+      "kind": "file",
+      "bytes": 2416,
+      "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+      "kind": "file",
+      "bytes": 3816,
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+      "kind": "file",
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+      "kind": "file",
+      "bytes": 1865,
+      "sha256": "36f1af1f7ef32a312af3bc7c3c010355bdda2156bd0baf0cc807b67a88b761a6",
+      "executable": false
+    }
+  },
+  "driver": {
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../a41-installed/run_journeys.py",
+    "bytes": 23930,
+    "sha256": "6172ca32aeb989bbab11f0ca40f106c11aa7b5f5a02ba6f3e12f69dd5b38f90f",
+    "source": "#!/usr/bin/env python3\n\"\"\"Six explicitly authorized installed-app journeys; no configure/install/build.\n\nExecute only after the root has supplied the installed H1 prefix and released\nits exclusive timing/build workload. This private driver preserves exact raw\nstdout/stderr/diagnostic bytes in the final bounded repository receipt.\n\"\"\"\nfrom __future__ import annotations\n\nimport base64\nimport copy\nimport datetime\nimport gzip\nimport hashlib\nimport json\nimport os\nfrom pathlib import Path\nimport platform\nimport re\nimport shutil\nimport stat\nimport subprocess\nimport time\n\n\nROOT = Path('/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ')\nWORK = ROOT.parent / 'a41-installed'\nINSTALLED = ROOT.parent / 'install-header-h1'\nSTAGED = WORK / 'copied organ Ω'\nMOVED = WORK / 'relocated organ Ω'\nSESSION = ROOT / 'docs/development/2026-11-16-heading-title-continuation'\nREPORT = SESSION / 'reports/a41-installed-journeys.json'\nMETA = Path('share/hammond-b3-organ/standalone')\nEXE_SHA = 'bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b'\nPAINTER_SHA = '0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d'\nSOURCE_FILES = {\n    'STANDALONE_INSTALL.md': ROOT / 'docs/STANDALONE_INSTALL.md',\n    'STANDALONE_APP.md': ROOT / 'docs/STANDALONE_APP.md',\n    'STANDALONE_MODEL.md': ROOT / 'docs/STANDALONE_MODEL.md',\n    'MIDI_UI_RUNBOOK.md': ROOT / 'docs/MIDI_UI_RUNBOOK.md',\n    'PRESET_RUNBOOK.md': ROOT / 'docs/PRESET_RUNBOOK.md',\n    'INTERFACE_RUNBOOK.md': ROOT / 'docs/INTERFACE_RUNBOOK.md',\n    'THIRD_PARTY_NOTICES.md': ROOT / 'THIRD_PARTY_NOTICES.md',\n    'LICENSE-SDL2.txt': Path('/workspace/scratch/3edffb787db3/SDL2/LICENSE.txt'),\n    'LICENSE-DejaVu.txt': ROOT / 'assets/standalone/fonts/LICENSE-DejaVu.txt',\n    'sdl2-lock.json': ROOT / 'data/dependencies/sdl2-lock.json',\n    'font-source-manifest.json': ROOT / 'assets/standalone/fonts/source-manifest.json',\n    'reference-source-manifest.json': ROOT / 'assets/standalone/reference/manifest.json',\n    'atlas-reference.json': ROOT / 'docs/design/atlas-reference.json',\n    'standalone-capabilities.json': ROOT.parent / 'build-native/generated/standalone-capabilities.json',\n    'MIDI_EXPRESSION_GUIDE.md': ROOT / 'docs/MIDI_EXPRESSION_GUIDE.md',\n    'reference-apron-manifest.json': ROOT / 'assets/standalone/reference-apron-v1/manifest.json',\n}\nGUIDES = ('STANDALONE_INSTALL.md', 'STANDALONE_APP.md', 'STANDALONE_MODEL.md',\n          'MIDI_UI_RUNBOOK.md', 'PRESET_RUNBOOK.md', 'INTERFACE_RUNBOOK.md',\n          'THIRD_PARTY_NOTICES.md', 'MIDI_EXPRESSION_GUIDE.md')\nSAVED_CONTROLS = {\n    'manual_drawbars': [\n        [[8, 0, 8, 0, 0, 0, 0, 0, 0], [8, 0, 8, 6, 0, 0, 0, 0, 0]],\n        [[0, 0, 8, 4, 0, 0, 0, 0, 0], [0, 0, 8, 4, 4, 0, 0, 0, 0]],\n    ],\n    'selected_banks': [0, 1], 'fixed_registrations': [8, 0],\n    'preset_selections': [0, 11], 'route_enabled': [False, True],\n    'expression': 0.5, 'pedal_drawbars': [4, 0],\n    'percussion': {'enabled': True, 'harmonic': 1, 'volume': 1, 'decay': 1},\n}\nINVALID = 'a41_no_such_sdl_driver'\nreport = {'schema': 1, 'worker': '/root/w07_a41', 'status': 'preparing',\n          'started_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),\n          'platform': platform.platform(), 'python': platform.python_version(),\n          'runs': [], 'checks': []}\n\n\ndef sha(data):\n    return hashlib.sha256(data).hexdigest()\n\n\ndef identity(path):\n    data = path.read_bytes()\n    return {'path': str(path), 'bytes': len(data), 'sha256': sha(data)}\n\n\ndef keep_bytes(data):\n    assert len(data) <= 2 * 1024 * 1024\n    compressed = gzip.compress(data, mtime=0)\n    assert gzip.decompress(compressed) == data\n    return {'bytes': len(data), 'sha256': sha(data), 'encoding': 'gzip+base64',\n            'content': base64.b64encode(compressed).decode('ascii')}\n\n\ndef flush():\n    REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\\n', encoding='utf-8')\n\n\ndef check(condition, text):\n    report['checks'].append({'check': text, 'passed': bool(condition)})\n    if not condition:\n        raise AssertionError(text)\n\n\ndef tree(root):\n    result = {}\n    for path in sorted(root.rglob('*')):\n        mode = path.lstat().st_mode\n        name = path.relative_to(root).as_posix()\n        if stat.S_ISDIR(mode):\n            result[name] = {'kind': 'directory'}\n        else:\n            assert stat.S_ISREG(mode) and not path.is_symlink(), path\n            data = path.read_bytes()\n            result[name] = {'kind': 'file', 'bytes': len(data), 'sha256': sha(data),\n                            'executable': bool(mode & 0o111)}\n    return result\n\n\ndef strict_object(pairs):\n    result = {}\n    for key, value in pairs:\n        if key in result:\n            raise ValueError('Duplicate JSON key: ' + key)\n        result[key] = value\n    return result\n\n\ndef invalid_number(value):\n    raise ValueError('Nonfinite JSON token: ' + value)\n\n\ndef decode(data):\n    return json.loads(data, object_pairs_hook=strict_object, parse_constant=invalid_number)\n\n\ndef tap(at, key, modifiers='none'):\n    return [(at, f'key_down {key} {modifiers} 0'),\n            (at + 10, f'key_up {key} {modifiers}')]\n\n\ndef tabs(at, count, modifiers='none'):\n    return [event for i in range(count) for event in tap(at + 20 * i, 'Tab', modifiers)]\n\n\ndef load_script():\n    # Exact existing independent installed-state Load workflow: 1280x900.\n    events = tabs(200, 24) + tap(750, 'Return')\n    events += tap(800, 'Tab') + tap(850, 'Home')\n    events += tabs(900, 36) + tap(1650, 'End')\n    events += tabs(1700, 4, 'shift') + tap(1800, 'Return')\n    events += tabs(1850, 5) + tap(1970, 'End')\n    events += tap(2200, 'O', 'ctrl')\n    return 'B3UIREPLAY1\\nduration_ms 2700\\n' + ''.join(f'{at} {action}\\n' for at, action in events)\n\n\ndef run(name, args, *, expected, audio='dummy', video='dummy', diagnostic=None, timeout=12):\n    cwd = WORK / 'operator-session' / name\n    cwd.mkdir(parents=True, exist_ok=False)\n    environment = os.environ.copy()\n    environment.update(SDL_AUDIODRIVER=audio, SDL_VIDEODRIVER=video,\n                       SDL_RENDER_DRIVER='software')\n    command = [str(MOVED / 'bin/hammond_standalone'), *map(str, args)]\n    started = time.monotonic()\n    completed = subprocess.run(command, cwd=cwd, env=environment,\n        stdin=subprocess.DEVNULL, capture_output=True, timeout=timeout, check=False)\n    entry = {'name': name, 'command': command, 'cwd': str(cwd),\n             'environment_overrides': {'SDL_AUDIODRIVER': audio, 'SDL_VIDEODRIVER': video,\n                                      'SDL_RENDER_DRIVER': 'software'},\n             'timeout_seconds': timeout, 'elapsed_seconds': time.monotonic() - started,\n             'expected_exit_code': expected, 'exit_code': completed.returncode,\n             'stdout': keep_bytes(completed.stdout), 'stderr': keep_bytes(completed.stderr)}\n    report['runs'].append(entry)\n    if diagnostic is not None and diagnostic.is_file():\n        raw = diagnostic.read_bytes()\n        entry['diagnostics'] = keep_bytes(raw)\n        entry['diagnostics_path'] = str(diagnostic)\n        data = decode(raw)\n    else:\n        data = None\n    flush()  # Preserve unexpected actual exit/output before asserting.\n    check(completed.returncode == expected, name + ': exact expected exit')\n    if expected == 0:\n        check(not completed.stderr, name + ': no unexpected stderr')\n    return completed, data, entry\n\n\ndef no_physical_input(data, name):\n    midi = data['midi']\n    check(midi['backend_available'] is False and midi['backend'] == 'unavailable', name + ': MIDI-OFF runtime agrees with capability')\n    check(midi['requested_port'] == '' and midi['device']['callback_messages'] == 0,\n          name + ': no physical port or callback')\n    check(midi['generation'] == 0 and midi['active_after_shutdown'] is False,\n          name + ': no native MIDI generation or final activity')\n\n\ndef normal_runtime(data, name, width, height):\n    check(data['schema_version'] == 3 and data['application'] == 'hammond_standalone', name + ': actual diagnostic schema')\n    check(data['profile'] == {'id': 'nominal-unmeasured-v1',\n          'authoring_sha256': '49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83'},\n          name + ': unchanged embedded nominal profile')\n    runtime, audio, session = (data[key] for key in ('runtime', 'audio', 'session'))\n    check((runtime['video_driver'], runtime['renderer'], audio['driver']) ==\n          ('dummy', 'software', 'dummy'), name + ': explicit dummy/software drivers')\n    check([runtime[key] for key in ('window_width', 'window_height', 'drawable_width', 'drawable_height')]\n          == [width, height, width, height], name + ': actual logical and drawable dimensions')\n    check(runtime['sdl_version'] == '2.32.10' and runtime['rendered_images'] > 0,\n          name + ': real SDL frames rendered')\n    check(audio['callback_count'] > 0 and audio['rendered_frames'] > 0 and\n          audio['open_before_shutdown'] is True and audio['running_before_shutdown'] is True,\n          name + ': dummy audio executed')\n    check(all(audio[key] == 0 for key in ('render_failures', 'format_failures', 'overrange_failures',\n          'overrange_samples', 'nonfinite_failures', 'nonfinite_samples')), name + ': no audio render errors')\n    check(all(session[key] == 0 for key in ('recovery_count', 'queue_overflows', 'rejected_commands', 'fault_flags')),\n          name + ': no session fault/recovery/rejection')\n    check(session['running_after_shutdown'] is False and session['held_after_shutdown'] is False,\n          name + ': stopped and released at shutdown')\n    check(data['errors'] == {'count': 0, 'last': ''}, name + ': no application error')\n    no_physical_input(data, name)\n\n\ndef main():\n    check(sha((ROOT / 'apps/standalone/InstrumentView.cpp').read_bytes()) == PAINTER_SHA,\n          'root candidate painter still matches admitted source')\n    check(sha((INSTALLED / 'bin/hammond_standalone').read_bytes()) == EXE_SHA,\n          'root-installed executable is exact candidate')\n    before = tree(INSTALLED)\n    files = {k: v for k, v in before.items() if v['kind'] == 'file'}\n    expected_names = {'bin/hammond_standalone', *((META / name).as_posix() for name in SOURCE_FILES)}\n    check(set(files) == expected_names and len(files) == 17, 'exact MIDI-disabled 17-file installed payload')\n    source_inputs = {name: identity(path) for name, path in SOURCE_FILES.items()}\n    for name, item in source_inputs.items():\n        check(files[(META / name).as_posix()]['sha256'] == item['sha256'], 'installed source bytes: ' + name)\n    report['source_inputs'] = source_inputs\n    report['source_painter'] = identity(ROOT / 'apps/standalone/InstrumentView.cpp')\n    report['installed_prefix'] = str(INSTALLED)\n    report['installed_tree_before'] = before\n    report['driver'] = {**identity(Path(__file__)), 'source': Path(__file__).read_text()}\n    shutil.copytree(INSTALLED, STAGED)\n    check(tree(STAGED) == before, 'private copied payload preserves all bytes and modes')\n    STAGED.rename(MOVED)\n    check(not STAGED.exists() and tree(MOVED) == before, 'private payload actually relocated without byte changes')\n    report['relocated_prefix'] = str(MOVED)\n    metadata = {name: MOVED / META / name for name in SOURCE_FILES}\n    capability = decode(metadata['standalone-capabilities.json'].read_bytes())\n    report['capability'] = capability\n    check(capability['schema_version'] == 1 and capability['component'] == 'Standalone', 'capability schema/component')\n    check(capability['midi']['enabled'] is False and capability['midi']['backend'] == 'unavailable'\n          and capability['midi']['rtmidi'] is None, 'MIDI disabled capability explicitly retained')\n    check(capability['profile'] == 'embedded nominal-unmeasured-v1', 'profile identity is embedded and nominal')\n    for section, fields in {\n        'sdl2': {'lock_sha256': 'sdl2-lock.json', 'license_sha256': 'LICENSE-SDL2.txt'},\n        'fonts': {'manifest_sha256': 'font-source-manifest.json', 'license_sha256': 'LICENSE-DejaVu.txt'},\n        'reference_art': {'manifest_sha256': 'reference-source-manifest.json', 'provenance_sha256': 'atlas-reference.json'},\n        'reference_apron': {'manifest_sha256': 'reference-apron-manifest.json', 'provenance_sha256': 'atlas-reference.json'},\n    }.items():\n        for field, name in fields.items():\n            check(capability[section][field] == source_inputs[name]['sha256'], 'capability hash: ' + section + '.' + field)\n    link_count = 0\n    for name in GUIDES:\n        for target in re.findall(r'(?<!!)\\[[^\\]]+\\]\\(([^)]+)\\)', metadata[name].read_text()):\n            if re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target) or target.startswith('#'):\n                continue\n            path = target.split('#', 1)[0]\n            check(path in metadata and metadata[path].is_file(), 'installed guide link: ' + name + ' -> ' + path)\n            link_count += 1\n    report['installed_relative_guide_links'] = link_count\n\n    paths = WORK / 'session-files'\n    paths.mkdir(exist_ok=False)\n    original = ROOT / 'data/registrations/starter-v1/entries/12 Manual Return.b3performance'\n    state = paths / '12 Manual Return.b3performance'\n    shutil.copyfile(original, state)\n    script = paths / 'generic-load.b3ui'\n    script.write_text(load_script(), encoding='ascii', newline='\\n')\n    midi_script = paths / 'expression.b3midi'\n    midi_script.write_text('B3MIDIREPLAY1\\nduration_ms 800\\n0 connect\\n100 bytes 90 3C 64\\n200 bytes B0 0B 28\\n500 bytes 80 3C 00\\n', encoding='ascii')\n    inputs = {name: {**identity(path), 'raw': keep_bytes(path.read_bytes())}\n              for name, path in {'state': state, 'load_script': script, 'midi_script': midi_script}.items()}\n    report['journey_inputs'] = inputs\n    report['state_source'] = identity(original)\n    report['expected_saved_controls'] = SAVED_CONTROLS\n    report['expected_script_source'] = identity(ROOT / 'apps/standalone/native_tests/test_standalone_starter_load.py')\n    report['status'] = 'running'\n    flush()\n\n    proc, _, _ = run('01-help', ['--help'], expected=0, audio=INVALID, video=INVALID)\n    check(b'nominal dry organ' in proc.stdout and b'--input-script' in proc.stdout and b'--expression-invert' in proc.stdout,\n          'help: exact supported operator commands before SDL')\n    proc, _, _ = run('02-midi-unavailable', ['--list-midi'], expected=1, audio=INVALID, video=INVALID)\n    check(proc.stdout == b'MIDI backend: unavailable\\n' and b'MIDI backend is unavailable in this build' in proc.stderr,\n          'MIDI unavailable: explicit build boundary, no fallback')\n    check(b'Cannot initialize' not in proc.stderr and INVALID.encode() not in proc.stderr,\n          'MIDI unavailable: no SDL initialization')\n\n    absent = paths / 'absent-canonical.b3controls'\n    diag = paths / 'canonical.json'\n    _, data, entry = run('03-canonical-smoke', ['--state', absent, '--smoke-ms', '600', '--width', '1672', '--height', '941',\n                          '--diagnostics', diag], expected=0, diagnostic=diag)\n    normal_runtime(data, 'canonical smoke', 1672, 941)\n    check(data['smoke']['passed'] is True and data['smoke']['held_observed'] is True and\n          data['smoke']['release_observed'] is True and data['smoke']['duration_ms'] == 600,\n          'canonical smoke: held and released notes actually observed')\n    check(data['presentation']['initial_workspace'] == 'play' and\n          data['presentation']['initial_presentation'] == 'dimensional', 'canonical smoke: H1-eligible presentation')\n    check(not absent.exists(), 'canonical smoke: no implicit saved controls')\n\n    diag = paths / 'generic-load.json'\n    _, data, entry = run('04-generic-load', ['--state', state, '--input-script', script,\n                          '--width', '1280', '--height', '900', '--workspace', 'play', '--diagnostics', diag],\n                          expected=0, diagnostic=diag)\n    normal_runtime(data, 'generic Load', 1280, 900)\n    observed = data['replay']\n    check(all(observed[key] is True for key in ('completed', 'delivered', 'passed', 'final_acknowledged',\n              'snapshot_available_before_shutdown', 'session_running_before_shutdown')), 'generic Load: acknowledged replay completion')\n    check(all(observed[key] is False for key in ('controls_pending_before_shutdown', 'save_pending_before_shutdown',\n              'observations_truncated', 'ui_observations_truncated')), 'generic Load: no pending operation or history truncation')\n    event_count = len(load_script().splitlines()) - 2\n    check(observed['duration_ms'] == 2700 and observed['scheduled_events'] == observed['pushed_events'] == event_count,\n          'generic Load: complete original bounded event schedule')\n    endpoint = observed['before_shutdown']\n    check(data['controls'] == observed['desired_controls_before_shutdown'] == endpoint['controls'] == SAVED_CONTROLS,\n          'generic Load: exact full controls including expression, banks, presets, routes, pedals and percussion restored')\n    check(endpoint['manual_notes'] == [[], []] and endpoint['pedal_ids'] == [], 'generic Load: no held transient state restored')\n    check(endpoint['resolved_sequence'] == endpoint['last_applied_sequence'] == observed['last_submitted_sequence'],\n          'generic Load: final full state acknowledged by session')\n    altered = copy.deepcopy(SAVED_CONTROLS)\n    altered.update(selected_banks=[1, 1], fixed_registrations=[0, 0], preset_selections=[11, 11],\n                   route_enabled=[True, True], expression=1, pedal_drawbars=[8, 0])\n    altered['manual_drawbars'][0][1][0] = 0\n    altered['percussion']['enabled'] = False\n    history = observed['observations']\n    check(any(item['controls'] == SAVED_CONTROLS and item['elapsed_ms'] < 750 for item in history),\n          'generic Load: startup state observed before live edits')\n    edited = [item for item in history if item['controls'] == altered and item['elapsed_ms'] < 2200\n              and item['resolved_sequence'] == item['last_applied_sequence'] == item['last_submitted_sequence']]\n    check(bool(edited), 'generic Load: fully altered state acknowledged before Load')\n    check(endpoint['last_applied_sequence'] > edited[-1]['last_applied_sequence'] and\n          any(item['controls'] == SAVED_CONTROLS and item['elapsed_ms'] >= 2200 and\n              item['last_applied_sequence'] == observed['last_submitted_sequence'] for item in history),\n          'generic Load: new applied Load observed after edited state')\n    entry['state_summary'] = {'events': event_count, 'startup_controls': SAVED_CONTROLS,\n                              'acknowledged_edited_controls': altered, 'final_controls': endpoint['controls'],\n                              'ui_observations': len(observed['ui_observations'])}\n\n    absent = paths / 'absent-expression.b3controls'\n    diag = paths / 'inverted-expression.json'\n    _, data, _ = run('05-inverted-expression', ['--state', absent, '--midi-script', midi_script,\n                         '--expression-min', '20', '--expression-max', '100', '--expression-invert', '--diagnostics', diag],\n                         expected=0, diagnostic=diag)\n    normal_runtime(data, 'inverted expression', 1280, 900)\n    replay = data['midi_replay']\n    check(all(replay[key] is True for key in ('completed', 'delivered', 'passed', 'final_acknowledged')),\n          'inverted expression: actual replay completed and acknowledged')\n    final = replay['before_shutdown']\n    check(final['controls']['expression'] == 0.75 and final['manual_notes'] == [[], []] and final['pedal_ids'] == [],\n          'inverted expression: CC11 value 40 maps to 0.75, notes released')\n    calibration = data['midi']['expression_calibration']\n    check(calibration['configured'] == calibration['pre_shutdown_active'] ==\n          {'minimum': 20, 'maximum': 100, 'inverted': True} and calibration['active'] is None,\n          'inverted expression: calibration epoch observable then inactive')\n    check(not absent.exists(), 'inverted expression: no implicit state save')\n\n    absent = paths / 'absent-no-audio.b3controls'\n    diag = paths / 'no-audio.json'\n    proc, data, _ = run('06-audio-unavailable', ['--state', absent, '--smoke-ms', '600', '--workspace', 'service',\n                        '--flat', '--diagnostics', diag], expected=1, audio=INVALID, diagnostic=diag)\n    check(b'No Audio: cannot initialize selected SDL audio driver' in proc.stderr,\n          'audio unavailable: explicit selected-driver failure')\n    check(data['audio']['driver'] == '' and data['audio']['open_before_shutdown'] is False and\n          data['audio']['running_before_shutdown'] is False, 'audio unavailable: no silent driver fallback')\n    check(all(data['audio'][key] == 0 for key in ('callback_count', 'rendered_frames', 'sample_rate', 'buffer_frames',\n          'channels', 'sample_format', 'buffer_bytes')), 'audio unavailable: no callback/frame/format claims')\n    check(data['session']['prepared'] is False and data['session']['frame_clock'] == 0 and\n          data['session']['publication_revision'] == 0, 'audio unavailable: unprepared zero-clock session')\n    check(data['runtime']['video_driver'] == 'dummy' and data['runtime']['rendered_images'] > 0 and\n          data['presentation']['initial_workspace'] == 'service' and\n          data['presentation']['initial_presentation'] == 'flat', 'audio unavailable: usable Service/Flat UI remains rendered')\n    check(data['smoke']['completed'] is True and data['smoke']['passed'] is False and\n          data['smoke']['held_observed'] is False, 'audio unavailable: completed failure is not passed audio smoke')\n    check(data['errors']['count'] > 0 and not absent.exists(), 'audio unavailable: visible error and no implicit save')\n    no_physical_input(data, 'audio unavailable')\n\n    for name, item in inputs.items():\n        check(sha(Path(item['path']).read_bytes()) == item['sha256'], 'unchanged private input: ' + name)\n    check(sha(original.read_bytes()) == report['state_source']['sha256'], 'source starter controls unchanged')\n    check(tree(MOVED) == before and tree(INSTALLED) == before, 'installed and relocated payloads unchanged after all six runs')\n    check(sha((ROOT / 'apps/standalone/InstrumentView.cpp').read_bytes()) == PAINTER_SHA,\n          'production painter unchanged throughout installed journeys')\n    report['installed_tree_after'] = tree(INSTALLED)\n    report['relocated_tree_after'] = tree(MOVED)\n    report['limitations'] = [\n        'Six selected actual installed Linux software/dummy journeys; not the complete CTest suite.',\n        'No real display, DPI, pointer device, physical audio/MIDI, DAW or native accessibility journey.',\n        'No callback deadline, OS callback retirement, physical fidelity, complete 1:1 UI or signed-release claim.',\n        'Executable and payload were copied and privately relocated; the root staging prefix and all shared sources/builds remained present and untouched.',\n        'The embedded-resource source argument and payload inventory do not prove absence of every possible filesystem access; no syscall trace was run.',\n        'MIDI-OFF and deliberately unavailable-audio exits are expected refusals, preserved as failures of those requested capabilities, not successful device operation.',\n    ]\n    report['status'] = 'passed'\n    report['completed_at_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()\n    report['run_count'] = len(report['runs'])\n    report['checks_passed'] = len(report['checks'])\n    flush()\n    print(json.dumps({'status': report['status'], 'runs': len(report['runs']), 'checks': len(report['checks']),\n                      'payload_files': len(files), 'relative_guide_links': link_count,\n                      'report': str(REPORT)}, indent=2))\n\n\nif __name__ == '__main__':\n    try:\n        main()\n    except BaseException as error:\n        report['status'] = 'failed'\n        report['failure'] = repr(error)\n        flush()\n        raise\n"
+  },
+  "relocated_prefix": "/workspace/scratch/5a28c3564dbf/a41-installed/relocated organ Ω",
+  "capability": {
+    "schema_version": 1,
+    "component": "Standalone",
+    "midi": {
+      "enabled": false,
+      "backend": "unavailable",
+      "availability": "No physical MIDI backend was compiled. Keyboard, pointer and explicit synthetic replay remain available.",
+      "rtmidi": null
+    },
+    "sdl2": {
+      "version": "2.32.10",
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "linkage": "static",
+      "lock_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "license_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+    },
+    "fonts": {
+      "embedded": true,
+      "manifest_sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+      "license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+    },
+    "reference_art": {
+      "embedded": true,
+      "identity": "standalone-reference-decoration-v1",
+      "manifest_sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+      "provenance_sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "source_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+      "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration"
+    },
+    "reference_apron": {
+      "embedded": true,
+      "identity": "standalone-reference-apron-v1",
+      "manifest_sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+      "provenance_sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "source_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+      "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration"
+    },
+    "profile": "embedded nominal-unmeasured-v1",
+    "qualification": "Local staging metadata; no physical-device, timing, fidelity or release-distribution claim."
+  },
+  "installed_relative_guide_links": 38,
+  "journey_inputs": {
+    "state": {
+      "path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/12 Manual Return.b3performance",
+      "bytes": 452,
+      "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+      "raw": {
+        "bytes": 452,
+        "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA22PwU7DMAyG73kKS5yH2jRruyPjwAUxCbhPTuKsEWlSJek23p5qW6cKUORD/Nn/J2+r593b5/vu9UOwSAebcsRsg98rzOjCATA7TCvV4UBu5UNvPbrVsYTUIV/XoDam1JprwdtGiLbi67YSpq5Ntdm0RqiKoyhNK6RqSDW8rKmRDSeppGk4V4bReYiU0qSE4nHNBopqvH7Jo3SkoYQOYx+8VZA7GzUcgxt7ghRMBk0Kv8FgytOqRgc64kliTCCgYD36ceqNwxQLiRypPAU+gbFn0vvlvfDyADGMmfaztmAS/dc03EJxqfu7gu0N1Atw87lwWvq2//l88PTLWM7G4hIs/hpncEeMvGY/Y8jqB8QBAAA="
+      }
+    },
+    "load_script": {
+      "path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/generic-load.b3ui",
+      "bytes": 3479,
+      "sha256": "489218ab81d669aa6899223bf0ed03b248c101e354083db841a566df54e66821",
+      "raw": {
+        "bytes": 3479,
+        "sha256": "489218ab81d669aa6899223bf0ed03b248c101e354083db841a566df54e66821",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA3WXzWrbQBRG93oKPYI+zZ9m2UKghUJLSBdZhbR2aWgjF8em5O3rJNge1d/ZXh8GzmWYI78PXz9eX3359O5W3Wq/vd89bOa7x6d+LMPQjcPQ/1o/3602f+f+5v5bP2/mdX+Y622+/3OaduMIbDBsBDYZNgNbDDsBWy/ZAG7BuAVwC8YtgFswbgHcgnEL4BaMWwS3aNwiuEXjFsEtGrcIbtG4RXCLxi2BWzJuCdyScUvgloxbArdk3BK4JeOWwS0btwxu2bhlcMvGLYNbNm4lNez1erffzke85BPe/NBNYDgZw6k9/cPmcX2Cz2efxl2Fk6s5ucLuqtldhd1Vs7sKu6tmdxXuRTX3QgPIaZCjR6KDoyPRydGZ6OLoiWhnKbKUsxRZylmKLOUsRZZyliJLOUuKqlxVRVmV66oorHJlFaVVrq2iuMrVVZRXub6KAitXWFFi5RoriqxcZUWZleusKLRypRWlVq61otjK1VaUW7neioIrV1xRcuWaK4quXHVF2ZXrrii8cuUVpVeuvaL4ytVXuY3T1bw60+c4Hcfd4dX47+ynnw8/di94WR7+Oj9MR+SD5SPyyfIZ+eL4RbaXoVeT7rb0WuS73WeT7/M+p0L05OgK9PErYEEfPwEu6dHRgejo6AL3oE6X92BcvP2f+++77e+XvyfNy/827P4BBszEtpcNAAA="
+      }
+    },
+    "midi_script": {
+      "path": "/workspace/scratch/5a28c3564dbf/a41-installed/session-files/expression.b3midi",
+      "bytes": 97,
+      "sha256": "d757ca04c7a0a8b9a2c751bbcb8125984023ef732d11044ac3f574b4bdecf4a7",
+      "raw": {
+        "bytes": 97,
+        "sha256": "d757ca04c7a0a8b9a2c751bbcb8125984023ef732d11044ac3f574b4bdecf4a7",
+        "encoding": "gzip+base64",
+        "content": "H4sIAAAAAAACA3My9vV08QxyDfBxjDTkSiktSizJzM+Lzy1WsDAw4DJQSM7Py0tNLuEyNDBQSKosSS1WsDRQMHZWMDPhMoILORkoGDgpGFlwmcKFLMCqgEYAAI5Hu21hAAAA"
+      }
+    }
+  },
+  "state_source": {
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/data/registrations/starter-v1/entries/12 Manual Return.b3performance",
+    "bytes": 452,
+    "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df"
+  },
+  "expected_saved_controls": {
+    "manual_drawbars": [
+      [
+        [
+          8,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          8,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          8,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          8,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "selected_banks": [
+      0,
+      1
+    ],
+    "fixed_registrations": [
+      8,
+      0
+    ],
+    "preset_selections": [
+      0,
+      11
+    ],
+    "route_enabled": [
+      false,
+      true
+    ],
+    "expression": 0.5,
+    "pedal_drawbars": [
+      4,
+      0
+    ],
+    "percussion": {
+      "enabled": true,
+      "harmonic": 1,
+      "volume": 1,
+      "decay": 1
+    }
+  },
+  "expected_script_source": {
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_starter_load.py",
+    "bytes": 15627,
+    "sha256": "22285ddcaec03adf61f97b1d65c7e70de4ee6c6437480267b4784ab8d360f5c7"
+  },
+  "original_three_run_receipt": {
+    "bytes": 56043,
+    "sha256": "fa10bfe518a51cfc304d48cbe40e0e289103cb6563139e135c9e41e864ffa005",
+    "encoding": "gzip+base64",
+    "content": "H4sIAAAAAAACA+296XLjuJIo/P88haYn4so+si3uS814bmjf982Su0bBVaJEkRQXbR31QN/LfM90AXARKcl2dbXdcyLure6uFkkAmQkkckMC+OMfqdRvjrRUNsJv31L4A3zcm/ZascHjb1nbNN3sHmPnAoX/hj46ruB6DvyoCpquyNFb21XkueDOPVeCXwmMYB5x/BFnhxj+jWa/YfwTQ3IEx2Qw7BuG+fUsXXBV097AGk3N8A6PzBPOPdHs44Fj5gz1uNfc5eNC10SJeApRsI7u0jRgFfIJJ55wyn9tewbE6xX8TqX+QH+Dt4awUWBRDH9cKrqFiqIPkrnZCIYc1UAvs5B2xxIkJetItuBKyywtEJxE0gwli2oWdMOjZgBqdUB61lZ0UxIA3SnTXghG6v///7KiZmSXwmZjGvIcFDNkQTcNJYIKQDz6eAQvvp/x2cuoy/8UBqalgDKm/egojqOZRvaKTMXYabZpbBTDnZs7xbY1WYHd9McZo0GxOc+NirVOsV8bl/oQCwBlbphzx5OWc0fW57KtgbpxMmClca1Y+tOV+qV2sdSfn6s5puruBVsJu+RHhLurbRTTc+eOIoH+hFjjxJkwXbAcwHLnj9gThjM4YDKGwzAMpziWZ87FD5YiQRZVDpo7l0wZcgUW+3zrrePKAH6yt8SjizqQxDk+RpqzFAiagfQohMyQiijzPCVLJIXxmMyLCkmC/zBJ4HEFU2RWpMFPCWcIhRVwhZMwllJJisQphol3mGIAnDRjAdtdnDQrIwqOwlDxIoB6FwwuLFGlnFrO/1PIUePJy0tX6OT7PM9kqBXvWU4Pr2OnwUwd5PJtY3hqD8qWxXctOd8Xp80JQXdH1WWXZbpj6UjV8y6+4Fprg8iuHIofEwqfy1rO0eLHwsLe8iNNfKls+qNxwzvOek1TJKoD7bQuCCPtROGdna7gWM2oreoihvcHeMu2GdpYlwi8v8krWNbhB862RI/7qogP3IklTKzBxB03Zp3tC7bwhNWAKjLH8nAsY8OhUG8duJbe3q2HCx3LY1jPGw+Otj3w8urJPGwppvlSmDR4nazVD9UXuTiSh/2KXJ1s+jJ/4mRMdLZjZepsRZuSJ5T8Ig8HHXxL7GR6YBZ29mZc8PoDJmdZ3i7TcRo9a8Z79ZFQwE7edlp90TrNkd5gmXErW+haVb4kaTTTrAveNsvIS2O2e2llreaLzTtdbyeUDx0dZys8nRVtfiG+ZE8vHXWwyfcHnr4QqvhIL6q5bLk8yHnH8Up3anS53T9uzYJAF9p9Y5k5OVlWHdhlbXNw69XxoNIY28axuW69aNnBsc9wfKOptG1yuixnDj1nksXVHocNCHd4apya9Zm3XOzWeplpjErjbrlLNvfCsrre5ZfNolWf5mjaYmczod3eTD2nKR0OHufg3Uq76aypaqtaJTeywEgEtV33lRlbrS7Kyz23pFS+0W1aXFFrmBuSap8YxihSEiez5Sah8kTrZJhtjXO7ZJ/YSdXDiWqTS5LmG1SWqdukyVWW8rBRK5pZkSuOqrslqbyQ/UV3qDDNNTnZWUe7WMzs93bD2XANYzNeNgwm506b/drLaqOuey4/XZbyfGs5ZnSNIOrWsSpNvXF+xFU3pyzh9CeNrTGsDpreRrQrB3q9G1cOYq6fkVuFWV5qn7Ktbt7q06dVo6LpQ40cKE52uNO6JNbb8CucpjLLAr7Sp85uOqZUbyr2sdEG1wlzsO/s8aXoDACXNkaOPslUxBlTz2xFpmVbI8rxMrPtuLnKl4r5Eb/N9fbNNkksPXI6bhGrbus0ys6OjGu0e+zKs0s1R2YqzbHh6ty+zdqdmjYbkFJ5ZzH4+LCdWsyAkk5YZlFyixir1FfKasLtljjoxrpc2662ZaM1m62pPOZlFzItW6d+s4P3td2kYU53uMW0XVyodziGaHhs1tAFGVPKJtEy8tRYO+iL0qk4s+v4Yck0sGJ5mWc25mxc0knF1gq6OdzV1OWqbA0MpydOSWpY2rY78t5aD5mXgksW9lnRYZYis6CF/gbvrnvSWMh3TWO96AqrDVHu1zbltl5UvLZFSxyVOW0YbyAd7EL5KG2mW15qrrNmtSeuMvQ6x2XYfK9zUEb1Yma9P1XcTq1u9LsqX3rxtrlqZr3MYntcxjRCzq+G1pJu5zvFda59ai3otpEvu/ah3DaXi303I6zbfA2T8JZRandy9Z20XHZIczI0eWHUqRyoGb9WTsvTcEgYR2OzPU0qg8HpWKqOzHxnVqieOruid5i0qAE/4VRg9Oh1R99iO6nW6JkDtrNVm+a+M14wfUPrZzuFIVEyiqAjF4LdWDveWBxk8jOvY1sWvq+SttboS+XFDK+Pjp3ysuBtvLq0PLxY6ow46ONGbnxgO2alphUGpx4Q8Ae32B91MoSqKaTobnl6sVxtOC8rFuVdpihiy6xRd7J0VcqdZkDSadqM3bcG++zyVJXaTM9QtiVjAUQ342T63UorV6IybmG8mk6dRrfjrSixMRWspbmZWmNSZoZetdwRxosRMbOEjA5mOl8hqqKwV0riqpHZdexmz8lJmZ5dZWkh57nTrauwplkt6y7dcEsdob7clnm1ktuRlWFWPDqNnE5vlgXR6E9nOV3DTaYzOjnMoEM6qlzvlXP0cHPYu+WFqtAZXMeGJt3rZWb7XW4pHWmiZsnHxUTz6rIrEv21XM12qEOnzbLbOt7XKxgxqLM6Y9ZG+wqZ1waLTEus9hSxMNSaL1uhaKzqoxLbFuq9w1JeOXWxoK8dCh9WOm180FsuKadSyc1qmYKb1dxK9phvE/ZRrRGsN6rT9uRwKvZFbDy1RKY3LdhlbEcJ5EB3x4MmPrbaRbPachbO3puM7f1aYne7/XQ44Csy3u5S5C67PjilNsu380TbyGAV0p4sazr+0u0UBYKyukwp35oWlWm/shd0C8i8wug4yk6EFa1Xq06nKNW2Yw7PeP28s5R7e6C6n5+vLSFgiADT7bYhgt22QkgRkyiK4DlVwiWc4gVVVIG4BsaAKvIERbCCQuEKxVC8yJOUJFA8zfO4yHI0IXI0/UlWyL6Vi/05U/aPGH3XtjrxuNFk7dEzhB1wMgRRV/4V7HZdc1yE2JcZ7+/R/X+XIY8xPEYSGGBXnmYpCmffN+Txm4Y8/lOGPMHcnEAURym0IirAfCdwVRBVmVEEMKkYVeCAvUOrKsOStEjIpKRinMDwDCUQJC5IDEmSvCx+0gTKdnG5Wx4NSlbrtGbbA7Y8aLTwZrO0a51Keuu4NvTcImfz+6ZVWeR+QXwwxE3yWQrICWA5Y7IkcYrIAKkgyaTC0BxDirLCEjiQIJhEciLwcyhBojnQCzyHcWDYWErEPol8zq2dWmT7hHn15pGun0pu/dQyugN2POC6Y4wb92uD9akzdPDmSFo4Y23VHhwPzVPrUB+2rPpYWrVGx1U9VzN1fSJurGoun8vbZPall4EAflIekY+SYJiGJgn6o7Mx1/8S4ghGYhKv/hzUQOg8qpoO7GBBdED3n8l8Ekk4JLapOxdQIfmPm8RbBsOShfaa7C7jr3CGJS6DINpi6cbf8UF8Jyoia8LCMB1Xk5zPIvNM38oxjS+T4+/wy6+JcdnbbI4fSO2bZb5OSBNPFEMDo4GiSRhs4SnuV2ItPyeiWfamjMJFRhAUlhWAxcLiLFAXnKByQGixJCYQQE7RLE4xEs4qAk2LtEISHC2yrCipqkyrNPVZIrrdbLbWzgAf1eRdud9osUBe0eOBL6LbzrheGzqn+mAERLjGEO1hD8fH5VoDs1vDAUG0RQlrr7q9EZBVw9G+ypkHrFxuNBbtbVMstxsS2bK9XqFdN3LGsPcrIp69LeKBLKdEiSRUQQaSniMJAqg4XmFkGid4WgLUc1DpiSIPGB+jOIKnaFlWVRVjWULC1M8yEV/yWI/ItXKL8r6aMZRq1yxu6cWgqgvThduutdjdy0yi99mXRkmXZpR8OAxcvUrXji9ea1Thp3m6ac8KstAstzR7RHerNccSxeJhZjU4vJYQ81F3xWXL7T6jmNtMxzAcUIa4AFhKoqARQAGWExhZUQWaoGlZpeCTQEi8IkoMR7A0+CaRAq1yYLIIn9VrGXw2ILKr9rKQYRluL1enxHqJs4Y6FIBj6Fb3i8J00B+0l15j3N3s13sxw9LYsj/EnRlexSa5Xl7ekst13a62+UwPbynkYdA48dMKOcoztDNq2Gxlw9cLOmb0e7hXKDaKboGY2NVBR8+1rPKUK+BbGZsSvW51xxxz/WJXGIvmqKgo8vjotOm9bEiOsxlVyCWBlSaWSiw6Tlt3R+rLiuPGy/22Kjn2SRDF2bh4GM9oR3CJ9niIu/qap1sTgsodt9Xhnlh3W5V6ZiDO9FF+yubFWUZeLNRqQxvOplJ+0GLoGvDD2UWBXu4IUubcTKUh9dul8Ur18jmhfToehya3mzE7l+FFsjZ6oQaapw+VfrNVFRvGdOeu2tKi89LZd5uGy6gFbVIZtveLtX30lOnCUAyibOcHbrNotA23MBw74ska8UJZUVbVQsc8rNuD1s7o7aV+2eo4VQrvLAi5sObcl9OqnikXR7vyOF9zdJ7O4QyzVAWPO7IlSst27VF7aGrN7anRmxALWhVaxSXWanmnbNcSOhNxaXnHlrhgFLtkHWuc2CJYC+/JPc3ZKZmhZmHCtFxs1xljkiGO2H5JmJSp921JMUY0ofHCbugK3LGc7dcNzyuY9soypYUykmcLo8jUTtVGobYv56reOlMSrMZxoWq4veqtClngda+xno6RHGfbMr22pHahtpn2V0bDNPTTRpqtK+U8m7XWVGfJ6IOtW2l0Sp5eUg/j8qYgT8a7/FJYcsdVh6/sJits1ee6W/5gLTv5Y3s6cUqlqTTeilizMh6s1FXzVM2PHIrynLoLZEHmUB7xE1MyBo0lxs3KbLuwyzclZ7btqU22vM2Uvb1q8gWMbNW7VqOdLZqHMpFpTtwcJe3Wp7qwKM627IRZkdbyyL0wIzXLmU1xo7mk1c8d9ouho4uzDl4XtYEx5ienEr/EDse2LhxzmTYnH9eKkCmtOByv5qd7p6ZO6uqmTMutJdNumpnmqZvBtdJRa8way8bRHC0XWUefnpqr0kJvZ9iRgnVavGyZs2MbLztDYzcrHSalQW+7w8XRslggsgeZrTKOdCz1rB7TXdbbM9tYu+pux3HmquIcBqtKbetoqm4NeqY5xhr4yCwVWy2mOq2vpOJsqmoj1fBaBXIwlOmXoSsR+eVCPC2IGTVUmX1lzTn73m5VqhetXW15PKiHfF/OmyK5cirl3PHYcJaDCmMSB5mXOmK+vJyc8vt8cVxfjbdd5qWqbUcV6qTtebYxqRijca26qg2J6Q4f8LY0nJpip7kk2pvKvrhcKjV3z/Y2tW2T4PS2qTTz/cUwty/s2oMxrcxqFclij9a+v9qNx40jU2sWJsucqbALduPgG6Lp7QvNkcDTdNbCMWahr/TiepJlhi+55gEQPnC2x3Z3WO5WtSabd7gtNRAlHHdommWXDFBJ6g53Mbk7mTq1XoEpTVit6Ji7esHxsqNabdRevKyNcVcpzZYte6P02hlzdRgCZyV/yLWKjfYWE3ujLGbklAWXrQu1/NbgNaHf5LZVvNUoVNs7Th/R/PDlqEzzmt3tUS8NQ+jUpWaj1yxOsE1eFhpavTErMuvltNkd1E1z8zJuLsvmxDzsqaXWe5Ea2LaUMfqbQXlbkGdLrL5lTL7sYqbZFjqlU0EzLJazqVUB3xd6HHHYtvXWppAjS0dg6MmV0Xh3as/2rXz/oDb06k6azg4NdXnYWkBJ7o0OEOHj0yZzcNjpsL9u5ISMrPUkslM80Et6Nqu6fC93JAv9otKtTovcMsditqxXKlms3XGHlVz9pAlHDQgLrjTxepWip2SZ7jab7+CUvCBsQ902utZxQbYX5HSaW0GfTBybTrXUn2Elyh5h7XqmUBpVBmZfyVlFSu0UJi190jruMXrX2vSbdJUpW9Siji1a+852uNzZ7X1hhunLdp0Q2E6GLBDVpbEqHi1eXGLrjTstq9kM4b1oK5EbmuXjwMRWorhcH/EBmS0OtVIl0yfowqTarBDyeE+0OouKOCKZutBk5cWsqWDjOjV1Z5m9xHS7K30nkIaQHdR6J1XODw9uueEUqnmsUdD6zm6aF5x2pbbkiNJuQ60HRd4pyDnRKTtTRWqOS3XD7NKHU417wU/NHIcZYn1GrUUGb1fwFp/N74V8vV7J4k3JPBYGFZ1kq9ZM9ei16NHGSXmxzQHlKu6ssZvsNltd4IWOxLHDroh1G5lmtmlutR1Pj6We5TDNWvfo1ZYMf8zUM+M9LouZitl8IcdA5q2rhspmqIw63fN5bFoS9pa404YZqi7y+OHEFicvh656cLcMUROGJj3DNkty18dFa106qJPNdNXv7avkuLFmMhtJ1DyaJkbM7ihw2fx6tTnSenPB7Ex2Wevzs8p+xWzz6jJLGQ2mVXLJ/mHJKzkiZxUKRmFxyOU6o77ZHermvsZki1y2m1GbGpt5odW2N3jhh5WetRPcZrZMm7vSIT82y6zVliZHpVESV7a8b7KtF9zSl4NDbqIBm6+Yr294rVUebtt03snOdp1BY1orUUqOzplVXrG00YRaTs1px140t2ynKM/WOdfbj5bZXI5eThp4pTrIZ3C+gnHOqq2UGG8jsbrLDzz1pTQB0qqX8ZbtqTrbdZvMRNPcppnbmD1tz+1WTmOzGblF21Ga+9pu4C1tM1fQrayDWS+OTPY6R5XsZV06TwE7oV9Xmpk8LtCKyE67dsX2KKFC7TFxsW5NKS/D25xJZcqyxW5b2tE7mKNDT13zhMlTFZ0asatx5tjmSuVtqVIgtapq7jSWyTbbx3yTsOWpMnLqOxWTpmOsmJ30LYFjHcAGFG0bYkbeZff59kFgBo0D9oZDELNw55YA3PFvn+86w7AJcp5/k5aKtL6RfoHeQ9AwkyQF2pA1WXCVlCVowK61UwA/XU9tICqKkxJkoJ9hIMQxPWDDnL1mS3CA9wnacW1PuRmrSQA6E5FSDorkuTCUmtIc8CRIMTR+CYDfRqtWrD3KmgNbllM4i3opdYZrCUfdFORfgnBuxe+HFHJKvqUGw1y7mGt22qV5rQ0ems2nzZdByHW7X9h6q1MsfTr2cEzmo9q8P2rnO53GZzff7ZcGpeFXtV5rD0v9cq5Q+ioAw2qtX5x3c/3hdN7uDGuF0uCzQTRBo+1B6XFQbBJP7sH9ksaLykoYe5/evCPrxKNuSmtfvn1m0yrw4R/9V48bwdBUxXE/H4qtqIqtGADGl4MSXF1wHiOAnw/gHPN+lARLEDVdczXF+XxASGSUXuDUHtQ67XllBGztz54W55ERLBso1L8+MJat7aAalUxLOyublGUrjmLvoCYFWhVBT4GOTG1MGGT+K4BCCED1eaDtY+q8aAFTNE3PReBS0lIwFr8IKxrpY8rPSM1K5sYCPGD82kyHY5uKVHSsdeVg6ZqkuYgMF1giivyLnWP6Wl8GKMKGoYWxERVZBvBgvxvmRjME/a/2xlJwlr6AeoICah4EIz+xVU1SDEf51Iah0HOeQlb/gqa/Aulops4F2/0a5JMgAAvtFEOAj18EBEqcL6cEAfkcWs5CdOGBiZXSNWP9humbevyvrzCbfgruZxuDPwX0s83znwL66Vb1z0P9fMX8Z7v5k/yUf3mS/17YPvP+vdP3DPNvmrpngH/XDDpD/IpIwZ8B+rXT5n+yZ/8+hg378G9k2TjI/xlC/64B/RspvSbpfwzoV7LRbYhfabF8CPELpNCHML9E3P6LQv2C/r3i0L9hrtxq/qtny1swv3K+/ATMLxjRt6B+qaT/Fx3SL5mm/7ew71suyt+lTd8A/eU69Q24n8dWwZ7xb8HqaJi9m4J5un+tQcNMeUbUXpCi+istxvFzPMsybZQuHyRep4IkfCclKqppK6lBsflriF9vwPm8XkHh6IuW/Th0SvQ0XU6JpmfIgn18gP2mAm4QBVDzc0CBFkGnpDRDczVB106Cq/3i0sN1cvvPdhEgyVEu8gb8hZK5Zliee87E/e02c58TdX/72YyGqr+J4jFPPnbg5oqsbEpO9oO5E+YA4zyGxw4DiFKABUqQCYyjaEakFJmkCVwiKIzGZELmZV7gWJZhCEHhVJVUeEZSVQxTVJLjRAVu9ReF3+I9/Nu1zPwKOi/F8Xn3E0vQN2jERQ7HBYXBFZpTMIrgZZblKUJlMQXneInCCEnBSYwjBIpXcY4UBJrAKJmkCAGnCIZ4k8bIxPgKKq/tl5BOHueIG2RSAk2rAkGRrESKPMepnCKpAkmxisDhBCGzBIYRNEaJcNMTIA6TcYJjOZLAaZXEVTJJ5g2b5tOofM9eigaTZ6hbDKvQOK8qEsFiPIDDMZRKglFlcFZgWcC2CscznKJiBMsxEicxAiuyBIPLGEbiEgN4OEnltcb7NCLfUabRpORo6hbDcgIhgP8URcYxVWV4jgWTjRHAlMTBdOUBbTJGUiSpyDwDZiFD4KrCsCQmEgrBS7KSpPGmQfFpZL5vrkSjSeM0c0v88ArHEjwn8oKIAyFEiTzL8zJBiuC1yrOcKMoCLrM0L6oKIfGSwtGiQqsYI2EYw1JJSt9IC/kMWj/KOIkIJTGMv0EoqYoqTvFAatIMyShAzFKKqKqiTLASR4gMo4oSg4NpCAgXMEkSSIGkaZLHVYETKVJMEnqVnPJzJAKGASBZjpVFMgvrZoOGkhkoIS0cR92ghGfBjBNJjBBJBmc4TJEAc/K4wtNAZwDBybOiyNMCIA58p0iKxxkZDKkEJCyt4gR7m5JYJsxnDBfU066TPedeZNFCa/a9xJvzEN6clAQYWg5IH0KkKQ7DRAGIIUblBUWSGVERKEJkcZXhVBb0rsSROM+wOC0IEo0pDInLTJLuixSdT5mOgitkZcVSDFkxJE0B5L+RBxSd+8PeIlSWJRYoD0lUSFlRBALIUBzHeJWgFAoHyoLGBZXlQQmgWkRRIlVGFUQRPLM8oJW7mJNvJwx95Ti/nzYUyV+K4G6JXzAVGY4kORoneYrnKEZlaU4WaUGScRaTJfBM8iyrSjglcqIA2BonBYwhWAqTwbROdsAHuUxf0wsR0OwHXUBy+C25DISVqEgYL2GyjNMyBsQzhhO8CkZYkkSaZDGahCflSCJP4KwCOUFgeGAhygQFuP9ikt/Msfo0DSQrjrYAnfBuIlck03D81ojzjIjxIgaMBZ5SJBEDqlaEp1zRmEjiDFC9BE4CNueBXUgCNQTEGbA3SB6jJFIGM/xibr+X8fULZCOX6tEAfs5OyS4UA3qKMKf5pxLLzrYGc2uyA6rAdMZVFlj1hEDihKCSogQsSAn4C0ADibIsgDnPiDKQeCoYfA50EsMKwANgGVxgbhiNt5ZeP9d0fHdxNybGWe6mN0DxwOQHo82QArCPCWBOSwolCsBc5gjgEgCVRQF6WQ4YJJwkyzQtULgsUaA0J7DSW7P7Vj7cF0/uAOYO/2iWE9TNWU7hwMykMVIAHQAEPi6rOPAQAHcrHJDqEuAHSQVmNEFKIgHsEw4YpCLOCYxCA1cLk7lz5vyPuAccJMSfXeBfp92yEpTXDAd49XDD+VhT9k+SFZ4OeGZzFqdwMpyIEaWYCEQ2YFceaGkJ/MtxEvCGBBW4RoxKSdDPI4GGwwQWwzBgXYoKxVEq8P9wRQQl5d8iGqPo1twC46AdfoauoM7jUhFkxX5cBoc/nptybUWZ+wGfc6+JWoKB1ho6muE3WbMVyTXtY5IR3zhm4UYDMM/vmkUoMN2B+39TFyicQjIyDnuKVoE+wKA1oEoUi7ESsMR5oCo5lcI4qBt5FehLoAdIEpjnwPdkxdiBAdEGhhvhGQjRVv4Exah8SPOjSD6iIyf+cgPZ93vvV9vKfuSGvT88X+ZA3R6cWHzrpwl835T/gLwvsrk/n7pbLtf7tH2RG/V5pP2M1v5w+L5G134ykW/Gsz4g76tiUZ9H3ruBrPep+7Io1OdR925c+YOx+6qg8JdQd3uF4IPx+6rQ/pdQeCtm/j59XxXu/jzyPo47fiQ+vyho+HkkfuTCf6ACv8br/jzyfipK9cE0/KJg0ucR+dO+6gfc+kXO5FcQ+teG9KuCY59H6dth5A8o+5rI7ycS9pMxtI9Mm68Jen1IZxQuCM4b/euhkKeny6MWPWO+AuxtKEfnyTpeBkIIkiexqzgIsE0JoCaA2gcqkxdF4DTigECBwsBsZSRgEQEjlVZpAfglAgMMA5wAlh+wy0WSU/nonLQg0gNb/Pd/y3qOjU55VIxdyr/Qgvzd+P03+M9AO8S3KAoe+GprJ0U+Hy8AhJGVCgn5D5jdIZmGqi08wCFBIT8C+gQaNUqow5WUacDmVHjugrtUUuhIhqXgoIwaHe4jhW/PmUhVPOWHa9BeRlvRFcFR5N8NzYUHKUi654BhSrnaRjMWPrQUHCC4T/QpNVxqTircPeoPaGx7qp8wYgv73w3/3L+snxyUPZ9aEWxf1QyElQr3UfoZMgrExTIdDQYUwE9J0Sz3Key83w3VNjep+Vz1XNAb83lK28B0IUCDYboo7cWBfRK89Q9cix4l0zpGD/CECHgoYvQCHtEWPcA9cLomRs9wkkUPphPgAVkXlAqR6ILHqFB4+Un0wj6Dcpaeq+nnR4D5+cETgSqSFMeJXvlown/6nc4w9YwA3aX/7IRJ3/9uTDr9BmgAtvNkAYljuKlsKp2YRunfjcDmLhWvi14F7kBxULiCyqLWQaFg43J44Cko0uqMEyWuT0WF7fjedgAUFgtWM3agtAVjnNno4hkGYQB489EF8wiIRGCuaIaHWAA01S91O33YVWGbCCbsTScpNB4jgQGHGGJaGuaiLv5QKsM+Lb2U5oMqrJT+q4FBAL+bQ2GxsMW/GqaF3doZ9QulebnWLA1Ak3/8bkCBlb7pY6W/Jfv+dqGH6yZ8J/Sd6kGBG1VD/+edylGRsPp17OKy9o0SYeWryMBl3esCYdVbIcvL2jfLhA3cdoxiTbxRIKx/GXQDNd+UBu8mN6TvL5s8Rylj6Px82kCEYtICi/fOB8vxUQtv+h4/gdjNamHD75vB77b+xvpx1PQtd/CSM95Zlz333jtmXtBeTBz/wkJocg7dCHLenEm3yl336g0v6uc69Y11Owjix+8Ggghl190bUuvhlix6uC1lAqz9P7cEycMtCfHwxtxPtvbW5H2ns4ECGeSAcpwXOu1hv9OMi2jQF54AT+gX9qJgO6ArX8/gXl+5hxT2kPL/Tvz7/SF1/shcfvz+EG8EC8tRNxqJf6RuNvI94ltgQaJjoUXBWCNUQTkcNJIGNiZ4bSsLzXFt30aDnzkEI6iNjEd4OjVsJCwBG0At2MCGVOaKgc76gF/K0K94SA1tT4maAEa17Z9ploaXDNCgnqXIF91HJYAqtuSFNf5In9uH7YLqQPlvYCp0Gp5knUrvTN3bKMGDrEjCEf7+4bNorT3ONWvQxEnfvmABKGLfAIHjm/aPQAna8q/kAw/pxJV8kG38C/ngJ0AcmPbA4LlgueTlfKBkaNg+RT8Mc38XPcC/TmDuPYHS90+aY0IjVXDv7pPNhuYraDD8+RT+AGVBAeTWJD6jN3NAK+zSywbhBX5wBOB4+ufJoacfvmErKyqwigWIpnD/za9oK8DGN0JT/Ml32fwST0vlIGsLICbu7s8NhCe13EG7PGwFlgddDl892cBknCPPA1aLwfgjDb+n4dFEtl8bYIkKgne6YvhQ4XggJGDBENkYAWtFsYLm43RAsQeGPWom9Z/PKSL1zxSOEVTwP78gPBAHsjCwip+RO/IUvkEVH1IbOHjP2H2iXVQQsGNY9NzKfer5GdF/QevPEQZehidYQ/6LnWCd5MAUtPfRMdagmF/gSWQoVFeJY4OQBK+AHpA0LR3vORW4m8u7sMN84/1pb2tg1rvKwb2DuuBJ9jaWc+dPogfgOsLRfiYeUorhQF8QtfqMJMN9KpNK//47UB+pkITntOeqj1w6xi6IC+/gifcaFDkPKQjqzHwQzGvIqt+fgE8O7Ja7P/w3gFRYGs4DtAECkm6a+rm1+x/BKGkqcOCh7xl8+HbuO1vQHCWVQ8MIvpRs27TvEBJnJGEexB2UCmfEHE9HQuSH/wLMPcTd0Jl20NYZVP7JXuimeJf+Z/r+PgYTHhYVTgcdSpe7+yfHncPX50LwaozznNGRdTF3TR+PJ8GZQwf9EM6hgErY2NNgXhsUa/072F4c7BnzV9j4dyQEYaQKslaUQJD+ca6hgHG8aCBg+AhQv1TxAQXHMbk+xpozd44buMcKCioLOeXxZt6XCB9iC+Nq6Z8WDxdT5fJP+hwuC1kIjdD/SmEmjuP3PxJT18cpJjFdW5PcuSmuQP8BuaXZzrtsslaOD6mdoHswEJRC5b8lxhAUgF/8ypfDh7h1DGv7nJouejCMBUNA9QFwsUFl0D1g6oEfsc4MOhK8hP2IoL9LlGaAMpo8N7yNqNh3qEJE1RUObRgZM7QQB9dcK4aPhV/x3G4gfW5oGCRdYGArlLN+h85RB82Xprl+TvQ0ZCrbUeZgTkNb1n1OohyfvYJ1J4DyqOPBwGqqBrTjc9pAoYMkFq+opJoGZeeyuQeCGvz6kfojqvYjhaUv+QnUAaTiWFjRs66rpe+/xzESHQRIMj3D/RgpZQc9Dcg8GuIMeADcHap7j97632EcD5EKkCEwoNQ0MBmGgpiOAYhjATt7DtxUzXIjqf/vqVKw0QzYiUBiIwnv+4puLDaKLsZJNeFxddBuUnVzD+8y4bADj2FPflMIKQdwG6KWwED3EBRUChBJlgaP6T6iL32fqJB5RiU4WAGhH9bhUJ2quVFu1QAweFiFZMLyOIMqlAz5jfI4CytQSGRoqhsBwn3Yb2MH6yJs6KgKz74Dy7ojEP3pDpRZkmvr6aTpk86ToxrQuM3cFAcqU/Z8E32+cVIEQBJqUahN008rUzPu1PQfggu4S0BW+g/0FbIB5Cj/HeQFH4HYPADG3x2UpKCQvXAeUv98iPYTgleerJnPaXTDDUByB8y42OM5ZvwM5jpoIbjJ5hknQs6R9nIstHh5YU8avISwo7JPmzXQOHe+E+08+8Y+4ro5mOm+ARF05Pk6HwDAdJ6CF08wknx3XejJs6CdfXdxx88zovAhdXGtzzOi9G0FcXXDz3M6vN8nHMNgayxA7hVarn6UFYYFbqY+AumR+ucGsAQo648EnJOwncCJgDMG+gignulCz+fuDMfSFb/EOUD9BIc1QOEB9uwz+A+aXLvnWKfECHRcYIo9xxoolsbtUbP5AM9vRAF9MLAWGFt/TMKRDv7/4FtsFyPk2keknuEQAxXqc1k6wAq8iPBLA+QCCx/8ulLM6Zt3NyHH8GI4wbtgQNMXIwq+fDCml+r/aoyhhRGN8o8rJC+ucYJmaNg56YtbnIJv8cFMPYYjfU391a1O6W+xOZqOv4644cmXIfD1VYP+yg8oHfOKzhX9r8hkQktD75QDX89mkG+UI18yMskRD5yt7dgik+YgqxDKDWQinj9BIxEacnf3CXt8D1gpVui2dYjgvaZjR7CnoWUTwx809G55dGQ7qgS58fwhVikwUgOj5dzghVkcFIMUBmae70lBddoNFuTiu/T9E17RHu6sP9fCXfW+cQ30bqBDQ+/oeqihV3nmDOQrAAVxc594+jws0XtQG4tR4MPxXaTkqMfbvnXWwIUii6o/pHwrDvX7WQcZ5txaHh24s93fkR4YexBIyAXwfICU7zO/puFD+nu8N+Cb1zTcuA/4bh5twAcjCTgNiSX/QN54MTjMz6l0bL9+Ok4YOmm+Uy5DFQmna0pYAI/PQefuxk61jQR+DA9b2XqKA+csnBUBnHQMA1nZaRLADnixwXkD8w2QusJCcfzSWGLWJno77KqUv+Jpp8ImbmESBJ6hsvXbjSEBrQLgPaKF6Tlc+IS2bazH3kbBj2qjHkqdIUBc/PVi1HLQN+dBtjdgfIPOjI3wQwpdW/iQ8q8mjEwHRIU/3n5MLoxf+ZSQvtxA3wXLd3eij+kbKjY+tsFkiwmkIOx3fw08OG3Yb/iPtIZczeCE4UcPaCUBBjnkxx1+Ef8LEgiMxTxyPtMUz/K4IkicjIk0zYiYIMoEhnMiJwmixKgEheEMrsiCyAm8KmCKCipgtEqIgiwLHHmheM4UeYZ/BLR8Pgk5wDEVEhBOSn8EHkJVGRhjMIaPCEbuYOCTQpPxLh3UgGYqqoPCn4EJd5/osbug6GsaadswwPr9IRV9sKHfYPsvUWtgNgSlYFQsTt1dZGqeFS8M8KKX90kBF5zogb5lw9JBAoSTHNbXEJdrSvfAszH3c8SQEFTw7HMmgg3kPZQU5yLRm6BQaLj5fwDLvCbY+4Lbv9/gSt1coPmN+DtoHbAqMH8cFH9PEBP1K4xnJyZImngiiScc8+XOZf/Lc20TiJv/elPaAC2ro/NLVBu8c1Jh3SQKwShGkgz5oH67CHTwPQLsN3YuEIcdlAWeghHsMbqQTND+TLTqGQacYm8WfoM0xCh+I8FdJVdk6XpAmh8ggcIzOS0QQXMVKA8gABzIDH7EPvEKGaxwZsbeJsTEuYAjQD2Jahlh8CTR1vltWPT+/kIX+xT5qKUUGIlxrskKJu/bhEkQqWMwkgAwUGeegmxv6NUjXGxl5Zul4SFAiH7B0wH5urBAqL2pQEKZg8pnQ3hZv00kVuIoh+hGg/2mykKcERVfKrr8p9Wb45rAeJUTuVfAiU5FLdxQEUE/BxrC7zV482oqrQsO/JkGcvtinM4qyx+msN13jaGzOt0IwOdP6koY2byLVnQ/3I2Yvk9Y0WhJIpbicrFG9AvXCF0MIsTunL70jit8jVaQx3ON0s9eOBSiEljUz37wPsIm+IouXIIu6xp4i/6UeAA/wJzw6z2BmbcBOEGjeffqh519UYv0a+AKRf6agWQm5Ig3KAU+/90dymry4yDxAD4CjzgGgI/nCYUeVzg13DuE9n3c9g9AQxaGMfBzAZxFDuOfuEgp7LnEgVGQKAji28XCXoT0Q7TuEUc97L9Y3NsvDN/7iyQxIGHpK48EkfP6VscBmzowt9DQwEbObx6iNLmry0JgLC2YY3GHNoGS7xjG39wsHMwOVDrqoD8zMZOtXu7ijdzTS/69rhDbq4tq+T+TpUPrCw7qP/8Z4Ytyl+bIFZ/P71E8wJ/VQVpT9MmfrmgxMBxZP4sSxeKSE+0h5WckJiQDKhK8h0PmIwkX8H7htpWw8/z2AG5wTP3wWwIodGuDMijACKc1bAQh4xe/icufvJDlciyj0pdjGcdwo7hCED4IplkYPozx/JsCIpQP52sjomBF2PDr+7lM35MS+GLZ9ez5QtzPj4ngRPT2tvOGo76Ol4qunAkk6iAuJtPvXFGT1DLxJv0owWuUPXJhJtwq+nZkIGGkvlHbdv1fEI4fEU//mbtw3qYk4YKmLx28Syc0lf7ZC3JCiJCVHN/yegBaEJhNKAH8jzPRKHUQhVxjN+GgiOhFniAweRL3w8AyV5mRcScWpRT60dyL21LQku6b+YbvQorlPiZgJS6BeQvmB6mIfv8mb1yB1W7mDr4FHebUfQz/VtLeL4H/cUOZqihcA8b6IRIj/tDfKHuTLQOO+f6KqiHeTOhGf4U+oXyv7rKBWjdoB5rGT/AZNRdwJswV8N0QIGuwpN0AMfbzDy+ocgV7obj+cvkTcJhk6PPY6bv//Z//9m/3v//++vrfv//+/XsG/PX773d3r/99/z0DXt/DJdFQQCLU45rtsjeACQgaR5YvaPq/X4XHU+5x9j34P/bIZ54ev//zG2jTx+Y+FSH2hCL9DlQXd+l/T1+27K/qoJx5JfkF2VTPUStAgLiwgYcUfv+Kfb81WqEVFmkUpCdDIuHX7+d4e8I4ih+HG5pGcITgEbjwGdl7SZCxscoAEf+WTRKlrSAQc1jLN6zO9aGTExLsxBYQEzejpmNlgoXDm0uFpq0tUBzsOZnunEh7zPqrLzbMc4XRaZgCjROpFkrzTPmLvk8iaQEHGLr4YIKlo/U5N8zIcWDbP1frbCChvg9xfPDbC21utAwfbxwFWzXpEe31EUlPS8dLxvOyEuv48WQrP8ULzHllDzpceUbZWPfnIPv8Guo5fxPARCruqngcdDpPQrV3e+WaQwvXGORwA8x78BvHsMCI47EUWUgxFHhJRC/zWArLpwgOvKSjlxwq6a+BXxMXLm1c+Cpx6zbMJLSFfXKB6yr36P7H5fS8dnL+QNmgCooegP9D1XTufvgW/QCvYz0GXseeflz4RuG0CfbAxP2Pm44HBDsPDPSE2xFy1oUVF3mKjrBDMRzA86buA0gmPb9VD6F9E+Rbno4RZKsBVeZkXaTzoo/zYP7NEWdbx0u7Oci2hXDCKFA6sawWiQzblB5Sc/AvKApXwdPBqdiAT17Tj/7P7+ckh2csTHMI8oTDNIfgMWGTiWHcPyXbR39/VBrlawGgwcIpkrAiAISG6TEY67cKnWcWKA8s5KuSyZDHnz+OO+zHG91yfeZ20EU6EIuPviUb6yf8T/RTnFToRPlmcGBcf4ufkI3SVPzeiJeBBmuslL8bEbxDmyoSfQRXI6+2Dfz5477TF+NcQNsWz+d2K+mU/xwHjBAP6H8Ksmrvb5T7CMGbh4SnI5YWRMdPc4kEsv/mfB44EMvRDA5yqzVhEa+RvEU8KDRPrMdGjHF10HjAF76MewjwAdLs0f/8uEGxXwbD0uhltDSCMyzhvzovoPAUnn43CQOUjq/f+2lGFxM2lnkEf0aR0xsrjGfKUyEtEK2HFEDkRiTXLwOM1iB5OLnmcFEGxZdNEQUjLorGKbyoFQSV36h4WTqmO333D3Rzkp8uCPyWgmglw9eAJWGMJAxZRJBvrnYqcHSDtVRotyGmnEd72AIn1NKFY/o2pW81kXyPWolWtYAv+nCDlCr+qOhAgUEZkKh+FcvxmTKK5dxqDEwzbROIAqT2UtGkieba5bxJGFwfTx3qMV7hYt6EtsGFbngIzYMPZsV5WhEcdjWtoskXjdNDMEgPb02p9+D96mwLyEdZoHCqAVTBVMPCjREh50WZHEC/Qxy/X65QhQX9JapwfiRWqaKsErQKC9hkh5Ymz4n/aIMT4Kw5kO+GuQe+x0KRr4VP2jEEy1ma7jlt5Go18bzgPX9rwRGFSOPkw/XcM9yUT2mYC3PFwzeJ9oNVF1T7LDuHCVa38ICoAuZ++/sV/T5Y3w+au4A+FKCEDXna/I2PN6iFqSk+zMAiCVJCgN5GJwYElWOUo2TUyLuHKxUJr8X3cKGTgtaBHlNEvMOizroWkTA7FgnAcxkYNZQ96H76GbB+wfN3CxiRFx9j2CUFbpLskA3PfmZ4WoKfgB1Cjog2ZMvU/LTVCPzV6vW1YI6b6PGqcOeqHTPhb6yEQ2ICqJftJG399+j0rU7V0/VIbAKOlHQPjfjZkH1IoW2GD768dsEPtEcQvoB7/vxQ/Xl/H9xkANjjUhmd8Q12WiIV5uP8CneqvX7/jlo6F/S3FGpyWOr7LQ5FuhE4/UDpoMFB3vtHKIDvpr5D+ZtbDwbXLvsUrvLOBf8wj4tC54FChRxP9NdIY8Xe63U/nwr1uo9rQqaIx1SUhxPYiroLpSAMzJvW8UkGji3KiE6Oc7JwmBud3Cf6/Ir7u0RvbBJ9fg22oV5tDgW1cH9v6E3tktgu+vzqJxP7e0VjLAR9jeQG0Wd/T2oS79erXbjfX7Hvrzj8+xwtjArH9pQmFgWefTHrlw6FVXzg4iLwQlMZxzt/gfG9WYX41C8WJgIjSfWfKZb2My/C9c8A+v17HIEcZc8K2CFSqIHLB7VgSpE1N1p5gg+IIV4RlBvgYCzzFhUhL72JPty/cDnM58JvzBr/4zszJlbg1mxJDADaluVTeK2Q4Kw5RlTcmj5+nzVjy9yXU/8tPP8r6NfXR8Bub5a6TG76S+zyX8+owy8bRZGuj/r0J6TQn2ZEQ9mnAmj+pp+IF/2jjgLG863f+KaAKFzlbTbAD/dXntOB6v2W0LvBJmrPOkeovr2ns26azvExn/tYxZsLGCSyFmOfbmnNj+FdWE3BRsTzEFx+/+7vt33X1U+EYD/w9f1IkiLHK91yXc6hIPrxRp23vX4UN4q8l1gU872+SUa7NhqyVInAa4l/EQ7IycGuPwUhsl9xaH7Vnwn7JZXol0u3JrDt4+np87c8G//95/s1F+l2tzCPMkyTvkgg4pOthRlR/sJJgPT7dioqHJ8qr/GTH/xEwyeWRsCCsh8Yd0Gpa8vuY0oLBRwPNtRSWGoD5GjKNRH8hyAcEkZHItEv6JoYuC3JjQZxOuaxYknyYx9QJ/jHwgW5BImPVqwL534WPioVp+oPANvQNh485oGAmYRgXgSPONo1GFIdHIrxI8hKiIGJWg7TET7utXgfKJYpLQOhjoKw7lKBewiDZn8iAnMTRCIKg3QydFd/ItppmI8oAP2xAIxKxqSeHwC/FHyMX/BGEPyng53xeAvsKriv4x1JBKqouvCOEHsv4n5bcoUx67aZysHycBgvotep0LZHgWY/RzjI+3o3Vu2XvB1ND5t8DE4ZDBKVbwUV/V0D3+O5ZtGGmIsSb2d+R5k71xHHqPa72eDB0TS3iIIpyZoO+S4i5ta6AJTfSYhvZFBf5MKjdOlk9jsK00DxO7d9RkuLnqrCdPLgezLGuwQjqujxan6qeayif+oBCszcpjBEKotAZP0GUpIuaBvn1qiFruX31+CIm+scqquCqOm5BBOCYhuObkTDY217YpgJDZTmTotpi9ukeEaITuqk2OYjgnbpCMcJCfevfL/cluLHoNF2khg5seI3N0v8uaj3ZeA8lBF/OXYeipFbPYTyzVIDH1S2DEqmRjWg8WDW+FvbOC4WHs5myLvrE/F1kndm6HtrJu/My7OFEkiXcOOoDzaQZH7j7+Tlv6Yv96TcVlg3MID8CPsSNRVUTS4jfJS4f93qWdldp0B/kPsMs+hR+q3v8vm7VW9kzF+lPZ/3h4WZrAjSVd7zGUwYz7xu/HbWQQJckFsdrOqfI4YRGunrFODLrNtzPu450TmRk3vOVgpWu4JE3CBHNwYtcElhvrCjHVJol/L937V3AmhX2fNT3MJ9E2fE3KVteguUN3wmJzz5NP1+YjciCrnPN7czXOcc36oVTzwOa+jaRnND7xSGjmJJjPCU5MiaCPyJM+ZNzfDA92D/XdbfZRU/MNlFxwpHQfPCUHFgLgPg16e4zoPGDNp9JmsOdD0eUsVu7SGFvHHQf/7+2YfzXlg0x9B5iKBkbpJC8wptUhUkeJ6BFmQdBqhcwQp1I2hZkOGSw0OqMzi/tRVXA9ITWYIRTFWD3pl7fDiTg3/DoaCF6bTawgC2UeBk+Fo2CbV03rCCQuJBYvkeSOYw4x2996drPNP8P87HSIN+X8D4e+zAaMTkS6Qe/Vno+IdEO4H8V+RwKRUVB3LR9OAaRRK7IYAQpgw/wlCeP5/9/wn2Ak2HBOLQ2jdQPFE2fRkN01R9KQvqmCqM7ICvlun4IhVl8R0dKPj8QUIHaoM3sNthkB7U2gsOnK1J3KKd2UgfgTEQ0eGaoItiQvYx3NsHj82Ge0GjPeqgq4CC1MMlCj9k5YQaxoGYukvTgesCwTbuVDxHHvmPgGURyqqnB8x4XvSKkP3+dg5ToDYvUutDbRceGfjdd0R/6dDAq3MZon2Z/lJb8sSG+1tnq80j5Z6sEp68dn+RgeX7WWCGxk+F++N8UuJlRzxEZw/eQCh+GOFN4G86WemAI+d+mui32B4oZIjfSD/9Fks+fbtdH4XgpBL/KLz7H+fz7u6D7XmampqjHVjzOTLU5nM47ebzdKDNXfsYP/YNbeQLt45JiuWm8kBilNBPqDMAayLjI34cxg2OguwbcVS8UOiXfffjOPYdai2Wu5sYv+gsr9+N8z2Cl7tWfuZSgIsLAK5OFfevFTwnhJ+vHUhuGIE3IwQH+Ud7PiD88waR8Jx/GKyJX7cQLPGElx2cL1zwc8xgIzF5cb4nIXgVYvVbO3bmQiJJDQoniBPs+KdUQzmKpmDLZy2F1icjd/loAKkNjxoIom++NE5FCDydMfA3kgDYhqfrV1cxx2k8d9JvwXbvcyswHVBDfUXLBMXTLEbypMoKJKtgJCuIKkFIMoPhhEBJEg3vzzjXhdMBeDywMmQyLXa7WWwDyOfew5HczvH513ejjSYJBgn0W3DBY4TIxZ6Mz70Z55rKz72sO7HF5WeoDfN2g7EOt4Wdd6HAzWO+ZnvcxVjkRi993mUzV1tcPvcOpnCfCvTq4/wmcxgBJBjLkgwrgHo0zqiyzANyaFyBJ7aTgINlTGIADThonFAFgmcAIJoS8Dj+NkzMcmBgW/OvHrl9/vS/x0ys6+5+c2DhtqBPGdrwbO93R/XzLkv6f6N6NarBVj10Q+O7+/pCLbcFDpemBgEzWK1pohzHwBEIN/f8R/yooMfQX/IvjXmIXBfoqQQuCtwL7tqa6CGjw/dXbt0kfMt+QtdPoXLJ/QoxnQ5DBb9yxXTSjEhsAPpgg86Na4NvXhmMgS4HElcWBYVhgGSSWYyRKMDYvCILGGAAmge8L8sUj6mATylW4HCSg9d40EAbyGqMPYR9jMTbgL8GNLJ2/E0wsN3YidDxIsFh0LBElXJqOf9PIUcQ3f2ILbZyxwpLrhsD+lglVn3bO3ZX+9zoUBCX3aHXcEoTfVBX1gRp0dsJIzVGnX4x2zaydSJj0zwp0tmdx486+0FOESWn7yx4zj51VoXcMMcOC7sxNcp79Ki964r22JkOR7Vx9sUsChu8btl72a1oTVFj2OnA2tJtV95g/a3WMI/LdoPpbwfFCWc3Nv3iQLGsypoaU2JfmWojbDsoUUa1nTet7a7K1k1ysDanvc70kOHGsxxbOY2kxcFlF8t+K7/GGjuuvDi6nW1/ITHUWteGhcJiWiQZSdm294deU+sfrW5ulFmIZQPb7fSdWjzmipXWRhVO7iY3yMoSRpbqh63qsQsPa+M5d8+x+n6y2xLZrM5x3WFz0mIr1LLmZJeWIZWU1q4yzU651TbP9fKgv59/C0bkR0IQxFIfP3ueXO0au3HHGsXeutSR4oCi5gSRA2YGwwsCw/E8MFdEFVNkjBQJCqgDDAeimsI4UhY5oCpohpFVmgIMzRH4T8yNOOSvgf3XJgc5eTlNbLGX71d40mx0p7XMacZviFFjsRzVm4O8PFuKfUKYLFZlTtnQHdKutxcKLmdnL0uuctpMpjWW676ceOWFJGm+Q0/IyTa7kzle7AjsgZEzzVa3t5K6vSxuZkkGI9SMmqF3tNglshv5JTNlCCKTJTuC7LVqYjHv5IvTWXvRFotFJz85Zme5Cpv3cuN9gZu6i7KzFxdVaWGUmlReaE32A1Jo7zWv9LIqOyW3Yks10a1Q/ZdC86AR+cmp7hXk40Aa7Ra6eRBztrwm8w2qrnRAVUx09wePEJe6BNi4OW2L7Q2lt5UTDuSselorHJ3vKtl2vj0tLmZ7Zs1npe5GeiEKJ0JRDzpRXjMO7UlNb+vq8lLGxw7rNDzG3ciHF68/fCF7i25NmBVWfaZRNI/d/lGuzJhO09QmS6MhNkbOoT876ptGszNy+jPwU6uDn15jqx/G/fFmzDCmaVfrelkYj+0toXktezye9V88kWnkNPdlUi5rdN+0te1Bmo0mM13xnEYTzPL+RB9vGdx0Vw18LIwmrKFoZs0e44e+5E2EBrX1XqrjMjF7sW1N4yRvNLbGircTmtTRHb94U3KIi3sGy0hUVVJlSn6h2MzRMPZcVtZ4atJnM50V3+pnBkV60D0e1dosozSpvii8mGNlyNoiNvEGLDkBv7OtjIU1MbqzaPDdkj0tldTuvuQxcrW/UFYmk2uSZol54Ym8tOsC9shkWFbJvOyOavuY5Qi2S+XzzqnkWlL7bQETy9P5bAFztUH0xsW47K07HFmalQRgyLFA28Fr4QmJpXHgJYJJDyxMjsIIUgGOFSEDl5KiBOA90iwlUiKwplRKYH9CvJzhfg3kvyhcWkd+N8a43uFYVPOHVXG4Hmhrd6Cd6qdWpnk64hOnmNtTxXpv0GK7R8xtN73SsV3M9wYN0xkM4Pd+r1WdTVrF7rJl1pqd/tqsFBdWpazvN1Kj3GwVtovSNJer0VWPwJcQ8AWDRFZefEHnE66B/Ixt1pdXRUam1GeaUVEHvLEt9twXFxnH4MNr0Jev0Wiff6VS3EPsAXv4qS+/9BD9/v7wVxBhPhGRf1wgdLuHsJ9DjPryHvoVRKjP6aF/xND6LZmGH+OwqBU8Uf5Gfn6sUoQ7lqh0lbh/E04SUCJ5P1Y+EV2F8YdErbNu+M2//ClAIJHfH2uNegPhKHv/dog3EfcIr4c6x45hqBRdEpV4ha6Kgm8u5ODtXe6fIBH/ypb4S0mI0wzBXslCgiA4WpYlQZGgzFMZXOVZEZjQtMQqLJCUlKIwwPchWYrDCIYF0pCjgJEtA8NTBWXOsjBYN4CNXlyEc2OL8BtnTP/2jx//+D+5y9sz69oAAA=="
+  },
+  "original_failure": "AssertionError('03-canonical-smoke: exact expected exit')",
+  "continuation_driver": {
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../a41-installed/continue_journeys.py",
+    "bytes": 3117,
+    "sha256": "d6cd4d84e4d9ebf6963c7bef6c4ffaae2104a6ddaaa8b643abe066b6f47d1f56",
+    "source": "#!/usr/bin/env python3\n\"\"\"Continue independent journeys 4–6 after preserving actual journey-3 failure.\n\nReuse the exact already-frozen assertions/commands from run_journeys.py. Execute\nonly its tail beginning with generic Load, before its unconditional final status\nwrite. The original complete three-run receipt is retained byte-for-byte inside\nthe amended receipt, and the failed check remains in the active check list.\n\"\"\"\nimport datetime\nimport importlib.util\nimport json\nfrom pathlib import Path\n\npath = Path(__file__).with_name('run_journeys.py')\nspec = importlib.util.spec_from_file_location('a41_original_driver', path)\nmodule = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nraw = module.REPORT.read_bytes()\nrecord = json.loads(raw)\nassert record['status'] == 'failed' and len(record['runs']) == 3\nassert record['runs'][-1]['name'] == '03-canonical-smoke'\nassert record['runs'][-1]['exit_code'] == 1\nrecord['original_three_run_receipt'] = module.keep_bytes(raw)\nrecord['original_failure'] = record.pop('failure')\nrecord['status'] = 'continuing-independent-journeys'\nrecord['continuation_driver'] = {**module.identity(Path(__file__)), 'source': Path(__file__).read_text()}\nmodule.report = record\nmodule.flush()\nnamespace = module.__dict__\nnamespace.update({\n    'paths': module.WORK / 'session-files',\n    'state': Path(record['journey_inputs']['state']['path']),\n    'script': Path(record['journey_inputs']['load_script']['path']),\n    'midi_script': Path(record['journey_inputs']['midi_script']['path']),\n    'inputs': record['journey_inputs'],\n    'original': Path(record['state_source']['path']),\n    'before': record['installed_tree_before'],\n})\nsource = path.read_text()\nbegin = source.index(\"    diag = paths / 'generic-load.json'\\n\")\nend = source.index(\"    report['limitations'] = [\\n\", begin)\nsegment = '\\n'.join(line[4:] if line.startswith('    ') else line for line in source[begin:end].splitlines()) + '\\n'\nrecord['continuation_segment'] = {'source_driver_sha256': module.sha(path.read_bytes()),\n                                  'bytes': len(segment.encode()), 'sha256': module.sha(segment.encode()),\n                                  'starts_at': \"diag = paths / 'generic-load.json'\",\n                                  'ends_before': \"report['limitations'] = [\"}\ntry:\n    exec(compile(segment, str(path) + ':continued-journeys-4-6', 'exec'), namespace)\n    record['status'] = 'partial-pass-canonical-smoke-failed'\nexcept BaseException as error:\n    record['status'] = 'failed-continuation'\n    record['continuation_failure'] = repr(error)\n    raise\nfinally:\n    record['run_count'] = len(record['runs'])\n    record['checks_passed'] = sum(item['passed'] for item in record['checks'])\n    record['checks_failed'] = sum(not item['passed'] for item in record['checks'])\n    record['completed_at_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()\n    module.flush()\nprint(json.dumps({'status': record['status'], 'run_count': record['run_count'],\n                  'checks_passed': record['checks_passed'], 'checks_failed': record['checks_failed']}, indent=2))\n"
+  },
+  "continuation_segment": {
+    "source_driver_sha256": "6172ca32aeb989bbab11f0ca40f106c11aa7b5f5a02ba6f3e12f69dd5b38f90f",
+    "bytes": 6502,
+    "sha256": "25f606d8bdc0922cca9dfb713bb19ffa5641dbc89c2bcdc7bf9cf21911b3ccc0",
+    "starts_at": "diag = paths / 'generic-load.json'",
+    "ends_before": "report['limitations'] = ["
+  },
+  "installed_tree_after": {
+    "bin": {
+      "kind": "directory"
+    },
+    "bin/hammond_standalone": {
+      "kind": "file",
+      "bytes": 4103352,
+      "sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b",
+      "executable": true
+    },
+    "share": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ/standalone": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 25156,
+      "sha256": "a9e87298b9ab14564b9799d23b872f978bbda1d759bfe2c9ce85be5f06c00674",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+      "kind": "file",
+      "bytes": 2345,
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+      "kind": "file",
+      "bytes": 884,
+      "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/MIDI_EXPRESSION_GUIDE.md": {
+      "kind": "file",
+      "bytes": 23478,
+      "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 29640,
+      "sha256": "e519fec270928c864f358e617a7750de8968ef02786c8c6a7b7261d0031c63e9",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 18545,
+      "sha256": "8a2a8a2eed10ff69871e86a2d914ad9278d03433ed96e8c621fe6730b2e29cde",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+      "kind": "file",
+      "bytes": 26725,
+      "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+      "kind": "file",
+      "bytes": 19010,
+      "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+      "kind": "file",
+      "bytes": 9182,
+      "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+      "kind": "file",
+      "bytes": 23009,
+      "sha256": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/atlas-reference.json": {
+      "kind": "file",
+      "bytes": 811,
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+      "kind": "file",
+      "bytes": 1428,
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/reference-apron-manifest.json": {
+      "kind": "file",
+      "bytes": 2416,
+      "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+      "kind": "file",
+      "bytes": 3816,
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+      "kind": "file",
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+      "kind": "file",
+      "bytes": 1865,
+      "sha256": "36f1af1f7ef32a312af3bc7c3c010355bdda2156bd0baf0cc807b67a88b761a6",
+      "executable": false
+    }
+  },
+  "relocated_tree_after": {
+    "bin": {
+      "kind": "directory"
+    },
+    "bin/hammond_standalone": {
+      "kind": "file",
+      "bytes": 4103352,
+      "sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b",
+      "executable": true
+    },
+    "share": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ/standalone": {
+      "kind": "directory"
+    },
+    "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 25156,
+      "sha256": "a9e87298b9ab14564b9799d23b872f978bbda1d759bfe2c9ce85be5f06c00674",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+      "kind": "file",
+      "bytes": 2345,
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+      "kind": "file",
+      "bytes": 884,
+      "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/MIDI_EXPRESSION_GUIDE.md": {
+      "kind": "file",
+      "bytes": 23478,
+      "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 29640,
+      "sha256": "e519fec270928c864f358e617a7750de8968ef02786c8c6a7b7261d0031c63e9",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+      "kind": "file",
+      "bytes": 18545,
+      "sha256": "8a2a8a2eed10ff69871e86a2d914ad9278d03433ed96e8c621fe6730b2e29cde",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+      "kind": "file",
+      "bytes": 26725,
+      "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+      "kind": "file",
+      "bytes": 19010,
+      "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+      "kind": "file",
+      "bytes": 9182,
+      "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+      "kind": "file",
+      "bytes": 23009,
+      "sha256": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/atlas-reference.json": {
+      "kind": "file",
+      "bytes": 811,
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+      "kind": "file",
+      "bytes": 1428,
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/reference-apron-manifest.json": {
+      "kind": "file",
+      "bytes": 2416,
+      "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+      "kind": "file",
+      "bytes": 3816,
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+      "kind": "file",
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "executable": false
+    },
+    "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+      "kind": "file",
+      "bytes": 1865,
+      "sha256": "36f1af1f7ef32a312af3bc7c3c010355bdda2156bd0baf0cc807b67a88b761a6",
+      "executable": false
+    }
+  },
+  "run_count": 7,
+  "checks_passed": 155,
+  "checks_failed": 1,
+  "completed_at_utc": "2026-11-17T01:58:42.230626+00:00",
+  "original_six_run_receipt": {
+    "bytes": 116481,
+    "sha256": "b63a981e8c120b537510351399f6f82e117c39980ffab7baf5ebfe91be95be37",
+    "encoding": "gzip+base64",
+    "content": "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"
+  },
+  "diagnostic_authorization": {
+    "owner": "/root",
+    "scope": "One separately labeled 2000 ms canonical diagnostic after original six runs, same state/source/drivers and 1672x941; root holds concurrent native/compile work.",
+    "original_600ms_result": "Preserved failure; never reclassified or replaced."
+  },
+  "diagnostic_driver": {
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../a41-installed/canonical_diagnostic.py",
+    "bytes": 3171,
+    "sha256": "efa652721612b0dde77b2380d3db96476db958efc162311b2624f351dc6fd6b6",
+    "source": "#!/usr/bin/env python3\n\"\"\"One root-authorized 2000 ms diagnostic; retain original 600 ms failure.\"\"\"\nimport datetime\nimport importlib.util\nimport json\nfrom pathlib import Path\n\npath = Path(__file__).with_name('run_journeys.py')\nspec = importlib.util.spec_from_file_location('a41_original_driver', path)\nmodule = importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nraw = module.REPORT.read_bytes()\nrecord = json.loads(raw)\nassert record['status'] == 'partial-pass-canonical-smoke-failed' and len(record['runs']) == 6\nrecord['original_six_run_receipt'] = module.keep_bytes(raw)\nrecord['diagnostic_authorization'] = {\n    'owner': '/root', 'scope': 'One separately labeled 2000 ms canonical diagnostic after original six runs, same state/source/drivers and 1672x941; root holds concurrent native/compile work.',\n    'original_600ms_result': 'Preserved failure; never reclassified or replaced.',\n}\nrecord['diagnostic_driver'] = {**module.identity(Path(__file__)), 'source': Path(__file__).read_text()}\nrecord['status'] = 'canonical-diagnostic-running'\nmodule.report = record\nmodule.flush()\npaths = module.WORK / 'session-files'\nabsent = paths / 'absent-canonical.b3controls'\ndiag = paths / 'canonical-2000ms.json'\ntry:\n    proc, data, entry = module.run('07-canonical-2000ms-diagnostic',\n        ['--state', absent, '--smoke-ms', '2000', '--width', '1672', '--height', '941', '--diagnostics', diag],\n        expected=0, diagnostic=diag)\n    module.normal_runtime(data, 'canonical 2000ms diagnostic', 1672, 941)\n    module.check(data['smoke']['duration_ms'] == 2000 and all(data['smoke'][key] is True for key in\n        ('completed', 'note_on_sent', 'note_off_sent', 'held_observed', 'release_observed', 'passed')),\n        'canonical 2000ms diagnostic: every unchanged smoke correctness assertion passes')\n    module.check(not absent.exists(), 'canonical 2000ms diagnostic: original absent state still absent')\n    module.check(module.tree(module.INSTALLED) == module.tree(module.MOVED) == record['installed_tree_before'],\n        'canonical 2000ms diagnostic: installed and relocated payloads remain exact')\n    module.check(module.sha((module.ROOT / 'apps/standalone/InstrumentView.cpp').read_bytes()) == module.PAINTER_SHA,\n        'canonical 2000ms diagnostic: painter remains exact')\n    entry['classification'] = 'Separate passed 2000ms diagnostic; original 600ms failure remains open.'\n    record['status'] = 'six-journeys-five-expected-one-failed-diagnostic-passed'\nexcept BaseException as error:\n    record['status'] = 'original-canonical-failure-and-diagnostic-failure'\n    record['diagnostic_failure'] = repr(error)\n    raise\nfinally:\n    record['run_count'] = len(record['runs'])\n    record['checks_passed'] = sum(item['passed'] for item in record['checks'])\n    record['checks_failed'] = sum(not item['passed'] for item in record['checks'])\n    record['completed_at_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()\n    module.flush()\nprint(json.dumps({'status': record['status'], 'run_count': record['run_count'],\n                  'checks_passed': record['checks_passed'], 'checks_failed': record['checks_failed']}, indent=2))\n"
+  },
+  "integrity_review": {
+    "retained_byte_records_decoded_and_verified": 24,
+    "original_run_prefixes_exact": true,
+    "main_cpp_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+    "reviewed_at_utc": "2026-11-17T02:00:10.071097+00:00"
+  },
+  "smoke_boundary_review": {
+    "observed_600ms": {
+      "status": "failed",
+      "exit_code": 1,
+      "images": 2,
+      "callback_count": 155,
+      "rendered_frames": 79360,
+      "note_on_sent": false,
+      "note_off_sent": false,
+      "held_observed": false,
+      "release_observed": false,
+      "render_failures": 0,
+      "format_failures": 0,
+      "nonfinite_failures": 0,
+      "overrange_failures": 0
+    },
+    "source_eligibility": "advance_smoke sends note-on only when 30 <= elapsed < smoke_ms/2, audio is running, copied snapshot is running, and controls are not pending. run() performs a whole render_frame between main-loop eligibility checks.",
+    "source_at_600ms": "Note-on eligibility window is [30,300) ms.",
+    "source_at_2000ms": "The separate diagnostic has [30,1000) ms note-on eligibility and the unchanged required note-off/held/release assertions.",
+    "inference_limit": "The observed 600 ms result establishes that no eligible note-on was submitted. No per-turn timestamp, paint-cost trace or pending-control trace was captured, so scheduler contention, cold painting, and initial snapshot readiness cannot be separated causally.",
+    "diagnostic_classification": "One authorized 2000 ms run passed on the same executable/state/drivers/dimensions with root native work held; it does not repair, erase or qualify the original 600 ms case."
+  },
+  "limitations": [
+    "Selected installed Linux software/dummy journeys; not a complete CTest run.",
+    "The original 600 ms canonical smoke remains failed and requires separate investigation before claiming that operating condition.",
+    "No real display/DPI/input device, physical audio/MIDI, DAW, native accessibility, callback deadline/retirement, physical fidelity, literal whole-interface 1:1, licensing/signing/distribution acceptance.",
+    "Root staging prefix, checkout/build/dependencies remained present and untouched; the private 17-file payload was copied then renamed to an actual relocated prefix. No syscall trace was performed.",
+    "Three successful application journeys and two expected capability refusals among the original six; one failed canonical smoke is retained; a separate 2000 ms diagnostic passed."
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "protocol": "header-material-h1-v1",
+  "base_receipt_sha256": "882773ad5771de15aad0889e957c07e5aa4d73c38f4736e641122eff1943eff8",
+  "copied_at_utc": "2026-11-17T01:04:55.377103+00:00",
+  "source_sha256": {
+    "apps/standalone/InstrumentView.cpp": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+  },
+  "binary": {
+    "path": "/workspace/scratch/5a28c3564dbf/t3-native/test_standalone_header_material",
+    "bytes": 3812984,
+    "sha256": "c598ff864f4a9024f717563c002f7742baf8eae4c277aea4390de3b66f7658e1"
+  },
+  "object": {
+    "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/test_standalone_header_material.cpp.o",
+    "bytes": 498200,
+    "sha256": "1efe9a559dd894fdc62eeb1524893088d3216a4fab60fdf204f70690dd30385a"
+  },
+  "inputs": [
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/test_standalone_header_material.cpp",
+      "bytes": 61218,
+      "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/InstrumentView.cpp",
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/libhammond_standalone_drawing.a",
+      "bytes": 1283262,
+      "sha256": "ffc41ccf55b0268f6b01af36d3e1b97cecb7b79f14e574cb7cc2178c12a853e7"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/libhammond_standalone_support.a",
+      "bytes": 421086,
+      "sha256": "9e1046e988d3b7d05b4c09d34243aebb95f8648fd175987ee06e59f375d78be9"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/libhammond_core.a",
+      "bytes": 460336,
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/libSDL2.a",
+      "bytes": 3245774,
+      "sha256": "383aee215b2eaa4f716623113fc0481af90ac55bfa56fca261c157241a1a1977"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/compile_commands.json",
+      "bytes": 369857,
+      "sha256": "b62a9b53ded3e7619f0a68165e71849865743899549c21eece929a7933b5614e"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/CMakeCache.txt",
+      "bytes": 47686,
+      "sha256": "cc6349d42235df5e3538e9b1b291e1e30ebfc0fedf9d924fd36d5042498dc2d6"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/link.txt",
+      "bytes": 359,
+      "sha256": "0e10d6120f334a595223b6c2b0f5067b50622a9d0bd89794f148ff48717df0d1"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/flags.make",
+      "bytes": 625,
+      "sha256": "aa86642ced293b04e9fa79ce250cbcf428e1208f99ecdd04ac51d979f9c0e366"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/DependInfo.cmake",
+      "bytes": 1076,
+      "sha256": "e780095ce1ef5a9a98ad914903ecb6bfe19238f13b5d0386ba03dbf59f8d4228"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/t3-native/h1-inputs/fixture.cpp.o.d",
+      "bytes": 26453,
+      "sha256": "c59fb9b1b23152ff34492f9d793ff3559e433856f16cf72125e52ce658cc27d0"
+    },
+    {
+      "path": "/usr/bin/x86_64-linux-gnu-g++-14",
+      "bytes": 1166360,
+      "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d"
+    }
+  ],
+  "commands": [
+    "/usr/bin/c++ -DSDL_MAIN_HANDLED -I/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/include -I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include -I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include/SDL2 -I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include-config-release/SDL2 -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/test_standalone_header_material.dir/native_tests/test_standalone_header_material.cpp.o -c /workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/test_standalone_header_material.dir/link.d CMakeFiles/test_standalone_header_material.dir/native_tests/test_standalone_header_material.cpp.o -o test_standalone_header_material  libhammond_standalone_drawing.a libhammond_standalone_support.a ../../_sdl2/libSDL2.a -lm -pthread ../../libhammond_core.a"
+  ],
+  "compile_directory": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone",
+  "link_directory": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone",
+  "default_execution": "docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-baseline-corrected-default.json",
+  "default_execution_sha256": "9e07b8b4a33c71fa438c9c113834ba2e552455b322467bd59a11d8bfc213fbbb",
+  "default_result": {
+    "schema": 1,
+    "protocol": "header-material-h1-v1",
+    "status": "passed",
+    "cases": 48,
+    "checks": 10447,
+    "paintings": 163,
+    "clipped_cases": 16,
+    "empty_cases": 2,
+    "inactive_cases": 8,
+    "protected_pixels": 56329523,
+    "deterministic_repaints": 48,
+    "clip_companions": 16,
+    "quiet_clip_pixels": 33462,
+    "history_states": 48,
+    "history_repaints": 1,
+    "fresh_repaints": 1,
+    "helper_present": false,
+    "helper_probes": 0,
+    "backend": "SDL software surface; copied state; no audio/window"
+  },
+  "ancestry": "Actual freshlybuilt preH1fixture includes acceptedT3painter; copied original executable,object,source,staticlibraries andcompile/linkmetadata beforeanyH1edit. No candidate switch or reconstructed before image."
+}

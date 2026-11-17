@@ -1,0 +1,1142 @@
+{
+  "schema": 1,
+  "worker": "/root/w10_a56",
+  "scope": "Read-only source, retained receipt, file identity and bounded resource/delivery audit. No configure/build/native execution/install/capture/cleanup/index/commit/push by A56.",
+  "observed_at_utc": "2026-11-17T02:59:26.682447+00:00",
+  "standing_instructions_read": [
+    "AGENTS.md",
+    "docs/PLAN.md",
+    "docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md",
+    "docs/development/2026-11-16-heading-title-continuation/assignments.json"
+  ],
+  "pdf_boundary": "A56 read the entire standing plan, not all 500 source PDF pages; the session PDF reading belongs to A01-A06.",
+  "source_snapshot": {
+    "git_head": "045c95d769b197d05b6596901508c160fd62fb35",
+    "application": {
+      "path": "../build-native/apps/standalone/hammond_standalone",
+      "bytes": 4103352,
+      "sha256": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479"
+    },
+    "painter": {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    "main": {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 147241,
+      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+    },
+    "standalone_cmake": {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44093,
+      "sha256": "7c7e1b42825d1ecd5b9cdc75508ed44117283dade74c0d473f171d8ab2482bb4"
+    }
+  },
+  "h1_structural_bounds": {
+    "canonical_inset_xywh": [
+      76,
+      14,
+      1520,
+      94
+    ],
+    "eligible_logical_width": [
+      1400,
+      8192
+    ],
+    "eligible_logical_height": [
+      820,
+      8192
+    ],
+    "presentation": "Dimensional Play",
+    "renderer_scale_domain": "Both components finite, >0 and <=2; no lower cutoff. Original fallback outside domain.",
+    "rgb_knots": 144,
+    "x_knots": 12,
+    "y_knots": 4,
+    "int_boundaries": 258,
+    "column_spans": 257,
+    "grain_pairs": 8192,
+    "grain_marks": 16384,
+    "grain_mix_calls": 32768,
+    "grain_seed_hex": "0xB3A02211",
+    "primitive_and_field_evaluation_bound": "257 * visible_inset_rows + 16384",
+    "canonical_rows": 94,
+    "canonical_primitive_bound": 40542,
+    "conservative_max_rows": 1638,
+    "conservative_max_primitive_bound": 437350,
+    "endpoint_8192_scale2_rows": 1636,
+    "resource_crop_rows": 64,
+    "resource_crop_primitive_bound": 32832,
+    "resource_output_pixels": 4096,
+    "fixed_table_bytes_if_int32_and_double64": 2312,
+    "fixed_table_bytes_exclude": "Scalars, guards, call stack, compiler placement, SDL command queue, textures and existing whole-renderer allocations.",
+    "allocation_evidence": "Source inspection: no application-owned heap, persistent cache, new assets or image-sized array added by H1 helper. No runtime allocator instrumentation or real-time guarantee.",
+    "grain_empty_field_boundary": "The corrected helper does not return merely because mapped field edges/rows collapse; it still visits all grain marks when overall raster visibility permits. Tiny-grain regression remains a separate receipt."
+  },
+  "input_identities": {
+    "AGENTS.md": {
+      "path": "AGENTS.md",
+      "bytes": 24722,
+      "sha256": "7cbe378f8fe3a67e13c7211f78548f7f7a7cc369324980d930c50a116140f101"
+    },
+    "docs/PLAN.md": {
+      "path": "docs/PLAN.md",
+      "bytes": 55498,
+      "sha256": "db72a6fd26b097704ba6b7fc1ebd86b4174af55a2b1aca7ecd766f80d1e5cc6d"
+    },
+    "docs/design/HEADER_MATERIAL_H1_CONTRACT.md": {
+      "path": "docs/design/HEADER_MATERIAL_H1_CONTRACT.md",
+      "bytes": 26099,
+      "sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61218,
+      "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+    },
+    "apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp": {
+      "path": "apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp",
+      "bytes": 10554,
+      "sha256": "254f66fbd3f2ab86b63000d5eb8f59826775c1db61752c0ac4e173029494fc0a"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "path": "apps/standalone/native_tests/test_standalone_title_density.py",
+      "bytes": 23467,
+      "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2"
+    },
+    "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py": {
+      "path": "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py",
+      "bytes": 14225,
+      "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822"
+    },
+    "tools/compare_header_material.py": {
+      "path": "tools/compare_header_material.py",
+      "bytes": 93670,
+      "sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760"
+    },
+    "tools/compare_heading_typography.py": {
+      "path": "tools/compare_heading_typography.py",
+      "bytes": 52528,
+      "sha256": "e809a3e052efa5916e1ce6f20b1ef0a5560fc50b423f0759ba705d0650aaf886"
+    },
+    "tools/capture_standalone_interface.py": {
+      "path": "tools/capture_standalone_interface.py",
+      "bytes": 39296,
+      "sha256": "eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a"
+    },
+    "docs/STANDALONE_INSTALL.md": {
+      "path": "docs/STANDALONE_INSTALL.md",
+      "bytes": 19010,
+      "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba"
+    },
+    "README.md": {
+      "path": "README.md",
+      "bytes": 80215,
+      "sha256": "b1a1d6027e5a16011bb168c8ee2f9bd116d312a254d9d8ababcf9f9ef68a3e5f"
+    },
+    "docs/reviews/HEADING_HEADER_INSTALLED_JOURNEYS.md": {
+      "path": "docs/reviews/HEADING_HEADER_INSTALLED_JOURNEYS.md",
+      "bytes": 7752,
+      "sha256": "7d9eacb9d4f6c0a08e76f0adeb31fc476940ffd8d910a1e8df4650d229892d07"
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/h1-grain-bounds-current.json": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-grain-bounds-current.json",
+      "bytes": 228,
+      "sha256": "7e3d069cec17669f77c21f6663811bd4c7e83736d6e379fc30ea3f3720cbcc50"
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/h1-statistics-qualification.json": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-statistics-qualification.json",
+      "bytes": 2385,
+      "sha256": "41cc3b8f2298b093e248eff8db48679489064945f8a9f7f4bb1e6d4deafde78f"
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/reconciled-title-density.json": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/reconciled-title-density.json",
+      "bytes": 22506,
+      "sha256": "a1c715a385ee76a964a6c3a9f71c1c44882250c97dc4a35f0e2147ee6eac81a2"
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-inputs.json": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-inputs.json",
+      "bytes": 75848,
+      "sha256": "ec855549fb1732ed81f06d0bb540952118bddf1758cecf652b79799df769d8d7"
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/serialized-generated-properties.json": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-generated-properties.json",
+      "bytes": 1377,
+      "sha256": "d3826b42f00024371b23b9b474369519014da55019e5f4a61cea954ef97179d8"
+    }
+  },
+  "comparisons": [
+    {
+      "receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/report.json",
+        "bytes": 1307188,
+        "sha256": "206229c94cefc4216c12556c224405084e35886dff3e0f07bb2f0e5671fb12dd"
+      },
+      "status": "failed",
+      "elapsed_seconds": 295.712,
+      "bounds": {
+        "actual_native_invocations": 137,
+        "concurrent_native_processes": 1,
+        "failure_png_bytes": 67108864,
+        "json_files_max": 7,
+        "maximum_native_invocations": 137,
+        "maximum_output_pixels": 8580000,
+        "per_json_bytes": 12582912,
+        "per_native_timeout_seconds": 60,
+        "per_process_stderr_bytes": 65536,
+        "per_process_stdout_bytes": 34844289,
+        "raw_frames_retained": 0,
+        "total_native_wall_deadline_seconds": 1800
+      },
+      "actual_failure_png_bytes": 67106544,
+      "coverage": {
+        "baseline_source_map": 229,
+        "companion_compared_pixels": 54635662,
+        "companion_pairs_completed": 16,
+        "inputs_unchanged": true,
+        "main_compared_pixels": 131641918,
+        "main_pairs_completed": 48,
+        "matrix_complete": false,
+        "outside_changed_pixels": 0,
+        "protected_sources": 213,
+        "repeats_complete": false,
+        "required_companion_pairs": 16,
+        "required_main_pairs": 48,
+        "required_repeats_per_side": 2
+      },
+      "numerical_summary": {
+        "after_RMS_error": 1.6673172881480465,
+        "after_RMS_error_hex": "0x1.aad54e48a6b98p+0",
+        "after_failed": 59,
+        "after_mean_error_exact": "846310429693/228096000000",
+        "after_passed": 44,
+        "baseline_reproduced": true,
+        "before_failed": 59,
+        "before_passed": 44
+      },
+      "directory_usage": {
+        "files": 210,
+        "logical_bytes": 69407357,
+        "allocated_bytes": 69902336,
+        "symlinks_not_followed": 0
+      },
+      "limit": "Historical frozen comparison, not qualification of the later changed main or merged current source."
+    },
+    {
+      "receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration-corrected/report.json",
+        "bytes": 1269274,
+        "sha256": "e443414e9d5ae81e00fc2e26ad5014f6bbc29ff44de9820c54f96335cbb6744b"
+      },
+      "status": "baseline-demonstrated",
+      "elapsed_seconds": 265.263,
+      "bounds": {
+        "actual_native_invocations": 137,
+        "concurrent_native_processes": 1,
+        "failure_png_bytes": 67108864,
+        "json_files_max": 7,
+        "maximum_native_invocations": 137,
+        "maximum_output_pixels": 8580000,
+        "per_json_bytes": 12582912,
+        "per_native_timeout_seconds": 60,
+        "per_process_stderr_bytes": 65536,
+        "per_process_stdout_bytes": 34844289,
+        "raw_frames_retained": 0,
+        "total_native_wall_deadline_seconds": 1800
+      },
+      "actual_failure_png_bytes": 65104,
+      "coverage": {
+        "baseline_source_map": 229,
+        "companion_compared_pixels": 54635662,
+        "companion_pairs_completed": 16,
+        "inputs_unchanged": true,
+        "main_compared_pixels": 131641918,
+        "main_pairs_completed": 48,
+        "matrix_complete": true,
+        "outside_changed_pixels": 0,
+        "protected_sources": 213,
+        "repeats_complete": true,
+        "required_companion_pairs": 16,
+        "required_main_pairs": 48,
+        "required_repeats_per_side": 2
+      },
+      "numerical_summary": {
+        "after_RMS_error": 1.6673172881480465,
+        "after_RMS_error_hex": "0x1.aad54e48a6b98p+0",
+        "after_failed": 59,
+        "after_mean_error_exact": "846310429693/228096000000",
+        "after_passed": 44,
+        "baseline_reproduced": true,
+        "before_failed": 59,
+        "before_passed": 44
+      },
+      "directory_usage": {
+        "files": 9,
+        "logical_bytes": 2327999,
+        "allocated_bytes": 2342912,
+        "symlinks_not_followed": 0
+      },
+      "limit": "Historical frozen comparison, not qualification of the later changed main or merged current source."
+    },
+    {
+      "receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json",
+        "bytes": 1282472,
+        "sha256": "058cfb0b13554789f5e8e27fe6328b2b70ba75147b157179609a76b78e7f9e15"
+      },
+      "status": "passed",
+      "elapsed_seconds": 233.244,
+      "bounds": {
+        "actual_native_invocations": 137,
+        "concurrent_native_processes": 1,
+        "failure_png_bytes": 67108864,
+        "json_files_max": 7,
+        "maximum_native_invocations": 137,
+        "maximum_output_pixels": 8580000,
+        "per_json_bytes": 12582912,
+        "per_native_timeout_seconds": 60,
+        "per_process_stderr_bytes": 65536,
+        "per_process_stdout_bytes": 34844289,
+        "raw_frames_retained": 0,
+        "total_native_wall_deadline_seconds": 1800
+      },
+      "actual_failure_png_bytes": 0,
+      "coverage": {
+        "baseline_source_map": 229,
+        "companion_compared_pixels": 54635662,
+        "companion_pairs_completed": 16,
+        "inputs_unchanged": true,
+        "main_compared_pixels": 131641918,
+        "main_pairs_completed": 48,
+        "matrix_complete": true,
+        "outside_changed_pixels": 0,
+        "protected_sources": 213,
+        "repeats_complete": true,
+        "required_companion_pairs": 16,
+        "required_main_pairs": 48,
+        "required_repeats_per_side": 2
+      },
+      "numerical_summary": {
+        "after_RMS_error": 0.3182611192893787,
+        "after_RMS_error_hex": "0x1.45e63e2bbeb4cp-2",
+        "after_failed": 0,
+        "after_mean_error_exact": "7620796849/20736000000",
+        "after_passed": 103,
+        "baseline_reproduced": true,
+        "before_failed": 59,
+        "before_passed": 44
+      },
+      "directory_usage": {
+        "files": 6,
+        "logical_bytes": 2277755,
+        "allocated_bytes": 2293760,
+        "symlinks_not_followed": 0
+      },
+      "limit": "Historical frozen comparison, not qualification of the later changed main or merged current source."
+    }
+  ],
+  "permanent_fixture_bounds": {
+    "header_statistics": {
+      "native_children": 1,
+      "case": 46,
+      "rgba_bytes": 6293408,
+      "stdout_max_bytes": 6817697,
+      "stderr_max_bytes": 65536,
+      "timeout_default_seconds": 20,
+      "timeout_max_seconds": 60,
+      "criteria": 103,
+      "oracle": "Independent Fraction / plane residual SSE / math.fsum; no NumPy requirement."
+    },
+    "title_density": {
+      "native_children": 19,
+      "inventory_rows": 44,
+      "rendered_original_canonical_cases": 18,
+      "one_frame_at_a_time": true,
+      "inventory_max_bytes": 65536,
+      "rgba_bytes_per_frame": 6622200,
+      "stdout_max_bytes_per_frame": 7146489,
+      "stderr_max_bytes": 65536,
+      "timeout_per_child_seconds": 20,
+      "json_max_depth": 16,
+      "numeric_token_max_characters": 64,
+      "finite_numeric_values_required": true
+    },
+    "replay_paint_boundary": {
+      "native_children": 2,
+      "timeout_default_seconds": 12,
+      "timeout_max_seconds": 30,
+      "stdout_max_bytes": 65536,
+      "stderr_max_bytes": 65536,
+      "diagnostics_read_max_bytes": 2097152,
+      "private_files_per_case": 3,
+      "limit": "Post-run bounded diagnostics read is not an OS disk quota or overall process RSS ceiling."
+    }
+  },
+  "timing": {
+    "receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-paint-timing/report.json",
+      "bytes": 114648,
+      "sha256": "042c9318e7a7b7e04df5d2b4aed048d92f93cf32381de3996becbb9b4abe4adf"
+    },
+    "method": "One native child at a time; adjacent genuine before/after executables, reversing executable order on alternate cases. 30 warmup and 300 samples per executable. No concurrent build, capture or native test.",
+    "elapsed_seconds": 449.67726076799954,
+    "inputs_unchanged_recorded": true,
+    "inputs": {
+      "before": {
+        "binary": {
+          "recorded": {
+            "path": "/workspace/scratch/5a28c3564dbf/t3-native/hammond_standalone_paint_benchmark",
+            "bytes": 3756168,
+            "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+          },
+          "observed": {
+            "path": "/workspace/scratch/5a28c3564dbf/t3-native/hammond_standalone_paint_benchmark",
+            "bytes": 3756168,
+            "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+          },
+          "matches": true
+        },
+        "painter": {
+          "recorded": {
+            "path": "/workspace/scratch/5a28c3564dbf/t3-native/InstrumentView.cpp",
+            "bytes": 164592,
+            "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+          },
+          "observed": {
+            "path": "/workspace/scratch/5a28c3564dbf/t3-native/InstrumentView.cpp",
+            "bytes": 164592,
+            "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+          },
+          "matches": true
+        }
+      },
+      "after": {
+        "binary": {
+          "recorded": {
+            "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+            "bytes": 3760864,
+            "sha256": "7de8ab75e8be2b8fcb521a1e2752297e2c6c258ac8a3016ef4434eb7d334623e"
+          },
+          "observed": {
+            "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+            "bytes": 3760864,
+            "sha256": "7de8ab75e8be2b8fcb521a1e2752297e2c6c258ac8a3016ef4434eb7d334623e"
+          },
+          "matches": true
+        },
+        "painter": {
+          "recorded": {
+            "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+            "bytes": 171413,
+            "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+          },
+          "observed": {
+            "path": "apps/standalone/InstrumentView.cpp",
+            "bytes": 171413,
+            "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+          },
+          "matches": true
+        }
+      }
+    },
+    "cases": [
+      {
+        "name": "minimum-active",
+        "width": 1400,
+        "height": 820,
+        "presentation": "dimensional",
+        "execution_order": [
+          "before",
+          "after"
+        ],
+        "comparison": {
+          "before_total_median_ms": 113.757396,
+          "after_total_median_ms": 118.844028,
+          "growth_ms": 5.0866319999999945,
+          "growth_percent": 4.47147366136967,
+          "before_total_p95_ms": 197.619199,
+          "after_total_p95_ms": 152.760494,
+          "benchmark_investigation_required": false
+        },
+        "pixels": {
+          "before": "74b99c4c7552fcb9",
+          "after": "91cd3b7db42168c8"
+        },
+        "runs": {
+          "before": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 4592000
+          },
+          "after": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 4592000
+          }
+        },
+        "pixels_equal": false
+      },
+      {
+        "name": "canonical",
+        "width": 1672,
+        "height": 941,
+        "presentation": "dimensional",
+        "execution_order": [
+          "after",
+          "before"
+        ],
+        "comparison": {
+          "before_total_median_ms": 150.587494,
+          "after_total_median_ms": 155.469887,
+          "growth_ms": 4.8823930000000075,
+          "growth_percent": 3.2422300619465836,
+          "before_total_p95_ms": 372.727266,
+          "after_total_p95_ms": 188.269849,
+          "benchmark_investigation_required": false
+        },
+        "pixels": {
+          "after": "2139eefa89ca68e0",
+          "before": "e712579bc93b2dc5"
+        },
+        "runs": {
+          "after": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 6293408
+          },
+          "before": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 6293408
+          }
+        },
+        "pixels_equal": false
+      },
+      {
+        "name": "wide",
+        "width": 1920,
+        "height": 1080,
+        "presentation": "dimensional",
+        "execution_order": [
+          "before",
+          "after"
+        ],
+        "comparison": {
+          "before_total_median_ms": 204.791788,
+          "after_total_median_ms": 207.374467,
+          "growth_ms": 2.582679000000013,
+          "growth_percent": 1.26112429859737,
+          "before_total_p95_ms": 579.152159,
+          "after_total_p95_ms": 439.329642,
+          "benchmark_investigation_required": false
+        },
+        "pixels": {
+          "before": "e4153946b24426e7",
+          "after": "7494c0b21f92c928"
+        },
+        "runs": {
+          "before": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 8294400
+          },
+          "after": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 8294400
+          }
+        },
+        "pixels_equal": false
+      },
+      {
+        "name": "compact-inactive",
+        "width": 960,
+        "height": 700,
+        "presentation": "dimensional",
+        "execution_order": [
+          "after",
+          "before"
+        ],
+        "comparison": {
+          "before_total_median_ms": 64.529565,
+          "after_total_median_ms": 55.469886,
+          "growth_ms": -9.059679000000003,
+          "growth_percent": -14.039578602459203,
+          "before_total_p95_ms": 128.402961,
+          "after_total_p95_ms": 77.383897,
+          "benchmark_investigation_required": false
+        },
+        "pixels": {
+          "after": "f2d463f753f2646d",
+          "before": "f2d463f753f2646d"
+        },
+        "runs": {
+          "after": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 2688000
+          },
+          "before": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 2688000
+          }
+        },
+        "pixels_equal": true
+      },
+      {
+        "name": "flat-inactive",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "execution_order": [
+          "before",
+          "after"
+        ],
+        "comparison": {
+          "before_total_median_ms": 45.455391,
+          "after_total_median_ms": 39.192656,
+          "growth_ms": -6.262734999999999,
+          "growth_percent": -13.777760706095343,
+          "before_total_p95_ms": 201.654375,
+          "after_total_p95_ms": 68.858723,
+          "benchmark_investigation_required": false
+        },
+        "pixels": {
+          "before": "aa58ce2e68f71fbe",
+          "after": "aa58ce2e68f71fbe"
+        },
+        "runs": {
+          "before": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 6293408
+          },
+          "after": {
+            "exit_code": 0,
+            "warmup": 30,
+            "samples": 300,
+            "heap_instrumentation": false,
+            "surface_bytes": 6293408
+          }
+        },
+        "pixels_equal": true
+      }
+    ],
+    "limits": [
+      "Software SDL surface at scale 1 with no window or audio device.",
+      "Separate executable runs do not eliminate scheduler or frequency drift.",
+      "No audio callback deadline, hardware renderer, physical display or arbitrary C/SDL allocation claim.",
+      "Existing benchmark investigation flag (>2 ms and >15% median growth) is diagnostic; it does not replace visual/resource admission."
+    ],
+    "raw_records_checked": 20,
+    "raw_record_mismatches": []
+  },
+  "galleries": [
+    {
+      "directory": "docs/design/native-gallery-header-before-v1",
+      "manifest": {
+        "path": "docs/design/native-gallery-header-before-v1/manifest.json",
+        "bytes": 11442,
+        "sha256": "8e3e34f6a791811b9ab04be4b465a9b47c0b69eaf5554ed63f73a847a948badc"
+      },
+      "provenance": {
+        "path": "docs/design/native-gallery-header-before-v1/provenance.json",
+        "bytes": 132072,
+        "sha256": "e8930841821d5c2f07f417708c8cd3a3a4ccf55758fed8618a1f8762e80e6d07"
+      },
+      "payload_count": 69,
+      "verified_payload_bytes": 8058627,
+      "manifest_total_bytes": 8058627,
+      "payload_mismatches": [],
+      "extra_files_excluding_manifest": [],
+      "views": 15,
+      "executable": {
+        "after": {
+          "bytes": 4094560,
+          "sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3"
+        },
+        "before": {
+          "bytes": 4094560,
+          "sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3"
+        },
+        "path": "/workspace/scratch/5a28c3564dbf/t3-native/hammond_standalone"
+      },
+      "painter": {
+        "bytes": 164592,
+        "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+      },
+      "main": {
+        "bytes": 146859,
+        "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+      },
+      "production_inputs": 148,
+      "build_inputs": 15,
+      "capture_all_recorded_inputs_unchanged": true,
+      "current_production_differences": [
+        {
+          "path": "apps/standalone/InstrumentView.cpp",
+          "capture": {
+            "bytes": 164592,
+            "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+          },
+          "current": {
+            "path": "apps/standalone/InstrumentView.cpp",
+            "bytes": 171413,
+            "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+          }
+        },
+        {
+          "path": "apps/standalone/main.cpp",
+          "capture": {
+            "bytes": 146859,
+            "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+          },
+          "current": {
+            "path": "apps/standalone/main.cpp",
+            "bytes": 147241,
+            "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+          }
+        }
+      ],
+      "all_bmp_conversion_lossless_recorded": true,
+      "all_native_bmp_removed_recorded": true,
+      "remaining_bmp_files": 0,
+      "decoded_pixel_recheck_by_A56": false,
+      "boundary": "Manifest payload hashes independently reread; provenance statements are recorded capture evidence. No recapture or visual/pixel decode by A56. Later README is outside immutable capture manifest."
+    },
+    {
+      "directory": "docs/design/native-gallery-header-h1-v1",
+      "manifest": {
+        "path": "docs/design/native-gallery-header-h1-v1/manifest.json",
+        "bytes": 11442,
+        "sha256": "edda49da4ee2fa819764bac1a80a70d12efaedee6ea25c4965bee5c54830f250"
+      },
+      "provenance": {
+        "path": "docs/design/native-gallery-header-h1-v1/provenance.json",
+        "bytes": 132101,
+        "sha256": "3eec905282f32d4f02a97f1b7a7a601b36b928b04b59543c0124f1656eb7d58c"
+      },
+      "payload_count": 69,
+      "verified_payload_bytes": 8355481,
+      "manifest_total_bytes": 8355481,
+      "payload_mismatches": [],
+      "extra_files_excluding_manifest": [
+        "README.md"
+      ],
+      "views": 15,
+      "executable": {
+        "after": {
+          "bytes": 4103352,
+          "sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b"
+        },
+        "before": {
+          "bytes": 4103352,
+          "sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b"
+        },
+        "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone"
+      },
+      "painter": {
+        "bytes": 171413,
+        "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+      },
+      "main": {
+        "bytes": 146859,
+        "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+      },
+      "production_inputs": 148,
+      "build_inputs": 15,
+      "capture_all_recorded_inputs_unchanged": true,
+      "current_production_differences": [
+        {
+          "path": "apps/standalone/main.cpp",
+          "capture": {
+            "bytes": 146859,
+            "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+          },
+          "current": {
+            "path": "apps/standalone/main.cpp",
+            "bytes": 147241,
+            "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+          }
+        }
+      ],
+      "all_bmp_conversion_lossless_recorded": true,
+      "all_native_bmp_removed_recorded": true,
+      "remaining_bmp_files": 0,
+      "decoded_pixel_recheck_by_A56": false,
+      "boundary": "Manifest payload hashes independently reread; provenance statements are recorded capture evidence. No recapture or visual/pixel decode by A56. Later README is outside immutable capture manifest."
+    }
+  ],
+  "installation": {
+    "a41_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a41-installed-journeys.json",
+      "bytes": 191531,
+      "sha256": "9d708b2a8a75856d5d729e42d771b788b1959bf24c6d1bec40fc0ecaa1f5f1ee"
+    },
+    "prefix": "/workspace/scratch/5a28c3564dbf/install-header-h1",
+    "actual_file_count": 17,
+    "expected_file_count": 17,
+    "total_file_bytes": 4292037,
+    "files": {
+      "bin/hammond_standalone": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/bin/hammond_standalone",
+        "bytes": 4103352,
+        "sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b",
+        "executable": true
+      },
+      "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md",
+        "bytes": 25156,
+        "sha256": "a9e87298b9ab14564b9799d23b872f978bbda1d759bfe2c9ce85be5f06c00674",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt",
+        "bytes": 2345,
+        "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/LICENSE-SDL2.txt",
+        "bytes": 884,
+        "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/MIDI_EXPRESSION_GUIDE.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/MIDI_EXPRESSION_GUIDE.md",
+        "bytes": 23478,
+        "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md",
+        "bytes": 29640,
+        "sha256": "e519fec270928c864f358e617a7750de8968ef02786c8c6a7b7261d0031c63e9",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md",
+        "bytes": 18545,
+        "sha256": "8a2a8a2eed10ff69871e86a2d914ad9278d03433ed96e8c621fe6730b2e29cde",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/STANDALONE_APP.md",
+        "bytes": 26725,
+        "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md",
+        "bytes": 19010,
+        "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/STANDALONE_MODEL.md",
+        "bytes": 9182,
+        "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md",
+        "bytes": 23009,
+        "sha256": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/atlas-reference.json": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/atlas-reference.json",
+        "bytes": 811,
+        "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/font-source-manifest.json",
+        "bytes": 1428,
+        "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/reference-apron-manifest.json": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/reference-apron-manifest.json",
+        "bytes": 2416,
+        "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/reference-source-manifest.json",
+        "bytes": 3816,
+        "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/sdl2-lock.json",
+        "bytes": 375,
+        "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+        "executable": false
+      },
+      "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+        "path": "/workspace/scratch/5a28c3564dbf/install-header-h1/share/hammond-b3-organ/standalone/standalone-capabilities.json",
+        "bytes": 1865,
+        "sha256": "36f1af1f7ef32a312af3bc7c3c010355bdda2156bd0baf0cc807b67a88b761a6",
+        "executable": false
+      }
+    },
+    "mismatches_against_original_a41": [],
+    "extra_paths": [],
+    "missing_paths": [],
+    "relative_guide_link_count": 38,
+    "bad_relative_guide_links": [],
+    "source_metadata_changed_since_install": [],
+    "skipped_outside_owner_paths": [
+      {
+        "name": "LICENSE-SDL2.txt",
+        "reason": "External dependency tree not inspected; installed license hash checked against A41 receipt."
+      }
+    ],
+    "application_is_current_build": false,
+    "capability": {
+      "schema_version": 1,
+      "component": "Standalone",
+      "midi": {
+        "enabled": false,
+        "backend": "unavailable",
+        "availability": "No physical MIDI backend was compiled. Keyboard, pointer and explicit synthetic replay remain available.",
+        "rtmidi": null
+      },
+      "sdl2": {
+        "version": "2.32.10",
+        "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+        "linkage": "static",
+        "lock_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+        "license_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+      },
+      "fonts": {
+        "embedded": true,
+        "manifest_sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+        "license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+      },
+      "reference_art": {
+        "embedded": true,
+        "identity": "standalone-reference-decoration-v1",
+        "manifest_sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+        "provenance_sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+        "source_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration"
+      },
+      "reference_apron": {
+        "embedded": true,
+        "identity": "standalone-reference-apron-v1",
+        "manifest_sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+        "provenance_sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+        "source_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration"
+      },
+      "profile": "embedded nominal-unmeasured-v1",
+      "qualification": "Local staging metadata; no physical-device, timing, fidelity or release-distribution claim."
+    },
+    "original_result_status": "six-journeys-five-expected-one-failed-diagnostic-passed",
+    "actual_invocations_recorded": 7,
+    "checks_passed_recorded": 155,
+    "checks_failed_recorded": 1,
+    "limitations": [
+      "Selected installed Linux software/dummy journeys; not a complete CTest run.",
+      "The original 600 ms canonical smoke remains failed and requires separate investigation before claiming that operating condition.",
+      "No real display/DPI/input device, physical audio/MIDI, DAW, native accessibility, callback deadline/retirement, physical fidelity, literal whole-interface 1:1, licensing/signing/distribution acceptance.",
+      "Root staging prefix, checkout/build/dependencies remained present and untouched; the private 17-file payload was copied then renamed to an actual relocated prefix. No syscall trace was performed.",
+      "Three successful application journeys and two expected capability refusals among the original six; one failed canonical smoke is retained; a separate 2000 ms diagnostic passed."
+    ],
+    "a56_executed_installed_application": false
+  },
+  "storage": {
+    "observation_kind": "Time-bounded local snapshot while root runs final candidate; later worker reports/logs/publication may increase it. Logical sizes are not compressed Git transfer sizes.",
+    "disk_total_bytes": 67586535424,
+    "disk_used_bytes": 10895183872,
+    "disk_free_bytes": 53238603776,
+    "disk_free_gib": 49.582313537597656,
+    "repository": {
+      "files": 6799,
+      "logical_bytes": 522776587,
+      "allocated_bytes": 536719360,
+      "symlinks_not_followed": 0
+    },
+    "session": {
+      "files": 568,
+      "logical_bytes": 89626151,
+      "allocated_bytes": 90861568,
+      "symlinks_not_followed": 0
+    },
+    "original_h1_install": {
+      "files": 17,
+      "logical_bytes": 4292037,
+      "allocated_bytes": 4329472,
+      "symlinks_not_followed": 0
+    },
+    "current_changed_or_untracked_existing_paths_since_base": 984,
+    "current_changed_or_untracked_existing_bytes_since_base": 131509665,
+    "comparison_base": "6047723b595259de355c74342e48a8ae2ee1e228",
+    "largest_changed_or_untracked_files": [
+      {
+        "path": "docs/development/2026-11-16-ui-delivery/reports/title-paired/mask-declaration.json",
+        "bytes": 2782858
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-paired/mask-declaration.json",
+        "bytes": 2782858
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-08-main-after.png",
+        "bytes": 2448028
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-08-main-before.png",
+        "bytes": 2448028
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-02-main-after.png",
+        "bytes": 1980423
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-02-main-before.png",
+        "bytes": 1980423
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-17-uncut-after.png",
+        "bytes": 1975158
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-23-uncut-after.png",
+        "bytes": 1975158
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-20-uncut-before.png",
+        "bytes": 1975158
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-23-uncut-before.png",
+        "bytes": 1975158
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-20-uncut-after.png",
+        "bytes": 1975158
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-17-uncut-before.png",
+        "bytes": 1975158
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-07-main-before.png",
+        "bytes": 1648596
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-07-main-after.png",
+        "bytes": 1648596
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration/h1-13-main-after.png",
+        "bytes": 1634674
+      }
+    ],
+    "cleanup_performed": false,
+    "cleanup_necessary_now": false,
+    "recovery_order": [
+      "Keep all genuine baseline binaries/sources, original failed receipts, authored galleries and frozen support declarations.",
+      "Before any future large configure/build/capture, remeasure free space and forecast its bounded outputs; retain only one active root native build per established workflow.",
+      "If pressure arises, identify only this session-owned reproducible build intermediates or verified redundant conversion files; retain a manifest/hash and root receipt before removal.",
+      "Do not delete originals, inspect or remove other session trees, weaken fixture bounds, erase failed comparisons or replace baseline bytes to reclaim space.",
+      "Checkpoint reviewable source/docs with Git before any resource-recovery mutation; publication follows root guarded source/tree verification."
+    ]
+  },
+  "required_root_actions": [
+    {
+      "priority": "before current package claim",
+      "action": "Freeze final installed metadata; rebuild or explicitly reconfigure after intended guide/notice changes, then install Standalone into a new owned prefix. Never overwrite install-header-h1. Retain a fresh exact17-file manifest, app/source/capability identities and internal guide-link result.",
+      "reason": "A41 and existing prefix identify bfe8/main89b24, while current build is2c64/main361ae."
+    },
+    {
+      "priority": "before current-executable screenshot claim",
+      "action": "Retain H1 gallery as its explicitly named bfe8 capture; if current2c64 images are desired, use a separately named capture and provenance receipt. Do not edit the original69-payload manifests or infer replay qualification from unchanged painter.",
+      "reason": "Both15-view manifests verify, but gallery identity predates replay-main change."
+    },
+    {
+      "priority": "before final qualification claim",
+      "action": "Use root final frozen241-suite result and separate exact-source hosted evidence. Preserve237/240,239/241,isolated diagnoses,A41 original600msfailure and independent2000msdiagnostic as distinct records.",
+      "reason": "Read-only file/hash audit cannot close native, scheduling, platform or installed behavioral gates."
+    },
+    {
+      "priority": "documentation",
+      "action": "Make final README/checkpoint distinguish latest captured H1 stage, current executable and fresh installed prefix; retain nominal dry audio and unmet/unwaived whole-interface1:1, display/accessibility/hardware/fidelity/release limits.",
+      "reason": "Evidence scopes must not be relabeled by later integration."
+    }
+  ],
+  "result": "bounded resource and retained payload identities verified; current package refresh remains required",
+  "fixture_surface_bounds": {
+    "cpp_max_width": 3866,
+    "cpp_max_height": 2194,
+    "cpp_surface_max_rgba_bytes": 33928016,
+    "python_transport_max_pixels": 8580000,
+    "python_transport_rgba_bytes": 34320000,
+    "resource_case_ids": [
+      30,
+      31,
+      32
+    ],
+    "resource_logical_size": [
+      8192,
+      8192
+    ],
+    "resource_equal_scales": [
+      1,
+      1.5,
+      2
+    ],
+    "resource_physical_output": [
+      64,
+      64
+    ],
+    "resource_output_rgba_bytes": 16384,
+    "scope": "Bounds are checked before SDL surface construction. Native assertions and comparisons use bounded crops at maximum logical size; no whole8192 frame or full-frame8192 containment is observed."
+  },
+  "frozen_candidate_at_audit": {
+    "root_source_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-inputs.json",
+    "root_generated_properties_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-generated-properties.json",
+    "result_exists_at_audit": false,
+    "scope": "Root native241-test result was not complete at this read-only audit snapshot; this report makes no prospective pass claim."
+  },
+  "own_deliverable_validation": {
+    "json_parsed": true,
+    "note_words": 744,
+    "required_note_range": [
+      600,
+      900
+    ],
+    "markdown_relative_file_links_checked": 11,
+    "missing_relative_targets": 0,
+    "trailing_whitespace_issues": 0,
+    "owned_path_diff_check_exit": 0,
+    "scope": "Only the three assigned A56 outputs; no native/test-suite execution or additional whole-tree hashing."
+  }
+}

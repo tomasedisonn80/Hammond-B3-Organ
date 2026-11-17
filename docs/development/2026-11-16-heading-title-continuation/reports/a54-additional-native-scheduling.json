@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "agent": "A54",
+  "wave": 9,
+  "same_worker_followup": true,
+  "recorded_utc": "2026-11-17T03:07:50.834866+00:00",
+  "status": "additional_two_properties_admitted_full_candidate_pending",
+  "decision": {
+    "new_RUN_SERIAL_TRUE": [
+      "test_standalone_native_calibration",
+      "test_standalone_midi_cli"
+    ],
+    "retain_existing_serial_tests": [
+      "test_standalone_app",
+      "test_standalone_native_midi_replay",
+      "test_standalone_workspace_replay"
+    ],
+    "broader_family_isolation": false,
+    "exact_cpu_cause_established": false,
+    "product_semantic_repair_claim": false,
+    "root_owns_native_executions_builds_source_edits_and_publication": true
+  },
+  "earlier_admission_unchanged": [
+    {
+      "path": "docs/reviews/REPLAY_TEST_SCHEDULING_ADMISSION.md",
+      "bytes": 8780,
+      "sha256": "064b0a45497c2b23589a89fd0328acc60395775fd9de0111f3d05d0ff60fdd17"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-replay-scheduling-admission.json",
+      "bytes": 26326,
+      "sha256": "869af0fe82ae0a9d8c034d2fae23c2d710aca1c1c189e7f7941c54f219cd8ce6"
+    }
+  ],
+  "original_serialized_full_run": {
+    "passed": 238,
+    "total": 241,
+    "parallel": 2,
+    "returncode": 8,
+    "wrapper_seconds": 686.4455297099994,
+    "ctest_seconds": 686.18,
+    "frozen_code_input_count": 474,
+    "changed_code_inputs": [],
+    "log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-ctest.log",
+      "bytes": 77140,
+      "sha256": "ba6261b1c014a7fb28d01680f74a9de0c6c07e3cab8695931bcb28b3306751b1"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-ctest.xml",
+      "bytes": 175210,
+      "sha256": "3322b61fa78fd72b46b48916465d23bc2cc8c20436d4804bd00c672d0771e5ae"
+    },
+    "result_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-results.json",
+      "bytes": 893,
+      "sha256": "7d8319ee6a2c2354f5e357bc52368a3d14adc9547c554cbc8391ad17a17c05d7"
+    },
+    "input_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-inputs.json",
+      "bytes": 75848,
+      "sha256": "ec855549fb1732ed81f06d0bb540952118bddf1758cecf652b79799df769d8d7"
+    },
+    "discovery": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-test-discovery.json",
+      "bytes": 255763,
+      "sha256": "6256b643dfe21d86bf9e82c7cb6594c0a2ee8c47fd677660cc33885d6018ebc6"
+    },
+    "prior_serial_nonoverlap_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-observed-scheduling.json",
+      "bytes": 57734,
+      "sha256": "8f697af08c16c3a3bc1446b64eb80355b55f043cde2b29576b8e9cc9f81768a7"
+    },
+    "workspace_failure_separate": "A different missing semantic-view transition under actual serialization; not the former <180 ms assertion and not admitted as scheduling-only."
+  },
+  "original_failure_blocks": [
+    {
+      "case": "native_calibration",
+      "source_log_lines_inclusive": [
+        130,
+        162
+      ],
+      "bytes": 3455,
+      "sha256": "e4963db2b5d34c98b74b86c48b31c5d43b9ef2f3648eff16ded6d94a4b63a5d5",
+      "encoding": "base64(gzip(utf8))",
+      "compressed_bytes": 934,
+      "encoded_data": "H4sIAAAAAAACA+VWy27rNhDd6yum6sYJ4ock27F94UXa6yAF0gfabIogIGhyFLOWSV2SsuO/71C2k+s0QOFHFxfVihA5nDNnzswQkqyddhN4QOfh+zTLRuBpyZznWvLCaGSae7VEJnihppbWRkPr3Xd5eXnLVYESANKs1cnAoYh+qQ3ha8NcvfjKIvxxd9NMe/0RDAZ9zgeIUl6n3RSzXi57mPSHOR9ynvaup3k2HIpuyq/zvkwGySBPBl3OZUemqRQ8i2q0Ysb1M8qvMTKLpkTtmNHFmvHco2VczBmFxfiKK++YxhcyFUkCDcYWXGnGWhvMP77dc69yFGtRYOscni4CdWDm+7DxhQvPSmM93SWM1ijIaKX8jFX6A49H4D3UxcdArak80gVeWaR4C8nMSqN1dawW/6ovDb9XdKC20lgcgfYoPxvItzc/3W9A57Uit9lhUjnBrXQhyGIa8lNaJDlur/xS1a7wpSyUUIEkb9cHID/d2T7j20JhSi9Re2PXr8khQ4u8YKirBW4VGPJIlDFeSWUOQX28l4/h7nKzUM4p/cyMJXnNNWWPOYGaW2XYFHNDR3lZ0u0HsnyCm33AMwrOz9ZMSdpUFHU4SOVLeXJolyE7pREzpk2gIqSNskV77rDyO8XNPuBtF855VfjXylgoqXalsZqRAokJ9aw0+am2G8xVdkmW7gDUJ/t6X4rakMTKIJ06erqSgLi9JroTlzeVmIWcHsX3aY5eGb8RvuLFh5PLVdPSGkEG6EaQdD7Bhi0odkjo9/UnkEi2oXKwWMOmO4DFsuBr2k+jaHyWLwocb0f2t9Gko+ZZvujBcoGhtUJjYejtQlONSiykrICCO38xigBuiXaI2ytj566k820nKCQxa/d4OhBZr9+V07x9xxcLo2Xzh6z5q33muk3ice23F1B7Ww8hetf+9+dRq1zHV6QHjdBNO1eg9BkSRNEAvaqKvMVJetZPvpBCG5J7/hiH0oyfHmNJk12iDctKLyiKMNM35i5+uoL0IrqpjQnkxFpjR9CB78b/jRy/rYb1P5PlsPsmy5PJey/NB1thg+t1Q3lcPMZmiZbaXvwE4zHEmsDFQDBhs4tBh0yYSvvNiaTenGEha/uL8G/y828Pf7K7yf3nfwj4lhcOQTmgEQqePMMIdlBhjuupoYdYWDSrEqSS9blNlITAAYUCdTjRuSTwO9cwrKl1geM0bfUHmYvq2ph8hkYYBjRJ3JjK8W8Ao+jKfw0AAA==",
+      "decode_sha256_verified": true
+    },
+    {
+      "case": "midi_cli",
+      "source_log_lines_inclusive": [
+        165,
+        205
+      ],
+      "bytes": 5011,
+      "sha256": "181b03683a554b4673075d987a2018f35a25027942e7329bbfba4111fd70fed6",
+      "encoding": "base64(gzip(utf8))",
+      "compressed_bytes": 1243,
+      "encoded_data": "H4sIAAAAAAACA9VYwXLbNhC98yvQ9GJ7bMmSKFmSxwe3cSaeSdqZ1j1jQGApYQwCLABKVr6+C1CylZppScaX6CDLIvDwFvv2LSAySofjdEQewHny83gyWhKPH6nzTAumjAZaSCEpV5IMvvk6Ozv7wKQCQQgZzwfzCXHAk8/37+/Jr5/uh4VBKAJPwCvPMgXkz4+3F+PpbEnGfJbCdD4V83wk2HQ8yvOUp4LlMB3NRhMhJoxdzhbjdDbKcp7NxSydXuYLztLF1Si9WiSRLJKjQjovNcd/1kxrUI5iAJQpRTNTYSh2R0vjpJdGO3JCacGkpnTwG/NyA58xxFvOocSoOQx6gZ6G/SHm8YUSPDGcWhrrKbOrqgDtabbDxxFFG6pZAZQbsBwBWpPqBttEq7TgHD7DQTqXq8qyEAEVBjG08XRrpce8V05ypo7Gd6DYd4mabkLIj0L3ROoNWA/i5sFWUNP/cHv/qXG/QYvSSO0dtZBXDmgGubFAnVDUWGoqX1be9eHdDvm1GBQqvK5whOIgMN4wRWoUNVPyS9yH1oRaob0modFmnnBqUHKt7ijhHC3F0TzMBrWL6g7xgt2ErOCI1rz6LtBAFevNSn5kCGGTPX7l4/zoC+iDrZm1w3tNxEIJDGVHTRntJ44O6lU4VepVzEV7KbWDe00D+4T1VUkF5KxSKD9vggVJjXKjW+nXlFfOm4JalCDitCbUFfhrarHjRKMGBRvQ9BF2mWE2xuStUc9mWftoheimhHZK7wveRPE571vLyjhtbVCZENpMWaIoQ6gYYYDWwFtvYW/0RpLeqr0giiL8LWI81K/xDRxnJaCAMBv4RkvFdh1Z9oBvorkfik2bYzIcrXQIUqKo0bRlZtt7WQe8jkT2CXkbFnuwRgovreFFnYoVZa1NIW1Id93womS7MOqK/T8EY+MCe1Q9eKAxWOFOftmfaqIta8/aH9++e5Um0rlB04nFhG3D2G2IPEy0aAMWmy7j1jh3sIUeW9tvgSaqsihASLR0mjHP1yiXGnstQyHtjhrdwWn3JdaBbe81GgnrDVbVwZhepmK3RhIHm4+7gYt6GrKpfRe2vRb4L6pHNvAK9euD5Pez7r1WUwAFe5JFVVDHrSz9EVIlqbdM7680dTmDqNBvOKa5i5L7LtFE91C6sSvUwQc7rHsWWo8JleGp35q6mDvQ7ArdRM+tsc3j1bbu+mwjV3Ui5EqHI3h9tNrfHLukvhPuM7Fb7iu8bf/r8u2qrLSGoxeCW5LRdHFNIJ4966YI1hqLDy6vcSQPw/JKkb/uCS6CDTdMCTOeStwVPN3m9WX/+HmaJDdv8krC7Wn5o97/kos3eSUPlnHIGH8kJ4VxnoTrFPoGrq6IYs6fLvGO/AGzQN4Nt8Y+uhLHD7HYghEPp2w855PpLBVZPvzIisJocfHL5OJ3u2J6iDJ3w5cfeIY6bg4N2+GG3/r1Z1Du3p0TJTWQydX0nEj9FinCIAhxoPIBQ2Vaf/c3avdkr9SBBV9ZzY2Ac3J5Tg5fOy9Qr6fJbZyCKHdBvShR8tMNuSRLsq4jPgpjSWoFEFeYR9jr9xqDcEHRBE+ahJsSD1UE+xmWl/OSuyR5q2z+wTQZT+KGubBz4/lgNl7gAkHrd+/JSSBU4Z7cjE6TfwA1z6GBkxMAAA==",
+      "decode_sha256_verified": true
+    }
+  ],
+  "original_failure_scope": {
+    "native_calibration": {
+      "methods": 9,
+      "native_children": 10,
+      "failures": 2,
+      "ctest_seconds": 23.03,
+      "binary_sha256": "886aa8eedd7242e35fd5e169fa9aa257bf399c42a7f6d1818f184aad0d22dca3",
+      "original_per_case_diagnostic_and_dependency_trace_retained_in_log": false
+    },
+    "midi_cli": {
+      "methods": 23,
+      "native_children": 159,
+      "failed_subcases": 1,
+      "ctest_seconds": 28.83,
+      "binary_sha256": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479",
+      "failed_subcase": {
+        "inverted": true,
+        "duration_ms": 600,
+        "expected_returncode": 0,
+        "actual_returncode": 1,
+        "stderr": "hammond_standalone: Native smoke failed; inspect the copied diagnostics"
+      },
+      "original_per_case_smoke_diagnostics_retained_in_log": false
+    },
+    "decisive_assertions": [
+      {
+        "method": "NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel",
+        "assertion": "midi.decoder.unmapped_channels == 2",
+        "actual": 0,
+        "replay_duration_ms": 2400,
+        "later_assertions_unreached": [
+          "parameter_messages",
+          "expression",
+          "final_held",
+          "forbidden_old_route_note"
+        ]
+      },
+      {
+        "method": "NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives",
+        "assertion": "any observation with overlay none, error_count 1, held EMPTY_HELD",
+        "actual": false,
+        "replay_duration_ms": 3200,
+        "first_unrelated_keyboard_owner_witness_passed": true,
+        "later_assertions_unreached": [
+          "opens and errors",
+          "generation and epochs",
+          "fault retirement and discarded packets",
+          "decoder and parameter message counts",
+          "expression and final held owners"
+        ]
+      },
+      {
+        "method": "NativeMidiAcceptance.test_cli_expression_configuration_does_not_write_musical_expression",
+        "assertion": "process.returncode == 0",
+        "actual": 1,
+        "later_assertions_unreached_for_true_subcase": [
+          "stderr empty",
+          "configured and selected calibration",
+          "musical expression unchanged",
+          "zero parameter_messages",
+          "smoke.passed"
+        ]
+      }
+    ],
+    "observed_ctest_overlap": {
+      "test_standalone_midi_cli": {
+        "start_line": 127,
+        "active_at_start": [
+          "python_test_plot_pedal_trace"
+        ],
+        "other_tests_started_while_active": [
+          {
+            "name": "test_standalone_native_calibration",
+            "line": 129
+          },
+          {
+            "name": "test_standalone_percussion_raster",
+            "line": 164
+          }
+        ],
+        "finish_line": 165
+      },
+      "test_standalone_native_calibration": {
+        "start_line": 129,
+        "active_at_start": [
+          "test_standalone_midi_cli"
+        ],
+        "other_tests_started_while_active": [],
+        "finish_line": 130
+      }
+    },
+    "inference": "Overlapping CTest jobs and subsequent unchanged isolated passes are observed. A specific scheduler cause is not established. Route failure is a final decoder count; absent retained dependency trace prevents proving whether its third poll or downstream drain occurred."
+  },
+  "frozen_relevant_inputs": {
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 44093,
+      "sha256": "7c7e1b42825d1ecd5b9cdc75508ed44117283dade74c0d473f171d8ab2482bb4"
+    },
+    "apps/standalone/main.cpp": {
+      "bytes": 147241,
+      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+    },
+    "apps/standalone/MidiDevice.cpp": {
+      "bytes": 22400,
+      "sha256": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324"
+    },
+    "apps/standalone/MidiDevice.h": {
+      "bytes": 7457,
+      "sha256": "ce6c75faf49218073a369ac12a67bf0b995ec0309f1c078f23da78963865bea3"
+    },
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": {
+      "bytes": 5011,
+      "sha256": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6"
+    },
+    "apps/standalone/native_tests/fake_calibration/RtMidi.h": {
+      "bytes": 12049,
+      "sha256": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041"
+    },
+    "apps/standalone/native_tests/test_standalone_native_calibration.py": {
+      "bytes": 31325,
+      "sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85"
+    },
+    "apps/standalone/native_tests/test_standalone_midi_cli.py": {
+      "bytes": 41122,
+      "sha256": "37ecb6bd48017cee656629e3cac51bc5fa3a1979f1bc2c58d8228113debdf18f"
+    }
+  },
+  "original_generated_tests": [
+    {
+      "backtrace": 464,
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_cli.py"
+      ],
+      "name": "test_standalone_midi_cli",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "midi",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "backtrace": 468,
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_CALIBRATION_PROBE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py"
+      ],
+      "name": "test_standalone_native_calibration",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "midi",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    }
+  ],
+  "probe_boundary": {
+    "driver_includes_real_main": true,
+    "native_midi_dependency_substituted": true,
+    "callback_schedule": "synchronous-native-api-boundaries",
+    "route_packets_emitted_on_isPortOpen_query": 3,
+    "first_two_queries": "activation",
+    "nominal_production_connection_poll_ms": 250,
+    "physical_backend": false
+  },
+  "isolated_diagnostics": {
+    "status": "all_three_required_single_method_invocations_pass",
+    "receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/additional-native-one-isolated-diagnostics.json",
+      "bytes": 3437,
+      "sha256": "d527d45c93e817c06c2f57e7e7f480ae45a25f7d8aa1a2688bffa8cbc9792e4f"
+    },
+    "data": {
+      "schema_version": 1,
+      "recorded_utc": "2026-11-17T03:06:10.664007+00:00",
+      "diagnostic_method_invocations": 3,
+      "executions": [
+        {
+          "case": "calibration-route",
+          "command": [
+            "python3",
+            "-B",
+            "apps/standalone/native_tests/test_standalone_native_calibration.py",
+            "NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel"
+          ],
+          "selected_environment": {
+            "HAMMOND_STANDALONE_CALIBRATION_PROBE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe"
+          },
+          "returncode": 0,
+          "seconds": 3.0326922640015255,
+          "log": "docs/development/2026-11-16-heading-title-continuation/reports/additional-calibration-route-one-isolated.log",
+          "log_sha256": "48e2985fea1ba68bb6272b727bd7ff29606533b720958eb99e4d81f4d514951b"
+        },
+        {
+          "case": "calibration-fault",
+          "command": [
+            "python3",
+            "-B",
+            "apps/standalone/native_tests/test_standalone_native_calibration.py",
+            "NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives"
+          ],
+          "selected_environment": {
+            "HAMMOND_STANDALONE_CALIBRATION_PROBE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe"
+          },
+          "returncode": 0,
+          "seconds": 3.5480770180001855,
+          "log": "docs/development/2026-11-16-heading-title-continuation/reports/additional-calibration-fault-one-isolated.log",
+          "log_sha256": "6d4cb93eebeb073baf9dfb6b13724be416866b055d32b52aa95c5ee0f56befb0"
+        },
+        {
+          "case": "midi-cli-expression",
+          "command": [
+            "python3",
+            "-B",
+            "apps/standalone/native_tests/test_standalone_midi_cli.py",
+            "NativeMidiAcceptance.test_cli_expression_configuration_does_not_write_musical_expression"
+          ],
+          "selected_environment": {
+            "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone"
+          },
+          "returncode": 0,
+          "seconds": 1.8460692269982246,
+          "log": "docs/development/2026-11-16-heading-title-continuation/reports/additional-midi-cli-expression-one-isolated.log",
+          "log_sha256": "c96b066a21f5ceee25f7167e819dbef47fd6fe4fb0a37e5d224bca5d7b66992a"
+        }
+      ],
+      "input_sha256": {
+        "apps/standalone/native_tests/test_standalone_native_calibration.py": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85",
+        "apps/standalone/native_tests/test_standalone_midi_cli.py": "37ecb6bd48017cee656629e3cac51bc5fa3a1979f1bc2c58d8228113debdf18f",
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe": "886aa8eedd7242e35fd5e169fa9aa257bf399c42a7f6d1818f184aad0d22dca3",
+        "apps/standalone/main.cpp": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3",
+        "apps/standalone/CMakeLists.txt": "7c7e1b42825d1ecd5b9cdc75508ed44117283dade74c0d473f171d8ab2482bb4",
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479"
+      },
+      "changed_inputs": [],
+      "scope": "One unchanged isolated invocation per newly failed method after the complete238/241 run; both original CLI subcases retained. No result replaces the original failed run or proves a particular CPU cause."
+    },
+    "all_log_hashes_verified": true,
+    "cli_original_false_and_true_subcases_and_two_children_retained": true,
+    "previously_unreached_assertions_executed_in_separate_successes": true,
+    "unittest_seconds": {
+      "calibration-route": 2.618,
+      "calibration-fault": 3.384,
+      "midi-cli-expression": 1.683
+    }
+  },
+  "required_candidate": {
+    "status": "pending_root_runtime_review_and_combined_qualification",
+    "source_delta_admitted_here": "Only the two new RUN_SERIAL TRUE properties and explanatory comment in apps/standalone/CMakeLists.txt; independently reviewed runtime changes must be itemized separately.",
+    "unchanged": [
+      "all fixture bytes and scenario callback thresholds",
+      "all event timestamps and expected outcomes",
+      "2400 ms route / 3200 ms fault replay / two 600 ms CLI smoke workloads",
+      "12-second CLI and 15-second calibration child bounds",
+      "90-second normal CTest bounds and calibration existing 180-second sanitizer bound",
+      "commands, labels, environments, names and target wiring"
+    ],
+    "generated_metadata": "Both new properties boolean true; retain existing three; compare original commands, labels, timeouts and complete discovered test set; identify separately admitted additions and no removals.",
+    "full_run": "One complete frozen-input --parallel 2 --output-on-failure --no-tests=error run with separately retained logs/JUnit and coherently rebuilt app/probe after any runtime change; all discovered tests must pass without exclusions or retries.",
+    "observed_nonoverlap": "Every serial test starts with no active test and no other test starts before completion; preserve actual event evidence.",
+    "continued_failure": "Retain it and investigate separately; no rerun-until-green authorization."
+  },
+  "limitations": [
+    "Earlier 239/241 and later 238/241 original failures remain unchanged.",
+    "RUN_SERIAL excludes only simultaneous tests in the same CTest process.",
+    "No exact CPU cause, repeated stability, hardware deadline, physical MIDI/audio, all-host compatibility, signing, calibration or literal whole-UI 1:1 claim.",
+    "A54 performed no native runs, builds, source mutations, commits, pushes, or remote operations in this review.",
+    "VST3 exact-published-source verification remains pending root publication."
+  ]
+}

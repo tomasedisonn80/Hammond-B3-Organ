@@ -2,62 +2,70 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The playable instrument is a **nominal dry organ** with a native standalone application, an offline renderer and an optional VST3 adapter. Its musical core has 91 continuously running sources, two 61-key manuals, 25 pedals, eighteen documentary fixed registrations, four retained drawbar banks, percussion and shared expression.
 
-<!-- ui-delivery-summary:start -->
-## Current development: reference title, header and reliable qualification
-
-The [UI delivery session](docs/development/2026-11-16-ui-delivery/README.md)
-has freshly read **all 500 atlas pages**. Its own requested **60 distinct agents
-in ten waves** are recorded as they actually work in the
-[ledger](docs/development/2026-11-16-ui-delivery/assignments.json); the
-[checkpoint](docs/development/2026-11-16-ui-delivery/CHECKPOINT.md) identifies
-accepted work, remaining gates and the next assignment.
-
-**T3 revision 2 is implemented:** the live title has stronger brass strokes and
-restrained relief, with its existing position, fitting, caption and controls
-preserved. The [158-pair comparison](docs/development/2026-11-16-ui-delivery/reports/title-paired/report.json)
-checks 383,790,445 pixel positions with zero changes outside the declared title
-support. Independent [numerical/source](docs/reviews/TITLE_T3_REVISION_2_NATIVE_ADMISSION.md)
-and [15-view visual](docs/reviews/TITLE_T3_REVISION_2_VISUAL_ADMISSION.md) reviews
-are retained. The [current interface](#current-native-interface) shows actual
-application output beside the unchanged reference.
-
-The next material step is the separately admitted
-[H1 header interior](docs/design/HEADER_MATERIAL_H1_CONTRACT.md), using a genuine
-accepted-T3 baseline, fixed numerical criteria and independent full-frame review.
-A renderer test completion guard and [isolated native smoke scheduling](docs/reviews/NATIVE_SMOKE_SCHEDULING_ADMISSION.md)
-preserve their workloads and assertions while addressing observed qualification
-failures. Original failed runs remain in the session records.
-
-**Literal whole-interface 1:1 remains the target and is not yet achieved.** The
-[complete M0–M9 plan](docs/PLAN.md) still separates software implementation,
-measured instrument fidelity, connected scanner/AO-28/Leslie audio, native
-accessibility and platform/device release qualification.
-<!-- ui-delivery-summary:end -->
-
 <!-- heading-title-continuation-summary:start -->
-## Previous continuation: reference typography and reliable replay
+## Current continuation: reference headings, brass title and header material
 
 The [new continuation](docs/development/2026-11-16-heading-title-continuation/README.md)
-has freshly read all 500 atlas pages. Its requested sixty distinct workers in
-ten waves are in progress; the [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json)
+has freshly read all 500 atlas pages. All sixty distinct workers in ten waves have been dispatched;
+57 deliveries are accepted and exact-source hosted reviews remain pending; the [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json)
 and [recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
 record accepted work and concrete next assignments.
 
-The two live manual-rack headings now match the reference's spacing and baseline
-more closely. The [158-pair comparison](docs/development/2026-11-16-heading-title-continuation/reports/t2-complete/report.json)
-passes with zero changes outside the declared glyph/rule support, including
-partial clips, inactive layouts and 92 complete state comparisons.
-The [independent visual review](docs/reviews/RACK_HEADING_T2_VISUAL.md) admits this
-specific change. A bounded UI-event history also fixes replay tests losing
-initial MIDI-dialog focus before the first acknowledged audio snapshot; the
-complete 23-method dialog suite passes. [Replay review](docs/reviews/REPLAY_UI_HISTORY_ADMISSION.md)
+The live rack headings follow the reference's spacing and baseline; the title
+has a stronger brass face, highlight and shadow; and the header has a warmer
+light field with fine grain. The [two current installed-app captures](docs/design/native-heading-final/README.md)
+show canonical 1672×941 and minimum 960×700 at app `1fa2a247…`. The
+[historical fifteen-view H1 gallery](docs/design/native-gallery-header-h1-v1/README.md)
+keeps its original app `bfe8e36d…` and broader layout/focus coverage. The
+[UI design and direct reference comparison](#current-native-interface) explain
+the measured changes and remaining differences.
 
-The [current application captures](#current-native-interface) below show this
-accepted T2 stage. Next is the separately admitted five-pass title treatment,
-followed by a separately reviewed header material proposal. **Literal whole-interface
-1:1 remains unmet and unwaived.** Physical calibration, connected scanner/AO-28/Leslie
-integration and remaining M0–M9 exits retain their documented gates.
+
+The [local publication admission](docs/reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
+accepts the unchanged source for guarded publication with the failed full-run
+result and three passing diagnostics retained. Exact-source hosted acceptance
+remains pending; this is not a green full-suite aggregate.
+
+T2 headings and T3 revision-2 title treatment each passed their separate
+158-pair comparison and visual admission. H1 header material passes all
+**103 canonical reference criteria**, up from **44 before**. Its separate
+matrix of 48 main pairs and 16 companions preserves pixels outside the admitted area. The
+[independent visual review](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md) admits
+the scoped visual change. The [current checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+owns final integration, installed-workflow, publication and exact-source hosted
+results; these are separate from image admission.
+
+A bounded UI-event history also preserves initial MIDI-dialog focus before the
+first acknowledged audio snapshot; the complete 23-method dialog suite passes.
+The [replay review](docs/reviews/REPLAY_UI_HISTORY_ADMISSION.md) and
+[compatibility audit](docs/reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md)
+retain the unchanged musical/state behavior and the intentional additive
+UI-replay diagnostics fields.
+
+The latest [qualified-final suite](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+finished **240/242**, retaining a preset-raster timeout and two native-MIDI
+acknowledgment-window failures within one CTest. One
+[unchanged preset diagnostic](docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json)
+and one invocation of each
+[failed MIDI method](docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
+then passed. Those bounded results remain separate from the failed aggregate.
+The independently reviewed semantic-paint and startup-prefix changes are
+implemented; final publication and exact-source hosted acceptance are next.
+
+**Literal whole-interface 1:1 remains unmet and unwaived.** Physical calibration,
+connected scanner/AO-28/Leslie integration and every remaining M0–M9 exit retain
+their documented gates. The interface continues to report the nominal dry
+audio path truthfully.
 <!-- heading-title-continuation-summary:end -->
+
+The concurrent [UI-delivery continuation](docs/development/2026-11-16-ui-delivery/README.md)
+and its [accepted T3 gallery](docs/design/native-gallery-ui-delivery-title/manifest.json)
+remain preserved with their own source-specific reviews and worker ledger.
+The combined source retains its stricter title-input validation, portable
+comparison interfaces and [isolated smoke scheduling](docs/reviews/NATIVE_SMOKE_SCHEDULING_ADMISSION.md).
+The current H1 evidence and later replay correction are identified separately
+below; older title captures are not relabeled as H1 captures.
+
 
 <!-- preset-library-continuation-summary:start -->
 ## Previous continuation: portable registrations and reference apron
@@ -76,7 +84,7 @@ and [recovery checkpoint](docs/development/2026-11-16-preset-library-continuatio
 [Portable registration quick start](#prepare-and-audition-portable-registrations) ·
 [Complete operator guide](docs/REGISTRATION_GUIDE.md) ·
 [Starter pack](data/registrations/starter-v1/README.md) ·
-[Current thirteen-view gallery](docs/design/native-gallery-preset-v1/README.md) ·
+[Retained thirteen-view gallery](docs/design/native-gallery-preset-v1/README.md) ·
 [Full M0–M9 plan](docs/PLAN.md)
 
 At **canonical 1672×941 only**, the apron matches **32,544 exposed reference RGB
@@ -157,7 +165,7 @@ The earlier [product continuation](docs/development/2026-11-15-product-continuat
 
 The **47 sound parameters**, **`B3CONTROLS4`** writer and readers for versions **1–3** retain their meanings. MIDI calibration is native adapter configuration; it adds no sound parameter or VST3 mapping. Scanner, AO-28 and Leslie audio are not connected to the dry Engine. The [registration compatibility review](docs/reviews/REGISTRATION_COMPATIBILITY_ADMISSION.md), [retained conversion review](docs/reviews/CONVERSION_MATERIAL_COMPATIBILITY.md), [earlier product review](docs/PRODUCT_COMPATIBILITY.md) and [full plan](docs/PLAN.md) preserve these boundaries.
 
-[Get started](#getting-started) · [Play and configure MIDI](docs/MIDI_EXPRESSION_GUIDE.md) · [Interface guide](docs/INTERFACE_RUNBOOK.md) · [Contact reference guide](docs/CONTACT_SWITCHING_GUIDE.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [M0–M9 plan](docs/PLAN.md) · [Current recovery checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md)
+[Get started](#getting-started) · [Play and configure MIDI](docs/MIDI_EXPRESSION_GUIDE.md) · [Interface guide](docs/INTERFACE_RUNBOOK.md) · [Contact reference guide](docs/CONTACT_SWITCHING_GUIDE.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [M0–M9 plan](docs/PLAN.md) · [Current recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
 
 The earlier [product batch record](docs/PRODUCT_CONTINUATION_CLOSURE.md) preserves
 its accepted development, strict accounting and remaining requirements. Literal
@@ -443,47 +451,86 @@ The functional inventory remains **68 ordinary controls, including 24 reversed p
 
 ### Current native interface
 
-**The latest admitted captured stage is T3 revision 2: live brass title over the
-retained T2 rack typography.** The [manifest](docs/design/native-gallery-ui-delivery-title/manifest.json)
-and [provenance](docs/design/native-gallery-ui-delivery-title/provenance.json)
-bind all **15 actual application views** to executable
-`010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3`.
-The [previous T2 gallery](docs/design/native-gallery-heading-t2-v1/manifest.json)
-remains available; the unchanged reference appears immediately below.
+**The latest actual captures come from the relocated installed application**
+`1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a`.
+They combine T2 rack headings, the accepted T3 revision 2 title, H1 header
+material and the later reviewed replay repairs. The [new provenance](docs/design/native-heading-final/provenance.json)
+and [immutable manifest](docs/design/native-heading-final/manifest.json) bind
+canonical 1672×941 and minimum 960×700 frames to the actual program, source,
+inputs and decoded pixels. The H1 painter remains `0bf731a6…`.
 
-![Actual native Play at 1672×941 with the T3 brass title](docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png)
+The [fifteen-view H1 gallery](docs/design/native-gallery-header-h1-v1/README.md)
+retains its original captured app `bfe8e36d…`, wider layout/focus coverage and
+[source identity](docs/design/native-gallery-header-h1-v1/provenance.json).
+Current full-suite, publication and hosted results remain separate gates in the
+[checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md).
+The [genuine immediately-before gallery](docs/design/native-gallery-header-before-v1/provenance.json)
+retains accepted T3 before the H1 change; the
+[original session baseline](docs/design/native-gallery-heading-baseline-v1/provenance.json)
+and intermediate stages remain separate. These images are from the application,
+with the unchanged reference shown below for direct comparison.
+
+![Actual installed native Play at 1672×941 with T2 headings, T3 title and H1 header material](docs/design/native-heading-final/images/play-reference-1672x941.png)
 
 ![Unmodified atlas cover/page-409 concept at 1672×941](docs/design/atlas-cover-reference.jpg)
 
 | Design evidence | View |
 | --- | --- |
 | Original concept | [Unmodified image and provenance](docs/design/atlas-reference.json) |
-| Current T3 stage | [1672×941](docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png) · [1400×820 minimum active](docs/design/native-gallery-ui-delivery-title/images/play-minimum-active-1400x820.png) · [1920×1080](docs/design/native-gallery-ui-delivery-title/images/play-wide-1920x1080.png) |
-| Unequal-aspect header views | [1920×820](docs/design/native-gallery-ui-delivery-title/images/play-header-wide-1920x820.png) · [1400×1080](docs/design/native-gallery-ui-delivery-title/images/play-header-tall-1400x1080.png) |
-| Current auxiliary views | [Compact, Flat, Rotary, Service and focus manifest](docs/design/native-gallery-ui-delivery-title/manifest.json) |
-| Retained material/type stages | [T2 headings](docs/design/native-gallery-heading-t2-v1/manifest.json) · [T1 footage](examples/demos/footage-typography-v1/README.md) · [Lower v2](examples/demos/lower-rack-material-v2/README.md) · [Upper](examples/demos/upper-rack-material-v1/README.md) |
+| Current installed application | [1672×941](docs/design/native-heading-final/images/play-reference-1672x941.png) · [960×700](docs/design/native-heading-final/images/play-minimum-960x700.png) · [Provenance](docs/design/native-heading-final/provenance.json) |
+| Original H1 gallery | [1672×941](docs/design/native-gallery-header-h1-v1/images/play-reference-1672x941.png) · [1400×820 minimum active](docs/design/native-gallery-header-h1-v1/images/play-minimum-active-1400x820.png) · [1920×1080](docs/design/native-gallery-header-h1-v1/images/play-wide-1920x1080.png) |
+| Unequal aspect ratios | [1920×820](docs/design/native-gallery-header-h1-v1/images/play-header-wide-1920x820.png) · [1400×1080](docs/design/native-gallery-header-h1-v1/images/play-header-tall-1400x1080.png) |
+| Retained auxiliary views | [Compact, Flat, Rotary, Service and focus scenes](docs/design/native-gallery-header-h1-v1/README.md#all-fifteen-actual-views) |
+| Retained heading/title stages | [T2](docs/design/native-gallery-heading-t2-v1/provenance.json) · [Accepted T3 revision 2](docs/design/native-gallery-heading-title-v2/provenance.json) · [Genuine pre-H1 captures](docs/design/native-gallery-header-before-v1/provenance.json) |
+| Retained material/type stages | [T1 typography](examples/demos/footage-typography-v1/README.md) · [Lower v2](examples/demos/lower-rack-material-v2/README.md) · [Upper](examples/demos/upper-rack-material-v1/README.md) |
 | Retained MIDI dialog | [960×700 calibration view](examples/demos/standalone-product-preview-v1/midi-overlay/images/midi-minimum-960x700.png) |
 
-These are actual application pixels from dummy SDL audio/video and software
-rendering in a MIDI-disabled build. The reference is generated concept art.
-Original BMP files were converted losslessly to PNG and their recorded hashes
-are retained. Runtime counters vary; deterministic paired fixtures supply
-preservation evidence. Stills do not qualify native display/DPI, audio devices
-or semantic accessibility.
+The app captures use dummy SDL audio/video, software rendering and a
+MIDI-disabled build. They are actual application pixels; the reference is
+generated concept art. The two new captures preserve original BMP bytes in
+lossless gzip archives and verify exact PNG pixel equality. Older H1 gallery
+BMP bytes remain unavailable after their recorded lossless PNG conversion. Runtime counters vary; deterministic paired fixtures
+supply preservation evidence. Stills do not newly qualify native input, displays,
+DPI, audio devices or semantic accessibility.
 
-The [independent T3 visual review](docs/reviews/TITLE_T3_REVISION_2_VISUAL_ADMISSION.md)
-finds stronger strokes, open counters, a readable separated caption and no scoped
-clipping, halo or control-overlap blocker across the 15 views. The two new
-unequal-aspect views have no corresponding before PNG in the thirteen-frame
-baseline and are not claimed as paired visual equality.
+### What changed in the UI design
 
-**Literal whole-interface 1:1 remains unmet and unwaived.** Remaining differences
-include header lighting/texture, panel and wood transitions, key perspective and
-bevels, cap shadows, small legends and the opaque footer. The functional controls
-also differ: correct footage, 0–8 travel, 24 real presets, expression/pedals,
-utility controls and truthful unconnected-model labels replace inaccuracies or
-unimplemented controls in the illustration. T3 and narrow apron equality do not
-close those gaps or establish physical audio fidelity.
+| Reference goal | Current implementation and observed evidence |
+| --- | --- |
+| Rack-heading spacing and baseline | T2 fits the two live serif headings and their flanking rules. Its [158-pair comparison](docs/development/2026-11-16-heading-title-continuation/reports/t2-complete/report.json) preserves pixels outside the declared text/rule area, including clips and inactive layouts; [independent visual admission](docs/reviews/RACK_HEADING_T2_VISUAL.md) covers the actual frames. |
+| Brass title weight and relief | T3 revision 2 adds five live text passes while retaining the title geometry and truthful subtitle. Its [158-pair admission](docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json) and [visual review](docs/reviews/TITLE_T3_VISUAL_ADMISSION.md) preserve controls and state. At the frozen encoded Y′≥100 threshold in the title ROI, without a hue filter, the [current H1 review](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md) measures **5,499 title pixels**, versus **5,415** in the reference; the accepted pre-H1 title had **5,512**. The new background affects antialiased edge pixels, and both remain inside the original 4,500–6,000 band. |
+| Header lighting and surface | H1 adds a darker left edge, warmer upper-left light, smooth lateral variation and deterministic fine grain inside the existing header. The [frozen comparison](docs/development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json) passes **103/103** criteria versus **44/103** before. Equal-patch mean brightness error falls from **3.7103 to 0.3675**, and residual RMS error from **1.6673 to 0.3183**. The [actual-frame visual review](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md) finds no new seam, band, distracting speckle or lost lettering at all five active sizes. |
+
+These are local encoded-image measurements, not a whole-interface similarity
+score or physical metal/lighting measurements. H1's 48 main pairs, 16 clipped
+companions and four repeats preserve the admitted exterior, opaque title/control
+details, focus and complete copied state. At those frozen comparison inputs,
+all 213 protected source paths matched the genuine pre-H1 baseline. Subsequent
+admitted `main.cpp` replay repairs are separately qualified changes; that
+historical protected-source comparison does not describe the later tree. The
+[representative software timing](docs/development/2026-11-16-heading-title-continuation/reports/h1-paint-timing/report.json)
+records 1.3–4.5% median growth in the three active views, with no existing
+benchmark investigation flag. Separate-process timing has scheduler noise and
+does not establish a hardware frame rate or audio callback deadline.
+
+### Remaining reference and usability work
+
+**Literal whole-interface 1:1 remains unmet and unwaived.** The
+[current H1 visual review](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md) and retained
+[whole-interface review](docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md)
+make the remaining differences explicit:
+
+| Area | Remaining difference and required next evidence |
+| --- | --- |
+| Manuals, rims and drawbar caps | Key divisions, front depth, bevels, shafts, recesses and contact shadows differ. Recover the existing manual/rim/cap owners, then admit a bounded change against genuine before/after frames and shared hit geometry. |
+| Material and lettering | The title is more uniformly gold and shallower than the reference; wood illumination, other panel fields, thin rules and small legends still differ. Each next slice needs its own fixed support and reference criteria, followed by full-frame review. |
+| Utilities and cabinet area | Live Save/Load/device tools, expression/mixtures, reversed presets, keyboard targeting, the 25-note pedalboard and footer differ from the illustrated preset selector, vibrato and microphone controls. Keep these functional distinctions and truthful unconnected-model labels while improving spacing and readability. |
+| Native usability | Real display/DPI, pointer and keyboard journeys, held-note resize, focus, small-text readability and native semantic accessibility still require observed evidence. The Flat alternative and current control inventory remain required. |
+
+The concept's incorrect footage, reversed travel labels and incomplete musical
+inventory cannot define the working organ. Preserve the correct **68 controls,
+147 playing keys, 24 presets and four banks**. Cabinet artwork and scoped apron
+equality do not establish connected Leslie audio or measured instrument fidelity.
 
 ### Retained T1 manual footage typography
 
@@ -557,8 +604,9 @@ comparisons and their original failures remain in the
 [previous gallery](examples/demos/whole-reference-layout-v1/README.md).
 
 The [retained Upper-stage gallery admission](docs/reviews/UPPER_RACK_GALLERY_ADMISSION.md)
-qualifies that material stage. The [current whole-interface review](docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md)
-owns the latest captured residual assessment. Native display usability, semantic
+qualifies that material stage. The [retained whole-interface review](docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md)
+records that earlier stage; the [H1 visual review](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md)
+adds the latest captured residual assessment. Native display usability, semantic
 accessibility, physical devices, callback deadlines and measured audio/cabinet
 fidelity require their own evidence.
 
@@ -632,31 +680,31 @@ The objective remains one inspectable engine for an identified B-3/AO-28 and Les
 | **M6 — Leslie electronics** | Independent ideal passive crossover and numerical/lifecycle evidence. | Declare same-Hz criteria, evaluate a separately identified numerical candidate, acquire real loads/losses, then qualify the coupled amplifier/transformer/crossover/driver model. |
 | **M7 — Rotary acoustics** | Independent R2 motion/R3 propagation and implemented R4 waveform renderer/CLI. | Complete the waveform owner's remaining independent acceptance; R5 audible policy, R6 runtime integration and physical cabinet evidence remain separate. |
 | **M8 — Calibration** | Capture/corpus/split tools, declared comparison policies, studies and report replay. | Execute the [physical acquisition sequence](docs/CALIBRATION_NEXT_ACQUISITION.md), then fit and evaluate held-out evidence with uncertainty. |
-| **M9 — Product and release** | Canonical wide Play, scoped Upper/Lower material, implemented T1 typography and reference apron; live controls/workspaces, MIDI calibration, optional VST3, portable registration CLI, proposed starter pack, saved-control rendering and explicit installs. | Continue the requested 1:1 visual match and qualify native callback retirement, real displays/devices/hosts, accessibility, callback deadlines, licensing and distribution. |
+| **M9 — Product and release** | Canonical wide Play; Upper/Lower material, T1 footage, T2 headings, T3 title, H1 header and reference apron; live controls/workspaces, MIDI calibration, optional VST3, portable registration CLI, proposed starter pack, saved-control rendering and explicit installs. | Continue the requested 1:1 visual match and qualify native callback retirement, real displays/devices/hosts, accessibility, callback deadlines, licensing and distribution. |
 
-T1 footage typography is already implemented and independently admitted. The
-next proposed visual slice is **T2: the two rack headings' tracking and baseline**,
-followed separately by **T3: title weight, highlight and shadow**. First check
-current ownership, retain a genuine current baseline and independently freeze
-glyph/rule support and comparisons before painting; the
-[material/type inputs](docs/design/REFERENCE_MATERIAL_TYPE_NEXT.md) are planning
-inputs, not implementation approval. Manual keys, rim, caps, semantic-entry and
-browser/library work retain their existing owners. The
-[whole-window plan](docs/design/WHOLE_WINDOW_REFERENCE_NEXT.md) and
+T1 footage, T2 rack headings and the T3 revision-2 title are implemented with
+separate admissions. H1 header material now has complete numerical and scoped
+visual passes. Finish its source-specific integration and delivery gates through
+the [current checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+before treating the full continuation as qualified. Manual keys, rims, caps,
+semantic-entry and browser/library work retain their existing owners. The
+[whole-window plan](docs/design/WHOLE_WINDOW_REFERENCE_NEXT.md),
+[current visual residuals](#remaining-reference-and-usability-work) and
 [native journey proposal](docs/design/NATIVE_ACCESSIBILITY_JOURNEY_NEXT.md) /
 [review](docs/reviews/NATIVE_ACCESSIBILITY_JOURNEY_NEXT_REVIEW.md) retain the
-remaining visual, interaction and accessibility gates.
+remaining visual, interaction and accessibility requirements. Every new painter
+slice still needs a genuine baseline, fixed support and independent admission.
 
 The next concrete work is:
 
-1. **Continue toward the requested 1:1 interface.** Follow the [current residual admission](docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md) and T2/T3 sequence above; then propose one bounded header/performance-panel material slice. Coordinate shared painter ownership. Preserve the [current apron gallery](docs/design/native-gallery-preset-v1/README.md), original reference, earlier comparisons/failures and [UI acceptance requirements](docs/reviews/PRODUCT_UI_ACCEPTANCE.md). Real display/DPI/input journeys still need observed evidence for small legends, focus, held-note resize, drawbar endpoints, pending/applied captions and calibration.
+1. **Continue toward the requested 1:1 interface.** Preserve the completed full-run result and three bounded diagnostics, then complete guarded publication and exact-source hosted qualification. The fresh install and [two current captures](docs/design/native-heading-final/README.md) have independent admission; the [historical H1 gallery](docs/design/native-gallery-header-h1-v1/README.md) keeps its original identity. Recover manual/rim/cap/browser owners before the next bounded surface or lettering change. [H1 residuals](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md), [UI requirements](docs/reviews/PRODUCT_UI_ACCEPTANCE.md) and actual display/DPI/input/accessibility journeys remain binding.
 2. **Continue M3 from the admitted integer-grid trajectory.** The [causal-grid guide](docs/CAUSAL_CONTACT_GRID_GUIDE.md) describes the implemented four-key, 4096-frame research epoch and its exact event/state acceptance. Freeze and independently admit the next causal audio/filter contract: use of the explicit conversion certificate, absolute source phase, partial-cell integration, latency, full-window grading and reset/tail/flush ownership. Full-organ capacity and Engine/native/VST3 scheduling, lifecycle, allocation and deadlines need separate integration acceptance. A later atlas `1e-4` grade needs an independently admitted full-window reference; the [offline study's](docs/CONTACT_SWITCHING_RESULTS.md) 64 continuous probes cannot supply it. Synchronized gesture/contact/source/dry captures remain a separate physical gate.
 3. **Continue M6 through an explicit numerical and physical protocol.** Freeze frequency band, load family, magnitude/phase/complex-error criteria and independent check grid before comparing a new realization. Preserve the current same-Hz results and fixed documentary registry. [Crossover next gates](docs/CROSSOVER_DEVELOPER_GUIDE.md#5-continue-m6-through-explicit-gates)
 4. **Preserve the independent model tracks.** Resolve scanner G5; continue R4 integration/publication/final acceptance with its owner; acquire complete AO-28/Leslie electrical and cabinet inputs. Validate the dry organ before fitting downstream cabinet or room effects.
 5. **Complete native and release gates with observed evidence.** The [recovery review](docs/reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) identifies a source-proven WinMM/CoreMIDI close-error observability gap. Its below-RtMidi fault-injection and checked-close task requires platform callback-retirement evidence; the review observed no hardware failure or use-after-free. Actual DAW/device journeys, native semantic accessibility, deadlines, rights and signed distribution retain separate requirements.
 
-The [active checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md)
-and [actual ledger](docs/development/2026-11-16-preset-library-continuation/assignments.json)
+The [active checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+and [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json)
 record current work, ownership and acceptance. The [product handoff](docs/PRODUCT_HANDOFF.md)
 and separate [waveform checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md)
 retain their broader operating and ownership boundaries. Atlas research waves,
@@ -664,7 +712,29 @@ M0–M9 milestones and development staffing waves are distinct.
 
 ## Source-specific qualification
 
-| Current continuation evidence | Observed scope |
+| Heading/title/header continuation evidence | Observed scope |
+| --- | --- |
+| [T2 publication](docs/development/2026-11-16-heading-title-continuation/reports/t2-publication.json) and [hosted results](docs/development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json) | Published `6047723b`, with independently verified tree and parent. All 16 latest hosted job families succeed after one unchanged core sanitizer retry; the first attempt's 15 successes and 15-second timeout remain retained. These results qualify T2 source, not later T3/H1 changes. |
+| [T2 admission](docs/development/2026-11-16-heading-title-continuation/reports/t2-acceptance.json) and [replay review](docs/reviews/REPLAY_UI_HISTORY_ADMISSION.md) | 158 genuine raster pairs, 92 complete-model pairs, zero forbidden changes and independent visual admission. The repaired 23-method MIDI CLI suite passes with the musical acknowledgment guard preserved. |
+| [T3 revision-2 admission](docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json) | 158 pairs, 1,317 material assertions, 18 density cases and independent visual admission. The rejected original title candidate and its two geometry failures remain separate. |
+| [H1 comparison](docs/development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json) and [visual admission](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md) | 103/103 criteria, 48 main + 16 companion pairs, four repeats, 10,542 fixture checks including 95 helper probes, 1,317 material assertions and 213 protected inputs; no exterior changes. Fifteen actual app frames pass scoped visual review. |
+| [H1 software timing](docs/development/2026-11-16-heading-title-continuation/reports/h1-paint-timing/report.json) | Five serial before/after cases, 30 warmup and 300 measured frames per executable. Active median growth is 1.3–4.5%; no existing benchmark investigation flag. Compact and Flat pixels remain exact. This is no hardware-rate or callback-deadline claim. |
+| [Implemented startup-prefix oracle](docs/reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md) and [qualified workspace records](docs/development/2026-11-16-heading-title-continuation/reports/qualified-workspace-records.json) | Independently reviewed acknowledged startup prefixes and stronger copied-state chronology are implemented. All 37 workspace native children pass in the qualified-final run; the semantic-paint repair and musical guards retain their identities. |
+| [Qualified-final full result](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json) | 240/242, exit 8, 740.263707625 s; 475 code inputs and recorded build inputs unchanged, six serialized tests nonoverlapping. Preset raster times out at 30 s; native MIDI has two missing acknowledgment-window cases. The earlier semantic 240/242 is a different run. |
+| [Preset isolated diagnostic](docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json) and [two MIDI isolated diagnostics](docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json) | Exactly one unchanged invocation each passes: 27.517879209 s, 2.031860108 s and 2.037485655 s. Original 30 s / 9 s limits remain. No green full-suite aggregate or exact scheduling cause is inferred. |
+| [Fresh installed captures](docs/reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md) and [relocated installation](docs/reviews/FINAL_NATIVE_INSTALL_REVIEW.md) | A55/A56 independently admit two actual current-app captures and the 17-file package at their recorded scope; the original H1 gallery and short-smoke failure remain historical evidence. |
+| [Current recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) | Recovery commit `835755a9…` is verified and additional preflight blobs are uploaded. Main remains `9d60dbf…`; final branch publication and all sixteen exact-source hosted families are pending. The ledger has 57 accepted deliveries and three hosted reviewers pending. |
+
+The [test-only completion-guard review](docs/reviews/RENDER_RACE_COMPLETION_REVIEW.md)
+retains the original sanitizer timeout and measured 45-second repair without
+changing assertions or workload. Local ASan/UBSan diagnostics with leak checking
+disabled for the recorded environment limitation do not qualify hosted leak
+checks. All original failed candidates and failed fixture/checker runs remain
+source-bound evidence. Worker-record closure is separate from product acceptance.
+
+### Retained registration/apron qualification — 16 November 2026
+
+| Earlier registration/apron evidence | Observed scope |
 | --- | --- |
 | [Verified follow-up publication](docs/development/2026-11-16-preset-library-continuation/reports/followup-publication.json) | Published `cc6be852`, tree `201e38b05901fa30e3d053b9c245829818a5b52e`, sole parent `20739f6`; independent provider reads and local fetch confirm the reviewed content. |
 | [Native baseline](docs/development/2026-11-16-preset-library-continuation/reports/baseline-qualification.json) and [earlier coherent run](docs/development/2026-11-16-preset-library-continuation/reports/w04-coherent-qualification.json) | 220/220 before implementation; later 230/230 at its recorded inputs. Neither is a rerun of the subsequent 235-test inventory. |
@@ -793,7 +863,8 @@ These recordings demonstrate the named nominal models and retained inputs; they 
 | --- | --- |
 | [Project guide](docs/PROJECT_GUIDE.md) | Reading order and the wider technical/documentary index. |
 | [Status](docs/STATUS.md), [Next steps](docs/NEXT_STEPS.md), [development log](docs/DEVELOPMENT_LOG.md) | Implemented work, observed checks, open gates and concrete continuation. |
-| [Active registration/apron session](docs/development/2026-11-16-preset-library-continuation/README.md), [checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md) and [ledger](docs/development/2026-11-16-preset-library-continuation/assignments.json) | Current M9 scope, actual assignment ownership, exact setup and future-agent recovery. |
+| [Active heading/title/header session](docs/development/2026-11-16-heading-title-continuation/README.md), [checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and [ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json) | Current M9 scope, actual assignment ownership, exact setup and future-agent recovery. |
+| [Retained registration/apron session](docs/development/2026-11-16-preset-library-continuation/README.md) | Earlier portable-library, rendering, pack and apron delivery with its own source-specific evidence. |
 | [Registration operator guide](docs/REGISTRATION_GUIDE.md), [starter pack](data/registrations/starter-v1/README.md) and [audition archive](docs/development/2026-11-16-preset-library-continuation/reports/starter-auditions-originals.tar.gz) | Portable preparation, scope/expression semantics, explicit installation and reproducible full-state rendering. |
 | [Retained streaming/material session](docs/development/2026-11-15-streaming-continuation/README.md), [scope](docs/development/2026-11-15-streaming-continuation/SCOPE.md) and [checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md) | Earlier M3/M9 implementation, ownership and exact-source evidence. |
 | [Complete M0–M9 plan](docs/PLAN.md), [acceptance matrix](docs/ACCEPTANCE_MATRIX.md), [release readiness](docs/RELEASE_READINESS.md) | Whole-project dependencies and evidence required to finish. |
@@ -808,7 +879,7 @@ These recordings demonstrate the named nominal models and retained inputs; they 
 | [Original session handoff](docs/SESSION_HANDOFF.md), [earlier refinement handoff](docs/REFERENCE_REFINEMENT_HANDOFF.md) | Preserved dated commands and evidence; use the active checkpoint for current work. |
 | [Agent instructions](AGENTS.md), [repository checks](docs/REPOSITORY_CHECKS.md) | Standing continuation/publication workflow and read-only source/link integrity checks. |
 
-The unchanged [research atlas](Hammond_B3_Leslie_Research_Atlas_500pp.pdf) contains 80 chapters across 500 pages. The original [complete review](docs/research/ATLAS_REVIEW.md) and the current session's [six fresh reading records](docs/development/2026-11-16-preset-library-continuation/reports/atlas-reading-coverage.json) cover every page; the [earlier streaming readings](docs/development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json) retain their own identities. Coverage does not independently validate all underlying manufacturer sources or supply physical measurements. Referenced companion files absent from the baseline remain absent; new code/data retain reconstruction identities.
+The unchanged [research atlas](Hammond_B3_Leslie_Research_Atlas_500pp.pdf) contains 80 chapters across 500 pages. The original [complete review](docs/research/ATLAS_REVIEW.md) and the current session's [six fresh reading records](docs/development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json) cover every page; the [earlier streaming readings](docs/development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json) retain their own identities. Coverage does not independently validate all underlying manufacturer sources or supply physical measurements. Referenced companion files absent from the baseline remain absent; new code/data retain reconstruction identities.
 
 The nominal generator uses 12-TET, ideal shared sine sources, proposed phases and normalized amplitude. Two independent direct-image factory-table transcriptions corroborate the retained routing in the [factory comparison](docs/FACTORY_REFERENCE.md). They do not calibrate tuning, pickup levels, contact timing, circuits, rotors or acoustics. Historical G-G service readings are not oscillator amplitudes.
 

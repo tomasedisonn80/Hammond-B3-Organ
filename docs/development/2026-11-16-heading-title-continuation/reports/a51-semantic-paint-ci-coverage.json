@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w09_a51",
+  "worker": "A51",
+  "same_worker_followup": true,
+  "new_worker_credit": false,
+  "recorded_utc": "2026-11-17T03:15:07.169054+00:00",
+  "decision": "Admit the inspected CI/CMake additions and normal generated metadata within source coverage scope; native execution and exact-source hosted acceptance remain root-owned",
+  "scope": {
+    "native_execution_by_a51": false,
+    "build_or_configure_by_a51": false,
+    "source_or_workflow_edits_by_a51": false,
+    "main_cpp_examined_or_qualified": false,
+    "original_a51_files_unchanged": {
+      "docs/reviews/HEADING_HEADER_FINAL_SOURCE_AUDIT.md": "6b29dfb5e84eca7d72ce9ba8d432541c05fa9bc20381f3a3233a07a0a2a49099",
+      "docs/development/2026-11-16-heading-title-continuation/reports/a51-final-source-audit.json": "844f1100c46bf37cd6b935870cbfe84e77440d3cdf77cbbfd80a3268a2819cc6",
+      "docs/development/2026-11-16-heading-title-continuation/notes/A51.md": "2ac9f13312908dbef4f42b4756c2e1282e603b3e9a55f5f54624cf0dde3f538b"
+    }
+  },
+  "inputs": [
+    {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 71269,
+      "sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c"
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44925,
+      "sha256": "ca7fd58cfb5f77df9f095e5e1e58766e11acb0ca29cb2523172ee56736729547"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+      "bytes": 16743,
+      "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-inputs.json",
+      "bytes": 75848,
+      "sha256": "ec855549fb1732ed81f06d0bb540952118bddf1758cecf652b79799df769d8d7"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-test-discovery.json",
+      "bytes": 255763,
+      "sha256": "6256b643dfe21d86bf9e82c7cb6594c0a2ee8c47fd677660cc33885d6018ebc6"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-test-discovery.json",
+      "bytes": 265585,
+      "sha256": "e7f41b261e1108c94327415db36d7bbf21ac5431def0c37b1cdd5d3539cc18b1"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-generated-properties.json",
+      "bytes": 3705,
+      "sha256": "e7f1c5ac8697d556bbe482ac8c3cb245a23977f64990840490e920f1c057552d"
+    },
+    {
+      "path": "docs/reviews/ADDITIONAL_NATIVE_SCHEDULING_ADMISSION.md",
+      "bytes": 9621,
+      "sha256": "0134a37956da506a3a49595d33f42c55eb419e93fd3f8574b98bb05a6e834c55"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-additional-native-scheduling.json",
+      "bytes": 20188,
+      "sha256": "4b7d1401894d73165e090d896b54522eac6b532c6ab460d429236700a75193c6"
+    }
+  ],
+  "workflow": {
+    "prior_sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e",
+    "current_sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c",
+    "normal_required_before": 44,
+    "normal_required_after": 45,
+    "sanitizer_tests_before": 33,
+    "sanitizer_tests_after": 34,
+    "build_targets_before": 31,
+    "build_targets_after": 31,
+    "sole_added_mapping": {
+      "test_standalone_semantic_paint_boundary": "hammond_standalone"
+    },
+    "prior_required_names_retained": true,
+    "source_provenance_only_addition": "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+    "fixture_imported_helpers_already_pinned": [
+      "apps/standalone/native_tests/test_standalone_app.py",
+      "apps/standalone/native_tests/test_standalone_midi_replay.py",
+      "apps/standalone/native_tests/test_standalone_workflows.py"
+    ],
+    "inline_python_blocks_parsed": 11,
+    "sanitizer_policy_block_unchanged": true,
+    "real_application_instrumentation_block_unchanged": true,
+    "sanitizer_python_command_arguments": 7,
+    "sanitizer_child_timeout_seconds": 30,
+    "sanitizer_ctest_timeout_seconds": 90,
+    "unchanged_sanitizer_policy": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "label_correction": "Stale step label thirty-three was reported and corrected to thirty-four; no behavioral change.",
+    "diff_from_frozen_a51": "--- A51-b572\n+++ semantic-4fe89694\n@@ -417,6 +417,7 @@\n                       \"test_standalone_title_density\", \"test_standalone_header_material\",\n                       \"test_standalone_header_statistics\", \"test_standalone_header_grain_bounds\",\n                       \"test_standalone_replay_paint_boundary\",\n+                      \"test_standalone_semantic_paint_boundary\",\n                       \"test_standalone_manual_key_material_raster\",\n                       \"test_standalone_reference_apron_art\", \"test_standalone_reference_apron_raster\",\n                       \"test_standalone_reference_apron_unavailable\", \"test_standalone_starter_load\",\n@@ -675,6 +676,7 @@\n         test_standalone_header_statistics=test_standalone_header_material\n         test_standalone_header_grain_bounds=test_standalone_header_grain_bounds\n         test_standalone_replay_paint_boundary=hammond_standalone\n+        test_standalone_semantic_paint_boundary=hammond_standalone\n         test_standalone_manual_key_material_raster=test_standalone_manual_key_material_raster\n         test_standalone_reference_apron_art=test_standalone_reference_apron_art\n         test_standalone_reference_apron_raster=test_standalone_reference_apron_raster\n@@ -708,7 +710,7 @@\n           assert all(len(pair) == 2 and all(re.fullmatch(r\"[a-z][a-z0-9_]*\", name) for name in pair)\n                      for pair in pairs), pairs\n           test_targets = dict(pairs)\n-          assert len(test_targets) == len(pairs) == 33, \"Required CTest names must be unique\"\n+          assert len(test_targets) == len(pairs) == 34, \"Required CTest names must be unique\"\n           assert test_targets[\"test_standalone_title_density\"] == \"test_standalone_footage_typography_raster\"\n           build_targets = sorted(set(test_targets.values()))\n           assert len(build_targets) == 31\n@@ -733,6 +735,7 @@\n                      \"apps/standalone/native_tests/test_standalone_header_statistics.py\",\n                      \"apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp\",\n                      \"apps/standalone/native_tests/test_standalone_replay_paint_boundary.py\",\n+                     \"apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py\",\n                      \"apps/standalone/native_tests/test_standalone_workflows.py\",\n                      \"apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp\",\n                      \"apps/standalone/native_tests/test_standalone_reference_apron_art.cpp\",\n@@ -836,7 +839,7 @@\n           provenance = json.loads((logs / \"provenance.json\").read_text())\n           test_targets = provenance[\"test_targets\"]\n           required = provenance[\"build_targets\"]\n-          assert len(test_targets) == 33 and len(required) == 31 and set(required) == set(test_targets.values())\n+          assert len(test_targets) == 34 and len(required) == 31 and set(required) == set(test_targets.values())\n           libraries = {\"SDL2-static\": \"_sdl2/libSDL2.a\", \"hammond_core\": \"libhammond_core.a\",\n                        \"hammond_standalone_support\": \"apps/standalone/libhammond_standalone_support.a\",\n                        \"hammond_standalone_drawing\": \"apps/standalone/libhammond_standalone_drawing.a\",\n@@ -956,7 +959,7 @@\n           (logs / \"instrumentation.json\").write_text(json.dumps(record, sort_keys=True, indent=2) + \"\\n\")\n           PY\n \n-      - name: Discover exactly thirty-three gates and run with leak checking\n+      - name: Discover exactly thirty-four gates and run with leak checking\n         env:\n           HAMMOND_NATIVE_CALIBRATION_EVIDENCE: ${{ github.workspace }}/standalone-sanitizer-logs/native-calibration\n         run: |\n@@ -967,7 +970,7 @@\n           provenance = json.loads((logs / \"provenance.json\").read_text())\n           test_targets = provenance[\"test_targets\"]\n           required = provenance[\"required_tests\"]\n-          assert len(required) == len(set(required)) == 33 and set(required) == set(test_targets)\n+          assert len(required) == len(set(required)) == 34 and set(required) == set(test_targets)\n           selection = \"^(\" + \"|\".join(re.escape(name) for name in required) + \")$\"\n           (logs / \"ctest-filter.txt\").write_text(selection + \"\\n\")\n           command = [\"ctest\", \"--test-dir\", \"build-standalone-sanitizers\", \"-C\", \"Release\",\n@@ -976,7 +979,7 @@\n               subprocess.run(command, stdout=output, check=True)\n           discovered = json.loads((logs / \"ctest-discovered.json\").read_text())[\"tests\"]\n           names = [test[\"name\"] for test in discovered]\n-          assert len(names) == len(set(names)) == 33 and set(names) == set(required), names\n+          assert len(names) == len(set(names)) == 34 and set(names) == set(required), names\n           sanitizer_limits = {\"test_standalone_workspace_raster\": 180,\n                               \"test_standalone_scaled_view\": 360,\n                               \"test_standalone_preset_raster\": 300,\n@@ -991,6 +994,7 @@\n                               \"test_standalone_header_statistics\": 240,\n                               \"test_standalone_header_grain_bounds\": 90,\n                               \"test_standalone_replay_paint_boundary\": 90,\n+                              \"test_standalone_semantic_paint_boundary\": 90,\n                               \"test_standalone_manual_key_material_raster\": 240,\n                               \"test_standalone_reference_apron_art\": 30,\n                               \"test_standalone_reference_apron_raster\": 60,\n@@ -1011,7 +1015,8 @@\n                   assert len(command) == 5 and command[1] == \"-B\" and command[3] == \"--executable\", command\n                   assert pathlib.Path(command[0]).is_file() and pathlib.Path(command[2]).resolve(strict=True) == script, command\n                   assert pathlib.Path(command[4]).resolve(strict=True) == executable, command\n-              elif test[\"name\"] in (\"test_standalone_header_statistics\", \"test_standalone_replay_paint_boundary\"):\n+              elif test[\"name\"] in (\"test_standalone_header_statistics\", \"test_standalone_replay_paint_boundary\",\n+                                    \"test_standalone_semantic_paint_boundary\"):\n                   script = pathlib.Path(\"apps/standalone/native_tests/\" + test[\"name\"] + \".py\").resolve(strict=True)\n                   timeout = \"60\" if test[\"name\"] == \"test_standalone_header_statistics\" else \"30\"\n                   assert len(command) == 7 and command[1] == \"-B\" and command[3] == \"--executable\", command\n@@ -1027,7 +1032,7 @@\n               overrides = properties.get(\"ENVIRONMENT\", []) + properties.get(\"ENVIRONMENT_MODIFICATION\", []) + command\n               assert not any(value.startswith((\"ASAN_OPTIONS=\", \"UBSAN_OPTIONS=\", \"LSAN_OPTIONS=\"))\n                              for value in overrides), (test[\"name\"], overrides)\n-          print(\"Discovered exactly 33 gates from 31 built interface, channel, calibration, product paint, title, header, replay and apron inputs; job sanitizer policy applies to every gate.\", flush=True)\n+          print(\"Discovered exactly 34 gates from 31 built interface, channel, calibration, product paint, title, header, replay and apron inputs; job sanitizer policy applies to every gate.\", flush=True)\n           PY\n           ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \\\n             --no-tests=error --timeout 180 -R \"$(cat standalone-sanitizer-logs/ctest-filter.txt)\" \\\n"
+  },
+  "cmake": {
+    "current_sha256": "ca7fd58cfb5f77df9f095e5e1e58766e11acb0ca29cb2523172ee56736729547",
+    "only_delta_from_preceding_frozen_input": "One semantic test registration, two additional RUN_SERIAL TRUE properties, and explanatory CLI comment/line wrapping.",
+    "normalized_previous_sha256": "7c7e1b42825d1ecd5b9cdc75508ed44117283dade74c0d473f171d8ab2482bb4",
+    "normalized_previous_bytes": 44093,
+    "matches_prior_frozen_identity": true,
+    "reused_existing_target": "hammond_standalone",
+    "new_gate_normal_child_timeout_seconds": 12,
+    "new_gate_sanitizer_child_timeout_seconds": 30,
+    "new_gate_normal_ctest_timeout_seconds": 60,
+    "new_gate_sanitizer_ctest_timeout_seconds": 90,
+    "additional_scheduling": [
+      "test_standalone_native_calibration",
+      "test_standalone_midi_cli"
+    ],
+    "native_calibration_normal_timeout_seconds": 90,
+    "native_calibration_sanitizer_timeout_seconds": 180,
+    "midi_cli_timeout_seconds": 90,
+    "scheduled_python_fixture_identities_unchanged": [
+      {
+        "path": "apps/standalone/native_tests/test_standalone_midi_cli.py",
+        "bytes": 41122,
+        "sha256": "37ecb6bd48017cee656629e3cac51bc5fa3a1979f1bc2c58d8228113debdf18f",
+        "matches_A54_frozen_input": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_native_calibration.py",
+        "bytes": 31325,
+        "sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85",
+        "matches_A54_frozen_input": true
+      }
+    ]
+  },
+  "normal_generated_metadata": {
+    "before_tests": 241,
+    "after_tests": 242,
+    "added": [
+      "test_standalone_semantic_paint_boundary"
+    ],
+    "removed": [],
+    "all_existing_command_vectors_equal": true,
+    "only_existing_property_deltas": [
+      {
+        "test": "test_standalone_midi_cli",
+        "changes": {
+          "RUN_SERIAL": {
+            "before": null,
+            "after": true
+          }
+        }
+      },
+      {
+        "test": "test_standalone_native_calibration",
+        "changes": {
+          "RUN_SERIAL": {
+            "before": null,
+            "after": true
+          }
+        }
+      }
+    ],
+    "serialized_tests_verified": [
+      "test_standalone_app",
+      "test_standalone_native_midi_replay",
+      "test_standalone_workspace_replay",
+      "test_standalone_native_calibration",
+      "test_standalone_midi_cli"
+    ],
+    "new_gate": {
+      "backtrace": 478,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "-B",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+        "--executable",
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--timeout-seconds",
+        "12"
+      ],
+      "name": "test_standalone_semantic_paint_boundary",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone",
+            "workspace"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 60.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    "root_summary_independently_reproduced": true
+  },
+  "limits": [
+    "This is source and normal generated CTest metadata review, not native execution or a whole-suite pass.",
+    "Sanitizer discovery/execution at the published source remains pending and must enforce the declared command/timeout shapes.",
+    "A60 owns the runtime event-loop implementation; this follow-up intentionally does not inspect or qualify its active main source.",
+    "Scheduling properties affect CTest job overlap, not OS scheduling, CPU reservation or callback deadlines.",
+    "Prior failures, earlier A51 report and all physical/whole-interface/host/release requirements remain intact."
+  ]
+}

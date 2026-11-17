@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "purpose": "Source-bound local diagnostic of observed hosted publication-race completion timeout",
+  "source_head": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "recorded_at_utc": "2026-11-17T00:53:42.701602+00:00",
+  "build_directory": "../build-race-sanitizer",
+  "configuration": {
+    "build_type": "Debug",
+    "sanitizers": true,
+    "standalone": false,
+    "VST3": false,
+    "build_target": "hammond_render"
+  },
+  "files": {
+    "hammond_render": {
+      "bytes": 5121816,
+      "sha256": "2c6cf2d21fd3704f6e3f6467374f7d427018ba0022f03473b43b55a0c0dd99b9"
+    },
+    "CMakeCache.txt": {
+      "bytes": 20238,
+      "sha256": "f50227fb3056b6a20192e1a4abe28f6c8c2240f14cad82f1ab8bf10246e41832"
+    },
+    "compile_commands.json": {
+      "bytes": 129226,
+      "sha256": "59b87f9b795bbc28d5d34be4225c2427ee4026eddcd2d481f2f6a72f6f39ee67"
+    },
+    "CMakeFiles/hammond_render.dir/link.txt": {
+      "bytes": 240,
+      "sha256": "3c42881c3f9806d1d403eaa2532391289661ad61e235982d6ac4783ea6daf3f1"
+    }
+  },
+  "logs": [
+    "race-sanitizer-configure.log",
+    "race-sanitizer-build.log"
+  ],
+  "claims": "Build success only; actual instrumented test results independently recorded by A31"
+}

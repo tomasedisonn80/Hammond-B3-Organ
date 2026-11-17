@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T04:03:36.156885+00:00",
+  "integrator": "root",
+  "decision": "Admit reviewed implementation for guarded source publication and exact-source hosted qualification. Retain the failed full local aggregate and bounded isolated passes. This is not a green complete local suite, repeated timing guarantee, whole-interface parity or product release.",
+  "frozen_code_input_count": 475,
+  "changed_code_inputs": [],
+  "local_full": {
+    "passed": 240,
+    "total": 242,
+    "returncode": 8,
+    "seconds": 740.263707625003,
+    "failures": [
+      "test_standalone_preset_raster",
+      "test_standalone_native_midi_replay"
+    ]
+  },
+  "isolated_diagnostics": {
+    "preset_raster": {
+      "returncode": 0,
+      "seconds": 27.51787920899733,
+      "unchanged_timeout_seconds": 30
+    },
+    "midi_methods": [
+      {
+        "method": "test_cc120_releases_only_its_external_division_and_preserves_ui",
+        "returncode": 0,
+        "seconds": 2.031860107999819,
+        "actual_children": 1,
+        "unchanged_child_timeout_seconds": 9
+      },
+      {
+        "method": "test_real_overflow_discards_stale_packets_and_requires_reconnect",
+        "returncode": 0,
+        "seconds": 2.037485654996999,
+        "actual_children": 1,
+        "unchanged_child_timeout_seconds": 9
+      }
+    ]
+  },
+  "actual_workspace_children": 37,
+  "actual_workspace_visits": 101,
+  "workspace_lossless_archive_verified": true,
+  "serialized_tests_nonoverlap": 6,
+  "application_sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+  "source_sha256": {
+    "apps/standalone/main.cpp": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+    "apps/standalone/InstrumentView.cpp": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+    "apps/standalone/CMakeLists.txt": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+    ".github/workflows/standalone.yml": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+    "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048"
+  },
+  "evidence": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-inputs.json",
+      "bytes": 76573,
+      "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json",
+      "bytes": 1368,
+      "sha256": "f226ae0a4c6866dab2f577d6c715e03d95891582edf7bf5c76f575c07d00d2cc"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.log",
+      "bytes": 130384,
+      "sha256": "c8fa5c2d326bb22069121f245d307e4c4aad588e0727bd15baf3454e65268b1c"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.xml",
+      "bytes": 231727,
+      "sha256": "2dea62baac1897f1c6f209c13b1702adf91b32a90466c7d44a56508652fe1652"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-observed-scheduling.json",
+      "bytes": 50540,
+      "sha256": "718b5d9eb35efe8d91b75776c03bfb3142c16bdacdde75c228a5303b8810b2e1"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-workspace-records.json",
+      "bytes": 43221,
+      "sha256": "64dd0527ed9e8bab1b57308c6ca7697d0825e3d89434594ba19699c5a57cbd08"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-workspace-records.tar.gz",
+      "bytes": 36882,
+      "sha256": "0e56107abd88d81370143a880b8f71869a06aa494c6cc3189c93df899ac25f48"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json",
+      "bytes": 1928,
+      "sha256": "c935b010fa17026d7457d6027d89b6f62f465269a5bb42a8ba9f98a2fa2ac472"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json",
+      "bytes": 4508,
+      "sha256": "747ca94a2f2855f962c82fa18f92c376ff143286db520fb457cf616c496aaebb"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-failure-review.md",
+      "bytes": 7587,
+      "sha256": "b841b5641212e04073b0727eea088bfa157b77bea3a1d4cfb26ae6e01ca823ce"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-failure-review.json",
+      "bytes": 45580,
+      "sha256": "86ec88a774cf25470040bd6908ef91c23dd21d7ee19b1dcfea334a2caf7b2990"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-workspace-startup-actual.json",
+      "bytes": 134711,
+      "sha256": "f37910472bb90fe95801e5f30601a6c6f9afdee6f0ec693251f489ad1d25932d"
+    },
+    {
+      "path": "docs/reviews/WORKSPACE_STARTUP_ACTUAL_QUALIFICATION.md",
+      "bytes": 7707,
+      "sha256": "caf604a11800d83da916ddaac673824fa7e8d1406a53cf52f943d8ec9d603210"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/final-native-install.json",
+      "bytes": 11759,
+      "sha256": "f93759e6e874673e23f36449b045f9c89e747b50c45de6e18d00991dc5310d3d"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a56-final-native-install.json",
+      "bytes": 54555,
+      "sha256": "58a75a457ad0590f2829c2e955320f7e19c28537072cad83ed01e6f48752151d"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a55-final-installed-capture.json",
+      "bytes": 43676,
+      "sha256": "192a46c0079167e8949f145440e36252bfd9bb38a639bbe87e211166495812f3"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a51-semantic-paint-ci-coverage.json",
+      "bytes": 16237,
+      "sha256": "3f3e0b187a0442ee4616967f7fc65197d092537241e858bb591ecaee83c81ae6"
+    },
+    {
+      "path": "docs/reviews/PRESET_RASTER_LOCAL_TIMING_REVIEW.md",
+      "bytes": 7535,
+      "sha256": "d7d59b04b66ffe2b2b15acaa6b5ba93b0626f0d7e4a66465fd2c158f4a6e5359"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-preset-raster-local-timing.json",
+      "bytes": 15841,
+      "sha256": "766b2635aed61903a3ae9c06444586ade83106e49a8af8e128d655caaec0bd5f"
+    }
+  ],
+  "remaining_gate": "Publish exact reviewed tree while preserving concurrent and recovery parents, independently verify remote, and observe all 16 required hosted job families. Accept A52\u2013A54 only from their completed hosted evidence; then close records and documentation separately."
+}

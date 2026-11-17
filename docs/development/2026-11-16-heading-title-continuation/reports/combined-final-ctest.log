@@ -1,0 +1,746 @@
+Test project /workspace/scratch/5a28c3564dbf/build-native
+        Start 235: test_standalone_workflows
+        Start 220: test_standalone_header_material
+  1/241 Test #220: test_standalone_header_material ...................   Passed   43.27 sec
+        Start 213: test_standalone_product_visual
+  2/241 Test #235: test_standalone_workflows .........................   Passed   66.53 sec
+        Start 225: test_standalone_scaled_view
+  3/241 Test #213: test_standalone_product_visual ....................   Passed   39.04 sec
+        Start 234: test_standalone_native_midi_replay
+  4/241 Test #225: test_standalone_scaled_view .......................   Passed   29.36 sec
+        Start 236: test_standalone_workspace_replay
+  5/241 Test #234: test_standalone_native_midi_replay ................***Failed   44.47 sec
+Native MIDI replay executable SHA-256: 2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479
+test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect) ... ok
+test_calibrated_cc11_and_cc121_reset_preserve_all_division_owners (__main__.NativeMidiReplayAcceptance.test_calibrated_cc11_and_cc121_reset_preserve_all_division_owners) ... ok
+test_cc11_and_bank_b_edits_share_pending_ui_controls (__main__.NativeMidiReplayAcceptance.test_cc11_and_bank_b_edits_share_pending_ui_controls) ... ok
+test_cc120_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc120_releases_only_its_external_division_and_preserves_ui) ... ok
+test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui) ... FAIL
+test_division_channel_range_routing_and_ignored_packets (__main__.NativeMidiReplayAcceptance.test_division_channel_range_routing_and_ignored_packets) ... ok
+test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner (__main__.NativeMidiReplayAcceptance.test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner) ... ok
+test_focus_resize_help_and_midi_apply_preserve_external_owners (__main__.NativeMidiReplayAcceptance.test_focus_resize_help_and_midi_apply_preserve_external_owners) ... ok
+test_full_inbox_drains_in_bounded_batches_without_overflow (__main__.NativeMidiReplayAcceptance.test_full_inbox_drains_in_bounded_batches_without_overflow) ... ok
+test_global_panic_retires_midi_and_suppresses_old_ui_press (__main__.NativeMidiReplayAcceptance.test_global_panic_retires_midi_and_suppresses_old_ui_press) ... ok
+test_interruption_is_a_failed_replay_but_shutdown_still_joins (__main__.NativeMidiReplayAcceptance.test_interruption_is_a_failed_replay_but_shutdown_still_joins) ... ok
+test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection (__main__.NativeMidiReplayAcceptance.test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection) ... ok
+test_real_overflow_discards_stale_packets_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_real_overflow_discards_stale_packets_and_requires_reconnect) ... ok
+test_repeated_fifo_owners_velocity_zero_and_both_release_orders (__main__.NativeMidiReplayAcceptance.test_repeated_fifo_owners_velocity_zero_and_both_release_orders) ... ok
+test_script_apply_validates_selected_calibration_before_retaining_active_epoch (__main__.NativeMidiReplayAcceptance.test_script_apply_validates_selected_calibration_before_retaining_active_epoch) ... ok
+Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2
+
+======================================================================
+FAIL: test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py", line 240, in run_native
+    yield NativeRun(data, elapsed)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py", line 634, in scoped_channel_release
+    self.assert_window(run, 950, 1230, ((60,), (62,), (5, 6)))
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py", line 452, in assert_window
+    self.assertTrue(candidates, f"No acknowledged musical observation in [{after}, {before}) ms")
+AssertionError: [] is not true : No acknowledged musical observation in [950, 1230) ms
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py", line 616, in test_cc123_releases_only_its_external_division_and_preserves_ui
+    self.scoped_channel_release(123, (127, 0, 91))
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py", line 631, in scoped_channel_release
+    with self.run_native(1600, events, ui_events=ui) as run:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py", line 252, in run_native
+    raise AssertionError(
+AssertionError: test_cc123_releases_only_its_external_division_and_preserves_ui: AssertionError: [] is not true : No acknowledged musical observation in [950, 1230) ms
+Command: ['/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone', '--state', '/tmp/hammond-native-midi-replay-vxgnca_2/run-1/private controls.b3controls', '--midi-script', '/tmp/hammond-native-midi-replay-vxgnca_2/run-1/MIDI input 音.b3midi', '--diagnostics', '/tmp/hammond-native-midi-replay-vxgnca_2/run-1/diagnostics.json', '--input-script', '/tmp/hammond-native-midi-replay-vxgnca_2/run-1/UI input Ω.b3ui']
+Elapsed: 1.886s
+
+
+MIDI input:
+B3MIDIREPLAY1
+duration_ms 1600
+0 connect
+150 bytes 90 3C 64
+150 bytes 90 40 64
+150 bytes 91 3E 64
+150 bytes 91 41 64
+150 bytes 92 28 64
+150 bytes 92 29 64
+650 bytes B0 7B 7F
+950 bytes B1 7B 00
+1250 bytes B2 7B 5B
+UI input:
+B3UIREPLAY1
+duration_ms 1600
+100 key_down A none 0
+220 key_down F2 none 0
+224 key_up F2 none
+260 key_down S none 0
+330 key_down F3 none 0
+334 key_up F3 none
+370 key_down D none 0
+Copied diagnostics (at most 65536 characters):
+{"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 150, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 76800, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": true, "arrival_time_is_sample_time": false, "arrival_time_source": "synthetic_main_thread_receipt", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "unavailable", "backend_available": false, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 9, "epochs": 1, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 9, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "discovery": {"completed": 0, "discarded_results": 0, "failures": 0, "pending_after_shutdown": false, "pending_before_shutdown": false, "requests": 0, "shutdown_join_performed": false, "started": 0}, "drain_budget": 32, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "pre_shutdown_active": {"inverted": false, "maximum": 127, "minimum": 0}, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 9, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 9, "received_packets": 9, "resets": 1}, "last_submit_status": "ok", "maximum_drained_per_turn": 6, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 1, "release_commands_accepted": 3, "release_pending": false, "release_sequence": 18, "requested_port": "", "retired_fault_bits": 0, "retirements": 1, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "synthetic-replay", "startup_failed": false, "state_after_shutdown": "unavailable", "state_before_shutdown": "unavailable", "status": "MIDI input closed for application shutdown.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "midi_replay": {"accepted_note_off_commands": 0, "accepted_note_on_commands": 9, "accepted_packets": 9, "arrival_time_is_sample_time": false, "arrival_time_source": "synthetic_main_thread_steady_clock_receipt", "barrier_wait_turns": 0, "before_shutdown": {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "last_applied_sequence": 15, "manual_notes": [[60], [62]], "pedal_ids": [5], "resolved_sequence": 15}, "budget_exhaustions": 0, "cancelled_connects": 0, "completed": true, "connect_barriers": 0, "connect_events": 1, "connected_after_shutdown": false, "connected_before_shutdown": true, "connections_started": 1, "controls_pending_before_shutdown": false, "delivered": true, "delivered_events": 10, "desired_controls_before_shutdown": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "device_starts": 1, "discarded_queued_packets": 0, "disconnect_events": 0, "dropped_packets": 0, "duration_ms": 1600, "event_budget": 512, "failure_count": 0, "faulted_before_shutdown": false, "faults_while_closed": 0, "final_acknowledged": true, "ignored_while_closed": 0, "intentional_backend_faults": 0, "intentional_overflow_faults": 0, "last_arrival_ns": 18916868269947, "last_submitted_sequence": 15, "maximum_events_per_turn": 6, "observation_capacity": 8704, "observations": [{"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 250, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 4, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 250, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 10, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 417, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 11, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 417, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 12, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 417, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 10, "last_submitted_sequence": 12, "manual_notes": [[60, 64], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 10}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 474, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 12, "last_submitted_sequence": 12, "manual_notes": [[60, 64], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 12}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 650, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 12, "last_submitted_sequence": 13, "manual_notes": [[60, 64], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 12}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 709, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 13, "last_submitted_sequence": 13, "manual_notes": [[60], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 13}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1095, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 13, "last_submitted_sequence": 14, "manual_notes": [[60], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 13}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1259, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 14, "last_submitted_sequence": 14, "manual_notes": [[60], [62]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 14}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1259, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 14, "last_submitted_sequence": 15, "manual_notes": [[60], [62]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 14}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1381, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 15, "last_submitted_sequence": 15, "manual_notes": [[60], [62]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5], "resolved_sequence": 15}], "observations_truncated": false, "offered_packets": 9, "passed": true, "pending_connect_before_shutdown": false, "pending_packets_before_shutdown": 0, "rejected_packets": 0, "release_pending_before_shutdown": false, "save_pending_before_shutdown": false, "scheduled_events": 10, "scheduled_packets": 9, "session_running_before_shutdown": true, "snapshot_available_before_shutdown": true, "source": "synthetic-replay"}, "presentation": {"before_shutdown": {"elapsed_ms": 1706, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 1, "pedals": 1, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 72192, "publication_revision": 286, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 15, "window_height": 900, "window_width": 1280, "workspace": "play"}, "initial_presentation": "dimensional", "initial_workspace": "play", "last_painted": {"elapsed_ms": 1706, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 1, "pedals": 1, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 72192, "publication_revision": 286, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 15, "window_height": 900, "window_width": 1280, "workspace": "play"}, "observation_capacity": 512, "observations": [{"elapsed_ms": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 0, "publication_revision": 4, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 1, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 250, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 11264, "publication_revision": 48, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 2, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 417, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 2, "pedals": 2, "upper": 2}, "inspection": {"controls_pending": false, "frame_clock": 18432, "publication_revision": 76, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 3, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 709, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 2, "pedals": 2, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 31744, "publication_revision": 128, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 8, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 1259, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 1, "pedals": 2, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 56832, "publication_revision": 226, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 12, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 1381, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 1, "pedals": 1, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 61952, "publication_revision": 246, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 13, "window_height": 900, "window_width": 1280, "workspace": "play"}], "observations_truncated": false, "screenshot": null}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "replay": {"accepted_note_off_commands": 0, "accepted_note_on_commands": 9, "before_shutdown": {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "last_applied_sequence": 15, "manual_notes": [[60], [62]], "pedal_ids": [5], "resolved_sequence": 15}, "completed": true, "controls_pending_before_shutdown": false, "delivered": true, "desired_controls_before_shutdown": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "device_starts": 1, "duration_ms": 1600, "final_acknowledged": true, "last_submitted_sequence": 15, "observation_capacity": 8704, "observations": [{"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 250, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 4, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 250, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 10, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 417, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 11, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 417, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 12, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 417, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 10, "last_submitted_sequence": 12, "manual_notes": [[60, 64], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 10}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 474, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 12, "last_submitted_sequence": 12, "manual_notes": [[60, 64], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 12}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 650, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 12, "last_submitted_sequence": 13, "manual_notes": [[60, 64], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 12}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 709, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 13, "last_submitted_sequence": 13, "manual_notes": [[60], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 13}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1095, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 13, "last_submitted_sequence": 14, "manual_notes": [[60], [62, 65]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 13}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1259, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 14, "last_submitted_sequence": 14, "manual_notes": [[60], [62]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 14}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1259, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 14, "last_submitted_sequence": 15, "manual_notes": [[60], [62]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5, 6], "resolved_sequence": 14}, {"controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "elapsed_ms": 1381, "error_count": 0, "expression_calibration": {"active": {"inverted": false, "maximum": 127, "minimum": 0}, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 15, "last_submitted_sequence": 15, "manual_notes": [[60], [62]], "modal_focus": 0, "overlay": "none", "pedal_ids": [5], "resolved_sequence": 15}], "observations_truncated": false, "passed": true, "pushed_events": 7, "save_pending_before_shutdown": false, "scheduled_events": 7, "session_running_before_shutdown": true, "snapshot_available_before_shutdown": true, "ui_observation_capacity": 512, "ui_observations": [{"elapsed_ms": 0, "modal_focus": 0, "overlay": "none"}], "ui_observations_truncated": false}, "runtime": {"drawable_height": 900, "drawable_width": 1280, "rendered_images": 15, "renderer": "software", "screenshot_while_held": false, "screenshot_written": false, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 900, "window_width": 1280}, "schema_version": 3, "session": {"discarded_commands": 4, "fault_flags": 0, "frame_clock": 76800, "held_after_shutdown": false, "last_applied_sequence": 15, "maximum_observed_peak": 0.1975019872188568, "prepared": true, "publication_revision": 306, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 19, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": false, "duration_ms": 0, "held_observed": false, "note_off_sent": false, "note_on_sent": false, "passed": false, "release_observed": false, "requested": false}, "state_path": "/tmp/hammond-native-midi-replay-vxgnca_2/run-1/private controls.b3controls", "status": "Synthetic replay active. Messages apply at the next audio callback boundary."}
+
+----------------------------------------------------------------------
+Ran 15 tests in 44.254s
+
+FAILED (failures=1)
+
+        Start 226: test_standalone_preset_raster
+  6/241 Test #226: test_standalone_preset_raster .....................   Passed   18.80 sec
+        Start  94: python_test_chapel_controls
+  7/241 Test #236: test_standalone_workspace_replay ..................***Failed   50.58 sec
+Native workspace executable SHA-256: 2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479
+test_capture_failure_closes_parameter_gesture_before_view_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_capture_failure_closes_parameter_gesture_before_view_and_resize) ... ok
+test_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns) ... FAIL
+test_hidden_play_regions_cannot_edit_redirect_or_audition (__main__.NativeWorkspaceReplayAcceptance.test_hidden_play_regions_cannot_edit_redirect_or_audition) ... ok
+test_pointer_capture_failure_preserves_keyboard_owner_during_navigation (__main__.NativeWorkspaceReplayAcceptance.test_pointer_capture_failure_preserves_keyboard_owner_during_navigation) ... ok
+test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok
+test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok
+Actual native workspace subprocesses: 30
+
+======================================================================
+FAIL: test_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 227, in run_native
+    yield workflow_fixture.WorkflowRun(data, state_path.read_bytes(), elapsed)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 464, in test_focus_memory_restores_drawbar_save_and_load_after_returns
+    self.assert_commands(run, on=0, off=0, control_changes=6)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 281, in assert_commands
+    self.assertLess(initial["elapsed_ms"], 180, "A pre-action loaded-state observation is required")
+AssertionError: 292 not less than 180 : A pre-action loaded-state observation is required
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 461, in test_focus_memory_restores_drawbar_save_and_load_after_returns
+    with self.run_native(3750, events, final_size=(960, 700)) as run:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 231, in run_native
+    raise AssertionError(
+AssertionError: test_focus_memory_restores_drawbar_save_and_load_after_returns: AssertionError: 292 not less than 180 : A pre-action loaded-state observation is required
+Command: ['/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone', '--state', '/tmp/hammond-native-workspaces-9_au8lcj/run-1/private controls.b3controls', '--input-script', '/tmp/hammond-native-workspaces-9_au8lcj/run-1/workspace input.b3ui', '--diagnostics', '/tmp/hammond-native-workspaces-9_au8lcj/run-1/diagnostics.json', '--width', '1280', '--height', '900']
+Elapsed: 3.867s
+
+
+UI input:
+B3UIREPLAY1
+duration_ms 3750
+20 key_down Tab none 0
+30 key_up Tab none
+40 key_down Tab none 0
+50 key_up Tab none
+60 key_down Tab none 0
+70 key_up Tab none
+80 key_down Tab none 0
+90 key_up Tab none
+100 key_down Tab none 0
+110 key_up Tab none
+120 key_down Tab none 0
+130 key_up Tab none
+140 key_down Tab none 0
+150 key_up Tab none
+160 key_down Tab none 0
+170 key_up Tab none
+180 key_down Tab none 0
+190 key_up Tab none
+200 key_down Tab none 0
+210 key_up Tab none
+220 key_down Tab none 0
+230 key_up Tab none
+240 key_down Tab none 0
+250 key_up Tab none
+260 key_down Tab none 0
+270 key_up Tab none
+280 key_down Tab none 0
+290 key_up Tab none
+300 key_down Tab none 0
+310 key_up Tab none
+320 key_down Tab none 0
+330 key_up Tab none
+340 key_down Tab none 0
+350 key_up Tab none
+360 key_down Tab none 0
+370 key_up Tab none
+380 key_down Tab none 0
+390 key_up Tab none
+400 key_down Tab none 0
+410 key_up Tab none
+420 key_down Tab none 0
+430 key_up Tab none
+440 key_down Tab none 0
+450 key_up Tab none
+460 key_down Tab none 0
+470 key_up Tab none
+480 key_down Tab none 0
+490 key_up Tab none
+500 key_down Tab none 0
+510 key_up Tab none
+550 key_down Home none 0
+560 key_up Home none
+750 mouse_down 130 66
+770 mouse_up 130 66
+900 key_down Tab none 0
+910 key_up Tab none
+930 key_down Tab none 0
+940 key_up Tab none
+1100 mouse_down 208 66
+1120 mouse_up 208 66
+1220 key_down Tab none 0
+1230 key_up Tab none
+1250 key_down Tab none 0
+1260 key_up Tab none
+1450 mouse_down 52 66
+1470 mouse_up 52 66
+1650 key_down Right none 0
+1660 key_up Right none
+1830 mouse_down 994 80
+1850 mouse_up 994 80
+2000 key_down Right none 0
+2010 key_up Right none
+2170 resize 960 700
+2350 key_down Right none 0
+2360 key_up Right none
+2570 mouse_down 130 66
+2590 mouse_up 130 66
+2750 key_down Space none 0
+2760 key_up Space none
+2920 mouse_down 52 66
+2940 mouse_up 52 66
+3090 key_down Right none 0
+3100 key_up Right none
+3270 mouse_down 208 66
+3290 mouse_up 208 66
+3450 key_down Space none 0
+3460 key_up Space none
+Copied diagnostics:
+{"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 288, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 147456, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [3, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": false, "arrival_time_is_sample_time": false, "arrival_time_source": "none", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "unavailable", "backend_available": false, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 0, "epochs": 0, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 0, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "discovery": {"completed": 0, "discarded_results": 0, "failures": 0, "pending_after_shutdown": false, "pending_before_shutdown": false, "requests": 0, "shutdown_join_performed": false, "started": 0}, "drain_budget": 32, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "pre_shutdown_active": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 0, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 0, "received_packets": 0, "resets": 0}, "last_submit_status": "ok", "maximum_drained_per_turn": 0, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 0, "release_commands_accepted": 0, "release_pending": false, "release_sequence": 0, "requested_port": "", "retired_fault_bits": 0, "retirements": 0, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "none", "startup_failed": false, "state_after_shutdown": "unavailable", "state_before_shutdown": "unavailable", "status": "MIDI backend unavailable in this build.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "presentation": {"before_shutdown": {"elapsed_ms": 3760, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 146944, "publication_revision": 578, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 7, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 104, "window_height": 700, "window_width": 960, "workspace": "service"}, "initial_presentation": "dimensional", "initial_workspace": "play", "last_painted": {"elapsed_ms": 3760, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 146944, "publication_revision": 578, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 7, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 104, "window_height": 700, "window_width": 960, "workspace": "service"}, "observation_capacity": 512, "observations": [{"elapsed_ms": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 0, "publication_revision": 4, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 1, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 292, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 11776, "publication_revision": 50, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 2, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 617, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 25600, "publication_revision": 104, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 5, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 741, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 30720, "publication_revision": 124, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 6, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 845, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 34816, "publication_revision": 140, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 1, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 7, "window_height": 900, "window_width": 1280, "workspace": "rotary"}, {"elapsed_ms": 1120, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 46080, "publication_revision": 184, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 2, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 11, "window_height": 900, "window_width": 1280, "workspace": "service"}, {"elapsed_ms": 1508, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 58880, "publication_revision": 234, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 3, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 16, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 1657, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 65024, "publication_revision": 258, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 3, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 18, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 1720, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 67584, "publication_revision": 268, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 3, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 19, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 1866, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 73216, "publication_revision": 290, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 4, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 21, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 2009, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 78848, "publication_revision": 312, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 4, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 26, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 2025, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 79360, "publication_revision": 314, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 4, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 27, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 2173, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 86016, "publication_revision": 340, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 4, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 32, "window_height": 700, "window_width": 960, "workspace": "play"}, {"elapsed_ms": 2351, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 93696, "publication_revision": 370, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 4, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 40, "window_height": 700, "window_width": 960, "workspace": "play"}, {"elapsed_ms": 2363, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 94208, "publication_revision": 372, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 4, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 41, "window_height": 700, "window_width": 960, "workspace": "play"}, {"elapsed_ms": 2581, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 102912, "publication_revision": 406, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 5, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 51, "window_height": 700, "window_width": 960, "workspace": "rotary"}, {"elapsed_ms": 2922, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 116224, "publication_revision": 458, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 6, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 68, "window_height": 700, "window_width": 960, "workspace": "play"}, {"elapsed_ms": 3103, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 123904, "publication_revision": 488, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 6, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 77, "window_height": 700, "window_width": 960, "workspace": "play"}, {"elapsed_ms": 3125, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 124928, "publication_revision": 492, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 6, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 78, "window_height": 700, "window_width": 960, "workspace": "play"}, {"elapsed_ms": 3298, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 126976, "publication_revision": 500, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 7, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 81, "window_height": 700, "window_width": 960, "workspace": "service"}, {"elapsed_ms": 3455, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 134144, "publication_revision": 528, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 7, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 89, "window_height": 700, "window_width": 960, "workspace": "service"}, {"elapsed_ms": 3483, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 135168, "publication_revision": 532, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "modal_focus": 0, "overlay": "none", "pointer_capture": {"attempts": 7, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 91, "window_height": 700, "window_width": 960, "workspace": "service"}], "observations_truncated": false, "screenshot": null}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "replay": {"accepted_note_off_commands": 0, "accepted_note_on_commands": 0, "before_shutdown": {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [3, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "last_applied_sequence": 9, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 9}, "completed": true, "controls_pending_before_shutdown": false, "delivered": true, "desired_controls_before_shutdown": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [3, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "device_starts": 1, "duration_ms": 3750, "final_acknowledged": true, "last_submitted_sequence": 9, "observation_capacity": 512, "observations": [{"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 292, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 3, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 617, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 3, "last_submitted_sequence": 4, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [0, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 741, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 4, "last_submitted_sequence": 4, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 4}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [0, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1657, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 4, "last_submitted_sequence": 5, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 4}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [1, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1720, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 5, "last_submitted_sequence": 5, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 5}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [1, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2009, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 5, "last_submitted_sequence": 6, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 5}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [2, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2025, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 6, "last_submitted_sequence": 6, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [2, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2351, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 6, "last_submitted_sequence": 7, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [3, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2363, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 7, "last_submitted_sequence": 7, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 7}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [3, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 3103, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 7, "last_submitted_sequence": 8, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 7}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [4, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 3125, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 8, "last_submitted_sequence": 8, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 8}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [4, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 3455, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 8, "last_submitted_sequence": 9, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 8}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [3, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 3483, "error_count": 0, "expression_calibration": {"active": null, "configured": {"inverted": false, "maximum": 127, "minimum": 0}, "model": "midi-expression-endpoints-v1", "pending": null, "reconnect_pending": false, "release_pending": false, "selected": {"inverted": false, "maximum": 127, "minimum": 0}, "selected_valid": true}, "last_applied_sequence": 9, "last_submitted_sequence": 9, "manual_notes": [[], []], "modal_focus": 0, "overlay": "none", "pedal_ids": [], "resolved_sequence": 9}], "observations_truncated": false, "passed": true, "pushed_events": 87, "save_pending_before_shutdown": false, "scheduled_events": 87, "session_running_before_shutdown": true, "snapshot_available_before_shutdown": true, "ui_observation_capacity": 512, "ui_observations": [{"elapsed_ms": 0, "modal_focus": 0, "overlay": "none"}], "ui_observations_truncated": false}, "runtime": {"drawable_height": 700, "drawable_width": 960, "rendered_images": 104, "renderer": "software", "screenshot_while_held": false, "screenshot_written": false, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 700, "window_width": 960}, "schema_version": 3, "session": {"discarded_commands": 1, "fault_flags": 0, "frame_clock": 147456, "held_after_shutdown": false, "last_applied_sequence": 9, "maximum_observed_peak": 0, "prepared": true, "publication_revision": 582, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 10, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": false, "duration_ms": 0, "held_observed": false, "note_off_sent": false, "note_on_sent": false, "passed": false, "release_observed": false, "requested": false}, "state_path": "/tmp/hammond-native-workspaces-9_au8lcj/run-1/private controls.b3controls", "status": "Loaded saved controls."}
+
+----------------------------------------------------------------------
+Ran 6 tests in 50.333s
+
+FAILED (failures=1)
+
+        Start 154: python_test_rotary_propagation_acceptance
+  8/241 Test #154: python_test_rotary_propagation_acceptance .........   Passed   22.14 sec
+        Start 239: test_standalone_chapel
+  9/241 Test  #94: python_test_chapel_controls .......................   Passed   24.19 sec
+        Start 138: python_test_plot_pedal_trace
+ 10/241 Test #239: test_standalone_chapel ............................   Passed   21.22 sec
+        Start 216: test_standalone_lower_rack_material_raster
+ 11/241 Test #138: python_test_plot_pedal_trace ......................   Passed   20.77 sec
+        Start 231: test_standalone_midi_cli
+ 12/241 Test #216: test_standalone_lower_rack_material_raster ........   Passed   17.60 sec
+        Start 212: test_standalone_waveform_material
+ 13/241 Test #231: test_standalone_midi_cli ..........................   Passed   22.39 sec
+        Start 209: test_standalone_workspace_raster
+ 14/241 Test #212: test_standalone_waveform_material .................   Passed   10.68 sec
+        Start 214: test_standalone_percussion_raster
+ 15/241 Test #209: test_standalone_workspace_raster ..................   Passed   11.19 sec
+        Start 224: test_standalone_keyboard_rim_raster
+ 16/241 Test #214: test_standalone_percussion_raster .................   Passed   18.87 sec
+        Start 233: test_standalone_native_calibration
+ 17/241 Test #224: test_standalone_keyboard_rim_raster ...............   Passed   13.78 sec
+        Start 215: test_standalone_upper_rack_material_raster
+ 18/241 Test #215: test_standalone_upper_rack_material_raster ........   Passed   13.18 sec
+        Start  82: python_test_capture_install
+ 19/241 Test #233: test_standalone_native_calibration ................   Passed   20.96 sec
+        Start 136: python_test_plot_console_trace
+ 20/241 Test  #82: python_test_capture_install .......................   Passed   14.91 sec
+        Start  88: python_test_capture_replay
+ 21/241 Test #136: python_test_plot_console_trace ....................   Passed    9.89 sec
+        Start 217: test_standalone_footage_typography_raster
+ 22/241 Test  #88: python_test_capture_replay ........................   Passed    9.63 sec
+        Start 150: python_test_render_fixture
+ 23/241 Test #217: test_standalone_footage_typography_raster .........   Passed   16.43 sec
+        Start 211: test_standalone_material_acceptance
+ 24/241 Test #150: python_test_render_fixture ........................   Passed   10.34 sec
+        Start  90: python_test_capture_study
+ 25/241 Test #211: test_standalone_material_acceptance ...............   Passed    9.66 sec
+        Start  75: python_test_capture_cli_pipeline
+ 26/241 Test  #90: python_test_capture_study .........................   Passed    8.82 sec
+        Start  95: python_test_chapel_presets
+ 27/241 Test  #75: python_test_capture_cli_pipeline ..................   Passed    8.54 sec
+        Start 175: test_standalone_install
+ 28/241 Test  #95: python_test_chapel_presets ........................   Passed    8.43 sec
+        Start 135: python_test_pedal_trace
+ 29/241 Test #135: python_test_pedal_trace ...........................   Passed    7.19 sec
+        Start  66: test_source_leakage_spectrum
+ 30/241 Test #175: test_standalone_install ...........................   Passed   11.31 sec
+        Start 123: python_test_install
+ 31/241 Test  #66: test_source_leakage_spectrum ......................   Passed    9.15 sec
+        Start 206: test_standalone_reference_apron_unavailable
+ 32/241 Test #123: python_test_install ...............................   Passed    9.57 sec
+        Start 164: python_test_source_leakage_demo
+ 33/241 Test #206: test_standalone_reference_apron_unavailable .......   Passed    5.62 sec
+        Start 147: python_test_render
+ 34/241 Test #147: python_test_render ................................   Passed    4.13 sec
+        Start 169: python_test_starter_auditions
+ 35/241 Test #164: python_test_source_leakage_demo ...................   Passed    6.21 sec
+        Start 156: python_test_rotary_waveform_acceptance
+ 36/241 Test #156: python_test_rotary_waveform_acceptance ............   Passed    4.53 sec
+        Start 223: test_standalone_manual_key_material_raster
+ 37/241 Test #169: python_test_starter_auditions .....................   Passed    6.15 sec
+        Start 104: python_test_console_trace
+ 38/241 Test #223: test_standalone_manual_key_material_raster ........   Passed    8.24 sec
+        Start  99: python_test_compile_profile
+ 39/241 Test #104: python_test_console_trace .........................   Passed    6.98 sec
+        Start  81: python_test_capture_graph_scale
+ 40/241 Test  #99: python_test_compile_profile .......................   Passed    6.12 sec
+        Start  83: python_test_capture_job
+ 41/241 Test  #81: python_test_capture_graph_scale ...................   Passed    6.41 sec
+        Start 218: test_standalone_title_density
+ 42/241 Test #218: test_standalone_title_density .....................   Passed    5.41 sec
+        Start 116: python_test_crossover_install
+ 43/241 Test  #83: python_test_capture_job ...........................   Passed    5.84 sec
+        Start 141: python_test_reference_apron_art
+ 44/241 Test #116: python_test_crossover_install .....................   Passed    2.07 sec
+        Start 111: python_test_contact_reference_install
+ 45/241 Test #141: python_test_reference_apron_art ...................   Passed    4.51 sec
+        Start 159: python_test_scanner_line_profile
+ 46/241 Test #111: python_test_contact_reference_install .............   Passed    3.85 sec
+        Start 199: test_standalone_workspace_continuity
+ 47/241 Test #159: python_test_scanner_line_profile ..................   Passed    5.43 sec
+        Start 204: test_standalone_reference_apron_raster
+ 48/241 Test #199: test_standalone_workspace_continuity ..............   Passed    5.39 sec
+        Start 129: python_test_pedal_catalog
+ 49/241 Test #204: test_standalone_reference_apron_raster ............   Passed    4.74 sec
+        Start 103: python_test_console_evidence
+ 50/241 Test #129: python_test_pedal_catalog .........................   Passed    5.24 sec
+        Start  98: python_test_compile_pedal_routing
+ 51/241 Test #103: python_test_console_evidence ......................   Passed    5.39 sec
+        Start 110: python_test_contact_grid_conversion_resources
+ 52/241 Test  #98: python_test_compile_pedal_routing .................   Passed    7.41 sec
+        Start 172: python_test_verify_render
+ 53/241 Test #110: python_test_contact_grid_conversion_resources .....   Passed    5.37 sec
+        Start 109: python_test_contact_grid_conversion_native
+ 54/241 Test #172: python_test_verify_render .........................   Passed    5.49 sec
+        Start  79: python_test_capture_corpus_admission
+ 55/241 Test  #79: python_test_capture_corpus_admission ..............   Passed    2.15 sec
+        Start 115: python_test_crossover_acceptance
+ 56/241 Test #109: python_test_contact_grid_conversion_native ........   Passed    7.72 sec
+        Start 157: python_test_scanner_ac_reference
+ 57/241 Test #115: python_test_crossover_acceptance ..................   Passed    3.55 sec
+        Start  20: test_leslie_crossover
+ 58/241 Test #157: python_test_scanner_ac_reference ..................   Passed    5.08 sec
+        Start 149: python_test_render_controls_admission
+ 59/241 Test  #20: test_leslie_crossover .............................   Passed    4.21 sec
+        Start 173: python_test_vst3_build_tools
+ 60/241 Test #149: python_test_render_controls_admission .............   Passed    3.21 sec
+        Start 160: python_test_scanner_native_ac
+ 61/241 Test #173: python_test_vst3_build_tools ......................   Passed    3.47 sec
+        Start 219: test_standalone_typography_clips
+ 62/241 Test #160: python_test_scanner_native_ac .....................   Passed    2.12 sec
+        Start 161: python_test_scanner_transient_reference
+ 63/241 Test #161: python_test_scanner_transient_reference ...........   Passed    3.49 sec
+        Start 203: test_standalone_benchmark
+ 64/241 Test #219: test_standalone_typography_clips ..................   Passed    4.33 sec
+        Start 227: test_standalone_audio_device
+ 65/241 Test #227: test_standalone_audio_device ......................   Passed    3.01 sec
+        Start  74: python_test_capture_audio_admission
+ 66/241 Test #203: test_standalone_benchmark .........................   Passed    3.67 sec
+        Start 132: python_test_pedal_render_cli
+ 67/241 Test #132: python_test_pedal_render_cli ......................   Passed    3.27 sec
+        Start 130: python_test_pedal_demo
+ 68/241 Test  #74: python_test_capture_audio_admission ...............   Passed    5.38 sec
+        Start 151: python_test_repository_integrity
+ 69/241 Test #130: python_test_pedal_demo ............................   Passed    3.02 sec
+        Start  80: python_test_capture_demo
+ 70/241 Test  #80: python_test_capture_demo ..........................   Passed    3.47 sec
+        Start  97: python_test_compile_fixed_registrations
+ 71/241 Test #151: python_test_repository_integrity ..................   Passed    6.28 sec
+        Start 155: python_test_rotary_reference
+ 72/241 Test  #97: python_test_compile_fixed_registrations ...........   Passed    3.04 sec
+        Start 143: python_test_refinement_session
+ 73/241 Test #155: python_test_rotary_reference ......................   Passed    2.52 sec
+        Start 166: python_test_source_leakage_render
+ 74/241 Test #143: python_test_refinement_session ....................   Passed    2.17 sec
+        Start 153: python_test_rotary_profile
+ 75/241 Test #166: python_test_source_leakage_render .................   Passed    1.91 sec
+        Start 133: python_test_pedal_render_evidence
+ 76/241 Test #153: python_test_rotary_profile ........................   Passed    2.52 sec
+        Start 106: python_test_contact_grid_conversion_adversarial
+ 77/241 Test #133: python_test_pedal_render_evidence .................   Passed    2.20 sec
+        Start 158: python_test_scanner_foh_probe
+ 78/241 Test #106: python_test_contact_grid_conversion_adversarial ...   Passed    1.53 sec
+        Start  19: test_input_processor
+ 79/241 Test  #19: test_input_processor ..............................   Passed    1.07 sec
+        Start 146: python_test_registration_install
+ 80/241 Test #158: python_test_scanner_foh_probe .....................   Passed    2.48 sec
+        Start  92: python_test_causal_contact_grid_differential
+ 81/241 Test  #92: python_test_causal_contact_grid_differential ......   Passed    1.88 sec
+        Start 112: python_test_contact_switching_io
+ 82/241 Test #146: python_test_registration_install ..................   Passed    2.07 sec
+        Start 121: python_test_fixture_catalog
+ 83/241 Test #112: python_test_contact_switching_io ..................   Passed    1.54 sec
+        Start 140: python_test_product_session
+ 84/241 Test #121: python_test_fixture_catalog .......................   Passed    2.32 sec
+        Start 148: python_test_render_controls
+ 85/241 Test #140: python_test_product_session .......................   Passed    2.26 sec
+        Start 165: python_test_source_leakage_install
+ 86/241 Test #148: python_test_render_controls .......................   Passed    1.47 sec
+        Start 108: python_test_contact_grid_conversion_install
+ 87/241 Test #165: python_test_source_leakage_install ................   Passed    1.81 sec
+        Start 105: python_test_contact_grid_conversion
+ 88/241 Test #108: python_test_contact_grid_conversion_install .......   Passed    1.94 sec
+        Start 232: test_standalone_expression_diagnostics
+ 89/241 Test #105: python_test_contact_grid_conversion ...............   Passed    1.65 sec
+        Start  84: python_test_capture_metadata_read
+ 90/241 Test #232: test_standalone_expression_diagnostics ............   Passed    3.37 sec
+        Start 142: python_test_reference_apron_raster_checker
+ 91/241 Test #142: python_test_reference_apron_raster_checker ........   Passed    0.90 sec
+        Start  24: test_numerics
+ 92/241 Test  #24: test_numerics .....................................   Passed    1.21 sec
+        Start 113: python_test_contact_switching_study
+ 93/241 Test  #84: python_test_capture_metadata_read .................   Passed    4.88 sec
+        Start 127: python_test_parameters
+ 94/241 Test #113: python_test_contact_switching_study ...............   Passed    1.05 sec
+        Start 238: test_standalone_replay_boundaries
+ 95/241 Test #127: python_test_parameters ............................   Passed    2.03 sec
+        Start  72: python_test_capture
+ 96/241 Test  #72: python_test_capture ...............................   Passed    1.56 sec
+        Start  16: test_fixed_registration_engine
+ 97/241 Test #238: test_standalone_replay_boundaries .................   Passed    5.43 sec
+        Start 162: python_test_sdl2_dependency
+ 98/241 Test  #16: test_fixed_registration_engine ....................   Passed    2.33 sec
+        Start 152: python_test_rotary_motion_acceptance
+ 99/241 Test #162: python_test_sdl2_dependency .......................   Passed    1.97 sec
+        Start  71: python_test_calibration_session_records
+100/241 Test #152: python_test_rotary_motion_acceptance ..............   Passed    1.82 sec
+        Start 139: python_test_preset_parameter_oracle
+101/241 Test #139: python_test_preset_parameter_oracle ...............   Passed    0.96 sec
+        Start 101: python_test_console_benchmark
+102/241 Test  #71: python_test_calibration_session_records ...........   Passed    1.64 sec
+        Start  17: test_fixed_registration_lifecycle
+103/241 Test #101: python_test_console_benchmark .....................   Passed    1.48 sec
+        Start  70: python_test_audio_analysis
+104/241 Test  #17: test_fixed_registration_lifecycle .................   Passed    1.32 sec
+        Start 221: test_standalone_header_statistics
+105/241 Test #221: test_standalone_header_statistics .................   Passed    0.68 sec
+        Start 167: python_test_source_leakage_roundtrip
+106/241 Test  #70: python_test_audio_analysis ........................   Passed    1.64 sec
+        Start  46: test_realtime_console
+107/241 Test #167: python_test_source_leakage_roundtrip ..............   Passed    1.44 sec
+        Start  78: python_test_capture_corpus
+108/241 Test  #46: test_realtime_console .............................   Passed    1.58 sec
+        Start  96: python_test_cli_unicode
+109/241 Test  #78: python_test_capture_corpus ........................   Passed    2.24 sec
+        Start 102: python_test_console_catalog
+110/241 Test  #96: python_test_cli_unicode ...........................   Passed    1.89 sec
+        Start 168: python_test_standalone_session_records
+111/241 Test #168: python_test_standalone_session_records ............   Passed    0.94 sec
+        Start 126: python_test_parameter_bridge
+112/241 Test #102: python_test_console_catalog .......................   Passed    1.38 sec
+        Start  47: test_realtime_pedals
+113/241 Test #126: python_test_parameter_bridge ......................   Passed    1.24 sec
+        Start 118: python_test_demo_bundle
+114/241 Test  #47: test_realtime_pedals ..............................   Passed    2.03 sec
+        Start 117: python_test_crossover_reference
+115/241 Test #118: python_test_demo_bundle ...........................   Passed    1.60 sec
+        Start  87: python_test_capture_readiness
+116/241 Test #117: python_test_crossover_reference ...................   Passed    1.69 sec
+        Start 134: python_test_pedal_session
+117/241 Test  #87: python_test_capture_readiness .....................   Passed    1.22 sec
+        Start 174: python_test_rotary_waveform_report_admission
+118/241 Test #134: python_test_pedal_session .........................   Passed    1.23 sec
+        Start  73: python_test_capture_audio
+119/241 Test #174: python_test_rotary_waveform_report_admission ......   Passed    1.29 sec
+        Start  85: python_test_capture_numerics
+120/241 Test  #73: python_test_capture_audio .........................   Passed    0.76 sec
+        Start  57: test_scanner_line_foh
+121/241 Test  #85: python_test_capture_numerics ......................   Passed    0.98 sec
+        Start 100: python_test_compile_rotary_profile
+122/241 Test  #57: test_scanner_line_foh .............................   Passed    1.02 sec
+        Start  69: test_tonewheel
+123/241 Test #100: python_test_compile_rotary_profile ................   Passed    0.72 sec
+        Start  13: test_engine_rate
+124/241 Test  #69: test_tonewheel ....................................   Passed    0.74 sec
+        Start 210: test_standalone_inspection_raster
+125/241 Test  #13: test_engine_rate ..................................   Passed    0.96 sec
+        Start 229: test_standalone_callback_allocation
+126/241 Test #210: test_standalone_inspection_raster .................   Passed    0.77 sec
+        Start  53: test_rotary_renderer
+127/241 Test #229: test_standalone_callback_allocation ...............   Passed    0.97 sec
+        Start  40: test_performance_acceptance
+128/241 Test  #53: test_rotary_renderer ..............................   Passed    0.92 sec
+        Start  77: python_test_capture_comparison
+129/241 Test  #40: test_performance_acceptance .......................   Passed    0.61 sec
+        Start 171: python_test_starter_registration_oracle
+130/241 Test  #77: python_test_capture_comparison ....................   Passed    0.86 sec
+        Start 119: python_test_factory_reference
+131/241 Test #171: python_test_starter_registration_oracle ...........   Passed    0.72 sec
+        Start 128: python_test_partial_key_render
+132/241 Test #119: python_test_factory_reference .....................   Passed    0.64 sec
+        Start  91: python_test_causal_contact_grid_cli
+133/241 Test #128: python_test_partial_key_render ....................   Passed    0.63 sec
+        Start  89: python_test_capture_standalone_interface
+134/241 Test  #91: python_test_causal_contact_grid_cli ...............   Passed    0.67 sec
+        Start  64: test_source_leakage_oracle
+135/241 Test  #89: python_test_capture_standalone_interface ..........   Passed    0.95 sec
+        Start 163: python_test_source_leakage_compiler
+136/241 Test  #64: test_source_leakage_oracle ........................   Passed    0.67 sec
+        Start 190: test_standalone_preset_ui
+137/241 Test #163: python_test_source_leakage_compiler ...............   Passed    0.74 sec
+        Start 137: python_test_plot_crossover_characterization
+138/241 Test #190: test_standalone_preset_ui .........................   Passed    0.55 sec
+        Start  86: python_test_capture_policy
+139/241 Test  #86: python_test_capture_policy ........................   Passed    0.46 sec
+        Start 120: python_test_fixed_registration_source_admission
+140/241 Test #137: python_test_plot_crossover_characterization .......   Passed    0.62 sec
+        Start 107: python_test_contact_grid_conversion_cli
+141/241 Test #120: python_test_fixed_registration_source_admission ...   Passed    0.68 sec
+        Start  18: test_host_timeline
+142/241 Test #107: python_test_contact_grid_conversion_cli ...........   Passed    0.62 sec
+        Start 125: python_test_native_bundle_inventory
+143/241 Test  #18: test_host_timeline ................................   Passed    0.52 sec
+        Start 170: python_test_starter_registration_generator
+144/241 Test #125: python_test_native_bundle_inventory ...............   Passed    0.61 sec
+        Start  56: test_scanner_line
+145/241 Test #170: python_test_starter_registration_generator ........   Passed    0.49 sec
+        Start 131: python_test_pedal_map
+146/241 Test  #56: test_scanner_line .................................   Passed    0.51 sec
+        Start 144: python_test_registration_cli
+147/241 Test #131: python_test_pedal_map .............................   Passed    0.46 sec
+        Start 191: test_standalone_projection
+148/241 Test #144: python_test_registration_cli ......................   Passed    0.41 sec
+        Start  45: test_realtime
+149/241 Test #191: test_standalone_projection ........................   Passed    0.37 sec
+        Start  14: test_factory_runtime
+150/241 Test  #45: test_realtime .....................................   Passed    0.45 sec
+        Start 114: python_test_continuation_ledger
+151/241 Test  #14: test_factory_runtime ..............................   Passed    0.36 sec
+        Start 145: python_test_registration_cli_admission
+152/241 Test #114: python_test_continuation_ledger ...................   Passed    0.34 sec
+        Start 207: test_standalone_drawing
+153/241 Test #207: test_standalone_drawing ...........................   Passed    0.12 sec
+        Start 194: test_standalone_session
+154/241 Test #145: python_test_registration_cli_admission ............   Passed    0.29 sec
+        Start   4: test_console_engine
+155/241 Test #194: test_standalone_session ...........................   Passed    0.36 sec
+        Start  27: test_partial_key
+156/241 Test   #4: test_console_engine ...............................   Passed    0.40 sec
+        Start  25: test_owned_lifecycle
+157/241 Test  #27: test_partial_key ..................................   Passed    0.26 sec
+        Start  44: test_profile
+158/241 Test  #25: test_owned_lifecycle ..............................   Passed    0.29 sec
+        Start  67: test_source_rate
+159/241 Test  #44: test_profile ......................................   Passed    0.32 sec
+        Start 122: python_test_fractional_contact_reference
+160/241 Test  #67: test_source_rate ..................................   Passed    0.26 sec
+        Start  76: python_test_capture_common
+161/241 Test  #76: python_test_capture_common ........................   Passed    0.21 sec
+        Start  65: test_source_leakage_resources
+162/241 Test #122: python_test_fractional_contact_reference ..........   Passed    0.31 sec
+        Start  63: test_source_leakage_lifecycle
+163/241 Test  #65: test_source_leakage_resources .....................   Passed    0.24 sec
+        Start  12: test_engine
+164/241 Test  #63: test_source_leakage_lifecycle .....................   Passed    0.23 sec
+        Start 228: test_standalone_device_removal
+165/241 Test  #12: test_engine .......................................   Passed    0.23 sec
+        Start  60: test_source_leakage_contacts
+166/241 Test #228: test_standalone_device_removal ....................   Passed    0.24 sec
+        Start  55: test_rotary_streaming_path
+167/241 Test  #60: test_source_leakage_contacts ......................   Passed    0.17 sec
+        Start  93: python_test_causal_contact_grid_reference
+168/241 Test  #55: test_rotary_streaming_path ........................   Passed    0.21 sec
+        Start 183: test_standalone_midi_concurrency
+169/241 Test #183: test_standalone_midi_concurrency ..................   Passed    0.06 sec
+        Start 124: python_test_model_info
+170/241 Test  #93: python_test_causal_contact_grid_reference .........   Passed    0.25 sec
+        Start 178: test_standalone_concurrency
+171/241 Test #178: test_standalone_concurrency .......................   Passed    0.15 sec
+        Start   9: test_controls
+172/241 Test #124: python_test_model_info ............................   Passed    0.23 sec
+        Start  43: test_preset_realtime
+173/241 Test  #43: test_preset_realtime ..............................   Passed    0.19 sec
+        Start 197: test_standalone_whole_reference
+174/241 Test   #9: test_controls .....................................   Passed    0.22 sec
+        Start  50: test_rotary_motion
+175/241 Test  #50: test_rotary_motion ................................   Passed    0.07 sec
+        Start  35: test_pedal_sources
+176/241 Test  #35: test_pedal_sources ................................   Passed    0.21 sec
+        Start   8: test_control_io
+177/241 Test #197: test_standalone_whole_reference ...................   Passed    0.36 sec
+        Start  30: test_pedal_integration
+178/241 Test   #8: test_control_io ...................................   Passed    0.15 sec
+        Start  49: test_rotary_history_acceptance
+179/241 Test  #30: test_pedal_integration ............................   Passed    0.13 sec
+        Start  52: test_rotary_propagation_allocation
+180/241 Test  #49: test_rotary_history_acceptance ....................   Passed    0.15 sec
+        Start  41: test_performance_input
+181/241 Test  #52: test_rotary_propagation_allocation ................   Passed    0.12 sec
+        Start 196: test_standalone_ui
+182/241 Test  #41: test_performance_input ............................   Passed    0.10 sec
+        Start  54: test_rotary_renderer_transactions
+183/241 Test #196: test_standalone_ui ................................   Passed    0.09 sec
+        Start  38: test_percussion_controls
+184/241 Test  #38: test_percussion_controls ..........................   Passed    0.04 sec
+        Start 193: test_standalone_registration_library
+185/241 Test  #54: test_rotary_renderer_transactions .................   Passed    0.05 sec
+        Start  58: test_scanner_rotor
+186/241 Test #193: test_standalone_registration_library ..............   Passed    0.04 sec
+        Start   6: test_contact_rate
+187/241 Test  #58: test_scanner_rotor ................................   Passed    0.08 sec
+        Start   5: test_contact_bank
+188/241 Test   #6: test_contact_rate .................................   Passed    0.09 sec
+        Start 198: test_standalone_workspace_acceptance
+189/241 Test   #5: test_contact_bank .................................   Passed    0.06 sec
+        Start 192: test_standalone_reference_layout
+190/241 Test #198: test_standalone_workspace_acceptance ..............   Passed    0.05 sec
+        Start 187: test_standalone_midi_session
+191/241 Test #192: test_standalone_reference_layout ..................   Passed    0.05 sec
+        Start  48: test_rotary_history
+192/241 Test #187: test_standalone_midi_session ......................   Passed    0.04 sec
+        Start 205: test_standalone_reference_apron_art
+193/241 Test  #48: test_rotary_history ...............................   Passed    0.04 sec
+        Start  33: test_pedal_reference
+194/241 Test #205: test_standalone_reference_apron_art ...............   Passed    0.04 sec
+        Start 189: test_standalone_preset_concurrency
+195/241 Test  #33: test_pedal_reference ..............................   Passed    0.05 sec
+        Start  68: test_state_exchange
+196/241 Test #189: test_standalone_preset_concurrency ................   Passed    0.03 sec
+        Start  61: test_source_leakage_engine
+197/241 Test  #68: test_state_exchange ...............................   Passed    0.04 sec
+        Start  23: test_note_ownership
+198/241 Test  #61: test_source_leakage_engine ........................   Passed    0.05 sec
+        Start  11: test_decimal
+199/241 Test  #23: test_note_ownership ...............................   Passed    0.04 sec
+        Start  21: test_leslie_crossover_allocation
+200/241 Test  #11: test_decimal ......................................   Passed    0.04 sec
+        Start   1: test_causal_contact_grid
+201/241 Test   #1: test_causal_contact_grid ..........................   Passed    0.02 sec
+        Start  51: test_rotary_propagation
+202/241 Test  #21: test_leslie_crossover_allocation ..................   Passed    0.03 sec
+        Start  22: test_leslie_crossover_lifecycle
+203/241 Test  #51: test_rotary_propagation ...........................   Passed    0.02 sec
+        Start 222: test_standalone_header_grain_bounds
+204/241 Test  #22: test_leslie_crossover_lifecycle ...................   Passed    0.02 sec
+        Start  29: test_pedal_engine
+205/241 Test #222: test_standalone_header_grain_bounds ...............   Passed    0.01 sec
+        Start  62: test_source_leakage_io
+206/241 Test  #62: test_source_leakage_io ............................   Passed    0.01 sec
+        Start  39: test_percussion_rate
+207/241 Test  #29: test_pedal_engine .................................   Passed    0.02 sec
+        Start  32: test_pedal_realtime
+208/241 Test  #32: test_pedal_realtime ...............................   Passed    0.01 sec
+        Start  37: test_percussion
+209/241 Test  #39: test_percussion_rate ..............................   Passed    0.01 sec
+        Start  10: test_core_robustness
+210/241 Test  #10: test_core_robustness ..............................   Passed    0.01 sec
+        Start 188: test_standalone_percussion_reference
+211/241 Test  #37: test_percussion ...................................   Passed    0.01 sec
+        Start 177: test_standalone_channel_modes
+212/241 Test #188: test_standalone_percussion_reference ..............   Passed    0.01 sec
+        Start 182: test_standalone_inspection_author
+213/241 Test #177: test_standalone_channel_modes .....................   Passed    0.01 sec
+        Start   3: test_causal_contact_grid_resources
+214/241 Test #182: test_standalone_inspection_author .................   Passed    0.00 sec
+        Start  28: test_pedal_controls
+215/241 Test   #3: test_causal_contact_grid_resources ................   Passed    0.01 sec
+        Start  36: test_pedal_voice
+216/241 Test  #36: test_pedal_voice ..................................   Passed    0.01 sec
+        Start 176: test_standalone_channel_acceptance
+217/241 Test  #28: test_pedal_controls ...............................   Passed    0.01 sec
+        Start  26: test_parameter_bridge
+218/241 Test #176: test_standalone_channel_acceptance ................   Passed    0.01 sec
+        Start 184: test_standalone_midi_discovery
+219/241 Test  #26: test_parameter_bridge .............................   Passed    0.01 sec
+        Start 208: test_standalone_quad_drawing
+220/241 Test #184: test_standalone_midi_discovery ....................   Passed    0.01 sec
+        Start  34: test_pedal_routing
+221/241 Test #208: test_standalone_quad_drawing ......................   Passed    0.01 sec
+        Start 181: test_standalone_inspection_acceptance
+222/241 Test  #34: test_pedal_routing ................................   Passed    0.01 sec
+        Start 179: test_standalone_expression_calibration
+223/241 Test #179: test_standalone_expression_calibration ............   Passed    0.00 sec
+        Start 195: test_standalone_state_files
+224/241 Test #181: test_standalone_inspection_acceptance .............   Passed    0.01 sec
+        Start 186: test_standalone_midi_replay
+225/241 Test #195: test_standalone_state_files .......................   Passed    0.01 sec
+        Start  31: test_pedal_note_ownership
+226/241 Test  #31: test_pedal_note_ownership .........................   Passed    0.00 sec
+        Start  15: test_fixed_registration_data
+227/241 Test #186: test_standalone_midi_replay .......................   Passed    0.01 sec
+        Start 241: test_standalone_input_replay
+228/241 Test  #15: test_fixed_registration_data ......................   Passed    0.01 sec
+        Start 185: test_standalone_midi_input
+229/241 Test #185: test_standalone_midi_input ........................   Passed    0.01 sec
+        Start 200: test_standalone_workspaces_author
+230/241 Test #200: test_standalone_workspaces_author .................   Passed    0.01 sec
+        Start   7: test_control_file_input
+231/241 Test #241: test_standalone_input_replay ......................   Passed    0.02 sec
+        Start 201: test_standalone_midi_backend
+232/241 Test   #7: test_control_file_input ...........................   Passed    0.01 sec
+        Start   2: test_causal_contact_grid_lifecycle
+233/241 Test   #2: test_causal_contact_grid_lifecycle ................   Passed    0.01 sec
+        Start  42: test_preset_parameter_boundaries
+234/241 Test #201: test_standalone_midi_backend ......................   Passed    0.01 sec
+        Start 202: test_standalone_midi_backend_quarantine
+235/241 Test  #42: test_preset_parameter_boundaries ..................   Passed    0.00 sec
+        Start  59: test_source_leakage
+236/241 Test #202: test_standalone_midi_backend_quarantine ...........   Passed    0.01 sec
+        Start 180: test_standalone_external_control
+237/241 Test  #59: test_source_leakage ...............................   Passed    0.01 sec
+        Start 237: test_standalone_replay_paint_boundary
+238/241 Test #180: test_standalone_external_control ..................   Passed    0.01 sec
+        Start 240: test_standalone_starter_load
+239/241 Test #237: test_standalone_replay_paint_boundary .............   Passed    1.03 sec
+240/241 Test #240: test_standalone_starter_load ......................   Passed   11.52 sec
+        Start 230: test_standalone_app
+241/241 Test #230: test_standalone_app ...............................   Passed   15.15 sec
+
+99% tests passed, 2 tests failed out of 241
+
+Label Time Summary:
+admission                 =   1.29 sec*proc (1 test)
+backend                   =   0.02 sec*proc (2 tests)
+benchmark                 =   3.67 sec*proc (1 test)
+causal                    =  19.73 sec*proc (11 tests)
+concurrency               =   0.06 sec*proc (1 test)
+contact                   =  25.52 sec*proc (13 tests)
+conversion                =   1.94 sec*proc (1 test)
+crossover                 =   5.62 sec*proc (2 tests)
+data                      =   1.44 sec*proc (1 test)
+electrical                =   3.55 sec*proc (1 test)
+fallback                  =   5.62 sec*proc (1 test)
+filesystem                =   0.04 sec*proc (2 tests)
+foh                       =   2.48 sec*proc (1 test)
+geometry                  = 206.30 sec*proc (14 tests)
+independent               =   3.55 sec*proc (1 test)
+inspection                =   0.77 sec*proc (1 test)
+install                   =  11.74 sec*proc (5 tests)
+intentional-quarantine    =   0.01 sec*proc (1 test)
+leakage                   =   1.44 sec*proc (1 test)
+library                   =   0.04 sec*proc (1 test)
+material                  = 142.37 sec*proc (9 tests)
+midi                      =  91.19 sec*proc (4 tests)
+native                    = 546.04 sec*proc (36 tests)
+offline                   =  22.40 sec*proc (11 tests)
+percussion                =  18.87 sec*proc (1 test)
+probe                     =   2.48 sec*proc (1 test)
+reference-apron           =  10.41 sec*proc (3 tests)
+registration              =  26.33 sec*proc (10 tests)
+relocation                =   2.07 sec*proc (1 test)
+research                  =  19.73 sec*proc (11 tests)
+rim                       =  13.78 sec*proc (1 test)
+rotary                    =   5.82 sec*proc (2 tests)
+scanner                   =   2.48 sec*proc (1 test)
+smoke                     =   4.53 sec*proc (1 test)
+source                    =   1.44 sec*proc (1 test)
+source-leakage            =   1.81 sec*proc (1 test)
+standalone                = 549.83 sec*proc (41 tests)
+typography                =  26.17 sec*proc (3 tests)
+waveform                  =   5.82 sec*proc (2 tests)
+workspace                 =  92.17 sec*proc (4 tests)
+
+Total Test time (real) = 502.21 sec
+
+The following tests FAILED:
+	234 - test_standalone_native_midi_replay (Failed)       midi native standalone
+	236 - test_standalone_workspace_replay (Failed)         native standalone workspace
+Errors while running CTest

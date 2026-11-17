@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T03:06:10.664007+00:00",
+  "diagnostic_method_invocations": 3,
+  "executions": [
+    {
+      "case": "calibration-route",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_native_calibration.py",
+        "NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel"
+      ],
+      "selected_environment": {
+        "HAMMOND_STANDALONE_CALIBRATION_PROBE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe"
+      },
+      "returncode": 0,
+      "seconds": 3.0326922640015255,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/additional-calibration-route-one-isolated.log",
+      "log_sha256": "48e2985fea1ba68bb6272b727bd7ff29606533b720958eb99e4d81f4d514951b"
+    },
+    {
+      "case": "calibration-fault",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_native_calibration.py",
+        "NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives"
+      ],
+      "selected_environment": {
+        "HAMMOND_STANDALONE_CALIBRATION_PROBE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe"
+      },
+      "returncode": 0,
+      "seconds": 3.5480770180001855,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/additional-calibration-fault-one-isolated.log",
+      "log_sha256": "6d4cb93eebeb073baf9dfb6b13724be416866b055d32b52aa95c5ee0f56befb0"
+    },
+    {
+      "case": "midi-cli-expression",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_midi_cli.py",
+        "NativeMidiAcceptance.test_cli_expression_configuration_does_not_write_musical_expression"
+      ],
+      "selected_environment": {
+        "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone"
+      },
+      "returncode": 0,
+      "seconds": 1.8460692269982246,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/additional-midi-cli-expression-one-isolated.log",
+      "log_sha256": "c96b066a21f5ceee25f7167e819dbef47fd6fe4fb0a37e5d224bca5d7b66992a"
+    }
+  ],
+  "input_sha256": {
+    "apps/standalone/native_tests/test_standalone_native_calibration.py": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85",
+    "apps/standalone/native_tests/test_standalone_midi_cli.py": "37ecb6bd48017cee656629e3cac51bc5fa3a1979f1bc2c58d8228113debdf18f",
+    "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe": "886aa8eedd7242e35fd5e169fa9aa257bf399c42a7f6d1818f184aad0d22dca3",
+    "apps/standalone/main.cpp": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3",
+    "apps/standalone/CMakeLists.txt": "7c7e1b42825d1ecd5b9cdc75508ed44117283dade74c0d473f171d8ab2482bb4",
+    "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479"
+  },
+  "changed_inputs": [],
+  "scope": "One unchanged isolated invocation per newly failed method after the complete238/241 run; both original CLI subcases retained. No result replaces the original failed run or proves a particular CPU cause."
+}

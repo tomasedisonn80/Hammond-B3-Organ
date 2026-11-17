@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "worker": "A54",
+  "agent": "/root/w09_a54",
+  "wave": 9,
+  "recorded_utc": "2026-11-17T02:39:51.803466+00:00",
+  "status": "prepared_awaiting_exact_published_source",
+  "native_execution": false,
+  "remote_requests": 0,
+  "input_identities": {
+    "AGENTS.md": {
+      "bytes": 24722,
+      "sha256": "7cbe378f8fe3a67e13c7211f78548f7f7a7cc369324980d930c50a116140f101"
+    },
+    "docs/PLAN.md": {
+      "bytes": 55498,
+      "sha256": "db72a6fd26b097704ba6b7fc1ebd86b4174af55a2b1aca7ecd766f80d1e5cc6d"
+    },
+    ".github/workflows/native-vst3.yml": {
+      "bytes": 8367,
+      "sha256": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734"
+    },
+    "plugins/vst3/CMakeLists.txt": {
+      "bytes": 10678,
+      "sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545"
+    },
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "data/dependencies/vst3-sdk-lock.json": {
+      "bytes": 3796,
+      "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+    },
+    "plugins/vst3/PluginIds.h": {
+      "bytes": 746,
+      "sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc"
+    },
+    "tools/native_bundle_inventory.py": {
+      "bytes": 19121,
+      "sha256": "ee46f979cb3070dcf39d976ab657be974d937f89e835a7927b384dcc755ad4a7"
+    },
+    "plugins/vst3/tests/test_native_install.py": {
+      "bytes": 11704,
+      "sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e"
+    }
+  },
+  "local_head_at_read": "045c95d769b197d05b6596901508c160fd62fb35",
+  "required_jobs": [
+    {
+      "name": "Native VST3 (Linux GCC)",
+      "runner_label": "ubuntu-24.04",
+      "compiler": "g++",
+      "expected_tests": [
+        "hammond_vst3_validator",
+        "test_native_controller",
+        "test_native_abi",
+        "test_native_behavior",
+        "test_native_automation",
+        "test_native_concurrency",
+        "test_native_install",
+        "test_native_realtime"
+      ]
+    },
+    {
+      "name": "Native VST3 (macOS AppleClang)",
+      "runner_label": "macos-15",
+      "compiler": "clang++",
+      "expected_tests": [
+        "hammond_vst3_validator",
+        "test_native_controller",
+        "test_native_abi",
+        "test_native_behavior",
+        "test_native_automation",
+        "test_native_concurrency",
+        "test_native_install"
+      ]
+    },
+    {
+      "name": "Native VST3 (macOS Intel AppleClang)",
+      "runner_label": "macos-15-intel",
+      "compiler": "clang++",
+      "expected_tests": [
+        "hammond_vst3_validator",
+        "test_native_controller",
+        "test_native_abi",
+        "test_native_behavior",
+        "test_native_automation",
+        "test_native_concurrency",
+        "test_native_install"
+      ]
+    },
+    {
+      "name": "Native VST3 (Windows MSVC x64)",
+      "runner_label": "windows-2022",
+      "compiler": "cl",
+      "expected_tests": [
+        "hammond_vst3_validator",
+        "test_native_controller",
+        "test_native_abi",
+        "test_native_behavior",
+        "test_native_automation",
+        "test_native_concurrency",
+        "test_native_install"
+      ]
+    }
+  ],
+  "expected_architecture_scope": "Verify actual runner architecture and binary/module evidence after publication; runner labels alone are not observed execution. Linux-only realtime interception must not be generalized to macOS or Windows.",
+  "workflow_requirements": [
+    "exact GITHUB_SHA checkout and clean tracked source",
+    "source/tree/run/attempt/OS/architecture provenance",
+    "locked SDK3.8.1, tagv3.8.1_build_84, root3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96 plus all required submodules",
+    "Release bundle and all native test inputs built through hammond_vst3_test_inputs",
+    "actual SDK validator plus native CTests, no-tests=error and verbose JUnit/log retention",
+    "private component-scoped install and relocated module validation",
+    "build and staged bundle byte inventory equality, archive SHA256",
+    "diagnostics artifacts and successful bundle artifact upload"
+  ],
+  "qualification_limits": [
+    "No hosted observation made yet",
+    "Current9d60 and oldT2 are not qualification of unpublished combined source",
+    "No rerun, remote mutation, source edit, build or native invocation authorized to A54",
+    "Validator/harness/install/package observations do not prove allDAWs, hardware, callback deadlines, signing, physical fidelity, accessibility or whole-interface1:1"
+  ]
+}

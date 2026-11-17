@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T03:57:43.014242+00:00",
+  "scope": "One unchanged isolated diagnostic after complete qualified-final240/242 failure. No source, property, workload or30second timeout changes. Not a replacement full-suite outcome.",
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/5a28c3564dbf/build-native",
+    "-R",
+    "^test_standalone_preset_raster$",
+    "--parallel",
+    "1",
+    "--verbose",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.xml"
+  ],
+  "returncode": 0,
+  "seconds": 27.51787920899733,
+  "inputs": {
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_preset_raster.cpp": {
+      "bytes": 19942,
+      "sha256": "5733e529ecb06609d2e19fa9a367450a66ca8a2a41d99b5b7d42bfbbebe210eb"
+    },
+    "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_preset_raster": {
+      "bytes": 3786784,
+      "sha256": "2f064905f2edb47d2d50369c1c468f005dedd386cefcb0d81419e1bdd3322fb9"
+    },
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp": {
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/CMakeLists.txt": {
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96"
+    }
+  },
+  "changed_inputs": [],
+  "log": {
+    "bytes": 1288,
+    "sha256": "b245f3df496da5086be88f982bf3443cc13c65c5ab82e7c3a9fd1fc320167d23"
+  },
+  "junit": {
+    "bytes": 688,
+    "sha256": "2f0b11ae8484aaa9eb89ccb3b4e8c9213b28f451c53ea17f092cdb0795646190"
+  }
+}

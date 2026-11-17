@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "recorded_at_utc": "2026-11-17T01:29:54.429613+00:00",
+  "status": "H1 implementation prerequisites satisfied; authorize scoped A34 painter",
+  "inputs": {
+    "docs/design/HEADER_MATERIAL_H1_CONTRACT.md": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+    "docs/reviews/HEADER_MATERIAL_H1_ADMISSION.md": "c2e7a216a11d7065262702aaee8f7ec766171a4571cc51c2f9bf7edd021cd6e5",
+    "docs/reviews/HEADER_H1_CHECKER_CORRECTION_ADMISSION.md": "0f3470119d8c641572a8547dd1871871343febd5cbdefac5397f9571e19d3342",
+    "tools/compare_header_material.py": "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b",
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+    "apps/standalone/InstrumentView.cpp": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+    "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-identity.json": "882773ad5771de15aad0889e957c07e5aa4d73c38f4736e641122eff1943eff8",
+    "docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-baseline-identity.json": "82164ea2cee28477564d73d652f762844080134bf0c6b5bf0a4f8c3809513d48",
+    "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-demonstration-corrected/report.json": "e443414e9d5ae81e00fc2e26ad5014f6bbc29ff44de9820c54f96335cbb6744b",
+    "docs/design/native-gallery-header-before-v1/provenance.json": "e8930841821d5c2f07f417708c8cd3a3a4ccf55758fed8618a1f8762e80e6d07",
+    "docs/design/native-gallery-header-before-v1/manifest.json": "8e3e34f6a791811b9ab04be4b465a9b47c0b69eaf5554ed63f73a847a948badc"
+  },
+  "baseline_coverage": {
+    "baseline_source_map": 229,
+    "companion_compared_pixels": 54635662,
+    "companion_pairs_completed": 16,
+    "inputs_unchanged": true,
+    "main_compared_pixels": 131641918,
+    "main_pairs_completed": 48,
+    "matrix_complete": true,
+    "outside_changed_pixels": 0,
+    "protected_sources": 213,
+    "repeats_complete": true,
+    "required_companion_pairs": 16,
+    "required_main_pairs": 48,
+    "required_repeats_per_side": 2
+  },
+  "baseline_numerical_summary": {
+    "after_RMS_error": 1.6673172881480465,
+    "after_RMS_error_hex": "0x1.aad54e48a6b98p+0",
+    "after_failed": 59,
+    "after_mean_error_exact": "846310429693/228096000000",
+    "after_passed": 44,
+    "baseline_reproduced": true,
+    "before_failed": 59,
+    "before_passed": 44
+  },
+  "baseline_elapsed_seconds": 265.263,
+  "source_before_painter": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+  "helper_signature": "void reference_header_h1_material(Drawing&, UiRect already_inset, ReferenceCompositionScale)",
+  "ownership": "A34 may edit only InstrumentView.cpp and own note; root builds/captures/executes; all existing childcalls/thresholds/protectedinputs stay",
+  "original_failures_retained": [
+    "reports/h1-fixture-initial-rejection.json",
+    "reports/h1-baseline-checker-rejection.json"
+  ],
+  "candidate_gates_pending": [
+    "all103material inequalities",
+    "same48main+16companion+4repeat pairedpreservation",
+    "candidate95helperrestorationprobes",
+    "nativelegacyfullmaterialandtypography",
+    "representativesource-bound timing",
+    "independent15framevisualreview",
+    "coherentfinaltestsandpublished-sourceplatformqualification"
+  ],
+  "whole_interface_1_to_1": "unmet andunwaived"
+}

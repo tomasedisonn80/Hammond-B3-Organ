@@ -1,9 +1,3 @@
-# Reader for the preserved original H1 proposal
-
-This is a derived reading copy with repository-relative links repaired after relocation. The exact original bytes remain in [HEADER_MATERIAL_H1_PROPOSAL_v1.md.gz](HEADER_MATERIAL_H1_PROPOSAL_v1.md.gz), SHA-256 after decompression `d818189557308c6d8624ec1e1f855a730f3a8aac0ac2abefd0f8e2520bdd99cc`. No field, formula, case or acceptance threshold is changed below. Original provenance and the revision 1.1 admission remain separate.
-
----
-
 # H1 reference-header interior material contract
 
 **A22 proposal, 17 November 2026. Independent admission is required before any
@@ -19,18 +13,18 @@ A22 read the complete AGENTS/M0–M9 plan and current session records, the
 whole-interface residuals, Upper/Lower material contracts and reviews, and T3.
 The original full image and persisted T2 canonical, minimum-active and wide
 application images were directly viewed. The
-[observation report](../reports/a22-header-observations.json)
+[observation report](../development/2026-11-16-heading-title-continuation/reports/a22-header-observations.json)
 retains all identities, exact rational sufficient statistics, RGB planes,
 Y′ planes, residual SSE/RMS, descriptive witnesses and the original before
 outcomes. Those observations do not constitute a candidate comparison.
 
 | Input | SHA-256 |
 | --- | --- |
-| [Original atlas JPEG](../../../design/atlas-cover-reference.jpg), 1672×941 | `9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187` |
-| [Persisted T2 canonical PNG](../../../design/native-gallery-heading-t2-v1/images/play-reference-1672x941.png) | `96a9fb295200307ffb7b459ee8a146d83579a881aafcd54b1cc73a7ed1b2b55c` |
-| [T2 minimum-active PNG](../../../design/native-gallery-heading-t2-v1/images/play-minimum-active-1400x820.png) | `5ce28ab35d96b721f2ee31fe8ae48dd5ecd9667a455302e7ca29fb7bbdd3baa4` |
-| [T2 wide PNG](../../../design/native-gallery-heading-t2-v1/images/play-wide-1920x1080.png) | `811fb42f55d017eba3c731d38f05a3d1993ec31379e556cc2b473a76a543509e` |
-| [T2 capture provenance](../../../design/native-gallery-heading-t2-v1/provenance.json) | `96fdcbbad0702c79a0f19ac76c9f75ce50e2ab241d5ac2d50ddbc21fd47e9987` |
+| [Original atlas JPEG](atlas-cover-reference.jpg), 1672×941 | `9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187` |
+| [Persisted T2 canonical PNG](native-gallery-heading-t2-v1/images/play-reference-1672x941.png) | `96a9fb295200307ffb7b459ee8a146d83579a881aafcd54b1cc73a7ed1b2b55c` |
+| [T2 minimum-active PNG](native-gallery-heading-t2-v1/images/play-minimum-active-1400x820.png) | `5ce28ab35d96b721f2ee31fe8ae48dd5ecd9667a455302e7ca29fb7bbdd3baa4` |
+| [T2 wide PNG](native-gallery-heading-t2-v1/images/play-wide-1920x1080.png) | `811fb42f55d017eba3c731d38f05a3d1993ec31379e556cc2b473a76a543509e` |
+| [T2 capture provenance](native-gallery-heading-t2-v1/provenance.json) | `96fdcbbad0702c79a0f19ac76c9f75ce50e2ab241d5ac2d50ddbc21fd47e9987` |
 
 That capture records painter `94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db`
 and application `e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a`.
