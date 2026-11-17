@@ -46,8 +46,9 @@ bool p1_fixture_invoke_helper(Drawer& drawing, UiRect bounds, ReferenceCompositi
     if constexpr (p1_fixture_helper_present<Drawer>) {
         reference_performance_p1_material(drawing, bounds, scale);
         return true;
+    } else {
+        return false;
     }
-    return false;
 }
 } // namespace hammond::standalone
 

@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "worker": "A56",
+  "agent": "/root/w10_a56",
+  "wave": 10,
+  "recorded_utc": "2026-11-17T06:36:32.780800+00:00",
+  "status": "TWO_TEST_FILE_REPAIR_INDEPENDENTLY_ADMITTED_LOCALLY_QUALIFIED_NEW_SOURCE_HOSTED_PENDING",
+  "source_commit_with_original_failure": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "source_tree_with_original_failure": "2565ac86f9d31b7ab9d24d0d5353289c2359bf12",
+  "original_windows_core": {
+    "run_id": 44030833273,
+    "job_id": 133862108675,
+    "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44030833273/job/133862108675",
+    "attempt": 1,
+    "ctest": {
+      "total": 209,
+      "passed": 207,
+      "failed": 2,
+      "seconds": 219.81,
+      "exit_code": 8
+    },
+    "failed_suites": [
+      {
+        "name": "python_test_capture_standalone_interface",
+        "ctest_number": 89,
+        "seconds": 4.51,
+        "methods": 45,
+        "errors": 3,
+        "method": "test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout",
+        "subcases": [
+          {
+            "scale": 1,
+            "timeout": 12
+          },
+          {
+            "scale": 3,
+            "timeout": 30
+          },
+          {
+            "scale": 10,
+            "timeout": 12
+          }
+        ],
+        "observed_error": "KeyError: 'inputs/play-dimensional.b3uireplay'",
+        "source_line": 366
+      },
+      {
+        "name": "python_test_compare_header_material",
+        "ctest_number": 97,
+        "seconds": 0.89,
+        "methods": 24,
+        "errors": 7,
+        "observed_error": "FileNotFoundError: [WinError 3] for retained historical POSIX baseline paths after the test's mocked identity lookup fell through to the real identity function.",
+        "source_line": 294
+      }
+    ],
+    "later_unicode_generator_step": "skipped after the failed CTest step",
+    "complete_original_log": "core-cf87a587-job-133862108675.log.gz",
+    "raw_log_sha256": "c47eee99796358d5a7f0cba50883c62d63df69994e701b96d5758f68d1de3d95",
+    "raw_carriage_returns_preserved": 3903
+  },
+  "authorized_scope": [
+    "tests/test_capture_standalone_interface.py",
+    "tests/test_compare_header_material.py"
+  ],
+  "changed_files": {
+    "tests/test_capture_standalone_interface.py": {
+      "before_sha256": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56",
+      "after_sha256": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc",
+      "method_count": 45,
+      "test_method_names_unchanged": true,
+      "changed_test_methods": [
+        "test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout"
+      ],
+      "top_level_constant_ASTs_unchanged": true
+    },
+    "tests/test_compare_header_material.py": {
+      "before_sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125",
+      "after_sha256": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d",
+      "method_count": 24,
+      "test_method_names_unchanged": true,
+      "changed_test_methods": [],
+      "top_level_constant_ASTs_unchanged": true
+    }
+  },
+  "capture_producer_changed": false,
+  "real_comparator_changed": false,
+  "production_code_changed": false,
+  "diagnosis_and_repair": [
+    {
+      "observed": "Capture test dictionary lookup uses a literal inputs/ prefix; the unchanged inventory producer stores str(path.relative_to(root)).",
+      "repair": "Build only the expected test key with str(Path(\"inputs\") / filename). This follows existing native-path serialization without accepting alternate keys or changing provenance bytes.",
+      "evidence": "tools/capture_standalone_interface.py inventory; failed test line 366 in the original Windows log."
+    },
+    {
+      "observed": "The same test expects script.encode(\"ascii\") although the existing producer writes replay files with Path.write_text(script, encoding=\"ascii\") and default native newline translation.",
+      "classification": "Source-derived latent mismatch; the observed Windows KeyError prevented reaching its hash comparison. No separate Windows hash-failure execution is claimed.",
+      "repair": "Compute the expected exact disk bytes with script.replace(\"\\n\", os.linesep).encode(\"ascii\") before the existing SHA-256 equality assertion. All frozen default returned-replay hashes remain unchanged.",
+      "boundary": "No newline normalization of actual evidence, no alternate digest acceptance, no producer format change, no new Windows run."
+    },
+    {
+      "observed": "Baseline mock stores retained input/object identities under raw POSIX row path strings, while its existing identity wrapper first constructs native Path(source). On Windows the keys differ and lookup invokes the real filesystem identity on an absent historical path.",
+      "repair": "Normalize only insertion keys with str(Path(row[\"path\"])); keep deepcopy(row) byte-for-byte in meaning, including its original path/hash/byte fields. Unknown paths still fall back to real_identity.",
+      "boundary": "No real baseline admission, source pin, expected record, refusal or fixture transformation changes."
+    }
+  ],
+  "preservation": {
+    "capture_methods": 45,
+    "header_methods": 24,
+    "all_test_method_names_unchanged": true,
+    "all_header_test_method_ASTs_unchanged": true,
+    "all_top_level_constant_ASTs_unchanged": true,
+    "header_refusal_cases_retained": 78,
+    "refusal_count_basis": "The prior independently admitted 78-case inventory is retained; every header test method AST is identical. This invocation reports 24 methods, not a newly instrumented refusal counter.",
+    "unchanged_source_identities": {
+      "tools/capture_standalone_interface.py": {
+        "bytes": 41587,
+        "sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487"
+      },
+      "tools/compare_header_material.py": {
+        "bytes": 98489,
+        "sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+      },
+      "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+        "bytes": 61275,
+        "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+      },
+      ".github/workflows/ci.yml": {
+        "bytes": 20374,
+        "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+      },
+      "CMakeLists.txt": {
+        "bytes": 30784,
+        "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+      }
+    },
+    "gates_retained": [
+      "typed checks",
+      "all exact fixture and historical source pins",
+      "original/cast/helper complete-file reversals",
+      "native-boundary mocks",
+      "all replay scales and independent timeouts",
+      "all existing hash comparisons",
+      "real comparator refusal predicates",
+      "all original workload and timeout values"
+    ]
+  },
+  "local_execution": {
+    "scope": "Exactly one invocation of each authorized source-only Python suite; no native executable, configure, build, CTest, benchmark, capture, or CI retry. CLI native/image boundaries remain mocked.",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "results": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "tests/test_capture_standalone_interface.py",
+          "-v"
+        ],
+        "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+        "started_utc": "2026-11-17T06:35:27.527865+00:00",
+        "seconds": 2.14857948700228,
+        "exit_code": 0,
+        "stdout": "windows-repair-test_capture_standalone_interface.stdout",
+        "stderr": "windows-repair-test_capture_standalone_interface.stderr",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "959b490dad80df99b36ebffe6e7288723e6cccf6600686c8dd869cb07b742bc2",
+        "stderr_tail": [
+          "",
+          "----------------------------------------------------------------------",
+          "Ran 45 tests in 1.813s",
+          "",
+          "OK"
+        ]
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "tests/test_compare_header_material.py",
+          "-v"
+        ],
+        "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+        "started_utc": "2026-11-17T06:35:27.529314+00:00",
+        "seconds": 0.9754268570031854,
+        "exit_code": 0,
+        "stdout": "windows-repair-test_compare_header_material.stdout",
+        "stderr": "windows-repair-test_compare_header_material.stderr",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "9a3ab0cdb054ab8b49125b13534f2d811599081418a1d998a2cc38d72d4a4c32",
+        "stderr_tail": [
+          "",
+          "----------------------------------------------------------------------",
+          "Ran 24 tests in 0.629s",
+          "",
+          "OK"
+        ]
+      }
+    ],
+    "source_sha256": {
+      "tests/test_capture_standalone_interface.py": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc",
+      "tests/test_compare_header_material.py": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d",
+      "tools/capture_standalone_interface.py": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487",
+      "tools/compare_header_material.py": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f",
+      "tools/compare_title_typography.py": "a3e6d7f6dcb6b11b1281b69c866e2b044f76eacffc05b5375b4936c77650704c",
+      "tools/compare_heading_typography.py": "e809a3e052efa5916e1ce6f20b1ef0a5560fc50b423f0759ba705d0650aaf886",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+    },
+    "sources_unchanged": true
+  },
+  "execution_limit": "Only these two source-only suites were invoked, once each, by A56. Linux local success is not Windows qualification or a replacement of the failed cf87a587 run. No native executable, build, configure, CTest, benchmark, capture or CI retry by A56.",
+  "independent_review": "A59 independently admitted the frozen expanded two-test-file patch as part of the five repaired inputs, with no source blockers. Its report also reviews the completed root affected qualification recorded separately below.",
+  "next_owner_actions": [
+    "Root owns guarded publication after the original-source workflow outcomes are retained, using a fresh expected remote head without force.",
+    "Qualify the actual new published source separately, including Windows Core and previously skipped execution; do not transfer cf87a587 job passes.",
+    "Keep the completed cf87a587 A56 note immutable after acceptance; use a separate receipt for any later successor-source review."
+  ],
+  "patch": {
+    "path": "windows-portability-repair.patch",
+    "sha256": "80c98a3244331df6e2363f2b0d11d408b95f6db488a33791a50a58b01e3e3068"
+  },
+  "reader_diagnostic": "One preparatory source inventory command named nonexistent tools/compare_title_material.py and stopped before any tests. The actual tools/compare_title_typography.py was then discovered; no source or gate result was inferred from that failed read.",
+  "local_repair_followup_admission": {
+    "recorded_utc": "2026-11-17T06:43:06.453717+00:00",
+    "independent_source_review": {
+      "report": "A59-windows-repair.json",
+      "sha256": "b70564f1500a22f6d3b25ba809c07ee0f62570e94161215424a82eed1125fe47",
+      "recorded_status": "ADMIT_FROZEN_REPAIR_AND_REVIEWED_LOCAL_QUALIFICATION_NEW_SOURCE_WINDOWS_PENDING",
+      "source_blockers": [],
+      "scope": "All five frozen repaired inputs independently reviewed. A59 also reviewed the completed root affected qualification recorded below; independent source review and root execution remain separately attributed."
+    },
+    "root_local_qualification": {
+      "report": "windows-repair-local-qualification.json",
+      "sha256": "c371f06f83e6024d7cfc3bf464a7a84ea037063aa8824577a615a751e27a1149",
+      "status": "passed",
+      "published_base": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "started_utc": "2026-11-17T06:38:02.006454+00:00",
+      "completed_utc": "2026-11-17T06:38:43.601110+00:00",
+      "affected_counts": {
+        "errors": 0,
+        "failures": 0,
+        "names": [
+          "python_test_repository_integrity",
+          "test_standalone_performance_plate",
+          "test_standalone_performance_plate_numerical"
+        ],
+        "skipped": 0,
+        "tests": 3
+      },
+      "affected_exit_code": 0,
+      "affected_seconds": 28.239448375999928,
+      "fixture_build_exit_code": 0,
+      "fixture_binary_identical": true,
+      "fixture_sha256": "60e951c907bf177b190e1a8abee9246a472b5e1d8ddc957b5ba5e2ce5179ecd5",
+      "application_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9",
+      "changed_inputs": 5,
+      "unchanged_inputs": 582,
+      "changed_during_qualification": [],
+      "separate_source_suite_counts": {
+        "capture": 45,
+        "header": 24,
+        "p1": 54
+      },
+      "execution_owner": "root, not A56"
+    },
+    "boundary": "This is separately reviewed local repair evidence on changed inputs. It neither changes the original cf87a587 Core failure nor establishes new-source Windows/hosted qualification. Root retains publication and final acceptance authority."
+  }
+}

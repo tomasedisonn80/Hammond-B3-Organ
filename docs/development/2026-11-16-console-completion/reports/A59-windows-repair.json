@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "worker": "A59",
+  "agent": "/root/w10_a59",
+  "wave": 10,
+  "recorded_utc": "2026-11-17T06:42:57.440047+00:00",
+  "status": "ADMIT_FROZEN_REPAIR_AND_REVIEWED_LOCAL_QUALIFICATION_NEW_SOURCE_WINDOWS_PENDING",
+  "publication_under_review": {
+    "commit": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+    "tree": "2565ac86f9d31b7ab9d24d0d5353289c2359bf12",
+    "receipt": "docs/development/2026-11-16-console-completion/reports/implementation-publication.json",
+    "claim": "Read existing verified publication receipt and immutable local commit bytes; no new remote fetch or publication by A59."
+  },
+  "authority": {
+    "owned_paths": [
+      "docs/reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md",
+      "docs/development/2026-11-16-console-completion/reports/A59-windows-repair.json",
+      "docs/development/2026-11-16-console-completion/notes/A59.md"
+    ],
+    "source_authors": [
+      "root: P1 fixture, comparator and added adversarial tests",
+      "A56: the two existing Python test files"
+    ],
+    "scope_refinement": "Initial two-line test repair expanded by root to include the source-proven native-newline expectation and import os in the same capture test file. This report admits the frozen expanded patch, not a two-line claim.",
+    "reviewer_execution": "Read-only source/AST/byte/hash and retained-log review only. No build, test, native process, CI retry, Git/index/ref mutation or other-workspace operation by A59."
+  },
+  "reviewed_inputs": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "published_bytes": 75570,
+      "published_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "reviewed_bytes": 75587,
+      "reviewed_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d"
+    },
+    {
+      "path": "tools/compare_performance_plate.py",
+      "published_bytes": 84566,
+      "published_sha256": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923",
+      "reviewed_bytes": 87740,
+      "reviewed_sha256": "46ce7721d2cb884b08f231249ffc0fc7f80a3d9a33657c0519216d68087671b2",
+      "comparison": {
+        "old_top_level_definition_count": 71,
+        "changed_old_definitions": [
+          "execute"
+        ],
+        "added_definitions": [
+          "admit_fixture_source",
+          "pin_fixture_source"
+        ],
+        "removed_definitions": [],
+        "old_top_level_assignment_count": 40,
+        "changed_old_assignments": [],
+        "old_test_method_count": 0,
+        "reviewed_test_method_count": 0,
+        "changed_old_test_methods": [],
+        "added_test_methods": [],
+        "removed_test_methods": []
+      }
+    },
+    {
+      "path": "tests/test_compare_performance_plate.py",
+      "published_bytes": 34820,
+      "published_sha256": "cba6e56cbcf7dd3fe16924e21ae0f1bec2d76215a7df4abcbede600be327bd8c",
+      "reviewed_bytes": 43217,
+      "reviewed_sha256": "97bf84741a1954fbd16ba5992862cdfef0393e50e8c5d3ba3b15b9ceda344bdd",
+      "comparison": {
+        "old_top_level_definition_count": 7,
+        "changed_old_definitions": [],
+        "added_definitions": [
+          "FixtureHelperTransitionTests"
+        ],
+        "removed_definitions": [],
+        "old_top_level_assignment_count": 3,
+        "changed_old_assignments": [],
+        "old_test_method_count": 45,
+        "reviewed_test_method_count": 54,
+        "changed_old_test_methods": [],
+        "added_test_methods": [
+          "test_boolean_mode_and_complete_bytes_are_required",
+          "test_exact_helper_repair_is_reversible_and_candidate_only",
+          "test_execute_rejects_bad_fixture_before_any_native_launch",
+          "test_malformed_missing_duplicate_or_changed_helper_is_rejected",
+          "test_original_fixture_remains_valid_in_both_modes_with_original_pin",
+          "test_pinning_records_actual_and_original_identities_and_detects_drift",
+          "test_repinning_does_not_admit_unrelated_bytes_or_relocated_block",
+          "test_reversal_alone_does_not_replace_the_complete_repair_identity",
+          "test_source_change_between_identity_and_read_is_rejected"
+        ],
+        "removed_test_methods": []
+      }
+    },
+    {
+      "path": "tests/test_capture_standalone_interface.py",
+      "published_bytes": 58181,
+      "published_sha256": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56",
+      "reviewed_bytes": 58284,
+      "reviewed_sha256": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc",
+      "comparison": {
+        "old_top_level_definition_count": 1,
+        "changed_old_definitions": [
+          "InterfaceCaptureValidationTests"
+        ],
+        "added_definitions": [],
+        "removed_definitions": [],
+        "old_top_level_assignment_count": 14,
+        "changed_old_assignments": [],
+        "old_test_method_count": 45,
+        "reviewed_test_method_count": 45,
+        "changed_old_test_methods": [
+          "test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout"
+        ],
+        "added_test_methods": [],
+        "removed_test_methods": []
+      }
+    },
+    {
+      "path": "tests/test_compare_header_material.py",
+      "published_bytes": 25550,
+      "published_sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125",
+      "reviewed_bytes": 25561,
+      "reviewed_sha256": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d",
+      "comparison": {
+        "old_top_level_definition_count": 4,
+        "changed_old_definitions": [
+          "BaselineTransitionTests"
+        ],
+        "added_definitions": [],
+        "removed_definitions": [],
+        "old_top_level_assignment_count": 14,
+        "changed_old_assignments": [],
+        "old_test_method_count": 24,
+        "reviewed_test_method_count": 24,
+        "changed_old_test_methods": [],
+        "added_test_methods": [],
+        "removed_test_methods": []
+      }
+    }
+  ],
+  "fixture_reversal": {
+    "original_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+    "reviewed_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+    "original_bytes": 75570,
+    "reviewed_bytes": 75587,
+    "original_block_occurrences_before": 1,
+    "corrected_block_occurrences_after": 1,
+    "original_block_occurrences_after": 0,
+    "whole_reversed_file_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+    "whole_reversed_file_exactly_original": true,
+    "original_block_sha256": "e3e8fdad56e8332de33b348d06c8a94ef1176d512b352a2079cd95b0c9ad34d5",
+    "corrected_block_sha256": "ef644e3e10e0ecc9d914f99e1c78a5bb6bdb1209aa0ecc696f86a410b3a60551",
+    "helper_present_behavior": "Same dependent predicate, call and arguments once, then true.",
+    "helper_absent_behavior": "Dependent helper call remains in discarded constexpr branch; same false result moves to explicit else.",
+    "new_helper_absent_runtime_execution": false
+  },
+  "comparator_boundary": {
+    "all_40_original_assignments_unchanged": true,
+    "unchanged_original_definitions": 70,
+    "original_definition_count": 71,
+    "changed_definition": "execute only",
+    "added_definitions": [
+      "admit_fixture_source",
+      "pin_fixture_source"
+    ],
+    "original_pins_preserved": true,
+    "all_62_numerical_criteria_unchanged": true,
+    "criteria_details": {
+      "patches": 12,
+      "per_patch_ymean_limit": 3,
+      "per_patch_rgbmean_limit": 4,
+      "per_patch_rms_limit": 1.2,
+      "aggregate_ymean_limit_ratio": [
+        6324946007329,
+        2837721600000
+      ],
+      "aggregate_rms_limit": 0.6968632531987865,
+      "retained_baseline_pass_fail_total": [
+        28,
+        34,
+        62
+      ]
+    },
+    "paired_mode": "Original fixture 4f187527… and original coherent UiModel pair, genuine before executable/painter/admission and all paired workload/transport limits remain mandatory. Repaired fixture is refused.",
+    "candidate_mode": "Original fixture remains admitted. Repaired complete file requires Boolean mode, bytes payload, one exact corrected block and no original block, whole-file reversal to original pin, and exact new whole-file pin.",
+    "read_stability": "Registered file size/hash are checked against complete read before admission; final input stability is unchanged.",
+    "native_order": "Existing UiModel check remains first; fixture admission occurs before executable launch.",
+    "silent_fallback_added": false,
+    "old_test_methods_unchanged": 45,
+    "new_test_methods": 9,
+    "adversarial_source_coverage": [
+      "paired-mode refusal",
+      "non-Boolean mode and non-bytes source refusal",
+      "missing, duplicate, old-plus-new, predicate, call and return mutations",
+      "repinning cannot admit unrelated bytes or relocated block",
+      "complete repaired digest remains necessary",
+      "registered-input read mismatch",
+      "post-registration source drift",
+      "failure before any native launch"
+    ]
+  },
+  "windows_test_repairs": {
+    "capture": {
+      "path_key": "str(Path(\"inputs\") / filename) matches unchanged inventory str(path.relative_to(root)).",
+      "expected_bytes": "script.replace(\"\\n\", os.linesep).encode(\"ascii\") matches unchanged Path.write_text(script, encoding=\"ascii\") default newline translation.",
+      "observed_failure": "Three KeyErrors at native-path lookup, scales 1/3/10.",
+      "newline_evidence_class": "Source-derived latent mismatch masked by the earlier KeyError; no observed Windows hash-failure or new Windows disk bytes claimed.",
+      "actual_evidence_normalization": false,
+      "alternate_hash_acceptance": false,
+      "producer_unchanged": true,
+      "methods_retained": 45,
+      "methods_changed": 1,
+      "skips_added": 0
+    },
+    "header": {
+      "change": "Only mock dictionary insertion keys use str(Path(row[\"path\"])); deepcopy(row) retains all original path/size/hash fields.",
+      "observed_failure": "Native Path normalized the lookup while stored POSIX mock keys did not, falling through to real_identity on absent historical paths.",
+      "unknown_path_fallback": "Original real_identity fallback remains unchanged.",
+      "source_admission_oracles_unchanged": true,
+      "all_test_method_bodies_unchanged": 24,
+      "prior_refusal_cases_retained": 78,
+      "refusal_count_basis": "Prior A55 source enumeration plus byte-identical old method bodies; no new instrumented count.",
+      "skips_added": 0
+    }
+  },
+  "published_input_preservation": {
+    "source_receipt": "docs/development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json",
+    "source_receipt_sha256": "bccea63cb138de7166d7f95e57dd6789e18bfe3697c2307d1ba6f54bea5e80bd",
+    "recorded_inputs": 587,
+    "unchanged": 582,
+    "changed_paths": [
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "tests/test_capture_standalone_interface.py",
+      "tests/test_compare_header_material.py",
+      "tests/test_compare_performance_plate.py",
+      "tools/compare_performance_plate.py"
+    ],
+    "production_runtime_painter_core_ui_parameters_state_unchanged": true,
+    "cmake_workflows_deadlines_instrumentation_unchanged": true
+  },
+  "original_failure_evidence": {
+    "source_commit": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+    "core": {
+      "run_id": 44030833273,
+      "job_id": 133862108675,
+      "attempt": 1,
+      "passed": 207,
+      "total": 209,
+      "failed": 2,
+      "failed_suites": [
+        "python_test_capture_standalone_interface",
+        "python_test_compare_header_material"
+      ],
+      "methods_and_errors": {
+        "capture": [
+          45,
+          3
+        ],
+        "header": [
+          24,
+          7
+        ]
+      },
+      "later_unicode_generator_step": "skipped after failed CTest step"
+    },
+    "native": {
+      "run_id": 44030833294,
+      "job_id": 133862108913,
+      "attempt": 1,
+      "failure": "P1 fixture line50 C4702 unreachable code, promoted to C2220 under unchanged /W4 /WX",
+      "tests_executed": 0,
+      "copied_state_diagnostic_leaf_available": false,
+      "tests_and_postacceptance_package_steps": "unrun after build failure"
+    },
+    "retained_logs": [
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/core-cf87a587-job-133862108675.log.gz",
+        "gzip_sha256": "05ac3aa9e118ce2e3098a135f28377a863a9e7c6f31ebbc8486b2d7a9300a87d",
+        "raw_bytes": 606646,
+        "raw_sha256": "c47eee99796358d5a7f0cba50883c62d63df69994e701b96d5758f68d1de3d95"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted/job-133862108913.log.gz",
+        "gzip_sha256": "9291202d964d0452993531787210afeff1779a803f26c612dcef82add26d9092",
+        "raw_bytes": 455495,
+        "raw_sha256": "580ad243484bb9cc5d8759ce5392abfdb31735255256ba83f6212b50c9b22fcc"
+      }
+    ],
+    "predecessor_title_header_protocol_failures": "Remain unresolved; native cf87 build failure prevents the new diagnostic readers from running."
+  },
+  "reviewed_source_only_qualification": [
+    {
+      "receipt": "docs/development/2026-11-16-console-completion/reports/p1-helper-source-tests.json",
+      "receipt_sha256": "86ca1b23c1b237289c213ea3519470fd4a5a4056b023018539f079c038199541",
+      "executor": "root",
+      "methods": 54,
+      "exit_code": 0,
+      "seconds": 1.25085305399989,
+      "log": "docs/development/2026-11-16-console-completion/reports/p1-helper-source-tests.log",
+      "log_sha256": "26bdd1cb23999da05216d02cc549e9eaf1612ff45e78204cdb6dce0dbc3467f4",
+      "log_identity_matches": true,
+      "ok_method_lines": 54,
+      "skips_or_failures": [],
+      "source_pins_match": true
+    },
+    {
+      "receipt": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-portability-python-qualification.json",
+      "receipt_sha256": "8e5008f28034b029b36f125841e14d1eee8c282581aab6bdc82c66a89fdd2fad",
+      "executor": "A56",
+      "methods": 45,
+      "exit_code": 0,
+      "seconds": 2.14857948700228,
+      "log": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-repair-test_capture_standalone_interface.stderr",
+      "log_sha256": "959b490dad80df99b36ebffe6e7288723e6cccf6600686c8dd869cb07b742bc2",
+      "log_identity_matches": true,
+      "ok_method_lines": 45,
+      "skips_or_failures": [],
+      "source_pins_match": true
+    },
+    {
+      "receipt": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-portability-python-qualification.json",
+      "receipt_sha256": "8e5008f28034b029b36f125841e14d1eee8c282581aab6bdc82c66a89fdd2fad",
+      "executor": "A56",
+      "methods": 24,
+      "exit_code": 0,
+      "seconds": 0.9754268570031854,
+      "log": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-repair-test_compare_header_material.stderr",
+      "log_sha256": "9a3ab0cdb054ab8b49125b13534f2d811599081418a1d998a2cc38d72d4a4c32",
+      "log_identity_matches": true,
+      "ok_method_lines": 24,
+      "skips_or_failures": [],
+      "source_pins_match": true
+    }
+  ],
+  "root_affected_qualification": {
+    "status": "passed",
+    "receipt": "docs/development/2026-11-16-console-completion/reports/windows-repair-local-qualification.json",
+    "receipt_sha256": "c371f06f83e6024d7cfc3bf464a7a84ea037063aa8824577a615a751e27a1149",
+    "build": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/21cce69f7784/build-native",
+        "--target",
+        "test_standalone_performance_plate",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "windows-repair-fixture-build.log",
+      "log_sha256": "021f13e9e8c589920bd5c00d9a62a66005695be26e475d2307f70459ac298f79",
+      "seconds": 13.283043497998733
+    },
+    "affected": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/21cce69f7784/build-native",
+        "--output-on-failure",
+        "--parallel",
+        "1",
+        "--no-tests=error",
+        "-R",
+        "^(test_standalone_performance_plate|test_standalone_performance_plate_numerical|python_test_repository_integrity)$",
+        "--output-junit",
+        "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/windows-repair-affected.xml"
+      ],
+      "exit_code": 0,
+      "log": "windows-repair-affected.log",
+      "log_sha256": "9a055293b00f346d5c43c951c469adebe7189836a28196c1c4407b41aaa310cc",
+      "seconds": 28.239448375999928
+    },
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "names": [
+        "python_test_repository_integrity",
+        "test_standalone_performance_plate",
+        "test_standalone_performance_plate_numerical"
+      ],
+      "skipped": 0,
+      "tests": 3
+    },
+    "source_sha256_count": 587,
+    "all_current_source_pins_match": true,
+    "changed_during_qualification": [],
+    "native_p1": {
+      "cases": 34,
+      "checks": 53648,
+      "paintings": 111,
+      "helper_probes": 61,
+      "helper_present": true
+    },
+    "canonical_numerical": {
+      "mode": "candidate-only-frozen62",
+      "checks_evaluated": 191,
+      "failures": [],
+      "screen_count": 62,
+      "screens_passed": 62,
+      "report_path": "docs/development/2026-11-16-console-completion/reports/windows-repair-p1-candidate/report.json",
+      "report_sha256": "d30633e3ce5c01b040bf3f259dc57bede38d12acfc7fd8c68082d12c8815dd2a",
+      "report_bytes": 49716,
+      "report_exactly_matches_original_tmp": true,
+      "fixture_source_admission": {
+        "accepted_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+        "candidate_only": true,
+        "claim": "Source admission only; coherent build and runtime acceptance remain separate.",
+        "observed_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+        "original_pinned_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+        "transition": {
+          "corrected_block_sha256": "ef644e3e10e0ecc9d914f99e1c78a5bb6bdb1209aa0ecc696f86a410b3a60551",
+          "id": "p1-helper-constexpr-else-v1",
+          "original_block_sha256": "e3e8fdad56e8332de33b348d06c8a94ef1176d512b352a2079cd95b0c9ad34d5",
+          "reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+          "scope": "candidate-only",
+          "whole_file_reversal_verified": true
+        },
+        "variant": "p1-helper-constexpr-else"
+      },
+      "retained_streams": [
+        {
+          "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-p1-candidate/after-list.stdout.zlib",
+          "compressed_bytes": 2412,
+          "compressed_sha256": "df37c31b128027142d7e712759c103b3ae43d3a5ec320760b50e37e34504cb61",
+          "raw_bytes": 27310,
+          "raw_sha256": "453447b786f4585069c34eb3b52ec21e8f2d85362cb389bb2ff58446a24f2125",
+          "recorded_identities_match": true
+        },
+        {
+          "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-p1-candidate/after-list.stderr.zlib",
+          "compressed_bytes": 8,
+          "compressed_sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb",
+          "raw_bytes": 0,
+          "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recorded_identities_match": true
+        },
+        {
+          "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-p1-candidate/after-00.stdout.zlib",
+          "compressed_bytes": 1100577,
+          "compressed_sha256": "d03aa8aa2b81f0be063369793621226c6c4047aed473de9f2e3dccc6e85b0366",
+          "raw_bytes": 6561750,
+          "raw_sha256": "371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55",
+          "recorded_identities_match": true
+        },
+        {
+          "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-p1-candidate/after-00.stderr.zlib",
+          "compressed_bytes": 8,
+          "compressed_sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb",
+          "raw_bytes": 0,
+          "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "recorded_identities_match": true
+        }
+      ],
+      "retained_directory_files": 5,
+      "retained_directory_bytes": 1152721
+    },
+    "retained_pre_repair_fixture": {
+      "directory": "/workspace/scratch/21cce69f7784/qualified-before-p1-helper-repair",
+      "identity_receipt_sha256": "1c7f633d4f8120a7893413af06d2c7d66a97ad7637b8f9a42695f0c54d3e0012",
+      "source_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "binary_bytes": 3862304,
+      "binary_sha256": "60e951c907bf177b190e1a8abee9246a472b5e1d8ddc957b5ba5e2ce5179ecd5",
+      "current_binary_sha256": "60e951c907bf177b190e1a8abee9246a472b5e1d8ddc957b5ba5e2ce5179ecd5",
+      "before_after_binary_bytes_identical": true,
+      "scope": "Genuine cf87 combined-source Linux fixture retained by root before the helper correction; distinct from the older genuine pre-P1 paired baseline."
+    },
+    "current_application_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9",
+    "evidence_files": [
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-local-qualification.json",
+        "bytes": 70761,
+        "sha256": "c371f06f83e6024d7cfc3bf464a7a84ea037063aa8824577a615a751e27a1149"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-fixture-build.log",
+        "bytes": 264,
+        "sha256": "021f13e9e8c589920bd5c00d9a62a66005695be26e475d2307f70459ac298f79"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-affected.log",
+        "bytes": 860,
+        "sha256": "9a055293b00f346d5c43c951c469adebe7189836a28196c1c4407b41aaa310cc"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-affected.xml",
+        "bytes": 2886,
+        "sha256": "7d20c988cecce2fec16edcfaab874e1e026d7a778929a6c53f54516dc18dfb53"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-affected-detail.log",
+        "bytes": 10562,
+        "sha256": "a28069ebe395ca437cb34a6ae561ba1b843b18870042b8f2b6f65441d83f8a07"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-p1-retention.json",
+        "bytes": 1242,
+        "sha256": "e455bce14bd8051615acc8a99742c5bf655ef16338aea86f5a2b73c1948d79aa"
+      }
+    ],
+    "source_suite_counts_are_separate": {
+      "capture": 45,
+      "header": 24,
+      "p1": 54
+    },
+    "limitations": [
+      "Linux Release observations only; no fresh MSVC or Windows execution",
+      "Helper present in native execution; no new helper-absent runtime execution",
+      "Three affected CTests, not a full-suite or paired-comparison rerun",
+      "Final A59 files postdate the repository-integrity pass; final documentary check remains root-owned"
+    ]
+  },
+  "ledger_prefix_audit": {
+    "ledger_sha256": "0cd88fed26a8181855e1041f5b659fac18aea67c2240506a4fc80996bfa8f372",
+    "dispatched_records": 59,
+    "accepted_records": 56,
+    "running_records": [
+      "A56",
+      "A57",
+      "A59"
+    ],
+    "missing_ids": [
+      "A60"
+    ],
+    "waves": {
+      "1": {
+        "accepted": 6
+      },
+      "2": {
+        "accepted": 6
+      },
+      "3": {
+        "accepted": 6
+      },
+      "4": {
+        "accepted": 6
+      },
+      "5": {
+        "accepted": 6
+      },
+      "6": {
+        "accepted": 6
+      },
+      "7": {
+        "accepted": 6
+      },
+      "8": {
+        "accepted": 6
+      },
+      "9": {
+        "accepted": 6
+      },
+      "10": {
+        "accepted": 2,
+        "running": 3
+      }
+    },
+    "accepted_note_identities_and_floors_checked": 56,
+    "accepted_note_issues": [],
+    "distinct_agent_and_id_and_note_paths": true,
+    "concrete_navigation_issue": "Initial CHECKPOINT/ROOT_NEXT_QUEUE stated 58 dispatched/55 accepted and A59 undispatched while actual ledger had59/56. Root was notified and both current records now state59/56 with A59 running and A60 undispatched.",
+    "historical_publication_receipt": "Dated58/55 receipt remains immutable and is not an error.",
+    "checker_source_reviewed": "docs/development/2026-11-16-console-completion/check_session.py",
+    "checker_executed_by_A59": false,
+    "strict_closure": false,
+    "limits": "Read-only actual prefix consistency, not proof of external dispatch/concurrency; all60 accepted records and root strict execution remain required. Planned A60 and follow-ups supply no credit."
+  },
+  "source_blockers": [],
+  "remaining_gates": [
+    "Preserve all current exact-source jobs through terminal outcome before next same-ref push",
+    "Guarded publication of accepted repair with fresh expected remote head and independent commit/tree/parent/content verification",
+    "Fresh exact-source Windows Core and native execution, including previously unreached diagnostic readers; all new-source hosted families remain source-specific",
+    "A60 actual dispatch, substantive note, all required root acceptances and strict 60-record closure",
+    "Final documentation integrity and remote evidence publication"
+  ],
+  "product_limits": [
+    "No new Windows pass",
+    "No new helper-absent runtime run",
+    "No replacement of original failures",
+    "No full-suite aggregate claim",
+    "No native browser completion, physical fidelity, device/accessibility/release or literal whole-interface 1:1 claim"
+  ],
+  "reader_diagnostic": "One read named windows-repair-build.log before the exact filename was inspected; that file does not exist. The actual windows-repair-fixture-build.log was then read and its digest verified. No test/build failure or result was inferred from the missing read."
+}

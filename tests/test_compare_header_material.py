@@ -280,7 +280,7 @@ class BaselineTransitionTests(unittest.TestCase):
         self.identities[str(self.before.parent / "hammond_standalone")] = deepcopy(
             self.receipt["files"]["hammond_standalone"])
         for row in [*self.supplement["inputs"], self.supplement["object"]]:
-            self.identities[row["path"]] = deepcopy(row)
+            self.identities[str(Path(row["path"]))] = deepcopy(row)
         self.source_files = {
             HEADER.FIXTURE: HEADER.identity(ROOT / HEADER.FIXTURE),
             HEADER.PAINTER: HEADER.identity(ROOT / HEADER.PAINTER),

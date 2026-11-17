@@ -70,6 +70,13 @@ PINNED = {
 # Keep PINNED as the genuine original source identities. Only candidate-only
 # may admit the exact A26 pair below; paired comparisons retain the old pair.
 UI_MODEL_FILES = ("apps/standalone/UiModel.h", "apps/standalone/UiModel.cpp")
+P1_HELPER_ELSE_SHA256 = "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d"
+P1_ORIGINAL_HELPER = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n"
+    b"        reference_performance_p1_material(drawing, bounds, scale);\n"
+    b"        return true;\n    }\n    return false;\n")
+P1_ELSE_HELPER = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n"
+    b"        reference_performance_p1_material(drawing, bounds, scale);\n"
+    b"        return true;\n    } else {\n        return false;\n    }\n")
 RECALL_SOURCE_TRANSITION = "ui-model-recall-controls-a26-v1"
 RECALL_SOURCE_PATCH = SESSION + "/reports/UiModel-recall-controls.patch"
 RECALL_SOURCE_PATCH_SHA256 = "d4fadc8ae85d9f3dd2aedb6cccc63977fe1c4516dcca47b758a0ec18c7792cf8"
@@ -1213,6 +1220,48 @@ def pin_input(inputs, label, path, expected=None):
     return Path(item["path"])
 
 
+def admit_fixture_source(source_bytes, *, candidate_only):
+    """Keep paired fixture identity frozen; admit one exact candidate repair."""
+    require(type(candidate_only) is bool, "fixture admission mode must be boolean")
+    require(type(source_bytes) is bytes, "fixture admission requires complete byte source")
+    observed = sha(source_bytes)
+    original = PINNED[FIXTURE]
+    result = dict(variant="original-fixture", candidate_only=candidate_only,
+                  original_pinned_sha256=original, observed_sha256=observed,
+                  accepted_sha256=original, transition=None,
+                  claim="Source admission only; coherent build and runtime acceptance remain separate.")
+    if observed == original:
+        return result
+    require(candidate_only,
+            "paired mode requires original fixture; helper else transition is candidate-only")
+    require(source_bytes.count(P1_ELSE_HELPER) == 1 and P1_ORIGINAL_HELPER not in source_bytes,
+            "fixture requires one exact complete constexpr else block")
+    restored = source_bytes.replace(P1_ELSE_HELPER, P1_ORIGINAL_HELPER, 1)
+    require(sha(restored) == original,
+            "fixture helper reversal does not reconstruct original bytes")
+    require(observed == P1_HELPER_ELSE_SHA256,
+            "fixture helper repair does not match exact admitted placement/source identity")
+    result.update(variant="p1-helper-constexpr-else", accepted_sha256=observed,
+                  transition=dict(id="p1-helper-constexpr-else-v1", scope="candidate-only",
+                                  reversed_sha256=sha(restored), whole_file_reversal_verified=True,
+                                  corrected_block_sha256=sha(P1_ELSE_HELPER),
+                                  original_block_sha256=sha(P1_ORIGINAL_HELPER)))
+    return result
+
+
+def pin_fixture_source(inputs, root, *, candidate_only):
+    resolved = pin_input(inputs, FIXTURE, root / FIXTURE)
+    item = inputs[FIXTURE]
+    with resolved.open("rb") as stream:
+        source_bytes = stream.read(item["bytes"] + 1)
+    require(len(source_bytes) == item["bytes"] and sha(source_bytes) == item["sha256"],
+            "fixture source changed while reading registered input")
+    admission = admit_fixture_source(source_bytes, candidate_only=candidate_only)
+    item["expected_sha256"] = admission["accepted_sha256"]
+    item["original_pinned_sha256"] = PINNED[FIXTURE]
+    return admission
+
+
 def admit_ui_model_sources(source_bytes, *, candidate_only):
     """Admit one coherent pair; reverse exact added blocks, never normalize C++."""
     require(type(candidate_only) is bool, "UiModel admission mode must be boolean")
@@ -1336,7 +1385,8 @@ def execute(args):
                                ("SDL_VIDEODRIVER", "SDL_AUDIODRIVER", "SDL_RENDER_DRIVER", "SDL_RENDER_SCALE_QUALITY",
                                 "LD_LIBRARY_PATH", "LC_ALL", "LANG")},
                   source_labels={"before": args.before_source_id, "after": args.after_source_id},
-                  inputs={}, ui_model_source_admission=None, cases=[], companions=[], commands=runner.commands,
+                  inputs={}, ui_model_source_admission=None, fixture_source_admission=None,
+                  cases=[], companions=[], commands=runner.commands,
                   limits=dict(header_bytes=MAX_HEADER, frame_bytes=MAX_STREAM, stderr_bytes=MAX_STDERR,
                               files=MAX_FILES, storage_bytes=MAX_STORAGE, subprocesses=MAX_COMMANDS,
                               per_process_seconds=args.timeout, total_seconds=args.total_seconds),
@@ -1346,9 +1396,11 @@ def execute(args):
     frames, retained, witnesses = {}, {}, {}
     try:
         for path, expected in PINNED.items():
-            if path not in UI_MODEL_FILES:
+            if path not in UI_MODEL_FILES and path != FIXTURE:
                 pin_input(report["inputs"], path, root / path, expected)
         report["ui_model_source_admission"] = pin_ui_model_sources(
+            report["inputs"], root, candidate_only=args.candidate_only)
+        report["fixture_source_admission"] = pin_fixture_source(
             report["inputs"], root, candidate_only=args.candidate_only)
         pin_input(report["inputs"], "comparator", Path(__file__))
         after = pin_input(report["inputs"], "after_executable", args.after, args.after_sha256)

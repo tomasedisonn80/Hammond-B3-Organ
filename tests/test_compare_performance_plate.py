@@ -591,5 +591,140 @@ class UiModelSourceTransitionTests(unittest.TestCase):
                 self.assertTrue(any(expected_error in failure["detail"] for failure in report["failures"]))
 
 
+class FixtureHelperTransitionTests(unittest.TestCase):
+    ORIGINAL_SHA = "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    REPAIRED_SHA = "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d"
+    ORIGINAL_BLOCK = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n"
+        b"        reference_performance_p1_material(drawing, bounds, scale);\n"
+        b"        return true;\n    }\n    return false;\n")
+    REPAIRED_BLOCK = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n"
+        b"        reference_performance_p1_material(drawing, bounds, scale);\n"
+        b"        return true;\n    } else {\n        return false;\n    }\n")
+
+    @classmethod
+    def setUpClass(cls):
+        current = (ROOT / p1.FIXTURE).read_bytes()
+        if hashlib.sha256(current).hexdigest() == cls.REPAIRED_SHA:
+            cls.original = current.replace(cls.REPAIRED_BLOCK, cls.ORIGINAL_BLOCK, 1)
+        else:
+            cls.original = current
+        if hashlib.sha256(cls.original).hexdigest() != cls.ORIGINAL_SHA:
+            raise AssertionError("fixture does not recover the genuine original")
+        cls.repaired = cls.original.replace(cls.ORIGINAL_BLOCK, cls.REPAIRED_BLOCK, 1)
+        if hashlib.sha256(cls.repaired).hexdigest() != cls.REPAIRED_SHA:
+            raise AssertionError("fixture does not reproduce the exact reviewed repair")
+
+    def test_original_fixture_remains_valid_in_both_modes_with_original_pin(self):
+        self.assertEqual(p1.PINNED[p1.FIXTURE], self.ORIGINAL_SHA)
+        for mode in (False, True):
+            with self.subTest(candidate_only=mode):
+                result = p1.admit_fixture_source(self.original, candidate_only=mode)
+                self.assertEqual(result["variant"], "original-fixture")
+                self.assertEqual(result["accepted_sha256"], self.ORIGINAL_SHA)
+                self.assertIsNone(result["transition"])
+
+    def test_exact_helper_repair_is_reversible_and_candidate_only(self):
+        result = p1.admit_fixture_source(self.repaired, candidate_only=True)
+        self.assertEqual(result["original_pinned_sha256"], self.ORIGINAL_SHA)
+        self.assertEqual(result["accepted_sha256"], self.REPAIRED_SHA)
+        self.assertEqual(result["observed_sha256"], self.REPAIRED_SHA)
+        self.assertEqual(result["transition"]["scope"], "candidate-only")
+        self.assertEqual(result["transition"]["reversed_sha256"], self.ORIGINAL_SHA)
+        self.assertTrue(result["transition"]["whole_file_reversal_verified"])
+        with self.assertRaisesRegex(ValueError, "paired mode requires original fixture"):
+            p1.admit_fixture_source(self.repaired, candidate_only=False)
+
+    def test_boolean_mode_and_complete_bytes_are_required(self):
+        for mode in (0, 1, None, "candidate-only"):
+            with self.subTest(mode=mode), self.assertRaisesRegex(ValueError, "mode must be boolean"):
+                p1.admit_fixture_source(self.original, candidate_only=mode)
+        for value in (bytearray(self.repaired), self.repaired.decode(), None):
+            with self.subTest(type=type(value)), self.assertRaisesRegex(ValueError, "complete byte source"):
+                p1.admit_fixture_source(value, candidate_only=True)
+
+    def test_malformed_missing_duplicate_or_changed_helper_is_rejected(self):
+        cases = {
+            "missing": self.repaired.replace(self.REPAIRED_BLOCK, b"", 1),
+            "duplicate": self.repaired + self.REPAIRED_BLOCK,
+            "old-block-added": self.repaired + self.ORIGINAL_BLOCK,
+            "predicate": self.repaired.replace(b"if constexpr (p1_fixture_helper_present<Drawer>)", b"if constexpr (true)", 1),
+            "missing-call": self.repaired.replace(b"        reference_performance_p1_material(drawing, bounds, scale);\n", b"", 1),
+            "true-value": self.repaired.replace(b"        return true;\n", b"        return false;\n", 1),
+            "false-value": self.repaired.replace(b"        return false;\n", b"        return true;\n", 1),
+        }
+        for name, payload in cases.items():
+            with self.subTest(name=name), mock.patch.object(p1, "P1_HELPER_ELSE_SHA256", p1.sha(payload)):
+                with self.assertRaisesRegex(ValueError, "one exact complete constexpr else"):
+                    p1.admit_fixture_source(payload, candidate_only=True)
+
+    def test_repinning_does_not_admit_unrelated_bytes_or_relocated_block(self):
+        cases = {"unrelated": self.repaired + b"// unrelated source change\n",
+                 "relocated": self.repaired.replace(self.REPAIRED_BLOCK, b"", 1) + self.REPAIRED_BLOCK}
+        for name, payload in cases.items():
+            with self.subTest(name=name), mock.patch.object(p1, "P1_HELPER_ELSE_SHA256", p1.sha(payload)):
+                with self.assertRaisesRegex(ValueError, "does not reconstruct original bytes"):
+                    p1.admit_fixture_source(payload, candidate_only=True)
+
+    def test_reversal_alone_does_not_replace_the_complete_repair_identity(self):
+        with mock.patch.object(p1, "P1_HELPER_ELSE_SHA256", "0" * 64):
+            with self.assertRaisesRegex(ValueError, "exact admitted placement/source identity"):
+                p1.admit_fixture_source(self.repaired, candidate_only=True)
+
+    def test_pinning_records_actual_and_original_identities_and_detects_drift(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / p1.FIXTURE
+            path.parent.mkdir(parents=True)
+            for source, expected, mode in ((self.original, self.ORIGINAL_SHA, False),
+                                          (self.repaired, self.REPAIRED_SHA, True)):
+                path.write_bytes(source)
+                inputs = {}
+                result = p1.pin_fixture_source(inputs, root, candidate_only=mode)
+                self.assertEqual(result["accepted_sha256"], expected)
+                self.assertEqual(inputs[p1.FIXTURE]["sha256"], expected)
+                self.assertEqual(inputs[p1.FIXTURE]["expected_sha256"], expected)
+                self.assertEqual(inputs[p1.FIXTURE]["original_pinned_sha256"], self.ORIGINAL_SHA)
+                audit = p1.Audit()
+                p1.check_inputs_unchanged(audit, inputs)
+                self.assertEqual(audit.failures, [])
+                path.write_bytes(source + b"\n")
+                p1.check_inputs_unchanged(audit, inputs)
+                self.assertEqual(len(audit.failures), 1)
+
+    def test_source_change_between_identity_and_read_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / p1.FIXTURE
+            path.parent.mkdir(parents=True)
+            path.write_bytes(self.repaired)
+            claimed = p1.identity(path)
+            claimed["sha256"] = self.ORIGINAL_SHA
+            with mock.patch.object(p1, "identity", return_value=claimed):
+                with self.assertRaisesRegex(ValueError, "source changed while reading"):
+                    p1.pin_fixture_source({}, root, candidate_only=True)
+
+    def test_execute_rejects_bad_fixture_before_any_native_launch(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in (*p1.PINNED, p1.RECALL_SOURCE_PATCH):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes((ROOT / name).read_bytes())
+            (root / p1.FIXTURE).write_bytes(self.repaired + b"// unreviewed\n")
+            output = root / "report"
+            args = p1.cli(["--root", str(root), "--candidate-only", "--after", str(root / "unrun"),
+                           "--output", str(output)])
+            with mock.patch.object(p1.Runner, "command", side_effect=AssertionError("native launch forbidden")) as launch, \
+                    mock.patch("builtins.print"):
+                result = p1.execute(args)
+            launch.assert_not_called()
+            self.assertEqual(result, 1)
+            report = json.loads((output / "report.json").read_bytes())
+            self.assertFalse(report["passed"])
+            self.assertEqual(report["commands"], [])
+            self.assertIsNone(report["fixture_source_admission"])
+            self.assertTrue(any("fixture helper reversal" in failure["detail"] for failure in report["failures"]))
+
+
 if __name__ == "__main__":
     unittest.main()
