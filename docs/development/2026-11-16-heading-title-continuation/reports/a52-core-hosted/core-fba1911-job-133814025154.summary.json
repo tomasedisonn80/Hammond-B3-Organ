@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "job_id": 133814025154,
+  "source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+  "run_id": 44016021552,
+  "run_attempt": 1,
+  "retained_utc": "2026-11-17T04:26:31.890110+00:00",
+  "decoded_complete_log": {
+    "bytes": 68197,
+    "characters": 68195,
+    "lines": 486,
+    "sha256": "f8283a5878e69147df82229d6737becd1bac9c83dc45bf91fa899d5ff965e68c",
+    "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025154.log.gz",
+    "compressed_bytes": 10861,
+    "compressed_sha256": "c3f9f43912dba660e72b8b232f2e4d905d651acf242ec84cb97bca20963caec8",
+    "round_trip_verified": true
+  },
+  "source_revision_stdout": [
+    {
+      "line": 111,
+      "text": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+    },
+    {
+      "line": 136,
+      "text": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+    },
+    {
+      "line": 198,
+      "text": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+    }
+  ],
+  "toolchain": [
+    {
+      "line": 199,
+      "text": "cmake version 3.31.6"
+    },
+    {
+      "line": 202,
+      "text": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+    },
+    {
+      "line": 207,
+      "text": "Python 3.12.16"
+    },
+    {
+      "line": 227,
+      "text": "-- The CXX compiler identification is GNU 13.3.0"
+    }
+  ],
+  "ctest_outcomes": [],
+  "ctest_outcome_count": 0,
+  "nonpassing_ctest_outcomes": [],
+  "required_tests_observed": [],
+  "required_tests_missing": [],
+  "summary_lines": [
+    {
+      "line": 270,
+      "text": "Ran 14 tests in 0.395s"
+    },
+    {
+      "line": 272,
+      "text": "OK"
+    }
+  ],
+  "instrumentation_flags_examples": [],
+  "sanitizer_policy_lines": [],
+  "invocation_lines": [
+    {
+      "line": 240,
+      "text": "##[group]Run python tests/test_rotary_waveform_acceptance.py --self-test \\"
+    },
+    {
+      "line": 241,
+      "text": "python tests/test_rotary_waveform_acceptance.py --self-test \\"
+    },
+    {
+      "line": 275,
+      "text": "cmake --build build-waveform --target check_rotary_waveform_full \\"
+    }
+  ],
+  "error_lines": [],
+  "special_lines": [],
+  "ctest_inventory_applicable": false,
+  "inventory_scope": "Dedicated full waveform target; the twelve CTest names apply to Release/sanitizer jobs, not this dedicated R4 job.",
+  "full_waveform_result": {
+    "line": 424,
+    "status": "pass",
+    "mode": "full",
+    "qualification_json": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T041718.167774Z-751e7158/qualification.json",
+    "wall_seconds": 533.89119289,
+    "failures": []
+  },
+  "self_test_result": {
+    "methods": 14,
+    "seconds": 0.395,
+    "result": "OK"
+  },
+  "detailed_artifact_contents_independently_downloaded": false,
+  "artifact_scope": "Complete job log includes the actual full-mode status/failure list and uploaded qualification path; no additional per-experiment numerical claims are derived from an uninspected artifact.",
+  "uploaded_artifact": {
+    "id": 14298663828,
+    "name": "rotary-waveform-full-linux-1",
+    "bytes": 111722,
+    "sha256": "381586a2f147b0d1dcd6f6afc182c316f9deecd9f844896eab5115b5a89c0f4d",
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/artifacts/14298663828",
+    "evidence": "Successful upload lines465-469 in complete retained job log; artifact body not downloaded."
+  }
+}

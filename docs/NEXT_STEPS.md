@@ -21,60 +21,73 @@ and stage receipts for exact results. The following sequence is dependency
 ordered: consult root's current checkpoint and skip gates already completed at
 the same qualified source rather than repeating historical work.
 
-All sixty distinct workers have been dispatched and 57 notes are accepted.
-A52–A54 retain exact-published-source core, standalone and VST3 qualification;
-the live ledger owns later acceptance. The current candidate uses main
-`0c02c619…` and app `1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a`.
-Painter `0bf731a6…` is unchanged. The [two current installed captures](design/native-heading-final/README.md)
-use `1fa2a247…`; the historical fifteen-view H1 gallery retains `bfe8e36d…`.
-The [qualified-final result](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
-is **240/242**, exit 8, in **740.263707625 seconds**, distinct from the previous
-semantic 240/242. One unchanged preset-raster diagnostic and each of the two
-failed MIDI methods pass exactly once afterward; the failed aggregate is retained.
-Root proceeds to exact-source publication/hosted review with this finite local
-record, without an aggregate-only full rerun.
+All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+Current main/app remain `0c02c619…` / `1fa2a247…`, with painter `0bf731a6…`.
+The [two installed captures](design/native-heading-final/README.md) use that
+application; the historical fifteen-view gallery retains `bfe8e36d…`.
+The [qualified-final local run](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+remains **240/242**, with exactly three separate unchanged diagnostics passing.
+
+The [verified source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
+`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
+update and independent API/Git verification preserve both histories and verify
+the exact contents. This published tree equals local authored merge `07aafd218…`.
+
+The [original hosted record](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json) is
+Core 6/6 and VST3 4/4 successful; standalone has four normal 68/68 successes,
+one Windows fixture compile failure and one sanitizer cancellation after 30/34
+selected passes. The cancellation's originating cause is unproven. The
+[two-file Windows correction](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
+is locally qualified: affected tests 2/2; identical Linux binary, all 48 cases,
+default result and canonical pixels; 103/103 criteria, complete statistics
+identical except two source hashes. At that stage, 473 of 475 inputs are unchanged.
+Root [separately implemented the sanitizer job budget](development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json),
+20 → 35 minutes overall, with all test/child bounds, workload, instrumentation
+and leak policy unchanged. The final successor changes three inputs and leaves
+472 unchanged. Successor publication and CI remain pending.
 
 ### 1. Complete the current source's integration and delivery gates
 
-1. Retain the [qualified-final full result](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json),
-   [preset diagnostic](development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json) and
-   [two MIDI diagnostics](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
-   separately. All 475 code inputs and recorded build inputs remained unchanged;
-   six serialized tests did not overlap. Workspace's 37 children and Starter
-   Load pass. Preserve the full run's 30-second preset timeout and two missing
-   MIDI acknowledgment windows. Retain the completed independent source-specific
-   supplements; no source/property change or another full run solely to obtain
-   a green aggregate is admitted. A46/A48/A60 repairs and the
-   [implemented startup-prefix oracle](reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md)
-   retain their reviewed scope and original evidence.
-2. Retain the independently accepted [current package](reviews/FINAL_NATIVE_INSTALL_REVIEW.md)
-   and [two installed-app captures](reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md).
-   The older 17-file H1 installation, failed 600 ms smoke and separate 2000 ms
-   diagnostic retain their original app and outcomes. No hardware or display
-   acceptance follows from these software journeys.
-3. Keep README's H1 captures bound to their original application and identify
-   the newer main/app separately. The 213-protected-input claim belongs to the
-   original frozen H1 comparison. Preserve the historical comparator pins under
-   the [reconciliation instructions](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md).
-   Title density means encoded-Y′≥100 pixels in the title ROI, with no hue
-   filter: T3 before H1 5,512; H1 5,499; reference 5,415. Numerical containment,
-   full-frame review, runtime compatibility and resource evidence retain their
-   separate source identities.
-4. Root verifies the final intended tree and fresh remote head, then publishes
-   with a guarded nonforced ref update preserving concurrent `9d60dbf…` and
-   verified recovery `835755a9…` as parents. The recovery object's 366 blobs and
-   141 additional preflight blobs are uploaded; main still points to `9d60dbf…`.
-   Independently verify the published commit/tree/parents/contents. A52 core,
-   A53 standalone and A54 VST3 then inspect all sixteen required hosted families
-   at that exact source. Accept the remaining three actual deliveries from
-   their evidence, run the matching strict sixty-record check, and commit/push
-   final documentation and outcome receipts. Older T2 jobs qualify only T2.
+1. **Preserve completed evidence and implemented repair boundaries.** Keep
+   the failed full run, its unchanged preset/MIDI diagnostics and all original
+   hosted attempts immutable. A46/A48/A60 repairs, the startup-prefix oracle,
+   current package and two actual captures already have scoped admission.
+   The separate 20 → 35-minute sanitizer job allowance is admitted and
+   implemented, with its own three-input receipt; retain the earlier two-file
+   Windows receipt at its original scope. No originating cancellation cause
+   is proven; no test deadline, workload or sanitizer policy changed. No
+   aggregate-only full rerun is authorized.
+2. **Root publishes the qualified successor.** Read the completed admissions and
+   actual implementation/equivalence receipts; preserve production app and all
+   unchanged inputs. Inspect a fresh remote head, perform a guarded nonforced
+   update, then independently verify exact commit/tree/parent/contents. The
+   successor is not yet published; no commit identity or passing CI is assumed.
+3. **The same A52–A54 review all sixteen successor families.** Bind actual jobs,
+   runner assignment, toolchains, executed tests and complete logs to the new
+   source. A52 owns Core, A53 standalone and A54 VST3. Core/VST3 successes at
+   `fba1911…` do not automatically qualify changed inputs; original Windows
+   failure and sanitizer cancellation remain retained. Do not push another
+   commit while the successor jobs run because same-ref concurrency cancels them.
+4. **Root preserves record closure and publishes final recovery.**
+   Accept only actual reviewed deliveries; freeze accepted notes and use separate
+   follow-up receipts. After all successor jobs are terminal/reviewed, commit
+   and push accepted evidence/documentation and verify the resulting source.
+   Record any remaining failures without manufacturing a green aggregate.
 
-
-The [local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
-accepts the unchanged source for guarded publication with the failed full-run
-result and three passing diagnostics retained. Exact-source hosted acceptance
-remains pending; this is not a green full-suite aggregate.
+The [original local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
+retains the qualified-final **240/242** and three passing diagnostics. The
+original published tree and hosted outcomes are complete; successor publication
+and acceptance remain pending. Current captures keep their actual app identity,
+and historical H1 comparator pins remain binding under the
+[reconciliation instructions](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md).
 
 The root-owned recovery build uses the commands below from the current checkout.
 They operate only the already configured local dummy-SDL build; normal desktop

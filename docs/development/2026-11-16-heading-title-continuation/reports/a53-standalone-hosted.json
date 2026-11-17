@@ -1,10 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "worker": "/root/w09_a53",
   "agent": "A53",
   "wave": 9,
-  "recorded_utc": "2026-11-17T02:45:58.153509+00:00",
-  "status": "Hosted inventory prepared; exact new publication SHA not yet released. Independent completed combined-workspace diagnosis retained.",
+  "recorded_utc": "2026-11-17 04:46:08 UTC",
+  "status": "Original published fba1911 standalone run completed with failure: four normal jobs passed, Windows build failed, sanitizer job cancelled after 30/34 completed tests. No overall hosted acceptance.",
   "ownership": "Read-only source/log/GitHub observation. No native execution, builds, source or workflow changes, retry, Git mutation, or remote mutation by A53.",
   "readings": [
     "Complete AGENTS.md",
@@ -13,97 +13,119 @@
     "Complete standalone.yml",
     "A51 final source audit",
     "A44 workspace diagnosis",
-    "A45 genuine before/after receipts"
+    "A45 genuine before/after receipts",
+    "All six terminal original-source GitHub job metadata and complete returned log streams, with relevant exact blocks inspected",
+    "Published workflow and immutable Git source objects",
+    "Frozen workspace startup admission/conformance/actual evidence",
+    "Frozen Windows portability admission and independent local-result supplement"
   ],
   "source_inputs": [
     {
-      "path": "AGENTS.md",
-      "bytes": 24722,
-      "sha256": "7cbe378f8fe3a67e13c7211f78548f7f7a7cc369324980d930c50a116140f101"
-    },
-    {
-      "path": "docs/PLAN.md",
-      "bytes": 55498,
-      "sha256": "db72a6fd26b097704ba6b7fc1ebd86b4174af55a2b1aca7ecd766f80d1e5cc6d"
-    },
-    {
       "path": ".github/workflows/standalone.yml",
-      "bytes": 70886,
-      "sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e"
+      "bytes": 71269,
+      "sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c",
+      "git_blob": "e847672566a5b2b2ee11aedbe9edc1612b27ebcd",
+      "current_working_bytes_match_published": true
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+      "git_blob": "4b8e01bb7efed934dff514640f29a0c41b57a667",
+      "current_working_bytes_match_published": true
     },
     {
       "path": "apps/standalone/main.cpp",
-      "bytes": 147241,
-      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
-    },
-    {
-      "path": "apps/standalone/InstrumentView.cpp",
-      "bytes": 171413,
-      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+      "git_blob": "324fb10f608712c701e4c4e0a8445b44e67a7af8",
+      "current_working_bytes_match_published": true
     },
     {
       "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
-      "bytes": 35691,
-      "sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+      "bytes": 47128,
+      "sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+      "git_blob": "7ea030bcfcf6833e1db483d1e1980b26c28120cb",
+      "current_working_bytes_match_published": true
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+      "bytes": 16743,
+      "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048",
+      "git_blob": "eb4e0cdb3186db97ab0aa2fff9602eb214a6df40",
+      "current_working_bytes_match_published": true
     },
     {
       "path": "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py",
       "bytes": 14225,
-      "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822"
+      "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822",
+      "git_blob": "abf7de150c05222aa747c869def82862db04d0b9",
+      "current_working_bytes_match_published": true
     },
     {
-      "path": "docs/reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md",
-      "bytes": 10431,
-      "sha256": "4ee24912b6eea3bc74e1a221b57ad9ebd389feaa5eabb5a8c8b0a5d1412d19f3"
+      "path": "apps/standalone/native_tests/test_standalone_install.py",
+      "bytes": 44926,
+      "sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+      "git_blob": "856eb6f6c0ead362c6baf78ec599c96f0be81a0a",
+      "current_working_bytes_match_published": true
     },
     {
-      "path": "docs/reviews/HEADING_HEADER_FINAL_SOURCE_AUDIT.md",
-      "bytes": 9651,
-      "sha256": "6b29dfb5e84eca7d72ce9ba8d432541c05fa9bc20381f3a3233a07a0a2a49099"
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61218,
+      "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+      "git_blob": "14eb3d4bc64db7384f7cc5c91811824cbfa9f0a4",
+      "current_working_bytes_match_published": false
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+      "git_blob": "5a981db934d7cfccd8f064a56d481aa248cbe673",
+      "current_working_bytes_match_published": false
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp",
+      "bytes": 10554,
+      "sha256": "254f66fbd3f2ab86b63000d5eb8f59826775c1db61752c0ac4e173029494fc0a",
+      "git_blob": "6ebad8259948b4869572d45fc4258436c747fe60",
+      "current_working_bytes_match_published": true
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_native_calibration.py",
+      "bytes": 31325,
+      "sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85",
+      "git_blob": "25bcba02c4fa8bfaa4b859883255e6bea19a4e88",
+      "current_working_bytes_match_published": true
+    },
+    {
+      "path": "tools/compare_header_material.py",
+      "bytes": 93670,
+      "sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+      "git_blob": "a9f1a29f03d9ea1b35c26f1d96dbd1c09767b83d",
+      "current_working_bytes_match_published": true
     }
   ],
   "hosted": {
-    "state": "awaiting root exact-SHA release; no uncreated-run polling",
-    "source_sha": null,
-    "runs": [],
+    "state": "completed: failure",
+    "source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a",
+    "parents": [
+      "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "835755a9069c25ce55bc2c231547458b4b3ffce4"
+    ],
+    "source_publication_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json",
+    "independent_binding": "Exact commit/tree/parents observed by GitHub API; fetched workflow bytes hash to the immutable local Git blob. Every terminal job reports this head and attempt 1.",
+    "run_id": 44016021554,
+    "run_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554",
+    "attempt": 1,
+    "conclusion": "failure",
+    "run_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/run-44016021554.json",
     "workflow": {
       "path": ".github/workflows/standalone.yml",
-      "bytes": 70886,
-      "sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e"
+      "bytes": 71269,
+      "sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c"
     },
-    "job_families": [
-      {
-        "name": "Native standalone (Linux GCC, MIDI ON)",
-        "runner": "ubuntu-24.04",
-        "MIDI_backend": "ALSA"
-      },
-      {
-        "name": "Native standalone (macOS AppleClang, MIDI ON)",
-        "runner": "macos-15",
-        "MIDI_backend": "CoreMIDI"
-      },
-      {
-        "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
-        "runner": "macos-15-intel",
-        "MIDI_backend": "CoreMIDI"
-      },
-      {
-        "name": "Native standalone (Windows MSVC x64, MIDI ON)",
-        "runner": "windows-2022",
-        "MIDI_backend": "WinMM"
-      },
-      {
-        "name": "Native standalone (Linux GCC, MIDI OFF)",
-        "runner": "ubuntu-24.04",
-        "MIDI_backend": "unavailable"
-      },
-      {
-        "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
-        "runner": "ubuntu-24.04",
-        "MIDI_backend": "unavailable"
-      }
-    ],
-    "normal_required_count": 44,
+    "normal_required_count": 45,
     "normal_required_tests": [
       "test_standalone_channel_acceptance",
       "test_standalone_channel_modes",
@@ -140,6 +162,7 @@
       "test_standalone_reference_layout",
       "test_standalone_replay_paint_boundary",
       "test_standalone_scaled_view",
+      "test_standalone_semantic_paint_boundary",
       "test_standalone_starter_load",
       "test_standalone_title_density",
       "test_standalone_upper_rack_material_raster",
@@ -150,8 +173,79 @@
       "test_standalone_workspace_replay",
       "test_standalone_workspaces_author"
     ],
-    "normal_selection": "All ^test_standalone_ tests, serially; the required set is a minimum. Actual counts must come from each job.",
-    "sanitizer_required_count": 33,
+    "normal_selection": "Every enabled ^test_standalone_ test; 68 were discovered and passed on each of the four successful normal jobs. Windows never reached discovery.",
+    "normal_result_names": [
+      "test_standalone_install",
+      "test_standalone_channel_acceptance",
+      "test_standalone_channel_modes",
+      "test_standalone_concurrency",
+      "test_standalone_expression_calibration",
+      "test_standalone_external_control",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "test_standalone_midi_concurrency",
+      "test_standalone_midi_discovery",
+      "test_standalone_midi_input",
+      "test_standalone_midi_replay",
+      "test_standalone_midi_session",
+      "test_standalone_percussion_reference",
+      "test_standalone_preset_concurrency",
+      "test_standalone_preset_ui",
+      "test_standalone_projection",
+      "test_standalone_reference_layout",
+      "test_standalone_registration_library",
+      "test_standalone_session",
+      "test_standalone_state_files",
+      "test_standalone_ui",
+      "test_standalone_whole_reference",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspaces_author",
+      "test_standalone_midi_backend",
+      "test_standalone_midi_backend_quarantine",
+      "test_standalone_benchmark",
+      "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_unavailable",
+      "test_standalone_drawing",
+      "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster",
+      "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance",
+      "test_standalone_waveform_material",
+      "test_standalone_product_visual",
+      "test_standalone_percussion_raster",
+      "test_standalone_upper_rack_material_raster",
+      "test_standalone_lower_rack_material_raster",
+      "test_standalone_footage_typography_raster",
+      "test_standalone_title_density",
+      "test_standalone_typography_clips",
+      "test_standalone_header_material",
+      "test_standalone_header_statistics",
+      "test_standalone_header_grain_bounds",
+      "test_standalone_manual_key_material_raster",
+      "test_standalone_keyboard_rim_raster",
+      "test_standalone_scaled_view",
+      "test_standalone_preset_raster",
+      "test_standalone_audio_device",
+      "test_standalone_device_removal",
+      "test_standalone_callback_allocation",
+      "test_standalone_app",
+      "test_standalone_midi_cli",
+      "test_standalone_expression_diagnostics",
+      "test_standalone_native_calibration",
+      "test_standalone_native_midi_replay",
+      "test_standalone_workflows",
+      "test_standalone_workspace_replay",
+      "test_standalone_replay_paint_boundary",
+      "test_standalone_semantic_paint_boundary",
+      "test_standalone_replay_boundaries",
+      "test_standalone_chapel",
+      "test_standalone_starter_load",
+      "test_standalone_input_replay"
+    ],
+    "normal_name_sets_identical_across_successful_jobs": true,
+    "sanitizer_required_count": 34,
     "sanitizer_build_target_count": 31,
     "sanitizer_test_targets": {
       "test_standalone_ui": "test_standalone_ui",
@@ -182,43 +276,1075 @@
       "test_standalone_header_statistics": "test_standalone_header_material",
       "test_standalone_header_grain_bounds": "test_standalone_header_grain_bounds",
       "test_standalone_replay_paint_boundary": "hammond_standalone",
+      "test_standalone_semantic_paint_boundary": "hammond_standalone",
       "test_standalone_manual_key_material_raster": "test_standalone_manual_key_material_raster",
       "test_standalone_reference_apron_art": "test_standalone_reference_apron_art",
       "test_standalone_reference_apron_raster": "test_standalone_reference_apron_raster",
       "test_standalone_reference_apron_unavailable": "test_standalone_reference_apron_unavailable",
       "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
     },
+    "sanitizer_build_targets": [
+      "hammond_standalone",
+      "hammond_standalone_calibration_probe",
+      "test_standalone_channel_acceptance",
+      "test_standalone_channel_modes",
+      "test_standalone_drawing",
+      "test_standalone_expression_calibration",
+      "test_standalone_footage_typography_raster",
+      "test_standalone_header_grain_bounds",
+      "test_standalone_header_material",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "test_standalone_inspection_raster",
+      "test_standalone_lower_rack_material_raster",
+      "test_standalone_manual_key_material_raster",
+      "test_standalone_material_acceptance",
+      "test_standalone_preset_raster",
+      "test_standalone_preset_ui",
+      "test_standalone_product_visual",
+      "test_standalone_projection",
+      "test_standalone_quad_drawing",
+      "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable",
+      "test_standalone_reference_layout",
+      "test_standalone_scaled_view",
+      "test_standalone_ui",
+      "test_standalone_upper_rack_material_raster",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster",
+      "test_standalone_workspaces_author"
+    ],
     "sanitizer_policy": {
       "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
       "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
       "LSAN_OPTIONS": "exitcode=23",
-      "compiled": "Project C++ and SDL C: -fsanitize=address,undefined -fno-omit-frame-pointer",
-      "private_MIDI_flag": "hammond_standalone_support=0; fake calibration probe=1",
-      "new_gates": [
-        "test_standalone_header_statistics",
-        "test_standalone_header_grain_bounds",
-        "test_standalone_replay_paint_boundary"
+      "per_test_overrides": false,
+      "parallel": 1,
+      "job_timeout_minutes": 20,
+      "project_and_SDL_flags": [
+        "-fsanitize=address,undefined",
+        "-fno-omit-frame-pointer"
       ]
     },
-    "packaging_expected": {
-      "MIDI_ON_files": 21,
-      "MIDI_OFF_files": 17,
-      "smoke_ms": 600,
-      "checks": [
-        "Standalone component install",
-        "exact files/modes/hashes",
-        "relocated out-of-repository help and dummy smoke",
-        "MIDI closed/unavailable and quiescent",
-        "unchanged installed bytes",
-        "archive exact members, bytes and modes"
-      ]
+    "sanitizer_actual": {
+      "completed_tests": 30,
+      "passed": 30,
+      "failed_result_rows": 0,
+      "in_progress_at_cancellation": "test_standalone_preset_raster",
+      "not_started": [
+        "test_standalone_native_calibration",
+        "test_standalone_replay_paint_boundary",
+        "test_standalone_semantic_paint_boundary"
+      ],
+      "original_error": "The operation was canceled.",
+      "selected_ctest_total_seconds": null,
+      "passed_test_durations_sum_seconds": 739.08,
+      "sanitizer_diagnostic_observed": false
     },
-    "next_step": "After root releases exact published SHA, record run/job/attempt/runner identities and bounded discovery, native, instrumentation, calibration and package summaries. Report exact failures immediately without retry.",
+    "sanitizer_cancellation": {
+      "original_error": "The operation was canceled.",
+      "error_at": "2026-11-17T04:36:39.3023508Z",
+      "preset_started_at": "2026-11-17T04:35:49.6666788Z",
+      "preset_timeout_seconds": 300,
+      "original_block": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814024877-cancellation.log",
+      "interpretation": "Job cancellation near the configured 20-minute budget; exact external cancellation reason is not exposed. No preset result, complete 34-test summary, calibration receipt or post-acceptance source verification.",
+      "instrumentation_step": "success",
+      "post_acceptance_source_and_SDL_check": "skipped",
+      "selected_completed_gate_count": 30
+    },
+    "jobs": [
+      {
+        "job_id": 133814025319,
+        "name": "Native standalone (Linux GCC, MIDI ON)",
+        "runner_name": "GitHub Actions 1000001383",
+        "runner_id": 1000001383,
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "attempt": 1,
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "conclusion": "success",
+        "job_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025319.json",
+        "completed_native_tests": 68,
+        "all_completed_result_rows_passed": true,
+        "ctest_summary": [
+          {
+            "line": 5382,
+            "text": "100% tests passed, 0 tests failed out of 68"
+          },
+          {
+            "line": 5405,
+            "text": "Total Test time (real) = 360.44 sec"
+          }
+        ],
+        "actual_native_invocation_summaries": [
+          {
+            "line": 5043,
+            "text": "230: Actual native application subprocesses: 184"
+          },
+          {
+            "line": 5080,
+            "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 26; successful UI replays: 0; expected failed UI replays: 23"
+          },
+          {
+            "line": 5098,
+            "text": "232: Actual expression diagnostics subprocesses: 3"
+          },
+          {
+            "line": 5121,
+            "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+          },
+          {
+            "line": 5150,
+            "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+          },
+          {
+            "line": 5177,
+            "text": "235: Actual native workflow subprocesses: 52"
+          },
+          {
+            "line": 5197,
+            "text": "236: Actual native workspace subprocesses: 37"
+          },
+          {
+            "line": 5225,
+            "text": "237: Actual native subprocesses: 2; executable SHA-256: 3fd8cd110146e06dce87b943a34db95734384e4fff2e92a2652dfb05b9183f41"
+          },
+          {
+            "line": 5235,
+            "text": "238: Actual native subprocesses: 2; executable SHA-256: 3fd8cd110146e06dce87b943a34db95734384e4fff2e92a2652dfb05b9183f41"
+          },
+          {
+            "line": 5253,
+            "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+          }
+        ],
+        "package_summary": [
+          {
+            "line": 5665,
+            "text": "Verified 21 installed files, MIDI ALSA, relocated help/dummy smoke, and the archived bytes."
+          }
+        ],
+        "complete_log_archive": {
+          "job_id": 133814025319,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025319-complete.log.gz",
+          "stored_bytes": 119183,
+          "stored_sha256": "0a95a04e9da772b4578b6debff8e74d479836f2c5c61eb82ca8a6d6566db83ce",
+          "decoded_bytes": 1036438,
+          "decoded_sha256": "08645f05140cf095afa40d2aded284b08ccad61bcb7830a0d9286165dd3b132c",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        }
+      },
+      {
+        "job_id": 133814025192,
+        "name": "Native standalone (Linux GCC, MIDI OFF)",
+        "runner_name": "GitHub Actions 1000001382",
+        "runner_id": 1000001382,
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "attempt": 1,
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "conclusion": "success",
+        "job_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025192.json",
+        "completed_native_tests": 68,
+        "all_completed_result_rows_passed": true,
+        "ctest_summary": [
+          {
+            "line": 5344,
+            "text": "100% tests passed, 0 tests failed out of 68"
+          },
+          {
+            "line": 5367,
+            "text": "Total Test time (real) = 452.39 sec"
+          }
+        ],
+        "actual_native_invocation_summaries": [
+          {
+            "line": 5005,
+            "text": "230: Actual native application subprocesses: 184"
+          },
+          {
+            "line": 5042,
+            "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 0; successful UI replays: 19; expected failed UI replays: 4"
+          },
+          {
+            "line": 5060,
+            "text": "232: Actual expression diagnostics subprocesses: 3"
+          },
+          {
+            "line": 5083,
+            "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+          },
+          {
+            "line": 5112,
+            "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+          },
+          {
+            "line": 5139,
+            "text": "235: Actual native workflow subprocesses: 52"
+          },
+          {
+            "line": 5159,
+            "text": "236: Actual native workspace subprocesses: 37"
+          },
+          {
+            "line": 5187,
+            "text": "237: Actual native subprocesses: 2; executable SHA-256: 3f60af50763c9e55a6b8a2d5634479a41a14a6ae5f4aa62c022e9d0c6e095b99"
+          },
+          {
+            "line": 5197,
+            "text": "238: Actual native subprocesses: 2; executable SHA-256: 3f60af50763c9e55a6b8a2d5634479a41a14a6ae5f4aa62c022e9d0c6e095b99"
+          },
+          {
+            "line": 5215,
+            "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+          }
+        ],
+        "package_summary": [
+          {
+            "line": 5622,
+            "text": "Verified 17 installed files, MIDI unavailable, relocated help/dummy smoke, and the archived bytes."
+          }
+        ],
+        "complete_log_archive": {
+          "job_id": 133814025192,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025192-complete.log.gz",
+          "stored_bytes": 118270,
+          "stored_sha256": "d99cf1e01b2947a6543120a36d68270bd9e462dcc6f7dbc5729fceb1efdc583e",
+          "decoded_bytes": 1024552,
+          "decoded_sha256": "384c4c68f0da0b9d06238f7740ea7f199c50bd6c7b5304104f12619708d588b2",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        }
+      },
+      {
+        "job_id": 133814025354,
+        "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+        "runner_name": "GitHub Actions 1000001391",
+        "runner_id": 1000001391,
+        "labels": [
+          "macos-15-intel"
+        ],
+        "attempt": 1,
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "conclusion": "success",
+        "job_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025354.json",
+        "completed_native_tests": 68,
+        "all_completed_result_rows_passed": true,
+        "ctest_summary": [
+          {
+            "line": 5003,
+            "text": "100% tests passed out of 68"
+          },
+          {
+            "line": 5026,
+            "text": "Total Test time (real) = 602.50 sec"
+          }
+        ],
+        "actual_native_invocation_summaries": [
+          {
+            "line": 4664,
+            "text": "230: Actual native application subprocesses: 184"
+          },
+          {
+            "line": 4701,
+            "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 0; successful UI replays: 19; expected failed UI replays: 4"
+          },
+          {
+            "line": 4719,
+            "text": "232: Actual expression diagnostics subprocesses: 3"
+          },
+          {
+            "line": 4742,
+            "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+          },
+          {
+            "line": 4771,
+            "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+          },
+          {
+            "line": 4798,
+            "text": "235: Actual native workflow subprocesses: 52"
+          },
+          {
+            "line": 4818,
+            "text": "236: Actual native workspace subprocesses: 37"
+          },
+          {
+            "line": 4846,
+            "text": "237: Actual native subprocesses: 2; executable SHA-256: 3457aa8b38393272b41e90943342f117b9e2da0fb0da4e80c407b5315dbde2f8"
+          },
+          {
+            "line": 4856,
+            "text": "238: Actual native subprocesses: 2; executable SHA-256: 3457aa8b38393272b41e90943342f117b9e2da0fb0da4e80c407b5315dbde2f8"
+          },
+          {
+            "line": 4874,
+            "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+          }
+        ],
+        "package_summary": [
+          {
+            "line": 5284,
+            "text": "Verified 21 installed files, MIDI CoreMIDI, relocated help/dummy smoke, and the archived bytes."
+          }
+        ],
+        "complete_log_archive": {
+          "job_id": 133814025354,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025354-complete.log.gz",
+          "stored_bytes": 115673,
+          "stored_sha256": "50b9673817a02e12e5a522c7fc3d4a09524c92d5130a707a10a4f34202215ecd",
+          "decoded_bytes": 1034185,
+          "decoded_sha256": "2dd81d27781e71ad44a3a476826345c2e34d843035070d52e814f889cdd01428",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        }
+      },
+      {
+        "job_id": 133814025770,
+        "name": "Native standalone (macOS AppleClang, MIDI ON)",
+        "runner_name": "GitHub Actions 1000001394",
+        "runner_id": 1000001394,
+        "labels": [
+          "macos-15"
+        ],
+        "attempt": 1,
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "conclusion": "success",
+        "job_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025770.json",
+        "completed_native_tests": 68,
+        "all_completed_result_rows_passed": true,
+        "ctest_summary": [
+          {
+            "line": 4860,
+            "text": "100% tests passed out of 68"
+          },
+          {
+            "line": 4883,
+            "text": "Total Test time (real) = 409.24 sec"
+          }
+        ],
+        "actual_native_invocation_summaries": [
+          {
+            "line": 4521,
+            "text": "230: Actual native application subprocesses: 184"
+          },
+          {
+            "line": 4558,
+            "text": "231: Actual MIDI CLI/modal subprocesses: 159; enumeration errors: 0; successful UI replays: 19; expected failed UI replays: 4"
+          },
+          {
+            "line": 4576,
+            "text": "232: Actual expression diagnostics subprocesses: 3"
+          },
+          {
+            "line": 4599,
+            "text": "233: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+          },
+          {
+            "line": 4628,
+            "text": "234: Actual native MIDI replay subprocesses: 33; expected interrupted replays: 2"
+          },
+          {
+            "line": 4655,
+            "text": "235: Actual native workflow subprocesses: 52"
+          },
+          {
+            "line": 4675,
+            "text": "236: Actual native workspace subprocesses: 37"
+          },
+          {
+            "line": 4703,
+            "text": "237: Actual native subprocesses: 2; executable SHA-256: c42a9a2e7f76b8aa4b99ea7977116a90edc29ad799b174bb328ee213b52579d9"
+          },
+          {
+            "line": 4713,
+            "text": "238: Actual native subprocesses: 2; executable SHA-256: c42a9a2e7f76b8aa4b99ea7977116a90edc29ad799b174bb328ee213b52579d9"
+          },
+          {
+            "line": 4731,
+            "text": "239: Actual replay boundary subprocesses: 29; preserved setup rejections: 19"
+          }
+        ],
+        "package_summary": [
+          {
+            "line": 5141,
+            "text": "Verified 21 installed files, MIDI CoreMIDI, relocated help/dummy smoke, and the archived bytes."
+          }
+        ],
+        "complete_log_archive": {
+          "job_id": 133814025770,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025770-complete.log.gz",
+          "stored_bytes": 112234,
+          "stored_sha256": "b38b44da2117d870bd48533e03e2d96e07ce5b601e66d219372a87bc04064bb5",
+          "decoded_bytes": 1021269,
+          "decoded_sha256": "52f8f1368287c15dc384299b0e8ec933a632173a881ea83d7c64a0319c43bcab",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        }
+      },
+      {
+        "job_id": 133814025240,
+        "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+        "runner_name": "GitHub Actions 1000001388",
+        "runner_id": 1000001388,
+        "labels": [
+          "windows-2022"
+        ],
+        "attempt": 1,
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "conclusion": "failure",
+        "job_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240.json",
+        "completed_native_tests": 0,
+        "all_completed_result_rows_passed": null,
+        "ctest_summary": [],
+        "actual_native_invocation_summaries": [],
+        "package_summary": [],
+        "log_retention_supplement": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-log-retention.json",
+        "complete_log_archive": {
+          "job_id": 133814025240,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-complete.log.gz",
+          "stored_bytes": 49229,
+          "stored_sha256": "5b8bf4cb6d3fa516a13962b07423a230a08ab1e614355be527fa603d5bd63c15",
+          "decoded_bytes": 427470,
+          "decoded_sha256": "567f3da9e4781ff8610fa814a61d3c792504809377214e9f1d17c69546005074",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        }
+      },
+      {
+        "job_id": 133814024877,
+        "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+        "runner_name": "GitHub Actions 1000001379",
+        "runner_id": 1000001379,
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "attempt": 1,
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "conclusion": "cancelled",
+        "job_record": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814024877.json",
+        "completed_native_tests": 30,
+        "all_completed_result_rows_passed": true,
+        "ctest_summary": [],
+        "actual_native_invocation_summaries": [],
+        "package_summary": [],
+        "complete_log_archive": {
+          "job_id": 133814024877,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814024877-complete.log.gz",
+          "stored_bytes": 114252,
+          "stored_sha256": "f9034e35bdcedebf66b20b2db280746542a290a02ac5a01a4c2bbb6291dbeba3",
+          "decoded_bytes": 1317735,
+          "decoded_sha256": "0efeef4e151d896864c51597ab697210a2217574387a1818e554fdac41e6c90d",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        }
+      }
+    ],
+    "header_actuals": [
+      {
+        "job_id": 133814025319,
+        "material": {
+          "line": 4841,
+          "original_json": {
+            "bytes": 429,
+            "sha256": "fa811ee8d3752a553fcfd344f0e19e103fc4784bbaa850e5aecea4b94bdb78e0"
+          },
+          "schema": 1,
+          "protocol": "header-material-h1-v1",
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163,
+          "clipped_cases": 16,
+          "empty_cases": 2,
+          "inactive_cases": 8,
+          "protected_pixels": 56329523,
+          "deterministic_repaints": 48,
+          "clip_companions": 16,
+          "quiet_clip_pixels": 33462,
+          "history_states": 48,
+          "history_repaints": 1,
+          "fresh_repaints": 1,
+          "helper_present": true,
+          "helper_probes": 95,
+          "backend": "SDL software surface; copied state; no audio/window"
+        },
+        "statistics": {
+          "line": 4849,
+          "original_json": {
+            "bytes": 58204,
+            "sha256": "363d0fd3b0e76be1ebec36dbc8cb150c866200bffc8e65b82d032b5d5e6974e9"
+          },
+          "status": "passed",
+          "protocol_passed": true,
+          "helper_passed": true,
+          "source_fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+          "test_sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+          "executable_sha256": "4334bb43b96bdab5f03bced748dd3a49ee701fd128db8c5d9362bcd510fbdb67",
+          "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+          "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "numerical": {
+            "inequality_count": 103,
+            "evaluated_count": 103,
+            "passed_count": 103,
+            "failed_count": 0,
+            "passed": true,
+            "mean_error_exact": "7620796849/20736000000",
+            "rms_error": 0.3182611192893787,
+            "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+            "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+          },
+          "resources": {
+            "native_invocations": 1,
+            "canonical_rgba_bytes": 6293408,
+            "header_max_bytes": 524288,
+            "stdout_max_bytes": 6817697,
+            "stderr_max_bytes": 65536,
+            "process_timeout_seconds": 20,
+            "cleanup_wait_seconds": 5,
+            "retained_frames": 1,
+            "images_persisted": 0
+          }
+        },
+        "grain": {
+          "line": 4857,
+          "original_json": {
+            "bytes": 227,
+            "sha256": "21116b280ad7fffacb36cbf0b5407505d13ffa270a5876b505610e5e66c8c984"
+          },
+          "schema": 1,
+          "protocol": "header-h1-grain-bounds-v1",
+          "status": "passed",
+          "cases": 4,
+          "checks": 170,
+          "pixels_checked": 96000,
+          "grain_pixels_checked": 18,
+          "unchanged_pixels_checked": 95982,
+          "backend": "SDL software surface; no window or audio"
+        }
+      },
+      {
+        "job_id": 133814025192,
+        "material": {
+          "line": 4803,
+          "original_json": {
+            "bytes": 429,
+            "sha256": "fa811ee8d3752a553fcfd344f0e19e103fc4784bbaa850e5aecea4b94bdb78e0"
+          },
+          "schema": 1,
+          "protocol": "header-material-h1-v1",
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163,
+          "clipped_cases": 16,
+          "empty_cases": 2,
+          "inactive_cases": 8,
+          "protected_pixels": 56329523,
+          "deterministic_repaints": 48,
+          "clip_companions": 16,
+          "quiet_clip_pixels": 33462,
+          "history_states": 48,
+          "history_repaints": 1,
+          "fresh_repaints": 1,
+          "helper_present": true,
+          "helper_probes": 95,
+          "backend": "SDL software surface; copied state; no audio/window"
+        },
+        "statistics": {
+          "line": 4811,
+          "original_json": {
+            "bytes": 58204,
+            "sha256": "363d0fd3b0e76be1ebec36dbc8cb150c866200bffc8e65b82d032b5d5e6974e9"
+          },
+          "status": "passed",
+          "protocol_passed": true,
+          "helper_passed": true,
+          "source_fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+          "test_sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+          "executable_sha256": "4334bb43b96bdab5f03bced748dd3a49ee701fd128db8c5d9362bcd510fbdb67",
+          "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+          "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "numerical": {
+            "inequality_count": 103,
+            "evaluated_count": 103,
+            "passed_count": 103,
+            "failed_count": 0,
+            "passed": true,
+            "mean_error_exact": "7620796849/20736000000",
+            "rms_error": 0.3182611192893787,
+            "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+            "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+          },
+          "resources": {
+            "native_invocations": 1,
+            "canonical_rgba_bytes": 6293408,
+            "header_max_bytes": 524288,
+            "stdout_max_bytes": 6817697,
+            "stderr_max_bytes": 65536,
+            "process_timeout_seconds": 20,
+            "cleanup_wait_seconds": 5,
+            "retained_frames": 1,
+            "images_persisted": 0
+          }
+        },
+        "grain": {
+          "line": 4819,
+          "original_json": {
+            "bytes": 227,
+            "sha256": "21116b280ad7fffacb36cbf0b5407505d13ffa270a5876b505610e5e66c8c984"
+          },
+          "schema": 1,
+          "protocol": "header-h1-grain-bounds-v1",
+          "status": "passed",
+          "cases": 4,
+          "checks": 170,
+          "pixels_checked": 96000,
+          "grain_pixels_checked": 18,
+          "unchanged_pixels_checked": 95982,
+          "backend": "SDL software surface; no window or audio"
+        }
+      },
+      {
+        "job_id": 133814025354,
+        "material": {
+          "line": 4462,
+          "original_json": {
+            "bytes": 429,
+            "sha256": "fa811ee8d3752a553fcfd344f0e19e103fc4784bbaa850e5aecea4b94bdb78e0"
+          },
+          "schema": 1,
+          "protocol": "header-material-h1-v1",
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163,
+          "clipped_cases": 16,
+          "empty_cases": 2,
+          "inactive_cases": 8,
+          "protected_pixels": 56329523,
+          "deterministic_repaints": 48,
+          "clip_companions": 16,
+          "quiet_clip_pixels": 33462,
+          "history_states": 48,
+          "history_repaints": 1,
+          "fresh_repaints": 1,
+          "helper_present": true,
+          "helper_probes": 95,
+          "backend": "SDL software surface; copied state; no audio/window"
+        },
+        "statistics": {
+          "line": 4470,
+          "original_json": {
+            "bytes": 58205,
+            "sha256": "02df8be2873268fbc3e4706abcd4f3ff43b96f49989f3aa03c1e7cebbf689d4b"
+          },
+          "status": "passed",
+          "protocol_passed": true,
+          "helper_passed": true,
+          "source_fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+          "test_sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+          "executable_sha256": "79c58da12c0744c5c7d0b4169476973b4ed176d69e9e75ca7f952b3346d2b1b8",
+          "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+          "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "numerical": {
+            "inequality_count": 103,
+            "evaluated_count": 103,
+            "passed_count": 103,
+            "failed_count": 0,
+            "passed": true,
+            "mean_error_exact": "7620796849/20736000000",
+            "rms_error": 0.3182611192893787,
+            "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+            "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+          },
+          "resources": {
+            "native_invocations": 1,
+            "canonical_rgba_bytes": 6293408,
+            "header_max_bytes": 524288,
+            "stdout_max_bytes": 6817697,
+            "stderr_max_bytes": 65536,
+            "process_timeout_seconds": 20,
+            "cleanup_wait_seconds": 5,
+            "retained_frames": 1,
+            "images_persisted": 0
+          }
+        },
+        "grain": {
+          "line": 4478,
+          "original_json": {
+            "bytes": 227,
+            "sha256": "21116b280ad7fffacb36cbf0b5407505d13ffa270a5876b505610e5e66c8c984"
+          },
+          "schema": 1,
+          "protocol": "header-h1-grain-bounds-v1",
+          "status": "passed",
+          "cases": 4,
+          "checks": 170,
+          "pixels_checked": 96000,
+          "grain_pixels_checked": 18,
+          "unchanged_pixels_checked": 95982,
+          "backend": "SDL software surface; no window or audio"
+        }
+      },
+      {
+        "job_id": 133814025770,
+        "material": {
+          "line": 4319,
+          "original_json": {
+            "bytes": 429,
+            "sha256": "fa811ee8d3752a553fcfd344f0e19e103fc4784bbaa850e5aecea4b94bdb78e0"
+          },
+          "schema": 1,
+          "protocol": "header-material-h1-v1",
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163,
+          "clipped_cases": 16,
+          "empty_cases": 2,
+          "inactive_cases": 8,
+          "protected_pixels": 56329523,
+          "deterministic_repaints": 48,
+          "clip_companions": 16,
+          "quiet_clip_pixels": 33462,
+          "history_states": 48,
+          "history_repaints": 1,
+          "fresh_repaints": 1,
+          "helper_present": true,
+          "helper_probes": 95,
+          "backend": "SDL software surface; copied state; no audio/window"
+        },
+        "statistics": {
+          "line": 4327,
+          "original_json": {
+            "bytes": 58205,
+            "sha256": "b41f7747a512a8aee7564500a1ce7b5845987b9874edc79553ef04a4a86932e4"
+          },
+          "status": "passed",
+          "protocol_passed": true,
+          "helper_passed": true,
+          "source_fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+          "test_sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+          "executable_sha256": "7041bd9e33344b6f2cecd8648ccefbbe56e3314c4a7b19a06415d540a3e518e6",
+          "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+          "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "numerical": {
+            "inequality_count": 103,
+            "evaluated_count": 103,
+            "passed_count": 103,
+            "failed_count": 0,
+            "passed": true,
+            "mean_error_exact": "7620796849/20736000000",
+            "rms_error": 0.3182611192893787,
+            "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+            "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+          },
+          "resources": {
+            "native_invocations": 1,
+            "canonical_rgba_bytes": 6293408,
+            "header_max_bytes": 524288,
+            "stdout_max_bytes": 6817697,
+            "stderr_max_bytes": 65536,
+            "process_timeout_seconds": 20,
+            "cleanup_wait_seconds": 5,
+            "retained_frames": 1,
+            "images_persisted": 0
+          }
+        },
+        "grain": {
+          "line": 4335,
+          "original_json": {
+            "bytes": 227,
+            "sha256": "21116b280ad7fffacb36cbf0b5407505d13ffa270a5876b505610e5e66c8c984"
+          },
+          "schema": 1,
+          "protocol": "header-h1-grain-bounds-v1",
+          "status": "passed",
+          "cases": 4,
+          "checks": 170,
+          "pixels_checked": 96000,
+          "grain_pixels_checked": 18,
+          "unchanged_pixels_checked": 95982,
+          "backend": "SDL software surface; no window or audio"
+        }
+      },
+      {
+        "job_id": 133814024877,
+        "material": {
+          "line": 6661,
+          "original_json": {
+            "bytes": 429,
+            "sha256": "fa811ee8d3752a553fcfd344f0e19e103fc4784bbaa850e5aecea4b94bdb78e0"
+          },
+          "schema": 1,
+          "protocol": "header-material-h1-v1",
+          "status": "passed",
+          "cases": 48,
+          "checks": 10542,
+          "paintings": 163,
+          "clipped_cases": 16,
+          "empty_cases": 2,
+          "inactive_cases": 8,
+          "protected_pixels": 56329523,
+          "deterministic_repaints": 48,
+          "clip_companions": 16,
+          "quiet_clip_pixels": 33462,
+          "history_states": 48,
+          "history_repaints": 1,
+          "fresh_repaints": 1,
+          "helper_present": true,
+          "helper_probes": 95,
+          "backend": "SDL software surface; copied state; no audio/window"
+        },
+        "statistics": {
+          "line": 6669,
+          "original_json": {
+            "bytes": 58215,
+            "sha256": "f5735eb41d24168dcc41c76ee2cf504657c0242534d1319ab761479746541806"
+          },
+          "status": "passed",
+          "protocol_passed": true,
+          "helper_passed": true,
+          "source_fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+          "test_sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+          "executable_sha256": "da78edc75c4107bdcde927cc4b6c9835c1fafe02c84597b38b57376be6e52939",
+          "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+          "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+          "numerical": {
+            "inequality_count": 103,
+            "evaluated_count": 103,
+            "passed_count": 103,
+            "failed_count": 0,
+            "passed": true,
+            "mean_error_exact": "7620796849/20736000000",
+            "rms_error": 0.3182611192893787,
+            "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+            "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+          },
+          "resources": {
+            "native_invocations": 1,
+            "canonical_rgba_bytes": 6293408,
+            "header_max_bytes": 524288,
+            "stdout_max_bytes": 6817697,
+            "stderr_max_bytes": 65536,
+            "process_timeout_seconds": 60,
+            "cleanup_wait_seconds": 5,
+            "retained_frames": 1,
+            "images_persisted": 0
+          }
+        },
+        "grain": {
+          "line": 6677,
+          "original_json": {
+            "bytes": 227,
+            "sha256": "21116b280ad7fffacb36cbf0b5407505d13ffa270a5876b505610e5e66c8c984"
+          },
+          "schema": 1,
+          "protocol": "header-h1-grain-bounds-v1",
+          "status": "passed",
+          "cases": 4,
+          "checks": 170,
+          "pixels_checked": 96000,
+          "grain_pixels_checked": 18,
+          "unchanged_pixels_checked": 95982,
+          "backend": "SDL software surface; no window or audio"
+        }
+      }
+    ],
+    "installation": {
+      "executed_successfully_on_jobs": [
+        133814025319,
+        133814025192,
+        133814025354,
+        133814025770
+      ],
+      "source": "apps/standalone/native_tests/test_standalone_install.py",
+      "source_sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+      "complete_unfiltered_unittest_count": 8,
+      "unicode_coverage_evidence": "The actual CTest runs the complete eight-method script and reports OK. Method names are not individually printed; the immutable script establishes their contents.",
+      "unicode_methods": [
+        "test_actual_component_relocates_and_runs",
+        "test_custom_directories_copy_mode_and_disabled_component"
+      ],
+      "assertions": [
+        "Exact 21-file MIDI ON or 17-file MIDI OFF installed payload and unchanged bytes",
+        "Unicode and space-containing original and moved prefixes; relocated help from unrelated current working directory",
+        "Custom program files Ω/bin and readable data Ω/share; private copy installation and removed private source/build copy",
+        "800 ms synthetic inverted CC11 replay from operator session Ω; final expression 0.75, empty held notes, exact 20..100 inverted calibration, zero errors, no state save",
+        "Disabled component negative cases"
+      ],
+      "workflow_package_assertions": [
+        "Exact inventory, hashes and modes",
+        "Moved-prefix help and 600 ms default-size dummy smoke",
+        "Closed or unavailable MIDI and quiescent state",
+        "Tar members, bytes and modes match installed payload"
+      ],
+      "artifact_bytes_independently_downloaded": false
+    },
+    "artifacts": {
+      "count": 10,
+      "metadata": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/run-44016021554.json",
+      "diagnostics": 6,
+      "packages": 4,
+      "windows_package": false,
+      "sanitizer_package": "Not part of this job",
+      "retention_days": 14
+    },
+    "next_step": "Root evaluates a separate prospective job-budget correction, preserves this original cancellation, then publishes the reviewed Windows fixture identity transition and independently verifies every successor-source job. No retry or remote mutation by A53.",
     "limits": [
-      "Pre-H1 9d60dbf and old T2 CI do not qualify this source",
-      "Dummy MIDI and the fake probe are not physical device acceptance",
-      "Real display, native accessibility and whole-interface 1:1 remain open"
-    ]
+      "Original fba1911 is not overall accepted; 4/5 normal jobs passed and sanitizer completed only 30/34 selected gates.",
+      "All six complete returned decoded job logs are retained as deterministic gzip, with original newline bytes and round-trip-verified UTF-8 byte identities. They are not the provider's original archive; package artifacts were not downloaded.",
+      "Successful CI artifact archive verification is distinguished from independent downloaded artifact inspection.",
+      "Local Windows portability equivalence does not establish actual repaired-source MSVC success.",
+      "The existing whole-repository local suite failures are retained separately; this hosted prefix does not overwrite them.",
+      "Dummy/software rendering, fake MIDI probes and synthetic MIDI are not physical-device, real-display, native-accessibility or whole-interface 1:1 reference acceptance."
+    ],
+    "windows_log_retention": {
+      "supplement": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-log-retention.json",
+      "schema_version": 1,
+      "source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_id": 44016021554,
+      "attempt": 1,
+      "job_id": 133814025240,
+      "description": "Retention correction only. Initial apply_patch writes normalized CRLF to LF. Existing views and frozen admissions are unchanged. Original CRLF bytes are stored as deterministic gzip members because repository attributes normalize text to LF; decoded members match the exact original stream-block digests. All failure text and outcomes are unchanged.",
+      "original_job_record": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240.json",
+        "bytes": 6692,
+        "sha256": "fe40a800aa7ce22c68b86ec6538f065a74aecda0808014811e459c9ab6038cae"
+      },
+      "decoded_full_log": {
+        "bytes": 427470,
+        "sha256": "567f3da9e4781ff8610fa814a61d3c792504809377214e9f1d17c69546005074"
+      },
+      "blocks": [
+        {
+          "source_first_line": 2072,
+          "source_last_line": 2103,
+          "source_utf8_byte_offset": 248739,
+          "original_crlf": {
+            "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-compile-failure-original-crlf.log.gz",
+            "storage_encoding": "gzip; mtime=0",
+            "bytes": 1718,
+            "sha256": "05f5406c014cbbea04710bc4869241b6eb7aedbfb3e896998bdf5e6ed0840e55",
+            "decoded_content": {
+              "bytes": 7224,
+              "sha256": "3d5281c501a3d39e0c71e0a5010d67d751c859be0a84936f98b2ec56f126661c",
+              "CRLF_count": 32
+            }
+          },
+          "existing_normalized_lf_view": {
+            "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-compile-failure.log",
+            "bytes": 7192,
+            "sha256": "80a67a6868cbda39ace76aae274588325fa25ffcedfddf755c31b515fd87610d",
+            "LF_count": 32
+          },
+          "exact_newline_normalization_equality": true
+        },
+        {
+          "source_first_line": 2898,
+          "source_last_line": 2919,
+          "source_utf8_byte_offset": 419140,
+          "original_crlf": {
+            "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-build-summary-original-crlf.log.gz",
+            "storage_encoding": "gzip; mtime=0",
+            "bytes": 553,
+            "sha256": "cf116302be191ce2ce9d3e8f9d8215e2a35795007fe6bf4b57f8999350e9aede",
+            "decoded_content": {
+              "bytes": 2512,
+              "sha256": "ed9b68e6f4761cc67bb378d3ef1dc87903b516f39a804242a5a9c01f07236e9c",
+              "CRLF_count": 22
+            }
+          },
+          "existing_normalized_lf_view": {
+            "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-build-summary.log",
+            "bytes": 2490,
+            "sha256": "ab867c925376d3c41ae30cdf3813e244ff17ac4e9a703aace869a86d4cf93477",
+            "LF_count": 22
+          },
+          "exact_newline_normalization_equality": true
+        }
+      ],
+      "git_retention_reason": "Existing attributes are text=auto/eol=lf; gzip preserves the original bytes without changing attributes."
+    },
+    "complete_log_retention": {
+      "manifest": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/complete-log-archives.json",
+      "schema_version": 1,
+      "source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_id": 44016021554,
+      "attempt": 1,
+      "description": "Complete original returned decoded job logs, encoded as UTF-8 and stored with deterministic gzip (mtime=0, empty filename header). These are not the provider's original zip archive. Original newline bytes, including Windows CRLF, are preserved.",
+      "count": 6,
+      "total_stored_bytes": 628841,
+      "total_decoded_bytes": 5861649,
+      "logs": [
+        {
+          "job_id": 133814025319,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025319-complete.log.gz",
+          "stored_bytes": 119183,
+          "stored_sha256": "0a95a04e9da772b4578b6debff8e74d479836f2c5c61eb82ca8a6d6566db83ce",
+          "decoded_bytes": 1036438,
+          "decoded_sha256": "08645f05140cf095afa40d2aded284b08ccad61bcb7830a0d9286165dd3b132c",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        },
+        {
+          "job_id": 133814025192,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025192-complete.log.gz",
+          "stored_bytes": 118270,
+          "stored_sha256": "d99cf1e01b2947a6543120a36d68270bd9e462dcc6f7dbc5729fceb1efdc583e",
+          "decoded_bytes": 1024552,
+          "decoded_sha256": "384c4c68f0da0b9d06238f7740ea7f199c50bd6c7b5304104f12619708d588b2",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        },
+        {
+          "job_id": 133814025354,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025354-complete.log.gz",
+          "stored_bytes": 115673,
+          "stored_sha256": "50b9673817a02e12e5a522c7fc3d4a09524c92d5130a707a10a4f34202215ecd",
+          "decoded_bytes": 1034185,
+          "decoded_sha256": "2dd81d27781e71ad44a3a476826345c2e34d843035070d52e814f889cdd01428",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        },
+        {
+          "job_id": 133814025770,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025770-complete.log.gz",
+          "stored_bytes": 112234,
+          "stored_sha256": "b38b44da2117d870bd48533e03e2d96e07ce5b601e66d219372a87bc04064bb5",
+          "decoded_bytes": 1021269,
+          "decoded_sha256": "52f8f1368287c15dc384299b0e8ec933a632173a881ea83d7c64a0319c43bcab",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        },
+        {
+          "job_id": 133814025240,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-complete.log.gz",
+          "stored_bytes": 49229,
+          "stored_sha256": "5b8bf4cb6d3fa516a13962b07423a230a08ab1e614355be527fa603d5bd63c15",
+          "decoded_bytes": 427470,
+          "decoded_sha256": "567f3da9e4781ff8610fa814a61d3c792504809377214e9f1d17c69546005074",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        },
+        {
+          "job_id": 133814024877,
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814024877-complete.log.gz",
+          "stored_bytes": 114252,
+          "stored_sha256": "f9034e35bdcedebf66b20b2db280746542a290a02ac5a01a4c2bbb6291dbeba3",
+          "decoded_bytes": 1317735,
+          "decoded_sha256": "0efeef4e151d896864c51597ab697210a2217574387a1818e554fdac41e6c90d",
+          "gzip_mtime": 0,
+          "round_trip_verified": true
+        }
+      ]
+    }
   },
   "combined_workspace_diagnosis": {
     "status": "Completed read-only diagnosis. Suite failed; no acceptance claim or fixture correction.",
@@ -634,5 +1760,93 @@
       "A45 before/after qualifies its separate semantic-paint guarantee",
       "No physical/display/accessibility/literal1:1 closure"
     ]
+  },
+  "preparation_history": {
+    "description": "Historical pre-publication preparation; its 44 required normal tests and 33 sanitizer gates are not the inventory of fba1911.",
+    "archived_report": "docs/development/2026-11-16-heading-title-continuation/inputs/hosted-preparation/a53-standalone-hosted.json",
+    "archived_report_sha256": "3c453253df0b610efecfa9bd81936641ee0504b84f658ce491c062bad24628bc",
+    "workflow_sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e",
+    "normal_required_count": 44,
+    "sanitizer_required_count": 33,
+    "sanitizer_build_target_count": 31,
+    "source_inputs": [
+      {
+        "path": "AGENTS.md",
+        "bytes": 24722,
+        "sha256": "7cbe378f8fe3a67e13c7211f78548f7f7a7cc369324980d930c50a116140f101"
+      },
+      {
+        "path": "docs/PLAN.md",
+        "bytes": 55498,
+        "sha256": "db72a6fd26b097704ba6b7fc1ebd86b4174af55a2b1aca7ecd766f80d1e5cc6d"
+      },
+      {
+        "path": ".github/workflows/standalone.yml",
+        "bytes": 70886,
+        "sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e"
+      },
+      {
+        "path": "apps/standalone/main.cpp",
+        "bytes": 147241,
+        "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+      },
+      {
+        "path": "apps/standalone/InstrumentView.cpp",
+        "bytes": 171413,
+        "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+        "bytes": 35691,
+        "sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py",
+        "bytes": 14225,
+        "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822"
+      },
+      {
+        "path": "docs/reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md",
+        "bytes": 10431,
+        "sha256": "4ee24912b6eea3bc74e1a221b57ad9ebd389feaa5eabb5a8c8b0a5d1412d19f3"
+      },
+      {
+        "path": "docs/reviews/HEADING_HEADER_FINAL_SOURCE_AUDIT.md",
+        "bytes": 9651,
+        "sha256": "6b29dfb5e84eca7d72ce9ba8d432541c05fa9bc20381f3a3233a07a0a2a49099"
+      }
+    ]
+  },
+  "related_frozen_reviews": [
+    {
+      "path": "docs/reviews/WORKSPACE_STARTUP_OBSERVATION_ADMISSION.md",
+      "sha256": "68a13c87bdab02b6a624e7845a6f60ec370fa7fb606554198bca0f9bdc94de56"
+    },
+    {
+      "path": "docs/reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md",
+      "sha256": "ee3ee5d685a91d745c13769e3ef995fc7d6cd37716eaa88b4ea4eda134f560f8"
+    },
+    {
+      "path": "docs/reviews/WORKSPACE_STARTUP_ACTUAL_QUALIFICATION.md",
+      "sha256": "caf604a11800d83da916ddaac673824fa7e8d1406a53cf52f943d8ec9d603210"
+    },
+    {
+      "path": "docs/reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY.md",
+      "sha256": "40beeb233d0f6b789b1a8047a05ed2630139a64a8879ac18c90533fac60307b8"
+    },
+    {
+      "path": "docs/reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md",
+      "sha256": "66e0013aa66aa8310144628c590220f7af27cd4813c6e1b372d77d3d7997d62c"
+    }
+  ],
+  "successor_windows_portability": {
+    "status": "Locally qualified by root; independently reviewed by A53; no successor hosted result yet",
+    "admission_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a53-header-material-windows-portability.json",
+    "conformance_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a53-header-material-windows-conformance.json",
+    "fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+    "statistics_test_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+    "affected_ctests_passed": 2,
+    "original_failure_preserved": true,
+    "historical_comparator_unchanged": true
   }
 }

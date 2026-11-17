@@ -5,49 +5,58 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
-**Active heading/title/header continuation, 17 November 2026.** This user's
-request owns `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ` and root's
-coordinated `../build-native`. Start with the
-[current handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md),
-[session](docs/development/2026-11-16-heading-title-continuation/README.md),
-[latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
-and [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json).
-The complete [M0–M9 plan](docs/PLAN.md) and every standing obligation below
-remain binding. Six new readers covered all 500 atlas pages; this continuation
-has its own sixty-worker requirement in ten waves of six. Only its actual
-dispatches and accepted notes count. Read progress from its ledger, and use its
-matching checker below; this opening does not declare sixty-worker closure.
+**Active heading/title/header continuation, 17 November 2026.** This request owns
+`/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ` and root's coordinated
+`../build-native`. Read the [handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md),
+[session](docs/development/2026-11-16-heading-title-continuation/README.md), [latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and
+[actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json), plus the complete [M0–M9 plan](docs/PLAN.md)
+and every standing obligation below. Six new readers covered all 500 atlas
+pages. All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](docs/development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+The [verified source publication](docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
+`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
+update and independent API/Git verification preserve both histories and verify
+the exact contents. This published tree equals local authored merge `07aafd218…`.
 
-All sixty workers have now been dispatched; 57 notes are accepted. Three
-source-specific hosted reviews remain pending publication. Read the actual ledger
-for later closure; neither a follow-up nor another session counts as a new worker.
-The current installed app and two actual captures use main `0c02c619…` and
-executable `1fa2a247…`; the H1 painter remains `0bf731a6…`. The independently
-reviewed startup-prefix oracle is implemented. The
-[qualified-final full result](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
-is **240/242**, exit 8, in 740.263707625 seconds, distinct from the preceding
-semantic 240/242. All 475 code inputs and recorded build inputs stayed unchanged;
-workspace's 37 children and Starter Load passed. Preserve the preset-raster
-30-second timeout and two missing native-MIDI acknowledgment-window cases.
-Exactly one unchanged preset diagnostic and one invocation of each failed MIDI
-method subsequently passed; the checkpoint links all three. The full run stays
-failed. Source/property changes require separate admission; no aggregate retry
-is authorized merely to obtain a green result.
+The [original terminal hosted record](docs/development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json)
+has **14 successes, one failure and one cancellation**, all attempt 1.
+A52 Core 6/6 and A54 VST3 4/4 are accepted at `fba1911…`. Four standalone
+normal jobs pass 68/68 each; Windows fails MSVC fixture compilation, and
+standalone sanitizer is cancelled after 30/34 selected passes, with no proven
+originating cancellation cause. Preserve every incomplete gate and original log.
 
-Verified recovery commit `835755a9069c25ce55bc2c231547458b4b3ffce4` preserves the
-local `045c95d…` recovery tree. Its 366 blobs and 141 additional preflight blobs
-are uploaded. Main still points to concurrent UI-delivery commit
-`9d60dbf462a90fe422fd4e69757fe202264acb7c`; **no branch ref has been updated**.
-Root next publishes the final source with a fresh expected head and no force,
-preserving `9d60dbf…` and `835755a9…` as parents, verifies the exact
-tree/parents/contents, and gives that source to A52 core, A53 standalone and
-A54 VST3. All sixteen hosted families and acceptance of those three workers
-remain pending. Inspect fresh HEAD/tree/index/worktree/remote before acting.
+The [two-file Windows correction](docs/development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
+has local 2/2 affected CTest qualification and identical Linux fixture binary,
+48-case inventory, default result and canonical numerical/pixel outputs except
+two source hashes. At that stage, the other 473 qualified code inputs remain
+unchanged. Production app `1fa2a247…`, main `0c02c619…` and H1 painter
+`0bf731a6…` retain their identities. Root [separately implemented](docs/development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json)
+only the admitted standalone sanitizer job allowance, 20 → 35 minutes. Every
+test bound, workload, instrumented target and leak policy remains unchanged.
+The final successor changes exactly three inputs; the other 472 remain unchanged.
+Successor publication and all exact-source successor hosted outcomes are pending.
 
-The [local publication admission](docs/reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
-accepts the unchanged source for guarded publication with the failed full-run
-result and three passing diagnostics retained. Exact-source hosted acceptance
-remains pending; this is not a green full-suite aggregate.
+The [qualified-final full result](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+remains **240/242**, exit 8, in 740.263707625 seconds; all 475 code inputs
+and recorded build inputs were unchanged during that run. Workspace's 37 children and Starter Load pass.
+Retain the 30-second preset timeout and two missing native-MIDI acknowledgment
+windows. Exactly one unchanged preset diagnostic and one invocation of each
+failed MIDI method subsequently pass. These diagnostics do not authorize
+source/property changes or an aggregate-only retry.
+
+Repair admission and implementation are complete. Root publishes with a fresh
+expected head and no force, verifies exact source/tree/parent/contents, and releases the same
+A52/A53/A54 reviewers for all sixteen successor families. Check live
+HEAD/tree/index/worktree/remote before acting. Preserve accepted notes and
+original receipts; follow-ups use separate evidence. Preserve executed record closure and publish
+final evidence/documentation after actual successor results are available.
 
 Every future agent must leave setup, actual progress, evidence, failures and
 unrun gates, ownership and concrete next actions recoverable; update README

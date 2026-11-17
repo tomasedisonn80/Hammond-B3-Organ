@@ -22,9 +22,13 @@ and [actual ledger](development/2026-11-16-heading-title-continuation/assignment
 before choosing work. Fresh reading by this session's six A01–A06 workers covers
 all 500 atlas pages; [their reading records](#source-and-reading-records) preserve
 exact ranges and hashes. Reading, worker accounting and product acceptance answer
-different questions. All sixty distinct workers have been dispatched; 57 notes
-are accepted. A52–A54 await the exact published source for core, standalone and
-VST3 qualification. The live ledger records subsequent acceptance.
+different questions. All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+The ledger and retained strict-check receipt establish actual record closure.
 
 T2 is published as `6047723b…`; its latest 16 required job families succeed after
 one unchanged core-sanitizer retry, with the first timeout retained. Accepted T3
@@ -34,8 +38,14 @@ is **240/242**, exit 8, in **740.263707625 seconds**, with unchanged code/build
 inputs. It is separate from the earlier semantic 240/242. Exactly one unchanged
 [preset diagnostic](development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json) and one invocation
 of each [failed MIDI method](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
-pass; the full-suite failures remain. Final publication and all sixteen
-exact-source hosted families are next, with 57 accepted deliveries.
+pass; the full-suite failures remain. The verified `fba1911…` publication has
+[14 original hosted successes, one Windows failure and one standalone sanitizer cancellation](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json).
+The [two-file fixture correction](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
+is locally qualified with identical Linux binary, inventory and numerical/pixel
+outputs apart from two source hashes. Root [separately implemented](development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json)
+only the sanitizer job allowance, 20 → 35 minutes, with every test bound,
+workload and sanitizer policy unchanged. The successor changes three inputs
+and leaves 472 unchanged; publication and exact-source hosted review are pending.
 
 The [two current installed-app captures](design/native-heading-final/provenance.json)
 and [relocated 17-file package](reviews/FINAL_NATIVE_INSTALL_REVIEW.md) have
@@ -52,7 +62,7 @@ requirements.
 | --- | --- |
 | What works and what has actually passed? | [STATUS.md](STATUS.md): current behavior, source-bound local/hosted observations, milestone position and preserved historical results. |
 | What is the complete product roadmap? | [PLAN.md](PLAN.md): all M0–M9 deliverables, dependencies and engineering/physical exits. |
-| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md) and [current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md): preserve the qualified-final 240/242 and three passing unchanged diagnostics; retain the completed independent supplements, then guarded publication, exact-source hosted review and actual sixty-record closure. H1 scope and fresh package/capture admissions already exist. Physical acquisition, accessibility and real-device gates remain separate. |
+| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md) and [current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md): preserve the qualified-final 240/242 and all original hosted outcomes; publish the qualified three-input successor with exact source verification, observe all sixteen new hosted families, then publish final evidence/recovery. Sixty-record closure has passed. The two-file Windows fixture correction is locally qualified. Physical acquisition, accessibility and real-device gates remain separate. |
 | How does a future agent recover this workspace? | [Current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [session](development/2026-11-16-heading-title-continuation/README.md), [actual ledger](development/2026-11-16-heading-title-continuation/assignments.json), [current setup](STATUS.md#current-workspace-and-setup) and [ownership map](PLAN.md#current-ownership-and-source). Inspect live HEAD/tree/index/dirty files/remote; older workspace labels do not transfer ownership. |
 | How are this session's actual records checked? | The [current checker](development/2026-11-16-heading-title-continuation/check_session.py) validates the [current ledger](development/2026-11-16-heading-title-continuation/assignments.json); run it with `--strict` only for closure of all 60 accepted notes in ten waves. It verifies records, not external dispatch, product quality or publication. Old workers and follow-ups supply no new credit. |
 | How do I inspect the isolated causal trajectory? | [Developer guide](CAUSAL_CONTACT_GRID_GUIDE.md), [frozen contract](CAUSAL_CONTACT_GRID_CONTRACT.md), [implementation review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) and [resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md). The finite integer API remains distinct from the later certified conversion and isolated audio work; recover those owners through the current plan. |
@@ -79,8 +89,17 @@ The original 213-protected-input comparison belongs to its frozen H1 sources;
 later main changes have separate reviews and runtime receipts. The adopted
 comparators retain their historical protected-main pin; recover the
 [reconciliation instructions](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md)
-before reproducing those matrices. Inspect live state and the current checkpoint
-for the eventual final source, publication and hosted results.
+before reproducing those matrices.
+
+The [verified source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
+`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
+update and independent API/Git verification preserve both histories and verify
+the exact contents. This published tree equals local authored merge `07aafd218…`.
+Successor publication and hosted results remain pending; inspect live state and
+the checkpoint before interpreting a previous success as current qualification.
 
 | Current record | What it establishes |
 | --- | --- |
@@ -90,15 +109,18 @@ for the eventual final source, publication and hosted results.
 | [Actual H1 frames](design/native-gallery-header-h1-v1/provenance.json) and [genuine before frames](design/native-gallery-header-before-v1/provenance.json) | Fifteen app views each, including 1920×820 and 1400×1080. Captured source/executable/state/pixel identities are retained; runtime meter/counter drift differs from exact-state paired fixtures. These software captures do not establish whole-interface parity or hardware display acceptance. |
 | [Original compatibility review](reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md) and [later source audit](reviews/HEADING_HEADER_FINAL_SOURCE_AUDIT.md) | The 213 protected identities belong to the original T3/H1 comparison, with the admitted original-base UI-history exception. Subsequent resize/semantic main corrections are reviewed separately below. State4/readers 1–3, 47 parameter IDs, plugin UUIDs, 91 shared sources and the dry Engine retain their meanings. Three additive schema-3 UI-replay members remain an explicit diagnostic compatibility exception. |
 | [T2 hosted completion](development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json) and [sanitizer review](reviews/T2_HOSTED_SANITIZER_REVIEW.md) | All 16 latest job families pass at `6047723b…`, including both macOS architectures, after one unchanged failed-job retry. Original first-attempt 15 successes / one timeout remains retained. This is not T3/H1 or changed-test qualification. |
-| [Renderer race review](reviews/RENDER_RACE_COMPLETION_REVIEW.md) | The later test-only post-resume guard changes from 15 to 45 seconds inside the unchanged 90-second CTest limit. Assertions and workload remain exact; local Release and ASan/UBSan observations are recorded. The local LSan runtime limitation and changed-source hosted leak gate remain explicit. |
+| [Renderer race review](reviews/RENDER_RACE_COMPLETION_REVIEW.md) | The later test-only post-resume guard changes from 15 to 45 seconds inside the unchanged 90-second CTest limit. Assertions and workload remain exact; local Release and ASan/UBSan observations are recorded. The local LSan runtime limitation remains retained. Core ASan/UBSan/leaks passes 202/202 at `fba1911…`; the separate standalone sanitizer gate is cancelled/incomplete. |
 | [A46 resize review](reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md), [A48 Load review](reviews/STARTER_LOAD_OBSERVATION_DIAGNOSIS.md) and [repair qualification](development/2026-11-16-heading-title-continuation/reports/replay-load-link-repair-qualification.json) | Separately admitted resize-prefix painting and copied-state Load chronology corrections retain original failures, meaningful before/after evidence and unchanged file/control requirements. |
 | [A60 semantic event-drain review](reviews/SEMANTIC_EVENT_PAINT_ADMISSION.md), [genuine before](development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before-root.json) and [current candidate](development/2026-11-16-heading-title-continuation/reports/semantic-paint-candidate-root.json) | Both genuine-before children exit zero but fail the required painted-visit sequence. The current app passes both six-view cases; [three unchanged boundary CTests](development/2026-11-16-heading-title-continuation/reports/semantic-unchanged-boundaries.json) also pass. The original A46 marker branch and musical guards remain unchanged. |
 | [Implemented startup-prefix oracle](reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md) and [actual workspace records](development/2026-11-16-heading-title-continuation/reports/qualified-workspace-records.json) | The independently reviewed acknowledged-prefix and copied-state oracle is implemented. Workspace replay passes all 37 actual children in the qualified-final run; Starter Load also passes. Main/app remain `0c02c619…` / `1fa2a247…`. |
 | [Qualified-final full result](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json) | 240/242, exit 8, 740.263707625 s; 475 code inputs and recorded build inputs unchanged; six serialized tests nonoverlapping. Preset raster exceeds 30 s, and native MIDI replay has two missing acknowledgment-window observations. The earlier semantic 240/242 remains a separate failed run. |
 | [Preset diagnostic](development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json) and [two MIDI diagnostics](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json) | Exactly one unchanged invocation each passes in 27.517879209 s, 2.031860108 s and 2.037485655 s. The original full result and all limits remain intact; no green full aggregate or exact CPU/scheduler cause is established. |
 | [Current installed capture review](reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md) and [package review](reviews/FINAL_NATIVE_INSTALL_REVIEW.md) | A55/A56 admit two actual current-app captures and a fresh relocated 17-file installation, at their recorded scope. |
-| [Provider recovery object](development/2026-11-16-heading-title-continuation/reports/h1-recovery-provider-checkpoint.json) and [publication recovery](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) | Recovery commit `835755a9…` and its exact tree are verified; 366 recovery blobs plus 141 preflight blobs are uploaded. Main remains `9d60dbf…`; final nonforced publication, exact-source hosted results and three worker acceptances are pending. |
-| [Local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md) | The unchanged source is admitted for guarded publication with the failed full-run result and three passing diagnostics retained. Exact-source hosted acceptance remains pending. |
+| [Published source](development/2026-11-16-heading-title-continuation/reports/source-publication.json) and [terminal original CI](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json) | `fba1911…`, tree `b62f212…`, preserves `9d60dbf…` and `835755a9…`. API/Git verify exact contents. Attempt 1: Core 6/6 and VST3 4/4 successful; standalone four normal successes, one Windows compile failure and one sanitizer cancellation after 30/34 selected passes. The cancellation cause is unproven. |
+| [Core review](development/2026-11-16-heading-title-continuation/reports/a52-core-hosted.json) and [VST3 review](development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted.json) | Core's four Release jobs and sanitizer each pass 202/202, plus complete R4. VST3 passes 29 CTests across four jobs and 47/47 validator tests per actual module. These results belong to the original published source. |
+| [Windows fixture correction](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json) and [equivalence](development/2026-11-16-heading-title-continuation/reports/windows-header-fixture-equivalence.json) | Two affected CTests pass. Linux binary, all 48 cases, default 10,542 checks/163 paintings and canonical pixels match; 103/103 criteria pass and complete statistics differ only in two source hashes. At this two-file stage 473/475 inputs and production app remain unchanged. New MSVC/hosted acceptance is pending. |
+| [Local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md) | Retains the failed 240/242 aggregate and three separate passing diagnostics. The publication has occurred; it did not erase local failures or the original hosted Windows failure and sanitizer cancellation. |
+| [Current repair/recovery checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) | [Sanitizer job budget](development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json) is implemented: overall 20 → 35 minutes only. The final successor changes exactly three inputs, leaving 472 unchanged; all test bounds, workload and sanitizer policy remain exact. Root must publish/verify the successor and observe all sixteen new families before final recovery publication. |
 
 ### Historical streaming source and evidence
 

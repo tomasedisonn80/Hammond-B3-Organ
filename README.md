@@ -5,57 +5,70 @@ A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the reposito
 <!-- heading-title-continuation-summary:start -->
 ## Current continuation: reference headings, brass title and header material
 
-The [new continuation](docs/development/2026-11-16-heading-title-continuation/README.md)
-has freshly read all 500 atlas pages. All sixty distinct workers in ten waves have been dispatched;
-57 deliveries are accepted and exact-source hosted reviews remain pending; the [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json)
-and [recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
-record accepted work and concrete next assignments.
+The [continuation](docs/development/2026-11-16-heading-title-continuation/README.md) freshly read all 500 atlas pages.
+All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](docs/development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+The [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json) and [checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+retain accepted work and concrete next assignments.
 
 The live rack headings follow the reference's spacing and baseline; the title
-has a stronger brass face, highlight and shadow; and the header has a warmer
-light field with fine grain. The [two current installed-app captures](docs/design/native-heading-final/README.md)
-show canonical 1672×941 and minimum 960×700 at app `1fa2a247…`. The
-[historical fifteen-view H1 gallery](docs/design/native-gallery-header-h1-v1/README.md)
+has a stronger brass face, highlight and shadow; the header has a warmer
+light field and fine grain. The [two current installed-app captures](docs/design/native-heading-final/README.md)
+show canonical 1672×941 and minimum 960×700 at app `1fa2a247…`.
+The [historical fifteen-view H1 gallery](docs/design/native-gallery-header-h1-v1/README.md)
 keeps its original app `bfe8e36d…` and broader layout/focus coverage. The
 [UI design and direct reference comparison](#current-native-interface) explain
 the measured changes and remaining differences.
 
-
-The [local publication admission](docs/reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
-accepts the unchanged source for guarded publication with the failed full-run
-result and three passing diagnostics retained. Exact-source hosted acceptance
-remains pending; this is not a green full-suite aggregate.
-
-T2 headings and T3 revision-2 title treatment each passed their separate
-158-pair comparison and visual admission. H1 header material passes all
-**103 canonical reference criteria**, up from **44 before**. Its separate
-matrix of 48 main pairs and 16 companions preserves pixels outside the admitted area. The
-[independent visual review](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md) admits
-the scoped visual change. The [current checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
-owns final integration, installed-workflow, publication and exact-source hosted
-results; these are separate from image admission.
-
-A bounded UI-event history also preserves initial MIDI-dialog focus before the
-first acknowledged audio snapshot; the complete 23-method dialog suite passes.
-The [replay review](docs/reviews/REPLAY_UI_HISTORY_ADMISSION.md) and
+T2 headings and T3 revision-2 title each pass their separate 158-pair comparison.
+H1 passes **103 canonical reference criteria**, up from **44 before**; its
+48 main pairs and 16 companions preserve pixels outside the admitted area.
+The [independent visual review](docs/reviews/HEADER_MATERIAL_H1_VISUAL.md) admits
+these scoped changes. A bounded UI-event history also preserves initial
+MIDI-dialog focus; the separate 23-method dialog suite passes. Its
+[review](docs/reviews/REPLAY_UI_HISTORY_ADMISSION.md) and
 [compatibility audit](docs/reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md)
-retain the unchanged musical/state behavior and the intentional additive
-UI-replay diagnostics fields.
+retain the musical/state boundary and additive diagnostics exception.
 
-The latest [qualified-final suite](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
-finished **240/242**, retaining a preset-raster timeout and two native-MIDI
+The [verified source publication](docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
+`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
+update and independent API/Git verification preserve both histories and verify
+the exact contents. This published tree equals local authored merge `07aafd218…`.
+
+The [original hosted outcomes](docs/development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json) are
+**Core 6/6 and VST3 4/4 successful**. Four normal standalone jobs pass 68/68 each;
+Windows standalone fails fixture compilation, and standalone sanitizer is
+cancelled after 30 of 34 selected tests pass. All are original attempt 1.
+The cancellation's originating cause is unproven; incomplete tests are not passes.
+
+The [two-file Windows fixture correction](docs/development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json)
+passes both affected CTests locally. Its Linux binary, all 48 case descriptions,
+10,542-check result and canonical numerical/pixel outputs are unchanged apart
+from two recorded source hashes. Production app `1fa2a247…` is unchanged.
+The [separate sanitizer-budget implementation](docs/development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json)
+changes only that job's overall allowance from 20 to 35 minutes, preserving
+all test bounds, workloads, instrumentation and leak checks. The final successor
+has exactly **three changed inputs and 472 unchanged**; publication and all
+successor hosted results remain pending. [Next actions](docs/NEXT_STEPS.md)
+define the exact publication and qualification sequence.
+
+The [qualified-final local suite](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+remains **240/242**, retaining its preset-raster timeout and two native-MIDI
 acknowledgment-window failures within one CTest. One
 [unchanged preset diagnostic](docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json)
-and one invocation of each
-[failed MIDI method](docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
-then passed. Those bounded results remain separate from the failed aggregate.
-The independently reviewed semantic-paint and startup-prefix changes are
-implemented; final publication and exact-source hosted acceptance are next.
+and one invocation of each [failed MIDI method](docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
+subsequently pass. These separate observations do not replace the failed aggregate.
 
 **Literal whole-interface 1:1 remains unmet and unwaived.** Physical calibration,
 connected scanner/AO-28/Leslie integration and every remaining M0–M9 exit retain
-their documented gates. The interface continues to report the nominal dry
-audio path truthfully.
+their documented gates. The interface reports the nominal dry audio path truthfully.
 <!-- heading-title-continuation-summary:end -->
 
 The concurrent [UI-delivery continuation](docs/development/2026-11-16-ui-delivery/README.md)
@@ -723,7 +736,7 @@ M0–M9 milestones and development staffing waves are distinct.
 | [Qualified-final full result](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json) | 240/242, exit 8, 740.263707625 s; 475 code inputs and recorded build inputs unchanged, six serialized tests nonoverlapping. Preset raster times out at 30 s; native MIDI has two missing acknowledgment-window cases. The earlier semantic 240/242 is a different run. |
 | [Preset isolated diagnostic](docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json) and [two MIDI isolated diagnostics](docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json) | Exactly one unchanged invocation each passes: 27.517879209 s, 2.031860108 s and 2.037485655 s. Original 30 s / 9 s limits remain. No green full-suite aggregate or exact scheduling cause is inferred. |
 | [Fresh installed captures](docs/reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md) and [relocated installation](docs/reviews/FINAL_NATIVE_INSTALL_REVIEW.md) | A55/A56 independently admit two actual current-app captures and the 17-file package at their recorded scope; the original H1 gallery and short-smoke failure remain historical evidence. |
-| [Current recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) | Recovery commit `835755a9…` is verified and additional preflight blobs are uploaded. Main remains `9d60dbf…`; final branch publication and all sixteen exact-source hosted families are pending. The ledger has 57 accepted deliveries and three hosted reviewers pending. |
+| [Current recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) | `fba1911…` is published and independently verified. Its original attempt-one matrix has 14 successes, one Windows compilation failure and one standalone sanitizer cancellation. All 60 deliveries are accepted and the strict record check passes. The reviewed three-input repair is implemented; successor publication and exact-source hosted qualification are the next gates. |
 
 The [test-only completion-guard review](docs/reviews/RENDER_RACE_COMPLETION_REVIEW.md)
 retains the original sanitizer timeout and measured 45-second repair without

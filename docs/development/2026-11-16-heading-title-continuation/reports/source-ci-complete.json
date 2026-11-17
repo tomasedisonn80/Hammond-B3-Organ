@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-17 04:45:32 UTC",
+  "source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+  "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a",
+  "scope": "Root independently fetched terminal workflow/job API metadata. Detailed execution and retained evidence belong to A52/A53/A54 scoped reviews. No failed or cancelled job is represented as a pass.",
+  "job_total": 16,
+  "conclusion_counts": {
+    "success": 14,
+    "cancelled": 1,
+    "failure": 1
+  },
+  "runs": [
+    {
+      "run_id": 44016021552,
+      "name": "CI",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552",
+      "jobs": [
+        {
+          "job_id": 133814025154,
+          "name": "Complete R4 waveform qualification (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:27Z",
+          "completed_at": "2026-11-17T04:26:17Z",
+          "runner_id": 1000001384,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025154"
+        },
+        {
+          "job_id": 133814025396,
+          "name": "Linux GCC ASan + UBSan + leaks",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:23:09Z",
+          "runner_id": 1000001385,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025396"
+        },
+        {
+          "job_id": 133814025466,
+          "name": "Release (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:20:37Z",
+          "runner_id": 1000001386,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025466"
+        },
+        {
+          "job_id": 133814025483,
+          "name": "Release (Windows MSVC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:25Z",
+          "completed_at": "2026-11-17T04:28:20Z",
+          "runner_id": 1000001389,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025483"
+        },
+        {
+          "job_id": 133814025534,
+          "name": "Release (macOS Intel AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:28Z",
+          "completed_at": "2026-11-17T04:30:56Z",
+          "runner_id": 1000001392,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025534"
+        },
+        {
+          "job_id": 133814025572,
+          "name": "Release (macOS AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:21:49Z",
+          "runner_id": 1000001393,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025572"
+        }
+      ]
+    },
+    {
+      "run_id": 44016021554,
+      "name": "Native standalone",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554",
+      "jobs": [
+        {
+          "job_id": 133814024877,
+          "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:36:45Z",
+          "runner_id": 1000001379,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554/job/133814024877"
+        },
+        {
+          "job_id": 133814025192,
+          "name": "Native standalone (Linux GCC, MIDI OFF)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:25Z",
+          "completed_at": "2026-11-17T04:28:01Z",
+          "runner_id": 1000001382,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554/job/133814025192"
+        },
+        {
+          "job_id": 133814025240,
+          "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:21:20Z",
+          "runner_id": 1000001388,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554/job/133814025240"
+        },
+        {
+          "job_id": 133814025319,
+          "name": "Native standalone (Linux GCC, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:25:25Z",
+          "runner_id": 1000001383,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554/job/133814025319"
+        },
+        {
+          "job_id": 133814025354,
+          "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:27Z",
+          "completed_at": "2026-11-17T04:36:31Z",
+          "runner_id": 1000001391,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554/job/133814025354"
+        },
+        {
+          "job_id": 133814025770,
+          "name": "Native standalone (macOS AppleClang, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:18:06Z",
+          "completed_at": "2026-11-17T04:28:27Z",
+          "runner_id": 1000001394,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021554/job/133814025770"
+        }
+      ]
+    },
+    {
+      "run_id": 44016021543,
+      "name": "Native VST3",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543",
+      "jobs": [
+        {
+          "job_id": 133814024868,
+          "name": "Native VST3 (macOS Intel AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:28Z",
+          "completed_at": "2026-11-17T04:23:23Z",
+          "runner_id": 1000001380,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814024868"
+        },
+        {
+          "job_id": 133814025096,
+          "name": "Native VST3 (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:17:49Z",
+          "runner_id": 1000001381,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814025096"
+        },
+        {
+          "job_id": 133814025233,
+          "name": "Native VST3 (macOS AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:18:04Z",
+          "runner_id": 1000001390,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814025233"
+        },
+        {
+          "job_id": 133814025269,
+          "name": "Native VST3 (Windows MSVC x64)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T04:16:25Z",
+          "completed_at": "2026-11-17T04:18:54Z",
+          "runner_id": 1000001387,
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814025269"
+        }
+      ]
+    }
+  ],
+  "source_repair_status": "Two-file Windows fixture correction is locally qualified but not yet published. Separate native sanitizer job-budget review is pending. Original outcomes are immutable."
+}

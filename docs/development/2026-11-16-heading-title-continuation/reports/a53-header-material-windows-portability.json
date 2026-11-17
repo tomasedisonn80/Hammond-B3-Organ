@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w09_a53",
+  "same_worker_followup": true,
+  "recorded_utc": "2026-11-17T04:28:39.836758+00:00",
+  "status": "Frozen prospective narrow portability admission; no implementation or native/build/test execution by A53.",
+  "published_source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+  "run_id": 44016021554,
+  "run_attempt": 1,
+  "job_id": 133814025240,
+  "failure": "MSVC C4244 int-to-float assignment at line156 columns34/71, promoted to C2220 by /W4 /WX. Aggregate build failed; tests/package not reached.",
+  "review": {
+    "path": "docs/reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY.md",
+    "bytes": 5084,
+    "sha256": "40beeb233d0f6b789b1a8047a05ed2630139a64a8879ac18c90533fac60307b8"
+  },
+  "original_job_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240.json",
+    "bytes": 6692,
+    "sha256": "fe40a800aa7ce22c68b86ec6538f065a74aecda0808014811e459c9ab6038cae"
+  },
+  "exact_failure_blocks": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-compile-failure.log",
+      "bytes": 7192,
+      "sha256": "80a67a6868cbda39ace76aae274588325fa25ffcedfddf755c31b515fd87610d"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-build-summary.log",
+      "bytes": 2490,
+      "sha256": "ab867c925376d3c41ae30cdf3813e244ff17ac4e9a703aace869a86d4cf93477"
+    }
+  ],
+  "source_transitions": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "original_bytes": 61218,
+      "original_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+      "proposed_bytes": 61258,
+      "proposed_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "original_assignment": "c.width = shape == 0 ? 1920 : 1400; c.height = shape == 0 ? 820 : 1080;",
+      "proposed_assignment": "c.width = static_cast<float>(shape == 0 ? 1920 : 1400); c.height = static_cast<float>(shape == 0 ? 820 : 1080);",
+      "diff": "--- apps/standalone/native_tests/test_standalone_header_material.cpp@fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2\n\n+++ apps/standalone/native_tests/test_standalone_header_material.cpp proposed\n\n@@ -153,7 +153,7 @@\n\n     for (std::size_t shape = 0; shape < 2; ++shape)\n         for (std::size_t scale = 0; scale < 2; ++scale) {\n             auto& c = result[9 + shape * 2 + scale];\n-            c.width = shape == 0 ? 1920 : 1400; c.height = shape == 0 ? 820 : 1080;\n+            c.width = static_cast<float>(shape == 0 ? 1920 : 1400); c.height = static_cast<float>(shape == 0 ? 820 : 1080);\n             c.rx = c.ry = scale == 0 ? 0.75F : 1.25F;\n         }\n     result[13].width = 1672.5F; result[13].height = 941.25F;\n"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "original_bytes": 34239,
+      "original_sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+      "proposed_bytes": 34239,
+      "proposed_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+      "original_literal": "FIXTURE_SHA256 = \"a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2\"",
+      "proposed_literal": "FIXTURE_SHA256 = \"96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809\"",
+      "diff": "--- apps/standalone/native_tests/test_standalone_header_statistics.py@fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2\n\n+++ apps/standalone/native_tests/test_standalone_header_statistics.py proposed\n\n@@ -47,7 +47,7 @@\n\n MAX_TIMEOUT_SECONDS = 60.0\n CLEANUP_TIMEOUT_SECONDS = 5.0\n MAX_ERROR_CHARACTERS = 4096\n-FIXTURE_SHA256 = \"a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2\"\n+FIXTURE_SHA256 = \"96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809\"\n CONTRACT_SHA256 = \"07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282\"\n OBSERVATIONS_SHA256 = \"8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b\"\n COMPARATOR_SHA256 = \"098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b\"\n"
+    }
+  ],
+  "numeric_review": {
+    "expression_type_before_cast": "Conditional with two int literals; chosen int converted to float by assignment.",
+    "expression_after": "Same conditional result converted explicitly to float before the same assignment.",
+    "selected_values": [
+      {
+        "integer": 1920,
+        "binary32_little_endian_hex": "0000f044",
+        "roundtrip_exact": true
+      },
+      {
+        "integer": 1400,
+        "binary32_little_endian_hex": "0000af44",
+        "roundtrip_exact": true
+      },
+      {
+        "integer": 820,
+        "binary32_little_endian_hex": "00004d44",
+        "roundtrip_exact": true
+      },
+      {
+        "integer": 1080,
+        "binary32_little_endian_hex": "00008744",
+        "roundtrip_exact": true
+      }
+    ],
+    "affected_cases": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "shape_dimensions": [
+      [
+        1920,
+        820
+      ],
+      [
+        1400,
+        1080
+      ]
+    ],
+    "scale_values_unchanged": [
+      0.75,
+      1.25
+    ],
+    "all_other_cases_byte_unchanged": 44,
+    "numeric_runtime_equivalence": "Predicted from unchanged exact float values; actual48-case and numeric-output verification remains root-owned and unrun by A53."
+  },
+  "preserved_checks": [
+    "Original /W4 /WX and all workflow flags",
+    "48 cases and all workload counts/assertions/protocol/rounding helpers",
+    "Active statistics exact fixture hash before and after native execution",
+    "All active statistics semantics except the one expected hash literal",
+    "Production source and binaries",
+    "Historical comparator old fixture hash and all prior evidence"
+  ],
+  "historical_comparator": {
+    "path": "tools/compare_header_material.py",
+    "bytes": 93670,
+    "sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+    "retained_fixture_pin": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+    "reproduction": "Use admitted historical source view; do not repin historical comparator."
+  },
+  "static_verification": {
+    "originals_match_published_and_working_bytes": true,
+    "Cxx_change_reverses_exactly": true,
+    "Python_literal_change_reverses_exactly": true,
+    "Python_AST_equal_except_exact_expected_identity": true,
+    "both_guard_calls_preserved": true
+  },
+  "root_next": [
+    "Apply only two casts",
+    "Freeze corrected C++ bytes and change only the active exact statistics identity literal",
+    "Verify48 actual case descriptions and numeric equivalence",
+    "Run unchanged native header-material and header-statistics gates",
+    "Preserve production binary identities",
+    "After all original hosted jobs terminate, publish guarded correction and observe new exact-source Windows and other required outcomes"
+  ],
+  "limits": [
+    "No source edits or native/build/tests by A53",
+    "No warning suppression, allowlist expansion, disabled checks or deadline change",
+    "Remaining original hosted jobs keep their fba1911 provenance",
+    "No predicted new hosted success or physical/display/wholeUI parity closure"
+  ]
+}

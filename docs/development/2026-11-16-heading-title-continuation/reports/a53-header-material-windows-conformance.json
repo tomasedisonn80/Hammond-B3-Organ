@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w09_a53",
+  "recorded_utc": "2026-11-17T04:35:56.884673+00:00",
+  "status": "Implementation conforms and observed local qualification passes; repaired-source MSVC/hosted qualification remains pending.",
+  "scope": "Read-only independent source/evidence review. Root executed build/list/native tests; A53 ran none.",
+  "review": {
+    "path": "docs/reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md",
+    "bytes": 4693,
+    "sha256": "66e0013aa66aa8310144628c590220f7af27cd4813c6e1b372d77d3d7997d62c"
+  },
+  "frozen_admission_review": {
+    "path": "docs/reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY.md",
+    "bytes": 5084,
+    "sha256": "40beeb233d0f6b789b1a8047a05ed2630139a64a8879ac18c90533fac60307b8"
+  },
+  "frozen_admission_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-header-material-windows-portability.json",
+    "bytes": 7339,
+    "sha256": "82f2fad3d6e23b710e532da4a829ca61aa54d3846858ccd1cc039d37e278cd59"
+  },
+  "actual_sources": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61258,
+      "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f"
+    }
+  ],
+  "source_conformance": {
+    "matches_both_exact_proposed_complete_byte_hashes": true,
+    "changed_code_inputs": [
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "unchanged_other_inputs": 473,
+    "input_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-inputs.json",
+      "bytes": 76573,
+      "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+    },
+    "historical_comparator_unchanged": true,
+    "production_application": {
+      "path": "../build-native/apps/standalone/hammond_standalone",
+      "bytes": 4103352,
+      "sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+    }
+  },
+  "genuine_binary_comparison": {
+    "original": {
+      "path": "/workspace/scratch/5a28c3564dbf/windows-fixture-before-native/test_standalone_header_material",
+      "bytes": 3817680,
+      "sha256": "5dca7e7d05ba1143fd740894b62a87056b96c8a471980fac1e792bbb269ca397"
+    },
+    "rebuilt": {
+      "path": "../build-native/apps/standalone/test_standalone_header_material",
+      "bytes": 3817680,
+      "sha256": "5dca7e7d05ba1143fd740894b62a87056b96c8a471980fac1e792bbb269ca397"
+    },
+    "byte_identical": true
+  },
+  "actual_case_inventory": {
+    "original": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-original-inventory.json",
+      "bytes": 24054,
+      "sha256": "feba3c0358c376de2026a91fb419a9f741f8f31ad93062a907f1116cb1597558"
+    },
+    "rebuilt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-candidate-inventory.json",
+      "bytes": 24054,
+      "sha256": "feba3c0358c376de2026a91fb419a9f741f8f31ad93062a907f1116cb1597558"
+    },
+    "cases": 48,
+    "byte_identical": true
+  },
+  "actual_default_result": {
+    "original": {
+      "path": "/workspace/scratch/5a28c3564dbf/windows-fixture-before-native/test_standalone_header_material-original-stdout.txt",
+      "bytes": 430,
+      "sha256": "7297ef381afddcda2eb1de1cfa9a4594fcd77ad953c5eb20d9cf4380e068699f"
+    },
+    "rebuilt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-material-after.json",
+      "bytes": 430,
+      "sha256": "7297ef381afddcda2eb1de1cfa9a4594fcd77ad953c5eb20d9cf4380e068699f"
+    },
+    "byte_identical": true,
+    "result": {
+      "schema": 1,
+      "protocol": "header-material-h1-v1",
+      "status": "passed",
+      "cases": 48,
+      "checks": 10542,
+      "paintings": 163,
+      "clipped_cases": 16,
+      "empty_cases": 2,
+      "inactive_cases": 8,
+      "protected_pixels": 56329523,
+      "deterministic_repaints": 48,
+      "clip_companions": 16,
+      "quiet_clip_pixels": 33462,
+      "history_states": 48,
+      "history_repaints": 1,
+      "fresh_repaints": 1,
+      "helper_present": true,
+      "helper_probes": 95,
+      "backend": "SDL software surface; copied state; no audio/window"
+    }
+  },
+  "complete_statistics_comparison": {
+    "original": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-statistics-after.json",
+      "bytes": 58181,
+      "sha256": "83e95609e0ad19a1d4d3da14b1ac9f514a385d7ec626e414c87f9c467113049a"
+    },
+    "rebuilt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-statistics-after.json",
+      "bytes": 58181,
+      "sha256": "ecacc6c3bd9dab63ad2fc550d8b4a63622d8354dd1e4560e7bb6b66c6c4d39d4"
+    },
+    "all_fields_equal_except": [
+      {
+        "path": ".identities.frozen_fixture_source_sha256",
+        "before": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+        "after": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+      },
+      {
+        "path": ".identities.test_source_sha256",
+        "before": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+        "after": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f"
+      }
+    ],
+    "evaluated_criteria": 103,
+    "passed_criteria": 103,
+    "failed_criteria": 0,
+    "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+    "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+    "resources_unchanged": {
+      "native_invocations": 1,
+      "canonical_rgba_bytes": 6293408,
+      "header_max_bytes": 524288,
+      "stdout_max_bytes": 6817697,
+      "stderr_max_bytes": 65536,
+      "process_timeout_seconds": 20.0,
+      "cleanup_wait_seconds": 5.0,
+      "retained_frames": 1,
+      "images_persisted": 0
+    }
+  },
+  "root_execution": {
+    "build": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-fixture-build.json",
+      "bytes": 370,
+      "sha256": "b121b5cec35cee5516577ad89c0ebfbbce628b6ea07363548c51baa777fda6ca"
+    },
+    "equivalence": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-fixture-equivalence.json",
+      "bytes": 724,
+      "sha256": "85915725dba97c68c5dababb6b3328c141509e9361f75b2541627b3770da7c16"
+    },
+    "affected_ctests": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-affected.json",
+      "bytes": 1524,
+      "sha256": "8896d19ea729956d431c4afedb093ceaa0e00936ccad78241da25ba15b64fef4"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-affected.xml",
+      "bytes": 2295,
+      "sha256": "db5329a413bff8bfdb8cefd17e6c5bc306ab2fc8f7f1d18bd0b7681f42d74f27"
+    },
+    "qualification": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json",
+      "bytes": 1693,
+      "sha256": "b2d4320226431206af0fded2b71a4657e63b452dbd6101e22c72d0a3e3d578a1"
+    },
+    "passed": 2,
+    "total": 2,
+    "seconds": 43.59351938499822,
+    "testcases": [
+      {
+        "name": "test_standalone_header_material",
+        "classname": "test_standalone_header_material",
+        "time": "42.6568",
+        "status": "run"
+      },
+      {
+        "name": "test_standalone_header_statistics",
+        "classname": "test_standalone_header_statistics",
+        "time": "0.783749",
+        "status": "run"
+      }
+    ]
+  },
+  "limitations": [
+    "Observed byte-identical binary applies to this local compiler/build only",
+    "Originalfba1911Windows failure remains unchanged",
+    "New exact-source MSVC compilation/native/packaging still required",
+    "No historical comparator repin or old-output relabel",
+    "No source/native/build/test execution by A53",
+    "Physical/display/accessibility/whole-interface1:1 acceptance separate"
+  ]
+}

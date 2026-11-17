@@ -1,3 +1,197 @@
+# Original hosted results complete; successor ready for publication — 17 November 2026
+
+All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+Accepted notes and original hosted reports remain frozen. Follow-up qualifications
+use separate receipts.
+
+The [verified source publication](reports/source-publication.json) is
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
+`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
+update and independent API/Git verification preserve both histories and verify
+the exact contents. This published tree equals local authored merge `07aafd218…`.
+
+All sixteen original job families are terminal at that exact source, attempt 1:
+[14 successes, one failure and one cancellation](reports/source-ci-complete.json).
+
+| Workflow | Original source-specific result |
+| --- | --- |
+| [Core CI](reports/a52-core-hosted.json), run `44016021552` | **6/6 successful**: four platform Release jobs and Linux ASan/UBSan/leaks each pass 202/202; full R4 qualification also passes. |
+| [Native VST3](reports/a54-vst3-hosted.json), run `44016021543` | **4/4 successful**, 29 CTests across the jobs; each actual module validator passes 47/47, with installation and packaging checked. |
+| [Native standalone](reports/source-ci-complete.json), run `44016021554` | Four normal jobs pass **68/68 each**: Linux MIDI OFF/ON and both macOS architectures. Windows fails fixture compilation under `/W4 /WX`; the Linux sanitizer job is cancelled after **30 of 34 selected tests pass**. |
+
+The standalone cancellation occurred during preset raster, leaving it and three
+later tests incomplete. No sanitizer finding or originating cancellation cause
+is established. It is not a successful sanitizer gate. Original logs, failures
+and cancelled/unreached work remain retained.
+
+The [independently reviewed Windows fixture correction](../../reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md)
+is [locally qualified](reports/windows-header-local-qualification.json):
+two explicit float casts plus one active fixture-hash literal across two files.
+Both affected CTests pass **2/2 in 43.593519385 seconds**. The Linux fixture
+binary, all 48 case descriptions and default 10,542-check/163-painting result
+are identical. All **103/103** canonical criteria pass; complete statistics
+differ only in the two source identity values, with unchanged canonical pixels.
+At this Windows-only stage, **473 of 475 qualified code inputs are unchanged**.
+Production app `1fa2a247…`, painter, workloads, criteria and historical comparators
+are unchanged. This is local equivalence evidence; successor MSVC compilation
+and hosted acceptance remain pending.
+
+Root [implemented the separately admitted sanitizer job budget](reports/native-sanitizer-job-budget-implementation.json):
+only `jobs.native-sanitizers.timeout-minutes` changes **20 → 35 minutes**.
+Every other workflow byte, all 34 selected tests, 31 build inputs, individual
+test/child limits, workloads, instrumentation and leak policies are unchanged.
+The final successor changes only the Windows fixture pair and workflow scalar:
+**exactly three of 475 inputs change; 472 remain unchanged**. Production
+sources and app `1fa2a247…` are unchanged. The observed prefix plus existing
+tail-limit envelope is 1,823.666679 seconds; this supports the job allowance
+without proving what caused the original cancellation. Successor publication
+and all exact-source hosted results remain pending; no successor SHA is recorded.
+
+The Windows fixture source is
+`96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809`;
+its active statistics test is
+`5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f`.
+The unchanged Linux fixture executable is `5dca7e7d…`; historical comparator
+pins and original sources/binary in `../windows-fixture-before-native` remain
+preserved. The two-file qualification needs no further local native execution.
+
+The complete local run remains **240/242**, with one unchanged preset diagnostic
+and two unchanged one-method MIDI diagnostics passing separately. Its 475 code
+inputs were unchanged during that run; later repair-stage counts are distinct.
+Production app `1fa2a247…` and the accepted current package/captures remain intact.
+
+## Concrete next sequence
+
+The independently admitted Windows fixture correction and separate sanitizer
+job-budget change are implemented and recorded. Root next publishes this
+three-input successor with a fresh expected remote head and no force, independently
+verifies its commit/tree/parent/contents, and supplies that exact source to the
+same A52 Core, A53 standalone and A54 VST3 reviewers. Preserve all original
+attempts; prior successes do not qualify the successor automatically. Staffing
+and strict record closure are complete. Publish the final evidence and handoff
+after all successor jobs finish and are reviewed. No further local aggregate-only
+rerun is authorized by these results.
+
+Root retains shared source/build/native/publication ownership. Same-ref workflow
+concurrency cancels older runs; after publishing the successor, wait for all
+sixteen jobs to finish before another push. Inspect disk use before large work;
+preserve all genuine baselines, raw evidence and other owners' files.
+
+## Retained publication and qualification checkpoints
+
+The following dated entries preserve earlier states. Their former pending-work
+and staffing counts are historical; this opening owns current recovery.
+
+---
+
+# Windows fixture repair in qualification — 17 November 2026
+
+Main remains the independently verified `fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`.
+The original Windows standalone job `133814025240`, run `44016021554` attempt 1,
+fails compilation because two conditional integer assignments in the header
+fixture trigger MSVC C4244 under `/W4 /WX`. Native tests and packaging are
+unreached in that job. The [frozen independent admission](../../reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY.md)
+permits exactly two explicit float casts and one active fixture-hash update;
+production, CMake/workflows, warning policy, criteria and workload are unchanged.
+
+Root implemented the exact admitted bytes: fixture SHA
+`96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809`, active
+statistics test SHA `5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f`.
+The [target rebuild](reports/windows-header-fixture-build.json) passes.
+The [observed equivalence](reports/windows-header-fixture-equivalence.json)
+confirms the original and rebuilt Linux fixture are byte-identical (`5dca7e7d…`),
+and all 48 actual `--list` case records match exactly. The other 473 frozen
+code inputs and application `1fa2a247…` remain unchanged. Historical comparator
+pins and original records remain untouched; old reproduction uses its named
+source view. Genuine pre-repair sources/binary remain in
+`../windows-fixture-before-native` and are identified in the originals receipt.
+
+Both affected CTests passed serially: **2/2 in 43.593519385 seconds**. The
+[complete local qualification](reports/windows-header-local-qualification.json)
+confirms the original default result exactly (48 cases, 10,542 checks and 163
+paintings) and 103/103 canonical criteria. Every complete statistics field equals
+`h1-statistics-after.json` except the two admitted source hashes; canonical
+header and RGBA bytes are unchanged. The qualified-final JUnit statistics text
+was truncated, so the comparison used the original complete JSON instead.
+No further local native execution is needed for this two-file portability fix.
+
+A52–A54 continue all original source-specific hosted reviews. All four original
+VST3 jobs are successful, subject to A54's completed report; Linux standalone
+MIDI ON passes 68/68, and original Core jobs are still finishing. Preserve every
+original outcome before a new push cancels work. Root then publishes only the
+reviewed fixture correction and complete evidence, verifies the new source, and
+releases the same three reviewers for actual repaired-source outcomes. Worker
+follow-ups do not change the count of sixty actual dispatches.
+
+The earlier checkpoint below retains the first source publication and its
+initial workflow states. This opening owns the current repair and next action.
+
+---
+
+# Published source; exact-source hosted review active — 17 November 2026
+
+**Main is published at `fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`.** The guarded, nonforced update
+preserves parents `9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. Independent API verification and
+Git fetch confirm the ref, exact tree, both parents and all contents. The
+[publication receipt](reports/source-publication.json) maps the local authored
+merge `07aafd21829c2c006414c05d04b8e93dc4ada5c8` to that same tree. Local main
+now follows the provider commit; a backup branch preserves the local merge.
+Unfinished hosted work was preserved without a reset.
+
+All **475 qualified code inputs remain unchanged**. The complete local run
+remains **240/242** with three separate unchanged isolated passes. Actual staged
+archive integrity passes for 1,669 Markdown files and 9,235 local links, and the
+progress checker records 60 actual dispatches / 57 accepted notes. Five
+integrity/whitespace receipt files were the only additions after that staged
+archive check. Original raw logs and frozen evidence retain their exact bytes.
+
+## Current workers and exact-source workflows
+
+| Same worker | Workflow run | Required families | State at release |
+| --- | --- | ---: | --- |
+| A52 | Core CI `44016021552`, attempt 1 | 6 | In progress |
+| A53 | Native standalone `44016021554`, attempt 1 | 6 | Queued |
+| A54 | Native VST3 `44016021543`, attempt 1 | 4 | In progress |
+
+The [initial observation](reports/source-ci-initial.json) is not a terminal
+qualification. These same workers own actual source/job/log review and their
+remaining hosted notes; follow-ups create no additional credit. They may change
+only their assigned hosted reports, logs and pending notes. Original preparatory
+records are preserved in the [archive](reports/hosted-preparation-archive.json).
+Root owns repairs, retries, integration and publication. Report a concrete
+failure before proposing a correction; retain all original attempts.
+
+**Do not push another commit while these workflows run:** their configured
+concurrency cancels older work on the same ref. Prepare final documentation in
+the worktree, then wait for all sixteen job families to finish and be reviewed.
+Accept A52–A54 from their actual completed evidence, run the matching strict
+sixty-record check, update current README/AGENTS/plan/status/handoff and next
+steps, then publish the documentation/evidence closure with a fresh expected
+head and no force. Verify the final commit/tree and code equivalence separately.
+No whole-interface 1:1, physical, hardware, accessibility or release claim follows
+from source publication or staffing closure.
+
+Root's last disk observation was **46.4 GiB free**. The temporary 355 MB staged
+source view was removed after its checks. Retain all original baselines,
+artifacts, upload manifests and other owners' work. No cleanup is required to
+finish the hosted review and documentation.
+
+---
+
+## Retained prepublication checkpoints
+
+The entries below retain their original dated states. Their older pending
+publication wording is superseded by the verified publication above.
+
 # Current recovery — qualified-final results and publication, 17 November 2026
 
 This is the current entry. All checkpoints below are retained historical

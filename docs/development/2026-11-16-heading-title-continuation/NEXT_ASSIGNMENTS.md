@@ -1,58 +1,55 @@
 # Current staffing and next sequence — 17 November 2026
 
-The [actual ledger](assignments.json) records **60 distinct dispatched workers
-and 57 accepted deliveries**. Waves 1–8 and all six wave-10 workers are accepted.
-Wave 9 has three accepted deliveries and the three remaining hosted reviews.
-The [current checkpoint](CHECKPOINT.md) owns source identities, completed local evidence
-and publication recovery; the earlier work plan below is retained history.
+All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+The [ledger](assignments.json) and [checkpoint](CHECKPOINT.md) own current
+acceptance and source recovery. All wave-10 work and A52/A54 are accepted.
+Original notes and reports remain frozen; subsequent work is same-worker evidence.
 
-| Workers | Actual state and remaining authority |
+| Worker group | Current scope and next authority |
 | --- | --- |
-| A01–A48, waves 1–8 | Accepted scoped deliveries; original evidence and failures remain. |
-| A49–A51, wave 9 | Accepted reconciliation, permanent handoff and compatibility/CI review. |
-| A52, wave 9 | Core workflow, sanitizer and platform acceptance pending at the exact published source. |
-| A53, wave 9 | Standalone workflow and expanded native/sanitizer acceptance pending at that same published source. |
-| A54, wave 9 | VST3 platform, validator and packaging acceptance pending at that same published source. |
-| A55–A60, wave 10 | All accepted: visual, resource/install, recovery, semantic admission, independent regression and implementation. Follow-ups retain those identities and provide no additional credit. |
-
-A55/A56 have also independently accepted the two fresh current-app captures
-and relocated 17-file install at their stated scope. The existing 57 accepted
-notes remain frozen; later qualifications use separate receipts. Pending hosted
-acceptance is not a reason to invent workers or count another session's ledger.
+| A01–A51 and A55–A60 | Accepted scoped deliveries; original evidence, failures and continuing ownership remain binding. |
+| A52 | Accepted original Core 6/6 at `fba1911…`. Prepare the eleven-document patch; observe successor Core only after root supplies the verified new source. |
+| A53 | Accepted original standalone review; preserve four normal successes, Windows compile failure and sanitizer cancellation. Review successor standalone after publication. |
+| A54 | Accepted original VST3 4/4 and completed separate sanitizer-budget admission. Observe successor VST3 after publication. |
+| Root | Own shared integration, exact implementation, native execution, acceptance, guarded publication and final recovery closure. |
 
 ## Dependency-ready work now
 
-1. **Root retains the complete local record.** The
-   [qualified-final full suite](reports/qualified-final-coherent-results.json)
-   finished **240/242**, exit 8, in **740.263707625 seconds**. All 475 code inputs
-   and recorded build inputs stayed unchanged; six serial exclusions were
-   observed. Workspace passes with 37 actual children, and Starter Load passes.
-   Preserve its preset-raster 30-second timeout and two missing MIDI
-   acknowledgment-window cases, separately from the earlier semantic 240/242.
-   One [unchanged preset diagnostic](reports/preset-raster-one-isolated.json)
-   and one invocation of each [failed MIDI method](reports/qualified-midi-one-isolated-diagnostics.json)
-   now pass. A52/A53's independent source-specific supplements are complete.
-   These three bounded diagnostics do not replace the failed aggregate;
-   no source/property change or aggregate-only full rerun is authorized.
-   The [local publication admission](../../reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
-   now admits this unchanged source for guarded publication with its actual
-   failed aggregate and three passing diagnostics retained.
-2. **Root publishes and verifies the final source.** The verified recovery
-   commit `835755a9069c25ce55bc2c231547458b4b3ffce4` has the complete uploaded
-   recovery tree: 366 blobs / 51,076,715 bytes. Another 141 preflight blobs /
-   6,399,504 bytes are uploaded. Main remains `9d60dbf…`; no branch ref has yet
-   changed. Preserve that commit and
-   concurrent `9d60dbf462a90fe422fd4e69757fe202264acb7c` as final merge parents,
-   inspect a fresh remote head, use a guarded nonforced ref update, and verify
-   the exact final tree, parents and contents.
-3. **A52–A54 execute their existing hosted-review assignments.** Give each the
-   same independently verified published source. Collect the actual outcomes
-   of all sixteen required core/standalone/VST3 job families; retained T2 jobs
-   and the uploaded recovery object do not qualify the later candidate.
-4. **Root closes actual records and documentation.** Accept the three reviewed
-   deliveries only from their returned evidence. Run the matching checker with
-   `--strict` after all sixty are accepted, retain its result, then commit/push
-   final evidence and recovery documentation and verify the publication.
+1. **Retain the published source and original results.** The
+   [publication](reports/source-publication.json) is `fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`,
+   tree `b62f212300d75633346ab8fc5ffdd722255fe00a`, preserving parents
+   `9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+   `835755a9069c25ce55bc2c231547458b4b3ffce4`. API/Git verification is complete.
+   The [original terminal CI](reports/source-ci-complete.json) has 14 successes,
+   one Windows compile failure and one standalone sanitizer cancellation, all
+   attempt 1. Four normal standalone jobs pass 68/68 each; cancelled sanitizer
+   completes only 30/34 selected tests. Its originating cause remains unproven.
+2. **Retain the completed, separately admitted repairs.** The
+   [Windows-only two-file correction](reports/windows-header-local-qualification.json)
+   is locally qualified: 2/2 affected CTests, identical Linux binary, all 48 cases,
+   default 10,542 checks/163 paintings and canonical pixels; 103/103 numerical
+   criteria pass and complete statistics differ only in two source hashes.
+   The other 473/475 inputs and production app are unchanged at this stage.
+   Root's [separate workflow implementation](reports/native-sanitizer-job-budget-implementation.json)
+   changes only the sanitizer job allowance from 20 to 35 minutes. Every test
+   bound, workload and sanitizer policy remains unchanged. The final successor
+   changes exactly three inputs and leaves 472 unchanged; production is unchanged.
+3. **Publish and qualify the successor.** Root verifies the intended tree and
+   fresh remote head, uses a guarded nonforced update, then independently verifies
+   exact commit/tree/parent/contents. Supply that source to the same A52 Core,
+   A53 standalone and A54 VST3 reviewers for all sixteen families. Successor
+   publication/source identity/CI are pending; original successes cannot be
+   silently transferred. Wait for all jobs before another same-ref push.
+4. **Preserve actual record closure and publish recovery.**
+   Retain the qualified-final local 240/242, its three passing unchanged
+   diagnostics and all original hosted outcomes. No aggregate-only full rerun
+   is authorized. After actual reviews, root commits/pushes final receipts,
+   README/plan/status/handoff and next actions, then verifies remote contents.
 
 The exact record-check command, from the repository root, is:
 
@@ -60,11 +57,13 @@ The exact record-check command, from the repository root, is:
 python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py --strict
 ~~~
 
-This is a future closure command, not an executed result. The checker has no
-`--repo` option and validates records only. Complete staffing does not establish
-whole-interface 1:1, physical calibration, connected-model audio, device/DAW
-qualification, accessibility or release readiness. Keep all standing
-[instructions](../../../AGENTS.md) and [M0–M9 exits](../../PLAN.md) binding.
+The [retained strict execution](reports/sixty-worker-strict.json) passes with
+sixty accepted records, ten complete waves, zero pending/errors and the atlas
+record verified. The checker has no `--repo` option and validates records only. Complete staffing does not establish whole-interface
+1:1, physical calibration, connected-model audio, devices/DAWs, accessibility or
+release readiness. All permanent [instructions](../../../AGENTS.md) and
+[M0–M9 exits](../../PLAN.md) remain binding. **Literal whole-interface 1:1
+remains unmet and unwaived.**
 
 ---
 

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "source_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+  "run_id": 44016021554,
+  "attempt": 1,
+  "job_id": 133814025240,
+  "description": "Retention correction only. Initial apply_patch writes normalized CRLF to LF. Existing views and frozen admissions are unchanged. Original CRLF bytes are stored as deterministic gzip members because repository attributes normalize text to LF; decoded members match the exact original stream-block digests. All failure text and outcomes are unchanged.",
+  "original_job_record": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240.json",
+    "bytes": 6692,
+    "sha256": "fe40a800aa7ce22c68b86ec6538f065a74aecda0808014811e459c9ab6038cae"
+  },
+  "decoded_full_log": {
+    "bytes": 427470,
+    "sha256": "567f3da9e4781ff8610fa814a61d3c792504809377214e9f1d17c69546005074"
+  },
+  "blocks": [
+    {
+      "source_first_line": 2072,
+      "source_last_line": 2103,
+      "source_utf8_byte_offset": 248739,
+      "original_crlf": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-compile-failure-original-crlf.log.gz",
+        "storage_encoding": "gzip; mtime=0",
+        "bytes": 1718,
+        "sha256": "05f5406c014cbbea04710bc4869241b6eb7aedbfb3e896998bdf5e6ed0840e55",
+        "decoded_content": {
+          "bytes": 7224,
+          "sha256": "3d5281c501a3d39e0c71e0a5010d67d751c859be0a84936f98b2ec56f126661c",
+          "CRLF_count": 32
+        }
+      },
+      "existing_normalized_lf_view": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-compile-failure.log",
+        "bytes": 7192,
+        "sha256": "80a67a6868cbda39ace76aae274588325fa25ffcedfddf755c31b515fd87610d",
+        "LF_count": 32
+      },
+      "exact_newline_normalization_equality": true
+    },
+    {
+      "source_first_line": 2898,
+      "source_last_line": 2919,
+      "source_utf8_byte_offset": 419140,
+      "original_crlf": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-build-summary-original-crlf.log.gz",
+        "storage_encoding": "gzip; mtime=0",
+        "bytes": 553,
+        "sha256": "cf116302be191ce2ce9d3e8f9d8215e2a35795007fe6bf4b57f8999350e9aede",
+        "decoded_content": {
+          "bytes": 2512,
+          "sha256": "ed9b68e6f4761cc67bb378d3ef1dc87903b516f39a804242a5a9c01f07236e9c",
+          "CRLF_count": 22
+        }
+      },
+      "existing_normalized_lf_view": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-build-summary.log",
+        "bytes": 2490,
+        "sha256": "ab867c925376d3c41ae30cdf3813e244ff17ac4e9a703aace869a86d4cf93477",
+        "LF_count": 22
+      },
+      "exact_newline_normalization_equality": true
+    }
+  ],
+  "git_retention_reason": "Existing attributes are text=auto/eol=lf; gzip preserves the original bytes without changing attributes."
+}

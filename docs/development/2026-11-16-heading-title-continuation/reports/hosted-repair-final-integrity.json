@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T05:02:58.338570+00:00",
+  "checked_staged_tree": "e93034bcd7131e4f431a1a6330d68dbd69c209cf",
+  "source_base": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+  "exact_staged_archive": true,
+  "commands": [
+    {
+      "gate": "repository",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_repository.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 5.629740995998873,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-repository-integrity.log",
+      "bytes": 1173,
+      "sha256": "a918a9a726b2004c12bf74e29f0545c392f51e157b106eac8ffaa45107b53d2b"
+    },
+    {
+      "gate": "session",
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-heading-title-continuation/check_session.py",
+        "--strict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.12476244600111386,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-session-integrity.log",
+      "bytes": 1222,
+      "sha256": "cee2198fb1b50a56d6c069a5c9187d327e79181cddc7c98214b4485fd1151627"
+    }
+  ],
+  "original_frozen_code_inputs": 475,
+  "changed_inputs": [
+    {
+      "path": ".github/workflows/standalone.yml",
+      "original": {
+        "bytes": 71269,
+        "sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c"
+      },
+      "staged": {
+        "bytes": 71269,
+        "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319"
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "original": {
+        "bytes": 61218,
+        "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+      },
+      "staged": {
+        "bytes": 61258,
+        "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "original": {
+        "bytes": 34239,
+        "sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509"
+      },
+      "staged": {
+        "bytes": 34239,
+        "sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f"
+      }
+    }
+  ],
+  "other_code_inputs_unchanged": 472,
+  "live_code_and_documentation_whitespace_passed": true,
+  "retained_evidence_whitespace_paths": [
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814024877-cancellation.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/job-133814025240-build-summary.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/ctest.xml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/toolchain.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/ctest.xml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/ctest.xml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/archive.sha256",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/ctest.xml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/moduleinfo.json",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/provenance.json",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/toolchain.log"
+  ],
+  "retained_evidence_whitespace_warning_count": 173,
+  "original_whitespace_output": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-final-whitespace-original.log.gz",
+    "decoded_bytes": 29537,
+    "decoded_sha256": "137d943e5b12ffde5f7c1a2e50bae37b88344758906146770395cb69f7ea6790",
+    "gzip_bytes": 3768,
+    "gzip_sha256": "96933a53816fc32188579f674ae808844da1ff944c058800f95ae581f50f7e68"
+  },
+  "temporary_view_removed_after_checks": true,
+  "free_disk_bytes_before_removal": 47575900160,
+  "seconds": 11.890492978000111,
+  "scope": "Existing repository and strict 60-worker record checks on exact staged archive. Original logs and numerical evidence retain their bytes. No native tests rerun; source-specific repaired Windows and full sanitizer CI remain the next required execution."
+}

@@ -10,11 +10,13 @@ Historical workers and tests are not counted again.
 
 ## Current recovery point
 
-All **60 distinct workers have actually been dispatched in ten waves of six;
-57 deliveries are accepted**. A52–A54 retain exact-published-source core,
-standalone and VST3 qualification. Follow-ups do not add worker credit. The
-[ledger](assignments.json) and [checkpoint](CHECKPOINT.md) own later closure.
-
+All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+The [ledger](assignments.json) and [checkpoint](CHECKPOINT.md) own later closure.
 T2 rack headings are published at `6047723b595259de355c74342e48a8ae2ee1e228`.
 T3 revision 2 and H1 have completed independently reviewed numerical, visual,
 clipping and software-cost gates. H1 passes 103/103 frozen reference criteria;
@@ -57,29 +59,69 @@ The [two failed MIDI methods](reports/qualified-midi-one-isolated-diagnostics.js
 each passed once in **2.031860108** and **2.037485655 seconds**, with their
 nine-second child deadlines and all 475 code inputs unchanged. These separate
 passes preserve the original failed full-run outcome; they establish neither
-a green 242-test aggregate nor a particular CPU/scheduler cause. Root proceeds
-to exact-source hosted qualification with this complete local evidence.
+a green 242-test aggregate nor a particular CPU/scheduler cause. The published
+source and its original hosted outcomes are recorded separately in this session.
 
-The [verified provider recovery object](reports/h1-recovery-provider-checkpoint.json)
-is commit `835755a9069c25ce55bc2c231547458b4b3ffce4`, with recovery tree
-`9faad3ce95cc0f4a5c0fd4113a08f0b0915ef97c` and parent `6047723b…`.
-Its **366 blobs / 51,076,715 bytes** and **141 additional preflight blobs /
-6,399,504 bytes** are uploaded. **Main remains at `9d60dbf…`; no branch ref has
-been updated.** The final guarded, nonforced publication must preserve both
-concurrent `9d60dbf…` and recovery `835755a9…` histories, then independently
-verify its exact tree, parents and contents. A52–A54 still own all sixteen
-required hosted job families; 57 of sixty deliveries are accepted.
+The [verified source publication](reports/source-publication.json) is
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
+`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
+update and independent API/Git verification preserve both histories and verify
+the exact contents. This published tree equals local authored merge `07aafd218…`.
 
-Root follows the completed local admission, publishes and verifies
-the final merge, observes the exact-source hosted matrix, accepts the remaining
-three actual deliveries, and commits/pushes strict-record and final recovery
-closure. No whole-suite or release pass is manufactured from the diagnostics.
+All sixteen original job families are terminal at that exact source, attempt 1:
+[14 successes, one failure and one cancellation](reports/source-ci-complete.json).
+
+| Workflow | Original source-specific result |
+| --- | --- |
+| [Core CI](reports/a52-core-hosted.json), run `44016021552` | **6/6 successful**: four platform Release jobs and Linux ASan/UBSan/leaks each pass 202/202; full R4 qualification also passes. |
+| [Native VST3](reports/a54-vst3-hosted.json), run `44016021543` | **4/4 successful**, 29 CTests across the jobs; each actual module validator passes 47/47, with installation and packaging checked. |
+| [Native standalone](reports/source-ci-complete.json), run `44016021554` | Four normal jobs pass **68/68 each**: Linux MIDI OFF/ON and both macOS architectures. Windows fails fixture compilation under `/W4 /WX`; the Linux sanitizer job is cancelled after **30 of 34 selected tests pass**. |
+
+The standalone cancellation occurred during preset raster, leaving it and three
+later tests incomplete. No sanitizer finding or originating cancellation cause
+is established. It is not a successful sanitizer gate. Original logs, failures
+and cancelled/unreached work remain retained.
+
+The [independently reviewed Windows fixture correction](../../reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md)
+is [locally qualified](reports/windows-header-local-qualification.json):
+two explicit float casts plus one active fixture-hash literal across two files.
+Both affected CTests pass **2/2 in 43.593519385 seconds**. The Linux fixture
+binary, all 48 case descriptions and default 10,542-check/163-painting result
+are identical. All **103/103** canonical criteria pass; complete statistics
+differ only in the two source identity values, with unchanged canonical pixels.
+At this Windows-only stage, **473 of 475 qualified code inputs are unchanged**.
+Production app `1fa2a247…`, painter, workloads, criteria and historical comparators
+are unchanged. This is local equivalence evidence; successor MSVC compilation
+and hosted acceptance remain pending.
+
+Root [implemented the separately admitted sanitizer job budget](reports/native-sanitizer-job-budget-implementation.json):
+only `jobs.native-sanitizers.timeout-minutes` changes **20 → 35 minutes**.
+Every other workflow byte, all 34 selected tests, 31 build inputs, individual
+test/child limits, workloads, instrumentation and leak policies are unchanged.
+The final successor changes only the Windows fixture pair and workflow scalar:
+**exactly three of 475 inputs change; 472 remain unchanged**. Production
+sources and app `1fa2a247…` are unchanged. The observed prefix plus existing
+tail-limit envelope is 1,823.666679 seconds; this supports the job allowance
+without proving what caused the original cancellation. Successor publication
+and all exact-source hosted results remain pending; no successor SHA is recorded.
+
+The independently admitted Windows fixture correction and separate sanitizer
+job-budget change are implemented and recorded. Root next publishes this
+three-input successor with a fresh expected remote head and no force, independently
+verifies its commit/tree/parent/contents, and supplies that exact source to the
+same A52 Core, A53 standalone and A54 VST3 reviewers. Preserve all original
+attempts; prior successes do not qualify the successor automatically. Staffing
+and strict record closure are complete. Publish the final evidence and handoff
+after all successor jobs finish and are reviewed. No further local aggregate-only
+rerun is authorized by these results.
 
 
-The [local publication admission](../../reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
-accepts the unchanged source for guarded publication with the failed full-run
-result and three passing diagnostics retained. Exact-source hosted acceptance
-remains pending; this is not a green full-suite aggregate.
+The [original local publication admission](../../reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
+retains the failed full-run result and three separate passing diagnostics.
+Publication is complete at `fba1911…`; its original standalone failure and
+cancellation remain open qualification evidence. Successor acceptance is pending.
 
 ## Delivered phases and next work
 
@@ -87,8 +129,10 @@ remains pending; this is not a green full-suite aggregate.
 2. **T3 title:** accepted five-pass brass treatment with retained geometry and subtitle.
 3. **H1 header:** accepted bounded field/grain, reference-patch criteria, clipping,
    actual visual review and paint-cost study; permanent regressions integrated.
-4. **Delivery:** complete current integration and exact-source hosted gates,
-   retain current installed captures in README, then publish final recovery.
+4. **Delivery:** original `fba1911…` publication and hosted observation are
+   complete with two unsuccessful standalone jobs retained. Repairs and strict
+   record closure are complete; successor publication/CI and final recovery remain.
+   README retains the current installed captures and whole-interface boundary.
 
 The existing manual/rim/cap/browser/contact/scanner owners retain their scopes.
 No other checkout or unfinished overlay is modified. Shared painter edits remain
@@ -133,7 +177,8 @@ The subsequently published T2 source has all 16 latest job families successful,
 including all three Apple Silicon jobs. Its original sanitizer timeout and one
 successful unchanged-source retry remain in the
 [T2 hosted receipt](reports/t2-hosted-complete.json). Those results do not
-qualify the later unpublished source.
+qualify the later `fba1911…` publication or its pending successor. Their own
+original hosted outcomes are recorded above.
 
 ## Continuing after a context reset
 
