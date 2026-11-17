@@ -77,6 +77,29 @@ P1_ORIGINAL_HELPER = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n
 P1_ELSE_HELPER = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n"
     b"        reference_performance_p1_material(drawing, bounds, scale);\n"
     b"        return true;\n    } else {\n        return false;\n    }\n")
+P1_INDEXED_FIXTURE_SHA256 = "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+ARRAY_ORIGINAL_BYTES = b"""template <typename Range, typename Writer>
+void array(std::ostream& out, const Range& values, Writer write) {
+    out << '[';
+    bool first = true;
+    for (const auto& value : values) {
+        if (!first) out << ',';
+        first = false;
+        write(out, value);
+    }
+    out << ']';
+}
+"""
+ARRAY_INDEXED_BYTES = b"""template <typename Range, typename Writer>
+void array(std::ostream& out, const Range& values, Writer write) {
+    out << '[';
+    for (std::size_t index = 0; index < values.size(); ++index) {
+        if (index != 0) out << ',';
+        write(out, values[index]);
+    }
+    out << ']';
+}
+"""
 RECALL_SOURCE_TRANSITION = "ui-model-recall-controls-a26-v1"
 RECALL_SOURCE_PATCH = SESSION + "/reports/UiModel-recall-controls.patch"
 RECALL_SOURCE_PATCH_SHA256 = "d4fadc8ae85d9f3dd2aedb6cccc63977fe1c4516dcca47b758a0ec18c7792cf8"
@@ -1234,6 +1257,21 @@ def admit_fixture_source(source_bytes, *, candidate_only):
         return result
     require(candidate_only,
             "paired mode requires original fixture; helper else transition is candidate-only")
+    if ARRAY_INDEXED_BYTES in source_bytes or observed == P1_INDEXED_FIXTURE_SHA256:
+        require(source_bytes.count(ARRAY_INDEXED_BYTES) == 1 and ARRAY_ORIGINAL_BYTES not in source_bytes,
+                "fixture requires one exact indexed array block")
+        restored = source_bytes.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
+        require(sha(restored) == P1_HELPER_ELSE_SHA256,
+                "indexed array reversal does not reconstruct admitted helper fixture")
+        require(observed == P1_INDEXED_FIXTURE_SHA256,
+                "indexed fixture does not match complete admitted identity")
+        previous = admit_fixture_source(restored, candidate_only=True)
+        result.update(variant="p1-indexed-array-v1", accepted_sha256=observed,
+                      transition=dict(id="p1-indexed-array-v1", scope="candidate-only",
+                                      reversed_sha256=sha(restored), whole_file_reversal_verified=True,
+                                      original_reversed_sha256=original,
+                                      helper_transition=previous["transition"]))
+        return result
     require(source_bytes.count(P1_ELSE_HELPER) == 1 and P1_ORIGINAL_HELPER not in source_bytes,
             "fixture requires one exact complete constexpr else block")
     restored = source_bytes.replace(P1_ELSE_HELPER, P1_ORIGINAL_HELPER, 1)
@@ -1506,10 +1544,16 @@ def execute(args):
                       passed=not audit.failures, checks_evaluated=audit.checks, failures=audit.failures,
                       artifacts_before_report={"files": store.files, "bytes": store.bytes})
         store.json("report.json", report)
-    print(json.dumps({"model": MODEL, "mode": report["mode"], "passed": report["passed"],
-                      "checks_evaluated": audit.checks, "failed_checks": len(audit.failures),
-                      "candidate_screens": report.get("after_canonical", {}).get("numerical_screens", {}),
-                      "report": str(output / "report.json")}, allow_nan=False))
+    summary = {"model": MODEL, "mode": report["mode"], "passed": report["passed"],
+               "checks_evaluated": audit.checks, "failed_checks": len(audit.failures),
+               "candidate_screens": report.get("after_canonical", {}).get("numerical_screens", {}),
+               "report": str(output / "report.json")}
+    if audit.failures:
+        summary["failures"] = [{"check": str(item.get("check", ""))[:160],
+                                "detail": str(item.get("detail", ""))[:512]}
+                               for item in audit.failures[:8]]
+        summary["omitted_failure_count"] = max(0, len(audit.failures) - 8)
+    print(json.dumps(summary, allow_nan=False))
     return 0 if report["passed"] else 1
 
 

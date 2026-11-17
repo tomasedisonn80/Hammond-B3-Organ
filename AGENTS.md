@@ -5,33 +5,79 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current console continuation
 
-**Console continuation, 16 November 2026**, base
-`9d60dbf462a90fe422fd4e69757fe202264acb7c`: this request owns
-`/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and the single coordinated
-`../build-native`. Read its [scope](docs/development/2026-11-16-console-completion/README.md),
+**Console continuation, current recovery 17 November 2026**, starting at
+`9d60dbf462a90fe422fd4e69757fe202264acb7c`. This request owns
+`/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and root's single coordinated
+`../build-native`. Read the [handoff](docs/CONSOLE_COMPLETION_HANDOFF.md),
+[scope](docs/development/2026-11-16-console-completion/README.md),
 [checkpoint](docs/development/2026-11-16-console-completion/CHECKPOINT.md),
-[actual ledger](docs/development/2026-11-16-console-completion/assignments.json)
-and fresh [all-500-page coverage](docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
-This request has its own 60 distinct workers in ten waves. Its complementary
-scope is the copied registration-library model and independently reviewed P1
-percussion/expression plate material. Published main `03c70c1` adds the separately accepted H1/header and scripted
-semantic-paint work. This root preserves both tracks and qualifies their exact
-combined source. Other workspaces remain read-only; inspect and reconcile any
-further published advances before publication.
-Every future session must recover the complete plan, record setup and actual
-progress, distinguish tested/failed/unrun gates, state concrete next work,
-update README with real captures after UI changes, and commit/push accepted
-authorized work with independent remote and source-specific CI verification.
-All standing compatibility, ownership and literal 1:1 obligations below remain.
+[actual ledger](docs/development/2026-11-16-console-completion/assignments.json),
+[fresh all-500-page coverage](docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json)
+and [complete M0–M9 crosswalk](docs/reviews/CONSOLE_ATLAS_CROSSWALK.md).
+All sixty distinct workers are root-accepted in ten waves of six. The
+[executed strict check](docs/development/2026-11-16-console-completion/reports/final-worker-strict.json)
+verifies all 60 note hashes with zero errors. This closes records, not product
+qualification. No follow-up or older worker counts again.
 
-Current test-only successor recovery also includes published `6287055`,
+The [current verified repair publication](docs/development/2026-11-16-console-completion/reports/repair-publication.json)
+is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
+`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
+`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
+independent API/Git verification and all 587 repaired input identities are recorded.
+**All new-source hosted results are pending at this handoff**; the three workflows
+were triggered, and no first-source pass transfers to this repair.
+
+The [first verified console publication](docs/development/2026-11-16-console-completion/reports/implementation-publication.json)
+is `cf87a587d0002d106e5210b57a39fd1967245a8f`, tree
+`2565ac86f9d31b7ab9d24d0d5353289c2359bf12`. All sixteen original jobs are
+terminal, attempt one: Core **5/6**, native **5/6**, VST3 **4/4** succeed.
+Core Windows is **207/209** on two Python test-fixture path failures; native
+Windows fails P1 fixture C4702/C2220 before acceptance executes. The
+[A56](docs/reviews/CONSOLE_CORE_HOSTED_ADMISSION.md),
+[A57](docs/reviews/CONSOLE_NATIVE_HOSTED_ADMISSION.md) and
+[A58](docs/reviews/CONSOLE_VST3_HOSTED_ADMISSION.md) admissions preserve every
+source-specific outcome. The first publication receipt's dated worker and
+pending-CI fields remain immutable historical observations.
+
+[A59's five-file repair admission](docs/reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md)
+and [local qualification](docs/development/2026-11-16-console-completion/reports/windows-repair-local-qualification.json)
+are separate: source suites **54/54, 45/45 and 24/24** pass once each; **3/3**
+affected CTests pass with unchanged Linux fixture/application bytes. Every
+production, CMake, workflow, workload, numerical and timeout boundary is retained.
+The capture newline correction addresses a source-derived latent expectation;
+the original Windows KeyError occurred before any hash comparison. Do not
+claim a newly observed Windows newline failure or repaired Windows qualification.
+The repair publication is verified above; root records all subsequent new-source
+hosted results in the live checkpoint. Older passes do not qualify changed inputs.
+
+Preserve the predecessor `6287055` title/header copied-state protocol failures,
 [A55's exact helper transition](docs/reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
-and the [separately qualified failure-only reader diagnostics](docs/development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json).
-Preserve the predecessor Windows title/header protocol failures; no differing
-leaf or cause is yet established. Do not loosen typed equality, numerical
-criteria, deadlines or workloads. Observe the next exact-source Windows result
-before choosing a corrective change. Root publishes with a fresh expected SHA
-and no force after prior same-ref jobs finish, then records all new outcomes.
+and [separate failure-only diagnostics](docs/development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json).
+The first console Windows build never reached those readers. No differing leaf
+or cause is established. Observe the new Windows path/type/value evidence before
+choosing a correction; preserve failures and keep strict typed equality, values,
+criteria, deadlines and workloads. No aggregate-only or unchanged-source retry
+is admitted. Wait for every source-specific job to become terminal before
+another same-ref push; root alone publishes accepted work with a fresh expected
+SHA and no force, then independently verifies remote commit/tree/parents/contents.
+
+The delivered scope is copied LibraryModel/recall plus separately reviewed
+P1 material combined with the published H1/header and semantic-paint source.
+Native browser/main wiring remains unimplemented. Follow the
+[native plan](docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md): admit model-owned
+Save availability and real post-Start proof before native lifecycle/input/storage
+and browser integration. Preserve all other owners and read-only workspaces.
+
+**Every future agent** must recover this entire file and the complete plan before
+choosing work or resuming after a context reset; record setup, actual progress,
+failed/unrun gates and concrete next inputs/modules/acceptance; checkpoint before
+long operations; and update README from admitted actual captures after UI changes.
+Keep originals and recovery manifests before optional cleanup of only owned,
+reproducible intermediates. Commit/push accepted authorized work through root
+and independently verify the remote and exact-source CI without asking for
+renewed permission for this scope. The standing compatibility, full-plan and
+literal whole-interface **1:1 unmet/unwaived** obligations below apply to all
+future agents and are not closed by readings, worker counts or numerical passes.
 
 ## Published heading/header recovery record
 

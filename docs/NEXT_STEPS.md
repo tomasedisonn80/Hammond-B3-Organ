@@ -1,80 +1,98 @@
 # Next steps
 
 <!-- console-next-current:start -->
-<a id="current-console-continuation--17-november-2026"></a>
-## Current console continuation — 16 November 2026
+<a id="current-console-continuation--16-november-2026"></a>
+## Current console continuation — 17 November 2026
 
-Read the complete [M0–M9 plan](PLAN.md), [standing instructions](../AGENTS.md),
-[current handoff](CONSOLE_COMPLETION_HANDOFF.md), [setup](CONSOLE_SETUP_AND_HANDOFF.md),
-[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+Read the full [M0–M9 plan](PLAN.md), [standing instructions](../AGENTS.md),
+[handoff](CONSOLE_COMPLETION_HANDOFF.md), [setup](CONSOLE_SETUP_AND_HANDOFF.md),
+[live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
 [actual ledger](development/2026-11-16-console-completion/assignments.json) and
 [root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
-Root owns integration, `../build-native`, acceptance and publication in
-`/workspace/scratch/21cce69f7784/Hammond-B3-Organ`. Older workspace commands
-below are historical; other owners' unfinished work remains separate.
+Root owns integration, the one `../build-native`, acceptance and publication in
+`/workspace/scratch/21cce69f7784/Hammond-B3-Organ`. Confirm current ownership,
+HEAD/tree/index/dirty files and fresh remote before acting; other workspaces and
+older dated entries below remain read-only/historical.
 
-### 1. Finish documentary qualification, publication and actual worker closure
+### 1. Finish new-source hosted qualification and record closure
 
-The [combined result](development/2026-11-16-console-completion/reports/combined-qualification.json)
-passes **46 build steps, 78 affected tests and 15 captures** with all 587 inputs
-stable. All 69 gallery payloads and the [independent all-frame review](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md)
-are complete. README shows the combined gallery. Preserve the original **246/247**
-full run and rerun the affected document gate after authoring; do not relabel
-the 78-test result as a full 251-test run.
+The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)
+is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
+`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
+`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
+independent API/Git verification and all 587 repaired input identities are recorded.
+**All new-source hosted results are pending at this handoff**; the three workflows
+were triggered, and no first-source pass transfers to this repair.
 
-Root reviews the final staged tree, reconciles any fresh remote advance and
-publishes accepted paths with an exact expected parent and no force. Independently
-fetch and verify remote commit/tree/parents/contents, then observe all required
-hosted jobs at that source. Record passing, failed, cancelled and unrun outcomes
-separately. Finish sixty actual accepted notes in ten waves and the matching
-strict record check. Planned workers, follow-ups and historical sessions count
-for no new credit. Check the live checkpoint before repeating completed work.
+First console source [cf87a587](development/2026-11-16-console-completion/reports/implementation-publication.json)
+is already published and independently verified. All sixteen attempt-one jobs
+are terminal: Core 5/6, native 5/6 and VST3 4/4 succeed. Preserve the original
+Windows Core 207/209 path-fixture failures and native P1 C4702/C2220 failure
+with zero acceptance execution. Their complete [Core](reviews/CONSOLE_CORE_HOSTED_ADMISSION.md),
+[native](reviews/CONSOLE_NATIVE_HOSTED_ADMISSION.md) and
+[VST3](reviews/CONSOLE_VST3_HOSTED_ADMISSION.md) reviews are separate source-bound evidence.
 
-### 2. Admit native library integration in dependency order
+The [five-file repair admission](reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md)
+and [local qualification](development/2026-11-16-console-completion/reports/windows-repair-local-qualification.json)
+are complete: one source-only run each at 54/54, 45/45 and 24/24, plus 3/3 affected
+CTests with unchanged Linux fixture/application. Do not repeat them to create a
+green aggregate. The verified repair receipt already binds the exact five-file
+identities and all 587 inputs; do not republish that completed stage. The same
+A56/A57/A58 reviewers inspect every new-source family and retain separate receipts.
+Their follow-ups create no new worker credit.
 
-The [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md) owns
-the detailed hook map and acceptance cases; the [LibraryModel guide](LIBRARY_MODEL_GUIDE.md)
-describes the implemented foundation. First freeze and independently review a
-model-owned read-only Save-availability projection and real post-Start proof.
-`controls_pending == false` alone is insufficient, as is a queued pre-Start
-restore. Next assign input/gesture/focus hooks, main-loop lifecycle/submission/
-storage routing, then browser model/view and painter changes. Keep one owner
-per shared file and recover existing native/browser owners before overlap.
+Fresh Windows Core must execute both formerly failed Python suites and the
+previously skipped Unicode-checkout generator. Fresh Windows native must compile
+the P1 fixture, reach the original title/header readers, preserve any actual
+first-difference path/type/value, and run the required downstream acceptance and
+package gates. No differing copied-state leaf or cause is yet proved. Inspect
+actual output before a narrowly admitted cause-specific change; keep every typed
+equality, expected value, numerical screen, timeout and workload. Record every
+new-source family, including failures/cancellations/unrun gates. Wait for all
+sixteen jobs to become terminal before another same-ref push; no unchanged-source
+retry, relaxed oracle or transfer of older passes is admitted.
 
-Actual app acceptance must cover startup/restart/stopped Load, original held-note
-releases across modal open/close, pending CC11 and both scopes, timeout/recovery,
-fresh final storage authorization, create-only collisions and protected paths.
-Then require full-frame/input and exact-source platform admission. Existing
-five harnesses do not complete this native journey.
+All sixty actual workers are root-accepted, six per wave. The
+[executed strict check](development/2026-11-16-console-completion/reports/final-worker-strict.json)
+verifies every accepted note hash with zero errors. Preserve those notes and
+execute final documentary integrity after authoring. The earlier
+246/247 full failure and later 78-test affected selection remain separate;
+strict worker closure proves record consistency, not product acceptance. Publish
+accepted closure evidence/current navigation and independently verify the final
+remote contents and any required source-specific CI. Use the live checkpoint to
+skip work already observed at the same source.
 
-### 3. Preserve source boundaries and every product exit
+### 2. Implement native library integration in dependency order
 
-Published `03c70c1` H1/header and semantic-paint work is retained in the
-[admitted combined source](reviews/CONSOLE_SOURCE_RECONCILIATION_ADMISSION.md).
-Its original timing/source evidence stays immutable; old-source comparisons
-do not qualify changed inputs. H1/P1 support separation is limited to qualified
-domains, with a documented tiny-scale pixel overlap. Recover all
-[other owners](PLAN.md#current-ownership-and-source) before shared work.
-Preserve 47 parameters, state4/readers 1–3, 91 sources, UUIDs, 147 keys,
-24 presets, four banks and the nominal dry Engine. The
-[atlas crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md) retains physical acquisition,
-scanner G5/ScannerLineFoh, M5/M6 graphs and dry validation, R4/R5/R6, native
-accessibility, device/DAW journeys, callback deadlines/retirement, rights and
-signed release. **Literal whole-interface 1:1 remains unmet and unwaived.**
+The [native plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md) provides the exact
+hook map and acceptance cases; the [LibraryModel guide](LIBRARY_MODEL_GUIDE.md)
+describes the existing foundation. Recover native/browser owners before overlap.
 
-**Latest test-source reconciliation:** Published `6287055` is preserved,
-including its two-file Windows helper repair and all 117 added evidence files.
-The [exact helper transition](reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
-has a separate [4/4 local qualification](development/2026-11-16-console-completion/reports/helper-transition-qualification.json).
-The predecessor's Windows run then exposed two copied-state protocol mismatches
-before title/header numerical evaluation. Its [original log and outcome](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
-remain retained; the differing leaf and cause are not yet known. Independently
-admitted failure-only diagnostics keep every equality predicate, expected value,
-numerical criterion and timeout unchanged. Their [3/3 affected local checks](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
-pass, with 582 of 587 original inputs unchanged and only five test/tool inputs
-changed in total. The actual application and all 150 application source inputs
-remain unchanged. Publication and new exact-source Windows/complete hosted
-qualification are next; no platform repair or all-green claim is made.
+| Next owner / files | Concrete deliverable and acceptance boundary |
+| --- | --- |
+| Model/API owner: `LibraryModel.h/.cpp` and design/tests | Independently admit a read-only Save-availability projection carrying basis/revision/sequence and reason. `controls_pending == false`, cached/default state and a pre-Start queued restore cannot prove availability. |
+| Input owner: `UiModel.h/.cpp` | Browser gate, parameter-gesture closure and validated focus restoration; preserve original real keyboard/Space/pointer Up ownership, suppress held repeats, and close no note by synthetic release. SDK-free input tests precede main wiring. |
+| Adapter owner: `main.cpp` | Freeze real post-Start intention/proof; report every actual submission or disabled-gate result exactly once; centralize Prepare/Start/Stop, fresh observations and synchronous create-only effects with fresh final authorization and exactly-once completion. Preserve ordinary MIDI/recovery policies and the legacy saved baseline. |
+| Browser/view owner: new model/view and assigned painter paths | Consume copied LibraryView, own focus/caret/scroll only, reconcile current H1/title support and add actual root/Refresh/Recall/Save routing without duplicating receipt authority. |
+| Independent acceptance / root | Actual startup/restart/stopped-Load, held-input/modal, pending-CC11/both-scope, timeout/recovery, collision/protected-path and warning journeys; full-frame/input review, affected coherent regression/sanitizers and exact-source Linux/Windows/macOS evidence. |
+
+Native browser/main wiring and `--library` remain absent until those actual
+changes and journeys are admitted. The five current harnesses supply foundation
+evidence only. Update README from newly admitted actual captures after UI changes.
+
+### 3. Preserve the full plan and separate product exits
+
+The current [combined gallery](design/native-gallery-console-combined/manifest.json)
+and its [all-frame admission](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md) remain
+unchanged. Historical paired/timing results retain their exact sources; H1/P1
+support separation is bounded, with a documented tiny-scale alias. Recover all
+[owners](PLAN.md#current-ownership-and-source) before contact/audio, scanner,
+crossover, R4/R5/R6 or accessibility work. Preserve 47 parameters, state4/readers
+1–3, 91 sources, UUIDs, 147 keys, 24 presets, four banks, 68 controls and the nominal
+dry Engine. The [500-page/M0–M9 crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md)
+retains physical acquisition, M5/M6 graphs and dry validation, real device/DAW/
+display/DPI, callback lifetime/deadlines, rights and signed-release gates.
+**Literal whole-interface 1:1 remains unmet and unwaived.**
 
 <!-- console-next-current:end -->
 

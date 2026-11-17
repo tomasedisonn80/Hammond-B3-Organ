@@ -1,0 +1,27 @@
+{
+  "original_block": "template <typename Range, typename Writer>\nvoid array(std::ostream& out, const Range& values, Writer write) {\n    out << '[';\n    bool first = true;\n    for (const auto& value : values) {\n        if (!first) out << ',';\n        first = false;\n        write(out, value);\n    }\n    out << ']';\n}\n",
+  "indexed_block": "template <typename Range, typename Writer>\nvoid array(std::ostream& out, const Range& values, Writer write) {\n    out << '[';\n    for (std::size_t index = 0; index < values.size(); ++index) {\n        if (index != 0) out << ',';\n        write(out, values[index]);\n    }\n    out << ']';\n}\n",
+  "original_block_sha256": "32125ed7272476ec9a34c8753e41e3d4efd54f996937557870afe77b9637e73b",
+  "indexed_block_sha256": "a026cf2b61bde1f4ba656b1cdb0008e3bc4b664659c6aa115edc4e9a404d24fe",
+  "files": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "before_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+      "after_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+      "before_bytes": 49033,
+      "after_bytes": 49026
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "before_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+      "after_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+      "before_bytes": 61275,
+      "after_bytes": 61268
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "before_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+      "after_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "before_bytes": 75587,
+      "after_bytes": 75580
+    }
+  },
+  "scope": "One exact common serializer traversal block per fixture; original Windows empty-list failure retained. No production or equality/criterion/deadline change. Windows success and particular compiler cause remain unproven."
+}

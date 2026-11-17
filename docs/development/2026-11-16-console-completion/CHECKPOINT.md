@@ -1,51 +1,139 @@
 # Current checkpoint
 
 Base `9d60dbf462a90fe422fd4e69757fe202264acb7c`; branch `main`.
-Root owns this checkout and `../build-native`. Other workspaces stay read-only.
+Root owns this checkout and the single `../build-native`. Other workspaces stay read-only.
 
-**Live position:** 58 actual workers dispatched; 55 accepted. A56/Core,
-A57/native and A58/VST3 await the actual console publication for independent
-hosted review. A59 and A60 remain undispatched; planned work is not credit.
+**Root record closure, 17 November 2026 UTC: 60 actual workers dispatched and accepted.**
+All ten waves have exactly six accepted deliveries. Root reviewed A60 and executed
+the [strict record check](reports/final-worker-strict.json): 60 note hashes verified,
+zero running workers and zero errors. This closes worker records; hosted/product
+qualification remains separate. The [ledger](assignments.json) records every review.
 
-A54 admitted tree `34f4f497350b5a487328379d641d947be98e5f8f`; local merge
-`d22fb75862a159c4fe0ff38d7457678d0ddf1cd7` adds only its three records and
-acceptance ledger to that content. Fresh `6287055` has since been merged,
-preserving all 117 added evidence files and both test-only changes. A55 admits
-the strict helper reversal, original comparator pins and all old-form behavior.
-The [helper qualification](reports/helper-transition-qualification.json) passes
-four affected gates and retains a byte-identical Linux fixture. The earlier
-combined result remains 46 build steps/78 affected tests/15 captures/69 verified
-payloads; original full 246/247 stays failed and its separate document rerun passes.
+## Current verified repair; complete CI and next candidate
 
-All sixteen predecessor `6287055` jobs are now terminal: metadata shows fifteen
-successes and Windows failure. Windows compiled successfully and passed 66/68;
-title-density and header-statistics rejected copied-state protocol data before
-their numerical evaluation. The [original complete log](reports/prepublication-628-windows-original.json)
-is retained losslessly; its missing actual leaf prevents a causal diagnosis.
-A57 independently admits bounded failure-only details in those two Python
-readers. Their [three affected local gates](reports/copied-state-diagnostic-qualification.json)
-pass. All acceptance predicates/values/numerical criteria and resource policies
-stay unchanged. The five total test/tool changes leave 582/587 original inputs
-unchanged, every application source input and actual app `3bb46f2f…` unchanged.
-There is no new MSVC execution or fix claim. Observe the next exact-source
-Windows diagnostics before changing the cause, keeping every original failure.
+The [current verified repair publication](reports/repair-publication.json)
+is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
+`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
+`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
+independent API/Git verification and all 587 repaired input identities are recorded.
+**All sixteen jobs are terminal: 15 successes and one Windows native failure.**
+[Core](reports/A56-repair-hosted/core-d2ed03b9-admission.json) passes all six
+families: five 209/209 CTest runs and full R4. Windows actually executes the
+45/24/54-method suites and Unicode-generator qualification. Root independently
+rehashed all 48 retained Core payloads. [VST3](reports/A58-repair-hosted/summary.json)
+passes all four jobs, 29/29 CTests and 47/47 actual-module validator checks per
+platform; root rehashed all 58 payloads. Native passes four normal 78/78 families
+and sanitizer 41/41; Windows builds successfully then finishes 75/78.
+Runs: Core `44034656790`, native `44034656779`, VST3 `44034656821`, all attempt one.
 
-API objects preserve both local recovery commits: `3263b17` maps to `280d0f8`
-with exact tree `b91a768…`; local `d22fb75` maps to `8cd9034` with exact tree
-`78571f9…` and both recovery/published parents. Initial large tree timeout and
-follow-up404 are retained; smaller SHA-only trees succeeded. No branch ref has
-moved. Root now performs final document/staged checks, creates the exact final
-tree, publishes with fresh expected head/no force and independently fetches it.
-Then all sixteen new-source jobs, actual sixty-worker closure and final
-documentation publication remain. More than 41 GiB is free; no original removed.
+The [actual Windows diagnosis](reports/A57-repair-hosted/windows-copied-state-diagnosis.json)
+identifies empty drawbar bank `[0][1]` where nine values are required in both title
+and header output. P1 passes all 62 visual screens but one other check fails;
+its precise detail was not retained, so a shared cause is unproven. The original
+full log, failed result and expected inner FIFO subcase skip remain preserved.
 
-Native library browser/main wiring remains next after model-owned Save
-availability and a new post-Start proof. H1/P1 separation is qualified only in
-the recorded fixture/gallery domains; tiny scales can alias a pixel. Literal
-whole-interface 1:1 remains unmet and unwaived. Use the [handoff](../../CONSOLE_COMPLETION_HANDOFF.md),
-[setup](../../CONSOLE_SETUP_AND_HANDOFF.md) and [queue](ROOT_NEXT_QUEUE.md).
-The dated entries below preserve
-the sequence and original outcomes; earlier next-action wording is historical.
+Root's next **uncommitted** candidate replaces one common array traversal block
+in each of three native fixtures with indexed traversal. The
+[exact transition](reports/array-source-transition.json) and
+[genuine before binaries/streams](reports/array-serialization-before/receipt.json)
+are retained. A59 independently admits the six fixture/reader/comparator source
+files; original pins, strict equality, numerical criteria and paired tools are
+preserved. A56 owns two source-only test adaptations and regressions. Root next
+runs the three builds, three exact-stream comparisons and seven affected gates.
+No Windows success, deeper compiler cause or P1 failure cause is claimed.
+
+## Retained first verified source and terminal CI
+
+The first console source is published as
+`cf87a587d0002d106e5210b57a39fd1967245a8f`, tree
+`2565ac86f9d31b7ab9d24d0d5353289c2359bf12`, ordered parents
+`6287055a111dc4e2747564da3d48edc9b65e2e3e` and
+`8cd9034f7e1dd21dab373f0e4ad0d1be0bab61e7`. The immutable
+[publication receipt](reports/implementation-publication.json) records expected-SHA/
+no-force publication and independent API/Git verification. Its 58/55 and pending-CI
+fields retain the original publication-time snapshot, not current progress.
+
+All sixteen original attempt-one jobs are terminal: **14 successes, two failures,
+zero cancellations**. [A56 Core](reports/A56-core-hosted.json) has five successes:
+four 209/209 CTest families plus full R4. Windows is 207/209 on two Python fixture
+path failures; the Unicode-checkout generator step is skipped.
+[A57 native](reports/A57-native-hosted.json) has four normal 78/78 successes
+(Linux MIDI OFF/ON, ARM/Intel macOS) and Linux sanitizer 41/41. Windows fails P1
+fixture C4702/C2220 before any acceptance CTest, copied-state diagnostic reader or
+successful installed-package stage executes. [A58 VST3](reports/A58-vst3-hosted.json)
+passes all four families, 29/29 CTests and 47/47 actual-module validator checks
+per platform. Original logs, attempts and every failed/unrun step remain retained.
+
+## Admitted repair; new-source qualification remains separate
+
+[A59](../../reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md) independently admits the
+five repaired fixture/comparator/test files. Exactly five of the published
+source's 587 inputs change; 582 remain unchanged. Production/app/gallery,
+CMake/workflows, `/W4 /WX`, numerical criteria, typed equality, bounds and workloads
+stay unchanged. Native path expectations match the unchanged producer, and header
+normalization affects only mock lookup keys. The capture newline mismatch is a
+source-derived latent expectation, not a separately observed Windows hash failure.
+
+Source-only suites pass **54/54, 45/45 and 24/24 once each**. The separate
+[affected local qualification](reports/windows-repair-local-qualification.json)
+passes the fixture build and **3/3 CTests**: repository integrity, native P1 and
+candidate-only P1 numerical (**191 checks, all 62 screens**). All inputs remain
+stable, and the rebuilt Linux fixture and application are byte-identical.
+No helper-absent runtime, new paired comparison or full-suite aggregate is
+claimed by that local receipt. The repair is independently published as `d2ed03b…`;
+its subsequent exact-source hosted outcomes are recorded above.
+
+The predecessor `6287055` Windows run compiled and passed 66/68, rejecting title/
+header copied state before numerical evaluation. Its [original complete log](reports/prepublication-628-windows-original.json)
+and the separately admitted [failure-only diagnostics](reports/copied-state-diagnostic-qualification.json)
+remain retained. The first console source failed P1 compilation before those
+readers ran. The later `d2ed03b` output now establishes the two empty-list leaves
+recorded above. The indexed serializer candidate preserves the required complete
+state and needs fresh execution; a particular compiler mechanism remains unproven.
+No weakened oracle/deadline/workload or unchanged-source retry is admitted.
+
+## Immediate root work
+
+1. Recover the completed `d2ed03b…` publication receipt and its verified input
+   identities. The same A56/A57/A58 reviewers inspect the new source in separate
+   receipts; their follow-ups add no worker. Do not repeat the completed publication.
+2. Finish the independent eight-input candidate review and local qualification,
+   then publish it with a fresh remote lease. All `d2ed03b` jobs are terminal.
+   Its failures remain failures; the next published source needs fresh Windows
+   and other-family results without any relaxed oracle, deadline or workload.
+3. A60 acceptance and strict worker closure are complete. Execute the final
+   repository document-integrity gate after all authoring and retain its receipt
+   without promoting the old 246/247 full result or earlier checks.
+4. Publish accepted final records/navigation and independently verify remote
+   contents and the applicable source-specific CI. Update this live section with
+   actual observations while preserving accepted notes and dated receipts.
+
+## Retained qualification and next implementation
+
+The earlier [combined result](reports/combined-qualification.json) remains
+46/46 build steps, 78/78 affected tests and 15/15 captures on 587 stable inputs;
+all 69 gallery payloads were verified and A48's all-frame review is accepted.
+The original full 246/247 stays failed; later document checks pass separately.
+The 78-test selection is not a full 251-test rerun. Application
+`3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9`
+and the displayed combined gallery remain unchanged by the repair.
+
+Earlier staging/recovery (`34f4f497…`, local `3263b17`/`d22fb75`, API
+`280d0f8`/`8cd9034`) and first tree-request failures retain their receipts;
+[first publication](reports/implementation-publication.json) is the actual remote
+source, not a local authored alias. A55's [exact helper transition](reports/A55-helper-transition.json)
+and its [4/4 qualification](reports/helper-transition-qualification.json) preserve
+all 117 imported `6287055` evidence additions and original source pins.
+More than 41 GiB was free at root's resource observation; no original was removed.
+
+Native browser/main wiring remains absent. The [next plan](../../design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+starts with model-owned Save availability and a new post-Start proof, then native
+input, lifecycle/submission/storage and browser/view hooks. H1/P1 separation is
+qualified only in recorded fixture/gallery domains; tiny scales can alias a pixel.
+Literal whole-interface **1:1 remains unmet and unwaived**. Recover the
+[handoff](../../CONSOLE_COMPLETION_HANDOFF.md), [setup](../../CONSOLE_SETUP_AND_HANDOFF.md)
+and [queue](ROOT_NEXT_QUEUE.md). All dated sections below preserve their original
+sequence and outcomes; earlier next-action wording is historical.
 
 ## Actual progress
 

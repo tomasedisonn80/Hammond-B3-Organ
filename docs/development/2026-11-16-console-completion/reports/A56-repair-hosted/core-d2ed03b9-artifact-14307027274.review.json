@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "artifact_id": 14307027274,
+  "job_id": 133874509351,
+  "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "archive": "core-d2ed03b9-r4-full.zip",
+  "qualification_path": "build-waveform/rotary-waveform/Release/full/full-20261117T065514.972614Z-59b6b4f4/qualification.json",
+  "qualification_sha256": "d54ef6d23a086c1e2b4cdb401d32d440e64602bf20d41e0e8bbbed6de344c2fd",
+  "latest_pointer_digest_verified": true,
+  "status": "pass",
+  "completed": true,
+  "mode": "full",
+  "fixture_id": "rotary-r4-full-stream-v1",
+  "failures": [],
+  "groups": {
+    "source_before": "pass",
+    "executable_before": "pass",
+    "build_metadata_before": "pass",
+    "build_options": "pass",
+    "native_process_capture": "pass",
+    "native_process_exit": "pass",
+    "native_json": "pass",
+    "native_report_admission": "pass",
+    "selected_decimal_crosscheck": "pass",
+    "retained_static_grid": "pass",
+    "source_after": "pass",
+    "source_stability": "pass",
+    "executable_after": "pass",
+    "executable_stability": "pass",
+    "build_metadata_after": "pass",
+    "build_metadata_stability": "pass"
+  },
+  "wall_seconds": 535.7267005399999,
+  "native_process": {
+    "argv": [
+      "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/hammond_rotary_waveform_probe",
+      "--mode",
+      "full"
+    ],
+    "cwd": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T065514.972614Z-59b6b4f4",
+    "timeout_seconds": 1500.0,
+    "exit_code": 0,
+    "timed_out": false,
+    "resource_limit_exceeded": null,
+    "started_utc": "2026-11-17T06:55:15.249299+00:00",
+    "started": true,
+    "wall_seconds": 533.991220915,
+    "finished_utc": "2026-11-17T07:04:09.240535+00:00",
+    "peak_observed_run_bytes": 407442,
+    "stdout": {
+      "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T065514.972614Z-59b6b4f4/native.stdout.json",
+      "bytes": 405134,
+      "sha256": "95a90f9b6c9f815ebde22127cf7156879f20bf1ab45402fb27d05c0680b6b1ff"
+    },
+    "stderr": {
+      "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T065514.972614Z-59b6b4f4/native.stderr.txt",
+      "bytes": 2308,
+      "sha256": "cd63e2909bc07a6be02f76793c4821dd69f2c2cc61e7451a8c6034c48d8799f9"
+    }
+  },
+  "native_report_status": "pass",
+  "native_totals": {
+    "rate_count": 4,
+    "completed_partitions": 24,
+    "reference_frames": 3801000,
+    "reference_scalar_comparisons": 7602000,
+    "reference_path_solutions": 15204000,
+    "native_frames": 22806000,
+    "native_path_solutions": 91224000,
+    "partition_compared_samples": 38010000,
+    "partition_equal_samples": 38010000,
+    "native_events_consumed": 840,
+    "selected_trace_paths": 176,
+    "convergence_pairs": 288,
+    "auxiliary_convergence_path_solutions": 576
+  },
+  "native_admission": {
+    "status": "pass",
+    "mode": "full",
+    "fixture_id": "rotary-r4-full-stream-v1",
+    "totals": {
+      "rate_count": 4,
+      "completed_partitions": 24,
+      "reference_frames": 3801000,
+      "reference_scalar_comparisons": 7602000,
+      "reference_path_solutions": 15204000,
+      "native_frames": 22806000,
+      "native_path_solutions": 91224000,
+      "partition_compared_samples": 38010000,
+      "partition_equal_samples": 38010000,
+      "native_events_consumed": 840,
+      "selected_trace_paths": 176,
+      "convergence_pairs": 288,
+      "auxiliary_convergence_path_solutions": 576
+    },
+    "maximum_normalized_error": "1.93574020587629201495E-9"
+  },
+  "source_before": {
+    "git_head": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "git_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+    "dirty_overlay": false
+  },
+  "source_after": {
+    "git_head": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "git_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+    "dirty_overlay": false
+  },
+  "streams": [
+    {
+      "stream": "stdout",
+      "archive_path": "build-waveform/rotary-waveform/Release/full/full-20261117T065514.972614Z-59b6b4f4/native.stdout.json",
+      "bytes": 405134,
+      "sha256": "95a90f9b6c9f815ebde22127cf7156879f20bf1ab45402fb27d05c0680b6b1ff",
+      "exact_original_stream_verified": true
+    },
+    {
+      "stream": "stderr",
+      "archive_path": "build-waveform/rotary-waveform/Release/full/full-20261117T065514.972614Z-59b6b4f4/native.stderr.txt",
+      "bytes": 2308,
+      "sha256": "cd63e2909bc07a6be02f76793c4821dd69f2c2cc61e7451a8c6034c48d8799f9",
+      "exact_original_stream_verified": true
+    }
+  ],
+  "scope": "native R4 waveform and exact partition qualification plus selected reference and retained static-grid checks",
+  "separate_gates": {
+    "transaction_lifecycle": "not_run",
+    "R5_audible_policy": "not_run",
+    "R6_device_deadlines": "not_run",
+    "physical_fidelity": "not_run"
+  },
+  "source_binding_limit": "before/after source, build metadata and executable hashes bind observed bytes; generated commands do not prove a preexisting executable was freshly compiled; use the build-before-run CMake target"
+}

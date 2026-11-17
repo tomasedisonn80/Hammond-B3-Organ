@@ -1,0 +1,1724 @@
+{
+  "actual_worker": "/root/w10_a57",
+  "all_steps_terminal": true,
+  "artifact_index": "artifacts-index.json",
+  "cancelled_jobs": 0,
+  "completed_jobs": 6,
+  "ctest_instances_executed": 431,
+  "ctest_instances_failed": 3,
+  "ctest_instances_passed": 428,
+  "extra_agent_credit": false,
+  "failed_jobs": 1,
+  "family_results": [
+    {
+      "all_required_tests_passed": true,
+      "all_steps_terminal": true,
+      "artifact_id": 14308300667,
+      "completed_at": "2026-11-17T07:17:35Z",
+      "conclusion": "success",
+      "ctest_summary": [
+        "The following tests passed:",
+        "100% tests passed, 0 tests failed out of 41",
+        "Total Test time (real) = 937.81 sec"
+      ],
+      "ctests_executed": 41,
+      "ctests_failed": 0,
+      "ctests_passed": 41,
+      "ctests_skipped": 0,
+      "job_id": 133874509009,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "method_skip_lines": [],
+      "method_skipped_subcases": 0,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "package_files": null,
+      "python_suite_methods": null,
+      "required_named_gates_passed": 41,
+      "required_named_gates_present": 41,
+      "review": "job-133874509009-review.json",
+      "runner_id": 1000001447,
+      "runner_name": "GitHub Actions 1000001447",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed"
+    },
+    {
+      "all_required_tests_passed": true,
+      "all_steps_terminal": true,
+      "artifact_id": 14306733646,
+      "completed_at": "2026-11-17T07:05:40Z",
+      "conclusion": "success",
+      "ctest_summary": [
+        "The following tests passed:",
+        "100% tests passed, 0 tests failed out of 78",
+        "Total Test time (real) = 443.63 sec"
+      ],
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "job_id": 133874509183,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "method_skip_lines": [],
+      "method_skipped_subcases": 0,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "package_files": 21,
+      "python_suite_methods": {
+        "python_test_capture_standalone_interface": {
+          "internal_seconds": 1.133,
+          "junit_status": "run",
+          "methods": 45,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "internal_seconds": 0.413,
+          "junit_status": "run",
+          "methods": 24,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "internal_seconds": 0.543,
+          "junit_status": "run",
+          "methods": 54,
+          "status": "passed"
+        }
+      },
+      "required_named_gates_passed": 55,
+      "required_named_gates_present": 55,
+      "review": "job-133874509183-review.json",
+      "runner_id": 1000001448,
+      "runner_name": "GitHub Actions 1000001448",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed"
+    },
+    {
+      "all_required_tests_passed": false,
+      "all_steps_terminal": true,
+      "artifact_id": 14307123053,
+      "completed_at": "2026-11-17T07:09:21Z",
+      "conclusion": "failure",
+      "ctest_summary": [
+        "The following tests passed:",
+        "96% tests passed, 3 tests failed out of 78",
+        "Total Test time (real) = 550.83 sec"
+      ],
+      "ctests_executed": 78,
+      "ctests_failed": 3,
+      "ctests_passed": 75,
+      "ctests_skipped": 0,
+      "job_id": 133874509242,
+      "labels": [
+        "windows-2022"
+      ],
+      "method_skip_lines": [
+        {
+          "line": "  test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) (case='fifo') ... skipped 'FIFO creation is not supported on this platform'",
+          "test": "test_standalone_replay_boundaries"
+        },
+        {
+          "line": "OK (skipped=1)",
+          "test": "test_standalone_replay_boundaries"
+        }
+      ],
+      "method_skipped_subcases": 1,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "package_files": null,
+      "python_suite_methods": {
+        "python_test_capture_standalone_interface": {
+          "internal_seconds": 3.839,
+          "methods": 45,
+          "result": "Passed"
+        },
+        "python_test_compare_header_material": {
+          "internal_seconds": 0.957,
+          "methods": 24,
+          "result": "Passed"
+        },
+        "python_test_compare_performance_plate": {
+          "internal_seconds": 0.968,
+          "methods": 54,
+          "result": "Passed"
+        }
+      },
+      "required_named_gates_passed": 52,
+      "required_named_gates_present": 55,
+      "review": "job-133874509242-review.json",
+      "runner_id": 1000001452,
+      "runner_name": "GitHub Actions 1000001452",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed"
+    },
+    {
+      "all_required_tests_passed": true,
+      "all_steps_terminal": true,
+      "artifact_id": 14306278829,
+      "completed_at": "2026-11-17T07:05:11Z",
+      "conclusion": "success",
+      "ctest_summary": [
+        "The following tests passed:",
+        "100% tests passed, 0 tests failed out of 78",
+        "Total Test time (real) = 413.58 sec"
+      ],
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "job_id": 133874509299,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "method_skip_lines": [],
+      "method_skipped_subcases": 0,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "package_files": 17,
+      "python_suite_methods": {
+        "python_test_capture_standalone_interface": {
+          "internal_seconds": 0.973,
+          "junit_status": "run",
+          "methods": 45,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "internal_seconds": 0.347,
+          "junit_status": "run",
+          "methods": 24,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "internal_seconds": 0.471,
+          "junit_status": "run",
+          "methods": 54,
+          "status": "passed"
+        }
+      },
+      "required_named_gates_passed": 55,
+      "required_named_gates_present": 55,
+      "review": "job-133874509299-review.json",
+      "runner_id": 1000001455,
+      "runner_name": "GitHub Actions 1000001455",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed"
+    },
+    {
+      "all_required_tests_passed": true,
+      "all_steps_terminal": true,
+      "artifact_id": 14306758403,
+      "completed_at": "2026-11-17T07:04:51Z",
+      "conclusion": "success",
+      "ctest_summary": [
+        "The following tests passed:",
+        "100% tests passed out of 78",
+        "Total Test time (real) = 412.98 sec"
+      ],
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "job_id": 133874509422,
+      "labels": [
+        "macos-15"
+      ],
+      "method_skip_lines": [],
+      "method_skipped_subcases": 0,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "package_files": 21,
+      "python_suite_methods": {
+        "python_test_capture_standalone_interface": {
+          "internal_seconds": 1.138,
+          "junit_status": "run",
+          "methods": 45,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "internal_seconds": 0.383,
+          "junit_status": "run",
+          "methods": 24,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "internal_seconds": 0.525,
+          "junit_status": "run",
+          "methods": 54,
+          "status": "passed"
+        }
+      },
+      "required_named_gates_passed": 55,
+      "required_named_gates_present": 55,
+      "review": "job-133874509422-review.json",
+      "runner_id": 1000001458,
+      "runner_name": "GitHub Actions 1000001458",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed"
+    },
+    {
+      "all_required_tests_passed": true,
+      "all_steps_terminal": true,
+      "artifact_id": 14307636021,
+      "completed_at": "2026-11-17T07:10:05Z",
+      "conclusion": "success",
+      "ctest_summary": [
+        "The following tests passed:",
+        "100% tests passed out of 78",
+        "Total Test time (real) = 569.18 sec"
+      ],
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "job_id": 133874509606,
+      "labels": [
+        "macos-15-intel"
+      ],
+      "method_skip_lines": [],
+      "method_skipped_subcases": 0,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "package_files": 21,
+      "python_suite_methods": {
+        "python_test_capture_standalone_interface": {
+          "internal_seconds": 2.811,
+          "junit_status": "run",
+          "methods": 45,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "internal_seconds": 1.038,
+          "junit_status": "run",
+          "methods": 24,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "internal_seconds": 1.324,
+          "junit_status": "run",
+          "methods": 54,
+          "status": "passed"
+        }
+      },
+      "required_named_gates_passed": 55,
+      "required_named_gates_present": 55,
+      "review": "job-133874509606-review.json",
+      "runner_id": 1000001449,
+      "runner_name": "GitHub Actions 1000001449",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed"
+    }
+  ],
+  "first_source_immutable_reference": "../A57-native-hosted.json",
+  "first_source_immutable_verification": {
+    "all_prior_evidence_files_byte_identical": true,
+    "prior_evidence_files_checked": 62,
+    "references": [
+      {
+        "bytes": 13587,
+        "path": "docs/reviews/CONSOLE_NATIVE_HOSTED_ADMISSION.md",
+        "sha256": "e77da54e5b6ec6d4fe9258e24ce44551dfbe11dd7060bf1098a7e7310e1831b9"
+      },
+      {
+        "bytes": 94741,
+        "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted.json",
+        "sha256": "075276398b54b7145cdecfe4a251964646224306bf880288a9d0af1c73851b25"
+      },
+      {
+        "bytes": 3530,
+        "path": "docs/development/2026-11-16-console-completion/notes/A57.md",
+        "sha256": "39e2bc05675af526bf972a720d817bb0a6b315f080b63f817fa03cf7e9c95764"
+      },
+      {
+        "bytes": 40423,
+        "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted/source-policy-preflight.json",
+        "sha256": "680a895cfcc62adcec5424cc44343c3642bd50315e1d2de20ff419fcb96b8ef5"
+      },
+      {
+        "bytes": 1093,
+        "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted/published-source-identity.json",
+        "sha256": "b52b8631cdd9836bd5849f1503f00be8c3bd72b4f6826462654ef755dd7b0274"
+      },
+      {
+        "bytes": 8338,
+        "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted/inspect_retained_artifact.py",
+        "sha256": "dc53e5f021218f9fa5b552cb64cabc77e84dae396b6f3b9a8392f9123cc0b966"
+      }
+    ]
+  },
+  "job_reviews": [
+    "job-133874509009-review.json",
+    "job-133874509183-review.json",
+    "job-133874509242-review.json",
+    "job-133874509299-review.json",
+    "job-133874509422-review.json",
+    "job-133874509606-review.json"
+  ],
+  "jobs": [
+    {
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509009",
+      "completed_at": "2026-11-17T07:17:35Z",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:20Z",
+      "head_branch": "main",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/job/133874509009",
+      "id": 133874509009,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rk0Q",
+      "run_attempt": 1,
+      "run_id": 44034656779,
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "runner_id": 1000001447,
+      "runner_name": "GitHub Actions 1000001447",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-11-17T06:54:27Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:47Z",
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:27Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:48Z",
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:47Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:52Z",
+          "conclusion": "success",
+          "name": "Record the revision, sanitizer policy and tools",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:48Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:55Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:26Z",
+          "conclusion": "success",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:42Z",
+          "conclusion": "success",
+          "name": "Configure native Release with project and SDL sanitizers",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:01:49Z",
+          "conclusion": "success",
+          "name": "Build the thirty-seven selected acceptance inputs",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:42Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:01:50Z",
+          "conclusion": "success",
+          "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+          "number": 9,
+          "started_at": "2026-11-17T07:01:49Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:17:28Z",
+          "conclusion": "success",
+          "name": "Discover exactly forty-one gates and run with leak checking",
+          "number": 10,
+          "started_at": "2026-11-17T07:01:50Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:17:29Z",
+          "conclusion": "success",
+          "name": "Reverify source and locked SDL2 after acceptance",
+          "number": 11,
+          "started_at": "2026-11-17T07:17:28Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:17:32Z",
+          "conclusion": "success",
+          "name": "Retain native sanitizer diagnostics",
+          "number": 12,
+          "started_at": "2026-11-17T07:17:29Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:17:32Z",
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "started_at": "2026-11-17T07:17:32Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:17:32Z",
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "started_at": "2026-11-17T07:17:32Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:17:32Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 25,
+          "started_at": "2026-11-17T07:17:32Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509009",
+      "workflow_name": "Native standalone"
+    },
+    {
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509183",
+      "completed_at": "2026-11-17T07:05:40Z",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "head_branch": "main",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/job/133874509183",
+      "id": 133874509183,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rlfw",
+      "run_attempt": 1,
+      "run_id": 44034656779,
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "runner_id": 1000001448,
+      "runner_name": "GitHub Actions 1000001448",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-11-17T06:54:24Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:49Z",
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:24Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:49Z",
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:49Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:52Z",
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:49Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:54Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:55Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:54Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:12Z",
+          "conclusion": "success",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:35Z",
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:12Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:35Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:35Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:35Z",
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:35Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:58:06Z",
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:35Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:58:06Z",
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "started_at": "2026-11-17T06:58:06Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:30Z",
+          "conclusion": "success",
+          "name": "Run all required standalone and capture acceptance tests",
+          "number": 13,
+          "started_at": "2026-11-17T06:58:06Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:31Z",
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "started_at": "2026-11-17T07:05:30Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:33Z",
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "started_at": "2026-11-17T07:05:31Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:35Z",
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "started_at": "2026-11-17T07:05:33Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:37Z",
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "started_at": "2026-11-17T07:05:35Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:37Z",
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "started_at": "2026-11-17T07:05:37Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:37Z",
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "started_at": "2026-11-17T07:05:37Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:37Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "started_at": "2026-11-17T07:05:37Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509183",
+      "workflow_name": "Native standalone"
+    },
+    {
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509242",
+      "completed_at": "2026-11-17T07:09:21Z",
+      "conclusion": "failure",
+      "created_at": "2026-11-17T06:54:21Z",
+      "head_branch": "main",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/job/133874509242",
+      "id": 133874509242,
+      "labels": [
+        "windows-2022"
+      ],
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rlug",
+      "run_attempt": 1,
+      "run_id": 44034656779,
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "runner_id": 1000001452,
+      "runner_name": "GitHub Actions 1000001452",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-11-17T06:54:25Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:55Z",
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:25Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:55Z",
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:00Z",
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:02Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "started_at": "2026-11-17T06:55:00Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:04Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "started_at": "2026-11-17T06:55:02Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:04Z",
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:04Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:04Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:04Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:50Z",
+          "conclusion": "success",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:04Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:51Z",
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:50Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:00:04Z",
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:51Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:00:04Z",
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "started_at": "2026-11-17T07:00:04Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:15Z",
+          "conclusion": "failure",
+          "name": "Run all required standalone and capture acceptance tests",
+          "number": 13,
+          "started_at": "2026-11-17T07:00:04Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:15Z",
+          "conclusion": "skipped",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "started_at": "2026-11-17T07:09:15Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:15Z",
+          "conclusion": "skipped",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "started_at": "2026-11-17T07:09:15Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:17Z",
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "started_at": "2026-11-17T07:09:15Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:17Z",
+          "conclusion": "skipped",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "started_at": "2026-11-17T07:09:17Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:17Z",
+          "conclusion": "skipped",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "started_at": "2026-11-17T07:09:17Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:19Z",
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "started_at": "2026-11-17T07:09:17Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:19Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "started_at": "2026-11-17T07:09:19Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509242",
+      "workflow_name": "Native standalone"
+    },
+    {
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509299",
+      "completed_at": "2026-11-17T07:05:11Z",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "head_branch": "main",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/job/133874509299",
+      "id": 133874509299,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rl8w",
+      "run_attempt": 1,
+      "run_id": 44034656779,
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "runner_id": 1000001455,
+      "runner_name": "GitHub Actions 1000001455",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-11-17T06:54:26Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:47Z",
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:48Z",
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:47Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:52Z",
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:48Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:55Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:55Z",
+          "conclusion": "skipped",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:31Z",
+          "conclusion": "success",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:46Z",
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:31Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:46Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:46Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:46Z",
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:46Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:58:06Z",
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:46Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:58:06Z",
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "started_at": "2026-11-17T06:58:06Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:00Z",
+          "conclusion": "success",
+          "name": "Run all required standalone and capture acceptance tests",
+          "number": 13,
+          "started_at": "2026-11-17T06:58:06Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:01Z",
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "started_at": "2026-11-17T07:05:00Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:04Z",
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "started_at": "2026-11-17T07:05:01Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:06Z",
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "started_at": "2026-11-17T07:05:04Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:08Z",
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "started_at": "2026-11-17T07:05:06Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:08Z",
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "started_at": "2026-11-17T07:05:08Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:08Z",
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "started_at": "2026-11-17T07:05:08Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:05:08Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "started_at": "2026-11-17T07:05:08Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509299",
+      "workflow_name": "Native standalone"
+    },
+    {
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509422",
+      "completed_at": "2026-11-17T07:04:51Z",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "head_branch": "main",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/job/133874509422",
+      "id": 133874509422,
+      "labels": [
+        "macos-15"
+      ],
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rmbg",
+      "run_attempt": 1,
+      "run_id": 44034656779,
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "runner_id": 1000001458,
+      "runner_name": "GitHub Actions 1000001458",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-11-17T06:54:24Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:50Z",
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:24Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:50Z",
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:50Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:52Z",
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:50Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:55Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:56Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:56Z",
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:56Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:44Z",
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "started_at": "2026-11-17T06:54:56Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:44Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:44Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:44Z",
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:44Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:57:47Z",
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:44Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:57:48Z",
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "started_at": "2026-11-17T06:57:47Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:41Z",
+          "conclusion": "success",
+          "name": "Run all required standalone and capture acceptance tests",
+          "number": 13,
+          "started_at": "2026-11-17T06:57:48Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:43Z",
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "started_at": "2026-11-17T07:04:41Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:45Z",
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "started_at": "2026-11-17T07:04:43Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:46Z",
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "started_at": "2026-11-17T07:04:45Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:47Z",
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "started_at": "2026-11-17T07:04:46Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:47Z",
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "started_at": "2026-11-17T07:04:47Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:48Z",
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "started_at": "2026-11-17T07:04:47Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:04:49Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "started_at": "2026-11-17T07:04:48Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509422",
+      "workflow_name": "Native standalone"
+    },
+    {
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509606",
+      "completed_at": "2026-11-17T07:10:05Z",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "head_branch": "main",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/job/133874509606",
+      "id": 133874509606,
+      "labels": [
+        "macos-15-intel"
+      ],
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rnJg",
+      "run_attempt": 1,
+      "run_id": 44034656779,
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "runner_id": 1000001449,
+      "runner_name": "GitHub Actions 1000001449",
+      "started_at": "2026-11-17T06:54:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-11-17T06:54:26Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:52Z",
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:53Z",
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:52Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:54Z",
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:53Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:54:57Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:54Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:00Z",
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:57Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:55:00Z",
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:00Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:56:38Z",
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:00Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:56:38Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T06:56:38Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T06:56:38Z",
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "started_at": "2026-11-17T06:56:38Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:00:26Z",
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "started_at": "2026-11-17T06:56:38Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:00:26Z",
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "started_at": "2026-11-17T07:00:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:56Z",
+          "conclusion": "success",
+          "name": "Run all required standalone and capture acceptance tests",
+          "number": 13,
+          "started_at": "2026-11-17T07:00:26Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:57Z",
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "started_at": "2026-11-17T07:09:56Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:09:59Z",
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "started_at": "2026-11-17T07:09:58Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:10:01Z",
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "started_at": "2026-11-17T07:09:59Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:10:02Z",
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "started_at": "2026-11-17T07:10:01Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:10:02Z",
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "started_at": "2026-11-17T07:10:02Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:10:03Z",
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "started_at": "2026-11-17T07:10:02Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T07:10:03Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "started_at": "2026-11-17T07:10:03Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509606",
+      "workflow_name": "Native standalone"
+    }
+  ],
+  "later_working_candidate_notice": "later-working-candidate-notice.json",
+  "limits": [
+    "Windows now compiles but fails title density, H1 statistics and P1 numerical acceptance.",
+    "Title/H1 actual compared nodes are empty lists versus expected list length nine; no specific compiler/runtime cause is proved.",
+    "Title evaluated zero of 18 cases and H1 evaluated zero of 103 inequalities; no numeric threshold failure is inferred.",
+    "P1 has 62 passing numerical screens but one unidentified non-screen failure; original full temporary P1 report and raw frame headers were not retained by CI.",
+    "One Windows FIFO subcase is skipped; CTest-level skipped count is zero.",
+    "Later indexed-array working candidates are outside this committed-source receipt and need fresh publication and hosted execution.",
+    "No physical hardware, driver timing, accessibility, native browser/main integration, DAW, callback retirement, physical fidelity, signed release, or whole-interface 1:1 qualification."
+  ],
+  "no_CI_rerun": true,
+  "no_local_native_build_test_or_git_execution": true,
+  "no_source_edits": true,
+  "no_timeout_relaxation": true,
+  "observed_utc": "2026-11-17T07:19:43.108Z",
+  "original_logs_complete": true,
+  "other_exact_head_workflows_status_only": [
+    {
+      "conclusion": "success",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "id": 44034656821,
+      "name": "Native VST3",
+      "run_attempt": 1,
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "id": 44034656790,
+      "name": "CI",
+      "run_attempt": 1,
+      "status": "completed"
+    }
+  ],
+  "parent": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "policy_reference": "../A57-native-hosted/source-policy-preflight.json",
+  "qualification_claimed": false,
+  "readable_review": "admission.md",
+  "required_families": 6,
+  "retained_compressed_log_bytes": 704703,
+  "retained_diagnostic_zip_bytes": 2048394,
+  "retained_log_bytes": 6421827,
+  "run": {
+    "actor": {
+      "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+      "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+      "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+      "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+      "gravatar_id": "",
+      "html_url": "https://github.com/tomasedisonn80",
+      "id": 355213237,
+      "login": "tomasedisonn80",
+      "node_id": "U_kgDOFSwftQ",
+      "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+      "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+      "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+      "site_admin": false,
+      "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+      "type": "User",
+      "url": "https://api.github.com/users/tomasedisonn80",
+      "user_view_type": "public"
+    },
+    "artifacts_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/artifacts",
+    "cancel_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/cancel",
+    "check_suite_id": 119202785558,
+    "check_suite_node_id": "CS_kwDOVrmZNc8AAAAbwQopFg",
+    "check_suite_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-suites/119202785558",
+    "conclusion": "failure",
+    "created_at": "2026-11-17T06:54:20Z",
+    "display_title": "Fix Windows fixture portability and preserve first published CI evidence",
+    "event": "push",
+    "head_branch": "main",
+    "head_commit": {
+      "author": {
+        "email": "tomasedisonn4@gmail.com",
+        "name": "tomasedisonn80"
+      },
+      "committer": {
+        "email": "tomasedisonn4@gmail.com",
+        "name": "tomasedisonn80"
+      },
+      "id": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "message": "Fix Windows fixture portability and preserve first published CI evidence",
+      "timestamp": "2026-11-17T06:54:10Z",
+      "tree_id": "45f3f2bc1bc844061be7d1303b13b10bfaba9938"
+    },
+    "head_repository": {
+      "archive_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/{archive_format}{/ref}",
+      "assignees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/assignees{/user}",
+      "blobs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/blobs{/sha}",
+      "branches_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/branches{/branch}",
+      "collaborators_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/collaborators{/collaborator}",
+      "comments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/comments{/number}",
+      "commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/commits{/sha}",
+      "compare_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/compare/{base}...{head}",
+      "contents_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contents/{+path}",
+      "contributors_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contributors",
+      "deployments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/deployments",
+      "description": null,
+      "downloads_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/downloads",
+      "events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/events",
+      "fork": false,
+      "forks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/forks",
+      "full_name": "tomasedisonn80/Hammond-B3-Organ",
+      "git_commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits{/sha}",
+      "git_refs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/refs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/tags{/sha}",
+      "hooks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/hooks",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ",
+      "id": 1455003957,
+      "issue_comment_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/comments{/number}",
+      "issue_events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/events{/number}",
+      "issues_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues{/number}",
+      "keys_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/keys{/key_id}",
+      "labels_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/labels{/name}",
+      "languages_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/languages",
+      "merges_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/merges",
+      "milestones_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/milestones{/number}",
+      "name": "Hammond-B3-Organ",
+      "node_id": "R_kgDOVrmZNQ",
+      "notifications_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/notifications{?since,all,participating}",
+      "owner": {
+        "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+        "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+        "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+        "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+        "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+        "gravatar_id": "",
+        "html_url": "https://github.com/tomasedisonn80",
+        "id": 355213237,
+        "login": "tomasedisonn80",
+        "node_id": "U_kgDOFSwftQ",
+        "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+        "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+        "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+        "site_admin": false,
+        "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+        "type": "User",
+        "url": "https://api.github.com/users/tomasedisonn80",
+        "user_view_type": "public"
+      },
+      "private": false,
+      "pulls_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/pulls{/number}",
+      "releases_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/releases{/id}",
+      "stargazers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/stargazers",
+      "statuses_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/statuses/{sha}",
+      "subscribers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscribers",
+      "subscription_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscription",
+      "tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/tags",
+      "teams_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/teams",
+      "trees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/trees{/sha}",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ"
+    },
+    "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+    "id": 44034656779,
+    "jobs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/jobs",
+    "logs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/logs",
+    "name": "Native standalone",
+    "node_id": "WFR_kwLOVrmZNc8AAAAKQKuKCw",
+    "path": ".github/workflows/standalone.yml",
+    "previous_attempt_url": null,
+    "pull_requests": [],
+    "referenced_workflows": [],
+    "repository": {
+      "archive_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/{archive_format}{/ref}",
+      "assignees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/assignees{/user}",
+      "blobs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/blobs{/sha}",
+      "branches_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/branches{/branch}",
+      "collaborators_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/collaborators{/collaborator}",
+      "comments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/comments{/number}",
+      "commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/commits{/sha}",
+      "compare_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/compare/{base}...{head}",
+      "contents_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contents/{+path}",
+      "contributors_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contributors",
+      "deployments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/deployments",
+      "description": null,
+      "downloads_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/downloads",
+      "events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/events",
+      "fork": false,
+      "forks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/forks",
+      "full_name": "tomasedisonn80/Hammond-B3-Organ",
+      "git_commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits{/sha}",
+      "git_refs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/refs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/tags{/sha}",
+      "hooks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/hooks",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ",
+      "id": 1455003957,
+      "issue_comment_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/comments{/number}",
+      "issue_events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/events{/number}",
+      "issues_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues{/number}",
+      "keys_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/keys{/key_id}",
+      "labels_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/labels{/name}",
+      "languages_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/languages",
+      "merges_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/merges",
+      "milestones_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/milestones{/number}",
+      "name": "Hammond-B3-Organ",
+      "node_id": "R_kgDOVrmZNQ",
+      "notifications_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/notifications{?since,all,participating}",
+      "owner": {
+        "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+        "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+        "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+        "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+        "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+        "gravatar_id": "",
+        "html_url": "https://github.com/tomasedisonn80",
+        "id": 355213237,
+        "login": "tomasedisonn80",
+        "node_id": "U_kgDOFSwftQ",
+        "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+        "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+        "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+        "site_admin": false,
+        "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+        "type": "User",
+        "url": "https://api.github.com/users/tomasedisonn80",
+        "user_view_type": "public"
+      },
+      "private": false,
+      "pulls_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/pulls{/number}",
+      "releases_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/releases{/id}",
+      "stargazers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/stargazers",
+      "statuses_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/statuses/{sha}",
+      "subscribers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscribers",
+      "subscription_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscription",
+      "tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/tags",
+      "teams_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/teams",
+      "trees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/trees{/sha}",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ"
+    },
+    "rerun_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779/rerun",
+    "run_attempt": 1,
+    "run_number": 71,
+    "run_started_at": "2026-11-17T06:54:20Z",
+    "status": "completed",
+    "triggering_actor": {
+      "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+      "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+      "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+      "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+      "gravatar_id": "",
+      "html_url": "https://github.com/tomasedisonn80",
+      "id": 355213237,
+      "login": "tomasedisonn80",
+      "node_id": "U_kgDOFSwftQ",
+      "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+      "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+      "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+      "site_admin": false,
+      "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+      "type": "User",
+      "url": "https://api.github.com/users/tomasedisonn80",
+      "user_view_type": "public"
+    },
+    "updated_at": "2026-11-17T07:17:35Z",
+    "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+    "workflow_id": 417795651,
+    "workflow_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/workflows/417795651"
+  },
+  "run_attempt": 1,
+  "run_attempts_observed": [
+    1
+  ],
+  "run_id": 44034656779,
+  "schema_version": 2,
+  "source_identity": "source-identity.json",
+  "source_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "source_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+  "status": "NOT_ADMITTED_WINDOWS_COPIED_DRAWBAR_SHAPE_AND_P1_NONSCREEN_FAILURE",
+  "successful_jobs": 5,
+  "terminal_observation": "terminal-observation.connector.json.gz",
+  "wave": 10,
+  "windows_diagnosis": "windows-copied-state-diagnosis.json",
+  "windows_priority": "Require actual compile past P1 helper and actual title/header diagnostic execution; preserve any emitted first copied-state path/type/value.",
+  "worker": "A57"
+}

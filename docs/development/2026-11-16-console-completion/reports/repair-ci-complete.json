@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "source_commit": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "source_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+  "parent": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "status": "COMPLETE_WITH_WINDOWS_NATIVE_FAILURE",
+  "all_jobs_terminal": true,
+  "run_attempt": 1,
+  "total_jobs": 16,
+  "successful_jobs": 15,
+  "failed_jobs": 1,
+  "cancelled_jobs": 0,
+  "workflows": [
+    {
+      "name": "Core",
+      "run_id": 44034656790,
+      "jobs": 6,
+      "success": 6,
+      "ctest_families": 5,
+      "ctests_per_family": 209,
+      "full_R4": "passed",
+      "windows_python_methods": {
+        "capture": 45,
+        "header": 24,
+        "p1": 54
+      },
+      "windows_unicode_generator": "passed"
+    },
+    {
+      "name": "Native standalone",
+      "run_id": 44034656779,
+      "jobs": 6,
+      "success": 5,
+      "normal_passes": [
+        {
+          "family": "Linux MIDI OFF",
+          "ctests": 78
+        },
+        {
+          "family": "Linux MIDI ON",
+          "ctests": 78
+        },
+        {
+          "family": "macOS ARM64",
+          "ctests": 78
+        },
+        {
+          "family": "macOS Intel",
+          "ctests": 78
+        }
+      ],
+      "sanitizer": {
+        "passed": 41,
+        "targets": 37,
+        "provenance_inputs": 63
+      },
+      "windows": {
+        "passed": 75,
+        "total": 78,
+        "failed_tests": [
+          "test_standalone_title_density",
+          "test_standalone_performance_plate_numerical",
+          "test_standalone_header_statistics"
+        ],
+        "title_leaf": "view.controls.drawbars[0][1]: list lengths 0 / 9",
+        "header_leaf": "session.controls.drawbars[0][1]: list lengths 0 / 9",
+        "p1": {
+          "evaluated_checks": 192,
+          "failed_checks": 1,
+          "visual_screens_passed": 62,
+          "failed_check_identity": "not retained; shared cause unproven"
+        },
+        "expected_inner_fifo_subcase_skip": true
+      }
+    },
+    {
+      "name": "Native VST3",
+      "run_id": 44034656821,
+      "jobs": 4,
+      "success": 4,
+      "ctests": 29,
+      "actual_module_validator_passed_each": 47
+    }
+  ],
+  "root_reviews": {
+    "A58": {
+      "status": "accepted_followup_review",
+      "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "report": "docs/development/2026-11-16-console-completion/reports/A58-repair-hosted/summary.json",
+      "sha256": "7975c81106d7a782472d8a393f8a113e67aeceb4f62f941c2c2b5abc53ee1a39",
+      "root_review": "Read full admission and exact-source summary, independently rehashed all58 retained payloads, verified four terminal successful jobs and 8/7/7/7 CTests, actual module47/47 each, immutable original warnings and first-source evidence. Scope excludes physical/device/DAW/release and other workflows."
+    },
+    "A56": {
+      "status": "accepted_followup_review",
+      "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "report": "docs/development/2026-11-16-console-completion/reports/A56-repair-hosted/core-d2ed03b9-admission.json",
+      "sha256": "080beadea8545f13e287b8fce8bfa37a4d1e5087bc5c97b5f2aa5fa045d9eb28",
+      "root_review": "Read source-bound decision and original-failure boundary, independently rehashed all48 retained payloads. All six required Core jobs terminal success, five209/209 CTest inventories, actual Windows45/24/54 method execution and Unicode generator completed, fullR4 successful. No retry or original-result rewriting."
+    },
+    "A57": {
+      "status": "accepted_followup_review_of_failed_qualification",
+      "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "report": "docs/development/2026-11-16-console-completion/reports/A57-repair-hosted/report.json",
+      "sha256": "3413eb6cecc7ed4875e14fa5b13e745ac367aa580dd2465f689f2f8b85a2c05c",
+      "root_review": "Reviewed original full Windows failure excerpt and exact empty-list diagnostics, independently verified retained inventory hashes and all six terminal family results: four78/78 normals plus41 sanitizer, Windows75/78 with three failures. P1 passes62 screens but one non-screen failure remains unnamed; no shared cause inferred. Windows one inner FIFO subcase skip retained. Accepted truthful review, not all-platform native qualification."
+    }
+  },
+  "boundaries": [
+    "All claims belong to this original source and attempt; new indexed-array candidate requires fresh publication and execution.",
+    "Original cf87 and predecessor628 failures remain immutable.",
+    "No unchanged-source CI retry or relaxed numerical criterion, source pin, timeout, workload or sanitizer policy.",
+    "All60 workers are already accepted; these followups add no worker credit.",
+    "Native browser and literal whole-interface1:1 remain open."
+  ]
+}

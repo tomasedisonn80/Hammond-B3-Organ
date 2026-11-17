@@ -1,0 +1,94 @@
+{
+  "actual_remote_sha": null,
+  "actual_remote_tree": null,
+  "actual_worker": "/root/w10_a57",
+  "authority": {
+    "first_source_records_immutable": true,
+    "no_children": true,
+    "no_ci_rerun": true,
+    "no_git_operations": true,
+    "no_local_build_tests_or_native_execution": true,
+    "no_source_edits": true,
+    "no_timeout_weakening": true,
+    "run_lookup_waits_for_actual_remote_sha": true,
+    "writes_only_in": "docs/development/2026-11-16-console-completion/reports/A57-repair-hosted/"
+  },
+  "expected_changed_source_sha256": {
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+    "tests/test_capture_standalone_interface.py": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc",
+    "tests/test_compare_header_material.py": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d",
+    "tests/test_compare_performance_plate.py": "97bf84741a1954fbd16ba5992862cdfef0393e50e8c5d3ba3b15b9ceda344bdd",
+    "tools/compare_performance_plate.py": "46ce7721d2cb884b08f231249ffc0fc7f80a3d9a33657c0519216d68087671b2"
+  },
+  "expected_standalone_cmake_sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+  "expected_workflow_sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659",
+  "extra_agent_credit": false,
+  "immutable_references": [
+    {
+      "bytes": 13587,
+      "path": "docs/reviews/CONSOLE_NATIVE_HOSTED_ADMISSION.md",
+      "sha256": "e77da54e5b6ec6d4fe9258e24ce44551dfbe11dd7060bf1098a7e7310e1831b9"
+    },
+    {
+      "bytes": 94741,
+      "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted.json",
+      "sha256": "075276398b54b7145cdecfe4a251964646224306bf880288a9d0af1c73851b25"
+    },
+    {
+      "bytes": 3530,
+      "path": "docs/development/2026-11-16-console-completion/notes/A57.md",
+      "sha256": "39e2bc05675af526bf972a720d817bb0a6b315f080b63f817fa03cf7e9c95764"
+    },
+    {
+      "bytes": 40423,
+      "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted/source-policy-preflight.json",
+      "sha256": "680a895cfcc62adcec5424cc44343c3642bd50315e1d2de20ff419fcb96b8ef5"
+    },
+    {
+      "bytes": 1093,
+      "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted/published-source-identity.json",
+      "sha256": "b52b8631cdd9836bd5849f1503f00be8c3bd72b4f6826462654ef755dd7b0274"
+    },
+    {
+      "bytes": 8338,
+      "path": "docs/development/2026-11-16-console-completion/reports/A57-native-hosted/inspect_retained_artifact.py",
+      "sha256": "dc53e5f021218f9fa5b552cb64cabc77e84dae396b6f3b9a8392f9123cc0b966"
+    },
+    {
+      "bytes": 15034,
+      "path": "docs/reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md",
+      "sha256": "b1ac7bdd13540cde142658c9d9cfb11c7b6cb2ef8c57b97ddacb6ceed31d77b2"
+    },
+    {
+      "bytes": 26234,
+      "path": "docs/development/2026-11-16-console-completion/reports/A59-windows-repair.json",
+      "sha256": "b70564f1500a22f6d3b25ba809c07ee0f62570e94161215424a82eed1125fe47"
+    },
+    {
+      "bytes": 70761,
+      "path": "docs/development/2026-11-16-console-completion/reports/windows-repair-local-qualification.json",
+      "sha256": "c371f06f83e6024d7cfc3bf464a7a84ea037063aa8824577a615a751e27a1149"
+    }
+  ],
+  "observed_utc": "2026-11-17T06:51:37.909676+00:00",
+  "priority": "New Windows must compile past the P1 helper and execute title/header diagnostic readers. Preserve any concrete failure immediately, including exact first copied-state path/type/value if emitted. No inference from older source.",
+  "required_families": [
+    "Linux GCC MIDI OFF",
+    "Linux GCC MIDI ON",
+    "macOS ARM64 AppleClang MIDI ON",
+    "macOS Intel AppleClang MIDI ON",
+    "Windows MSVC x64 MIDI ON",
+    "Linux GCC ASan+UBSan+leaks MIDI OFF"
+  ],
+  "root_stated_candidate_tree_hint": "45f3f2bc1bc844061be7d1303b13b10bfaba9938; not independently verified remotely",
+  "root_stated_local_candidate_hint": "5bd11be; not a remote publication identity",
+  "schema_version": 1,
+  "status": "PREPARED_AWAIT_INDEPENDENTLY_VERIFIED_ACTUAL_REMOTE_SOURCE",
+  "unchanged_policy_reference": "../A57-native-hosted/source-policy-preflight.json",
+  "unchanged_windows_diagnostic_readers": {
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": "455c42c9be0e9714fadcaefbd269fbe4de5ece4439e9334d893cf5d64856ae8f",
+    "apps/standalone/native_tests/test_standalone_title_density.py": "b91743c7b5b791586feea50d465f90613c85730472ed97aa21054c7bf9588457"
+  },
+  "wave": 10,
+  "worker": "A57"
+}

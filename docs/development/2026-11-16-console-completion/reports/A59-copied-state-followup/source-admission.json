@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "reviewer": "A59",
+  "review_kind": "follow-up of the already accepted A59 worker; no additional worker credit",
+  "observed_utc": "2026-11-17T07:23:47Z",
+  "decision": "ADMITTED_SOURCE_ONLY",
+  "published_failed_source": {
+    "commit": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+    "native_windows_run": 44034656779,
+    "native_windows_job": 133874509242,
+    "compiled": true,
+    "acceptance": "75 of 78 passed; three failed",
+    "title_failure": "copied view controls differs; view.controls.drawbars[0][1]: list lengths 0 / 9",
+    "header_failure": "complete canonical copied session differs; session.controls.drawbars[0][1]: list lengths 0 / 9",
+    "header_numerical_evaluated": 0,
+    "header_numerical_required": 103,
+    "p1_observation": "192 checks evaluated, one failed; all 62 candidate numerical screens passed. The failed nonnumerical check is not named in the original retained summary.",
+    "original_log": "docs/development/2026-11-16-console-completion/reports/A57-repair-hosted/job-133874509242.log.gz",
+    "original_log_raw_bytes": 659407,
+    "original_log_raw_sha256": "d4c08f3bde380b7f69fdf8e26fde70b6a326125e4624f4713062036a341351fc",
+    "diagnostic_archive": "docs/development/2026-11-16-console-completion/reports/A57-repair-hosted/artifact-14307123053.zip",
+    "diagnostic_archive_bytes": 179500,
+    "diagnostic_archive_sha256": "18d22990fc61b0dd3cc46f14be794b03da68346a26ca39c1165b0a355cead25a",
+    "diagnostic_archive_members": 42,
+    "unavailable_evidence": "A57 reports that this diagnostic archive retains neither rejected raw JSON headers nor the temporary P1 report/streams. No original P1 failure name is inferred."
+  },
+  "predecessor_failure_preserved": {
+    "source": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "run": 44026516737,
+    "job": 133848047271,
+    "path": "docs/development/2026-11-16-console-completion/reports/prepublication-628-windows-original.log.gz",
+    "raw_bytes": 605930,
+    "raw_sha256": "285945725cd6b549ab7c942a99f7e8a951debed844b62b2e6eb1abb61dd09517",
+    "observation": "66 of 68 passed. Title copied controls and header copied session were rejected, without a specific differing leaf. This original failure is not retrospectively relabeled as diagnosed or repaired."
+  },
+  "source_grounded_findings": [
+    "ControlSnapshot drawbars has fixed extents: two manuals, two banks per manual and nine uint8_t values per bank.",
+    "copied_state_difference checks identical Python types before its list-length branch. The actual d2ed03b messages therefore establish an empty decoded list at bank [0][1], versus the strict nine-element expectation.",
+    "The strict readers use the standard JSON parser without an array-transform hook. Their empty-bank rejection is correct.",
+    "The three native fixtures share the exact same array writer. No particular compiler or optimizer defect is established from the available evidence.",
+    "The first differing leaf does not establish the correctness of later nested held-key or geometry arrays. Replacing the common traversal also covers those call sites without changing their writers."
+  ],
+  "indexed_traversal_design": {
+    "original_block_sha256": "32125ed7272476ec9a34c8753e41e3d4efd54f996937557870afe77b9637e73b",
+    "indexed_block_sha256": "a026cf2b61bde1f4ba656b1cdb0008e3bc4b664659c6aa115edc4e9a404d24fe",
+    "change": "Replace mutable first plus range-for with index from zero to values.size(), emit comma when index is nonzero, and invoke the same write(out, values[index]).",
+    "range_types": "All actual ranges are std::array or std::vector and support const size()/operator[]. P1's additional vectors contain Span, OpaqueProbe, TextRun, UiRect or SDL_Rect. Boolean ranges are std::array<bool,N>; there is no vector<bool> call site.",
+    "preserved_semantics": [
+      "Element order and the exact number of writer invocations",
+      "Const element reference and existing by-value/by-reference writer conversions",
+      "Empty, singleton and multi-element delimiter behavior",
+      "Unsigned integer casts, boolalpha, precision and all field names",
+      "All callers' source containers remain unmodified by their writers"
+    ],
+    "call_site_line_counts": {"title_fixture": 18, "header_fixture": 19, "p1_fixture": 27},
+    "count_qualification": "Counts are source lines containing calls; a line may contain more than one nested call."
+  },
+  "independently_verified_frozen_files": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49026,
+      "sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+      "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+      "one_indexed_block_zero_original_blocks": true,
+      "one_block_reversal_equals_published_bytes": true
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61268,
+      "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+      "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+      "one_indexed_block_zero_original_blocks": true,
+      "one_block_reversal_equals_published_bytes": true
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75580,
+      "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "published_helper_only_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+      "original_paired_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "one_indexed_block_zero_original_blocks": true,
+      "one_block_reversal_equals_published_bytes": true
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 26715,
+      "sha256": "7be7a351718f0964efbd7407f2403541efe0a00c96095e4f53b09156d237a124",
+      "all_24_original_top_level_assignments_unchanged": true,
+      "unchanged_original_definitions": 21,
+      "changed_original_definitions": ["main"],
+      "added_definitions": ["admit_fixture_bytes"]
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "bytes": 37656,
+      "sha256": "c0e18a521d2905af285fdf1e77f868d329381f9430a8dd14d891499b8120ce95",
+      "all_25_original_top_level_assignments_unchanged": true,
+      "unchanged_original_definitions": 20,
+      "changed_original_definitions": ["main"],
+      "added_definitions": ["admit_fixture_bytes"]
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 89928,
+      "sha256": "7a49551493fae8bffe6764927d51ed1e37a1b6cdbe06b2bfb872670783ac4264",
+      "all_43_original_top_level_assignments_unchanged": true,
+      "unchanged_original_definitions": 71,
+      "changed_original_definitions": ["admit_fixture_source", "execute"],
+      "added_definitions": []
+    }
+  },
+  "source_admission_boundaries": {
+    "title_and_header": "Original fixture pins remain unchanged. Each standalone candidate reader accepts original bytes or exactly one indexed block whose complete reversal has the original SHA-256 and whose current complete source has the separately frozen SHA-256. Bytes-only input is required. Admission precedes native launch; final fixture hash must equal the initially observed hash.",
+    "p1": "Original paired source 4f187 remains mandatory in paired mode. Candidate-only admits original, the existing exact helper-only a446 transition, or indexed 026489. Indexed reversal must yield the complete a446 source, which then passes the existing exact helper reversal back to 4f187. Strict Boolean mode, bytes payload, unique blocks, full-file hashes, registered-read stability, existing UiModel admission and final input stability remain enforced.",
+    "paired_tools": "compare_footage_typography.py, compare_title_typography.py and compare_header_material.py are byte-identical to d2ed03b. Their historical pins/transitions are not silently broadened.",
+    "strict_predicates": "typed equality, expected complete state, validate_model, numerical functions, all original numerical constants and process/resource deadlines are unchanged by AST comparison.",
+    "p1_failure_summary": "Successful summary fields/order remain unchanged. Only a failing result adds up to eight failure rows, truncating check to 160 characters and detail to 512, plus omitted_failure_count. Original failure storage, decisions, status and numerical screens are unchanged."
+  },
+  "before_retention_verified": {
+    "receipt": "docs/development/2026-11-16-console-completion/reports/array-serialization-before/receipt.json",
+    "compressed_payload_count": 12,
+    "compressed_payload_bytes": 8353832,
+    "all_compressed_and_raw_sizes_and_sha256_match": true,
+    "all_three_canonical_stream_headers_and_rgba_identities_match": true,
+    "all_three_observed_drawbar_bank_lengths": [[9, 9], [9, 9]],
+    "all_stderr_empty": true,
+    "platform_scope": "Genuine pre-edit Linux controls only; not a Windows reproduction.",
+    "collector_limitation": "Initial title capture succeeded and its original bytes were saved, then metadata extraction raised KeyError because title uses model rather than model_before. Receipt explicitly records reuse without rerun and null elapsed time."
+  },
+  "unchanged_production_spot_checks": [
+    "apps/standalone/main.cpp",
+    "apps/standalone/InstrumentView.cpp",
+    "apps/standalone/UiModel.cpp",
+    "apps/standalone/UiModel.h",
+    "apps/standalone/Session.cpp"
+  ],
+  "accepted_A59_records_unchanged": {
+    "docs/reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md": "b1ac7bdd13540cde142658c9d9cfb11c7b6cb2ef8c57b97ddacb6ceed31d77b2",
+    "docs/development/2026-11-16-console-completion/reports/A59-windows-repair.json": "b70564f1500a22f6d3b25ba809c07ee0f62570e94161215424a82eed1125fe47",
+    "docs/development/2026-11-16-console-completion/notes/A59.md": "278c2a2e17b177b3e35991f51b46a7fde35c472c7cc2cc558a71046a254dc7da"
+  },
+  "review_execution_scope": "A59 performed read-only source, immutable Git-object, AST, hash and retained-evidence inspection. A59 ran no tests, builds or native executables; made no Git/index/ref mutation; did not collect CI; and did not edit root implementation/test files.",
+  "remaining_gates_at_this_record": [
+    "A56 adversarial test source and recorded qualification review",
+    "Root source-bound rebuild, exact before/after canonical streams and affected native/numerical qualification review",
+    "A fresh hosted Windows result for the final published corrected source"
+  ],
+  "limitations": [
+    "This is a source design/patch admission, not a runtime or Windows pass.",
+    "The specific compiler/runtime mechanism behind the observed empty list is unproven.",
+    "The original P1 single nonnumerical failure remains unnamed in retained Windows evidence.",
+    "This follow-up does not change the accepted worker count or rewrite any accepted A59 note/admission."
+  ]
+}

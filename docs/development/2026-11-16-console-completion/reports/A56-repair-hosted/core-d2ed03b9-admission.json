@@ -1,0 +1,1851 @@
+{
+  "schema_version": 1,
+  "worker": "A56",
+  "agent": "/root/w10_a56",
+  "continuation_of_accepted_worker": true,
+  "additional_agent_credit": 0,
+  "recorded_utc": "2026-11-17T07:13:16.222045+00:00",
+  "status": "COMPLETE_EXACT_SOURCE_CORE_REVIEW_SIX_SUCCESSES",
+  "decision": "All six required Core families independently reviewed at exact published d2ed03b9, attempt 1, are terminal success. The Windows repair is exercised by 209 passing CTests and actual 45/24/54-method receipts. This is source-specific Core qualification for root acceptance; the original cf87a587 failure remains a failure.",
+  "published_source": {
+    "commit": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+    "parents": [
+      "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    ],
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "api_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits/d2ed03b94114e35d0caa65968d11afe896a5e9f5"
+  },
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "source_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/d2ed03b94114e35d0caa65968d11afe896a5e9f5/.github/workflows/ci.yml",
+    "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+    "git_blob_sha1": "295897e4b960f0fdc7fe55ba55e6cad5e23c2501",
+    "unchanged_from_6287055": true,
+    "release_job_minutes": 20,
+    "release_ctest_default_seconds": 300,
+    "sanitizer_job_minutes": 25,
+    "sanitizer_ctest_default_seconds": 600,
+    "ctest_parallelism": 2,
+    "required_empty_selection_policy": "--no-tests=error",
+    "r4_job_minutes": 35,
+    "r4_full_step_minutes": 30,
+    "r4_child_seconds": 1500,
+    "sanitizer_environment": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "unchanged_from_cf87a587": true
+  },
+  "source_review": "core-d2ed03b9-source-review.json",
+  "source_checks": {
+    "commit_tree_parent_exact": true,
+    "protected_roots": [
+      {
+        "path": "include",
+        "old_sha": "9a3c71eacf360e9dab78e74c0e675cd74e778f2c",
+        "new_sha": "9a3c71eacf360e9dab78e74c0e675cd74e778f2c",
+        "unchanged": true
+      },
+      {
+        "path": "src",
+        "old_sha": "09948c8801c1f37c0eb3bde7700234a16adaed97",
+        "new_sha": "09948c8801c1f37c0eb3bde7700234a16adaed97",
+        "unchanged": true
+      },
+      {
+        "path": "plugins",
+        "old_sha": "b13032ad4419df067f3a2ce65dc92ed17fd854c4",
+        "new_sha": "b13032ad4419df067f3a2ce65dc92ed17fd854c4",
+        "unchanged": true
+      },
+      {
+        "path": "data",
+        "old_sha": "d14be4edfb6970f383a9900e6ac488254c7dc66a",
+        "new_sha": "d14be4edfb6970f383a9900e6ac488254c7dc66a",
+        "unchanged": true
+      },
+      {
+        "path": "CMakeLists.txt",
+        "old_sha": "153dab88317650f34f93aeff52b968845418f82e",
+        "new_sha": "153dab88317650f34f93aeff52b968845418f82e",
+        "unchanged": true
+      },
+      {
+        "path": "CMakePresets.json",
+        "old_sha": "a13ed53b2590e2858032ebaaf6f6db874c91bfb0",
+        "new_sha": "a13ed53b2590e2858032ebaaf6f6db874c91bfb0",
+        "unchanged": true
+      }
+    ],
+    "workflow_bytes": 20374,
+    "workflow_sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+    "workflow_git_blob_sha1": "295897e4b960f0fdc7fe55ba55e6cad5e23c2501",
+    "files": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "bytes": 20374,
+        "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+        "git_blob_sha1": "295897e4b960f0fdc7fe55ba55e6cad5e23c2501",
+        "qualified_sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+        "matches_qualified_source": true,
+        "remote_blob": "295897e4b960f0fdc7fe55ba55e6cad5e23c2501",
+        "remote_bytes": 20374,
+        "matches_published_blob": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+        "bytes": 75587,
+        "sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+        "git_blob_sha1": "92dc0d6e6169662b68bd9107db49204ee7b2e29e",
+        "qualified_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+        "matches_qualified_source": true,
+        "remote_blob": "92dc0d6e6169662b68bd9107db49204ee7b2e29e",
+        "remote_bytes": 75587,
+        "matches_published_blob": true
+      },
+      {
+        "path": "tests/test_capture_standalone_interface.py",
+        "bytes": 58284,
+        "sha256": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc",
+        "git_blob_sha1": "0bf6d3ee1c712db9443edd6a36bfbda76211f23f",
+        "qualified_sha256": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc",
+        "matches_qualified_source": true,
+        "remote_blob": "0bf6d3ee1c712db9443edd6a36bfbda76211f23f",
+        "remote_bytes": 58284,
+        "matches_published_blob": true
+      },
+      {
+        "path": "tests/test_compare_header_material.py",
+        "bytes": 25561,
+        "sha256": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d",
+        "git_blob_sha1": "2cace72374b89ac300d0aa59e1e49ac0762e90aa",
+        "qualified_sha256": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d",
+        "matches_qualified_source": true,
+        "remote_blob": "2cace72374b89ac300d0aa59e1e49ac0762e90aa",
+        "remote_bytes": 25561,
+        "matches_published_blob": true
+      },
+      {
+        "path": "tests/test_compare_performance_plate.py",
+        "bytes": 43217,
+        "sha256": "97bf84741a1954fbd16ba5992862cdfef0393e50e8c5d3ba3b15b9ceda344bdd",
+        "git_blob_sha1": "242424956f793cdac66bca7ba99760bfc85a4156",
+        "qualified_sha256": "97bf84741a1954fbd16ba5992862cdfef0393e50e8c5d3ba3b15b9ceda344bdd",
+        "matches_qualified_source": true,
+        "remote_blob": "242424956f793cdac66bca7ba99760bfc85a4156",
+        "remote_bytes": 43217,
+        "matches_published_blob": true
+      },
+      {
+        "path": "tools/compare_performance_plate.py",
+        "bytes": 87740,
+        "sha256": "46ce7721d2cb884b08f231249ffc0fc7f80a3d9a33657c0519216d68087671b2",
+        "git_blob_sha1": "dff8e54f5a85714b0470eedb82527d49aad33c96",
+        "qualified_sha256": "46ce7721d2cb884b08f231249ffc0fc7f80a3d9a33657c0519216d68087671b2",
+        "matches_qualified_source": true,
+        "remote_blob": "dff8e54f5a85714b0470eedb82527d49aad33c96",
+        "remote_bytes": 87740,
+        "matches_published_blob": true
+      },
+      {
+        "path": "tools/capture_standalone_interface.py",
+        "bytes": 41587,
+        "sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487",
+        "git_blob_sha1": "8ec2dcb913b9b2e7337f904a2aeffc6dba02aa68",
+        "qualified_sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487",
+        "matches_qualified_source": true,
+        "remote_blob": "8ec2dcb913b9b2e7337f904a2aeffc6dba02aa68",
+        "remote_bytes": 41587,
+        "matches_published_blob": true
+      },
+      {
+        "path": "tools/compare_header_material.py",
+        "bytes": 98489,
+        "sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f",
+        "git_blob_sha1": "44989293f6bd9512da0f371a45bc51e539fa6e44",
+        "qualified_sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f",
+        "matches_qualified_source": true,
+        "remote_blob": "44989293f6bd9512da0f371a45bc51e539fa6e44",
+        "remote_bytes": 98489,
+        "matches_published_blob": true
+      }
+    ]
+  },
+  "protected_scope": {
+    "files": 81,
+    "include_files": 31,
+    "src_files": 30,
+    "plugin_files": 20,
+    "semantic_boundary": "Previously reviewed 47 parameter identities, B3CONTROLS4 writer/readers 1–3, 91 shared free-running sources, plugin UUIDs and nominal dry Engine remain in byte-identical protected subtrees."
+  },
+  "run": {
+    "id": 44034656790,
+    "name": "CI",
+    "path": ".github/workflows/ci.yml",
+    "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "head_branch": "main",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "run_number": 107,
+    "run_attempt": 1,
+    "created_at": "2026-11-17T06:54:20Z",
+    "run_started_at": "2026-11-17T06:54:20Z",
+    "updated_at": "2026-11-17T07:07:14Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+    "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+    "jobs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/jobs",
+    "artifacts_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/artifacts"
+  },
+  "required_families": [
+    "Release (Linux GCC)",
+    "Release (macOS AppleClang)",
+    "Release (macOS Intel AppleClang)",
+    "Release (Windows MSVC)",
+    "Complete R4 waveform qualification (Linux GCC)",
+    "Linux GCC ASan + UBSan + leaks"
+  ],
+  "terminal_jobs": 6,
+  "successful_jobs": 6,
+  "failed_jobs": 0,
+  "cancelled_jobs": 0,
+  "retried_jobs": 0,
+  "unassigned_terminal_jobs": 0,
+  "initially_queued_macOS_ARM_retained": true,
+  "all_five_ctest_inventories_identical": true,
+  "jobs": [
+    {
+      "id": 133874509282,
+      "run_id": 44034656790,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rl4g",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509282",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/job/133874509282",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T06:58:33Z",
+      "name": "Release (Linux GCC)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "completed_at": "2026-11-17T06:54:26Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:26Z",
+          "completed_at": "2026-11-17T06:54:46Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:46Z",
+          "completed_at": "2026-11-17T06:54:46Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:46Z",
+          "completed_at": "2026-11-17T06:54:49Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:49Z",
+          "completed_at": "2026-11-17T06:54:53Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:53Z",
+          "completed_at": "2026-11-17T06:54:53Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:53Z",
+          "completed_at": "2026-11-17T06:56:37Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:56:37Z",
+          "completed_at": "2026-11-17T06:56:37Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T06:56:37Z",
+          "completed_at": "2026-11-17T06:58:27Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T06:58:27Z",
+          "completed_at": "2026-11-17T06:58:30Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-17T06:58:30Z",
+          "completed_at": "2026-11-17T06:58:30Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T06:58:30Z",
+          "completed_at": "2026-11-17T06:58:30Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-17T06:58:30Z",
+          "completed_at": "2026-11-17T06:58:30Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-17T06:58:30Z",
+          "completed_at": "2026-11-17T06:58:30Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T06:58:30Z",
+          "completed_at": "2026-11-17T06:58:31Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T06:58:31Z",
+          "completed_at": "2026-11-17T06:58:31Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T06:58:31Z",
+          "completed_at": "2026-11-17T06:58:31Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T06:58:31Z",
+          "completed_at": "2026-11-17T06:58:31Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509282",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001457,
+      "runner_name": "GitHub Actions 1000001457",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "elapsed_seconds": 250.0,
+      "complete_log": {
+        "job_id": 133874509282,
+        "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+        "encoding": "UTF-8 of complete decoded connector log, including original BOM/CR characters",
+        "raw_bytes": 692022,
+        "raw_sha256": "b4858fb8862aa1629bc2e5e4b798bb8937db06bb5c8ee115afcbc978e9beee12",
+        "carriage_returns": 0,
+        "gzip_bytes": 80074,
+        "gzip_sha256": "cfe5b0247c0ff2ecbd66a60b9875847bd826289fe3110ee0003ab994e1a56f29",
+        "gzip_roundtrip_verified": true,
+        "path": "core-d2ed03b9-job-133874509282.log.gz"
+      },
+      "log_review": "core-d2ed03b9-job-133874509282.summary.json",
+      "source_sha_logged": true,
+      "ctest_result": {
+        "records": 209,
+        "unique_names": 209,
+        "passed": 209,
+        "nonpassed": [],
+        "total_seconds": [
+          110.22
+        ],
+        "all_twelve_registration_apron_tests_passed": true,
+        "all_five_library_suites_passed": true
+      }
+    },
+    {
+      "id": 133874509419,
+      "run_id": 44034656790,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rmaw",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509419",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/job/133874509419",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "started_at": "2026-11-17T06:56:05Z",
+      "completed_at": "2026-11-17T07:00:59Z",
+      "name": "Release (macOS AppleClang)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:56:05Z",
+          "completed_at": "2026-11-17T06:56:07Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:56:07Z",
+          "completed_at": "2026-11-17T06:56:27Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:56:27Z",
+          "completed_at": "2026-11-17T06:56:27Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:56:27Z",
+          "completed_at": "2026-11-17T06:56:27Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:56:27Z",
+          "completed_at": "2026-11-17T06:56:31Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T06:56:31Z",
+          "completed_at": "2026-11-17T06:56:31Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:56:31Z",
+          "completed_at": "2026-11-17T06:57:58Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:57:58Z",
+          "completed_at": "2026-11-17T06:57:58Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T06:57:58Z",
+          "completed_at": "2026-11-17T07:00:52Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-17T07:00:52Z",
+          "completed_at": "2026-11-17T07:00:52Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-17T07:00:52Z",
+          "completed_at": "2026-11-17T07:00:52Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-11-17T07:00:52Z",
+          "completed_at": "2026-11-17T07:00:52Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-11-17T07:00:52Z",
+          "completed_at": "2026-11-17T07:00:52Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-11-17T07:00:52Z",
+          "completed_at": "2026-11-17T07:00:52Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T07:00:52Z",
+          "completed_at": "2026-11-17T07:00:54Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T07:00:54Z",
+          "completed_at": "2026-11-17T07:00:54Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T07:00:54Z",
+          "completed_at": "2026-11-17T07:00:55Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T07:00:55Z",
+          "completed_at": "2026-11-17T07:00:57Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509419",
+      "labels": [
+        "macos-15"
+      ],
+      "runner_id": 1000001460,
+      "runner_name": "GitHub Actions 1000001460",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "elapsed_seconds": 294.0,
+      "complete_log": {
+        "job_id": 133874509419,
+        "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+        "encoding": "UTF-8 of complete decoded connector log, including original BOM/CR characters",
+        "raw_bytes": 428115,
+        "raw_sha256": "f9094f374d604fc1d36284dbd78cefea9cb6434142f0ac8970cfdae79dcf049d",
+        "carriage_returns": 0,
+        "gzip_bytes": 37996,
+        "gzip_sha256": "a9765dc57e96a747bf091655b91cba3ef0afacc28f6428fcde7653191d22e2dd",
+        "gzip_roundtrip_verified": true,
+        "path": "core-d2ed03b9-job-133874509419.log.gz"
+      },
+      "log_review": "core-d2ed03b9-job-133874509419.summary.json",
+      "source_sha_logged": true,
+      "ctest_result": {
+        "records": 209,
+        "unique_names": 209,
+        "passed": 209,
+        "nonpassed": [],
+        "total_seconds": [
+          174.26
+        ],
+        "all_twelve_registration_apron_tests_passed": true,
+        "all_five_library_suites_passed": true
+      }
+    },
+    {
+      "id": 133874509438,
+      "run_id": 44034656790,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rmfg",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509438",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/job/133874509438",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T07:07:13Z",
+      "name": "Release (macOS Intel AppleClang)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "completed_at": "2026-11-17T06:54:26Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:26Z",
+          "completed_at": "2026-11-17T06:54:49Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:49Z",
+          "completed_at": "2026-11-17T06:54:49Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:49Z",
+          "completed_at": "2026-11-17T06:54:50Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:50Z",
+          "completed_at": "2026-11-17T06:55:03Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T06:55:03Z",
+          "completed_at": "2026-11-17T06:55:03Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:03Z",
+          "completed_at": "2026-11-17T07:01:12Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T07:01:12Z",
+          "completed_at": "2026-11-17T07:01:12Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T07:01:12Z",
+          "completed_at": "2026-11-17T07:07:07Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-17T07:07:07Z",
+          "completed_at": "2026-11-17T07:07:07Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-17T07:07:07Z",
+          "completed_at": "2026-11-17T07:07:07Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-11-17T07:07:07Z",
+          "completed_at": "2026-11-17T07:07:07Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-11-17T07:07:07Z",
+          "completed_at": "2026-11-17T07:07:07Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-11-17T07:07:07Z",
+          "completed_at": "2026-11-17T07:07:07Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T07:07:07Z",
+          "completed_at": "2026-11-17T07:07:09Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T07:07:09Z",
+          "completed_at": "2026-11-17T07:07:10Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T07:07:10Z",
+          "completed_at": "2026-11-17T07:07:11Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T07:07:11Z",
+          "completed_at": "2026-11-17T07:07:12Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509438",
+      "labels": [
+        "macos-15-intel"
+      ],
+      "runner_id": 1000001451,
+      "runner_name": "GitHub Actions 1000001451",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "elapsed_seconds": 770.0,
+      "complete_log": {
+        "job_id": 133874509438,
+        "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+        "encoding": "UTF-8 of complete decoded connector log, including original BOM/CR characters",
+        "raw_bytes": 425855,
+        "raw_sha256": "fe6cacc8e6b3d38318b945e9d3fc0697aa03bc9f7e5ffb48e8dcb6ad026de458",
+        "carriage_returns": 0,
+        "gzip_bytes": 39437,
+        "gzip_sha256": "4bba53f5f05360e8a09539dcb0470cad8aca03a05ce6225dcb7471ed7f7c0cc4",
+        "gzip_roundtrip_verified": true,
+        "path": "core-d2ed03b9-job-133874509438.log.gz"
+      },
+      "log_review": "core-d2ed03b9-job-133874509438.summary.json",
+      "source_sha_logged": true,
+      "ctest_result": {
+        "records": 209,
+        "unique_names": 209,
+        "passed": 209,
+        "nonpassed": [],
+        "total_seconds": [
+          354.38
+        ],
+        "all_twelve_registration_apron_tests_passed": true,
+        "all_five_library_suites_passed": true
+      }
+    },
+    {
+      "id": 133874509296,
+      "run_id": 44034656790,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rl8A",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509296",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/job/133874509296",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T07:06:17Z",
+      "name": "Release (Windows MSVC)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "completed_at": "2026-11-17T06:54:25Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:25Z",
+          "completed_at": "2026-11-17T06:54:47Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:47Z",
+          "completed_at": "2026-11-17T06:54:48Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:48Z",
+          "completed_at": "2026-11-17T06:54:50Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:50Z",
+          "completed_at": "2026-11-17T06:54:50Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:50Z",
+          "completed_at": "2026-11-17T06:55:05Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:05Z",
+          "completed_at": "2026-11-17T06:59:23Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:59:23Z",
+          "completed_at": "2026-11-17T06:59:23Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T06:59:23Z",
+          "completed_at": "2026-11-17T07:04:57Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-17T07:04:57Z",
+          "completed_at": "2026-11-17T07:04:57Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T07:04:57Z",
+          "completed_at": "2026-11-17T07:06:10Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-11-17T07:06:10Z",
+          "completed_at": "2026-11-17T07:06:10Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-11-17T07:06:10Z",
+          "completed_at": "2026-11-17T07:06:10Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-11-17T07:06:10Z",
+          "completed_at": "2026-11-17T07:06:10Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T07:06:10Z",
+          "completed_at": "2026-11-17T07:06:12Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T07:06:12Z",
+          "completed_at": "2026-11-17T07:06:12Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T07:06:12Z",
+          "completed_at": "2026-11-17T07:06:14Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T07:06:14Z",
+          "completed_at": "2026-11-17T07:06:14Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509296",
+      "labels": [
+        "windows-2022"
+      ],
+      "runner_id": 1000001454,
+      "runner_name": "GitHub Actions 1000001454",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "elapsed_seconds": 714.0,
+      "complete_log": {
+        "job_id": 133874509296,
+        "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+        "encoding": "UTF-8 of complete decoded connector log, including original BOM/CR characters",
+        "raw_bytes": 623342,
+        "raw_sha256": "2719c471a8de09b0436288b3614b7ed494def8f5d012d4d7bf7e2e24d532fe90",
+        "carriage_returns": 3997,
+        "gzip_bytes": 67425,
+        "gzip_sha256": "4362c93057b9682d9cef8c3970b82af835d556fd25f06dafff04c04fc4d2cb44",
+        "gzip_roundtrip_verified": true,
+        "path": "core-d2ed03b9-job-133874509296.log.gz"
+      },
+      "log_review": "core-d2ed03b9-job-133874509296.summary.json",
+      "source_sha_logged": true,
+      "ctest_result": {
+        "records": 209,
+        "unique_names": 209,
+        "passed": 209,
+        "nonpassed": [],
+        "total_seconds": [
+          333.1
+        ],
+        "all_twelve_registration_apron_tests_passed": true,
+        "all_five_library_suites_passed": true
+      }
+    },
+    {
+      "id": 133874508983,
+      "run_id": 44034656790,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rktw",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874508983",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/job/133874508983",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:20Z",
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T07:01:59Z",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "completed_at": "2026-11-17T06:54:25Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:25Z",
+          "completed_at": "2026-11-17T06:54:45Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:45Z",
+          "completed_at": "2026-11-17T06:54:45Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:45Z",
+          "completed_at": "2026-11-17T06:54:46Z"
+        },
+        {
+          "name": "Configure Debug with ASan and UBSan",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:46Z",
+          "completed_at": "2026-11-17T06:54:47Z"
+        },
+        {
+          "name": "Build with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:47Z",
+          "completed_at": "2026-11-17T06:56:35Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full sanitizer test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:56:35Z",
+          "completed_at": "2026-11-17T06:56:35Z"
+        },
+        {
+          "name": "Run every registered test with leak checking",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:56:35Z",
+          "completed_at": "2026-11-17T07:01:54Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T07:01:54Z",
+          "completed_at": "2026-11-17T07:01:56Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-17T07:01:56Z",
+          "completed_at": "2026-11-17T07:01:56Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-17T07:01:56Z",
+          "completed_at": "2026-11-17T07:01:56Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-17T07:01:56Z",
+          "completed_at": "2026-11-17T07:01:56Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874508983",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001445,
+      "runner_name": "GitHub Actions 1000001445",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "elapsed_seconds": 456.0,
+      "complete_log": {
+        "job_id": 133874508983,
+        "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+        "encoding": "UTF-8 of complete decoded connector log, including original BOM/CR characters",
+        "raw_bytes": 485217,
+        "raw_sha256": "a391d13278ae115616691f56d0df5ccb68bee7c6d4f67ba671bcce50142b223c",
+        "carriage_returns": 0,
+        "gzip_bytes": 43488,
+        "gzip_sha256": "f5c03f385b2ceaf0b9378f33a88076868871ed6030ed296906f2288dc5449830",
+        "gzip_roundtrip_verified": true,
+        "path": "core-d2ed03b9-job-133874508983.log.gz"
+      },
+      "log_review": "core-d2ed03b9-job-133874508983.summary.json",
+      "source_sha_logged": true,
+      "ctest_result": {
+        "records": 209,
+        "unique_names": 209,
+        "passed": 209,
+        "nonpassed": [],
+        "total_seconds": [
+          318.89
+        ],
+        "all_twelve_registration_apron_tests_passed": true,
+        "all_five_library_suites_passed": true
+      }
+    },
+    {
+      "id": 133874509351,
+      "run_id": 44034656790,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfK4rmJw",
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133874509351",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656790/job/133874509351",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T06:54:21Z",
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T07:04:13Z",
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "completed_at": "2026-11-17T06:54:26Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:26Z",
+          "completed_at": "2026-11-17T06:54:46Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:46Z",
+          "completed_at": "2026-11-17T06:54:46Z"
+        },
+        {
+          "name": "Record source and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:46Z",
+          "completed_at": "2026-11-17T06:54:48Z"
+        },
+        {
+          "name": "Configure the independent core qualification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:48Z",
+          "completed_at": "2026-11-17T06:54:51Z"
+        },
+        {
+          "name": "Require strict report admission",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:51Z",
+          "completed_at": "2026-11-17T06:54:53Z"
+        },
+        {
+          "name": "Build and run all full waveform experiments",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:53Z",
+          "completed_at": "2026-11-17T07:04:10Z"
+        },
+        {
+          "name": "Retain exact complete waveform evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T07:04:10Z",
+          "completed_at": "2026-11-17T07:04:11Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T07:04:11Z",
+          "completed_at": "2026-11-17T07:04:11Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-17T07:04:11Z",
+          "completed_at": "2026-11-17T07:04:12Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-17T07:04:12Z",
+          "completed_at": "2026-11-17T07:04:12Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133874509351",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001456,
+      "runner_name": "GitHub Actions 1000001456",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions",
+      "elapsed_seconds": 590.0,
+      "complete_log": {
+        "job_id": 133874509351,
+        "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+        "encoding": "UTF-8 of complete decoded connector log, including original BOM/CR characters",
+        "raw_bytes": 70186,
+        "raw_sha256": "14d13e601c867bc8710a77e0671a06cf413133a49bce4a1f3e3f87576296bc5d",
+        "carriage_returns": 0,
+        "gzip_bytes": 11289,
+        "gzip_sha256": "b717f79bb26ceb4144ab40d12cb26d05e4e2b140864f6f39b6b82e1f44644f02",
+        "gzip_roundtrip_verified": true,
+        "path": "core-d2ed03b9-job-133874509351.log.gz"
+      },
+      "log_review": "core-d2ed03b9-job-133874509351.summary.json",
+      "source_sha_logged": true,
+      "ctest_result": null
+    }
+  ],
+  "windows_method_results": {
+    "artifact_id": 14307775125,
+    "review": "core-d2ed03b9-artifact-14307775125.review.json",
+    "source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "junit": {
+      "name": "Win32-MSBuild",
+      "tests": "209",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "runnervm9zap3",
+      "time": "333",
+      "timestamp": "2026-11-17T06:59:23"
+    },
+    "suites": [
+      {
+        "name": "python_test_capture_standalone_interface",
+        "method_count": 45,
+        "unittest_seconds": 4.676,
+        "unittest_result": "OK",
+        "skipped_methods": 0,
+        "execution_command": "\"C:/hostedtoolcache/windows/Python/3.12.10/x64/python.exe\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_capture_standalone_interface.py\"\r",
+        "system_out": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 4.676s\n\nOK\n"
+      },
+      {
+        "name": "python_test_compare_header_material",
+        "method_count": 24,
+        "unittest_seconds": 1.042,
+        "unittest_result": "OK",
+        "skipped_methods": 0,
+        "execution_command": "\"C:/hostedtoolcache/windows/Python/3.12.10/x64/python.exe\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_compare_header_material.py\"\r",
+        "system_out": "........................\n----------------------------------------------------------------------\nRan 24 tests in 1.042s\n\nOK\n"
+      },
+      {
+        "name": "python_test_compare_performance_plate",
+        "method_count": 54,
+        "unittest_seconds": 0.952,
+        "unittest_result": "OK",
+        "skipped_methods": 0,
+        "execution_command": "\"C:/hostedtoolcache/windows/Python/3.12.10/x64/python.exe\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_compare_performance_plate.py\"\r",
+        "system_out": "......................................................\n----------------------------------------------------------------------\nRan 54 tests in 0.952s\n\nOK\n"
+      }
+    ],
+    "boundary": "These are actual hosted Python suite method counts. The 54-method P1 source/comparator suite does not replace the separate native P1/SDL workflow review."
+  },
+  "windows_unicode_generator": {
+    "qualification_sha256": "e10820c294f835a23c67b2b9ea566f3612c0cc376fb026b91908ac74cbc26046",
+    "qualification": {
+      "compiled_source_definition": "HAMMOND_STARTER_SOURCE_DIR=\"D:/a/_temp/hammond generator é 漢字/source\"",
+      "generator_sha256": "5b3b9b39db911619b769ff68e39fe6b7620253ce3b37d5af5d8bf16a0dc2f14d",
+      "payloads": {
+        "01 Quiet Foundation.b3performance": {
+          "bytes": 457,
+          "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651"
+        },
+        "01 Quiet Foundation.b3registration": {
+          "bytes": 457,
+          "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651"
+        },
+        "02 Warm Comp.b3performance": {
+          "bytes": 459,
+          "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+        },
+        "02 Warm Comp.b3registration": {
+          "bytes": 459,
+          "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+        },
+        "03 Clear Lead.b3performance": {
+          "bytes": 459,
+          "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad"
+        },
+        "03 Clear Lead.b3registration": {
+          "bytes": 459,
+          "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad"
+        },
+        "04 Reed Edge.b3performance": {
+          "bytes": 457,
+          "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020"
+        },
+        "04 Reed Edge.b3registration": {
+          "bytes": 457,
+          "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020"
+        },
+        "05 Bright Ensemble.b3performance": {
+          "bytes": 457,
+          "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f"
+        },
+        "05 Bright Ensemble.b3registration": {
+          "bytes": 457,
+          "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f"
+        },
+        "06 High Shimmer.b3performance": {
+          "bytes": 457,
+          "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a"
+        },
+        "06 High Shimmer.b3registration": {
+          "bytes": 457,
+          "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a"
+        },
+        "07 Percussive Pair.b3performance": {
+          "bytes": 456,
+          "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a"
+        },
+        "07 Percussive Pair.b3registration": {
+          "bytes": 456,
+          "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a"
+        },
+        "08 Slow Accent.b3performance": {
+          "bytes": 457,
+          "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005"
+        },
+        "08 Slow Accent.b3registration": {
+          "bytes": 457,
+          "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005"
+        },
+        "09 Split Dialogue.b3performance": {
+          "bytes": 457,
+          "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b"
+        },
+        "09 Split Dialogue.b3registration": {
+          "bytes": 457,
+          "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b"
+        },
+        "10 Pedal Study.b3performance": {
+          "bytes": 457,
+          "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890"
+        },
+        "10 Pedal Study.b3registration": {
+          "bytes": 457,
+          "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890"
+        },
+        "11 Fixed Contrast.b3performance": {
+          "bytes": 452,
+          "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d"
+        },
+        "11 Fixed Contrast.b3registration": {
+          "bytes": 452,
+          "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d"
+        },
+        "12 Manual Return.b3performance": {
+          "bytes": 452,
+          "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df"
+        },
+        "12 Manual Return.b3registration": {
+          "bytes": 452,
+          "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df"
+        }
+      },
+      "protected_source_refusal": {
+        "attempted_count": 0,
+        "committed_count": 0,
+        "event": "summary",
+        "message": "Generate into a separate staging directory; authored pack paths are protected",
+        "schema": "hammond-starter-generator-v1",
+        "status": "ProtectedPath",
+        "unattempted_count": 24,
+        "uncertain_file": null
+      },
+      "scope": "MSVC Release actual generator and 24 exact files; no SDL, VST3, native UI or device qualification.",
+      "source_archive_sha256": "488db5d60c33411337ce48ded32b305bdbefebf86bc83ffd6b5d0152036fe09c",
+      "source_commit": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "source_pack_unchanged": true,
+      "source_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+      "unicode_source_root": "D:\\a\\_temp\\hammond generator é 漢字\\source"
+    },
+    "actual_generation_records": 25,
+    "payloads_saved": 24,
+    "generation_summary": {
+      "schema": "hammond-starter-generator-v1",
+      "event": "summary",
+      "status": "Complete",
+      "committed_count": 24,
+      "attempted_count": 24,
+      "unattempted_count": 0,
+      "uncertain_file": null,
+      "message": "All 24 files committed; no existing files were replaced"
+    },
+    "stdout_lf_only": true,
+    "generate_and_protected_stderr_empty": true,
+    "source_root_contains_unicode": true,
+    "commands": [
+      {
+        "command": [
+          "cmake",
+          "-S",
+          "D:\\a\\_temp\\hammond generator é 漢字\\source",
+          "-B",
+          "D:\\a\\_temp\\hammond generator é 漢字\\build",
+          "-G",
+          "Visual Studio 17 2022",
+          "-A",
+          "x64",
+          "-DBUILD_TESTING=OFF",
+          "-DHAMMOND_BUILD_STANDALONE=OFF",
+          "-DHAMMOND_BUILD_VST3=OFF",
+          "-DHAMMOND_ENABLE_MIDI=OFF",
+          "-DPython3_EXECUTABLE=C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe"
+        ],
+        "cwd": "D:\\a\\_temp\\hammond generator é 漢字",
+        "timeout_seconds": 120,
+        "expected_exit": 0
+      },
+      {
+        "command": [
+          "cmake",
+          "--build",
+          "D:\\a\\_temp\\hammond generator é 漢字\\build",
+          "--config",
+          "Release",
+          "--target",
+          "hammond_generate_starter_registrations",
+          "--parallel",
+          "2",
+          "--verbose"
+        ],
+        "cwd": "D:\\a\\_temp\\hammond generator é 漢字",
+        "timeout_seconds": 360,
+        "expected_exit": 0
+      },
+      {
+        "command": [
+          "D:\\a\\_temp\\hammond generator é 漢字\\build\\Release\\hammond_generate_starter_registrations.exe",
+          "--output",
+          "D:\\a\\_temp\\hammond generator é 漢字\\outputs\\generated é 漢字"
+        ],
+        "cwd": "D:\\a\\_temp\\hammond generator é 漢字",
+        "timeout_seconds": 30,
+        "expected_exit": 0
+      },
+      {
+        "command": [
+          "D:\\a\\_temp\\hammond generator é 漢字\\build\\Release\\hammond_generate_starter_registrations.exe",
+          "--output",
+          "D:\\a\\_temp\\hammond generator é 漢字\\source\\data\\registrations\\starter-v1\\must stay absent é 漢字"
+        ],
+        "cwd": "D:\\a\\_temp\\hammond generator é 漢字",
+        "timeout_seconds": 15,
+        "expected_exit": 3
+      }
+    ],
+    "scope": "Actual hosted MSVC Release generator in Unicode source/output paths, 24 exact payloads, protected-source refusal. This does not qualify SDL, VST3, native UI or devices."
+  },
+  "linux_method_results": {
+    "artifact_id": 14306224026,
+    "review": "core-d2ed03b9-artifact-14306224026.review.json",
+    "suites": [
+      {
+        "name": "python_test_capture_standalone_interface",
+        "method_count": 45,
+        "unittest_seconds": 0.9,
+        "unittest_result": "OK",
+        "skipped_methods": 0
+      },
+      {
+        "name": "python_test_compare_header_material",
+        "method_count": 24,
+        "unittest_seconds": 0.353,
+        "unittest_result": "OK",
+        "skipped_methods": 0
+      },
+      {
+        "name": "python_test_compare_performance_plate",
+        "method_count": 54,
+        "unittest_seconds": 0.472,
+        "unittest_result": "OK",
+        "skipped_methods": 0
+      }
+    ]
+  },
+  "linux_standard_library_apron_results": {
+    "art_methods": 25,
+    "art_optional_method_skips": 6,
+    "raster_methods": 14,
+    "raster_optional_method_skips": 2,
+    "both_result": "OK",
+    "source": "core-d2ed03b9-job-133874509282.summary.json"
+  },
+  "sanitizer_execution": {
+    "evidence": {
+      "engine_compilation": true,
+      "library_model_compilation": true,
+      "model_test_compilation": true,
+      "model_test_linkage": true,
+      "ASAN_OPTIONS_detect_leaks_1": true,
+      "UBSAN_OPTIONS_stacktrace_halt": true,
+      "LSAN_OPTIONS_exitcode23": true
+    },
+    "scope": "Core/headless Engine and library model/test instrumentation with ASan, UBSan and leak checking; SDL/native sanitizer qualification remains separate."
+  },
+  "r4_execution": {
+    "review": "core-d2ed03b9-artifact-14307027274.review.json",
+    "artifact_id": 14307027274,
+    "status": "pass",
+    "completed": true,
+    "mode": "full",
+    "wall_seconds": 535.7267005399999,
+    "failures": [],
+    "groups": {
+      "source_before": "pass",
+      "executable_before": "pass",
+      "build_metadata_before": "pass",
+      "build_options": "pass",
+      "native_process_capture": "pass",
+      "native_process_exit": "pass",
+      "native_json": "pass",
+      "native_report_admission": "pass",
+      "selected_decimal_crosscheck": "pass",
+      "retained_static_grid": "pass",
+      "source_after": "pass",
+      "source_stability": "pass",
+      "executable_after": "pass",
+      "executable_stability": "pass",
+      "build_metadata_after": "pass",
+      "build_metadata_stability": "pass"
+    },
+    "native_process_exit_code": 0,
+    "native_process_timed_out": false,
+    "native_totals": {
+      "rate_count": 4,
+      "completed_partitions": 24,
+      "reference_frames": 3801000,
+      "reference_scalar_comparisons": 7602000,
+      "reference_path_solutions": 15204000,
+      "native_frames": 22806000,
+      "native_path_solutions": 91224000,
+      "partition_compared_samples": 38010000,
+      "partition_equal_samples": 38010000,
+      "native_events_consumed": 840,
+      "selected_trace_paths": 176,
+      "convergence_pairs": 288,
+      "auxiliary_convergence_path_solutions": 576
+    },
+    "source_before": {
+      "git_head": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "git_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+      "dirty_overlay": false
+    },
+    "source_after": {
+      "git_head": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "git_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+      "dirty_overlay": false
+    },
+    "original_stdout_stderr_digests_verified": true,
+    "report_admission_self_test_methods": 14,
+    "report_admission_self_test_seconds": 0.392,
+    "scope": "native R4 waveform and exact partition qualification plus selected reference and retained static-grid checks",
+    "separate_gates": {
+      "transaction_lifecycle": "not_run",
+      "R5_audible_policy": "not_run",
+      "R6_device_deadlines": "not_run",
+      "physical_fidelity": "not_run"
+    }
+  },
+  "artifacts": {
+    "total_count": 6,
+    "artifacts": [
+      {
+        "id": 14307775125,
+        "node_id": "MDg6QXJ0aWZhY3QxNDMwNzc3NTEyNQ==",
+        "name": "ci-windows-2022-release-1",
+        "size_in_bytes": 163032,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14307775125",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14307775125/zip",
+        "expired": false,
+        "digest": "sha256:4f8fa9dea4eb492b6e15a7b86a8007570dc497bcfa124a399fe25c157d4be871",
+        "created_at": "2026-11-17T07:06:12Z",
+        "updated_at": "2026-11-17T07:06:12Z",
+        "expires_at": "2026-12-01T07:06:11Z",
+        "workflow_run": {
+          "id": 44034656790,
+          "repository_id": 1455003957,
+          "head_repository_id": 1455003957,
+          "head_branch": "main",
+          "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5"
+        },
+        "downloaded_for_review": true,
+        "retained_archive": "core-d2ed03b9-windows-release.zip",
+        "archive_receipt": "core-d2ed03b9-artifact-14307775125.receipt.json",
+        "review": "core-d2ed03b9-artifact-14307775125.review.json"
+      },
+      {
+        "id": 14307402271,
+        "node_id": "MDg6QXJ0aWZhY3QxNDMwNzQwMjI3MQ==",
+        "name": "ci-macos-15-intel-release-1",
+        "size_in_bytes": 155971,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14307402271",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14307402271/zip",
+        "expired": false,
+        "digest": "sha256:5870bed6c0107851e891a16cda2ba67f2b1bb3f6e53db90d169cbba218178019",
+        "created_at": "2026-11-17T07:07:09Z",
+        "updated_at": "2026-11-17T07:07:09Z",
+        "expires_at": "2026-12-01T07:07:08Z",
+        "workflow_run": {
+          "id": 44034656790,
+          "repository_id": 1455003957,
+          "head_repository_id": 1455003957,
+          "head_branch": "main",
+          "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5"
+        },
+        "downloaded_for_review": false
+      },
+      {
+        "id": 14307027274,
+        "node_id": "MDg6QXJ0aWZhY3QxNDMwNzAyNzI3NA==",
+        "name": "rotary-waveform-full-linux-1",
+        "size_in_bytes": 111947,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14307027274",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14307027274/zip",
+        "expired": false,
+        "digest": "sha256:f2e06bd671d648a868019f14a80edeb09e41ff347b32a2882bf60684bb569cc7",
+        "created_at": "2026-11-17T07:04:11Z",
+        "updated_at": "2026-11-17T07:04:11Z",
+        "expires_at": "2026-12-01T07:04:10Z",
+        "workflow_run": {
+          "id": 44034656790,
+          "repository_id": 1455003957,
+          "head_repository_id": 1455003957,
+          "head_branch": "main",
+          "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5"
+        },
+        "downloaded_for_review": true,
+        "retained_archive": "core-d2ed03b9-r4-full.zip",
+        "archive_receipt": "core-d2ed03b9-artifact-14307027274.receipt.json",
+        "review": "core-d2ed03b9-artifact-14307027274.review.json"
+      },
+      {
+        "id": 14306583319,
+        "node_id": "MDg6QXJ0aWZhY3QxNDMwNjU4MzMxOQ==",
+        "name": "ci-linux-gcc-sanitizers-1",
+        "size_in_bytes": 153016,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14306583319",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14306583319/zip",
+        "expired": false,
+        "digest": "sha256:d12f51fffa3e35f99c5fdde638c5a26189c14cad80a6233ba4a560a32f5183fe",
+        "created_at": "2026-11-17T07:01:56Z",
+        "updated_at": "2026-11-17T07:01:56Z",
+        "expires_at": "2026-12-01T07:01:54Z",
+        "workflow_run": {
+          "id": 44034656790,
+          "repository_id": 1455003957,
+          "head_repository_id": 1455003957,
+          "head_branch": "main",
+          "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5"
+        },
+        "downloaded_for_review": false
+      },
+      {
+        "id": 14306429048,
+        "node_id": "MDg6QXJ0aWZhY3QxNDMwNjQyOTA0OA==",
+        "name": "ci-macos-15-release-1",
+        "size_in_bytes": 151245,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14306429048",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14306429048/zip",
+        "expired": false,
+        "digest": "sha256:84fac16d730c9cef3dcee3e20870778e005d9946a6d1adcceef00be50f1dfc5c",
+        "created_at": "2026-11-17T07:00:54Z",
+        "updated_at": "2026-11-17T07:00:54Z",
+        "expires_at": "2026-12-01T07:00:53Z",
+        "workflow_run": {
+          "id": 44034656790,
+          "repository_id": 1455003957,
+          "head_repository_id": 1455003957,
+          "head_branch": "main",
+          "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5"
+        },
+        "downloaded_for_review": false
+      },
+      {
+        "id": 14306224026,
+        "node_id": "MDg6QXJ0aWZhY3QxNDMwNjIyNDAyNg==",
+        "name": "ci-ubuntu-24.04-release-1",
+        "size_in_bytes": 172081,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14306224026",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14306224026/zip",
+        "expired": false,
+        "digest": "sha256:9ea00011906f08af5c6492451c0baafeb8a011efd108a79acc269779f3562c8b",
+        "created_at": "2026-11-17T06:58:31Z",
+        "updated_at": "2026-11-17T06:58:31Z",
+        "expires_at": "2026-12-01T06:58:30Z",
+        "workflow_run": {
+          "id": 44034656790,
+          "repository_id": 1455003957,
+          "head_repository_id": 1455003957,
+          "head_branch": "main",
+          "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5"
+        },
+        "downloaded_for_review": true,
+        "retained_archive": "core-d2ed03b9-linux-release.zip",
+        "archive_receipt": "core-d2ed03b9-artifact-14306224026.receipt.json",
+        "review": "core-d2ed03b9-artifact-14306224026.review.json"
+      }
+    ]
+  },
+  "retention": {
+    "complete_primary_logs": 6,
+    "complete_job_steps_and_timings": true,
+    "raw_log_bytes": 2724737,
+    "gzip_log_bytes": 279709,
+    "log_gzip_roundtrips_verified": true,
+    "downloaded_artifact_count": 3,
+    "downloaded_artifact_bytes": 447060,
+    "all_downloaded_zip_digests_match_API": true,
+    "other_artifacts": "Metadata and successful uploads retained; ARM macOS, Intel macOS and sanitizer artifact bodies were not downloaded because their complete primary logs were decisive for the requested execution review.",
+    "job_observations": "core-d2ed03b9-job-observations.json.gz",
+    "observation_count": 7,
+    "poll_interval_seconds": [
+      99.01,
+      103.467,
+      170.347,
+      93.51,
+      139.364,
+      89.885
+    ]
+  },
+  "original_failure_preservation": {
+    "source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+    "run_id": 44030833273,
+    "run_conclusion": "failure",
+    "terminal_jobs": 6,
+    "successful_jobs": 5,
+    "failed_jobs": 1,
+    "windows_passed_ctests": 207,
+    "windows_total_ctests": 209,
+    "windows_ctest_exit": 8,
+    "windows_unicode_generator": "skipped",
+    "accepted_original_note_and_reports_unchanged": true,
+    "accepted_original_file_sha256": {
+      "../notes/A56.md": "97789deecdb2530ddd941d84f75b32a83aeec89b232861bb80effb8d28c11259",
+      "A56-core-hosted.json": "4dbf51bc4ba9bf05edd8cf6e91b58c72720908a44eba5611c6b90310dfa51d78",
+      "A56-core-hosted/windows-portability-repair.json": "fe96e43115d6f8e73829e60894b2928e4c5c77c69a345526a5b4bcc8de75dd3e",
+      "A56-core-hosted/core-cf87a587-admission.json": "04362d2d6f8dc4fda82f26c12abbe62f69a372b3a989a1b1a936ad98b28548d3",
+      "CONSOLE_CORE_HOSTED_ADMISSION.md": "e028589edea6e363e14c7d026beeb79a156ff18422b389724b38dc812ba835e3"
+    },
+    "original_windows_log_raw_sha256": "c47eee99796358d5a7f0cba50883c62d63df69994e701b96d5758f68d1de3d95",
+    "old_passes_promoted": false
+  },
+  "historical_outcomes_not_promoted": [
+    "Original console local full run remains 246/247 with its repository-integrity failure.",
+    "Combined 46-build-step/78-affected-test/15-capture results retain their own inputs and do not form a full-suite or hosted pass.",
+    "Earlier fba1911, 03c70c1 and 6287055 results retain their own source-specific failures, cancellations and successes."
+  ],
+  "execution_authority": {
+    "root_final_acceptance_and_publication": true,
+    "reviewer_git_or_ci_mutation": false,
+    "reviewer_retries": 0,
+    "reviewer_source_changes_during_this_followup": false,
+    "reviewer_local_build_test_or_native_execution_during_this_followup": false,
+    "writes": "Only new reports/A56-repair-hosted evidence and receipts; accepted first-source A56 note/report/evidence remain immutable."
+  },
+  "remaining_limits": [
+    "Root owns final acceptance, session closure and publication.",
+    "Other standalone/native/VST3 workflows have independent source-specific owners and evidence.",
+    "Passing registered CTests does not assert every optional internal method or branch executed; disclosed optional-method skips remain.",
+    "Real devices, display/DPI/native accessibility, callback deadlines and retirement, measured AO-28/scanner/Leslie fidelity, rights and signed distribution remain separate.",
+    "Literal whole-interface 1:1 remains unmet and unwaived.",
+    "Any later changed source requires its own execution qualification."
+  ]
+}

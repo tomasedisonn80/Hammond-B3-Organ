@@ -1,0 +1,447 @@
+{
+  "schema_version": 1,
+  "reviewer": "A59",
+  "continuation": true,
+  "additional_worker_credit": 0,
+  "observed_utc": "2026-11-17T07:34:32.458224+00:00",
+  "decision": "ADMITTED_SOURCE_TESTS_AND_LOCAL_QUALIFICATION_WINDOWS_PENDING",
+  "source_admission": {
+    "path": "docs/development/2026-11-16-console-completion/reports/A59-copied-state-followup/source-admission.json",
+    "bytes": 11045,
+    "sha256": "21f7f146dec94d5a35f5c1130c1bdaf6a3212090b0e55b73f489dcbe4b0e8d23"
+  },
+  "source_admission_unchanged": true,
+  "review_scope": "Independent read-only source, AST, immutable published Git objects, retained artifact, log and XML review. A59 executed no tests, builds or native binaries and made no Git/index/ref mutation. Only new files in this follow-up directory were authored.",
+  "published_base": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "actual_original_windows_failure": {
+    "commit": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+    "native_windows_run": 44034656779,
+    "native_windows_job": 133874509242,
+    "compiled": true,
+    "acceptance": "75 of 78 passed; three failed",
+    "title_failure": "copied view controls differs; view.controls.drawbars[0][1]: list lengths 0 / 9",
+    "header_failure": "complete canonical copied session differs; session.controls.drawbars[0][1]: list lengths 0 / 9",
+    "header_numerical_evaluated": 0,
+    "header_numerical_required": 103,
+    "p1_observation": "192 checks evaluated, one failed; all 62 candidate numerical screens passed. The failed nonnumerical check is not named in the original retained summary.",
+    "original_log": "docs/development/2026-11-16-console-completion/reports/A57-repair-hosted/job-133874509242.log.gz",
+    "original_log_raw_bytes": 659407,
+    "original_log_raw_sha256": "d4c08f3bde380b7f69fdf8e26fde70b6a326125e4624f4713062036a341351fc",
+    "diagnostic_archive": "docs/development/2026-11-16-console-completion/reports/A57-repair-hosted/artifact-14307123053.zip",
+    "diagnostic_archive_bytes": 179500,
+    "diagnostic_archive_sha256": "18d22990fc61b0dd3cc46f14be794b03da68346a26ca39c1165b0a355cead25a",
+    "diagnostic_archive_members": 42,
+    "unavailable_evidence": "A57 reports that this diagnostic archive retains neither rejected raw JSON headers nor the temporary P1 report/streams. No original P1 failure name is inferred."
+  },
+  "source_tests": [
+    {
+      "path": "tests/test_compare_performance_plate.py",
+      "bytes": 52155,
+      "sha256": "bdb013403199552b8c7014a186e5a4a6dbe862f1263f7b8ea2fea7a394718725",
+      "original_test_methods": 54,
+      "current_test_methods": 62,
+      "all_original_method_asts_unchanged": true,
+      "added_methods": 8,
+      "first_and_only_invocation_reported": true,
+      "exit_code": 0,
+      "process_seconds": 1.0186417469958542,
+      "unittest_seconds": 0.807,
+      "skips": 0,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "tests/test_compare_performance_plate.py",
+        "-v"
+      ],
+      "stdout": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/test_compare_performance_plate.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/test_compare_performance_plate.stderr",
+        "bytes": 9427,
+        "sha256": "8e75fec45ec0d1114b828b4ff9758841cb20cde380052d88064a8a2921a6754e"
+      }
+    },
+    {
+      "path": "tests/test_compare_header_material.py",
+      "bytes": 39478,
+      "sha256": "49fd5a857bdb172991e6e2470921ff822e72b6a39e63e5e1b23042fdad09aee1",
+      "original_test_methods": 24,
+      "current_test_methods": 33,
+      "all_original_method_asts_unchanged": true,
+      "added_methods": 9,
+      "first_and_only_invocation_reported": true,
+      "exit_code": 0,
+      "process_seconds": 1.1720355189972906,
+      "unittest_seconds": 0.867,
+      "skips": 0,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "tests/test_compare_header_material.py",
+        "-v"
+      ],
+      "stdout": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/test_compare_header_material.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/test_compare_header_material.stderr",
+        "bytes": 5571,
+        "sha256": "44d62435ffac94f89a90f6a7f2b5312d0bb94a8e857ae1e4b153c653db05dae5"
+      }
+    }
+  ],
+  "test_patch_review": {
+    "all_78_original_methods_ast_identical": true,
+    "new_methods": 17,
+    "all_95_recorded_method_rows_ok_no_skips": true,
+    "all_nine_qualification_inputs_before_after_and_current_match": true,
+    "paired_header_comparator_unchanged": true,
+    "independent_oracles": "New tests declare exact full-source hashes and exact old/new serializer blocks independently from implementation constants. They check bytes-only inputs, exact full-file identities, missing/duplicate/changed blocks, relocation, unrelated append, adversarial repinning, candidate-only P1 admission and refusal before native launch.",
+    "historical_setup_changes": "P1 helper tests first reverse the exact indexed source to the separately pinned helper-only source. Header fixture_sources similarly reconstructs the exact historical source. One legacy header current-checkout test temporarily points ROOT at actual reconstructed fixture bytes; baseline tests materialize historical fixture bytes in a temporary source root. Existing test method bodies and all original hash/refusal oracles remain unchanged. A new test explicitly rejects the indexed fixture in the unchanged paired header comparator.",
+    "strict_reader_regression": "The actual typed_equal/copied_state_difference functions still reject an empty second drawbar bank and Boolean substitution for integer values. Native frame/numerical boundaries are mocked only in source tests of admission timing and final input drift; these tests are not native or numerical qualification.",
+    "explanatory_receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/array-regressions-report.json",
+      "bytes": 17805,
+      "sha256": "f935bc74a290dd7596208f4951396ac4676ecfae741d3e29f52fa6ec60920819"
+    },
+    "qualification_receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/source-only-qualification.json",
+      "bytes": 10522,
+      "sha256": "b2abb130664757c06218653eb4748906d1bbd4788cd213b69ed97ae2519aa928"
+    }
+  },
+  "local_qualification": {
+    "receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/array-local-qualification.json",
+      "bytes": 74511,
+      "sha256": "cc65610eb5df0038aa2b26137faaefbb217d7225af06971342ea66094756db05"
+    },
+    "status": "passed",
+    "source_inputs": 587,
+    "independently_compared_with_published_git_objects": true,
+    "exact_changed_inputs": {
+      "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+        "candidate_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+        "published_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
+      },
+      "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+        "candidate_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+        "published_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+      },
+      "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+        "candidate_sha256": "c0e18a521d2905af285fdf1e77f868d329381f9430a8dd14d891499b8120ce95",
+        "published_sha256": "455c42c9be0e9714fadcaefbd269fbe4de5ece4439e9334d893cf5d64856ae8f"
+      },
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+        "candidate_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+        "published_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d"
+      },
+      "apps/standalone/native_tests/test_standalone_title_density.py": {
+        "candidate_sha256": "7be7a351718f0964efbd7407f2403541efe0a00c96095e4f53b09156d237a124",
+        "published_sha256": "b91743c7b5b791586feea50d465f90613c85730472ed97aa21054c7bf9588457"
+      },
+      "tests/test_compare_header_material.py": {
+        "candidate_sha256": "49fd5a857bdb172991e6e2470921ff822e72b6a39e63e5e1b23042fdad09aee1",
+        "published_sha256": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d"
+      },
+      "tests/test_compare_performance_plate.py": {
+        "candidate_sha256": "bdb013403199552b8c7014a186e5a4a6dbe862f1263f7b8ea2fea7a394718725",
+        "published_sha256": "97bf84741a1954fbd16ba5992862cdfef0393e50e8c5d3ba3b15b9ceda344bdd"
+      },
+      "tools/compare_performance_plate.py": {
+        "candidate_sha256": "7a49551493fae8bffe6764927d51ed1e37a1b6cdbe06b2bfb872670783ac4264",
+        "published_sha256": "46ce7721d2cb884b08f231249ffc0fc7f80a3d9a33657c0519216d68087671b2"
+      }
+    },
+    "unchanged_inputs": 579,
+    "all_current_hashes_match_frozen_receipt": true,
+    "reported_changes_during_qualification": [],
+    "build": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/21cce69f7784/build-native",
+        "--target",
+        "test_standalone_footage_typography_raster",
+        "test_standalone_header_material",
+        "test_standalone_performance_plate",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "array-fixture-build.log",
+      "log_sha256": "8b21951fe4f2109e30aa4162e4eddd788a4fffa5226477dca71493f7540aa879",
+      "seconds": 16.957733027003997
+    },
+    "build_log": {
+      "path": "docs/development/2026-11-16-console-completion/reports/array-fixture-build.log",
+      "bytes": 728,
+      "sha256": "8b21951fe4f2109e30aa4162e4eddd788a4fffa5226477dca71493f7540aa879"
+    },
+    "affected": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/21cce69f7784/build-native",
+        "--output-on-failure",
+        "--parallel",
+        "1",
+        "--no-tests=error",
+        "-R",
+        "^(test_standalone_(footage_typography_raster|title_density|header_material|header_statistics|performance_plate|performance_plate_numerical)|python_test_repository_integrity)$",
+        "--output-junit",
+        "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/array-affected.xml"
+      ],
+      "exit_code": 0,
+      "log": "array-affected.log",
+      "log_sha256": "50266acafbc1ba9bde25251a4cb6dfaf5b02e7894e8358e44bcde2bac78e7e42",
+      "seconds": 86.90884113500215
+    },
+    "affected_log": {
+      "path": "docs/development/2026-11-16-console-completion/reports/array-affected.log",
+      "bytes": 1444,
+      "sha256": "50266acafbc1ba9bde25251a4cb6dfaf5b02e7894e8358e44bcde2bac78e7e42"
+    },
+    "affected_xml": {
+      "path": "docs/development/2026-11-16-console-completion/reports/array-affected.xml",
+      "bytes": 7149,
+      "sha256": "31fafdada9a66f43206c5efd6ac36a135a805afc787dda1d4425d14242abbabf"
+    },
+    "complete_detail_log": {
+      "path": "docs/development/2026-11-16-console-completion/reports/array-affected-detail.log",
+      "bytes": 96269,
+      "sha256": "1c66ac59c31b2c8638d13025a41634c13f4d831a2c7f1daca141c90d92365e5d"
+    },
+    "xml_counts": {
+      "errors": 0,
+      "failures": 0,
+      "names": [
+        "python_test_repository_integrity",
+        "test_standalone_footage_typography_raster",
+        "test_standalone_title_density",
+        "test_standalone_header_material",
+        "test_standalone_performance_plate",
+        "test_standalone_performance_plate_numerical",
+        "test_standalone_header_statistics"
+      ],
+      "skipped": 0,
+      "tests": 7
+    },
+    "results": [
+      {
+        "name": "python_test_repository_integrity",
+        "passed": true,
+        "methods": 41
+      },
+      {
+        "name": "test_standalone_footage_typography_raster",
+        "passed": true,
+        "cases": 44,
+        "checks": 23501530
+      },
+      {
+        "name": "test_standalone_title_density",
+        "passed": true,
+        "cases": 18,
+        "case_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "all_original_density_rules_unchanged": true
+      },
+      {
+        "name": "test_standalone_header_material",
+        "passed": true,
+        "cases": 48,
+        "checks": 10542,
+        "paintings": 163,
+        "helper_probes": 95
+      },
+      {
+        "name": "test_standalone_performance_plate",
+        "passed": true,
+        "cases": 34,
+        "checks": 53648,
+        "paintings": 111,
+        "helper_probes": 61
+      },
+      {
+        "name": "test_standalone_performance_plate_numerical",
+        "passed": true,
+        "checks_evaluated": 191,
+        "failed_checks": 0,
+        "frozen_numerical_screens_passed": 62
+      },
+      {
+        "name": "test_standalone_header_statistics",
+        "passed": true,
+        "protocol_passed": true,
+        "helper_passed": true,
+        "original_inequalities_evaluated": 103,
+        "passed_count": 103,
+        "failed_count": 0
+      }
+    ],
+    "detail_vs_xml": "JUnit truncates large stdout bodies after 1024 bytes. Complete title/header/P1 numerical results were therefore independently read from the retained full detail log; the full P1 report was also verified separately.",
+    "canonical_streams": [
+      {
+        "after_executable_sha256": "1a47a42b3965378384fa6827c9bcd0ee059253902ee10d36efa940b665c1bd70",
+        "before_executable_sha256": "1537ca56091a90ebf1bcd4ba5f81bfb4ada78df0ae0cc0aa821bf960ca8682ec",
+        "command": [
+          "/workspace/scratch/21cce69f7784/build-native/apps/standalone/test_standalone_footage_typography_raster",
+          "--case",
+          "0"
+        ],
+        "entire_stream_identical_to_genuine_before": true,
+        "exit_code": 0,
+        "name": "title",
+        "seconds": 0.4201114259994938,
+        "stderr_bytes": 0,
+        "stderr_gzip_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+        "stderr_path": "array-serialization-after/title-stderr.gz",
+        "stdout_bytes": 6681919,
+        "stdout_gzip_sha256": "965d3e3b8d18630a3a18a470da98ce5d0b6b7a9157f455cc2172f2a81c67ebab",
+        "stdout_path": "array-serialization-after/title-stdout.gz",
+        "stdout_sha256": "d13f9bf5f08ad8ea73dadec3a478b2262471c1f80bd030b21f851e6be6f30c2c"
+      },
+      {
+        "after_executable_sha256": "f0167db881ae0e425f8f590e51cb38ef0f861e52dfb32f8d4b07c16264108743",
+        "before_executable_sha256": "8ab975b18ef2a4fb8db7f06108a75e3b74e729c6a79ae204fd3db3872f0fb0cc",
+        "command": [
+          "/workspace/scratch/21cce69f7784/build-native/apps/standalone/test_standalone_header_material",
+          "--case",
+          "46"
+        ],
+        "entire_stream_identical_to_genuine_before": true,
+        "exit_code": 0,
+        "name": "header",
+        "seconds": 0.6159457530011423,
+        "stderr_bytes": 0,
+        "stderr_gzip_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+        "stderr_path": "array-serialization-after/header-stderr.gz",
+        "stdout_bytes": 6524840,
+        "stdout_gzip_sha256": "7d338fdde1639a1f420c3b094c80b006ef63b84886913da2170a200edfa5a83b",
+        "stdout_path": "array-serialization-after/header-stdout.gz",
+        "stdout_sha256": "3f5256bd74c001f9eeae0d521edabe953df00c4b3ab8156367b692d563246352"
+      },
+      {
+        "after_executable_sha256": "f9a3f67518233d94d77c53ba137d3b1fc05ee9f55619f24cf654c24cecb027a9",
+        "before_executable_sha256": "60e951c907bf177b190e1a8abee9246a472b5e1d8ddc957b5ba5e2ce5179ecd5",
+        "command": [
+          "/workspace/scratch/21cce69f7784/build-native/apps/standalone/test_standalone_performance_plate",
+          "--case",
+          "0"
+        ],
+        "entire_stream_identical_to_genuine_before": true,
+        "exit_code": 0,
+        "name": "p1",
+        "seconds": 0.650208974002453,
+        "stderr_bytes": 0,
+        "stderr_gzip_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+        "stderr_path": "array-serialization-after/p1-stderr.gz",
+        "stdout_bytes": 6561750,
+        "stdout_gzip_sha256": "7424601c5552e2fc02665d7927873aec226e90fd7b0f8c2f912856aae5b1b8b7",
+        "stdout_path": "array-serialization-after/p1-stdout.gz",
+        "stdout_sha256": "371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55"
+      }
+    ],
+    "all_three_complete_json_plus_rgba_streams_independently_byte_equal_to_genuine_before": true,
+    "all_three_after_executables_changed_and_current_hashes_match": true,
+    "all_after_stderr_empty": true,
+    "application_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9",
+    "current_application_hash_matches": true
+  },
+  "p1_complete_retention": {
+    "manifest": {
+      "path": "docs/development/2026-11-16-console-completion/reports/array-p1-retention.json",
+      "bytes": 15503,
+      "sha256": "27a43b7bdef472797c40bf5253aff9e20d6e0004a7b034230881357ac82549b9"
+    },
+    "report": {
+      "path": "docs/development/2026-11-16-console-completion/reports/array-p1-candidate/report.json",
+      "bytes": 50069,
+      "sha256": "c75205388e4254ff879d5b84058237539fa360d136e2c0e4608b0cd7d3aa8e37"
+    },
+    "files": 5,
+    "total_bytes": 1153074,
+    "all_retained_files_independently_equal_original_temporary_files": true,
+    "all_four_compressed_and_raw_stream_identities_verified": true,
+    "mode": "candidate-only-frozen62",
+    "checks_evaluated": 191,
+    "failures": [],
+    "candidate_screens": {
+      "all_passed": true,
+      "failed": 0,
+      "passed": 62,
+      "total": 62
+    },
+    "retained_historical_screens": {
+      "all_passed": false,
+      "failed": 34,
+      "passed": 28,
+      "total": 62
+    },
+    "fixture_source_admission": {
+      "accepted_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "candidate_only": true,
+      "claim": "Source admission only; coherent build and runtime acceptance remain separate.",
+      "observed_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "original_pinned_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "transition": {
+        "helper_transition": {
+          "corrected_block_sha256": "ef644e3e10e0ecc9d914f99e1c78a5bb6bdb1209aa0ecc696f86a410b3a60551",
+          "id": "p1-helper-constexpr-else-v1",
+          "original_block_sha256": "e3e8fdad56e8332de33b348d06c8a94ef1176d512b352a2079cd95b0c9ad34d5",
+          "reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+          "scope": "candidate-only",
+          "whole_file_reversal_verified": true
+        },
+        "id": "p1-indexed-array-v1",
+        "original_reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+        "reversed_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+        "scope": "candidate-only",
+        "whole_file_reversal_verified": true
+      },
+      "variant": "p1-indexed-array-v1"
+    },
+    "retention_scope": "Original completed report and four captured streams copied without native execution or report reconstruction. A59 verified retained files against the still-existing original temporary directory."
+  },
+  "accepted_A59_records": {
+    "docs/reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md": "b1ac7bdd13540cde142658c9d9cfb11c7b6cb2ef8c57b97ddacb6ceed31d77b2",
+    "docs/development/2026-11-16-console-completion/reports/A59-windows-repair.json": "b70564f1500a22f6d3b25ba809c07ee0f62570e94161215424a82eed1125fe47",
+    "docs/development/2026-11-16-console-completion/notes/A59.md": "278c2a2e17b177b3e35991f51b46a7fde35c472c7cc2cc558a71046a254dc7da"
+  },
+  "unchanged_records_verified_again": true,
+  "remaining_gate": "Fresh hosted qualification, especially native Windows, for the final published corrected source.",
+  "limits": [
+    "No Windows reproduction or Windows repair pass is inferred from Linux.",
+    "No particular MSVC optimizer/compiler mechanism is claimed.",
+    "The original d2ed03b P1 single nonnumerical failure remains unnamed in its retained evidence. New failure-only diagnostics preserve future failure names without changing decisions.",
+    "No new full-suite, paired comparison, helper-absent runtime or production-application rebuild is claimed.",
+    "Original 6287055 and d2ed03b Windows failures remain original failed observations.",
+    "The genuine-before title metadata collector correction and unavailable initial elapsed time remain documented in the unchanged before receipt.",
+    "This is follow-up work by an already counted worker; it adds no worker credit and changes no accepted note."
+  ]
+}

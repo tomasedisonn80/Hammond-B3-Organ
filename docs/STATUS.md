@@ -1,75 +1,112 @@
 # Development status
 
 <!-- console-status-current:start -->
-<a id="current-console-continuation--17-november-2026"></a>
-## Current console continuation — 16 November 2026
+<a id="current-console-continuation--16-november-2026"></a>
+## Current console continuation — 17 November 2026
 
-Use the [current handoff](CONSOLE_COMPLETION_HANDOFF.md),
-[setup](CONSOLE_SETUP_AND_HANDOFF.md), [checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+Use the [handoff](CONSOLE_COMPLETION_HANDOFF.md), [setup](CONSOLE_SETUP_AND_HANDOFF.md),
+[live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
 [actual ledger](development/2026-11-16-console-completion/assignments.json) and
 [root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
-This session starts at `9d60dbf462a90fe422fd4e69757fe202264acb7c`; the working
-source now preserves fresh published `03c70c1` H1/header and semantic-paint work.
-Its six new readers covered [all 500 pages](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
-The required sixty actual workers/ten waves are counted only in this session's ledger.
+Root owns `/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and the single
+`../build-native`; other workspaces remain read-only. All sixty distinct workers
+are accepted in ten waves of six. The
+[executed strict check](development/2026-11-16-console-completion/reports/final-worker-strict.json)
+verifies all 60 note hashes with zero errors. Six fresh readers covered
+[all 500 pages](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
 
-### Implemented behavior and source-bound evidence
+### Current publication; new-source qualification pending
+
+The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)
+is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
+`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
+`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
+independent API/Git verification and all 587 repaired input identities are recorded.
+**All new-source hosted results are pending at this handoff**; the three workflows
+were triggered, and no first-source pass transfers to this repair.
+
+### Retained first publication and terminal hosted results
+
+The [first publication receipt](development/2026-11-16-console-completion/reports/implementation-publication.json)
+verifies commit `cf87a587d0002d106e5210b57a39fd1967245a8f`, tree
+`2565ac86f9d31b7ab9d24d0d5353289c2359bf12`, ordered parents
+`6287055a111dc4e2747564da3d48edc9b65e2e3e` and
+`8cd9034f7e1dd21dab373f0e4ad0d1be0bab61e7`. All sixteen attempt-one jobs
+are terminal: **14 succeed, two fail, none are cancelled**. Its immutable
+receipt retains the earlier 58-dispatched/55-accepted and pending-CI snapshot;
+subsequent evidence is in the separate reviews below.
+
+| Workflow and source-bound review | Actual outcome | Remaining failed or unrun work |
+| --- | --- | --- |
+| [Core, A56](reviews/CONSOLE_CORE_HOSTED_ADMISSION.md) | **5/6 jobs pass**. Linux Release, ARM/Intel macOS and Linux ASan/UBSan/leaks each pass 209/209; full R4 qualification also passes. Windows passes 207/209. | Capture has three native-path lookup errors; header comparison has seven mock-path errors. The actual Windows Unicode-checkout generator step is skipped. |
+| [Native, A57](reviews/CONSOLE_NATIVE_HOSTED_ADMISSION.md) | **5/6 jobs pass**. Linux MIDI OFF/ON and ARM/Intel macOS each pass 78/78; Linux ASan/UBSan/leaks passes 41/41 with the strict 37-target policy. | Windows P1 fixture fails C4702/C2220 under unchanged `/W4 /WX`; zero acceptance CTests run. The failure-only title/header readers, post-acceptance verification and successful installed-package stages are unrun there. |
+| [Native VST3, A58](reviews/CONSOLE_VST3_HOSTED_ADMISSION.md) | **4/4 jobs pass**, 29/29 CTests total, 47/47 actual-module validator checks per platform. | Device/DAW, deadlines and signed distribution are separate. Retained SDK diagnostics prevent any warning-free claim; its selftest is not the module result. |
+
+### Independently admitted successor repair
+
+[A59 admits exactly five fixture/comparator/test inputs](reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md).
+The P1 optional helper uses the same false result inside an explicit constexpr
+`else`; strict whole-file reversal and candidate-only admission preserve the
+original paired comparator. The two Python suites expect the existing producer's
+native path/newline representation and normalize only mock lookup keys.
+The newline mismatch is source-derived and latent: the observed Windows KeyError
+stopped before that hash comparison. Production sources, actual comparators,
+build/workflow policies, timeouts and numerical criteria remain unchanged.
+
+The [local qualification](development/2026-11-16-console-completion/reports/windows-repair-local-qualification.json)
+records **3/3 affected CTests**, including 191 P1 checks/all 62 numerical screens;
+source-only **54/54, 45/45 and 24/24** suites each ran once separately. All 587
+inputs remained stable during qualification, with five changed and 582 unchanged
+relative to the first published source. The rebuilt Linux fixture and production
+app are byte-identical to their pre-repair counterparts. These are Linux results;
+all subsequent new-source Windows/platform outcomes must be read from the live
+checkpoint. No helper-absent runtime or all-platform repair is claimed.
+
+At predecessor `6287055`, Windows compiled and passed 66/68 but rejected title and
+header copied state before numerical evaluation. The [original failure](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
+and [failure-only diagnostic qualification](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
+remain distinct. The first console Windows compilation failure prevented those
+new readers from running; the differing path/type/value and cause remain unknown.
+New actual Windows output must determine any next correction. Strict equality,
+expected values, numerical gates and resource bounds remain frozen.
+
+### Implemented behavior and retained local evidence
 
 LibraryModel owns copied catalog, selection, draft and named-operation state.
-Registration recall preserves latest desired expression; Performance restores
-saved expression. The validated `UiModel::recall_controls` publishes one whole
-control action even for equal values and preserves the legacy saved baseline.
-Read the [guide](LIBRARY_MODEL_GUIDE.md) and [source admission](reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md).
-Native browser and main-loop library hooks remain absent.
+Registration retains latest desired expression; Performance restores saved
+expression. `UiModel::recall_controls` publishes one validated complete action
+even for equal values and preserves the legacy saved baseline. Read the
+[guide](LIBRARY_MODEL_GUIDE.md) and [source admission](reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md).
+**Native browser/main hooks and `--library` remain absent.**
 
-| Recorded gate | Result and evidence boundary |
+| Earlier scoped gate | Recorded result and limit |
 | --- | --- |
-| [Combined qualification](development/2026-11-16-console-completion/reports/combined-qualification.json) | **46/46 build steps; 78/78 affected CTests; 15/15 captures**. All 587 production/test/build inputs stayed unchanged. The selection includes every standalone test and three comparator/capture Python suites; it is not a full 251-test rerun. |
-| [Combined gallery admission](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md) | All 69 payloads verified; reference and sixty retained full frames inspected. Current seven active views retain exact P1/H1 material-support pixels against their qualified predecessors. README displays this actual gallery. |
-| [Library foundation](development/2026-11-16-console-completion/reports/library-integrated-result.json) | **5/5 suites pass** across model, real Session, real filesystem with synthetic proof, public-API recall and combined roundtrips. Also included in the combined run; native browser routing is unimplemented. |
-| [SDK-free configuration](reviews/CONSOLE_HEADLESS_ADMISSION.md) | Fresh Linux Release build and **12/12 selected tests** pass without SDL/RtMidi/VST3 dependencies. |
-| [First full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json) | **246/247**, exit 8. The only failure was repository integrity while A33's linked report was unwritten. Preserve this failure and record the affected document rerun separately. |
-| [P1 paired v2](development/2026-11-16-console-completion/reports/p1-paired-v2-summary.json) | **62 screens, 34 pairs, 74,008,097 pixel positions**, zero forbidden changes. Original v1 metadata-oracle failure and both sets of streams remain retained. |
-| [P1 timing](development/2026-11-16-console-completion/reports/p1-timing-summary.json) | One eight-process, 2,400-sample batch has no investigation signal and passes its exact Flat cross-witness gate. Pre-helper/pre-H1 source only; descriptive shared-host evidence does not establish equivalence or a deadline. |
-| [Combined source](reviews/CONSOLE_SOURCE_RECONCILIATION_ADMISSION.md) and [CI gate audit](reviews/CONSOLE_CI_GATE_ADMISSION.md) | Exact H1/P1 addition and published main preserved. All persistent gates remain: 41 sanitizer checks/37 targets, 55 mandatory native platform checks, original per-test bounds and serial policies. |
+| [Combined qualification](development/2026-11-16-console-completion/reports/combined-qualification.json) | **46/46 build steps, 78/78 affected CTests, 15/15 captures**, 587 inputs stable. This selection is not a full 251-test rerun. |
+| [Combined gallery admission](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md) | All 69 payloads verified; reference and sixty retained full frames inspected by A48. Seven active current views preserve qualified P1/H1 material-support pixels. README uses these actual captures. |
+| [Library foundation](development/2026-11-16-console-completion/reports/library-integrated-result.json) | **5/5 suites** distinguish model, real Session, real filesystem with synthetic proof, public-API recall and combined journeys. They do not wire the browser. |
+| [SDK-free admission](reviews/CONSOLE_HEADLESS_ADMISSION.md) | **12/12 selected tests** in a distinct Linux Release configuration without SDL/RtMidi/VST3 dependencies. |
+| [First full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json) | **246/247**, exit 8; A33's report was unwritten during the integrity check. Preserve this failure and the separately passing later document checks. |
+| [P1 paired/timing evidence](development/2026-11-16-console-completion/reports/p1-paired-v2-summary.json) | 62 screens, 34 pairs and 74,008,097 pixel positions with zero forbidden changes. The separate eight-process/2,400-sample timing batch retains its pre-helper/pre-H1 source and establishes no deadline or equivalence. |
 
-Current app SHA-256 is `3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9`.
-The [manifest](design/native-gallery-console-combined/manifest.json) binds the
-fifteen actual captures. Earlier galleries, failures, timing, binaries and
-source pins retain their original scope. Staged review, separate document
-qualification, actual publication and exact-source hosted outcomes are tracked
-in the live checkpoint; local passes supply no new Windows/macOS execution.
+Unchanged app SHA-256 is
+`3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9`;
+its [manifest](design/native-gallery-console-combined/manifest.json) binds all
+fifteen captures. Historical binaries, sources, original failures and timings
+retain their own scopes. H1/P1 support separation is bounded to the qualified
+domains; arbitrarily tiny positive scales can alias a pixel.
 
-### Workspace and next implementation
+### Next implementation and open exits
 
-Root owns `/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and its single
-coordinated `../build-native`. Read-only pinned dependencies are under
-`/workspace/scratch/3edffb787db3`; `../a32-headless` was separately authorized.
-Use the [setup guide](CONSOLE_SETUP_AND_HANDOFF.md). Other sessions' checkouts,
-indexes, builds and evidence remain read-only.
-
-Follow the [native plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md): model-owned
-Save availability and actual post-Start proof precede browser/main wiring and
-modal held-input routing. Preserve all [owner boundaries](PLAN.md#current-ownership-and-source)
-and [M0–M9 exits](PLAN.md#milestones-and-exit-evidence). H1/P1 supports are
-separate at qualified fixture scales and actual scale-1 captures; arbitrarily
-tiny positive scales can alias a pixel. **Literal whole-interface 1:1 remains
-unmet and unwaived.** Real device/display/DPI/DAW journeys, native accessibility,
-callback lifetime/deadlines, physical fidelity, rights and signed release remain separate.
-
-**Latest test-source reconciliation:** Published `6287055` is preserved,
-including its two-file Windows helper repair and all 117 added evidence files.
-The [exact helper transition](reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
-has a separate [4/4 local qualification](development/2026-11-16-console-completion/reports/helper-transition-qualification.json).
-The predecessor's Windows run then exposed two copied-state protocol mismatches
-before title/header numerical evaluation. Its [original log and outcome](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
-remain retained; the differing leaf and cause are not yet known. Independently
-admitted failure-only diagnostics keep every equality predicate, expected value,
-numerical criterion and timeout unchanged. Their [3/3 affected local checks](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
-pass, with 582 of 587 original inputs unchanged and only five test/tool inputs
-changed in total. The actual application and all 150 application source inputs
-remain unchanged. Publication and new exact-source Windows/complete hosted
-qualification are next; no platform repair or all-green claim is made.
+Follow the [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md):
+independently admit model-owned Save availability and actual post-Start proof,
+then native input, lifecycle/submission, fresh-read/storage and browser/view hooks.
+Keep original held releases and synchronous final create-only authorization.
+Recover [owners](PLAN.md#current-ownership-and-source) before shared work; the
+[complete M0–M9 exits](PLAN.md#milestones-and-exit-evidence) remain binding.
+Preserve 47 parameters, `B3CONTROLS4`/readers 1–3, 91 shared sources, UUIDs and
+the nominal dry Engine. **Literal whole-interface 1:1 remains unmet and unwaived.**
+Physical fidelity/acquisition, real device/display/DPI/DAW journeys, native
+accessibility, callback lifetime/deadlines, rights and signed release remain separate.
 
 <!-- console-status-current:end -->
 

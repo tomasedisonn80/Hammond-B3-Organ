@@ -1,20 +1,41 @@
 # Project guide
 
-## Current console continuation — 16 November 2026
+## Current console continuation — 17 November 2026
 
 Start with the [console handoff](CONSOLE_COMPLETION_HANDOFF.md),
 [source-verified setup](CONSOLE_SETUP_AND_HANDOFF.md),
-[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
 [actual ledger](development/2026-11-16-console-completion/assignments.json) and
-[complete M0–M9 plan](PLAN.md). The new console session read all 500 pages,
-implements the copied-state LibraryModel/recall foundation and P1 material,
-and preserves published H1/header and semantic-paint work. The
+[complete M0–M9 plan](PLAN.md). The session's six readers covered all 500 pages;
+its copied-state LibraryModel/recall foundation and P1 material preserve the
+published H1/header and semantic-paint work. The
 [combined result](development/2026-11-16-console-completion/reports/combined-qualification.json)
-passes 46 build steps, 78 affected tests and fifteen captures; README displays
-the independently admitted combined gallery. Native browser/main library wiring
-and literal whole-interface 1:1 remain unfinished. Publication, exact-source
-hosted outcomes and the required sixty new workers/ten waves are established
-only by this session's actual records, not the historical counts below.
+retains 46 build steps, 78 affected tests and fifteen actual captures; README
+shows the independently admitted combined gallery.
+
+The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)
+is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
+`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
+`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
+independent API/Git verification and all 587 repaired input identities are recorded.
+**All new-source hosted results are pending at this handoff**; the three workflows
+were triggered, and no first-source pass transfers to this repair.
+
+The [first verified source](development/2026-11-16-console-completion/reports/implementation-publication.json)
+`cf87a587…` has sixteen terminal jobs: **Core 5/6, native 5/6, VST3 4/4** pass.
+The [current status](STATUS.md#current-console-continuation--17-november-2026)
+links both original Windows failures and the [five-file repair admission](reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md).
+Its local Linux passes do not establish new Windows execution. Follow the live
+checkpoint for all subsequent new-source results and final record closure; the first receipt's older worker/pending-CI snapshot remains immutable.
+All sixty actual worker records exist, while root acceptance and the matching
+strict receipt govern closure.
+
+The next [native integration](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md) starts
+with model-owned Save availability and real post-Start proof, then input,
+lifecycle/submission/storage and browser/view wiring. Native browser/main hooks
+remain absent. **Literal whole-interface 1:1 remains unmet and unwaived**, as do
+separate physical/device/display/accessibility/DAW/callback/release gates.
+Historical counts and next-action text below retain their own source and owner.
 
 ## Retained heading/title/header record — 17 November 2026 UTC
 
@@ -101,7 +122,7 @@ requirements.
 | --- | --- |
 | What works and what has actually passed? | [STATUS.md](STATUS.md): current behavior, source-bound local/hosted observations, milestone position and preserved historical results. |
 | What is the complete product roadmap? | [PLAN.md](PLAN.md): all M0–M9 deliverables, dependencies and engineering/physical exits. |
-| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md), the [console handoff](CONSOLE_COMPLETION_HANDOFF.md) and [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md): finish source-bound delivery/record closure, then independently admit Save availability and post-Start proof before native browser/main wiring. Preserve all physical, accessibility, device and release exits. |
+| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md), the [console handoff](CONSOLE_COMPLETION_HANDOFF.md) and [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md): verify the admitted repair and all new-source Windows/platform outcomes, complete actual record closure, then independently admit Save availability and post-Start proof before native browser/main wiring. Preserve all physical, accessibility, device and release exits. |
 | How does a future agent recover this workspace? | Read all [AGENTS.md](../AGENTS.md), [PLAN.md](PLAN.md), the [console handoff](CONSOLE_COMPLETION_HANDOFF.md), [setup](CONSOLE_SETUP_AND_HANDOFF.md), [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md), [root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md) and [actual ledger](development/2026-11-16-console-completion/assignments.json); inspect fresh local and remote source before assigning paths. |
 | How are this session’s actual records checked? | Run `python3 -B docs/development/2026-11-16-console-completion/check_session.py`; use `--strict` only for closure after all sixty actual notes are accepted. The [checker](development/2026-11-16-console-completion/check_session.py) validates records, not dispatch, product acceptance or publication. |
 | How do I inspect the isolated causal trajectory? | [Developer guide](CAUSAL_CONTACT_GRID_GUIDE.md), [frozen contract](CAUSAL_CONTACT_GRID_CONTRACT.md), [implementation review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) and [resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md). The finite integer API remains distinct from the later certified conversion and isolated audio work; recover those owners through the current plan. |

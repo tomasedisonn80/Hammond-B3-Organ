@@ -1,12 +1,65 @@
 # Development log
 
+## 2026-11-17 — Console repair published; original failures retained and handoff refreshed
+
+The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)
+is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
+`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
+`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
+independent API/Git verification and all 587 repaired input identities are recorded.
+**All new-source hosted results are pending at this handoff**; the three workflows
+were triggered, and no first-source pass transfers to this repair.
+
+The [first verified console source](development/2026-11-16-console-completion/reports/implementation-publication.json)
+is `cf87a587d0002d106e5210b57a39fd1967245a8f`, tree
+`2565ac86f9d31b7ab9d24d0d5353289c2359bf12`. Its sixteen original attempt-one
+jobs are terminal: **14 successes and two Windows failures**, no cancellations.
+[A56 Core](reviews/CONSOLE_CORE_HOSTED_ADMISSION.md) is 5/6, with four 209/209
+CTest successes plus full R4 and Windows 207/209 on two Python fixture path
+assumptions. [A57 native](reviews/CONSOLE_NATIVE_HOSTED_ADMISSION.md) is 5/6:
+four normal 78/78 families and sanitizer 41/41 pass; Windows P1 C4702/C2220 stops
+all acceptance execution. [A58 VST3](reviews/CONSOLE_VST3_HOSTED_ADMISSION.md)
+is 4/4 with 29/29 CTests and 47/47 actual-module validator checks per platform.
+Original complete logs, skipped gates, predecessor Windows copied-state failures
+and the publication receipt's dated 58/55/pending-CI snapshot remain immutable.
+
+[A59 admits the five-file test portability repair](reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md)
+with 582/587 inputs unchanged and every production/build/workflow/criterion bound
+preserved. One source-only suite each passes 54/54, 45/45 and 24/24. The separate
+[affected local qualification](development/2026-11-16-console-completion/reports/windows-repair-local-qualification.json)
+passes 3/3 CTests, including 191 P1 checks/all 62 screens, with identical Linux
+fixture and application bytes. The capture newline mismatch is source-derived
+and latent behind the observed KeyError; new Windows execution is not claimed.
+The first console Windows build never reached the failure-only title/header
+readers, so the rejected path/type/value and cause remain unknown. Actual new-source
+Windows output must precede any further cause-specific correction.
+
+A60 refreshes only current README/AGENTS/plan/status/next/project-routing, handoff,
+checkpoint and queue sections and adds its [documentary admission](reviews/CONSOLE_FINAL_HANDOFF_ADMISSION.md).
+Historical sections, all accepted notes and the actual combined gallery remain
+unchanged. The actual ledger contains sixty dispatched workers and fifty-nine
+accepted before A60 root review; no strict closure is claimed by this entry.
+The [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md)
+owns later repair CI, final acceptance, strict and document-integrity
+receipts and final publication. This documentary review runs no build, test,
+capture, CI retry or remote operation.
+
+The [next native phase](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md) remains concrete:
+model-owned Save availability and post-Start proof, followed by held-input-safe
+UiModel and native lifecycle/submission/fresh-read/storage hooks, then browser/view
+and actual journeys. Whole-plan recovery, current setup/progress, original evidence,
+actual UI captures, authorized accepted commit/push and independent remote/source
+verification remain permanent instructions for future agents. Bounded M3/M9 work
+leaves literal whole-interface 1:1 unmet/unwaived and every separate physical,
+device/DAW/display, native-accessibility, callback and release gate open.
+
 ## 2026-11-16 — Fresh Windows fixture and diagnostic successor qualified
 
-Root preserves published6287055 and all117new evidence files. A55 independently
+Root preserves published `6287055` and all 117 new evidence files. A55 independently
 admits exact helper-fixture reversal through the previous cast source to the
 original baseline; all old comparator admission behavior remains intact.
 Four targeted local gates pass with a byte-identical Linux fixture. The completed
-predecessor Windows run compiles, then passes66/68 with two early copied-state
+predecessor Windows run compiles, then passes 66/68 with two early copied-state
 protocol failures. No differing leaf or cause is proved by its original log.
 A57 admits failure-only scalar/path/type details with all original predicates,
 values, numerical criteria and bounds unchanged; three affected local gates pass.

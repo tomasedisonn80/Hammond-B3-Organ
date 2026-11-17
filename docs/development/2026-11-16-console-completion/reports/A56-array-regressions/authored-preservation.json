@@ -1,0 +1,41 @@
+{
+  "tests": [
+    {
+      "path": "tests/test_compare_performance_plate.py",
+      "sha256": "bdb013403199552b8c7014a186e5a4a6dbe862f1263f7b8ea2fea7a394718725",
+      "methods": 62,
+      "original_methods_retained": 54,
+      "original_method_bodies_changed": [],
+      "added_methods": [
+        "FixtureArrayTransitionTests.test_complete_indexed_hash_is_required_after_exact_reversal",
+        "FixtureArrayTransitionTests.test_execute_refuses_bad_indexed_source_before_native_launch",
+        "FixtureArrayTransitionTests.test_indexed_admission_preserves_original_and_intermediate_identities",
+        "FixtureArrayTransitionTests.test_indexed_input_records_both_pins_and_rejects_drift",
+        "FixtureArrayTransitionTests.test_indexed_source_and_mode_types_are_not_coerced",
+        "FixtureArrayTransitionTests.test_repinning_indexed_and_intermediate_files_cannot_replace_original",
+        "FixtureArrayTransitionTests.test_repinning_indexed_source_cannot_admit_relocation_or_other_bytes",
+        "FixtureArrayTransitionTests.test_repinning_indexed_source_cannot_admit_structural_mutations"
+      ]
+    },
+    {
+      "path": "tests/test_compare_header_material.py",
+      "sha256": "9d3b2923e063ea5ca07d157a614849d8ebc82f5f1727301efda6f82f5876cdfd",
+      "methods": 33,
+      "original_methods_retained": 24,
+      "original_method_bodies_changed": [],
+      "added_methods": [
+        "ArrayReaderAdmissionTests.test_bad_source_is_refused_before_executable_or_process_access",
+        "ArrayReaderAdmissionTests.test_complete_byte_source_type_is_required",
+        "ArrayReaderAdmissionTests.test_complete_indexed_pin_is_required_after_exact_reversal",
+        "ArrayReaderAdmissionTests.test_empty_second_bank_and_boolean_substitution_remain_invalid",
+        "ArrayReaderAdmissionTests.test_exact_original_and_indexed_sources_keep_independent_pins",
+        "ArrayReaderAdmissionTests.test_indexed_header_does_not_replace_original_paired_admission",
+        "ArrayReaderAdmissionTests.test_indexed_identity_is_stable_and_drift_is_refused_after_mocked_capture",
+        "ArrayReaderAdmissionTests.test_repinning_cannot_admit_missing_duplicate_or_changed_array",
+        "ArrayReaderAdmissionTests.test_repinning_cannot_admit_relocation_or_unrelated_append"
+      ]
+    }
+  ],
+  "paired_header_comparator_sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f",
+  "execution": "AST-only checks; no suite invocation yet."
+}

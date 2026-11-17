@@ -1,0 +1,25 @@
+{
+  "source_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "run_id": 44034656779,
+  "job_id": 133874509242,
+  "observed_utc": "2026-11-17T07:09:06.111Z",
+  "job_status_when_requested": "in_progress",
+  "purpose": "Check whether original acceptance log and copied-state diagnostic are available before job completion.",
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "GitHub API error 404: ﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.\nRequestId:b14cedf2-e01e-0008-0f62-76293b000000\nTime:2026-11-17T07:08:55.7332679Z</Message></Error>"
+      }
+    ],
+    "structuredContent": {
+      "error": "GitHub API error 404: ﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.\nRequestId:b14cedf2-e01e-0008-0f62-76293b000000\nTime:2026-11-17T07:08:55.7332679Z</Message></Error>",
+      "error_code": "NOT_FOUND",
+      "error_data": {
+        "error_str": "GitHub API error 404: ﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.\nRequestId:b14cedf2-e01e-0008-0f62-76293b000000\nTime:2026-11-17T07:08:55.7332679Z</Message></Error>"
+      }
+    },
+    "isError": true
+  },
+  "interpretation": "GitHub job log blob is not yet available (404 BlobNotFound). This is an evidence availability result, not a job conclusion. No CI rerun was requested; await terminal job before complete-log fetch."
+}
