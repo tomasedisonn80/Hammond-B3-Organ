@@ -1,0 +1,257 @@
+{
+  "schema": 1,
+  "observer": "A53, same accepted worker; read-only source-specific observation",
+  "source_sha": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "source_tree": "2565ac86f9d31b7ab9d24d0d5353289c2359bf12",
+  "run_id": 44030833294,
+  "run_attempt": 1,
+  "job_id": 133862108913,
+  "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44030833294/job/133862108913",
+  "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+  "state": {
+    "status": "completed",
+    "conclusion": "failure",
+    "started_at": "2026-11-17T06:23:22Z",
+    "completed_at": "2026-11-17T06:28:27Z"
+  },
+  "runner": {
+    "id": 1000001433,
+    "name": "GitHub Actions 1000001433",
+    "labels": [
+      "windows-2022"
+    ]
+  },
+  "complete_log": {
+    "job_id": 133862108913,
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/job-133862108913-complete.log.gz",
+    "stored_bytes": 51349,
+    "stored_sha256": "7cd849e1987d72a43e14ff4173d99bd4283a166065fa39de9626cf6b8ba470c4",
+    "decoded_bytes": 455495,
+    "decoded_sha256": "580ad243484bb9cc5d8759ce5392abfdb31735255256ba83f6212b50c9b22fcc",
+    "gzip_mtime": 0,
+    "round_trip_verified": true
+  },
+  "source_inventory": "inventory.json",
+  "actual_checkout_evidence": [
+    {
+      "line": 99,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    },
+    {
+      "line": 189,
+      "text": "HEAD is now at cf87a58 Preserve Windows fixture repair and expose exact copied-state failures"
+    },
+    {
+      "line": 192,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    }
+  ],
+  "compiler_evidence": [
+    {
+      "line": 447,
+      "text": "-- The CXX compiler identification is MSVC 19.44.35230.0"
+    },
+    {
+      "line": 466,
+      "text": "-- The C compiler identification is MSVC 19.44.35230.0"
+    }
+  ],
+  "steps": [
+    {
+      "number": 2,
+      "name": "Check out the exact tested revision",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:24Z",
+      "completed_at": "2026-11-17T06:23:45Z"
+    },
+    {
+      "number": 3,
+      "name": "Set up Python 3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:45Z",
+      "completed_at": "2026-11-17T06:23:45Z"
+    },
+    {
+      "number": 4,
+      "name": "Record exact source and dependency identities",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:45Z",
+      "completed_at": "2026-11-17T06:23:48Z"
+    },
+    {
+      "number": 5,
+      "name": "Explicitly acquire and locally verify locked external SDL2",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:48Z",
+      "completed_at": "2026-11-17T06:23:51Z"
+    },
+    {
+      "number": 6,
+      "name": "Explicitly acquire and locally verify locked external RtMidi",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:51Z",
+      "completed_at": "2026-11-17T06:23:52Z"
+    },
+    {
+      "number": 7,
+      "name": "Install Ubuntu desktop and audio development headers",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-17T06:23:52Z",
+      "completed_at": "2026-11-17T06:23:52Z"
+    },
+    {
+      "number": 8,
+      "name": "Configure native Release on Linux or macOS",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-17T06:23:52Z",
+      "completed_at": "2026-11-17T06:23:52Z"
+    },
+    {
+      "number": 9,
+      "name": "Configure native Release on Windows",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:52Z",
+      "completed_at": "2026-11-17T06:24:38Z"
+    },
+    {
+      "number": 10,
+      "name": "Retain actual compiler identities and require native SDL backends",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:24:38Z",
+      "completed_at": "2026-11-17T06:24:38Z"
+    },
+    {
+      "number": 11,
+      "name": "Build the application and every standalone acceptance input",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-17T06:24:38Z",
+      "completed_at": "2026-11-17T06:28:22Z"
+    },
+    {
+      "number": 12,
+      "name": "Verify the compiled MIDI backend and retain prepared identities",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-17T06:28:22Z",
+      "completed_at": "2026-11-17T06:28:22Z"
+    },
+    {
+      "number": 13,
+      "name": "Run all required standalone and capture acceptance tests",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-17T06:28:22Z",
+      "completed_at": "2026-11-17T06:28:22Z"
+    },
+    {
+      "number": 14,
+      "name": "Reverify source and dependencies after acceptance",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-17T06:28:22Z",
+      "completed_at": "2026-11-17T06:28:22Z"
+    },
+    {
+      "number": 15,
+      "name": "Stage, relocate, smoke and archive the exact installed payload",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-17T06:28:22Z",
+      "completed_at": "2026-11-17T06:28:22Z"
+    },
+    {
+      "number": 16,
+      "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:28:22Z",
+      "completed_at": "2026-11-17T06:28:24Z"
+    },
+    {
+      "number": 17,
+      "name": "Retain the successful executable package and byte inventory",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-17T06:28:24Z",
+      "completed_at": "2026-11-17T06:28:24Z"
+    }
+  ],
+  "ctest": {
+    "expected_count": 78,
+    "executed": 0,
+    "passed": 0,
+    "failed": 0,
+    "not_executed": 78,
+    "actual_names_equal_source_inventory": null,
+    "total_seconds": null,
+    "results": [],
+    "discovery_evidence": [],
+    "summary_evidence": []
+  },
+  "protocols": [],
+  "native_invocations": [],
+  "actual_evidence": [
+    {
+      "line": 99,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    },
+    {
+      "line": 189,
+      "text": "HEAD is now at cf87a58 Preserve Windows fixture repair and expose exact copied-state failures"
+    },
+    {
+      "line": 192,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    },
+    {
+      "line": 447,
+      "text": "-- The CXX compiler identification is MSVC 19.44.35230.0"
+    },
+    {
+      "line": 466,
+      "text": "-- The C compiler identification is MSVC 19.44.35230.0"
+    }
+  ],
+  "final_source_dependency_reverification": {
+    "status": "skipped",
+    "basis": "Actual API step status, exact executed workflow script and complete log; no source result is transferred from another commit."
+  },
+  "install_and_package": {
+    "status": "unreached after compile failure",
+    "install_ctest": "not executed",
+    "package_stage": "skipped",
+    "direct_artifact_download": false
+  },
+  "sanitizer": null,
+  "failure": {
+    "stage": "Build the application and every standalone acceptance input",
+    "exit_code": 1,
+    "file": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+    "line": 50,
+    "column": 1,
+    "diagnostics": [
+      "C4702: unreachable code",
+      "C2220: warning treated as an error"
+    ],
+    "warning_policy": "/W4 /WX retained",
+    "frozen_receipt": "windows-build-failure-retention.json",
+    "frozen_receipt_sha256": "b6d8f2954ac90600862a9155572e3128eefaa449a82a44d15ccda553863f7f51",
+    "runtime_boundary": "No CTests ran. Newly added title/header failure-only diagnostics and all runtime P1 serialization were unobserved. No claim that an analogous array serializer malformed its Windows output."
+  },
+  "observation_limits": [
+    "No local native executions, builds, tests, remote mutations or CI retries by A53.",
+    "Complete original decoded job log retained losslessly; artifact API metadata and actual archive assertions inspected, no artifact directly downloaded by A53.",
+    "This exact concurrent source has its own P1/library and canonical paint changes; no previous-source pixel, success or failure is silently transferred.",
+    "Dummy-device and copied/software-paint acceptance does not close physical MIDI/audio, real-display/DPI, native accessibility or whole-UI literal 1:1 gates."
+  ]
+}

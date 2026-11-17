@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""Prepare immutable Git Data upload inputs from an already reviewed local commit."""
+from __future__ import annotations
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import sys
+
+root = Path(__file__).resolve().parent
+repo = root / 'Hammond-B3-Organ'
+base, commit, label = sys.argv[1:]
+assert label.replace('-', '').isalnum()
+
+def git(*args: str) -> bytes:
+    return subprocess.check_output(['git', *args], cwd=repo)
+
+def entries(ref: str) -> dict:
+    result = {}
+    for row in git('ls-tree', '-r', '-z', ref).split(b'\0'):
+        if not row:
+            continue
+        meta, rawpath = row.split(b'\t', 1)
+        mode, kind, sha = meta.decode().split()
+        result[rawpath.decode()] = {'mode': mode, 'type': kind, 'sha': sha}
+    return result
+
+base_sha = git('rev-parse', base).decode().strip()
+commit_sha = git('rev-parse', commit).decode().strip()
+before, after = entries(base_sha), entries(commit_sha)
+known = {v['sha'] for v in before.values()}
+for p in root.glob('publication-*-upload-state.json'):
+    rows = json.loads(p.read_text())
+    assert isinstance(rows, list)
+    known.update(r['sha'] for r in rows)
+
+files, unknown, seen = [], [], set()
+blob_dir = root / 'publication-immutable-blobs'
+blob_dir.mkdir(exist_ok=True)
+for path, entry in sorted(after.items()):
+    if before.get(path) == entry:
+        continue
+    row = {'path': path, **entry}
+    assert row['type'] == 'blob', row
+    data = git('cat-file', 'blob', row['sha'])
+    assert hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest() == row['sha']
+    row.update(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+    files.append(row)
+    if row['sha'] not in known and row['sha'] not in seen:
+        dest = blob_dir / row['sha']
+        if dest.exists():
+            assert dest.read_bytes() == data
+        else:
+            dest.write_bytes(data)
+        unknown.append(row)
+        seen.add(row['sha'])
+deletions = sorted(set(before) - set(after))
+assert not deletions, deletions
+manifest = {'base': base_sha, 'local_commit': commit_sha,
+            'tree': git('rev-parse', commit_sha + '^{tree}').decode().strip(),
+            'files': files, 'deletions': deletions,
+            'unknown_blobs': unknown, 'unknown_bytes': sum(r['bytes'] for r in unknown)}
+out = root / ('publication-' + label + '-manifest.json')
+out.write_text(json.dumps(manifest, indent=2) + '\n')
+print(json.dumps({k: (len(v) if isinstance(v, list) else v)
+                  for k, v in manifest.items()} | {'manifest': str(out)}, indent=2))

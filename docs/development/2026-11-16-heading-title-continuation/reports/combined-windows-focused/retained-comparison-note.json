@@ -1,0 +1,8 @@
+{
+  "initial_read_only_attempt": "All original nine CTests, source checks and artifact validations passed. An additional root postprocessing assertion incorrectly assumed cross-platform raw inventory byte equality and stopped before writing a qualification receipt.",
+  "observed_difference": "The Windows --list payload is exactly the Linux payload with its sole final LF replaced by CRLF: 27,311 versus 27,310 bytes. Complete strict typed inventories are equal under the unchanged original validator.",
+  "canonical_full_stream": "Both platforms produce the same 6,561,750 canonical bytes, SHA256 371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55.",
+  "resolution": "Record raw inventory inequality and exact line-ending difference separately from strict semantic equality and exact canonical-stream equality. No test, oracle, parser, native output or criterion was edited.",
+  "native_and_test_reruns": 0,
+  "artifact_downloads_repeated": 0
+}

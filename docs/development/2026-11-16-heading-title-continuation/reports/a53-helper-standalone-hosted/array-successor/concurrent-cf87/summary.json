@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "observer": "A53/60 wave 9, same worker",
+  "source_sha": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "source_tree": "2565ac86f9d31b7ab9d24d0d5353289c2359bf12",
+  "parents": [
+    "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "8cd9034f7e1dd21dab373f0e4ad0d1be0bab61e7"
+  ],
+  "run_id": 44030833294,
+  "run_attempt": 1,
+  "run_status": "completed",
+  "run_conclusion": "failure",
+  "terminal_jobs": 6,
+  "successful_jobs": 5,
+  "failed_jobs": 1,
+  "live_jobs": 0,
+  "live_scope": "This standalone run only; other workflows are not assessed by this receipt.",
+  "inventory": {
+    "normal_explicit_required": 55,
+    "normal_actual": 78,
+    "standalone_native_prefix": 75,
+    "python_tools": 3,
+    "sanitizer_gates": 41,
+    "sanitizer_build_targets": 37,
+    "receipt": "inventory.json"
+  },
+  "jobs": [
+    {
+      "id": 133862108476,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "runner_id": 1000001430,
+      "conclusion": "success",
+      "ctest": "41/41",
+      "total_seconds": 595.9,
+      "package": "not a sanitizer job stage",
+      "record": "job-133862108476.json",
+      "preset_raster": {
+        "ordinal": 38,
+        "total": 41,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 54.5,
+        "line": 7374
+      }
+    },
+    {
+      "id": 133862108651,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "runner_id": 1000001428,
+      "conclusion": "success",
+      "ctest": "78/78",
+      "total_seconds": 607.59,
+      "package": "passed",
+      "record": "job-133862108651.json",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 22.89,
+        "line": 4723
+      }
+    },
+    {
+      "id": 133862108913,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "runner_id": 1000001433,
+      "conclusion": "failure",
+      "ctest": "not executed",
+      "total_seconds": null,
+      "package": "unreached after compile failure",
+      "record": "job-133862108913.json",
+      "preset_raster": null
+    },
+    {
+      "id": 133862109037,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "runner_id": 1000001440,
+      "conclusion": "success",
+      "ctest": "78/78",
+      "total_seconds": 412.88,
+      "package": "passed",
+      "record": "job-133862109037.json",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 11.69,
+        "line": 5187
+      }
+    },
+    {
+      "id": 133862109056,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "runner_id": 1000001436,
+      "conclusion": "success",
+      "ctest": "78/78",
+      "total_seconds": 443.85,
+      "package": "passed",
+      "record": "job-133862109056.json",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 13.05,
+        "line": 5237
+      }
+    },
+    {
+      "id": 133862109073,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "runner_id": 1000001441,
+      "conclusion": "success",
+      "ctest": "78/78",
+      "total_seconds": 454.22,
+      "package": "passed",
+      "record": "job-133862109073.json",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 12.54,
+        "line": 4651
+      }
+    }
+  ],
+  "windows_failure": {
+    "job_id": 133862108913,
+    "receipt": "windows-build-failure-retention.json",
+    "sha256": "b6d8f2954ac90600862a9155572e3128eefaa449a82a44d15ccda553863f7f51",
+    "file": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+    "line": 50,
+    "column": 1,
+    "diagnostics": [
+      "C4702",
+      "C2220"
+    ],
+    "ctests": 0,
+    "new_runtime_diagnostics": "not reached",
+    "packaging": "skipped"
+  },
+  "new_P1_observed": {
+    "native": {
+      "cases": 34,
+      "main_cases": 24,
+      "checks": 53648,
+      "paintings": 111,
+      "helper_probes": 61
+    },
+    "numerical": {
+      "mode": "candidate-only-frozen62",
+      "checks": 191,
+      "failed": 0,
+      "frozen_screens_passed": 62,
+      "frozen_screens_total": 62
+    },
+    "scope": "Observed in four normal Unix jobs and sanitizer. The numerical gate is one canonical candidate against 62 frozen screens; it does not execute the complete paired 34-case/timing/visual acceptance. Its detailed temporary report file was not directly retained by A53; the complete printed JSON is in the original log."
+  },
+  "all_h1_title_grain_observed": {
+    "title_cases": 18,
+    "title_inventory": 44,
+    "H1_cases": 48,
+    "H1_checks": 10542,
+    "H1_paintings": 163,
+    "H1_numerical": 103,
+    "grain_cases": 4,
+    "grain_checks": 170,
+    "canonical_header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+    "canonical_rgba_sha256": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+    "scope": "Source-specific outputs from successful cf87 jobs; no cross-source pixel equivalence asserted."
+  },
+  "log_retention": {
+    "manifest": "complete-log-archives.json",
+    "files": 6,
+    "stored_bytes": 664783,
+    "decoded_bytes": 6219052
+  },
+  "publication_safety": {
+    "concurrency_cancel_in_progress": true,
+    "all_six_current_jobs_terminal": true,
+    "full_reconciled_source_and_runs": "Not released to A53; no polling or acceptance claim for an uncreated run."
+  },
+  "artifact_scope": "API metadata only; no direct artifact downloads by A53. Complete original job logs retained separately.",
+  "boundaries": [
+    "Windows compilation and all later Windows gates remain failed/unreached on cf87.",
+    "Earlier 03c Intel timeout and 628 Windows protocol failures remain immutable; this source's Intel preset pass at 22.89 s is a separate observation, with the normal 30 s bound retained.",
+    "Focused ea02 Windows success is a separate two-CTest/capture result and does not qualify this concurrent source or a future merge.",
+    "Physical devices, real-display/DPI, native accessibility and literal whole-UI 1:1 remain open."
+  ],
+  "read_only": true
+}

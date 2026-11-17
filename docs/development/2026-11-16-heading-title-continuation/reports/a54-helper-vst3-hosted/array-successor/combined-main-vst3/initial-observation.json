@@ -1,0 +1,616 @@
+{
+  "schema_version": 1,
+  "worker": "A54",
+  "same_accepted_worker_followup": true,
+  "additional_worker_credit": false,
+  "source": {
+    "sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+    "tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+    "parents": [
+      "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9"
+    ],
+    "changed_files": [
+      {
+        "filename": "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+        "status": "modified",
+        "sha": "c3dbf54e73669add3dd31cd0c521e00b46b79c34",
+        "additions": 3,
+        "deletions": 5
+      },
+      {
+        "filename": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+        "status": "modified",
+        "sha": "211ed56cbd98dda26eedc47fcaef24ea54ef3718",
+        "additions": 3,
+        "deletions": 5
+      },
+      {
+        "filename": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+        "status": "modified",
+        "sha": "fbe66aa6132fdb3ea259c0419dfa60afe8d7e180",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+        "status": "modified",
+        "sha": "dae64d4f2e5e643219ba99faf49620a6d5759f05",
+        "additions": 3,
+        "deletions": 5
+      },
+      {
+        "filename": "apps/standalone/native_tests/test_standalone_title_density.py",
+        "status": "modified",
+        "sha": "c57d5240185ff7d424fa340d78bd9eff619dfffb",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "tests/test_compare_header_material.py",
+        "status": "modified",
+        "sha": "8593794d2a0e6aae88c908e0b11b008d677484fd",
+        "additions": 148,
+        "deletions": 5
+      },
+      {
+        "filename": "tests/test_compare_performance_plate.py",
+        "status": "modified",
+        "sha": "1c0171894466cda564b03b6a45af7c7151b7a93d",
+        "additions": 154,
+        "deletions": 0
+      },
+      {
+        "filename": "tools/compare_header_material.py",
+        "status": "modified",
+        "sha": "221d8d6d1fb50eaa7359a3d469d524e9eeb084b5",
+        "additions": 43,
+        "deletions": 4
+      },
+      {
+        "filename": "tools/compare_performance_plate.py",
+        "status": "modified",
+        "sha": "1c2c294bddaa26d1f33f51b31a5adbba08c8b471",
+        "additions": 37,
+        "deletions": 0
+      }
+    ]
+  },
+  "workflow_run": {
+    "id": 44038196255,
+    "name": "Native VST3",
+    "head_sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+    "head_branch": "main",
+    "path": ".github/workflows/native-vst3.yml",
+    "status": "in_progress",
+    "conclusion": null,
+    "run_attempt": 1,
+    "run_started_at": "2026-11-17T07:22:28Z",
+    "created_at": "2026-11-17T07:22:28Z",
+    "updated_at": "2026-11-17T07:22:32Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196255"
+  },
+  "jobs": [
+    {
+      "id": 133886097249,
+      "run_id": 44038196255,
+      "run_attempt": 1,
+      "name": "Native VST3 (macOS Intel AppleClang)",
+      "head_sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T07:22:31Z",
+      "completed_at": null,
+      "runner_id": 1000001462,
+      "runner_name": "GitHub Actions 1000001462",
+      "labels": [
+        "macos-15-intel"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:32Z",
+          "completed_at": "2026-11-17T07:22:34Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:35Z",
+          "completed_at": "2026-11-17T07:23:13Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:13Z",
+          "completed_at": "2026-11-17T07:23:14Z"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:14Z",
+          "completed_at": "2026-11-17T07:23:15Z"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:15Z",
+          "completed_at": "2026-11-17T07:23:20Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "number": 6,
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-11-17T07:23:20Z",
+          "completed_at": null
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "number": 7,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "number": 8,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "number": 9,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "number": 10,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "number": 11,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "number": 12,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133886097530,
+      "run_id": 44038196255,
+      "run_attempt": 1,
+      "name": "Native VST3 (Windows MSVC x64)",
+      "head_sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T07:22:31Z",
+      "completed_at": null,
+      "runner_id": 1000001463,
+      "runner_name": "GitHub Actions 1000001463",
+      "labels": [
+        "windows-2022"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:31Z",
+          "completed_at": "2026-11-17T07:22:32Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:32Z",
+          "completed_at": "2026-11-17T07:22:54Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:54Z",
+          "completed_at": "2026-11-17T07:22:54Z"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:54Z",
+          "completed_at": "2026-11-17T07:22:57Z"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:57Z",
+          "completed_at": "2026-11-17T07:23:03Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-11-17T07:23:03Z",
+          "completed_at": "2026-11-17T07:23:03Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:03Z",
+          "completed_at": "2026-11-17T07:23:20Z"
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "number": 8,
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-11-17T07:23:20Z",
+          "completed_at": null
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "number": 9,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "number": 10,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "number": 11,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "number": 12,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133886097561,
+      "run_id": 44038196255,
+      "run_attempt": 1,
+      "name": "Native VST3 (macOS AppleClang)",
+      "head_sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T07:22:31Z",
+      "completed_at": null,
+      "runner_id": 1000001467,
+      "runner_name": "GitHub Actions 1000001467",
+      "labels": [
+        "macos-15"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:31Z",
+          "completed_at": "2026-11-17T07:22:33Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:33Z",
+          "completed_at": "2026-11-17T07:23:00Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:00Z",
+          "completed_at": "2026-11-17T07:23:00Z"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:00Z",
+          "completed_at": "2026-11-17T07:23:02Z"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:02Z",
+          "completed_at": "2026-11-17T07:23:08Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "number": 6,
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-11-17T07:23:08Z",
+          "completed_at": null
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "number": 7,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "number": 8,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "number": 9,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "number": 10,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "number": 11,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "number": 12,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133886097578,
+      "run_id": 44038196255,
+      "run_attempt": 1,
+      "name": "Native VST3 (Linux GCC)",
+      "head_sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T07:22:31Z",
+      "completed_at": null,
+      "runner_id": 1000001464,
+      "runner_name": "GitHub Actions 1000001464",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:32Z",
+          "completed_at": "2026-11-17T07:22:35Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:35Z",
+          "completed_at": "2026-11-17T07:22:54Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:54Z",
+          "completed_at": "2026-11-17T07:22:54Z"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "number": 4,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:54Z",
+          "completed_at": "2026-11-17T07:22:58Z"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "number": 5,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:22:58Z",
+          "completed_at": "2026-11-17T07:23:01Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "number": 6,
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T07:23:01Z",
+          "completed_at": "2026-11-17T07:23:05Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "number": 7,
+          "status": "completed",
+          "conclusion": "skipped",
+          "started_at": "2026-11-17T07:23:05Z",
+          "completed_at": "2026-11-17T07:23:05Z"
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "number": 8,
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-11-17T07:23:05Z",
+          "completed_at": null
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "number": 9,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "number": 10,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "number": 11,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "number": 12,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "pending",
+          "conclusion": null,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    }
+  ],
+  "scope": "Initial assigned-runner observation only; all four exact-source jobs are still running. No pass is claimed from prior sources. Complete terminal metadata, actual logs and artifacts are required."
+}

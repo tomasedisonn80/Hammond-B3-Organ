@@ -1,0 +1,1820 @@
+{
+  "schema_version": 1,
+  "agent": "A54",
+  "wave": 9,
+  "same_worker_followup_no_additional_credit": true,
+  "recorded_utc": "2026-11-17T05:55:42.390016+00:00",
+  "status": "accepted_exact_helper_source_native_vst3_workflow",
+  "repository": "tomasedisonn80/Hammond-B3-Organ",
+  "source": {
+    "commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+    "parents": [
+      "03c70c103a4a0dd72b323529416b909c19a4e139"
+    ],
+    "publication_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/helper-branch-publication.json",
+      "bytes": 4895,
+      "sha256": "1d052411573a89b0f41b9bb8d38464a44e74ea69897eb703c154be717b35b85f"
+    },
+    "independent_git_api_object_matches": true,
+    "all_four_actual_provenance_artifacts_match": true,
+    "workflow": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/source-workflow.txt",
+      "bytes": 8367,
+      "sha256": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734"
+    },
+    "input_comparison": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/input-comparison.json",
+      "bytes": 44839,
+      "sha256": "c265f25fc66b1dfbec054d69d75b129ad0cc292da018b3abfb95975d35b1ac62"
+    },
+    "unchanged_tracked_blobs_in_listed_scope": 290,
+    "qualification_does_not_attach_to_future_docs_closure": true
+  },
+  "workflow_run": {
+    "id": 44026516616,
+    "name": "Native VST3",
+    "path": ".github/workflows/native-vst3.yml",
+    "event": "push",
+    "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "head_branch": "main",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "created_at": "2026-11-17T05:47:11Z",
+    "updated_at": "2026-11-17T05:52:04Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616"
+  },
+  "terminal_metadata": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/final-metadata.json",
+    "bytes": 29544,
+    "sha256": "ec379286461c15b2c77726f4f2222dbe7035ae27518d84d6fe6fd515728ddd16"
+  },
+  "required_families": [
+    "linux",
+    "mac_arm",
+    "mac_intel",
+    "windows"
+  ],
+  "actual_assigned_runners": 4,
+  "attempts_observed": [
+    1
+  ],
+  "failed_jobs": 0,
+  "cancelled_jobs": 0,
+  "unassigned_jobs": 0,
+  "ctest_total": 29,
+  "ctest_failed": 0,
+  "ctest_skipped": 0,
+  "ctest_disabled": 0,
+  "sdk": {
+    "version": "3.8.1",
+    "tag": "v3.8.1_build_84",
+    "root_commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+    "submodules": [
+      {
+        "path": "base",
+        "commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477"
+      },
+      {
+        "path": "cmake",
+        "commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5"
+      },
+      {
+        "path": "pluginterfaces",
+        "commit": "4f547e8e102b47de4a8b8aaf343c73b700786372"
+      },
+      {
+        "path": "public.sdk",
+        "commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da"
+      }
+    ],
+    "lock": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/sdk-lock.json",
+      "bytes": 3796,
+      "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+    },
+    "verified_primary_licenses_per_platform": 5,
+    "embedded_json_verified_per_platform": true,
+    "acquisition_and_independent_verification_per_platform": true
+  },
+  "platforms": [
+    {
+      "family": "linux",
+      "job": {
+        "id": 133848046935,
+        "run_id": 44026516616,
+        "workflow_name": "Native VST3",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOVrmZNc8AAAAfKfcdVw",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046935",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046935",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-17T05:47:12Z",
+        "started_at": "2026-11-17T05:47:14Z",
+        "completed_at": "2026-11-17T05:48:22Z",
+        "name": "Native VST3 (Linux GCC)",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-11-17T05:47:14Z",
+            "completed_at": "2026-11-17T05:47:16Z"
+          },
+          {
+            "name": "Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-11-17T05:47:16Z",
+            "completed_at": "2026-11-17T05:47:23Z"
+          },
+          {
+            "name": "Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-11-17T05:47:23Z",
+            "completed_at": "2026-11-17T05:47:23Z"
+          },
+          {
+            "name": "Record actual source and runner provenance",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-11-17T05:47:23Z",
+            "completed_at": "2026-11-17T05:47:25Z"
+          },
+          {
+            "name": "Explicitly acquire and verify the locked external SDK",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-11-17T05:47:25Z",
+            "completed_at": "2026-11-17T05:47:27Z"
+          },
+          {
+            "name": "Configure native Release on Linux or macOS",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-11-17T05:47:27Z",
+            "completed_at": "2026-11-17T05:47:29Z"
+          },
+          {
+            "name": "Configure native Release on Windows",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7,
+            "started_at": "2026-11-17T05:47:29Z",
+            "completed_at": "2026-11-17T05:47:29Z"
+          },
+          {
+            "name": "Build the bundle and every native test input",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-11-17T05:47:29Z",
+            "completed_at": "2026-11-17T05:48:14Z"
+          },
+          {
+            "name": "Validate the actual module and run the native tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-11-17T05:48:14Z",
+            "completed_at": "2026-11-17T05:48:19Z"
+          },
+          {
+            "name": "Inventory and archive the validated native bundle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-11-17T05:48:19Z",
+            "completed_at": "2026-11-17T05:48:19Z"
+          },
+          {
+            "name": "Retain complete source, dependency, build and test diagnostics",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-11-17T05:48:19Z",
+            "completed_at": "2026-11-17T05:48:20Z"
+          },
+          {
+            "name": "Retain the qualified bundle and byte inventory",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-11-17T05:48:20Z",
+            "completed_at": "2026-11-17T05:48:21Z"
+          },
+          {
+            "name": "Post Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23,
+            "started_at": "2026-11-17T05:48:21Z",
+            "completed_at": "2026-11-17T05:48:21Z"
+          },
+          {
+            "name": "Post Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24,
+            "started_at": "2026-11-17T05:48:21Z",
+            "completed_at": "2026-11-17T05:48:21Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25,
+            "started_at": "2026-11-17T05:48:21Z",
+            "completed_at": "2026-11-17T05:48:21Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046935",
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "runner_id": 1000001421,
+        "runner_name": "GitHub Actions 1000001421",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      "provenance": {
+        "configuration": "Release",
+        "image_os": "ubuntu24",
+        "image_version": "20261111.127.1",
+        "machine": "x86_64",
+        "platform": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+        "python": "3.12.16",
+        "run_attempt": "1",
+        "run_id": "44026516616",
+        "runner_arch": "X64",
+        "runner_os": "Linux",
+        "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "source_tree": "c96fe07c4241f5afe423306945508a114506f0c2"
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/linux/validation.json",
+        "bytes": 25960,
+        "sha256": "cb2d8138835da3c0b35c083d8df196e7c435c6a0bab59a33471ca5bcd3d38e7d"
+      },
+      "module": {
+        "architectures": [
+          "x86_64"
+        ],
+        "format": "ELF64",
+        "path": "Contents/x86_64-linux/HammondB3.so",
+        "platform": "linux"
+      },
+      "module_header": {
+        "format": "ELF64",
+        "architecture": "x86_64",
+        "machine_code": 62,
+        "byte_order": "little",
+        "module_type": "ET_DYN"
+      },
+      "module_bytes": {
+        "bytes": 459048,
+        "sha256": "cb83fb90758ad73f27100d59f0e36a72690a4b925da25d2e30d0cb45ffbf8639"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is GNU 13.3.0",
+        "-- Found Python3: /opt/hostedtoolcache/Python/3.12.16/x64/bin/python (found suitable version \"3.12.16\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is GNU 13.3.0"
+      ],
+      "ctests": {
+        "count": 8,
+        "failed": 0,
+        "skipped": 0,
+        "disabled": 0,
+        "total_seconds": 5.01,
+        "tests": [
+          {
+            "name": "test_native_install",
+            "seconds": 0.983005,
+            "status": "run",
+            "command": "Test command: /opt/hostedtoolcache/Python/3.12.16/x64/bin/python \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/plugins/vst3/tests/test_native_install.py\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          },
+          {
+            "name": "hammond_vst3_validator",
+            "seconds": 1.03896,
+            "status": "run",
+            "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/validator \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_controller",
+            "seconds": 0.0128472,
+            "status": "run",
+            "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_controller",
+            "computed_timeout": "Test timeout computed to be: 300"
+          },
+          {
+            "name": "test_native_abi",
+            "seconds": 0.633605,
+            "status": "run",
+            "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_abi \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_behavior",
+            "seconds": 1.1415,
+            "status": "run",
+            "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_behavior \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_automation",
+            "seconds": 0.358208,
+            "status": "run",
+            "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_automation \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_concurrency",
+            "seconds": 0.204121,
+            "status": "run",
+            "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_concurrency \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          },
+          {
+            "name": "test_native_realtime",
+            "seconds": 0.625519,
+            "status": "run",
+            "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_realtime \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          }
+        ]
+      },
+      "actual_module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "command": "Test command: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/validator \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+        "actual_module_loaded": true,
+        "class_ids": [
+          "19F9ADC0533F42B4B96BD51D6547E838",
+          "0DEE76AB26BC475ABF64F138C89FB0E0"
+        ],
+        "not_sdk_selftest_substitution": true,
+        "diagnostic_messages": {
+          "teardown_message": {
+            "text": "Failed to teardown test!",
+            "current_count": 16,
+            "original_complete_ctest_count": 16,
+            "previous_03c70c1_count": 16
+          },
+          "unsupported_64_bit_message": {
+            "text": "64bit Audio Processing not supported.",
+            "current_count": 15,
+            "original_complete_ctest_count": 15,
+            "previous_03c70c1_count": 15
+          }
+        },
+        "warning_free_claim": false
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "bundle_sha256": {
+          "Contents/Resources/THIRD_PARTY_NOTICES.md": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+          "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e",
+          "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184",
+          "Contents/x86_64-linux/HammondB3.so": "cb83fb90758ad73f27100d59f0e36a72690a4b925da25d2e30d0cb45ffbf8639"
+        },
+        "payload_files": 4,
+        "relocated_abi": {
+          "accepted_callbacks": 1673,
+          "assertions": 701642,
+          "audible_frames": 217972,
+          "compared_frames": 229725,
+          "conversions": 2140,
+          "descriptors": 47,
+          "float_hash": "af029009868faa04",
+          "instances": 9,
+          "lifecycle_sequences": 6,
+          "maximum_audio_error": 0,
+          "rejected_calls": 88,
+          "state_round_trips": 3207,
+          "suite": "native-abi-v1"
+        },
+        "suite": "native-install-v1"
+      },
+      "archive": {
+        "bytes": 198145,
+        "sha256": "11c7981fc2e9b44dae7190b400adcbafefbe90505320953660c632e1e41040fa"
+      },
+      "moduleinfo": {
+        "bytes": 1090,
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+      },
+      "artifacts": {
+        "diagnostics": {
+          "id": 14303830651,
+          "name": "native-vst3-ubuntu-24.04-X64-release-diagnostics-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 41307,
+          "sha256": "5c63e496472d82c1d08fc9f437659622b05d0c4110ac6fef54e728f40aa7eb1a"
+        },
+        "bundle": {
+          "id": 14303411177,
+          "name": "native-vst3-ubuntu-24.04-X64-release-bundle-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 198624,
+          "sha256": "211cd532c811559625c6b5dcbee596447100b2fa3982b9536007ac6a79f8ab0c"
+        }
+      },
+      "unchanged_from_original_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": true,
+        "validator_diagnostic_message_counts": true
+      },
+      "unchanged_from_03c70c1_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": true,
+        "validator_diagnostic_message_counts": true
+      },
+      "complete_job_log_ctest_consistency": {
+        "all_ctest_lines_found_in_order": true,
+        "ctest_line_count": 471,
+        "comparison": "Strip each job timestamp and line-ending whitespace for comparison only; retain both original byte streams unchanged."
+      }
+    },
+    {
+      "family": "mac_arm",
+      "job": {
+        "id": 133848046857,
+        "run_id": 44026516616,
+        "workflow_name": "Native VST3",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOVrmZNc8AAAAfKfcdCQ",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046857",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046857",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-17T05:47:12Z",
+        "started_at": "2026-11-17T05:50:24Z",
+        "completed_at": "2026-11-17T05:52:03Z",
+        "name": "Native VST3 (macOS AppleClang)",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-11-17T05:50:24Z",
+            "completed_at": "2026-11-17T05:50:25Z"
+          },
+          {
+            "name": "Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-11-17T05:50:25Z",
+            "completed_at": "2026-11-17T05:50:34Z"
+          },
+          {
+            "name": "Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-11-17T05:50:34Z",
+            "completed_at": "2026-11-17T05:50:35Z"
+          },
+          {
+            "name": "Record actual source and runner provenance",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-11-17T05:50:35Z",
+            "completed_at": "2026-11-17T05:50:36Z"
+          },
+          {
+            "name": "Explicitly acquire and verify the locked external SDK",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-11-17T05:50:36Z",
+            "completed_at": "2026-11-17T05:50:41Z"
+          },
+          {
+            "name": "Configure native Release on Linux or macOS",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-11-17T05:50:41Z",
+            "completed_at": "2026-11-17T05:50:51Z"
+          },
+          {
+            "name": "Configure native Release on Windows",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7,
+            "started_at": "2026-11-17T05:50:51Z",
+            "completed_at": "2026-11-17T05:50:51Z"
+          },
+          {
+            "name": "Build the bundle and every native test input",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-11-17T05:50:51Z",
+            "completed_at": "2026-11-17T05:51:52Z"
+          },
+          {
+            "name": "Validate the actual module and run the native tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-11-17T05:51:52Z",
+            "completed_at": "2026-11-17T05:51:56Z"
+          },
+          {
+            "name": "Inventory and archive the validated native bundle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-11-17T05:51:56Z",
+            "completed_at": "2026-11-17T05:51:57Z"
+          },
+          {
+            "name": "Retain complete source, dependency, build and test diagnostics",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-11-17T05:51:57Z",
+            "completed_at": "2026-11-17T05:51:58Z"
+          },
+          {
+            "name": "Retain the qualified bundle and byte inventory",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-11-17T05:51:58Z",
+            "completed_at": "2026-11-17T05:51:59Z"
+          },
+          {
+            "name": "Post Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23,
+            "started_at": "2026-11-17T05:51:59Z",
+            "completed_at": "2026-11-17T05:51:59Z"
+          },
+          {
+            "name": "Post Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24,
+            "started_at": "2026-11-17T05:51:59Z",
+            "completed_at": "2026-11-17T05:52:00Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25,
+            "started_at": "2026-11-17T05:52:00Z",
+            "completed_at": "2026-11-17T05:52:01Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046857",
+        "labels": [
+          "macos-15"
+        ],
+        "runner_id": 1000001426,
+        "runner_name": "GitHub Actions 1000001426",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      "provenance": {
+        "configuration": "Release",
+        "image_os": "macos15",
+        "image_version": "20261112.0539.3",
+        "machine": "arm64",
+        "platform": "macOS-15.8.2-arm64-arm-64bit",
+        "python": "3.12.10",
+        "run_attempt": "1",
+        "run_id": "44026516616",
+        "runner_arch": "ARM64",
+        "runner_os": "macOS",
+        "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "source_tree": "c96fe07c4241f5afe423306945508a114506f0c2"
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/mac_arm/validation.json",
+        "bytes": 22457,
+        "sha256": "23dde0a0eaf512f1b1bd56a89e532c33bd2b72481a1b82408c0df72d315898fe"
+      },
+      "module": {
+        "architectures": [
+          "arm64"
+        ],
+        "format": "Mach-O64",
+        "path": "Contents/MacOS/HammondB3",
+        "platform": "macos"
+      },
+      "module_header": {
+        "format": "Mach-O64",
+        "architecture": "arm64",
+        "cpu_type": 16777228,
+        "file_type": 8,
+        "byte_order": "little"
+      },
+      "module_bytes": {
+        "bytes": 448688,
+        "sha256": "7b710fd3290ea325c383522a62fe8d9a26869ba48c6b61a20f558c68ffd6cfe4"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is AppleClang 17.0.0.17000013",
+        "-- Found Python3: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/bin/python (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is AppleClang 17.0.0.17000013"
+      ],
+      "ctests": {
+        "count": 7,
+        "failed": 0,
+        "skipped": 0,
+        "disabled": 0,
+        "total_seconds": 4.58,
+        "tests": [
+          {
+            "name": "test_native_install",
+            "seconds": 1.44914,
+            "status": "run",
+            "command": "Test command: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/bin/python \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/plugins/vst3/tests/test_native_install.py\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          },
+          {
+            "name": "hammond_vst3_validator",
+            "seconds": 0.942641,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/validator \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_controller",
+            "seconds": 0.0272926,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_controller",
+            "computed_timeout": "Test timeout computed to be: 300"
+          },
+          {
+            "name": "test_native_abi",
+            "seconds": 0.521544,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_abi \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_behavior",
+            "seconds": 0.974924,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_behavior \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_automation",
+            "seconds": 0.291737,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_automation \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_concurrency",
+            "seconds": 0.349194,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_concurrency \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          }
+        ]
+      },
+      "actual_module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/validator \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+        "actual_module_loaded": true,
+        "class_ids": [
+          "19F9ADC0533F42B4B96BD51D6547E838",
+          "0DEE76AB26BC475ABF64F138C89FB0E0"
+        ],
+        "not_sdk_selftest_substitution": true,
+        "diagnostic_messages": {
+          "teardown_message": {
+            "text": "Failed to teardown test!",
+            "current_count": 16,
+            "original_complete_ctest_count": 16,
+            "previous_03c70c1_count": 16
+          },
+          "unsupported_64_bit_message": {
+            "text": "64bit Audio Processing not supported.",
+            "current_count": 15,
+            "original_complete_ctest_count": 15,
+            "previous_03c70c1_count": 15
+          }
+        },
+        "warning_free_claim": false
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "bundle_sha256": {
+          "Contents/Info.plist": "92a94a48600eae1a98b7ed19dbba5a41d9b5018fcc38495f0b80b6dcf4f9263d",
+          "Contents/MacOS/HammondB3": "7b710fd3290ea325c383522a62fe8d9a26869ba48c6b61a20f558c68ffd6cfe4",
+          "Contents/Resources/THIRD_PARTY_NOTICES.md": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+          "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e",
+          "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184",
+          "Contents/_CodeSignature/CodeResources": "6ca04917ad416bead632f73747fdc38a05406263765764e0df44cef4a0a24c3d"
+        },
+        "payload_files": 6,
+        "relocated_abi": {
+          "accepted_callbacks": 1673,
+          "assertions": 701642,
+          "audible_frames": 217972,
+          "compared_frames": 229725,
+          "conversions": 2140,
+          "descriptors": 47,
+          "float_hash": "af029009868faa04",
+          "instances": 9,
+          "lifecycle_sequences": 6,
+          "maximum_audio_error": 0,
+          "rejected_calls": 88,
+          "state_round_trips": 3207,
+          "suite": "native-abi-v1"
+        },
+        "suite": "native-install-v1"
+      },
+      "archive": {
+        "bytes": 164384,
+        "sha256": "6b31c9e6671f645341f2d6b06f8922d5665205729c27dcc52df181036745d1e0"
+      },
+      "moduleinfo": {
+        "bytes": 1090,
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+      },
+      "artifacts": {
+        "diagnostics": {
+          "id": 14302938675,
+          "name": "native-vst3-macos-15-ARM64-release-diagnostics-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 50463,
+          "sha256": "5ff6429030e2105ca86742936e9104ff5bf3c849463f2195a40889272c390e81"
+        },
+        "bundle": {
+          "id": 14302674125,
+          "name": "native-vst3-macos-15-ARM64-release-bundle-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 165562,
+          "sha256": "af5bbd9bda176eb18b1ce9e3b64e6a0e5a23b1dc586dbf35f88377311f9e6516"
+        }
+      },
+      "unchanged_from_original_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": true,
+        "validator_diagnostic_message_counts": true
+      },
+      "unchanged_from_03c70c1_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": true,
+        "validator_diagnostic_message_counts": true
+      },
+      "complete_job_log_ctest_consistency": {
+        "all_ctest_lines_found_in_order": true,
+        "ctest_line_count": 444,
+        "comparison": "Strip each job timestamp and line-ending whitespace for comparison only; retain both original byte streams unchanged."
+      }
+    },
+    {
+      "family": "mac_intel",
+      "job": {
+        "id": 133848046789,
+        "run_id": 44026516616,
+        "workflow_name": "Native VST3",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOVrmZNc8AAAAfKfccxQ",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046789",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046789",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-17T05:47:12Z",
+        "started_at": "2026-11-17T05:47:17Z",
+        "completed_at": "2026-11-17T05:50:22Z",
+        "name": "Native VST3 (macOS Intel AppleClang)",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-11-17T05:47:18Z",
+            "completed_at": "2026-11-17T05:47:22Z"
+          },
+          {
+            "name": "Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-11-17T05:47:22Z",
+            "completed_at": "2026-11-17T05:47:35Z"
+          },
+          {
+            "name": "Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-11-17T05:47:35Z",
+            "completed_at": "2026-11-17T05:47:36Z"
+          },
+          {
+            "name": "Record actual source and runner provenance",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-11-17T05:47:36Z",
+            "completed_at": "2026-11-17T05:47:37Z"
+          },
+          {
+            "name": "Explicitly acquire and verify the locked external SDK",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-11-17T05:47:37Z",
+            "completed_at": "2026-11-17T05:47:42Z"
+          },
+          {
+            "name": "Configure native Release on Linux or macOS",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6,
+            "started_at": "2026-11-17T05:47:42Z",
+            "completed_at": "2026-11-17T05:47:59Z"
+          },
+          {
+            "name": "Configure native Release on Windows",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 7,
+            "started_at": "2026-11-17T05:47:59Z",
+            "completed_at": "2026-11-17T05:47:59Z"
+          },
+          {
+            "name": "Build the bundle and every native test input",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-11-17T05:47:59Z",
+            "completed_at": "2026-11-17T05:50:06Z"
+          },
+          {
+            "name": "Validate the actual module and run the native tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-11-17T05:50:06Z",
+            "completed_at": "2026-11-17T05:50:14Z"
+          },
+          {
+            "name": "Inventory and archive the validated native bundle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-11-17T05:50:14Z",
+            "completed_at": "2026-11-17T05:50:14Z"
+          },
+          {
+            "name": "Retain complete source, dependency, build and test diagnostics",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-11-17T05:50:14Z",
+            "completed_at": "2026-11-17T05:50:16Z"
+          },
+          {
+            "name": "Retain the qualified bundle and byte inventory",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-11-17T05:50:16Z",
+            "completed_at": "2026-11-17T05:50:18Z"
+          },
+          {
+            "name": "Post Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23,
+            "started_at": "2026-11-17T05:50:18Z",
+            "completed_at": "2026-11-17T05:50:18Z"
+          },
+          {
+            "name": "Post Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24,
+            "started_at": "2026-11-17T05:50:18Z",
+            "completed_at": "2026-11-17T05:50:19Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25,
+            "started_at": "2026-11-17T05:50:19Z",
+            "completed_at": "2026-11-17T05:50:19Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046789",
+        "labels": [
+          "macos-15-intel"
+        ],
+        "runner_id": 1000001412,
+        "runner_name": "GitHub Actions 1000001412",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      "provenance": {
+        "configuration": "Release",
+        "image_os": "macos15",
+        "image_version": "20260824.0482.1",
+        "machine": "x86_64",
+        "platform": "macOS-15.7.9-x86_64-i386-64bit",
+        "python": "3.12.10",
+        "run_attempt": "1",
+        "run_id": "44026516616",
+        "runner_arch": "X64",
+        "runner_os": "macOS",
+        "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "source_tree": "c96fe07c4241f5afe423306945508a114506f0c2"
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/mac_intel/validation.json",
+        "bytes": 22482,
+        "sha256": "9d7d77e98e2cf4fa742632532e9593e6bc4dfb43afa889b8fdb2349ba50be5d3"
+      },
+      "module": {
+        "architectures": [
+          "x86_64"
+        ],
+        "format": "Mach-O64",
+        "path": "Contents/MacOS/HammondB3",
+        "platform": "macos"
+      },
+      "module_header": {
+        "format": "Mach-O64",
+        "architecture": "x86_64",
+        "cpu_type": 16777223,
+        "file_type": 8,
+        "byte_order": "little"
+      },
+      "module_bytes": {
+        "bytes": 453616,
+        "sha256": "176c76437fcefe8843919d2ad14436d14d9aa4cd94a7acf6c9c5759aecaf42e9"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is AppleClang 17.0.0.17000013",
+        "-- Found Python3: /Users/runner/hostedtoolcache/Python/3.12.10/x64/bin/python (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is AppleClang 17.0.0.17000013"
+      ],
+      "ctests": {
+        "count": 7,
+        "failed": 0,
+        "skipped": 0,
+        "disabled": 0,
+        "total_seconds": 7.51,
+        "tests": [
+          {
+            "name": "test_native_install",
+            "seconds": 1.97706,
+            "status": "run",
+            "command": "Test command: /Users/runner/hostedtoolcache/Python/3.12.10/x64/bin/python \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/plugins/vst3/tests/test_native_install.py\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          },
+          {
+            "name": "hammond_vst3_validator",
+            "seconds": 1.42152,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/validator \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_controller",
+            "seconds": 0.0492834,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_controller",
+            "computed_timeout": "Test timeout computed to be: 300"
+          },
+          {
+            "name": "test_native_abi",
+            "seconds": 0.919878,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_abi \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_behavior",
+            "seconds": 1.66346,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_behavior \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_automation",
+            "seconds": 0.656578,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_automation \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_concurrency",
+            "seconds": 0.812291,
+            "status": "run",
+            "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/test_native_concurrency \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          }
+        ]
+      },
+      "actual_module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "command": "Test command: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/validator \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+        "actual_module_loaded": true,
+        "class_ids": [
+          "19F9ADC0533F42B4B96BD51D6547E838",
+          "0DEE76AB26BC475ABF64F138C89FB0E0"
+        ],
+        "not_sdk_selftest_substitution": true,
+        "diagnostic_messages": {
+          "teardown_message": {
+            "text": "Failed to teardown test!",
+            "current_count": 16,
+            "original_complete_ctest_count": 16,
+            "previous_03c70c1_count": 16
+          },
+          "unsupported_64_bit_message": {
+            "text": "64bit Audio Processing not supported.",
+            "current_count": 15,
+            "original_complete_ctest_count": 15,
+            "previous_03c70c1_count": 15
+          }
+        },
+        "warning_free_claim": false
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "bundle_sha256": {
+          "Contents/Info.plist": "92a94a48600eae1a98b7ed19dbba5a41d9b5018fcc38495f0b80b6dcf4f9263d",
+          "Contents/MacOS/HammondB3": "176c76437fcefe8843919d2ad14436d14d9aa4cd94a7acf6c9c5759aecaf42e9",
+          "Contents/Resources/THIRD_PARTY_NOTICES.md": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+          "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e",
+          "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184",
+          "Contents/_CodeSignature/CodeResources": "6ca04917ad416bead632f73747fdc38a05406263765764e0df44cef4a0a24c3d"
+        },
+        "payload_files": 6,
+        "relocated_abi": {
+          "accepted_callbacks": 1673,
+          "assertions": 701642,
+          "audible_frames": 217972,
+          "compared_frames": 229725,
+          "conversions": 2140,
+          "descriptors": 47,
+          "float_hash": "af029009868faa04",
+          "instances": 9,
+          "lifecycle_sequences": 6,
+          "maximum_audio_error": 0,
+          "rejected_calls": 88,
+          "state_round_trips": 3207,
+          "suite": "native-abi-v1"
+        },
+        "suite": "native-install-v1"
+      },
+      "archive": {
+        "bytes": 178195,
+        "sha256": "dc75daa43752815f8052a41dfd51865179a7c38253fa412cb2b2d4babf48ee4b"
+      },
+      "moduleinfo": {
+        "bytes": 1090,
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+      },
+      "artifacts": {
+        "diagnostics": {
+          "id": 14304175065,
+          "name": "native-vst3-macos-15-intel-X64-release-diagnostics-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 49255,
+          "sha256": "dd7dd267cf6ff758c3ae9f1066da060344062a60cf91e548206d8f1933dd1151"
+        },
+        "bundle": {
+          "id": 14303491520,
+          "name": "native-vst3-macos-15-intel-X64-release-bundle-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 179340,
+          "sha256": "1899cfad433efcad104e798009b54796967d2f344cd73d0772eb177da6830711"
+        }
+      },
+      "unchanged_from_original_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": true,
+        "validator_diagnostic_message_counts": true
+      },
+      "unchanged_from_03c70c1_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": true,
+        "validator_diagnostic_message_counts": true
+      },
+      "complete_job_log_ctest_consistency": {
+        "all_ctest_lines_found_in_order": true,
+        "ctest_line_count": 444,
+        "comparison": "Strip each job timestamp and line-ending whitespace for comparison only; retain both original byte streams unchanged."
+      }
+    },
+    {
+      "family": "windows",
+      "job": {
+        "id": 133848046537,
+        "run_id": 44026516616,
+        "workflow_name": "Native VST3",
+        "head_branch": "main",
+        "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+        "run_attempt": 1,
+        "node_id": "CR_kwDOVrmZNc8AAAAfKfcbyQ",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046537",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046537",
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-17T05:47:12Z",
+        "started_at": "2026-11-17T05:47:14Z",
+        "completed_at": "2026-11-17T05:49:23Z",
+        "name": "Native VST3 (Windows MSVC x64)",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-11-17T05:47:14Z",
+            "completed_at": "2026-11-17T05:47:15Z"
+          },
+          {
+            "name": "Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-11-17T05:47:15Z",
+            "completed_at": "2026-11-17T05:47:29Z"
+          },
+          {
+            "name": "Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-11-17T05:47:29Z",
+            "completed_at": "2026-11-17T05:47:29Z"
+          },
+          {
+            "name": "Record actual source and runner provenance",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-11-17T05:47:29Z",
+            "completed_at": "2026-11-17T05:47:32Z"
+          },
+          {
+            "name": "Explicitly acquire and verify the locked external SDK",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5,
+            "started_at": "2026-11-17T05:47:32Z",
+            "completed_at": "2026-11-17T05:47:38Z"
+          },
+          {
+            "name": "Configure native Release on Linux or macOS",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 6,
+            "started_at": "2026-11-17T05:47:38Z",
+            "completed_at": "2026-11-17T05:47:38Z"
+          },
+          {
+            "name": "Configure native Release on Windows",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7,
+            "started_at": "2026-11-17T05:47:38Z",
+            "completed_at": "2026-11-17T05:47:58Z"
+          },
+          {
+            "name": "Build the bundle and every native test input",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-11-17T05:47:58Z",
+            "completed_at": "2026-11-17T05:49:08Z"
+          },
+          {
+            "name": "Validate the actual module and run the native tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-11-17T05:49:08Z",
+            "completed_at": "2026-11-17T05:49:16Z"
+          },
+          {
+            "name": "Inventory and archive the validated native bundle",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10,
+            "started_at": "2026-11-17T05:49:16Z",
+            "completed_at": "2026-11-17T05:49:16Z"
+          },
+          {
+            "name": "Retain complete source, dependency, build and test diagnostics",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11,
+            "started_at": "2026-11-17T05:49:16Z",
+            "completed_at": "2026-11-17T05:49:17Z"
+          },
+          {
+            "name": "Retain the qualified bundle and byte inventory",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12,
+            "started_at": "2026-11-17T05:49:17Z",
+            "completed_at": "2026-11-17T05:49:19Z"
+          },
+          {
+            "name": "Post Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23,
+            "started_at": "2026-11-17T05:49:19Z",
+            "completed_at": "2026-11-17T05:49:19Z"
+          },
+          {
+            "name": "Post Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24,
+            "started_at": "2026-11-17T05:49:19Z",
+            "completed_at": "2026-11-17T05:49:21Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25,
+            "started_at": "2026-11-17T05:49:21Z",
+            "completed_at": "2026-11-17T05:49:21Z"
+          }
+        ],
+        "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046537",
+        "labels": [
+          "windows-2022"
+        ],
+        "runner_id": 1000001411,
+        "runner_name": "GitHub Actions 1000001411",
+        "runner_group_id": 0,
+        "runner_group_name": "GitHub Actions"
+      },
+      "provenance": {
+        "configuration": "Release",
+        "image_os": "win22",
+        "image_version": "20261112.366.7",
+        "machine": "AMD64",
+        "platform": "Windows-2022Server-10.0.20348-SP0",
+        "python": "3.12.10",
+        "run_attempt": "1",
+        "run_id": "44026516616",
+        "runner_arch": "X64",
+        "runner_os": "Windows",
+        "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "source_tree": "c96fe07c4241f5afe423306945508a114506f0c2"
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/windows/validation.json",
+        "bytes": 22238,
+        "sha256": "af6e085423dd09258f430a1f042182f54bf5428c8f206a8e7273d8e9294c5c9b"
+      },
+      "module": {
+        "architectures": [
+          "x86_64"
+        ],
+        "format": "PE32+",
+        "path": "Contents/x86_64-win/HammondB3.vst3",
+        "platform": "windows"
+      },
+      "module_header": {
+        "format": "PE32+",
+        "architecture": "x86_64",
+        "machine_code": 34404,
+        "optional_header_magic": "0x20b",
+        "dll_characteristic": true
+      },
+      "module_bytes": {
+        "bytes": 400384,
+        "sha256": "b2a943876c57b62cde247d3749be6d1b0ee5486dfc1704b45ed8b09082ffdbe2"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is MSVC 19.44.35230.0",
+        "-- Found Python3: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is MSVC 19.44.35230.0"
+      ],
+      "ctests": {
+        "count": 7,
+        "failed": 0,
+        "skipped": 0,
+        "disabled": 0,
+        "total_seconds": 7.32,
+        "tests": [
+          {
+            "name": "test_native_install",
+            "seconds": 1.94844,
+            "status": "run",
+            "command": "Test command: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/plugins/vst3/tests/test_native_install.py\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          },
+          {
+            "name": "hammond_vst3_validator",
+            "seconds": 1.21695,
+            "status": "run",
+            "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\validator.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_controller",
+            "seconds": 0.0600439,
+            "status": "run",
+            "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_controller.exe",
+            "computed_timeout": "Test timeout computed to be: 300"
+          },
+          {
+            "name": "test_native_abi",
+            "seconds": 0.851876,
+            "status": "run",
+            "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_abi.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_behavior",
+            "seconds": 2.18757,
+            "status": "run",
+            "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_behavior.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_automation",
+            "seconds": 0.535893,
+            "status": "run",
+            "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_automation.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 180"
+          },
+          {
+            "name": "test_native_concurrency",
+            "seconds": 0.447137,
+            "status": "run",
+            "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_concurrency.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+            "computed_timeout": "Test timeout computed to be: 240"
+          }
+        ]
+      },
+      "actual_module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\validator.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+        "actual_module_loaded": true,
+        "class_ids": [
+          "19F9ADC0533F42B4B96BD51D6547E838",
+          "0DEE76AB26BC475ABF64F138C89FB0E0"
+        ],
+        "not_sdk_selftest_substitution": true,
+        "diagnostic_messages": {
+          "teardown_message": {
+            "text": "Failed to teardown test!",
+            "current_count": 16,
+            "original_complete_ctest_count": 16,
+            "previous_03c70c1_count": 16
+          },
+          "unsupported_64_bit_message": {
+            "text": "64bit Audio Processing not supported.",
+            "current_count": 15,
+            "original_complete_ctest_count": 15,
+            "previous_03c70c1_count": 15
+          }
+        },
+        "warning_free_claim": false
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "bundle_sha256": {
+          "Contents/Resources/THIRD_PARTY_NOTICES.md": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+          "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e",
+          "Contents/Resources/moduleinfo.json": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d",
+          "Contents/x86_64-win/HammondB3.vst3": "b2a943876c57b62cde247d3749be6d1b0ee5486dfc1704b45ed8b09082ffdbe2",
+          "PlugIn.ico": "1dda09aceb9fa930a3894cce4ad57edd8fa48ce58157c97ba5f971d2d4e79821",
+          "desktop.ini": "3f3d19c85c40231d4dec0c6526b77d8325031eb7d52fcf141d68feaa3a88547f"
+        },
+        "payload_files": 6,
+        "relocated_abi": {
+          "accepted_callbacks": 1673,
+          "assertions": 701642,
+          "audible_frames": 217972,
+          "compared_frames": 229725,
+          "conversions": 2140,
+          "descriptors": 47,
+          "float_hash": "af029009868faa04",
+          "instances": 9,
+          "lifecycle_sequences": 6,
+          "maximum_audio_error": 0,
+          "rejected_calls": 88,
+          "state_round_trips": 3207,
+          "suite": "native-abi-v1"
+        },
+        "suite": "native-install-v1"
+      },
+      "archive": {
+        "bytes": 420783,
+        "sha256": "0f7d354e2c15eb9f378726f4ed716497b22de9d53187e056203db70687516b2b"
+      },
+      "moduleinfo": {
+        "bytes": 1133,
+        "sha256": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d"
+      },
+      "artifacts": {
+        "diagnostics": {
+          "id": 14302789450,
+          "name": "native-vst3-windows-2022-X64-release-diagnostics-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 37716,
+          "sha256": "c21137778c7d4387852d73dbe2117d9e813d2fe4f18954005dc986d1ded7e64f"
+        },
+        "bundle": {
+          "id": 14302804248,
+          "name": "native-vst3-windows-2022-X64-release-bundle-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+          "bytes": 421160,
+          "sha256": "b896b5583cc4596631ad7a4a35792ea77ac84c407eddbad7aa7a34b4f965d8ec"
+        }
+      },
+      "unchanged_from_original_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": false,
+        "validator_diagnostic_message_counts": true
+      },
+      "unchanged_from_03c70c1_run": {
+        "native_abi_summary": true,
+        "module_metadata_bytes": true,
+        "module_binary_sha256": false,
+        "validator_diagnostic_message_counts": true
+      },
+      "complete_job_log_ctest_consistency": {
+        "all_ctest_lines_found_in_order": true,
+        "ctest_line_count": 447,
+        "comparison": "Strip each job timestamp and line-ending whitespace for comparison only; retain both original byte streams unchanged."
+      }
+    }
+  ],
+  "linux_realtime": {
+    "regions": 193,
+    "overload_calibration": "12/12",
+    "assertions": 8945157,
+    "processing_paths_cpp_new_delete_zero": true,
+    "positive_calibration": [
+      "module calibration processor create new=1 delete=0; release new=0 delete=1 refs=0",
+      "module calibration controller create new=1 delete=0; release new=0 delete=1 refs=0"
+    ],
+    "rows": [
+      [
+        "enabled",
+        "40",
+        "0",
+        "13793",
+        "9",
+        "0",
+        "28",
+        "0",
+        "0",
+        "20176.845",
+        "3171.062"
+      ],
+      [
+        "preset",
+        "54",
+        "0",
+        "456",
+        "90",
+        "3",
+        "24",
+        "0",
+        "0",
+        "1003.315",
+        "96.206"
+      ],
+      [
+        "dense",
+        "5",
+        "0",
+        "224",
+        "4608",
+        "0",
+        "4",
+        "0",
+        "0",
+        "811.743",
+        "357.866"
+      ],
+      [
+        "maximum",
+        "3",
+        "0",
+        "196608",
+        "6",
+        "0",
+        "0",
+        "0",
+        "0",
+        "277462.505",
+        "95532.684"
+      ],
+      [
+        "carry",
+        "13",
+        "0",
+        "32",
+        "2054",
+        "1027",
+        "0",
+        "0",
+        "0",
+        "193.163",
+        "60.979"
+      ],
+      [
+        "output-shape",
+        "24",
+        "0",
+        "1152",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1730.454",
+        "101.147"
+      ],
+      [
+        "rejected",
+        "0",
+        "33",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "13.674",
+        "1.760"
+      ],
+      [
+        "setProcessing",
+        "15",
+        "6",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1.278",
+        "0.253"
+      ]
+    ],
+    "summary": "regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265 state_reads=204 rollback_cases=30 future_channel_samples=18114 moving_contact_checks=4 owner_capacity_checks=2 assertions=8945157 checksum=fbea92c63d86af53",
+    "scope": "Scope: Linux calling-thread global C++ new/delete; timings are observations, not device deadlines.",
+    "complete_output": [
+      "module calibration processor create new=1 delete=0; release new=0 delete=1 refs=0",
+      "module calibration controller create new=1 delete=0; release new=0 delete=1 refs=0",
+      "enabled rate 44100: manual, pedal, moving contacts, percussion and independent audio verified",
+      "enabled rate 48000: manual, pedal, moving contacts, percussion and independent audio verified",
+      "enabled rate 96000: manual, pedal, moving contacts, percussion and independent audio verified",
+      "path accepted rejected frames fresh_raw carried_raw queued_restores new delete total_us max_us",
+      "enabled 40 0 13793 9 0 28 0 0 20176.845 3171.062",
+      "preset 54 0 456 90 3 24 0 0 1003.315 96.206",
+      "dense 5 0 224 4608 0 4 0 0 811.743 357.866",
+      "maximum 3 0 196608 6 0 0 0 0 277462.505 95532.684",
+      "carry 13 0 32 2054 1027 0 0 0 193.163 60.979",
+      "output-shape 24 0 1152 0 0 0 0 0 1730.454 101.147",
+      "rejected 0 33 0 0 0 0 0 0 13.674 1.760",
+      "setProcessing 15 6 0 0 0 0 0 0 1.278 0.253",
+      "regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265 state_reads=204 rollback_cases=30 future_channel_samples=18114 moving_contact_checks=4 owner_capacity_checks=2 assertions=8945157 checksum=fbea92c63d86af53",
+      "Scope: Linux calling-thread global C++ new/delete; timings are observations, not device deadlines."
+    ]
+  },
+  "install_contract": {
+    "both_actual_methods_executed_per_platform": true,
+    "explicit_NativeVST3_component_only": true,
+    "prefix_sentinels_preserved": true,
+    "reinstall_refused_without_mutation": true,
+    "actual_moved_module_loaded_from_unrelated_cwd": true,
+    "relocated_native_abi_equals_original_per_platform": true,
+    "unbuilt_missing_empty_and_unsafe_prefix_negative_guards_executed": true,
+    "unchanged_exact_fixture": "plugins/vst3/tests/test_native_install.py"
+  },
+  "validator_output_boundary": {
+    "actual_module_ctest_block_used": true,
+    "sdk_build_selftest_not_substituted": true,
+    "per_platform_passed": 47,
+    "per_platform_failed": 0,
+    "teardown_message_count_per_platform": 16,
+    "unsupported_64_bit_message_count_per_platform": 15,
+    "message_counts_equal_original_and_03c70c1_runs_on_every_platform": true,
+    "messages_preserved_not_suppressed": true,
+    "warning_free_claim": false,
+    "no_cause_inferred_for_teardown_messages": true,
+    "untruncated_ctest_log_used": true,
+    "every_ctest_log_line_found_in_complete_job_log_in_order": true
+  },
+  "complete_job_logs": {
+    "schema_version": 1,
+    "run_id": 44026516616,
+    "source": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "logs": [
+      {
+        "job_id": 133848046935,
+        "bytes": 294470,
+        "sha256": "aeb234742d2ab23b268dd5bd8fe0e927511f65dc5ceb161df852f7ee40e927bf",
+        "retained_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/job-133848046935.log.gz",
+        "gzip_bytes": 33346,
+        "gzip_sha256": "795630b89bc15efdae133caa3f846eccb15ecf1304cf011001389c72aaed11d8",
+        "deterministic_gzip_mtime": 0,
+        "gzip_filename": null,
+        "decoded_lines": 1741,
+        "decoded_carriage_returns": 0,
+        "complete_roundtrip_verified": true
+      },
+      {
+        "job_id": 133848046537,
+        "bytes": 204294,
+        "sha256": "c592a6b54187b6b005d37b3478ee67195e08a0c86f6b2e9d45e28ff0740068ce",
+        "retained_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/job-133848046537.log.gz",
+        "gzip_bytes": 32744,
+        "gzip_sha256": "e5a8229e5e72dad446208d7014953b5aa35103f8372dcc0ccc6f33ef0dd2f179",
+        "deterministic_gzip_mtime": 0,
+        "gzip_filename": null,
+        "decoded_lines": 1959,
+        "decoded_carriage_returns": 1951,
+        "complete_roundtrip_verified": true
+      },
+      {
+        "job_id": 133848046789,
+        "bytes": 303089,
+        "sha256": "313f6ce2561a207f7714bcb26820fd2e772864e831a24a8825fd4462c5b639aa",
+        "retained_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/job-133848046789.log.gz",
+        "gzip_bytes": 31983,
+        "gzip_sha256": "97f70fa4e4d4b695a295e67307eee07e1a2c2b21d967a478cbb7e8a42adafe6e",
+        "deterministic_gzip_mtime": 0,
+        "gzip_filename": null,
+        "decoded_lines": 1645,
+        "decoded_carriage_returns": 0,
+        "complete_roundtrip_verified": true
+      },
+      {
+        "job_id": 133848046857,
+        "bytes": 302119,
+        "sha256": "5fd6638fbe39174f8df963dcc8a7b5c3d3b1443904807118eaa8e047be0ecb91",
+        "retained_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/job-133848046857.log.gz",
+        "gzip_bytes": 31488,
+        "gzip_sha256": "e2c20c69d0807e0cf5f235a16281d144cec736ba1c513c9047fb74dd5531ef38",
+        "deterministic_gzip_mtime": 0,
+        "gzip_filename": null,
+        "decoded_lines": 1609,
+        "decoded_carriage_returns": 0,
+        "complete_roundtrip_verified": true
+      }
+    ]
+  },
+  "preservation": {
+    "prior_frozen_records": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/prior-evidence-preserved.json",
+      "bytes": 24273,
+      "sha256": "b7d9647d0e2253bdece0ca90c2aafa5e350a50c2ad29401232afc2441657b213"
+    },
+    "prior_files_checked": 102,
+    "all_prior_bytes_unchanged": true,
+    "original_note_unchanged": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/notes/A54.md",
+      "bytes": 6224,
+      "sha256": "666fbf4682989759d8c1ffb0872786408a4ceabaf257e5fb64636dc2d884f761"
+    },
+    "retention": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/retention.json",
+      "bytes": 16322,
+      "sha256": "ba02aa100e0abd2d7f0ac8755117b5c38524aaa33ca0b3c523a2a27be9111eb4"
+    },
+    "retained_folder_files": 33,
+    "retained_folder_bytes": 581812,
+    "removed_own_verified_bundle_zips": 4,
+    "removed_bytes": 964686,
+    "original_artifact_text_preserved_inside_zip_or_gzip": true,
+    "git_byte_preservation_checked_without_index_mutation": true
+  },
+  "inspection_operations": {
+    "complete_job_logs": 4,
+    "outer_artifact_zips": 8,
+    "native_builds": 0,
+    "native_executions": 0,
+    "local_tests": 0,
+    "hosted_reruns": 0,
+    "remote_mutations": 0,
+    "production_source_edits": 0,
+    "staging_or_git_mutations": 0,
+    "additional_workers": 0,
+    "offline_inspector": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/inspect_artifacts.py",
+      "bytes": 21373,
+      "sha256": "cd609ca9d74542b480bb65b662870c0c157af8f46059ea54b3c26101bcced03f"
+    }
+  },
+  "review": "docs/reviews/HEADING_HEADER_HELPER_VST3_HOSTED.md",
+  "scope_limits": [
+    "Qualification belongs to 6287055a111dc4e2747564da3d48edc9b65e2e3e, run 44026516616 attempt 1; later documentation closure is a different commit.",
+    "Core/standalone matrix outcomes belong to their own reviewers; no complete 16-job aggregate is claimed here.",
+    "The prior 03c70c1 Intel standalone preset timeout, Windows C4702, original fba Windows C4244 and sanitizer cancellation, and local 240/242 results remain retained.",
+    "Actual module validation retains diagnostic messages; no warning-free output or inferred teardown cause.",
+    "No all-DAW compatibility, physical MIDI/audio device behavior, hardware deadline, calibrated instrument, signing/notarization, native accessibility, custom VST3 editor or literal whole-UI 1:1 claim.",
+    "Windows module hash differs from both previous runs; no cause or four-platform binary reproducibility is inferred."
+  ],
+  "next_step": "Root retains source identity, waits for all other exact-source workflow reviews, and owns the final evidence/current-docs publication after staged integrity. Same A54 may prepare the separately assigned patch; no new native run or hosted retry."
+}

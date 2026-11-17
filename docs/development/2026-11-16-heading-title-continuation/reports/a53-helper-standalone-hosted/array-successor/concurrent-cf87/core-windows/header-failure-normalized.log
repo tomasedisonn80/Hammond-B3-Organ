@@ -1,0 +1,263 @@
+2026-11-17T06:28:07.2782279Z         Start  97: python_test_compare_header_material
+2026-11-17T06:28:08.1694694Z  96/209 Test  #97: python_test_compare_header_material ...............***Failed    0.89 sec
+2026-11-17T06:28:08.1695585Z EEEEE..EE.................
+2026-11-17T06:28:08.1695839Z ======================================================================
+2026-11-17T06:28:08.1696751Z ERROR: test_both_fixture_forms_keep_the_genuine_original_baseline (__main__.BaselineTransitionTests.test_both_fixture_forms_keep_the_genuine_original_baseline) (current='1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d')
+2026-11-17T06:28:08.1698094Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1698408Z Traceback (most recent call last):
+2026-11-17T06:28:08.1699328Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 359, in test_both_fixture_forms_keep_the_genuine_original_baseline
+2026-11-17T06:28:08.1699957Z     result = self.admit(fixture_payload=payload)
+2026-11-17T06:28:08.1700235Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1700668Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 319, in admit
+2026-11-17T06:28:08.1701216Z     return HEADER.baseline_inputs(root, self.receipt_path, self.receipt_sha, path,
+2026-11-17T06:28:08.1701606Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1702233Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_header_material.py", line 1148, in baseline_inputs
+2026-11-17T06:28:08.1702837Z     require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
+2026-11-17T06:28:08.1703236Z                                    ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1703634Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1139, in __call__
+2026-11-17T06:28:08.1704038Z     return self._mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1704259Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1704662Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1143, in _mock_call
+2026-11-17T06:28:08.1705074Z     return self._execute_mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1705321Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1705788Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1204, in _execute_mock_call
+2026-11-17T06:28:08.1706208Z     result = effect(*args, **kwargs)
+2026-11-17T06:28:08.1706428Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1706889Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 316, in identity
+2026-11-17T06:28:08.1707311Z     return self.identity(source)
+2026-11-17T06:28:08.1707517Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1707933Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 294, in identity
+2026-11-17T06:28:08.1708446Z     return deepcopy(result) if result is not None else self.real_identity(path)
+2026-11-17T06:28:08.1708805Z                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1709264Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_heading_typography.py", line 105, in identity
+2026-11-17T06:28:08.1709712Z     path = Path(path).resolve(strict=True)
+2026-11-17T06:28:08.1709956Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1710333Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\pathlib.py", line 1240, in resolve
+2026-11-17T06:28:08.1710738Z     s = self._flavour.realpath(self, strict=strict)
+2026-11-17T06:28:08.1710993Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1711375Z   File "<frozen ntpath>", line 727, in realpath
+2026-11-17T06:28:08.1712050Z FileNotFoundError: [WinError 3] The system cannot find the path specified: '\\workspace\\scratch\\66b061effd9e\\pre-header-native\\h1-inputs\\test_standalone_header_material.cpp'
+2026-11-17T06:28:08.1712633Z 
+2026-11-17T06:28:08.1712742Z ======================================================================
+2026-11-17T06:28:08.1713618Z ERROR: test_both_fixture_forms_keep_the_genuine_original_baseline (__main__.BaselineTransitionTests.test_both_fixture_forms_keep_the_genuine_original_baseline) (current='96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809')
+2026-11-17T06:28:08.1714497Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1714958Z Traceback (most recent call last):
+2026-11-17T06:28:08.1715556Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 359, in test_both_fixture_forms_keep_the_genuine_original_baseline
+2026-11-17T06:28:08.1716114Z     result = self.admit(fixture_payload=payload)
+2026-11-17T06:28:08.1716355Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1716758Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 319, in admit
+2026-11-17T06:28:08.1717284Z     return HEADER.baseline_inputs(root, self.receipt_path, self.receipt_sha, path,
+2026-11-17T06:28:08.1717650Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1718124Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_header_material.py", line 1148, in baseline_inputs
+2026-11-17T06:28:08.1718869Z     require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
+2026-11-17T06:28:08.1719309Z                                    ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1719743Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1139, in __call__
+2026-11-17T06:28:08.1720137Z     return self._mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1720357Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1720763Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1143, in _mock_call
+2026-11-17T06:28:08.1721183Z     return self._execute_mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1721441Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1721870Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1204, in _execute_mock_call
+2026-11-17T06:28:08.1722299Z     result = effect(*args, **kwargs)
+2026-11-17T06:28:08.1722509Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1722914Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 316, in identity
+2026-11-17T06:28:08.1723343Z     return self.identity(source)
+2026-11-17T06:28:08.1723543Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1723938Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 294, in identity
+2026-11-17T06:28:08.1724464Z     return deepcopy(result) if result is not None else self.real_identity(path)
+2026-11-17T06:28:08.1724829Z                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1725282Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_heading_typography.py", line 105, in identity
+2026-11-17T06:28:08.1725688Z     path = Path(path).resolve(strict=True)
+2026-11-17T06:28:08.1725909Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1726284Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\pathlib.py", line 1240, in resolve
+2026-11-17T06:28:08.1726673Z     s = self._flavour.realpath(self, strict=strict)
+2026-11-17T06:28:08.1726932Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1727187Z   File "<frozen ntpath>", line 727, in realpath
+2026-11-17T06:28:08.1727840Z FileNotFoundError: [WinError 3] The system cannot find the path specified: '\\workspace\\scratch\\66b061effd9e\\pre-header-native\\h1-inputs\\test_standalone_header_material.cpp'
+2026-11-17T06:28:08.1728417Z 
+2026-11-17T06:28:08.1728505Z ======================================================================
+2026-11-17T06:28:08.1729212Z ERROR: test_changed_retained_fixture_and_object_identities_are_rejected (__main__.BaselineTransitionTests.test_changed_retained_fixture_and_object_identities_are_rejected) (target='fixture')
+2026-11-17T06:28:08.1729999Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1730294Z Traceback (most recent call last):
+2026-11-17T06:28:08.1731032Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 394, in test_changed_retained_fixture_and_object_identities_are_rejected
+2026-11-17T06:28:08.1731630Z     self.admit(supplement)
+2026-11-17T06:28:08.1732034Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 319, in admit
+2026-11-17T06:28:08.1732569Z     return HEADER.baseline_inputs(root, self.receipt_path, self.receipt_sha, path,
+2026-11-17T06:28:08.1732956Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1733448Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_header_material.py", line 1148, in baseline_inputs
+2026-11-17T06:28:08.1734060Z     require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
+2026-11-17T06:28:08.1734472Z                                    ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1734879Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1139, in __call__
+2026-11-17T06:28:08.1735397Z     return self._mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1735626Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1736028Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1143, in _mock_call
+2026-11-17T06:28:08.1736432Z     return self._execute_mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1736672Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1737095Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1204, in _execute_mock_call
+2026-11-17T06:28:08.1737509Z     result = effect(*args, **kwargs)
+2026-11-17T06:28:08.1737721Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1738128Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 316, in identity
+2026-11-17T06:28:08.1738563Z     return self.identity(source)
+2026-11-17T06:28:08.1738768Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1739235Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 294, in identity
+2026-11-17T06:28:08.1739767Z     return deepcopy(result) if result is not None else self.real_identity(path)
+2026-11-17T06:28:08.1740122Z                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1740576Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_heading_typography.py", line 105, in identity
+2026-11-17T06:28:08.1741003Z     path = Path(path).resolve(strict=True)
+2026-11-17T06:28:08.1741230Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1741609Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\pathlib.py", line 1240, in resolve
+2026-11-17T06:28:08.1742022Z     s = self._flavour.realpath(self, strict=strict)
+2026-11-17T06:28:08.1742281Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1742552Z   File "<frozen ntpath>", line 727, in realpath
+2026-11-17T06:28:08.1743241Z FileNotFoundError: [WinError 3] The system cannot find the path specified: '\\workspace\\scratch\\66b061effd9e\\pre-header-native\\h1-inputs\\test_standalone_header_material.cpp'
+2026-11-17T06:28:08.1743822Z 
+2026-11-17T06:28:08.1743919Z ======================================================================
+2026-11-17T06:28:08.1744649Z ERROR: test_changed_retained_fixture_and_object_identities_are_rejected (__main__.BaselineTransitionTests.test_changed_retained_fixture_and_object_identities_are_rejected) (target='object')
+2026-11-17T06:28:08.1745399Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1745695Z Traceback (most recent call last):
+2026-11-17T06:28:08.1746315Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 394, in test_changed_retained_fixture_and_object_identities_are_rejected
+2026-11-17T06:28:08.1746903Z     self.admit(supplement)
+2026-11-17T06:28:08.1747289Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 319, in admit
+2026-11-17T06:28:08.1748689Z     return HEADER.baseline_inputs(root, self.receipt_path, self.receipt_sha, path,
+2026-11-17T06:28:08.1749097Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1749580Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_header_material.py", line 1148, in baseline_inputs
+2026-11-17T06:28:08.1750183Z     require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
+2026-11-17T06:28:08.1750593Z                                    ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1751213Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1139, in __call__
+2026-11-17T06:28:08.1751624Z     return self._mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1751858Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1752247Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1143, in _mock_call
+2026-11-17T06:28:08.1752784Z     return self._execute_mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1753049Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1753490Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1204, in _execute_mock_call
+2026-11-17T06:28:08.1753915Z     result = effect(*args, **kwargs)
+2026-11-17T06:28:08.1754123Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1754529Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 316, in identity
+2026-11-17T06:28:08.1754957Z     return self.identity(source)
+2026-11-17T06:28:08.1755153Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1755546Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 294, in identity
+2026-11-17T06:28:08.1756082Z     return deepcopy(result) if result is not None else self.real_identity(path)
+2026-11-17T06:28:08.1756448Z                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1756914Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_heading_typography.py", line 105, in identity
+2026-11-17T06:28:08.1757348Z     path = Path(path).resolve(strict=True)
+2026-11-17T06:28:08.1757566Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1757956Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\pathlib.py", line 1240, in resolve
+2026-11-17T06:28:08.1758364Z     s = self._flavour.realpath(self, strict=strict)
+2026-11-17T06:28:08.1758622Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1758892Z   File "<frozen ntpath>", line 727, in realpath
+2026-11-17T06:28:08.1759560Z FileNotFoundError: [WinError 3] The system cannot find the path specified: '\\workspace\\scratch\\66b061effd9e\\pre-header-native\\h1-inputs\\test_standalone_header_material.cpp'
+2026-11-17T06:28:08.1760145Z 
+2026-11-17T06:28:08.1760243Z ======================================================================
+2026-11-17T06:28:08.1760992Z ERROR: test_helper_else_current_identity_cannot_replace_original_or_other_current (__main__.BaselineTransitionTests.test_helper_else_current_identity_cannot_replace_original_or_other_current)
+2026-11-17T06:28:08.1761750Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1762047Z Traceback (most recent call last):
+2026-11-17T06:28:08.1762701Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 335, in test_helper_else_current_identity_cannot_replace_original_or_other_current
+2026-11-17T06:28:08.1763368Z     result = self.admit(fixture_payload=self.helper_else)
+2026-11-17T06:28:08.1763645Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1764483Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 319, in admit
+2026-11-17T06:28:08.1765021Z     return HEADER.baseline_inputs(root, self.receipt_path, self.receipt_sha, path,
+2026-11-17T06:28:08.1765509Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1765979Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_header_material.py", line 1148, in baseline_inputs
+2026-11-17T06:28:08.1766680Z     require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
+2026-11-17T06:28:08.1767085Z                                    ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1767496Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1139, in __call__
+2026-11-17T06:28:08.1767886Z     return self._mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1768114Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1768491Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1143, in _mock_call
+2026-11-17T06:28:08.1768906Z     return self._execute_mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1769266Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1769683Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1204, in _execute_mock_call
+2026-11-17T06:28:08.1770092Z     result = effect(*args, **kwargs)
+2026-11-17T06:28:08.1770301Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1770700Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 316, in identity
+2026-11-17T06:28:08.1771119Z     return self.identity(source)
+2026-11-17T06:28:08.1771315Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1771715Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 294, in identity
+2026-11-17T06:28:08.1772246Z     return deepcopy(result) if result is not None else self.real_identity(path)
+2026-11-17T06:28:08.1772601Z                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1773058Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_heading_typography.py", line 105, in identity
+2026-11-17T06:28:08.1773493Z     path = Path(path).resolve(strict=True)
+2026-11-17T06:28:08.1773727Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1774095Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\pathlib.py", line 1240, in resolve
+2026-11-17T06:28:08.1774502Z     s = self._flavour.realpath(self, strict=strict)
+2026-11-17T06:28:08.1774751Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1775011Z   File "<frozen ntpath>", line 727, in realpath
+2026-11-17T06:28:08.1775702Z FileNotFoundError: [WinError 3] The system cannot find the path specified: '\\workspace\\scratch\\66b061effd9e\\pre-header-native\\h1-inputs\\test_standalone_header_material.cpp'
+2026-11-17T06:28:08.1776283Z 
+2026-11-17T06:28:08.1776371Z ======================================================================
+2026-11-17T06:28:08.1776928Z ERROR: test_missing_retained_original_fixture_is_rejected (__main__.BaselineTransitionTests.test_missing_retained_original_fixture_is_rejected)
+2026-11-17T06:28:08.1777527Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1777813Z Traceback (most recent call last):
+2026-11-17T06:28:08.1778362Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 400, in test_missing_retained_original_fixture_is_rejected
+2026-11-17T06:28:08.1789488Z     self.admit(supplement)
+2026-11-17T06:28:08.1789936Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 319, in admit
+2026-11-17T06:28:08.1790504Z     return HEADER.baseline_inputs(root, self.receipt_path, self.receipt_sha, path,
+2026-11-17T06:28:08.1790915Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1791421Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_header_material.py", line 1148, in baseline_inputs
+2026-11-17T06:28:08.1792270Z     require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
+2026-11-17T06:28:08.1792705Z                                    ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1793131Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1139, in __call__
+2026-11-17T06:28:08.1793556Z     return self._mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1793841Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1794254Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1143, in _mock_call
+2026-11-17T06:28:08.1794693Z     return self._execute_mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1794966Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1795394Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1204, in _execute_mock_call
+2026-11-17T06:28:08.1795826Z     result = effect(*args, **kwargs)
+2026-11-17T06:28:08.1796141Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1796598Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 316, in identity
+2026-11-17T06:28:08.1797033Z     return self.identity(source)
+2026-11-17T06:28:08.1797243Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1797660Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 294, in identity
+2026-11-17T06:28:08.1798212Z     return deepcopy(result) if result is not None else self.real_identity(path)
+2026-11-17T06:28:08.1798594Z                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1799057Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_heading_typography.py", line 105, in identity
+2026-11-17T06:28:08.1799512Z     path = Path(path).resolve(strict=True)
+2026-11-17T06:28:08.1799760Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1800148Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\pathlib.py", line 1240, in resolve
+2026-11-17T06:28:08.1800579Z     s = self._flavour.realpath(self, strict=strict)
+2026-11-17T06:28:08.1800839Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1801104Z   File "<frozen ntpath>", line 727, in realpath
+2026-11-17T06:28:08.1801754Z FileNotFoundError: [WinError 3] The system cannot find the path specified: '\\workspace\\scratch\\66b061effd9e\\pre-header-native\\h1-inputs\\InstrumentView.cpp'
+2026-11-17T06:28:08.1802314Z 
+2026-11-17T06:28:08.1802412Z ======================================================================
+2026-11-17T06:28:08.1803158Z ERROR: test_original_baseline_identities_are_admitted_with_exact_transition (__main__.BaselineTransitionTests.test_original_baseline_identities_are_admitted_with_exact_transition)
+2026-11-17T06:28:08.1803905Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1804204Z Traceback (most recent call last):
+2026-11-17T06:28:08.1804866Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 323, in test_original_baseline_identities_are_admitted_with_exact_transition
+2026-11-17T06:28:08.1805502Z     result = self.admit()
+2026-11-17T06:28:08.1805695Z              ^^^^^^^^^^^^
+2026-11-17T06:28:08.1806094Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 319, in admit
+2026-11-17T06:28:08.1806654Z     return HEADER.baseline_inputs(root, self.receipt_path, self.receipt_sha, path,
+2026-11-17T06:28:08.1807054Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1807551Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_header_material.py", line 1148, in baseline_inputs
+2026-11-17T06:28:08.1808173Z     require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
+2026-11-17T06:28:08.1808581Z                                    ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1808980Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1139, in __call__
+2026-11-17T06:28:08.1809461Z     return self._mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1809696Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1810089Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1143, in _mock_call
+2026-11-17T06:28:08.1810508Z     return self._execute_mock_call(*args, **kwargs)
+2026-11-17T06:28:08.1810767Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1811211Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\unittest\mock.py", line 1204, in _execute_mock_call
+2026-11-17T06:28:08.1811648Z     result = effect(*args, **kwargs)
+2026-11-17T06:28:08.1811860Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1812286Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 316, in identity
+2026-11-17T06:28:08.1812723Z     return self.identity(source)
+2026-11-17T06:28:08.1813001Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1813416Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_compare_header_material.py", line 294, in identity
+2026-11-17T06:28:08.1813954Z     return deepcopy(result) if result is not None else self.real_identity(path)
+2026-11-17T06:28:08.1814336Z                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1814810Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tools\compare_heading_typography.py", line 105, in identity
+2026-11-17T06:28:08.1815262Z     path = Path(path).resolve(strict=True)
+2026-11-17T06:28:08.1815500Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1815893Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\pathlib.py", line 1240, in resolve
+2026-11-17T06:28:08.1816311Z     s = self._flavour.realpath(self, strict=strict)
+2026-11-17T06:28:08.1816573Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-17T06:28:08.1816838Z   File "<frozen ntpath>", line 727, in realpath
+2026-11-17T06:28:08.1817572Z FileNotFoundError: [WinError 3] The system cannot find the path specified: '\\workspace\\scratch\\66b061effd9e\\pre-header-native\\h1-inputs\\test_standalone_header_material.cpp'
+2026-11-17T06:28:08.1818188Z 
+2026-11-17T06:28:08.1818315Z ----------------------------------------------------------------------
+2026-11-17T06:28:08.1818608Z Ran 24 tests in 0.636s
+2026-11-17T06:28:08.1818731Z 
+2026-11-17T06:28:08.1818802Z FAILED (errors=7)

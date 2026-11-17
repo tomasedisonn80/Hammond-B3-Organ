@@ -3,167 +3,94 @@
 Applies to all future sessions. This archival reorganization grants no permissions
 and changes no authorities, approvals, obligations or frozen criteria.
 
-## Current console continuation
+## Current integrated recovery — 17 November 2026
 
-**Console continuation, 16 November 2026**, base
-`9d60dbf462a90fe422fd4e69757fe202264acb7c`: this request owns
-`/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and the single coordinated
-`../build-native`. Read its [scope](docs/development/2026-11-16-console-completion/README.md),
-[checkpoint](docs/development/2026-11-16-console-completion/CHECKPOINT.md),
-[actual ledger](docs/development/2026-11-16-console-completion/assignments.json)
-and fresh [all-500-page coverage](docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
-This request has its own 60 distinct workers in ten waves. Its complementary
-scope is the copied registration-library model and independently reviewed P1
-percussion/expression plate material. Published main `03c70c1` adds the separately accepted H1/header and scripted
-semantic-paint work. This root preserves both tracks and qualifies their exact
-combined source. Other workspaces remain read-only; inspect and reconcile any
-further published advances before publication.
+This continuation owns `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ`
+and the single root-coordinated `../build-native`. Root owns shared source,
+configuration, native execution, integration, acceptance and publication.
+The independent console checkout at `/workspace/scratch/21cce69f7784/Hammond-B3-Organ`
+and every other owner's files remain read-only here. Preserve incoming console
+history and its separate [ledger](docs/development/2026-11-16-console-completion/assignments.json); published source
+integration does not transfer unfinished browser/model work or worker credit.
+
+Read **all** of this file and [PLAN](docs/PLAN.md), then the
+[handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md), [session](docs/development/2026-11-16-heading-title-continuation/README.md),
+[latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json).
+Also recover the [console handoff](docs/CONSOLE_COMPLETION_HANDOFF.md),
+[source-verified setup](docs/CONSOLE_SETUP_AND_HANDOFF.md) and the
+[ownership map](docs/PLAN.md#current-ownership-and-source).
+Inspect live HEAD/tree/index/worktree and fresh remote state before any edit.
+
+This heading/title/header continuation completed **60 accepted distinct workers
+in ten waves of six**, with fresh textual coverage of **all 500 atlas pages**.
+The [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json), [strict record result](docs/development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
+and [reading receipt](docs/development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json) retain the evidence.
+Follow-ups keep their original identities and add no worker credit.
+The [console owner's ledger](docs/development/2026-11-16-console-completion/assignments.json) is a separate record. At its retained `d2ed03b` source it has
+60 records: 59 accepted and
+1 still running. Its owner and checkpoint govern subsequent
+closure; these records are never combined with this continuation's sixty.
+
+[Source publication](docs/development/2026-11-16-heading-title-continuation/reports/combined-main-publication.json): `54859886268ce83c36f359c43327f7c72a77ae82`,
+tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a`. This is the tested implementation published on main. All sixteen required jobs completed successfully on attempt 1. Later documentation/evidence commits retain a separate source-equivalence boundary; retrieve the actual live HEAD instead of assuming it is this tested commit.
+
+| Workflow | Required jobs | Actual outcome at this source |
+| --- | ---: | --- |
+| Core | 6 | 6/6 jobs passed: five 209/209 registered CTest suites and full R4 qualification [run 44038196587](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196587) |
+| Native standalone | 6 | 6/6 jobs passed: five normal 78/78 suites; sanitizer 41/41 [run 44038196285](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196285) |
+| Native VST3 | 4 | 4/4 jobs passed: 29 native CTests; actual module validator 47/0 on each platform [run 44038196255](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196255) |
+
+The [complete terminal matrix](docs/development/2026-11-16-heading-title-continuation/reports/combined-ci-complete.json) records job IDs, attempts and outcomes. Root’s [source/input-equivalence record](docs/development/2026-11-16-heading-title-continuation/reports/combined-final-integrity.json)
+identifies the verification stage and inputs compared with this tested source.
+Root owns the final staged repository/ledger checks and guarded documentary
+publication; use that receipt’s recorded execution and outcome.
+
+Independent completed reviews: [Core](docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-main-core/CORE_REVIEW.md) · [Standalone](docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/combined-main-standalone/review.md) · [VST3](docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/combined-main-vst3/review.md). Recover actual live HEAD, tree and fresh remote state from the
+[checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) before new work. A documentation descendant
+does not create new native execution or replace any earlier failed result.
+
+Preserve the combined H1/P1 production painter and LibraryModel/recall foundation,
+the strict typed protocol, all numerical criteria and fixture workloads.
+The indexed-array and constexpr-else fixture transitions are exact
+whole-source admissions with complete reversals; historical paired comparators
+retain their original pins. Keep failure-only diagnostics, upstream source
+admissions and every original test. The old malformed Windows arrays are
+observed bytes; no compiler-root-cause claim has been established.
+Keep the unchanged preset-raster 30-second guard, sanitizer instrumentation/leak
+policy and 35-minute overall job allowance.
+
 Every future session must recover the complete plan, record setup and actual
 progress, distinguish tested/failed/unrun gates, state concrete next work,
 update README with real captures after UI changes, and commit/push accepted
 authorized work with independent remote and source-specific CI verification.
-All standing compatibility, ownership and literal 1:1 obligations below remain.
+Check disk use and checkpoint before long operations or context changes.
+Reuse the coordinated build; retain compact original evidence before deleting
+only owned, reproducible intermediates. Do not delete another owner's source,
+index, build, genuine baseline or retained failure.
 
-Current test-only successor recovery also includes published `6287055`,
-[A55's exact helper transition](docs/reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
-and the [separately qualified failure-only reader diagnostics](docs/development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json).
-Preserve the predecessor Windows title/header protocol failures; no differing
-leaf or cause is yet established. Do not loosen typed equality, numerical
-criteria, deadlines or workloads. Observe the next exact-source Windows result
-before choosing a corrective change. Root publishes with a fresh expected SHA
-and no force after prior same-ref jobs finish, then records all new outcomes.
+The next model step is a reviewed, read-only **Save-availability projection**
+and **fresh post-Start control proof**, followed by input/gesture/focus hooks,
+main-loop lifecycle/submission/storage routing, then the native browser model,
+view and painter. `controls_pending == false` and a queued pre-Start restore
+are insufficient proof. Preserve original held-note releases across modal
+open/close, pending CC11, both recall scopes, startup/restart/stopped Load,
+timeout/recovery, fresh final storage authorization, create-only collisions and
+protected paths. The [native integration plan](docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+and [LibraryModel guide](docs/LIBRARY_MODEL_GUIDE.md) define the dependencies.
 
-## Published heading/header recovery record
+Preserve **47 parameter identities, `B3CONTROLS4` with readers 1–3,
+plugin UUIDs, 91 shared free-running sources, four banks, 147 playing keys,
+24 presets and 68 ordinary controls including presets**. The live Engine
+remains **nominal and dry**. Neither a photograph nor isolated scanner/AO-28/
+Leslie research establishes a connected audio model or measured fidelity.
 
-The following owner record remains historical for this checkout; its original
-workspace, results and unfinished acceptance are preserved.
+**Literal whole-interface 1:1 remains unmet and unwaived.** The standing
+engineering, UI, ownership, evidence, sixty-worker workflow, storage and
+publication rules below remain binding. The retained owner entries describe
+their dated sources and then-pending actions; the current checkpoint above
+governs this integration.
 
-**Heading/title/header continuation, 17 November 2026 UTC.** This request owns
-`/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ` and root's coordinated
-`../build-native`. Read the [handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md),
-[session](docs/development/2026-11-16-heading-title-continuation/README.md), [latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and
-[actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json), plus the complete [M0–M9 plan](docs/PLAN.md)
-and every standing obligation below. Six new readers covered all 500 atlas
-pages. All **60 distinct workers were dispatched in ten waves of six;
-60 deliveries are accepted**.
-All ten waves have six accepted deliveries.
-Follow-ups retain their original worker identities and create no additional credit.
-The [executed strict record check](docs/development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
-passes with zero pending workers/errors; it verifies record consistency only.
-The [current verified publication](docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-publication.json) is
-`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
-`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
-`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
-and independent API/Git checks verify the exact commit, tree, parent and contents.
-This is the published three-input repair, separate from the next locally
-qualified helper correction, which is not yet published.
-
-The [complete published-source matrix](docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json)
-contains **14 successes and two failures**, with all sixteen attempt-one jobs
-terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
-Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
-job executes and passes **34/34 gates**. Windows job `133832484867` fails
-C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
-`133832484811` completes **67/68**, with preset raster timing out at **30.05
-seconds** under its unchanged **30-second** guard; post-acceptance source/
-dependency verification and relocated executable packaging remain skipped.
-The [independent Intel review](docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-and [root publication admission](docs/development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
-are complete. They retain that failed gate, its full workload and unchanged
-guard, and permit only the separately qualified Windows helper publication
-with complete evidence and current documentation. The timeout supplies no
-completed counters or measured remaining runtime; no timing fix, specific
-cause or repeated stability is claimed. No local or CI retry is admitted.
-
-The [original source publication](docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
-`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
-`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
-`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
-`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
-update and independent API/Git verification preserve both histories and verify
-the exact contents. This published tree equals local authored merge `07aafd218…`.
-
-The [original terminal hosted record](docs/development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json)
-has **14 successes, one failure and one cancellation**, all attempt 1.
-A52 Core 6/6 and A54 VST3 4/4 are accepted at `fba1911…`. Four standalone
-normal jobs pass 68/68 each; Windows fails MSVC fixture compilation, and
-standalone sanitizer is cancelled after 30/34 selected passes, with no proven
-originating cancellation cause. Preserve every incomplete gate and original log.
-
-The [next two-file helper correction](docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json)
-is implemented and locally qualified. It moves the same false return into an
-explicit `else` for the dependent `if constexpr` helper predicate and updates
-the one active fixture-hash literal. Both existing affected CTests pass
-**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
-48 actual cases, the exact **10,542-check/163-painting** default result and
-**103/103** canonical criteria. Complete statistics differ only in the two
-recorded source identities; canonical pixels and historical comparators are
-unchanged. Both helper-present and helper-absent specializations are preserved
-by independent source/instantiation review; **no new helper-absent runtime
-execution is claimed**.
-
-Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
-remain unchanged**. Relative to original `fba1911`, the total is still **three
-changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
-`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
-sanitizer job allowance remain unchanged. Every test/child bound, workload,
-instrumented input and leak policy is preserved. **The next helper-source
-publication and all of its exact-source hosted results remain pending; no
-publication SHA is recorded for it.** Local Linux equivalence is not MSVC
-compilation or execution evidence. The [independent Intel review](docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-and [root publication admission](docs/development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
-permit publishing only this separately qualified helper pair with complete
-evidence and current documentation. The preset raster retains its failed
-Intel result, unchanged 30-second guard and full workload; the helper pair
-is not admitted as a timing fix.
-
-The [qualified-final full result](docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
-remains **240/242**, exit 8, in 740.263707625 seconds; all 475 code inputs
-and recorded build inputs were unchanged during that run. Workspace's 37 children and Starter Load pass.
-Retain the 30-second preset timeout and two missing native-MIDI acknowledgment
-windows. Exactly one unchanged preset diagnostic and one invocation of each
-failed MIDI method subsequently pass. These diagnostics do not authorize
-source/property changes or an aggregate-only retry.
-
-The complete published `03c70c1` matrix remains **14 successes and two
-failures**, including Windows C4702 and the Intel preset-raster timeout.
-The [independent Intel review](docs/development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-is complete, and [root's publication admission](docs/development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
-permits publishing only the separately reviewed, locally qualified two-file
-Windows helper correction with complete evidence and current documentation.
-Preserve the normal preset **30-second guard**, all **256 paints/272 readbacks**,
-every assertion and the original failed result. The timeout provides no
-completed counters or measured remaining runtime; no timing fix or specific
-cause is claimed. A later pass would be a separate source/runner observation,
-not proof of repaired cause or repeated stability.
-
-Root must check the exact staged repository and strict worker records, publish
-with a fresh expected remote head and no force, independently verify the exact
-commit/tree/parent/contents, and release the same A52 Core, A53 standalone and
-A54 VST3 reviewers for **all sixteen new-source families**. The next helper
-publication and its CI remain pending; do not invent a SHA or transfer earlier
-passes. Preserve both earlier Windows failures, the Intel failure and its
-skipped post-acceptance/package steps, and the original sanitizer cancellation.
-Keep both helper specializations and do not claim a new helper-absent runtime
-run. Wait for all next-source jobs before another same-ref push, because
-workflow concurrency cancels older runs. All 60 deliveries and strict record
-closure remain complete; follow-ups add no worker credit. Root then commits
-and pushes accepted final evidence, README/current-plan/status/handoff and
-concrete next actions, and verifies remote contents. No local test or CI retry,
-aggregate-only rerun, timeout/oracle change or broader source repair is admitted.
-
-The [fresh strict record check](docs/development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
-passes after the [exclusive follow-up ownership update](docs/development/2026-11-16-heading-title-continuation/reports/helper-review-ownership.json).
-Only future evidence paths were added to the same A52/A53/A54 rows; accepted
-notes, statuses and acceptance fields remain unchanged. All 60 accepted
-deliveries and ten complete six-worker waves remain intact. The original
-strict receipt remains immutable.
-
-Every future agent must leave setup, actual progress, evidence, failures and
-unrun gates, ownership and concrete next actions recoverable; update README
-with actual application captures after UI changes; then commit and push accepted
-authorized work through the integrator and verify its remote/source-specific
-results. The literal whole-interface 1:1 requirement remains unmet and unwaived.
+## Retained owner entries
 
 ### Concurrent UI-delivery entry retained from 9d60dbf
 

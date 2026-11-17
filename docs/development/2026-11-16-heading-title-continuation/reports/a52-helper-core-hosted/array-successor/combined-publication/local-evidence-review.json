@@ -1,0 +1,172 @@
+{
+  "first_to_final_source_scope": {
+    "additional_incoming_test_change": "tests/test_capture_standalone_interface.py retains the d2ed path/newline repair and is re-executed in final consumers.",
+    "changed_among_first_nine_paths": [
+      "tests/test_compare_header_material.py",
+      "tests/test_compare_performance_plate.py",
+      "tools/compare_performance_plate.py"
+    ],
+    "explanation": "The three native fixture sources and both strict readers are unchanged after the first local run. Later modifications affect test infrastructure/source admission, and the three Python gates plus actual P1 numerical consumer ran at final source. This record does not relabel the first 14 as one full run of the final source.",
+    "unchanged_among_first_nine_paths": [
+      "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "apps/standalone/native_tests/test_standalone_title_density.py",
+      "tools/compare_header_material.py"
+    ]
+  },
+  "integrity": {
+    "both_exit_codes": [
+      0,
+      0
+    ],
+    "checked_tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+    "claim_boundary": "Repository/source-archive and worker record consistency only; no proof of physical fidelity, native acceptance or future hosted success.",
+    "receipt": {
+      "bytes": 3712,
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-source-integrity.json",
+      "sha256": "7d99835bcd070556e318d7ce8c71ba585578133f526f9370327a52ec56111244"
+    },
+    "repository_log": {
+      "bytes": 1170,
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-source-repository-integrity.log",
+      "sha256": "ff10986733c4c7d34ecf56671c5909ef0071e151163a57249d98e2433b7e4adf"
+    },
+    "strict_session_log": {
+      "bytes": 1222,
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-source-session-integrity.log",
+      "sha256": "cee2198fb1b50a56d6c069a5c9187d327e79181cddc7c98214b4485fd1151627"
+    },
+    "strict_worker_record": {
+      "accepted": 60,
+      "pending": 0,
+      "waves": 10,
+      "workers_per_wave": 6
+    }
+  },
+  "original_setup_failure_retained": {
+    "receipt": {
+      "bytes": 2264,
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/p1-original-build-qualified.json",
+      "sha256": "edb22472104f9da17f74c25e0883450050a249ec1cf8d96bdcb344f6b3b584b7"
+    },
+    "scope": "Initial missing-target build request preceded CMake regeneration; no compilation or test ran. Root retained it, reconfigured the same build/options, and built the original P1 fixture before the before/after capture. Not reclassified as a successful original build."
+  },
+  "p1_before_after_transport": {
+    "after_report": {
+      "bytes": 5183,
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/p1-after-transport/report.json",
+      "sha256": "69ad5eb1bb2c8545791df202c460797e265b0e763c5148c9bea671e5e87aade1"
+    },
+    "before_report": {
+      "bytes": 5074,
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/p1-before-transport/report.json",
+      "sha256": "625527bcc39c2e79558e0c305f60b5596807f9e723c036276074b250eb28af42"
+    },
+    "boundary": "Local Linux before/after array-helper evidence using the already changed P1 painter. No pre-P1 whole-image transfer and no assertion that Windows pixels equal Linux.",
+    "canonical_header_bytes_including_newline": 268342,
+    "canonical_header_sha256": "a92a7e6fdc9d12a9cf23f096236031cee74e87018130f7429df97bd0947dd5b6",
+    "canonical_stream_bytes": 6561750,
+    "canonical_stream_sha256": "371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55",
+    "independent_verification": "All eight existing before/after stdout/stderr zlib members decoded with a fixed 36,025,169-byte ceiling and matched their original compressed and decoded lengths/SHA values. All exits were zero, errors/stderr empty. The inventory and complete canonical stream compared byte-for-byte equal.",
+    "inventory_bytes": 27310,
+    "inventory_sha256": "453447b786f4585069c34eb3b52ec21e8f2d85362cb389bb2ff58446a24f2125",
+    "rgba_sha256": "34bb954838cd156d8bb057eaf0cc6965feda3b8821d43c20ac4e0433c95511bf"
+  },
+  "p1_numerical_results": {
+    "boundary": "Final consumer log preserves the result and temporary report path. Complete first-stage raw numerical report/streams are retained separately; the focused Windows run must retain its own exact-source full report and streams.",
+    "capture_python_methods_each": 45,
+    "checks_evaluated_each": 191,
+    "failed_checks_each": 0,
+    "final_python_methods": 64,
+    "first_and_final_summary_passed": true,
+    "first_python_methods": 54,
+    "header_python_methods_each": 32,
+    "mode": "candidate-only-frozen62"
+  },
+  "phases": [
+    {
+      "actual_summary_lines": [
+        "89: Ran 45 tests in 1.540s",
+        "97: Ran 32 tests in 1.047s",
+        "98: Ran 54 tests in 0.756s",
+        "100% tests passed, 0 tests failed out of 14",
+        "Total Test time (real) =  98.68 sec"
+      ],
+      "exit_code": 0,
+      "junit": {
+        "bytes": 9909,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-ctest.xml",
+        "sha256": "c681cd5628f865980b685c877e32d81acee4feb5f00754ca1ff0dc9560781d7e"
+      },
+      "receipt": {
+        "bytes": 1213,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-ctest.json",
+        "sha256": "25676f0321f404062b03ea7accd8010770920a8c4bc53dd41643900023eb7f77"
+      },
+      "scope": "First combined stage at cf87 before later d2ed test-source and additive P1 comparator integration.",
+      "test_count": 14,
+      "test_names": [
+        "python_test_capture_standalone_interface",
+        "python_test_compare_header_material",
+        "python_test_compare_performance_plate",
+        "test_standalone_library_model",
+        "test_standalone_library_recall",
+        "test_standalone_library_roundtrip",
+        "test_standalone_library_session",
+        "test_standalone_library_storage",
+        "test_standalone_footage_typography_raster",
+        "test_standalone_title_density",
+        "test_standalone_header_material",
+        "test_standalone_performance_plate",
+        "test_standalone_performance_plate_numerical",
+        "test_standalone_header_statistics"
+      ],
+      "verbose_log": {
+        "bytes": 106795,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-ctest.log",
+        "sha256": "afd36f66dcb36d653cd28541e9aa9202d54952d78c7158721920f7adf15f6ed7"
+      },
+      "wrapper_seconds": 98.68675613300002
+    },
+    {
+      "actual_summary_lines": [
+        "89: Ran 45 tests in 1.524s",
+        "97: Ran 32 tests in 0.756s",
+        "98: Ran 64 tests in 1.048s",
+        "100% tests passed, 0 tests failed out of 4",
+        "Total Test time (real) =   5.59 sec"
+      ],
+      "exit_code": 0,
+      "junit": {
+        "bytes": 2653,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.xml",
+        "sha256": "da22cd1eb791b5036af054c60da52e00ed8e1ee59050831198d74152776bb21a"
+      },
+      "receipt": {
+        "bytes": 1262,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.json",
+        "sha256": "c12492d49cc240bd39160ad0b4da1787e0cc37a38fe2869960dc5b051323a93a"
+      },
+      "scope": "Final consumer stage after incoming path repairs and the P1 superset comparator/test merge; no repeat of the unchanged full native P1 fixture.",
+      "test_count": 4,
+      "test_names": [
+        "python_test_capture_standalone_interface",
+        "python_test_compare_header_material",
+        "python_test_compare_performance_plate",
+        "test_standalone_performance_plate_numerical"
+      ],
+      "verbose_log": {
+        "bytes": 12739,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.log",
+        "sha256": "5dbd44d2dcebc617e708b6fd9d948122706fff6c55b08bfe3126e8bdaa9177d7"
+      },
+      "wrapper_seconds": 5.616027559997747
+    }
+  ],
+  "recorded_utc": "2026-11-17T07:17:10.425030+00:00",
+  "reviewer": "A52",
+  "schema": 1,
+  "scope": "Read-only verification of retained actual executions and identities; no new tests, native commands or retries."
+}

@@ -1,0 +1,323 @@
+{
+  "schema": 1,
+  "reviewer": "A52",
+  "worker_credit": "same accepted worker; no additional worker or wave",
+  "disposition": "Admit this exact two-file proposal for root's integration and subsequent source-specific qualification. The source-only suite passes. This does not admit the combined product, historical paired H1 comparison, native fixtures, Windows compiler or final publication.",
+  "review_basis": {
+    "concurrent_main": {
+      "commit": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "tree": "2565ac86f9d31b7ab9d24d0d5353289c2359bf12",
+      "parents": [
+        "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+        "8cd9034f7e1dd21dab373f0e4ad0d1be0bab61e7"
+      ]
+    },
+    "array_candidate": {
+      "commit": "ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9",
+      "tree": "e46c65173517956d6eda69086f4ee428aeae8782",
+      "parents": [
+        "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      ]
+    },
+    "implementation_owner": "root",
+    "source_files_edited_by_reviewer": 0,
+    "native_or_build_executions_by_reviewer": 0,
+    "remote_mutations_by_reviewer": 0,
+    "old_full_pixel_equivalence_transfer": false
+  },
+  "proposed_change": {
+    "base_commit": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+    "candidate_fixture_commit": "ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9",
+    "candidate_fixture_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+    "patch_path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/header-comparator-indexed-transition.patch",
+    "patch_bytes": 18463,
+    "patch_sha256": "fa170d96bf8005a6b9403b28aab5417903866d7ae483c8ad0db6ea79a9a0d0e6",
+    "files": [
+      {
+        "path": "tools/compare_header_material.py",
+        "before_bytes": 98489,
+        "before_sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f",
+        "proposed_bytes": 100851,
+        "proposed_sha256": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328"
+      },
+      {
+        "path": "tests/test_compare_header_material.py",
+        "before_bytes": 25550,
+        "before_sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125",
+        "proposed_bytes": 34435,
+        "proposed_sha256": "4832837c0465e875ac7873ada1d7b005f7da8c727fa7467621f85aa6d7adb8f8"
+      }
+    ],
+    "old_test_methods": 24,
+    "proposed_test_methods": 32,
+    "added_test_methods": [
+      [
+        "BaselineTransitionTests",
+        "test_indexed_array_keeps_the_exact_genuine_retained_baseline"
+      ],
+      [
+        "FixtureTransitionTests",
+        "test_indexed_array_reverses_through_all_exact_predecessors"
+      ],
+      [
+        "FixtureTransitionTests",
+        "test_indexed_array_does_not_admit_unreviewed_complete_files"
+      ],
+      [
+        "FixtureTransitionTests",
+        "test_repinning_all_intermediates_cannot_replace_the_historical_baseline"
+      ],
+      [
+        "FixtureTransitionTests",
+        "test_repinning_indexed_array_still_requires_the_exact_helper_else_predecessor"
+      ],
+      [
+        "FixtureTransitionTests",
+        "test_repinning_indexed_array_cannot_admit_wrong_traversal_or_duplicate_helper"
+      ],
+      [
+        "BaselineTransitionTests",
+        "test_indexed_array_current_identity_cannot_replace_actual_or_original"
+      ],
+      [
+        "BaselineTransitionTests",
+        "test_indexed_array_preserves_the_paired_uimodel_and_main_source_pins"
+      ]
+    ],
+    "changed_old_test_methods": [
+      [
+        "FixtureTransitionTests",
+        "test_current_checkout_reports_its_actual_admitted_identity"
+      ]
+    ],
+    "only_changed_comparator_function": "fixture_portability_transition",
+    "python_ast_parse": true,
+    "native_executions": 0,
+    "project_source_files_edited": 0
+  },
+  "exact_fixture_admission": {
+    "fixture": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "stages": [
+      {
+        "kind": "indexed array candidate",
+        "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+        "bytes": 61268
+      },
+      {
+        "kind": "exact full array-helper reversal",
+        "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "bytes": 61275
+      },
+      {
+        "kind": "existing exact constexpr-else reversal",
+        "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+      },
+      {
+        "kind": "existing sole complete dimension-line reversal; genuine historical fixture",
+        "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+      }
+    ],
+    "existing_float_literal_variant_sha256": "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d",
+    "historical_comparator_sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+    "guard": "Exact candidate SHA selects the new branch. Exactly one complete indexed helper must exist and the old helper must be absent. Reversing that complete helper must reproduce the entire exact constexpr-else fixture before the existing cast and original-file checks run.",
+    "no_repinning_of_historical_baseline": true,
+    "original_accepted_forms_retained": true,
+    "native_serialization_correctness_claimed": false
+  },
+  "unchanged_acceptance": {
+    "old_numerical_and_parser_functions": "AST-identical; only fixture_portability_transition is changed among pre-existing comparator functions.",
+    "old_test_methods": "All 24 retained. Only test_current_checkout_reports_its_actual_admitted_identity is extended to recognize the new exact identity; all other existing test-method ASTs remain identical.",
+    "fixture_case_values_and_writers": "The proposal changes no fixture, case value, writer, geometry, workload, native limit or typed comparison.",
+    "historical_baseline": "All old pinned source digests, genuine retained baseline executable/object/input identities, supplement binding and protected source checks remain required.",
+    "protected_uimodel_boundary": "baseline_inputs still requires its original protected UiModel.cpp/.h and main.cpp identities. cf87's UiModel change is not silently admitted by this fixture transition, and a new historical paired H1 comparison must not be claimed from these unit tests.",
+    "inherited_prose": "The pre-existing baseline_inputs method narration is unchanged; the added fixture_portability_transition method describes the complete indexed-helper chain precisely."
+  },
+  "new_test_coverage": [
+    "Exact new fixture identity, unique helper, byte-exact predecessor, every historical digest and truthful transition flags.",
+    "Unreviewed whole files, altered case dimensions, historical/literal/cast combinations without the required constexpr-else predecessor.",
+    "Repinned candidate cannot admit missing, duplicated or additional old helpers; skipped first/every-other elements; wrong element indexing; missing writer; wrong comma condition.",
+    "Repinned candidate cannot admit relocation, unrelated append, changed case values or a different predecessor.",
+    "Even repinning all intermediate identities cannot replace the genuine historical baseline.",
+    "Current-source identity and supplement cannot substitute a newer fixture for the retained original.",
+    "The original protected UiModel.cpp/.h and main.cpp checks still reject changes under the new fixture."
+  ],
+  "affected_gate_inventory": {
+    "basis": "Static reading of immutable cf87 CMake, workflow and acceptance sources. These are requirements, not claims that the combined source has executed them.",
+    "pure_python": [
+      {
+        "name": "python_test_compare_header_material",
+        "source": "tests/test_compare_header_material.py",
+        "reason": "Exact fixture-source transitions, genuine historical baseline and protected-source tamper rejection; proposed 32 methods."
+      },
+      {
+        "name": "python_test_compare_performance_plate",
+        "source": "tests/test_compare_performance_plate.py",
+        "reason": "P1 strict native transport, numerical/geometry oracles, original and added UiModel/source transitions, drift refusal and candidate-only boundaries; A54 owns its fixture transition proposal."
+      },
+      {
+        "name": "python_test_capture_standalone_interface",
+        "source": "tests/test_capture_standalone_interface.py",
+        "reason": "Changed capture timing/scaling, backend facts, copied semantic state, complete focus geometry and failure without automatic retry."
+      }
+    ],
+    "original_array_affected_native": [
+      {
+        "name": "test_standalone_footage_typography_raster",
+        "normal_timeout_seconds": 90,
+        "sanitizer_timeout_seconds": 240
+      },
+      {
+        "name": "test_standalone_title_density",
+        "normal_timeout_seconds": 90,
+        "sanitizer_timeout_seconds": 240
+      },
+      {
+        "name": "test_standalone_header_material",
+        "normal_timeout_seconds": 180,
+        "sanitizer_timeout_seconds": 480
+      },
+      {
+        "name": "test_standalone_header_statistics",
+        "normal_timeout_seconds": 90,
+        "sanitizer_timeout_seconds": 240,
+        "normal_child_timeout_seconds": 20,
+        "sanitizer_child_timeout_seconds": 60
+      }
+    ],
+    "new_native": [
+      {
+        "name": "test_standalone_performance_plate",
+        "normal_timeout_seconds": 180,
+        "sanitizer_timeout_seconds": 480,
+        "purpose": "Complete native fixture using the real combined painter."
+      },
+      {
+        "name": "test_standalone_performance_plate_numerical",
+        "normal_timeout_seconds": 180,
+        "sanitizer_timeout_seconds": 480,
+        "purpose": "Actual compare_performance_plate.py --candidate-only --after <built fixture>; separate numerical gate, not a historical paired comparison."
+      },
+      {
+        "name": "test_standalone_library_model",
+        "purpose": "Copied catalog state, generations, control receipts, refusals, bounded deadlines, save authority and overflow/exhaustion."
+      },
+      {
+        "name": "test_standalone_library_session",
+        "purpose": "Real Session renders, accepted posts, failure recovery, source/owner preservation, paired samples and observed control receipts."
+      },
+      {
+        "name": "test_standalone_library_storage",
+        "purpose": "Real filesystem operations with synthetic control proof: complete canonical snapshots, create-only publication, stale effects, warnings and Unicode paths."
+      },
+      {
+        "name": "test_standalone_library_recall",
+        "purpose": "Synthetic UiModel boundary: complete snapshots, equality/supersession, legacy Load/Save, owner/gesture preservation and invalid-snapshot atomicity."
+      },
+      {
+        "name": "test_standalone_library_roundtrip",
+        "purpose": "Real Session plus real storage: post-Start proof, scope recall with original owners, newer-intent refusal and late create-only collisions."
+      }
+    ],
+    "full_native_filter": "^(test_standalone_|python_test_(compare_performance_plate|compare_header_material|capture_standalone_interface)$)",
+    "complete_suite_reason": "InstrumentView.cpp and UiModel.cpp/.h plus the shared support library changed. Fresh execution must cover existing raster/material, workspace/projection/inspection, replay and semantic-paint, preset, starter Load, application and install gates as discovered, rather than transferring the old four-fixture results.",
+    "discovery": "Reconfigure the root-owned coherent build and retain actual --show-only=json-v1 inventory. Do not infer the normal count by adding old counts; configured globs and platform conditions decide it.",
+    "sanitizer_declared_ctests": 41,
+    "sanitizer_declared_unique_build_targets": 37,
+    "sanitizer_policy": {
+      "job_timeout_minutes": 35,
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "sanitizer_link_requirements": "Verify Library gates link instrumented support/core, P1 links instrumented drawing/support/core/SDL, and all existing required instrumented sources and per-test bounds remain enforced.",
+    "duplicate_execution_requirement": false,
+    "duplicate_execution_note": "The named checks can be satisfied by the corresponding complete suite; this inventory does not require redundant repeats of already complete gates at the same exact source.",
+    "hosted": "After root's integration admission and exact publication, all 16 normal hosted families need their own actual source/toolchain/result evidence. No previous source's success is transferred."
+  },
+  "integration_constraints": [
+    "Preserve both published histories; root applies the narrow proposal to the integrated tree and freezes its exact source identity.",
+    "The separately reviewed A54 P1 portability proposal addresses a concrete Windows compile failure and has its own exact fixture/pin admission. This A52 patch modifies neither P1 file nor its oracle.",
+    "The changed P1 painter legitimately changes full-image hashes. Retain old captures as their own evidence; obtain new complete canonical payload/header/pixel identities at the combined source and evaluate existing strict readers/numerical criteria.",
+    "A Linux source-only unittest cannot establish Windows nested-array output or the combined native painter. Actual Windows execution and retained complete state headers remain necessary.",
+    "No timeout, workload, assertion, sanitizer policy, production source or original failure record is modified by this proposal.",
+    "The original Windows compile and serialization failures and Intel preset timeout remain historical failures, without inferred compiler/optimizer/scheduler causes.",
+    "Literal whole-interface 1:1 reference matching, physical hardware and real-device claims remain open."
+  ],
+  "reviewer_next_step": "Return the exact patch and evidence hashes to root; root implements, reviews the combined diff, performs coherent local/native qualification, then publishes and observes the new exact-source hosted matrix.",
+  "frozen_utc": "2026-11-17T06:50:47.295687+00:00",
+  "source_only_verification": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/source-only-verification.json",
+    "bytes": 6626,
+    "sha256": "d2f9a82f903bd83fdab6ddd4711be53bad389e4ab5cc4ffa43f8766fa4e04bc6",
+    "final_exit_code": 0,
+    "final_unittest_methods": 32
+  },
+  "preservation_check": {
+    "prior_frozen_files_verified": 93,
+    "all_byte_identical": true,
+    "expected_manifest_sha256": "1c430c9b9fdbb2a84d6ac3ea345c09dd371e8296796b6eb2d07d2e2e9143c28f",
+    "includes": "All 92 previous A52 evidence files plus the frozen Windows array qualification admission; accepted note and all three Core reports/reviews remain unchanged."
+  },
+  "static_gate_input_identities": {
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 46805,
+      "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07"
+    },
+    ".github/workflows/standalone.yml": {
+      "bytes": 78398,
+      "sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "bytes": 179890,
+      "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+    },
+    "apps/standalone/UiModel.cpp": {
+      "bytes": 83993,
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+    },
+    "apps/standalone/UiModel.h": {
+      "bytes": 18956,
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+    },
+    "apps/standalone/LibraryModel.cpp": {
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98"
+    },
+    "apps/standalone/LibraryModel.h": {
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2"
+    },
+    "tests/test_compare_performance_plate.py": {
+      "bytes": 34820,
+      "sha256": "cba6e56cbcf7dd3fe16924e21ae0f1bec2d76215a7df4abcbede600be327bd8c"
+    },
+    "tests/test_capture_standalone_interface.py": {
+      "bytes": 58181,
+      "sha256": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56"
+    },
+    "apps/standalone/tests/test_standalone_library_model.cpp": {
+      "bytes": 79171,
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d"
+    },
+    "apps/standalone/tests/test_standalone_library_session.cpp": {
+      "bytes": 47769,
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279"
+    },
+    "apps/standalone/tests/test_standalone_library_storage.cpp": {
+      "bytes": 39345,
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793"
+    },
+    "apps/standalone/tests/test_standalone_library_recall.cpp": {
+      "bytes": 44191,
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae"
+    },
+    "apps/standalone/tests/test_standalone_library_roundtrip.cpp": {
+      "bytes": 34998,
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0"
+    }
+  }
+}

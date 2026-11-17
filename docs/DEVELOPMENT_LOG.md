@@ -1,5 +1,64 @@
 # Development log
 
+## 2026-11-17 — Combined source, fixture portability and current delivery record
+
+The heading continuation preserves both published histories while integrating
+the incoming P1 material/LibraryModel foundation with T2/T3/H1 and semantic-paint
+work. Original `cf87` Windows compilation and Core path failures remain retained.
+The `d2ed` successor preserves its exact helper-only source admission and tests;
+its Windows run compiles and executes 78 gates, with three reader failures.
+Title/header disclose empty copied drawbar rows. P1 passes its 34-case native
+fixture and all 62 screens while retaining one unidentified numerical failure.
+
+The admitted indexed fixtures and reader identities retain strict complete
+expected state, limits, all workloads, historical paired pins and failure-only
+diagnostics. The P1 comparator admits the exact indexed fixture only through
+the unchanged helper-only predecessor and full reversal to the original.
+All 54 upstream test methods remain exact; ten indexed-transition methods are
+added. Production, CMake/workflows and sanitizer/leak policy are preserved.
+
+The [first combined local selection](development/2026-11-16-heading-title-continuation/reports/console-integration/first-combined-local-qualification.json)
+passes 14/14 at its recorded tool inputs; complete original/indexed P1 canonical
+streams and inventories match. The
+[final consumer selection](development/2026-11-16-heading-title-continuation/reports/console-integration/final-local-qualification.json)
+passes 4/4 in 5.61602756 s at candidate `5485988`, with the three Python suites
+and actual P1 numerical reader. Existing native inputs/binaries stay unchanged;
+no redundant default-34 execution is relabeled as final-source work.
+
+[Source publication](development/2026-11-16-heading-title-continuation/reports/combined-main-publication.json): `54859886268ce83c36f359c43327f7c72a77ae82`,
+tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a`. This is the tested implementation published on main. All sixteen required jobs completed successfully on attempt 1. Later documentation/evidence commits retain a separate source-equivalence boundary; retrieve the actual live HEAD instead of assuming it is this tested commit.
+
+| Workflow | Required jobs | Actual outcome at this source |
+| --- | ---: | --- |
+| Core | 6 | 6/6 jobs passed: five 209/209 registered CTest suites and full R4 qualification [run 44038196587](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196587) |
+| Native standalone | 6 | 6/6 jobs passed: five normal 78/78 suites; sanitizer 41/41 [run 44038196285](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196285) |
+| Native VST3 | 4 | 4/4 jobs passed: 29 native CTests; actual module validator 47/0 on each platform [run 44038196255](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196255) |
+
+The [complete terminal matrix](development/2026-11-16-heading-title-continuation/reports/combined-ci-complete.json) records job IDs, attempts and outcomes. Root’s [source/input-equivalence record](development/2026-11-16-heading-title-continuation/reports/combined-final-integrity.json)
+identifies the verification stage and inputs compared with this tested source.
+Root owns the final staged repository/ledger checks and guarded documentary
+publication; use that receipt’s recorded execution and outcome.
+
+Independent completed reviews: [Core](development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-main-core/CORE_REVIEW.md) · [Standalone](development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/combined-main-standalone/review.md) · [VST3](development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/combined-main-vst3/review.md). Recover actual live HEAD, tree and fresh remote state from the
+[checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) before new work. A documentation descendant
+does not create new native execution or replace any earlier failed result.
+
+The README now leads with an actual combined 1672×941 application frame,
+delivered behavior, the source-specific matrix and concrete remaining work.
+All fifteen combined gallery captures retain their original executable/source
+identities and independent all-frame review; no new capture is invented.
+Old installed H1 captures, failed aggregates and complete raw hosted diagnostic
+bytes remain attached to their original inputs. Current plans, handoff and
+recovery rows describe the native library/model dependencies and complete
+M0–M9 requirements instead of an already superseded helper publication.
+
+This continuation's 60 accepted workers/ten complete waves and full 500-page
+textual coverage remain closed. The console owner's ledger and acceptance are
+independent. **Literal whole-interface 1:1 remains unmet and unwaived**;
+physical/connected-audio, real display/device/DAW, native accessibility,
+callback lifetime/deadlines, rights and signed-distribution gates remain open.
+
+
 ## 2026-11-16 — Fresh Windows fixture and diagnostic successor qualified
 
 Root preserves published6287055 and all117new evidence files. A55 independently

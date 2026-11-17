@@ -1,0 +1,34 @@
+2026-11-17T06:27:39.9585117Z         Start  89: python_test_capture_standalone_interface
+2026-11-17T06:27:44.4629753Z  88/209 Test  #89: python_test_capture_standalone_interface ..........***Failed    4.51 sec
+2026-11-17T06:27:44.4630541Z .......EEE.....................................
+2026-11-17T06:27:44.4630856Z ======================================================================
+2026-11-17T06:27:44.4631717Z ERROR: test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout (__main__.InterfaceCaptureValidationTests.test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout) (scale=1, timeout=12.0)
+2026-11-17T06:27:44.4632651Z ----------------------------------------------------------------------
+2026-11-17T06:27:44.4632962Z Traceback (most recent call last):
+2026-11-17T06:27:44.4640028Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_capture_standalone_interface.py", line 366, in test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout
+2026-11-17T06:27:44.4640987Z     self.assertEqual(record["inputs"]["before"][name]["sha256"], hashlib.sha256(script.encode("ascii")).hexdigest())
+2026-11-17T06:27:44.4641471Z                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-17T06:27:44.4641756Z KeyError: 'inputs/play-dimensional.b3uireplay'
+2026-11-17T06:27:44.4641961Z 
+2026-11-17T06:27:44.4642068Z ======================================================================
+2026-11-17T06:27:44.4643019Z ERROR: test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout (__main__.InterfaceCaptureValidationTests.test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout) (scale=3, timeout=30.0)
+2026-11-17T06:27:44.4644868Z ----------------------------------------------------------------------
+2026-11-17T06:27:44.4645192Z Traceback (most recent call last):
+2026-11-17T06:27:44.4645968Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_capture_standalone_interface.py", line 366, in test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout
+2026-11-17T06:27:44.4646914Z     self.assertEqual(record["inputs"]["before"][name]["sha256"], hashlib.sha256(script.encode("ascii")).hexdigest())
+2026-11-17T06:27:44.4647395Z                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-17T06:27:44.4647695Z KeyError: 'inputs/play-dimensional.b3uireplay'
+2026-11-17T06:27:44.4647910Z 
+2026-11-17T06:27:44.4648014Z ======================================================================
+2026-11-17T06:27:44.4648975Z ERROR: test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout (__main__.InterfaceCaptureValidationTests.test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout) (scale=10, timeout=12.0)
+2026-11-17T06:27:44.4650162Z ----------------------------------------------------------------------
+2026-11-17T06:27:44.4650510Z Traceback (most recent call last):
+2026-11-17T06:27:44.4651321Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_capture_standalone_interface.py", line 366, in test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout
+2026-11-17T06:27:44.4652623Z     self.assertEqual(record["inputs"]["before"][name]["sha256"], hashlib.sha256(script.encode("ascii")).hexdigest())
+2026-11-17T06:27:44.4653160Z                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-11-17T06:27:44.4653455Z KeyError: 'inputs/play-dimensional.b3uireplay'
+2026-11-17T06:27:44.4653665Z 
+2026-11-17T06:27:44.4653793Z ----------------------------------------------------------------------
+2026-11-17T06:27:44.4654093Z Ran 45 tests in 4.282s
+2026-11-17T06:27:44.4654226Z 
+2026-11-17T06:27:44.4654304Z FAILED (errors=3)

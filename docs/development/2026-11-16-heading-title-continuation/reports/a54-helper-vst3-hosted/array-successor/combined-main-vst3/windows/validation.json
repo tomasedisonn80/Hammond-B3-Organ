@@ -1,0 +1,588 @@
+{
+  "family": "windows",
+  "job": {
+    "id": 133886097530,
+    "run_id": 44038196255,
+    "run_attempt": 1,
+    "name": "Native VST3 (Windows MSVC x64)",
+    "head_sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-17T07:22:31Z",
+    "completed_at": "2026-11-17T07:24:43Z",
+    "runner_id": 1000001463,
+    "runner_name": "GitHub Actions 1000001463",
+    "runner_group_id": 0,
+    "runner_group_name": "GitHub Actions",
+    "labels": [
+      "windows-2022"
+    ],
+    "steps": [
+      {
+        "name": "Set up job",
+        "number": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:31Z",
+        "completed_at": "2026-11-17T07:22:32Z"
+      },
+      {
+        "name": "Check out the exact tested revision",
+        "number": 2,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:32Z",
+        "completed_at": "2026-11-17T07:22:54Z"
+      },
+      {
+        "name": "Set up Python 3.12",
+        "number": 3,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:54Z",
+        "completed_at": "2026-11-17T07:22:54Z"
+      },
+      {
+        "name": "Record actual source and runner provenance",
+        "number": 4,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:54Z",
+        "completed_at": "2026-11-17T07:22:57Z"
+      },
+      {
+        "name": "Explicitly acquire and verify the locked external SDK",
+        "number": 5,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:57Z",
+        "completed_at": "2026-11-17T07:23:03Z"
+      },
+      {
+        "name": "Configure native Release on Linux or macOS",
+        "number": 6,
+        "status": "completed",
+        "conclusion": "skipped",
+        "started_at": "2026-11-17T07:23:03Z",
+        "completed_at": "2026-11-17T07:23:03Z"
+      },
+      {
+        "name": "Configure native Release on Windows",
+        "number": 7,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:23:03Z",
+        "completed_at": "2026-11-17T07:23:20Z"
+      },
+      {
+        "name": "Build the bundle and every native test input",
+        "number": 8,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:23:20Z",
+        "completed_at": "2026-11-17T07:24:30Z"
+      },
+      {
+        "name": "Validate the actual module and run the native tests",
+        "number": 9,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:24:30Z",
+        "completed_at": "2026-11-17T07:24:37Z"
+      },
+      {
+        "name": "Inventory and archive the validated native bundle",
+        "number": 10,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:24:37Z",
+        "completed_at": "2026-11-17T07:24:37Z"
+      },
+      {
+        "name": "Retain complete source, dependency, build and test diagnostics",
+        "number": 11,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:24:37Z",
+        "completed_at": "2026-11-17T07:24:38Z"
+      },
+      {
+        "name": "Retain the qualified bundle and byte inventory",
+        "number": 12,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:24:38Z",
+        "completed_at": "2026-11-17T07:24:40Z"
+      },
+      {
+        "name": "Post Set up Python 3.12",
+        "number": 23,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:24:40Z",
+        "completed_at": "2026-11-17T07:24:40Z"
+      },
+      {
+        "name": "Post Check out the exact tested revision",
+        "number": 24,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:24:40Z",
+        "completed_at": "2026-11-17T07:24:42Z"
+      },
+      {
+        "name": "Complete job",
+        "number": 25,
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:24:42Z",
+        "completed_at": "2026-11-17T07:24:42Z"
+      }
+    ]
+  },
+  "source": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+  "provenance": {
+    "configuration": "Release",
+    "image_os": "win22",
+    "image_version": "20261112.366.7",
+    "machine": "AMD64",
+    "platform": "Windows-2022Server-10.0.20348-SP0",
+    "python": "3.12.10",
+    "run_attempt": "1",
+    "run_id": "44038196255",
+    "runner_arch": "X64",
+    "runner_os": "Windows",
+    "source_commit": "54859886268ce83c36f359c43327f7c72a77ae82",
+    "source_tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a"
+  },
+  "sdk_lock": {
+    "bytes": 3796,
+    "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+  },
+  "sdk_version": "3.8.1",
+  "sdk_tag": "v3.8.1_build_84",
+  "sdk_acquisition": {
+    "embedded_json_verified": true,
+    "network_used": true,
+    "primary_licenses_verified": 5,
+    "schema_version": 1,
+    "sdk_root": "D:\\a\\_temp\\hammond-vst3-sdk",
+    "verified_checkouts": [
+      {
+        "commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+        "path": "."
+      },
+      {
+        "commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477",
+        "path": "base"
+      },
+      {
+        "commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5",
+        "path": "cmake"
+      },
+      {
+        "commit": "4f547e8e102b47de4a8b8aaf343c73b700786372",
+        "path": "pluginterfaces"
+      },
+      {
+        "commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da",
+        "path": "public.sdk"
+      }
+    ]
+  },
+  "sdk_verification": {
+    "embedded_json_verified": true,
+    "network_used": false,
+    "primary_licenses_verified": 5,
+    "schema_version": 1,
+    "sdk_root": "D:\\a\\_temp\\hammond-vst3-sdk",
+    "verified_checkouts": [
+      {
+        "commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+        "path": "."
+      },
+      {
+        "commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477",
+        "path": "base"
+      },
+      {
+        "commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5",
+        "path": "cmake"
+      },
+      {
+        "commit": "4f547e8e102b47de4a8b8aaf343c73b700786372",
+        "path": "pluginterfaces"
+      },
+      {
+        "commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da",
+        "path": "public.sdk"
+      }
+    ]
+  },
+  "artifacts": {
+    "diagnostics": {
+      "id": 14307499997,
+      "name": "native-vst3-windows-2022-X64-release-diagnostics-54859886268ce83c36f359c43327f7c72a77ae82-1",
+      "bytes": 37694,
+      "sha256": "c4ad93623839b658cdd0a962f44b7b47ef56ff07e0795b8c66e3904cfb40eee1"
+    },
+    "bundle": {
+      "id": 14308875473,
+      "name": "native-vst3-windows-2022-X64-release-bundle-54859886268ce83c36f359c43327f7c72a77ae82-1",
+      "bytes": 421113,
+      "sha256": "3f37eccd0e9c6b16d4a0e59ad46068fc805851ec55ca65cff5cddcd6aca1273f"
+    }
+  },
+  "ctest_log": {
+    "bytes": 26564,
+    "sha256": "21a241102d8f4c7ecb95d417a97dba318bade7d6611e4b87cae022452e21e38b"
+  },
+  "ctest_xml": {
+    "bytes": 5598,
+    "sha256": "7aba93d328d5239a9a0681a31f44de383cddcaba99d4902ac19d7b9c99dc2b80"
+  },
+  "ctest_count": 7,
+  "ctest_failures": 0,
+  "ctest_skipped": 0,
+  "ctest_disabled": 0,
+  "ctest_total_seconds": 7.07,
+  "tests": [
+    {
+      "name": "test_native_install",
+      "seconds": 1.84724,
+      "status": "run",
+      "command": "Test command: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/plugins/vst3/tests/test_native_install.py\"",
+      "computed_timeout": "Test timeout computed to be: 240"
+    },
+    {
+      "name": "hammond_vst3_validator",
+      "seconds": 1.1935,
+      "status": "run",
+      "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\validator.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+      "computed_timeout": "Test timeout computed to be: 180"
+    },
+    {
+      "name": "test_native_controller",
+      "seconds": 0.0582096,
+      "status": "run",
+      "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_controller.exe",
+      "computed_timeout": "Test timeout computed to be: 300"
+    },
+    {
+      "name": "test_native_abi",
+      "seconds": 0.844145,
+      "status": "run",
+      "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_abi.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+      "computed_timeout": "Test timeout computed to be: 180"
+    },
+    {
+      "name": "test_native_behavior",
+      "seconds": 2.1111,
+      "status": "run",
+      "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_behavior.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+      "computed_timeout": "Test timeout computed to be: 180"
+    },
+    {
+      "name": "test_native_automation",
+      "seconds": 0.526923,
+      "status": "run",
+      "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_automation.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+      "computed_timeout": "Test timeout computed to be: 180"
+    },
+    {
+      "name": "test_native_concurrency",
+      "seconds": 0.429194,
+      "status": "run",
+      "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\test_native_concurrency.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\" \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/nominal.b3p\"",
+      "computed_timeout": "Test timeout computed to be: 240"
+    }
+  ],
+  "actual_module_validator": {
+    "passed": 47,
+    "failed": 0,
+    "sdk_version": "3.8.1",
+    "command": "Test command: D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-native\\bin\\Release\\validator.exe \"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3\"",
+    "actual_module_loaded": true,
+    "class_ids": [
+      "19F9ADC0533F42B4B96BD51D6547E838",
+      "0DEE76AB26BC475ABF64F138C89FB0E0"
+    ],
+    "not_sdk_selftest_substitution": true,
+    "diagnostic_messages": {
+      "teardown_message": {
+        "text": "Failed to teardown test!",
+        "current_count": 16,
+        "original_complete_ctest_count": 16,
+        "previous_03c70c1_count": 16
+      },
+      "unsupported_64_bit_message": {
+        "text": "64bit Audio Processing not supported.",
+        "current_count": 15,
+        "original_complete_ctest_count": 15,
+        "previous_03c70c1_count": 15
+      }
+    },
+    "warning_free_claim": false
+  },
+  "native_abi": {
+    "suite": "native-abi-v1",
+    "instances": 9,
+    "assertions": 701642,
+    "descriptors": 47,
+    "conversions": 2140,
+    "accepted_callbacks": 1673,
+    "rejected_calls": 88,
+    "state_round_trips": 3207,
+    "lifecycle_sequences": 6,
+    "compared_frames": 229725,
+    "audible_frames": 217972,
+    "maximum_audio_error": 0,
+    "float_hash": "af029009868faa04"
+  },
+  "native_install": {
+    "bundle_sha256": {
+      "Contents/Resources/THIRD_PARTY_NOTICES.md": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+      "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e",
+      "Contents/Resources/moduleinfo.json": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d",
+      "Contents/x86_64-win/HammondB3.vst3": "860e8d75b025cd3aed3c112ea464e5a7b315495d1f2a6bbcfd74337c0f1b5374",
+      "PlugIn.ico": "1dda09aceb9fa930a3894cce4ad57edd8fa48ce58157c97ba5f971d2d4e79821",
+      "desktop.ini": "3f3d19c85c40231d4dec0c6526b77d8325031eb7d52fcf141d68feaa3a88547f"
+    },
+    "payload_files": 6,
+    "relocated_abi": {
+      "accepted_callbacks": 1673,
+      "assertions": 701642,
+      "audible_frames": 217972,
+      "compared_frames": 229725,
+      "conversions": 2140,
+      "descriptors": 47,
+      "float_hash": "af029009868faa04",
+      "instances": 9,
+      "lifecycle_sequences": 6,
+      "maximum_audio_error": 0,
+      "rejected_calls": 88,
+      "state_round_trips": 3207,
+      "suite": "native-abi-v1"
+    },
+    "suite": "native-install-v1"
+  },
+  "install_methods_executed": 2,
+  "install_methods": [
+    "test_install_move_and_load",
+    "test_preflight_rejects_incomplete_bundle_without_mutating_prefix"
+  ],
+  "relocated_abi_equals_direct_abi": true,
+  "native_summaries": [
+    "native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600",
+    "native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f",
+    "native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03",
+    "native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1",
+    "native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=2325 rejected_callbacks=24 zero_callbacks=461 compared_frames=103208 audible_frames=103208 future_frames=6168 accepted_loads=3174 full_loads=1534 malformed_loads=462 successful_saves=8150 busy_saves=88 pending_saves=4987 published_saves=3115 maximum_audio_error=0"
+  ],
+  "linux_realtime": null,
+  "compiler_identification": [
+    "-- The CXX compiler identification is MSVC 19.44.35230.0",
+    "-- Found Python3: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter",
+    "-- The C compiler identification is MSVC 19.44.35230.0"
+  ],
+  "bundle_inventory": {
+    "bundle_name": "HammondB3.vst3",
+    "configuration": "Release",
+    "execution_environment": {
+      "machine": "AMD64",
+      "python": "3.12.10",
+      "system": "Windows"
+    },
+    "file_count": 6,
+    "files": [
+      {
+        "bytes": 23009,
+        "mode_octal": "0666",
+        "path": "Contents/Resources/THIRD_PARTY_NOTICES.md",
+        "sha256": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b"
+      },
+      {
+        "bytes": 1094,
+        "mode_octal": "0666",
+        "path": "Contents/Resources/VST3_SDK_LICENSE.txt",
+        "sha256": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e"
+      },
+      {
+        "bytes": 1133,
+        "mode_octal": "0666",
+        "path": "Contents/Resources/moduleinfo.json",
+        "sha256": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d"
+      },
+      {
+        "bytes": 400384,
+        "mode_octal": "0666",
+        "path": "Contents/x86_64-win/HammondB3.vst3",
+        "sha256": "860e8d75b025cd3aed3c112ea464e5a7b315495d1f2a6bbcfd74337c0f1b5374"
+      },
+      {
+        "bytes": 254170,
+        "mode_octal": "0666",
+        "path": "PlugIn.ico",
+        "sha256": "1dda09aceb9fa930a3894cce4ad57edd8fa48ce58157c97ba5f971d2d4e79821"
+      },
+      {
+        "bytes": 44,
+        "mode_octal": "0666",
+        "path": "desktop.ini",
+        "sha256": "3f3d19c85c40231d4dec0c6526b77d8325031eb7d52fcf141d68feaa3a88547f"
+      }
+    ],
+    "kind": "hammond-native-bundle-inventory-v1",
+    "module": {
+      "architectures": [
+        "x86_64"
+      ],
+      "format": "PE32+",
+      "path": "Contents/x86_64-win/HammondB3.vst3",
+      "platform": "windows"
+    },
+    "schema_version": 1,
+    "scope": "File identities and native-header inspection; no SDK/DAW/device/signature/fidelity result.",
+    "sdk_lock": {
+      "bytes": 3796,
+      "primary_license_sha256": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e",
+      "root_commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+      "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+    },
+    "source": {
+      "kind": "caller-declared-git-commit",
+      "revision": "54859886268ce83c36f359c43327f7c72a77ae82"
+    },
+    "total_bytes": 679834
+  },
+  "bundle_inventory_bytes": {
+    "bytes": 2127,
+    "sha256": "8547bdf94ffba52ce9cd1d2cc381825facad952bdc9b38685641b11bf6c10405"
+  },
+  "archive": {
+    "bytes": 420769,
+    "sha256": "934e7c89205e8db99a40d9c5f4d55d3c16d490f5542364d2eca34a3c45a3b57d"
+  },
+  "archive_digest_file": {
+    "bytes": 92,
+    "sha256": "3419accb174ea885f60168836ba8b286eb4eef7522a05979d577d28eb7d4d735"
+  },
+  "all_archive_payload_bytes_sizes_modes_match_inventory": true,
+  "build_and_staged_inventory_bytes_identical": true,
+  "independently_parsed_module_header": {
+    "format": "PE32+",
+    "architecture": "x86_64",
+    "machine_code": 34404,
+    "optional_header_magic": "0x20b",
+    "dll_characteristic": true
+  },
+  "module_bytes": {
+    "bytes": 400384,
+    "sha256": "860e8d75b025cd3aed3c112ea464e5a7b315495d1f2a6bbcfd74337c0f1b5374"
+  },
+  "moduleinfo": {
+    "bytes": 1133,
+    "sha256": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d"
+  },
+  "moduleinfo_classes": [
+    {
+      "CID": "19F9ADC0533F42B4B96BD51D6547E838",
+      "Category": "Audio Module Class",
+      "Name": "Hammond B3 Nominal",
+      "Vendor": "Hammond B3 Organ project",
+      "Version": "0.1.0",
+      "SDKVersion": "VST 3.8.1",
+      "Sub Categories": [
+        "Instrument",
+        "Synth"
+      ],
+      "Class Flags": 1,
+      "Cardinality": 2147483647,
+      "Snapshots": []
+    },
+    {
+      "CID": "0DEE76AB26BC475ABF64F138C89FB0E0",
+      "Category": "Component Controller Class",
+      "Name": "Hammond B3 Nominal Controller",
+      "Vendor": "Hammond B3 Organ project",
+      "Version": "0.1.0",
+      "SDKVersion": "VST 3.8.1",
+      "Class Flags": 0,
+      "Cardinality": 2147483647,
+      "Snapshots": []
+    }
+  ],
+  "unchanged_from_original_run": {
+    "native_abi_summary": true,
+    "module_metadata_bytes": true,
+    "module_binary_sha256": false,
+    "validator_diagnostic_message_counts": true
+  },
+  "unchanged_from_03c70c1_run": {
+    "native_abi_summary": true,
+    "module_metadata_bytes": true,
+    "module_binary_sha256": false,
+    "validator_diagnostic_message_counts": true
+  },
+  "scope_limits": [
+    "SDK/native workflow qualification of this exact source only.",
+    "No all-DAW, physical MIDI/audio device, hardware deadline, calibrated instrument, signing/notarization or whole-UI 1:1 claim.",
+    "Complete CTest log, rather than possibly truncated successful JUnit output, supplies validator/install/realtime summaries."
+  ],
+  "retained_original_bundle_text": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/combined-main-vst3/windows/bundle-inventory.json.gz",
+      "stored": {
+        "bytes": 972,
+        "sha256": "719956406dea65148514f8808026a7402082f77a15b5d310400a67853df7ceee"
+      },
+      "decoded": {
+        "bytes": 2127,
+        "sha256": "8547bdf94ffba52ce9cd1d2cc381825facad952bdc9b38685641b11bf6c10405"
+      },
+      "encoding": "gzip",
+      "mtime": 0,
+      "embedded_filename": null
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/combined-main-vst3/windows/moduleinfo.json.gz",
+      "stored": {
+        "bytes": 440,
+        "sha256": "ff0827953473584546225cebb88cd9c8fb9df5eed112f47376d9977d61ca3261"
+      },
+      "decoded": {
+        "bytes": 1133,
+        "sha256": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d"
+      },
+      "encoding": "gzip",
+      "mtime": 0,
+      "embedded_filename": null
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/combined-main-vst3/windows/archive.sha256.gz",
+      "stored": {
+        "bytes": 104,
+        "sha256": "c811f4878fec69197e9121f92e1984cb5e33f9af681a0b977b319a2d12625c5d"
+      },
+      "decoded": {
+        "bytes": 92,
+        "sha256": "3419accb174ea885f60168836ba8b286eb4eef7522a05979d577d28eb7d4d735"
+      },
+      "encoding": "gzip",
+      "mtime": 0,
+      "embedded_filename": null
+    }
+  ],
+  "complete_job_log_ctest_consistency": {
+    "all_ctest_lines_found_in_order": true,
+    "ctest_line_count": 447,
+    "comparison": "Strip each job timestamp and line-ending whitespace for comparison only; retain both original byte streams unchanged."
+  },
+  "unchanged_from_6287055_run": {
+    "native_abi_summary": true,
+    "module_metadata_bytes": true,
+    "module_binary_sha256": false,
+    "validator_diagnostic_message_counts": true
+  }
+}

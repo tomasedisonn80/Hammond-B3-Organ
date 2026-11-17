@@ -1,0 +1,12 @@
+{
+  "initial_attempt": "Verified provider ZIP size/SHA and CRCs, then extraction stopped on an overly narrow root-folder assertion when it reached the first legitimate build-standalone metadata member. Existing extracted diagnostic files remained intact.",
+  "observed_valid_additional_members": [
+    "build-standalone/CMakeCache.txt",
+    "build-standalone/CMakeFiles/CMakeConfigureLog.yaml",
+    "build-standalone/Testing/Temporary/LastTest.log"
+  ],
+  "resolution": "Read exact archive names and confirmed all three additional metadata paths are explicitly included in the already-admitted workflow upload list. Resumed local extraction from the same immutable downloaded ZIP, verifying every existing output before retaining the remaining three files.",
+  "redownloads": 0,
+  "native_or_test_reruns": 0,
+  "final_members_verified": 41
+}

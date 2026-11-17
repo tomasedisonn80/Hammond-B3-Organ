@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "worker": "A54",
+  "same_accepted_worker_followup": true,
+  "additional_worker_credit": false,
+  "recorded_utc": "2026-11-17T06:42:52.493463+00:00",
+  "decision": "Prospectively admit only the attached exact three-file P1 candidate for root-owned qualification; runtime and new-source Windows results remain unobserved.",
+  "source_base": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "patch": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/p1-portability-candidate.patch",
+    "bytes": 16954,
+    "sha256": "7894d1cc17feff917afee4570d4af7e40161d6ffaee7d79a27d9b4a4c5175d43"
+  },
+  "files": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "before_bytes": 75570,
+      "before_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "candidate_bytes": 75580,
+      "candidate_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    },
+    {
+      "path": "tools/compare_performance_plate.py",
+      "before_bytes": 84566,
+      "before_sha256": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923",
+      "candidate_bytes": 89016,
+      "candidate_sha256": "fa4d44bf1df72c2b5d540e2125293277a937a33ea0c9590f4967d68c68f429ca"
+    },
+    {
+      "path": "tests/test_compare_performance_plate.py",
+      "before_bytes": 34820,
+      "before_sha256": "cba6e56cbcf7dd3fe16924e21ae0f1bec2d76215a7df4abcbede600be327bd8c",
+      "candidate_bytes": 43358,
+      "candidate_sha256": "f9abf1d76a4b61ccbc7fb12d63a1d8fb3409b2e26d6eed6d40c802d6d9575f26"
+    }
+  ],
+  "observed_failure": {
+    "receipt_path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/windows-build-failure-retention.json",
+    "receipt_sha256": "b6d8f2954ac90600862a9155572e3128eefaa449a82a44d15ccda553863f7f51",
+    "run_id": 44030833294,
+    "job_id": 133862108913,
+    "attempt": 1,
+    "file": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+    "line": 50,
+    "diagnostics": [
+      "C2220 warning treated as error",
+      "C4702 unreachable code"
+    ],
+    "build_exit": 1,
+    "ctests_executed": 0,
+    "original_crlf_failure_blocks_independently_found_in_complete_decoded_log": true,
+    "complete_log_decoded_sha256": "580ad243484bb9cc5d8759ce5392abfdb31735255256ba83f6212b50c9b22fcc",
+    "scope": "Actual compile failure; original Windows P1 runtime serialization, image/numerical behavior and later steps are unobserved."
+  },
+  "constexpr_correction": {
+    "original_block_sha256": "6153bcecf2c3dc3d685285c250002e2c134b0073485afcc0402fc9c412ae4a70",
+    "candidate_block_sha256": "4c5f552a137a2e5549459f1e3b0e6b278ae9bc190c9b957a01736c58fb7e3ee7",
+    "reason": "Place the existing false return in the discarded else of the dependent if constexpr. The true specialization still invokes the same private helper and returns true; the false specialization returns false without requiring the absent helper. Warning flags remain unchanged.",
+    "new_absent_helper_runtime_claim": false
+  },
+  "serializer_assessment": {
+    "original_body_byte_identical_to_footage_and_header_helpers_at_cf87": true,
+    "replacement_byte_identical_to_ea02_windows_qualified_footage_helper": true,
+    "cpp_static_array_call_expressions": 28,
+    "additional_range_types": [
+      "std::vector<Span>",
+      "std::vector<OpaqueProbe>",
+      "std::vector<UiRect>",
+      "std::vector<TextRun>",
+      "std::vector<SDL_Rect>"
+    ],
+    "other_ranges": "The same fixed std::array controls/session/view/layout/quad/color types as header/footage; also Case::pedals std::array<uint8_t,2> and Pixel by-value color.",
+    "all_actual_range_arguments_support_const_size_and_index": true,
+    "empty_vector_behavior": "Both forms emit [] for zero elements; element order, const reference, element writers, precision, bool handling, commas and brackets remain the complete serialization contract. Writers inspected here only append to output and do not resize their input ranges.",
+    "cstddef_already_present": true,
+    "p1_windows_malformed_runtime_observed": false,
+    "admission_reason": "A consistent traversal of a byte-identical private serializer duplicate, with all present range types supported. It is a prospective portability correction subject to actual P1 qualification, not a claimed repair of an observed P1 malformed stream.",
+    "specific_compiler_bug_claim": false
+  },
+  "source_transition": {
+    "historical_PINNED_FIXTURE_preserved": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+    "exact_candidate_fixture_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+    "original_source_accepted_in_both_modes": true,
+    "successor_accepted_only_candidate_only": true,
+    "new_fixture_refused_in_paired_mode": true,
+    "whole_file_hash_and_reverse_exact_complete_two_blocks_required": true,
+    "placement_bound_by_complete_candidate_sha": true,
+    "arbitrary_cpp_normalization": false,
+    "fixture_still_registered_and_final_rehashed": true,
+    "report_addition": "fixture_source_admission, with original/observed/accepted hashes, candidate-only scope, replacement hashes/counts and full-file reversal result.",
+    "existing_UiModel_transition_and_original_baseline_admission_unchanged": true,
+    "PINNED_dictionary_unchanged": true
+  },
+  "scope_protection": {
+    "cpp_only_two_exact_blocks_replaced_and_full_original_reconstructed": true,
+    "old_comparator_functions_and_classes_unchanged_except_execute": 70,
+    "existing_test_classes_unchanged": 5,
+    "new_fixture_transition_test_methods": 9,
+    "ast_parse_only_performed": true,
+    "tests_executed_by_A54": 0,
+    "native_builds_runs_by_A54": 0,
+    "repo_source_files_written_by_A54": 0,
+    "remote_mutations": 0,
+    "production_painter_and_150_capture_inputs_modified_by_patch": false
+  },
+  "qualification_required": [
+    "Root applies only the exact reviewed source changes after its independent review; no actual source edit or test has been performed by A54.",
+    "Root runs the existing comparator unit gate, including the nine added source-admission/refusal tests; source/type/mode/tamper/partial/placement and final-stability failures remain required before native launch.",
+    "Root coherently rebuilds test_standalone_performance_plate and runs test_standalone_performance_plate plus test_standalone_performance_plate_numerical under their unchanged normal 180-second CTest limits (existing sanitizer limits 480 seconds). The native default must retain all 34 scenarios (24 main, five companions, two repeats, three eligibility witnesses); the canonical reader must retain all 62 numerical screens and complete typed protocol/witness checks.",
+    "Retain bounded original/candidate --list and canonical --case 0 transport/header/pixel observations under their actual source and binary identities; any unexpected changed value or criterion blocks acceptance.",
+    "The next exact-source Windows build must preserve /W4 /WX and actually reach all required native gates. No P1 Windows runtime pass is inferred from the older footage/header focused qualification.",
+    "Historical P1 paired results and all frozen original fixture/comparator/source pins remain source-specific. The new fixture is deliberately not admitted into original paired mode; rerunning paired work requires its original source setup or a separately reviewed contract.",
+    "No production/CMake/workflow, thresholds, source expected models, child/storage/stream limits, workload, helper semantics, state/parameter/UUID/audio changes are admitted. Original cf87 failure and older source outcomes remain frozen."
+  ],
+  "ownership": {
+    "proposed_source_files": [
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "tools/compare_performance_plate.py",
+      "tests/test_compare_performance_plate.py"
+    ],
+    "written_outputs_only": [
+      "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/p1-portability-candidate.patch",
+      "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/p1-portability-admission.json"
+    ],
+    "header_comparator_proposal_owner": "A52",
+    "implementation_execution_and_publication_owner": "root",
+    "final_eleven_doc_patch": "paused on cf87 base pending integrated source and actual results"
+  }
+}

@@ -10,168 +10,85 @@ this document makes recovery and the next decisions practical.
 
 ## Where the work stands
 
-T2 rack headings, T3 revision 2 title treatment and H1 header material are
-accepted within their separately frozen visual scopes.
-All **60 distinct workers were dispatched in ten waves of six;
-60 deliveries are accepted**.
-All ten waves have six accepted deliveries.
-Follow-ups retain their original worker identities and create no additional credit.
-The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
-passes with zero pending workers/errors; it verifies record consistency only.
+The combined production source contains accepted T2/T3 typography, scoped H1
+header and P1 performance material, the reviewed semantic-paint runtime changes
+and the copied LibraryModel/UiModel recall foundation. Native browser/main
+library integration remains unfinished. The complete source-specific results
+below are separate from whole-interface, physical and release acceptance.
 
-The [current verified publication](development/2026-11-16-heading-title-continuation/reports/hosted-repair-publication.json) is
-`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
-`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
-`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
-and independent API/Git checks verify the exact commit, tree, parent and contents.
-This is the published three-input repair, separate from the next locally
-qualified helper correction, which is not yet published.
+[Source publication](development/2026-11-16-heading-title-continuation/reports/combined-main-publication.json): `54859886268ce83c36f359c43327f7c72a77ae82`,
+tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a`. This is the tested implementation published on main. All sixteen required jobs completed successfully on attempt 1. Later documentation/evidence commits retain a separate source-equivalence boundary; retrieve the actual live HEAD instead of assuming it is this tested commit.
 
-The [complete published-source matrix](development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json)
-contains **14 successes and two failures**, with all sixteen attempt-one jobs
-terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
-Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
-job executes and passes **34/34 gates**. Windows job `133832484867` fails
-C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
-`133832484811` completes **67/68**, with preset raster timing out at **30.05
-seconds** under its unchanged **30-second** guard; post-acceptance source/
-dependency verification and relocated executable packaging remain skipped.
-The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
-are complete. They retain that failed gate, its full workload and unchanged
-guard, and permit only the separately qualified Windows helper publication
-with complete evidence and current documentation. The timeout supplies no
-completed counters or measured remaining runtime; no timing fix, specific
-cause or repeated stability is claimed. No local or CI retry is admitted.
+| Workflow | Required jobs | Actual outcome at this source |
+| --- | ---: | --- |
+| Core | 6 | 6/6 jobs passed: five 209/209 registered CTest suites and full R4 qualification [run 44038196587](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196587) |
+| Native standalone | 6 | 6/6 jobs passed: five normal 78/78 suites; sanitizer 41/41 [run 44038196285](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196285) |
+| Native VST3 | 4 | 4/4 jobs passed: 29 native CTests; actual module validator 47/0 on each platform [run 44038196255](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196255) |
 
-The [original source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
-`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
-`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
-`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
-`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
-update and independent API/Git verification preserve both histories and verify
-the exact contents. This published tree equals local authored merge `07aafd218…`.
+The [complete terminal matrix](development/2026-11-16-heading-title-continuation/reports/combined-ci-complete.json) records job IDs, attempts and outcomes. Root’s [source/input-equivalence record](development/2026-11-16-heading-title-continuation/reports/combined-final-integrity.json)
+identifies the verification stage and inputs compared with this tested source.
+Root owns the final staged repository/ledger checks and guarded documentary
+publication; use that receipt’s recorded execution and outcome.
 
-All sixteen original job families are terminal at that exact source, attempt 1:
-[14 successes, one failure and one cancellation](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json).
+Independent completed reviews: [Core](development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-main-core/CORE_REVIEW.md) · [Standalone](development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/combined-main-standalone/review.md) · [VST3](development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/combined-main-vst3/review.md). Recover actual live HEAD, tree and fresh remote state from the
+[checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) before new work. A documentation descendant
+does not create new native execution or replace any earlier failed result.
 
-| Workflow | Original source-specific result |
-| --- | --- |
-| [Core CI](development/2026-11-16-heading-title-continuation/reports/a52-core-hosted.json), run `44016021552` | **6/6 successful**: four platform Release jobs and Linux ASan/UBSan/leaks each pass 202/202; full R4 qualification also passes. |
-| [Native VST3](development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted.json), run `44016021543` | **4/4 successful**, 29 CTests across the jobs; each actual module validator passes 47/47, with installation and packaging checked. |
-| [Native standalone](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json), run `44016021554` | Four normal jobs pass **68/68 each**: Linux MIDI OFF/ON and both macOS architectures. Windows fails fixture compilation under `/W4 /WX`; the Linux sanitizer job is cancelled after **30 of 34 selected tests pass**. |
+This heading/title/header continuation completed **60 accepted distinct workers
+in ten waves of six**, with fresh textual coverage of **all 500 atlas pages**.
+The [actual ledger](development/2026-11-16-heading-title-continuation/assignments.json), [strict record result](development/2026-11-16-heading-title-continuation/reports/helper-worker-strict.json)
+and [reading receipt](development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json) retain the evidence.
+Follow-ups keep their original identities and add no worker credit.
+The [console owner's ledger](development/2026-11-16-console-completion/assignments.json) is a separate record. At its retained `d2ed03b` source it has
+60 records: 59 accepted and
+1 still running. Its owner and checkpoint govern subsequent
+closure; these records are never combined with this continuation's sixty.
 
-The standalone cancellation occurred during preset raster, leaving it and three
-later tests incomplete. No sanitizer finding or originating cancellation cause
-is established. It is not a successful sanitizer gate. Original logs, failures
-and cancelled/unreached work remain retained.
+The [combined gallery](design/native-gallery-console-combined/manifest.json)
+contains **15 actual application views**, including canonical 1672×941, minimum
+960×700, active resize/aspect variants, focus, Flat, Rotary and Service.
+Its [provenance](design/native-gallery-console-combined/provenance.json)
+binds the captured app `3bb46f2f…` and all **150 production input identities**;
+the [all-frame review](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md)
+retains the original scope. Test-fixture and reader changes preserve those
+production inputs. The [current local app build](development/2026-11-16-heading-title-continuation/reports/console-integration/combined-local-app-build.json)
+from published `5485988` produced the same **4,111,800-byte executable** as the
+captured app under the retained Release/MIDI-OFF configuration. That build
+completed in **10.8775 s**; it executed no new capture or test. The earlier
+software-rendered frames retain their original capture time and provenance.
+The [two installed H1 captures](design/native-heading-final/README.md)
+remain historical app `1fa2a247…` evidence from before P1 integration.
 
-The [first independently reviewed Windows fixture correction](reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md)
-is [locally qualified](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json):
-two explicit float casts plus one active fixture-hash literal across two files.
-Both affected CTests pass **2/2 in 43.593519385 seconds**. The Linux fixture
-binary, all 48 case descriptions and default 10,542-check/163-painting result
-are identical. All **103/103** canonical criteria pass; complete statistics
-differ only in the two source identity values, with unchanged canonical pixels.
-At this Windows-only stage, **473 of 475 qualified code inputs are unchanged**.
-Production app `1fa2a247…`, painter, workloads, criteria and historical comparators
-are unchanged. This first local correction entered published `03c70c1`;
-its Windows job subsequently failed C4702 at the optional-helper fallback.
-That actual compilation failure remains retained separately.
+Current portability work is confined to the recorded fixture/readers/comparator
+inputs. It preserves the production painter/main/LibraryModel, all upstream
+diagnostics and test cases, strict complete copied models, canonical visual
+criteria, workloads and deadlines. The native fixture's dependent helper keeps
+both specializations; no new absent-helper runtime result is claimed. The
+[indexed P1 superset admission](development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/d2ed-integration/p1-comparator-indexed-superset-admission.json)
+retains the exact helper-only intermediate and complete original-source reversal.
 
-Root [implemented the separately admitted sanitizer job budget](development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json):
-only `jobs.native-sanitizers.timeout-minutes` changes **20 → 35 minutes**.
-Every other workflow byte, all 34 selected tests, 31 build inputs, individual
-test/child limits, workloads, instrumentation and leak policies are unchanged.
-Published `03c70c1` changed only the Windows fixture pair and workflow scalar:
-**exactly three of 475 inputs change; 472 remain unchanged**. Production
-sources and app `1fa2a247…` are unchanged. The observed prefix plus existing
-tail-limit envelope is 1,823.666679 seconds; this supports the job allowance
-without proving what caused the original cancellation. Publication is verified
-at `03c70c1`; its actual hosted outcomes are identified above.
+The first combined selection passed 14/14 at its recorded tool inputs; the
+[final consumer selection](development/2026-11-16-heading-title-continuation/reports/console-integration/final-local-qualification.json)
+passed 4/4 at `5485988` with the final three Python suites and actual P1 reader.
+The actual focused/full platform results belong to the publication table above.
+Neither selection replaces an older failed full run.
 
-The [next two-file helper correction](development/2026-11-16-heading-title-continuation/reports/windows-helper-local-qualification.json)
-is implemented and locally qualified. It moves the same false return into an
-explicit `else` for the dependent `if constexpr` helper predicate and updates
-the one active fixture-hash literal. Both existing affected CTests pass
-**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
-48 actual cases, the exact **10,542-check/163-painting** default result and
-**103/103** canonical criteria. Complete statistics differ only in the two
-recorded source identities; canonical pixels and historical comparators are
-unchanged. Both helper-present and helper-absent specializations are preserved
-by independent source/instantiation review; **no new helper-absent runtime
-execution is claimed**.
+Earlier outcomes stay attached to their original source:
+the heading [240/242 local run](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+and its three separate passing diagnostics; the console
+[246/247 full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json);
+[fba's failure and cancellation](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json);
+[03c's two failures](development/2026-11-16-heading-title-continuation/reports/hosted-repair-ci-complete.json);
+and [628's Windows protocol failure](development/2026-11-16-heading-title-continuation/reports/helper-ci-complete.json).
+The [original Windows diagnostic](development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-retention.json)
+and [array admission](development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/windows-array-serialization-admission.json)
+retain the malformed copied-array bytes and strict expected state.
+Later successes neither erase those observations nor establish a compiler bug,
+an exact scheduling cause or repeated stability.
 
-Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
-remain unchanged**. Relative to original `fba1911`, the total is still **three
-changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
-`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
-sanitizer job allowance remain unchanged. Every test/child bound, workload,
-instrumented input and leak policy is preserved. **The next helper-source
-publication and all of its exact-source hosted results remain pending; no
-publication SHA is recorded for it.** Local Linux equivalence is not MSVC
-compilation or execution evidence. The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-and [root publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
-permit publishing only this separately qualified helper pair with complete
-evidence and current documentation. The preset raster retains its failed
-Intel result, unchanged 30-second guard and full workload; the helper pair
-is not admitted as a timing fix.
-
-The [reconciliation review](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md)
-preserves both histories and the adopted comparators' historical protected-main
-pin. Reproduce old H1 evidence with its named source view. Other sessions retain
-their own workers, evidence, checkout and unfinished ownership.
-
-The current application is `1fa2a247…`, main `0c02c619…`, with unchanged H1
-painter `0bf731a6…`. Its reviewed replay fixes preserve UI history, resize
-boundaries and intermediate scripted semantic paints. Both genuine-before
-six-view cases fail only actual painted visits; both current cases pass, as do
-three unchanged resize/helper CTests. A [fresh 17-file installation](development/2026-11-16-heading-title-continuation/reports/final-native-install.json)
-passes exact metadata, 38 guide-link and relocated-help checks. The
-[two current installed captures](design/native-heading-final/README.md) pass
-unchanged native capture validation and independent visual review; original
-BMP bytes are retained losslessly. The historical 15-view H1 gallery keeps its
-original app bfe8 identity.
-
-The independently admitted [startup-prefix oracle](reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md)
-is now implemented. Its acknowledged startup prefixes and stronger copied-state
-chronology retain every original journey and timing requirement. The current
-workspace fixture is `38808674…`; standalone CMake is `64265511…`. The
-[qualified workspace records](development/2026-11-16-heading-title-continuation/reports/qualified-workspace-records.json)
-retain all 37 actual children from the complete run.
-
-The [qualified-final full run](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
-completed **240/242**, exit 8, in **740.263707625 seconds**. All **475 code inputs
-and recorded build inputs remained unchanged**; six serialized tests had
-verified nonoverlap. Workspace replay passed with **37 actual native children**,
-and Starter Load passed. The two failed CTests were the preset-raster
-**30-second timeout** and native MIDI replay, with two missing
-acknowledgment-window observations. This is distinct from the earlier
-[semantic full run's 240/242](development/2026-11-16-heading-title-continuation/reports/semantic-final-coherent-results.json).
-
-Exactly three bounded, unchanged diagnostics followed. The
-[preset-raster diagnostic](development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json)
-passed once in **27.517879209 seconds**, retaining its 30-second limit.
-The [two failed MIDI methods](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
-each passed once in **2.031860108** and **2.037485655 seconds**, with their
-nine-second child deadlines and all 475 code inputs unchanged. These separate
-passes preserve the original failed full-run outcome; they establish neither
-a green 242-test aggregate nor a particular CPU/scheduler cause. The published
-source and its original hosted outcomes are recorded separately in this session.
-
-The earlier H1 237/240, combined 239/241, scheduling 238/241 and semantic
-240/242 remain separate original outcomes. These finite software results close
-no literal whole-interface 1:1, specimen fidelity, actual hardware/accessibility
-or complete product-release gate.
-
-Six new readers covered all **500 atlas pages** in ranges 1–84, 85–168,
-169–252, 253–336, 337–420 and 421–500. The
-[coverage receipt](development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json)
-and [reading map](PROJECT_GUIDE.md#source-and-reading-records) retain their
-identities. This is complete textual coverage; it does not assert independent
-verification of every figure, cited paper or missing physical measurement.
-The atlas's research waves, M0–M9 milestones and ten staffing waves describe
-different kinds of progress.
+**Literal whole-interface 1:1 remains unmet and unwaived.** The actual combined
+software frames do not establish real display/DPI, native accessibility, devices,
+DAWs, callback retirement/deadlines, physical fidelity or signed distribution.
 
 ## Recover before editing
 
@@ -197,6 +114,10 @@ crossover and waveform owners keep their boundaries. Use the
 that overlaps them. Never edit another session's checkout or clean its files.
 
 ## Delivered interface scope and evidence
+
+The table retains the original T2/T3/H1 sources. P1 and the combined production
+gallery have the separate admissions identified above; none rewrites these
+earlier observations.
 
 | Stage | Evidence and practical meaning |
 | --- | --- |
@@ -226,8 +147,10 @@ visual review for the actual boundary.
 | Application in the H1 gallery and first complete H1 run | `bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b` |
 | Selective replay-repair `main.cpp` | `361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3` |
 | Rebuilt replay-repair application before concurrent reconciliation | `2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479` |
-| Current semantic event-drain main | `0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537` |
-| Current installed/captured application | `1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a` |
+| Shared semantic event-drain main | `0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537` |
+| Retained installed/captured H1 application | `1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a` |
+| Combined H1/P1 production painter | `6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105` |
+| Earlier captured combined application | `3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9` |
 | Reviewed Load observation fixture | `96139c491057d1b3c28e4a79b9ae2b89fb1118b1afcaff4c4dd67c4a0c56f060` |
 
 The [capture provenance](design/native-gallery-header-h1-v1/provenance.json),
@@ -341,41 +264,41 @@ later source supplements in the checkpoint.
 
 ## Next work and durable completion
 
-The complete published `03c70c1` matrix remains **14 successes and two
-failures**, including Windows C4702 and the Intel preset-raster timeout.
-The [independent Intel review](development/2026-11-16-heading-title-continuation/reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-is complete, and [root's publication admission](development/2026-11-16-heading-title-continuation/reports/helper-publication-admission.json)
-permits publishing only the separately reviewed, locally qualified two-file
-Windows helper correction with complete evidence and current documentation.
-Preserve the normal preset **30-second guard**, all **256 paints/272 readbacks**,
-every assertion and the original failed result. The timeout provides no
-completed counters or measured remaining runtime; no timing fix or specific
-cause is claimed. A later pass would be a separate source/runner observation,
-not proof of repaired cause or repeated stability.
+### Resume from the delivered source
 
-Root must check the exact staged repository and strict worker records, publish
-with a fresh expected remote head and no force, independently verify the exact
-commit/tree/parent/contents, and release the same A52 Core, A53 standalone and
-A54 VST3 reviewers for **all sixteen new-source families**. The next helper
-publication and its CI remain pending; do not invent a SHA or transfer earlier
-passes. Preserve both earlier Windows failures, the Intel failure and its
-skipped post-acceptance/package steps, and the original sanitizer cancellation.
-Keep both helper specializations and do not claim a new helper-absent runtime
-run. Wait for all next-source jobs before another same-ref push, because
-workflow concurrency cancels older runs. All 60 deliveries and strict record
-closure remain complete; follow-ups add no worker credit. Root then commits
-and pushes accepted final evidence, README/current-plan/status/handoff and
-concrete next actions, and verifies remote contents. No local test or CI retry,
-aggregate-only rerun, timeout/oracle change or broader source repair is admitted.
+Recover actual live HEAD and any later remote advance, then read the exact
+publication, terminal matrix and input-equivalence receipts above. Preserve the
+completed qualification; a later change needs the gates affected by that change.
+Keep original failures, immutable reports, historical comparator pins and both
+owner-local ledgers. Root coordinates any new shared-file or build assignment,
+and records the new source, commands, results and next acceptance before
+committing and pushing an authorized, reviewed chunk.
 
-After that delivery, recover existing UI owners before choosing the next
-reference slice. Remaining differences include wood illumination, bevels and
-shadows, key/cap surfaces, small labels and title face density. Freeze reference
-regions, support, genuine baseline, numerical criteria and full-frame review
-before implementing another slice. Preserve truthful control counts and
-unconnected-model labels despite inaccuracies in generated reference art.
-Real display/DPI/input and native accessibility journeys remain necessary.
-Use [NEXT_STEPS](NEXT_STEPS.md) for the currently assigned dependency-ready work.
+The next model step is a reviewed, read-only **Save-availability projection**
+and **fresh post-Start control proof**, followed by input/gesture/focus hooks,
+main-loop lifecycle/submission/storage routing, then the native browser model,
+view and painter. `controls_pending == false` and a queued pre-Start restore
+are insufficient proof. Preserve original held-note releases across modal
+open/close, pending CC11, both recall scopes, startup/restart/stopped Load,
+timeout/recovery, fresh final storage authorization, create-only collisions and
+protected paths. The [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+and [LibraryModel guide](LIBRARY_MODEL_GUIDE.md) define the dependencies.
+
+Recover existing visual owners before another reference slice. Freeze genuine
+before inputs, reference regions/support, numerical criteria, resource bounds
+and full-frame review. Preserve meaningful controls and unconnected-model labels
+despite inaccurate legends in the generated concept. Follow [NEXT_STEPS](NEXT_STEPS.md)
+and every [M0–M9 exit](PLAN.md#milestones-and-exit-evidence).
+
+Preserve every original failed result and unknown cause. Keep the preset's
+**30-second guard and 256 paints/272 readbacks**, all child/test bounds,
+instrumentation and leak policy. Later passes are separate observations, not
+proof of a timing repair or repeated stability. Root records actual changes,
+inputs, commands, acceptance and next work, then commits/pushes accepted
+authorized chunks with a fresh expected remote head and no force.
+Independent remote verification and exact-source hosted observation remain
+part of delivery; later documentary commits have an explicit code-equivalence
+boundary. Wait for any observed same-ref matrix to finish before another push.
 
 Validate this session's records from the repository root:
 
@@ -390,8 +313,8 @@ external dispatch, fidelity, product quality, execution or publication. Use only
 this session's actual workers; follow-ups and other sessions create no credit.
 
 Keep one coordinated build, bounded native children and concise console output.
-The last root checkpoint retained about 50 GiB free; inspect actual disk use
-before large work. Preserve original reports, failures, captures and genuine
+The earlier disk figures are historical; inspect actual free space and owned
+storage before large work. Preserve original reports, failures, captures and genuine
 baseline directories, including `../t3-native` and
 `../h1-replay-before-native`. Store reproducible temporary work outside the source
 tree, retain compact provenance and commit accepted durable work. Clean only

@@ -1,0 +1,209 @@
+{
+  "schema": 1,
+  "reviewer": "A53; independent read-only source and retained-evidence review",
+  "original_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "incoming_source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "incoming_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+  "incoming_parent": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "decision": "Preserve the incoming two test portability fixes; compose the header mock insertion-key line with all existing A52 indexed-array additions. Do not duplicate the repair or change production tools.",
+  "inputs": {
+    "tests/test_capture_standalone_interface.py": {
+      "cf87": {
+        "bytes": 58181,
+        "sha256": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56"
+      },
+      "d2ed": {
+        "bytes": 58284,
+        "sha256": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc"
+      }
+    },
+    "tests/test_compare_header_material.py": {
+      "cf87": {
+        "bytes": 25550,
+        "sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125"
+      },
+      "d2ed": {
+        "bytes": 25561,
+        "sha256": "6105d8a0da993b0e33700226d69165cedfc17d9ab9ac7e7fb5add0906e341c8d"
+      }
+    },
+    "tools/capture_standalone_interface.py": {
+      "cf87": {
+        "bytes": 41587,
+        "sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487"
+      },
+      "d2ed": {
+        "bytes": 41587,
+        "sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487"
+      }
+    },
+    "tools/compare_header_material.py": {
+      "cf87": {
+        "bytes": 98489,
+        "sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+      },
+      "d2ed": {
+        "bytes": 98489,
+        "sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+      }
+    },
+    "tools/compare_heading_typography.py": {
+      "cf87": {
+        "bytes": 52528,
+        "sha256": "e809a3e052efa5916e1ce6f20b1ef0a5560fc50b423f0759ba705d0650aaf886"
+      },
+      "d2ed": {
+        "bytes": 52528,
+        "sha256": "e809a3e052efa5916e1ce6f20b1ef0a5560fc50b423f0759ba705d0650aaf886"
+      }
+    },
+    ".github/workflows/ci.yml": {
+      "cf87": {
+        "bytes": 20374,
+        "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+      },
+      "d2ed": {
+        "bytes": 20374,
+        "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+      }
+    },
+    "CMakeLists.txt": {
+      "cf87": {
+        "bytes": 30784,
+        "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+      },
+      "d2ed": {
+        "bytes": 30784,
+        "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+      }
+    },
+    "CMakePresets.json": {
+      "cf87": {
+        "bytes": 1711,
+        "sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8"
+      },
+      "d2ed": {
+        "bytes": 1711,
+        "sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8"
+      }
+    }
+  },
+  "exact_diff_verified": true,
+  "test_preservation": {
+    "capture_methods": 45,
+    "capture_test_names_unchanged": true,
+    "capture_only_changed_method": "test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout",
+    "header_methods_at_d2ed": 24,
+    "all_header_method_ASTs_unchanged_from_cf87": true,
+    "top_level_constants_unchanged": true
+  },
+  "current_A52_composition": {
+    "base_current": {
+      "bytes": 34446,
+      "sha256": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+    },
+    "applied_by_A53": false,
+    "limit": "Current root bytes have changed since the independently reviewed A52 base; no prospective composition hash asserted."
+  },
+  "pure_stdlib_source_qualification": {
+    "project_modules_imported": false,
+    "project_tests_or_native_processes_executed": false,
+    "method": "AST complete-file transformation checks and PurePosixPath/PureWindowsPath evaluation of actual retained identity records; no file is resolved or opened by a simulated native path.",
+    "retained_supplement": {
+      "path": "docs/development/2026-11-16-ui-delivery/reports/h1-fixture-baseline-identity.json",
+      "bytes": 6077,
+      "sha256": "7ca076951bb48ec62dfda051f816a4b6be8c8049405335167b3a7838a289f420"
+    },
+    "results": [
+      {
+        "path_flavour": "PurePosixPath",
+        "retained_input_object_rows": 14,
+        "old_mock_lookup_misses": 0,
+        "new_mock_lookup_misses": 0,
+        "all_identity_value_records_unchanged": true,
+        "changed_hash_values_still_compare_unequal": true,
+        "capture_native_relative_key": "inputs/play-dimensional.b3uireplay",
+        "literal_posix_capture_key_matches": true,
+        "incoming_capture_expected_key_matches": true
+      },
+      {
+        "path_flavour": "PureWindowsPath",
+        "retained_input_object_rows": 14,
+        "old_mock_lookup_misses": 14,
+        "new_mock_lookup_misses": 0,
+        "all_identity_value_records_unchanged": true,
+        "changed_hash_values_still_compare_unequal": true,
+        "capture_native_relative_key": "inputs\\play-dimensional.b3uireplay",
+        "literal_posix_capture_key_matches": false,
+        "incoming_capture_expected_key_matches": true
+      }
+    ]
+  },
+  "captured_failure_boundary": {
+    "observed": "KeyError before the exact expected SHA equality; header FileNotFoundError after mock lookup miss.",
+    "newline_mismatch": "Source-derived latent mismatch from default Path.write_text translation; not an observed subsequent Windows hash failure.",
+    "incoming_expected_hash": "Exact independently derived native disk bytes via script.replace(\"\\n\", os.linesep).encode(\"ascii\"), with one SHA equality, no alternate digest and no normalized actual evidence."
+  },
+  "bounds": {
+    "original_release_job_minutes": 20,
+    "actual_CTest_command": "ctest --preset release --parallel 2 --timeout 300 --no-tests=error --output-junit ...",
+    "timeout_property_observation": "The non-verbose original log does not print per-test computed timeout properties. Exact top-level CMake registration does not assign a named TIMEOUT override to either failed Python gate.",
+    "capture_mock_selected_timeouts_seconds": [
+      12,
+      30,
+      12
+    ],
+    "capture_scales": [
+      1,
+      3,
+      10
+    ],
+    "changed_bounds": false
+  },
+  "A56_evidence_at_immutable_d2ed": {
+    "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-portability-preservation.json": {
+      "bytes": 841,
+      "sha256": "1863b3d776cd269d0a6c2d31dc35a10fbe3a218fb822e0c89da75fa0a7426788"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-portability-python-qualification.json": {
+      "bytes": 3006,
+      "sha256": "8e5008f28034b029b36f125841e14d1eee8c282581aab6bdc82c66a89fdd2fad"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-portability-repair.json": {
+      "bytes": 13596,
+      "sha256": "fe96e43115d6f8e73829e60894b2928e4c5c77c69a345526a5b4bcc8de75dd3e"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-portability-repair.patch": {
+      "bytes": 1978,
+      "sha256": "80c98a3244331df6e2363f2b0d11d408b95f6db488a33791a50a58b01e3e3068"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/core-cf87a587-job-133862108675.log.gz": {
+      "bytes": 61091,
+      "sha256": "05ac3aa9e118ce2e3098a135f28377a863a9e7c6f31ebbc8486b2d7a9300a87d",
+      "decoded": {
+        "bytes": 606646,
+        "sha256": "c47eee99796358d5a7f0cba50883c62d63df69994e701b96d5758f68d1de3d95"
+      },
+      "identical_to_A53_original_complete_log": true
+    },
+    "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-original-test_capture_standalone_interface.py.gz": {
+      "bytes": 12336,
+      "sha256": "54bfcd6b64997f336e071815453e4ea37209abbbe2557da14fe4bcebd186df1b",
+      "decoded": {
+        "bytes": 58181,
+        "sha256": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56"
+      },
+      "exact_cf87_source": "tests/test_capture_standalone_interface.py"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-original-test_compare_header_material.py.gz": {
+      "bytes": 5401,
+      "sha256": "082857d6ec0e814142295242c41d43995e41b935c22d9e8da977b1b979f6f376",
+      "decoded": {
+        "bytes": 25550,
+        "sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125"
+      },
+      "exact_cf87_source": "tests/test_compare_header_material.py"
+    }
+  },
+  "qualification_boundary": "A56 retained Linux Python runs passed 45 capture and 24 header methods, with native/image boundaries mocked. A53 ran no project tests. Actual reconciled-source Windows qualification is still required; cf87 stays failed."
+}

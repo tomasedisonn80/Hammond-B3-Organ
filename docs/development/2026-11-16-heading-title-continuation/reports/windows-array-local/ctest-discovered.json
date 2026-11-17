@@ -1,0 +1,189 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test"
+    ],
+    "files" : 
+    [
+      "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 339,
+        "parent" : 0
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 347,
+        "parent" : 2
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 378,
+        "parent" : 4
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 390,
+        "parent" : 6
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 1,
+      "command" : 
+      [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_footage_typography_raster"
+      ],
+      "config" : "Release",
+      "name" : "test_standalone_footage_typography_raster",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "geometry",
+            "native",
+            "standalone",
+            "typography"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 90.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "backtrace" : 3,
+      "command" : 
+      [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "-B",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_title_density.py",
+        "--executable",
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_footage_typography_raster"
+      ],
+      "config" : "Release",
+      "name" : "test_standalone_title_density",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "native",
+            "standalone",
+            "typography"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 90.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "command" : 
+      [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_header_material"
+      ],
+      "config" : "Release",
+      "name" : "test_standalone_header_material",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "geometry",
+            "material",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 180.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "backtrace" : 7,
+      "command" : 
+      [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "-B",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_header_statistics.py",
+        "--executable",
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_header_material",
+        "--timeout-seconds",
+        "20"
+      ],
+      "config" : "Release",
+      "name" : "test_standalone_header_statistics",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "material",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 90.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}

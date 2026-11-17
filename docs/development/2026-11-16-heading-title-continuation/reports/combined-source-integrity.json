@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "utc": "2026-11-17T07:08:36.933105+00:00",
+  "checked_staged_tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+  "base": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "exact_staged_archive": true,
+  "commands": [
+    {
+      "gate": "repository",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_repository.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 5.650339842999529,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-source-repository-integrity.log",
+      "bytes": 1170,
+      "sha256": "ff10986733c4c7d34ecf56671c5909ef0071e151163a57249d98e2433b7e4adf"
+    },
+    {
+      "gate": "session",
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-heading-title-continuation/check_session.py",
+        "--strict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.09363268300512573,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-source-session-integrity.log",
+      "bytes": 1222,
+      "sha256": "cee2198fb1b50a56d6c069a5c9187d327e79181cddc7c98214b4485fd1151627"
+    }
+  ],
+  "exact_source_delta": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49026,
+      "sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61268,
+      "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "bytes": 35747,
+      "sha256": "000aa38a03402e64a0bb5ef6642294973637fa0b7270659c8c23af60eaf40d18"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75580,
+      "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 24838,
+      "sha256": "d37591ec80910769d61f81cf90e7d937bf4844dcd307ae887ac5099c440a8a79"
+    },
+    "tests/test_compare_header_material.py": {
+      "bytes": 34446,
+      "sha256": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+    },
+    "tests/test_compare_performance_plate.py": {
+      "bytes": 53469,
+      "sha256": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 100851,
+      "sha256": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328"
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 90994,
+      "sha256": "d6fcd559d43cec25fb2d3157a9291cfe2608289465278a1e53c6da5ec2587ca5"
+    }
+  },
+  "source_paths_changed": 9,
+  "unchanged_base_paths": 7605,
+  "tested_source_equivalence": null,
+  "retained_evidence_whitespace_warning_count": 0,
+  "retained_evidence_whitespace_paths": [],
+  "whitespace_original": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-source-whitespace-original.log.gz",
+    "decoded": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "compressed": {
+      "bytes": 20,
+      "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    }
+  },
+  "free_disk_bytes": 42587734016,
+  "seconds": 14.098897868003405,
+  "native_tests_rerun": false,
+  "scope": "Exact-tree repository integrity and strict original 60-worker/ten-wave record consistency. Source/runtime qualification belongs to separately retained actual executions. No acceptance criterion or gate changed."
+}

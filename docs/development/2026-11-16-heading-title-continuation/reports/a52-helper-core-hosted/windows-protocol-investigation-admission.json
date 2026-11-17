@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "reviewer": "A52, wave 9; same accepted worker, no additional credit",
+  "decision": "admitted_for_one_bounded_original_source_windows_protocol_investigation",
+  "blocking_findings": [],
+  "decision_sequence": {
+    "no_blocker_decision_sent_before_branch_publication": true,
+    "prior_decision": "No blocking defect found in exact workflow 6a173d8368b16bbee939f284401a9a1da15bc9ab4edb457bac91c14f93e74d00.",
+    "formal_record_written_after_root_reported_branch_publication": true,
+    "root_reported_publication": {
+      "branch": "investigate/windows-copied-state-6287055",
+      "commit": "44a63d19aa7f3e705c7f434fa7b85233886c6d03",
+      "tree": "3a12455475d3a45097aba22638c4e10d0aabcfdf",
+      "parents": [
+        "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      ],
+      "main_unchanged": true,
+      "reviewer_independently_fetched_diagnostic_publication": false
+    },
+    "meaning": "This formalizes the workflow-byte admission already communicated before publication. It records no diagnostic execution or product qualification."
+  },
+  "workflow": {
+    "scratch_path": "/workspace/scratch/5a28c3564dbf/windows-copied-state-investigation.yml",
+    "bytes": 20167,
+    "sha256": "6a173d8368b16bbee939f284401a9a1da15bc9ab4edb457bac91c14f93e74d00",
+    "name": "Windows copied-state investigation",
+    "tested_source": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "tested_source_tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+    "tested_source_parent": "03c70c103a4a0dd72b323529416b909c19a4e139",
+    "trigger": {
+      "push_branches": [
+        "investigate/windows-copied-state-6287055"
+      ],
+      "pull_request": false,
+      "workflow_dispatch": false
+    },
+    "concurrency": {
+      "group": "windows-copied-state-investigation-${{ github.ref }}",
+      "cancel_in_progress": false
+    },
+    "permissions": {
+      "contents": "read"
+    },
+    "persist_checkout_credentials": false,
+    "runner": "windows-2022",
+    "architecture_request": "x64",
+    "generator": "Visual Studio 17 2022",
+    "configuration": "Release",
+    "job_timeout_minutes": 25,
+    "requested_midi": "ON",
+    "requested_midi_backend": "WinMM",
+    "python_request": "3.12",
+    "build_targets": [
+      "test_standalone_footage_typography_raster",
+      "test_standalone_header_material"
+    ],
+    "build_parallelism": 2,
+    "original_tests": [
+      "test_standalone_title_density",
+      "test_standalone_header_statistics"
+    ],
+    "ctest_parallelism": 1,
+    "ctest_fallback_timeout_seconds": 180,
+    "each_discovered_test_timeout_seconds": 90,
+    "ctest_repeat_or_retry": false,
+    "ctest_no_tests_error": true
+  },
+  "findings": [
+    {
+      "area": "Scope and missing evidence",
+      "finding": "The original Windows job compiled the helper-corrected fixture and completed 66 of 68 CTests. Both failures rejected copied-state protocol records before numerical evaluation. The retained logs identify the compound predicates but contain no actual native frame header from which to prove a mismatching leaf. Exact case0/case46 header acquisition addresses that concrete gap."
+    },
+    {
+      "area": "Separate execution identity",
+      "finding": "The workflow runs only on the dedicated investigation branch, has a distinct concurrency group with cancellation disabled, and explicitly checks out the immutable failed source. It records the checked-out source commit separately from GITHUB_SHA, the workflow-definition commit. The three existing product workflows restrict push events to main, so this branch push does not request their matrices."
+    },
+    {
+      "area": "Source and dependency preservation",
+      "finding": "Provenance checks HEAD against 6287055, requires no tracked diff and hashes tracked code/build/tool/data/workflow inputs before work. The unchanged repository acquisition tools verify locked SDL2 and RtMidi. Post-failure verification repeats both dependency checks and every recorded source hash, rechecks HEAD and the tracked diff. Source, test, oracle, CMake and production edits are absent from the reviewed workflow."
+    },
+    {
+      "area": "Configuration and build",
+      "finding": "The Windows configure argument list matches the original Windows job: Visual Studio 17 2022, x64, BUILD_TESTING ON, standalone ON, VST3 OFF, original Python path, pinned SDL2/RtMidi roots, MIDI ON and original install directories. Only the two existing fixture targets and their dependencies are built, in Release with parallelism two. Compiler identity files, CMake cache/configure log, verbose build output and required Windows/WASAPI/dummy SDL backend macros are retained. Actual runner/toolchain versions remain observations to compare, not assumed identical binaries."
+    },
+    {
+      "area": "Original test outcomes",
+      "finding": "CTest discovery requires exactly the two named tests, existing executable paths, original Python scripts/-B, no disabled tests, both TIMEOUT 90 properties and header's --timeout-seconds 20. The filtered CTest run retains the original Release, verbose, serial, no-tests=error and fallback-180 invocation. CMake's explicit 90-second properties remain controlling. There is one invocation, no repeat option and no oracle/deadline relaxation."
+    },
+    {
+      "area": "Failure propagation",
+      "finding": "The original-test step temporarily disables immediate shell exit only to preserve PIPESTATUS[0] in original-ctest-exit.txt, then exits with that exact CTest result. It is not marked continue-on-error. A reproduced failure therefore remains a failed step/job while later always-conditional acquisition and upload retain evidence."
+    },
+    {
+      "area": "Bounded native capture",
+      "finding": "Exactly two supplemental children are requested: footage --case 0 and header --case 46. The collector uses the unchanged readers' 20-second child deadline, five-second cleanup bounds, 64 KiB read chunks and original stdout/stderr caps. Both pipes are drained concurrently through the full bounded stream; capture does not close stdout at the first newline and thereby induce a broken pipe."
+    },
+    {
+      "area": "Raw evidence first",
+      "finding": "Each exact first line, including its newline when present, is persisted as -header.bin before JSON parsing or semantic validation; bounded stderr is persisted separately. Missing-newline captures retain a capped prefix and an explicit incomplete result. Receipts include return code, timeout/capture errors, lengths and SHA-256 values, executable size/hash, reader source hash, full-stream hash and RGBA-tail size/hash. No images are persisted."
+    },
+    {
+      "area": "Diagnostic comparisons",
+      "finding": "Additional parsed JSON and strict typed differences are derived from the unchanged reader's expected controls/session functions. Both original parse_frame functions are invoked unchanged and their success/error recorded. Those comparisons neither modify nor substitute the original predicates. Difference lists are bounded to 100 entries and are supplemental; exact raw headers are the authoritative acquired bytes."
+    },
+    {
+      "area": "Capture-step meaning",
+      "finding": "A successful capture step means that bounded native output and a header were acquired without process/stderr failures. It deliberately does not mean that the unchanged protocol parser or the numerical test passed. A protocol error is retained in the capture record; original CTest outcomes remain authoritative for the two checks."
+    },
+    {
+      "area": "Post-failure retention",
+      "finding": "Capture runs after successful discovery even if CTest fails; source/dependency rechecks run after successful dependency preparation even if later steps fail; artifact upload always runs and errors if no files exist. The artifact includes diagnostic files, CMake cache/configure log and original CTest logs. Missing preparation, incomplete capture, failed rechecks, cancellation or failed upload must remain unqualified, rather than inferred successful."
+    },
+    {
+      "area": "Claim boundary",
+      "finding": "This is one explicitly admitted new investigation using the old failed source, not a retry of the product workflow, a repaired source or product acceptance. Any pass is a separate source/runner observation and cannot erase the original Windows failures. The mismatching leaf and cause remain unestablished until the actual header evidence is inspected."
+    }
+  ],
+  "capture_limits": {
+    "title_case0": {
+      "case": 0,
+      "fixture_target": "test_standalone_footage_typography_raster",
+      "stdout_cap_bytes": 7146489,
+      "rgba_bytes": 6622200
+    },
+    "header_case46": {
+      "case": 46,
+      "fixture_target": "test_standalone_header_material",
+      "stdout_cap_bytes": 6817697,
+      "rgba_bytes": 6293408
+    },
+    "each": {
+      "native_timeout_seconds": 20,
+      "cleanup_timeout_seconds": 5,
+      "header_content_cap_bytes": 524288,
+      "maximum_persisted_header_bytes_including_newline": 524289,
+      "stderr_cap_bytes": 65536,
+      "read_chunk_bytes": 65536
+    },
+    "supplemental_native_invocations": 2,
+    "retained_images": 0,
+    "maximum_reported_strict_differences_per_capture": 100
+  },
+  "execution_constraints": [
+    "Root alone authors/publishes/executes the diagnostic workflow and retains the exact workflow/source/run/job/attempt identities.",
+    "Admission binds only the reviewed 20,167-byte workflow SHA; a changed workflow needs its affected scope reviewed.",
+    "Keep all source/tests/CMake/dependency locks, MSVC warning policy, fixed workload and original CTest/child deadlines unchanged.",
+    "Execute each selected original CTest once and each supplemental case once; no repeat-until-pass loop, re-run or extra exploratory case is admitted by this record.",
+    "Observe and retain both original test outcomes, exact raw headers, process errors, actual compiler/configuration and executable identities, and successful source/dependency postchecks before using the data.",
+    "Download and verify actual diagnostic artifact contents before claiming the missing header or any precise typed leaf has been observed; upload metadata alone is insufficient.",
+    "Compare original CTest executable identities with supplemental capture identities before attributing differences to one binary.",
+    "Keep raw bytes, derived parsed records and leaf differences distinguishable; a bounded difference list is not asserted exhaustive.",
+    "Any subsequent source/oracle correction requires an independent evidence-based admission and qualification at its own source. No correction is authorized here.",
+    "Do not reinterpret current Core/VST3 successes, the whole hosted aggregate, native fixtures or this investigation as literal whole-interface 1:1, hardware fidelity, device/accessibility, callback-deadline or signed-release acceptance."
+  ],
+  "actions_performed": {
+    "local_read_only_source_and_evidence_review": true,
+    "yaml_parse": true,
+    "bash_syntax_only": true,
+    "inline_python_ast_parse": true,
+    "project_builds": 0,
+    "native_executions": 0,
+    "test_executions": 0,
+    "workflow_reruns": 0,
+    "remote_mutations": 0,
+    "source_or_workflow_edits": 0,
+    "additional_workers": 0
+  },
+  "next_action": "Root observes the one separately published investigation. Preserve its actual outcomes, retrieve the bounded headers and compare the exact typed leaves. Decide any repair prospectively from that evidence; otherwise keep the two original failed gates open.",
+  "written_at": "2026-11-17T06:17:03.357634+00:00",
+  "original_failure_evidence": {
+    "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/windows-first-failure-retention.json",
+    "receipt_bytes": 5316,
+    "receipt_sha256": "3f7b2c721d227b0e9dec74f6efff21e67d8fd1105863f0e448430b910f3762a7",
+    "source_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "run_id": 44026516737,
+    "attempt": 1,
+    "job_id": 133848047271,
+    "complete_log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-complete.log.gz",
+      "stored": {
+        "bytes": 84844,
+        "sha256": "540f8d3bd1c58eb94ae58426efd7eb771a9af695791913213d1c865e6c15f008"
+      },
+      "decoded": {
+        "bytes": 605930,
+        "sha256": "285945725cd6b549ab7c942a99f7e8a951debed844b62b2e6eb1abb61dd09517"
+      },
+      "CRLF_sequences": 4281,
+      "LF_sequences": 4293
+    },
+    "complete_log_and_four_original_blocks_independently_verified": true,
+    "failures": [
+      {
+        "test": "test_standalone_title_density",
+        "number": 218,
+        "seconds": 0.23,
+        "error": "copied view controls differs",
+        "validated_inventory_cases": 44,
+        "completed_cases": 0
+      },
+      {
+        "test": "test_standalone_header_statistics",
+        "number": 221,
+        "seconds": 0.44,
+        "error": "complete canonical copied session differs",
+        "native_invocations": 1,
+        "numerical_evaluated": 0,
+        "numerical_passed": 0,
+        "numerical_failed": 0
+      }
+    ],
+    "ctest": {
+      "passed": 66,
+      "failed": 2,
+      "total": 68,
+      "seconds": 465.15,
+      "exit_code": 8
+    },
+    "source_reverification": "skipped",
+    "workflow_packaging": "skipped",
+    "actual_mismatching_leaf_observed": false,
+    "cause_established": false
+  },
+  "independently_read_source_identities": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_title_density.py",
+      "bytes": 23467,
+      "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2",
+      "byte_identical_to_failed_commit": true
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+      "byte_identical_to_failed_commit": true
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+      "bytes": 49033,
+      "sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+      "byte_identical_to_failed_commit": true
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61275,
+      "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+      "byte_identical_to_failed_commit": true
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+      "byte_identical_to_failed_commit": true
+    },
+    {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 71269,
+      "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319",
+      "byte_identical_to_failed_commit": true
+    }
+  ],
+  "static_verification": {
+    "workflow_bytes": 20167,
+    "workflow_sha256": "6a173d8368b16bbee939f284401a9a1da15bc9ab4edb457bac91c14f93e74d00",
+    "jobs": 1,
+    "bash_syntax_checked_without_execution": 8,
+    "inline_python_parsed_without_execution": [
+      {
+        "step": "Bind original source and investigation provenance",
+        "bytes": 1376,
+        "sha256": "4f919f58bd35ce26072edd79fc5a9cfbac4a5b5081bbcbc03fa6cd4771f44e90",
+        "nodes": 242
+      },
+      {
+        "step": "Verify original test commands and deadlines and compiler identities",
+        "bytes": 2076,
+        "sha256": "91c5b7fdfc18b115eb0cdd85af24362ec790f79c339b9c974a362294382a3678",
+        "nodes": 467
+      },
+      {
+        "step": "Capture original raw case headers despite failed semantic validation",
+        "bytes": 7867,
+        "sha256": "e9bd8ed0ddb41993b09f3b6e76dad67bfe1fb3c83604775b40bf3e557e2e1d47",
+        "nodes": 1511
+      },
+      {
+        "step": "Reverify original source and dependencies even after test failure",
+        "bytes": 1009,
+        "sha256": "7a9a82c92ee67cc6838e2c356017c475aac5dc7f646311daffe8f167cdc55290",
+        "nodes": 218
+      }
+    ],
+    "trigger_and_concurrency_verified": true
+  },
+  "preservation": {
+    "previously_frozen_files_checked": 91,
+    "changed_files": [],
+    "all_prior_scoped_files_unchanged": true,
+    "prior_file_manifest_canonical_sha256": "8010c130790817e679153c33c04a7d3fb459a459b6f699f42e2ebbb934aa2543",
+    "accepted_A52_note_sha256": "d2f1a24a5a242c8753773f765d557579e2f148751c4379149b5156065b1735e1",
+    "frozen_helper_core_report_sha256": "dcaea8f424957b5001b665146379d44d40bd2593770bb5ccbc50bc8be9295052",
+    "frozen_helper_core_review_sha256": "066a4b225d475b520c9ea944e8278e4de54056b8eb55dd98c4fab21ae01b9534"
+  }
+}

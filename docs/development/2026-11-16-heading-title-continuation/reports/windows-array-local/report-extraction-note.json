@@ -1,0 +1,8 @@
+{
+  "original_test_run_exit": 0,
+  "affected_tests": 4,
+  "postprocessing_first_attempt": "The after-capture report reader attempted to decode JUnit system-out, which CTest truncated to1024bytes for two passing tests, and raised JSONDecodeError. Both after captures and all four real CTests had already completed successfully.",
+  "correction": "Decode the four complete JSON reports from the retained verbose CTest log, using the unchanged XML only for test identities, status and durations.",
+  "additional_native_or_ctest_executions": 0,
+  "complete_log_sha256": "ca157e9e6607df86cabcba330a1e9245b43c93adb19397e877d1c851d0f53fe0"
+}

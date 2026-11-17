@@ -1,0 +1,1465 @@
+{
+  "schema_version": 1,
+  "reviewer": "A52, wave 9; same accepted worker helper-source follow-up",
+  "status": "completed_all_six_helper_core_families",
+  "completed_at": "2026-11-17T06:00:59.846727+00:00",
+  "source_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+  "source_tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+  "parents": [
+    "03c70c103a4a0dd72b323529416b909c19a4e139"
+  ],
+  "publication_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/helper-branch-publication.json",
+  "independent_source_evidence": {
+    "git_commit_api_verified": true,
+    "exact_source_workflow_fetched": true,
+    "all_six_job_head_shas_match": true,
+    "actual_revision_stdout_in_every_complete_log": true
+  },
+  "run": {
+    "id": 44026516631,
+    "name": "CI",
+    "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "run_attempt": 1,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "path": ".github/workflows/ci.yml",
+    "created_at": "2026-11-17T05:47:11Z",
+    "updated_at": "2026-11-17T05:58:53Z",
+    "run_started_at": "2026-11-17T05:47:11Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631"
+  },
+  "run_id": 44026516631,
+  "run_attempt": 1,
+  "final_api_observation": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-attempt1-final.json",
+  "initial_api_observation": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-attempt1-initial.json",
+  "aggregate": {
+    "required_jobs": 6,
+    "success": 6,
+    "failure": 0,
+    "cancelled": 0,
+    "unassigned": 0,
+    "ctest_jobs": 5,
+    "ctests_per_job": 202,
+    "same_202_distinct_names_across_all_five": true,
+    "required_names_per_ctest_job": 12,
+    "full_r4_status": "pass",
+    "full_r4_wall_seconds": 613.307703575,
+    "full_r4_failures": [],
+    "report_admission_self_tests": 14
+  },
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "bytes": 20374,
+    "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+    "git_blob": "295897e4b960f0fdc7fe55ba55e6cad5e23c2501",
+    "fetched_helper_equals_local_and_both_prior_workflows": true
+  },
+  "required_registration_apron_tests": [
+    "test_control_file_input",
+    "test_standalone_registration_library",
+    "python_test_registration_cli",
+    "python_test_registration_cli_admission",
+    "python_test_render_controls",
+    "python_test_render_controls_admission",
+    "python_test_starter_registration_generator",
+    "python_test_starter_registration_oracle",
+    "python_test_starter_auditions",
+    "python_test_registration_install",
+    "python_test_reference_apron_art",
+    "python_test_reference_apron_raster_checker"
+  ],
+  "jobs": [
+    {
+      "id": 133848046591,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "run_id": 44026516631,
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T05:47:14Z",
+      "completed_at": "2026-11-17T05:57:53Z",
+      "runner_id": 1000001413,
+      "runner_name": "GitHub Actions 1000001413",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/job/133848046591",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:14Z",
+          "completed_at": "2026-11-17T05:47:15Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:15Z",
+          "completed_at": "2026-11-17T05:47:21Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:21Z",
+          "completed_at": "2026-11-17T05:47:21Z"
+        },
+        {
+          "name": "Record source and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:21Z",
+          "completed_at": "2026-11-17T05:47:22Z"
+        },
+        {
+          "name": "Configure the independent core qualification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:22Z",
+          "completed_at": "2026-11-17T05:47:23Z"
+        },
+        {
+          "name": "Require strict report admission",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:23Z",
+          "completed_at": "2026-11-17T05:47:25Z"
+        },
+        {
+          "name": "Build and run all full waveform experiments",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:25Z",
+          "completed_at": "2026-11-17T05:57:51Z"
+        },
+        {
+          "name": "Retain exact complete waveform evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:57:51Z",
+          "completed_at": "2026-11-17T05:57:52Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T05:57:52Z",
+          "completed_at": "2026-11-17T05:57:52Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-17T05:57:52Z",
+          "completed_at": "2026-11-17T05:57:52Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-17T05:57:52Z",
+          "completed_at": "2026-11-17T05:57:52Z"
+        }
+      ],
+      "summary": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046591.summary.json",
+      "summary_sha256": "f32d186903641c9ed7eec00b060f7acab4e5557bca674021fa70a13ef7443bf4",
+      "toolchain": [
+        {
+          "line": 195,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 198,
+          "text": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+        },
+        {
+          "line": 203,
+          "text": "Python 3.12.16"
+        },
+        {
+          "line": 223,
+          "text": "-- The CXX compiler identification is GNU 13.3.0"
+        }
+      ],
+      "source_revision_stdout_count": 3,
+      "decoded_complete_log": {
+        "bytes": 67950,
+        "characters": 67948,
+        "lines": 482,
+        "sha256": "b7d9e9479f5e70335a376dbfdd9f022e8cc00a640ab5cd027cdc08f6dac9a1eb",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046591.log.gz",
+        "compressed_bytes": 10804,
+        "compressed_sha256": "0bad0102a7c81f60075aa87180e93505ded3bc5d7002bcf3d0a35ef6c5994429",
+        "round_trip_verified": true
+      },
+      "uploaded_artifact": {
+        "id": 14303582890,
+        "name": "rotary-waveform-full-linux-1",
+        "bytes": 111747,
+        "sha256": "266ab25afd9f6ae6ea912a117694977d014f9708a08c7696a7144516bd4882a0",
+        "metadata_matches_api": true,
+        "body_independently_downloaded": false,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/artifacts/14303582890"
+      },
+      "ctest_count": 0,
+      "ctest_nonpassing": 0,
+      "required_names_observed": [],
+      "required_names_missing": [],
+      "summary_lines": [
+        {
+          "line": 266,
+          "text": "Ran 14 tests in 0.463s"
+        },
+        {
+          "line": 268,
+          "text": "OK"
+        }
+      ],
+      "full_waveform_result": {
+        "line": 420,
+        "status": "pass",
+        "mode": "full",
+        "qualification_json": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T054737.902247Z-a72a8dd7/qualification.json",
+        "wall_seconds": 613.307703575,
+        "failures": []
+      },
+      "report_admission_self_test": {
+        "methods": 14,
+        "seconds": 0.463,
+        "result": "OK"
+      }
+    },
+    {
+      "id": 133848046893,
+      "name": "Release (macOS Intel AppleClang)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "run_id": 44026516631,
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T05:47:15Z",
+      "completed_at": "2026-11-17T05:57:34Z",
+      "runner_id": 1000001414,
+      "runner_name": "GitHub Actions 1000001414",
+      "labels": [
+        "macos-15-intel"
+      ],
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/job/133848046893",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:16Z",
+          "completed_at": "2026-11-17T05:47:19Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:19Z",
+          "completed_at": "2026-11-17T05:47:31Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:31Z",
+          "completed_at": "2026-11-17T05:47:32Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:32Z",
+          "completed_at": "2026-11-17T05:47:33Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:33Z",
+          "completed_at": "2026-11-17T05:47:46Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:46Z",
+          "completed_at": "2026-11-17T05:47:46Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:46Z",
+          "completed_at": "2026-11-17T05:52:25Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:52:25Z",
+          "completed_at": "2026-11-17T05:52:25Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:52:25Z",
+          "completed_at": "2026-11-17T05:57:28Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-17T05:57:28Z",
+          "completed_at": "2026-11-17T05:57:28Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-17T05:57:28Z",
+          "completed_at": "2026-11-17T05:57:28Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-11-17T05:57:28Z",
+          "completed_at": "2026-11-17T05:57:28Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-11-17T05:57:28Z",
+          "completed_at": "2026-11-17T05:57:28Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-11-17T05:57:28Z",
+          "completed_at": "2026-11-17T05:57:28Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T05:57:28Z",
+          "completed_at": "2026-11-17T05:57:30Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T05:57:30Z",
+          "completed_at": "2026-11-17T05:57:30Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T05:57:30Z",
+          "completed_at": "2026-11-17T05:57:31Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T05:57:31Z",
+          "completed_at": "2026-11-17T05:57:31Z"
+        }
+      ],
+      "summary": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046893.summary.json",
+      "summary_sha256": "afc1676e273542a81ce340ab6f18432d97909076630c109d6da91be57c4c54dc",
+      "toolchain": [
+        {
+          "line": 267,
+          "text": "cmake version 4.4.2"
+        },
+        {
+          "line": 270,
+          "text": "ctest version 4.4.2"
+        },
+        {
+          "line": 273,
+          "text": "Python 3.12.10"
+        },
+        {
+          "line": 274,
+          "text": "macOS-15.7.9-x86_64-i386-64bit"
+        },
+        {
+          "line": 275,
+          "text": "x86_64"
+        },
+        {
+          "line": 292,
+          "text": "-- The CXX compiler identification is AppleClang 17.0.0.17000013"
+        }
+      ],
+      "source_revision_stdout_count": 3,
+      "decoded_complete_log": {
+        "bytes": 407772,
+        "characters": 407770,
+        "lines": 2036,
+        "sha256": "4d45c546a89410cd635c7e023b0396efd4ab8ff1f49307361eccb845a59f77c8",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046893.log.gz",
+        "compressed_bytes": 37944,
+        "compressed_sha256": "a98f311cc47f9ec78968a8c8c4792eadb6da08ecc53a7eaab307e7e0742eeb6a",
+        "round_trip_verified": true
+      },
+      "uploaded_artifact": {
+        "id": 14303971933,
+        "name": "ci-macos-15-intel-release-1",
+        "bytes": 153735,
+        "sha256": "e26616f3cd0f5f277a52204da59a1cf8ce4f9ea505d4206c4768deb429d68632",
+        "metadata_matches_api": true,
+        "body_independently_downloaded": false,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/artifacts/14303971933"
+      },
+      "ctest_count": 202,
+      "ctest_nonpassing": 0,
+      "required_names_observed": [
+        "python_test_reference_apron_art",
+        "python_test_reference_apron_raster_checker",
+        "python_test_registration_cli",
+        "python_test_registration_cli_admission",
+        "python_test_registration_install",
+        "python_test_render_controls",
+        "python_test_render_controls_admission",
+        "python_test_starter_auditions",
+        "python_test_starter_registration_generator",
+        "python_test_starter_registration_oracle",
+        "test_control_file_input",
+        "test_standalone_registration_library"
+      ],
+      "required_names_missing": [],
+      "summary_lines": [
+        {
+          "line": 1944,
+          "text": "100% tests passed out of 202"
+        },
+        {
+          "line": 1977,
+          "text": "Total Test time (real) = 302.72 sec"
+        }
+      ]
+    },
+    {
+      "id": 133848046977,
+      "name": "Release (macOS AppleClang)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "run_id": 44026516631,
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T05:47:15Z",
+      "completed_at": "2026-11-17T05:51:13Z",
+      "runner_id": 1000001422,
+      "runner_name": "GitHub Actions 1000001422",
+      "labels": [
+        "macos-15"
+      ],
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/job/133848046977",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:15Z",
+          "completed_at": "2026-11-17T05:47:17Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:17Z",
+          "completed_at": "2026-11-17T05:47:26Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:26Z",
+          "completed_at": "2026-11-17T05:47:27Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:27Z",
+          "completed_at": "2026-11-17T05:47:27Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:27Z",
+          "completed_at": "2026-11-17T05:47:31Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:31Z",
+          "completed_at": "2026-11-17T05:47:31Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:31Z",
+          "completed_at": "2026-11-17T05:48:53Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:48:53Z",
+          "completed_at": "2026-11-17T05:48:54Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:48:54Z",
+          "completed_at": "2026-11-17T05:51:09Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-17T05:51:09Z",
+          "completed_at": "2026-11-17T05:51:09Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-17T05:51:09Z",
+          "completed_at": "2026-11-17T05:51:09Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-11-17T05:51:09Z",
+          "completed_at": "2026-11-17T05:51:09Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-11-17T05:51:09Z",
+          "completed_at": "2026-11-17T05:51:09Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-11-17T05:51:09Z",
+          "completed_at": "2026-11-17T05:51:09Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T05:51:09Z",
+          "completed_at": "2026-11-17T05:51:10Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T05:51:10Z",
+          "completed_at": "2026-11-17T05:51:11Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T05:51:11Z",
+          "completed_at": "2026-11-17T05:51:11Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T05:51:11Z",
+          "completed_at": "2026-11-17T05:51:12Z"
+        }
+      ],
+      "summary": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046977.summary.json",
+      "summary_sha256": "14b937da78f351bf474b6cdeee62fa027c5c28b9e26613d52587e2d7edeb8336",
+      "toolchain": [
+        {
+          "line": 225,
+          "text": "cmake version 4.4.5"
+        },
+        {
+          "line": 228,
+          "text": "ctest version 4.4.5"
+        },
+        {
+          "line": 231,
+          "text": "Python 3.12.10"
+        },
+        {
+          "line": 232,
+          "text": "macOS-15.8.2-arm64-arm-64bit"
+        },
+        {
+          "line": 233,
+          "text": "arm64"
+        },
+        {
+          "line": 250,
+          "text": "-- The CXX compiler identification is AppleClang 17.0.0.17000013"
+        }
+      ],
+      "source_revision_stdout_count": 3,
+      "decoded_complete_log": {
+        "bytes": 409309,
+        "characters": 409307,
+        "lines": 1994,
+        "sha256": "9ee134a823f33c9e1162e131fe8fd97c71df88c26a5a4c19f9ef49d3a87abe1e",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046977.log.gz",
+        "compressed_bytes": 36676,
+        "compressed_sha256": "2e4c881f73831063fd5254c83411485c1e97f84ba730a286029b519c66aacadd",
+        "round_trip_verified": true
+      },
+      "uploaded_artifact": {
+        "id": 14303591406,
+        "name": "ci-macos-15-release-1",
+        "bytes": 149103,
+        "sha256": "755e74b528fd73e2b9336564e15b16eb552b33bdf87e4f50acd93dde1582294b",
+        "metadata_matches_api": true,
+        "body_independently_downloaded": false,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/artifacts/14303591406"
+      },
+      "ctest_count": 202,
+      "ctest_nonpassing": 0,
+      "required_names_observed": [
+        "python_test_reference_apron_art",
+        "python_test_reference_apron_raster_checker",
+        "python_test_registration_cli",
+        "python_test_registration_cli_admission",
+        "python_test_registration_install",
+        "python_test_render_controls",
+        "python_test_render_controls_admission",
+        "python_test_starter_auditions",
+        "python_test_starter_registration_generator",
+        "python_test_starter_registration_oracle",
+        "test_control_file_input",
+        "test_standalone_registration_library"
+      ],
+      "required_names_missing": [],
+      "summary_lines": [
+        {
+          "line": 1902,
+          "text": "100% tests passed out of 202"
+        },
+        {
+          "line": 1935,
+          "text": "Total Test time (real) = 134.99 sec"
+        }
+      ]
+    },
+    {
+      "id": 133848046993,
+      "name": "Release (Windows MSVC)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "run_id": 44026516631,
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T05:47:14Z",
+      "completed_at": "2026-11-17T05:58:52Z",
+      "runner_id": 1000001416,
+      "runner_name": "GitHub Actions 1000001416",
+      "labels": [
+        "windows-2022"
+      ],
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/job/133848046993",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:15Z",
+          "completed_at": "2026-11-17T05:47:16Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:16Z",
+          "completed_at": "2026-11-17T05:47:28Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:28Z",
+          "completed_at": "2026-11-17T05:47:29Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:29Z",
+          "completed_at": "2026-11-17T05:47:31Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:31Z",
+          "completed_at": "2026-11-17T05:47:31Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:31Z",
+          "completed_at": "2026-11-17T05:47:48Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:48Z",
+          "completed_at": "2026-11-17T05:51:51Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:51:51Z",
+          "completed_at": "2026-11-17T05:51:51Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:51:51Z",
+          "completed_at": "2026-11-17T05:57:34Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-17T05:57:34Z",
+          "completed_at": "2026-11-17T05:57:34Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T05:57:34Z",
+          "completed_at": "2026-11-17T05:58:47Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-11-17T05:58:47Z",
+          "completed_at": "2026-11-17T05:58:47Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-11-17T05:58:47Z",
+          "completed_at": "2026-11-17T05:58:47Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-11-17T05:58:47Z",
+          "completed_at": "2026-11-17T05:58:47Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T05:58:47Z",
+          "completed_at": "2026-11-17T05:58:48Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T05:58:48Z",
+          "completed_at": "2026-11-17T05:58:48Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T05:58:48Z",
+          "completed_at": "2026-11-17T05:58:50Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T05:58:50Z",
+          "completed_at": "2026-11-17T05:58:50Z"
+        }
+      ],
+      "summary": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046993.summary.json",
+      "summary_sha256": "fa784ba9c571752e9c5726a6c3190c0710b9e3759055df24ee9cdf594b6ed289",
+      "toolchain": [
+        {
+          "line": 232,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 235,
+          "text": "ctest version 3.31.6"
+        },
+        {
+          "line": 238,
+          "text": "Python 3.12.10"
+        },
+        {
+          "line": 239,
+          "text": "Windows-2022Server-10.0.20348-SP0"
+        },
+        {
+          "line": 240,
+          "text": "AMD64"
+        },
+        {
+          "line": 261,
+          "text": "-- The CXX compiler identification is MSVC 19.44.35230.0"
+        },
+        {
+          "line": 3537,
+          "text": "-- The CXX compiler identification is MSVC 19.44.35230.0"
+        }
+      ],
+      "source_revision_stdout_count": 3,
+      "decoded_complete_log": {
+        "bytes": 599840,
+        "characters": 599358,
+        "lines": 3870,
+        "sha256": "a3d4bd5eb1f1cba0dc508b788f55594b7284fb2b57158eefbfdf7bcec767f819",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848046993.log.gz",
+        "compressed_bytes": 65471,
+        "compressed_sha256": "16e513b9b684e12d68dff7a41e6afb459f3975ac72dcb61ba57773a83ec1c5d1",
+        "round_trip_verified": true
+      },
+      "uploaded_artifact": {
+        "id": 14303458051,
+        "name": "ci-windows-2022-release-1",
+        "bytes": 160454,
+        "sha256": "5b6d1fe5b2c106ed6bd2006de5114aea3c29dc9e0fd3cf48072c04325b4e794a",
+        "metadata_matches_api": true,
+        "body_independently_downloaded": false,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/artifacts/14303458051"
+      },
+      "ctest_count": 202,
+      "ctest_nonpassing": 0,
+      "required_names_observed": [
+        "python_test_reference_apron_art",
+        "python_test_reference_apron_raster_checker",
+        "python_test_registration_cli",
+        "python_test_registration_cli_admission",
+        "python_test_registration_install",
+        "python_test_render_controls",
+        "python_test_render_controls_admission",
+        "python_test_starter_auditions",
+        "python_test_starter_registration_generator",
+        "python_test_starter_registration_oracle",
+        "test_control_file_input",
+        "test_standalone_registration_library"
+      ],
+      "required_names_missing": [],
+      "summary_lines": [
+        {
+          "line": 3388,
+          "text": "100% tests passed, 0 tests failed out of 202"
+        },
+        {
+          "line": 3421,
+          "text": "Total Test time (real) = 343.24 sec"
+        }
+      ],
+      "windows_unicode_generator": {
+        "files_saved": 24,
+        "complete_attempted": 24,
+        "complete_committed": 24,
+        "protected_attempted": 0,
+        "protected_committed": 0,
+        "actual_utf8_unicode_source_compile_observed": true,
+        "detailed_payload_hash_artifact_independently_read": false
+      }
+    },
+    {
+      "id": 133848047021,
+      "name": "Release (Linux GCC)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "run_id": 44026516631,
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T05:47:15Z",
+      "completed_at": "2026-11-17T05:51:04Z",
+      "runner_id": 1000001418,
+      "runner_name": "GitHub Actions 1000001418",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/job/133848047021",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:16Z",
+          "completed_at": "2026-11-17T05:47:18Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:18Z",
+          "completed_at": "2026-11-17T05:47:28Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:28Z",
+          "completed_at": "2026-11-17T05:47:28Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:28Z",
+          "completed_at": "2026-11-17T05:47:31Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:31Z",
+          "completed_at": "2026-11-17T05:47:34Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:34Z",
+          "completed_at": "2026-11-17T05:47:34Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:34Z",
+          "completed_at": "2026-11-17T05:49:07Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:49:07Z",
+          "completed_at": "2026-11-17T05:49:08Z"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:49:08Z",
+          "completed_at": "2026-11-17T05:50:56Z"
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T05:50:56Z",
+          "completed_at": "2026-11-17T05:50:58Z"
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-17T05:50:58Z",
+          "completed_at": "2026-11-17T05:50:58Z"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T05:50:58Z",
+          "completed_at": "2026-11-17T05:50:58Z"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-17T05:50:58Z",
+          "completed_at": "2026-11-17T05:50:58Z"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-17T05:50:58Z",
+          "completed_at": "2026-11-17T05:50:58Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T05:50:58Z",
+          "completed_at": "2026-11-17T05:51:01Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-11-17T05:51:01Z",
+          "completed_at": "2026-11-17T05:51:01Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-11-17T05:51:01Z",
+          "completed_at": "2026-11-17T05:51:01Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-11-17T05:51:01Z",
+          "completed_at": "2026-11-17T05:51:01Z"
+        }
+      ],
+      "summary": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848047021.summary.json",
+      "summary_sha256": "98a61fc577ddb74dd0ba492d874913347beb724a800332ac42abeccdafbb8633",
+      "toolchain": [
+        {
+          "line": 200,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 203,
+          "text": "ctest version 3.31.6"
+        },
+        {
+          "line": 206,
+          "text": "Python 3.12.16"
+        },
+        {
+          "line": 207,
+          "text": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39"
+        },
+        {
+          "line": 208,
+          "text": "x86_64"
+        },
+        {
+          "line": 231,
+          "text": "-- The CXX compiler identification is GNU 13.3.0"
+        }
+      ],
+      "source_revision_stdout_count": 3,
+      "decoded_complete_log": {
+        "bytes": 670953,
+        "characters": 670951,
+        "lines": 6018,
+        "sha256": "603df4f9c23880edba9639e47d8ebe4804aee6e703efa4a7c823eeb40bd11d4a",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848047021.log.gz",
+        "compressed_bytes": 78568,
+        "compressed_sha256": "04fa92ee6be6017fae160375fbc1925573d8584b4b9b4321434c84f7ed64c5c8",
+        "round_trip_verified": true
+      },
+      "uploaded_artifact": {
+        "id": 14303606710,
+        "name": "ci-ubuntu-24.04-release-1",
+        "bytes": 169852,
+        "sha256": "c702f771e4c4eab61fcdbedaf187b249906972fa1a4eaafd9260f6b78c01e0a6",
+        "metadata_matches_api": true,
+        "body_independently_downloaded": false,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/artifacts/14303606710"
+      },
+      "ctest_count": 202,
+      "ctest_nonpassing": 0,
+      "required_names_observed": [
+        "python_test_reference_apron_art",
+        "python_test_reference_apron_raster_checker",
+        "python_test_registration_cli",
+        "python_test_registration_cli_admission",
+        "python_test_registration_install",
+        "python_test_render_controls",
+        "python_test_render_controls_admission",
+        "python_test_starter_auditions",
+        "python_test_starter_registration_generator",
+        "python_test_starter_registration_oracle",
+        "test_control_file_input",
+        "test_standalone_registration_library"
+      ],
+      "required_names_missing": [],
+      "summary_lines": [
+        {
+          "line": 2374,
+          "text": "100% tests passed, 0 tests failed out of 202"
+        },
+        {
+          "line": 2407,
+          "text": "Total Test time (real) = 108.01 sec"
+        },
+        {
+          "line": 2452,
+          "text": "Ran 25 tests in 2.075s"
+        },
+        {
+          "line": 2454,
+          "text": "OK (skipped=6)"
+        },
+        {
+          "line": 2471,
+          "text": "Ran 14 tests in 0.287s"
+        },
+        {
+          "line": 2473,
+          "text": "OK (skipped=2)"
+        }
+      ],
+      "optional_skips": {
+        "Pillow": 6,
+        "NumPy": 2,
+        "scope": "Separate standard-library-only suites; optional pixel/source decode methods are explicitly skipped."
+      }
+    },
+    {
+      "id": 133848047047,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "run_id": 44026516631,
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T05:47:15Z",
+      "completed_at": "2026-11-17T05:53:43Z",
+      "runner_id": 1000001424,
+      "runner_name": "GitHub Actions 1000001424",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/job/133848047047",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:16Z",
+          "completed_at": "2026-11-17T05:47:18Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:18Z",
+          "completed_at": "2026-11-17T05:47:32Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:32Z",
+          "completed_at": "2026-11-17T05:47:32Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:32Z",
+          "completed_at": "2026-11-17T05:47:35Z"
+        },
+        {
+          "name": "Configure Debug with ASan and UBSan",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:35Z",
+          "completed_at": "2026-11-17T05:47:39Z"
+        },
+        {
+          "name": "Build with sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:39Z",
+          "completed_at": "2026-11-17T05:49:12Z"
+        },
+        {
+          "name": "Require registration and apron tools in the full sanitizer test inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T05:49:12Z",
+          "completed_at": "2026-11-17T05:49:12Z"
+        },
+        {
+          "name": "Run every registered test with leak checking",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:49:12Z",
+          "completed_at": "2026-11-17T05:53:37Z"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:53:37Z",
+          "completed_at": "2026-11-17T05:53:40Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-17T05:53:40Z",
+          "completed_at": "2026-11-17T05:53:40Z"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-17T05:53:40Z",
+          "completed_at": "2026-11-17T05:53:40Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-17T05:53:40Z",
+          "completed_at": "2026-11-17T05:53:40Z"
+        }
+      ],
+      "summary": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848047047.summary.json",
+      "summary_sha256": "b1a89df005691534672626fc4df44a96b4f8ff09f32d5b5b1a01b5ead7ce30cc",
+      "toolchain": [
+        {
+          "line": 209,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 212,
+          "text": "ctest version 3.31.6"
+        },
+        {
+          "line": 215,
+          "text": "Python 3.12.16"
+        },
+        {
+          "line": 216,
+          "text": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+        },
+        {
+          "line": 246,
+          "text": "-- The CXX compiler identification is GNU 13.3.0"
+        }
+      ],
+      "source_revision_stdout_count": 3,
+      "decoded_complete_log": {
+        "bytes": 463689,
+        "characters": 463687,
+        "lines": 2495,
+        "sha256": "49de0ef2678d7754d8526e797543b92c4bd26c098600ba2a70864d0b6f202754",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-job-133848047047.log.gz",
+        "compressed_bytes": 41750,
+        "compressed_sha256": "7eedaf47ea2e561016bab95182fabfa4d4ae24ed5ec9c65602b46ae0d1d1ea4f",
+        "round_trip_verified": true
+      },
+      "uploaded_artifact": {
+        "id": 14304205487,
+        "name": "ci-linux-gcc-sanitizers-1",
+        "bytes": 150587,
+        "sha256": "4cc53a3ae4ad31785c3b30b4fa50036516c224c0590c44f3acad37c4008fc460",
+        "metadata_matches_api": true,
+        "body_independently_downloaded": false,
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631/artifacts/14304205487"
+      },
+      "ctest_count": 202,
+      "ctest_nonpassing": 0,
+      "required_names_observed": [
+        "python_test_reference_apron_art",
+        "python_test_reference_apron_raster_checker",
+        "python_test_registration_cli",
+        "python_test_registration_cli_admission",
+        "python_test_registration_install",
+        "python_test_render_controls",
+        "python_test_render_controls_admission",
+        "python_test_starter_auditions",
+        "python_test_starter_registration_generator",
+        "python_test_starter_registration_oracle",
+        "test_control_file_input",
+        "test_standalone_registration_library"
+      ],
+      "required_names_missing": [],
+      "summary_lines": [
+        {
+          "line": 2400,
+          "text": "100% tests passed, 0 tests failed out of 202"
+        },
+        {
+          "line": 2433,
+          "text": "Total Test time (real) = 265.43 sec"
+        }
+      ],
+      "sanitizer_instrumentation_and_executed_environment_verified": true
+    }
+  ],
+  "sanitizer_policy": {
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23"
+  },
+  "sanitizer_evidence": "Actual GNU compile/link instrumentation and all three policies in the executed unfiltered 202-test step; no reported sanitizer failure. Core sanitizer evidence is separate from standalone sanitizer evidence.",
+  "architecture_scope": "All four Release jobs print actual machine architecture. Dedicated Linux sanitizer/R4 jobs print compiler identity and x64 Python locations but do not separately print machine architecture; no unsupported machine observation is claimed for those two.",
+  "artifacts": {
+    "metadata_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/core-6287055-artifacts-metadata.json",
+    "count": 6,
+    "all_log_ids_sizes_and_digests_match_api": true,
+    "bodies_independently_downloaded": false
+  },
+  "retention": {
+    "complete_decoded_job_logs": 6,
+    "decoded_utf8_bytes": 2619513,
+    "deterministic_gzip_bytes": 271213,
+    "zero_mtime_no_original_filename": true,
+    "all_decompression_hashes_verified": true
+  },
+  "preserved_originals": {
+    "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/preservation-verification.json",
+    "files_verified": 63,
+    "all_byte_identical": true,
+    "accepted_A52_note_sha256": "d2f1a24a5a242c8753773f765d557579e2f148751c4379149b5156065b1735e1"
+  },
+  "actions_performed": {
+    "read_only_github_metadata_and_logs": true,
+    "local_analysis_and_owned_reports": true,
+    "builds": 0,
+    "native_runs": 0,
+    "workflow_reruns": 0,
+    "remote_mutations": 0,
+    "additional_workers": 0
+  },
+  "limits": [
+    "Qualification belongs only to 6287055a111dc4e2747564da3d48edc9b65e2e3e, run 44026516631 attempt 1. Future documentation/evidence commits are not automatically qualified.",
+    "The five platform/configuration CTest jobs repeat 202 test names; this is not 1010 distinct tests.",
+    "Linux standard-library-only suites retain six optional Pillow and two optional NumPy skips.",
+    "Detailed uploaded artifact bodies were not downloaded; no unobserved per-experiment numerical or payload-hash-content claims are made.",
+    "Core does not qualify the standalone Windows fixture or standalone sanitizer job; those and VST3 retain their own reviewers and results.",
+    "Both earlier Core qualifications, original standalone Windows failures/cancellation, the 03c70c1 Intel preset timeout, original local 240/242 and three separate diagnostics remain unchanged. The helper correction is not claimed as a preset timing fix.",
+    "Physical Hammond/Leslie fidelity, connected model integration, devices/DAWs, callback deadlines, native accessibility, release and literal whole-interface 1:1 remain separately open."
+  ]
+}
