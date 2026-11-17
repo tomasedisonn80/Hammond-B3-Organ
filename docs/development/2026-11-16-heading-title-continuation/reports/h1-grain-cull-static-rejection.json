@@ -1,0 +1,289 @@
+{
+  "schema": 1,
+  "finding": "field-only empty-intersection earlyreturn skips admitted minimum-one-pixel grain at small positive renderer scales",
+  "source_sha256": "0385765af919cac92e334d103f02c0f342cbf2fbd6060ca71a1a715ec7cdcb16",
+  "source_saved": "docs/development/2026-11-16-heading-title-continuation/inputs/InstrumentView-h1-initial.cpp",
+  "renderer_scale_binary32": [
+    0.10000000149011612,
+    0.10000000149011612
+  ],
+  "logical_size": [
+    1672,
+    941
+  ],
+  "physical_output": [
+    200,
+    120
+  ],
+  "physical_clip": [
+    7,
+    0,
+    1,
+    120
+  ],
+  "field_intrinsic_x_boundaries": [
+    8,
+    160
+  ],
+  "field_clipped_x_boundaries": [
+    8,
+    8
+  ],
+  "grain_marks_visible_in_clip": [
+    {
+      "pair": 146,
+      "mark": 0,
+      "canonical": [
+        78,
+        28
+      ],
+      "device": [
+        7,
+        2
+      ]
+    },
+    {
+      "pair": 819,
+      "mark": 1,
+      "canonical": [
+        79,
+        46
+      ],
+      "device": [
+        7,
+        4
+      ]
+    },
+    {
+      "pair": 1735,
+      "mark": 0,
+      "canonical": [
+        78,
+        86
+      ],
+      "device": [
+        7,
+        8
+      ]
+    },
+    {
+      "pair": 1800,
+      "mark": 1,
+      "canonical": [
+        78,
+        37
+      ],
+      "device": [
+        7,
+        3
+      ]
+    },
+    {
+      "pair": 2027,
+      "mark": 1,
+      "canonical": [
+        79,
+        49
+      ],
+      "device": [
+        7,
+        4
+      ]
+    },
+    {
+      "pair": 2467,
+      "mark": 0,
+      "canonical": [
+        79,
+        59
+      ],
+      "device": [
+        7,
+        5
+      ]
+    },
+    {
+      "pair": 3545,
+      "mark": 1,
+      "canonical": [
+        79,
+        28
+      ],
+      "device": [
+        7,
+        2
+      ]
+    },
+    {
+      "pair": 4045,
+      "mark": 1,
+      "canonical": [
+        79,
+        41
+      ],
+      "device": [
+        7,
+        4
+      ]
+    },
+    {
+      "pair": 4052,
+      "mark": 1,
+      "canonical": [
+        79,
+        60
+      ],
+      "device": [
+        7,
+        6
+      ]
+    },
+    {
+      "pair": 4463,
+      "mark": 0,
+      "canonical": [
+        79,
+        80
+      ],
+      "device": [
+        7,
+        8
+      ]
+    },
+    {
+      "pair": 4912,
+      "mark": 1,
+      "canonical": [
+        79,
+        37
+      ],
+      "device": [
+        7,
+        3
+      ]
+    },
+    {
+      "pair": 5800,
+      "mark": 1,
+      "canonical": [
+        78,
+        101
+      ],
+      "device": [
+        7,
+        10
+      ]
+    },
+    {
+      "pair": 6108,
+      "mark": 0,
+      "canonical": [
+        78,
+        18
+      ],
+      "device": [
+        7,
+        1
+      ]
+    },
+    {
+      "pair": 6284,
+      "mark": 1,
+      "canonical": [
+        78,
+        44
+      ],
+      "device": [
+        7,
+        4
+      ]
+    },
+    {
+      "pair": 6426,
+      "mark": 0,
+      "canonical": [
+        79,
+        22
+      ],
+      "device": [
+        7,
+        2
+      ]
+    },
+    {
+      "pair": 6686,
+      "mark": 0,
+      "canonical": [
+        79,
+        99
+      ],
+      "device": [
+        7,
+        9
+      ]
+    },
+    {
+      "pair": 6764,
+      "mark": 1,
+      "canonical": [
+        79,
+        46
+      ],
+      "device": [
+        7,
+        4
+      ]
+    },
+    {
+      "pair": 7366,
+      "mark": 1,
+      "canonical": [
+        78,
+        17
+      ],
+      "device": [
+        7,
+        1
+      ]
+    },
+    {
+      "pair": 7493,
+      "mark": 0,
+      "canonical": [
+        78,
+        22
+      ],
+      "device": [
+        7,
+        2
+      ]
+    },
+    {
+      "pair": 7813,
+      "mark": 1,
+      "canonical": [
+        79,
+        100
+      ],
+      "device": [
+        7,
+        10
+      ]
+    },
+    {
+      "pair": 8172,
+      "mark": 0,
+      "canonical": [
+        78,
+        40
+      ],
+      "device": [
+        7,
+        4
+      ]
+    }
+  ],
+  "distinct_grain_pixels": 9,
+  "kind": "independent static arithmetic counterexample; no native candidate execution",
+  "proposed_correction": "Remove field-only earlyreturn; retain common raster/globalvisibility guard and prescribed bounded grainloop. No contract/domain/threshold/support changes."
+}

@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "agent": "A54",
+  "wave": 9,
+  "same_worker_followup": true,
+  "recorded_utc": "2026-11-17T03:23:47.572260+00:00",
+  "status": "starter_load_single_property_admitted_full_candidate_pending",
+  "decision": {
+    "prospective_RUN_SERIAL_TRUE": "test_standalone_starter_load",
+    "prerequisite": "Exactly one unchanged isolated materialized-scopes method after current full suite completes, both original scopes retained, must pass with unchanged relevant inputs.",
+    "if_isolated_method_fails": "No scheduling-only admission; retain and diagnose, no repeat-until-green.",
+    "other_scheduling_expansion": false,
+    "fixture_source_oracle_time_changes_admitted": false,
+    "root_owns_native_execution_source_edits_configuration_and_publication": true,
+    "prerequisite_satisfied": true,
+    "admitted_RUN_SERIAL_TRUE": "test_standalone_starter_load",
+    "condition_result": "Exactly one unchanged materialized-scopes method passed after the completed full run; both original scopes, two app children and two materializer children retained."
+  },
+  "full_run_at_preparation": {
+    "status": "running",
+    "discovered_tests": 242,
+    "frozen_code_inputs": 475,
+    "whole_run_result_claimed": false,
+    "whole_log_final_hash_claimed": false,
+    "source_log": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-ctest.log",
+    "observed_log_bytes_at_capture": 54061,
+    "completed_prefix": {
+      "through_line_inclusive": 103,
+      "bytes": 31360,
+      "sha256": "959f430b47c9073168b6dcf12449bdceb8769bc2a08707bcada25e434eada276"
+    },
+    "input_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-coherent-inputs.json",
+      "bytes": 76524,
+      "sha256": "50d2c18dbedccb2db161f202bed6d9801960f85c43907b2adcc7ca2afb74e16a"
+    },
+    "discovery": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-test-discovery.json",
+      "bytes": 265585,
+      "sha256": "e7f41b261e1108c94327415db36d7bbf21ac5431def0c37b1cdd5d3539cc18b1"
+    }
+  },
+  "completed_original_failure_block": {
+    "source_log_lines_inclusive": [
+      62,
+      103
+    ],
+    "bytes": 27093,
+    "sha256": "c2a120fad712ed20d338c0fc25a909b30535f4686d6d0b9850fd817d904bb424",
+    "encoding": "base64(gzip(utf8))",
+    "compressed_bytes": 3635,
+    "encoded_data": "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",
+    "complete_copied_diagnostic_json_present": true,
+    "decode_sha256_verified": true
+  },
+  "original_failure": {
+    "ctest": "test_standalone_starter_load",
+    "ctest_seconds": 12.13,
+    "python_methods": 8,
+    "pure_methods_passed": 6,
+    "native_methods": 2,
+    "failed_subcases": 1,
+    "native_children": 4,
+    "materializer_children": 2,
+    "failed_method": "NativeStarterLoadAcceptance.test_materialized_scopes_keep_their_expression_when_generically_loaded",
+    "failed_scope": "registration",
+    "materialized_name": "Current Expression.b3performance",
+    "materialized_expression": 0.625,
+    "failure": "applied_load_chain returned None: complete copied startup/edit/Load chain required",
+    "timed_out": false,
+    "observations": [
+      {
+        "elapsed_ms": 131,
+        "last_applied_sequence": 1,
+        "resolved_sequence": 1,
+        "last_submitted_sequence": 1,
+        "index": 0,
+        "complete_loaded": true,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 787,
+        "last_applied_sequence": 1,
+        "resolved_sequence": 1,
+        "last_submitted_sequence": 2,
+        "index": 1,
+        "complete_loaded": true,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 937,
+        "last_applied_sequence": 1,
+        "resolved_sequence": 1,
+        "last_submitted_sequence": 3,
+        "index": 2,
+        "complete_loaded": true,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 937,
+        "last_applied_sequence": 2,
+        "resolved_sequence": 2,
+        "last_submitted_sequence": 3,
+        "index": 3,
+        "complete_loaded": false,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 1029,
+        "last_applied_sequence": 3,
+        "resolved_sequence": 3,
+        "last_submitted_sequence": 3,
+        "index": 4,
+        "complete_loaded": false,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 1814,
+        "last_applied_sequence": 3,
+        "resolved_sequence": 3,
+        "last_submitted_sequence": 4,
+        "index": 5,
+        "complete_loaded": false,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 1814,
+        "last_applied_sequence": 3,
+        "resolved_sequence": 3,
+        "last_submitted_sequence": 5,
+        "index": 6,
+        "complete_loaded": false,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 2226,
+        "last_applied_sequence": 3,
+        "resolved_sequence": 3,
+        "last_submitted_sequence": 6,
+        "index": 7,
+        "complete_loaded": false,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 2226,
+        "last_applied_sequence": 3,
+        "resolved_sequence": 3,
+        "last_submitted_sequence": 7,
+        "index": 8,
+        "complete_loaded": false,
+        "complete_edited": false
+      },
+      {
+        "elapsed_ms": 2226,
+        "last_applied_sequence": 5,
+        "resolved_sequence": 5,
+        "last_submitted_sequence": 7,
+        "index": 9,
+        "complete_loaded": false,
+        "complete_edited": false,
+        "fields_different_from_complete_edited": [
+          "pedal_drawbars"
+        ]
+      },
+      {
+        "elapsed_ms": 2567,
+        "last_applied_sequence": 7,
+        "resolved_sequence": 7,
+        "last_submitted_sequence": 7,
+        "index": 10,
+        "complete_loaded": true,
+        "complete_edited": false
+      }
+    ],
+    "complete_edited_observation_count": 0,
+    "copied_applied_sequence_6_count": 0,
+    "replay": {
+      "duration_ms": 2700,
+      "scheduled_events": 152,
+      "pushed_events": 152,
+      "completed": true,
+      "delivered": true,
+      "passed": true,
+      "final_acknowledged": true,
+      "last_submitted_sequence": 7,
+      "observations_truncated": false
+    },
+    "errors": {
+      "count": 0,
+      "last": ""
+    },
+    "endpoint": {
+      "last_applied_sequence": 7,
+      "resolved_sequence": 7,
+      "complete_loaded": true
+    },
+    "subsequent_unreached_assertions_in_failed_child": [
+      "endpoint applied sequence greater than selected edited sequence",
+      "private loaded state bytes unchanged",
+      "source materialized file bytes unchanged",
+      "script bytes unchanged",
+      "private child directory exact inventory"
+    ],
+    "observed_ctest_overlap": {
+      "start_line": 59,
+      "active_at_start": [
+        "python_test_scanner_line_profile"
+      ],
+      "other_tests_started_while_active": [
+        {
+          "name": "python_test_capture_job",
+          "line": 61
+        }
+      ],
+      "finish_line": 62
+    }
+  },
+  "offline_helper_diagnosis": {
+    "method": "Compiled exact original applied_load_chain AST function only; evaluated retained diagnostic observations and independently literal complete expected/edited controls; no unittest or native process run.",
+    "helper_result": null,
+    "complete_helper_source_sha256": "0a3c4e7edfbac912e550578d9bea9156c487af4c00293199071283e421bd871f",
+    "reason": "No copied complete E. The applied5 record still differs in pedal_drawbars; later applied7 restores L. Missing E remains a required negative case under the A47/A48 admission.",
+    "earlier_oracle_admission": {
+      "path": "docs/reviews/STARTER_LOAD_OBSERVATION_DIAGNOSIS.md",
+      "bytes": 10234,
+      "sha256": "7c5e9bf8793c0da16da41b98e29fa7abb016e0296b66bb70ac0505feae043495"
+    },
+    "no_oracle_relaxation": true
+  },
+  "source_and_binary_provenance": {
+    "selected_frozen_inputs": {
+      "apps/standalone/CMakeLists.txt": {
+        "bytes": 44925,
+        "sha256": "ca7fd58cfb5f77df9f095e5e1e58766e11acb0ca29cb2523172ee56736729547"
+      },
+      "apps/standalone/main.cpp": {
+        "bytes": 147938,
+        "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+      },
+      "apps/standalone/Session.cpp": {
+        "bytes": 31176,
+        "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3"
+      },
+      "apps/standalone/Session.h": {
+        "bytes": 8982,
+        "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929"
+      },
+      "apps/standalone/native_tests/test_standalone_starter_load.py": {
+        "bytes": 24078,
+        "sha256": "96139c491057d1b3c28e4a79b9ae2b89fb1118b1afcaff4c4dd67c4a0c56f060"
+      },
+      "apps/standalone/native_tests/test_standalone_workflows.py": {
+        "bytes": 41796,
+        "sha256": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+      }
+    },
+    "selected_inputs_match_frozen_at_review": true,
+    "app": {
+      "path": "../build-native/apps/standalone/hammond_standalone",
+      "bytes": 4103352,
+      "sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+    },
+    "registration": {
+      "path": "../build-native/hammond_registration",
+      "bytes": 253280,
+      "sha256": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f"
+    },
+    "recipe_inputs": [
+      {
+        "path": "data/registrations/starter-v1/entries/12 Manual Return.b3registration",
+        "bytes": 452,
+        "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df"
+      },
+      {
+        "path": "data/registrations/starter-v1/entries/12 Manual Return.b3performance",
+        "bytes": 452,
+        "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df"
+      },
+      {
+        "path": "data/registrations/starter-v1/entries/02 Warm Comp.b3performance",
+        "bytes": 459,
+        "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+      }
+    ]
+  },
+  "original_generated_test": {
+    "backtrace": 484,
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+      "-E",
+      "env",
+      "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+      "HAMMOND_REGISTRATION_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/hammond_registration",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_starter_load.py"
+    ],
+    "name": "test_standalone_starter_load",
+    "properties": [
+      {
+        "name": "LABELS",
+        "value": [
+          "native",
+          "registration",
+          "standalone"
+        ]
+      },
+      {
+        "name": "TIMEOUT",
+        "value": 60.0
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      }
+    ]
+  },
+  "required_isolated_diagnostic": {
+    "status": "passed_once_unchanged_after_full_run",
+    "command": [
+      "python3",
+      "-B",
+      "apps/standalone/native_tests/test_standalone_starter_load.py",
+      "NativeStarterLoadAcceptance.test_materialized_scopes_keep_their_expression_when_generically_loaded"
+    ],
+    "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+    "selected_environment": {
+      "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+      "HAMMOND_REGISTRATION_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/hammond_registration"
+    },
+    "fixture_internal_environment": {
+      "SDL_AUDIODRIVER": "dummy",
+      "SDL_VIDEODRIVER": "dummy",
+      "SDL_RENDER_DRIVER": "software"
+    },
+    "method_invocations": 1,
+    "native_children": 2,
+    "materializer_children": 2,
+    "both_original_scopes": [
+      "registration",
+      "performance"
+    ],
+    "preserve": {
+      "actions_per_native_journey": 152,
+      "native_duration_ms": 2700,
+      "load_at_ms": 2200,
+      "native_child_timeout_seconds": 9,
+      "materializer_child_timeout_seconds": 15,
+      "ctest_timeout_seconds": 60,
+      "all_original_assertions": true
+    },
+    "actual_result": {
+      "receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/starter-load-one-isolated-diagnostic.json",
+        "bytes": 1943,
+        "sha256": "52d1596ca1ffe8886af3925a0116ee1f549e9112a7bca37df549c3f5cc7586a3"
+      },
+      "log": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/starter-load-one-isolated-diagnostic.log",
+        "bytes": 926,
+        "sha256": "cdcb8577f8dee46b203e09e2e0c35c8e99394aeb531f0559d4810123121195d4"
+      },
+      "root_data": {
+        "command": [
+          "python3",
+          "-B",
+          "apps/standalone/native_tests/test_standalone_starter_load.py",
+          "NativeStarterLoadAcceptance.test_materialized_scopes_keep_their_expression_when_generically_loaded"
+        ],
+        "selected_environment": {
+          "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+          "HAMMOND_REGISTRATION_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/hammond_registration"
+        },
+        "returncode": 0,
+        "seconds": 6.032474427000125,
+        "before_sha256": {
+          "apps/standalone/native_tests/test_standalone_starter_load.py": "96139c491057d1b3c28e4a79b9ae2b89fb1118b1afcaff4c4dd67c4a0c56f060",
+          "apps/standalone/main.cpp": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+          "../build-native/apps/standalone/hammond_standalone": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+          "../build-native/hammond_registration": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+          "apps/standalone/CMakeLists.txt": "ca7fd58cfb5f77df9f095e5e1e58766e11acb0ca29cb2523172ee56736729547"
+        },
+        "after_sha256": {
+          "apps/standalone/native_tests/test_standalone_starter_load.py": "96139c491057d1b3c28e4a79b9ae2b89fb1118b1afcaff4c4dd67c4a0c56f060",
+          "apps/standalone/main.cpp": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+          "../build-native/apps/standalone/hammond_standalone": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+          "../build-native/hammond_registration": "872a343f20eb6710e6867fc4d1c0fe0b95118b883de21035ee70774f8762e13f",
+          "apps/standalone/CMakeLists.txt": "ca7fd58cfb5f77df9f095e5e1e58766e11acb0ca29cb2523172ee56736729547"
+        },
+        "log_sha256": "cdcb8577f8dee46b203e09e2e0c35c8e99394aeb531f0559d4810123121195d4",
+        "scope": "Exactly one unchanged method invocation after the complete240/242 run; both original subcases retained."
+      },
+      "unittest_seconds": 5.797,
+      "one_method_and_two_app_two_materializer_children_verified_from_log": true,
+      "binary_and_recipe_banners_match_original_failure": true,
+      "previously_unreached_assertions_executed_in_separate_success": true
+    }
+  },
+  "subsequent_candidate_requirements": {
+    "status": "pending_root_property_edit_generated_metadata_and_full_qualification",
+    "only_scheduling_delta": "Add RUN_SERIAL TRUE for test_standalone_starter_load; retain five previous settings.",
+    "generated_metadata": "Actual boolean true, unchanged command/environment/labels/60-second timeout, and complete unchanged 242-name discovery.",
+    "execution": "One complete coherent frozen-input --parallel 2 --output-on-failure --no-tests=error candidate, separate original logs/JUnit, all242 pass without exclusions or retries.",
+    "observed_nonoverlap": "All six serial tests start with empty active set; no other test starts until each completes.",
+    "source_constraints": "No production, fixture, assertion, timestamp, duration, or timeout edits authorized by this review."
+  },
+  "limits": [
+    "Preparation state retained historically; completed full-run evidence is added separately and the original result remains240/242.",
+    "No specific CPU/scheduler/blocked-thread cause established.",
+    "The copied5-to7 transition does not establish separate publication or audio application timing of E.",
+    "Final-only success, desired controls, or FIFO reasoning cannot manufacture a copied complete E.",
+    "A successful isolated run would support bounded scheduling sensitivity, not repeated stability or product repair.",
+    "RUN_SERIAL excludes only simultaneous jobs within the same CTest process.",
+    "No previous admission/note changed; A54 launched no native process or build.",
+    "Exact-source hosted VST3 qualification remains pending; no whole-UI1:1, all-host, hardware, signing or calibration closure."
+  ],
+  "finalized_utc": "2026-11-17T03:29:42.054496+00:00",
+  "completed_full_run": {
+    "passed": 240,
+    "total": 242,
+    "returncode": 8,
+    "wrapper_seconds": 614.4031229270004,
+    "ctest_seconds": 614.38,
+    "failed_tests": [
+      "test_standalone_workspace_replay",
+      "test_standalone_starter_load"
+    ],
+    "changed_code_inputs": [],
+    "changed_build_inputs": [],
+    "log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-ctest.log",
+      "bytes": 105585,
+      "sha256": "469020395283b24fdcafd76dd97262df67789865e85154b03378e0c21e0cf7ff"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-ctest.xml",
+      "bytes": 206064,
+      "sha256": "6063e75c8beb76ef94d411741f6ab5d25f098ba0d7333f7110d697a1c706eeef"
+    },
+    "result_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-coherent-results.json",
+      "bytes": 1043,
+      "sha256": "bb7b3cac330003ddf7ad4270a3a6435b6a75922faba7e8ebf150282529c28ba2"
+    },
+    "root_scheduling_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-observed-scheduling.json",
+      "bytes": 50415,
+      "sha256": "1a6ad82b17ee7ee23bf12ee17c99d1812840e4f532149aa6f280e5d99a45804e"
+    },
+    "independently_parsed_serial_windows": {
+      "test_standalone_native_midi_replay": {
+        "start_line": 424,
+        "active_at_start": [],
+        "other_tests_started_while_active": [],
+        "finish_line": 425
+      },
+      "test_standalone_workspace_replay": {
+        "start_line": 426,
+        "active_at_start": [],
+        "other_tests_started_while_active": [],
+        "finish_line": 427
+      },
+      "test_standalone_midi_cli": {
+        "start_line": 526,
+        "active_at_start": [],
+        "other_tests_started_while_active": [],
+        "finish_line": 527
+      },
+      "test_standalone_app": {
+        "start_line": 528,
+        "active_at_start": [],
+        "other_tests_started_while_active": [],
+        "finish_line": 529
+      },
+      "test_standalone_native_calibration": {
+        "start_line": 530,
+        "active_at_start": [],
+        "other_tests_started_while_active": [],
+        "finish_line": 531
+      }
+    },
+    "independently_parsed_violations": [],
+    "original_failure_block_and_prefix_unchanged": true,
+    "workspace_failure_is_separate": true
+  }
+}

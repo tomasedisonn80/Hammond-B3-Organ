@@ -1,0 +1,56 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+    "--executable",
+    "/workspace/scratch/5a28c3564dbf/semantic-replay-before-native/hammond_standalone",
+    "--report",
+    "docs/development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before.json"
+  ],
+  "returncode": 1,
+  "seconds": 1.0989693039991835,
+  "status": "failed",
+  "changed_inputs": [],
+  "cases": [
+    {
+      "initial": "dimensional",
+      "status": "failed",
+      "process_exit": 0,
+      "failure": "AssertionError: Lists differ: [('play', 'flat', 1280, 900, 'none')] != [('rotary', 'dimensional', 1280, 900, 'none'[192 chars]ne')]\n\nFirst differing element 0:\n('play', 'flat', 1280, 900, 'none')\n('rotary', 'dimensional', 1280, 900, 'none')\n\nSecond list contains 5 additional elements.\nFirst extra element 1:\n('rotary', 'flat', 1280, 900, 'none')\n\n+ [('rotary', 'dimensional', 1280, 900, 'none'),\n+  ('rotary', 'flat', 1280, 900, 'none'),\n+  ('rotary', 'flat', 1280, 900, 'audio'),\n+  ('rotary', 'flat', 1280, 900, 'none'),\n+  ('service', 'flat', 1280, 900, 'none'),\n- [('play', 'flat', 1280, 900, 'none')]\n? ^\n\n+  ('play', 'flat', 1280, 900, 'none')]\n? ^\n : Every workspace, presentation, and overlay transition must reach an actual painted image",
+      "actual_visits": [
+        {
+          "view": [
+            "play",
+            "flat",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 1,
+          "elapsed_ms": 1
+        }
+      ]
+    },
+    {
+      "initial": "flat",
+      "status": "failed",
+      "process_exit": 0,
+      "failure": "AssertionError: Lists differ: [('play', 'dimensional', 1280, 900, 'none')] != [('rotary', 'flat', 1280, 900, 'none'), ('ro[220 chars]ne')]\n\nFirst differing element 0:\n('play', 'dimensional', 1280, 900, 'none')\n('rotary', 'flat', 1280, 900, 'none')\n\nSecond list contains 5 additional elements.\nFirst extra element 1:\n('rotary', 'dimensional', 1280, 900, 'none')\n\n+ [('rotary', 'flat', 1280, 900, 'none'),\n+  ('rotary', 'dimensional', 1280, 900, 'none'),\n+  ('rotary', 'dimensional', 1280, 900, 'audio'),\n+  ('rotary', 'dimensional', 1280, 900, 'none'),\n+  ('service', 'dimensional', 1280, 900, 'none'),\n- [('play', 'dimensional', 1280, 900, 'none')]\n? ^\n\n+  ('play', 'dimensional', 1280, 900, 'none')]\n? ^\n : Every workspace, presentation, and overlay transition must reach an actual painted image",
+      "actual_visits": [
+        {
+          "view": [
+            "play",
+            "dimensional",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 1,
+          "elapsed_ms": 0
+        }
+      ]
+    }
+  ],
+  "log_sha256": "2aa87fb46e756e47de695c041ac2356bbacb7e7326f85beccc7363c5cb0a1b27"
+}

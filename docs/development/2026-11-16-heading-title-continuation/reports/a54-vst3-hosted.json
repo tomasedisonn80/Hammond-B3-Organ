@@ -1,0 +1,1137 @@
+{
+  "schema_version": 1,
+  "agent": "A54",
+  "wave": 9,
+  "same_worker_followups_not_additional_credit": true,
+  "recorded_utc": "2026-11-17T04:36:45.964320+00:00",
+  "status": "accepted_all_four_original_exact_source_native_vst3_families",
+  "repository": "tomasedisonn80/Hammond-B3-Organ",
+  "source": {
+    "commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "tree": "b62f212300d75633346ab8fc5ffdd722255fe00a",
+    "parents": [
+      "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "835755a9069c25ce55bc2c231547458b4b3ffce4"
+    ],
+    "publication_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json",
+      "bytes": 3184,
+      "sha256": "9ac243a2b46ee5fb01389578f0b85899e7717010ee71bda449683764dcf4f2d5"
+    },
+    "independent_git_api_fields_match": true,
+    "all_actual_provenance_artifacts_match": true,
+    "workflow_sha256": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734",
+    "workflow_source_evidence": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/source-api.json",
+      "bytes": 1797,
+      "sha256": "1d33cde713dcbc412a8f9270a7ae8bbcd16db26cdec155a125b0680865f9ef21"
+    }
+  },
+  "workflow_run": {
+    "id": 44016021543,
+    "name": "Native VST3",
+    "path": ".github/workflows/native-vst3.yml",
+    "event": "push",
+    "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "head_branch": "main",
+    "status": "completed",
+    "conclusion": "success",
+    "run_attempt": 1,
+    "created_at": "2026-11-17T04:16:23Z",
+    "updated_at": "2026-11-17T04:23:24Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543"
+  },
+  "terminal_metadata": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/final-metadata.json",
+    "bytes": 24772,
+    "sha256": "d7e3252c976dcebdce19c25b4f6bfa949ae2f844ddb1aae753bd724398e9a008"
+  },
+  "required_families": [
+    "linux",
+    "mac_arm",
+    "mac_intel",
+    "windows"
+  ],
+  "job_count": 4,
+  "actual_assigned_runners": 4,
+  "workflow_attempts_observed": 1,
+  "failed_jobs": 0,
+  "cancelled_jobs": 0,
+  "unassigned_jobs": 0,
+  "required_skipped_ctests": 0,
+  "ctest_total": 29,
+  "all_actual_module_validator_results": {
+    "per_platform_passed": 47,
+    "per_platform_failed": 0
+  },
+  "sdk": {
+    "version": "3.8.1",
+    "tag": "v3.8.1_build_84",
+    "root_commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+    "submodules": {
+      "base": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477",
+      "cmake": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5",
+      "pluginterfaces": "4f547e8e102b47de4a8b8aaf343c73b700786372",
+      "public.sdk": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da"
+    },
+    "lock": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/sdk-lock.json",
+      "bytes": 3796,
+      "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+    },
+    "primary_licenses_verified_per_platform": 5,
+    "embedded_json_verified_per_platform": true,
+    "acquisition_and_separate_verification_both_observed": true
+  },
+  "platforms": [
+    {
+      "family": "linux",
+      "job": {
+        "id": 133814025096,
+        "run_id": 44016021543,
+        "run_attempt": 1,
+        "name": "Native VST3 (Linux GCC)",
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T04:16:26Z",
+        "completed_at": "2026-11-17T04:17:49Z",
+        "runner_id": 1000001381,
+        "runner_name": "GitHub Actions 1000001381",
+        "labels": [
+          "ubuntu-24.04"
+        ],
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814025096"
+      },
+      "required_steps_all_success": true,
+      "actual_source_provenance": {
+        "configuration": "Release",
+        "image_os": "ubuntu24",
+        "image_version": "20261111.127.1",
+        "machine": "x86_64",
+        "platform": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+        "python": "3.12.16",
+        "run_attempt": "1",
+        "run_id": "44016021543",
+        "runner_arch": "X64",
+        "runner_os": "Linux",
+        "source_commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a"
+      },
+      "module": {
+        "architectures": [
+          "x86_64"
+        ],
+        "format": "ELF64",
+        "path": "Contents/x86_64-linux/HammondB3.so",
+        "platform": "linux"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is GNU 13.3.0",
+        "-- Found Python3: /opt/hostedtoolcache/Python/3.12.16/x64/bin/python (found suitable version \"3.12.16\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is GNU 13.3.0"
+      ],
+      "ctests": {
+        "passed": 8,
+        "total": 8,
+        "failed": 0,
+        "skipped": 0,
+        "total_seconds": 4.88,
+        "names": [
+          "test_native_install",
+          "hammond_vst3_validator",
+          "test_native_controller",
+          "test_native_abi",
+          "test_native_behavior",
+          "test_native_automation",
+          "test_native_concurrency",
+          "test_native_realtime"
+        ]
+      },
+      "module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "class_ids_unchanged": true
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "methods": 2,
+        "payload_files": 4,
+        "relocated_abi_equals_original": true,
+        "maximum_audio_error": 0
+      },
+      "packaging": {
+        "all_file_bytes_sizes_paths_modes_verified": true,
+        "binary_header_independently_checked": true,
+        "build_staged_inventory_identical": true,
+        "archive": {
+          "bytes": 198146,
+          "sha256": "b8e0a81399bf6b3cd0dd01c6f5660229e5f965a8e2082f8f998906e86da90ba1"
+        },
+        "moduleinfo": {
+          "bytes": 1090,
+          "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+        }
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/validation.json",
+        "bytes": 9720,
+        "sha256": "ace22257c038bfc3a0eda9ad00eef6f769e0e66690fb6ed1a37e901acbe5a311"
+      },
+      "complete_decoded_job_log": {
+        "compressed": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814025096.log.txt.gz",
+          "bytes": 33472,
+          "sha256": "4eec2388c2025e5b5496e761b5a8bc87d8dedd3d51bbebe87cbbc9e9695db9a6"
+        },
+        "decoded_bytes": 294471,
+        "decoded_sha256": "9098ef0bdd1623cb72f1aa13efbeea6b84cd906104018e344f56cd997e376f00"
+      },
+      "artifacts": [
+        {
+          "id": 14299115647,
+          "name": "native-vst3-ubuntu-24.04-X64-release-diagnostics-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 41453,
+          "digest": "sha256:dab945aa12084f024035bebb4ce910339fcefb1ab2c56f4f56a7b6682d87eed0",
+          "expired": false,
+          "created_at": "2026-11-17T04:17:47Z",
+          "updated_at": "2026-11-17T04:17:47Z",
+          "expires_at": "2026-12-01T04:17:46Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14299115647.zip"
+        },
+        {
+          "id": 14298582715,
+          "name": "native-vst3-ubuntu-24.04-X64-release-bundle-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 198626,
+          "digest": "sha256:eaf085dff25f5e90dbb82ca472973eba92a92024e4ace35e6d1e261f7b84ecc7",
+          "expired": false,
+          "created_at": "2026-11-17T04:17:48Z",
+          "updated_at": "2026-11-17T04:17:48Z",
+          "expires_at": "2026-12-01T04:17:47Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": null
+        }
+      ]
+    },
+    {
+      "family": "mac_arm",
+      "job": {
+        "id": 133814025233,
+        "run_id": 44016021543,
+        "run_attempt": 1,
+        "name": "Native VST3 (macOS AppleClang)",
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T04:16:26Z",
+        "completed_at": "2026-11-17T04:18:04Z",
+        "runner_id": 1000001390,
+        "runner_name": "GitHub Actions 1000001390",
+        "labels": [
+          "macos-15"
+        ],
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814025233"
+      },
+      "required_steps_all_success": true,
+      "actual_source_provenance": {
+        "configuration": "Release",
+        "image_os": "macos15",
+        "image_version": "20261104.0514.1",
+        "machine": "arm64",
+        "platform": "macOS-15.8.2-arm64-arm-64bit",
+        "python": "3.12.10",
+        "run_attempt": "1",
+        "run_id": "44016021543",
+        "runner_arch": "ARM64",
+        "runner_os": "macOS",
+        "source_commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a"
+      },
+      "module": {
+        "architectures": [
+          "arm64"
+        ],
+        "format": "Mach-O64",
+        "path": "Contents/MacOS/HammondB3",
+        "platform": "macos"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is AppleClang 17.0.0.17000013",
+        "-- Found Python3: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/bin/python (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is AppleClang 17.0.0.17000013"
+      ],
+      "ctests": {
+        "passed": 7,
+        "total": 7,
+        "failed": 0,
+        "skipped": 0,
+        "total_seconds": 3.82,
+        "names": [
+          "test_native_install",
+          "hammond_vst3_validator",
+          "test_native_controller",
+          "test_native_abi",
+          "test_native_behavior",
+          "test_native_automation",
+          "test_native_concurrency"
+        ]
+      },
+      "module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "class_ids_unchanged": true
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "methods": 2,
+        "payload_files": 6,
+        "relocated_abi_equals_original": true,
+        "maximum_audio_error": 0
+      },
+      "packaging": {
+        "all_file_bytes_sizes_paths_modes_verified": true,
+        "binary_header_independently_checked": true,
+        "build_staged_inventory_identical": true,
+        "archive": {
+          "bytes": 164390,
+          "sha256": "2c10e5fb79227bab90c272e6b98de44c11441fe23c325d5b265cbf875cd82f97"
+        },
+        "moduleinfo": {
+          "bytes": 1090,
+          "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+        }
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/validation.json",
+        "bytes": 8133,
+        "sha256": "6ecee9453b4ae4ba58b695d99b9bf7f6e1c51be40e064782964cc7af561e23d7"
+      },
+      "complete_decoded_job_log": {
+        "compressed": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814025233.log.txt.gz",
+          "bytes": 31892,
+          "sha256": "495e3b2528b416da3e3c464dcda510eda3130719855acd429a41d1de8f5e4217"
+        },
+        "decoded_bytes": 305011,
+        "decoded_sha256": "24f0529e4c1ef7dfb8f98bb7d27869d0cdb5764f028aa2778b4dbb5bfc5f0f87"
+      },
+      "artifacts": [
+        {
+          "id": 14298169507,
+          "name": "native-vst3-macos-15-ARM64-release-diagnostics-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 50506,
+          "digest": "sha256:4c97e67da87c107bda9ae89f42a7d6af3dd2af59bc639f164f4b0fb7e588e8d8",
+          "expired": false,
+          "created_at": "2026-11-17T04:17:59Z",
+          "updated_at": "2026-11-17T04:17:59Z",
+          "expires_at": "2026-12-01T04:17:58Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298169507.zip"
+        },
+        {
+          "id": 14299685070,
+          "name": "native-vst3-macos-15-ARM64-release-bundle-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 165603,
+          "digest": "sha256:6950019c69df3bd308a43ff36f2609ad4c761692bdf08e70b8ca27aacb59c5df",
+          "expired": false,
+          "created_at": "2026-11-17T04:18:00Z",
+          "updated_at": "2026-11-17T04:18:00Z",
+          "expires_at": "2026-12-01T04:17:59Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": null
+        }
+      ]
+    },
+    {
+      "family": "mac_intel",
+      "job": {
+        "id": 133814024868,
+        "run_id": 44016021543,
+        "run_attempt": 1,
+        "name": "Native VST3 (macOS Intel AppleClang)",
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T04:16:28Z",
+        "completed_at": "2026-11-17T04:23:23Z",
+        "runner_id": 1000001380,
+        "runner_name": "GitHub Actions 1000001380",
+        "labels": [
+          "macos-15-intel"
+        ],
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814024868"
+      },
+      "required_steps_all_success": true,
+      "actual_source_provenance": {
+        "configuration": "Release",
+        "image_os": "macos15",
+        "image_version": "20260824.0482.1",
+        "machine": "x86_64",
+        "platform": "macOS-15.7.9-x86_64-i386-64bit",
+        "python": "3.12.10",
+        "run_attempt": "1",
+        "run_id": "44016021543",
+        "runner_arch": "X64",
+        "runner_os": "macOS",
+        "source_commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a"
+      },
+      "module": {
+        "architectures": [
+          "x86_64"
+        ],
+        "format": "Mach-O64",
+        "path": "Contents/MacOS/HammondB3",
+        "platform": "macos"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is AppleClang 17.0.0.17000013",
+        "-- Found Python3: /Users/runner/hostedtoolcache/Python/3.12.10/x64/bin/python (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is AppleClang 17.0.0.17000013"
+      ],
+      "ctests": {
+        "passed": 7,
+        "total": 7,
+        "failed": 0,
+        "skipped": 0,
+        "total_seconds": 12.93,
+        "names": [
+          "test_native_install",
+          "hammond_vst3_validator",
+          "test_native_controller",
+          "test_native_abi",
+          "test_native_behavior",
+          "test_native_automation",
+          "test_native_concurrency"
+        ]
+      },
+      "module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "class_ids_unchanged": true
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "methods": 2,
+        "payload_files": 6,
+        "relocated_abi_equals_original": true,
+        "maximum_audio_error": 0
+      },
+      "packaging": {
+        "all_file_bytes_sizes_paths_modes_verified": true,
+        "binary_header_independently_checked": true,
+        "build_staged_inventory_identical": true,
+        "archive": {
+          "bytes": 178186,
+          "sha256": "12a49e29adcc157f0006d8e76537f50c0c987c93c5dae982e28097ba6ee16165"
+        },
+        "moduleinfo": {
+          "bytes": 1090,
+          "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+        }
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/validation.json",
+        "bytes": 8133,
+        "sha256": "5dc7301435357eaa7e7a883cb0d74b046ae6c70aacc96025364ee4fa7003460f"
+      },
+      "complete_decoded_job_log": {
+        "compressed": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814024868.log.txt.gz",
+          "bytes": 33054,
+          "sha256": "449b1e1ce2aac6e791c11e788e26650497d0b103c7fd4fbd8bea7f85e3c4b215"
+        },
+        "decoded_bytes": 303888,
+        "decoded_sha256": "aae0601ef7da1561bb9bb77faee8abd9d09e7d6f6743dd3f53d5b67543e7d47d"
+      },
+      "artifacts": [
+        {
+          "id": 14298573562,
+          "name": "native-vst3-macos-15-intel-X64-release-diagnostics-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 49533,
+          "digest": "sha256:b30a273720e32d1fd37a3b53dc843973b39545d53be52823660a2c3255b0f35b",
+          "expired": false,
+          "created_at": "2026-11-17T04:23:16Z",
+          "updated_at": "2026-11-17T04:23:16Z",
+          "expires_at": "2026-12-01T04:23:15Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298573562.zip"
+        },
+        {
+          "id": 14299730426,
+          "name": "native-vst3-macos-15-intel-X64-release-bundle-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 179326,
+          "digest": "sha256:73b534001bd18dc3fd3ef5ebc1438a01410020ec3bf8d6f1680a4bd7555a53a0",
+          "expired": false,
+          "created_at": "2026-11-17T04:23:18Z",
+          "updated_at": "2026-11-17T04:23:18Z",
+          "expires_at": "2026-12-01T04:23:17Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": null
+        }
+      ]
+    },
+    {
+      "family": "windows",
+      "job": {
+        "id": 133814025269,
+        "run_id": 44016021543,
+        "run_attempt": 1,
+        "name": "Native VST3 (Windows MSVC x64)",
+        "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T04:16:25Z",
+        "completed_at": "2026-11-17T04:18:54Z",
+        "runner_id": 1000001387,
+        "runner_name": "GitHub Actions 1000001387",
+        "labels": [
+          "windows-2022"
+        ],
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021543/job/133814025269"
+      },
+      "required_steps_all_success": true,
+      "actual_source_provenance": {
+        "configuration": "Release",
+        "image_os": "win22",
+        "image_version": "20261112.366.7",
+        "machine": "AMD64",
+        "platform": "Windows-2022Server-10.0.20348-SP0",
+        "python": "3.12.10",
+        "run_attempt": "1",
+        "run_id": "44016021543",
+        "runner_arch": "X64",
+        "runner_os": "Windows",
+        "source_commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+        "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a"
+      },
+      "module": {
+        "architectures": [
+          "x86_64"
+        ],
+        "format": "PE32+",
+        "path": "Contents/x86_64-win/HammondB3.vst3",
+        "platform": "windows"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is MSVC 19.44.35230.0",
+        "-- Found Python3: C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter",
+        "-- The C compiler identification is MSVC 19.44.35230.0"
+      ],
+      "ctests": {
+        "passed": 7,
+        "total": 7,
+        "failed": 0,
+        "skipped": 0,
+        "total_seconds": 8.17,
+        "names": [
+          "test_native_install",
+          "hammond_vst3_validator",
+          "test_native_controller",
+          "test_native_abi",
+          "test_native_behavior",
+          "test_native_automation",
+          "test_native_concurrency"
+        ]
+      },
+      "module_validator": {
+        "passed": 47,
+        "failed": 0,
+        "sdk_version": "3.8.1",
+        "class_ids_unchanged": true
+      },
+      "native_abi": {
+        "suite": "native-abi-v1",
+        "instances": 9,
+        "assertions": 701642,
+        "descriptors": 47,
+        "conversions": 2140,
+        "accepted_callbacks": 1673,
+        "rejected_calls": 88,
+        "state_round_trips": 3207,
+        "lifecycle_sequences": 6,
+        "compared_frames": 229725,
+        "audible_frames": 217972,
+        "maximum_audio_error": 0,
+        "float_hash": "af029009868faa04"
+      },
+      "native_install": {
+        "methods": 2,
+        "payload_files": 6,
+        "relocated_abi_equals_original": true,
+        "maximum_audio_error": 0
+      },
+      "packaging": {
+        "all_file_bytes_sizes_paths_modes_verified": true,
+        "binary_header_independently_checked": true,
+        "build_staged_inventory_identical": true,
+        "archive": {
+          "bytes": 420775,
+          "sha256": "ee5fd88f1e0c8a965166627d387c9813711b6988ed9aee91a178f0d14aa1a31c"
+        },
+        "moduleinfo": {
+          "bytes": 1133,
+          "sha256": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d"
+        }
+      },
+      "validation_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/validation.json",
+        "bytes": 8094,
+        "sha256": "5160204f84ff6251cbc1ddaa0270e3a0075996aaec6d72af61e4f32fc173da8f"
+      },
+      "complete_decoded_job_log": {
+        "compressed": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814025269.log.txt.gz",
+          "bytes": 32760,
+          "sha256": "1c4c7568f19c6b29a7c6f9f3b3ea5450619918deb6058bb2c253eccf850ff89d"
+        },
+        "decoded_bytes": 203683,
+        "decoded_sha256": "e7b3e6f0b92dbb3810c3a2053dfa57d85bd84bb5b05b7cd13c840fb5b5a874aa"
+      },
+      "artifacts": [
+        {
+          "id": 14298941919,
+          "name": "native-vst3-windows-2022-X64-release-diagnostics-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 37710,
+          "digest": "sha256:97e6341672b61502388731012cd2e833c620de52db08add83449db3d5c7bfb5a",
+          "expired": false,
+          "created_at": "2026-11-17T04:18:50Z",
+          "updated_at": "2026-11-17T04:18:50Z",
+          "expires_at": "2026-12-01T04:18:49Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298941919.zip"
+        },
+        {
+          "id": 14299275929,
+          "name": "native-vst3-windows-2022-X64-release-bundle-fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2-1",
+          "size_in_bytes": 421124,
+          "digest": "sha256:9984af19402a10f42e252916fce2578b6a7fcf80544e17c799e734baef7a616d",
+          "expired": false,
+          "created_at": "2026-11-17T04:18:51Z",
+          "updated_at": "2026-11-17T04:18:51Z",
+          "expires_at": "2026-12-01T04:18:50Z",
+          "workflow_run": {
+            "id": 44016021543,
+            "repository_id": 1455003957,
+            "head_repository_id": 1455003957,
+            "head_branch": "main",
+            "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+          },
+          "downloaded_bytes_verified": true,
+          "retained_local_path": null
+        }
+      ]
+    }
+  ],
+  "linux_realtime_boundary": {
+    "included_only_on_linux": true,
+    "calling_thread_global_cpp_new_delete_interception": true,
+    "positive_overload_calibration": "12/12",
+    "checked_regions": 193,
+    "assertions": 8945157,
+    "measured_processing_path_new_delete": 0,
+    "device_deadlines_established": false,
+    "full_output_in_validation_receipt": true
+  },
+  "install_contract": {
+    "methods": [
+      "test_install_move_and_load",
+      "test_preflight_rejects_incomplete_bundle_without_mutating_prefix"
+    ],
+    "per_platform_methods_executed": 2,
+    "prefix_sentinels_preserved": true,
+    "reinstall_refused_unchanged": true,
+    "relocated_actual_module_abi_matches_original": true,
+    "explicit_component_only": true,
+    "unbuilt_missing_empty_and_unsafe_prefix_guards_executed": true
+  },
+  "preservation": {
+    "original_preparation": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/inputs/hosted-preparation/a54-vst3-hosted-preparation.json",
+      "bytes": 4580,
+      "sha256": "ca5d39059f320d976f85e1431a42b42a081113ec5a63443fe1edc95a03339868"
+    },
+    "complete_job_logs_retained_compressed": 4,
+    "original_diagnostic_artifact_zips_retained": 4,
+    "temporary_bundle_zips_removed_after_verified_inspection": [
+      {
+        "artifact_id": 14298582715,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298582715.zip",
+        "bytes": 198626,
+        "sha256": "eaf085dff25f5e90dbb82ca472973eba92a92024e4ace35e6d1e261f7b84ecc7",
+        "reason": "Verified package ZIP was temporary; keep remote identity, digest, inventories, module metadata, and internal archive digest without committing built plugin bytes."
+      },
+      {
+        "artifact_id": 14299685070,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14299685070.zip",
+        "bytes": 165603,
+        "sha256": "6950019c69df3bd308a43ff36f2609ad4c761692bdf08e70b8ca27aacb59c5df",
+        "reason": "Verified package ZIP was temporary; keep remote identity, digest, inventories, module metadata, and internal archive digest without committing built plugin bytes."
+      },
+      {
+        "artifact_id": 14299730426,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14299730426.zip",
+        "bytes": 179326,
+        "sha256": "73b534001bd18dc3fd3ef5ebc1438a01410020ec3bf8d6f1680a4bd7555a53a0",
+        "reason": "Verified package ZIP was temporary; keep remote identity, digest, inventories, module metadata, and internal archive digest without committing built plugin bytes."
+      },
+      {
+        "artifact_id": 14299275929,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14299275929.zip",
+        "bytes": 421124,
+        "sha256": "9984af19402a10f42e252916fce2578b6a7fcf80544e17c799e734baef7a616d",
+        "reason": "Verified package ZIP was temporary; keep remote identity, digest, inventories, module metadata, and internal archive digest without committing built plugin bytes."
+      }
+    ],
+    "retained_evidence_files": [
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298169507.zip",
+        "bytes": 50506,
+        "sha256": "4c97e67da87c107bda9ae89f42a7d6af3dd2af59bc639f164f4b0fb7e588e8d8"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298573562.zip",
+        "bytes": 49533,
+        "sha256": "b30a273720e32d1fd37a3b53dc843973b39545d53be52823660a2c3255b0f35b"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298941919.zip",
+        "bytes": 37710,
+        "sha256": "97e6341672b61502388731012cd2e833c620de52db08add83449db3d5c7bfb5a"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14299115647.zip",
+        "bytes": 41453,
+        "sha256": "dab945aa12084f024035bebb4ce910339fcefb1ab2c56f4f56a7b6682d87eed0"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/final-metadata.json",
+        "bytes": 24772,
+        "sha256": "d7e3252c976dcebdce19c25b4f6bfa949ae2f844ddb1aae753bd724398e9a008"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814024868.log.txt.gz",
+        "bytes": 33054,
+        "sha256": "449b1e1ce2aac6e791c11e788e26650497d0b103c7fd4fbd8bea7f85e3c4b215"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814025096.log.txt.gz",
+        "bytes": 33472,
+        "sha256": "4eec2388c2025e5b5496e761b5a8bc87d8dedd3d51bbebe87cbbc9e9695db9a6"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814025233.log.txt.gz",
+        "bytes": 31892,
+        "sha256": "495e3b2528b416da3e3c464dcda510eda3130719855acd429a41d1de8f5e4217"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/job-133814025269.log.txt.gz",
+        "bytes": 32760,
+        "sha256": "1c4c7568f19c6b29a7c6f9f3b3ea5450619918deb6058bb2c253eccf850ff89d"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/archive.sha256",
+        "bytes": 91,
+        "sha256": "d23be1426439ccab4cc1cdd85653e4e7106df1a1b32394b962d2da749dc6009f"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/bundle-inventory.json",
+        "bytes": 1777,
+        "sha256": "73a5b113b3c3631065036b509b8e3bb6374f0142d11da837930228b6e74f9f07"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/ctest.log.gz",
+        "bytes": 5388,
+        "sha256": "1110caea4aed25f7de6c5a1de009c698c2c6a776983d6415644acfba19254bce"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/ctest.xml",
+        "bytes": 6603,
+        "sha256": "45e86f504d7c65d4e970f53ecc963c01f7f39162d506f2db9b12d6d9735a10fe"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/moduleinfo.json",
+        "bytes": 1090,
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/provenance.json",
+        "bytes": 423,
+        "sha256": "7fce5760be7cf6ceae617271f2712fb12e555bfbec52303761d80cedd295a5f3"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/sdk-acquisition-summary.json",
+        "bytes": 690,
+        "sha256": "567838397ab55418b0ecf807e0fd9bf317324a5977e135bc6a761f4da26e6702"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/sdk-verification.json",
+        "bytes": 691,
+        "sha256": "6852c1bc83e11e3c361198020149a15106757eb4a5154959c936e094bb9fdd2b"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/toolchain.log",
+        "bytes": 462,
+        "sha256": "b634c4485af1404cf680fd5dfb49489d3e85d552aa9008e439653d154e8c1bf7"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/linux/validation.json",
+        "bytes": 9720,
+        "sha256": "ace22257c038bfc3a0eda9ad00eef6f769e0e66690fb6ed1a37e901acbe5a311"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/archive.sha256",
+        "bytes": 91,
+        "sha256": "c982b9f310e0977ca005def572a046705a5999b712d09c61c704c43c3e4c3bae"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/bundle-inventory.json",
+        "bytes": 2140,
+        "sha256": "c928e7eea85f083b82747f71579d4f287b4c5be94e20e658ff9d899287cbff68"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/ctest.log.gz",
+        "bytes": 4889,
+        "sha256": "a0cb68468c73dcab94c55429f0069bb8791e6e44212ef364331aa1ae97e44547"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/ctest.xml",
+        "bytes": 5558,
+        "sha256": "1d7b2092f7ee8d63777a479fb4b0bca679175eb1039ca91cb35486be425c5c11"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/moduleinfo.json",
+        "bytes": 1090,
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/provenance.json",
+        "bytes": 410,
+        "sha256": "d69619c74df6833f46b1dd7c8edee7b53f777c64fbb9390b4cc11f1a36efaa07"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/sdk-acquisition-summary.json",
+        "bytes": 691,
+        "sha256": "5b73a4fe14219192885bfd6a985514b556f1d64f9de0c5a13f885efaf4cee4ec"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/sdk-verification.json",
+        "bytes": 692,
+        "sha256": "1ea4f3340d2278f9a13afcc5815b30dbfdf523ab78461e325499b4b7e7438526"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/toolchain.log",
+        "bytes": 420,
+        "sha256": "bb28f10efabdf0f0ab8b598572b6989a0b0aff5109ff1fdd94d74fe280753d37"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_arm/validation.json",
+        "bytes": 8133,
+        "sha256": "6ecee9453b4ae4ba58b695d99b9bf7f6e1c51be40e064782964cc7af561e23d7"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/archive.sha256",
+        "bytes": 91,
+        "sha256": "209af160b12533529297910dc9f5225d0fef861990530abef60854b6b3a647c9"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/bundle-inventory.json",
+        "bytes": 2142,
+        "sha256": "277596dbae2ae710c5d854170ff983f30eca202f7095c242a35325b0f98c38b6"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/ctest.log.gz",
+        "bytes": 4886,
+        "sha256": "cc6cb9d9ec863bb307931f3565009e975134428f230ce33e0e66e09d5f214bbd"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/ctest.xml",
+        "bytes": 5556,
+        "sha256": "a83677e3c6c1f61213d4f2a09ba3e211dfa63b6127b072cd8f0ad21f2a2aec93"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/moduleinfo.json",
+        "bytes": 1090,
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/provenance.json",
+        "bytes": 411,
+        "sha256": "55b224cfcfe86f7af464d0b854a5fe512845aeb2d35d2bb44bf8a90cedf70ff8"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/sdk-acquisition-summary.json",
+        "bytes": 691,
+        "sha256": "5b73a4fe14219192885bfd6a985514b556f1d64f9de0c5a13f885efaf4cee4ec"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/sdk-verification.json",
+        "bytes": 692,
+        "sha256": "1ea4f3340d2278f9a13afcc5815b30dbfdf523ab78461e325499b4b7e7438526"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/toolchain.log",
+        "bytes": 421,
+        "sha256": "2ae2a3b6e86be09b11eeb88f073bcf46ba4a447787629625a55341ad5a6e29d9"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/mac_intel/validation.json",
+        "bytes": 8133,
+        "sha256": "5dc7301435357eaa7e7a883cb0d74b046ae6c70aacc96025364ee4fa7003460f"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/preparation.json",
+        "bytes": 4580,
+        "sha256": "ca5d39059f320d976f85e1431a42b42a081113ec5a63443fe1edc95a03339868"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/sdk-lock.json",
+        "bytes": 3796,
+        "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/source-api.json",
+        "bytes": 1797,
+        "sha256": "1d33cde713dcbc412a8f9270a7ae8bbcd16db26cdec155a125b0680865f9ef21"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/source-workflow.txt",
+        "bytes": 8367,
+        "sha256": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/archive.sha256",
+        "bytes": 92,
+        "sha256": "13da947bd7e49685d6625bab9b2fc4cf0007a19ee9f09fefa1e7c840ed07bcb0"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/bundle-inventory.json",
+        "bytes": 2127,
+        "sha256": "c6d3498ca3dea5235fb2267dcd5dfcc4b05a6aef3622d29b8102bb8dfa1df2d8"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/ctest.log.gz",
+        "bytes": 4939,
+        "sha256": "5a1167b93b4718519b80054938305c72774bd0bca361f4c46f5cf190ddceec18"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/ctest.xml",
+        "bytes": 5600,
+        "sha256": "5fec11a79f9b40202ce5bc420f193cfac03e3720d152b6fcbb25ac0df57d3051"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/moduleinfo.json",
+        "bytes": 1133,
+        "sha256": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/provenance.json",
+        "bytes": 426,
+        "sha256": "c46f2b2201638c605e3adef736451e4213f7c30c4898d74eba152927e4b5cd4e"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/sdk-acquisition-summary.json",
+        "bytes": 680,
+        "sha256": "eb4a3adbd316c4974fc7883d9081773bfc128e479c62fd4d50a068b49c16058f"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/sdk-verification.json",
+        "bytes": 681,
+        "sha256": "5685445ccf56e7333900f2f3b7a05440cb651ccfdd868ef6ee6664c7922b119c"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/toolchain.log",
+        "bytes": 227,
+        "sha256": "b9ea63860ca1eb21cfc2a7b54fc8c7a5304ff19c3d3219b602529c00f0c2eb62"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/validation.json",
+        "bytes": 8094,
+        "sha256": "5160204f84ff6251cbc1ddaa0270e3a0075996aaec6d72af61e4f32fc173da8f"
+      }
+    ],
+    "retained_evidence_bytes": 452853,
+    "prior_local_reviews_and_receipts_unchanged": [
+      {
+        "path": "docs/reviews/REPLAY_TEST_SCHEDULING_ADMISSION.md",
+        "bytes": 8780,
+        "sha256": "064b0a45497c2b23589a89fd0328acc60395775fd9de0111f3d05d0ff60fdd17"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-replay-scheduling-admission.json",
+        "bytes": 26326,
+        "sha256": "869af0fe82ae0a9d8c034d2fae23c2d710aca1c1c189e7f7941c54f219cd8ce6"
+      },
+      {
+        "path": "docs/reviews/ADDITIONAL_NATIVE_SCHEDULING_ADMISSION.md",
+        "bytes": 9621,
+        "sha256": "0134a37956da506a3a49595d33f42c55eb419e93fd3f8574b98bb05a6e834c55"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-additional-native-scheduling.json",
+        "bytes": 20188,
+        "sha256": "4b7d1401894d73165e090d896b54522eac6b532c6ab460d429236700a75193c6"
+      },
+      {
+        "path": "docs/reviews/STARTER_LOAD_SCHEDULING_ADMISSION.md",
+        "bytes": 10531,
+        "sha256": "a5a3ed9520a950dce103d357422ae8003b0bbcaac5c5a49cbb73b4425e6f9dba"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-starter-load-scheduling.json",
+        "bytes": 24265,
+        "sha256": "a9f04fe5419558c65dfd04ef6664cd3dc9995ff22bc19f2b6e1552e10e2ce724"
+      },
+      {
+        "path": "docs/reviews/PRESET_RASTER_LOCAL_TIMING_REVIEW.md",
+        "bytes": 7535,
+        "sha256": "d7d59b04b66ffe2b2b15acaa6b5ba93b0626f0d7e4a66465fd2c158f4a6e5359"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-preset-raster-local-timing.json",
+        "bytes": 15841,
+        "sha256": "766b2635aed61903a3ae9c06444586ade83106e49a8af8e128d655caaec0bd5f"
+      }
+    ],
+    "junit_truncation_handled": "Complete ctest.log used for validator result, installation JSON and Linux interception output; original XML retained."
+  },
+  "local_result_boundary": {
+    "original_full_passed": 240,
+    "original_full_total": 242,
+    "original_exit": 8,
+    "original_result_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json",
+      "bytes": 1368,
+      "sha256": "f226ae0a4c6866dab2f577d6c715e03d95891582edf7bf5c76f575c07d00d2cc"
+    },
+    "vst3_success_does_not_erase_local_failures": true,
+    "other_workflows_not_adjudicated_here": true
+  },
+  "inspection_operations": {
+    "native_executions_by_A54": 0,
+    "builds_by_A54": 0,
+    "remote_mutations_by_A54": 0,
+    "reruns_requested_by_A54": 0,
+    "inspection_route_note": "A direct job-detail read did not provide the expected content wrapper; the run-attempt jobs collection supplied complete final metadata. No workflow was retried."
+  },
+  "review": {
+    "path": "docs/reviews/HEADING_HEADER_VST3_HOSTED.md",
+    "bytes": 9981,
+    "sha256": "7b7ca9b3aeacbdfdef988b942c5e4692e54e0b659b2b03c031e348a09c4d38f2"
+  },
+  "note": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/notes/A54.md",
+    "bytes": 6224,
+    "sha256": "666fbf4682989759d8c1ffb0872786408a4ceabaf257e5fb64636dc2d884f761",
+    "words": 850
+  },
+  "next_steps": [
+    "Root integrates documentation and reports exact original-source VST3 results separately from core/standalone workflow outcomes.",
+    "Any successor commit requires explicitly named source/input comparison and separately reported hosted evidence; do not relabel this run.",
+    "Keep original mixed local outcomes and all prior admission evidence unchanged."
+  ],
+  "not_established": [
+    "All DAWs or supported-host matrix",
+    "Physical MIDI/audio hardware or device deadlines",
+    "Calibrated physical-instrument fidelity",
+    "Developer ID release signing or notarization",
+    "Custom plugin editor or complete standalone reference presentation",
+    "Accessibility or literal whole-UI1:1",
+    "Completion of all remaining M0-M9 project exits"
+  ]
+}

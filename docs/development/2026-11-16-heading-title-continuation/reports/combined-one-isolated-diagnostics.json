@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T02:44:22.341700+00:00",
+  "actual_diagnostic_invocations": 2,
+  "executions": [
+    {
+      "case": "midi",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_midi_replay.py",
+        "NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui"
+      ],
+      "returncode": 0,
+      "seconds": 1.904240761003166,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-midi-one-isolated-diagnostic.log",
+      "log_sha256": "2f549fcf90e282a0bfdb885b68062453a2a2074d3bd3233b7d827a02dcc269a7"
+    },
+    {
+      "case": "workspace",
+      "command": [
+        "python3",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+        "NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns"
+      ],
+      "returncode": 0,
+      "seconds": 4.047807788003411,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-workspace-one-isolated-diagnostic.log",
+      "log_sha256": "1127554e5b1a8f134529e3fcc0185e0b39ab4a8f71263f640e809a5c79a93b7f"
+    }
+  ],
+  "input_sha256": {
+    "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479",
+    "apps/standalone/main.cpp": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3",
+    "apps/standalone/CMakeLists.txt": "aae163ac030bacfefe8f8342eaeac11552d2fe97cf45e4b567cc3eb6e8e8f34b",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+  },
+  "changed_inputs": [],
+  "scope": "Exactly one unchanged isolated execution per originally failing method, after the complete parallel run. These are separate diagnostics, not replacements for the original failures or proof of a particular CPU/scheduler cause."
+}

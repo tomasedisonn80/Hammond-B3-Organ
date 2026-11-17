@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "timestamp_utc": "2026-11-17T01:52:25.341932+00:00",
+  "initial_result": "progress validator failed: A40 and A41 own note not assigned",
+  "cause": "Root used repository-relative paths for two session-relative note registrations. Actual assigned files and agent identities were unchanged.",
+  "changes": [
+    {
+      "worker": "A40",
+      "before": [
+        "docs/PLAN.md",
+        "docs/PROJECT_GUIDE.md",
+        "docs/development/2026-11-16-heading-title-continuation/notes/A40.md"
+      ],
+      "after": [
+        "docs/PLAN.md",
+        "docs/PROJECT_GUIDE.md",
+        "notes/A40.md"
+      ]
+    },
+    {
+      "worker": "A41",
+      "before": [
+        "docs/reviews/HEADING_HEADER_INSTALLED_JOURNEYS.md",
+        "docs/development/2026-11-16-heading-title-continuation/reports/a41-installed-journeys.json",
+        "docs/development/2026-11-16-heading-title-continuation/notes/A41.md"
+      ],
+      "after": [
+        "docs/reviews/HEADING_HEADER_INSTALLED_JOURNEYS.md",
+        "reports/a41-installed-journeys.json",
+        "notes/A41.md"
+      ]
+    }
+  ],
+  "scope": "Path notation correction only; no dispatch, accepted worker, note bytes or validator semantics changed."
+}

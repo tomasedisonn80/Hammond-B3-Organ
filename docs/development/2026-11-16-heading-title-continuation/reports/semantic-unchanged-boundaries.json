@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "--parallel",
+    "1",
+    "--output-on-failure",
+    "--no-tests=error",
+    "-R",
+    "^test_standalone_(replay_paint_boundary|replay_boundaries|input_replay)$",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/semantic-unchanged-boundaries.xml"
+  ],
+  "returncode": 0,
+  "seconds": 6.652619015996606,
+  "log_sha256": "db753eb13dc550f03edd4b8eab889d57106e8c3a102dec5b998d143baceb3ac7"
+}

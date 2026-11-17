@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "test_count": 242,
+  "all_previous_names_commands_retained": true,
+  "only_property_changes": [
+    {
+      "test": "test_standalone_starter_load",
+      "before": {
+        "LABELS": [
+          "native",
+          "registration",
+          "standalone"
+        ],
+        "TIMEOUT": 60.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      },
+      "after": {
+        "LABELS": [
+          "native",
+          "registration",
+          "standalone"
+        ],
+        "RUN_SERIAL": true,
+        "TIMEOUT": 60.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      },
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "HAMMOND_REGISTRATION_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/hammond_registration",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_starter_load.py"
+      ]
+    }
+  ],
+  "serialized_tests": [
+    "test_standalone_app",
+    "test_standalone_midi_cli",
+    "test_standalone_native_calibration",
+    "test_standalone_native_midi_replay",
+    "test_standalone_workspace_replay",
+    "test_standalone_starter_load"
+  ],
+  "standalone_test_count": 68,
+  "cmake_sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+  "workspace_fixture_sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+  "app_sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+}

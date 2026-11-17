@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-17T04:53:59.463583+00:00",
+  "source_base": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+  "independent_admission": "docs/reviews/NATIVE_SANITIZER_JOB_BUDGET_ADMISSION.md",
+  "independent_admission_sha256": "92dd4789882de5e0069ee3144def097aa33fbb633de8228a3206595faebf061d",
+  "independent_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a54-native-sanitizer-job-budget.json",
+  "independent_receipt_sha256": "1e9cb487bd94d15907b7347fd40eefd18edd1cc558434ceba635364c627d51dc",
+  "applied_file": ".github/workflows/standalone.yml",
+  "job": "native-sanitizers",
+  "old_job_timeout_minutes": 20,
+  "new_job_timeout_minutes": 35,
+  "original_workflow_sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c",
+  "candidate_workflow_sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319",
+  "exact_single_scalar_change": true,
+  "other_workflow_bytes_identical": true,
+  "total_original_code_inputs": 475,
+  "changed_inputs": [
+    {
+      "path": ".github/workflows/standalone.yml",
+      "original": {
+        "bytes": 71269,
+        "sha256": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c"
+      },
+      "candidate": {
+        "bytes": 71269,
+        "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319"
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "original": {
+        "bytes": 61218,
+        "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+      },
+      "candidate": {
+        "bytes": 61258,
+        "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "original": {
+        "bytes": 34239,
+        "sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509"
+      },
+      "candidate": {
+        "bytes": 34239,
+        "sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f"
+      }
+    }
+  ],
+  "other_code_inputs_unchanged": 472,
+  "production_application_sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+  "production_sources_and_build_properties_unchanged": true,
+  "individual_test_limits_workloads_and_sanitizer_policy_unchanged": true,
+  "new_native_execution_performed_for_workflow_scalar": false,
+  "original_hosted_matrix": "docs/development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json",
+  "remaining_acceptance": "Publish exact three-input correction and inspect actual successor Windows compilation/native/package gates, complete 34/34 instrumented sanitizer gate and all other required source-specific hosted outcomes. Original failure and cancellation remain original outcomes."
+}

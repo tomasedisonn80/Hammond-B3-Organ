@@ -8,16 +8,21 @@ or follow-ups again.
 
 ## Immediate integration
 
-The P1 paired comparison, full-frame visual review, fixed timing batch and
-same-scene Flat witness are complete on their recorded inputs. Original
-failures and sources remain retained. The integrated all-target build passes;
-the first full run is 246/247 with one temporary documentation-link failure,
-which remains retained and needs the affected gate after authoring finishes.
-The final integrated 15-view gallery and all 69 manifest entries pass, production
-input identities remain unchanged and README now uses the actual final images.
-Independent final-gallery admission remains next. No publication has occurred.
+Combined H1/P1/published-main source is admitted. Its coherent build passes
+46/46 steps, affected tests 78/78, captures 15/15 and manifest payloads 69/69;
+587 production/test/build inputs remain stable. A48's independent full-frame
+review is complete, and the admitted README update displays the combined gallery.
+Keep the original full-suite 246/247 failure and earlier source-bound evidence.
 
-## Remaining planned worker scopes
+Root now finishes the affected documentation check, final staging and A54's
+exact-tree admission. Publish the reviewed combined tree with fresh remote
+`03c70c1` history and the recovery parent, using a fresh expected head and no
+force. All 432 recovery blobs are SHA-verified; the initial large tree timeout
+and follow-up 404 remain recorded while smaller bottom-up trees are completed.
+No branch ref has moved at this checkpoint. Then dispatch A55–A60 for independent
+publication, exact-source hosted outcomes and actual sixty-record closure.
+
+## Assignment sequence (actual state is in the ledger)
 
 | Planned worker | Separate useful scope |
 | --- | --- |
@@ -29,10 +34,10 @@ Independent final-gallery admission remains next. No publication has occurred.
 | A42 | Independent coherent full-suite evidence review |
 | A43 | Parameter/state/source/UUID and musical compatibility |
 | A44 | Independent fixed timing and cross-witness outcome review |
-| A45 | Frozen production/build/workflow source manifest for publication |
-| A46 | Final application gallery and source-continuity admission |
-| A47 | Combined library foundation/recall admission and browser boundary |
-| A48 | Combined P1 design/raster/visual/timing/candidate admission |
+| A45 | Reconcile both exact Windows fixture repairs; retain original pins |
+| A46 | Preserve additive CMake/CI union after fresh remote H1/replay advance |
+| A47 | Independent combined H1/P1/main source reconciliation admission |
+| A48 | Combined application gallery, source continuity and material admission |
 | A49 | Clean-checkout setup/install and release qualification guidance |
 | A50 | Independent README/reference/residual and operator-claim review |
 | A51 | Independent persistent CMake/hosted-CI gate audit |

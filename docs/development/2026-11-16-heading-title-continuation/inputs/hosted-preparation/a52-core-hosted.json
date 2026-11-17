@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "worker": "A52",
+  "agent": "/root/w09_a52",
+  "wave": 9,
+  "recorded_utc": "2026-11-17T02:47:54.810296+00:00",
+  "status": "preparation_complete; original_MIDI_failure_diagnosed; waiting_for_root_exact_published_source",
+  "published_source_sha": null,
+  "published_tree_sha": null,
+  "core_ci_runs": [],
+  "preparation": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/preparation.json",
+    "bytes": 4248,
+    "sha256": "a24c3e676e60ef258b0c8aa2f2297ca15a5fe96c3abdfb26ac9ff18910575c91"
+  },
+  "local_midi_diagnosis": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/midi-original-failure-diagnosis.json",
+    "bytes": 21484,
+    "sha256": "89271d930ed9454794d7b14080c45f9c865f58207da15d2398e162c9f4ab10f1"
+  },
+  "reviews": [
+    {
+      "path": "docs/reviews/HEADING_HEADER_CORE_HOSTED.md",
+      "bytes": 4269,
+      "sha256": "7ab5918cbc231226be69a84be2649068c16255707f8264b362011e7f2da41f3f"
+    },
+    {
+      "path": "docs/reviews/COMBINED_MIDI_REPLAY_DIAGNOSIS.md",
+      "bytes": 7698,
+      "sha256": "a461383bbbc21f04135255140fde820ad870745cc7b1474bb50c71d56b6ef676"
+    }
+  ],
+  "note": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/notes/A52.md",
+    "bytes": 5931,
+    "sha256": "16e6d49a9988e031331295e1369ea38a3d94cb6a8044a2fd6a4770e07017bae5"
+  },
+  "execution_counts": {
+    "A52_native_executions": 0,
+    "A52_GitHub_requests": 0,
+    "A52_reruns": 0,
+    "A52_source_or_workflow_mutations": 0
+  },
+  "qualification_limits": [
+    "No exact new published source was supplied; no uncreated CI runs queried.",
+    "Remote9d60 and olderT2 outcomes are separate sources.",
+    "Combined local239/241 remains failed; isolated root comparison pending.",
+    "Later final MIDI predicates evaluated offline, not falsely counted as original executed assertions.",
+    "Physical hardware, callback timing and full-interface visual equality remain open."
+  ],
+  "next_step": "Root owns one unchanged isolated failing-method comparison and subsequent source publication. A52 resumes as same worker to observe exact SHA Core CI; no extra worker credit."
+}

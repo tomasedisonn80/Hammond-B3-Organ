@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T02:30:02.552689+00:00",
+  "local_recovery_commit": "045c95d769b197d05b6596901508c160fd62fb35",
+  "remote_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "decision": "Adopt byte-exact remote portable comparator interfaces and stricter title-density reader after independent A49 review and root exact diff/AST review; original accepted checker sources remain archived and their old reports unchanged",
+  "files": [
+    {
+      "path": "tools/compare_header_material.py",
+      "before_sha256": "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b",
+      "remote_sha256": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+      "before_archive": "docs/development/2026-11-16-heading-title-continuation/inputs/compare_header_material-accepted-heading.py",
+      "changed_existing_functions_or_classes": [
+        "baseline_inputs",
+        "main"
+      ],
+      "unchanged_functions_or_classes": 55
+    },
+    {
+      "path": "tools/compare_title_typography.py",
+      "before_sha256": "71dcb664761319322853809572894ef0fa0d036dc702c719b5ab8ced4e2566ed",
+      "remote_sha256": "a3e6d7f6dcb6b11b1281b69c866e2b044f76eacffc05b5375b4936c77650704c",
+      "before_archive": "docs/development/2026-11-16-heading-title-continuation/inputs/compare_title_typography-accepted-heading.py",
+      "changed_existing_functions_or_classes": [
+        "main"
+      ],
+      "unchanged_functions_or_classes": 18
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_title_density.py",
+      "before_sha256": "9a537d7ac536a622504ab01f0d9934d0bd85084511c69c07e4c3411ab21f0afa",
+      "remote_sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2",
+      "before_archive": "docs/development/2026-11-16-heading-title-continuation/inputs/test_standalone_title_density-accepted-heading.py",
+      "changed_existing_functions_or_classes": [
+        "capture_frame",
+        "expected_header",
+        "validate_model",
+        "parse_frame",
+        "main"
+      ],
+      "unchanged_functions_or_classes": 7
+    }
+  ],
+  "invariants": "18 canonical density thresholds/ROI and H1 numerical functions, 103 thresholds, protected support, renderer/state checks and resource bounds unchanged. H1 expected baseline receipt hash must be independently fixed before execution; do not derive it from mutable bytes.",
+  "scope": "Neither frozen comparator accepts current changed main as its original protected main; do not weaken pins or relabel original full matrices as a new full run. Separate source/runtime audit covers the main-only change. Pending static/19-process density/full coherent and hosted gates.",
+  "proposal_resolution": "Retain original d818 proposal at original path with exact link-context copies; preserve remote derived reader as sibling and preserve remote exact-original gzip."
+}

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "--output-on-failure",
+    "--parallel",
+    "1",
+    "--no-tests=error",
+    "-R",
+    "^(test_standalone_workspace_replay|test_standalone_replay_boundaries|test_standalone_input_replay)$",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/replay-repair-affected.xml"
+  ],
+  "returncode": 0,
+  "seconds": 55.52775347800343
+}

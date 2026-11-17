@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "--parallel",
+    "2",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.xml"
+  ],
+  "selected_environment": {
+    "HAMMOND_STANDALONE_WORKSPACE_EVIDENCE": "/workspace/scratch/5a28c3564dbf/qualified-workspace-evidence"
+  },
+  "returncode": 8,
+  "seconds": 740.263707625003,
+  "test_count": 242,
+  "failed_tests": [
+    "test_standalone_preset_raster",
+    "test_standalone_native_midi_replay"
+  ],
+  "changed_code_inputs": [],
+  "changed_build_inputs": [],
+  "serial_nonoverlap_passed": true,
+  "workspace_actual_native_children": 37,
+  "log": {
+    "bytes": 130384,
+    "sha256": "c8fa5c2d326bb22069121f245d307e4c4aad588e0727bd15baf3454e65268b1c"
+  },
+  "junit": {
+    "bytes": 231727,
+    "sha256": "2dea62baac1897f1c6f209c13b1702adf91b32a90466c7d44a56508652fe1652"
+  },
+  "coherent_input_receipt": {
+    "bytes": 76573,
+    "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+  },
+  "workspace_records_receipt": {
+    "bytes": 43221,
+    "sha256": "64dd0527ed9e8bab1b57308c6ca7697d0825e3d89434594ba19699c5a57cbd08"
+  }
+}

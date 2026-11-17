@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "status": "qualified",
+  "method": "Identical regression source linked against identical qualified libraries; archived genuine initial H1 painter in separate scratch include tree. No before switch or production edit.",
+  "inputs": [
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp",
+      "bytes": 10554,
+      "sha256": "254f66fbd3f2ab86b63000d5eb8f59826775c1db61752c0ac4e173029494fc0a"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/apps/standalone/InstrumentView.cpp",
+      "bytes": 171488,
+      "sha256": "0385765af919cac92e334d103f02c0f342cbf2fbd6060ca71a1a715ec7cdcb16"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    }
+  ],
+  "commands": [
+    {
+      "stage": "compile",
+      "command": [
+        "/usr/bin/c++",
+        "-DSDL_MAIN_HANDLED",
+        "-I/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone",
+        "-I/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/include",
+        "-I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include",
+        "-I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include/SDL2",
+        "-I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include-config-release/SDL2",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-Wshadow",
+        "-Werror",
+        "-o",
+        "/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/fixture.cpp.o",
+        "-c",
+        "/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone",
+      "exit_code": 0,
+      "elapsed_seconds": 13.746269551000296
+    },
+    {
+      "stage": "link",
+      "command": [
+        "/usr/bin/c++",
+        "-O3",
+        "-DNDEBUG",
+        "-Wl,--dependency-file=/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/link.d",
+        "/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/fixture.cpp.o",
+        "-o",
+        "/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/test_standalone_header_grain_bounds",
+        "libhammond_standalone_drawing.a",
+        "libhammond_standalone_support.a",
+        "../../_sdl2/libSDL2.a",
+        "-lm",
+        "-pthread",
+        "../../libhammond_core.a"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone",
+      "exit_code": 0,
+      "elapsed_seconds": 0.3281598369976564
+    }
+  ],
+  "before": {
+    "binary": {
+      "path": "/workspace/scratch/5a28c3564dbf/h1-grain-regression-before/test_standalone_header_grain_bounds",
+      "bytes": 3747528,
+      "sha256": "7d676629bc74302d323afcbaf05c324b6510f6fecb7218a88292e1227ee5374a"
+    },
+    "exit_code": 1,
+    "expected_failure": "(7,1) retains background instead of prescribed grain",
+    "stderr": "Header H1 grain bounds failed in BLEND narrow clip: exact RGBA differs at (7,1): expected 30 25 21 255; actual 173 181 193 211\n"
+  },
+  "after": {
+    "binary": {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_header_grain_bounds",
+      "bytes": 3747528,
+      "sha256": "9c04dde1cd441bd20e6a959ca3a411f2b33dcbf21b3ad66ec503c8a217a0e074"
+    },
+    "exit_code": 0,
+    "result": {
+      "schema": 1,
+      "protocol": "header-h1-grain-bounds-v1",
+      "status": "passed",
+      "cases": 4,
+      "checks": 170,
+      "pixels_checked": 96000,
+      "grain_pixels_checked": 18,
+      "unchanged_pixels_checked": 95982,
+      "backend": "SDL software surface; no window or audio"
+    }
+  },
+  "libraries": [
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/libhammond_standalone_drawing.a",
+      "bytes": 1283262,
+      "sha256": "ffc41ccf55b0268f6b01af36d3e1b97cecb7b79f14e574cb7cc2178c12a853e7"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/libhammond_standalone_support.a",
+      "bytes": 421086,
+      "sha256": "9e1046e988d3b7d05b4c09d34243aebb95f8648fd175987ee06e59f375d78be9"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/libhammond_core.a",
+      "bytes": 460336,
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/_sdl2/libSDL2.a",
+      "bytes": 3245774,
+      "sha256": "383aee215b2eaa4f716623113fc0481af90ac55bfa56fca261c157241a1a1977"
+    }
+  ]
+}

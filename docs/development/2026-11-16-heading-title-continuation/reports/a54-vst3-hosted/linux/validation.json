@@ -1,0 +1,244 @@
+{
+  "family": "linux",
+  "provenance": {
+    "configuration": "Release",
+    "image_os": "ubuntu24",
+    "image_version": "20261111.127.1",
+    "machine": "x86_64",
+    "platform": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+    "python": "3.12.16",
+    "run_attempt": "1",
+    "run_id": "44016021543",
+    "runner_arch": "X64",
+    "runner_os": "Linux",
+    "source_commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a"
+  },
+  "sdk_version": "3.8.1",
+  "sdk_lock": {
+    "bytes": 3796,
+    "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+  },
+  "sdk_verification": {
+    "embedded_json_verified": true,
+    "network_used": false,
+    "primary_licenses_verified": 5,
+    "schema_version": 1,
+    "sdk_root": "/home/runner/work/_temp/hammond-vst3-sdk",
+    "verified_checkouts": [
+      {
+        "commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+        "path": "."
+      },
+      {
+        "commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477",
+        "path": "base"
+      },
+      {
+        "commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5",
+        "path": "cmake"
+      },
+      {
+        "commit": "4f547e8e102b47de4a8b8aaf343c73b700786372",
+        "path": "pluginterfaces"
+      },
+      {
+        "commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da",
+        "path": "public.sdk"
+      }
+    ]
+  },
+  "acquisition_network_used": true,
+  "artifact_ids": {
+    "diagnostics": 14299115647,
+    "bundle": 14298582715
+  },
+  "downloaded_artifacts": {
+    "diagnostics_zip": {
+      "bytes": 41453,
+      "sha256": "dab945aa12084f024035bebb4ce910339fcefb1ab2c56f4f56a7b6682d87eed0"
+    },
+    "bundle_zip": {
+      "bytes": 198626,
+      "sha256": "eaf085dff25f5e90dbb82ca472973eba92a92024e4ace35e6d1e261f7b84ecc7"
+    }
+  },
+  "actual_bundle_module": {
+    "architectures": [
+      "x86_64"
+    ],
+    "format": "ELF64",
+    "path": "Contents/x86_64-linux/HammondB3.so",
+    "platform": "linux"
+  },
+  "module_bytes_independently_header_checked": true,
+  "file_count": 4,
+  "all_archive_payload_bytes_sizes_modes_match_inventory": true,
+  "build_staged_inventory_byte_identical": true,
+  "bundle_inventory": {
+    "bytes": 1777,
+    "sha256": "73a5b113b3c3631065036b509b8e3bb6374f0142d11da837930228b6e74f9f07"
+  },
+  "archive": {
+    "bytes": 198146,
+    "sha256": "b8e0a81399bf6b3cd0dd01c6f5660229e5f965a8e2082f8f998906e86da90ba1"
+  },
+  "archive_sha256_file_verified": true,
+  "moduleinfo": {
+    "bytes": 1090,
+    "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184"
+  },
+  "ctest_log": {
+    "bytes": 28730,
+    "sha256": "1221c51fe235226f2ef36bb48675f646801e3af2fb2a99b0ab69710c2cf3230d"
+  },
+  "ctest_xml": {
+    "bytes": 6603,
+    "sha256": "45e86f504d7c65d4e970f53ecc963c01f7f39162d506f2db9b12d6d9735a10fe"
+  },
+  "ctest_count": 8,
+  "ctest_failures": 0,
+  "ctest_skipped": 0,
+  "tests": [
+    {
+      "name": "test_native_install",
+      "seconds": 0.904207,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "hammond_vst3_validator",
+      "seconds": 1.02637,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_controller",
+      "seconds": 0.0125933,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_abi",
+      "seconds": 0.62682,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_behavior",
+      "seconds": 1.12267,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_automation",
+      "seconds": 0.352503,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_concurrency",
+      "seconds": 0.20559,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    },
+    {
+      "name": "test_native_realtime",
+      "seconds": 0.620238,
+      "status": "run",
+      "failed": false,
+      "skipped": false
+    }
+  ],
+  "actual_module_validator": {
+    "passed": 47,
+    "failed": 0,
+    "sdk_version": "3.8.1",
+    "class_ids_unchanged": true
+  },
+  "native_abi": {
+    "suite": "native-abi-v1",
+    "instances": 9,
+    "assertions": 701642,
+    "descriptors": 47,
+    "conversions": 2140,
+    "accepted_callbacks": 1673,
+    "rejected_calls": 88,
+    "state_round_trips": 3207,
+    "lifecycle_sequences": 6,
+    "compared_frames": 229725,
+    "audible_frames": 217972,
+    "maximum_audio_error": 0,
+    "float_hash": "af029009868faa04"
+  },
+  "native_install": {
+    "bundle_sha256": {
+      "Contents/Resources/THIRD_PARTY_NOTICES.md": "3fbf149e1e5636e21c4ebffbd27c82b66fbc6131fb87a0cca3a355391fa8b43b",
+      "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e",
+      "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184",
+      "Contents/x86_64-linux/HammondB3.so": "cb83fb90758ad73f27100d59f0e36a72690a4b925da25d2e30d0cb45ffbf8639"
+    },
+    "payload_files": 4,
+    "relocated_abi": {
+      "accepted_callbacks": 1673,
+      "assertions": 701642,
+      "audible_frames": 217972,
+      "compared_frames": 229725,
+      "conversions": 2140,
+      "descriptors": 47,
+      "float_hash": "af029009868faa04",
+      "instances": 9,
+      "lifecycle_sequences": 6,
+      "maximum_audio_error": 0,
+      "rejected_calls": 88,
+      "state_round_trips": 3207,
+      "suite": "native-abi-v1"
+    },
+    "suite": "native-install-v1"
+  },
+  "install_methods_executed": 2,
+  "install_relocated_abi_equals_original_abi": true,
+  "native_summaries": [
+    "native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600",
+    "native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f",
+    "native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03",
+    "native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1",
+    "native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=1412 rejected_callbacks=24 zero_callbacks=278 compared_frames=64916 audible_frames=64916 future_frames=6168 accepted_loads=3174 full_loads=8546 malformed_loads=462 successful_saves=15147 busy_saves=74 pending_saves=11999 published_saves=3100 maximum_audio_error=0",
+    "regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265 state_reads=204 rollback_cases=30 future_channel_samples=18114 moving_contact_checks=4 owner_capacity_checks=2 assertions=8945157 checksum=fbea92c63d86af53"
+  ],
+  "linux_realtime_untruncated_output": [
+    "module calibration processor create new=1 delete=0; release new=0 delete=1 refs=0",
+    "module calibration controller create new=1 delete=0; release new=0 delete=1 refs=0",
+    "enabled rate 44100: manual, pedal, moving contacts, percussion and independent audio verified",
+    "enabled rate 48000: manual, pedal, moving contacts, percussion and independent audio verified",
+    "enabled rate 96000: manual, pedal, moving contacts, percussion and independent audio verified",
+    "path accepted rejected frames fresh_raw carried_raw queued_restores new delete total_us max_us",
+    "enabled 40 0 13793 9 0 28 0 0 19880.247 3177.133",
+    "preset 54 0 456 90 3 24 0 0 1003.323 115.098",
+    "dense 5 0 224 4608 0 4 0 0 793.243 346.728",
+    "maximum 3 0 196608 6 0 0 0 0 275290.997 94630.262",
+    "carry 13 0 32 2054 1027 0 0 0 209.798 61.095",
+    "output-shape 24 0 1152 0 0 0 0 0 1733.500 107.668",
+    "rejected 0 33 0 0 0 0 0 0 13.210 1.805",
+    "setProcessing 15 6 0 0 0 0 0 0 1.210 0.175",
+    "regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265 state_reads=204 rollback_cases=30 future_channel_samples=18114 moving_contact_checks=4 owner_capacity_checks=2 assertions=8945157 checksum=fbea92c63d86af53",
+    "Scope: Linux calling-thread global C++ new/delete; timings are observations, not device deadlines."
+  ],
+  "compiler_identification": [
+    "-- The CXX compiler identification is GNU 13.3.0",
+    "-- Found Python3: /opt/hostedtoolcache/Python/3.12.16/x64/bin/python (found suitable version \"3.12.16\", minimum required is \"3.10\") found components: Interpreter",
+    "-- The C compiler identification is GNU 13.3.0"
+  ],
+  "ctest_total_seconds": 4.88,
+  "limits": [
+    "No all-DAW/device/hardware/deadline/signing/notarization/calibration/wholeUI1:1 acceptance.",
+    "JUnit long output may be truncated; validator/install/real-time summaries are read from complete ctest.log."
+  ]
+}

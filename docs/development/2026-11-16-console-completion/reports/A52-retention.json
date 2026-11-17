@@ -1,0 +1,900 @@
+{
+  "baseline_capture": {
+    "archive": {
+      "bytes": 1006057,
+      "files_without_recovery_head_blob": [
+        "diagnostics/play-reference-1672x941.json",
+        "images/play-reference-1672x941.bmp",
+        "manifest.json",
+        "provenance.json"
+      ],
+      "limit_bytes": 20971520,
+      "members": [
+        {
+          "bytes": 11215,
+          "mtime_ns": 1794884699175719693,
+          "path": "diagnostics/play-reference-1672x941.json",
+          "sha256": "8a3e7b0c9a8cb68af4dc2f92c4ab4b9734c6ce0afc1a2191f902f40c53aed7b5"
+        },
+        {
+          "bytes": 0,
+          "mtime_ns": 1794884699183719591,
+          "path": "diagnostics/play-reference-1672x941.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 0,
+          "mtime_ns": 1794884699179719642,
+          "path": "diagnostics/play-reference-1672x941.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 6293530,
+          "mtime_ns": 1794884699151719996,
+          "path": "images/play-reference-1672x941.bmp",
+          "sha256": "4d6ee1eb34e7d084313ccef51f502c3ddfa472fe11f7ac2fad91e0382852528b"
+        },
+        {
+          "bytes": 456,
+          "mtime_ns": 1794884696178851492,
+          "path": "inputs/controls.b3controls",
+          "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+        },
+        {
+          "bytes": 3960,
+          "mtime_ns": 1794884696179267302,
+          "path": "inputs/play-dimensional-pedal-focus.b3uireplay",
+          "sha256": "8efb6d0fc894f77fb427690b6f8febcaf3e2176310540ffcc04a340f1cf4889c"
+        },
+        {
+          "bytes": 3728,
+          "mtime_ns": 1794884696179787158,
+          "path": "inputs/play-dimensional-toolbar-focus.b3uireplay",
+          "sha256": "b02902d365c32db119b3e845967de35df083eaa5b9a43395476762ee0bbcd719"
+        },
+        {
+          "bytes": 1690,
+          "mtime_ns": 1794884696179534640,
+          "path": "inputs/play-dimensional.b3uireplay",
+          "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+        },
+        {
+          "bytes": 1734,
+          "mtime_ns": 1794884696180106984,
+          "path": "inputs/play-flat.b3uireplay",
+          "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+        },
+        {
+          "bytes": 1690,
+          "mtime_ns": 1794884696180264192,
+          "path": "inputs/rotary-dimensional.b3uireplay",
+          "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+        },
+        {
+          "bytes": 1690,
+          "mtime_ns": 1794884696180487593,
+          "path": "inputs/service-dimensional.b3uireplay",
+          "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+        },
+        {
+          "bytes": 2000,
+          "mtime_ns": 1794884696178081647,
+          "path": "inputs/source-qualification.json",
+          "sha256": "6675b0c41f66561de33b940144b9d3fb411ce450220222dbd1b49afe433712ca"
+        },
+        {
+          "bytes": 2352,
+          "mtime_ns": 1794884699469124390,
+          "path": "manifest.json",
+          "sha256": "813c91fc56de85578f984b38cac9893c5a59e3c6c174d1a6f0006e1285bdff14"
+        },
+        {
+          "bytes": 37852,
+          "mtime_ns": 1794884699431716454,
+          "path": "provenance.json",
+          "sha256": "b353244959ade4efa760d10a75a986175a0fdb094e58f695ed55d5e5e14cdf1f"
+        }
+      ],
+      "original_bytes": 6361897,
+      "original_files": 14,
+      "original_manifest_verified": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/A52-baseline-capture-original.tar.gz",
+      "roundtrip_member_bytes_and_sha256": true,
+      "sha256": "001252c0dbbafe91cb2f3a5c77ea54b49c111cdccb5e52a4553d3c441b8495e9",
+      "source_mtimes_unchanged": true
+    },
+    "duration_ms": 1800,
+    "failure": "no observed held state before the live drawbar edit",
+    "recorded_status": "failed",
+    "rendered_images": 3
+  },
+  "decision": "Retain and admit original failure evidence with explicit historical-source and missing-original-object qualifications; source-specific outcomes remain unchanged.",
+  "excluded_live_outputs": [
+    "combined-qualification.json",
+    "combined-application-qualification.json",
+    "combined-* logs/discovery",
+    "docs/design/native-gallery-console-combined"
+  ],
+  "first_full_run": {
+    "artifact_hashes_verified": 3,
+    "exit_code": 8,
+    "failed": [
+      "python_test_repository_integrity"
+    ],
+    "failure": "Repository integrity saw the A33 note link before A33-native-next.json existed; later presence does not rewrite the first result.",
+    "passed": 246,
+    "tests": 247
+  },
+  "flat_witness": {
+    "p1-flat-witness-v1": {
+      "errors": [
+        "benchmark did not exit zero",
+        "ValueError: two complete accepted captures required"
+      ],
+      "exit_codes": [
+        1
+      ],
+      "full_stdout_equality": false,
+      "native_layout_fnv": "Retained native-reported identity only; no layout recomputation. Pixel FNV and SHA-256 independently recomputed from retained RGBA.",
+      "processes": 1,
+      "report_sha256": "02646a116a93a234ac7826d00a65bf1a8e7811a8f54bda21bac7c0402b75a521",
+      "stderr_text": "Flat capture failed: enable fixed renderer batching: \n",
+      "stored_passed": false,
+      "streams": [
+        {
+          "compressed_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+          "file": "01-before.stdout.gz",
+          "raw_bytes": 0,
+          "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "compressed_sha256": "ce41830443fdea4410e0c920dea8556221bcd1b4cd71bf47ee485e59b6777a70",
+          "file": "01-before.stderr.gz",
+          "raw_bytes": 54,
+          "raw_sha256": "ce5d03b4a2cbb576eb13de8e3e9f9143e681cf9a2f6a938f7188096f7c75dae9"
+        }
+      ],
+      "timing_samples": 0
+    },
+    "p1-flat-witness-v2": {
+      "errors": [],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "full_stdout_equality": true,
+      "native_layout_fnv": "Retained native-reported identity only; no layout recomputation. Pixel FNV and SHA-256 independently recomputed from retained RGBA.",
+      "processes": 2,
+      "report_sha256": "6aa697bdfbb27220d7515883cfde520def1822d0cb563e04e3b32bce8f073314",
+      "stderr_text": "",
+      "stored_passed": true,
+      "streams": [
+        {
+          "compressed_sha256": "bc24358fdfe0b464b78c860d02250a775ba4c0a49b9049ae897162be5babd62e",
+          "file": "01-before.stdout.gz",
+          "raw_bytes": 6294029,
+          "raw_sha256": "10c7bce48e9d2c76d7089c02da6122f02e53adfeaf0d6e63595243b2886d622c"
+        },
+        {
+          "compressed_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+          "file": "01-before.stderr.gz",
+          "raw_bytes": 0,
+          "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "compressed_sha256": "bc24358fdfe0b464b78c860d02250a775ba4c0a49b9049ae897162be5babd62e",
+          "file": "02-after.stdout.gz",
+          "raw_bytes": 6294029,
+          "raw_sha256": "10c7bce48e9d2c76d7089c02da6122f02e53adfeaf0d6e63595243b2886d622c"
+        },
+        {
+          "compressed_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+          "file": "02-after.stderr.gz",
+          "raw_bytes": 0,
+          "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "timing_samples": 0
+    }
+  },
+  "hash_reference_audit": {
+    "all_occurrences_classified": true,
+    "historical_or_external_only": {
+      "235f4c58830d1d7f0efc5a6b13f22838eccf04aa1c653f37534af2c6c7356a4b": {
+        "occurrences": [
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_stretch.c/expected_sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_stretch.c/sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_stretch.c/expected_sha256",
+            "receipt": "p1-paired-v2/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_stretch.c/sha256",
+            "receipt": "p1-paired-v2/report.json"
+          }
+        ],
+        "qualification": "Pinned borrowed SDL source identity retained in original receipts; deliberately not rehashed outside authorized workspace.",
+        "recorded_path": null
+      },
+      "27581c71dbed789a9c13e0c324500f42a3dd9325086e8ec8c0fdb6a5c992de8c": {
+        "current_file": {
+          "bytes": 558132,
+          "matches_historical_identity": false,
+          "sha256": "9608fbbe51e00bba1a67a07300f9408fee53c5138fcd242d5611e87bbc422191"
+        },
+        "occurrences": [
+          {
+            "pointer": "/inputs_before/9/sha256",
+            "receipt": "p1-flat-witness-v1/report.json"
+          },
+          {
+            "pointer": "/inputs_before/16/sha256",
+            "receipt": "p1-flat-witness-v1/report.json"
+          },
+          {
+            "pointer": "/inputs_before/9/sha256",
+            "receipt": "p1-flat-witness-v2/report.json"
+          },
+          {
+            "pointer": "/inputs_before/16/sha256",
+            "receipt": "p1-flat-witness-v2/report.json"
+          },
+          {
+            "pointer": "/link_input_identities/3/sha256",
+            "receipt": "p1-before-reproduction.json"
+          }
+        ],
+        "qualification": "Historical shared-build intermediate identity retained in original receipt. The current file differs, and no untouched retained copy was found in the scoped witness files; no reconstruction was attempted.",
+        "recorded_path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/libhammond_standalone_support.a"
+      },
+      "2e3bbc7ab7d6d59310c634d6374eabb60da185d8c7cfc8526baa45318e6d3257": {
+        "occurrences": [
+          {
+            "pointer": "/inputs/SDL/src/render/software/SDL_render_sw.c/expected_sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/render/software/SDL_render_sw.c/sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/render/software/SDL_render_sw.c/expected_sha256",
+            "receipt": "p1-paired-v2/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/render/software/SDL_render_sw.c/sha256",
+            "receipt": "p1-paired-v2/report.json"
+          }
+        ],
+        "qualification": "Pinned borrowed SDL source identity retained in original receipts; deliberately not rehashed outside authorized workspace.",
+        "recorded_path": null
+      },
+      "5d3d7d40efbac24704c81944a70ffa1b3b1c4710a59556e87fdd96feaf59b790": {
+        "current_file": {
+          "bytes": 313744,
+          "matches_historical_identity": false,
+          "sha256": "44f87e889fed995be7f382d896aa708b7ede6cc08a58a51bc611eb9b13a63fcd"
+        },
+        "occurrences": [
+          {
+            "pointer": "/inputs_before/14/sha256",
+            "receipt": "p1-flat-witness-v1/report.json"
+          },
+          {
+            "pointer": "/inputs_before/14/sha256",
+            "receipt": "p1-flat-witness-v2/report.json"
+          },
+          {
+            "pointer": "/candidate_painter_object/sha256",
+            "receipt": "p1-before-reproduction.json"
+          }
+        ],
+        "qualification": "Historical shared-build intermediate identity retained in original receipt. The current file differs, and no untouched retained copy was found in the scoped witness files; no reconstruction was attempted.",
+        "recorded_path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o"
+      },
+      "ae904d0fd11c6122c77d78909538b26694b4d57a9b6b722c51e0417d4709be54": {
+        "occurrences": [
+          {
+            "pointer": "/inputs/SDL/src/render/SDL_render.c/expected_sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/render/SDL_render.c/sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/render/SDL_render.c/expected_sha256",
+            "receipt": "p1-paired-v2/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/render/SDL_render.c/sha256",
+            "receipt": "p1-paired-v2/report.json"
+          }
+        ],
+        "qualification": "Pinned borrowed SDL source identity retained in original receipts; deliberately not rehashed outside authorized workspace.",
+        "recorded_path": null
+      },
+      "e2c324858b829a0afebc0ce04c983178347c24adb08d9738118c06fc39f3bbf5": {
+        "occurrences": [
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_surface.c/expected_sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_surface.c/sha256",
+            "receipt": "p1-paired-v1/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_surface.c/expected_sha256",
+            "receipt": "p1-paired-v2/report.json"
+          },
+          {
+            "pointer": "/inputs/SDL/src/video/SDL_surface.c/sha256",
+            "receipt": "p1-paired-v2/report.json"
+          }
+        ],
+        "qualification": "Pinned borrowed SDL source identity retained in original receipts; deliberately not rehashed outside authorized workspace.",
+        "recorded_path": null
+      }
+    },
+    "qualification_method": "All SHA-256-valued JSON fields of selected receipts were checked against current retained bytes, preserved Git source, decompressed raw streams, canonical header JSON or exact RGBA/RGB payloads. Raw fields are not presumed to be file hashes. Snapshot file bytes are separately hashed below; arbitrary code-embedded fixture constants are not asserted as original artifact identities.",
+    "sha256_field_occurrences": 1106,
+    "unique_sha256_values": 356,
+    "verified_occurrences": 1082
+  },
+  "library_model": {
+    "corrected_result": "32 groups / 3250 assertions / 0 failed groups",
+    "corrected_source_sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d",
+    "first_result": "32 groups / 3225 assertions / 1 failed group",
+    "original_source_sha256": "c26e865596cfe60626ec0fe4eec37d57b2d7ec19ab1682ef94d9450b645b5dca",
+    "production_model_unchanged": true,
+    "provenance": "A16 source contents were reconstructed by reversing the sole admitted amendment and matched the recorded pre-amendment hash. This is not an untouched original file. The original failed run/log survives unchanged. A17 comparator/test snapshots are genuine pre-edit copies."
+  },
+  "local_binary_and_object_witnesses": [
+    {
+      "bytes": 164592,
+      "path": "/workspace/scratch/21cce69f7784/baseline-native/InstrumentView.cpp",
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    {
+      "bytes": 4094560,
+      "path": "/workspace/scratch/21cce69f7784/baseline-native/hammond_standalone",
+      "sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3"
+    },
+    {
+      "bytes": 3756168,
+      "path": "/workspace/scratch/21cce69f7784/baseline-native/hammond_standalone_paint_benchmark",
+      "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+    },
+    {
+      "bytes": 3812984,
+      "path": "/workspace/scratch/21cce69f7784/baseline-native/test_standalone_header_material",
+      "sha256": "c598ff864f4a9024f717563c002f7742baf8eae4c277aea4390de3b66f7658e1"
+    },
+    {
+      "bytes": 3845160,
+      "path": "/workspace/scratch/21cce69f7784/baseline-native/test_standalone_performance_plate",
+      "sha256": "65d0cc74e53faf2d655cba5f6254d5087715c730f22556ec81940195ad18149e"
+    },
+    {
+      "bytes": 4103192,
+      "path": "/workspace/scratch/21cce69f7784/qualified-p1-before-recall/hammond_standalone",
+      "sha256": "7b812bbbfd86779bb01cb76fe225309dd2d3101d08c6bb7fe2d6730e9d02c2c9"
+    },
+    {
+      "bytes": 3760704,
+      "path": "/workspace/scratch/21cce69f7784/qualified-p1-before-recall/hammond_standalone_paint_benchmark",
+      "sha256": "5cf0d9046e05bf10178b70caee1c3996c719956dad364397ad7befbf46544d4e"
+    },
+    {
+      "bytes": 3849600,
+      "path": "/workspace/scratch/21cce69f7784/qualified-p1-before-recall/test_standalone_performance_plate",
+      "sha256": "846f9c1a239243644194bae40a90b555236c255993722b0717fbc1ba5a80018c"
+    },
+    {
+      "bytes": 4103288,
+      "path": "/workspace/scratch/21cce69f7784/qualified-before-h1-reconciliation/hammond_standalone",
+      "sha256": "7f8996cdd062907a8ad4f47021a32ef28a5f5b9753ac9bf7b16cc4849dc77ba3"
+    },
+    {
+      "bytes": 3760800,
+      "path": "/workspace/scratch/21cce69f7784/qualified-before-h1-reconciliation/hammond_standalone_paint_benchmark",
+      "sha256": "83fee4abb4914083382e7099d90c72960dac107ce5eaef0652355cd19f47b69e"
+    },
+    {
+      "bytes": 3817616,
+      "path": "/workspace/scratch/21cce69f7784/qualified-before-h1-reconciliation/test_standalone_header_material",
+      "sha256": "6c3efd0e099d5cd7fe7d3671d9f16216ab4e45bd8de27565f8e40c84158e9f1b"
+    },
+    {
+      "bytes": 3853792,
+      "path": "/workspace/scratch/21cce69f7784/qualified-before-h1-reconciliation/test_standalone_performance_plate",
+      "sha256": "0ff88c0752d4aaedc69c13a4e2ba1c8b4405d2277c2bfc6698a8d45f6b8a2815"
+    },
+    {
+      "bytes": 287152,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/before-InstrumentView.cpp.o",
+      "sha256": "aee8d1b133e3fec7d7217a6d45efa7b02f890f23c448285868898f6cfb30fc72"
+    },
+    {
+      "bytes": 4135,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/before-link.d",
+      "sha256": "93b2d12d704eb2ba48d0a7740ecad8815e6a6cc7776dfadeacec062ac77d49c5"
+    },
+    {
+      "bytes": 0,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/compile.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/compile.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 4150,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-after.d",
+      "sha256": "464503850e82d8b746c4983c2ebc9c80d5595c9792e1d860a88d917ea5b2f7da"
+    },
+    {
+      "bytes": 4055,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-before.d",
+      "sha256": "0ec950cd241137451a69901f25e3a4b2b8356e98be5ba652555b49b7c2de3b32"
+    },
+    {
+      "bytes": 3773248,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-after",
+      "sha256": "e62d0894547a9151ea4ce9840e2372b8e59c0ebffd343407fe2f18d2b334fa0c"
+    },
+    {
+      "bytes": 3764616,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-before",
+      "sha256": "14ace3dc843d8565e60f998add357475bd9ec8084c06333d59532db24a2a805d"
+    },
+    {
+      "bytes": 61272,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture.cpp.o",
+      "sha256": "45083b7188f2851135fc2dbd304c0284fa8f490894e3a1005c7b1c62f40d0299"
+    },
+    {
+      "bytes": 0,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/link.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 0,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/link.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 3756168,
+      "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/reproduced-before-benchmark",
+      "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+    }
+  ],
+  "observed_head": "3263b177d42e96309dcc23a287c586150ab2378e",
+  "observed_tree": "b91a76809b8a432bf9a32d2c5032037e64dbec6f",
+  "observed_utc": "2026-11-17T05:39:03.661438+00:00",
+  "original_before_object": {
+    "original_benchmark_sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f",
+    "qualification": "The original pre-P1 painter object was not retained. The later reproduced-before benchmark remains byte-identical to the genuine original, but its newly compiled object is a reconstruction and cannot fill that historical gap. Historical shared-build archives and candidate object may likewise have advanced; their original receipts retain their observed identities.",
+    "reconstructed_object_sha256": "aee8d1b133e3fec7d7217a6d45efa7b02f890f23c448285868898f6cfb30fc72",
+    "reproduced_benchmark_equals_genuine_original": true,
+    "retained": false
+  },
+  "original_failure_files": [
+    {
+      "bytes": 210,
+      "path": "docs/development/2026-11-16-console-completion/reports/baseline-capture.log",
+      "sha256": "e5b683b56d875efba52975ed124893631f16b67c9c2e4c0209ce52a33064430e"
+    },
+    {
+      "bytes": 569,
+      "path": "docs/development/2026-11-16-console-completion/reports/library-model-first-test.log",
+      "sha256": "34719ab12dbdb446cf2a4a97e9034ba31b76f6c9ef107d43e74000931827d655"
+    },
+    {
+      "bytes": 9269,
+      "path": "docs/development/2026-11-16-console-completion/reports/library-model-first-build.log",
+      "sha256": "9aa1bf6d43a9ee9449548be11ffc956043c0d25045d7e6489a9f0323ec21a84b"
+    },
+    {
+      "bytes": 7178,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1.log",
+      "sha256": "a97666961ca5327920cf7d9da453b6794ad6cc9deb62ca9f25bb1ca06828c2d1"
+    },
+    {
+      "bytes": 191,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v1.log",
+      "sha256": "87289b9bbf279e6a1a1064664f1597e1c6cbd8f28bdd9068088cac56b7d2bf5c"
+    },
+    {
+      "bytes": 140936,
+      "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.xml",
+      "sha256": "63cb6f9fffd3c466652ab2d38c32d86d9865d35d222c5ee3fcab88eddbae03c7"
+    },
+    {
+      "bytes": 38319,
+      "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.log",
+      "sha256": "bbdfff3343bde52dabfb1ce80bb2d14df62514cadadb912fdc1989c522b4df8f"
+    },
+    {
+      "bytes": 424723,
+      "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest-detail.log",
+      "sha256": "419df2387557a54727187a603e3766ea693e15e48952aced8549cbf47884b98b"
+    }
+  ],
+  "original_selected_files_unchanged_during_audit": true,
+  "paired": {
+    "p1-paired-v1": {
+      "all_commands_exit_zero": true,
+      "canonical_rgb_patch_hashes_verified": 24,
+      "compressed_and_raw_streams_verified": 140,
+      "failures": [
+        {
+          "check": "before:main-22:copied-model-schema-state-geometry",
+          "detail": "ValueError: copied view workspace_focus differs"
+        },
+        {
+          "check": "after:main-22:copied-model-schema-state-geometry",
+          "detail": "ValueError: copied view workspace_focus differs"
+        },
+        {
+          "check": "before:main-23:copied-model-schema-state-geometry",
+          "detail": "ValueError: copied view workspace_focus differs"
+        },
+        {
+          "check": "after:main-23:copied-model-schema-state-geometry",
+          "detail": "ValueError: copied view workspace_focus differs"
+        }
+      ],
+      "frame_header_and_rgba_pairs_verified": 68,
+      "pairs": 34,
+      "processes": 70,
+      "recorded_audit_checks": 8991,
+      "report_sha256": "4895fdbb8f79e07cc4ad2b6d672807433a98e5a08689c323547432ca88725ab7",
+      "stored_passed": false
+    },
+    "p1-paired-v2": {
+      "all_commands_exit_zero": true,
+      "canonical_rgb_patch_hashes_verified": 24,
+      "compressed_and_raw_streams_verified": 140,
+      "failures": [],
+      "frame_header_and_rgba_pairs_verified": 68,
+      "pairs": 34,
+      "processes": 70,
+      "recorded_audit_checks": 8987,
+      "report_sha256": "f64b634d5455e69e506730acac036e6b3764804d775ff4bdabb4d0a4e0abe1d4",
+      "stored_passed": true
+    }
+  },
+  "paired_git_storage": {
+    "all_stream_blobs_match_recovery_head": true,
+    "bytes": 130045026,
+    "identical_same_named_pairs": 140,
+    "largest_file": {
+      "bytes": 3273075,
+      "git_blob": "b11912e4d8e4417b1dafff3847a94ddc5cc73a75",
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/after-25.stdout.zlib",
+      "raw_sha256": "c9cd372f1d7bec862bb16d2ab271cd54a1cf0c76e016685c59f1100be161b45b",
+      "sha256": "75eda5413d0037fcfa743515c53c4af8a8d21070295e9f597ec3cabf7c3c28b9"
+    },
+    "manifest_sha256": "22bf3ef5989b56c7e51c37622217c0b9af9c89613592fcd99a17ccca428958b4",
+    "paths": 280,
+    "policy": "Keep both run paths and reports. Identical contents share Git blobs; this is logical payload size, not a packed-size estimate. No deletion, hardlinking, extra archive, Git object write or binary publication.",
+    "same_named_pairs": 140,
+    "unique_git_blob_payloads": 70,
+    "unique_payload_bytes": 65019549
+  },
+  "references_unchanged_from_base_and_A39": [
+    {
+      "bytes": 21248265,
+      "path": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+    },
+    {
+      "bytes": 412664,
+      "path": "docs/design/atlas-cover-reference.jpg",
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    {
+      "bytes": 811,
+      "path": "docs/design/atlas-reference.json",
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+    },
+    {
+      "bytes": 375,
+      "path": "data/dependencies/sdl2-lock.json",
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    {
+      "bytes": 1334,
+      "path": "cmake/VerifySdl2.cmake",
+      "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e"
+    }
+  ],
+  "resource_headroom": {
+    "archive_bytes": 1006057,
+    "available_bytes": 45790158848,
+    "free_inodes": 4015787,
+    "policy": "Ample headroom; retain originals and both duplicate paths. Do not publish whole builds or local binary witnesses; root owns accepted-source publication. No cleanup required or performed."
+  },
+  "reviewer": "A52 /root/w09_a52",
+  "schema_version": 1,
+  "scope": "Read-only original-evidence audit and one authorized lossless baseline archive. No builds, tests, native runs, captures, benchmarks, Git/index/ref writes, deletion or other-workspace inspection. Live combined qualification and combined gallery results deliberately excluded.",
+  "selected_receipts": {
+    "baseline-binaries.json": {
+      "bytes": 2000,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "6675b0c41f66561de33b940144b9d3fb411ce450220222dbd1b49afe433712ca",
+      "sha256_fields": 15,
+      "verified_from_retained_bytes_or_derivation": 15
+    },
+    "baseline-capture-failure.json": {
+      "bytes": 522,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "fa3393661753a8c4ccc6da59c7af7d72bfae46208902ab4e91586f51e7c3e6cd",
+      "sha256_fields": 1,
+      "verified_from_retained_bytes_or_derivation": 1
+    },
+    "integrated-first-ctest-result.json": {
+      "bytes": 1920,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "c40a47471efb8862f2b6d6ebc921f207b7b99ea5858856bc4c16b9b1c57a6823",
+      "sha256_fields": 4,
+      "verified_from_retained_bytes_or_derivation": 4
+    },
+    "library-model-first-test-receipt.json": {
+      "bytes": 629,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "6e29eb62917aad77655f0dafd662d32d5570c813ce59485df755fbab8c737a7b",
+      "sha256_fields": 2,
+      "verified_from_retained_bytes_or_derivation": 2
+    },
+    "library-model-resolution-amendment.json": {
+      "bytes": 428,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "c264c3a9781b1aa8f39f58c4f255d622d4851a0ba7de30f82c607dbfb3becb08",
+      "sha256_fields": 3,
+      "verified_from_retained_bytes_or_derivation": 3
+    },
+    "library-model-resolution-result.json": {
+      "bytes": 617,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "f1c299e2f9c910b2c36d5224ee8d101d95643c1d0c0aaea43eb242c69df0f4af",
+      "sha256_fields": 3,
+      "verified_from_retained_bytes_or_derivation": 3
+    },
+    "p1-before-reproduction.json": {
+      "bytes": 6134,
+      "historical_or_external_only": 2,
+      "matches_recovery_head_blob": true,
+      "sha256": "cd96c9ea3eb5bf5516dd78c538e260fc964dc28634bbaaf0304c929447956d14",
+      "sha256_fields": 16,
+      "verified_from_retained_bytes_or_derivation": 14
+    },
+    "p1-flat-witness-v1/report.json": {
+      "bytes": 17674,
+      "historical_or_external_only": 3,
+      "matches_recovery_head_blob": true,
+      "sha256": "02646a116a93a234ac7826d00a65bf1a8e7811a8f54bda21bac7c0402b75a521",
+      "sha256_fields": 30,
+      "verified_from_retained_bytes_or_derivation": 27
+    },
+    "p1-flat-witness-v2/report.json": {
+      "bytes": 28442,
+      "historical_or_external_only": 3,
+      "matches_recovery_head_blob": true,
+      "sha256": "6aa697bdfbb27220d7515883cfde520def1822d0cb563e04e3b32bce8f073314",
+      "sha256_fields": 39,
+      "verified_from_retained_bytes_or_derivation": 36
+    },
+    "p1-paired-v1/report.json": {
+      "bytes": 180107,
+      "historical_or_external_only": 8,
+      "matches_recovery_head_blob": true,
+      "sha256": "4895fdbb8f79e07cc4ad2b6d672807433a98e5a08689c323547432ca88725ab7",
+      "sha256_fields": 481,
+      "verified_from_retained_bytes_or_derivation": 473
+    },
+    "p1-paired-v2/report.json": {
+      "bytes": 179829,
+      "historical_or_external_only": 8,
+      "matches_recovery_head_blob": true,
+      "sha256": "f64b634d5455e69e506730acac036e6b3764804d775ff4bdabb4d0a4e0abe1d4",
+      "sha256_fields": 483,
+      "verified_from_retained_bytes_or_derivation": 475
+    },
+    "p1-pre-integration-preservation.json": {
+      "bytes": 6628,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "cfe25f0ae156ab0d37aa9e739bcd36712777348dcd0166eb2be286dcb44dae65",
+      "sha256_fields": 23,
+      "verified_from_retained_bytes_or_derivation": 23
+    },
+    "pre-h1-reconciliation-binary-preservation.json": {
+      "bytes": 1793,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": false,
+      "sha256": "fd7634a35b3e8d4ff069eb820492d21d072017a73bb355d2c4da2c8d7a998db8",
+      "sha256_fields": 4,
+      "verified_from_retained_bytes_or_derivation": 4
+    },
+    "source-history/A16-source-restoration.json": {
+      "bytes": 793,
+      "historical_or_external_only": 0,
+      "matches_recovery_head_blob": true,
+      "sha256": "f48de3a163891ba60e5d27fac8e46384b5b0427a087f65d49e6524c549e2cc72",
+      "sha256_fields": 2,
+      "verified_from_retained_bytes_or_derivation": 2
+    }
+  },
+  "source_ancestry": [
+    {
+      "qualification": "Recorded original source retained in the recovery commit; current combined painter is a different source.",
+      "retained_location": "git:3263b177d42e96309dcc23a287c586150ab2378e:apps/standalone/InstrumentView.cpp",
+      "role": "original P1 painter",
+      "sha256": "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927"
+    },
+    {
+      "qualification": "Original retained source; also matches starting base.",
+      "retained_location": "../baseline-native/InstrumentView.cpp",
+      "role": "genuine before painter",
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    {
+      "qualification": "Original pre-edit copy, independently recorded by A22.",
+      "retained_location": "source-history/A17-compare_performance_plate.py.txt",
+      "role": "A17 original comparator",
+      "sha256": "ca0aea0a4609848ef7927558c22d76bfe0ced9efdd59b554b6126d0a8d92a1fa"
+    },
+    {
+      "qualification": "Exact corrected source used for paired v2; later comparator transitions retain this historical pin.",
+      "retained_location": "source-history/pre-integration-tools__compare_performance_plate.py.txt",
+      "role": "A22 corrected comparator",
+      "sha256": "e7a810e21099e346ec4ab86097cba6552cde497fcfd22be659907efeb2c80344"
+    },
+    {
+      "qualification": "Reconstructed by reversing the known amendment, then hash matched; not an untouched original file.",
+      "retained_location": "source-history/test_standalone_library_model-A16.cpp.txt",
+      "role": "A16 first test contents",
+      "sha256": "c26e865596cfe60626ec0fe4eec37d57b2d7ec19ab1682ef94d9450b645b5dca"
+    },
+    {
+      "qualification": "Current retained test source matches the separately passing amended receipt.",
+      "retained_location": "apps/standalone/tests/test_standalone_library_model.cpp",
+      "role": "corrected model test",
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d"
+    },
+    {
+      "qualification": "Pre-correction source snapshot, preserving the failed explicit batching environment.",
+      "retained_location": "source-history/root-run_p1_flat_witness-v1.py.txt",
+      "role": "Flat v1 driver",
+      "sha256": "a0d5fbe06e71ac6ef9f44522055a1a8595e785b7040ce2bbed5ed64339c01b39"
+    },
+    {
+      "qualification": "Prospectively admitted environment correction; unchanged native companions.",
+      "retained_location": "docs/development/2026-11-16-console-completion/run_p1_flat_witness.py",
+      "role": "Flat v2 driver",
+      "sha256": "a504823e3e517cc116e8ff2ca80267b9e5e95b9294e13b5f1229687305b15164"
+    }
+  ],
+  "source_history": [
+    {
+      "bytes": 793,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A16-source-restoration.json",
+      "sha256": "f48de3a163891ba60e5d27fac8e46384b5b0427a087f65d49e6524c549e2cc72"
+    },
+    {
+      "bytes": 78886,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A17-compare_performance_plate.py.txt",
+      "sha256": "ca0aea0a4609848ef7927558c22d76bfe0ced9efdd59b554b6126d0a8d92a1fa"
+    },
+    {
+      "bytes": 12835,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A17-test_compare_performance_plate.py.txt",
+      "sha256": "8f9fafee6e5a18f7fa5df27133e5add1bfdf60f971b79e132353d49ba6b45024"
+    },
+    {
+      "bytes": 52103,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A23-run_p1_timing-v1.py.txt",
+      "sha256": "d53e5147cce85abb8bec3492dc2c63a9fd383be20d47fbc0ae606a78f0991f40"
+    },
+    {
+      "bytes": 23867,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A25-environment-v2-prospective-admission.md.txt",
+      "sha256": "3396a17b782fbc7a497cdfd9d54400985f2deccf1eafcbda150b3f1b19411392"
+    },
+    {
+      "bytes": 19702,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A25-precompile-timing-admission.md.txt",
+      "sha256": "0d494a915aa35850b9570e8a6ef2a2e2db85cb1341f82f35a0b5e6dc690bd1b3"
+    },
+    {
+      "bytes": 68503,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-.github__workflows__standalone.yml.txt",
+      "sha256": "59423f01dc5811d2f8146e06cb939fd9f96295c0e818a74c387519f7fe824e9c"
+    },
+    {
+      "bytes": 42338,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-apps__standalone__CMakeLists.txt.txt",
+      "sha256": "f42b3aa0a339011d5d60f12036328d7bc36738ed091d8c5abef8e4a14c08b35a"
+    },
+    {
+      "bytes": 83758,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-apps__standalone__UiModel.cpp.txt",
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+    },
+    {
+      "bytes": 18547,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-apps__standalone__UiModel.h.txt",
+      "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1"
+    },
+    {
+      "bytes": 52759,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-tests__test_capture_standalone_interface.py.txt",
+      "sha256": "40035a5aceda7b13392d35fd1a81f3e2190d4994e94604273dfc9c65a882fd81"
+    },
+    {
+      "bytes": 17687,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-tests__test_compare_performance_plate.py.txt",
+      "sha256": "b368e9277b306c807672acfa1b200c4fc4eda358c03b3e4e9b3bfe90b21af526"
+    },
+    {
+      "bytes": 41284,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-tools__capture_standalone_interface.py.txt",
+      "sha256": "975aee1c2261114bb5e899a336567a47b7b3541eac5c75fe1b055244d9c1975f"
+    },
+    {
+      "bytes": 79058,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-tools__compare_performance_plate.py.txt",
+      "sha256": "e7a810e21099e346ec4ab86097cba6552cde497fcfd22be659907efeb2c80344"
+    },
+    {
+      "bytes": 9313,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/root-run_p1_flat_witness-v1.py.txt",
+      "sha256": "a0d5fbe06e71ac6ef9f44522055a1a8595e785b7040ce2bbed5ed64339c01b39"
+    },
+    {
+      "bytes": 78187,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/test_standalone_library_model-A16.cpp.txt",
+      "sha256": "c26e865596cfe60626ec0fe4eec37d57b2d7ec19ab1682ef94d9450b645b5dca"
+    },
+    {
+      "bytes": 2246,
+      "matches_recovery_head_blob": true,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/test_standalone_library_model-root-amendment.diff",
+      "sha256": "2176a1aa3e82bf42d7b3d584d98e9fb80fd18bbf1333cc6eb54ed31d038a5eae"
+    }
+  ],
+  "unresolved_sha256": []
+}

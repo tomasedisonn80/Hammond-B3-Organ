@@ -575,15 +575,26 @@ public:
     [[nodiscard]] int run() {
         const std::uint64_t started = SDL_GetTicks64();
         replay_started_ = started;
+        const auto dispatch_event = [this](const SDL_Event& event) {
+            const auto workspace = ui_.view().workspace;
+            const auto presentation = ui_.view().presentation;
+            const auto overlay = overlay_;
+            handle_event(event);
+            return !options_.input_script.empty() &&
+                (workspace != ui_.view().workspace ||
+                 presentation != ui_.view().presentation || overlay != overlay_);
+        };
         while (running_) {
             if (!pump_replay(SDL_GetTicks64() - started)) break;
-            // Gather native input once per main-loop turn. Marker handlers can
-            // append another due replay prefix while this bounded drain runs.
+            // Gather native input once per main-loop turn. Marker handlers append
+            // due prefixes only after the current semantic view has been painted.
+            // A scripted semantic transition ends this drain so the ordinary
+            // paint runs before another queued event can replace that view.
             SDL_PumpEvents();
             SDL_Event event{};
             if (SDL_WaitEventTimeout(&event, 12) != 0) {
-                handle_event(event);
-                for (std::size_t count = 1; count < 256 && running_; ++count) {
+                bool semantic_transition = dispatch_event(event);
+                for (std::size_t count = 1; count < 256 && running_ && !semantic_transition; ++count) {
                     const int received = SDL_PeepEvents(&event, 1, SDL_GETEVENT,
                         SDL_FIRSTEVENT, SDL_LASTEVENT);
                     if (received < 0) {
@@ -593,7 +604,7 @@ public:
                         break;
                     }
                     if (received == 0) break;
-                    handle_event(event);
+                    semantic_transition = dispatch_event(event);
                 }
             }
             observe();
@@ -2325,9 +2336,17 @@ private:
 
     void handle_event(const SDL_Event& event) {
         if (!options_.input_script.empty() && replay_.acknowledge(event)) {
-            // Consumed-prefix markers permit the next resize immediately,
-            // within the ordinary bounded 256-event poll budget.
-            if (running_) { const bool pumped = pump_replay(SDL_GetTicks64() - replay_started_); (void)pumped; }
+            // Paint a changed semantic view before the next synchronous resize.
+            // Resize-only prefixes still share the bounded 256-event drain.
+            const auto& view = ui_.view();
+            const bool semantic_view_painted = last_painted_ &&
+                last_painted_->workspace == view.workspace &&
+                last_painted_->presentation == view.presentation &&
+                last_painted_->overlay == overlay_;
+            if (running_ && semantic_view_painted) {
+                const bool pumped = pump_replay(SDL_GetTicks64() - replay_started_);
+                (void)pumped;
+            }
             return;
         }
         if (event.type == SDL_QUIT) { lose_input(UiReleaseReason::WindowClosing); running_ = false; return; }

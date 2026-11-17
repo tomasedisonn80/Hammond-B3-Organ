@@ -194,8 +194,10 @@ records all five suites passing:
 | `roundtrip` | Four journeys; real UI/model/Session/storage, 24 posts/reports and seven authorizations |
 
 The distinct [SDK-free qualification](reviews/CONSOLE_HEADLESS_ADMISSION.md) passed
-12/12 selected suites. At this 17 November guide checkpoint, root's full
-247-test run and exact-source hosted CI remain pending; follow the
+12/12 selected suites. The first full run finished 246/247 with its original
+report-link integrity failure retained; the combined source then passed 78/78
+affected tests. Separate documentary qualification, publication and exact-source
+hosted outcomes remain in the
 [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md).
 Root owns final acceptance/publication. Next, independently admit the
 [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md), including

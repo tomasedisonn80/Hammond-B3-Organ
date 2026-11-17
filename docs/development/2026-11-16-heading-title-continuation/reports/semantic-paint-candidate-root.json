@@ -1,0 +1,170 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+    "--executable",
+    "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+    "--report",
+    "docs/development/2026-11-16-heading-title-continuation/reports/semantic-paint-candidate.json"
+  ],
+  "returncode": 0,
+  "seconds": 0.9659592719981447,
+  "status": "passed",
+  "file_sha256": {
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048",
+    "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+  },
+  "changed_inputs": [],
+  "cases": [
+    {
+      "initial": "dimensional",
+      "status": "passed",
+      "actual_visits": [
+        {
+          "view": [
+            "rotary",
+            "dimensional",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 1,
+          "elapsed_ms": 0
+        },
+        {
+          "view": [
+            "rotary",
+            "flat",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 2,
+          "elapsed_ms": 50
+        },
+        {
+          "view": [
+            "rotary",
+            "flat",
+            1280,
+            900,
+            "audio"
+          ],
+          "rendered_image": 3,
+          "elapsed_ms": 71
+        },
+        {
+          "view": [
+            "rotary",
+            "flat",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 4,
+          "elapsed_ms": 86
+        },
+        {
+          "view": [
+            "service",
+            "flat",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 5,
+          "elapsed_ms": 97
+        },
+        {
+          "view": [
+            "play",
+            "flat",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 6,
+          "elapsed_ms": 107
+        }
+      ],
+      "failure": null
+    },
+    {
+      "initial": "flat",
+      "status": "passed",
+      "actual_visits": [
+        {
+          "view": [
+            "rotary",
+            "flat",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 1,
+          "elapsed_ms": 0
+        },
+        {
+          "view": [
+            "rotary",
+            "dimensional",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 2,
+          "elapsed_ms": 10
+        },
+        {
+          "view": [
+            "rotary",
+            "dimensional",
+            1280,
+            900,
+            "audio"
+          ],
+          "rendered_image": 3,
+          "elapsed_ms": 52
+        },
+        {
+          "view": [
+            "rotary",
+            "dimensional",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 4,
+          "elapsed_ms": 113
+        },
+        {
+          "view": [
+            "service",
+            "dimensional",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 5,
+          "elapsed_ms": 165
+        },
+        {
+          "view": [
+            "play",
+            "dimensional",
+            1280,
+            900,
+            "none"
+          ],
+          "rendered_image": 6,
+          "elapsed_ms": 232
+        }
+      ],
+      "failure": null
+    }
+  ]
+}

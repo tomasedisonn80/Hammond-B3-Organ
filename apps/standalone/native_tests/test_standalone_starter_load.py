@@ -61,6 +61,53 @@ def load_workflow() -> str:
     return replay(DURATION_MS, events)
 
 
+def applied_load_chain(history: list[dict], expected: dict, altered: dict,
+                       final_sequence: int) -> tuple[dict, dict, dict] | None:
+    """Find copied startup/edit/Load states in their actual observation order.
+
+    Replay times make input eligible for delivery; they do not timestamp an
+    audio callback or promise when its snapshot will be copied. A genuine
+    applied edit can therefore be observed while the later Load is pending.
+    See docs/reviews/STARTER_LOAD_OBSERVATION_DIAGNOSIS.md for the admission.
+    """
+    if not history or final_sequence <= 0:
+        return None
+    ordered_fields = ("elapsed_ms", "last_applied_sequence", "resolved_sequence",
+                      "last_submitted_sequence")
+    for index, item in enumerate(history):
+        if any(item[field] < 0 for field in ordered_fields):
+            return None
+        if not (item["last_applied_sequence"] <= item["resolved_sequence"]
+                <= item["last_submitted_sequence"] <= final_sequence):
+            return None
+        if index:
+            previous = history[index - 1]
+            if any(item[field] < previous[field] for field in ordered_fields):
+                return None
+            if (item["last_applied_sequence"] == previous["last_applied_sequence"]
+                    and item["controls"] != previous["controls"]):
+                return None
+
+    def applied(item: dict) -> bool:
+        return 0 < item["last_applied_sequence"] == item["resolved_sequence"]
+
+    startup = next(((index, item) for index, item in enumerate(history)
+                    if item["controls"] == expected and item["elapsed_ms"] < 750
+                    and applied(item)), None)
+    restored = next(((index, item) for index, item in enumerate(history)
+                     if item["controls"] == expected and item["elapsed_ms"] >= LOAD_MS
+                     and applied(item) and item["last_applied_sequence"] == final_sequence), None)
+    if startup is None or restored is None or startup[0] >= restored[0]:
+        return None
+    edited = next((item for item in history[startup[0] + 1:restored[0]]
+                   if item["controls"] == altered and applied(item)
+                   and startup[1]["last_applied_sequence"] < item["last_applied_sequence"]
+                   < restored[1]["last_applied_sequence"]), None)
+    if edited is None:
+        return None
+    return startup[1], edited, restored[1]
+
+
 class NativeStarterLoadAcceptance(unittest.TestCase):
     native_calls = 0
     materialize_calls = 0
@@ -207,19 +254,12 @@ class NativeStarterLoadAcceptance(unittest.TestCase):
         altered["manual_drawbars"][0][1][0] = 0
         altered["percussion"]["enabled"] = False
         history = observed["observations"]
-        self.assertTrue(any(item["controls"] == expected and item["elapsed_ms"] < 750
-                            for item in history), "Startup must acknowledge the copied full state")
-        acknowledged_edits = [item for item in history
-                              if item["controls"] == altered and item["elapsed_ms"] < LOAD_MS
-                              and item["resolved_sequence"] == item["last_applied_sequence"]
-                              == item["last_submitted_sequence"]]
-        self.assertTrue(acknowledged_edits,
-                        "Live edits must be acknowledged before Load; startup alone is insufficient")
+        chain = applied_load_chain(history, expected, altered, observed["last_submitted_sequence"])
+        self.assertIsNotNone(chain,
+                             "Complete copied startup, applied edits and applied Load must occur "
+                             "in chronological and strictly advancing applied-sequence order")
         self.assertGreater(endpoint["last_applied_sequence"],
-                           acknowledged_edits[-1]["last_applied_sequence"])
-        self.assertTrue(any(item["controls"] == expected and item["elapsed_ms"] >= LOAD_MS
-                            and item["last_applied_sequence"] == observed["last_submitted_sequence"]
-                            for item in history), "An applied Load observation is required before shutdown")
+                           chain[1]["last_applied_sequence"])
 
     def test_generic_load_restores_complete_payload_under_both_scope_suffixes(self) -> None:
         registration = PACK / (RECIPE + ".b3registration")
@@ -276,6 +316,126 @@ class NativeStarterLoadAcceptance(unittest.TestCase):
             self.assertEqual(path.read_bytes(), original)
         self.assertEqual({path.name for path in destination.iterdir()},
                          {"Current Expression.b3performance", "Saved Expression.b3performance"})
+
+
+class LoadObservationOrderTests(unittest.TestCase):
+    """Pure oracle checks; these never construct or run a native process."""
+
+    def setUp(self) -> None:
+        self.altered = deepcopy(SAVED_CONTROLS)
+        self.altered.update(selected_banks=[1, 1], fixed_registrations=[0, 0],
+                            preset_selections=[11, 11], route_enabled=[True, True],
+                            expression=1, pedal_drawbars=[8, 0])
+        self.altered["manual_drawbars"][0][1][0] = 0
+        self.altered["percussion"]["enabled"] = False
+        self.history = [
+            {"elapsed_ms": 72, "last_applied_sequence": 1, "resolved_sequence": 1,
+             "last_submitted_sequence": 1, "controls": deepcopy(SAVED_CONTROLS)},
+            {"elapsed_ms": 2255, "last_applied_sequence": 6, "resolved_sequence": 6,
+             "last_submitted_sequence": 7, "controls": deepcopy(self.altered)},
+            {"elapsed_ms": 2383, "last_applied_sequence": 7, "resolved_sequence": 7,
+             "last_submitted_sequence": 7, "controls": deepcopy(SAVED_CONTROLS)},
+        ]
+
+    def chain(self, history: list[dict]) -> tuple[dict, dict, dict] | None:
+        return applied_load_chain(history, SAVED_CONTROLS, self.altered, 7)
+
+    def test_accepts_complete_applied_edits_with_or_without_pending_load(self) -> None:
+        for elapsed, submitted in ((2100, 6), (2255, 7), (2201, 7)):
+            with self.subTest(elapsed=elapsed, submitted=submitted):
+                history = deepcopy(self.history)
+                history[1].update(elapsed_ms=elapsed, last_submitted_sequence=submitted)
+                self.assertIsNotNone(self.chain(history))
+        history = deepcopy(self.history)
+        history[1]["elapsed_ms"] = history[2]["elapsed_ms"] = 2201
+        self.assertIsNotNone(self.chain(history), "Equal times preserve recorded order")
+        history = deepcopy(self.history)
+        history[1].update(last_applied_sequence=3, resolved_sequence=3)
+        self.assertIsNotNone(self.chain(history), "Strict advances do not require adjacent sequences")
+
+    def test_rejects_missing_or_reordered_copied_states(self) -> None:
+        for indices in ((), (0,), (2,), (0, 2), (0, 1), (1, 2), (1, 0, 2), (0, 2, 1)):
+            with self.subTest(indices=indices):
+                self.assertIsNone(self.chain([self.history[index] for index in indices]))
+        history = deepcopy(self.history)
+        history[1]["desired_controls"] = history[1]["controls"]
+        history[1]["controls"] = deepcopy(SAVED_CONTROLS)
+        self.assertIsNone(self.chain(history), "Desired edits cannot replace copied edits")
+
+    def test_rejects_invalid_or_nonadvancing_sequences(self) -> None:
+        changes = (
+            (0, {"last_applied_sequence": 0, "resolved_sequence": 0}),
+            (1, {"last_applied_sequence": 1, "resolved_sequence": 1}),
+            (2, {"last_applied_sequence": 6, "resolved_sequence": 6}),
+            (1, {"resolved_sequence": 7}),
+            (1, {"resolved_sequence": 5}),
+            (1, {"last_submitted_sequence": 5}),
+            (1, {"last_submitted_sequence": 8}),
+            (0, {"last_applied_sequence": -1}),
+            (0, {"resolved_sequence": -1}),
+            (0, {"last_submitted_sequence": -1}),
+            (2, {"last_submitted_sequence": 6}),
+        )
+        for index, change in changes:
+            with self.subTest(index=index, change=change):
+                history = deepcopy(self.history)
+                history[index].update(change)
+                self.assertIsNone(self.chain(history))
+        # All individual records are locally ordered, but resolved/submitted
+        # progress cannot move backwards between otherwise valid chain states.
+        for field in ("resolved_sequence", "last_submitted_sequence"):
+            with self.subTest(regression=field):
+                history = deepcopy(self.history)
+                intervening = deepcopy(history[0])
+                intervening.update(elapsed_ms=100, last_submitted_sequence=7)
+                intervening[field] = 7
+                history.insert(1, intervening)
+                if field == "last_submitted_sequence":
+                    history[2][field] = 6
+                self.assertIsNone(self.chain(history))
+        self.assertIsNone(applied_load_chain(self.history, SAVED_CONTROLS, self.altered, 8),
+                          "An otherwise coherent restoration must reach the actual final sequence")
+
+    def test_rejects_wrong_or_incomplete_full_controls(self) -> None:
+        for stage in range(3):
+            for field in ("expression", "manual_drawbars", "percussion", "selected_banks"):
+                with self.subTest(stage=stage, field=field):
+                    history = deepcopy(self.history)
+                    controls = history[stage]["controls"]
+                    if field == "expression":
+                        controls[field] = 0.625
+                    elif field == "manual_drawbars":
+                        controls[field][0][1][0] = 4
+                    elif field == "percussion":
+                        controls[field]["enabled"] = not controls[field]["enabled"]
+                    else:
+                        del controls[field]
+                    self.assertIsNone(self.chain(history))
+
+    def test_rejects_backward_times_and_preserves_existing_time_checks(self) -> None:
+        for index, elapsed in ((0, -1), (0, 750), (1, 71), (2, 2200), (2, 2199)):
+            with self.subTest(index=index, elapsed=elapsed):
+                history = deepcopy(self.history)
+                history[index]["elapsed_ms"] = elapsed
+                self.assertIsNone(self.chain(history))
+        history = deepcopy(self.history)
+        history[1]["elapsed_ms"] = 2100
+        history[2]["elapsed_ms"] = 2199
+        self.assertIsNone(self.chain(history), "Restoration retains its 2200 ms lower bound")
+
+    def test_rejects_control_changes_at_unchanged_or_restored_sequence(self) -> None:
+        for insertion, copied_from in ((1, 0), (2, 1), (3, 2)):
+            with self.subTest(insertion=insertion):
+                history = deepcopy(self.history)
+                changed = deepcopy(history[copied_from])
+                changed["controls"] = deepcopy(self.altered if copied_from != 1 else SAVED_CONTROLS)
+                history.insert(insertion, changed)
+                self.assertIsNone(self.chain(history))
+        history = deepcopy(self.history)
+        late_edit = deepcopy(history[1])
+        late_edit["elapsed_ms"] = 2400
+        history.append(late_edit)
+        self.assertIsNone(self.chain(history), "An edit after restoration cannot supply the chain")
 
 
 if __name__ == "__main__":

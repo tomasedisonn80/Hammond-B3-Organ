@@ -1,0 +1,110 @@
+{
+  "test_count": 242,
+  "preserved_tests": 241,
+  "only_old_property_changes": [
+    {
+      "name": "test_standalone_midi_cli",
+      "old": {
+        "LABELS": [
+          "midi",
+          "native",
+          "standalone"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      },
+      "new": {
+        "LABELS": [
+          "midi",
+          "native",
+          "standalone"
+        ],
+        "RUN_SERIAL": true,
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      },
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_cli.py"
+      ]
+    },
+    {
+      "name": "test_standalone_native_calibration",
+      "old": {
+        "LABELS": [
+          "midi",
+          "native",
+          "standalone"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      },
+      "new": {
+        "LABELS": [
+          "midi",
+          "native",
+          "standalone"
+        ],
+        "RUN_SERIAL": true,
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      },
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_CALIBRATION_PROBE=/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone_calibration_probe",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py"
+      ]
+    }
+  ],
+  "added_test": {
+    "backtrace": 478,
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "-B",
+      "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+      "--executable",
+      "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+      "--timeout-seconds",
+      "12"
+    ],
+    "name": "test_standalone_semantic_paint_boundary",
+    "properties": [
+      {
+        "name": "LABELS",
+        "value": [
+          "native",
+          "standalone",
+          "workspace"
+        ]
+      },
+      {
+        "name": "TIMEOUT",
+        "value": 60.0
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+      }
+    ]
+  },
+  "serialized_tests": [
+    "test_standalone_app",
+    "test_standalone_native_midi_replay",
+    "test_standalone_workspace_replay",
+    "test_standalone_native_calibration",
+    "test_standalone_midi_cli"
+  ],
+  "source_sha256": {
+    "apps/standalone/CMakeLists.txt": "ca7fd58cfb5f77df9f095e5e1e58766e11acb0ca29cb2523172ee56736729547",
+    ".github/workflows/standalone.yml": "4fe89694b7b85fe83b27f4bd2b3dc60e2b45ce88e30e1209e94a30a5469bf48c",
+    "apps/standalone/main.cpp": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+    "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048"
+  }
+}

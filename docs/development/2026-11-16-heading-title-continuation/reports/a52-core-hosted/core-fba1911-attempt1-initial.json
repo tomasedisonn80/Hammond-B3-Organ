@@ -1,0 +1,860 @@
+{
+  "schema_version": 1,
+  "worker": "A52",
+  "agent": "/root/w09_a52",
+  "observed_utc": "2026-11-17T04:19:11.355Z",
+  "publication": {
+    "sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "tree": "b62f212300d75633346ab8fc5ffdd722255fe00a",
+    "parents": [
+      "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "835755a9069c25ce55bc2c231547458b4b3ffce4"
+    ],
+    "workflow": {
+      "path": ".github/workflows/ci.yml",
+      "source_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2/.github/workflows/ci.yml"
+    }
+  },
+  "run": {
+    "id": 44016021552,
+    "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "path": ".github/workflows/ci.yml",
+    "run_attempt": 1,
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-11-17T04:16:23Z",
+    "run_started_at": "2026-11-17T04:16:23Z",
+    "updated_at": "2026-11-17T04:16:28Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552"
+  },
+  "jobs": [
+    {
+      "id": 133814025154,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "runner_id": 1000001384,
+      "runner_name": "GitHub Actions 1000001384",
+      "runner_group_id": 0,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T04:16:27Z",
+      "completed_at": null,
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025154",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T04:16:28Z",
+          "completed_at": "2026-11-17T04:16:30Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T04:16:30Z",
+          "completed_at": "2026-11-17T04:16:52Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T04:16:52Z",
+          "completed_at": "2026-11-17T04:16:52Z"
+        },
+        {
+          "name": "Record source and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T04:16:52Z",
+          "completed_at": "2026-11-17T04:16:54Z"
+        },
+        {
+          "name": "Configure the independent core qualification",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T04:16:54Z",
+          "completed_at": "2026-11-17T04:16:58Z"
+        },
+        {
+          "name": "Require strict report admission",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T04:16:58Z",
+          "completed_at": "2026-11-17T04:16:59Z"
+        },
+        {
+          "name": "Build and run all full waveform experiments",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 7,
+          "started_at": "2026-11-17T04:16:59Z",
+          "completed_at": null
+        },
+        {
+          "name": "Retain exact complete waveform evidence",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 16,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133814025396,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "runner_id": 1000001385,
+      "runner_name": "GitHub Actions 1000001385",
+      "runner_group_id": 0,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T04:16:26Z",
+      "completed_at": null,
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025396",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T04:16:27Z",
+          "completed_at": "2026-11-17T04:16:30Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T04:16:30Z",
+          "completed_at": "2026-11-17T04:16:52Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T04:16:52Z",
+          "completed_at": "2026-11-17T04:16:53Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T04:16:53Z",
+          "completed_at": "2026-11-17T04:16:56Z"
+        },
+        {
+          "name": "Configure Debug with ASan and UBSan",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T04:16:56Z",
+          "completed_at": "2026-11-17T04:17:00Z"
+        },
+        {
+          "name": "Build with sanitizers",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 6,
+          "started_at": "2026-11-17T04:17:00Z",
+          "completed_at": null
+        },
+        {
+          "name": "Require registration and apron tools in the full sanitizer test inventory",
+          "status": "pending",
+          "conclusion": null,
+          "number": 7,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run every registered test with leak checking",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 17,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 18,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133814025466,
+      "name": "Release (Linux GCC)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "runner_id": 1000001386,
+      "runner_name": "GitHub Actions 1000001386",
+      "runner_group_id": 0,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T04:16:26Z",
+      "completed_at": null,
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025466",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T04:16:27Z",
+          "completed_at": "2026-11-17T04:16:30Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T04:16:30Z",
+          "completed_at": "2026-11-17T04:16:52Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T04:16:52Z",
+          "completed_at": "2026-11-17T04:16:52Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T04:16:52Z",
+          "completed_at": "2026-11-17T04:16:56Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T04:16:56Z",
+          "completed_at": "2026-11-17T04:17:00Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T04:17:00Z",
+          "completed_at": "2026-11-17T04:17:00Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 7,
+          "started_at": "2026-11-17T04:17:00Z",
+          "completed_at": null
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 13,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 29,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 30,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133814025483,
+      "name": "Release (Windows MSVC)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "runner_id": 1000001389,
+      "runner_name": "GitHub Actions 1000001389",
+      "runner_group_id": 0,
+      "labels": [
+        "windows-2022"
+      ],
+      "started_at": "2026-11-17T04:16:25Z",
+      "completed_at": null,
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025483",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:16:27Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T04:16:27Z",
+          "completed_at": "2026-11-17T04:16:53Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T04:16:53Z",
+          "completed_at": "2026-11-17T04:16:53Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T04:16:53Z",
+          "completed_at": "2026-11-17T04:16:56Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-11-17T04:16:56Z",
+          "completed_at": "2026-11-17T04:16:56Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T04:16:56Z",
+          "completed_at": "2026-11-17T04:17:13Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 7,
+          "started_at": "2026-11-17T04:17:13Z",
+          "completed_at": null
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 13,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 29,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 30,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133814025534,
+      "name": "Release (macOS Intel AppleClang)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "runner_id": 1000001392,
+      "runner_name": "GitHub Actions 1000001392",
+      "runner_group_id": 0,
+      "labels": [
+        "macos-15-intel"
+      ],
+      "started_at": "2026-11-17T04:16:28Z",
+      "completed_at": null,
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025534",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T04:16:29Z",
+          "completed_at": "2026-11-17T04:16:32Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T04:16:32Z",
+          "completed_at": "2026-11-17T04:17:00Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T04:17:00Z",
+          "completed_at": "2026-11-17T04:17:01Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T04:17:01Z",
+          "completed_at": "2026-11-17T04:17:03Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T04:17:03Z",
+          "completed_at": "2026-11-17T04:17:19Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T04:17:19Z",
+          "completed_at": "2026-11-17T04:17:19Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 7,
+          "started_at": "2026-11-17T04:17:19Z",
+          "completed_at": null
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 13,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 29,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 30,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133814025572,
+      "name": "Release (macOS AppleClang)",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "runner_id": 1000001393,
+      "runner_name": "GitHub Actions 1000001393",
+      "runner_group_id": 0,
+      "labels": [
+        "macos-15"
+      ],
+      "started_at": "2026-11-17T04:16:26Z",
+      "completed_at": null,
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025572",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T04:16:26Z",
+          "completed_at": "2026-11-17T04:16:27Z"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T04:16:27Z",
+          "completed_at": "2026-11-17T04:16:55Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T04:16:55Z",
+          "completed_at": "2026-11-17T04:16:55Z"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T04:16:55Z",
+          "completed_at": "2026-11-17T04:16:56Z"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T04:16:56Z",
+          "completed_at": "2026-11-17T04:17:01Z"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T04:17:01Z",
+          "completed_at": "2026-11-17T04:17:01Z"
+        },
+        {
+          "name": "Build Release",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 7,
+          "started_at": "2026-11-17T04:17:01Z",
+          "completed_at": null
+        },
+        {
+          "name": "Require registration and apron tools in the full Release test inventory",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify apron tooling with only the Python standard library",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Qualify the actual starter generator from a Windows Unicode checkout",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "pending",
+          "conclusion": null,
+          "number": 13,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 29,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 30,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    }
+  ],
+  "qualification": "Initial observation only; all six jobs assigned runners and in progress, no pass claim.",
+  "retrieval_note": "The repository contents endpoint returns decoded workflow text through this connector; first JSON parse was rejected locally. A second read retained the original text. No remote mutation occurred."
+}

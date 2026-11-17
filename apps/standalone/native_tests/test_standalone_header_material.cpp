@@ -153,7 +153,7 @@ std::array<Case, case_count> cases() {
     for (std::size_t shape = 0; shape < 2; ++shape)
         for (std::size_t scale = 0; scale < 2; ++scale) {
             auto& c = result[9 + shape * 2 + scale];
-            c.width = shape == 0 ? 1920.0F : 1400.0F; c.height = shape == 0 ? 820.0F : 1080.0F;
+            c.width = static_cast<float>(shape == 0 ? 1920 : 1400); c.height = static_cast<float>(shape == 0 ? 820 : 1080);
             c.rx = c.ry = scale == 0 ? 0.75F : 1.25F;
         }
     result[13].width = 1672.5F; result[13].height = 941.25F;

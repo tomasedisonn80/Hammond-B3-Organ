@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T03:58:13.508979+00:00",
+  "scope": "Exactly one unchanged isolated invocation of each failed MIDI method after complete qualified-final240/242. Original9second children, every event/window/assertion and fixture bytes unchanged. Separate diagnostics, not a replacement full suite or causality proof.",
+  "coherent_inputs_receipt": {
+    "bytes": 76573,
+    "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+  },
+  "input_count": 475,
+  "changed_code_inputs": [],
+  "executable": {
+    "bytes": 4103352,
+    "sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+  },
+  "cases": [
+    {
+      "method": "test_cc120_releases_only_its_external_division_and_preserves_ui",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_midi_replay.py",
+        "NativeMidiReplayAcceptance.test_cc120_releases_only_its_external_division_and_preserves_ui"
+      ],
+      "selected_environment": {
+        "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "HAMMOND_STANDALONE_MIDI_EVIDENCE": "/workspace/scratch/5a28c3564dbf/qualified-midi-cc120-isolated"
+      },
+      "returncode": 0,
+      "seconds": 2.031860107999819,
+      "log": {
+        "bytes": 449,
+        "sha256": "3d522ed7f646ed7961affd615feead4752a2535458cc5720385bb0ac45852f3d"
+      },
+      "archive": {
+        "bytes": 3809,
+        "sha256": "f3475957b37c2f52a9d0a0742d387ecaefbcb40476128a3353e6ddee13fdf03e"
+      },
+      "members": {
+        "test_cc120_releases_only_its_external_division_and_preserves_ui-1/MIDI input \u97f3.b3midi": {
+          "bytes": 213,
+          "sha256": "3a61a71e8299ae109594386bfa1c2df836f39c232e24a07bab64302031cd7226"
+        },
+        "test_cc120_releases_only_its_external_division_and_preserves_ui-1/UI input \u03a9.b3ui": {
+          "bytes": 179,
+          "sha256": "ec8e6680bda9f05d99dda02cbb2e726ad9ab90bf562dcbec36c7a6125d8345f8"
+        },
+        "test_cc120_releases_only_its_external_division_and_preserves_ui-1/diagnostics.json": {
+          "bytes": 40508,
+          "sha256": "c89807c184a3e1bcaa4ec2d41827d63e4058718a3d19babf95f1294c0bf76d44"
+        },
+        "test_cc120_releases_only_its_external_division_and_preserves_ui-1/process.json": {
+          "bytes": 763,
+          "sha256": "8c52f26d6e4e468b563f40f9605fa37bf34c8dbf782db91d0a032ae5de299ff2"
+        }
+      }
+    },
+    {
+      "method": "test_real_overflow_discards_stale_packets_and_requires_reconnect",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_midi_replay.py",
+        "NativeMidiReplayAcceptance.test_real_overflow_discards_stale_packets_and_requires_reconnect"
+      ],
+      "selected_environment": {
+        "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "HAMMOND_STANDALONE_MIDI_EVIDENCE": "/workspace/scratch/5a28c3564dbf/qualified-midi-overflow-isolated"
+      },
+      "returncode": 0,
+      "seconds": 2.037485654996999,
+      "log": {
+        "bytes": 451,
+        "sha256": "8c851af3703da36997c4c3e862b6ef7bd19c23022fd11538739cee82b01d25f1"
+      },
+      "archive": {
+        "bytes": 3596,
+        "sha256": "10ddce88b7f603136f10984369648420bb55d2b2b97fe4a1185dbbc3b4c8bb0d"
+      },
+      "members": {
+        "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/MIDI input \u97f3.b3midi": {
+          "bytes": 11550,
+          "sha256": "0f020a1fc8e9fbd973e69f8054f7d22008f0f880d2c3ac42842c9df9e84c7f7b"
+        },
+        "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/UI input \u03a9.b3ui": {
+          "bytes": 51,
+          "sha256": "544259ec95293896a357e0cc1ab455953fb0d0620e57419ee394bcf5858d048e"
+        },
+        "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/diagnostics.json": {
+          "bytes": 30121,
+          "sha256": "30cd6ef4fa1bb2721373e48e724549c036aa4c0abb23863095c79a59f793392a"
+        },
+        "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/process.json": {
+          "bytes": 765,
+          "sha256": "ba3251282e0ae5038347b215bf5b96afb87caf69b8e4e8692cb40fb9bc13c424"
+        }
+      }
+    }
+  ]
+}

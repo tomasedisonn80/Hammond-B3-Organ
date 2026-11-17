@@ -1,0 +1,747 @@
+{
+  "schema": 1,
+  "worker": "/root/w08_a44",
+  "timestamp_utc": "2026-11-17T02:07:16.377231+00:00",
+  "status": "independent source diagnosis and proposed correction; not implemented or executed by A44",
+  "scope": "Read-only source, original failure bytes and contract review. Full suite was still running; no final full-suite result inferred.",
+  "source_inputs": [
+    {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 146859,
+      "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+    },
+    {
+      "path": "apps/standalone/ScriptedInput.cpp",
+      "bytes": 22586,
+      "sha256": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23"
+    },
+    {
+      "path": "apps/standalone/ScriptedInput.h",
+      "bytes": 4115,
+      "sha256": "294b11d6a2c9b425d766b019b2ff1e7c460a308c93887c648dd7bce1d955c3d5"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+      "bytes": 35691,
+      "sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_input_replay.cpp",
+      "bytes": 40834,
+      "sha256": "35ccdc0eb81ac0d583776fccc76a86101059f10edb8b36d7dc75ec14391c3c84"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_replay_boundaries.py",
+      "bytes": 19670,
+      "sha256": "b3b36600ac4da2f8619326f73752b885d186fc59e45986ae9f308285cb53b817"
+    },
+    {
+      "path": "docs/INTERFACE_WORKSPACE_CONTRACT.md",
+      "bytes": 16267,
+      "sha256": "a64e59e3f46fa8d1320a17cb92a710128c327b0a1c3a44b06bbf8516b47eb6b2"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-final-coherent-inputs.json",
+      "bytes": 75738,
+      "sha256": "9d6f4514fb5b49be841e61bbb628e4a8522b3bdd77d5b6ce6ed0a09190d95920"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_starter_load.py",
+      "bytes": 15627,
+      "sha256": "22285ddcaec03adf61f97b1d65c7e70de4ee6c6437480267b4784ab8d360f5c7"
+    }
+  ],
+  "application_sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b",
+  "painter_sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+  "failure": {
+    "log_path": "reports/h1-final-ctest.log",
+    "log_byte_offset": 155,
+    "complete_test_block": {
+      "bytes": 42240,
+      "sha256": "1fe187207314c02ab8d6ea6c11d39e95ed792abe41108146f67edaf7eeca1c85",
+      "encoding": "gzip+base64",
+      "content": "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"
+    },
+    "input_script": {
+      "bytes": 1969,
+      "sha256": "905d176f2fca14799ec78c4d7dc80bb1f7531960094d2b4087a52b57817d4194",
+      "encoding": "gzip+base64",
+      "content": "H4sIAAAAAAACA3WVzU7DQAyE73mKfYS1vT/ZI0hIIHFABQ6cqkIjqFCTqj9C8PTs0jZJyfjqjLzzWfbkWp7vZjcP91cvVC0P28V+1bXz9c5I9LZiaz6b7/my+2rN0+LVtF3bGFvJsXzY9MXKYaWfKgNWxqmyxso0VZLFUiKgVaAIUJGCRYCLFDACZKSgEWBjhY0BGytsDNhYYWPAxgobAzZW2BiwicImgE20ZQRsorAJYBOFTQCbKGyS0EVgrQNsTmFz6NIUNgfYnMLmAJtT2Bxg8wqbB2zej7S33brpxaEX9+Uqp45Zd4ddc9SXowyhivFczeJTLSkeEvCQRNE6cJslTEYW2NblOSq50Xs4F7WDI3RxxF5TB5Q9l6Pw/PeiG4/iVAvjvrPV+8e+7xyGzsOHnD9y0TslZ+qsrv2o+amY80frzpZQdy6Rt212q5/GpPx+tCWBVI8s0CP7iFaBfZruAsdx98fN4q0ZImroPnzIacRgulwW4t90xSbNuZz/O5fOhSPaIOE03SBxqnNx0PkvwNEW8rEHAAA="
+    },
+    "copied_diagnostics": {
+      "bytes": 34927,
+      "sha256": "e7a228c1fc379290ba0da5c46b3e97eedead05ec8759c5b70d06d19cd105d90a",
+      "encoding": "gzip+base64",
+      "content": "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"
+    },
+    "test": "test_standalone_workspace_replay",
+    "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+    "suite_methods": 6,
+    "suite_native_invocations": 30,
+    "suite_elapsed_seconds": 51.53,
+    "method_elapsed_seconds": 3.877,
+    "missing_painted_visit": [
+      "play",
+      "flat",
+      1280,
+      900,
+      "none"
+    ],
+    "actual_unique_visits": [
+      [
+        "play",
+        "dimensional",
+        1280,
+        900,
+        "none"
+      ],
+      [
+        "rotary",
+        "dimensional",
+        1280,
+        900,
+        "none"
+      ],
+      [
+        "service",
+        "dimensional",
+        1280,
+        900,
+        "none"
+      ],
+      [
+        "play",
+        "dimensional",
+        1280,
+        900,
+        "none"
+      ],
+      [
+        "play",
+        "flat",
+        960,
+        700,
+        "none"
+      ],
+      [
+        "rotary",
+        "flat",
+        960,
+        700,
+        "none"
+      ],
+      [
+        "play",
+        "flat",
+        960,
+        700,
+        "none"
+      ],
+      [
+        "service",
+        "flat",
+        960,
+        700,
+        "none"
+      ]
+    ],
+    "painted_observations": [
+      {
+        "elapsed_ms": 0,
+        "rendered_image": 1,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": true,
+          "frame_clock": 0,
+          "publication_revision": 4,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 119,
+        "rendered_image": 2,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 3584,
+          "publication_revision": 18,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 585,
+        "rendered_image": 6,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": true,
+          "frame_clock": 22528,
+          "publication_revision": 92,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 662,
+        "rendered_image": 7,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 26112,
+          "publication_revision": 106,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 817,
+        "rendered_image": 9,
+        "workspace": "rotary",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 32768,
+          "publication_revision": 132,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 1372,
+        "rendered_image": 12,
+        "workspace": "service",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 56320,
+          "publication_revision": 224,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 1740,
+        "rendered_image": 13,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": true,
+          "frame_clock": 71680,
+          "publication_revision": 284,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 2209,
+        "rendered_image": 14,
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": true,
+          "frame_clock": 91136,
+          "publication_revision": 360,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 2263,
+        "rendered_image": 15,
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 93184,
+          "publication_revision": 368,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 2396,
+        "rendered_image": 18,
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": true,
+          "frame_clock": 98304,
+          "publication_revision": 388,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 2433,
+        "rendered_image": 19,
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 99840,
+          "publication_revision": 394,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 2579,
+        "rendered_image": 23,
+        "workspace": "rotary",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 105472,
+          "publication_revision": 416,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 2922,
+        "rendered_image": 35,
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 119808,
+          "publication_revision": 472,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 3108,
+        "rendered_image": 41,
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": true,
+          "frame_clock": 128512,
+          "publication_revision": 506,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 3139,
+        "rendered_image": 42,
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 129536,
+          "publication_revision": 510,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 3286,
+        "rendered_image": 46,
+        "workspace": "service",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 136192,
+          "publication_revision": 536,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 3469,
+        "rendered_image": 52,
+        "workspace": "service",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": true,
+          "frame_clock": 144384,
+          "publication_revision": 568,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      },
+      {
+        "elapsed_ms": 3505,
+        "rendered_image": 53,
+        "workspace": "service",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 145920,
+          "publication_revision": 574,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        }
+      }
+    ],
+    "replay_final": {
+      "scheduled_events": 87,
+      "pushed_events": 87,
+      "delivered": true,
+      "completed": true,
+      "passed": true,
+      "final_acknowledged": true,
+      "controls_pending_before_shutdown": false,
+      "save_pending_before_shutdown": false
+    },
+    "errors": {
+      "count": 0,
+      "last": ""
+    },
+    "audio_failures": {
+      "render_failures": 0,
+      "format_failures": 0,
+      "nonfinite_failures": 0,
+      "overrange_failures": 0
+    },
+    "input_events_near_failure": [
+      "1830 mouse_down 994 80",
+      "1850 mouse_up 994 80",
+      "2000 key_down Right none 0",
+      "2010 key_up Right none",
+      "2170 resize 960 700"
+    ]
+  },
+  "source_mechanism": [
+    "ScriptedInput::pump posts all due non-resize actions in source order, then a consumed-prefix marker before a synchronous resize when preceding input has not been acknowledged.",
+    "Application::handle_event currently acknowledges that marker and immediately reenters pump_replay within the same bounded SDL event drain.",
+    "The pending resize changes the native window and posts its size event before the outer loop calls render_frame. The old-size Flat view therefore can never be painted in that catch-up turn.",
+    "record_painted_presentation is called only after paint_instrument and successful SDL_RenderFlush. Its omission truthfully reflects absence of that frame; it is not a history deduplication defect."
+  ],
+  "causality_limit": "The complete retained diagnostics and source establish the omitted-paint mechanism and its match to the observed 1740→2209ms/frame13→14 transition. There is no per-marker timing trace; no specific scheduler, cold-paint or CPU-contention cause is asserted.",
+  "proposal": {
+    "production_file": "apps/standalone/main.cpp",
+    "change": "Within the successful replay_.acknowledge(event) branch, retain eager pump_replay only if last_painted_ exists and matches current workspace, presentation and overlay. Otherwise return to the ordinary render before the existing next-loop pump. Update both marker-branch and run-loop comments.",
+    "semantic_comparison_fields": [
+      "workspace",
+      "presentation",
+      "overlay"
+    ],
+    "excluded_comparison_fields": [
+      "window_width",
+      "window_height",
+      "controls",
+      "controls_pending",
+      "frame_clock",
+      "publication_revision",
+      "held_targets",
+      "modal_focus"
+    ],
+    "reason_for_exclusions": "Dimension-only resize batches must retain the existing maximum-plan drain guarantee. Audio/control state and modal focus have their existing separate observation/acknowledgment contracts; do not add audio-dependent rendering gates.",
+    "unchanged": [
+      "ScriptedInput parser, plan, source ordering, resize/marker identity and delivery semantics",
+      "record_painted_presentation and diagnostic schemas",
+      "record_replay_ui_observation and musical observation/acknowledgment guards",
+      "Engine, Session, audio/MIDI callbacks, parameters, saved state, plugin identities, painter and controls",
+      "256-event per-turn drain, 256-action plan, 512-entry presentation history, 10000ms plan maximum and 2000ms drain guard",
+      "All existing fixtures, event timestamps, assertions, timeout budgets and original failures"
+    ],
+    "bounds": {
+      "maximum_script_actions": 256,
+      "maximum_distinct_consumed_prefix_markers": 256,
+      "new_storage_bytes": 0,
+      "new_explicit_paint_calls": 0,
+      "new_sleep_or_wait_calls": 0,
+      "normal_operation_and_midi_only_replay": "Marker branch requires a nonempty UI input script; unchanged otherwise.",
+      "pure_resize_case": "After at most one initial ordinary paint establishes last_painted_, semantic identity stays equal, preserving eager resize-only draining within the existing 256-event turn budget. The existing two 256-resize acceptance cases must both pass; timeout failure is not acceptable for those cases.",
+      "adverse_plan_limit": "Additional ordinary-loop paints are bounded by acknowledged prefix markers, not wall-clock fairness. General expensive semantic/resize mixes retain the existing fixed drain deadline and must never gain an unlimited grace period."
+    },
+    "guarantee": "If the final semantic view of an acknowledged resize-separated prefix differs from the last actual painted semantic view, that current view receives the ordinary outer-loop paint opportunity at its current size before the next replay prefix is pumped. This does not promise each pure resize or every intermediate non-resize semantic event a separate frame.",
+    "rejected_simpler_alternative": {
+      "change": "Unconditionally remove eager pump_replay from every marker acknowledgment.",
+      "reason": "test_maximum_resize_plan_drains_without_extending_grace explicitly requires 256 same-time repeated and alternating resizes to succeed. Unconditional deferral forces up to 256 expensive ordinary paints and risks breaking that existing fixed-budget acceptance. This alternative is not recommended.",
+      "source": "apps/standalone/native_tests/test_standalone_replay_boundaries.py",
+      "method": "test_maximum_resize_plan_drains_without_extending_grace"
+    }
+  },
+  "proposed_regression": {
+    "file": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+    "duration_ms": 250,
+    "initial_size": [
+      1280,
+      900
+    ],
+    "all_event_timestamps_ms": 0,
+    "keyboard_events": [
+      "key_down F7 none 0",
+      "key_up F7 none",
+      "resize 960 700",
+      "key_down F7 none 0",
+      "key_up F7 none",
+      "resize 1280 900"
+    ],
+    "pointer_events": [
+      "mouse_down 994 80",
+      "mouse_up 994 80",
+      "resize 960 700",
+      "mouse_down 674 80",
+      "mouse_up 674 80",
+      "resize 1280 900"
+    ],
+    "expected_actual_painted_visits": [
+      [
+        "play",
+        "flat",
+        1280,
+        900,
+        "none"
+      ],
+      [
+        "play",
+        "dimensional",
+        960,
+        700,
+        "none"
+      ],
+      [
+        "play",
+        "dimensional",
+        1280,
+        900,
+        "none"
+      ]
+    ],
+    "required_checks": [
+      "Literal ordered actual presentation.observations, increasing rendered_image and matching dimensions; no synthetic observation substitute.",
+      "Existing strict schema/lifecycle/error/final-ack checks; unchanged complete controls and saved bytes; zero note commands and no held notes.",
+      "Genuine preserved old executable fails the missing semantic-visit assertion with valid delivery; rebuilt corrected executable passes the new variants. Independently retain both existing 256-resize boundary cases and tied pointer-owner geometry case.",
+      "Existing six-method workspace acceptance remains unchanged apart from adding the regression."
+    ],
+    "unrun": true,
+    "reverse_initial_flat_expected_visits": [
+      [
+        "play",
+        "dimensional",
+        1280,
+        900,
+        "none"
+      ],
+      [
+        "play",
+        "flat",
+        960,
+        700,
+        "none"
+      ],
+      [
+        "play",
+        "flat",
+        1280,
+        900,
+        "none"
+      ]
+    ],
+    "coalescing_limit": "The intermediate Play/Flat 960x700 visit in the initial-Dimensional case is resize-only and need not paint before the immediately following semantic change. Requiring it would exceed the selective guarantee. Existing original workspace assertions are unchanged.",
+    "independent_owner": "Root assigned new deterministic regression drafting to A45; this document proposes acceptance but owns no fixture."
+  },
+  "root_acceptance_sequence": [
+    "Finish and retain the ongoing whole-suite result and freeze the genuine pre-repair main/app.",
+    "Admit any bounded main-only replay correction separately from the frozen H1 painter acceptance.",
+    "Root/new owner implements the selective semantic comparison; independently owned deterministic regression must distinguish genuine old failure from new success without requiring every resize-only frame.",
+    "Root rebuilds coherently and runs the new regression plus every unchanged workspace case, maximum 256-resize/tied pointer boundary cases, input replay, workflows and MIDI CLI/replay gates.",
+    "Run one isolated unchanged-source starter-load diagnostic after the current full suite; track its musical observation issue separately.",
+    "Bind final coherent full-suite, runtime/capture and publication evidence to changed main/app; retain original H1 galleries, original failed receipts, and current archival-link failure for root-owned source-context repair."
+  ],
+  "limitations": [
+    "No native executable, build, configuration, CTest or capture was run by A44.",
+    "No production source or existing test was modified.",
+    "The separate 600ms smoke failure and its 2000ms diagnostic are not repaired or qualified by this proposal.",
+    "No physical, hardware deadline, display/DPI, accessibility or whole-interface 1:1 gate is closed.",
+    "The separate starter-load musical acknowledgment observation failure and archival Markdown relative-link failure are not fixed or qualified by the semantic presentation proposal."
+  ],
+  "separate_starter_load_failure": {
+    "test": "test_standalone_starter_load",
+    "method": "test_materialized_scopes_keep_their_expression_when_generically_loaded",
+    "subcase": "performance",
+    "complete_test_block": {
+      "bytes": 26922,
+      "sha256": "e2c471d4df21003754935f45b7e2aac4f60fc412943eafcccfdccd47d4c7e7e2",
+      "encoding": "gzip+base64",
+      "content": "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"
+    },
+    "log_byte_offset": 44597,
+    "copied_diagnostics": {
+      "bytes": 23859,
+      "sha256": "81d3ce53890a92c9f2b9dd6631c9a9bd44e0ef2e932e5dbf6e927862c006b801",
+      "encoding": "gzip+base64",
+      "content": "H4sIAAAAAAACA+1cS2/jOBL+K4bPk7QetmPPefYwwO5pj0FDoCTK5kQiNSRlJxvkv28VKepppzNBB3HQBBpBi8Vn1fcVSxZZz0tS1yXLiGaCL39fLA+kqgTPE6UJz0kpOF3+tliSJmcCxM/LtCkKKpP0SVMFBatgtwF5W1pIUpnidRhBaUbKMiXZQ5KJhmsojtZbLD4QzmmJ9bBWTo8sowmHpjiBP2hBmlIvRKPrRuPguWRHKlGWN1X1hEWFkBXRSUFY2UgzYgClJVE6KVlBs6espLgE3aBsKR6WTiwpz2GmUxkHBRxpUpSC6DhKbP8gjuNgjQvkgheMM02nY/YCRaq67MpFTXmSUugIJIdG5+KE+tWyoSiFBUnC97PuesG4u3bak9q2lOa94sM4shaR9O+GKg2y87bp5Vb/qIrlqNxOIJFEo3C1DQIzZMM54/vLS2ubzTR4prsXBIPgWgoDhuclfaxhccpCMbhdo6XZI8xF0j1TWhqUYtV7wFHwHcQV4Q0pk1ySU0qkEd0b4W8L+3f0D1r0ws1UiNL7wIlXZ9oOhatxW5xMTfPJXFbtNGsqs8Yt7Bkgn5EntBaIKCdpSfNegQcigYEsa+VHUTaGGSGqC/VDdaJoSbNOGTCDMMRhJJCGJn2P9wUpFfSJPaPcNkNMEP7QNf2OHQPshLRWcGx1lDLQwDoVy5mpQTLDFlJopFIPgXY4J59jpKsggdOgK80qmjDlsIaPl2op0UgLU+6c0lDcAAdRCNAl+VOSlQL8DidcKAoQyxU2QF8EjMFqDSdH4BIqaiBJ+sJ+FgN39bwsxcm4osiZG4tjeGjq2giMlcC+IjePVlfWTqhPWovs4B4Yt4pqHytSImuM5YwvaHQiisS4g7aoxnlq1x4XDo6sqpEfLXGcrOEVeHYw9WD6tlzBVIXUdpiXzgHbyeYVM91MPY1TUAeTYOzfuaZ8uM5OBDNUZN/1A3ZRdNxLzhS05wBMV1KwUhu3NmkM2jkRmc8FxrM7ONg5mIUxsgcAaJYpdPhg1jlkW9KZSYDvfWoZgHDUnSVQagcGjcDm1E1orCRw+Tn6xou8cBUuE6N1v65HVyP5SzCeAMI6gLgGsK6RLSWBimmT76lxvojT3qsmYBaWSrfZOyLDf3lTltYbF2wPS8qNmHFQiR6NV5FHVjUVIj26Mz6Bt89m/ApwXyLB0Ffc9CPfwMprWINWN8dw2auiH7oeKCSZzkvSFiJJ365XWUkJgGouce7unWvpvCWgijkH/WLMDhgAKGgmaQW4d9baU0475VqCp+KxVXRGa+xrzOCMwDPTTyY22oyQNq5oh0zZuGBWDRaJc00U+x+diBDdEN6cEnocTNkhcly3FsZ1jAvBBhSMMi9W7cOLY6Jq0orpWYzVqjsxGMV+gCS6kXwYMU3DISjDmuCvEgaxzmPnBzGaQZZNPIGp6UJJHPTvhlGVwYovUt/hJyU6OwxCK1sKrgBijFwlzoIT+WU8KqQyz2jXwAVWOMc+3EIQQQA3te8cXarlMHIBbAnLSkSqqDx2c+rog1oce4nZ5mn8RlOfqQpWO+MnpzumrTZ3ZOfqWRD8588//ly0+8hiUGvB+EIfmFqkDSvzW9PIAmgCBtjuDFQFvK8gY7oAQEiMjTl91Em376QQxOQE/HkXNXHd+735vCH4LEmtcG8xLya7ze7LuM7r8o4HWuYJoGtv3UIfMwXDmCkYxEymP8ZVbWPadgu27wVnJm7eZGyEZ954gmCFr5V1k7oXWeDIkbXRtn3dURyMexB6FOG5NxYnkxA6gvMCotN8GJF3FQzo0URZI+HdSy9buwEGC5E1Q1dbmgC/o5sxIIAUHD64vDbY0ppWdcdviIzU3P0AnjsHkJeu/YiwOOFB04bNap3hAOw04FxQR6RcDl8lWUVMuBnDu8vyBE4XtowDZfsD+qydeQdsS08s1wcDj60pFfJBwd5gFFTj+q1ZmWagnx8M76rNO3GbSk1Qg7mnqqeqp+qHUNVGE9Yqg8DUWmUgND8cTEgYeAZeFwNbPowJGFzm3soz7x3MC38G8SZUuos8l77CbhYHxlIX+BRuPKHeQajoIwi12XpGfYHdKY6tTS8xKvZ71Lv2qNUHcGoXrj2nvsQutdvFm9e2qcCT6j2k2nwAqcKtj/2+xE61DXfRKztVHPmd6l3B3+4DSBXF29iT6kv8PBjEr+5Vq9DvVe/6efAnvFR9n/wEmIBCOZhoPP9MUpgJ6LdFtJ2tKFjZ6qnRByHxI546kGi9wf5Xu7tdSEm2zYN0vd6kAUnzKAi36TYjabYpolUQbkIAW7olu4IEtIAGwbqIUpLnZBubrwe5tRAAm5Q3Da9A46g1pNmLUUltrTj4EM+Fpokoiu4Lb6v0SQU+lZ/7dOgPsV3HITZ7DggPtOL5xf77+12vZLSq1TDqYrBiZix8/90eaRDlcdKFPazYnwtqFzr1bq+c7YFNAQ+yDlvnVJnP/10vZz9Me0B9FqDas8nmsIRqh84bq/E2vLgL7JE18DwJyR64OMEo++HUB2di9ByX//Cri3c1V3Jedv6TPR5qTIaHZ33M+c9jzksuPHyVSOGrDv5tcd1bdoHQvF94Dl4jB+2v/J6En0bCyJPwVyfhdr3zJPxUEsZfgYSBJ2FPwjC8yELb52UShp6En0TC6CpIGH0OCQNPwh+SsP1A7kn4gSSMr4KEsSfhtZLQfVD3LPw0Fq48Cz0LPQs/mYVrz8JfnYVRsLvzLPxUFm6uhIXhr8VBZ2xPwl+DhOurIOHak/BaSRit/W8zn0vCO0/Cn0TCrSehJ+ElEm6ugoQb/73+Wr/Xu8sRnoUfyMK7q2Dh3dvO8NdEqSFI60YdoKMuaVy4NjlayJG+4cSzyqBtU55p73KZ/TCb7Oy2x+W6DUtePUw7ll/KYvJjjRtFTjqb6/LFJsttU5o+Y2bGk5n/5ApGVz65hDG+xqFcmpe22KRDVqLQJyJtnrXu7kVyOjAzTHn+bkZykgjCkZ3yMoFFtm5rGd3G0W0YYLdHllORnMnA/Ob7JC8tDioyGCLuMWCV06U9HNy2CLu8h0VJ9l3iw0lKoTbfsbmrdDHx5usXA2xaQpdMD3BNumQpktZEjvlwPnVRFJlkg7Shicu0OEicaFKLjhyspH9ZLzK5XnKOuttB3uWLSzyfrvnibSljlko80FnC0+66wuice+B0PMg56Gp2V2nwWtKsnE+LOxczddVnuu6yJg5pZXMP1sRgbPlNV/W3Nm35jU2HKm9KQfIbsn+gq1X1+M1m976Jvv0X/Fa++Fe3xdymcZtUlaCqR/kK/w1dQGVlmrjo5Xb58n/usIK0M10AAA=="
+    },
+    "assertion": "Live edits must be acknowledged before Load; startup alone is insufficient",
+    "load_timestamp_ms": 2200,
+    "duration_ms": 2700,
+    "contains_resize": false,
+    "replay_final": {
+      "scheduled_events": 152,
+      "pushed_events": 152,
+      "delivered": true,
+      "completed": true,
+      "passed": true,
+      "final_acknowledged": true
+    },
+    "errors": {
+      "count": 0,
+      "last": ""
+    },
+    "observations_near_load": [
+      {
+        "elapsed_ms": 1872,
+        "resolved_sequence": 3,
+        "last_applied_sequence": 3,
+        "last_submitted_sequence": 4,
+        "expression": 0.5,
+        "pedal_drawbars": [
+          4,
+          0
+        ]
+      },
+      {
+        "elapsed_ms": 1872,
+        "resolved_sequence": 3,
+        "last_applied_sequence": 3,
+        "last_submitted_sequence": 5,
+        "expression": 0.5,
+        "pedal_drawbars": [
+          4,
+          0
+        ]
+      },
+      {
+        "elapsed_ms": 2097,
+        "resolved_sequence": 3,
+        "last_applied_sequence": 3,
+        "last_submitted_sequence": 6,
+        "expression": 0.5,
+        "pedal_drawbars": [
+          4,
+          0
+        ]
+      },
+      {
+        "elapsed_ms": 2097,
+        "resolved_sequence": 5,
+        "last_applied_sequence": 5,
+        "last_submitted_sequence": 6,
+        "expression": 1,
+        "pedal_drawbars": [
+          4,
+          0
+        ]
+      },
+      {
+        "elapsed_ms": 2255,
+        "resolved_sequence": 5,
+        "last_applied_sequence": 5,
+        "last_submitted_sequence": 7,
+        "expression": 1,
+        "pedal_drawbars": [
+          4,
+          0
+        ]
+      },
+      {
+        "elapsed_ms": 2255,
+        "resolved_sequence": 6,
+        "last_applied_sequence": 6,
+        "last_submitted_sequence": 7,
+        "expression": 1,
+        "pedal_drawbars": [
+          8,
+          0
+        ]
+      },
+      {
+        "elapsed_ms": 2383,
+        "resolved_sequence": 7,
+        "last_applied_sequence": 7,
+        "last_submitted_sequence": 7,
+        "expression": 0.5,
+        "pedal_drawbars": [
+          4,
+          0
+        ]
+      }
+    ],
+    "interpretation": "At 2097ms the retained copied snapshot had resolved/applied sequence 5 with edit sequence 6 submitted. Sequence 6 first appears in retained history at 2255ms, after the 2200ms Load timestamp, with Load sequence 7 already submitted. This proves an observation/acknowledgment acceptance gap, not the actual callback acknowledgment time. Final complete controls and replay acknowledgment passed.",
+    "outside_proposal": "No resize means no intermediate resize marker. The selective presentation deferral cannot repair this musical observation gap, and the guard must not be weakened.",
+    "next_step": "After the current whole suite finishes, root should run one isolated, unchanged-source starter-load diagnostic with the original script and assertions and retain its bytes/hashes. A pass is evidence of scheduling sensitivity, not proof the original failure is repaired; a repeat failure merits separate owned investigation. No timestamp, assertion, timeout or musical-guard adjustment is proposed."
+  }
+}

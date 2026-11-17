@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "reviewer": "A54, wave 9; same accepted worker follow-up",
+  "recorded_utc": "2026-11-17",
+  "purpose": "Preserve exact original Windows artifact-member bytes in Git despite inherited text=auto/eol=lf normalization.",
+  "status": "All five original members, accepted SHA-256 identities, current worktree bytes, stage-0 blobs and specified staged-tree members agree.",
+  "source_qualification": {
+    "source_commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "source_tree": "b62f212300d75633346ab8fc5ffdd722255fe00a",
+    "run_id": 44016021543,
+    "attempt": 1,
+    "job_id": 133814025269,
+    "qualification_not_reexecuted": true
+  },
+  "scope": {
+    "new_file_written_by_A54": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/git-byte-retention.json",
+    "workflow_edits_by_A54": 0,
+    "original_file_edits_by_A54": 0,
+    "index_mutations_by_A54": 0,
+    "native_executions": 0,
+    "builds": 0,
+    "remote_mutations": 0,
+    "extra_agents": 0
+  },
+  "root_correction_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/hosted-repair-artifact-byte-preservation.json",
+    "bytes": 5346,
+    "sha256": "d9b2392eea04a4006861fdaf1066570e703e13fca1766d4bd16ac3f397e898d2",
+    "staging_method_reported_by_root": "Only the new scoped attributes file and five literal paths; explicit git add --renormalize refreshed cached normalized entries.",
+    "original_normalization_observed_by": "Root; independently recomputed transformed identities in this supplement, not claimed as an A54 pre-correction index snapshot."
+  },
+  "attributes": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/.gitattributes",
+    "bytes": 213,
+    "sha256": "7676579ede0e56059a1c768ec578f042b2006b02dfcff7a0e380c452abb4d356",
+    "staged_blob": "3a7c421e2b9dc8401b4c5bab40e332a81d3c69e2",
+    "content": "# Preserve exact original Windows diagnostic bytes and recorded hashes.\nwindows/archive.sha256 -text\nwindows/ctest.xml -text\nwindows/moduleinfo.json -text\nwindows/provenance.json -text\nwindows/toolchain.log -text\n",
+    "noncomment_rules": [
+      "windows/archive.sha256 -text",
+      "windows/ctest.xml -text",
+      "windows/moduleinfo.json -text",
+      "windows/provenance.json -text",
+      "windows/toolchain.log -text"
+    ],
+    "only_five_literal_paths": true,
+    "no_global_attribute_change": true,
+    "global_attributes_sha256": "cf3b4abf5a14565327f0dda04ff385525a890794ae8fa25e02fdfb66eb798c43",
+    "unselected_negative_control": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/sdk-verification.json",
+      "cached_text_attribute": "auto"
+    }
+  },
+  "observed_root_reported_staged_tree": {
+    "tree": "45c080fce6191635945604c29fa7bbbe03478932",
+    "verification_scope": "Directly read the six named tree members (five originals plus attributes); this is the root-reported pre-supplement tree, not a claim that it contains this new supplement or is the eventual published source."
+  },
+  "original_artifacts": {
+    "retained_diagnostics": {
+      "id": 14298941919,
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/artifact-14298941919.zip",
+      "bytes": 37710,
+      "sha256": "97e6341672b61502388731012cd2e833c620de52db08add83449db3d5c7bfb5a",
+      "members_used": [
+        "native-ci-logs/ctest.xml",
+        "native-ci-logs/provenance.json",
+        "native-ci-logs/toolchain.log"
+      ]
+    },
+    "bundle": {
+      "id": 14299275929,
+      "bytes": 421124,
+      "sha256": "9984af19402a10f42e252916fce2578b6a7fcf80544e17c799e734baef7a616d",
+      "archive_bytes": 420775,
+      "archive_sha256": "ee5fd88f1e0c8a965166627d387c9813711b6988ed9aee91a178f0d14aa1a31c",
+      "acquisition": "Exact original artifact re-downloaded read-only and inspected in memory; no additional package file retained.",
+      "members_used": [
+        "archive.sha256",
+        "HammondB3-Release.tar.gz!HammondB3.vst3/Contents/Resources/moduleinfo.json"
+      ]
+    },
+    "origin_distinction": "archive.sha256 and moduleinfo.json originate in the bundle ZIP/tar, not the diagnostic ZIP."
+  },
+  "members": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/archive.sha256",
+      "original_artifact_id": 14299275929,
+      "original_artifact_member": "archive.sha256",
+      "bytes": 92,
+      "sha256": "13da947bd7e49685d6625bab9b2fc4cf0007a19ee9f09fefa1e7c840ed07bcb0",
+      "crlf_count": 1,
+      "bare_lf_count": 0,
+      "accepted_record_matches": true,
+      "original_member_matches": true,
+      "staged_blob": "b3ffed0db6dad79bf65a65ecd3de6d0fc5ad6c83",
+      "independently_computed_git_blob": "b3ffed0db6dad79bf65a65ecd3de6d0fc5ad6c83",
+      "staged_equals_original_worktree": true,
+      "reported_root_tree_member_matches": true,
+      "cached_attributes": {
+        "text": "unset",
+        "eol": "lf"
+      },
+      "counterfactual_crlf_to_lf": {
+        "bytes": 91,
+        "sha256": "6c66097e56dcc4941f9e23fa227371a31690acff805f31a413de26d513833ab1",
+        "differs_from_original": true
+      }
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/ctest.xml",
+      "original_artifact_id": 14298941919,
+      "original_artifact_member": "native-ci-logs/ctest.xml",
+      "bytes": 5600,
+      "sha256": "5fec11a79f9b40202ce5bc420f193cfac03e3720d152b6fcbb25ac0df57d3051",
+      "crlf_count": 97,
+      "bare_lf_count": 0,
+      "accepted_record_matches": true,
+      "original_member_matches": true,
+      "staged_blob": "5a3c029f711d0732e5a6b4276511909c4219f824",
+      "independently_computed_git_blob": "5a3c029f711d0732e5a6b4276511909c4219f824",
+      "staged_equals_original_worktree": true,
+      "reported_root_tree_member_matches": true,
+      "cached_attributes": {
+        "text": "unset",
+        "eol": "lf"
+      },
+      "counterfactual_crlf_to_lf": {
+        "bytes": 5503,
+        "sha256": "242d81b653a5bc7dbf39382b9d769a49fcecbc51c36aa2ae871d7786e18fe73f",
+        "differs_from_original": true
+      }
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/moduleinfo.json",
+      "original_artifact_id": 14299275929,
+      "original_artifact_member": "HammondB3-Release.tar.gz!HammondB3.vst3/Contents/Resources/moduleinfo.json",
+      "bytes": 1133,
+      "sha256": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d",
+      "crlf_count": 43,
+      "bare_lf_count": 0,
+      "accepted_record_matches": true,
+      "original_member_matches": true,
+      "staged_blob": "eb8947e27b77502f5c1157a056a2aa3f7d8eea84",
+      "independently_computed_git_blob": "eb8947e27b77502f5c1157a056a2aa3f7d8eea84",
+      "staged_equals_original_worktree": true,
+      "reported_root_tree_member_matches": true,
+      "cached_attributes": {
+        "text": "unset",
+        "eol": "lf"
+      },
+      "counterfactual_crlf_to_lf": {
+        "bytes": 1090,
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184",
+        "differs_from_original": true
+      }
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/provenance.json",
+      "original_artifact_id": 14298941919,
+      "original_artifact_member": "native-ci-logs/provenance.json",
+      "bytes": 426,
+      "sha256": "c46f2b2201638c605e3adef736451e4213f7c30c4898d74eba152927e4b5cd4e",
+      "crlf_count": 14,
+      "bare_lf_count": 0,
+      "accepted_record_matches": true,
+      "original_member_matches": true,
+      "staged_blob": "526759412ea277f2bb260596743bdf0a59d1b5a2",
+      "independently_computed_git_blob": "526759412ea277f2bb260596743bdf0a59d1b5a2",
+      "staged_equals_original_worktree": true,
+      "reported_root_tree_member_matches": true,
+      "cached_attributes": {
+        "text": "unset",
+        "eol": "lf"
+      },
+      "counterfactual_crlf_to_lf": {
+        "bytes": 412,
+        "sha256": "c57bd8952ec57b414c6c6b6a981491ebff63e6d08b1864eeb4e6f7721aee5328",
+        "differs_from_original": true
+      }
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/windows/toolchain.log",
+      "original_artifact_id": 14298941919,
+      "original_artifact_member": "native-ci-logs/toolchain.log",
+      "bytes": 227,
+      "sha256": "b9ea63860ca1eb21cfc2a7b54fc8c7a5304ff19c3d3219b602529c00f0c2eb62",
+      "crlf_count": 1,
+      "bare_lf_count": 7,
+      "accepted_record_matches": true,
+      "original_member_matches": true,
+      "staged_blob": "e8b90e952a85503d4bf9a6103f0e255fca96f05d",
+      "independently_computed_git_blob": "e8b90e952a85503d4bf9a6103f0e255fca96f05d",
+      "staged_equals_original_worktree": true,
+      "reported_root_tree_member_matches": true,
+      "cached_attributes": {
+        "text": "unset",
+        "eol": "lf"
+      },
+      "counterfactual_crlf_to_lf": {
+        "bytes": 226,
+        "sha256": "5a496ccf3eb79388a4be57d4b26475ac7f4bf3c7a42308f5ab21d3d6cecc8880",
+        "differs_from_original": true
+      }
+    }
+  ],
+  "accepted_a54_files_unchanged": {
+    "docs/development/2026-11-16-heading-title-continuation/notes/A54.md": {
+      "bytes": 6224,
+      "sha256": "666fbf4682989759d8c1ffb0872786408a4ceabaf257e5fb64636dc2d884f761",
+      "staged_equals_worktree": true
+    },
+    "docs/reviews/HEADING_HEADER_VST3_HOSTED.md": {
+      "bytes": 9981,
+      "sha256": "7b7ca9b3aeacbdfdef988b942c5e4692e54e0b659b2b03c031e348a09c4d38f2",
+      "staged_equals_worktree": true
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted.json": {
+      "bytes": 47261,
+      "sha256": "7f5699446021d2578f75cf12999b9684be046263ef15444b7a946b61e5deb9cb",
+      "staged_equals_worktree": true
+    }
+  },
+  "all_accepted_retained_evidence_records_rehashed": {
+    "files": 53,
+    "all_worktree_bytes_match": true
+  },
+  "followup": "Root may stage this supplement and publish. Preserve the five -text rules when retaining these immutable original artifacts. Any later hosted VST3 run remains a separate exact-source qualification; this supplement does not change the original accepted result."
+}

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "recorded_at_utc": "2026-11-17T00:58:34.276897+00:00",
+  "status": "local source repair verified; published-source leak checking pending",
+  "changed_source": "tests/test_render_controls_admission.py",
+  "source_sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+  "change": "Only post-resume communicate wait15to45seconds; all workload, synchronization, correctness assertions and90secondCTest budget unchanged",
+  "root_executions": [
+    {
+      "configuration": "Release",
+      "report": "reports/render-race-repaired-release.log",
+      "exit_code": 0,
+      "methods": 5,
+      "renderer_invocations": 45,
+      "seconds": 4.253,
+      "sha256": "f87864a3bf56b21231dd89ac141c9e85c82b4d853f53c178786d671b43f82bc9"
+    },
+    {
+      "configuration": "Debug ASan+UBSan with detect_leaks=0 solely for documented local LSan ptrace-runtime limitation",
+      "report": "reports/render-race-repaired-local-asan-ubsan-no-lsan.log",
+      "exit_code": 0,
+      "methods": 5,
+      "renderer_invocations": 45,
+      "seconds": 20.095,
+      "sha256": "210e5dd7ceef88934421c879053136863e8e07783b927f17da5680dddd886db3"
+    }
+  ],
+  "original_published_failure": "reports/t2-core-sanitizer-investigation.json",
+  "unchanged_published_retry": "reports/t2-hosted-complete.json",
+  "limitations": [
+    "Local ASan/UBSan result does not qualify leak checking",
+    "Successful unchanged T2 retry does not qualify changed test source",
+    "Fresh published-source hosted ASan+UBSan+leaks is required"
+  ]
+}

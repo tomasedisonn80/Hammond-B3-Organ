@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "script_sha256": "f3ee5b2fba5f7216be673f0bd551d9206a2e3ffbbb1f673a7015f47d8d5ad509",
+  "status": "passed",
+  "runs": [
+    {
+      "side": "before",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_header_statistics.py",
+        "--executable",
+        "/workspace/scratch/5a28c3564dbf/t3-native/test_standalone_header_material"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "elapsed_seconds": 1.5025503100005153,
+      "protocol_passed": true,
+      "helper_passed": false,
+      "numerical": {
+        "inequality_count": 103,
+        "evaluated_count": 103,
+        "passed_count": 44,
+        "failed_count": 59,
+        "passed": false,
+        "mean_error_exact": "846310429693/228096000000",
+        "rms_error": 1.6673172881480465,
+        "rms_error_hex": "0x1.aad54e48a6b98p+0",
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+      },
+      "stdout_sha256": "d5f7408a29b08a9325b204b1e4b16baec5e39d19c56c351f54bc5a99bc6d9a63",
+      "stderr_bytes": 0
+    },
+    {
+      "side": "after",
+      "command": [
+        "python3",
+        "-B",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_header_statistics.py",
+        "--executable",
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_header_material"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_seconds": 1.63577758899919,
+      "protocol_passed": true,
+      "helper_passed": true,
+      "numerical": {
+        "inequality_count": 103,
+        "evaluated_count": 103,
+        "passed_count": 103,
+        "failed_count": 0,
+        "passed": true,
+        "mean_error_exact": "7620796849/20736000000",
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+      },
+      "stdout_sha256": "83e95609e0ad19a1d4d3da14b1ac9f514a385d7ec626e414c87f9c467113049a",
+      "stderr_bytes": 0
+    }
+  ],
+  "scope": "Genuine pre-H1 baseline intentionally fails 59 numerical screens plus absent helper; current candidate passes every screen with valid transport."
+}

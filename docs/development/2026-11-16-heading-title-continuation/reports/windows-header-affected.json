@@ -1,0 +1,45 @@
+{
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "-R",
+    "^test_standalone_header_(material|statistics)$",
+    "--parallel",
+    "1",
+    "--verbose",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/windows-header-affected.xml"
+  ],
+  "returncode": 0,
+  "seconds": 43.59351938499822,
+  "log": {
+    "bytes": 60410,
+    "sha256": "c71f07123fd25c7ddd88ad2ccf815d7362f44e5d216068e6532147d8baf70f75"
+  },
+  "junit": {
+    "bytes": 2295,
+    "sha256": "db5329a413bff8bfdb8cefd17e6c5bc306ab2fc8f7f1d18bd0b7681f42d74f27"
+  },
+  "identity": {
+    "old_fixture_executable": {
+      "bytes": 3817680,
+      "sha256": "5dca7e7d05ba1143fd740894b62a87056b96c8a471980fac1e792bbb269ca397"
+    },
+    "new_fixture_executable": {
+      "bytes": 3817680,
+      "sha256": "5dca7e7d05ba1143fd740894b62a87056b96c8a471980fac1e792bbb269ca397"
+    },
+    "executable_byte_identical": true,
+    "all48_actual_case_records_byte_identical": true,
+    "inventory_sha256": "feba3c0358c376de2026a91fb419a9f741f8f31ad93062a907f1116cb1597558",
+    "changed_code_inputs": [
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "all_other473_code_inputs_unchanged": true,
+    "production_application_unchanged": true
+  }
+}

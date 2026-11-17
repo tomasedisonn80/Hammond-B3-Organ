@@ -1,0 +1,638 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w09_a53",
+  "agent": "A53",
+  "wave": 9,
+  "recorded_utc": "2026-11-17T02:45:58.153509+00:00",
+  "status": "Hosted inventory prepared; exact new publication SHA not yet released. Independent completed combined-workspace diagnosis retained.",
+  "ownership": "Read-only source/log/GitHub observation. No native execution, builds, source or workflow changes, retry, Git mutation, or remote mutation by A53.",
+  "readings": [
+    "Complete AGENTS.md",
+    "Complete docs/PLAN.md",
+    "Current session CHECKPOINT.md and agent ledger",
+    "Complete standalone.yml",
+    "A51 final source audit",
+    "A44 workspace diagnosis",
+    "A45 genuine before/after receipts"
+  ],
+  "source_inputs": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 24722,
+      "sha256": "7cbe378f8fe3a67e13c7211f78548f7f7a7cc369324980d930c50a116140f101"
+    },
+    {
+      "path": "docs/PLAN.md",
+      "bytes": 55498,
+      "sha256": "db72a6fd26b097704ba6b7fc1ebd86b4174af55a2b1aca7ecd766f80d1e5cc6d"
+    },
+    {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 70886,
+      "sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e"
+    },
+    {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 147241,
+      "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+      "bytes": 35691,
+      "sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py",
+      "bytes": 14225,
+      "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822"
+    },
+    {
+      "path": "docs/reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md",
+      "bytes": 10431,
+      "sha256": "4ee24912b6eea3bc74e1a221b57ad9ebd389feaa5eabb5a8c8b0a5d1412d19f3"
+    },
+    {
+      "path": "docs/reviews/HEADING_HEADER_FINAL_SOURCE_AUDIT.md",
+      "bytes": 9651,
+      "sha256": "6b29dfb5e84eca7d72ce9ba8d432541c05fa9bc20381f3a3233a07a0a2a49099"
+    }
+  ],
+  "hosted": {
+    "state": "awaiting root exact-SHA release; no uncreated-run polling",
+    "source_sha": null,
+    "runs": [],
+    "workflow": {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 70886,
+      "sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e"
+    },
+    "job_families": [
+      {
+        "name": "Native standalone (Linux GCC, MIDI ON)",
+        "runner": "ubuntu-24.04",
+        "MIDI_backend": "ALSA"
+      },
+      {
+        "name": "Native standalone (macOS AppleClang, MIDI ON)",
+        "runner": "macos-15",
+        "MIDI_backend": "CoreMIDI"
+      },
+      {
+        "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+        "runner": "macos-15-intel",
+        "MIDI_backend": "CoreMIDI"
+      },
+      {
+        "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+        "runner": "windows-2022",
+        "MIDI_backend": "WinMM"
+      },
+      {
+        "name": "Native standalone (Linux GCC, MIDI OFF)",
+        "runner": "ubuntu-24.04",
+        "MIDI_backend": "unavailable"
+      },
+      {
+        "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+        "runner": "ubuntu-24.04",
+        "MIDI_backend": "unavailable"
+      }
+    ],
+    "normal_required_count": 44,
+    "normal_required_tests": [
+      "test_standalone_channel_acceptance",
+      "test_standalone_channel_modes",
+      "test_standalone_drawing",
+      "test_standalone_expression_calibration",
+      "test_standalone_expression_diagnostics",
+      "test_standalone_footage_typography_raster",
+      "test_standalone_header_grain_bounds",
+      "test_standalone_header_material",
+      "test_standalone_header_statistics",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "test_standalone_inspection_raster",
+      "test_standalone_install",
+      "test_standalone_lower_rack_material_raster",
+      "test_standalone_manual_key_material_raster",
+      "test_standalone_material_acceptance",
+      "test_standalone_midi_backend",
+      "test_standalone_midi_backend_quarantine",
+      "test_standalone_midi_cli",
+      "test_standalone_midi_concurrency",
+      "test_standalone_midi_discovery",
+      "test_standalone_midi_input",
+      "test_standalone_midi_replay",
+      "test_standalone_midi_session",
+      "test_standalone_native_calibration",
+      "test_standalone_native_midi_replay",
+      "test_standalone_product_visual",
+      "test_standalone_projection",
+      "test_standalone_quad_drawing",
+      "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable",
+      "test_standalone_reference_layout",
+      "test_standalone_replay_paint_boundary",
+      "test_standalone_scaled_view",
+      "test_standalone_starter_load",
+      "test_standalone_title_density",
+      "test_standalone_upper_rack_material_raster",
+      "test_standalone_waveform_material",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster",
+      "test_standalone_workspace_replay",
+      "test_standalone_workspaces_author"
+    ],
+    "normal_selection": "All ^test_standalone_ tests, serially; the required set is a minimum. Actual counts must come from each job.",
+    "sanitizer_required_count": 33,
+    "sanitizer_build_target_count": 31,
+    "sanitizer_test_targets": {
+      "test_standalone_ui": "test_standalone_ui",
+      "test_standalone_preset_ui": "test_standalone_preset_ui",
+      "test_standalone_workspaces_author": "test_standalone_workspaces_author",
+      "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+      "test_standalone_projection": "test_standalone_projection",
+      "test_standalone_inspection_author": "test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+      "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+      "test_standalone_drawing": "test_standalone_drawing",
+      "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+      "test_standalone_scaled_view": "test_standalone_scaled_view",
+      "test_standalone_preset_raster": "test_standalone_preset_raster",
+      "test_standalone_reference_layout": "test_standalone_reference_layout",
+      "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+      "test_standalone_channel_modes": "test_standalone_channel_modes",
+      "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+      "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+      "test_standalone_product_visual": "test_standalone_product_visual",
+      "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+      "test_standalone_lower_rack_material_raster": "test_standalone_lower_rack_material_raster",
+      "test_standalone_footage_typography_raster": "test_standalone_footage_typography_raster",
+      "test_standalone_title_density": "test_standalone_footage_typography_raster",
+      "test_standalone_header_material": "test_standalone_header_material",
+      "test_standalone_header_statistics": "test_standalone_header_material",
+      "test_standalone_header_grain_bounds": "test_standalone_header_grain_bounds",
+      "test_standalone_replay_paint_boundary": "hammond_standalone",
+      "test_standalone_manual_key_material_raster": "test_standalone_manual_key_material_raster",
+      "test_standalone_reference_apron_art": "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster": "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable": "test_standalone_reference_apron_unavailable",
+      "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
+    },
+    "sanitizer_policy": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23",
+      "compiled": "Project C++ and SDL C: -fsanitize=address,undefined -fno-omit-frame-pointer",
+      "private_MIDI_flag": "hammond_standalone_support=0; fake calibration probe=1",
+      "new_gates": [
+        "test_standalone_header_statistics",
+        "test_standalone_header_grain_bounds",
+        "test_standalone_replay_paint_boundary"
+      ]
+    },
+    "packaging_expected": {
+      "MIDI_ON_files": 21,
+      "MIDI_OFF_files": 17,
+      "smoke_ms": 600,
+      "checks": [
+        "Standalone component install",
+        "exact files/modes/hashes",
+        "relocated out-of-repository help and dummy smoke",
+        "MIDI closed/unavailable and quiescent",
+        "unchanged installed bytes",
+        "archive exact members, bytes and modes"
+      ]
+    },
+    "next_step": "After root releases exact published SHA, record run/job/attempt/runner identities and bounded discovery, native, instrumentation, calibration and package summaries. Report exact failures immediately without retry.",
+    "limits": [
+      "Pre-H1 9d60dbf and old T2 CI do not qualify this source",
+      "Dummy MIDI and the fake probe are not physical device acceptance",
+      "Real display, native accessibility and whole-interface 1:1 remain open"
+    ]
+  },
+  "combined_workspace_diagnosis": {
+    "status": "Completed read-only diagnosis. Suite failed; no acceptance claim or fixture correction.",
+    "full_suite": {
+      "tests": 241,
+      "passed": 239,
+      "failed_tests": [
+        "test_standalone_native_midi_replay",
+        "test_standalone_workspace_replay"
+      ],
+      "returncode": 8,
+      "seconds": 502.3241684470013,
+      "changed_code_inputs": [],
+      "coherent_source_input_count": 474,
+      "result_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-results.json",
+        "bytes": 856,
+        "sha256": "428196052978826fec9d55c275dfe10852196f71c29f5b923e703b800abfc7ed"
+      },
+      "full_log": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-ctest.log",
+        "bytes": 125501,
+        "sha256": "e25e8b47838da8998aad0c1fd9df5dfcedcfa496e37b55d468b625355ea53c1c"
+      },
+      "junit": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-ctest.xml",
+        "bytes": 224763,
+        "sha256": "c9746e39345089626589e0c363cd2d72f3aa935c3f207aad5b387f25571a54bb"
+      }
+    },
+    "complete_failure_block": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-standalone-hosted/combined-workspace-failure.log",
+      "bytes": 44316,
+      "sha256": "b8f2b2a62696a9682886f665ad405acf9defe902abb2eacd50fbceb10874d98f",
+      "source_byte_offset": 45864,
+      "source_byte_end_exclusive": 90180
+    },
+    "copied_diagnostics": {
+      "bytes": 38335,
+      "sha256": "ceedc537c82eb782aeae54f97093a5f2985f209f529dcbdb242bb739cd5005df"
+    },
+    "original_copied_diagnostics": {
+      "bytes": 34927,
+      "sha256": "e7a228c1fc379290ba0da5c46b3e97eedead05ec8759c5b70d06d19cd105d90a"
+    },
+    "test": "test_standalone_workspace_replay",
+    "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+    "suite_methods": 6,
+    "actual_native_subprocesses": 30,
+    "ctest_seconds": 50.58,
+    "method_process_seconds": 3.867,
+    "application_sha256": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479",
+    "failed_predicate": {
+      "file": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+      "helper": "assert_commands",
+      "line": 281,
+      "assertion": "initial[\"elapsed_ms\"] < 180",
+      "actual_elapsed_ms": 292,
+      "message": "A pre-action loaded-state observation is required"
+    },
+    "first_script_control_change_ms": 550,
+    "first_script_event_ms": 20,
+    "initial_observation": {
+      "elapsed_ms": 292,
+      "last_submitted_sequence": 3,
+      "last_applied_sequence": 3,
+      "resolved_sequence": 3,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": [],
+      "error_count": 0
+    },
+    "control_observations": [
+      {
+        "elapsed_ms": 292,
+        "last_submitted_sequence": 3,
+        "last_applied_sequence": 3,
+        "resolved_sequence": 3,
+        "upper_B_first_drawbar": 8
+      },
+      {
+        "elapsed_ms": 617,
+        "last_submitted_sequence": 4,
+        "last_applied_sequence": 3,
+        "resolved_sequence": 3,
+        "upper_B_first_drawbar": 8
+      },
+      {
+        "elapsed_ms": 741,
+        "last_submitted_sequence": 4,
+        "last_applied_sequence": 4,
+        "resolved_sequence": 4,
+        "upper_B_first_drawbar": 0
+      },
+      {
+        "elapsed_ms": 1657,
+        "last_submitted_sequence": 5,
+        "last_applied_sequence": 4,
+        "resolved_sequence": 4,
+        "upper_B_first_drawbar": 0
+      },
+      {
+        "elapsed_ms": 1720,
+        "last_submitted_sequence": 5,
+        "last_applied_sequence": 5,
+        "resolved_sequence": 5,
+        "upper_B_first_drawbar": 1
+      },
+      {
+        "elapsed_ms": 2009,
+        "last_submitted_sequence": 6,
+        "last_applied_sequence": 5,
+        "resolved_sequence": 5,
+        "upper_B_first_drawbar": 1
+      },
+      {
+        "elapsed_ms": 2025,
+        "last_submitted_sequence": 6,
+        "last_applied_sequence": 6,
+        "resolved_sequence": 6,
+        "upper_B_first_drawbar": 2
+      },
+      {
+        "elapsed_ms": 2351,
+        "last_submitted_sequence": 7,
+        "last_applied_sequence": 6,
+        "resolved_sequence": 6,
+        "upper_B_first_drawbar": 2
+      },
+      {
+        "elapsed_ms": 2363,
+        "last_submitted_sequence": 7,
+        "last_applied_sequence": 7,
+        "resolved_sequence": 7,
+        "upper_B_first_drawbar": 3
+      },
+      {
+        "elapsed_ms": 3103,
+        "last_submitted_sequence": 8,
+        "last_applied_sequence": 7,
+        "resolved_sequence": 7,
+        "upper_B_first_drawbar": 3
+      },
+      {
+        "elapsed_ms": 3125,
+        "last_submitted_sequence": 8,
+        "last_applied_sequence": 8,
+        "resolved_sequence": 8,
+        "upper_B_first_drawbar": 4
+      },
+      {
+        "elapsed_ms": 3455,
+        "last_submitted_sequence": 9,
+        "last_applied_sequence": 8,
+        "resolved_sequence": 8,
+        "upper_B_first_drawbar": 4
+      },
+      {
+        "elapsed_ms": 3483,
+        "last_submitted_sequence": 9,
+        "last_applied_sequence": 9,
+        "resolved_sequence": 9,
+        "upper_B_first_drawbar": 3
+      }
+    ],
+    "actual_painted_visits": [
+      {
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 0,
+        "rendered_image": 1
+      },
+      {
+        "workspace": "rotary",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 845,
+        "rendered_image": 7
+      },
+      {
+        "workspace": "service",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 1120,
+        "rendered_image": 11
+      },
+      {
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 1508,
+        "rendered_image": 16
+      },
+      {
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 1866,
+        "rendered_image": 21
+      },
+      {
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 2173,
+        "rendered_image": 32
+      },
+      {
+        "workspace": "rotary",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 2581,
+        "rendered_image": 51
+      },
+      {
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 2922,
+        "rendered_image": 68
+      },
+      {
+        "workspace": "service",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 3298,
+        "rendered_image": 81
+      }
+    ],
+    "original_actual_painted_visits": [
+      {
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 0,
+        "rendered_image": 1
+      },
+      {
+        "workspace": "rotary",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 817,
+        "rendered_image": 9
+      },
+      {
+        "workspace": "service",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 1372,
+        "rendered_image": 12
+      },
+      {
+        "workspace": "play",
+        "presentation": "dimensional",
+        "window_width": 1280,
+        "window_height": 900,
+        "overlay": "none",
+        "elapsed_ms": 1740,
+        "rendered_image": 13
+      },
+      {
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 2209,
+        "rendered_image": 14
+      },
+      {
+        "workspace": "rotary",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 2579,
+        "rendered_image": 23
+      },
+      {
+        "workspace": "play",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 2922,
+        "rendered_image": 35
+      },
+      {
+        "workspace": "service",
+        "presentation": "flat",
+        "window_width": 960,
+        "window_height": 700,
+        "overlay": "none",
+        "elapsed_ms": 3286,
+        "rendered_image": 46
+      }
+    ],
+    "read_only_remaining_view_predicates": {
+      "exact_nine_visits": true,
+      "frame_clocks_sorted": true,
+      "frame_clock_increases": true,
+      "some_current_snapshot": true,
+      "last_snapshot_current_or_retained": true
+    },
+    "executed_before_failure": [
+      "run_native schema/transport/lifecycle/final acknowledgment and private-file-shape checks",
+      "Exact seven-state full-control path with Upper-B first drawbar [8,0,1,2,3,4,3] and every other control preserved",
+      "Empty musical and actually painted held-target path",
+      "Zero accepted note-on and note-off commands"
+    ],
+    "unreached_native_assertions": [
+      "Startup equality/final command arithmetic/final acknowledgment after line 281",
+      "assert_views: nine exact visits and inspection clock checks",
+      "Final exact saved state bytes at lines 472-473"
+    ],
+    "read_only_post_failure_supported": {
+      "initial_submitted_equals_applied_equals_resolved": true,
+      "final_submitted_sequence": 9,
+      "startup_sequence": 3,
+      "six_control_command_delta": true,
+      "before_shutdown_applied_equals_resolved_equals_final": true,
+      "views_all_predicates": true
+    },
+    "saved_bytes_limit": "State bytes are not embedded in copied diagnostics. Final exact-byte assertion was not reached; controls, final acknowledgment and the earlier isolated pass do not certify it.",
+    "delivery": {
+      "scheduled_events": 87,
+      "pushed_events": 87,
+      "completed": true,
+      "delivered": true,
+      "passed": true,
+      "final_acknowledged": true,
+      "controls_pending_before_shutdown": false,
+      "save_pending_before_shutdown": false,
+      "observations_truncated": false
+    },
+    "errors": {
+      "count": 0,
+      "last": ""
+    },
+    "audio_failures": {
+      "format_failures": 0,
+      "nonfinite_failures": 0,
+      "nonfinite_samples": 0,
+      "overrange_failures": 0,
+      "overrange_samples": 0,
+      "render_failures": 0
+    },
+    "relationship_to_A44": "Different predicate: actual Play/Flat1280x900 image21 at1866ms precedes Play/Flat960x700 image32 at2173ms. Original omission absent. Semantic paint ordering cannot guarantee a restored musical snapshot before180ms.",
+    "causality_limit": "Copied elapsed values and sampling guards do not reveal exact callback restore/ack time, event-handler timing, OS scheduling, or CPU contention. Prior serial versus full parallel outcomes alone do not establish causality.",
+    "root_decision": "Keep every fixture byte and <180ms assertion. Root owns unchanged isolated diagnostics of both failing methods, then conditional CTest-only RUN_SERIAL scheduling admission and combined --parallel2 qualification with verified nonoverlap. No fixture oracle correction authorized.",
+    "related_receipts": [
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a44-workspace-replay-diagnosis.json",
+        "bytes": 44368,
+        "sha256": "940d456cc214693c899c7f347d2c6378fea3c4e1151ca90a62f89c11623f80c1"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a45-before.json",
+        "bytes": 27322,
+        "sha256": "67daa292be8fb333e7bab9130802b76a87d9f52d5bdc0f0f947c6baf11941645"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a45-after.json",
+        "bytes": 28567,
+        "sha256": "56bcfba70a71d300c9cd12b908206f82d241ea7c6bb7c585818dd081d500ac06"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/replay-repair-affected.json",
+        "bytes": 549,
+        "sha256": "0a238e05f729212ee4b922aae302e1ab5ec6873eefb0533268b0cf6b29cb879d"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/replay-repair-affected.log",
+        "bytes": 648,
+        "sha256": "0129511093e19895a077602a70d00383225436f1c864a249d3f0bf4c4957a149"
+      },
+      {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-inputs.json",
+        "bytes": 76308,
+        "sha256": "35da944f0739fe7fd7e543adb18e502f6789f1c55df0b031e27b5b83cc8b59d0"
+      }
+    ],
+    "limits": [
+      "Original239/241 failure retained",
+      "Prior unchanged serial3/3 pass does not erase failure",
+      "A45 before/after qualifies its separate semantic-paint guarantee",
+      "No physical/display/accessibility/literal1:1 closure"
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "worker": "A52",
+  "agent": "/root/w09_a52",
+  "wave": 9,
+  "stage": "preparation-only",
+  "recorded_utc": "2026-11-17T02:39:16.814510+00:00",
+  "source_workflow": ".github/workflows/ci.yml",
+  "source_workflow_sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+  "source_workflow_bytes": 20374,
+  "inspected_AGENTS_sha256": "7cbe378f8fe3a67e13c7211f78548f7f7a7cc369324980d930c50a116140f101",
+  "inspected_PLAN_sha256": "db72a6fd26b097704ba6b7fc1ebd86b4174af55a2b1aca7ecd766f80d1e5cc6d",
+  "required_job_families": [
+    {
+      "name": "Release (Linux GCC)",
+      "job_key": "release",
+      "runner_label": "ubuntu-24.04",
+      "compiler": "g++",
+      "timeout_minutes": 20
+    },
+    {
+      "name": "Release (macOS AppleClang)",
+      "job_key": "release",
+      "runner_label": "macos-15",
+      "compiler": "clang++",
+      "timeout_minutes": 20,
+      "architecture": "Observe actual machine/runner; label alone is not proof."
+    },
+    {
+      "name": "Release (macOS Intel AppleClang)",
+      "job_key": "release",
+      "runner_label": "macos-15-intel",
+      "compiler": "clang++",
+      "timeout_minutes": 20,
+      "architecture": "Observe actual machine/runner; label alone is not proof."
+    },
+    {
+      "name": "Release (Windows MSVC)",
+      "job_key": "release",
+      "runner_label": "windows-2022",
+      "compiler": "cl",
+      "timeout_minutes": 20
+    },
+    {
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "job_key": "rotary-waveform",
+      "runner_label": "ubuntu-24.04",
+      "compiler": "g++",
+      "timeout_minutes": 35
+    },
+    {
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "job_key": "sanitizers",
+      "runner_label": "ubuntu-24.04",
+      "compiler": "g++",
+      "timeout_minutes": 25
+    }
+  ],
+  "required_explicit_registration_apron_tests": [
+    "test_control_file_input",
+    "test_standalone_registration_library",
+    "python_test_registration_cli",
+    "python_test_registration_cli_admission",
+    "python_test_render_controls",
+    "python_test_render_controls_admission",
+    "python_test_starter_registration_generator",
+    "python_test_starter_registration_oracle",
+    "python_test_starter_auditions",
+    "python_test_registration_install",
+    "python_test_reference_apron_art",
+    "python_test_reference_apron_raster_checker"
+  ],
+  "inline_python_blocks_parsed": 3,
+  "policy": {
+    "fail_fast": false,
+    "concurrency_cancel_in_progress": true,
+    "release_ctest": "unfiltered, parallel2, timeout300, no-tests=error",
+    "sanitizer_ctest": "unfiltered, parallel2, timeout600, no-tests=error",
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "Windows_extra": "Actual generator from Unicode checkout: all24 canonical outputs, source protection, exact source/payload identities",
+    "Linux_extra": "Standard-library apron tools and historical completed interface/refinement/product record checks",
+    "R4_extra": "Report-admission self-test plus actual check_rotary_waveform_full target; its source-specific limits remain separate"
+  },
+  "observation_plan": [
+    "Wait for root exact published source SHA/tree and independently fetch the commit/workflow identity.",
+    "Fetch only matching-head CI run, then every required job and every attempted version; preserve failure/cancellation before any root-authorized retry.",
+    "Observe runner assignment, actual machine evidence, complete steps and necessary logs; never infer execution from queued/cancelled metadata.",
+    "Record observed test counts, zero-test guards, unfiltered actual CTest result, source revision, sanitizer policy and actual R4 summaries.",
+    "Save bounded exact compressed logs with SHA/bytes and extracted decisive lines; no raw base64 or full logs printed to chat.",
+    "Root independently verifies publication and final source-specific aggregate; do not mutate refs, rerun jobs or post messages."
+  ],
+  "native_executions": 0,
+  "remote_calls": 0,
+  "qualification": "No new published-source run exists for this assignment yet. Old T2 and concurrent9d60 outcomes do not qualify the combined source."
+}

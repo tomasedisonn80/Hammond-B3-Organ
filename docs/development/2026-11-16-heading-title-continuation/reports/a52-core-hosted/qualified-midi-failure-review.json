@@ -1,0 +1,1573 @@
+{
+  "schema_version": 1,
+  "worker": "A52",
+  "agent": "/root/w09_a52",
+  "wave": 9,
+  "followup_not_new_worker": true,
+  "recorded_utc": "2026-11-17T04:00:32.405015+00:00",
+  "decision": "Evidence comparison complete. Full qualified-final run remains240/242 failed; both exact unchanged isolated methods pass. No local full-pass or CPU-cause claim. Root retains publication/admission authority and exact-source hosted verification follows publication.",
+  "original_run": {
+    "result": "240/242",
+    "returncode": 8,
+    "root_wrapper_seconds": 740.263707625003,
+    "failed_ctests": [
+      "test_standalone_preset_raster",
+      "test_standalone_native_midi_replay"
+    ],
+    "input_count": 475,
+    "log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.log",
+      "bytes": 130384,
+      "sha256": "c8fa5c2d326bb22069121f245d307e4c4aad588e0727bd15baf3454e65268b1c"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.xml",
+      "bytes": 231727,
+      "sha256": "2dea62baac1897f1c6f209c13b1702adf91b32a90466c7d44a56508652fe1652"
+    },
+    "inputs": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-inputs.json",
+      "bytes": 76573,
+      "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+    },
+    "results": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json",
+      "bytes": 1368,
+      "sha256": "f226ae0a4c6866dab2f577d6c715e03d95891582edf7bf5c76f575c07d00d2cc"
+    },
+    "A52_independent_changed_code_inputs": [],
+    "A52_independent_changed_build_inputs": [],
+    "root_serial_nonoverlap": true,
+    "A52_MIDI_log_active_test_sets": [
+      {
+        "event": "start",
+        "active_tests": [
+          234
+        ]
+      },
+      {
+        "event": "finish",
+        "active_tests": [
+          234
+        ]
+      }
+    ],
+    "midi_ctest_seconds": 44.7,
+    "midi_unittest_seconds": 44.382,
+    "midi_methods": 15,
+    "midi_failures": 2,
+    "midi_actual_children": 33,
+    "midi_expected_interruptions": 2
+  },
+  "retained_failure_block": {
+    "offset_bytes": 33594,
+    "end_exclusive_bytes": 127509,
+    "bytes": 93915,
+    "sha256": "197c2be046e7dc864a6890f40436eca2f359f4063d9b9ed0a1e669d85a628416",
+    "compressed_copy": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-original-failure.log.gz",
+      "bytes": 7842,
+      "sha256": "b7472dbc386a0d2d0d0c87912c9c01732b88020d912d0199d68f996eb1e83861"
+    }
+  },
+  "current_source": {
+    "apps/standalone/main.cpp": {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+      "path": "apps/standalone/native_tests/test_standalone_midi_replay.py",
+      "bytes": 54939,
+      "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    ".github/workflows/ci.yml": {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 20374,
+      "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96"
+    }
+  },
+  "current_executable": {
+    "bytes": 4103352,
+    "sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+  },
+  "historical_source_comparison": {
+    "method": "Read local immutable Git objects only; not a fresh remote publication observation.",
+    "revisions": {
+      "045c95d769b197d05b6596901508c160fd62fb35": {
+        "apps/standalone/main.cpp": {
+          "bytes": 147241,
+          "sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3"
+        },
+        "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+          "bytes": 54939,
+          "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+        },
+        "apps/standalone/InstrumentView.cpp": {
+          "bytes": 171413,
+          "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+        },
+        ".github/workflows/ci.yml": {
+          "bytes": 20374,
+          "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+        }
+      },
+      "9d60dbf462a90fe422fd4e69757fe202264acb7c": {
+        "apps/standalone/main.cpp": {
+          "bytes": 146859,
+          "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+        },
+        "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+          "bytes": 54939,
+          "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+        },
+        "apps/standalone/InstrumentView.cpp": {
+          "bytes": 164592,
+          "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+        },
+        ".github/workflows/ci.yml": {
+          "bytes": 20374,
+          "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+        }
+      },
+      "6047723b595259de355c74342e48a8ae2ee1e228": {
+        "apps/standalone/main.cpp": {
+          "bytes": 146859,
+          "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+        },
+        "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+          "bytes": 54939,
+          "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+        },
+        "apps/standalone/InstrumentView.cpp": {
+          "bytes": 164300,
+          "sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db"
+        },
+        ".github/workflows/ci.yml": {
+          "bytes": 20374,
+          "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+        }
+      }
+    }
+  },
+  "root_isolated_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json",
+    "bytes": 4508,
+    "sha256": "747ca94a2f2855f962c82fa18f92c376ff143286db520fb457cf616c496aaebb"
+  },
+  "cases": [
+    {
+      "kind": "cc120",
+      "method": "test_cc120_releases_only_its_external_division_and_preserves_ui",
+      "original": {
+        "elapsed_seconds_rounded": 1.939,
+        "diagnostic_substring_offset_bytes": 39575,
+        "diagnostic_substring_bytes": 42738,
+        "diagnostic_substring_sha256": "e6d8fcb32951e0d044b6d80873f35505557bb064f697e5afd143dd1ef7633c61",
+        "diagnostic_copy": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-cc120-original-diagnostics.json",
+          "bytes": 42739,
+          "sha256": "2ade475af96c270dfea8396d28783ea41e827ced0ddf9a173ed97701a3a10f3c"
+        },
+        "midi_script": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-cc120-original.b3midi",
+          "bytes": 213,
+          "sha256": "3a61a71e8299ae109594386bfa1c2df836f39c232e24a07bab64302031cd7226"
+        },
+        "ui_script": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-cc120-original.b3ui",
+          "bytes": 179,
+          "sha256": "ec8e6680bda9f05d99dda02cbb2e726ad9ab90bf562dcbec36c7a6125d8345f8"
+        },
+        "windows": [
+          {
+            "interval_ms": [
+              370,
+              630
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "candidate_times_ms": [],
+            "last_candidate_held": null,
+            "passes": false
+          },
+          {
+            "interval_ms": [
+              650,
+              930
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "candidate_times_ms": [
+              719,
+              795
+            ],
+            "last_candidate_held": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "passes": true
+          },
+          {
+            "interval_ms": [
+              950,
+              1230
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60
+              ],
+              [
+                62
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "candidate_times_ms": [
+              1086
+            ],
+            "last_candidate_held": [
+              [
+                60
+              ],
+              [
+                62
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "passes": true
+          }
+        ],
+        "observations": [
+          {
+            "elapsed_ms": 97,
+            "last_submitted_sequence": 3,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 162,
+            "last_submitted_sequence": 4,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 162,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 238,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 370,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 594,
+            "last_submitted_sequence": 12,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 594,
+            "last_submitted_sequence": 12,
+            "resolved_sequence": 11,
+            "last_applied_sequence": 11,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 719,
+            "last_submitted_sequence": 12,
+            "resolved_sequence": 12,
+            "last_applied_sequence": 12,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 719,
+            "last_submitted_sequence": 13,
+            "resolved_sequence": 12,
+            "last_applied_sequence": 12,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 795,
+            "last_submitted_sequence": 13,
+            "resolved_sequence": 13,
+            "last_applied_sequence": 13,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 1013,
+            "last_submitted_sequence": 14,
+            "resolved_sequence": 13,
+            "last_applied_sequence": 13,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 1086,
+            "last_submitted_sequence": 14,
+            "resolved_sequence": 14,
+            "last_applied_sequence": 14,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 1275,
+            "last_submitted_sequence": 15,
+            "resolved_sequence": 14,
+            "last_applied_sequence": 14,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 1341,
+            "last_submitted_sequence": 15,
+            "resolved_sequence": 15,
+            "last_applied_sequence": 15,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62
+              ]
+            ],
+            "pedal_ids": [
+              5
+            ]
+          }
+        ],
+        "completion": {
+          "completed": true,
+          "delivered": true,
+          "passed": true,
+          "final_acknowledged": true,
+          "duration_ms": 1600,
+          "scheduled_events": 10,
+          "delivered_events": 10,
+          "accepted_packets": 9,
+          "dropped_packets": 0,
+          "rejected_packets": 0,
+          "last_submitted_sequence": 15
+        },
+        "runtime": {
+          "drawable_height": 900,
+          "drawable_width": 1280,
+          "rendered_images": 19,
+          "renderer": "software",
+          "screenshot_while_held": false,
+          "screenshot_written": false,
+          "sdl_version": "2.32.10",
+          "video_driver": "dummy",
+          "window_height": 900,
+          "window_width": 1280
+        },
+        "audio": {
+          "callback_count": 160,
+          "rendered_frames": 81920,
+          "render_failures": 0,
+          "format_failures": 0,
+          "nonfinite_failures": 0,
+          "overrange_failures": 0
+        },
+        "errors": {
+          "count": 0,
+          "last": ""
+        },
+        "common_and_file_assertions_before_yield": "executed and passed; failure trace is in first method-specific assert_window",
+        "later_native_assertions_executed": false,
+        "later_predicates_independently_re_evaluated": {
+          "final_held": true,
+          "note_ons": true,
+          "note_offs": true,
+          "controls": true,
+          "decoder_actions": true,
+          "retirements": true
+        }
+      },
+      "one_isolated_diagnostic": {
+        "root_command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "-B",
+          "apps/standalone/native_tests/test_standalone_midi_replay.py",
+          "NativeMidiReplayAcceptance.test_cc120_releases_only_its_external_division_and_preserves_ui"
+        ],
+        "selected_environment": {
+          "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+          "HAMMOND_STANDALONE_MIDI_EVIDENCE": "/workspace/scratch/5a28c3564dbf/qualified-midi-cc120-isolated"
+        },
+        "root_wrapper_seconds": 2.031860107999819,
+        "unittest_seconds": 1.813,
+        "native_process": {
+          "command": [
+            "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+            "--state",
+            "/tmp/hammond-native-midi-replay-b7bfgkoy/run-1/private controls.b3controls",
+            "--midi-script",
+            "/tmp/hammond-native-midi-replay-b7bfgkoy/run-1/MIDI input \u97f3.b3midi",
+            "--diagnostics",
+            "/tmp/hammond-native-midi-replay-b7bfgkoy/run-1/diagnostics.json",
+            "--input-script",
+            "/tmp/hammond-native-midi-replay-b7bfgkoy/run-1/UI input \u03a9.b3ui"
+          ],
+          "elapsed_seconds": 1.77554832199894,
+          "executable_sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+          "environment": {
+            "SDL_AUDIODRIVER": "dummy",
+            "SDL_VIDEODRIVER": "dummy"
+          },
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "log": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-cc120-one-isolated.log",
+          "bytes": 449,
+          "sha256": "3d522ed7f646ed7961affd615feead4752a2535458cc5720385bb0ac45852f3d"
+        },
+        "archive": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-cc120-one-isolated.tar.gz",
+          "bytes": 3809,
+          "sha256": "f3475957b37c2f52a9d0a0742d387ecaefbcb40476128a3353e6ddee13fdf03e"
+        },
+        "members_independently_verified": {
+          "test_cc120_releases_only_its_external_division_and_preserves_ui-1/MIDI input \u97f3.b3midi": {
+            "bytes": 213,
+            "sha256": "3a61a71e8299ae109594386bfa1c2df836f39c232e24a07bab64302031cd7226"
+          },
+          "test_cc120_releases_only_its_external_division_and_preserves_ui-1/UI input \u03a9.b3ui": {
+            "bytes": 179,
+            "sha256": "ec8e6680bda9f05d99dda02cbb2e726ad9ab90bf562dcbec36c7a6125d8345f8"
+          },
+          "test_cc120_releases_only_its_external_division_and_preserves_ui-1/diagnostics.json": {
+            "bytes": 40508,
+            "sha256": "c89807c184a3e1bcaa4ec2d41827d63e4058718a3d19babf95f1294c0bf76d44"
+          },
+          "test_cc120_releases_only_its_external_division_and_preserves_ui-1/process.json": {
+            "bytes": 763,
+            "sha256": "8c52f26d6e4e468b563f40f9605fa37bf34c8dbf782db91d0a032ae5de299ff2"
+          }
+        },
+        "literal_scripts_identical_to_failed_run": true,
+        "actual_children": 1,
+        "child_timeout_seconds": 9.0,
+        "method_returncode": 0,
+        "complete_method_assertions_executed": true,
+        "windows": [
+          {
+            "interval_ms": [
+              370,
+              630
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "candidate_times_ms": [
+              466
+            ],
+            "last_candidate_held": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "passes": true
+          },
+          {
+            "interval_ms": [
+              650,
+              930
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "candidate_times_ms": [
+              758
+            ],
+            "last_candidate_held": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "passes": true
+          },
+          {
+            "interval_ms": [
+              950,
+              1230
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60
+              ],
+              [
+                62
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "candidate_times_ms": [
+              1060
+            ],
+            "last_candidate_held": [
+              [
+                60
+              ],
+              [
+                62
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "passes": true
+          }
+        ],
+        "observations": [
+          {
+            "elapsed_ms": 76,
+            "last_submitted_sequence": 3,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 133,
+            "last_submitted_sequence": 4,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 221,
+            "last_submitted_sequence": 4,
+            "resolved_sequence": 4,
+            "last_applied_sequence": 4,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 222,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 4,
+            "last_applied_sequence": 4,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 280,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 4,
+            "last_applied_sequence": 4,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 280,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 338,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 11,
+            "last_applied_sequence": 11,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 399,
+            "last_submitted_sequence": 12,
+            "resolved_sequence": 11,
+            "last_applied_sequence": 11,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 466,
+            "last_submitted_sequence": 12,
+            "resolved_sequence": 12,
+            "last_applied_sequence": 12,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 685,
+            "last_submitted_sequence": 13,
+            "resolved_sequence": 12,
+            "last_applied_sequence": 12,
+            "manual_notes": [
+              [
+                60,
+                64
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 758,
+            "last_submitted_sequence": 13,
+            "resolved_sequence": 13,
+            "last_applied_sequence": 13,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 989,
+            "last_submitted_sequence": 14,
+            "resolved_sequence": 13,
+            "last_applied_sequence": 13,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62,
+                65
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 1060,
+            "last_submitted_sequence": 14,
+            "resolved_sequence": 14,
+            "last_applied_sequence": 14,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 1285,
+            "last_submitted_sequence": 15,
+            "resolved_sequence": 14,
+            "last_applied_sequence": 14,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62
+              ]
+            ],
+            "pedal_ids": [
+              5,
+              6
+            ]
+          },
+          {
+            "elapsed_ms": 1359,
+            "last_submitted_sequence": 15,
+            "resolved_sequence": 15,
+            "last_applied_sequence": 15,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                62
+              ]
+            ],
+            "pedal_ids": [
+              5
+            ]
+          }
+        ],
+        "later_predicates_independently_re_evaluated": {
+          "final_held": true,
+          "note_ons": true,
+          "note_offs": true,
+          "controls": true,
+          "decoder_actions": true,
+          "retirements": true
+        }
+      }
+    },
+    {
+      "kind": "overflow",
+      "method": "test_real_overflow_discards_stale_packets_and_requires_reconnect",
+      "original": {
+        "elapsed_seconds_rounded": 1.752,
+        "diagnostic_substring_offset_bytes": 96517,
+        "diagnostic_substring_bytes": 30874,
+        "diagnostic_substring_sha256": "da001e20fe8b47f4e6879292ddd6d9084a8a877cd18636fcf8b1a4199976f6d7",
+        "diagnostic_copy": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-overflow-original-diagnostics.json",
+          "bytes": 30875,
+          "sha256": "482effd0572900084193efc3297b89a6440b6202bbcb32cf0412bef052c713a8"
+        },
+        "midi_script": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-overflow-original.b3midi",
+          "bytes": 11550,
+          "sha256": "0f020a1fc8e9fbd973e69f8054f7d22008f0f880d2c3ac42842c9df9e84c7f7b"
+        },
+        "ui_script": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-overflow-original.b3ui",
+          "bytes": 51,
+          "sha256": "544259ec95293896a357e0cc1ab455953fb0d0620e57419ee394bcf5858d048e"
+        },
+        "windows": [
+          {
+            "interval_ms": [
+              150,
+              480
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60,
+                67
+              ],
+              [
+                64
+              ],
+              [
+                1
+              ]
+            ],
+            "candidate_times_ms": [],
+            "last_candidate_held": null,
+            "passes": false
+          },
+          {
+            "interval_ms": [
+              500,
+              1080
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60
+              ],
+              [],
+              []
+            ],
+            "candidate_times_ms": [
+              519,
+              769
+            ],
+            "last_candidate_held": [
+              [
+                60
+              ],
+              [],
+              []
+            ],
+            "passes": true
+          }
+        ],
+        "observations": [
+          {
+            "elapsed_ms": 203,
+            "last_submitted_sequence": 4,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 203,
+            "last_submitted_sequence": 7,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 519,
+            "last_submitted_sequence": 7,
+            "resolved_sequence": 7,
+            "last_applied_sequence": 7,
+            "manual_notes": [
+              [
+                60,
+                67
+              ],
+              [
+                64
+              ]
+            ],
+            "pedal_ids": [
+              1
+            ]
+          },
+          {
+            "elapsed_ms": 519,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 7,
+            "last_applied_sequence": 7,
+            "manual_notes": [
+              [
+                60,
+                67
+              ],
+              [
+                64
+              ]
+            ],
+            "pedal_ids": [
+              1
+            ]
+          },
+          {
+            "elapsed_ms": 769,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 1235,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 1235,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 1312,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 11,
+            "last_applied_sequence": 11,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                69
+              ]
+            ],
+            "pedal_ids": []
+          }
+        ],
+        "completion": {
+          "completed": true,
+          "delivered": true,
+          "passed": true,
+          "final_acknowledged": true,
+          "duration_ms": 1450,
+          "scheduled_events": 607,
+          "delivered_events": 607,
+          "accepted_packets": 260,
+          "dropped_packets": 601,
+          "rejected_packets": 1,
+          "last_submitted_sequence": 11
+        },
+        "runtime": {
+          "drawable_height": 900,
+          "drawable_width": 1280,
+          "rendered_images": 9,
+          "renderer": "software",
+          "screenshot_while_held": false,
+          "screenshot_written": false,
+          "sdl_version": "2.32.10",
+          "video_driver": "dummy",
+          "window_height": 900,
+          "window_width": 1280
+        },
+        "audio": {
+          "callback_count": 149,
+          "rendered_frames": 76288,
+          "render_failures": 0,
+          "format_failures": 0,
+          "nonfinite_failures": 0,
+          "overrange_failures": 0
+        },
+        "errors": {
+          "count": 0,
+          "last": ""
+        },
+        "common_and_file_assertions_before_yield": "executed and passed; failure trace is in first method-specific assert_window",
+        "later_native_assertions_executed": false,
+        "later_predicates_independently_re_evaluated": {
+          "final_held": true,
+          "note_ons": true,
+          "note_offs": true,
+          "controls": true,
+          "intentional_overflow_faults": true,
+          "accepted_packets": true,
+          "rejected_packets": true,
+          "discarded_queued_packets": true,
+          "ignored_while_closed": true,
+          "maximum_events_per_turn": true,
+          "connections_started": true,
+          "budget_exhaustions": true,
+          "decoder_packets": true,
+          "retired_fault_bits": true,
+          "fault_retirements": true,
+          "release_batches": true,
+          "no_stale_upper64": true,
+          "no_unrequested_lower70": true
+        }
+      },
+      "one_isolated_diagnostic": {
+        "root_command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+          "-B",
+          "apps/standalone/native_tests/test_standalone_midi_replay.py",
+          "NativeMidiReplayAcceptance.test_real_overflow_discards_stale_packets_and_requires_reconnect"
+        ],
+        "selected_environment": {
+          "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+          "HAMMOND_STANDALONE_MIDI_EVIDENCE": "/workspace/scratch/5a28c3564dbf/qualified-midi-overflow-isolated"
+        },
+        "root_wrapper_seconds": 2.037485654996999,
+        "unittest_seconds": 1.737,
+        "native_process": {
+          "command": [
+            "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+            "--state",
+            "/tmp/hammond-native-midi-replay-gqb7mcgy/run-1/private controls.b3controls",
+            "--midi-script",
+            "/tmp/hammond-native-midi-replay-gqb7mcgy/run-1/MIDI input \u97f3.b3midi",
+            "--diagnostics",
+            "/tmp/hammond-native-midi-replay-gqb7mcgy/run-1/diagnostics.json",
+            "--input-script",
+            "/tmp/hammond-native-midi-replay-gqb7mcgy/run-1/UI input \u03a9.b3ui"
+          ],
+          "elapsed_seconds": 1.7081826180001372,
+          "executable_sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a",
+          "environment": {
+            "SDL_AUDIODRIVER": "dummy",
+            "SDL_VIDEODRIVER": "dummy"
+          },
+          "returncode": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "log": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-overflow-one-isolated.log",
+          "bytes": 451,
+          "sha256": "8c851af3703da36997c4c3e862b6ef7bd19c23022fd11538739cee82b01d25f1"
+        },
+        "archive": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-midi-overflow-one-isolated.tar.gz",
+          "bytes": 3596,
+          "sha256": "10ddce88b7f603136f10984369648420bb55d2b2b97fe4a1185dbbc3b4c8bb0d"
+        },
+        "members_independently_verified": {
+          "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/MIDI input \u97f3.b3midi": {
+            "bytes": 11550,
+            "sha256": "0f020a1fc8e9fbd973e69f8054f7d22008f0f880d2c3ac42842c9df9e84c7f7b"
+          },
+          "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/UI input \u03a9.b3ui": {
+            "bytes": 51,
+            "sha256": "544259ec95293896a357e0cc1ab455953fb0d0620e57419ee394bcf5858d048e"
+          },
+          "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/diagnostics.json": {
+            "bytes": 30121,
+            "sha256": "30cd6ef4fa1bb2721373e48e724549c036aa4c0abb23863095c79a59f793392a"
+          },
+          "test_real_overflow_discards_stale_packets_and_requires_reconnect-1/process.json": {
+            "bytes": 765,
+            "sha256": "ba3251282e0ae5038347b215bf5b96afb87caf69b8e4e8692cb40fb9bc13c424"
+          }
+        },
+        "literal_scripts_identical_to_failed_run": true,
+        "actual_children": 1,
+        "child_timeout_seconds": 9.0,
+        "method_returncode": 0,
+        "complete_method_assertions_executed": true,
+        "windows": [
+          {
+            "interval_ms": [
+              150,
+              480
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60,
+                67
+              ],
+              [
+                64
+              ],
+              [
+                1
+              ]
+            ],
+            "candidate_times_ms": [
+              256
+            ],
+            "last_candidate_held": [
+              [
+                60,
+                67
+              ],
+              [
+                64
+              ],
+              [
+                1
+              ]
+            ],
+            "passes": true
+          },
+          {
+            "interval_ms": [
+              500,
+              1080
+            ],
+            "end_exclusive": true,
+            "expected_held": [
+              [
+                60
+              ],
+              [],
+              []
+            ],
+            "candidate_times_ms": [
+              639
+            ],
+            "last_candidate_held": [
+              [
+                60
+              ],
+              [],
+              []
+            ],
+            "passes": true
+          }
+        ],
+        "observations": [
+          {
+            "elapsed_ms": 104,
+            "last_submitted_sequence": 3,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 172,
+            "last_submitted_sequence": 4,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 172,
+            "last_submitted_sequence": 7,
+            "resolved_sequence": 3,
+            "last_applied_sequence": 3,
+            "manual_notes": [
+              [],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 256,
+            "last_submitted_sequence": 7,
+            "resolved_sequence": 7,
+            "last_applied_sequence": 7,
+            "manual_notes": [
+              [
+                60,
+                67
+              ],
+              [
+                64
+              ]
+            ],
+            "pedal_ids": [
+              1
+            ]
+          },
+          {
+            "elapsed_ms": 562,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 7,
+            "last_applied_sequence": 7,
+            "manual_notes": [
+              [
+                60,
+                67
+              ],
+              [
+                64
+              ]
+            ],
+            "pedal_ids": [
+              1
+            ]
+          },
+          {
+            "elapsed_ms": 639,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 1122,
+            "last_submitted_sequence": 10,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 1122,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 10,
+            "last_applied_sequence": 10,
+            "manual_notes": [
+              [
+                60
+              ],
+              []
+            ],
+            "pedal_ids": []
+          },
+          {
+            "elapsed_ms": 1272,
+            "last_submitted_sequence": 11,
+            "resolved_sequence": 11,
+            "last_applied_sequence": 11,
+            "manual_notes": [
+              [
+                60
+              ],
+              [
+                69
+              ]
+            ],
+            "pedal_ids": []
+          }
+        ],
+        "later_predicates_independently_re_evaluated": {
+          "final_held": true,
+          "note_ons": true,
+          "note_offs": true,
+          "controls": true,
+          "intentional_overflow_faults": true,
+          "accepted_packets": true,
+          "rejected_packets": true,
+          "discarded_queued_packets": true,
+          "ignored_while_closed": true,
+          "maximum_events_per_turn": true,
+          "connections_started": true,
+          "budget_exhaustions": true,
+          "decoder_packets": true,
+          "retired_fault_bits": true,
+          "fault_retirements": true,
+          "release_batches": true,
+          "no_stale_upper64": true,
+          "no_unrequested_lower70": true
+        }
+      }
+    }
+  ],
+  "interpretation": [
+    "Both actual first-window failures are empty fully acknowledged candidate sets, not wrong held-state comparisons.",
+    "Correct initial musical states occur later:719ms after630 forCC120;519ms after480 foroverflow. Later required windows and all final/count/lifecycle predicates evaluate true offline in original diagnostics.",
+    "RUN_SERIAL excluded other CTests during this MIDI test; the serial property does not establish absence of system-wide load and did not guarantee these windows.",
+    "No CPU utilization trace or exact callback application clock exists. Do not infer CPU cause or exact dispatch latency.",
+    "Snapshots copy before MIDI delivery, observations deduplicate unchanged state; application completion cannot substitute for the strict timing-window oracle.",
+    "The unchanged literal scripts do not change workspace/presentation/overlay. Current semantic-transition branch is not selected by their actions.",
+    "New production main differs from prior published and recovery inputs; the MIDI fixture and Core workflow are byte-identical across compared historical revisions. Old hosted successes do not qualify current source.",
+    "Both isolated complete-method successes execute all their later assertions and file-tail/common checks. They are separate one-shot diagnostics, not a replacement full suite."
+  ],
+  "A52_execution_counts": {
+    "native_processes": 0,
+    "builds": 0,
+    "tests": 0,
+    "GitHub_requests": 0,
+    "source_or_property_changes": 0
+  },
+  "next_action": "No second diagnostic or source/property/oracle edits. Root reports240/242 plus exact isolation results, decides publication admission, verifies published SHA/tree, then resumes A52 for six Core CI families."
+}

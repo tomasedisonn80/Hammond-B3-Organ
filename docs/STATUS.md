@@ -4,72 +4,348 @@
 <a id="current-console-continuation--17-november-2026"></a>
 ## Current console continuation — 16 November 2026
 
-The [console scope](development/2026-11-16-console-completion/README.md),
-[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
-[actual assignments](development/2026-11-16-console-completion/assignments.json)
-and [root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md)
-govern current recovery. Starting source is
-`9d60dbf462a90fe422fd4e69757fe202264acb7c`; the working additions require their
-own recorded hashes. The required sixty new workers/ten waves remain tracked
-only by this session's actual ledger; no closure is claimed here. Its six new
-readers covered [all 500 atlas pages](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
+Use the [current handoff](CONSOLE_COMPLETION_HANDOFF.md),
+[setup](CONSOLE_SETUP_AND_HANDOFF.md), [checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-console-completion/assignments.json) and
+[root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
+This session starts at `9d60dbf462a90fe422fd4e69757fe202264acb7c`; the working
+source now preserves fresh published `03c70c1` H1/header and semantic-paint work.
+Its six new readers covered [all 500 pages](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
+The required sixty actual workers/ten waves are counted only in this session's ledger.
 
-### Implemented console foundation and observed evidence
+### Implemented behavior and source-bound evidence
 
-LibraryModel owns copied catalog/selection/draft state and named-operation
-receipts. Registration recall preserves latest desired expression; Performance
-restores saved expression. The validated `UiModel::recall_controls` publishes
-one whole-control action even for equal values and preserves the legacy saved
-baseline. Use the [developer guide](LIBRARY_MODEL_GUIDE.md) and
-[independent source admission](reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md).
-Native browser and `main.cpp` hooks remain absent.
+LibraryModel owns copied catalog, selection, draft and named-operation state.
+Registration recall preserves latest desired expression; Performance restores
+saved expression. The validated `UiModel::recall_controls` publishes one whole
+control action even for equal values and preserves the legacy saved baseline.
+Read the [guide](LIBRARY_MODEL_GUIDE.md) and [source admission](reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md).
+Native browser and main-loop library hooks remain absent.
 
-| Recorded gate | Observed result and limit |
+| Recorded gate | Result and evidence boundary |
 | --- | --- |
-| [Integrated library suites](development/2026-11-16-console-completion/reports/library-integrated-result.json) | **5/5 pass**: pure model, real Session, real filesystem with synthetic control proof, public-API recall and four combined real UiModel/LibraryModel/Session/storage journeys. These do not execute native browser routing. |
-| [Coherent native build](development/2026-11-16-console-completion/reports/integrated-build-result.json) and [first full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json) | All-target Release build passed; the first full run is **246/247**, exit 8, with one repository-integrity failure. Every other registered gate passed. |
-| [Strict P1 source transition](development/2026-11-16-console-completion/reports/p1-source-transition-result.json) and [finite-JSON capture repair](development/2026-11-16-console-completion/reports/capture-finite-json-result.json) | **45 Python methods pass in each suite**. A30 admits only the exact recall-helper pair in candidate-only mode; original paired pins and evidence remain unchanged. A31 rejects decoded nonfinite numeric evidence. |
-| [Distinct SDK-free admission](reviews/CONSOLE_HEADLESS_ADMISSION.md) | Fresh Linux Release configuration and first build pass **12/12 selected tests** without SDL, RtMidi or VST3 dependencies. Native/device/sanitizer/platform acceptance remains separate. |
-| [P1 paired v2](development/2026-11-16-console-completion/reports/p1-paired-v2-summary.json) | **62 numerical screens, 34 pairs, 74,008,097 pixel positions**, zero forbidden changes. The original v1 metadata-oracle failure remains retained. |
-| [P1 full-frame visual admission](reviews/PERFORMANCE_PLATE_P1_VISUAL_ADMISSION.md) | A24 inspected all fifteen P1 and fifteen preceding actual app frames plus the reference. The [P1 capture record](design/native-gallery-console-p1/provenance.json) is bound to its original pre-helper source/application. |
-| [Frozen P1 timing and Flat witness](development/2026-11-16-console-completion/reports/p1-timing-summary.json) | One eight-process, **2,400-sample** batch reports no investigation signal; the exact same-scene Flat witness and cross-witness gate pass. This descriptive shared-host batch establishes neither performance equivalence nor a display/audio deadline. |
+| [Combined qualification](development/2026-11-16-console-completion/reports/combined-qualification.json) | **46/46 build steps; 78/78 affected CTests; 15/15 captures**. All 587 production/test/build inputs stayed unchanged. The selection includes every standalone test and three comparator/capture Python suites; it is not a full 251-test rerun. |
+| [Combined gallery admission](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md) | All 69 payloads verified; reference and sixty retained full frames inspected. Current seven active views retain exact P1/H1 material-support pixels against their qualified predecessors. README displays this actual gallery. |
+| [Library foundation](development/2026-11-16-console-completion/reports/library-integrated-result.json) | **5/5 suites pass** across model, real Session, real filesystem with synthetic proof, public-API recall and combined roundtrips. Also included in the combined run; native browser routing is unimplemented. |
+| [SDK-free configuration](reviews/CONSOLE_HEADLESS_ADMISSION.md) | Fresh Linux Release build and **12/12 selected tests** pass without SDL/RtMidi/VST3 dependencies. |
+| [First full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json) | **246/247**, exit 8. The only failure was repository integrity while A33's linked report was unwritten. Preserve this failure and record the affected document rerun separately. |
+| [P1 paired v2](development/2026-11-16-console-completion/reports/p1-paired-v2-summary.json) | **62 screens, 34 pairs, 74,008,097 pixel positions**, zero forbidden changes. Original v1 metadata-oracle failure and both sets of streams remain retained. |
+| [P1 timing](development/2026-11-16-console-completion/reports/p1-timing-summary.json) | One eight-process, 2,400-sample batch has no investigation signal and passes its exact Flat cross-witness gate. Pre-helper/pre-H1 source only; descriptive shared-host evidence does not establish equivalence or a deadline. |
+| [Combined source](reviews/CONSOLE_SOURCE_RECONCILIATION_ADMISSION.md) and [CI gate audit](reviews/CONSOLE_CI_GATE_ADMISSION.md) | Exact H1/P1 addition and published main preserved. All persistent gates remain: 41 sanitizer checks/37 targets, 55 mandatory native platform checks, original per-test bounds and serial policies. |
 
-The [first full-run log](development/2026-11-16-console-completion/reports/integrated-first-ctest.log)
-records the repository-integrity failure while A33's linked report was not yet
-written; that report now exists. Preserve the original failure and record the
-affected document gate separately after authoring finishes. The [final integrated
-capture result](development/2026-11-16-console-completion/reports/integrated-capture-result.json)
-passes all fifteen views with 69 manifest entries verified; README now displays
-those actual images. Independent final-gallery review, publication and exact-source
-hosted outcomes remain root's checkpoint duties; this entry makes no all-pass or
-publication claim.
+Current app SHA-256 is `3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9`.
+The [manifest](design/native-gallery-console-combined/manifest.json) binds the
+fifteen actual captures. Earlier galleries, failures, timing, binaries and
+source pins retain their original scope. Staged review, separate document
+qualification, actual publication and exact-source hosted outcomes are tracked
+in the live checkpoint; local passes supply no new Windows/macOS execution.
+
+### Workspace and next implementation
+
+Root owns `/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and its single
+coordinated `../build-native`. Read-only pinned dependencies are under
+`/workspace/scratch/3edffb787db3`; `../a32-headless` was separately authorized.
+Use the [setup guide](CONSOLE_SETUP_AND_HANDOFF.md). Other sessions' checkouts,
+indexes, builds and evidence remain read-only.
+
+Follow the [native plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md): model-owned
+Save availability and actual post-Start proof precede browser/main wiring and
+modal held-input routing. Preserve all [owner boundaries](PLAN.md#current-ownership-and-source)
+and [M0–M9 exits](PLAN.md#milestones-and-exit-evidence). H1/P1 supports are
+separate at qualified fixture scales and actual scale-1 captures; arbitrarily
+tiny positive scales can alias a pixel. **Literal whole-interface 1:1 remains
+unmet and unwaived.** Real device/display/DPI/DAW journeys, native accessibility,
+callback lifetime/deadlines, physical fidelity, rights and signed release remain separate.
+<!-- console-status-current:end -->
+
+> The following heading/header entries retain the published track's original
+> workspace, source identities and observations. They do not assign this checkout.
+<!-- heading-title-status-current:start -->
+## Current heading, title and header continuation — 17 November 2026
+
+The current [session](development/2026-11-16-heading-title-continuation/README.md),
+[checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and
+[actual worker ledger](development/2026-11-16-heading-title-continuation/assignments.json)
+own recovery for this request. Read the complete [M0–M9 plan](PLAN.md) and
+[agent instructions](../AGENTS.md) before choosing work. Six new readers covered
+all 500 atlas pages under the [current reading receipt](development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json).
+All **60 distinct workers were dispatched in ten waves of six;
+60 deliveries are accepted**.
+All ten waves have six accepted deliveries.
+Follow-ups retain their original worker identities and create no additional credit.
+The [executed strict record check](development/2026-11-16-heading-title-continuation/reports/sixty-worker-strict.json)
+passes with zero pending workers/errors; it verifies record consistency only.
+Use the live ledger for subsequent follow-up ownership.
+
+### Current implemented behavior and measured interface work
+
+The playable application remains a **nominal dry organ** with 91 shared
+free-running sources, two 61-key manuals, 25 pedals, 24 reversed presets and
+four retained drawbar banks. The 47 parameter identities, `B3CONTROLS4` writer,
+readers 1–3 and plugin UUIDs remain unchanged. The interface retains 68 controls
+including presets, 147 playing keys and the existing focus and hit geometry.
+Scanner, complete AO-28 and Leslie research modules remain disconnected from
+the playable Engine. The [original compatibility review](reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md)
+reproduces 213 protected identities at the named T3/H1 comparison inputs and
+distinguishes additive UI-replay diagnostics from musical/state compatibility.
+The later resize, Load and semantic-drain corrections retain separate reviews
+and runtime qualification below; those original protected-input claims remain
+bound to their original sources.
+
+| Delivered scope | Observed evidence and limit |
+| --- | --- |
+| **T2 rack headings** | [Accepted](development/2026-11-16-heading-title-continuation/reports/t2-acceptance.json): 158 genuine before/after pairs, 92 complete-model pairs and zero forbidden pixel changes. The Upper/Lower live glyph spacing and flanking rules improve against the original reference; thirteen actual frames received independent visual review. |
+| **UI-replay observation** | A bounded 512-entry application-thread history retains startup focus and immediate modal transitions, with adjacent deduplication and fail-closed truncation. The [independent review](reviews/REPLAY_UI_HISTORY_ADMISSION.md) preserves the musical acknowledgment guard; the 23-method CLI suite passes. Three additive fields under diagnostics schema 3 require external exact-key consumers to accommodate them. |
+| **T3 title, revision 2** | [Accepted within title scope](development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json): 158 pairs, 213 protected inputs at that comparison, zero exterior changes, 1,317 material assertions and 18 density cases. At encoded Y′≥100, the title ROI contains 5,512 pixels before H1, versus reference 5,415, with no hue filter. The original revision's two geometry failures remain retained. |
+| **H1 header interior** | The [original complete comparison](development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json) passes 48 main + 16 companion pairs, four repeats, 103/103 frozen material criteria, 10,542 candidate fixture checks including 95 direct helper-restoration probes, and 1,317 material assertions. All 213 protected paths match at those frozen H1 inputs, with zero pixel changes outside admitted support. Genuine before remains 44 pass / 59 fail. |
+| **Permanent regressions** | The [stdlib numerical qualification](development/2026-11-16-heading-title-continuation/reports/h1-statistics-qualification.json) independently reproduces the real before's 44/59 result and the candidate's 103/0 result, with valid transport and separate helper presence. The [tiny-scale qualification](development/2026-11-16-heading-title-continuation/reports/h1-grain-bounds-qualification.json) uses identical fixture bytes and libraries: the archived initial H1 painter fails at pixel (7,1), while the corrected source passes four BLEND/NONE and enabled-empty cases across 96,000 exact RGBA pixels. |
+
+The [fifteen-view H1 gallery](design/native-gallery-header-h1-v1/provenance.json)
+records captured application `bfe8e36d…` and painter `0bf731a6…`. This remains
+the original captured executable; current runtime candidates are identified
+separately below. The
+[independent H1 visual admission](reviews/HEADER_MATERIAL_H1_VISUAL.md) inspected
+every frame and the complete header at 1672×941, 1400×820, 1920×1080,
+1920×820 and 1400×1080. It found no new seam, band, repeated grain tile, lost
+caption/control or displaced shadow within this scope. Both galleries' 69
+payloads and fifteen decoded frames verify. Dummy SDL/software captures are
+separate from actual display, DPI, input and accessibility journeys.
+
+Across the eighteen frozen header patches, equal-patch mean Y′ error improves
+from **3.7103256072 to 0.3675152801**, and RMS error from **1.6673172881 to
+0.3182611193**. These are encoded-image material measurements, not a whole-UI
+similarity score or physical luminance. Counting **encoded-Y′≥100 pixels in the
+title ROI, with no hue filter**, gives **5,499 for H1**, **5,512 for T3 before
+H1** and **5,415 for the reference**. H1's background changes antialiased-edge
+pixels; both application stages remain within the original 4,500–6,000 band.
+
+The [five-case paint timing](development/2026-11-16-heading-title-continuation/reports/h1-paint-timing/report.json)
+uses genuine separate executables, thirty warmup frames and 300 samples each.
+The three active sizes add 4.47%, 3.24% and 1.26% to median software paint time;
+no case triggers the existing investigation rule. Active after medians are
+118.84, 155.47 and 207.37 ms. These high, environment-specific software costs
+are not display frame-rate or audio callback deadline acceptance. Separate-run
+scheduler/frequency drift remains; lower inactive timings are not claimed as an
+optimization. Compact and Flat final pixels are identical.
+
+### Current qualification, publication and retained failures
+
+The [verified T2 publication](development/2026-11-16-heading-title-continuation/reports/t2-publication.json)
+is `6047723b595259de355c74342e48a8ae2ee1e228`, tree
+`8bb162b1d5bd153436649339cf9253eaee5c28eb`. Its
+[latest sixteen hosted job families](development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json)
+all pass, including both macOS architectures, after one unchanged core-sanitizer
+retry. The original first-attempt 15 successes / one completion timeout remains
+retained. T2 hosted results do not qualify the changed T3/H1/test sources.
+The current `fba1911…` publication and original hosted outcomes are recorded
+below; T2 remains historical evidence, not successor qualification.
+
+The [test-only race repair](reviews/RENDER_RACE_COMPLETION_REVIEW.md) changes only
+the post-resume completion guard from 15 to 45 seconds, preserving its workload,
+correctness assertions and outer 90-second CTest limit. The changed five-method,
+45-invocation suite passes Release and local ASan/UBSan diagnostics. The local
+LSan runtime fatal is preserved; the separate diagnostic with leak checking
+disabled is not leak qualification, and hosted leak checks remain enabled.
+
+The original H1-stage [configure](development/2026-11-16-heading-title-continuation/reports/h1-final-configure.log)
+and [all-target build](development/2026-11-16-heading-title-continuation/reports/h1-final-build.log)
+completed successfully. Its [Standalone installation](development/2026-11-16-heading-title-continuation/reports/h1-standalone-install.log)
+contains seventeen files and the same application bytes as the captured H1 build.
+That install retains its original identity; later runtime candidates need their
+own delivery evidence.
+The [installed journeys](development/2026-11-16-heading-title-continuation/reports/a41-installed-journeys.json)
+retain **five expected outcomes and one failed 600 ms canonical smoke**: the
+short run did not send or observe the required note/release sequence. One
+separately authorized 2,000 ms diagnostic passes the unchanged note-on/off,
+held/release, audio and joined-shutdown assertions. Its success does not turn
+the original six journeys into 6/6 or establish a hardware result. All seventeen
+payload hashes and thirty-eight guide links verify after relocation.
+
+The original [H1 coherent run](development/2026-11-16-heading-title-continuation/reports/h1-final-ctest.log)
+finished **237/240**, retaining the workspace painted-prefix omission, Load
+observation failure and archived-link context failure. A46's independently
+reviewed [resize-boundary correction](reviews/WORKSPACE_PAINT_REPLAY_DIAGNOSIS.md)
+and A48's [Load observation correction](reviews/STARTER_LOAD_OBSERVATION_DIAGNOSIS.md)
+have their own [qualification receipt](development/2026-11-16-heading-title-continuation/reports/replay-load-link-repair-qualification.json).
+Original failed predicates, genuine-before results and exact archived originals
+remain preserved. The Load correction admits observed copied-state chronology;
+it does not establish the exact callback application timestamp.
+
+The later [combined run](development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-results.json)
+finished **239/241**. Its two unchanged isolated method passes are separate
+diagnostics. The [scheduling candidate](development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-results.json)
+then finished **238/241**, with the admitted serial nonoverlap observed. Native
+calibration, MIDI CLI and a different workspace semantic-visit omission failed.
+No exact operating-system scheduling cause or repaired unrelated timing window
+is inferred from these outcomes.
+
+A60 implemented the independently admitted
+[semantic event-drain correction](reviews/SEMANTIC_EVENT_PAINT_ADMISSION.md).
+During scripted replay, an event that actually changes workspace, presentation
+or overlay ends that turn's remaining event drain so the ordinary render can
+paint it before another queued event replaces the view. The A46 marker branch,
+musical acknowledgment guards, painter, actions and deadlines remain unchanged.
+Both [genuine-before children](development/2026-11-16-heading-title-continuation/reports/semantic-paint-genuine-before-root.json)
+exit zero and pass the preceding lifecycle/control checks, then fail required
+painted visits. The [current candidate](development/2026-11-16-heading-title-continuation/reports/semantic-paint-candidate-root.json)
+passes both six-view cases, and the
+[three unchanged boundary CTests](development/2026-11-16-heading-title-continuation/reports/semantic-unchanged-boundaries.json)
+pass separately.
+
+| Source identity | SHA-256 / bound |
+| --- | --- |
+| Original H1 captured app | `bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b` |
+| Unchanged H1 painter | `0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d` |
+| Current semantic-replay main | `0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537` |
+| Current candidate app | `1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a` |
+
+The [qualified-final configure/build](development/2026-11-16-heading-title-continuation/reports/qualified-final-build.json)
+passes. The independently reviewed
+[startup-prefix oracle](reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md)
+is implemented in workspace fixture `38808674…`; CMake is `64265511…`.
+These are test/scheduling changes at the same main/application bytes.
+The [actual workspace records](development/2026-11-16-heading-title-continuation/reports/qualified-workspace-records.json)
+retain all 37 native children from the complete run.
+
+The [qualified-final full run](development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json)
+completed **240/242**, exit 8, in **740.263707625 seconds**. All **475 code inputs
+and recorded build inputs remained unchanged**; six serialized tests had
+verified nonoverlap. Workspace replay passed with **37 actual native children**,
+and Starter Load passed. The two failed CTests were the preset-raster
+**30-second timeout** and native MIDI replay, with two missing
+acknowledgment-window observations. This is distinct from the earlier
+[semantic full run's 240/242](development/2026-11-16-heading-title-continuation/reports/semantic-final-coherent-results.json).
+
+Exactly three bounded, unchanged diagnostics followed. The
+[preset-raster diagnostic](development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json)
+passed once in **27.517879209 seconds**, retaining its 30-second limit.
+The [two failed MIDI methods](development/2026-11-16-heading-title-continuation/reports/qualified-midi-one-isolated-diagnostics.json)
+each passed once in **2.031860108** and **2.037485655 seconds**, with their
+nine-second child deadlines and all 475 code inputs unchanged. These separate
+passes preserve the original failed full-run outcome; they establish neither
+a green 242-test aggregate nor a particular CPU/scheduler cause. The published
+source and its original hosted outcomes are recorded separately in this session.
+
+The preset diagnostic preserves all **192 label/focus, 160 glyph, 752 isolation
+and 96 state cases**, with zero failures and unchanged fixture, painter, CMake
+and binary hashes. The two MIDI methods are external-division CC120 release and
+real overflow/reconnect; their exact inputs, diagnostics and archived members
+remain in the receipt. Source or property changes are not authorized by these
+diagnostic successes.
+
+The [fresh 17-file relocated installation](reviews/FINAL_NATIVE_INSTALL_REVIEW.md)
+and [two actual current-app captures](reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md)
+are independently accepted by A56 and A55. They use `1fa2a247…` and leave the
+historical fifteen-view H1 gallery and original 600 ms smoke failure intact.
+
+The [verified source publication](development/2026-11-16-heading-title-continuation/reports/source-publication.json) is
+`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`, tree
+`b62f212300d75633346ab8fc5ffdd722255fe00a`, with parents
+`9d60dbf462a90fe422fd4e69757fe202264acb7c` and
+`835755a9069c25ce55bc2c231547458b4b3ffce4`. The guarded, nonforced
+update and independent API/Git verification preserve both histories and verify
+the exact contents. This published tree equals local authored merge `07aafd218…`.
+
+All sixteen original job families are terminal at that exact source, attempt 1:
+[14 successes, one failure and one cancellation](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json).
+
+| Workflow | Original source-specific result |
+| --- | --- |
+| [Core CI](development/2026-11-16-heading-title-continuation/reports/a52-core-hosted.json), run `44016021552` | **6/6 successful**: four platform Release jobs and Linux ASan/UBSan/leaks each pass 202/202; full R4 qualification also passes. |
+| [Native VST3](development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted.json), run `44016021543` | **4/4 successful**, 29 CTests across the jobs; each actual module validator passes 47/47, with installation and packaging checked. |
+| [Native standalone](development/2026-11-16-heading-title-continuation/reports/source-ci-complete.json), run `44016021554` | Four normal jobs pass **68/68 each**: Linux MIDI OFF/ON and both macOS architectures. Windows fails fixture compilation under `/W4 /WX`; the Linux sanitizer job is cancelled after **30 of 34 selected tests pass**. |
+
+The standalone cancellation occurred during preset raster, leaving it and three
+later tests incomplete. No sanitizer finding or originating cancellation cause
+is established. It is not a successful sanitizer gate. Original logs, failures
+and cancelled/unreached work remain retained.
+
+The [independently reviewed Windows fixture correction](reviews/HEADER_MATERIAL_WINDOWS_PORTABILITY_CONFORMANCE.md)
+is [locally qualified](development/2026-11-16-heading-title-continuation/reports/windows-header-local-qualification.json):
+two explicit float casts plus one active fixture-hash literal across two files.
+Both affected CTests pass **2/2 in 43.593519385 seconds**. The Linux fixture
+binary, all 48 case descriptions and default 10,542-check/163-painting result
+are identical. All **103/103** canonical criteria pass; complete statistics
+differ only in the two source identity values, with unchanged canonical pixels.
+At this Windows-only stage, **473 of 475 qualified code inputs are unchanged**.
+Production app `1fa2a247…`, painter, workloads, criteria and historical comparators
+are unchanged. This is local equivalence evidence; successor MSVC compilation
+and hosted acceptance remain pending.
+
+Root [implemented the separately admitted sanitizer job budget](development/2026-11-16-heading-title-continuation/reports/native-sanitizer-job-budget-implementation.json):
+only `jobs.native-sanitizers.timeout-minutes` changes **20 → 35 minutes**.
+Every other workflow byte, all 34 selected tests, 31 build inputs, individual
+test/child limits, workloads, instrumentation and leak policies are unchanged.
+The final successor changes only the Windows fixture pair and workflow scalar:
+**exactly three of 475 inputs change; 472 remain unchanged**. Production
+sources and app `1fa2a247…` are unchanged. The observed prefix plus existing
+tail-limit envelope is 1,823.666679 seconds; this supports the job allowance
+without proving what caused the original cancellation. Successor publication
+and all exact-source hosted results remain pending; no successor SHA is recorded.
+
+The adopted comparators retain their historical protected-main pin; the
+[reconciliation review](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md)
+defines reproduction of the original H1 comparison without substituting later
+runtime sources.
+
+
+The [original local publication admission](reviews/HEADING_HEADER_LOCAL_PUBLICATION_ADMISSION.md)
+retains the failed full-run result and three separate passing diagnostics.
+Publication is complete at `fba1911…`; its original standalone failure and
+cancellation remain open qualification evidence. Successor acceptance is pending.
+
+The [independent actual-workspace review](reviews/WORKSPACE_STARTUP_ACTUAL_QUALIFICATION.md)
+verifies all 37 children, 101 painted visits, 37 saved files and 150 retained member files. Root separately verifies the
+lossless archive. The [independent MIDI review](development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-failure-review.md)
+retains both original failures and the two unchanged isolated successes.
+
+The [independent preset timing review](reviews/PRESET_RASTER_LOCAL_TIMING_REVIEW.md)
+retains the full-run timeout and the single unchanged isolated pass under the
+same 30-second limit. All three source-specific review supplements are complete.
+
+Original baseline replay failure, invalidated T2 comparison, T3v1 rejection,
+initial H1 fixture/checker failures, grain-culling rejection and later full-suite
+failures remain intact. Targeted passes do not replace those failed runs or
+qualify different sources.
 
 ### Current workspace and setup
 
-Use `/workspace/scratch/21cce69f7784/Hammond-B3-Organ`; root owns the single
-coordinated `../build-native`. Pinned SDL and build tools under
-`/workspace/scratch/3edffb787db3` are read-only dependencies. The separate
-`../a32-headless` was explicitly assigned for the SDK-free configuration.
-Use [normal desktop setup](../README.md#build-and-launch-the-native-application)
-or the [foundation developer guide](LIBRARY_MODEL_GUIDE.md) for their respective
-workflows. Other sessions' checkouts, indexes, builds and evidence stay read-only.
+The sole writable checkout is
+`/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ`; root coordinates
+`../build-native`. SDL **2.32.10** at
+`/workspace/scratch/3edffb787db3/SDL2`, commit
+`5d249570393f7a37e037abf22cd6012a4cc56a71`, and CMake/CTest in
+`/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin` are read-only
+dependencies. The local recovery build uses GCC/C++20, Unix Makefiles, Release,
+testing and standalone ON, MIDI and VST3 OFF, with native SDL backends disabled.
+Use the [normal desktop setup](../README.md#build-and-launch-the-native-application)
+for identified devices and displays; this dummy-SDL configuration cannot qualify
+them. The original H1 installed prefix is `../install-header-h1`; genuine stage
+baselines and failed-source copies remain outside the source checkout with
+versioned identity receipts. About 52 GiB was free at the earlier H1 checkpoint;
+inspect actual disk use before new large work. Preserve originals and all other
+sessions; clean only owned reproducible intermediates after verified publication
+if needed.
 
-Next follow the [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md):
-model-owned Save availability and real post-Start proof precede browser/main
-wiring. H1 retains its separate [owner checkpoint](development/2026-11-16-ui-delivery/CHECKPOINT.md)
-and [old-source pin limits](reviews/CONSOLE_PORTABILITY_ADMISSION.md).
-Every [M0–M9 exit](PLAN.md#milestones-and-exit-evidence) and
-[existing owner boundary](PLAN.md#current-ownership-and-source) remains binding.
-**Literal whole-interface 1:1 remains unmet and unwaived**; physical fidelity,
-real device/display/DPI/DAW journeys, callback retirement/deadlines, native
-accessibility, rights and signed release remain separate gates.
-<!-- console-status-current:end -->
+### Current next actions and product boundaries
 
-<a id="portable-registrations-and-reference-apron--16-november-2026"></a>
-## Historical portable registrations and reference apron — 16 November 2026
+Follow [the current next-step sequence](NEXT_STEPS.md#current-heading-title-and-header-continuation--17-november-2026)
+and [complete milestone exits](PLAN.md#milestones-and-exit-evidence). Complete
+guarded publication of the implemented three-input successor and all sixteen
+successor hosted reviews, then final evidence/recovery publication. Strict
+sixty-record closure has passed. Recover
+the manual/rim/cap, browser/semantic and contact/scanner owners before assigning
+overlapping paths. Complete loaded AO-28/Leslie graphs, identified raw captures,
+held-out physical calibration, scanner G5/ScannerLineFoh acceptance, R4 owner
+acceptance, R5/R6, real devices/DAWs, callback lifetime/deadlines, native
+accessibility, rights and signed distribution remain separately evidenced work.
+**Literal whole-interface 1:1 remains unmet and unwaived.** The new measured
+header/title slices do not close M9 or authorize connected-effect claims.
+<!-- heading-title-status-current:end -->
 
-This is the retained portable-registration continuation record. Its workspace,
-counts and next actions describe that dated source, not current console work. Read its
+## Retained portable registrations and reference apron — 16 November 2026
+
+This dated entry retains the previous continuation and recovery evidence. Read its
 [session scope](development/2026-11-16-preset-library-continuation/README.md),
 [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md)
 and [actual ledger](development/2026-11-16-preset-library-continuation/assignments.json).
@@ -184,7 +460,7 @@ retains title, tracking, caps, panels, furniture, manuals and layout differences
 **Literal whole-interface 1:1 remains unmet and unwaived.** Software captures
 establish no real-display/DPI or native-accessibility acceptance.
 
-### Historical portable-registration workspace and setup
+### Registration workspace and setup (historical)
 
 Use `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`, root's coordinated
 `../build-native`, and read-only SDL 2.32.10 at
@@ -215,9 +491,9 @@ about 40 GiB was free at its recorded sample. Other sessions remain read-only.
 
 ## Preserved dated status records
 
-The following body retains earlier source-specific evidence and owner duties;
-historical navigation labels are clarified without changing those results.
-Use the current entry above for this continuation's recovery and priorities.
+The following body retains the previous status evidence. Historical heading
+labels distinguish its setup from the current entry at the top; use that entry
+for this continuation's recovery and priorities.
 
 ## Runtime and interface continuation — 16 November 2026
 
@@ -249,8 +525,7 @@ records completed worker closure and source-qualified publication history.
 [All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
 Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
 
-<a id="current-streamingmaterial-continuation--16-november-2026"></a>
-## Historical streaming/material continuation — 16 November 2026
+## Current streaming/material continuation — 16 November 2026
 
 The [active session](development/2026-11-15-streaming-continuation/README.md),
 started 15 November, implements the isolated **M3 causal integer-grid contact
@@ -273,8 +548,7 @@ for accepted counts. Six new readers covered all 500 atlas pages under the
 [coverage receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
 Previous sessions and repeated followups supply no worker credit here.
 
-<a id="implemented-current-behavior"></a>
-### Historical streaming implementation
+### Implemented current behavior
 
 [`CausalContactGrid`](../include/hammond/research/CausalContactGrid.h) is a separate
 C++20 research API, `causal-contact-grid-v1`. It retains nine independent
@@ -303,8 +577,7 @@ meanings, `B3CONTROLS4` and readers 1–3**, plugin identities and musical owner
 The earlier offline contact reference and canonical wide layout remain their
 own source-bound deliveries; they have not been replaced or regraded.
 
-<a id="current-tested-evidence-and-limits"></a>
-### Historical streaming evidence and limits
+### Current tested evidence and limits
 
 | Evidence | Observed result and scope |
 | --- | --- |
@@ -326,8 +599,7 @@ Other panel/wood illumination, key/cap bevels, shadows and typography still need
 work, followed by actual display/DPI/input and native semantic-accessibility
 journeys. Dummy SDL and local resource bounds qualify none of those gates.
 
-<a id="current-workspace-and-setup-1"></a>
-### Historical streaming workspace and setup
+### Streaming workspace and setup (historical)
 
 Root coordinates the single build, captures and publication. Other sessions'
 checkouts, indexes, builds and evidence are read-only to this session. In
@@ -384,8 +656,7 @@ journey. Keyboard/pointer builds may leave MIDI OFF; Windows executable paths
 and PowerShell commands are in the same guide. Launching at the default
 1280×900 shows the established compact layout.
 
-<a id="remaining-current-acceptance-and-engineering-work"></a>
-### Historical streaming acceptance and engineering work
+### Remaining current acceptance and engineering work
 
 All 60 scoped worker deliveries are accepted; the
 [strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
@@ -638,8 +909,7 @@ The portable checker repair is published and fully qualified as `80b8cce`.
 The closing commit retains documentation/evidence only; subsequent development
 starts from the concrete next assignments.
 
-<a id="current-repaired-source-qualification"></a>
-### Historical repaired-source qualification
+### Current repaired-source qualification
 
 Published **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**, tree
 `d310be065db2bb9b0012c11a0c5ec2beda4c9384`, has verified parent c4486ba in the
@@ -1174,8 +1444,7 @@ The [actual manifest](development/2026-11-14-preset-continuation/assignments.jso
 records this session's dispatched identities and acceptance. Earlier and parallel
 tracks below retain their source identities and separate evidence gates.
 
-<a id="active-midi-and-native-visual-continuation"></a>
-## Historical MIDI and native visual continuation
+## Active MIDI and native visual continuation
 
 A new [sixty-worker session](development/2026-11-14-midi-ui/README.md), starting at `0f7b900`, advances the next independent M9 external-MIDI input and native visual slice under [its scope](MIDI_UI_SCOPE.md). All 500 atlas pages have been read in six disjoint assignments. The bounded decoder/inbox, optional pinned RtMidi backend, native device modal, synthetic replay path and reference-led renderer are implemented. All 45 public parameters, `B3CONTROLS3`, the nominal Engine and the separate model tracks retain their identities.
 
@@ -1287,8 +1556,7 @@ separate edited/sounding banks, pedals, percussion, expression, Audio/Help
 panels and explicit saved controls. Follow the [operational handoff](STANDALONE_HANDOFF.md)
 and actual manifest. The scanner continuation below remains a separate track.
 
-<a id="final-code-and-current-evidence"></a>
-### Historical final code and evidence
+### Final code and current evidence
 
 Standalone package-audit checkpoint: `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
 `10f070c54d176571f1919d8141d24dd82db0e41c`. Root fetched it and verified exact
@@ -1490,8 +1758,7 @@ The wave-1 published tree and both successful hosted workflows are recorded
 there. Scanner and native standalone development retain their separate ownership;
 M5/M6 and measured-capture dependencies remain open under [ROTARY_SCOPE.md](ROTARY_SCOPE.md).
 
-<a id="active-scanner-continuation"></a>
-## Historical scanner continuation
+## Active scanner continuation
 
 The new [scanner session](development/2026-11-13-scanner/README.md) has completed its first 20 distinct assignments; the combined stage and its independent tests are in progress in wave 4. Six fresh readers covered every atlas page; follow its [handoff](SCANNER_HANDOFF.md), actual manifest and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Frequency/process and rotor qualification are complete; full matched-step stage qualification is in progress.
 
@@ -1588,8 +1855,7 @@ not a warning-free log or DAW qualification. The independent harness separately
 checks the supported lifecycle. Allocation/concurrency results do not establish
 all allocations, locks, scheduler histories or audio-device deadlines.
 
-<a id="next-implementation-and-remaining-product-gates"></a>
-## Historical next implementation and retained product gates
+## Next implementation and remaining product gates
 
 The graph/compiler, independent AC/transient references and prepared line modules now exist. The next scanner decision must resolve the observed G5 same-hertz failure under the frozen budgets before Engine integration. Its exact numerical evidence and separate rotor/integration ownership are in [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md). [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) separates discrete parity, full-band audible policy and later Engine/native integration. The original [scanner gate](M3_REMAINING_AND_SCANNER_GATE.md) retains the detailed physical and architectural requirements.
 

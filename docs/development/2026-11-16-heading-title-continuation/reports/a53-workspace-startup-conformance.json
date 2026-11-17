@@ -1,0 +1,1444 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w09_a53",
+  "status": "Conforms to frozen admission; ready for root-owned native qualification. No native execution by A53.",
+  "independent_AST_audit": {
+    "comparison_source": "A53 independently transformed only native-with bodies into plan capture, flattened subTest contexts and replaced newly added prefix calls with pure plan capture; no test class setup, subprocess, production import, native executable or native assertion ran.",
+    "fixture_original_sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3",
+    "fixture_current_sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+    "method_checks": {
+      "setUpClass": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "tearDownClass": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "setUp": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "run_native": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "assert_control_path": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "assert_hold_path": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "assert_views": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "assert_capture_refusals": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "assert_header_hold_prefixes": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save": {
+        "comparison": "unchanged AST",
+        "equal": true
+      },
+      "test_hidden_play_regions_cannot_edit_redirect_or_audition": {
+        "comparison": "AST after removing only admitted additions",
+        "equal": true
+      },
+      "test_focus_memory_restores_drawbar_save_and_load_after_returns": {
+        "comparison": "AST after removing only admitted additions",
+        "equal": true
+      },
+      "test_capture_failure_closes_parameter_gesture_before_view_and_resize": {
+        "comparison": "AST after removing only admitted additions",
+        "equal": true
+      },
+      "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation": {
+        "comparison": "AST after removing only admitted additions",
+        "equal": true
+      },
+      "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize": {
+        "comparison": "unchanged AST",
+        "equal": true
+      }
+    },
+    "critical_methods_byte_identical": {
+      "run_native": true,
+      "assert_control_path": true,
+      "assert_hold_path": true,
+      "assert_views": true,
+      "assert_capture_refusals": true,
+      "assert_header_hold_prefixes": true,
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save": true,
+      "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize": true
+    },
+    "original_note_count_delta_final_assertions_AST_equal": true,
+    "all_original_top_level_helpers_constants_imports_unchanged": true,
+    "original_plan_count": 30,
+    "new_plan_count": 37,
+    "original_plans_equal_in_order": true,
+    "added_prefix_count": 7,
+    "prefix_full_bindings": [
+      {
+        "prefix_index": 1,
+        "full_index": 2,
+        "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "flat": false,
+        "size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "prefix_index": 3,
+        "full_index": 4,
+        "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "flat": false,
+        "size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      },
+      {
+        "prefix_index": 5,
+        "full_index": 6,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "flat": false,
+        "size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "target_workspace": "rotary"
+      },
+      {
+        "prefix_index": 7,
+        "full_index": 8,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "flat": true,
+        "size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "target_workspace": "rotary"
+      },
+      {
+        "prefix_index": 9,
+        "full_index": 10,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "flat": false,
+        "size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "target_workspace": "service"
+      },
+      {
+        "prefix_index": 11,
+        "full_index": 12,
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "flat": true,
+        "size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "target_workspace": "service"
+      },
+      {
+        "prefix_index": 13,
+        "full_index": 14,
+        "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "flat": false,
+        "size": [
+          1280,
+          900
+        ],
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+      }
+    ],
+    "original_plans": [
+      {
+        "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "kind": "original_plan",
+        "duration_ms": 1900,
+        "events": 16,
+        "ui_sha256": "7e19729664960ea9ba97eb38654e9bd76489709f70db048bbbb290604879ae9e",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "kind": "original_plan",
+        "duration_ms": 3750,
+        "events": 87,
+        "ui_sha256": "905d176f2fca14799ec78c4d7dc80bb1f7531960094d2b4087a52b57817d4194",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": true,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": true,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "kind": "original_plan",
+        "duration_ms": 2250,
+        "events": 13,
+        "ui_sha256": "d00185eb0af35357e993498a4da6560cb42afc24e205d1f8649da8ac6fcb6084",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          960,
+          700
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          960,
+          700
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "6c3d6b22b1bf6725e8bb88a83c4459e4b5c36905bf657678ebe74b183830fd47",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          960,
+          700
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "a74e8b9de3109680053c09fd5c0c7e5b9fbcb5675729181ca3737ab9faf86ce5",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1672,
+          941
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1672,
+          941
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "2aca73b41c69205d90e8f4f771c29a8d840bce392ec6a2d882a0630832c829cd",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1672,
+          941
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "ea3481ec7f87ceb33cca1800a89c28a402fa094d4f96c1589d5acaa5fb72df12",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "3a706f55ac143d1bdefe2845146c7b8247da52b9c143956eae79cd4e2a79b721",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": 1,
+        "MIDI_sha256": "e219db6661addfa5fb082918bbb5ff5278b295372f89e3cc255f3f697dfabc28",
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+        "kind": "original_plan",
+        "duration_ms": 3200,
+        "events": 17,
+        "ui_sha256": "9d4770809137535ad3085b2ff07cc0087dc98ce548282996e333e0517f45de43",
+        "MIDI_events": 7,
+        "MIDI_sha256": "4cbf9900dd6ee9b32634a4e491cdef4457291e8aed6496e56b2361e1d137cace",
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      }
+    ],
+    "new_plans": [
+      {
+        "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "kind": "added_prefix",
+        "duration_ms": 250,
+        "events": 0,
+        "ui_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "kind": "original_plan",
+        "duration_ms": 1900,
+        "events": 16,
+        "ui_sha256": "7e19729664960ea9ba97eb38654e9bd76489709f70db048bbbb290604879ae9e",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "kind": "added_prefix",
+        "duration_ms": 250,
+        "events": 0,
+        "ui_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "kind": "original_plan",
+        "duration_ms": 3750,
+        "events": 87,
+        "ui_sha256": "905d176f2fca14799ec78c4d7dc80bb1f7531960094d2b4087a52b57817d4194",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "added_prefix",
+        "duration_ms": 250,
+        "events": 0,
+        "ui_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "added_prefix",
+        "duration_ms": 250,
+        "events": 0,
+        "ui_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": true,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": true,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "added_prefix",
+        "duration_ms": 250,
+        "events": 0,
+        "ui_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "added_prefix",
+        "duration_ms": 250,
+        "events": 0,
+        "ui_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": true,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "kind": "original_plan",
+        "duration_ms": 2600,
+        "events": 50,
+        "ui_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": true,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "kind": "added_prefix",
+        "duration_ms": 250,
+        "events": 0,
+        "ui_sha256": "bb8207d58b3f388938d99021ab71acfaf9a8e49f942dcfe817065edcd36f859f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "kind": "original_plan",
+        "duration_ms": 2250,
+        "events": 13,
+        "ui_sha256": "d00185eb0af35357e993498a4da6560cb42afc24e205d1f8649da8ac6fcb6084",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          960,
+          700
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          960,
+          700
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "6c3d6b22b1bf6725e8bb88a83c4459e4b5c36905bf657678ebe74b183830fd47",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          960,
+          700
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "a74e8b9de3109680053c09fd5c0c7e5b9fbcb5675729181ca3737ab9faf86ce5",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1672,
+          941
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1672,
+          941
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "2aca73b41c69205d90e8f4f771c29a8d840bce392ec6a2d882a0630832c829cd",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1672,
+          941
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "ea3481ec7f87ceb33cca1800a89c28a402fa094d4f96c1589d5acaa5fb72df12",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          819
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1399,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 5,
+        "ui_sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": false
+      },
+      {
+        "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "kind": "original_plan",
+        "duration_ms": 2850,
+        "events": 24,
+        "ui_sha256": "3a706f55ac143d1bdefe2845146c7b8247da52b9c143956eae79cd4e2a79b721",
+        "MIDI_events": null,
+        "MIDI_sha256": null,
+        "size": [
+          1400,
+          820
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+        "screenshot": true
+      },
+      {
+        "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+        "kind": "original_plan",
+        "duration_ms": 250,
+        "events": 4,
+        "ui_sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40",
+        "MIDI_events": 1,
+        "MIDI_sha256": "e219db6661addfa5fb082918bbb5ff5278b295372f89e3cc255f3f697dfabc28",
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": null,
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      },
+      {
+        "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+        "kind": "original_plan",
+        "duration_ms": 3200,
+        "events": 17,
+        "ui_sha256": "9d4770809137535ad3085b2ff07cc0087dc98ce548282996e333e0517f45de43",
+        "MIDI_events": 7,
+        "MIDI_sha256": "4cbf9900dd6ee9b32634a4e491cdef4457291e8aed6496e56b2361e1d137cace",
+        "size": [
+          1280,
+          900
+        ],
+        "final_size": [
+          960,
+          700
+        ],
+        "flat": false,
+        "state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+        "screenshot": false
+      }
+    ],
+    "pure_tests_count": 13
+  },
+  "recorded_utc": "2026-11-17T03:42:52.222187+00:00",
+  "review": {
+    "path": "docs/reviews/WORKSPACE_STARTUP_OBSERVATION_CONFORMANCE.md",
+    "bytes": 6790,
+    "sha256": "ee3ee5d685a91d745c13769e3ef995fc7d6cd37716eaa88b4ea4eda134f560f8"
+  },
+  "frozen_admission_review": {
+    "path": "docs/reviews/WORKSPACE_STARTUP_OBSERVATION_ADMISSION.md",
+    "bytes": 11943,
+    "sha256": "68a13c87bdab02b6a624e7845a6f60ec370fa7fb606554198bca0f9bdc94de56"
+  },
+  "frozen_admission_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-workspace-startup-observation.json",
+    "bytes": 40774,
+    "sha256": "c92a7d8f4fbd7679dfcd816d49ee04f5f228dda49062fbbb436a2514f582581c"
+  },
+  "A59_implementation_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a59-workspace-startup-prefix-implementation.json",
+    "bytes": 33015,
+    "sha256": "4b6ccfddd873cb2c37144e58e89ea769c4b630c1476ccc4de996059659708b9d"
+  },
+  "candidate": {
+    "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+    "bytes": 47128,
+    "sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b"
+  },
+  "preserved_prior_A53_artifacts_verified_unchanged": true,
+  "source_preservation": {
+    "main_and_CMake_unchanged_since_admission": true,
+    "frozen_proposal_unchanged": true,
+    "original_fixture_sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+  },
+  "independent_source_conformance": {
+    "positive_prefix_origin": true,
+    "seven_fresh_matching_prefixes": true,
+    "all_seven_full_first_loaded_origins_required": true,
+    "queued_ahead_allowed_but_missing_startup_rejected": true,
+    "elapsed_applied_submitted_monotone": true,
+    "resolved_equals_applied": true,
+    "origin_applied_submitted_final_bounds": true,
+    "same_applied_complete_musical_state_stable": true,
+    "same_applied_final_copy_stable": true,
+    "original_exact_note_counts_delta_before_shutdown_ack_preserved": true,
+    "startup_sequence_required_keyword": true,
+    "header_Upper_only_first_S_plus_1_preserved": true,
+    "header_full_coalescing_and_earliest_bounds_preserved": true,
+    "mixed_MIDI_connect_prefix_and_owner_window_preserved": true,
+    "pointer_coalescing_and_2050ms_lower_bound_preserved": true,
+    "full_script_timestamps_control_hold_view_capture_saved_bytes_preserved": true
+  },
+  "pure_validation": {
+    "attribution": "A59 execution, inspected by A53; not rerun by A53",
+    "receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a59-workspace-startup-prefix-implementation.json",
+      "bytes": 33015,
+      "sha256": "4b6ccfddd873cb2c37144e58e89ea769c4b630c1476ccc4de996059659708b9d"
+    },
+    "result": {
+      "command": "python3 -B apps/standalone/native_tests/test_standalone_workspace_replay.py WorkspaceStartupChronology",
+      "returncode": 0,
+      "test_count": 13,
+      "unittest_elapsed_seconds": 0.01,
+      "methods": [
+        "test_queued_ahead_loaded_startup_is_accepted",
+        "test_full_run_must_retain_the_first_loaded_origin",
+        "test_first_loaded_state_requires_full_controls_and_empty_holds",
+        "test_chronology_rejects_regressed_elapsed_time",
+        "test_chronology_rejects_regressed_applied_sequence",
+        "test_chronology_rejects_regressed_submitted_sequence",
+        "test_chronology_rejects_inconsistent_sequences_and_bounds",
+        "test_same_applied_sequence_cannot_change_musical_state",
+        "test_final_copy_cannot_change_state_without_application",
+        "test_command_counts_delta_and_final_acknowledgment_remain_strict",
+        "test_nonpositive_origin_and_empty_chronology_are_rejected",
+        "test_existing_upper_prefix_can_first_copy_after_origin",
+        "test_existing_header_full_prefix_coalescing_remains_legal"
+      ],
+      "native_subprocesses": 0,
+      "synthetic_records_are_oracle_unit_inputs_not_native_evidence": true
+    }
+  },
+  "execution_counts": {
+    "original_native_children": 30,
+    "prospective_native_children": 37,
+    "native_journey_methods": 6,
+    "pure_methods": 13,
+    "prospective_total_Python_methods": 19,
+    "CTest_registration_count": 1,
+    "actual_native_executions_by_A53": 0
+  },
+  "unchanged_bounds": {
+    "per_child_seconds": 9,
+    "CTest_seconds": 90,
+    "RUN_SERIAL": true,
+    "new_prefix_duration_ms": 250,
+    "production_completion_drain_ms": 2000,
+    "header_visual_settle_ms": 600
+  },
+  "limits": [
+    "No native pass inferred from pure checks or AST enumeration",
+    "Original semantic failure and unreached exact saved-byte tail remain failed/unqualified historical evidence",
+    "Root must prove actual37-child execution and all original downstream assertions",
+    "Coherent and exact-source hosted qualification still required",
+    "No physical device/display/accessibility/literal1:1/audio deadline closure"
+  ]
+}

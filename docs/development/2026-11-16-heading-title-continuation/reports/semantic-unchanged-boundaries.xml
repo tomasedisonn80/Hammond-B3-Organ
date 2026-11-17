@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="3"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="2e92012a1646"
+	time="6"
+	timestamp="2026-11-16T20:13:41"
+	>
+	<testcase name="test_standalone_replay_paint_boundary" classname="test_standalone_replay_paint_boundary" time="1.04013" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out>dimensional: passed; actual visits: [{"view": ["play", "flat", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 0}, {"view": ["play", "dimensional", 960, 700, "none"], "rendered_image": 2, "elapsed_ms": 25}, {"view": ["play", "dimensional", 1280, 900, "none"], "rendered_image": 3, "elapsed_ms": 76}]
+flat: passed; actual visits: [{"view": ["play", "dimensional", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 0}, {"view": ["play", "flat", 960, 700, "none"], "rendered_image": 2, "elapsed_ms": 47}, {"view": ["play", "flat", 1280, 900, "none"], "rendered_image": 3, "elapsed_ms": 55}]
+Actual native subprocesses: 2; executable SHA-256: 1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_replay_boundaries" classname="test_standalone_replay_boundaries" time="5.55208" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Replay boundary executable SHA-256: 1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a
+test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_input_replay" classname="test_standalone_input_replay" time="0.0390328" status="run">
+		<properties/>
+		<system-out>standalone replay acceptance (SDL dummy): 654 valid parses, 188 atomic parser rejections, 3 regular-file loads, 12 atomic file rejections, 51 forged-plan rejections, 130 checked queue actions, 14 acknowledged markers, 5 expected runtime failures, 4 lifetime cycles
+</system-out>
+	</testcase>
+</testsuite>

@@ -3,37 +3,41 @@
 Base `9d60dbf462a90fe422fd4e69757fe202264acb7c`; branch `main`.
 Root owns this checkout and `../build-native`. Other workspaces stay read-only.
 
-**Live position:** 43 actual workers dispatched; 40 deliveries accepted,
-including all six first waves. A41 reviews adversarial library coverage, A42
-independently audits the complete qualification and A43 checks compatibility.
-The read-only session validator passes progress mode; strict closure remains
-pending until all sixty actual workers have been reviewed and accepted.
+**Live position:** 54 actual workers dispatched; 53 accepted. A54 awaits
+the final staged tree for its independent prepublication admission. A55–A60
+remain to be dispatched in the final wave; planned assignments are not credit.
 
-All 127 coherent native build steps pass. The first full native/core run is
-**246/247 in 1,005.02 seconds**, exit 8. Its only failed registration was repository
-integrity while A33's linked JSON was not yet written; that report now exists.
-The original failure, JUnit and detail log remain unchanged. Root will rerun only
-the affected documentation gate after authoring settles. Internal Python method
-skips must be distinguished from CTest registrations in the final evidence review.
-All five library CTests, the P1 native and numerical gates, both 45-method Python
-suites and the separate first 12/12 SDK-free selection pass on their recorded
-inputs. The fixed eight-process timing batch retained all 2,400 samples with no
-investigation signal and a passing mandatory cross-witness Flat gate; it is one
-shared-host batch, not a performance-equivalence or display-deadline claim.
+Fresh published `03c70c1` is reconciled. All merge conflicts are resolved;
+local recovery `3263b177d42e96309dcc23a287c586150ab2378e` retains prior
+accepted console work. The combined merge is not yet committed or pushed.
+Exact source admissions preserve H1 and P1, published semantic-paint main,
+the cast fixture and all gates: 41 sanitizer checks/37 targets and 55 mandatory
+platform names, with original per-test policies. A45 admits only two exact
+fixture forms; 17 methods/56 refusal cases pass without changing original pins.
 
-The final integrated gallery passes **15/15** application captures and all **69**
-manifest entries, with unchanged recorded production inputs. Application SHA-256
-is `7f8996cdd062907a8ad4f47021a32ef28a5f5b9753ac9bf7b16cc4849dc77ba3`.
-The original P1 gallery and all original failures remain untouched. README now
-shows `docs/design/native-gallery-console-integrated`; independent final-gallery
-admission remains next. Main/browser integration and literal whole-interface 1:1
-remain incomplete. The A33 native plan defines the next concrete implementation.
+The [combined qualification](reports/combined-qualification.json) passes
+**46/46 build steps, 78/78 affected CTests and 15/15 captures**. All 587
+production/test/build inputs stayed unchanged. Discovery contains 251 tests;
+78 is the affected selection, not a full rerun. All 69 new gallery payloads
+are verified. A48 independently inspected the reference and all sixty retained
+frames; A50's admitted README update now displays the combined gallery.
+The original 246/247 full run and all original failed/older receipts remain
+unchanged. The separate [affected documentation gate](reports/document-integrity-after-combined.json) now passes 1/1 (10.12 seconds); its original full-run failure remains retained.
 
-A38's navigation, A39's resource audit and A40's progress/strict checker are
-accepted. About **45 GiB** remains free; no cleanup is needed. No commit or push
-has yet occurred in this session. Root continues independent reviews and prepares
-fresh-parent, nonforced publication followed by exact-source hosted qualification.
-See [the remaining queue](ROOT_NEXT_QUEUE.md); planned assignments supply no credit.
+The additive painter review covers fixture/actual scale-1 domains; arbitrarily
+tiny positive scales can alias a pixel. Native library browser/main wiring
+remains the next implementation, after model-owned Save availability and a new
+post-Start proof. Literal whole-interface 1:1 remains incomplete and unwaived.
+
+All 432 unique recovery blobs (96,621,792 bytes) are uploaded with returned Git
+SHA verification. No branch ref has moved. The first 770-path tree request
+timed out and a subsequent root-tree read returned 404. Smaller bottom-up,
+direct-child tree requests succeeded: all 54 unique objects match expected SHAs, including recovery tree `b91a76809b8a432bf9a32d2c5032037e64dbec6f`. API recovery commit `280d0f8c0f71de268b3f931cc8677f927bf54e65` has that exact tree and parent `9d60dbf`; no branch ref has moved. The final combined tree and its two-parent publication remain next.
+Fresh remote lease/no-force publication, exact-source hosted outcomes, A54
+staged admission, all sixty accepted notes and strict closure remain pending.
+More than 42 GiB remains free; originals and the A52 failed-capture archive are
+retained. Use the [current handoff](../../CONSOLE_COMPLETION_HANDOFF.md),
+[setup](../../CONSOLE_SETUP_AND_HANDOFF.md) and [root queue](ROOT_NEXT_QUEUE.md).
 The dated entries below preserve
 the sequence and original outcomes; earlier next-action wording is historical.
 

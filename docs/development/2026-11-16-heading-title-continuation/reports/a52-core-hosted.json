@@ -1,0 +1,1089 @@
+{
+  "schema_version": 2,
+  "worker": "A52",
+  "agent": "/root/w09_a52",
+  "wave": 9,
+  "followups_are_same_worker": true,
+  "recorded_utc": "2026-11-17T04:37:34.208995+00:00",
+  "status": "complete_exact_source_core_acceptance",
+  "decision": "All six required Core job families and workflow aggregate pass on original attempt1 at fba1911. Full local240/242 remains failed; standalone/VST3 and later-source qualification are separate.",
+  "published_source": {
+    "commit": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "tree": "b62f212300d75633346ab8fc5ffdd722255fe00a",
+    "parents": [
+      "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+      "835755a9069c25ce55bc2c231547458b4b3ffce4"
+    ],
+    "api_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits/fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2"
+  },
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+    "git_blob_sha1": "295897e4b960f0fdc7fe55ba55e6cad5e23c2501"
+  },
+  "run": {
+    "id": 44016021552,
+    "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+    "path": ".github/workflows/ci.yml",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-17T04:16:23Z",
+    "run_started_at": "2026-11-17T04:16:23Z",
+    "updated_at": "2026-11-17T04:30:57Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552"
+  },
+  "job_count": 6,
+  "successful_jobs": 6,
+  "failed_jobs": 0,
+  "cancelled_jobs": 0,
+  "unassigned_runner_jobs": 0,
+  "retried_jobs": 0,
+  "jobs": [
+    {
+      "id": 133814025154,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001384,
+      "runner_name": "GitHub Actions 1000001384",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T04:16:27Z",
+      "completed_at": "2026-11-17T04:26:17Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025154",
+      "test_wall_seconds": 533.89119289,
+      "ctest_count": 0,
+      "ctest_scope": "dedicated full waveform target",
+      "toolchain": [
+        {
+          "line": 199,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 202,
+          "text": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+        },
+        {
+          "line": 207,
+          "text": "Python 3.12.16"
+        },
+        {
+          "line": 227,
+          "text": "-- The CXX compiler identification is GNU 13.3.0"
+        }
+      ],
+      "full_log": {
+        "bytes": 68197,
+        "characters": 68195,
+        "lines": 486,
+        "sha256": "f8283a5878e69147df82229d6737becd1bac9c83dc45bf91fa899d5ff965e68c",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025154.log.gz",
+        "compressed_bytes": 10861,
+        "compressed_sha256": "c3f9f43912dba660e72b8b232f2e4d905d651acf242ec84cb97bca20963caec8",
+        "round_trip_verified": true
+      },
+      "summary_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025154.summary.json",
+        "bytes": 3406,
+        "sha256": "4c8ce6453efe57337c810767a7205ebdcfd170dc73f49bb9a35e08e349e7089e"
+      },
+      "archive_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025154.log.gz",
+        "bytes": 10861,
+        "sha256": "c3f9f43912dba660e72b8b232f2e4d905d651acf242ec84cb97bca20963caec8"
+      },
+      "supplemental_evidence": {
+        "full_waveform_result": {
+          "line": 424,
+          "status": "pass",
+          "mode": "full",
+          "qualification_json": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T041718.167774Z-751e7158/qualification.json",
+          "wall_seconds": 533.89119289,
+          "failures": []
+        },
+        "self_test_result": {
+          "methods": 14,
+          "seconds": 0.395,
+          "result": "OK"
+        },
+        "uploaded_artifact": {
+          "id": 14298663828,
+          "name": "rotary-waveform-full-linux-1",
+          "bytes": 111722,
+          "sha256": "381586a2f147b0d1dcd6f6afc182c316f9deecd9f844896eab5115b5a89c0f4d",
+          "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/artifacts/14298663828",
+          "evidence": "Successful upload lines465-469 in complete retained job log; artifact body not downloaded."
+        },
+        "detailed_artifact_contents_independently_downloaded": false,
+        "sanitizer_policy_lines": [],
+        "instrumentation_flags_examples": []
+      }
+    },
+    {
+      "id": 133814025396,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001385,
+      "runner_name": "GitHub Actions 1000001385",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T04:16:26Z",
+      "completed_at": "2026-11-17T04:23:09Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025396",
+      "test_wall_seconds": 262.99,
+      "ctest_count": 202,
+      "ctest_scope": "202 unique registered CTests; all pass; all12 required registration/apron names present",
+      "toolchain": [
+        {
+          "line": 209,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 212,
+          "text": "ctest version 3.31.6"
+        },
+        {
+          "line": 215,
+          "text": "Python 3.12.16"
+        },
+        {
+          "line": 216,
+          "text": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+        },
+        {
+          "line": 246,
+          "text": "-- The CXX compiler identification is GNU 13.3.0"
+        }
+      ],
+      "full_log": {
+        "bytes": 463689,
+        "characters": 463687,
+        "lines": 2495,
+        "sha256": "91e47a1c940a4981863711f5cfaf8f7afa4df65245ed7739cc7c7d3bb052342f",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025396.log.gz",
+        "compressed_bytes": 41713,
+        "compressed_sha256": "ea2f3119278a63dcc67145a48fa2f2dfd58c5a53103b0f14072a89dd0c7582eb",
+        "round_trip_verified": true
+      },
+      "summary_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025396.summary.json",
+        "bytes": 44595,
+        "sha256": "40766dcb78c330ed98233ea48240668909e9cf42e6864b643fc4c9f66740c34c"
+      },
+      "archive_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025396.log.gz",
+        "bytes": 41713,
+        "sha256": "ea2f3119278a63dcc67145a48fa2f2dfd58c5a53103b0f14072a89dd0c7582eb"
+      },
+      "supplemental_evidence": {
+        "sanitizer_policy_lines": [
+          {
+            "line": 54,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 55,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 56,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          },
+          {
+            "line": 180,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 181,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 182,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          },
+          {
+            "line": 198,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 199,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 200,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          },
+          {
+            "line": 229,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 230,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 231,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          },
+          {
+            "line": 267,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 268,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 269,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          },
+          {
+            "line": 1966,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 1967,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 1968,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          },
+          {
+            "line": 1984,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 1985,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 1986,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          },
+          {
+            "line": 2455,
+            "text": "  ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 2456,
+            "text": "  UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 2457,
+            "text": "  LSAN_OPTIONS: exitcode=23"
+          }
+        ],
+        "instrumentation_flags_examples": [
+          {
+            "line": 346,
+            "text": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/generated -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -MF CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o.d -o CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ContactBank.cpp"
+          },
+          {
+            "line": 348,
+            "text": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/generated -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -MF CMakeFiles/hammond_core.dir/src/ControlState.cpp.o.d -o CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlState.cpp"
+          },
+          {
+            "line": 350,
+            "text": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/generated -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o -MF CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o.d -o CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlStateIO.cpp"
+          },
+          {
+            "line": 352,
+            "text": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/generated -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/Engine.cpp.o -MF CMakeFiles/hammond_core.dir/src/Engine.cpp.o.d -o CMakeFiles/hammond_core.dir/src/Engine.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Engine.cpp"
+          }
+        ],
+        "instrumentation_link_examples": [
+          {
+            "line": 1923,
+            "text": "/usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/hammond_render.dir/link.d CMakeFiles/hammond_render.dir/tools/render.cpp.o -o hammond_render  libhammond_core.a libhammond_control_file_input.a libhammond_core.a"
+          }
+        ]
+      }
+    },
+    {
+      "id": 133814025466,
+      "name": "Release (Linux GCC)",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001386,
+      "runner_name": "GitHub Actions 1000001386",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T04:16:26Z",
+      "completed_at": "2026-11-17T04:20:37Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025466",
+      "test_wall_seconds": 108.64,
+      "ctest_count": 202,
+      "ctest_scope": "202 unique registered CTests; all pass; all12 required registration/apron names present",
+      "toolchain": [
+        {
+          "line": 200,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 203,
+          "text": "ctest version 3.31.6"
+        },
+        {
+          "line": 206,
+          "text": "Python 3.12.16"
+        },
+        {
+          "line": 207,
+          "text": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39"
+        },
+        {
+          "line": 208,
+          "text": "x86_64"
+        },
+        {
+          "line": 231,
+          "text": "-- The CXX compiler identification is GNU 13.3.0"
+        }
+      ],
+      "full_log": {
+        "bytes": 670953,
+        "characters": 670951,
+        "lines": 6018,
+        "sha256": "7c215b23d10e890a5998762bf7479f46c012043bc4597bc37ca1bc74bbabfbd4",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025466.log.gz",
+        "compressed_bytes": 78599,
+        "compressed_sha256": "6cc51e05fc89771b2ba6368ea306f4c74f32a536573ba497210649ab55b71cd0",
+        "round_trip_verified": true
+      },
+      "summary_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025466.summary.json",
+        "bytes": 44306,
+        "sha256": "86d9f86d0d086c2900b53c0986a71522dad893dc46a5f8e739be5a3e5e3a36a8"
+      },
+      "archive_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025466.log.gz",
+        "bytes": 78599,
+        "sha256": "6cc51e05fc89771b2ba6368ea306f4c74f32a536573ba497210649ab55b71cd0"
+      },
+      "supplemental_evidence": {
+        "supplemental_evidence": {
+          "unittest_outcomes": [
+            {
+              "line": 2452,
+              "text": "Ran 25 tests in 2.142s"
+            },
+            {
+              "line": 2454,
+              "text": "OK (skipped=6)"
+            },
+            {
+              "line": 2471,
+              "text": "Ran 14 tests in 0.288s"
+            },
+            {
+              "line": 2473,
+              "text": "OK (skipped=2)"
+            }
+          ],
+          "optional_skip_lines": [
+            {
+              "line": 2434,
+              "text": "test_extract_preflights_both_destinations_before_writing (__main__.ReferenceApronArtTests.test_extract_preflights_both_destinations_before_writing) ... skipped 'optional Pillow source decoder is not installed'"
+            },
+            {
+              "line": 2435,
+              "text": "test_extract_rejects_toolchain_mismatch_without_creating_destination (__main__.ReferenceApronArtTests.test_extract_rejects_toolchain_mismatch_without_creating_destination) ... skipped 'optional Pillow source decoder is not installed'"
+            },
+            {
+              "line": 2436,
+              "text": "test_extract_reproduces_locked_manifest_and_gzip (__main__.ReferenceApronArtTests.test_extract_reproduces_locked_manifest_and_gzip) ... skipped 'optional Pillow source decoder is not installed'"
+            },
+            {
+              "line": 2446,
+              "text": "test_source_rgb_for_every_unmasked_texel_independent_of_crop_implementation (__main__.ReferenceApronArtTests.test_source_rgb_for_every_unmasked_texel_independent_of_crop_implementation) ... skipped 'optional Pillow source decoder is not installed'"
+            },
+            {
+              "line": 2447,
+              "text": "test_source_verification_requires_full_decoded_image_hash (__main__.ReferenceApronArtTests.test_source_verification_requires_full_decoded_image_hash) ... skipped 'optional Pillow source decoder is not installed'"
+            },
+            {
+              "line": 2449,
+              "text": "test_verify_source_checks_exact_pixels (__main__.ReferenceApronArtTests.test_verify_source_checks_exact_pixels) ... skipped 'optional Pillow source decoder is not installed'"
+            },
+            {
+              "line": 2458,
+              "text": "test_single_pixel_escapes_and_footer_mutations_are_detected (__main__.ContractBoundaryAdversaries.test_single_pixel_escapes_and_footer_mutations_are_detected) ... skipped 'optional NumPy is unavailable; offline pixel comparisons remain unqualified'"
+            },
+            {
+              "line": 2459,
+              "text": "test_source_gate_includes_alpha_and_excludes_only_footer_hole (__main__.ContractBoundaryAdversaries.test_source_gate_includes_alpha_and_excludes_only_footer_hole) ... skipped 'optional NumPy is unavailable; offline pixel comparisons remain unqualified'"
+            }
+          ],
+          "historical_validators": [
+            {
+              "line": 2488,
+              "session": "2026-11-14-interface-continuation",
+              "status": "passed",
+              "scope": "retained_accounting_consistency_only",
+              "counts": {
+                "accepted": 60,
+                "distinct_agents": 60,
+                "distinct_numbers": 60,
+                "invalid_status": 0,
+                "malformed_rows": 0,
+                "recorded": 60,
+                "running": 0,
+                "substantive_accepted_notes": 60
+              },
+              "errors": []
+            },
+            {
+              "line": 3038,
+              "session": "2026-11-14-reference-refinement",
+              "status": "passed",
+              "scope": "retained_accounting_consistency_only",
+              "counts": {
+                "accepted": 60,
+                "distinct_agents": 60,
+                "distinct_ids": 60,
+                "distinct_note_paths": 60,
+                "invalid_status": 0,
+                "malformed_rows": 0,
+                "recorded": 60,
+                "running": 0,
+                "verified_accepted_notes": 60
+              },
+              "errors": []
+            },
+            {
+              "line": 3896,
+              "session": "2026-11-15-product-continuation",
+              "status": "passed",
+              "scope": "retained_record_consistency_only",
+              "counts": {
+                "accepted": 60,
+                "distinct_agents": 60,
+                "distinct_ids": 60,
+                "distinct_note_paths": 60,
+                "invalid_status": 0,
+                "recorded": 60,
+                "review_complete": 0,
+                "running": 0,
+                "verified_accepted_notes": 60
+              },
+              "errors": []
+            }
+          ]
+        },
+        "sanitizer_policy_lines": [],
+        "instrumentation_flags_examples": []
+      }
+    },
+    {
+      "id": 133814025483,
+      "name": "Release (Windows MSVC)",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001389,
+      "runner_name": "GitHub Actions 1000001389",
+      "labels": [
+        "windows-2022"
+      ],
+      "started_at": "2026-11-17T04:16:25Z",
+      "completed_at": "2026-11-17T04:28:20Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025483",
+      "test_wall_seconds": 336.91,
+      "ctest_count": 202,
+      "ctest_scope": "202 unique registered CTests; all pass; all12 required registration/apron names present",
+      "toolchain": [
+        {
+          "line": 228,
+          "text": "cmake version 3.31.6"
+        },
+        {
+          "line": 231,
+          "text": "ctest version 3.31.6"
+        },
+        {
+          "line": 234,
+          "text": "Python 3.12.10"
+        },
+        {
+          "line": 235,
+          "text": "Windows-2022Server-10.0.20348-SP0"
+        },
+        {
+          "line": 236,
+          "text": "AMD64"
+        },
+        {
+          "line": 257,
+          "text": "-- The CXX compiler identification is MSVC 19.44.35230.0"
+        },
+        {
+          "line": 3557,
+          "text": "-- The CXX compiler identification is MSVC 19.44.35230.0"
+        }
+      ],
+      "full_log": {
+        "bytes": 600828,
+        "characters": 600346,
+        "lines": 3889,
+        "sha256": "64c48cf58386c4d701e1d813c6df2a19ab0ecdfe7440e799dcd6f5bd3761cf92",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025483.log.gz",
+        "compressed_bytes": 65569,
+        "compressed_sha256": "5548b8f76d88dd4f7dfaa574de40a1269aac2d09358a185f8ad3f07c99932e81",
+        "round_trip_verified": true
+      },
+      "summary_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025483.summary.json",
+        "bytes": 47195,
+        "sha256": "5192aa35cfba075d0ba9d26cd7a2cb6b0f61c19c0994246916f6c0fb8f68eec5"
+      },
+      "archive_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025483.log.gz",
+        "bytes": 65569,
+        "sha256": "5548b8f76d88dd4f7dfaa574de40a1269aac2d09358a185f8ad3f07c99932e81"
+      },
+      "supplemental_evidence": {
+        "windows_unicode_generator": {
+          "actual_file_records": [
+            {
+              "line": 3803,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "01 Quiet Foundation.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3804,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "01 Quiet Foundation.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3805,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "02 Warm Comp.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3806,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "02 Warm Comp.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3807,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "03 Clear Lead.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3808,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "03 Clear Lead.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3809,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "04 Reed Edge.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3810,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "04 Reed Edge.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3811,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "05 Bright Ensemble.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3812,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "05 Bright Ensemble.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3813,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "06 High Shimmer.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3814,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "06 High Shimmer.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3815,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "07 Percussive Pair.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3816,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "07 Percussive Pair.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3817,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "08 Slow Accent.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3818,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "08 Slow Accent.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3819,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "09 Split Dialogue.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3820,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "09 Split Dialogue.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3821,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "10 Pedal Study.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3822,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "10 Pedal Study.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3823,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "11 Fixed Contrast.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3824,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "11 Fixed Contrast.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3825,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "12 Manual Return.b3registration",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            },
+            {
+              "line": 3826,
+              "schema": "hammond-starter-generator-v1",
+              "event": "file",
+              "file": "12 Manual Return.b3performance",
+              "status": "Saved",
+              "committed": true,
+              "message": "Saved"
+            }
+          ],
+          "summaries": [
+            {
+              "line": 3827,
+              "schema": "hammond-starter-generator-v1",
+              "event": "summary",
+              "status": "Complete",
+              "committed_count": 24,
+              "attempted_count": 24,
+              "unattempted_count": 0,
+              "uncertain_file": null,
+              "message": "All 24 files committed; no existing files were replaced"
+            },
+            {
+              "line": 3828,
+              "schema": "hammond-starter-generator-v1",
+              "event": "summary",
+              "status": "ProtectedPath",
+              "committed_count": 0,
+              "attempted_count": 0,
+              "unattempted_count": 24,
+              "uncertain_file": null,
+              "message": "Generate into a separate staging directory; authored pack paths are protected"
+            }
+          ],
+          "source_root_contains_unicode": true,
+          "workflow_assertions_completed": "All24 canonical payload byte/hash comparisons, compiled UTF-8 source definition and protected-source unchanged inventory checks complete before successful step exit. Detailed payload hashes are in the uploaded qualification artifact; they are not independently downloaded here."
+        },
+        "sanitizer_policy_lines": [],
+        "instrumentation_flags_examples": []
+      }
+    },
+    {
+      "id": 133814025534,
+      "name": "Release (macOS Intel AppleClang)",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001392,
+      "runner_name": "GitHub Actions 1000001392",
+      "labels": [
+        "macos-15-intel"
+      ],
+      "started_at": "2026-11-17T04:16:28Z",
+      "completed_at": "2026-11-17T04:30:56Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025534",
+      "test_wall_seconds": 446.55,
+      "ctest_count": 202,
+      "ctest_scope": "202 unique registered CTests; all pass; all12 required registration/apron names present",
+      "toolchain": [
+        {
+          "line": 285,
+          "text": "cmake version 4.4.2"
+        },
+        {
+          "line": 288,
+          "text": "ctest version 4.4.2"
+        },
+        {
+          "line": 291,
+          "text": "Python 3.12.10"
+        },
+        {
+          "line": 292,
+          "text": "macOS-15.7.9-x86_64-i386-64bit"
+        },
+        {
+          "line": 293,
+          "text": "x86_64"
+        },
+        {
+          "line": 310,
+          "text": "-- The CXX compiler identification is AppleClang 17.0.0.17000013"
+        }
+      ],
+      "full_log": {
+        "bytes": 408881,
+        "characters": 408879,
+        "lines": 2054,
+        "sha256": "55b6418ff9cf5d4dff004693bd9c88d11979755c30685df9277ceda6b5e4de8d",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025534.log.gz",
+        "compressed_bytes": 38402,
+        "compressed_sha256": "cfa964256bfe1493adc734a8bc4d47e04383d7e9c92eb598575097c491f6030b",
+        "round_trip_verified": true
+      },
+      "summary_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025534.summary.json",
+        "bytes": 39774,
+        "sha256": "ba768962b438896b896a4c60be4a1431f6ff80cea0a7e79ebb1387c8c1280ab1"
+      },
+      "archive_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025534.log.gz",
+        "bytes": 38402,
+        "sha256": "cfa964256bfe1493adc734a8bc4d47e04383d7e9c92eb598575097c491f6030b"
+      },
+      "supplemental_evidence": {
+        "sanitizer_policy_lines": [],
+        "instrumentation_flags_examples": []
+      }
+    },
+    {
+      "id": 133814025572,
+      "name": "Release (macOS AppleClang)",
+      "head_sha": "fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001393,
+      "runner_name": "GitHub Actions 1000001393",
+      "labels": [
+        "macos-15"
+      ],
+      "started_at": "2026-11-17T04:16:26Z",
+      "completed_at": "2026-11-17T04:21:49Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44016021552/job/133814025572",
+      "test_wall_seconds": 171.96,
+      "ctest_count": 202,
+      "ctest_scope": "202 unique registered CTests; all pass; all12 required registration/apron names present",
+      "toolchain": [
+        {
+          "line": 268,
+          "text": "cmake version 4.4.5"
+        },
+        {
+          "line": 271,
+          "text": "ctest version 4.4.5"
+        },
+        {
+          "line": 274,
+          "text": "Python 3.12.10"
+        },
+        {
+          "line": 275,
+          "text": "macOS-15.8.2-arm64-arm-64bit"
+        },
+        {
+          "line": 276,
+          "text": "arm64"
+        },
+        {
+          "line": 293,
+          "text": "-- The CXX compiler identification is AppleClang 17.0.0.17000013"
+        }
+      ],
+      "full_log": {
+        "bytes": 411975,
+        "characters": 411973,
+        "lines": 2037,
+        "sha256": "efe6b69b109bdc15f36a79bbf288cdd779c5cf20eb1e64591eae7145b070ae3e",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025572.log.gz",
+        "compressed_bytes": 37514,
+        "compressed_sha256": "580639b7572ccab6e6f641939db59b491725ed7de2abe841eca988f6fdfdcb70",
+        "round_trip_verified": true
+      },
+      "summary_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025572.summary.json",
+        "bytes": 39771,
+        "sha256": "46faa4fdf7d6ea06c61d2cc0c32cb3787562280dc16698a86346ac9850eecc82"
+      },
+      "archive_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-job-133814025572.log.gz",
+        "bytes": 37514,
+        "sha256": "580639b7572ccab6e6f641939db59b491725ed7de2abe841eca988f6fdfdcb70"
+      },
+      "supplemental_evidence": {
+        "sanitizer_policy_lines": [],
+        "instrumentation_flags_examples": []
+      }
+    }
+  ],
+  "initial_observation": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-attempt1-initial.json",
+    "bytes": 26478,
+    "sha256": "54e6ee348083ee85ef13aca639455fbdb5640d2663125ad20a43e6ded51a843d"
+  },
+  "final_observation": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-attempt1-final.json",
+    "bytes": 30476,
+    "sha256": "dc06e0cd775939eb7cc3aaf85831b07289d8e7c410c761d7009b9cdbb752473c"
+  },
+  "workflow_exact_source_copy": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/core-fba1911-ci.yml",
+    "bytes": 20374,
+    "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+  },
+  "root_publication_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/source-publication.json",
+    "bytes": 3184,
+    "sha256": "9ac243a2b46ee5fb01389578f0b85899e7717010ee71bda449683764dcf4f2d5"
+  },
+  "preparation_archive_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/hosted-preparation-archive.json",
+    "bytes": 4000,
+    "sha256": "c5dc3843ce1d8d3ee5a8aad524e00d76e6e5995a32369a9ecaaad585c6d0c2dd"
+  },
+  "preparation_original_archive_verified": true,
+  "required_inventory": [
+    {
+      "name": "Release (Linux GCC)",
+      "job_key": "release",
+      "runner_label": "ubuntu-24.04",
+      "compiler": "g++",
+      "timeout_minutes": 20
+    },
+    {
+      "name": "Release (macOS AppleClang)",
+      "job_key": "release",
+      "runner_label": "macos-15",
+      "compiler": "clang++",
+      "timeout_minutes": 20,
+      "architecture": "Observe actual machine/runner; label alone is not proof."
+    },
+    {
+      "name": "Release (macOS Intel AppleClang)",
+      "job_key": "release",
+      "runner_label": "macos-15-intel",
+      "compiler": "clang++",
+      "timeout_minutes": 20,
+      "architecture": "Observe actual machine/runner; label alone is not proof."
+    },
+    {
+      "name": "Release (Windows MSVC)",
+      "job_key": "release",
+      "runner_label": "windows-2022",
+      "compiler": "cl",
+      "timeout_minutes": 20
+    },
+    {
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "job_key": "rotary-waveform",
+      "runner_label": "ubuntu-24.04",
+      "compiler": "g++",
+      "timeout_minutes": 35
+    },
+    {
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "job_key": "sanitizers",
+      "runner_label": "ubuntu-24.04",
+      "compiler": "g++",
+      "timeout_minutes": 25
+    }
+  ],
+  "required_explicit_ctests": [
+    "test_control_file_input",
+    "test_standalone_registration_library",
+    "python_test_registration_cli",
+    "python_test_registration_cli_admission",
+    "python_test_render_controls",
+    "python_test_render_controls_admission",
+    "python_test_starter_registration_generator",
+    "python_test_starter_registration_oracle",
+    "python_test_starter_auditions",
+    "python_test_registration_install",
+    "python_test_reference_apron_art",
+    "python_test_reference_apron_raster_checker"
+  ],
+  "evidence_totals": {
+    "complete_job_logs": 6,
+    "decoded_utf8_bytes": 2624523,
+    "lossless_gzip_bytes": 272658,
+    "round_trip_verified": true,
+    "ctest_jobs": 5,
+    "registered_ctests_per_job": 202,
+    "not_distinct_tests_across_jobs": true
+  },
+  "preserved_local_diagnoses": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/midi-original-failure-diagnosis.json",
+      "bytes": 21484,
+      "sha256": "89271d930ed9454794d7b14080c45f9c865f58207da15d2398e162c9f4ab10f1"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-failure-review.json",
+      "bytes": 45580,
+      "sha256": "86ec88a774cf25470040bd6908ef91c23dd21d7ee19b1dcfea334a2caf7b2990"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-core-hosted/qualified-midi-failure-review.md",
+      "bytes": 7587,
+      "sha256": "b841b5641212e04073b0727eea088bfa157b77bea3a1d4cfb26ae6e01ca823ce"
+    }
+  ],
+  "review": {
+    "path": "docs/reviews/HEADING_HEADER_CORE_HOSTED.md",
+    "bytes": 7628,
+    "sha256": "c38e1200775190b34a00eb14be7d971c0bb61c7c74881602eb160a60671538d0"
+  },
+  "note": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/notes/A52.md",
+    "bytes": 5361,
+    "sha256": "d2f1a24a5a242c8753773f765d557579e2f148751c4379149b5156065b1735e1",
+    "words": 733
+  },
+  "execution_counts": {
+    "A52_native_processes": 0,
+    "A52_builds": 0,
+    "A52_remote_reads": 19,
+    "A52_remote_mutations": 0,
+    "A52_workflow_or_source_changes": 0,
+    "A52_retries": 0
+  },
+  "qualification_limits": [
+    "Exact fba1911 source only; later native-fixture corrections require their own source/equivalence admission.",
+    "Linux supplemental stdlib suites intentionally skip6 optional Pillow and2 optional NumPy methods; those paths are not claimed as executed passes.",
+    "R4 actual full-mode result and complete job log inspected; detailed waveform artifact body not independently downloaded.",
+    "Windows actual generator output and completed workflow assertions inspected; detailed payload-hash artifact body not independently downloaded.",
+    "Historical interface/refinement/product accounting passes do not close this continuation ledger.",
+    "Original local239/241 and240/242 failures and older source-specific sanitizer failures/retries remain unchanged.",
+    "Core workflow includes SDK-free model/tool tests; separate native standalone and VST3 workflows retain their owners and outcomes.",
+    "Physical fidelity, actual hardware/DAWs, callback deadlines, native accessibility, live model integration and literal whole-interface1:1 remain open."
+  ],
+  "next_step": "Root accepts this source-bound Core delivery, completes other hosted/source repair admissions, updates actual ledger and publishes final evidence/documentation; no A52 new-source pass implied."
+}

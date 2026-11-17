@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "agent": "A54",
+  "wave": 9,
+  "same_worker_followup": true,
+  "recorded_utc": "2026-11-17T04:05:08.899282+00:00",
+  "status": "bounded_mixed_local_evidence_admitted_for_exact_source_hosted_verification",
+  "decision": {
+    "proceed_to_exact_published_source_hosted_verification": true,
+    "green_full_local_run_claim": false,
+    "source_or_property_change_admitted": false,
+    "timeout_increase_admitted": false,
+    "scheduling_change_admitted": false,
+    "native_retries_admitted": false,
+    "repeat_full_suite_only_to_replace_aggregate_required": false,
+    "exact_scheduler_cause_established": false,
+    "repeated_stability_established": false,
+    "midi_failure_adjudication": "Separate A52 review; not adjudicated here."
+  },
+  "completed_original_full_run": {
+    "passed": 240,
+    "total": 242,
+    "returncode": 8,
+    "wrapper_seconds": 740.263707625003,
+    "ctest_seconds": 740.22,
+    "failed_tests": [
+      "test_standalone_preset_raster",
+      "test_standalone_native_midi_replay"
+    ],
+    "configuration": "Existing Release standalone/testing ON; MIDI/VST3 OFF; SDL2.32.10 static dummy-only; no sanitizer",
+    "frozen_code_input_count": 475,
+    "root_changed_code_inputs": [],
+    "root_changed_build_inputs": [],
+    "root_workspace_actual_native_children": 37,
+    "log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.log",
+      "bytes": 130384,
+      "sha256": "c8fa5c2d326bb22069121f245d307e4c4aad588e0727bd15baf3454e65268b1c"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.xml",
+      "bytes": 231727,
+      "sha256": "2dea62baac1897f1c6f209c13b1702adf91b32a90466c7d44a56508652fe1652"
+    },
+    "result_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-results.json",
+      "bytes": 1368,
+      "sha256": "f226ae0a4c6866dab2f577d6c715e03d95891582edf7bf5c76f575c07d00d2cc"
+    },
+    "input_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-inputs.json",
+      "bytes": 76573,
+      "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+    },
+    "discovery": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-test-discovery.json",
+      "bytes": 265664,
+      "sha256": "e70ab29c5671dda9f2439dc7a9580c9042fefa34f361b174839fa9b53381e76a"
+    },
+    "scheduling_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-observed-scheduling.json",
+      "bytes": 50540,
+      "sha256": "718b5d9eb35efe8d91b75776c03bfb3142c16bdacdde75c228a5303b8810b2e1"
+    },
+    "workspace_records_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-workspace-records.json",
+      "bytes": 43221,
+      "sha256": "64dd0527ed9e8bab1b57308c6ca7697d0825e3d89434594ba19699c5a57cbd08"
+    },
+    "independent_completed_test_events": 242,
+    "independent_six_serial_windows": {
+      "test_standalone_workspace_replay": {
+        "start_line": 2,
+        "active_at_start": [],
+        "other_starts": [],
+        "finish_line": 3
+      },
+      "test_standalone_starter_load": {
+        "start_line": 4,
+        "active_at_start": [],
+        "other_starts": [],
+        "finish_line": 5
+      },
+      "test_standalone_native_midi_replay": {
+        "start_line": 479,
+        "active_at_start": [],
+        "other_starts": [],
+        "finish_line": 480
+      },
+      "test_standalone_midi_cli": {
+        "start_line": 1203,
+        "active_at_start": [],
+        "other_starts": [],
+        "finish_line": 1204
+      },
+      "test_standalone_native_calibration": {
+        "start_line": 1205,
+        "active_at_start": [],
+        "other_starts": [],
+        "finish_line": 1206
+      },
+      "test_standalone_app": {
+        "start_line": 1207,
+        "active_at_start": [],
+        "other_starts": [],
+        "finish_line": 1208
+      }
+    },
+    "independent_serial_violations": []
+  },
+  "preserved_original_timeout": {
+    "source_log_lines_inclusive": [
+      17,
+      22
+    ],
+    "log_context": {
+      "bytes": 324,
+      "sha256": "e97ab04f3a1fa099ef8493d2596301f5f79f50e2da0601d79ce4ba75bfdd83d3",
+      "encoding": "base64(gzip(utf8))",
+      "compressed_bytes": 178,
+      "encoded_data": "H4sIAAAAAAACA4WPsQrDMAxE93yFIFuGNLVNSfIVhWY3whGk4NrGUof+fU0ylLSB3iA0nHTvADbdBLOAUpcRhFgsC4YZfQxkUyYmsRlZKFcA/UkZBVNxAdSDGSG9ZInBrnduwUTeuhgkR8/QHqskXpGZ5rJo1fYGmFwFexjT/cJs/4tz+FDU/7GPOZqmme4Pis/SRHdtp1aKL4yz7vcVk49lUImxktFR9QZvB86LRAEAAA==",
+      "decode_verified": true
+    },
+    "original_junit_testcase": {
+      "bytes": 281,
+      "sha256": "50d3f5fc00309d414b24d850b579ebb3f3ba1aaa34666deff0098f79f03e787b",
+      "encoding": "base64(gzip(utf8))",
+      "compressed_bytes": 178,
+      "encoded_data": "H4sIAAAAAAACA42QPQ7CMAyF5/YUUXZoEWIi7SnYI1MMikjSKnYq9fY4qPxtbH725+cnG0biAQhVhICdLtISQ7yAHyPaKSEh2wTEmLQaPBD9RbIr0L7dtruDVsJxpk5fwXnd11VlSpUTqoBEcBP0JAtjZt08x1MaJ0zskIp862WNOQS4o/VwRk9azeCzNCOwm/H4ybR6Nb9mhhaJGDZyrDfNl6gFfb2jfwA2ip6kGQEAAA==",
+      "decode_verified": true
+    },
+    "ctest_seconds": 30.02,
+    "junit_seconds": 30.015,
+    "failure_message": "Timeout",
+    "original_stdout_empty": true,
+    "test_was_not_serial": true,
+    "observed_overlap": {
+      "start_line": 17,
+      "active_at_start": [
+        "python_test_chapel_controls"
+      ],
+      "other_tests_started_while_active": [
+        {
+          "name": "test_standalone_chapel",
+          "line": 19
+        }
+      ],
+      "finish_line": 20
+    },
+    "active_operation_at_timeout_known": false
+  },
+  "unchanged_workload": {
+    "source": {
+      "path": "apps/standalone/native_tests/test_standalone_preset_raster.cpp",
+      "bytes": 19942,
+      "sha256": "5733e529ecb06609d2e19fa9a367450a66ca8a2a41d99b5b7d42bfbbebe210eb"
+    },
+    "configurations": 8,
+    "dimensions": [
+      [
+        960,
+        700
+      ],
+      [
+        1280,
+        900
+      ],
+      [
+        1672,
+        941
+      ],
+      [
+        1400,
+        820
+      ]
+    ],
+    "presentations": [
+      "Dimensional",
+      "Flat"
+    ],
+    "source_derived_full_instrument_paints": 256,
+    "source_derived_rgba_readbacks": 272,
+    "source_derived_expected_counters": {
+      "preserved_label_focus": 192,
+      "full_size_accidental_glyph": 160,
+      "other_manual_accidental_isolation": 752,
+      "applied_pending_cancel_rejection": 96
+    },
+    "SDL_Init_argument": 0,
+    "software_surface": true,
+    "window_audio_or_standalone_child": false,
+    "acknowledgments": "Explicit UiModel SessionSnapshot values, not real audio callbacks.",
+    "explicit_loops_finite": true,
+    "internal_stopwatch_assertions_sleeps_duration_or_process_guards": false,
+    "real_time_benchmark": false,
+    "normal_ctest_timeout_seconds": 30,
+    "existing_sanitizer_only_ctest_timeout_seconds": 300,
+    "current_run_sanitized": false,
+    "generated_test": {
+      "backtrace": 454,
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_preset_raster"
+      ],
+      "name": "test_standalone_preset_raster",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 30.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone"
+        }
+      ]
+    }
+  },
+  "historical_timing": [
+    {
+      "run": "combined",
+      "ctest_seconds": 18.8,
+      "outcome": "passed",
+      "log": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-ctest.log",
+        "bytes": 125501,
+        "sha256": "e25e8b47838da8998aad0c1fd9df5dfcedcfa496e37b55d468b625355ea53c1c"
+      },
+      "input_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-coherent-inputs.json",
+        "bytes": 76308,
+        "sha256": "35da944f0739fe7fd7e543adb18e502f6789f1c55df0b031e27b5b83cc8b59d0"
+      },
+      "same_fixture_and_painter_sha256": true,
+      "same_preset_binary_across_all_historical_runs_claimed": false
+    },
+    {
+      "run": "serialized",
+      "ctest_seconds": 22.19,
+      "outcome": "passed",
+      "log": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-ctest.log",
+        "bytes": 77140,
+        "sha256": "ba6261b1c014a7fb28d01680f74a9de0c6c07e3cab8695931bcb28b3306751b1"
+      },
+      "input_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/serialized-final-coherent-inputs.json",
+        "bytes": 75848,
+        "sha256": "ec855549fb1732ed81f06d0bb540952118bddf1758cecf652b79799df769d8d7"
+      },
+      "same_fixture_and_painter_sha256": true,
+      "same_preset_binary_across_all_historical_runs_claimed": false
+    },
+    {
+      "run": "semantic",
+      "ctest_seconds": 27.25,
+      "outcome": "passed",
+      "log": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-ctest.log",
+        "bytes": 105585,
+        "sha256": "469020395283b24fdcafd76dd97262df67789865e85154b03378e0c21e0cf7ff"
+      },
+      "input_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/semantic-final-coherent-inputs.json",
+        "bytes": 76524,
+        "sha256": "50d2c18dbedccb2db161f202bed6d9801960f85c43907b2adcc7ca2afb74e16a"
+      },
+      "same_fixture_and_painter_sha256": true,
+      "same_preset_binary_across_all_historical_runs_claimed": false
+    },
+    {
+      "run": "qualified",
+      "ctest_seconds": 30.02,
+      "outcome": "timeout",
+      "log": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-ctest.log",
+        "bytes": 130384,
+        "sha256": "c8fa5c2d326bb22069121f245d307e4c4aad588e0727bd15baf3454e65268b1c"
+      },
+      "input_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/qualified-final-coherent-inputs.json",
+        "bytes": 76573,
+        "sha256": "f89c1c4cca0091bbfb65518135690844bcf1182ac37413b88bd62d8b31dcb46b"
+      },
+      "same_fixture_and_painter_sha256": true,
+      "same_preset_binary_across_all_historical_runs_claimed": false
+    }
+  ],
+  "single_unchanged_isolated_gate": {
+    "receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.json",
+      "bytes": 1928,
+      "sha256": "c935b010fa17026d7457d6027d89b6f62f465269a5bb42a8ba9f98a2fa2ac472"
+    },
+    "root_data": {
+      "schema_version": 1,
+      "recorded_utc": "2026-11-17T03:57:43.014242+00:00",
+      "scope": "One unchanged isolated diagnostic after complete qualified-final240/242 failure. No source, property, workload or30second timeout changes. Not a replacement full-suite outcome.",
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/5a28c3564dbf/build-native",
+        "-R",
+        "^test_standalone_preset_raster$",
+        "--parallel",
+        "1",
+        "--verbose",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--output-junit",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.xml"
+      ],
+      "returncode": 0,
+      "seconds": 27.51787920899733,
+      "inputs": {
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_preset_raster.cpp": {
+          "bytes": 19942,
+          "sha256": "5733e529ecb06609d2e19fa9a367450a66ca8a2a41d99b5b7d42bfbbebe210eb"
+        },
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_preset_raster": {
+          "bytes": 3786784,
+          "sha256": "2f064905f2edb47d2d50369c1c468f005dedd386cefcb0d81419e1bdd3322fb9"
+        },
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp": {
+          "bytes": 171413,
+          "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+        },
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/CMakeLists.txt": {
+          "bytes": 44941,
+          "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96"
+        }
+      },
+      "changed_inputs": [],
+      "log": {
+        "bytes": 1288,
+        "sha256": "b245f3df496da5086be88f982bf3443cc13c65c5ab82e7c3a9fd1fc320167d23"
+      },
+      "junit": {
+        "bytes": 688,
+        "sha256": "2f0b11ae8484aaa9eb89ccb3b4e8c9213b28f451c53ea17f092cdb0795646190"
+      }
+    },
+    "log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.log",
+      "bytes": 1288,
+      "sha256": "b245f3df496da5086be88f982bf3443cc13c65c5ab82e7c3a9fd1fc320167d23"
+    },
+    "junit": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/preset-raster-one-isolated.xml",
+      "bytes": 688,
+      "sha256": "2f0b11ae8484aaa9eb89ccb3b4e8c9213b28f451c53ea17f092cdb0795646190"
+    },
+    "all_hashes_verified": true,
+    "testcases": 1,
+    "failures": 0,
+    "skipped": 0,
+    "ctest_seconds": 27.48,
+    "junit_seconds": 27.4798,
+    "computed_timeout_verified_seconds": 30,
+    "within_guard_margin_seconds": 2.520199999999999,
+    "full_case_counts_verified": true,
+    "exact_complete_stdout": "Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio",
+    "no_properties_workload_or_sources_changed": true,
+    "preset_binary_matches_A54_read_during_full_run": true
+  },
+  "source_provenance": {
+    "preset_executable_sha256": "2f064905f2edb47d2d50369c1c468f005dedd386cefcb0d81419e1bdd3322fb9",
+    "selected_source_inputs": {
+      "apps/standalone/native_tests/test_standalone_preset_raster.cpp": {
+        "bytes": 19942,
+        "sha256": "5733e529ecb06609d2e19fa9a367450a66ca8a2a41d99b5b7d42bfbbebe210eb"
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "bytes": 171413,
+        "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+      },
+      "apps/standalone/CMakeLists.txt": {
+        "bytes": 44941,
+        "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96"
+      }
+    },
+    "historical_full_receipts_explicitly_hash_this_preset_binary": false
+  },
+  "next_step": "Root publishes the exact reviewed source with mixed local outcomes documented; inspect hosted exactSHA jobs/attempts/platforms independently. Native VST3 passes alone do not qualify the standalone preset raster gate.",
+  "limits": [
+    "The original local full result remains240/242 and cannot be relabeled242/242.",
+    "The isolated pass proves completion of the unchanged full raster workload inside30seconds once; not repeated stability or exact scheduler causality.",
+    "Concurrent work is directly observed; no thread or CPU trace identifies the timeout mechanism.",
+    "A hosted pass belongs to its own exact source/build/runner and never erases this local timeout.",
+    "No hardware, all-host, calibration, signing, or whole-UI1:1 acceptance is implied.",
+    "A54 performed only reads and new owned review/receipt writes; no previous report/note, source/property, native artifact, build, test or retry changed."
+  ]
+}

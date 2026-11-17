@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T02:33:19.914294+00:00",
+  "rejected_proposal_sha256": "642ad6ba5e65cdfccea701ce63ea9bfa2892845d86e5f339d15f31d1154d9c47",
+  "rejected_source_archive": "docs/development/2026-11-16-heading-title-continuation/inputs/standalone-workflow-first-real-app-check.yml.gz",
+  "corrected_workflow_sha256": "b572d1e34d891657964d8ca6f5882fbaf157ab91ddbb309fd183af89fbdfac6e",
+  "decision": "A51 independent review caught the private target definition before any hosted run. Require HAMMOND_HAS_RTMIDI=0 on support, where CMake actually defines it; keep the calibration probe=1 check. Do not change production flags to satisfy a mistaken verification assumption.",
+  "actual_existing_compile_commands": [
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/Session.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/UiModel.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InspectionModel.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/StateFiles.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/RegistrationLibrary.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/MidiInput.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/MidiDevice.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "support",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/MidiReplay.cpp",
+      "macro": [
+        "-DHAMMOND_HAS_RTMIDI=0"
+      ]
+    },
+    {
+      "target": "application",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/main.cpp",
+      "macro": []
+    },
+    {
+      "target": "application",
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "macro": []
+    }
+  ],
+  "native_or_hosted_execution": false
+}

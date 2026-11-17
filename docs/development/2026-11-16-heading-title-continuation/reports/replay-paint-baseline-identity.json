@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "timestamp_utc": "2026-11-17T02:09:36.221186+00:00",
+  "purpose": "Genuine complete H1 app and exact main/painter before separately admitted replay resize-paint correction. This is not a reconstructed before switch.",
+  "files": [
+    {
+      "source": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+      "copy": "/workspace/scratch/5a28c3564dbf/h1-replay-before-native/hammond_standalone",
+      "bytes": 4103352,
+      "sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b"
+    },
+    {
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/main.cpp",
+      "copy": "/workspace/scratch/5a28c3564dbf/h1-replay-before-native/main.cpp",
+      "bytes": 146859,
+      "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+    },
+    {
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "copy": "/workspace/scratch/5a28c3564dbf/h1-replay-before-native/InstrumentView.cpp",
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    {
+      "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/h1-final-coherent-inputs.json",
+      "copy": "/workspace/scratch/5a28c3564dbf/h1-replay-before-native/coherent-inputs.json",
+      "bytes": 75738,
+      "sha256": "9d6f4514fb5b49be841e61bbb628e4a8522b3bdd77d5b6ce6ed0a09190d95920"
+    }
+  ],
+  "retained_failures": [
+    "h1-final-ctest.log: test_standalone_workspace_replay",
+    "h1-final-ctest.log: test_standalone_starter_load (separate no-resize issue)"
+  ],
+  "gate": "No main.cpp edit is authorized until the deterministic new fixture is frozen and demonstrates genuine old-binary failure."
+}
