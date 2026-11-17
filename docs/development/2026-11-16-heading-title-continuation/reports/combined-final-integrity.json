@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "utc": "2026-11-17T08:05:28.348752+00:00",
+  "checked_staged_tree": "2896ab9303e40f4ec2e21df074fff9cc1d089f64",
+  "base": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "exact_staged_archive": true,
+  "commands": [
+    {
+      "gate": "repository",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_repository.py",
+        "--root",
+        ".",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 4.673768375003419,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-repository-integrity.log",
+      "bytes": 1169,
+      "sha256": "29d83bfeca167d22649ffe70266ede12239413bba401e1e2178109ffaf04ee04"
+    },
+    {
+      "gate": "session",
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-heading-title-continuation/check_session.py",
+        "--strict"
+      ],
+      "exit_code": 0,
+      "seconds": 0.17042981200211216,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-session-integrity.log",
+      "bytes": 1222,
+      "sha256": "cee2198fb1b50a56d6c069a5c9187d327e79181cddc7c98214b4485fd1151627"
+    }
+  ],
+  "exact_source_delta": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49026,
+      "sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61268,
+      "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "bytes": 35747,
+      "sha256": "000aa38a03402e64a0bb5ef6642294973637fa0b7270659c8c23af60eaf40d18"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75580,
+      "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 24838,
+      "sha256": "d37591ec80910769d61f81cf90e7d937bf4844dcd307ae887ac5099c440a8a79"
+    },
+    "tests/test_compare_header_material.py": {
+      "bytes": 34446,
+      "sha256": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+    },
+    "tests/test_compare_performance_plate.py": {
+      "bytes": 53469,
+      "sha256": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 100851,
+      "sha256": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328"
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 90994,
+      "sha256": "d6fcd559d43cec25fb2d3157a9291cfe2608289465278a1e53c6da5ec2587ca5"
+    }
+  },
+  "source_paths_changed": 9,
+  "unchanged_base_paths": 7594,
+  "tested_source_equivalence": {
+    "actually_tested_source": "54859886268ce83c36f359c43327f7c72a77ae82",
+    "existing_paths_compared": 7603,
+    "all_existing_noncurrent_document_paths_identical": true,
+    "allowed_current_document_paths": [
+      "AGENTS.md",
+      "README.md",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/HEADING_TITLE_HEADER_HANDOFF.md",
+      "docs/NEXT_STEPS.md",
+      "docs/PLAN.md",
+      "docs/PROJECT_GUIDE.md",
+      "docs/STATUS.md",
+      "docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md",
+      "docs/development/2026-11-16-heading-title-continuation/NEXT_ASSIGNMENTS.md",
+      "docs/development/2026-11-16-heading-title-continuation/README.md"
+    ],
+    "modified_current_documents": [
+      "AGENTS.md",
+      "README.md",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/HEADING_TITLE_HEADER_HANDOFF.md",
+      "docs/NEXT_STEPS.md",
+      "docs/PLAN.md",
+      "docs/PROJECT_GUIDE.md",
+      "docs/STATUS.md",
+      "docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md",
+      "docs/development/2026-11-16-heading-title-continuation/NEXT_ASSIGNMENTS.md",
+      "docs/development/2026-11-16-heading-title-continuation/README.md"
+    ],
+    "added_evidence_paths": 413,
+    "scope": "Every existing path outside the eleven named current documents is identical to the tested source, including all production/test/tool/build/workflow/assets/data/examples and historical evidence. New files are restricted to this session evidence or heading review records. CI executions retain their actual source commit."
+  },
+  "retained_evidence_whitespace_warning_count": 241,
+  "retained_evidence_whitespace_paths": [
+    "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-windows/workflow-template.diff",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-windows/workflow.template.yml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/header-comparator-indexed-transition-attempt1.patch",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/header-comparator-indexed-transition.patch",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/combined-focused/workflow-source.yml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/core-windows/capture-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/core-windows/ctest-final-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/core-windows/header-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/windows-final-build-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/ctest-final-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/header-statistics-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/p1-native-and-numerical-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/title-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-final-test-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-header-material-pass-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-header-statistics-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-title-density-failure-normalized.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047288-preset-result.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/d2ed-integration/p1-comparator-indexed-superset.patch",
+    "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/p1-portability-candidate.patch",
+    "docs/development/2026-11-16-heading-title-continuation/reports/combined-windows-focused/workflow.yml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/affected-test-discovery.json",
+    "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-ctest.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/configure.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.log",
+    "docs/development/2026-11-16-heading-title-continuation/reports/windows-array-focused/workflow.yml",
+    "docs/development/2026-11-16-heading-title-continuation/reports/windows-array-local/candidate.patch",
+    "docs/development/2026-11-16-heading-title-continuation/reports/windows-array-local/ctest-discovered.json",
+    "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/workflow.yml"
+  ],
+  "whitespace_original": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-final-whitespace-original.log.gz",
+    "decoded": {
+      "bytes": 40456,
+      "sha256": "057cff578ce792616c37d4372b9c865edca43591f42c78a4826c86d461ed009e"
+    },
+    "compressed": {
+      "bytes": 1890,
+      "sha256": "590723c182f88ca7e2d948ba274cb5483f35d96f9933a26b62fe444929465965"
+    }
+  },
+  "free_disk_bytes": 43688402944,
+  "seconds": 13.413903098000446,
+  "native_tests_rerun": false,
+  "scope": "Exact-tree repository integrity and strict original 60-worker/ten-wave record consistency. Source/runtime qualification belongs to separately retained actual executions. No acceptance criterion or gate changed."
+}

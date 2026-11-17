@@ -1,0 +1,124 @@
+{
+  "schema": 1,
+  "reviewer": "A52 (same accepted worker; no additional worker credit)",
+  "baseline_inputs": [
+    {
+      "path": "tools/compare_header_material.py",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 98489,
+      "sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+    },
+    {
+      "path": "tools/compare_footage_typography.py",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 41804,
+      "sha256": "768ad4a5c022038c75414527961d5437bc3990a11d80772ce6fed6fc5a1534a1"
+    },
+    {
+      "path": "tools/compare_heading_typography.py",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 52528,
+      "sha256": "e809a3e052efa5916e1ce6f20b1ef0a5560fc50b423f0759ba705d0650aaf886"
+    },
+    {
+      "path": "tools/compare_title_typography.py",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 55125,
+      "sha256": "a3e6d7f6dcb6b11b1281b69c866e2b044f76eacffc05b5375b4936c77650704c"
+    },
+    {
+      "path": "tests/test_compare_header_material.py",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 25550,
+      "sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125"
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 179890,
+      "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a09-compatibility-baseline.json",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 42529,
+      "sha256": "7cdfb46aea8c3682b688ef965840af5ff76f46275add323f4aac783fcdbbf2c6"
+    },
+    {
+      "path": "docs/development/2026-11-16-ui-delivery/reports/h1-baseline-identity.json",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 38893,
+      "sha256": "eaf89814ff181b2c8559fccc00c1f001d25fa8d8a81d1021d38aca00530dc2d2"
+    },
+    {
+      "path": "docs/development/2026-11-16-ui-delivery/reports/h1-fixture-baseline-identity.json",
+      "git_source": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+      "bytes": 6077,
+      "sha256": "7ca076951bb48ec62dfda051f816a4b6be8c8049405335167b3a7838a289f420"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "git_source": "ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9",
+      "bytes": 61268,
+      "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
+    }
+  ],
+  "input_identity_reused_exactly": true,
+  "attempts": [
+    {
+      "recorded_utc": "2026-11-17T06:42:46.355963+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "tests/test_compare_header_material.py"
+      ],
+      "scope": "Isolated source-only unittest; actual comparator source imported with inert image placeholders and simulated historical file identities. No native build/executable, image algorithm or product acceptance.",
+      "temporary_tree_removed_after_run": true,
+      "exit_code": 1,
+      "seconds": 1.1605212930007838,
+      "patch_sha256": "185af86cf35a18da038294b1eacb429a66ca3735f62f2a77af9e2dd5010813f6",
+      "log_path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/source-only-check-attempt1.log",
+      "log_bytes": 1354,
+      "log_sha256": "c774e207b5853889baa2cb5e9a95e447deea5ea26936db83b9f4357233778e6b",
+      "attempt": 1,
+      "unittest_methods": 32,
+      "patched_sources": {
+        "tools/compare_header_material.py": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328",
+        "tests/test_compare_header_material.py": "533f6acb2b328a260f856e71ed557afd8a5f5f707dec29ad1d2d921fa95c3547"
+      },
+      "interpretation": "One newly authored tamper subcase mistakenly changed an earlier ++index loop outside the reviewed array helper. The comparator rejected that altered complete source correctly at its predecessor-hash check, while the test expected the helper-structure rejection. The first patch and complete failure log are retained. No comparator predicate was changed to pass this test."
+    },
+    {
+      "recorded_utc": "2026-11-17T06:46:31.007559+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "tests/test_compare_header_material.py"
+      ],
+      "scope": "Isolated source-only unittest; actual comparator source imported with inert image placeholders and simulated historical file identities. No native build/executable, image algorithm or product acceptance.",
+      "temporary_tree_removed_after_run": true,
+      "patch_sha256": "fa170d96bf8005a6b9403b28aab5417903866d7ae483c8ad0db6ea79a9a0d0e6",
+      "exit_code": 0,
+      "seconds": 0.9881812509993324,
+      "log_path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/source-only-check-attempt2.log",
+      "log_bytes": 131,
+      "log_sha256": "ddcd37d1511bb49fcd4f3e0705dbeaad223965e866d6f0b3643fa369279908bf",
+      "attempt": 2,
+      "unittest_methods": 32,
+      "patched_sources": {
+        "tools/compare_header_material.py": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328",
+        "tests/test_compare_header_material.py": "4832837c0465e875ac7873ada1d7b005f7da8c727fa7467621f85aa6d7adb8f8"
+      },
+      "interpretation": "The test mutation is now restricted to the exact INDEXED_ARRAY block, with an assertion that its target occurs once. All 32 methods pass (0.725 seconds unittest; wrapper time is recorded separately). Comparator implementation is byte-identical to attempt 1; only the newly added test helper/subcase construction changed."
+    }
+  ],
+  "first_patch_path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/header-comparator-indexed-transition-attempt1.patch",
+  "first_patch_sha256": "185af86cf35a18da038294b1eacb429a66ca3735f62f2a77af9e2dd5010813f6",
+  "limitations": [
+    "This is an isolated source-only unittest, not configured CTest discovery or native acceptance.",
+    "The test imports the real proposed comparator through inert image placeholders and mocks historical file identities for baseline-admission unit tests.",
+    "No image algorithm, C++ executable, build, renderer, device, hosted job or product test was executed by this review.",
+    "Temporary test trees were removed; original failed and final passing logs are retained."
+  ],
+  "frozen_utc": "2026-11-17T06:50:47.295687+00:00"
+}

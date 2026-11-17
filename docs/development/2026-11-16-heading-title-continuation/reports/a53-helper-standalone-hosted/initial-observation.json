@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "worker": "A53",
+  "same_accepted_worker_followup": true,
+  "observed_utc": "2026-11-17 05:50:01 UTC",
+  "source_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+  "tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+  "parents": [
+    "03c70c103a4a0dd72b323529416b909c19a4e139"
+  ],
+  "run_id": 44026516737,
+  "attempt": 1,
+  "source_audit": {
+    "source_inputs": [
+      {
+        "path": ".github/workflows/standalone.yml",
+        "bytes": 71269,
+        "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319",
+        "git_blob": "e542a38d85213459cbcc286ab5ce89e621c442d3",
+        "unchanged_from_03c70c1": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+        "bytes": 61275,
+        "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "git_blob": "b0afc8ccbc436b09012f41323bd1b7412c1f5ae5",
+        "unchanged_from_03c70c1": false
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+        "bytes": 34239,
+        "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+        "git_blob": "3255a5a84a3e84b458a27f415372aa0cb93bceaa",
+        "unchanged_from_03c70c1": false
+      },
+      {
+        "path": "apps/standalone/CMakeLists.txt",
+        "bytes": 44941,
+        "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96",
+        "git_blob": "4b8e01bb7efed934dff514640f29a0c41b57a667",
+        "unchanged_from_03c70c1": true
+      },
+      {
+        "path": "apps/standalone/InstrumentView.cpp",
+        "bytes": 171413,
+        "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+        "git_blob": "ff8f9caa1ffa085df6450347225244cc5a645db1",
+        "unchanged_from_03c70c1": true
+      },
+      {
+        "path": "apps/standalone/main.cpp",
+        "bytes": 147938,
+        "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+        "git_blob": "324fb10f608712c701e4c4e0a8445b44e67a7af8",
+        "unchanged_from_03c70c1": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_preset_raster.cpp",
+        "bytes": 19942,
+        "sha256": "5733e529ecb06609d2e19fa9a367450a66ca8a2a41d99b5b7d42bfbbebe210eb",
+        "git_blob": "6ba3f9acf29d1ca14db1988aac01f37ae1d99d51",
+        "unchanged_from_03c70c1": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+        "bytes": 47128,
+        "sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+        "git_blob": "7ea030bcfcf6833e1db483d1e1980b26c28120cb",
+        "unchanged_from_03c70c1": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py",
+        "bytes": 16743,
+        "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048",
+        "git_blob": "eb4e0cdb3186db97ab0aa2fff9602eb214a6df40",
+        "unchanged_from_03c70c1": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_install.py",
+        "bytes": 44926,
+        "sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+        "git_blob": "856eb6f6c0ead362c6baf78ec599c96f0be81a0a",
+        "unchanged_from_03c70c1": true
+      }
+    ],
+    "code_input_count": 475,
+    "changed_from_03": [
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "unchanged_from_03": 473,
+    "publication_receipt": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/helper-branch-publication.json",
+      "exists": true,
+      "bytes": 4895,
+      "sha256": "1d052411573a89b0f41b9bb8d38464a44e74ea69897eb703c154be717b35b85f"
+    }
+  },
+  "workflow": {
+    "bytes": 71269,
+    "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319"
+  },
+  "workflow_byte_identical_to_03c70c1": true,
+  "normal_required_names": 45,
+  "normal_expected_prefix_names": 68,
+  "sanitizer_selected_names": 34,
+  "sanitizer_build_targets": 31,
+  "sanitizer_job_allowance_minutes": 35,
+  "preset_ordinary_CTest_limit_seconds": 30,
+  "jobs": [
+    {
+      "id": 133848047071,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001419",
+      "runner_id": 1000001419,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T05:47:14Z",
+      "active": [
+        "Build the thirty-one selected acceptance inputs"
+      ]
+    },
+    {
+      "id": 133848047251,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001423",
+      "runner_id": 1000001423,
+      "labels": [
+        "macos-15"
+      ],
+      "started_at": "2026-11-17T05:47:15Z",
+      "active": [
+        "Configure native Release on Linux or macOS"
+      ]
+    },
+    {
+      "id": 133848047271,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001417",
+      "runner_id": 1000001417,
+      "labels": [
+        "windows-2022"
+      ],
+      "started_at": "2026-11-17T05:47:14Z",
+      "active": [
+        "Build the application and every standalone acceptance input"
+      ]
+    },
+    {
+      "id": 133848047285,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001420",
+      "runner_id": 1000001420,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T05:47:14Z",
+      "active": [
+        "Build the application and every standalone acceptance input"
+      ]
+    },
+    {
+      "id": 133848047288,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001415",
+      "runner_id": 1000001415,
+      "labels": [
+        "macos-15-intel"
+      ],
+      "started_at": "2026-11-17T05:47:15Z",
+      "active": [
+        "Configure native Release on Linux or macOS"
+      ]
+    },
+    {
+      "id": 133848047337,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "attempt": 1,
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001425",
+      "runner_id": 1000001425,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T05:47:14Z",
+      "active": [
+        "Build the application and every standalone acceptance input"
+      ]
+    }
+  ],
+  "limits": [
+    "Initial observation only; no terminal acceptance claimed.",
+    "Only the reviewed helper branch and active fixture source pin changed among 475 code inputs; 473 are unchanged.",
+    "The previous Intel timeout remains failed at 03c70c1. A later preset pass would be a separate observation, not a timing repair, cause or stability claim.",
+    "No build/native/test execution, retry, source/workflow edit, remote mutation or new worker credit by A53."
+  ]
+}

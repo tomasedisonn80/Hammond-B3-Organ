@@ -9,7 +9,60 @@ the [strict record check](reports/final-worker-strict.json): 60 note hashes veri
 zero running workers and zero errors. This closes worker records; hosted/product
 qualification remains separate. The [ledger](assignments.json) records every review.
 
-## Current qualified publication and final handoff — 17 November 2026 UTC
+## Final preserving documentary merge — 17 November 2026 UTC
+
+The final expected-head guard observed the concurrent heading-owner publication
+`f3829f50192bcf8fef8bafe72ac43c09d1f4c72c`, tree
+`d216279911a69a364426bef9d5e0b7b5221bd024`, with ordered parents `523c197` and
+`e057dcc0`. Root fetched it and is preserving both completed documentary histories.
+Its 514 changed paths are documentation/evidence; all 587 qualified source inputs
+remain identical to the fully qualified implementation `523c197`.
+
+Our complete accepted final evidence is retained in local `e114b835` and its
+API-equivalent commit `266129294d0d8d70f15307037c3fe5518a000215`, identical tree
+`1acb04ee4408bedd889909c05afd1c48661a9b81`, parent `523c197`. The first final
+[document gate](reports/final-closure-document-integrity.json) passed 1/1 CTest
+and all 41 methods with its fourteen Markdown inputs unchanged. Its
+[root admission](reports/final-closure-root-admission.json) and A60 audit remain
+immutable observations of that pre-merge tree; they are not relabelled as checks
+of the later resolved navigation.
+
+The seven overlapping navigation files retain the incoming heading-owner records,
+refreshed README setup/UI content, detailed visual/audio dependencies and original
+logs, alongside this console's current source-specific CI, rules and next steps.
+Owner routes and anchor aliases are reconciled explicitly. The resolution driver
+is retained in `reports/final-closure-navigation-resolution.py`. No production,
+test, workflow, deadline, criterion, gallery pixel or accepted worker note changes.
+
+The resolved navigation's [first merge document gate](reports/final-merge-document-integrity.json)
+passes 1/1 CTest and all 41 methods, with 587 source inputs and 36 Markdown inputs
+unchanged at that stage. Its result remains immutable. The later terminal-CI
+navigation update requires its own affected integrity result after final readback.
+
+All incoming `f3829f5` jobs are now terminal: **15/16 succeed**. Core is 6/6 and
+VST3 4/4. Native is 5/6; Intel job `133922212477` passes 77/78 CTests but
+`test_standalone_preset_raster` times out at 30.07 seconds under the unchanged
+30-second guard. Re-verification and successful relocated-package/smoke stages
+are skipped. The [complete terminal observation](reports/final-closure-concurrent-ci.json)
+and [independent timeout admission](reports/A59-concurrent-timeout-admission.json)
+retain the exact original log/ZIP and missing completion counters. Source-523's
+sixteen earlier successes remain separate; no precise cause, stability or timing
+fix is claimed. All repository implementation inputs and checked-in runtime assets are unchanged.
+Cross-run native binary identity is not established; the retained RtMidi archive
+hashes differ between these two runner executions.
+
+Publish only the preserving documentation/evidence merge with this timing gate
+open and visible. The [next-actions page](../../NEXT_STEPS.md#keep-the-intel-preset-raster-timing-gate-open)
+specifies a source-bound investigation while retaining the full workload and
+30-second guard. Root completes terminal-CI navigation review and its affected
+document gate, records the final staged admission in
+`reports/final-merge-root-admission.json`, then uses a fresh expected SHA without
+force and independently verifies remote tree/parents/contents and a clean checkout.
+Follow-ups add no worker credit; no source or unchanged-aggregate retry occurred.
+The next product implementation remains model-owned Save availability and actual
+post-Start proof, followed by native input/main/storage/browser integration.
+
+## Accepted pre-merge handoff snapshot — 17 November 2026 UTC
 
 The [combined implementation publication](reports/combined-indexed-publication.json)
 is `523c1979334b0fbb624ce120128a0b8ada078383`, tree

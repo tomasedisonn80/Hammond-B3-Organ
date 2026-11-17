@@ -1,0 +1,621 @@
+{
+  "schema": 1,
+  "observer": "A53/60, wave 9; same accepted worker, no additional credit",
+  "outcome": "All six exact-source main standalone jobs succeeded, attempt 1. Five normal jobs each pass 78/78; Linux ASan/UBSan/leaks passes 41/41.",
+  "source": {
+    "sha": "54859886268ce83c36f359c43327f7c72a77ae82",
+    "tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+    "parents": [
+      "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9"
+    ],
+    "publication_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/combined-main-publication.json",
+    "workflow_sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659",
+    "standalone_CMake_sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+    "basis": "API run head plus actual checkout in every original log; exact workflow/CMake fetched at this SHA; prior focused provenance binds this same source/tree."
+  },
+  "run": {
+    "id": 44038196285,
+    "attempt": 1,
+    "branch": "main",
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196285",
+    "status": "completed",
+    "conclusion": "success",
+    "last_terminal_observation": "2026-11-17 07:48:33 UTC"
+  },
+  "inventory": {
+    "file": "inventory.json",
+    "sha256": "cb713c527f92cb6d27709b98954d7a8f7ffa0ddd32fc398d0970d2161a639adc",
+    "explicit_required_normal_names": 55,
+    "actual_normal_names": 78,
+    "actual_standalone_normal_names": 75,
+    "actual_python_names": 3,
+    "sanitizer_exact_names": 41,
+    "sanitizer_unique_build_targets": 37,
+    "executed_total_across_six_jobs": 431,
+    "distinct_project_suite_claim": false
+  },
+  "jobs": [
+    {
+      "job_id": 133886098388,
+      "path": "job-133886098388.json",
+      "bytes": 46040,
+      "sha256": "d5478bbb52a03ff88c54607740e0dbb1f5d5be3aec32c4a6d9210607af0371e7",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "runner": {
+        "id": 1000001466,
+        "name": "GitHub Actions 1000001466",
+        "labels": [
+          "ubuntu-24.04"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:31Z",
+        "completed_at": "2026-11-17T07:33:45Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 445.96,
+        "actual_names_equal_source_inventory": true
+      },
+      "source_and_dependency_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "ALSA",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 13.15,
+        "line": 5237
+      },
+      "calibration": [
+        {
+          "line": 5411,
+          "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        }
+      ],
+      "paint_children": [
+        {
+          "line": 5515,
+          "text": "246: Actual native subprocesses: 2; executable SHA-256: 19182cbd9a0f7650115049e7830db026383c4f0e0ac374e1af7f36b69969cc9e"
+        },
+        {
+          "line": 5525,
+          "text": "247: Actual native subprocesses: 2; executable SHA-256: 19182cbd9a0f7650115049e7830db026383c4f0e0ac374e1af7f36b69969cc9e"
+        }
+      ],
+      "library_passes": 5,
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133886098757,
+      "path": "job-133886098757.json",
+      "bytes": 46072,
+      "sha256": "fa03cb9697009ef97408746d1d0e0910aeb956aefd3d521ce000b8b47bcd676d",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "runner": {
+        "id": 1000001473,
+        "name": "GitHub Actions 1000001473",
+        "labels": [
+          "ubuntu-24.04"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:31Z",
+        "completed_at": "2026-11-17T07:34:39Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 475.22,
+        "actual_names_equal_source_inventory": true
+      },
+      "source_and_dependency_postcheck": "success",
+      "installed_files": 17,
+      "midi_backend": "unavailable",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 15.12,
+        "line": 5181
+      },
+      "calibration": [
+        {
+          "line": 5355,
+          "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        }
+      ],
+      "paint_children": [
+        {
+          "line": 5459,
+          "text": "246: Actual native subprocesses: 2; executable SHA-256: 6e8d9db1c89e8b51446fea5bd3e282a2af933a9cbf99be0979a40841d0c2a831"
+        },
+        {
+          "line": 5469,
+          "text": "247: Actual native subprocesses: 2; executable SHA-256: 6e8d9db1c89e8b51446fea5bd3e282a2af933a9cbf99be0979a40841d0c2a831"
+        }
+      ],
+      "library_passes": 5,
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133886098398,
+      "path": "job-133886098398.json",
+      "bytes": 46166,
+      "sha256": "b678bf8a0961a3f61f295b5f2c11bc40ded45676e431839712e388d97d83bfc4",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "runner": {
+        "id": 1000001468,
+        "name": "GitHub Actions 1000001468",
+        "labels": [
+          "macos-15"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:33Z",
+        "completed_at": "2026-11-17T07:33:03Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 430.96,
+        "actual_names_equal_source_inventory": true
+      },
+      "source_and_dependency_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "CoreMIDI",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 10.73,
+        "line": 4635
+      },
+      "calibration": [
+        {
+          "line": 4809,
+          "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        }
+      ],
+      "paint_children": [
+        {
+          "line": 4913,
+          "text": "246: Actual native subprocesses: 2; executable SHA-256: a0de20fb05e7c736a8855dd52ac3b84965c9c2795227a23d1a7277efe826ed8d"
+        },
+        {
+          "line": 4923,
+          "text": "247: Actual native subprocesses: 2; executable SHA-256: a0de20fb05e7c736a8855dd52ac3b84965c9c2795227a23d1a7277efe826ed8d"
+        }
+      ],
+      "library_passes": 5,
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133886098331,
+      "path": "job-133886098331.json",
+      "bytes": 46200,
+      "sha256": "5bbf9d97d9e478f3d85ab4d2fe6a8f0e28eea1c60d84849c6534efaaf14784f4",
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "runner": {
+        "id": 1000001469,
+        "name": "GitHub Actions 1000001469",
+        "labels": [
+          "macos-15-intel"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:32Z",
+        "completed_at": "2026-11-17T07:39:32Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 537.55,
+        "actual_names_equal_source_inventory": true
+      },
+      "source_and_dependency_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "CoreMIDI",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 18.36,
+        "line": 4716
+      },
+      "calibration": [
+        {
+          "line": 4890,
+          "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        }
+      ],
+      "paint_children": [
+        {
+          "line": 4994,
+          "text": "246: Actual native subprocesses: 2; executable SHA-256: 1a09e7825c7c2531efb4fa9d18785acdb597f7cbadef080c6889825f9c848504"
+        },
+        {
+          "line": 5004,
+          "text": "247: Actual native subprocesses: 2; executable SHA-256: 1a09e7825c7c2531efb4fa9d18785acdb597f7cbadef080c6889825f9c848504"
+        }
+      ],
+      "library_passes": 5,
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133886098445,
+      "path": "job-133886098445.json",
+      "bytes": 46467,
+      "sha256": "ea980a6c9641989dc5c0c157e64569b7f42acf7f1edaa73d3d63ab1091973c4f",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "runner": {
+        "id": 1000001471,
+        "name": "GitHub Actions 1000001471",
+        "labels": [
+          "windows-2022"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:30Z",
+        "completed_at": "2026-11-17T07:33:03Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 415.8,
+        "actual_names_equal_source_inventory": true
+      },
+      "source_and_dependency_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "WinMM",
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 9.75,
+        "line": 5157
+      },
+      "calibration": [
+        {
+          "line": 5331,
+          "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        }
+      ],
+      "paint_children": [
+        {
+          "line": 5435,
+          "text": "246: Actual native subprocesses: 2; executable SHA-256: eafe29bfc7992879b4970c3b73e7f32c183736f2689e8136be6e6707d76c499b"
+        },
+        {
+          "line": 5445,
+          "text": "247: Actual native subprocesses: 2; executable SHA-256: eafe29bfc7992879b4970c3b73e7f32c183736f2689e8136be6e6707d76c499b"
+        }
+      ],
+      "library_passes": 5,
+      "skip_diagnostics": [
+        {
+          "line": 5461,
+          "text": "248:   test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) (case='fifo') ... skipped 'FIFO creation is not supported on this platform'"
+        },
+        {
+          "line": 5469,
+          "text": "248: OK (skipped=1)"
+        }
+      ]
+    },
+    {
+      "job_id": 133886098061,
+      "path": "job-133886098061.json",
+      "bytes": 32627,
+      "sha256": "70eaaa6c0a90da9b6753a7334048fa557c2748738c8145b9eb23f06d15020b97",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "runner": {
+        "id": 1000001465,
+        "name": "GitHub Actions 1000001465",
+        "labels": [
+          "ubuntu-24.04"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:22:31Z",
+        "completed_at": "2026-11-17T07:45:58Z"
+      },
+      "ctest": {
+        "executed": 41,
+        "passed": 41,
+        "failed": 0,
+        "total_seconds": 943.85,
+        "actual_names_equal_source_inventory": true
+      },
+      "source_and_dependency_postcheck": "success",
+      "installed_files": null,
+      "midi_backend": null,
+      "preset_raster": {
+        "ordinal": 38,
+        "total": 41,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 86.93,
+        "line": 7383
+      },
+      "calibration": [
+        {
+          "line": 7400,
+          "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        }
+      ],
+      "paint_children": [
+        {
+          "line": 7415,
+          "text": "246: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+        },
+        {
+          "line": 7425,
+          "text": "247: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+        }
+      ],
+      "library_passes": 5,
+      "skip_diagnostics": []
+    }
+  ],
+  "common_actual_protocols": {
+    "observed_in_all_six_jobs": true,
+    "title": {
+      "required_cases": 18,
+      "passed_cases": 18,
+      "fixture_inventory": 44
+    },
+    "H1_native": {
+      "cases": 48,
+      "checks": 10542,
+      "paintings": 163,
+      "helper_probes": 95
+    },
+    "H1_statistics": {
+      "evaluated": 103,
+      "passed": 103,
+      "failed": 0,
+      "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+      "RGBA_sha256": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2"
+    },
+    "H1_grain": {
+      "cases": 4,
+      "checks": 170,
+      "pixels": 96000
+    },
+    "P1_native": {
+      "cases": 34,
+      "checks": 53648,
+      "paintings": 111,
+      "helper_probes": 61
+    },
+    "P1_numerical": {
+      "checks_evaluated": 191,
+      "failed_checks": 0,
+      "candidate_screens_passed": 62,
+      "candidate_screens_failed": 0
+    },
+    "library": {
+      "gates": 5,
+      "all_passed": true
+    }
+  },
+  "normal_actuals": {
+    "python_methods_each": {
+      "capture": 45,
+      "header_comparator": 32,
+      "performance_comparator": 64
+    },
+    "workspace_children_each": 37,
+    "calibration_children_each": 10,
+    "calibration_lifecycles_each": 7,
+    "expected_application_replay_failures_each": 2,
+    "real_app_paint_children_each": {
+      "replay": 2,
+      "semantic": 2
+    },
+    "windows": {
+      "compiler": "MSVC 19.44.35230.0",
+      "actual_fixture_flags": [
+        {
+          "file": "test_standalone_footage_typography_raster.cpp",
+          "line": 2150,
+          "W4": true,
+          "WX": true,
+          "actual_command_sha256": "99197b66a130681aac26a78121f13baffd83677c86c4b66140bf0bad866e691d"
+        },
+        {
+          "file": "test_standalone_header_material.cpp",
+          "line": 2093,
+          "W4": true,
+          "WX": true,
+          "actual_command_sha256": "92ea9148b0819aa1c66f891e774e72e0313c267e728897d7ead0e685f8179d5f"
+        },
+        {
+          "file": "test_standalone_performance_plate.cpp",
+          "line": 1947,
+          "W4": true,
+          "WX": true,
+          "actual_command_sha256": "56dc1e9c3b66e2c238c1c55fad98e69d4d5a090efb9c9af0f1b6cbf75d40d389"
+        }
+      ],
+      "replay_boundary_children": 28,
+      "preserved_setup_rejections": 18,
+      "skip": "One unsupported FIFO-creation subcase in the successful replay-boundary CTest; its exact diagnostic is retained. No CTest was skipped."
+    },
+    "install": {
+      "suite_methods_each": 8,
+      "source_sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+      "unicode_basis": "Successful exact eight-method suite includes native prefix Ω / relocated Ω custom-directory and calibration checks. Individual install method names are not printed in these logs."
+    }
+  },
+  "dependencies": {
+    "SDL": {
+      "version": "2.32.10",
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71"
+    },
+    "RtMidi": {
+      "version": "6.0.0",
+      "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "prepared_manifest_sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae",
+      "patch_sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad",
+      "scope": "Enabled normal jobs; Linux MIDI OFF and sanitizer retain their declared disabled production MIDI path."
+    },
+    "all_six_source_dependency_reverification_steps": "success"
+  },
+  "sanitizer": {
+    "job_budget_minutes": 35,
+    "policy": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "build_targets_expected": 37,
+    "CTest_gates_expected": 41,
+    "actual_instrumentation_step": {
+      "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-11-17T07:30:08Z",
+      "completed_at": "2026-11-17T07:30:10Z"
+    },
+    "source_and_object_assertions": [
+      "SDL C and selected project C++ objects contain address,undefined sanitizer flags and frame pointers and exist as nonempty compiled objects",
+      "Seven archives have ASan and UBSan references; 37 selected executables link required sanitizer runtimes",
+      "Real app/probe link the six required instrumented archives; P1 links real painter/support/core/SDL; library gates link model/core",
+      "Production support privately defines MIDI=0; isolated calibration probe defines MIDI=1 and places fake dependency first",
+      "Required exact enabled CTest commands, finite bounds and no per-test sanitizer environment overrides"
+    ],
+    "calibration_postcheck": {
+      "line": 7488,
+      "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+    },
+    "actual_failure_stream_scan": "Successful postcheck scans all seven recorded calibration scenario stderr streams for ASan/UBSan/LSan/runtime-error diagnostics, including two expected application failures.",
+    "finite_limits_seconds": {
+      "workspace_raster": 180,
+      "scaled_view": 360,
+      "preset_raster": 300,
+      "inspection_raster": 60,
+      "material_acceptance": 60,
+      "product_visual": 240,
+      "upper_rack": 240,
+      "lower_rack": 240,
+      "footage": 240,
+      "title_density": 240,
+      "header_material": 480,
+      "P1_native": 480,
+      "P1_numerical": 480,
+      "header_statistics": 240,
+      "header_grain": 90,
+      "replay_paint": 90,
+      "semantic_paint": 90,
+      "manual_keys": 240,
+      "apron_art": 30,
+      "apron_raster": 60,
+      "apron_unavailable": 60,
+      "native_calibration": 180,
+      "header_statistics_child": 60,
+      "paint_child": 30,
+      "P1_reader_child": 60
+    },
+    "ctest_total_seconds": 943.85,
+    "app_sha256": "b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7",
+    "package_stage": "Not defined for this job",
+    "workspace_replay_claim": false
+  },
+  "packaging": {
+    "all_five_normal_stages": "success",
+    "executed_assertions": [
+      "Exact installed member set and bytes",
+      "Rename/relocation preserves members and bytes",
+      "Relocated help plus 600 ms dummy video/audio smoke",
+      "Expected MIDI capability and dependency metadata",
+      "Archive members, sizes and bytes equal installed payload"
+    ],
+    "artifacts_metadata_file": "final-observation.json",
+    "provider_artifacts": 11,
+    "diagnostic_artifacts": 6,
+    "package_artifacts": 5,
+    "direct_download_by_A53": false,
+    "signed_release_claim": false
+  },
+  "retention": {
+    "manifest": "complete-log-archives.json",
+    "manifest_sha256": "2d3e6c6203a990aaec3b3908f751b68587fbdd31bd6d4828ab2b86cb75e4515d",
+    "complete_logs": 6,
+    "decoded_bytes": 6566664,
+    "stored_bytes": 730885,
+    "all_original_decoded_logs_preserved": true,
+    "newline_conversion": false,
+    "Windows_original_CRLF": 5992,
+    "Windows_total_LF": 6004,
+    "gzip": {
+      "mtime": 0,
+      "filename": "",
+      "level": 9
+    },
+    "independent_stdlib_recheck": "All six stored and decoded lengths/hashes, gzip zero mtime, original newline counts, per-job receipt bindings and 431 actual CTest rows independently verified; no native invocation."
+  },
+  "separate_prior_evidence": {
+    "focused_same_source": "../combined-focused/review.md",
+    "focused_receipt": "../combined-focused/summary.json",
+    "focused_receipt_sha256": "87406cab041f60c0ba6490ceab904f850536039e25be960b4264aaefb67026fe",
+    "focused_artifact_verification": "../combined-focused/artifact-independent-verification.json",
+    "focused_pixel_scope": "The focused original P1 canonical stream is exactly equal to the separately retained Linux canonical stream at this source; original Windows inventory differs solely by final CRLF. This is distinct from full-matrix log observation.",
+    "d2ed_failure": "../concurrent-d2ed/review.md",
+    "cf87_failure": "../concurrent-cf87/review.md",
+    "cf87_Core_failure": "../concurrent-cf87/core-windows/review.md",
+    "older_source_review": "docs/reviews/HEADING_HEADER_HELPER_STANDALONE_HOSTED.md",
+    "older_Intel_failure": "docs/reviews/HEADING_HEADER_REPAIR_STANDALONE_HOSTED.md",
+    "original_source_review": "docs/reviews/HEADING_HEADER_STANDALONE_HOSTED.md",
+    "historical_results_unchanged": true
+  },
+  "limits": [
+    "Six standalone families only; Core/VST3 and root aggregate have separate reviewers.",
+    "The main-source run is a new observation, not a retry or replacement of any earlier failure/cancellation.",
+    "Intel preset 18.36 seconds under the unchanged 30-second guard is no timing-fix, cause or stability claim.",
+    "All original strict equality, numerical criteria, workloads, warning policies, individual child/CTest bounds and leak policies remain as committed.",
+    "Complete logs and exact assertion scripts are retained; package downloads and signature validation were not performed by A53.",
+    "Dummy audio/video, fake MIDI calibration, copied-state and software-surface paint do not establish physical devices, real display/DPI, native accessibility, callback retirement/deadlines, calibrated fidelity or literal whole-UI 1:1."
+  ],
+  "next_step": "Root independently reviews and combines all 16 source-specific outcomes, updates current README/setup/plan/checkpoint/next steps, preserves original failures, verifies source-equivalence/integrity, and publishes accepted evidence through a fresh guarded nonforced update. This report does not claim that later documentation publication.",
+  "worker_scope": {
+    "source_edits": 0,
+    "native_or_project_test_runs": 0,
+    "remote_mutations": 0,
+    "CI_retries": 0,
+    "new_workers": 0,
+    "accepted_note_unchanged_sha256": "6d2aa0f8944129595a750c152cd2e7c7599ef4710300256d491249df1f29f954"
+  }
+}

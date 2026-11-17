@@ -1,0 +1,632 @@
+{
+  "schema": 1,
+  "observer": "A53/60 wave9, same accepted worker; no added staffing credit",
+  "outcome": "All six original attempt-one standalone jobs succeed at exact523. Five normal jobs each pass78/78; strict sanitizer passes41/41.",
+  "source": {
+    "sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+    "tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+    "parents": [
+      "8189a49eacab5d4e6ce6c178862e83b03bdec437",
+      "54859886268ce83c36f359c43327f7c72a77ae82"
+    ],
+    "workflow_sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659",
+    "CMake_sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+    "inventory": "inventory.json",
+    "inventory_sha256": "5e12fa98faec9d202d4013b32cfffc5d06d9041d062ac78d941fc4dcd667c8d4",
+    "incoming_source_review": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/reconciled-main-core/incoming-source-review.json",
+      "sha256": "185dc0ba6c638e8c4854670145273af67f8d68e247f0df549bab29a8257c44d8"
+    },
+    "delta": "Exactly five Python/tool inputs differ from548: title/header reader source admission, two extended comparator suites, and bounded failure-only P1 stdout diagnostics. Native C++ fixtures, production, CMake/workflows, strict typed/numerical predicates, native workloads and limits are unchanged."
+  },
+  "run": {
+    "id": 44043394005,
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005",
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "last_terminal_observation": "2026-11-17 08:26:34 UTC"
+  },
+  "inventory_counts": {
+    "explicit_required_normal": 55,
+    "actual_normal": 78,
+    "normal_native_names": 75,
+    "normal_python_names": 3,
+    "exact_sanitizer_gates": 41,
+    "sanitizer_build_targets": 37,
+    "total_configuration_CTest_observations": 431,
+    "not_distinct_project_tests": true
+  },
+  "jobs": [
+    {
+      "job_id": 133903129162,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129162",
+      "path": "job-133903129162.json",
+      "bytes": 48288,
+      "sha256": "897c815e79ad1f934cda4160f475cf0a28da776ca2364d6198db274808ae23c3",
+      "runner": {
+        "id": 1000001498,
+        "name": "GitHub Actions 1000001498",
+        "labels": [
+          "ubuntu-24.04"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T08:02:46Z",
+        "completed_at": "2026-11-17T08:13:47Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 412.77,
+        "actual_names_equal_source_inventory": true
+      },
+      "python_methods": {
+        "python_test_capture_standalone_interface": 45,
+        "python_test_compare_header_material": 41,
+        "python_test_compare_performance_plate": 71
+      },
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 11.67,
+        "line": 5245
+      },
+      "source_dependencies_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "ALSA",
+      "reader_source_admissions": [
+        {
+          "name": "test_standalone_title_density",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+            "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        },
+        {
+          "name": "test_standalone_header_statistics",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+            "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        }
+      ],
+      "header_RGBA": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133903129190,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129190",
+      "path": "job-133903129190.json",
+      "bytes": 48332,
+      "sha256": "cf3bb1904977bad661d4a0ccee9963e815bb0eeb3c4fef2e63f16eb83b17077a",
+      "runner": {
+        "id": 1000001499,
+        "name": "GitHub Actions 1000001499",
+        "labels": [
+          "ubuntu-24.04"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T08:02:46Z",
+        "completed_at": "2026-11-17T08:15:22Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 499.09,
+        "actual_names_equal_source_inventory": true
+      },
+      "python_methods": {
+        "python_test_capture_standalone_interface": 45,
+        "python_test_compare_header_material": 41,
+        "python_test_compare_performance_plate": 71
+      },
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 16.84,
+        "line": 5189
+      },
+      "source_dependencies_postcheck": "success",
+      "installed_files": 17,
+      "midi_backend": "unavailable",
+      "reader_source_admissions": [
+        {
+          "name": "test_standalone_title_density",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+            "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        },
+        {
+          "name": "test_standalone_header_statistics",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+            "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        }
+      ],
+      "header_RGBA": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133903129154,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129154",
+      "path": "job-133903129154.json",
+      "bytes": 48417,
+      "sha256": "70ba1907627a8af1ebad2a76a8db455dc395b5dc0a66b75a8fba7d8782267ad9",
+      "runner": {
+        "id": 1000001494,
+        "name": "GitHub Actions 1000001494",
+        "labels": [
+          "macos-15"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T08:02:46Z",
+        "completed_at": "2026-11-17T08:14:11Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 456.23,
+        "actual_names_equal_source_inventory": true
+      },
+      "python_methods": {
+        "python_test_capture_standalone_interface": 45,
+        "python_test_compare_header_material": 41,
+        "python_test_compare_performance_plate": 71
+      },
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 14.48,
+        "line": 4651
+      },
+      "source_dependencies_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "CoreMIDI",
+      "reader_source_admissions": [
+        {
+          "name": "test_standalone_title_density",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+            "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        },
+        {
+          "name": "test_standalone_header_statistics",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+            "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        }
+      ],
+      "header_RGBA": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133903129393,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129393",
+      "path": "job-133903129393.json",
+      "bytes": 48456,
+      "sha256": "843abf5ff599a0ba03844d5a84bc024e683a467a893b56a454cabea97065a078",
+      "runner": {
+        "id": 1000001503,
+        "name": "GitHub Actions 1000001503",
+        "labels": [
+          "macos-15-intel"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T08:07:27Z",
+        "completed_at": "2026-11-17T08:25:41Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 574.83,
+        "actual_names_equal_source_inventory": true
+      },
+      "python_methods": {
+        "python_test_capture_standalone_interface": 45,
+        "python_test_compare_header_material": 41,
+        "python_test_compare_performance_plate": 71
+      },
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 19.09,
+        "line": 4710
+      },
+      "source_dependencies_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "CoreMIDI",
+      "reader_source_admissions": [
+        {
+          "name": "test_standalone_title_density",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+            "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        },
+        {
+          "name": "test_standalone_header_statistics",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+            "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        }
+      ],
+      "header_RGBA": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+      "skip_diagnostics": []
+    },
+    {
+      "job_id": 133903129277,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129277",
+      "path": "job-133903129277.json",
+      "bytes": 49437,
+      "sha256": "587857a03ad36a240b34122a9e2b74db5cf1e6b3b0f5beab588ecd9234104c69",
+      "runner": {
+        "id": 1000001502,
+        "name": "GitHub Actions 1000001502",
+        "labels": [
+          "windows-2022"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T08:06:41Z",
+        "completed_at": "2026-11-17T08:21:36Z"
+      },
+      "ctest": {
+        "executed": 78,
+        "passed": 78,
+        "failed": 0,
+        "total_seconds": 549.92,
+        "actual_names_equal_source_inventory": true
+      },
+      "python_methods": {
+        "python_test_capture_standalone_interface": 45,
+        "python_test_compare_header_material": 41,
+        "python_test_compare_performance_plate": 71
+      },
+      "preset_raster": {
+        "ordinal": 62,
+        "total": 78,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 17.86,
+        "line": 5164
+      },
+      "source_dependencies_postcheck": "success",
+      "installed_files": 21,
+      "midi_backend": "WinMM",
+      "reader_source_admissions": [
+        {
+          "name": "test_standalone_title_density",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+            "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        },
+        {
+          "name": "test_standalone_header_statistics",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+            "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        }
+      ],
+      "header_RGBA": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+      "skip_diagnostics": [
+        {
+          "line": 5468,
+          "text": "248:   test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) (case='fifo') ... skipped 'FIFO creation is not supported on this platform'"
+        },
+        {
+          "line": 5476,
+          "text": "248: OK (skipped=1)"
+        }
+      ]
+    },
+    {
+      "job_id": 133903128857,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903128857",
+      "path": "job-133903128857.json",
+      "bytes": 34726,
+      "sha256": "05705de60b70b443bb702efcf8460c3f00d40f22d3daad4a31aab39a303c5637",
+      "runner": {
+        "id": 1000001497,
+        "name": "GitHub Actions 1000001497",
+        "labels": [
+          "ubuntu-24.04"
+        ]
+      },
+      "state": {
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T08:02:45Z",
+        "completed_at": "2026-11-17T08:24:11Z"
+      },
+      "ctest": {
+        "executed": 41,
+        "passed": 41,
+        "failed": 0,
+        "total_seconds": 785.99,
+        "actual_names_equal_source_inventory": true
+      },
+      "python_methods": {},
+      "preset_raster": {
+        "ordinal": 38,
+        "total": 41,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 72.17,
+        "line": 7389
+      },
+      "source_dependencies_postcheck": "success",
+      "installed_files": null,
+      "midi_backend": null,
+      "reader_source_admissions": [
+        {
+          "name": "test_standalone_title_density",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+            "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        },
+        {
+          "name": "test_standalone_header_statistics",
+          "admission": {
+            "variant": "indexed-array-v1",
+            "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+            "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+            "candidate_only": true,
+            "whole_file_reversal_verified": true
+          }
+        }
+      ],
+      "header_RGBA": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+      "skip_diagnostics": []
+    }
+  ],
+  "common_actual_protocols": {
+    "all_six_observed": true,
+    "title_cases": 18,
+    "title_fixture_inventory": 44,
+    "H1_cases": 48,
+    "H1_native_checks": 10542,
+    "H1_paintings": 163,
+    "H1_helper_probes": 95,
+    "H1_numerical_evaluated": 103,
+    "H1_numerical_passed": 103,
+    "H1_numerical_failed": 0,
+    "H1_RGBA": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2",
+    "grain_cases": 4,
+    "grain_checks": 170,
+    "P1_native_cases": 34,
+    "P1_native_checks": 53648,
+    "P1_paintings": 111,
+    "P1_numerical_checks": 191,
+    "P1_failed_checks": 0,
+    "P1_screens": 62,
+    "library_gates_each": 5
+  },
+  "new_source_execution": {
+    "normal_Python_methods_each": {
+      "capture": 45,
+      "H1": 41,
+      "P1": 71
+    },
+    "previous548_methods": {
+      "capture": 45,
+      "H1": 32,
+      "P1": 64
+    },
+    "old_methods_preserved": "Independent source review; old methods remain AST-identical.",
+    "title_and_H1_reader_variants_each": "indexed-array-v1; whole_file_reversal_verified=true; complete original/indexed identities printed and frozen in per-job receipts.",
+    "postrun_fixture_identity": "Reader source remains frozen, executable remains unchanged, and each fixture is rehashed against its actual observed admitted source.",
+    "failure_diagnostic_scope": "P1 adds up to8 failure records,160-character check and512-character detail limits plus omitted count. All actual current P1 reports pass; no failed diagnostic branch is claimed executed by these six P1 reader runs."
+  },
+  "native_child_evidence": {
+    "normal_workspace_children_each": 37,
+    "all_six_calibration_subprocesses": 10,
+    "all_six_calibration_lifecycles": 7,
+    "all_six_deliberately_failed_calibration_replays": 2,
+    "all_six_replay_paint_children_each": 2,
+    "all_six_semantic_paint_children_each": 2,
+    "sanitizer_full_workspace_replay_not_selected": true,
+    "windows_replay_boundary_children": 28,
+    "windows_setup_rejections": 18,
+    "windows_FIFO_subcase_skipped": true
+  },
+  "sanitizer": {
+    "job_budget_minutes": 35,
+    "policy": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "build_targets_expected": 37,
+    "CTest_gates_expected": 41,
+    "actual_instrumentation_step": {
+      "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-11-17T08:10:56Z",
+      "completed_at": "2026-11-17T08:10:58Z"
+    },
+    "source_and_object_assertions": [
+      "SDL C and selected project C++ objects contain address,undefined sanitizer flags and frame pointers and exist as nonempty compiled objects",
+      "Seven archives have ASan and UBSan references; 37 selected executables link required sanitizer runtimes",
+      "Real app/probe link the six required instrumented archives; P1 links real painter/support/core/SDL; library gates link model/core",
+      "Production support privately defines MIDI=0; isolated calibration probe defines MIDI=1 and places fake dependency first",
+      "Required exact enabled CTest commands, finite bounds and no per-test sanitizer environment overrides"
+    ],
+    "calibration_postcheck": {
+      "line": 7494,
+      "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+    },
+    "actual_failure_stream_scan": "Successful postcheck scans all seven recorded calibration scenario stderr streams for ASan/UBSan/LSan/runtime-error diagnostics, including two expected application failures.",
+    "finite_limits_seconds": {
+      "workspace_raster": 180,
+      "scaled_view": 360,
+      "preset_raster": 300,
+      "inspection_raster": 60,
+      "material_acceptance": 60,
+      "product_visual": 240,
+      "upper_rack": 240,
+      "lower_rack": 240,
+      "footage": 240,
+      "title_density": 240,
+      "header_material": 480,
+      "P1_native": 480,
+      "P1_numerical": 480,
+      "header_statistics": 240,
+      "header_grain": 90,
+      "replay_paint": 90,
+      "semantic_paint": 90,
+      "manual_keys": 240,
+      "apron_art": 30,
+      "apron_raster": 60,
+      "apron_unavailable": 60,
+      "native_calibration": 180,
+      "header_statistics_child": 60,
+      "paint_child": 30,
+      "P1_reader_child": 60
+    }
+  },
+  "packaging": {
+    "normal_jobs_verified": 5,
+    "installed_inventory_sizes": [
+      21,
+      17,
+      21,
+      21,
+      21
+    ],
+    "executed_assertions": [
+      "Exact installed names/bytes",
+      "Rename and relocation preserve every member and byte",
+      "Relocated help and600ms dummy video/audio smoke",
+      "Expected MIDI and locked dependency metadata",
+      "Archive names/sizes/bytes equal installed payload"
+    ],
+    "Unicode_basis": "Exact unchanged eight-method install suite0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6 includes custom native prefix Ω / relocated Ω and calibration. Individual method names are not printed by these logs.",
+    "direct_package_download_by_A53": false,
+    "provider_metadata": "final-observation.json"
+  },
+  "retention": {
+    "manifest": "complete-log-archives.json",
+    "complete_logs": 6,
+    "decoded_bytes": 6572863,
+    "stored_bytes": 734082,
+    "all_six_round_trips_verified": true,
+    "Windows_newlines_preserved": {
+      "LF": 6011,
+      "CRLF": 5999,
+      "lone_CR": 0
+    }
+  },
+  "prior_evidence": {
+    "accepted548": "../combined-main-standalone/review.md",
+    "d2ed_original_failure": "../concurrent-d2ed/review.md",
+    "cf87_original_failure": "../concurrent-cf87/review.md",
+    "historical_records_and_accepted_A53_note_unchanged": true
+  },
+  "limitations": [
+    "This is exact523 execution, not a replacement or retry of548 or older sources.",
+    "Intel preset passes19.09seconds under unchanged30-second guard. Earlier30.05-second timeout remains failed; no timing fix, originating cause or repeated stability is claimed.",
+    "Normal source/dependency postchecks and all five package assertions pass. Artifact ZIP bodies were not downloaded by A53.",
+    "Dummy devices, isolated fake MIDI and software/copied-state paint do not close whole-UI1:1, real display/DPI, native accessibility, physical MIDI/audio, measured fidelity, callback retirement/deadlines or signed release.",
+    "Core/VST3 and final documentation merge/publication have separate owner receipts."
+  ],
+  "next_step": "Root combines the original523 source-specific matrix, reconciles its preserved documentation branch, verifies exact final input equivalence/integrity and publishes through a fresh expected-main nonforced update. This review claims no later documentary merge or publication.",
+  "actions": {
+    "native_or_build_or_project_test_runs": 0,
+    "remote_mutations": 0,
+    "CI_retries": 0,
+    "new_workers": 0
+  }
+}

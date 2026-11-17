@@ -1,0 +1,353 @@
+name: Windows copied-state investigation
+
+on:
+  push:
+    branches: [investigate/windows-copied-state-6287055]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-copied-state-investigation-${{ github.ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  HAMMOND_CI_MIDI: "ON"
+  HAMMOND_CI_MIDI_BACKEND: WinMM
+  SDL_AUDIODRIVER: dummy
+  SDL_VIDEODRIVER: dummy
+  INVESTIGATION_SOURCE: 6287055a111dc4e2747564da3d48edc9b65e2e3e
+
+jobs:
+  original-source-protocol:
+    name: Original Windows source protocol evidence
+    runs-on: windows-2022
+    timeout-minutes: 25
+    steps:
+      - name: Check out the exact original failed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: 6287055a111dc4e2747564da3d48edc9b65e2e3e
+          persist-credentials: false
+
+      - name: Set up original Python version
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Bind original source and investigation provenance
+        id: provenance
+        run: |
+          set -euo pipefail
+          mkdir -p windows-protocol-diagnostics
+          python - <<'PY'
+          import hashlib, json, os, pathlib, platform, subprocess, sys
+          head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          assert head == os.environ["INVESTIGATION_SOURCE"]
+          subprocess.run(["git", "diff", "--exit-code", "HEAD"], check=True)
+          names = subprocess.check_output(["git", "ls-files", "-z"], text=True).split("\0")
+          sources = {name: hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() for name in names
+                     if name and (name.startswith(("apps/", "src/", "include/", "tests/", "tools/", "data/", "cmake/", ".github/workflows/"))
+                                  or name in ("CMakeLists.txt", "CMakePresets.json"))}
+          record = {"source_commit": head, "workflow_commit": os.environ["GITHUB_SHA"],
+                    "scope": "Missing protocol evidence only, not product qualification or a repaired result",
+                    "python": sys.version, "platform": platform.platform(),
+                    "source_sha256": sources, "original_failed_job": 133848047271,
+                    "original_failed_run": 44026516737, "run_id": os.environ["GITHUB_RUN_ID"],
+                    "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"], "midi": "ON", "midi_backend": "WinMM"}
+          pathlib.Path("windows-protocol-diagnostics/provenance.json").write_text(json.dumps(record, indent=2, sort_keys=True) + "\n")
+          print(json.dumps({key: value for key, value in record.items() if key != "source_sha256"}, sort_keys=True))
+          PY
+          cmake --version | tee windows-protocol-diagnostics/cmake-version.log
+
+      - name: Acquire and verify the unchanged locked SDL2 and RtMidi
+        id: dependencies
+        run: |
+          set -euo pipefail
+          python tools/acquire_sdl2.py --destination "$RUNNER_TEMP/hammond-sdl2" 2>&1 | tee windows-protocol-diagnostics/sdl-acquisition.log
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" 2>&1 | tee windows-protocol-diagnostics/sdl-verification.log
+          python tools/acquire_rtmidi.py --destination "$RUNNER_TEMP/hammond-rtmidi" 2>&1 | tee windows-protocol-diagnostics/rtmidi-acquisition.log
+          python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" 2>&1 | tee windows-protocol-diagnostics/rtmidi-verification.log
+
+      - name: Configure the original Windows Release and MIDI options
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          set -euo pipefail
+          cmake -S . -B build-standalone -G "Visual Studio 17 2022" -A x64 \
+            -DBUILD_TESTING=ON -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+            -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            -DHAMMOND_ENABLE_MIDI="$HAMMOND_CI_MIDI" \
+            -DHAMMOND_RTMIDI_ROOT="$RUNNER_TEMP/hammond-rtmidi" \
+            -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
+            2>&1 | tee windows-protocol-diagnostics/configure.log
+
+      - name: Build only the two unchanged existing fixture targets
+        id: build
+        run: |
+          set -euo pipefail
+          cmake --build build-standalone --config Release \
+            --target test_standalone_footage_typography_raster test_standalone_header_material \
+            --parallel 2 --verbose 2>&1 | tee windows-protocol-diagnostics/build.log
+
+      - name: Verify original test commands and deadlines and compiler identities
+        id: discover
+        run: |
+          set -euo pipefail
+          ctest --test-dir build-standalone -C Release --show-only=json-v1 --no-tests=error \
+            -R '^test_standalone_(title_density|header_statistics)$' > windows-protocol-diagnostics/ctest-discovered.json
+          python - <<'PY'
+          import hashlib, json, pathlib, re, shutil
+          logs = pathlib.Path("windows-protocol-diagnostics")
+          tests = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
+          assert {test["name"] for test in tests} == {"test_standalone_title_density", "test_standalone_header_statistics"}
+          for test in tests:
+              properties = {item["name"]: item["value"] for item in test.get("properties", [])}
+              assert properties["TIMEOUT"] == 90 and not properties.get("DISABLED", False), test
+              command = test["command"]
+              assert command[1] == "-B" and pathlib.Path(command[2]).resolve() == pathlib.Path("apps/standalone/native_tests", test["name"] + ".py").resolve()
+              assert command[3] == "--executable" and pathlib.Path(command[4]).is_file(), command
+              assert (len(command) == 5 if test["name"] == "test_standalone_title_density" else command[5:] == ["--timeout-seconds", "20"]), command
+          compiler = {}
+          for language in ("C", "CXX"):
+              candidates = list(pathlib.Path("build-standalone").glob("CMakeFiles/*/CMake" + language + "Compiler.cmake"))
+              assert len(candidates) == 1
+              source = candidates[0]
+              text = source.read_text()
+              fields = {key: re.search(r'^set\(CMAKE_' + language + '_' + key + r' "([^"]*)"\)', text, re.M).group(1)
+                        for key in ("COMPILER", "COMPILER_ID", "COMPILER_VERSION")}
+              assert fields["COMPILER_ID"] == "MSVC"
+              compiler[language] = fields
+              shutil.copyfile(source, logs / source.name)
+          config = pathlib.Path("build-standalone/_sdl2/include-config-release/SDL2/SDL_config.h")
+          macros = dict(re.findall(r"^#define (SDL_(?:AUDIO|VIDEO)_DRIVER_\w+)\s+([^\r\n]+)", config.read_text(), re.M))
+          assert all(macros.get(name, "").strip() == "1" for name in ("SDL_VIDEO_DRIVER_WINDOWS", "SDL_AUDIO_DRIVER_WASAPI", "SDL_VIDEO_DRIVER_DUMMY", "SDL_AUDIO_DRIVER_DUMMY"))
+          shutil.copyfile(config, logs / "SDL_config-Release.h")
+          (logs / "compiler-and-backends.json").write_text(json.dumps({"compiler": compiler, "sdl_macros": macros}, indent=2, sort_keys=True) + "\n")
+          print(json.dumps({"compiler": compiler, "original_tests": tests}, sort_keys=True))
+          PY
+
+      - name: Retain the actual results of both unchanged CTests
+        id: original_tests
+        run: |
+          set -uo pipefail
+          set +e
+          ctest --test-dir build-standalone -C Release -V --parallel 1 --no-tests=error --timeout 180 \
+            -R '^test_standalone_(title_density|header_statistics)$' \
+            --output-junit "$GITHUB_WORKSPACE/windows-protocol-diagnostics/ctest.xml" \
+            2>&1 | tee windows-protocol-diagnostics/ctest.log
+          result=${PIPESTATUS[0]}
+          echo "$result" > windows-protocol-diagnostics/original-ctest-exit.txt
+          exit "$result"
+
+      - name: Capture original raw case headers despite failed semantic validation
+        if: always() && steps.discover.outcome == 'success'
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          """Acquire missing protocol bytes from original source; never qualify a product."""
+          import hashlib
+          import importlib.util
+          import json
+          import pathlib
+          import subprocess
+          import threading
+          import time
+          
+          OUT = pathlib.Path("windows-protocol-diagnostics")
+          OUT.mkdir(exist_ok=True)
+          
+          
+          def digest(value):
+              return hashlib.sha256(value).hexdigest()
+          
+          
+          def write_json(name, value):
+              (OUT / name).write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          
+          
+          def load(name):
+              path = pathlib.Path("apps/standalone/native_tests") / (name + ".py")
+              spec = importlib.util.spec_from_file_location(name, path)
+              module = importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(module)
+              return module
+          
+          
+          def differences(actual, expected, path="$", result=None):
+              result = [] if result is None else result
+              if len(result) >= 100:
+                  return result
+              if type(actual) is not type(expected):
+                  result.append({"path": path, "actual_type": type(actual).__name__,
+                                 "expected_type": type(expected).__name__, "actual": actual, "expected": expected})
+              elif isinstance(actual, dict):
+                  if actual.keys() != expected.keys():
+                      result.append({"path": path, "actual_keys": sorted(actual), "expected_keys": sorted(expected)})
+                  for key in expected.keys() & actual.keys():
+                      differences(actual[key], expected[key], path + "." + key, result)
+              elif isinstance(actual, list):
+                  if len(actual) != len(expected):
+                      result.append({"path": path, "actual_length": len(actual), "expected_length": len(expected)})
+                  for index, (left, right) in enumerate(zip(actual, expected)):
+                      differences(left, right, path + "[" + str(index) + "]", result)
+              elif actual != expected:
+                  result.append({"path": path, "actual_type": type(actual).__name__,
+                                 "expected_type": type(expected).__name__, "actual": actual, "expected": expected})
+              return result
+          
+          
+          def capture(executable, case, module, label):
+              # Same original reader sizes, byte caps, child deadline and cleanup limits.
+              timeout = getattr(module, "PROCESS_TIMEOUT_SECONDS", getattr(module, "DEFAULT_TIMEOUT_SECONDS", None))
+              assert timeout == 20 and module.CLEANUP_TIMEOUT_SECONDS == 5
+              assert module.MAX_HEADER_BYTES == 524288 and module.MAX_STDERR_BYTES == 65536
+              buffers = [bytearray(), bytearray()]
+              failures = []
+              command = [str(executable), "--case", str(case)]
+              started = time.monotonic()
+              process = subprocess.Popen(command, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+          
+              def kill():
+                  try:
+                      process.kill()
+                  except OSError:
+                      pass
+          
+              def collect(stream, channel, cap):
+                  try:
+                      while True:
+                          chunk = stream.read(module.READ_BYTES)
+                          if not chunk:
+                              break
+                          if len(buffers[channel]) + len(chunk) > cap:
+                              failures.append(("stdout" if channel == 0 else "stderr") + " exceeded original cap")
+                              kill()
+                              break
+                          buffers[channel].extend(chunk)
+                  except OSError as error:
+                      failures.append(str(error)[:4096])
+                      kill()
+                  finally:
+                      stream.close()
+          
+              readers = [threading.Thread(target=collect, args=(process.stdout, 0, module.MAX_STDOUT_BYTES), daemon=True),
+                         threading.Thread(target=collect, args=(process.stderr, 1, module.MAX_STDERR_BYTES), daemon=True)]
+              for reader in readers:
+                  reader.start()
+              try:
+                  process.wait(timeout=timeout)
+              except subprocess.TimeoutExpired:
+                  failures.append("original 20-second child deadline exceeded")
+                  kill()
+                  try:
+                      process.wait(timeout=module.CLEANUP_TIMEOUT_SECONDS)
+                  except subprocess.TimeoutExpired:
+                      failures.append("original 5-second termination bound exceeded")
+              finally:
+                  for reader in readers:
+                      reader.join(timeout=module.CLEANUP_TIMEOUT_SECONDS)
+              if any(reader.is_alive() for reader in readers):
+                  failures.append("reader remained alive after bounded cleanup")
+              # Persist the exact first line before any JSON parsing or semantic predicate.
+              end = buffers[0].find(b"\n", 0, module.MAX_HEADER_BYTES + 1)
+              header = bytes(buffers[0][:end + 1]) if 0 < end <= module.MAX_HEADER_BYTES else bytes(buffers[0][:module.MAX_HEADER_BYTES])
+              (OUT / (label + "-header.bin")).write_bytes(header)
+              (OUT / (label + "-stderr.bin")).write_bytes(buffers[1])
+              result = {
+                  "scope": "diagnostic acquisition only; original test failures remain failures",
+                  "command": command, "case": case, "elapsed_seconds": time.monotonic() - started,
+                  "returncode": process.returncode, "capture_errors": failures,
+                  "child_timeout_seconds": timeout, "cleanup_timeout_seconds": module.CLEANUP_TIMEOUT_SECONDS,
+                  "stdout_cap_bytes": module.MAX_STDOUT_BYTES, "stderr_cap_bytes": module.MAX_STDERR_BYTES,
+                  "header_cap_bytes": module.MAX_HEADER_BYTES, "read_bytes": module.READ_BYTES,
+                  "stdout_bytes": len(buffers[0]), "stdout_sha256": digest(buffers[0]),
+                  "stderr_bytes": len(buffers[1]), "stderr_sha256": digest(buffers[1]),
+                  "raw_header_bytes": len(header), "raw_header_sha256": digest(header),
+                  "raw_header_includes_newline": end > 0,
+                  "executable_bytes": executable.stat().st_size, "executable_sha256": digest(executable.read_bytes()),
+                  "source_sha256": digest(pathlib.Path(module.__file__).read_bytes()),
+                  "images_persisted": 0,
+              }
+              if end > 0:
+                  result["rgba_bytes"] = len(buffers[0]) - end - 1
+                  result["rgba_sha256"] = digest(memoryview(buffers[0])[end + 1:])
+              try:
+                  parsed = load("test_standalone_title_density").bounded_json(header.rstrip(b"\n"), module.MAX_HEADER_BYTES)
+                  write_json(label + "-header-parsed.json", parsed)
+                  if label == "title-case0":
+                      expected = module.expected_controls(module.expected_header(case), True)
+                      result["strict_differences"] = differences(parsed["model"]["view"]["controls"], expected,
+                                                                  "$.model.view.controls")
+                  else:
+                      expected = module.expected_session()
+                      result["strict_differences"] = differences(parsed["session_before"], expected, "$.session_before")
+                      differences(parsed["model_before"]["view"]["applied"], expected,
+                                  "$.model_before.view.applied", result["strict_differences"])
+                  try:
+                      if label == "title-case0":
+                          module.parse_frame(buffers[0], case)
+                      else:
+                          module.parse_frame(buffers[0])
+                      result["unchanged_protocol_parser"] = "passed"
+                  except Exception as error:
+                      result["unchanged_protocol_parser"] = "failed"
+                      result["unchanged_protocol_error"] = str(error)[:4096]
+              except Exception as error:
+                  result["diagnostic_parser_error"] = str(error)[:4096]
+              write_json(label + "-capture.json", result)
+              print(json.dumps({"capture": label, **result}, sort_keys=True), flush=True)
+              return not failures and process.returncode == 0 and not buffers[1] and 0 < end <= module.MAX_HEADER_BYTES
+          
+          
+          discovered = json.loads((OUT / "ctest-discovered.json").read_text(encoding="utf-8"))
+          tests = {test["name"]: test for test in discovered["tests"]}
+          valid = True
+          for name, case, label in (("test_standalone_title_density", 0, "title-case0"),
+                                    ("test_standalone_header_statistics", 46, "header-case46")):
+              command = tests[name]["command"]
+              executable = pathlib.Path(command[command.index("--executable") + 1]).resolve()
+              valid = capture(executable, case, load(name), label) and valid
+          raise SystemExit(0 if valid else 1)
+          PY
+
+      - name: Reverify original source and dependencies even after test failure
+        if: always() && steps.dependencies.outcome == 'success'
+        run: |
+          set -euo pipefail
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" 2>&1 | tee windows-protocol-diagnostics/sdl-verification-after.log
+          python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" 2>&1 | tee windows-protocol-diagnostics/rtmidi-verification-after.log
+          python - <<'PY'
+          import hashlib, json, os, pathlib, subprocess
+          logs = pathlib.Path("windows-protocol-diagnostics")
+          before = json.loads((logs / "provenance.json").read_text())
+          head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          changed = [name for name, value in before["source_sha256"].items() if hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() != value]
+          subprocess.run(["git", "diff", "--exit-code", "HEAD"], check=True)
+          result = {"source_commit": head, "workflow_commit": os.environ["GITHUB_SHA"], "changed_source_inputs": changed,
+                    "checked_inputs": len(before["source_sha256"]), "original_ctest_exit": (logs / "original-ctest-exit.txt").read_text().strip() if (logs / "original-ctest-exit.txt").exists() else "not executed"}
+          (logs / "source-verification-after.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+          assert head == before["source_commit"] == os.environ["INVESTIGATION_SOURCE"] and not changed, result
+          print(json.dumps(result, sort_keys=True))
+          PY
+
+      - name: Always retain missing protocol evidence and original failure results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: windows-original-protocol-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            windows-protocol-diagnostics/
+            build-standalone/CMakeCache.txt
+            build-standalone/CMakeFiles/CMakeConfigureLog.yaml
+            build-standalone/Testing/Temporary/LastTest.log
+            build-standalone/Testing/Temporary/LastTestsFailed.log

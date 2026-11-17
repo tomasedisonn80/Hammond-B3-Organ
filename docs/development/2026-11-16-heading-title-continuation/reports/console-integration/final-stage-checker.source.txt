@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+"""Check the exact staged combined tree without running native gates again."""
+import argparse
+from datetime import datetime,timezone
+import gzip
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import subprocess
+import tempfile
+import time
+
+ap=argparse.ArgumentParser();ap.add_argument('label');ap.add_argument('--expected',type=Path,required=True);ap.add_argument('--tested-source');args=ap.parse_args()
+assert args.label.replace('-','').isalnum()
+repo=Path(__file__).resolve().parent/'Hammond-B3-Organ';scratch=repo.parent
+session=Path('docs/development/2026-11-16-heading-title-continuation');out=repo/session/'reports'
+def git(*a):return subprocess.check_output(['git',*a],cwd=repo)
+def tree_entries(ref):
+ result={}
+ for row in git('ls-tree','-r','-z',ref).split(b'\0'):
+  if row:
+   meta,name=row.split(b'\t',1);mode,kind,sha=meta.decode().split();result[name.decode()]=dict(mode=mode,type=kind,sha=sha)
+ return result
+def ident(data):return dict(bytes=len(data),sha256=hashlib.sha256(data).hexdigest())
+expected=json.loads(args.expected.read_text());base=expected['base'];expected_changes=expected['exact_source_delta']
+staged=git('write-tree').decode().strip();entries=tree_entries(staged);before=tree_entries(base)
+changed={p for p in set(entries)|set(before) if entries.get(p)!=before.get(p)}
+source_equivalence=None
+if args.tested_source:
+ tested=git('rev-parse',args.tested_source).decode().strip();tested_entries=tree_entries(tested)
+ documentary={'README.md','AGENTS.md','docs/PLAN.md','docs/PROJECT_GUIDE.md','docs/STATUS.md','docs/NEXT_STEPS.md','docs/HEADING_TITLE_HEADER_HANDOFF.md','docs/DEVELOPMENT_LOG.md',str(session/'README.md'),str(session/'CHECKPOINT.md'),str(session/'NEXT_ASSIGNMENTS.md')}
+ assert all(p in tested_entries and p in entries and entries[p]['mode']==tested_entries[p]['mode'] and entries[p]['type']==tested_entries[p]['type'] for p in documentary),'A current document is missing or has an unintended mode/type change'
+ existing_changes=[p for p in tested_entries if entries.get(p)!=tested_entries[p]]
+ assert set(existing_changes)<=documentary,existing_changes
+ added=set(entries)-set(tested_entries)
+ assert all(p.startswith(str(session/'reports')+'/') or (p.startswith('docs/reviews/HEADING_') and p.endswith('.md')) for p in added),sorted(added)
+ equal=[p for p in tested_entries if p not in documentary]
+ assert all(entries.get(p)==tested_entries[p] for p in equal)
+ source_equivalence={'actually_tested_source':tested,'existing_paths_compared':len(equal),'all_existing_noncurrent_document_paths_identical':True,'allowed_current_document_paths':sorted(documentary),'modified_current_documents':sorted(existing_changes),'added_evidence_paths':len(added),'scope':'Every existing path outside the eleven named current documents is identical to the tested source, including all production/test/tool/build/workflow/assets/data/examples and historical evidence. New files are restricted to this session evidence or heading review records. CI executions retain their actual source commit.'}
+else:
+ assert changed==set(expected_changes),sorted(changed)
+for p,wanted in expected_changes.items():assert ident(git('cat-file','blob',entries[p]['sha']))==wanted,p
+view=Path(tempfile.mkdtemp(prefix=args.label+'-staged-',dir=scratch));receipts=[];started=time.monotonic()
+try:
+ with tempfile.TemporaryFile() as errors:
+  producer=subprocess.Popen(['git','archive','--format=tar',staged],cwd=repo,stdout=subprocess.PIPE,stderr=errors)
+  consumer=subprocess.run(['tar','-xf','-','-C',str(view)],stdin=producer.stdout,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+  producer.stdout.close();assert producer.wait()==0 and consumer.returncode==0,consumer.stderr
+ for name,command in [('repository',['python3','-B','tools/check_repository.py','--root','.','--json']),('session',['python3','-B',str(session/'check_session.py'),'--strict'])]:
+  t=time.monotonic();r=subprocess.run(command,cwd=view,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);f=out/(args.label+'-'+name+'-integrity.log');f.write_bytes(r.stdout)
+  row=dict(gate=name,command=command,exit_code=r.returncode,seconds=time.monotonic()-t,log=str(f.relative_to(repo)),**ident(r.stdout));receipts.append(row);print(json.dumps(row),flush=True)
+  assert r.returncode==0,r.stdout.decode(errors='replace')[-10000:]
+ w=subprocess.run(['git','diff','--cached','--check'],cwd=repo,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+ warnings=[]
+ for line in w.stdout.decode().splitlines():
+  if any(message in line for message in (': trailing whitespace.',': new blank line at EOF.',': space before tab in indent.')):warnings.append(dict(path=line.split(':',1)[0],message=line))
+ assert w.returncode in (0,2) and (w.returncode==0)==(not warnings),w.stdout.decode(errors='replace')[:4000]
+ assert all(row['path'].startswith(str(session/'reports')+'/') for row in warnings),warnings
+ z=out/(args.label+'-whitespace-original.log.gz');z.write_bytes(gzip.compress(w.stdout,mtime=0))
+ record=dict(schema=1,utc=datetime.now(timezone.utc).isoformat(),checked_staged_tree=staged,base=base,exact_staged_archive=True,commands=receipts,exact_source_delta=expected_changes,source_paths_changed=len(expected_changes),unchanged_base_paths=sum(entries.get(p)==v for p,v in before.items()),tested_source_equivalence=source_equivalence,retained_evidence_whitespace_warning_count=len(warnings),retained_evidence_whitespace_paths=sorted({x['path'] for x in warnings}),whitespace_original=dict(path=str(z.relative_to(repo)),decoded=ident(w.stdout),compressed=ident(z.read_bytes())),free_disk_bytes=shutil.disk_usage(scratch).free,seconds=time.monotonic()-started,native_tests_rerun=False,scope='Exact-tree repository integrity and strict original 60-worker/ten-wave record consistency. Source/runtime qualification belongs to separately retained actual executions. No acceptance criterion or gate changed.')
+ f=out/(args.label+'-integrity.json');f.write_text(json.dumps(record,indent=2)+'\n');print(json.dumps({'pass':True,'tree':staged,'receipt':str(f.relative_to(repo)),'source_changes':len(expected_changes),'compared_existing_paths':source_equivalence['existing_paths_compared'] if source_equivalence else len(before)}),flush=True)
+finally:shutil.rmtree(view)

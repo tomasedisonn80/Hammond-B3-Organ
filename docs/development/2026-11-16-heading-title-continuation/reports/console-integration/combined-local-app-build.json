@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "utc_start": "2026-11-17T07:50:57.932987+00:00",
+  "source_commit": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+    "--build",
+    "/workspace/scratch/5a28c3564dbf/build-native",
+    "--config",
+    "Release",
+    "--target",
+    "hammond_standalone",
+    "--parallel",
+    "2"
+  ],
+  "before_binary": {
+    "bytes": 4103352,
+    "sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+  },
+  "cache_before": {
+    "bytes": 47686,
+    "sha256": "cc6349d42235df5e3538e9b1b291e1e30ebfc0fedf9d924fd36d5042498dc2d6"
+  },
+  "source_before": {
+    "apps/standalone/main.cpp": {
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "bytes": 179890,
+      "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+    }
+  },
+  "setup_note": "An initial receipt setup assumed apps/standalone/src/main.cpp and raised FileNotFoundError before writing a receipt or invoking CMake. Actual paths were then read from rg --files. No build or native test occurred in that failed metadata setup.",
+  "reason": "Refresh the existing MIDI-OFF Release application in the one coordinated local build to the already-qualified combined production source. The old runnable binary was the historical H1-only capture. No new native test, capture, device selection or build-option change.",
+  "exit_code": 0,
+  "seconds": 10.877498714995454,
+  "after_binary": {
+    "bytes": 4111800,
+    "sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9"
+  },
+  "cache_after": {
+    "bytes": 47686,
+    "sha256": "cc6349d42235df5e3538e9b1b291e1e30ebfc0fedf9d924fd36d5042498dc2d6"
+  },
+  "source_after": {
+    "apps/standalone/main.cpp": {
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "bytes": 179890,
+      "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+    }
+  },
+  "source_commit_after": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "native_test_or_capture_executed": false,
+  "cache_unchanged": true,
+  "source_unchanged": true,
+  "log": {
+    "bytes": 732,
+    "sha256": "655d04705d0b130a409c888f13dad78aaf6fbcb494809d964962ab2b74a40562"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "source_candidate": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "source_tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+  "qualification": "Exact final consumers ran before same-tree source publication; metadata does not alter actual inputs.",
+  "tests": [
+    {
+      "name": "python_test_capture_standalone_interface",
+      "seconds": 1.82437,
+      "passed": true
+    },
+    {
+      "name": "python_test_compare_header_material",
+      "seconds": 1.03048,
+      "passed": true
+    },
+    {
+      "name": "python_test_compare_performance_plate",
+      "seconds": 1.62923,
+      "passed": true
+    },
+    {
+      "name": "test_standalone_performance_plate_numerical",
+      "seconds": 1.06722,
+      "passed": true
+    }
+  ],
+  "result": {
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/5a28c3564dbf/build-native",
+      "-C",
+      "Release",
+      "-R",
+      "^(python_test_(compare_header_material|compare_performance_plate|capture_standalone_interface)|test_standalone_performance_plate_numerical)$",
+      "--parallel",
+      "1",
+      "--verbose",
+      "--output-junit",
+      "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.xml"
+    ],
+    "exit_code": 0,
+    "seconds": 5.616027559997747,
+    "log": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.log",
+    "bytes": 12739,
+    "sha256": "5dbd44d2dcebc617e708b6fd9d948122706fff6c55b08bfe3126e8bdaa9177d7",
+    "source_unchanged": true,
+    "native_default_34_case_test_repeated_locally": false,
+    "qualification_reason": "New additive source admission and incoming test path/newline portability changes; re-execute only their three Python suites and actual numerical consumer. Original native fixtures/painter/binaries remain unchanged; focused Windows/full matrix will execute all required native gates at published source."
+  },
+  "p1_numerical": {
+    "passed": true,
+    "checks": 191,
+    "screens": 62,
+    "fixture_source_admission": {
+      "accepted_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "candidate_only": true,
+      "claim": "Source admission only; coherent build and runtime acceptance remain separate.",
+      "observed_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "original_pinned_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "transition": {
+        "helper_transition": {
+          "corrected_block_sha256": "ef644e3e10e0ecc9d914f99e1c78a5bb6bdb1209aa0ecc696f86a410b3a60551",
+          "id": "p1-helper-constexpr-else-v1",
+          "original_block_sha256": "e3e8fdad56e8332de33b348d06c8a94ef1176d512b352a2079cd95b0c9ad34d5",
+          "reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+          "scope": "candidate-only",
+          "whole_file_reversal_verified": true
+        },
+        "id": "p1-fixture-constexpr-else-indexed-array-v1",
+        "intermediate_fixture_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+        "replacements": {
+          "constexpr-else": {
+            "after_bytes": 184,
+            "after_sha256": "ef644e3e10e0ecc9d914f99e1c78a5bb6bdb1209aa0ecc696f86a410b3a60551",
+            "before_bytes": 167,
+            "before_sha256": "e3e8fdad56e8332de33b348d06c8a94ef1176d512b352a2079cd95b0c9ad34d5",
+            "occurrences": 1
+          },
+          "indexed-array": {
+            "after_bytes": 244,
+            "after_sha256": "0cee193c8b4fe1065ac47d4c062a97f7e68130819f4a060503e02eb59e50a35a",
+            "before_bytes": 251,
+            "before_sha256": "a6e4c73cfb8a7ff7eb3b580af35bf098c2da52b8c4b14c31db0dfe7c42fb73e1",
+            "occurrences": 1
+          }
+        },
+        "reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+        "scope": "candidate-only",
+        "whole_file_reversal_verified": true
+      },
+      "variant": "p1-helper-constexpr-else-indexed-array"
+    },
+    "retained_files": [
+      {
+        "original": "/tmp/p1-frozen62-nexr007h/report.json",
+        "retained": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-p1-numerical-retained/report.json",
+        "bytes": 50775,
+        "sha256": "6e68c7e15c6da444ebea2dc48f07c73f26cebc80d18d733107b51c7a9f964c16"
+      },
+      {
+        "original": "/tmp/p1-frozen62-nexr007h/after-00.stderr.zlib",
+        "retained": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-p1-numerical-retained/after-00.stderr.zlib",
+        "bytes": 8,
+        "sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb"
+      },
+      {
+        "original": "/tmp/p1-frozen62-nexr007h/after-00.stdout.zlib",
+        "retained": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-p1-numerical-retained/after-00.stdout.zlib",
+        "bytes": 1100577,
+        "sha256": "d03aa8aa2b81f0be063369793621226c6c4047aed473de9f2e3dccc6e85b0366"
+      },
+      {
+        "original": "/tmp/p1-frozen62-nexr007h/after-list.stderr.zlib",
+        "retained": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-p1-numerical-retained/after-list.stderr.zlib",
+        "bytes": 8,
+        "sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb"
+      },
+      {
+        "original": "/tmp/p1-frozen62-nexr007h/after-list.stdout.zlib",
+        "retained": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-p1-numerical-retained/after-list.stdout.zlib",
+        "bytes": 2412,
+        "sha256": "df37c31b128027142d7e712759c103b3ae43d3a5ec320760b50e37e34504cb61"
+      }
+    ]
+  },
+  "boundaries": "No claim that the earlier14gate execution used these final comparator/test bytes. Its unchanged native inputs/workload remain separately retained; focusedWindows and full16jobs remain pending."
+}

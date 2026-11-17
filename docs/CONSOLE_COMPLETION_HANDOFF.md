@@ -64,6 +64,22 @@ ASan/UBSan/leaks and unchanged deadlines. Optional internal Python subcase skips
 including the Windows FIFO case, remain disclosed in the full receipts; no CTest
 is skipped or disabled. These results qualify this exact implementation source.
 The same reviewers add no worker credit, and all earlier failures remain intact.
+<!-- console-later-ci:start -->
+**Later documentary-source observation:** all sixteen `f3829f5` jobs are
+terminal; **fifteen succeeded**: Core 6/6, native 5/6 and VST3 4/4. Intel native job `133922212477` passed
+**77/78 CTests**; `test_standalone_preset_raster` timed out at **30.07 seconds**
+under its unchanged **30-second guard**. Its post-acceptance source/dependency
+re-verification and successful relocated-package/smoke stages were skipped.
+The [terminal receipt and original failure evidence](development/2026-11-16-console-completion/reports/final-closure-concurrent-ci.json) and
+[independent timeout admission](development/2026-11-16-console-completion/reports/A59-concurrent-timeout-admission.json) preserve that outcome separately
+from `523c197`'s earlier sixteen successes. All 587 qualified repository source inputs and checked-in runtime assets are
+unchanged; this documentary merge introduces no timing repair or cross-run binary identity claim.
+The full preset workload and original guard remain required. No completed fixture
+counters, precise timeout cause or repeated timing stability are established.
+Keep an explicit Intel timing investigation open without retrying merely to obtain
+a green aggregate or changing the workload, thresholds or guard.
+<!-- console-later-ci:end -->
+
 <!-- console-final-ci:end -->
 
 The preceding indexed source `5485988` has [16/16 successful hosted jobs](development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json),

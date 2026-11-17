@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "component": "Steinberg VST 3 SDK",
+  "version": "3.8.1",
+  "tag": "v3.8.1_build_84",
+  "repository": "https://github.com/steinbergmedia/vst3sdk.git",
+  "commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+  "review_date": "2026-11-13",
+  "purpose": "Optional headless VST3 instrument and SDK validator; ordinary core builds remain SDK-independent.",
+  "minimum_cmake": "3.25",
+  "ordinary_build_fetches_dependencies": false,
+  "license": {
+    "spdx": "MIT",
+    "path": "LICENSE.txt",
+    "bytes": 1094,
+    "sha256": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e"
+  },
+  "required_submodules": [
+    {
+      "path": "base",
+      "repository": "https://github.com/steinbergmedia/vst3_base.git",
+      "commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE.txt",
+        "bytes": 1094,
+        "sha256": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e"
+      }
+    },
+    {
+      "path": "cmake",
+      "repository": "https://github.com/steinbergmedia/vst3_cmake.git",
+      "commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE.txt",
+        "bytes": 1094,
+        "sha256": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e"
+      }
+    },
+    {
+      "path": "pluginterfaces",
+      "repository": "https://github.com/steinbergmedia/vst3_pluginterfaces.git",
+      "commit": "4f547e8e102b47de4a8b8aaf343c73b700786372",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE.txt",
+        "bytes": 1094,
+        "sha256": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e"
+      }
+    },
+    {
+      "path": "public.sdk",
+      "repository": "https://github.com/steinbergmedia/vst3_public_sdk.git",
+      "commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da",
+      "license": {
+        "spdx": "MIT",
+        "path": "LICENSE.txt",
+        "bytes": 1094,
+        "sha256": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e"
+      }
+    }
+  ],
+  "excluded_submodules": [
+    "doc",
+    "tutorials",
+    "vstgui4"
+  ],
+  "embedded_third_party": [
+    {
+      "name": "sheredom/json.h",
+      "upstream": "https://github.com/sheredom/json.h",
+      "path": "public.sdk/source/vst/moduleinfo/json.h",
+      "bytes": 100775,
+      "sha256": "098ca68126cb34f7369388d49890d0a5d5ba731b76fbae0c2790377a663e9d41",
+      "license": "Unlicense",
+      "scope": "Used by SDK module-info parser and validator; retain the embedded notice if this code/tool is distributed."
+    }
+  ],
+  "cmake_options": {
+    "SMTG_ENABLE_VSTGUI_SUPPORT": false,
+    "SMTG_ENABLE_VST3_PLUGIN_EXAMPLES": false,
+    "SMTG_ENABLE_VST3_HOSTING_EXAMPLES": false,
+    "SMTG_CREATE_PLUGIN_LINK": false,
+    "SMTG_RUN_VST_VALIDATOR": true
+  },
+  "plugin_class_ids": {
+    "processor": {
+      "uuid": "19f9adc0-533f-42b4-b96b-d51d6547e838",
+      "fuid_hex": "19F9ADC0533F42B4B96BD51D6547E838",
+      "fuid_words": [
+        "0x19F9ADC0",
+        "0x533F42B4",
+        "0xB96BD51D",
+        "0x6547E838"
+      ]
+    },
+    "controller": {
+      "uuid": "0dee76ab-26bc-475a-bf64-f138c89fb0e0",
+      "fuid_hex": "0DEE76AB26BC475ABF64F138C89FB0E0",
+      "fuid_words": [
+        "0x0DEE76AB",
+        "0x26BC475A",
+        "0xBF64F138",
+        "0xC89FB0E0"
+      ]
+    }
+  },
+  "qualification": {
+    "observed": "Linux GCC 14.2.0 / CMake 3.31.6 headless SDK validator build; validator selftest 51 tests, 0 failures.",
+    "not_established": [
+      "Hammond plugin ABI validation",
+      "Actual DAW session",
+      "Audio-device deadlines",
+      "Windows/macOS plugin builds",
+      "Native UI",
+      "Release packaging or signing",
+      "Physical fidelity"
+    ]
+  }
+}

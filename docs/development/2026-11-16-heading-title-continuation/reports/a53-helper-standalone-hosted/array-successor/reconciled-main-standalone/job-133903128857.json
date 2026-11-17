@@ -1,0 +1,1129 @@
+{
+  "schema": 1,
+  "observer": "A53/60 wave 9, same accepted worker; exact-source read-only observation",
+  "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+  "source_tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+  "run_id": 44043394005,
+  "run_attempt": 1,
+  "job_id": 133903128857,
+  "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903128857",
+  "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+  "state": {
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-17T08:02:45Z",
+    "completed_at": "2026-11-17T08:24:11Z"
+  },
+  "runner": {
+    "id": 1000001497,
+    "name": "GitHub Actions 1000001497",
+    "labels": [
+      "ubuntu-24.04"
+    ]
+  },
+  "complete_original_log": {
+    "job_id": 133903128857,
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/reconciled-main-standalone/job-133903128857-complete.log.gz",
+    "stored_bytes": 126674,
+    "stored_sha256": "34df98a4dfef93ce4de01abc823955fb9cfc7e4bdfbc1e6d046b825f96e69fbb",
+    "decoded_bytes": 1454820,
+    "decoded_sha256": "cf972d32e8eddb76490911544f804153d65996aa2197f394ccf4e8e1c4aaa7b3",
+    "gzip_mtime": 0,
+    "round_trip_verified": true
+  },
+  "source_inventory": "inventory.json",
+  "actual_checkout": [
+    {
+      "line": 116,
+      "text": "523c1979334b0fbb624ce120128a0b8ada078383"
+    },
+    {
+      "line": 184,
+      "text": "HEAD is now at 523c197 Merge indexed fixture admission and accepted console evidence"
+    },
+    {
+      "line": 187,
+      "text": "523c1979334b0fbb624ce120128a0b8ada078383"
+    }
+  ],
+  "actual_compilers": [
+    {
+      "line": 731,
+      "text": "-- The CXX compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 745,
+      "text": "-- The C compiler identification is GNU 13.3.0"
+    }
+  ],
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-11-17T08:02:46Z",
+      "completed_at": "2026-11-17T08:02:47Z"
+    },
+    {
+      "name": "Check out the exact tested revision",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-11-17T08:02:47Z",
+      "completed_at": "2026-11-17T08:03:09Z"
+    },
+    {
+      "name": "Set up Python 3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-11-17T08:03:09Z",
+      "completed_at": "2026-11-17T08:03:09Z"
+    },
+    {
+      "name": "Record the revision, sanitizer policy and tools",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-11-17T08:03:09Z",
+      "completed_at": "2026-11-17T08:03:12Z"
+    },
+    {
+      "name": "Explicitly acquire and locally verify locked external SDL2",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-11-17T08:03:12Z",
+      "completed_at": "2026-11-17T08:03:14Z"
+    },
+    {
+      "name": "Install Ubuntu desktop and audio development headers",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-11-17T08:03:14Z",
+      "completed_at": "2026-11-17T08:03:36Z"
+    },
+    {
+      "name": "Configure native Release with project and SDL sanitizers",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7,
+      "started_at": "2026-11-17T08:03:36Z",
+      "completed_at": "2026-11-17T08:04:01Z"
+    },
+    {
+      "name": "Build the thirty-seven selected acceptance inputs",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-11-17T08:04:01Z",
+      "completed_at": "2026-11-17T08:10:56Z"
+    },
+    {
+      "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-11-17T08:10:56Z",
+      "completed_at": "2026-11-17T08:10:58Z"
+    },
+    {
+      "name": "Discover exactly forty-one gates and run with leak checking",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-11-17T08:10:58Z",
+      "completed_at": "2026-11-17T08:24:05Z"
+    },
+    {
+      "name": "Reverify source and locked SDL2 after acceptance",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-11-17T08:24:05Z",
+      "completed_at": "2026-11-17T08:24:05Z"
+    },
+    {
+      "name": "Retain native sanitizer diagnostics",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 12,
+      "started_at": "2026-11-17T08:24:05Z",
+      "completed_at": "2026-11-17T08:24:07Z"
+    },
+    {
+      "name": "Post Set up Python 3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 23,
+      "started_at": "2026-11-17T08:24:07Z",
+      "completed_at": "2026-11-17T08:24:07Z"
+    },
+    {
+      "name": "Post Check out the exact tested revision",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 24,
+      "started_at": "2026-11-17T08:24:07Z",
+      "completed_at": "2026-11-17T08:24:08Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 25,
+      "started_at": "2026-11-17T08:24:08Z",
+      "completed_at": "2026-11-17T08:24:08Z"
+    }
+  ],
+  "ctest": {
+    "expected_count": 41,
+    "executed": 41,
+    "passed": 41,
+    "failed": 0,
+    "not_executed": [],
+    "actual_names_equal_source_inventory": true,
+    "total_seconds": 785.99,
+    "results": [
+      {
+        "ordinal": 1,
+        "total": 41,
+        "test_number": 178,
+        "name": "test_standalone_channel_acceptance",
+        "status": "Passed",
+        "seconds": 0.34,
+        "line": 5789
+      },
+      {
+        "ordinal": 2,
+        "total": 41,
+        "test_number": 179,
+        "name": "test_standalone_channel_modes",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 5797
+      },
+      {
+        "ordinal": 3,
+        "total": 41,
+        "test_number": 181,
+        "name": "test_standalone_expression_calibration",
+        "status": "Passed",
+        "seconds": 0.01,
+        "line": 5805
+      },
+      {
+        "ordinal": 4,
+        "total": 41,
+        "test_number": 183,
+        "name": "test_standalone_inspection_acceptance",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 5813
+      },
+      {
+        "ordinal": 5,
+        "total": 41,
+        "test_number": 184,
+        "name": "test_standalone_inspection_author",
+        "status": "Passed",
+        "seconds": 0.02,
+        "line": 5821
+      },
+      {
+        "ordinal": 6,
+        "total": 41,
+        "test_number": 185,
+        "name": "test_standalone_library_model",
+        "status": "Passed",
+        "seconds": 0.04,
+        "line": 5829
+      },
+      {
+        "ordinal": 7,
+        "total": 41,
+        "test_number": 186,
+        "name": "test_standalone_library_recall",
+        "status": "Passed",
+        "seconds": 0.08,
+        "line": 5846
+      },
+      {
+        "ordinal": 8,
+        "total": 41,
+        "test_number": 187,
+        "name": "test_standalone_library_roundtrip",
+        "status": "Passed",
+        "seconds": 0.12,
+        "line": 5854
+      },
+      {
+        "ordinal": 9,
+        "total": 41,
+        "test_number": 188,
+        "name": "test_standalone_library_session",
+        "status": "Passed",
+        "seconds": 0.07,
+        "line": 5862
+      },
+      {
+        "ordinal": 10,
+        "total": 41,
+        "test_number": 189,
+        "name": "test_standalone_library_storage",
+        "status": "Passed",
+        "seconds": 0.14,
+        "line": 5870
+      },
+      {
+        "ordinal": 11,
+        "total": 41,
+        "test_number": 197,
+        "name": "test_standalone_preset_ui",
+        "status": "Passed",
+        "seconds": 3.1,
+        "line": 5878
+      },
+      {
+        "ordinal": 12,
+        "total": 41,
+        "test_number": 198,
+        "name": "test_standalone_projection",
+        "status": "Passed",
+        "seconds": 2.08,
+        "line": 5887
+      },
+      {
+        "ordinal": 13,
+        "total": 41,
+        "test_number": 199,
+        "name": "test_standalone_reference_layout",
+        "status": "Passed",
+        "seconds": 0.21,
+        "line": 5895
+      },
+      {
+        "ordinal": 14,
+        "total": 41,
+        "test_number": 203,
+        "name": "test_standalone_ui",
+        "status": "Passed",
+        "seconds": 0.29,
+        "line": 5903
+      },
+      {
+        "ordinal": 15,
+        "total": 41,
+        "test_number": 205,
+        "name": "test_standalone_workspace_acceptance",
+        "status": "Passed",
+        "seconds": 0.27,
+        "line": 5911
+      },
+      {
+        "ordinal": 16,
+        "total": 41,
+        "test_number": 206,
+        "name": "test_standalone_workspace_continuity",
+        "status": "Passed",
+        "seconds": 7.23,
+        "line": 5982
+      },
+      {
+        "ordinal": 17,
+        "total": 41,
+        "test_number": 207,
+        "name": "test_standalone_workspaces_author",
+        "status": "Passed",
+        "seconds": 0.01,
+        "line": 5990
+      },
+      {
+        "ordinal": 18,
+        "total": 41,
+        "test_number": 211,
+        "name": "test_standalone_reference_apron_raster",
+        "status": "Passed",
+        "seconds": 18.66,
+        "line": 5998
+      },
+      {
+        "ordinal": 19,
+        "total": 41,
+        "test_number": 212,
+        "name": "test_standalone_reference_apron_art",
+        "status": "Passed",
+        "seconds": 0.15,
+        "line": 6007
+      },
+      {
+        "ordinal": 20,
+        "total": 41,
+        "test_number": 213,
+        "name": "test_standalone_reference_apron_unavailable",
+        "status": "Passed",
+        "seconds": 19.1,
+        "line": 6015
+      },
+      {
+        "ordinal": 21,
+        "total": 41,
+        "test_number": 214,
+        "name": "test_standalone_drawing",
+        "status": "Passed",
+        "seconds": 0.48,
+        "line": 6024
+      },
+      {
+        "ordinal": 22,
+        "total": 41,
+        "test_number": 215,
+        "name": "test_standalone_quad_drawing",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 6032
+      },
+      {
+        "ordinal": 23,
+        "total": 41,
+        "test_number": 216,
+        "name": "test_standalone_workspace_raster",
+        "status": "Passed",
+        "seconds": 40.22,
+        "line": 6040
+      },
+      {
+        "ordinal": 24,
+        "total": 41,
+        "test_number": 217,
+        "name": "test_standalone_inspection_raster",
+        "status": "Passed",
+        "seconds": 2.85,
+        "line": 6049
+      },
+      {
+        "ordinal": 25,
+        "total": 41,
+        "test_number": 218,
+        "name": "test_standalone_material_acceptance",
+        "status": "Passed",
+        "seconds": 33.51,
+        "line": 6057
+      },
+      {
+        "ordinal": 26,
+        "total": 41,
+        "test_number": 220,
+        "name": "test_standalone_product_visual",
+        "status": "Passed",
+        "seconds": 104.52,
+        "line": 6065
+      },
+      {
+        "ordinal": 27,
+        "total": 41,
+        "test_number": 222,
+        "name": "test_standalone_upper_rack_material_raster",
+        "status": "Passed",
+        "seconds": 46.42,
+        "line": 6073
+      },
+      {
+        "ordinal": 28,
+        "total": 41,
+        "test_number": 223,
+        "name": "test_standalone_lower_rack_material_raster",
+        "status": "Passed",
+        "seconds": 49.63,
+        "line": 6081
+      },
+      {
+        "ordinal": 29,
+        "total": 41,
+        "test_number": 224,
+        "name": "test_standalone_footage_typography_raster",
+        "status": "Passed",
+        "seconds": 43.44,
+        "line": 6089
+      },
+      {
+        "ordinal": 30,
+        "total": 41,
+        "test_number": 225,
+        "name": "test_standalone_title_density",
+        "status": "Passed",
+        "seconds": 14.47,
+        "line": 7268
+      },
+      {
+        "ordinal": 31,
+        "total": 41,
+        "test_number": 227,
+        "name": "test_standalone_header_material",
+        "status": "Passed",
+        "seconds": 121.89,
+        "line": 7276
+      },
+      {
+        "ordinal": 32,
+        "total": 41,
+        "test_number": 228,
+        "name": "test_standalone_performance_plate",
+        "status": "Passed",
+        "seconds": 72.24,
+        "line": 7284
+      },
+      {
+        "ordinal": 33,
+        "total": 41,
+        "test_number": 229,
+        "name": "test_standalone_performance_plate_numerical",
+        "status": "Passed",
+        "seconds": 2.12,
+        "line": 7292
+      },
+      {
+        "ordinal": 34,
+        "total": 41,
+        "test_number": 230,
+        "name": "test_standalone_header_statistics",
+        "status": "Passed",
+        "seconds": 1.78,
+        "line": 7300
+      },
+      {
+        "ordinal": 35,
+        "total": 41,
+        "test_number": 231,
+        "name": "test_standalone_header_grain_bounds",
+        "status": "Passed",
+        "seconds": 0.08,
+        "line": 7308
+      },
+      {
+        "ordinal": 36,
+        "total": 41,
+        "test_number": 232,
+        "name": "test_standalone_manual_key_material_raster",
+        "status": "Passed",
+        "seconds": 20.43,
+        "line": 7316
+      },
+      {
+        "ordinal": 37,
+        "total": 41,
+        "test_number": 234,
+        "name": "test_standalone_scaled_view",
+        "status": "Passed",
+        "seconds": 84.1,
+        "line": 7381
+      },
+      {
+        "ordinal": 38,
+        "total": 41,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 72.17,
+        "line": 7389
+      },
+      {
+        "ordinal": 39,
+        "total": 41,
+        "test_number": 242,
+        "name": "test_standalone_native_calibration",
+        "status": "Passed",
+        "seconds": 21.43,
+        "line": 7412
+      },
+      {
+        "ordinal": 40,
+        "total": 41,
+        "test_number": 246,
+        "name": "test_standalone_replay_paint_boundary",
+        "status": "Passed",
+        "seconds": 1.02,
+        "line": 7422
+      },
+      {
+        "ordinal": 41,
+        "total": 41,
+        "test_number": 247,
+        "name": "test_standalone_semantic_paint_boundary",
+        "status": "Passed",
+        "seconds": 1.17,
+        "line": 7432
+      }
+    ],
+    "discovery": [
+      {
+        "line": 5769,
+        "text": "Discovered exactly 41 gates from 37 built interface, channel, calibration, library, product paint, title, header, P1, replay and apron inputs; job sanitizer policy applies to every gate."
+      }
+    ],
+    "summary": [
+      {
+        "line": 7477,
+        "text": "100% tests passed, 0 tests failed out of 41"
+      },
+      {
+        "line": 7493,
+        "text": "Total Test time (real) = 785.99 sec"
+      }
+    ]
+  },
+  "python_method_results": [],
+  "protocols": [
+    {
+      "name": "test_standalone_title_density",
+      "result": {
+        "ordinal": 30,
+        "total": 41,
+        "test_number": 225,
+        "name": "test_standalone_title_density",
+        "status": "Passed",
+        "seconds": 14.47,
+        "line": 7268
+      },
+      "first_output_line": 6096,
+      "last_output_line": 7267,
+      "scalar": {
+        "schema": 1,
+        "test": "standalone-title-density-v1",
+        "status": "passed",
+        "required_cases": 18,
+        "native_protocol": "footage-typography-v1",
+        "native_fixture_cases": 44,
+        "fixture_source_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+        "bounds_coordinates": "canonical half-open bounds, with integer viewport origin subtracted",
+        "predicate": "2126*R+7152*G+722*B >= threshold*10000; no hue or alpha predicate",
+        "minimum_error_reduction": 0.4,
+        "executable_sha256": "dc6d270f1aa571ada8b4dd7469a8c3922ea0733122445cb10af8e269c1580bed"
+      },
+      "cases": {
+        "count": 18,
+        "all_passed": true
+      },
+      "fixture_source_admission": {
+        "variant": "indexed-array-v1",
+        "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+        "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+        "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+        "candidate_only": true,
+        "whole_file_reversal_verified": true
+      },
+      "resources": {
+        "one_frame_at_a_time": true,
+        "process_timeout_seconds": 20,
+        "stdout_max_bytes": 7146489,
+        "stderr_max_bytes": 65536,
+        "inventory_max_bytes": 65536,
+        "json_max_depth": 16,
+        "number_token_max_characters": 64,
+        "images_persisted": 0
+      },
+      "inventory": {
+        "case_count": 44,
+        "validated": true,
+        "payload_sha256": "9a2a98fbafaa50354c3304b8ca33054e4d4b8cd86d33a0f02b90ce2e8a725c02"
+      }
+    },
+    {
+      "name": "test_standalone_header_material",
+      "result": {
+        "ordinal": 31,
+        "total": 41,
+        "test_number": 227,
+        "name": "test_standalone_header_material",
+        "status": "Passed",
+        "seconds": 121.89,
+        "line": 7276
+      },
+      "first_output_line": 7275,
+      "last_output_line": 7275,
+      "scalar": {
+        "schema": 1,
+        "protocol": "header-material-h1-v1",
+        "status": "passed",
+        "cases": 48,
+        "checks": 10542,
+        "paintings": 163,
+        "clipped_cases": 16,
+        "empty_cases": 2,
+        "inactive_cases": 8,
+        "protected_pixels": 56329523,
+        "deterministic_repaints": 48,
+        "clip_companions": 16,
+        "quiet_clip_pixels": 33462,
+        "history_states": 48,
+        "history_repaints": 1,
+        "fresh_repaints": 1,
+        "helper_present": true,
+        "helper_probes": 95,
+        "backend": "SDL software surface; copied state; no audio/window"
+      }
+    },
+    {
+      "name": "test_standalone_header_statistics",
+      "result": {
+        "ordinal": 34,
+        "total": 41,
+        "test_number": 230,
+        "name": "test_standalone_header_statistics",
+        "status": "Passed",
+        "seconds": 1.78,
+        "line": 7300
+      },
+      "first_output_line": 7299,
+      "last_output_line": 7299,
+      "scalar": {
+        "schema": 1,
+        "test": "standalone-header-statistics-v1",
+        "status": "passed",
+        "native_protocol": "header-material-h1-v1",
+        "case": 46,
+        "protocol_passed": true,
+        "helper_passed": true,
+        "python": "3.12.16",
+        "scope": "one canonical numerical regression; complete paired, visual, timing and platform gates remain separate"
+      },
+      "identities": {
+        "frozen_fixture_source_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+        "contract_sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+        "reference_observations_sha256": "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b",
+        "reference_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "reference_decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+        "independent_comparator_sha256": "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b",
+        "reference_origin": "immutable literals from A22 reference observations; no runtime image decode",
+        "test_source_sha256": "c3b52ee56645e51d4144c296d4fd0b6579c93e13b11b117fb4d67f2a98a9c4bd",
+        "fixture_source_admission": {
+          "variant": "indexed-array-v1",
+          "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+          "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "candidate_only": true,
+          "whole_file_reversal_verified": true
+        },
+        "executable": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/apps/standalone/test_standalone_header_material",
+        "executable_sha256": "bc468a7adf8fa199dc0bb68504a4ee76341c194e0ec218e53be2834e3c955fc9",
+        "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+        "rgba_sha256": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2"
+      },
+      "resources": {
+        "native_invocations": 1,
+        "canonical_rgba_bytes": 6293408,
+        "header_max_bytes": 524288,
+        "stdout_max_bytes": 6817697,
+        "stderr_max_bytes": 65536,
+        "process_timeout_seconds": 60,
+        "cleanup_wait_seconds": 5,
+        "retained_frames": 1,
+        "images_persisted": 0
+      },
+      "numerical": {
+        "inequality_count": 103,
+        "evaluated_count": 103,
+        "passed_count": 103,
+        "failed_count": 0,
+        "passed": true,
+        "mean_error_exact": "7620796849/20736000000",
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+      }
+    },
+    {
+      "name": "test_standalone_header_grain_bounds",
+      "result": {
+        "ordinal": 35,
+        "total": 41,
+        "test_number": 231,
+        "name": "test_standalone_header_grain_bounds",
+        "status": "Passed",
+        "seconds": 0.08,
+        "line": 7308
+      },
+      "first_output_line": 7307,
+      "last_output_line": 7307,
+      "scalar": {
+        "schema": 1,
+        "protocol": "header-h1-grain-bounds-v1",
+        "status": "passed",
+        "cases": 4,
+        "checks": 170,
+        "pixels_checked": 96000,
+        "grain_pixels_checked": 18,
+        "unchanged_pixels_checked": 95982,
+        "backend": "SDL software surface; no window or audio"
+      }
+    },
+    {
+      "name": "test_standalone_performance_plate",
+      "result": {
+        "ordinal": 32,
+        "total": 41,
+        "test_number": 228,
+        "name": "test_standalone_performance_plate",
+        "status": "Passed",
+        "seconds": 72.24,
+        "line": 7284
+      },
+      "first_output_line": 7283,
+      "last_output_line": 7283,
+      "scalar": {
+        "schema": 1,
+        "protocol": "performance-plate-p1-v1",
+        "status": "passed",
+        "cases": 34,
+        "main_cases": 24,
+        "checks": 53648,
+        "paintings": 111,
+        "clipped_cases": 5,
+        "empty_cases": 1,
+        "inactive_cases": 7,
+        "protected_pixels": 17527448,
+        "deterministic_repaints": 34,
+        "clip_companions": 10,
+        "quiet_clip_pixels": 10914,
+        "history_states": 32,
+        "history_repaints": 1,
+        "fresh_repaints": 1,
+        "eligibility_witnesses": 3,
+        "opaque_probes": 513,
+        "opaque_pixels": 39462,
+        "text_runs": 459,
+        "nonempty_text_runs": 340,
+        "glyph_core_pixels": 41116,
+        "focus_witnesses": 27,
+        "focus_pixels": 26204,
+        "helper_present": true,
+        "helper_probes": 61,
+        "backend": "SDL software surface; fixed copied state; no audio/window"
+      }
+    },
+    {
+      "name": "test_standalone_performance_plate_numerical",
+      "result": {
+        "ordinal": 33,
+        "total": 41,
+        "test_number": 229,
+        "name": "test_standalone_performance_plate_numerical",
+        "status": "Passed",
+        "seconds": 2.12,
+        "line": 7292
+      },
+      "first_output_line": 7291,
+      "last_output_line": 7291,
+      "scalar": {
+        "model": "performance-plate-p1-independent-v1",
+        "mode": "candidate-only-frozen62",
+        "passed": true,
+        "checks_evaluated": 191,
+        "failed_checks": 0,
+        "report": "/tmp/p1-frozen62-6eyff0qf/report.json"
+      },
+      "candidate_screens": {
+        "passed": 62,
+        "failed": 0,
+        "total": 62,
+        "all_passed": true
+      }
+    }
+  ],
+  "additional_native_protocols": [
+    {
+      "name": "test_standalone_footage_typography_raster",
+      "result": {
+        "ordinal": 29,
+        "total": 41,
+        "test_number": 224,
+        "name": "test_standalone_footage_typography_raster",
+        "status": "Passed",
+        "seconds": 43.44,
+        "line": 6089
+      },
+      "line": 6088,
+      "payload": {
+        "schema": 1,
+        "protocol": "footage-typography-v1",
+        "status": "passed",
+        "cases": 44,
+        "checks": 23501530,
+        "state_restorations": 59,
+        "clip_companions": 11,
+        "visible_clip_pixels": 439,
+        "clip_glyph_pixels": 707,
+        "clip_glyph_differences": 128,
+        "opaque_child_probes": 936,
+        "opaque_probe_pixels": 231858,
+        "literal_glyphs": 2097,
+        "strong_ink_pixels": 45208,
+        "focus_cases": 26,
+        "cyan_focus_pixels": 25690,
+        "case_1_repeats": 2,
+        "expected_typography": "admitted-runs",
+        "backend": "SDL software surface; fixed copied state; no audio/window"
+      }
+    }
+  ],
+  "library_gates": [
+    {
+      "ordinal": 6,
+      "total": 41,
+      "test_number": 185,
+      "name": "test_standalone_library_model",
+      "status": "Passed",
+      "seconds": 0.04,
+      "line": 5829
+    },
+    {
+      "ordinal": 7,
+      "total": 41,
+      "test_number": 186,
+      "name": "test_standalone_library_recall",
+      "status": "Passed",
+      "seconds": 0.08,
+      "line": 5846
+    },
+    {
+      "ordinal": 8,
+      "total": 41,
+      "test_number": 187,
+      "name": "test_standalone_library_roundtrip",
+      "status": "Passed",
+      "seconds": 0.12,
+      "line": 5854
+    },
+    {
+      "ordinal": 9,
+      "total": 41,
+      "test_number": 188,
+      "name": "test_standalone_library_session",
+      "status": "Passed",
+      "seconds": 0.07,
+      "line": 5862
+    },
+    {
+      "ordinal": 10,
+      "total": 41,
+      "test_number": 189,
+      "name": "test_standalone_library_storage",
+      "status": "Passed",
+      "seconds": 0.14,
+      "line": 5870
+    }
+  ],
+  "native_children": [
+    {
+      "line": 7406,
+      "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+    },
+    {
+      "line": 7421,
+      "text": "246: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    },
+    {
+      "line": 7431,
+      "text": "247: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    }
+  ],
+  "calibration": [
+    {
+      "line": 7406,
+      "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+    }
+  ],
+  "actual_real_application_paint_children": [
+    {
+      "line": 7421,
+      "text": "246: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    },
+    {
+      "line": 7431,
+      "text": "247: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    }
+  ],
+  "skip_diagnostics": [],
+  "actual_evidence": [
+    {
+      "line": 116,
+      "text": "523c1979334b0fbb624ce120128a0b8ada078383"
+    },
+    {
+      "line": 184,
+      "text": "HEAD is now at 523c197 Merge indexed fixture admission and accepted console evidence"
+    },
+    {
+      "line": 187,
+      "text": "523c1979334b0fbb624ce120128a0b8ada078383"
+    },
+    {
+      "line": 731,
+      "text": "-- The CXX compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 745,
+      "text": "-- The C compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 5769,
+      "text": "Discovered exactly 41 gates from 37 built interface, channel, calibration, library, product paint, title, header, P1, replay and apron inputs; job sanitizer policy applies to every gate."
+    },
+    {
+      "line": 7396,
+      "text": "242: Native calibration fixture SHA-256: 36437f34886696d306a69b11878459530c74e4f21c00b902317535b173aa3c5b"
+    },
+    {
+      "line": 7406,
+      "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+    },
+    {
+      "line": 7409,
+      "text": "242: Ran 9 tests in 21.071s"
+    },
+    {
+      "line": 7411,
+      "text": "242: OK"
+    },
+    {
+      "line": 7421,
+      "text": "246: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    },
+    {
+      "line": 7431,
+      "text": "247: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    },
+    {
+      "line": 7477,
+      "text": "100% tests passed, 0 tests failed out of 41"
+    },
+    {
+      "line": 7493,
+      "text": "Total Test time (real) = 785.99 sec"
+    },
+    {
+      "line": 7494,
+      "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+    }
+  ],
+  "source_dependencies_after_acceptance": {
+    "step": "Reverify source and locked SDL2 after acceptance",
+    "conclusion": "success",
+    "basis": "Actual step outcome and exact committed workflow's source/locked-dependency assertions; original complete log retained."
+  },
+  "installation_packaging": {
+    "scope": "No package stage in this sanitizer job"
+  },
+  "sanitizer": {
+    "job_budget_minutes": 35,
+    "policy": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "build_targets_expected": 37,
+    "CTest_gates_expected": 41,
+    "actual_instrumentation_step": {
+      "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-11-17T08:10:56Z",
+      "completed_at": "2026-11-17T08:10:58Z"
+    },
+    "source_and_object_assertions": [
+      "SDL C and selected project C++ objects contain address,undefined sanitizer flags and frame pointers and exist as nonempty compiled objects",
+      "Seven archives have ASan and UBSan references; 37 selected executables link required sanitizer runtimes",
+      "Real app/probe link the six required instrumented archives; P1 links real painter/support/core/SDL; library gates link model/core",
+      "Production support privately defines MIDI=0; isolated calibration probe defines MIDI=1 and places fake dependency first",
+      "Required exact enabled CTest commands, finite bounds and no per-test sanitizer environment overrides"
+    ],
+    "calibration_postcheck": {
+      "line": 7494,
+      "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+    },
+    "actual_failure_stream_scan": "Successful postcheck scans all seven recorded calibration scenario stderr streams for ASan/UBSan/LSan/runtime-error diagnostics, including two expected application failures.",
+    "finite_limits_seconds": {
+      "workspace_raster": 180,
+      "scaled_view": 360,
+      "preset_raster": 300,
+      "inspection_raster": 60,
+      "material_acceptance": 60,
+      "product_visual": 240,
+      "upper_rack": 240,
+      "lower_rack": 240,
+      "footage": 240,
+      "title_density": 240,
+      "header_material": 480,
+      "P1_native": 480,
+      "P1_numerical": 480,
+      "header_statistics": 240,
+      "header_grain": 90,
+      "replay_paint": 90,
+      "semantic_paint": 90,
+      "manual_keys": 240,
+      "apron_art": 30,
+      "apron_raster": 60,
+      "apron_unavailable": 60,
+      "native_calibration": 180,
+      "header_statistics_child": 60,
+      "paint_child": 30,
+      "P1_reader_child": 60
+    }
+  },
+  "artifacts_reported": [
+    {
+      "line": 7561,
+      "text": "SHA256 digest of uploaded artifact is b9f3b37109e24bbf34f2673b5f406e677346903e1bcf9cffab5a37bf523903f1"
+    },
+    {
+      "line": 7563,
+      "text": "Artifact standalone-linux-gcc-sanitizers-523c1979334b0fbb624ce120128a0b8ada078383-1 successfully finalized. Artifact ID 14311138530"
+    },
+    {
+      "line": 7564,
+      "text": "Artifact standalone-linux-gcc-sanitizers-523c1979334b0fbb624ce120128a0b8ada078383-1 has been successfully uploaded! Final size is 251378 bytes. Artifact ID is 14311138530"
+    },
+    {
+      "line": 7565,
+      "text": "Artifact download URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/artifacts/14311138530"
+    }
+  ],
+  "failures": [],
+  "actual_errors": [],
+  "limitations": [
+    "This exact main-source observation does not alter earlier failed or cancelled source records.",
+    "No native/build/project test, source edit, remote mutation or CI retry by A53.",
+    "Job logs and committed assertion scripts are inspected. Package assertions are executed evidence; A53 has not directly downloaded those packages.",
+    "Dummy devices, isolated fake MIDI calibration and copied/software-surface paint do not close physical MIDI/audio, real-display/DPI, native accessibility or whole-UI literal 1:1 acceptance.",
+    "A later preset timing pass is a separate observation; no earlier timeout cause, timing repair or stability is inferred."
+  ],
+  "reader_source_admissions": [
+    {
+      "name": "test_standalone_title_density",
+      "admission": {
+        "variant": "indexed-array-v1",
+        "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+        "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+        "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+        "candidate_only": true,
+        "whole_file_reversal_verified": true
+      }
+    },
+    {
+      "name": "test_standalone_header_statistics",
+      "admission": {
+        "variant": "indexed-array-v1",
+        "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+        "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "candidate_only": true,
+        "whole_file_reversal_verified": true
+      }
+    }
+  ],
+  "source_declared_and_observed_python_methods": {},
+  "predecessor_scope": "Accepted548 reports remain frozen; these are original523 attempt-one results. No outcome is transferred."
+}

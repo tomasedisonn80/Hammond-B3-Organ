@@ -1,0 +1,1204 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T09:25:24.170793+00:00",
+  "worker": "A56 follow-up; no additional worker credit",
+  "source": "f3829f50192bcf8fef8bafe72ac43c09d1f4c72c",
+  "tree": "d216279911a69a364426bef9d5e0b7b5221bd024",
+  "run_id": 44049129278,
+  "job_id": 133922212477,
+  "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44049129278/job/133922212477",
+  "conclusion": "failure",
+  "failed_step": {
+    "name": "Run all required standalone and capture acceptance tests",
+    "status": "completed",
+    "conclusion": "failure",
+    "number": 13,
+    "started_at": "2026-11-17T09:02:08Z",
+    "completed_at": "2026-11-17T09:14:33Z"
+  },
+  "diagnosis": {
+    "ctest_number": 235,
+    "name": "test_standalone_preset_raster",
+    "registered_timeout_seconds": 30.0,
+    "junit_elapsed_seconds": 30.0697,
+    "ctest_printed_elapsed_seconds": 30.07,
+    "failure_message": "Timeout",
+    "testcase_system_out_empty": true,
+    "observed_result": "The executable exceeded the unchanged 30-second CTest guard. The original log and JUnit contain no preset-raster output or numerical assertion diagnostic.",
+    "cause_limit": "The retained evidence does not establish why the deadline was exceeded, a compiler/numerical defect, a runner-only cause, a hang, or repeated timing stability. The gate remains failed.",
+    "completion_limit": "No completed preset-raster fixture counters are established by this timed-out execution."
+  },
+  "suite": {
+    "tests": 78,
+    "success": 77,
+    "failure": 1,
+    "error": 0,
+    "skipped": 0,
+    "ctest_exit_code": 8,
+    "ctest_total_wall_seconds": 744.7,
+    "junit_suite_attributes": {
+      "name": "Darwin-clang++",
+      "tests": "78",
+      "failures": "1",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "iad01-dz252-11f4ad6f-c24c-44ec-8e80-d9f0ced49c79-E69C74D5AE68.local",
+      "time": "744",
+      "timestamp": "2026-11-17T09:02:08"
+    }
+  },
+  "failed_test_discovery": {
+    "backtrace": 126,
+    "command": [
+      "/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/test_standalone_preset_raster"
+    ],
+    "config": "Release",
+    "name": "test_standalone_preset_raster",
+    "properties": [
+      {
+        "name": "LABELS",
+        "value": [
+          "native",
+          "standalone"
+        ]
+      },
+      {
+        "name": "TIMEOUT",
+        "value": 30.0
+      },
+      {
+        "name": "WORKING_DIRECTORY",
+        "value": "/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone"
+      }
+    ]
+  },
+  "failed_test_junit_xml": "<testcase name=\"test_standalone_preset_raster\" classname=\"test_standalone_preset_raster\" time=\"30.0697\" status=\"fail\">\n\t\t<failure message=\"Timeout\" />\n\t\t<properties>\n\t\t\t<property name=\"cmake_labels\" value=\"native;standalone\" />\n\t\t</properties>\n\t\t<system-out />\n\t</testcase>\n\t",
+  "last_tests_failed_original_text": "235:test_standalone_preset_raster\n",
+  "last_test_original_block": "235/251 Testing: test_standalone_preset_raster\n235/251 Test: test_standalone_preset_raster\nCommand: \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/test_standalone_preset_raster\"\nDirectory: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone\n\"test_standalone_preset_raster\" start time: Nov 17 09:09 UTC\nOutput:\n----------------------------------------------------------\n<end of output>\nTest time =  30.07 sec\n----------------------------------------------------------\nTest Failed.\n\"test_standalone_preset_raster\" end time: Nov 17 09:09 UTC\n\"test_standalone_preset_raster\" time elapsed: 00:00:30\n----------------------------------------------------------\n\n",
+  "decisive_full_job_log_lines": [
+    "2026-11-17T09:09:04.4782880Z       Start 235: test_standalone_preset_raster",
+    "2026-11-17T09:09:04.4794380Z 235: Test timeout computed to be: 30",
+    "2026-11-17T09:09:34.5386660Z 62/78 Test #235: test_standalone_preset_raster .................***Timeout  30.07 sec",
+    "2026-11-17T09:14:33.5745790Z 99% tests passed, 1 tests failed out of 78",
+    "2026-11-17T09:14:33.5779390Z Total Test time (real) = 744.70 sec",
+    "2026-11-17T09:14:33.5782020Z \t235 - test_standalone_preset_raster (Timeout)           native standalone",
+    "2026-11-17T09:14:33.6230820Z ##[error]Process completed with exit code 8."
+  ],
+  "all_testcases": [
+    {
+      "attributes": {
+        "name": "python_test_capture_standalone_interface",
+        "classname": "python_test_capture_standalone_interface",
+        "time": "6.37778",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 144,
+      "system_out_sha256_utf8": "2895341a40b938a7a6aac62c8a608dec63e858b32bf4090e217eece2bd717f81"
+    },
+    {
+      "attributes": {
+        "name": "python_test_compare_header_material",
+        "classname": "python_test_compare_header_material",
+        "time": "3.20702",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 140,
+      "system_out_sha256_utf8": "60d73dcbf20d9298bb650fc9dbdc1e68ca8dbb18e8fa97b6e20b119d6641beb6"
+    },
+    {
+      "attributes": {
+        "name": "python_test_compare_performance_plate",
+        "classname": "python_test_compare_performance_plate",
+        "time": "3.2605",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 170,
+      "system_out_sha256_utf8": "e87a3017926cd63b57e663e1dae3a5acd05f20cce250f8a37aba295256c8ab83"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_install",
+        "classname": "test_standalone_install",
+        "time": "25.4556",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "5100388057a5c3e384ab34c716fb89062ff35101a5a3371edcad8ff56fd53d94"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_channel_acceptance",
+        "classname": "test_standalone_channel_acceptance",
+        "time": "0.0185548",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 138,
+      "system_out_sha256_utf8": "639396e3f6a9eb36ed0ef17c745115f226c8c01e9109b58ba25e8447f4dcf02b"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_channel_modes",
+        "classname": "test_standalone_channel_modes",
+        "time": "0.0166671",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 84,
+      "system_out_sha256_utf8": "51ba1909c8f5727e68a8b55218b9b8f2a0559ad1672b94c8b111ab8cc6dd7aa3"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_concurrency",
+        "classname": "test_standalone_concurrency",
+        "time": "0.276833",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "2576fb02d53274b217d01538d70b0f93b986c0573dbb4c5798505dd7f2002a3b"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_expression_calibration",
+        "classname": "test_standalone_expression_calibration",
+        "time": "0.012525",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 89,
+      "system_out_sha256_utf8": "21ea51592a365b68846e3d7b04ae5d4bb1b326cb5bf8324623f5be0bde01afa6"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_external_control",
+        "classname": "test_standalone_external_control",
+        "time": "0.0176628",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 52,
+      "system_out_sha256_utf8": "0db3327a4e661944efcd74fe585a285ae7c9906053f0f657bb0d849a4d2d9426"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_inspection_acceptance",
+        "classname": "test_standalone_inspection_acceptance",
+        "time": "0.0298222",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 235,
+      "system_out_sha256_utf8": "9ef130a08a1a101f9e62e407a8d87eabafdd9a9e8fe4869b3d95c0faf4fc7263"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_inspection_author",
+        "classname": "test_standalone_inspection_author",
+        "time": "0.253907",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 107,
+      "system_out_sha256_utf8": "2701026c12f0a661946193780238f27c4c96a9ee884f6d298fc9c04beffce704"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_library_model",
+        "classname": "test_standalone_library_model",
+        "time": "0.0215861",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 79,
+      "system_out_sha256_utf8": "88a9c4990e4a51b1606056640e025fe47f5243824cea1fb859e05c9dfc43ab47"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_library_recall",
+        "classname": "test_standalone_library_recall",
+        "time": "0.0426249",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 529,
+      "system_out_sha256_utf8": "90552cead07122f4a60b092571111fc2fd899f883a351c48a8a85bd7a70c1c3c"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_library_roundtrip",
+        "classname": "test_standalone_library_roundtrip",
+        "time": "0.0532759",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 245,
+      "system_out_sha256_utf8": "61baaf697b84a55b7962980634bb2bff473da98b4f6eede9b7bed7d826a768d8"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_library_session",
+        "classname": "test_standalone_library_session",
+        "time": "0.0594144",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 229,
+      "system_out_sha256_utf8": "12a562f4a118a3e5df818883688447c0f89c401978037a58e5e99d8c75027053"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_library_storage",
+        "classname": "test_standalone_library_storage",
+        "time": "0.226127",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 88,
+      "system_out_sha256_utf8": "9f01bddb334bf3f254fdc3671fe6243170a0adf4c8b058b37e5ba22697cb417a"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_concurrency",
+        "classname": "test_standalone_midi_concurrency",
+        "time": "0.0844258",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 434,
+      "system_out_sha256_utf8": "a563d94ae0d206e2a6423518fccae19c29421959407a6069e20837f9ac3e660b"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_discovery",
+        "classname": "test_standalone_midi_discovery",
+        "time": "0.0166282",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 159,
+      "system_out_sha256_utf8": "e2825b14be53def66f6f4679a532e0e1ca553a3c5873a76ff9048b1f6d02c4bf"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_input",
+        "classname": "test_standalone_midi_input",
+        "time": "0.011011",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 73,
+      "system_out_sha256_utf8": "2be7e9a29181d11cba5a333ff5f375ccc15b8f18a81d43de24c555d77946425e"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_replay",
+        "classname": "test_standalone_midi_replay",
+        "time": "0.0258327",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 137,
+      "system_out_sha256_utf8": "4f9d63a09f3a6e57a3849f48f250d8e267f5ac0eabff99b21d87f392c2be44d3"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_session",
+        "classname": "test_standalone_midi_session",
+        "time": "0.0656505",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 218,
+      "system_out_sha256_utf8": "e74eec1394cddaf3f3906a239ef7a58406c4eec9419d9c5244871313ef395e66"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_percussion_reference",
+        "classname": "test_standalone_percussion_reference",
+        "time": "0.0245297",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 199,
+      "system_out_sha256_utf8": "6c5f863924e443f0ce97b78ba1c05c6471a1ec81066c7069c181da5f8b5e27d6"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_preset_concurrency",
+        "classname": "test_standalone_preset_concurrency",
+        "time": "0.0303441",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 367,
+      "system_out_sha256_utf8": "cd852d507d4bfee775cdbe90b77ef172eb1a6a0c71a1102e329b7d3d85342323"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_preset_ui",
+        "classname": "test_standalone_preset_ui",
+        "time": "0.89585",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 241,
+      "system_out_sha256_utf8": "234cd01afa6f95db1a448aef9c325e9e300ce5ffdd94325ad95ee23ac47d35b7"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_projection",
+        "classname": "test_standalone_projection",
+        "time": "1.02664",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 167,
+      "system_out_sha256_utf8": "c533f5ec7140553f54497f81537d83dab762ee6d41b67fba0bf28978b2a3f495"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_reference_layout",
+        "classname": "test_standalone_reference_layout",
+        "time": "0.105904",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 227,
+      "system_out_sha256_utf8": "6ac411e139ecc99508f2c359457ccb93ff8479102f34a2d2a4e0269f75823a5d"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_registration_library",
+        "classname": "test_standalone_registration_library",
+        "time": "0.843594",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 54,
+      "system_out_sha256_utf8": "01d67f26a11e0f7a967300eb144667595aa836f07fa5547f64f54f84446f8cb4"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_session",
+        "classname": "test_standalone_session",
+        "time": "0.637847",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 280,
+      "system_out_sha256_utf8": "925456ab35144ed2dc599dec95d13ab9447efcc67603fa9cceff1ea50fbfa594"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_state_files",
+        "classname": "test_standalone_state_files",
+        "time": "0.151684",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 328,
+      "system_out_sha256_utf8": "ea758ddeaf8787eeb8c8c5b7e5fb09d6b556be15b5253496b34e737937d26844"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_ui",
+        "classname": "test_standalone_ui",
+        "time": "0.178049",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 56,
+      "system_out_sha256_utf8": "026bda3aea1a7ddd235c8162adf2154aed5ed11c8d50ff37be80a7d55e52b57f"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_whole_reference",
+        "classname": "test_standalone_whole_reference",
+        "time": "0.417658",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 248,
+      "system_out_sha256_utf8": "8b7165e19a0fa05848c0586cf2424d0967ceb04ba850e983415a9de9c9aba3b2"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_workspace_acceptance",
+        "classname": "test_standalone_workspace_acceptance",
+        "time": "0.102983",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 247,
+      "system_out_sha256_utf8": "fef5f9d7a263f3cdac3c7605089456d7fbe10c805fbc73a5a8b97f9e314b8c73"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_workspace_continuity",
+        "classname": "test_standalone_workspace_continuity",
+        "time": "7.26979",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "2c05aaf6c6a06500dea0144fd54688459715a52865ccf743f5733ca834eda4de"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_workspaces_author",
+        "classname": "test_standalone_workspaces_author",
+        "time": "0.00960765",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 55,
+      "system_out_sha256_utf8": "c385803a57531534b7e2092a26ab9890fd6babab760169aed31d9f6f6775ee02"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_backend",
+        "classname": "test_standalone_midi_backend",
+        "time": "0.00967516",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 886,
+      "system_out_sha256_utf8": "c07b28bfca34d77f5e1c5b9d402a91a96c3f4cd71658d720d77ff38f7c2198c3"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_backend_quarantine",
+        "classname": "test_standalone_midi_backend_quarantine",
+        "time": "0.00940655",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 176,
+      "system_out_sha256_utf8": "79c25df34b7fd482216d2c29d9069cea79097c8941cacf81c37ca728e13038de"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_benchmark",
+        "classname": "test_standalone_benchmark",
+        "time": "4.33047",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 190,
+      "system_out_sha256_utf8": "f9b17c1788a72a502652b73c7ce67279ae0e824efc01c7d7b8971ed4353d23fa"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_reference_apron_raster",
+        "classname": "test_standalone_reference_apron_raster",
+        "time": "6.22543",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 339,
+      "system_out_sha256_utf8": "833f4c85d48c42c5014ef7a6fe02435c0f0a27fdb9e3a00c4390387b6d34a2d3"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_reference_apron_art",
+        "classname": "test_standalone_reference_apron_art",
+        "time": "0.0443236",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 295,
+      "system_out_sha256_utf8": "cd2d60efc8acea9bdd0335fc440b2d8880eb46d2e7e264ea60dbaa920b13321b"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_reference_apron_unavailable",
+        "classname": "test_standalone_reference_apron_unavailable",
+        "time": "6.37397",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 339,
+      "system_out_sha256_utf8": "e8624fc4275d2ab6dca813dad56bcf25566ec63a8eae42450fd7ca42b26667ec"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_drawing",
+        "classname": "test_standalone_drawing",
+        "time": "0.156832",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 192,
+      "system_out_sha256_utf8": "7a134ee28bd5371f7535463b29ba5abba9d9370a6e16eaa1c41e507d392d70ba"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_quad_drawing",
+        "classname": "test_standalone_quad_drawing",
+        "time": "0.0151406",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 92,
+      "system_out_sha256_utf8": "86e7d19bc72dda9fdef451f462a9d9b605e4798cb440aae87b3713c901e5a361"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_workspace_raster",
+        "classname": "test_standalone_workspace_raster",
+        "time": "12.4912",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 339,
+      "system_out_sha256_utf8": "b17eedfdb7d378b7bd42a9c3dbfcd8be7e4647b461c978400c0040bb6d5366da"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_inspection_raster",
+        "classname": "test_standalone_inspection_raster",
+        "time": "0.856836",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 240,
+      "system_out_sha256_utf8": "e2bdd45c5f23d802e3810e3fbbb1479fc2b124b99e474c6417523692c384260c"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_material_acceptance",
+        "classname": "test_standalone_material_acceptance",
+        "time": "9.83612",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "a3af981d84e1aa93efd7a3fcab6129b8f6cf3a1d7f79c0f3a7cf02015dff2901"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_waveform_material",
+        "classname": "test_standalone_waveform_material",
+        "time": "11.1334",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 491,
+      "system_out_sha256_utf8": "2100f1ee9c57eef3d0e2087137709bc75621a1c6caa90a9edf140e323ca2e572"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_product_visual",
+        "classname": "test_standalone_product_visual",
+        "time": "37.9458",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 494,
+      "system_out_sha256_utf8": "5f0e6c2888551b2eefe1868daf5800eaa72f2c6fca1dd20a5e3ce16ef43de71e"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_percussion_raster",
+        "classname": "test_standalone_percussion_raster",
+        "time": "27.464",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 213,
+      "system_out_sha256_utf8": "2d24b709a24635195ea2277b4481eb8f22f4adf56e6f2bd06962afca186c0c00"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_upper_rack_material_raster",
+        "classname": "test_standalone_upper_rack_material_raster",
+        "time": "22.5785",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 406,
+      "system_out_sha256_utf8": "155463a2254bdfd0f6ba8b1aea646f4066de3f0065d1e4c48790e668cf24920f"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_lower_rack_material_raster",
+        "classname": "test_standalone_lower_rack_material_raster",
+        "time": "23.0134",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 406,
+      "system_out_sha256_utf8": "0e06e3dc35c6f677d43bf30cc49011891fe046f88580dcd3b91537e3540717d7"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_footage_typography_raster",
+        "classname": "test_standalone_footage_typography_raster",
+        "time": "17.6882",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 492,
+      "system_out_sha256_utf8": "6d2ae06b440e92ec35bd877bebaefa6b6e15fcb3be36aba91bd97a92dd33d1ac"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_title_density",
+        "classname": "test_standalone_title_density",
+        "time": "8.90447",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "e6ea63590451d324359c0a345a051051198046600d34aba0a3320b207beb729e"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_typography_clips",
+        "classname": "test_standalone_typography_clips",
+        "time": "4.72615",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 311,
+      "system_out_sha256_utf8": "532c9e3c6e10f2f01ce9b9b08fc844f44befc136f3a9a44fa21a3ec0cd4b26be"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_header_material",
+        "classname": "test_standalone_header_material",
+        "time": "58.1526",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 430,
+      "system_out_sha256_utf8": "7297ef381afddcda2eb1de1cfa9a4594fcd77ad953c5eb20d9cf4380e068699f"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_performance_plate",
+        "classname": "test_standalone_performance_plate",
+        "time": "39.2148",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 630,
+      "system_out_sha256_utf8": "f63d3503e7bb8f5430a454fd76799e38f0887fe16a864626d6e9683146358cec"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_performance_plate_numerical",
+        "classname": "test_standalone_performance_plate_numerical",
+        "time": "2.2612",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "55c61feca583bb45cd1cc84b8f38bd6f48289c12477dadae51160fcaa222dcd2"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_header_statistics",
+        "classname": "test_standalone_header_statistics",
+        "time": "1.44243",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "21f22a994b6d31c5250a4d2e240ac79d1b2ecefa8212aa983a537209c506d8db"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_header_grain_bounds",
+        "classname": "test_standalone_header_grain_bounds",
+        "time": "0.0558586",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 228,
+      "system_out_sha256_utf8": "7e3d069cec17669f77c21f6663811bd4c7e83736d6e379fc30ea3f3720cbcc50"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_manual_key_material_raster",
+        "classname": "test_standalone_manual_key_material_raster",
+        "time": "9.1758",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 577,
+      "system_out_sha256_utf8": "00981d538f7fb69eda41506af02e6de9b688b2c3848960866988f545e183d4b2"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_keyboard_rim_raster",
+        "classname": "test_standalone_keyboard_rim_raster",
+        "time": "21.276",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 441,
+      "system_out_sha256_utf8": "d368fc8fc48c2f78233d72831bef5c5b0f82ba0490dabe524386c8c5e2b44e9c"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_scaled_view",
+        "classname": "test_standalone_scaled_view",
+        "time": "38.9008",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "f277eeb76cb28ad6166d70355b360ad0a99a8e70a8f376999664b45686e30c41"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_preset_raster",
+        "classname": "test_standalone_preset_raster",
+        "time": "30.0697",
+        "status": "fail"
+      },
+      "outcome": "failure",
+      "failure": {
+        "message": "Timeout"
+      },
+      "error": null,
+      "system_out_bytes_utf8": 0,
+      "system_out_sha256_utf8": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_audio_device",
+        "classname": "test_standalone_audio_device",
+        "time": "3.22988",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "9684a8608e9e7f40f1eb8e79c70d0be331d19f12de5e63fb985e58f762aded6f"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_device_removal",
+        "classname": "test_standalone_device_removal",
+        "time": "0.316718",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 319,
+      "system_out_sha256_utf8": "a3a0fa9314337b0352c64ae169ea1dd33d8c14aa8dffee9dc39613d6232df721"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_callback_allocation",
+        "classname": "test_standalone_callback_allocation",
+        "time": "1.06634",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "4a6a57197ba0ca6b0ba7b63ee8ec79bd3ec37713c4b314d6b32262b5a59a3c3b"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_app",
+        "classname": "test_standalone_app",
+        "time": "20.1229",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "db2a89df892f7ffc22e79e3803d6feb413913d06e15274133cba9a290865502c"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_midi_cli",
+        "classname": "test_standalone_midi_cli",
+        "time": "40.5154",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "e26a8528b43ee50121f413114d0f6d12bf56ff7933a40ea76eace1da12ba89e7"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_expression_diagnostics",
+        "classname": "test_standalone_expression_diagnostics",
+        "time": "3.54935",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 973,
+      "system_out_sha256_utf8": "ef26d600268d9b31ce814e7380f8df00bfc22007e6051ee7891897121536c02d"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_native_calibration",
+        "classname": "test_standalone_native_calibration",
+        "time": "21.2155",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "95b2d4a7a4b09b043e519a7306931cc6363088ff51bdb40f42ce4ddee212e358"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_native_midi_replay",
+        "classname": "test_standalone_native_midi_replay",
+        "time": "43.8845",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "53922f53b30bbcd6077c45ef494e820718a96247de465c1f043a3579dcd451e3"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_workflows",
+        "classname": "test_standalone_workflows",
+        "time": "67.4003",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "90e888d664cbe039d2e4d62c4b4c8a32234be1c08f66892bca475c1b9d9723fb"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_workspace_replay",
+        "classname": "test_standalone_workspace_replay",
+        "time": "53.8615",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "40553d6508b9b1ae9d199e166bbe6354353673c4a20e9b6437340dbb9c15da79"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_replay_paint_boundary",
+        "classname": "test_standalone_replay_paint_boundary",
+        "time": "1.17523",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 716,
+      "system_out_sha256_utf8": "c926b480201729eeb61243d6ac3c81e6d6bf0fd327b6ad206a56a7258f2886a7"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_semantic_paint_boundary",
+        "classname": "test_standalone_semantic_paint_boundary",
+        "time": "1.17425",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "b6740a98fc5e53adb3486038cc24200d4466f19d9e2ea9cbc6696ae243076baa"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_replay_boundaries",
+        "classname": "test_standalone_replay_boundaries",
+        "time": "6.47",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "5d06413febd2fcfa4e2ed4929a16ed321474eaae08711467b4129a3a90c1ab56"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_chapel",
+        "classname": "test_standalone_chapel",
+        "time": "23.1121",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 377,
+      "system_out_sha256_utf8": "527ba71a45a5e082e381f7d438d205d3e496f1ab4ed5109a0332972639f12a0e"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_starter_load",
+        "classname": "test_standalone_starter_load",
+        "time": "11.8522",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 1117,
+      "system_out_sha256_utf8": "8d0fbf9fb48cce2b81aafca1938fc75313aadce328c5a2cb798706b7caaa1910"
+    },
+    {
+      "attributes": {
+        "name": "test_standalone_input_replay",
+        "classname": "test_standalone_input_replay",
+        "time": "0.0570519",
+        "status": "run"
+      },
+      "outcome": "success",
+      "failure": null,
+      "error": null,
+      "system_out_bytes_utf8": 265,
+      "system_out_sha256_utf8": "09e816cd190d7c0f7c3ffefb53cde352fb2aac3b818c8e0645ef7aeeca1b5dc4"
+    }
+  ],
+  "job_provenance": {
+    "source_commit": "f3829f50192bcf8fef8bafe72ac43c09d1f4c72c",
+    "source_tree": "d216279911a69a364426bef9d5e0b7b5221bd024",
+    "run_id": "44049129278",
+    "run_attempt": "1",
+    "configuration": "Release",
+    "runner_os": "macOS",
+    "runner_arch": "X64",
+    "machine": "x86_64",
+    "platform": "macOS-15.7.9-x86_64-i386-64bit",
+    "image_os": "macos15",
+    "image_version": "20260824.0482.1",
+    "python": "3.12.10",
+    "toolchain": {
+      "C": {
+        "compiler": "/usr/bin/clang",
+        "compiler_architecture_id": "x86_64",
+        "compiler_id": "AppleClang",
+        "compiler_version": "17.0.0.17000013"
+      },
+      "CXX": {
+        "compiler": "/usr/bin/clang++",
+        "compiler_architecture_id": "x86_64",
+        "compiler_id": "AppleClang",
+        "compiler_version": "17.0.0.17000013"
+      }
+    }
+  },
+  "original_artifact_members": {
+    "standalone-ci-logs/ctest.xml": {
+      "archive_member": "standalone-ci-logs/ctest.xml",
+      "bytes": 56307,
+      "sha256": "a4e0d3ae7ff10acbb3a9742923feb051b8e0eed737f616af951428d4186c5255"
+    },
+    "standalone-ci-logs/ctest-discovered.json": {
+      "archive_member": "standalone-ci-logs/ctest-discovered.json",
+      "bytes": 71598,
+      "sha256": "249ba3066ae0022bd950ba0eda2c63e54f4b032d2486d2fa5b878bac1e745935"
+    },
+    "standalone-ci-logs/ctest.log": {
+      "archive_member": "standalone-ci-logs/ctest.log",
+      "bytes": 227253,
+      "sha256": "acf5f0f98ec668fbb154359f06346b6da34650e951f34b8688a187687d5eaf83"
+    },
+    "build-standalone/Testing/Temporary/LastTest.log": {
+      "archive_member": "build-standalone/Testing/Temporary/LastTest.log",
+      "bytes": 235594,
+      "sha256": "acfd8c8c6a1c6096998a97275973de1193cc0319bcb29c9881eee4b131c97ee1"
+    },
+    "build-standalone/Testing/Temporary/LastTestsFailed.log": {
+      "archive_member": "build-standalone/Testing/Temporary/LastTestsFailed.log",
+      "bytes": 34,
+      "sha256": "fca629cf5e02cbdce714cd82ebd82a5b9107e5f04d4d343dda92c648fba87837"
+    },
+    "standalone-ci-logs/provenance.json": {
+      "archive_member": "standalone-ci-logs/provenance.json",
+      "bytes": 26284,
+      "sha256": "3da0a560d1ee1aaed85408d0fa62afe3493d372b9aa46beb25d99eb5eb64f6ae"
+    }
+  },
+  "downstream_steps_skipped_after_failed_acceptance": [
+    {
+      "name": "Reverify source and dependencies after acceptance",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 14,
+      "started_at": "2026-11-17T09:14:33Z",
+      "completed_at": "2026-11-17T09:14:33Z"
+    },
+    {
+      "name": "Stage, relocate, smoke and archive the exact installed payload",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 15,
+      "started_at": "2026-11-17T09:14:33Z",
+      "completed_at": "2026-11-17T09:14:33Z"
+    },
+    {
+      "name": "Retain the successful executable package and byte inventory",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 17,
+      "started_at": "2026-11-17T09:14:35Z",
+      "completed_at": "2026-11-17T09:14:35Z"
+    },
+    {
+      "name": "Post Set up Python 3.12",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 33,
+      "started_at": "2026-11-17T09:14:35Z",
+      "completed_at": "2026-11-17T09:14:35Z"
+    }
+  ],
+  "limits": [
+    "No retries, cancellation, source changes, threshold or timeout changes, local test or native/build execution were performed for this review.",
+    "Earlier source-specific successful results are preserved separately and do not replace this failure.",
+    "Root owns documentary publication admission and any subsequent separately scoped timing investigation."
+  ]
+}

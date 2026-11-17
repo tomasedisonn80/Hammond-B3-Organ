@@ -1,0 +1,377 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T09:38:30.189559+00:00",
+  "status": "ADMIT_DOCUMENTARY_PRESERVING_MERGE_WITH_INTEL_TIMING_GATE_OPEN",
+  "scope": "Final root admission of the resolved documentation/evidence-only merge. The final receipt itself is added after this pre-receipt tree observation. This does not claim source-f382 full qualification, repaired timing, native binary equivalence, later publication or later CI success.",
+  "implementation_source": {
+    "commit": "523c1979334b0fbb624ce120128a0b8ada078383",
+    "tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+    "observed_hosted_jobs": 16,
+    "success": 16,
+    "attempt": 1,
+    "original_evidence_immutable": true
+  },
+  "incoming_source": {
+    "commit": "f3829f50192bcf8fef8bafe72ac43c09d1f4c72c",
+    "tree": "d216279911a69a364426bef9d5e0b7b5221bd024",
+    "outcome": {
+      "all_required_jobs_terminal": true,
+      "total_jobs": 16,
+      "success": 15,
+      "failure": 1,
+      "cancelled": 0,
+      "run_attempts": [
+        1
+      ],
+      "core": "6/6 success",
+      "native_standalone": "5/6 success; Intel preset-raster timeout remains failed",
+      "native_vst3": "4/4 success",
+      "observation_complete_utc": "2026-11-17T09:16:18.821Z",
+      "complete_source_qualification_pass": false
+    },
+    "failure": {
+      "job": 133922212477,
+      "run": 44049129278,
+      "test": "test_standalone_preset_raster",
+      "tests": 78,
+      "passed": 77,
+      "failed": 1,
+      "exit_code": 8,
+      "unchanged_timeout_seconds": 30,
+      "observed_seconds": 30.0697,
+      "printed_seconds": 30.07,
+      "fixture_output": "Empty; no completed fixture counters or numeric mismatch diagnostic",
+      "downstream": "Post-acceptance source reverify, relocated-package smoke and successful package upload were skipped",
+      "precise_cause_established": false,
+      "repair_claimed": false,
+      "cross_run_binary_identity_claimed": false
+    },
+    "all_jobs_terminal_before_planned_publication": true
+  },
+  "preserved_local_history": {
+    "local_commit": "e114b835e51e577f8ff5de68a3956988a7ea6f45",
+    "verified_api_equivalent": "266129294d0d8d70f15307037c3fe5518a000215",
+    "identical_tree": "1acb04ee4408bedd889909c05afd1c48661a9b81",
+    "planned_local_ordered_parents": [
+      "e114b835e51e577f8ff5de68a3956988a7ea6f45",
+      "f3829f50192bcf8fef8bafe72ac43c09d1f4c72c"
+    ],
+    "planned_api_ordered_parents": [
+      "266129294d0d8d70f15307037c3fe5518a000215",
+      "f3829f50192bcf8fef8bafe72ac43c09d1f4c72c"
+    ]
+  },
+  "reviewed_receipts": [
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json",
+      "bytes": 72526,
+      "sha256": "ce01bb903a8e5bc03803c0e479d44549bf5fc6cc1aa2bd082051c63d842786b4"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-publication.json",
+      "bytes": 6559,
+      "sha256": "e0c8b10d7edd43922ef0a00e7618f8a268517a3810a73aea0bbde44a366153ed"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-ci-complete.json",
+      "bytes": 15259,
+      "sha256": "a025629ec7f0ce0b68f7cf915ecf8a62ffa23bbd4ba652c0f8a3de66e4164236"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-ci-api-observation.json",
+      "bytes": 147694,
+      "sha256": "9546e7851fc0c80138da05946be727966349d2d336f0b49e709492f9ff82655f"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/A59-concurrent-final-source.json",
+      "bytes": 796256,
+      "sha256": "735e34b8cfce2fe598c2e2f7b0c261fbbaa58094b45af9ac48ec356268d02b63"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/A59-concurrent-timeout-admission.json",
+      "bytes": 50978,
+      "sha256": "cef9a8f76afd2ea962de47caf2c12922b735c6ecca6a88fc3bb246a60c9db6e1"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/A60-terminal-ci-navigation-audit.json",
+      "bytes": 41062,
+      "sha256": "24d8de6088a4f36081fb7ef227824420f0aa7afc5c2c5120803629e058369932"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-merge-terminal-document-integrity.json",
+      "bytes": 14066,
+      "sha256": "556d21d1f88b511394d4b5bb4774b6ce2576f95b1ad61ce7fb510c91459a1e7e"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-merge-terminal-api.json",
+      "bytes": 148058,
+      "sha256": "8610da0e1167b844d4a9d7edfd8c871dbc86c37928e3f700adeac939afc90958"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-closure-concurrent-ci.json",
+      "bytes": 41230,
+      "sha256": "7d7ba1b07bafcf579b5ecfb37f66ca366899cb5988ec59bdd53537364c834580"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-closure-concurrent-ci/evidence-inventory.json",
+      "bytes": 1978,
+      "sha256": "103745a245787ef5919571dcb56da441a86b47cf710b12814ff8e2179aa8f2c9"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-closure-concurrent-ci/original-retention.json",
+      "bytes": 11310,
+      "sha256": "9de77ba1a65b329d9bfbfc5bece7f150bcb1ed3667023f08c0670cefc4204a7c"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-closure-concurrent-ci/failure-analysis.json",
+      "bytes": 40327,
+      "sha256": "4928594b0c92a15c0467ac26c1dab76339ace7189e92de6175e8dc746abc54b1"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-closure-concurrent-ci/source-comparison.json",
+      "bytes": 92047,
+      "sha256": "773525af6d18f5439a1623777c16ce24fc3d52dc5a703da81ea8b9e3416922fd"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-merge-preservation-preflight.json",
+      "bytes": 1870,
+      "sha256": "880415c820e28a79f6549f37de540301ac837047048c0091515f5d905ab1ab5b"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-merge-diff-check.json",
+      "bytes": 109559,
+      "sha256": "74b853fcd05a531c6148117e1915b71fa5bb272ede4d7e88975d016b4ec91c7f"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-worker-strict.json",
+      "bytes": 2104,
+      "sha256": "595c6ecf3d07ac0383ae775e04dd6d4161b78662402f69223f10f123af504af8"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json",
+      "bytes": 2034,
+      "sha256": "e8d9f75992c972a7534778e626eb7ed1118b622a47ec9eaf1af955ef8327eeaf"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-closure-root-admission.json",
+      "bytes": 18775,
+      "sha256": "a09e5f473c9c77692c20be28661eb053e3dbbc1aa649d42eb94019397d0733dc"
+    }
+  ],
+  "final_document_gate": {
+    "receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-merge-terminal-document-integrity.json",
+      "bytes": 14066,
+      "sha256": "556d21d1f88b511394d4b5bb4774b6ce2576f95b1ad61ce7fb510c91459a1e7e"
+    },
+    "tests": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "internal_methods": 41,
+    "seconds": 5.990774958001566,
+    "frozen_documents": 36,
+    "root_rehashed_A60_bound_local_identities": 38,
+    "source_inputs_unchanged": true,
+    "app_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9",
+    "CI_archive_binary_observations_not_treated_as_local_files": true
+  },
+  "preservation": {
+    "index_tree_before_this_receipt": "4ce2ef735e1e9dde7c85f7fd1ea5b51a9c8ca6ea",
+    "incoming_file_count": 8414,
+    "incoming_entries_preserved_exactly": 8404,
+    "only_changed_incoming_paths": [
+      "AGENTS.md",
+      "README.md",
+      "docs/CONSOLE_COMPLETION_HANDOFF.md",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/NEXT_STEPS.md",
+      "docs/PLAN.md",
+      "docs/PROJECT_GUIDE.md",
+      "docs/STATUS.md",
+      "docs/development/2026-11-16-console-completion/CHECKPOINT.md",
+      "docs/development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md"
+    ],
+    "incoming_deletions": 0,
+    "local_original_additions_preserved_exactly": 229,
+    "qualified_source_file_count": 587,
+    "all_qualified_source_Git_entries_identical_across_base_incoming_local_index": true,
+    "all_qualified_working_sha256_match": true,
+    "all_frozen_document_and_audit_bound_identities_match": true,
+    "local_handoff": "Original accepted content retained with explicit later CI evidence insertion; current bytes are separately qualified by the terminal document gate",
+    "production_test_build_workflow_or_checked_in_runtime_asset_changes": false,
+    "conflicts": 0,
+    "unstaged_changes": 0,
+    "untracked_files_before_this_receipt": 0
+  },
+  "formatting": {
+    "original_complete_checks": {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-merge-diff-check.json",
+      "bytes": 109559,
+      "sha256": "74b853fcd05a531c6148117e1915b71fa5bb272ede4d7e88975d016b4ec91c7f"
+    },
+    "policy": "Original parent evidence bytes, including existing trailing whitespace and EOF blanks, remain unmodified. Only exact reverified parent blobs are excluded from scoped checks.",
+    "final_scoped_checks": [
+      {
+        "comparison": "local",
+        "parent": "e114b835e51e577f8ff5de68a3956988a7ea6f45",
+        "command": [
+          "git",
+          "diff",
+          "--cached",
+          "--check",
+          "--no-renames",
+          "e114b835e51e577f8ff5de68a3956988a7ea6f45",
+          "--",
+          ".",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-windows/workflow-template.diff",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-windows/workflow.template.yml",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/header-comparator-indexed-transition-attempt1.patch",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/header-comparator-indexed-transition.patch",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/reconciled-main-core/incoming-five-source-paths.diff",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/combined-focused/workflow-source.yml",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/core-windows/capture-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/core-windows/ctest-final-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/core-windows/header-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/windows-final-build-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/ctest-final-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/header-statistics-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/p1-native-and-numerical-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-d2ed/title-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-final-test-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-header-material-pass-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-header-statistics-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-title-density-failure-normalized.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047288-preset-result.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/d2ed-integration/p1-comparator-indexed-superset.patch",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/p1-portability-candidate.patch",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/combined-windows-focused/workflow.yml",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/console-integration/affected-test-discovery.json",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-ctest.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/console-integration/configure.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.log",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/reconciled-integration/incoming-source-diff.patch",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/reconciled-integration/preserved-docs-publication.json",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/reconciled-main-terminal-api.json",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/windows-array-focused/workflow.yml",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/windows-array-local/candidate.patch",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/windows-array-local/ctest-discovered.json",
+          ":(exclude)docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/workflow.yml"
+        ],
+        "exit_code": 0,
+        "output_bytes": 0,
+        "exact_original_payload_exceptions": 33,
+        "all_exception_blobs_and_sha256_reverified": true
+      },
+      {
+        "comparison": "incoming",
+        "parent": "f3829f50192bcf8fef8bafe72ac43c09d1f4c72c",
+        "command": [
+          "git",
+          "diff",
+          "--cached",
+          "--check",
+          "--no-renames",
+          "f3829f50192bcf8fef8bafe72ac43c09d1f4c72c",
+          "--",
+          ".",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-002.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-003.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-004.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-005.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-006.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-007.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-008.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-009.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-010.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-011.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-artifacts-012.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-001.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-002.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-003.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-004.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-005.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-006.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-007.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-008.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-009.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-010.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-011.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-jobs-012.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-002.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-003.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-004.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-005.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-006.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-007.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-008.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-009.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-010.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-011.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-run-012.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-runs-001.json",
+          ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-final-hosted/api-source.json"
+        ],
+        "exit_code": 0,
+        "output_bytes": 0,
+        "exact_original_payload_exceptions": 36,
+        "all_exception_blobs_and_sha256_reverified": true
+      }
+    ]
+  },
+  "staffing_and_pdf": {
+    "strict_worker_receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/final-worker-strict.json",
+      "bytes": 2104,
+      "sha256": "595c6ecf3d07ac0383ae775e04dd6d4161b78662402f69223f10f123af504af8"
+    },
+    "accepted_distinct_workers": 60,
+    "waves": 10,
+    "workers_per_wave": 6,
+    "same_worker_followup_credit": 0,
+    "strict_receipt_checker_assignments_and_all_original_parent_files_preserved": true,
+    "reading_coverage_receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json",
+      "bytes": 2034,
+      "sha256": "e8d9f75992c972a7534778e626eb7ed1118b622a47ec9eaf1af955ef8327eeaf"
+    },
+    "pages": 500,
+    "coverage_gap_or_overlap": false,
+    "reader_notes_rehashed": 6
+  },
+  "resource_observation": {
+    "utc": "2026-11-17T09:38:30.189559+00:00",
+    "filesystem": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+    "free_bytes": 41584267264,
+    "free_GiB": 38.72836685180664,
+    "total_bytes": 67586535424,
+    "cleanup_performed_in_closure": false
+  },
+  "publication_actions_remaining": [
+    "Commit the accepted resolved merge with its two local parents",
+    "Upload exact missing Git blobs and verify each bottom-up tree SHA",
+    "Verify the API equivalent parent and a fresh expected main ref, retaining all incoming history",
+    "Create the matching API merge, verify its ordered parents and tree, and update main non-forced with expected_sha",
+    "Independently read remote commit/ref and fetch public Git; verify full intended tree, qualified source and frozen documentation",
+    "Align the local branch to the verified tree-equivalent published commit and verify a clean worktree",
+    "Observe the automatically triggered successor workflows as new source-bound outcomes, without claiming unobserved results or retrying/cancelling for green"
+  ],
+  "next_product_actions": [
+    "Preserve and investigate the unresolved Intel preset-raster timing gate using the bounded input/profiling/stop protocol in NEXT_STEPS and A59 admission",
+    "Add model-owned Save availability with the actual fresh post-Start authorization basis",
+    "Wire UiModel focus and original physical input ownership before main lifecycle/submission and create-only storage",
+    "Add copied native LibraryView and qualify complete startup, restart, stopped Load, held input, CC11 scope, timeout/recovery and collision/warning journeys",
+    "Continue the literal reference match with actual captures and unchanged musical controls; whole-interface 1:1 remains unmet",
+    "Resume the full M0-M9 exit-gated plan; do not infer measured physical fidelity from code or reading"
+  ],
+  "permanent_boundaries": [
+    "Native browser/main integration and --library remain unimplemented",
+    "Literal whole-interface 1:1 remains required and unwaived",
+    "Original failures, thresholds, deadlines, workloads and numerical assertions remain unchanged; no hosted retry/cancellation",
+    "All 47 parameter identities, state4/readers1-3, 91 free-running shared sources, UUIDs and nominal dry Engine remain preserved",
+    "No connected scanner/AO28/Leslie or measured physical calibration claim",
+    "Future agents must read the complete standing rules and full plan, retain current handoffs and actual captures, record setup/results/limitations/next work, manage owned resources and verify guarded publication"
+  ]
+}

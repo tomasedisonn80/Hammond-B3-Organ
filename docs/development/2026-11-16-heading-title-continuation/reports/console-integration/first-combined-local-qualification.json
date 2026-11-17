@@ -1,0 +1,292 @@
+{
+  "schema": 1,
+  "base": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "applied_source_identities": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49026,
+      "sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61268,
+      "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "bytes": 35747,
+      "sha256": "000aa38a03402e64a0bb5ef6642294973637fa0b7270659c8c23af60eaf40d18"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75580,
+      "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 24838,
+      "sha256": "d37591ec80910769d61f81cf90e7d937bf4844dcd307ae887ac5099c440a8a79"
+    },
+    "tests/test_compare_header_material.py": {
+      "bytes": 34435,
+      "sha256": "4832837c0465e875ac7873ada1d7b005f7da8c727fa7467621f85aa6d7adb8f8"
+    },
+    "tests/test_compare_performance_plate.py": {
+      "bytes": 43358,
+      "sha256": "f9abf1d76a4b61ccbc7fb12d63a1d8fb3409b2e26d6eed6d40c802d6d9575f26"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 100851,
+      "sha256": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328"
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 89016,
+      "sha256": "fa4d44bf1df72c2b5d540e2125293277a937a33ea0c9590f4967d68c68f429ca"
+    }
+  },
+  "local_build": {
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/5a28c3564dbf/build-native",
+      "--config",
+      "Release",
+      "--target",
+      "test_standalone_footage_typography_raster",
+      "test_standalone_header_material",
+      "test_standalone_performance_plate",
+      "test_standalone_library_model",
+      "test_standalone_library_session",
+      "test_standalone_library_storage",
+      "test_standalone_library_recall",
+      "test_standalone_library_roundtrip",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "seconds": 80.58887002599658,
+    "log": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-build.log",
+    "log_bytes": 4418,
+    "log_sha256": "9adcc5ce5d4a845e8a47425588a3d1850c02c15f3e24507c1d70bc17cee6dffe"
+  },
+  "local_ctest": {
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/5a28c3564dbf/build-native",
+      "-C",
+      "Release",
+      "-R",
+      "^(test_standalone_footage_typography_raster|test_standalone_title_density|test_standalone_header_material|test_standalone_header_statistics|test_standalone_performance_plate|test_standalone_performance_plate_numerical|test_standalone_library_model|test_standalone_library_session|test_standalone_library_storage|test_standalone_library_recall|test_standalone_library_roundtrip|python_test_compare_header_material|python_test_compare_performance_plate|python_test_capture_standalone_interface)$",
+      "--parallel",
+      "1",
+      "--verbose",
+      "--output-junit",
+      "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-ctest.xml"
+    ],
+    "exit_code": 0,
+    "seconds": 98.68675613300002,
+    "log": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-affected-ctest.log",
+    "log_bytes": 106795,
+    "log_sha256": "afd36f66dcb36d653cd28541e9aa9202d54952d78c7158721920f7adf15f6ed7"
+  },
+  "test_count": 14,
+  "test_results": [
+    {
+      "name": "python_test_capture_standalone_interface",
+      "status": "run",
+      "seconds": 1.79088
+    },
+    {
+      "name": "python_test_compare_header_material",
+      "status": "run",
+      "seconds": 1.3116
+    },
+    {
+      "name": "python_test_compare_performance_plate",
+      "status": "run",
+      "seconds": 1.00748
+    },
+    {
+      "name": "test_standalone_library_model",
+      "status": "run",
+      "seconds": 0.00991883
+    },
+    {
+      "name": "test_standalone_library_recall",
+      "status": "run",
+      "seconds": 0.018059
+    },
+    {
+      "name": "test_standalone_library_roundtrip",
+      "status": "run",
+      "seconds": 0.0191196
+    },
+    {
+      "name": "test_standalone_library_session",
+      "status": "run",
+      "seconds": 0.030231
+    },
+    {
+      "name": "test_standalone_library_storage",
+      "status": "run",
+      "seconds": 0.0411304
+    },
+    {
+      "name": "test_standalone_footage_typography_raster",
+      "status": "run",
+      "seconds": 16.5744
+    },
+    {
+      "name": "test_standalone_title_density",
+      "status": "run",
+      "seconds": 8.74834
+    },
+    {
+      "name": "test_standalone_header_material",
+      "status": "run",
+      "seconds": 45.1106
+    },
+    {
+      "name": "test_standalone_performance_plate",
+      "status": "run",
+      "seconds": 22.2035
+    },
+    {
+      "name": "test_standalone_performance_plate_numerical",
+      "status": "run",
+      "seconds": 1.12947
+    },
+    {
+      "name": "test_standalone_header_statistics",
+      "status": "run",
+      "seconds": 0.662233
+    }
+  ],
+  "p1_transport_after": {
+    "schema": 1,
+    "phase": "after",
+    "inputs": {
+      "binary": {
+        "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_performance_plate",
+        "bytes": 3862304,
+        "sha256": "f9a3f67518233d94d77c53ba137d3b1fc05ee9f55619f24cf654c24cecb027a9"
+      },
+      "fixture": {
+        "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+        "bytes": 75580,
+        "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+      },
+      "comparator": {
+        "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tools/compare_performance_plate.py",
+        "bytes": 89016,
+        "sha256": "fa4d44bf1df72c2b5d540e2125293277a937a33ea0c9590f4967d68c68f429ca"
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+        "bytes": 179890,
+        "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+      },
+      "apps/standalone/UiModel.cpp": {
+        "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/UiModel.cpp",
+        "bytes": 83993,
+        "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+      },
+      "apps/standalone/UiModel.h": {
+        "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/UiModel.h",
+        "bytes": 18956,
+        "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+      },
+      "apps/standalone/Drawing.cpp": {
+        "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/Drawing.cpp",
+        "bytes": 22378,
+        "sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a"
+      },
+      "apps/standalone/main.cpp": {
+        "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/main.cpp",
+        "bytes": 147938,
+        "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+      }
+    },
+    "scope": "Transport, complete frozen inventory, and canonical stream equivalence only; existing CTests cover native and numerical acceptance.",
+    "timeout_seconds": 60,
+    "whole_run_seconds": 1200,
+    "retry": false,
+    "commands": [
+      {
+        "command": [
+          "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_performance_plate",
+          "--list"
+        ],
+        "utc_started": "2026-11-17T06:57:50.542894+00:00",
+        "name": "inventory",
+        "stdout_limit": 2097152,
+        "stderr_limit": 65536,
+        "timeout_seconds": 60,
+        "exit_code": 0,
+        "utc_finished": "2026-11-17T06:57:50.547779+00:00",
+        "duration_seconds": 0.004908450995571911,
+        "errors": [],
+        "stdout": {
+          "path": "inventory.stdout.zlib",
+          "bytes": 2412,
+          "sha256": "df37c31b128027142d7e712759c103b3ae43d3a5ec320760b50e37e34504cb61",
+          "raw_bytes": 27310,
+          "raw_sha256": "453447b786f4585069c34eb3b52ec21e8f2d85362cb389bb2ff58446a24f2125",
+          "encoding": "zlib"
+        },
+        "stderr": {
+          "path": "inventory.stderr.zlib",
+          "bytes": 8,
+          "sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb",
+          "raw_bytes": 0,
+          "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "encoding": "zlib"
+        }
+      },
+      {
+        "command": [
+          "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_performance_plate",
+          "--case",
+          "0"
+        ],
+        "utc_started": "2026-11-17T06:57:50.552903+00:00",
+        "name": "canonical",
+        "stdout_limit": 36025169,
+        "stderr_limit": 65536,
+        "timeout_seconds": 60,
+        "exit_code": 0,
+        "utc_finished": "2026-11-17T06:57:51.076631+00:00",
+        "duration_seconds": 0.5237580120010534,
+        "errors": [],
+        "stdout": {
+          "path": "canonical.stdout.zlib",
+          "bytes": 1100577,
+          "sha256": "d03aa8aa2b81f0be063369793621226c6c4047aed473de9f2e3dccc6e85b0366",
+          "raw_bytes": 6561750,
+          "raw_sha256": "371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55",
+          "encoding": "zlib"
+        },
+        "stderr": {
+          "path": "canonical.stderr.zlib",
+          "bytes": 8,
+          "sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb",
+          "raw_bytes": 0,
+          "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "encoding": "zlib"
+        }
+      }
+    ],
+    "passed": true,
+    "canonical": {
+      "width": 1672,
+      "height": 941,
+      "stream_bytes": 6561750,
+      "stream_sha256": "371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55",
+      "header_bytes": 268342,
+      "header_sha256": "a92a7e6fdc9d12a9cf23f096236031cee74e87018130f7429df97bd0947dd5b6",
+      "rgba_bytes": 6293408,
+      "rgba_sha256": "34bb954838cd156d8bb057eaf0cc6965feda3b8821d43c20ac4e0433c95511bf"
+    },
+    "inventory_sha256": "453447b786f4585069c34eb3b52ec21e8f2d85362cb389bb2ff58446a24f2125",
+    "complete_inventory_matches_frozen_34_cases": true,
+    "before_after_complete_canonical_stream_and_inventory_identical": true,
+    "inputs_unchanged": true
+  },
+  "scope": "Exact first integrated nine-file source at cf87 base; all14 existing selected gates pass once. P1canonical complete inventory/stream equal. Later d2ed test-source integration must be separately qualified; no historical whole-image transfer and no hosted result claimed."
+}

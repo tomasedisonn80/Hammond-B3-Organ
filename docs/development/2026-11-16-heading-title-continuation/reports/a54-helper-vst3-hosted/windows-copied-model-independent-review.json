@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "reviewer": "A54, same accepted worker; independent read-only Windows copied-model protocol diagnosis",
+  "recorded_utc": "2026-11-17T06:07:30.861503+00:00",
+  "source_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+  "run_id": 44026516737,
+  "attempt": 1,
+  "job_id": 133848047271,
+  "decision": "The evidence demonstrates two copied-model protocol failures, not a numerical image failure. The exact mismatching field/value/type is not retained; no production, serializer, expected-value or equality correction is admitted from the current evidence.",
+  "original_evidence": {
+    "manifest": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/windows-first-failure-retention.json",
+      "bytes": 5316,
+      "sha256": "3f7b2c721d227b0e9dec74f6efff21e67d8fd1105863f0e448430b910f3762a7"
+    },
+    "complete_log": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-complete.log.gz",
+      "stored": {
+        "bytes": 84844,
+        "sha256": "540f8d3bd1c58eb94ae58426efd7eb771a9af695791913213d1c865e6c15f008"
+      },
+      "decoded": {
+        "bytes": 605930,
+        "sha256": "285945725cd6b549ab7c942a99f7e8a951debed844b62b2e6eb1abb61dd09517"
+      },
+      "CRLF_sequences": 4281
+    },
+    "exact_blocks": [
+      {
+        "name": "title-density-failure",
+        "original_gzip": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-title-density-failure-original.log.gz",
+          "bytes": 1397,
+          "sha256": "a920d1deeeeef5e2abf720018346ce84c03a5943174f5f10c8874aae6fc7b816"
+        },
+        "decoded": {
+          "bytes": 4584,
+          "sha256": "05cdd55df9ccef4189065ad1dc47e657694c83bfb8c62e6d5563d81f37dd1bdd"
+        },
+        "exact_complete_log_line_membership": true,
+        "normalized_view_matches": true
+      },
+      {
+        "name": "header-material-pass",
+        "original_gzip": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-header-material-pass-original.log.gz",
+          "bytes": 566,
+          "sha256": "ab2e731e5f0202cca175de1fc60ce2547ba0d790e0a57975b7ed530eba8b36d0"
+        },
+        "decoded": {
+          "bytes": 1205,
+          "sha256": "d12d316d432c1fa63168170192f341c2542a1e823950d967df16ec288ea1051e"
+        },
+        "exact_complete_log_line_membership": true,
+        "normalized_view_matches": true
+      },
+      {
+        "name": "header-statistics-failure",
+        "original_gzip": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-header-statistics-failure-original.log.gz",
+          "bytes": 1339,
+          "sha256": "b01fb7382b6a9780f1464fe62b7bd11810fdf7b7d79ed1a0c8eefd1b78fa3645"
+        },
+        "decoded": {
+          "bytes": 2732,
+          "sha256": "c0a09b62558821781c5f11098e6d03d9a47b502f258ad5f8f5ac2ec2962c1bb2"
+        },
+        "exact_complete_log_line_membership": true,
+        "normalized_view_matches": true
+      },
+      {
+        "name": "final-test-failure",
+        "original_gzip": {
+          "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/job-133848047271-final-test-failure-original.log.gz",
+          "bytes": 818,
+          "sha256": "11926cf9c0d5a0da0632d05b58d35ad7d760c313b8d98002e7ea326786612b75"
+        },
+        "decoded": {
+          "bytes": 2549,
+          "sha256": "9cd49bc01cbabe98299c8534108160dcd05cc45b0e1f4c93d4a6915898ff8355"
+        },
+        "exact_complete_log_line_membership": true,
+        "normalized_view_matches": true
+      }
+    ],
+    "retained_source_files": [
+      {
+        "path": "apps/standalone/native_tests/test_standalone_title_density.py",
+        "bytes": 23467,
+        "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+        "bytes": 34239,
+        "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+        "bytes": 49033,
+        "sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+        "bytes": 61275,
+        "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "include/hammond/ControlState.h",
+        "bytes": 5751,
+        "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "include/hammond/Percussion.h",
+        "bytes": 6395,
+        "sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "src/ControlState.cpp",
+        "bytes": 7673,
+        "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "apps/standalone/Session.h",
+        "bytes": 8982,
+        "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+        "identical_to_published_source": true
+      },
+      {
+        "path": "apps/standalone/UiModel.cpp",
+        "bytes": 83758,
+        "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+        "identical_to_published_source": true
+      },
+      {
+        "path": ".github/workflows/standalone.yml",
+        "bytes": 71269,
+        "sha256": "af5cf9421c5cdbae37b5f0d26e1bf3d96c8a5b26491f89b6518db0ca0e1cc319",
+        "identical_to_published_source": true
+      }
+    ],
+    "all_source_bytes_match_published_commit": true
+  },
+  "actual_outcomes": {
+    "ctest": {
+      "passed": 66,
+      "failed": 2,
+      "total": 68,
+      "seconds": 465.15,
+      "exit_code": 8
+    },
+    "title_density": {
+      "schema": 1,
+      "test": "standalone-title-density-v1",
+      "status": "failed",
+      "required_cases": 18,
+      "native_protocol": "footage-typography-v1",
+      "native_fixture_cases": 44,
+      "fixture_source_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1698,
+        975
+      ],
+      "viewport_origin": [
+        13,
+        17
+      ],
+      "roi_xywh": [
+        590,
+        14,
+        490,
+        46
+      ],
+      "bounds_coordinates": "canonical half-open bounds, with integer viewport origin subtracted",
+      "predicate": "2126*R+7152*G+722*B >= threshold*10000; no hue or alpha predicate",
+      "reference_counts": [
+        5639,
+        5415,
+        4991,
+        4502,
+        3785
+      ],
+      "pre_T3_baseline_counts": [
+        4150,
+        3863,
+        3601,
+        3200,
+        2690
+      ],
+      "primary_band": [
+        4500,
+        6000
+      ],
+      "minimum_error_reduction": 0.4,
+      "resources": {
+        "one_frame_at_a_time": true,
+        "process_timeout_seconds": 20,
+        "stdout_max_bytes": 7146489,
+        "stderr_max_bytes": 65536,
+        "inventory_max_bytes": 65536,
+        "json_max_depth": 16,
+        "number_token_max_characters": 64,
+        "images_persisted": 0
+      },
+      "cases": [],
+      "executable_sha256": "c2f1c690b4c6761d6cf5bd32b297d1985fa02ea7b2ddf2acff1b540e2a5288f8",
+      "inventory": {
+        "case_count": 44,
+        "validated": true,
+        "payload_sha256": "ef9e743dd2644ccecb09ef08c597ceb3d158bce90ed627527e96b22bd4536e82"
+      },
+      "error": "copied view controls differs"
+    },
+    "header_statistics": {
+      "schema": 1,
+      "test": "standalone-header-statistics-v1",
+      "status": "failed",
+      "native_protocol": "header-material-h1-v1",
+      "case": 46,
+      "logical_size": [
+        1672,
+        941
+      ],
+      "primary_patch_order": [
+        "L",
+        "TL",
+        "TM",
+        "TR",
+        "CLT",
+        "CL",
+        "CR",
+        "RT",
+        "RU",
+        "RF",
+        "CM1",
+        "CM2",
+        "CM3",
+        "BL",
+        "BC1",
+        "BC2",
+        "BC3",
+        "BR"
+      ],
+      "protocol_passed": false,
+      "helper_passed": false,
+      "identities": {
+        "frozen_fixture_source_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "contract_sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+        "reference_observations_sha256": "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b",
+        "reference_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "reference_decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+        "independent_comparator_sha256": "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b",
+        "reference_origin": "immutable literals from A22 reference observations; no runtime image decode",
+        "test_source_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+        "executable": "D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\apps\\standalone\\Release\\test_standalone_header_material.exe",
+        "executable_sha256": "563397c1df5a3a72458258e6fceed1d256c35decf53a9bef390612841774509f"
+      },
+      "resources": {
+        "native_invocations": 1,
+        "canonical_rgba_bytes": 6293408,
+        "header_max_bytes": 524288,
+        "stdout_max_bytes": 6817697,
+        "stderr_max_bytes": 65536,
+        "process_timeout_seconds": 20.0,
+        "cleanup_wait_seconds": 5.0,
+        "retained_frames": 1,
+        "images_persisted": 0
+      },
+      "python": "3.12.10",
+      "numerical": {
+        "inequality_count": 103,
+        "evaluated_count": 0,
+        "passed_count": 0,
+        "failed_count": 0,
+        "passed": false,
+        "results": []
+      },
+      "scope": "one canonical numerical regression; complete paired, visual, timing and platform gates remain separate",
+      "error": "complete canonical copied session differs"
+    },
+    "header_native_fixture": {
+      "schema": 1,
+      "protocol": "header-material-h1-v1",
+      "status": "passed",
+      "cases": 48,
+      "checks": 10542,
+      "paintings": 163,
+      "clipped_cases": 16,
+      "empty_cases": 2,
+      "inactive_cases": 8,
+      "protected_pixels": 56329523,
+      "deterministic_repaints": 48,
+      "clip_companions": 16,
+      "quiet_clip_pixels": 33462,
+      "history_states": 48,
+      "history_repaints": 1,
+      "fresh_repaints": 1,
+      "helper_present": true,
+      "helper_probes": 95,
+      "backend": "SDL software surface; copied state; no audio/window"
+    },
+    "post_acceptance_source_reverification": "skipped",
+    "workflow_packaging": "skipped"
+  },
+  "failure_boundaries": [
+    {
+      "gate": "test_standalone_title_density",
+      "location": "apps/standalone/native_tests/test_standalone_title_density.py:validate_model / controls entry",
+      "observed": "44-case inventory validated; cases is empty; copied view controls differs",
+      "source_control_flow_inference": "The first requested canonical frame is case 0. Bounded capture returned and top-level header fields matched before recursive comparison of model.view.controls failed. No density case was appended.",
+      "not_established": "Which controls key or nested value/type differs; complete RGBA length validation and numerical density run after validate_model and were not reached."
+    },
+    {
+      "gate": "test_standalone_header_statistics",
+      "location": "apps/standalone/native_tests/test_standalone_header_statistics.py:validate_model / complete canonical copied session guard",
+      "observed": "One case46 native invocation; protocol_passed and helper_passed remain false; numerical evaluated/passed/failed counts are all zero.",
+      "source_control_flow_inference": "Fixed top-level fields, renderer records, and before/after equality of complete model/session/hit records precede the failing comparison. The guard combines session_before and model_before.view.applied against expected_session with short-circuit and; the log identifies neither operand nor leaf.",
+      "not_established": "A painted-state mutation, helper absence, failed material inequality or defective image. helper_passed is initialized false and assigned only after parse_frame returns; zero evaluated inequalities are not 103 failed inequalities."
+    }
+  ],
+  "independent_source_findings": [
+    {
+      "finding": "Strict type equality is intentional and remains required.",
+      "sources": [
+        "apps/standalone/native_tests/test_standalone_title_density.py:typed_equal",
+        "apps/standalone/native_tests/test_standalone_header_statistics.py:typed_equal"
+      ],
+      "detail": "The predicates compare exact Python types before recursively comparing dictionary keys, list lengths/elements and scalar values. Numeric coercion or tolerance would alter the admitted protocol."
+    },
+    {
+      "finding": "Both fixture controls serializers explicitly emit the same complete fields.",
+      "sources": [
+        "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp:controls",
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:controls"
+      ],
+      "detail": "Drawbars, selected banks, route booleans, pedal values and fixed-registration enums use static_cast<unsigned>. Percussion enabled is a bool under boolalpha; harmonic/volume/decay enums are explicitly unsigned."
+    },
+    {
+      "finding": "The fractional literals do not establish a rounding defect.",
+      "sources": [
+        "both native fixtures:state_for",
+        "both native fixtures:model_record/session_record"
+      ],
+      "detail": "Expression 0.625 is exactly 5/8; peak 0.125 is exactly 1/8. Both are representable in binary floating point. The records use max_digits10 and boolalpha. Without the actual emitted token, an MSVC decimal/rounding/format explanation is unsupported."
+    },
+    {
+      "finding": "The initial copied state is deliberately specified.",
+      "sources": [
+        "include/hammond/ControlState.h:ControlSnapshot",
+        "apps/standalone/Session.h:SessionSnapshot",
+        "both native fixtures:state_for"
+      ],
+      "detail": "Every drawbar bank is filled; expression, pedal drawbars, percussion and selected preset routes are explicitly assigned. Session flags/counters have member initializers; clocks, rate, peak, prepared/running and publication revision are explicitly set. The inspected fields do not supply a source-proven uninitialized-value explanation."
+    },
+    {
+      "finding": "Restore/selection/observe do not explain a platform-specific changed expected value.",
+      "sources": [
+        "src/ControlState.cpp:restore/select_bank/select_preset",
+        "apps/standalone/UiModel.cpp:observe"
+      ],
+      "detail": "restore validates then copies the full snapshot. Bank selection sets the chosen bank, clears fixed mode and enables routing. observe copies a valid nonstale snapshot and its controls when no pending controls exist. The native state_for check separately compares desired/applied snapshots against its constructed expectation."
+    },
+    {
+      "finding": "Transport still requires its original binary and bounded contract.",
+      "sources": [
+        "both native fixtures:main --case Windows branch",
+        "both Python readers:capture/parse_frame"
+      ],
+      "detail": "The native --case path selects _O_BINARY on Windows. Python uses byte pipes with bounded readers and requires child success/no stderr before returning payload. Typed model failure is later than JSON parsing and earlier than complete RGBA validation. No CRLF, encoding, timeout or renderer-cause repair follows from that ordering alone."
+    }
+  ],
+  "missing_evidence": {
+    "complete_log_field_string_counts": {
+      "\"model_before\"": 0,
+      "\"session_before\"": 0,
+      "\"drawbars\"": 0
+    },
+    "original_native_frame_headers_retained": false,
+    "first_differing_path_type_and_value_retained": false,
+    "header_sha_available_for_failed_header_case": false,
+    "why_missing": "The Python readers retain native payload only in bounded memory and emit generic comparison exceptions. The normal workflow retains their report/log output, not the --case JSON header. A53 independently confirmed this against artifact retention paths. The typed failure does not expose the mismatching leaf.",
+    "same_root_cause_for_both_failures_established": false
+  },
+  "prospective_diagnostic_recommendation": {
+    "authorized_or_executed_by_this_review": false,
+    "minimum_needed": "Root may separately admit one bounded inspection of the exact case0 footage header and case46 header fixture on the intended Windows source/toolchain, retaining executable/source identities, original JSON header bytes or a lossless archive plus hashes, and the first differing JSON path with actual/expected types and bounded values.",
+    "original_commands_to_bind": [
+      "test_standalone_footage_typography_raster.exe --case 0",
+      "test_standalone_header_material.exe --case 46"
+    ],
+    "diagnostic_only_alternative": "A prospectively reviewed bounded first-mismatch report can expose the leaf when the existing unchanged typed comparison fails. Keep its failure result and all predicates; no coercion, field omission, tolerance, relaxed failure handling or pass substitution.",
+    "resource_contract": "Preserve 20-second child limits, 5-second cleanup, existing 512-KiB header and 64-KiB stderr bounds, full stdout draining within existing caps, one frame at a time and 90-second CTest limits. Do not execute extra cases or persist unbounded raw images.",
+    "next_decision": "After observing the original differing leaf/token, independently review its concrete source or protocol cause and the narrow correction before editing or claiming a repaired test. A clean Linux run, native 48-case success or unrelated VST3 pass cannot replace that missing Windows observation."
+  },
+  "protections": [
+    "All exact typed predicates and complete field sets",
+    "All fixture values, dimensions, cases, counts and numerical thresholds",
+    "All child/CTest bounds and resource caps",
+    "Original failed Windows result and skipped workflow tail",
+    "Original native fixture success as separate evidence",
+    "Published production and source identities",
+    "Frozen VST3 review/report/retention records"
+  ],
+  "frozen_vst3_files": [
+    {
+      "path": "docs/reviews/HEADING_HEADER_HELPER_VST3_HOSTED.md",
+      "bytes": 13009,
+      "sha256": "064b05dc7af305f2ce9506fe4730e1c5595b84b65ef61236dc1e4da29c0fc339",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted.json",
+      "bytes": 74160,
+      "sha256": "7c975d5feee2f95b576d4acc4959314322959303c0921a7b96279b7dd566f7a8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/retention.json",
+      "bytes": 16322,
+      "sha256": "ba02aa100e0abd2d7f0ac8755117b5c38524aaa33ca0b3c523a2a27be9111eb4",
+      "unchanged": true
+    }
+  ],
+  "actions": {
+    "native_runs": 0,
+    "builds": 0,
+    "tests_executed": 0,
+    "ci_retries": 0,
+    "remote_mutations": 0,
+    "production_or_test_source_edits": 0,
+    "new_workers": 0,
+    "only_new_file": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/windows-copied-model-independent-review.json"
+  },
+  "followup": "Resume final current-doc patch preparation only after handing this review to root; final source/matrix/disposition remain conditional."
+}

@@ -8,6 +8,21 @@ workers or follow-ups again.
 
 ## Immediate integration
 
+The final publication guard found concurrent documentary source `f3829f5`, which
+preserves all 587 qualified inputs at implementation `523c197`. Our accepted
+final evidence tree `1acb04ee` is preserved in local `e114b835` / API-equivalent
+`26612929`. Root is resolving only shared navigation while retaining both
+owner histories, incoming README/setup/UI improvements and all original evidence.
+The [latest checkpoint](CHECKPOINT.md#final-preserving-documentary-merge--17-november-2026-utc)
+records the new merge boundary. The pre-merge A60/document gate remains its own
+immutable observation; require a new affected document gate for the resolved
+content. All incoming jobs are now terminal, with 15/16 successes and the Intel
+preset-raster timeout retained under its original 30-second guard. Finish the
+explicit terminal-result navigation review and affected document gate, publish the
+preserving documentary merge, and verify remote contents. Keep the source-bound
+Intel timing investigation open alongside the native model/input/main/browser
+sequence below. There are no new worker credits or product-source edits.
+
 <!-- console-final-publication:start -->
 The [verified combined implementation publication](reports/combined-indexed-publication.json)
 is `523c1979334b0fbb624ce120128a0b8ada078383`, tree
@@ -43,6 +58,22 @@ ASan/UBSan/leaks and unchanged deadlines. Optional internal Python subcase skips
 including the Windows FIFO case, remain disclosed in the full receipts; no CTest
 is skipped or disabled. These results qualify this exact implementation source.
 The same reviewers add no worker credit, and all earlier failures remain intact.
+<!-- console-later-ci:start -->
+**Later documentary-source observation:** all sixteen `f3829f5` jobs are
+terminal; **fifteen succeeded**: Core 6/6, native 5/6 and VST3 4/4. Intel native job `133922212477` passed
+**77/78 CTests**; `test_standalone_preset_raster` timed out at **30.07 seconds**
+under its unchanged **30-second guard**. Its post-acceptance source/dependency
+re-verification and successful relocated-package/smoke stages were skipped.
+The [terminal receipt and original failure evidence](reports/final-closure-concurrent-ci.json) and
+[independent timeout admission](reports/A59-concurrent-timeout-admission.json) preserve that outcome separately
+from `523c197`'s earlier sixteen successes. All 587 qualified repository source inputs and checked-in runtime assets are
+unchanged; this documentary merge introduces no timing repair or cross-run binary identity claim.
+The full preset workload and original guard remain required. No completed fixture
+counters, precise timeout cause or repeated timing stability are established.
+Keep an explicit Intel timing investigation open without retrying merely to obtain
+a green aggregate or changing the workload, thresholds or guard.
+<!-- console-later-ci:end -->
+
 <!-- console-final-ci:end -->
 
 The preceding indexed source `5485988` has [16/16 successful hosted jobs](reports/indexed-remote-ci-complete.json),
