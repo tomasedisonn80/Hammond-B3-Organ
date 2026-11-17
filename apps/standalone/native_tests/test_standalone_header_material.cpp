@@ -211,11 +211,9 @@ std::array<Case, case_count> cases() {
 template <typename Range, typename Writer>
 void array(std::ostream& out, const Range& values, Writer write) {
     out << '[';
-    bool first = true;
-    for (const auto& value : values) {
-        if (!first) out << ',';
-        first = false;
-        write(out, value);
+    for (std::size_t index = 0; index < values.size(); ++index) {
+        if (index != 0) out << ',';
+        write(out, values[index]);
     }
     out << ']';
 }
