@@ -523,6 +523,7 @@ public:
             }
         }
         if (replay_requested()) replay_observations_.reserve(replay_observation_capacity());
+        if (!options_.input_script.empty()) replay_ui_observations_.reserve(kReplayObservationCapacity);
         presentation_observations_.reserve(kPresentationObservationCapacity);
         if (!ui_.set_workspace(options_.workspace) || !ui_.set_presentation(options_.presentation)) {
             fail("Cannot initialize instrument presentation"); return false;
@@ -865,6 +866,14 @@ private:
         std::uint64_t error_count;
     };
 
+    // Event-time UI transitions do not depend on an audio snapshot being ready.
+    // These are neither musical acknowledgments nor evidence of painted frames.
+    struct ReplayUiObservation {
+        std::uint64_t elapsed_ms;
+        ViewOverlay overlay;
+        std::size_t modal_focus;
+    };
+
     struct PointerCaptureCounters {
         std::uint64_t attempts{0};
         std::uint64_t successes{0};
@@ -1147,7 +1156,28 @@ private:
             !pending_save_ && !ui_.view().controls_pending;
     }
 
+    [[nodiscard]] bool record_replay_ui_observation(std::uint64_t elapsed) {
+        if (options_.input_script.empty()) return true;
+        if (!replay_ui_observations_.empty()) {
+            const auto& previous = replay_ui_observations_.back();
+            if (previous.overlay == overlay_ && previous.modal_focus == modal_focus_) return true;
+        }
+        if (replay_ui_observations_.size() == kReplayObservationCapacity) {
+            if (!replay_ui_observations_truncated_) fail("Input replay UI observation capacity was exceeded");
+            replay_ui_observations_truncated_ = true;
+            fatal_failure_ = true;
+            running_ = false;
+            return false;
+        }
+        replay_ui_observations_.push_back({elapsed, overlay_, modal_focus_});
+        return true;
+    }
+
     void record_replay_observation(std::uint64_t elapsed) {
+        // A bounded SDL drain can visit multiple controls before observe()
+        // obtains the first restored snapshot. Preserve their event-time UI
+        // transitions without weakening the musical acknowledgment guard.
+        if (!record_replay_ui_observation(elapsed)) return;
         // Preparation publishes defaults before the queued restore. Record
         // running musical observations only after that restore is acknowledged.
         if (!snapshot_available_ || !snapshot_.running ||
@@ -1210,6 +1240,17 @@ private:
                << ",\"scheduled_events\":" << replay_.scheduled_count()
                << ",\"pushed_events\":" << replay_.pushed_count();
         write_replay_results(output);
+        output << ",\"ui_observation_capacity\":" << kReplayObservationCapacity
+               << ",\"ui_observations_truncated\":" << replay_ui_observations_truncated_
+               << ",\"ui_observations\":[";
+        for (std::size_t index = 0; index < replay_ui_observations_.size(); ++index) {
+            if (index != 0) output << ',';
+            const auto& observation = replay_ui_observations_[index];
+            output << "{\"elapsed_ms\":" << observation.elapsed_ms << ",\"overlay\":";
+            json_string(output, overlay_name(observation.overlay));
+            output << ",\"modal_focus\":" << observation.modal_focus << '}';
+        }
+        output << ']';
         output << '}';
     }
 
@@ -2327,6 +2368,12 @@ private:
                     (void)released;
                 } else if (!ui_.view().pointer_captured) release_capture();
             }
+            // A header click can open the modal before another event in this
+            // drain moves focus. Preserve that opening just like a key-down.
+            if (!options_.input_script.empty()) {
+                const bool recorded = record_replay_ui_observation(SDL_GetTicks64() - replay_started_);
+                (void)recorded;
+            }
             return;
         }
         if (event.type == SDL_MOUSEMOTION && overlay_ == ViewOverlay::None &&
@@ -2499,6 +2546,7 @@ private:
     std::unique_ptr<Drawing> drawing_; // Font textures precede renderer/window destruction.
     ScriptedInput replay_; // The window outlives its replay helper.
     std::vector<ReplayObservation> replay_observations_;
+    std::vector<ReplayUiObservation> replay_ui_observations_;
     std::vector<PresentationObservation> presentation_observations_;
     std::optional<PresentationObservation> last_painted_;
     std::optional<PresentationObservation> screenshot_presentation_;
@@ -2610,6 +2658,7 @@ private:
     bool replay_final_acknowledged_{false};
     bool replay_finalized_{false};
     bool replay_observations_truncated_{false};
+    bool replay_ui_observations_truncated_{false};
     bool midi_retirement_waiting_{false};
     bool midi_release_failed_{false};
     bool midi_shutdown_failed_{false};

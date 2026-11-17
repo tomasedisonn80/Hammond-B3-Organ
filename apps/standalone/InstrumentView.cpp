@@ -1784,6 +1784,41 @@ void reference_heading(Drawing& drawing, std::string_view value, UiRect bounds, 
     }
 }
 
+// T2 is confined to the two manual racks; other reference headings retain
+// their original centered text and rules. Tracking uses the same live glyph
+// advances as painting, with fixed storage and no font or layout mutation.
+void reference_rack_heading(Drawing& drawing, UiRect bounds, bool upper,
+                            ReferenceCompositionScale scale) {
+    constexpr std::string_view upper_text = "UPPER MANUAL DRAWBARS";
+    constexpr std::string_view lower_text = "LOWER MANUAL DRAWBARS";
+    static_assert(upper_text.size() == 21 && lower_text.size() == upper_text.size());
+    const auto value = upper ? upper_text : lower_text;
+    const float size = 16.0F * scale.f;
+    const float tracking = (upper ? 1.5F : 1.7F) * scale.sx;
+    const float center = (upper ? 360.0F : 875.5F) * scale.sx;
+    const float top = bounds.y + (bounds.height - size * 1.2F) / 2.0F + scale.sy;
+    std::array<float, upper_text.size()> advances{};
+    float natural = 0.0F;
+    for (std::size_t index = 0; index < value.size(); ++index) {
+        advances[index] = drawing.text_width(value.substr(index, 1), size, TextFace::Serif);
+        natural += advances[index];
+    }
+    const float run_width = natural + tracking * 20.0F;
+    const float left = center - run_width / 2.0F;
+    float cursor = left;
+    for (std::size_t index = 0; index < value.size(); ++index) {
+        drawing.text(value.substr(index, 1), cursor, top, size, kUiBrass, TextFace::Serif);
+        cursor += advances[index] + tracking;
+    }
+    const float outer_left = (upper ? 140.0F : 662.0F) * scale.sx;
+    const float outer_right = (upper ? 564.0F : 1083.0F) * scale.sx;
+    const float inner_left = left - 16.0F * scale.sx;
+    const float inner_right = (center + run_width / 2.0F) + 16.0F * scale.sx;
+    const float y = 292.0F * scale.sy;
+    drawing.rect({outer_left, y, inner_left - outer_left, scale.sy}, kMetalEdge);
+    drawing.rect({inner_right, y, outer_right - inner_right, scale.sy}, kMetalEdge);
+}
+
 void reference_button(Drawing& drawing, const UiControlGeometry& geometry,
                       std::string_view label, float size, ReferenceCompositionScale scale,
                       bool selected = false, bool warning = false,
@@ -2428,9 +2463,9 @@ void paint_reference_composition(Drawing& drawing, const UiModel& model, const I
              eligible ? kGreen : kMuted, TextFace::Sans, 3.0F * scale.sx);
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         const auto& rack = layout.registration_panels[manual];
-        reference_heading(drawing, manual == 0 ? "UPPER MANUAL DRAWBARS" : "LOWER MANUAL DRAWBARS",
+        reference_rack_heading(drawing,
             {rack.x + 16.0F * scale.sx, rack.y + 8.0F * scale.sy,
-             rack.width - 32.0F * scale.sx, 27.0F * scale.sy}, 16.0F, scale);
+             rack.width - 32.0F * scale.sx, 27.0F * scale.sy}, manual == 0, scale);
         // Numbered guide follows the same stored track endpoints as the caps.
         for (std::size_t index = 0; index < layout.control_count; ++index) {
             const auto& control = layout.controls[index];

@@ -19,7 +19,8 @@ import tempfile
 import unittest
 import uuid
 
-from test_standalone_app import assert_expression_calibration, diagnostic_excerpt
+from test_standalone_app import (ArraySchema, assert_expression_calibration,
+                                 assert_schema, diagnostic_excerpt)
 
 
 TIMEOUT = 12
@@ -249,6 +250,21 @@ class NativeMidiAcceptance(unittest.TestCase):
             for key in ("completed", "delivered", "final_acknowledged"):
                 self.assertTrue(observed[key], key + ": " + process.stderr)
             self.assertFalse(observed["observations_truncated"])
+            self.assertIs(type(observed["ui_observation_capacity"]), int)
+            self.assertEqual(observed["ui_observation_capacity"], 512)
+            self.assertIs(observed["ui_observations_truncated"], False)
+            ui_observations = observed["ui_observations"]
+            assert_schema(self, ui_observations, ArraySchema({
+                "elapsed_ms": int, "overlay": str, "modal_focus": int,
+            }), "replay.ui_observations")
+            self.assertGreater(len(ui_observations), 0)
+            self.assertLessEqual(len(ui_observations), observed["ui_observation_capacity"])
+            elapsed = [item["elapsed_ms"] for item in ui_observations]
+            self.assertGreaterEqual(elapsed[0], 0)
+            self.assertEqual(elapsed, sorted(elapsed))
+            states = [(item["overlay"], item["modal_focus"]) for item in ui_observations]
+            self.assertTrue(all(previous != current for previous, current in zip(states, states[1:])),
+                            "Unchanged adjacent UI states must be deduplicated")
             self.assertEqual(observed["scheduled_events"], len(replay.events))
             self.assertEqual(observed["pushed_events"], len(replay.events))
             self.assertEqual(observed["accepted_note_on_commands"], notes)
@@ -487,9 +503,64 @@ class NativeMidiAcceptance(unittest.TestCase):
         self.assertEqual(data["midi"]["status"], "No MIDI input selected.")
         self.assertEqual(data["midi"]["expression_calibration"]["configured"],
                          {"minimum": 1, "maximum": 126, "inverted": True})
-        focus = {item["modal_focus"] for item in data["replay"]["observations"]
+        focus = {item["modal_focus"] for item in data["replay"]["ui_observations"]
                  if item["overlay"] == "midi"}
         self.assertEqual(focus, set(range(11)))
+
+    def test_modal_immediate_batched_focus_history_preserves_startup_restore(self) -> None:
+        expected_drawbars = [
+            [[0] * 9, [8, 8, 8, 0, 0, 0, 0, 0, 0]],
+            [[0] * 9, [0, 0, 8, 0, 0, 0, 0, 0, 0]],
+        ]
+        for opening in ("keyboard", "pointer"):
+            with self.subTest(opening=opening):
+                replay = InputScript()
+                if opening == "keyboard":
+                    replay.key("M", "ctrl")
+                else:
+                    replay.click(POINTER_CASES[1][2]["header"])
+                replay.tabs(10).key("Escape")
+                # All 24 events are due in the first drain, before an audio
+                # snapshot is guaranteed available. No timing delay hides it.
+                replay.events = [(0, event) for _, event in replay.events]
+                data = self.modal(replay, arguments=["--width", "1280", "--height", "900"])
+                history = data["replay"]["ui_observations"]
+                self.assertEqual([item["modal_focus"] for item in history
+                                  if item["overlay"] == "midi"], list(range(11)))
+                self.assertEqual(history[-1]["overlay"], "none")
+
+                # Musical evidence still starts after the audition restore;
+                # early UI evidence cannot expose the prepared zero registration.
+                musical = data["replay"]["observations"]
+                self.assertGreater(len(musical), 0)
+                for observation in musical:
+                    self.assertGreaterEqual(observation["resolved_sequence"], 1)
+                    self.assertGreaterEqual(observation["last_applied_sequence"], 1)
+                    self.assertEqual(observation["controls"]["manual_drawbars"], expected_drawbars)
+                    self.assertEqual(observation["controls"]["pedal_drawbars"], [8, 0])
+                    self.assertEqual(observation["manual_notes"], [[], []])
+                    self.assertEqual(observation["pedal_ids"], [])
+
+    def test_modal_maximum_script_preserves_ui_transitions_and_deduplicates(self) -> None:
+        # The admitted script contains at most 256 events, so it cannot reach
+        # the separate 512-entry UI-history boundary. Use the whole input
+        # budget, with every event due immediately and no timing assumptions.
+        for modifier in ("none", "ctrl"):
+            with self.subTest(tab_modifier=modifier):
+                replay = InputScript()
+                replay.events = ([(0, "key_down M ctrl 0")] +
+                                 [(0, f"key_down Tab {modifier} 0")] * 254 +
+                                 [(0, "key_down Escape none 0")])
+                self.assertEqual(len(replay.events), 256)
+                data = self.modal(replay)
+                history = [(item["overlay"], item["modal_focus"])
+                           for item in data["replay"]["ui_observations"]]
+                # Ordinary Tabs wrap repeatedly, retaining nonadjacent revisits.
+                # Ctrl+Tab is ignored by the modal: all 254 records must collapse
+                # into the opening state, followed by the distinct close state.
+                focus = [index % 11 for index in range(255)] if modifier == "none" else [0]
+                expected = [("midi", index) for index in focus] + [("none", focus[-1])]
+                self.assertEqual(history, expected)
 
     def test_modal_focus_wraps_forward_and_reverse_across_eleven_controls(self) -> None:
         replay = InputScript().key("M", "ctrl").tabs(11).tabs(2).key("End")

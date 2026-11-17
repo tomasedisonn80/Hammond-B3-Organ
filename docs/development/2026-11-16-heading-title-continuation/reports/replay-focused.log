@@ -1,0 +1,165 @@
+Test project /workspace/scratch/5a28c3564dbf/build-native
+    Start 226: test_standalone_midi_cli
+1/4 Test #226: test_standalone_midi_cli .................   Passed   21.18 sec
+    Start 227: test_standalone_expression_diagnostics
+2/4 Test #227: test_standalone_expression_diagnostics ...   Passed    3.04 sec
+    Start 228: test_standalone_native_calibration
+3/4 Test #228: test_standalone_native_calibration .......***Failed   20.55 sec
+Native calibration fixture SHA-256: c870b3b0c3506cc566b9f41b1362d17a4f6bd7ac4ced45ebbccebca3c1810c12
+test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11) ... FAIL
+test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration) ... FAIL
+test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel) ... FAIL
+test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry) ... FAIL
+test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio) ... ok
+test_fixture_rejects_missing_or_unknown_scenario_before_app_entry (__main__.NativeCalibrationLifecycle.test_fixture_rejects_missing_or_unknown_scenario_before_app_entry) ... ok
+test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression) ... FAIL
+test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives) ... FAIL
+test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression) ... FAIL
+Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2
+
+======================================================================
+FAIL: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 388, in test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11
+    data, trace = self.run_case("calibration", calibration_edit(), 2600)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 229, in run_case
+    assert_schema(self, data, schema)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 186, in assert_schema
+    assert_schema(case, value[key], child, f"{name}.{key}")
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 184, in assert_schema
+    case.assertEqual(set(value), set(schema), name)
+AssertionError: Items in the second set but not the first:
+'ui_observations'
+'ui_observation_capacity'
+'ui_observations_truncated' : $.replay
+
+======================================================================
+FAIL: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 428, in test_changed_exact_port_reconnects_with_unchanged_calibration
+    data, trace = self.run_case("port", events, 2200)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 229, in run_case
+    assert_schema(self, data, schema)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 186, in assert_schema
+    assert_schema(case, value[key], child, f"{name}.{key}")
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 184, in assert_schema
+    case.assertEqual(set(value), set(schema), name)
+AssertionError: Items in the second set but not the first:
+'ui_observations'
+'ui_observation_capacity'
+'ui_observations_truncated' : $.replay
+
+======================================================================
+FAIL: test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 415, in test_changed_route_retires_old_owners_and_rejects_old_wire_channel
+    data, trace = self.run_case("route", events, 2400)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 229, in run_case
+    assert_schema(self, data, schema)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 186, in assert_schema
+    assert_schema(case, value[key], child, f"{name}.{key}")
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 184, in assert_schema
+    case.assertEqual(set(value), set(schema), name)
+AssertionError: Items in the second set but not the first:
+'ui_observations'
+'ui_observation_capacity'
+'ui_observations_truncated' : $.replay
+
+======================================================================
+FAIL: test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 464, in test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry
+    data, trace = self.run_case("failed-reopen", events, 3300, expected_exit=1)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 229, in run_case
+    assert_schema(self, data, schema)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 186, in assert_schema
+    assert_schema(case, value[key], child, f"{name}.{key}")
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 184, in assert_schema
+    case.assertEqual(set(value), set(schema), name)
+AssertionError: Items in the second set but not the first:
+'ui_observations'
+'ui_observation_capacity'
+'ui_observations_truncated' : $.replay
+
+======================================================================
+FAIL: test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 368, in test_healthy_identical_apply_preserves_epoch_notes_and_expression
+    data, trace = self.run_case("identical", events, 2200)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 229, in run_case
+    assert_schema(self, data, schema)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 186, in assert_schema
+    assert_schema(case, value[key], child, f"{name}.{key}")
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 184, in assert_schema
+    case.assertEqual(set(value), set(schema), name)
+AssertionError: Items in the second set but not the first:
+'ui_observations'
+'ui_observation_capacity'
+'ui_observations_truncated' : $.replay
+
+======================================================================
+FAIL: test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 489, in test_native_fault_retires_midi_owners_while_original_ui_owner_survives
+    data, trace = self.run_case("fault-retry", events, 3200, expected_exit=1)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 229, in run_case
+    assert_schema(self, data, schema)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 186, in assert_schema
+    assert_schema(case, value[key], child, f"{name}.{key}")
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 184, in assert_schema
+    case.assertEqual(set(value), set(schema), name)
+AssertionError: Items in the second set but not the first:
+'ui_observations'
+'ui_observation_capacity'
+'ui_observations_truncated' : $.replay
+
+======================================================================
+FAIL: test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 440, in test_no_input_apply_retains_calibration_without_touching_expression
+    data, trace = self.run_case("no-input", events, 3500, connected=False)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_native_calibration.py", line 229, in run_case
+    assert_schema(self, data, schema)
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 186, in assert_schema
+    assert_schema(case, value[key], child, f"{name}.{key}")
+  File "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 184, in assert_schema
+    case.assertEqual(set(value), set(schema), name)
+AssertionError: Items in the second set but not the first:
+'ui_observations'
+'ui_observation_capacity'
+'ui_observations_truncated' : $.replay
+
+----------------------------------------------------------------------
+Ran 9 tests in 20.382s
+
+FAILED (failures=7)
+
+    Start 229: test_standalone_native_midi_replay
+4/4 Test #229: test_standalone_native_midi_replay .......   Passed   41.26 sec
+
+75% tests passed, 1 tests failed out of 4
+
+Label Time Summary:
+midi          =  86.04 sec*proc (4 tests)
+native        =  86.04 sec*proc (4 tests)
+standalone    =  86.04 sec*proc (4 tests)
+
+Total Test time (real) =  86.05 sec
+
+The following tests FAILED:
+	228 - test_standalone_native_calibration (Failed)       midi native standalone
+Errors while running CTest

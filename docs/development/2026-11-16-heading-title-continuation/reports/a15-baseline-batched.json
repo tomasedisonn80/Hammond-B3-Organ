@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w03_a15",
+  "base_commit": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+  "executable": "/workspace/scratch/5a28c3564dbf/baseline-native/hammond_standalone",
+  "executable_sha256": "8027f4a2d134195ee1c0b1c282e2828806321460b10bbb83fc3b1bd9c6711c47",
+  "harness": "apps/standalone/native_tests/test_standalone_midi_cli.py",
+  "harness_at_base_sha256": "54af4bd4bc9a203c8af2c9543a8e961f3f8fb13774a99c7ca1edce41e895ef48",
+  "environment": {
+    "SDL_VIDEODRIVER": "dummy",
+    "SDL_AUDIODRIVER": "dummy",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "input_script_sha256": "f36b0c1d70664feebf2516689bc8e99e8bfa5c5dc27a280ba8d6133a5be3d3f3",
+  "input_script": "B3UIREPLAY1\nduration_ms 600\n0 key_down M ctrl 0\n0 key_up M ctrl\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Tab none 0\n0 key_up Tab none\n0 key_down Escape none 0\n0 key_up Escape none\n",
+  "command_contract": [
+    "<executable>",
+    "--state",
+    "<temporary-case>/absent controls 音.b3controls",
+    "--diagnostics",
+    "<temporary-case>/diagnostics.json",
+    "--input-script",
+    "<temporary-case>/modal input Ω.b3ui"
+  ],
+  "runs": [
+    {
+      "attempt": 1,
+      "zero_timestamp_events": 24,
+      "modal_focus_in_musical_history": [],
+      "musical_observation_count": 1,
+      "first_elapsed_ms": 77,
+      "replay_passed": true
+    },
+    {
+      "attempt": 2,
+      "zero_timestamp_events": 24,
+      "modal_focus_in_musical_history": [],
+      "musical_observation_count": 1,
+      "first_elapsed_ms": 82,
+      "replay_passed": true
+    },
+    {
+      "attempt": 3,
+      "zero_timestamp_events": 24,
+      "modal_focus_in_musical_history": [],
+      "musical_observation_count": 1,
+      "first_elapsed_ms": 83,
+      "replay_passed": true
+    }
+  ],
+  "captured_summary": {
+    "actual_subprocesses": 3,
+    "enumeration_errors": 0,
+    "successful_ui_replays": 3,
+    "expected_failed_ui_replays": 0,
+    "harness_exit_code": 0
+  },
+  "interpretation": "All three immediate modal traversals completed with healthy delivery/audio assertions but lost every MIDI focus state in the guarded musical history. This is baseline evidence, not candidate validation or painted-frame evidence.",
+  "executed_harness_command": "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/5a28c3564dbf/baseline-native/hammond_standalone PYTHONDONTWRITEBYTECODE=1 python3 -",
+  "executed_harness_stdin": "import sys\nsys.path.insert(0, 'apps/standalone/native_tests')\nfrom test_standalone_midi_cli import InputScript, NativeMidiAcceptance\nNativeMidiAcceptance.setUpClass()\ncase = NativeMidiAcceptance()\ncase.setUp()\ntry:\n    for attempt in range(3):\n        replay = InputScript().key('M', 'ctrl').tabs(10).key('Escape')\n        replay.events = [(0, event) for _, event in replay.events]\n        data = case.modal(replay)\n        musical = data['replay']['observations']\n        focus = sorted({item['modal_focus'] for item in musical if item['overlay'] == 'midi'})\n        print({'attempt': attempt + 1, 'zero_timestamp_events': len(replay.events),\n               'modal_focus_in_musical_history': focus,\n               'musical_observation_count': len(musical),\n               'first_elapsed_ms': musical[0]['elapsed_ms'],\n               'replay_passed': data['replay']['passed']})\nfinally:\n    case.doCleanups()\n    NativeMidiAcceptance.tearDownClass()\n",
+  "reproduction_requirement": "The recorded stdin imported the harness from base_commit before A15 modified it. Reproduce using that exact harness revision; the new harness intentionally requires the additive UI fields."
+}

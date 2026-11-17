@@ -1,0 +1,2731 @@
+{
+  "all_recorded_inputs_unchanged": true,
+  "build": {
+    "boundary": "Generated embedded headers, nominal profile and selected native/core static libraries. Selected CMake values are checked; this is not a hermetic compiler/dependency or rebuild attestation.",
+    "changed_paths": [],
+    "files": {
+      "_sdl2/libSDL2.a": {
+        "bytes": 3245774,
+        "sha256": "383aee215b2eaa4f716623113fc0481af90ac55bfa56fca261c157241a1a1977"
+      },
+      "apps/standalone/generated/EmbeddedProfile.h": {
+        "bytes": 28806,
+        "sha256": "427e4e3e99a69ebc61f4bc4c576f014843304b384881792934367b00ba569537"
+      },
+      "apps/standalone/generated/ReferenceApronData.h": {
+        "bytes": 2215140,
+        "sha256": "06ab67289452e17b2254093b12f05f2b5e234323abfa1098e635abf8cf298091"
+      },
+      "apps/standalone/generated/ReferenceArtData.h": {
+        "bytes": 5093899,
+        "sha256": "d94cefd9ad69726c267d4674acd66912f4764ee9f88d1c21ecce4ed7befcbac6"
+      },
+      "apps/standalone/libhammond_standalone_audio.a": {
+        "bytes": 32566,
+        "sha256": "6ab58451d462c655701f90880fceb1a7886f58f53681bfecf7b05503348971f8"
+      },
+      "apps/standalone/libhammond_standalone_drawing.a": {
+        "bytes": 1283262,
+        "sha256": "ffc41ccf55b0268f6b01af36d3e1b97cecb7b79f14e574cb7cc2178c12a853e7"
+      },
+      "apps/standalone/libhammond_standalone_drawing_apron_unavailable.a": {
+        "bytes": 1283270,
+        "sha256": "61a241100b60cc55477c05c6be3464c904f41f569055be34c1d890ebb2e1f164"
+      },
+      "apps/standalone/libhammond_standalone_replay.a": {
+        "bytes": 64866,
+        "sha256": "c095ecdbe90c90bd4e8b9afe87448914e7fba794edab88de456c1c6ab1f8250f"
+      },
+      "apps/standalone/libhammond_standalone_support.a": {
+        "bytes": 421086,
+        "sha256": "9e1046e988d3b7d05b4c09d34243aebb95f8648fd175987ee06e59f375d78be9"
+      },
+      "generated/RotaryNominalProfile.h": {
+        "bytes": 2722,
+        "sha256": "d51f3e6edf4f44f87ed65f9a80b9932299ee8d5fa52a2fad5b5d011a454a05a5"
+      },
+      "generated/hammond/generated/FixedRegistrationData.h": {
+        "bytes": 2099,
+        "sha256": "66cbb1a23cb5ebf14844afd6f98e13829c9f69c1511b09d5974ca5a4527157c6"
+      },
+      "generated/hammond/generated/PedalRoutingData.h": {
+        "bytes": 13333,
+        "sha256": "efddce2ea3619a7dd9e153382e307928f7aed60bdb8a0318ca6c0e71ee5f6034"
+      },
+      "generated/hammond/generated/ScannerLineData.h": {
+        "bytes": 1104,
+        "sha256": "d508e3856e637a8e107364ad2a8fed09893a2e50ae05d99db3d4b3da37a5a082"
+      },
+      "libhammond_core.a": {
+        "bytes": 460336,
+        "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+      },
+      "nominal.b3p": {
+        "bytes": 4545,
+        "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+      }
+    },
+    "inventory_sha256_after": "c17b075e74a53990b18547a7ed9d9d68c27cf0dd309fcd205c62d4277a27b1b0",
+    "inventory_sha256_before": "c17b075e74a53990b18547a7ed9d9d68c27cf0dd309fcd205c62d4277a27b1b0",
+    "root": "/workspace/scratch/5a28c3564dbf/build-native",
+    "selected_configuration_after": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_ENABLE_MIDI": "OFF",
+      "HAMMOND_RTMIDI_ROOT": "",
+      "HAMMOND_SDL2_ROOT": "/workspace/scratch/3edffb787db3/SDL2",
+      "SDL_ALSA": "OFF"
+    },
+    "selected_configuration_before": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_ENABLE_MIDI": "OFF",
+      "HAMMOND_RTMIDI_ROOT": "",
+      "HAMMOND_SDL2_ROOT": "/workspace/scratch/3edffb787db3/SDL2",
+      "SDL_ALSA": "OFF"
+    }
+  },
+  "capture_contract": "standalone-interface-capture-v1",
+  "case_matrix": "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection.",
+  "cases": [
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/play-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/play-reference-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/play-reference-1672x941",
+      "diagnostics": {
+        "bytes": 19879,
+        "path": "diagnostics/play-reference-1672x941.json",
+        "sha256": "bb58d27e0849f71356fefe5a1e639dc9304a3010d38961cd416546a475b4c689"
+      },
+      "elapsed_seconds": 1.958129144999475,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "669a2fe10141cc2c25d80e6abe0446525297382e1171070a71b7146bf83d0198",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "6f4aed5df6a9cdd8efcf39080d85afe14bd5238f3bc7354cb9426b5f8d863b13"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-reference-1672x941.png",
+        "png": {
+          "bytes": 767911,
+          "sha256": "96a9fb295200307ffb7b459ee8a146d83579a881aafcd54b1cc73a7ed1b2b55c"
+        },
+        "width": 1672
+      },
+      "name": "play-reference-1672x941",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1834,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 80896,
+            "publication_revision": 320,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 22,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "play"
+        },
+        "callbacks": 165,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 84480,
+        "ui_events": 66
+      },
+      "width": 1672,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/play-default-1280x900.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/play-default-1280x900.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/play-default-1280x900",
+      "diagnostics": {
+        "bytes": 21455,
+        "path": "diagnostics/play-default-1280x900.json",
+        "sha256": "5e5acaec21fea5d6e3ed84111c596197d7241ddfa09b79dbd68158946a747c9c"
+      },
+      "elapsed_seconds": 1.9560643540007732,
+      "exit_code": 0,
+      "height": 900,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "ff7fde735d350f6a30d8e67da53af5d0ca5ed07c73e0b08cba753b2dab998017",
+        "height": 900,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 4608122,
+          "sha256": "fd0984f3a3f799ed5314e5cffa80925855df205c39c57519da9ba019f9b5492d"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-default-1280x900.png",
+        "png": {
+          "bytes": 177399,
+          "sha256": "2b5e0c332f0114b70cc320e885de84290f2cec9e8443e97b8233a53b6fb60f6d"
+        },
+        "width": 1280
+      },
+      "name": "play-default-1280x900",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1819,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 80896,
+            "publication_revision": 320,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 25,
+          "window_height": 900,
+          "window_width": 1280,
+          "workspace": "play"
+        },
+        "callbacks": 166,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 84992,
+        "ui_events": 66
+      },
+      "width": 1280,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/play-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/play-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/play-minimum-960x700",
+      "diagnostics": {
+        "bytes": 23009,
+        "path": "diagnostics/play-minimum-960x700.json",
+        "sha256": "b717b9ded1c3b73523c3eec8d38e620d2644d127f5b16363515ac0da09dd7238"
+      },
+      "elapsed_seconds": 1.8990014139999403,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "d90617ec04f184e65223c510a7d72675b4bfd999ea4857fadbd4a4e96174f23f",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "432fd07f027aa43c5b3641c264341127e07c76cc0e50b3d1e74b2532bd591d19"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-minimum-960x700.png",
+        "png": {
+          "bytes": 143240,
+          "sha256": "39494e49302a369505e6f95a98cce16f4f2b34043c14b9f094ce053324d98a2f"
+        },
+        "width": 960
+      },
+      "name": "play-minimum-960x700",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1825,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 76288,
+            "publication_revision": 302,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 49,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "play"
+        },
+        "callbacks": 152,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 77824,
+        "ui_events": 66
+      },
+      "width": 960,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/service-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/service-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/service-reference-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/service-reference-1672x941",
+      "diagnostics": {
+        "bytes": 22243,
+        "path": "diagnostics/service-reference-1672x941.json",
+        "sha256": "93996ad973467dcc7c2d607bdc565caadcb35c1d0dbeb739536d940ae957aa69"
+      },
+      "elapsed_seconds": 1.921583945999373,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "3f2f6b8192d7ce51cb187c2055b23e0066148dacadcb6967ce66e9da7512a1ff",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "2a33d8b84bf8807ef0445cbef3114aab0014468eb23dc6ca1d915634fe41d522"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/service-reference-1672x941.png",
+        "png": {
+          "bytes": 412375,
+          "sha256": "ad7756f52834ad071d557a09b6933c3525e05157cd275073a5d2786328227256"
+        },
+        "width": 1672
+      },
+      "name": "service-reference-1672x941",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1813,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 81408,
+            "publication_revision": 322,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 26,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "service"
+        },
+        "callbacks": 165,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 84480,
+        "ui_events": 66
+      },
+      "width": 1672,
+      "workspace": "service"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/service-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/service-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/service-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/service-minimum-960x700",
+      "diagnostics": {
+        "bytes": 23798,
+        "path": "diagnostics/service-minimum-960x700.json",
+        "sha256": "9456f98903782a84f3be79a1201608497e7e7328c311747a8d0124cdafca325d"
+      },
+      "elapsed_seconds": 1.881771194999601,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "025e5a68e368291b10675e18e90153e8fdb1d5340090e39979b3a380222b10a2",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "37e7c8929e8387a5ee13f71dd3ef282623884eb7027cc9af480b14ebda96caa9"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/service-minimum-960x700.png",
+        "png": {
+          "bytes": 175249,
+          "sha256": "085356250c8d31eeb520edf26f4dca7f45e178e61124309ecf8ae01b1c0a1140"
+        },
+        "width": 960
+      },
+      "name": "service-minimum-960x700",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1817,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 81408,
+            "publication_revision": 322,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 54,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "service"
+        },
+        "callbacks": 162,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 82944,
+        "ui_events": 66
+      },
+      "width": 960,
+      "workspace": "service"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/rotary-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/rotary-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/rotary-reference-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/rotary-reference-1672x941",
+      "diagnostics": {
+        "bytes": 22236,
+        "path": "diagnostics/rotary-reference-1672x941.json",
+        "sha256": "a4efcff7bbb795f26bb5cfeb7a2af092faa52f3324bc9773a65793dedfabe572"
+      },
+      "elapsed_seconds": 1.920753035999951,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "40dfb37a271312288c430871ef129028a653b52390ed257ef27ac5ee2d364bfb",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "ce61c3400a65ea682fd7931b19df7da571c47fc059b92f7996fc394a1dac400e"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/rotary-reference-1672x941.png",
+        "png": {
+          "bytes": 774773,
+          "sha256": "364a8a5884e0ead6b54610ecfc9e631de42483b593e1e6638687c25b0595845e"
+        },
+        "width": 1672
+      },
+      "name": "rotary-reference-1672x941",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1812,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 79872,
+            "publication_revision": 316,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 25,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "rotary"
+        },
+        "callbacks": 163,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 83456,
+        "ui_events": 66
+      },
+      "width": 1672,
+      "workspace": "rotary"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/rotary-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/rotary-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/rotary-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/rotary-minimum-960x700",
+      "diagnostics": {
+        "bytes": 22227,
+        "path": "diagnostics/rotary-minimum-960x700.json",
+        "sha256": "943587cb751b8a5b707c8d51fb36fe59cf1fa5518eebe7951e8fbab0dc419f69"
+      },
+      "elapsed_seconds": 1.889335152998683,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "151a27086fd310f9c323216a9985c82f51f239c2d3dd3b245150ffd07f506c70",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "232f32f352f3b4a1da53dbe10c7d87c360ece2f449bc5d35d141077bd445db31"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/rotary-minimum-960x700.png",
+        "png": {
+          "bytes": 317385,
+          "sha256": "762322f8922c6be60a6127f29d580c3ec6d540e45a5411dfb8cdcff5a30c4915"
+        },
+        "width": 960
+      },
+      "name": "rotary-minimum-960x700",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1824,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 82432,
+            "publication_revision": 326,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 54,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "rotary"
+        },
+        "callbacks": 164,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 83968,
+        "ui_events": 66
+      },
+      "width": 960,
+      "workspace": "rotary"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-flat.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/flat-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/flat-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/flat-minimum-960x700",
+      "diagnostics": {
+        "bytes": 23758,
+        "path": "diagnostics/flat-minimum-960x700.json",
+        "sha256": "fcf0df07940339f709e731b6a277b56ff2a8a245ed707e9348be8e61c651b3f8"
+      },
+      "elapsed_seconds": 1.8738910510001006,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "9720e1b75b39decf4bda3cc175d1bf9a89ab719f8fe66b3b56aa41b9b8633770",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "e3bde0c8a8bc481a609e44de5596c2eff67dce3f6397e950785b7a65dad86229"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/flat-minimum-960x700.png",
+        "png": {
+          "bytes": 49561,
+          "sha256": "1375afec1244e39dae1c87b4701b19e0b4fc25b867adf86d9a0228f365c3eda1"
+        },
+        "width": 960
+      },
+      "name": "flat-minimum-960x700",
+      "presentation": "flat",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1816,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 81920,
+            "publication_revision": 324,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "flat",
+          "rendered_image": 66,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "play"
+        },
+        "callbacks": 162,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 82944,
+        "ui_events": 68
+      },
+      "width": 960,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1400",
+        "--height",
+        "820",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/play-minimum-active-1400x820.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/play-minimum-active-1400x820.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/play-minimum-active-1400x820",
+      "diagnostics": {
+        "bytes": 21447,
+        "path": "diagnostics/play-minimum-active-1400x820.json",
+        "sha256": "7f0d094ab8fdf538f4a1fa5a1b72d8c7a91a6305eeae49df5bdfc8db9797d162"
+      },
+      "elapsed_seconds": 1.9987187339993397,
+      "exit_code": 0,
+      "height": 820,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "7a67b23dc7d94e6c5c0d9116223194c5c3506e73b4e09ad386c16fc879392926",
+        "height": 820,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 4592122,
+          "sha256": "e790a71a5de696859406aebe4e02d93228185e2d1779f5fb54c09defbc5e4851"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-minimum-active-1400x820.png",
+        "png": {
+          "bytes": 585063,
+          "sha256": "5ce28ab35d96b721f2ee31fe8ae48dd5ecd9667a455302e7ca29fb7bbdd3baa4"
+        },
+        "width": 1400
+      },
+      "name": "play-minimum-active-1400x820",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1848,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 81408,
+            "publication_revision": 322,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 23,
+          "window_height": 820,
+          "window_width": 1400,
+          "workspace": "play"
+        },
+        "callbacks": 169,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 86528,
+        "ui_events": 66
+      },
+      "width": 1400,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-flat.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/flat-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/flat-reference-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/flat-reference-1672x941",
+      "diagnostics": {
+        "bytes": 22193,
+        "path": "diagnostics/flat-reference-1672x941.json",
+        "sha256": "c16625761d3e8c1e51e693028b4e1770fbc15e57edef1b488ab97dd036879c8d"
+      },
+      "elapsed_seconds": 1.9118352149998827,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "6fa228351e2cf5e2803fd3d5b180f3de75ac75d71bfc978a8ac0b188641adcee",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "195430e43de8589e66ff809369831c7dce8f68e965f240b770b2da46f302e6ee"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/flat-reference-1672x941.png",
+        "png": {
+          "bytes": 355450,
+          "sha256": "f6ee3bb99bb8ce51cf3b7bd8f7ea29cc2b1d62e8ddd88067aef5cdb39a38a84a"
+        },
+        "width": 1672
+      },
+      "name": "flat-reference-1672x941",
+      "presentation": "flat",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1819,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 80384,
+            "publication_revision": 318,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "flat",
+          "rendered_image": 35,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "play"
+        },
+        "callbacks": 161,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 82432,
+        "ui_events": 68
+      },
+      "width": 1672,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-dimensional-toolbar-focus.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/play-toolbar-focus-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/play-toolbar-focus-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/play-toolbar-focus-1672x941",
+      "diagnostics": {
+        "bytes": 23833,
+        "path": "diagnostics/play-toolbar-focus-1672x941.json",
+        "sha256": "2d4541208ca6ec084f2173779a5d0293eb66dab781f0ab9d215abbbdfb3c0cb8"
+      },
+      "elapsed_seconds": 1.9666392770013772,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "9b766a4313de6c9e2c0e2fbaa3f231cf8a71605b50cf4fad0e74dba729102e26",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "78b6f8cb2f8b11f6bde2d35a45afd0dc5ae0e5bdee4569132e7ea51a8e77a05f"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-toolbar-focus-1672x941.png",
+        "png": {
+          "bytes": 767482,
+          "sha256": "570b7c801abc8b9827a3291d2f87f57d70600fd098dd35dfa9aa2f8cbf496d69"
+        },
+        "width": 1672
+      },
+      "name": "play-toolbar-focus-1672x941",
+      "presentation": "dimensional",
+      "scene": "toolbar-focus",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1837,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 2,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 82944,
+            "publication_revision": 328,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 20,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "play"
+        },
+        "callbacks": 170,
+        "complete_control_state_checked": true,
+        "focus_pixels": {
+          "color_rgb": [
+            165,
+            228,
+            223
+          ],
+          "decoded_sha256": "9b766a4313de6c9e2c0e2fbaa3f231cf8a71605b50cf4fad0e74dba729102e26",
+          "edge_probe_rectangles": {
+            "bottom": [
+              1448,
+              640,
+              1576,
+              642
+            ],
+            "left": [
+              1444,
+              620,
+              1446,
+              638
+            ],
+            "right": [
+              1578,
+              620,
+              1580,
+              638
+            ],
+            "top": [
+              1448,
+              616,
+              1576,
+              618
+            ]
+          },
+          "expected_target": "KeyboardTarget Pedals",
+          "matched_pixels": {
+            "bottom": 256,
+            "left": 36,
+            "right": 36,
+            "top": 256
+          },
+          "meaning": "All four declared target-edge probes contain exact cyan focus ink in the native frame. Combined with the replay action and retained held-state diagnostics; no ordinary focus ID is exported by the application.",
+          "passed": true
+        },
+        "focus_scene": {
+          "accepted_note_on_commands": 5,
+          "action": "Enter selects the focused Pedals toolbar target; physical W holds pedal 2.",
+          "expected_target": "KeyboardTarget Pedals",
+          "ordinary_focus_id_exported": false,
+          "original_four_holds_preserved": true,
+          "pixel_focus_check_required": true
+        },
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          2,
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 87040,
+        "ui_events": 151
+      },
+      "width": 1672,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-dimensional-pedal-focus.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/play-pedal-focus-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/play-pedal-focus-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/play-pedal-focus-1672x941",
+      "diagnostics": {
+        "bytes": 23838,
+        "path": "diagnostics/play-pedal-focus-1672x941.json",
+        "sha256": "b910e408bb2248df11238fa3706592404945b8816d67432d6b6ee905fb0fdcf2"
+      },
+      "elapsed_seconds": 1.9519177059992217,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "031c5859873080a2da22d0afaa745bce91c8a41fc55382548f8dc26b55639924",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "d1fc86438a6afe3fa16a6ef9467a486f19a8af1ebc06496f96701008508c8f17"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-pedal-focus-1672x941.png",
+        "png": {
+          "bytes": 768016,
+          "sha256": "76adb2f5220f9f5c8ad7bde7fc18e6230e05012aa06e225f4a80159f58c323d2"
+        },
+        "width": 1672
+      },
+      "name": "play-pedal-focus-1672x941",
+      "presentation": "dimensional",
+      "scene": "pedal-focus",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1819,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 2,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 76800,
+            "publication_revision": 304,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 23,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "play"
+        },
+        "callbacks": 158,
+        "complete_control_state_checked": true,
+        "focus_pixels": {
+          "color_rgb": [
+            165,
+            228,
+            223
+          ],
+          "decoded_sha256": "031c5859873080a2da22d0afaa745bce91c8a41fc55382548f8dc26b55639924",
+          "edge_probe_rectangles": {
+            "bottom": [
+              1556,
+              850,
+              1575,
+              852
+            ],
+            "left": [
+              1553,
+              778,
+              1555,
+              848
+            ],
+            "right": [
+              1576,
+              778,
+              1578,
+              848
+            ],
+            "top": [
+              1556,
+              774,
+              1575,
+              776
+            ]
+          },
+          "expected_target": "PedalKey 25",
+          "matched_pixels": {
+            "bottom": 38,
+            "left": 140,
+            "right": 140,
+            "top": 38
+          },
+          "meaning": "All four declared target-edge probes contain exact cyan focus ink in the native frame. Combined with the replay action and retained held-state diagnostics; no ordinary focus ID is exported by the application.",
+          "passed": true
+        },
+        "focus_scene": {
+          "accepted_note_on_commands": 5,
+          "action": "End selects pedal 25 in the focused pedal group; Space holds that focused key.",
+          "expected_target": "PedalKey 25",
+          "ordinary_focus_id_exported": false,
+          "original_four_holds_preserved": true,
+          "pixel_focus_check_required": true
+        },
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3,
+          25
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 80896,
+        "ui_events": 161
+      },
+      "width": 1672,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1920",
+        "--height",
+        "1080",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/images/play-wide-1920x1080.bmp",
+        "--diagnostics",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/diagnostics/play-wide-1920x1080.json"
+      ],
+      "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery/runs/play-wide-1920x1080",
+      "diagnostics": {
+        "bytes": 21462,
+        "path": "diagnostics/play-wide-1920x1080.json",
+        "sha256": "cc7c8fe64498e7c1893586ab028ecff527d6b60c69eeb27f08d863e256140f78"
+      },
+      "elapsed_seconds": 1.9981903839998267,
+      "exit_code": 0,
+      "height": 1080,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "477ac1095438f458262bec384a48c4452ac9c4256343821bf0aa4e51524e2419",
+        "height": 1080,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 8294522,
+          "sha256": "f05ff1fa831e915c3290b99b28d026fc9277b274b3e60dfeb15645ece2f2100d"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-wide-1920x1080.png",
+        "png": {
+          "bytes": 914846,
+          "sha256": "811fb42f55d017eba3c731d38f05a3d1993ec31379e556cc2b473a76a543509e"
+        },
+        "width": 1920
+      },
+      "name": "play-wide-1920x1080",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1845,
+          "expression_calibration": {
+            "active": null,
+            "configured": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "model": "midi-expression-endpoints-v1",
+            "pending": null,
+            "reconnect_pending": false,
+            "release_pending": false,
+            "selected": {
+              "inverted": false,
+              "maximum": 127,
+              "minimum": 0
+            },
+            "selected_valid": true
+          },
+          "held_targets": {
+            "lower": 1,
+            "pedals": 1,
+            "upper": 2
+          },
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 82944,
+            "publication_revision": 328,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "modal_focus": 0,
+          "overlay": "none",
+          "pointer_capture": {
+            "attempts": 0,
+            "losses": 0,
+            "release_calls": 0,
+            "sdl_captured": false,
+            "successes": 0,
+            "ui_captured": false
+          },
+          "presentation": "dimensional",
+          "rendered_image": 19,
+          "window_height": 1080,
+          "window_width": 1920,
+          "workspace": "play"
+        },
+        "callbacks": 172,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_backend": "unavailable",
+        "midi_backend_available": false,
+        "midi_source": "none",
+        "midi_state": "unavailable",
+        "passed": true,
+        "rendered_frames": 88064,
+        "ui_events": 66
+      },
+      "width": 1920,
+      "workspace": "play"
+    }
+  ],
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "tools/capture_standalone_interface.py",
+    "--exe",
+    "../build-native/apps/standalone/hammond_standalone",
+    "--source-root",
+    ".",
+    "--build-root",
+    "../build-native",
+    "--source-qualification",
+    "docs/development/2026-11-16-heading-title-continuation/reports/t2-build-identity.json",
+    "--expected-exe-sha256",
+    "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a",
+    "--output",
+    "../t2-gallery",
+    "--dummy-sdl"
+  ],
+  "environment": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "PATH": "/bin:/usr/bin",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy"
+  },
+  "executable": {
+    "after": {
+      "bytes": 4094520,
+      "sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a"
+    },
+    "before": {
+      "bytes": 4094520,
+      "sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a"
+    },
+    "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/hammond_standalone"
+  },
+  "finished_at_utc": "2026-11-16T23:56:27.860183+00:00",
+  "inputs": {
+    "after": {
+      "inputs/controls.b3controls": {
+        "bytes": 456,
+        "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+      },
+      "inputs/play-dimensional-pedal-focus.b3uireplay": {
+        "bytes": 3960,
+        "sha256": "8efb6d0fc894f77fb427690b6f8febcaf3e2176310540ffcc04a340f1cf4889c"
+      },
+      "inputs/play-dimensional-toolbar-focus.b3uireplay": {
+        "bytes": 3728,
+        "sha256": "b02902d365c32db119b3e845967de35df083eaa5b9a43395476762ee0bbcd719"
+      },
+      "inputs/play-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+      },
+      "inputs/play-flat.b3uireplay": {
+        "bytes": 1734,
+        "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+      },
+      "inputs/rotary-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+      },
+      "inputs/service-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+      },
+      "inputs/source-qualification.json": {
+        "bytes": 3332,
+        "sha256": "5f01150960f304465f0b0b746f84114f41db41b53782dba308d312716eb0cb53"
+      }
+    },
+    "before": {
+      "inputs/controls.b3controls": {
+        "bytes": 456,
+        "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+      },
+      "inputs/play-dimensional-pedal-focus.b3uireplay": {
+        "bytes": 3960,
+        "sha256": "8efb6d0fc894f77fb427690b6f8febcaf3e2176310540ffcc04a340f1cf4889c"
+      },
+      "inputs/play-dimensional-toolbar-focus.b3uireplay": {
+        "bytes": 3728,
+        "sha256": "b02902d365c32db119b3e845967de35df083eaa5b9a43395476762ee0bbcd719"
+      },
+      "inputs/play-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+      },
+      "inputs/play-flat.b3uireplay": {
+        "bytes": 1734,
+        "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+      },
+      "inputs/rotary-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+      },
+      "inputs/service-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+      },
+      "inputs/source-qualification.json": {
+        "bytes": 3332,
+        "sha256": "5f01150960f304465f0b0b746f84114f41db41b53782dba308d312716eb0cb53"
+      }
+    }
+  },
+  "output_directory_at_capture": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/../t2-gallery",
+  "pillow": "13.0.0",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "qualification": "Actual native screenshots with SDL dummy audio/video and software renderer; no physical device, deadline, accessibility, measured instrument or literal 1:1 reference qualification.",
+  "schema_version": 1,
+  "source": {
+    "boundary": "Observed production overlay, including untracked files; HEAD alone does not identify this UI. The author report pins its listed sources only. Extra production hashes are observed capture inputs, not an independent build attestation. Test, install-rule and unrelated documentation edits are excluded.",
+    "changed_paths": [],
+    "checked_author_report": {
+      "binary_sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a",
+      "bytes": 3332,
+      "checked_source_sha256": {
+        "apps/standalone/AudioDevice.cpp": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0",
+        "apps/standalone/AudioDevice.h": "75ac25e462afb85c64b0298bf4e8c30d4979d3d30f231edec75c8ba41818673a",
+        "apps/standalone/Drawing.cpp": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a",
+        "apps/standalone/Drawing.h": "36663f449abfbf01c755b8ab718b2a75252709b68ed38df9452d446ea82289f3",
+        "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+        "apps/standalone/InspectionModel.cpp": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+        "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+        "apps/standalone/InstrumentView.cpp": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db",
+        "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+        "apps/standalone/MidiDevice.cpp": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324",
+        "apps/standalone/MidiDevice.h": "ce6c75faf49218073a369ac12a67bf0b995ec0309f1c078f23da78963865bea3",
+        "apps/standalone/MidiDiscovery.h": "414d76b9fbbdda4043f800de09da4863629c8790b2a312631cf6eb4466e5d7a6",
+        "apps/standalone/MidiInput.cpp": "4ddd655fb4a21040f2f83228fb23e38f98d0abe21d5bce7f0e28d064b5b7477c",
+        "apps/standalone/MidiInput.h": "4024723a91c28c8884ca065d167524c599d6816d047bcc834ea025b1dd734394",
+        "apps/standalone/MidiReplay.cpp": "a61047fcb0da050eae35a10e86205a496d13ea7d00fb8b113c8682d1556a88db",
+        "apps/standalone/MidiReplay.h": "c0a62c0d33e7b0c3b90237e82cf631222d3d5274bb6b45fa797906e1e77a3948",
+        "apps/standalone/RegistrationLibrary.cpp": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+        "apps/standalone/RegistrationLibrary.h": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+        "apps/standalone/ScriptedInput.cpp": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23",
+        "apps/standalone/ScriptedInput.h": "294b11d6a2c9b425d766b019b2ff1e7c460a308c93887c648dd7bce1d955c3d5",
+        "apps/standalone/Session.cpp": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+        "apps/standalone/Session.h": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+        "apps/standalone/StateFiles.cpp": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6",
+        "apps/standalone/StateFiles.h": "ccf0aa7cb6d88df7c5e582a6154a12d28d9db97ab97d2833529ba8a328354a67",
+        "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+        "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+        "apps/standalone/benchmark.cpp": "fbd8bc62d8cd60c72384da8ef2ebecef1a699f966c221cef5e7c84cba1902c82",
+        "apps/standalone/main.cpp": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+        "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+      },
+      "meaning": "Supplied author build report matched the current files and executable. This utility did not rebuild or independently attest source-to-binary provenance.",
+      "report_path_at_capture": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/t2-build-identity.json",
+      "sha256": "5f01150960f304465f0b0b746f84114f41db41b53782dba308d312716eb0cb53"
+    },
+    "files": {
+      "apps/standalone/AudioDevice.cpp": {
+        "bytes": 12072,
+        "sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0"
+      },
+      "apps/standalone/AudioDevice.h": {
+        "bytes": 5331,
+        "sha256": "75ac25e462afb85c64b0298bf4e8c30d4979d3d30f231edec75c8ba41818673a"
+      },
+      "apps/standalone/Drawing.cpp": {
+        "bytes": 22378,
+        "sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a"
+      },
+      "apps/standalone/Drawing.h": {
+        "bytes": 2617,
+        "sha256": "36663f449abfbf01c755b8ab718b2a75252709b68ed38df9452d446ea82289f3"
+      },
+      "apps/standalone/FontData.h": {
+        "bytes": 204816,
+        "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+      },
+      "apps/standalone/InspectionModel.cpp": {
+        "bytes": 18587,
+        "sha256": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8"
+      },
+      "apps/standalone/InspectionModel.h": {
+        "bytes": 2778,
+        "sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9"
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "bytes": 164300,
+        "sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db"
+      },
+      "apps/standalone/InstrumentView.h": {
+        "bytes": 2407,
+        "sha256": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0"
+      },
+      "apps/standalone/MidiDevice.cpp": {
+        "bytes": 22400,
+        "sha256": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324"
+      },
+      "apps/standalone/MidiDevice.h": {
+        "bytes": 7457,
+        "sha256": "ce6c75faf49218073a369ac12a67bf0b995ec0309f1c078f23da78963865bea3"
+      },
+      "apps/standalone/MidiDiscovery.h": {
+        "bytes": 4604,
+        "sha256": "414d76b9fbbdda4043f800de09da4863629c8790b2a312631cf6eb4466e5d7a6"
+      },
+      "apps/standalone/MidiInput.cpp": {
+        "bytes": 12250,
+        "sha256": "4ddd655fb4a21040f2f83228fb23e38f98d0abe21d5bce7f0e28d064b5b7477c"
+      },
+      "apps/standalone/MidiInput.h": {
+        "bytes": 10569,
+        "sha256": "4024723a91c28c8884ca065d167524c599d6816d047bcc834ea025b1dd734394"
+      },
+      "apps/standalone/MidiReplay.cpp": {
+        "bytes": 10746,
+        "sha256": "a61047fcb0da050eae35a10e86205a496d13ea7d00fb8b113c8682d1556a88db"
+      },
+      "apps/standalone/MidiReplay.h": {
+        "bytes": 2088,
+        "sha256": "c0a62c0d33e7b0c3b90237e82cf631222d3d5274bb6b45fa797906e1e77a3948"
+      },
+      "apps/standalone/RegistrationLibrary.cpp": {
+        "bytes": 39180,
+        "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc"
+      },
+      "apps/standalone/RegistrationLibrary.h": {
+        "bytes": 5982,
+        "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb"
+      },
+      "apps/standalone/ScriptedInput.cpp": {
+        "bytes": 22586,
+        "sha256": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23"
+      },
+      "apps/standalone/ScriptedInput.h": {
+        "bytes": 4115,
+        "sha256": "294b11d6a2c9b425d766b019b2ff1e7c460a308c93887c648dd7bce1d955c3d5"
+      },
+      "apps/standalone/Session.cpp": {
+        "bytes": 31176,
+        "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3"
+      },
+      "apps/standalone/Session.h": {
+        "bytes": 8982,
+        "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929"
+      },
+      "apps/standalone/StateFiles.cpp": {
+        "bytes": 4844,
+        "sha256": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6"
+      },
+      "apps/standalone/StateFiles.h": {
+        "bytes": 789,
+        "sha256": "ccf0aa7cb6d88df7c5e582a6154a12d28d9db97ab97d2833529ba8a328354a67"
+      },
+      "apps/standalone/UiModel.cpp": {
+        "bytes": 83758,
+        "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+      },
+      "apps/standalone/UiModel.h": {
+        "bytes": 18547,
+        "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1"
+      },
+      "apps/standalone/benchmark.cpp": {
+        "bytes": 37640,
+        "sha256": "fbd8bc62d8cd60c72384da8ef2ebecef1a699f966c221cef5e7c84cba1902c82"
+      },
+      "apps/standalone/main.cpp": {
+        "bytes": 146859,
+        "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+      },
+      "assets/standalone/fonts/DejaVuSans.ttf": {
+        "bytes": 759720,
+        "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+      },
+      "assets/standalone/fonts/DejaVuSerif.ttf": {
+        "bytes": 380660,
+        "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7"
+      },
+      "assets/standalone/fonts/LICENSE-DejaVu.txt": {
+        "bytes": 2345,
+        "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+      },
+      "assets/standalone/fonts/atlas-manifest.json": {
+        "bytes": 1487,
+        "sha256": "8b9413cc6acdf32f40ba272f04d0b984f9909772c295ca8c35f88f85bceb0469"
+      },
+      "assets/standalone/fonts/requirements-authoring.txt": {
+        "bytes": 90,
+        "sha256": "3f309f723b3bbd26e0455988913d43c28b25de63f45a4d89973b95fbefcdf280"
+      },
+      "assets/standalone/fonts/source-manifest.json": {
+        "bytes": 1428,
+        "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+      },
+      "assets/standalone/midi/LICENSE-RtMidi.txt": {
+        "bytes": 1349,
+        "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364"
+      },
+      "assets/standalone/reference-apron-v1/README.md": {
+        "bytes": 3342,
+        "sha256": "c7912e6f61dd57642a3a0ad19f619fdf640b1272aa6c63438f7711ab1c41fa9d"
+      },
+      "assets/standalone/reference-apron-v1/apron.rgba.gz": {
+        "bytes": 61162,
+        "sha256": "87387e6c0bbd54012f0e0b23560175781a6515483b047822e4b64e4adfaac06c"
+      },
+      "assets/standalone/reference-apron-v1/manifest.json": {
+        "bytes": 2416,
+        "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8"
+      },
+      "assets/standalone/reference-apron-v1/requirements-authoring.txt": {
+        "bytes": 164,
+        "sha256": "6a7168ee1c7c02cff8f0b163e9bbe70959c28a08abc8e7e8e7749499559c8687"
+      },
+      "assets/standalone/reference/cabinet.rgb.gz": {
+        "bytes": 369409,
+        "sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e"
+      },
+      "assets/standalone/reference/left-wood-cheek.rgb.gz": {
+        "bytes": 52070,
+        "sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4"
+      },
+      "assets/standalone/reference/manifest.json": {
+        "bytes": 3816,
+        "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87"
+      },
+      "assets/standalone/reference/requirements-authoring.txt": {
+        "bytes": 167,
+        "sha256": "98d3fbeaee859ac1b6076b2ab6495b2e3e3a7ecdcf32787de7204127e49fd254"
+      },
+      "assets/standalone/reference/right-wood-cheek.rgb.gz": {
+        "bytes": 142330,
+        "sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6"
+      },
+      "data/dependencies/rtmidi-lock.json": {
+        "bytes": 1161,
+        "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+      },
+      "data/dependencies/sdl2-lock.json": {
+        "bytes": 375,
+        "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+      },
+      "data/parameter-registry.json": {
+        "bytes": 36882,
+        "sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2"
+      },
+      "data/pedal-map.json": {
+        "bytes": 3267,
+        "sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd"
+      },
+      "data/profiles/nominal-unmeasured-v1.json": {
+        "bytes": 19627,
+        "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff"
+      },
+      "data/registrations/atlas-chapel-nominal-v1.json": {
+        "bytes": 4298,
+        "sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf"
+      },
+      "data/registrations/review-a-chapel.csv": {
+        "bytes": 466,
+        "sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694"
+      },
+      "data/registrations/review-b-chapel.csv": {
+        "bytes": 466,
+        "sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694"
+      },
+      "data/registrations/starter-v1/README.md": {
+        "bytes": 8566,
+        "sha256": "b5353cf54e5aeb259e2ab16735a2449385144e013bc736c38623c64162f45234"
+      },
+      "data/registrations/starter-v1/entries/01 Quiet Foundation.b3performance": {
+        "bytes": 457,
+        "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651"
+      },
+      "data/registrations/starter-v1/entries/01 Quiet Foundation.b3registration": {
+        "bytes": 457,
+        "sha256": "53a820f1169333e19e89e0f9e3fd07aa3b7cb21f8690671b83d3dd1198431651"
+      },
+      "data/registrations/starter-v1/entries/02 Warm Comp.b3performance": {
+        "bytes": 459,
+        "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+      },
+      "data/registrations/starter-v1/entries/02 Warm Comp.b3registration": {
+        "bytes": 459,
+        "sha256": "94b6ceada4ab630f1d8074586a5a3c820b4a7b9f31c928a1251390f716db3148"
+      },
+      "data/registrations/starter-v1/entries/03 Clear Lead.b3performance": {
+        "bytes": 459,
+        "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad"
+      },
+      "data/registrations/starter-v1/entries/03 Clear Lead.b3registration": {
+        "bytes": 459,
+        "sha256": "ff10f208f7efbdbfc0f58356f502cbdcb3db85ccc8b95252c545cda8a4126dad"
+      },
+      "data/registrations/starter-v1/entries/04 Reed Edge.b3performance": {
+        "bytes": 457,
+        "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020"
+      },
+      "data/registrations/starter-v1/entries/04 Reed Edge.b3registration": {
+        "bytes": 457,
+        "sha256": "761c15da69cdac75242c44140c163d249dffb6907f73215f29ca754a6f095020"
+      },
+      "data/registrations/starter-v1/entries/05 Bright Ensemble.b3performance": {
+        "bytes": 457,
+        "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f"
+      },
+      "data/registrations/starter-v1/entries/05 Bright Ensemble.b3registration": {
+        "bytes": 457,
+        "sha256": "a9c00472e42c5489417f5f7b5568774d70358a7b2a15638309613f7208b1613f"
+      },
+      "data/registrations/starter-v1/entries/06 High Shimmer.b3performance": {
+        "bytes": 457,
+        "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a"
+      },
+      "data/registrations/starter-v1/entries/06 High Shimmer.b3registration": {
+        "bytes": 457,
+        "sha256": "6d5369845ef8aaa7546a69907b1596c19fa5679319130d5aefd7dacfe0ae577a"
+      },
+      "data/registrations/starter-v1/entries/07 Percussive Pair.b3performance": {
+        "bytes": 456,
+        "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a"
+      },
+      "data/registrations/starter-v1/entries/07 Percussive Pair.b3registration": {
+        "bytes": 456,
+        "sha256": "eed4c54bb7dffc1b026cc9c026e9ee66987473d1a9cf9d83d794a1428188408a"
+      },
+      "data/registrations/starter-v1/entries/08 Slow Accent.b3performance": {
+        "bytes": 457,
+        "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005"
+      },
+      "data/registrations/starter-v1/entries/08 Slow Accent.b3registration": {
+        "bytes": 457,
+        "sha256": "aca661ba149ddda94861b17823a7f654e341b5af1c68f152646c32f942587005"
+      },
+      "data/registrations/starter-v1/entries/09 Split Dialogue.b3performance": {
+        "bytes": 457,
+        "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b"
+      },
+      "data/registrations/starter-v1/entries/09 Split Dialogue.b3registration": {
+        "bytes": 457,
+        "sha256": "1d43d8344e21a21f78c516a9889d0937c0ce1cb79708805e8f2335d2f12fcb9b"
+      },
+      "data/registrations/starter-v1/entries/10 Pedal Study.b3performance": {
+        "bytes": 457,
+        "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890"
+      },
+      "data/registrations/starter-v1/entries/10 Pedal Study.b3registration": {
+        "bytes": 457,
+        "sha256": "da6b09d781d25c91f5f070e6dc5e9d1660bd0c97b0be755a5c6aa64ff717d890"
+      },
+      "data/registrations/starter-v1/entries/11 Fixed Contrast.b3performance": {
+        "bytes": 452,
+        "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d"
+      },
+      "data/registrations/starter-v1/entries/11 Fixed Contrast.b3registration": {
+        "bytes": 452,
+        "sha256": "152a16771878e2db434f1137d5f753c01c22b3ace642d8be35e1b18358503c5d"
+      },
+      "data/registrations/starter-v1/entries/12 Manual Return.b3performance": {
+        "bytes": 452,
+        "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df"
+      },
+      "data/registrations/starter-v1/entries/12 Manual Return.b3registration": {
+        "bytes": 452,
+        "sha256": "0ded9fedbae66cb9d706c4f6c9eda0a185903add490f09b47a8138a11e5851df"
+      },
+      "data/registrations/starter-v1/recipes.json": {
+        "bytes": 9955,
+        "sha256": "665e6098928d845c1302642f89a109dc8f2be8500f9eb49d33111ba37d468051"
+      },
+      "data/rotary/nominal-research-v1.json": {
+        "bytes": 19988,
+        "sha256": "c0473cb20604726d989d7c280700109f647f7b227edb71c61d275ed9bfd67443"
+      },
+      "data/scanner/atlas-late-b3-nominal-v1.json": {
+        "bytes": 26228,
+        "sha256": "1d236be5e6b63e938a9f147808386173949d167e09aee8e902c55002e4ea4604"
+      },
+      "docs/design/atlas-cover-reference.jpg": {
+        "bytes": 412664,
+        "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+      },
+      "docs/design/atlas-reference.json": {
+        "bytes": 811,
+        "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+      },
+      "include/hammond/ConsoleModel.h": {
+        "bytes": 1721,
+        "sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51"
+      },
+      "include/hammond/ContactBank.h": {
+        "bytes": 7646,
+        "sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d"
+      },
+      "include/hammond/ControlState.h": {
+        "bytes": 5751,
+        "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856"
+      },
+      "include/hammond/ControlStateIO.h": {
+        "bytes": 2070,
+        "sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081"
+      },
+      "include/hammond/Engine.h": {
+        "bytes": 11513,
+        "sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408"
+      },
+      "include/hammond/FixedRegistration.h": {
+        "bytes": 1822,
+        "sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0"
+      },
+      "include/hammond/HostTimeline.h": {
+        "bytes": 7260,
+        "sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316"
+      },
+      "include/hammond/InputProcessor.h": {
+        "bytes": 2317,
+        "sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df"
+      },
+      "include/hammond/LeslieCrossover.h": {
+        "bytes": 5331,
+        "sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c"
+      },
+      "include/hammond/NoteOwnership.h": {
+        "bytes": 5037,
+        "sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc"
+      },
+      "include/hammond/ParameterBridge.h": {
+        "bytes": 2952,
+        "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3"
+      },
+      "include/hammond/PedalNoteOwnership.h": {
+        "bytes": 4596,
+        "sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33"
+      },
+      "include/hammond/PedalRouting.h": {
+        "bytes": 6909,
+        "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8"
+      },
+      "include/hammond/PedalVoice.h": {
+        "bytes": 3384,
+        "sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf"
+      },
+      "include/hammond/Percussion.h": {
+        "bytes": 6395,
+        "sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722"
+      },
+      "include/hammond/PerformanceInput.h": {
+        "bytes": 3220,
+        "sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77"
+      },
+      "include/hammond/Profile.h": {
+        "bytes": 2250,
+        "sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0"
+      },
+      "include/hammond/RotaryHistory.h": {
+        "bytes": 5507,
+        "sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b"
+      },
+      "include/hammond/RotaryMotion.h": {
+        "bytes": 6314,
+        "sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36"
+      },
+      "include/hammond/RotaryPropagation.h": {
+        "bytes": 3577,
+        "sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a"
+      },
+      "include/hammond/RotaryRenderer.h": {
+        "bytes": 6415,
+        "sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0"
+      },
+      "include/hammond/RotaryTypes.h": {
+        "bytes": 8414,
+        "sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+      },
+      "include/hammond/ScannerLine.h": {
+        "bytes": 6451,
+        "sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7"
+      },
+      "include/hammond/ScannerLineFoh.h": {
+        "bytes": 3927,
+        "sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887"
+      },
+      "include/hammond/ScannerRotor.h": {
+        "bytes": 6041,
+        "sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a"
+      },
+      "include/hammond/SourceLeakage.h": {
+        "bytes": 4287,
+        "sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482"
+      },
+      "include/hammond/StateExchange.h": {
+        "bytes": 6878,
+        "sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0"
+      },
+      "include/hammond/TonewheelBank.h": {
+        "bytes": 2760,
+        "sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b"
+      },
+      "include/hammond/Types.h": {
+        "bytes": 6015,
+        "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8"
+      },
+      "include/hammond/detail/Decimal.h": {
+        "bytes": 3736,
+        "sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42"
+      },
+      "include/hammond/research/CausalContactGrid.h": {
+        "bytes": 4279,
+        "sha256": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f"
+      },
+      "src/ContactBank.cpp": {
+        "bytes": 9665,
+        "sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1"
+      },
+      "src/ControlState.cpp": {
+        "bytes": 7673,
+        "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d"
+      },
+      "src/ControlStateIO.cpp": {
+        "bytes": 13152,
+        "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb"
+      },
+      "src/Engine.cpp": {
+        "bytes": 28448,
+        "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3"
+      },
+      "src/FixedRegistration.cpp": {
+        "bytes": 1630,
+        "sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d"
+      },
+      "src/HostTimeline.cpp": {
+        "bytes": 21374,
+        "sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149"
+      },
+      "src/InputProcessor.cpp": {
+        "bytes": 1257,
+        "sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc"
+      },
+      "src/LeslieCrossover.cpp": {
+        "bytes": 18694,
+        "sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525"
+      },
+      "src/NoteOwnership.cpp": {
+        "bytes": 8856,
+        "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751"
+      },
+      "src/ParameterBridge.cpp": {
+        "bytes": 11334,
+        "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220"
+      },
+      "src/PedalNoteOwnership.cpp": {
+        "bytes": 7419,
+        "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde"
+      },
+      "src/PedalRouting.cpp": {
+        "bytes": 3983,
+        "sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af"
+      },
+      "src/PedalVoice.cpp": {
+        "bytes": 1171,
+        "sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba"
+      },
+      "src/Percussion.cpp": {
+        "bytes": 4837,
+        "sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a"
+      },
+      "src/PerformanceInput.cpp": {
+        "bytes": 4219,
+        "sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189"
+      },
+      "src/Profile.cpp": {
+        "bytes": 11655,
+        "sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54"
+      },
+      "src/RotaryHistory.cpp": {
+        "bytes": 8643,
+        "sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5"
+      },
+      "src/RotaryMotion.cpp": {
+        "bytes": 17599,
+        "sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1"
+      },
+      "src/RotaryPropagation.cpp": {
+        "bytes": 14495,
+        "sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e"
+      },
+      "src/RotaryRenderer.cpp": {
+        "bytes": 16388,
+        "sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04"
+      },
+      "src/RotaryRendererInternal.h": {
+        "bytes": 1020,
+        "sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796"
+      },
+      "src/RotaryStreamingPath.cpp": {
+        "bytes": 9747,
+        "sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50"
+      },
+      "src/ScannerLine.cpp": {
+        "bytes": 20512,
+        "sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336"
+      },
+      "src/ScannerLineFoh.cpp": {
+        "bytes": 28845,
+        "sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df"
+      },
+      "src/ScannerRotor.cpp": {
+        "bytes": 5383,
+        "sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0"
+      },
+      "src/SourceLeakage.cpp": {
+        "bytes": 5741,
+        "sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c"
+      },
+      "src/SourceLeakageIO.cpp": {
+        "bytes": 8953,
+        "sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e"
+      },
+      "src/StateExchange.cpp": {
+        "bytes": 9473,
+        "sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837"
+      },
+      "src/TonewheelBank.cpp": {
+        "bytes": 4390,
+        "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b"
+      },
+      "src/research/CausalContactGrid.cpp": {
+        "bytes": 14390,
+        "sha256": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd"
+      },
+      "tools/compile_chapel_presets.py": {
+        "bytes": 15395,
+        "sha256": "ae54bbc196d779b2b1b369aa2c2e7db4268dd175201d6b193fed8256e6420826"
+      },
+      "tools/compile_profile.py": {
+        "bytes": 20385,
+        "sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8"
+      },
+      "tools/compile_reference_apron.py": {
+        "bytes": 14273,
+        "sha256": "13d8fbbeafb482332d7be4909ad8e2338632bd98797813233c84289ca3b57aac"
+      },
+      "tools/compile_reference_art.py": {
+        "bytes": 12418,
+        "sha256": "b0e06b4a0e6312300f64d47226875ce7d997759b9d9076eeb4cd049839d5c766"
+      },
+      "tools/embed_profile.py": {
+        "bytes": 3681,
+        "sha256": "f190b1bd45c1f1c8497293d9154d19982429cc07b3b1f45613e9e62c97556da9"
+      }
+    },
+    "git_after": {
+      "committed_tree": "163e4d7ff687acafa63813c73fdbc303a839a8f6",
+      "head": "113c29b7b14c8fde0859bc405ef8e4141a131ea6"
+    },
+    "git_before": {
+      "committed_tree": "163e4d7ff687acafa63813c73fdbc303a839a8f6",
+      "head": "113c29b7b14c8fde0859bc405ef8e4141a131ea6"
+    },
+    "inventory_sha256_after": "cd1040f230d8df5fecc78a7b3765d1b9eb0593ff2050c0d696583270a0b95cec",
+    "inventory_sha256_before": "cd1040f230d8df5fecc78a7b3765d1b9eb0593ff2050c0d696583270a0b95cec",
+    "root": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ"
+  },
+  "started_at_utc": "2026-11-16T23:55:52.594910+00:00",
+  "status": "passed",
+  "tool": {
+    "after": {
+      "bytes": 38457,
+      "sha256": "371d25b50fed8f7c73608c2a8581375fae377cb814afb73666b09ccc16a62152"
+    },
+    "before": {
+      "bytes": 38457,
+      "sha256": "371d25b50fed8f7c73608c2a8581375fae377cb814afb73666b09ccc16a62152"
+    },
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tools/capture_standalone_interface.py"
+  },
+  "visual_review": "Not performed by this utility. Review retained PNGs separately against the source concept."
+}

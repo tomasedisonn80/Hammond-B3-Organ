@@ -344,6 +344,20 @@ if(HAMMOND_BUILD_STANDALONE)
             set_tests_properties(test_standalone_footage_typography_raster PROPERTIES TIMEOUT 240)
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_footage_typography_raster)
+        add_executable(test_standalone_typography_clips
+            native_tests/test_standalone_typography_clips.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_typography_clips PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_typography_clips PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_typography_clips)
+        add_test(NAME test_standalone_typography_clips
+            COMMAND test_standalone_typography_clips)
+        set_tests_properties(test_standalone_typography_clips PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;typography;geometry")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_typography_clips PROPERTIES TIMEOUT 240)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_typography_clips)
         add_executable(test_standalone_manual_key_material_raster
             native_tests/test_standalone_manual_key_material_raster.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_manual_key_material_raster PRIVATE

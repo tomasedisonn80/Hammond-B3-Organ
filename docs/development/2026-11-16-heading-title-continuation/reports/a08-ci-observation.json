@@ -1,0 +1,404 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w02_a08",
+  "session": "2026-11-16-heading-title-continuation",
+  "observed_at_utc": "2026-11-16T23:35:01Z",
+  "source_commit": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+  "inspection": "read-only GitHub connector; no reruns, mutations or builds",
+  "runs": [
+    {
+      "id": 43885899445,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43885899445",
+      "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "check_suite_id": 118804927471,
+      "check_suite_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-suites/118804927471",
+      "created_at": "2026-11-16T14:27:22Z",
+      "updated_at": "2026-11-16T14:45:43Z"
+    },
+    {
+      "id": 43885899303,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43885899303",
+      "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "check_suite_id": 118804927009,
+      "check_suite_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-suites/118804927009",
+      "created_at": "2026-11-16T14:27:22Z",
+      "updated_at": "2026-11-16T14:42:25Z"
+    },
+    {
+      "id": 43885899261,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43885899261",
+      "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_attempt": 1,
+      "check_suite_id": 118804926869,
+      "check_suite_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-suites/118804926869",
+      "created_at": "2026-11-16T14:27:22Z",
+      "updated_at": "2026-11-16T14:42:25Z"
+    }
+  ],
+  "job_observations": [
+    {
+      "run": 43885899445,
+      "total_count": 6,
+      "jobs": [
+        {
+          "id": 133363819990,
+          "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:25Z",
+          "completed_at": "2026-11-16T14:44:34Z",
+          "runner_id": 1000001327,
+          "runner_name": "GitHub Actions 1000001327",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819990",
+          "steps_count": 15
+        },
+        {
+          "id": 133363820702,
+          "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:43:41Z",
+          "runner_id": 1000001331,
+          "runner_name": "GitHub Actions 1000001331",
+          "labels": [
+            "macos-15-intel"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363820702",
+          "steps_count": 20
+        },
+        {
+          "id": 133363820763,
+          "name": "Native standalone (macOS AppleClang, MIDI ON)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "cancelled",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:23Z",
+          "completed_at": "2026-11-16T14:45:42Z",
+          "runner_id": 0,
+          "runner_name": "",
+          "labels": [
+            "macos-15"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363820763",
+          "steps_count": 0
+        },
+        {
+          "id": 133363820835,
+          "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:40:23Z",
+          "runner_id": 1000001334,
+          "runner_name": "GitHub Actions 1000001334",
+          "labels": [
+            "windows-2022"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363820835",
+          "steps_count": 20
+        },
+        {
+          "id": 133363820861,
+          "name": "Native standalone (Linux GCC, MIDI OFF)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:37:42Z",
+          "runner_id": 1000001332,
+          "runner_name": "GitHub Actions 1000001332",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363820861",
+          "steps_count": 20
+        },
+        {
+          "id": 133363820986,
+          "name": "Native standalone (Linux GCC, MIDI ON)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:38:27Z",
+          "runner_id": 1000001333,
+          "runner_name": "GitHub Actions 1000001333",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363820986",
+          "steps_count": 20
+        }
+      ]
+    },
+    {
+      "run": 43885899303,
+      "total_count": 4,
+      "jobs": [
+        {
+          "id": 133363819276,
+          "name": "Native VST3 (Linux GCC)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:29:02Z",
+          "runner_id": 1000001324,
+          "runner_name": "GitHub Actions 1000001324",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819276",
+          "steps_count": 15
+        },
+        {
+          "id": 133363819763,
+          "name": "Native VST3 (Windows MSVC x64)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:25Z",
+          "completed_at": "2026-11-16T14:29:26Z",
+          "runner_id": 1000001329,
+          "runner_name": "GitHub Actions 1000001329",
+          "labels": [
+            "windows-2022"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819763",
+          "steps_count": 15
+        },
+        {
+          "id": 133363819797,
+          "name": "Native VST3 (macOS Intel AppleClang)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:30:42Z",
+          "runner_id": 1000001330,
+          "runner_name": "GitHub Actions 1000001330",
+          "labels": [
+            "macos-15-intel"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819797",
+          "steps_count": 15
+        },
+        {
+          "id": 133363820044,
+          "name": "Native VST3 (macOS AppleClang)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "cancelled",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:23Z",
+          "completed_at": "2026-11-16T14:42:24Z",
+          "runner_id": 0,
+          "runner_name": "",
+          "labels": [
+            "macos-15"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363820044",
+          "steps_count": 0
+        }
+      ]
+    },
+    {
+      "run": 43885899261,
+      "total_count": 6,
+      "jobs": [
+        {
+          "id": 133363819183,
+          "name": "Complete R4 waveform qualification (Linux GCC)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:37:21Z",
+          "runner_id": 1000001322,
+          "runner_name": "GitHub Actions 1000001322",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819183",
+          "steps_count": 11
+        },
+        {
+          "id": 133363819623,
+          "name": "Linux GCC ASan + UBSan + leaks",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:26Z",
+          "completed_at": "2026-11-16T14:34:08Z",
+          "runner_id": 1000001323,
+          "runner_name": "GitHub Actions 1000001323",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819623",
+          "steps_count": 12
+        },
+        {
+          "id": 133363819765,
+          "name": "Release (macOS AppleClang)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "cancelled",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:23Z",
+          "completed_at": "2026-11-16T14:42:24Z",
+          "runner_id": 0,
+          "runner_name": "",
+          "labels": [
+            "macos-15"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819765",
+          "steps_count": 0
+        },
+        {
+          "id": 133363819793,
+          "name": "Release (Linux GCC)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:25Z",
+          "completed_at": "2026-11-16T14:33:01Z",
+          "runner_id": 1000001326,
+          "runner_name": "GitHub Actions 1000001326",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819793",
+          "steps_count": 18
+        },
+        {
+          "id": 133363819922,
+          "name": "Release (Windows MSVC)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:25Z",
+          "completed_at": "2026-11-16T14:37:20Z",
+          "runner_id": 1000001328,
+          "runner_name": "GitHub Actions 1000001328",
+          "labels": [
+            "windows-2022"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819922",
+          "steps_count": 18
+        },
+        {
+          "id": 133363819925,
+          "name": "Release (macOS Intel AppleClang)",
+          "head_sha": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+          "conclusion": "success",
+          "status": "completed",
+          "created_at": "2026-11-16T14:27:23Z",
+          "started_at": "2026-11-16T14:27:28Z",
+          "completed_at": "2026-11-16T14:39:49Z",
+          "runner_id": 1000001335,
+          "runner_name": "GitHub Actions 1000001335",
+          "labels": [
+            "macos-15-intel"
+          ],
+          "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133363819925",
+          "steps_count": 18
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "success": 13,
+    "cancelled": 3,
+    "failed_executed_jobs": 0,
+    "total": 16
+  },
+  "cause": {
+    "status": "unestablished",
+    "observed": "All cancelled jobs have macos-15 label, runner_id 0, empty runner_name and zero steps. API started_at exists but establishes no runner execution.",
+    "not_inferred": [
+      "billing restriction",
+      "workflow code failure",
+      "queue-capacity exhaustion",
+      "concurrency cancellation",
+      "platform outage"
+    ]
+  },
+  "access_limits": [
+    {
+      "operation": "GET check-suites/118804927471/check-runs?per_page=100",
+      "result": "Connector INVALID_ARGUMENT: URL outside allowed Fetch endpoint surface; annotations unavailable"
+    },
+    {
+      "operation": "GET actions/jobs/133363820763",
+      "result": "Connector INVALID_ARGUMENT: URL outside allowed Fetch endpoint surface; supported run/jobs list succeeds"
+    },
+    {
+      "operation": "github_get_commit_combined_status",
+      "result": "statuses: []; not a successful Checks result"
+    },
+    {
+      "operation": "github_fetch_workflow_job_logs job133363820763",
+      "result": "404 BlobNotFound; no downloadable log obtained"
+    }
+  ],
+  "workflow_review": {
+    "fail_fast": false,
+    "concurrency_group": "github.workflow plus pull request number or github.ref",
+    "cancel_in_progress": true,
+    "macos_labels": [
+      "macos-15",
+      "macos-15-intel"
+    ],
+    "sha256": {
+      ".github/workflows/ci.yml": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+      ".github/workflows/native-vst3.yml": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734",
+      ".github/workflows/standalone.yml": "4cbc0be05c635f71becc73650d99ec6a9855293607c546bf10aac8f761d1bf57"
+    }
+  },
+  "primary_sources": [
+    {
+      "url": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+      "observed": "Current runner table maps macos-15 to ARM64 and macos-15-intel to Intel; generic macOS-demand note is not a diagnosis for these jobs."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/re-run-workflows-and-jobs",
+      "observed": "Specific-job reruns keep original GITHUB_SHA/GITHUB_REF. Dependent jobs may rerun."
+    }
+  ],
+  "recovery": [
+    "At final published source, identify the actual cancelled ARM job IDs and make one targeted rerun attempt using the supported GitHub rerun-job tool; retain original attempt.",
+    "For historical 113c29b only, exact job IDs are 133363820763 (standalone),133363820044 (VST3),133363819765 (core). These do not qualify a later source.",
+    "Avoid a new push into the same workflow/ref concurrency group while observing qualification, so its configured cancel-in-progress does not introduce a new interruption.",
+    "Require assigned runner, actual step execution, architecture/source provenance and all intended job gates before claiming ARM or full-matrix success.",
+    "If again cancelled before a runner, retain blocked/unexecuted status and inspect provider annotations through an authorized supported surface or seek provider diagnosis; do not remove or downgrade ARM gates or relabel Intel passes."
+  ]
+}

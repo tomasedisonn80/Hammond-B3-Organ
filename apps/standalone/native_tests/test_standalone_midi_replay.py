@@ -23,7 +23,7 @@ import tempfile
 import time
 import unittest
 
-from test_standalone_app import (REPLAY_EXPRESSION_FIELDS, SCHEMA, assert_expression_calibration,
+from test_standalone_app import (ArraySchema, REPLAY_EXPRESSION_FIELDS, SCHEMA, assert_expression_calibration,
                                  assert_schema, reject_nonfinite, unique_object)
 from test_standalone_workflows import FIXED_STATE, FIXED_CONTROLS
 
@@ -71,6 +71,8 @@ RESULT_SCHEMA = {
 UI_REPLAY_SCHEMA = {
     "completed": bool, "delivered": bool, "passed": bool, "duration_ms": int,
     "scheduled_events": int, "pushed_events": int, **RESULT_SCHEMA,
+    "ui_observation_capacity": int, "ui_observations_truncated": bool,
+    "ui_observations": ArraySchema({"elapsed_ms": int, "overlay": str, "modal_focus": int}),
 }
 MIDI_REPLAY_SCHEMA = {
     "source": str, "completed": bool, "delivered": bool, "passed": bool,

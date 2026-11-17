@@ -2,10 +2,35 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The playable instrument is a **nominal dry organ** with a native standalone application, an offline renderer and an optional VST3 adapter. Its musical core has 91 continuously running sources, two 61-key manuals, 25 pedals, eighteen documentary fixed registrations, four retained drawbar banks, percussion and shared expression.
 
-<!-- preset-library-continuation-summary:start -->
-## Current continuation: portable registrations and reference apron
+<!-- heading-title-continuation-summary:start -->
+## Current continuation: reference typography and reliable replay
 
-The [current session](docs/development/2026-11-16-preset-library-continuation/README.md)
+The [new continuation](docs/development/2026-11-16-heading-title-continuation/README.md)
+has freshly read all 500 atlas pages. Its requested sixty distinct workers in
+ten waves are in progress; the [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json)
+and [recovery checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+record accepted work and concrete next assignments.
+
+The two live manual-rack headings now match the reference's spacing and baseline
+more closely. The [158-pair comparison](docs/development/2026-11-16-heading-title-continuation/reports/t2-complete/report.json)
+passes with zero changes outside the declared glyph/rule support, including
+partial clips, inactive layouts and 92 complete state comparisons.
+The [independent visual review](docs/reviews/RACK_HEADING_T2_VISUAL.md) admits this
+specific change. A bounded UI-event history also fixes replay tests losing
+initial MIDI-dialog focus before the first acknowledged audio snapshot; the
+complete 23-method dialog suite passes. [Replay review](docs/reviews/REPLAY_UI_HISTORY_ADMISSION.md)
+
+The [current application captures](#current-native-interface) below show this
+accepted T2 stage. Next is the separately admitted five-pass title treatment,
+followed by a separately reviewed header material proposal. **Literal whole-interface
+1:1 remains unmet and unwaived.** Physical calibration, connected scanner/AO-28/Leslie
+integration and remaining M0–M9 exits retain their documented gates.
+<!-- heading-title-continuation-summary:end -->
+
+<!-- preset-library-continuation-summary:start -->
+## Previous continuation: portable registrations and reference apron
+
+The [previous session](docs/development/2026-11-16-preset-library-continuation/README.md)
 read all 500 atlas pages afresh and implements M9 headless registration
 inspection/import/materialization, full-state rendering with `--controls`, and
 the reference-derived lower apron. The starter pack has **twelve original,
@@ -386,22 +411,23 @@ The functional inventory remains **68 ordinary controls, including 24 reversed p
 
 ### Current native interface
 
-**This is the latest captured painter stage: the reference apron at 1672×941.**
-The [thirteen-view gallery](docs/design/native-gallery-preset-v1/README.md) and
-[capture provenance](docs/design/native-gallery-preset-v1/provenance.json) bind
-the source overlay, replay, copied state and pixels to executable
-`82c6a9ffa056852b80d5505dec19aaec72f83965953d765bbee388cc8b1293c8`.
-The unchanged reference appears below for direct comparison.
+**The latest captured painter stage is T2 live rack typography at 1672×941.**
+The [complete capture manifest](docs/design/native-gallery-heading-t2-v1/manifest.json)
+and [capture provenance](docs/design/native-gallery-heading-t2-v1/provenance.json)
+bind all thirteen actual views to executable
+`e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a`.
+The [genuine baseline](docs/design/native-gallery-heading-baseline-v1/provenance.json)
+is retained separately. The unchanged reference appears below for direct comparison.
 
-![Actual native Play at 1672×941 with the reference apron and live controls](docs/design/native-gallery-preset-v1/images/play-reference-1672x941.png)
+![Actual native Play at 1672×941 with live T2 rack headings](docs/design/native-gallery-heading-t2-v1/images/play-reference-1672x941.png)
 
 ![Unmodified atlas cover/page-409 concept at 1672×941](docs/design/atlas-cover-reference.jpg)
 
 | Design evidence | View |
 | --- | --- |
 | Original concept | [Unmodified image and provenance](docs/design/atlas-reference.json) |
-| Current apron stage | [1672×941](docs/design/native-gallery-preset-v1/images/play-reference-1672x941.png) · [1400×820 minimum active](docs/design/native-gallery-preset-v1/images/play-minimum-active-1400x820.png) · [1920×1080](docs/design/native-gallery-preset-v1/images/play-wide-1920x1080.png) |
-| Current auxiliary views | [Compact, Flat, Rotary, Service and focus gallery](docs/design/native-gallery-preset-v1/README.md) |
+| Current T2 stage | [1672×941](docs/design/native-gallery-heading-t2-v1/images/play-reference-1672x941.png) · [1400×820 minimum active](docs/design/native-gallery-heading-t2-v1/images/play-minimum-active-1400x820.png) · [1920×1080](docs/design/native-gallery-heading-t2-v1/images/play-wide-1920x1080.png) |
+| Current auxiliary views | [Compact, Flat, Rotary, Service and focus capture manifest](docs/design/native-gallery-heading-t2-v1/manifest.json) |
 | Retained material/type stages | [T1 typography](examples/demos/footage-typography-v1/README.md) · [Lower v2](examples/demos/lower-rack-material-v2/README.md) · [Upper](examples/demos/upper-rack-material-v1/README.md) |
 | Retained MIDI dialog | [960×700 calibration view](examples/demos/standalone-product-preview-v1/midi-overlay/images/midi-minimum-960x700.png) |
 
@@ -414,7 +440,8 @@ DPI, audio devices or semantic accessibility.
 
 **Literal whole-interface 1:1 remains unmet and unwaived.** The independent
 [whole-interface review](docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md)
-finds lighter/flatter title strokes, tighter rack-heading tracking, small
+records the previous stage. The [latest T2 review](docs/reviews/RACK_HEADING_T2_VISUAL.md)
+confirms improved heading placement while retaining lighter title/rack strokes, small
 compressed legends, harder wells and cap bevels, shallower manual fronts,
 different panel/wood lighting and rims, and a prominent opaque footer. Correct
 footage, 0–8 travel, 24 real presets, expression/pedals, utility controls and

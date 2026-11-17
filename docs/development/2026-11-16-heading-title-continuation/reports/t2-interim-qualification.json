@@ -1,0 +1,32 @@
+{
+  "stage": "T2 plus UI replay trace",
+  "completed_builds": [
+    "reports/t2-first-build.log",
+    "reports/t2-new-target-build.log"
+  ],
+  "app_focused_tests": {
+    "midi_cli": "passed 22 methods",
+    "expression_diagnostics": "passed",
+    "native_midi_replay": "passed",
+    "calibration_probe": "passed after rebuilding probe; stale first attempt retained"
+  },
+  "stale_probe_first_attempt": "reports/replay-focused.log",
+  "coherent_probe_and_rasters": "reports/t2-fixture-and-calibration-tests-complete.log",
+  "new_typography_clips": "48 cases default pass; pairing pending A19 comparator",
+  "legacy_heading_oracles": "Upper30 and Lower32 cases passed without weakened thresholds",
+  "first_comparison": {
+    "pairs": 110,
+    "individual_passes": 110,
+    "overall": "failed input stability: compile_commands changed during comparison",
+    "report": "reports/t2-paired/report.json"
+  },
+  "captures": {
+    "count": 13,
+    "status": "passed",
+    "gallery": "../t2-gallery",
+    "binary_sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a"
+  },
+  "interrupted_command": "reports/t2-fixture-and-calibration-tests.log contains no final outcome; complete run separately retained",
+  "full_t2_admission": "Pending 158 paired checks and independent visual review",
+  "whole_interface_1_to_1": "unmet and unwaived"
+}

@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "method": "New identical 48-case fixture linked against frozen original pre-T2 painter and unchanged current support libraries; not an earlier pre-edit executable",
+  "base_commit": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+  "source_sha256": {
+    "apps/standalone/InstrumentView.cpp": "63bede9eb5fccde155d6d6ddfbbcbfa7566ab06dcf2726d92b84bc7ad0e72a77",
+    "apps/standalone/native_tests/test_standalone_typography_clips.cpp": "d1635b45f7ee395e172f01e50ae44d7815cc8c62e5aa2443f91a6cffdb147672"
+  },
+  "commands": [
+    [
+      "/usr/bin/c++",
+      "-DSDL_MAIN_HANDLED",
+      "-I/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone",
+      "-I/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/include",
+      "-I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include",
+      "-I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include/SDL2",
+      "-I/workspace/scratch/5a28c3564dbf/build-native/_sdl2/include-config-release/SDL2",
+      "-O3",
+      "-DNDEBUG",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-c",
+      "/workspace/scratch/5a28c3564dbf/baseline-native/InstrumentView.cpp",
+      "-o",
+      "/workspace/scratch/5a28c3564dbf/baseline-native/InstrumentView-clips.o"
+    ],
+    [
+      "/usr/bin/c++",
+      "-O3",
+      "-DNDEBUG",
+      "CMakeFiles/test_standalone_typography_clips.dir/native_tests/test_standalone_typography_clips.cpp.o",
+      "/workspace/scratch/5a28c3564dbf/baseline-native/InstrumentView-clips.o",
+      "-o",
+      "/workspace/scratch/5a28c3564dbf/baseline-native/test_standalone_typography_clips",
+      "libhammond_standalone_drawing.a",
+      "libhammond_standalone_support.a",
+      "../../_sdl2/libSDL2.a",
+      "-lm",
+      "-pthread",
+      "../../libhammond_core.a"
+    ]
+  ],
+  "link_workdir": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone",
+  "inputs": [
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/baseline-native/InstrumentView.cpp",
+      "sha256": "63bede9eb5fccde155d6d6ddfbbcbfa7566ab06dcf2726d92b84bc7ad0e72a77",
+      "bytes": 162368
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_typography_clips.cpp",
+      "sha256": "d1635b45f7ee395e172f01e50ae44d7815cc8c62e5aa2443f91a6cffdb147672",
+      "bytes": 33965
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/CMakeFiles/test_standalone_typography_clips.dir/flags.make",
+      "sha256": "aa86642ced293b04e9fa79ce250cbcf428e1208f99ecdd04ac51d979f9c0e366",
+      "bytes": 625
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/CMakeFiles/test_standalone_typography_clips.dir/link.txt",
+      "sha256": "b47306ff93c8f693886eb6399ed40dd64fcb714f8de44368cf17b736e5329125",
+      "bytes": 432
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/CMakeFiles/test_standalone_typography_clips.dir/native_tests/test_standalone_typography_clips.cpp.o",
+      "sha256": "66aa903ba4ade1eab716a895cb4998a4b9f8cbb0f54b9cdadfc7cc8b91d0c724",
+      "bytes": 97808
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/libhammond_standalone_drawing.a",
+      "sha256": "ffc41ccf55b0268f6b01af36d3e1b97cecb7b79f14e574cb7cc2178c12a853e7",
+      "bytes": 1283262
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/libhammond_standalone_support.a",
+      "sha256": "9e1046e988d3b7d05b4c09d34243aebb95f8648fd175987ee06e59f375d78be9",
+      "bytes": 421086
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/_sdl2/libSDL2.a",
+      "sha256": "383aee215b2eaa4f716623113fc0481af90ac55bfa56fca261c157241a1a1977",
+      "bytes": 3245774
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/build-native/libhammond_core.a",
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c",
+      "bytes": 460336
+    }
+  ],
+  "binary": {
+    "path": "/workspace/scratch/5a28c3564dbf/baseline-native/test_standalone_typography_clips",
+    "sha256": "3e0387fe8d524df5149a8a7da43a29d7f990162cc922d52937f9238dd4c7d64e",
+    "bytes": 3779776
+  },
+  "files": {
+    "test_standalone_typography_clips": {
+      "bytes": 3779776,
+      "sha256": "3e0387fe8d524df5149a8a7da43a29d7f990162cc922d52937f9238dd4c7d64e"
+    }
+  },
+  "status": "built",
+  "object": {
+    "path": "/workspace/scratch/5a28c3564dbf/baseline-native/InstrumentView-clips.o",
+    "sha256": "6a90efc9c838410e170fe4bde26c99da0bf289e7d6ee4e2aa030b631991eaf76",
+    "bytes": 284600
+  }
+}

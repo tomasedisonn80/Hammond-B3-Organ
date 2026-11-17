@@ -5,6 +5,26 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
+**Heading/title and delivery continuation, 16 November 2026**, base
+`113c29b7b14c8fde0859bc405ef8e4141a131ea6`: the writable checkout for this
+request is `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ`. Read its
+[checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+and [actual worker ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json)
+before resuming. Root coordinates only this session's `../build-native`.
+Verified SDL source and CMake tools in the prior `3edffb787db3` workspace are
+read-only dependencies; every other checkout, index, build and original remains
+untouched. This session has its own sixty distinct workers in ten waves of six,
+at most three concurrently, and a fresh complete atlas reading. Its bounded
+next work is separately admitted T2 rack headings, T3 title treatment and
+delivery qualification. No historic worker or result counts again.
+
+The earlier dated entries below retain their source-specific evidence and
+unfinished ownership; their old writable/current paths are historical here.
+All standing plan, compatibility, UI, verification and publication obligations
+continue to apply. Future agents must document setup, actual progress, evidence,
+remaining gates and concrete next work, then commit and push accepted authorized
+changes. Update the current README with actual application captures after UI edits.
+
 **Portable registrations and reference apron, 16 November 2026**, base
 `54df95fe343d417dd89bb7a91f85e4f51c08dfe7`: this request's writable checkout is
 `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`. Root coordinates

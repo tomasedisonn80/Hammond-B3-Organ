@@ -27,16 +27,16 @@
 #include <io.h>
 #endif
 
-// Versioned T1 footage-assertion transition; original upper-rack-material-v1.1
+// Versioned T1 footage and T2 heading-assertion transitions; earlier fixture
 // source/results remain archived. Cases, material support and frame generation
-// are unchanged; only the admitted footage glyph expectation is replaced.
+// are unchanged; only the admitted live-glyph expectations are replaced.
 // Historical material comparators require their original protocol/binaries.
 namespace {
 using namespace hammond;
 using namespace hammond::standalone;
 using Pixel = std::array<std::uint8_t, 4>;
 static_assert(sizeof(Pixel) == 4);
-constexpr std::string_view protocol = "upper-rack-material-v1.2";
+constexpr std::string_view protocol = "upper-rack-material-v1.3";
 constexpr std::array<float, 9> centers{158, 206, 254, 302, 351, 400, 449, 498, 548};
 constexpr std::array<std::string_view, 9> footage{
     "16'", "5 1/3'", "8'", "4'", "2 2/3'", "2'", "1 3/5'", "1 1/3'", "1'"};
@@ -514,6 +514,46 @@ public:
         return read(coordinates);
     }
 
+    // T2 constants and raw Serif metrics form a complete independent oracle.
+    // Do not call the production rack-heading helper or its layout calculation.
+    Frame heading_text(UiRect box, float sx, float sy, std::vector<UiRect>& glyphs) {
+        constexpr std::string_view value = "UPPER MANUAL DRAWBARS";
+        static_assert(value.size() == 21);
+        const auto coordinates = transform(renderer_.get());
+        drawing_.clear({0, 0, 0, 0});
+        const float size = f32(16.0F * std::min(sx, sy));
+        const float factor = f32(size / 40.0F);
+        const float tracking = f32(1.5F * sx);
+        const float center = f32(360.0F * sx);
+        const float inset = f32(f32(box.height - f32(size * 1.2F)) / 2.0F);
+        const float top = f32(f32(box.y + inset) + sy);
+        const float baseline = f32(top + f32(38.0F * factor));
+        std::array<float, value.size()> advances{};
+        float natural = 0.0F;
+        for (std::size_t index = 0; index < value.size(); ++index) {
+            const auto& glyph = font_data::glyph(font_data::kSerif, static_cast<unsigned char>(value[index]));
+            advances[index] = f32(f32(static_cast<float>(glyph.advance_64) * factor) / 64.0F);
+            natural = f32(natural + advances[index]);
+        }
+        const float run_width = f32(natural + f32(tracking * 20.0F));
+        float cursor = f32(center - f32(run_width / 2.0F));
+        for (std::size_t index = 0; index < value.size(); ++index) {
+            drawing_.text(value.substr(index, 1), cursor, top, size, {255, 255, 255}, TextFace::Serif);
+            if (value[index] != ' ') {
+                const auto& glyph = font_data::glyph(font_data::kSerif, static_cast<unsigned char>(value[index]));
+                const int pad_x = f32(static_cast<float>(glyph.width) * factor) < 1.0F ? 2 : 0;
+                const int pad_y = f32(static_cast<float>(glyph.height) * factor) < 1.0F ? 2 : 0;
+                glyphs.push_back({f32(cursor + f32(static_cast<float>(glyph.bearing_x - pad_x) * factor)),
+                    f32(baseline + f32(static_cast<float>(glyph.bearing_y - pad_y) * factor)),
+                    f32(static_cast<float>(glyph.width + 2 * pad_x) * factor),
+                    f32(static_cast<float>(glyph.height + 2 * pad_y) * factor)});
+            }
+            cursor = f32(cursor + f32(advances[index] + tracking));
+        }
+        require(equal(coordinates, transform(renderer_.get())), "heading ink render preserves transform");
+        return read(coordinates);
+    }
+
     // Expected T1 layout is declared independently by musical-label index.
     // It does not call or copy the private production footage helper.
     Frame footage_text(std::size_t index, UiRect box, float sx, float sy,
@@ -636,6 +676,29 @@ void literal_ink(Target& target, const Frame& actual, std::string_view value, Ui
     }
 }
 
+void heading_ink(Target& target, const Frame& actual, UiRect box, float sx, float sy) {
+    std::vector<UiRect> glyphs;
+    const auto expected = target.heading_text(box, sx, sy, glyphs);
+    const auto& t = actual.coordinates;
+    for (const auto& glyph : glyphs) {
+        std::size_t samples = 0, matches = 0;
+        const int left = std::max(0, static_cast<int>(std::floor(glyph.x * t.sx + static_cast<float>(t.viewport.x))));
+        const int right = std::min(actual.width, static_cast<int>(std::ceil((glyph.x + glyph.width) * t.sx + static_cast<float>(t.viewport.x))));
+        const int top = std::max(0, static_cast<int>(std::floor(glyph.y * t.sy + static_cast<float>(t.viewport.y))));
+        const int bottom = std::min(actual.height, static_cast<int>(std::ceil((glyph.y + glyph.height) * t.sy + static_cast<float>(t.viewport.y))));
+        for (int y = top; y < bottom; ++y)
+            for (int x = left; x < right; ++x) {
+                const auto at = actual.at(x, y);
+                if (light(expected.pixels[at]) < 180) continue;
+                ++samples;
+                if (light(actual.pixels[at]) > 90) ++matches;
+            }
+        require(samples > 0 && samples == matches, "every literal glyph retains all strong contrasting ink");
+        ++totals.glyphs;
+        totals.ink_pixels += samples;
+    }
+}
+
 void footage_ink(Target& target, const Frame& actual, std::size_t index, UiRect box,
                  float sx, float sy) {
     std::vector<UiRect> glyphs;
@@ -681,9 +744,9 @@ void opaque_probe(const Case& test, const Frame& frame, UiRect canonical_probe) 
 void full_frame_children(const Case& test, const UiModel& model, Target& target, const Frame& frame) {
     const float sx = test.width / 1672.0F, sy = test.height / 941.0F, font_scale = std::min(sx, sy);
     const auto rack = canonical(test, 72, 269, 528, 239);
-    literal_ink(target, frame, "UPPER MANUAL DRAWBARS",
+    heading_ink(target, frame,
         {rack.x + 16.0F * sx, rack.y + 8.0F * sy, rack.width - 32.0F * sx, 27.0F * sy},
-        16 * font_scale, TextFace::Serif, 3 * sx);
+        sx, sy);
     const auto value = std::to_string(test.level);
     for (std::size_t index = 0; index < centers.size(); ++index) {
         const float center = centers[index];
