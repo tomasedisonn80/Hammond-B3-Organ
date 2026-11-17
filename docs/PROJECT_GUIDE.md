@@ -1,5 +1,81 @@
 # Project guide
 
+## Current continuation — 17 November 2026
+
+The repository provides a nominal dry-organ Engine, offline evidence tools,
+an optional VST3 instrument and a native standalone window. Two 61-key manuals
+and 25 pedals share 91 free-running sources: **147 playing keys**, separate
+from **24 reversed presets**. Four retained drawbar banks, fixed registrations,
+contacts, percussion and typed note ownership are implemented. The **47 sound
+parameters**, **`B3CONTROLS4`** writer and readers 1–3 retain their meanings.
+The scanner, complete AO-28 and Leslie research paths remain disconnected from
+the playable dry Engine. Physical organ/cabinet fidelity and full product release
+remain separate gates.
+
+This [heading/title/header continuation](development/2026-11-16-heading-title-continuation/README.md)
+advances bounded M9 work: accepted T2 rack typography and T3 title revision 2,
+plus H1 header-material numerical qualification and delivery work. Read all
+[AGENTS.md](../AGENTS.md) and the [complete M0–M9 plan](PLAN.md), then the
+[current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-16-heading-title-continuation/assignments.json)
+before choosing work. Fresh reading by this session's six A01–A06 workers covers
+all 500 atlas pages; [their reading records](#source-and-reading-records) preserve
+exact ranges and hashes. Reading, worker accounting and product acceptance answer
+different questions.
+
+T2 is published as `6047723b…`; its latest 16 required job families succeed after
+one unchanged core-sanitizer retry, with the first timeout retained. Accepted T3
+and numerically qualified H1 have their own source-bound reports below. Root's
+checkpoint owns later visual/timing/integration admission, publication and
+exact-source CI; an older green job does not qualify changed inputs. The
+[15-view H1 capture provenance](design/native-gallery-header-h1-v1/provenance.json)
+records actual software-rendered application frames. **Literal whole-interface
+1:1 remains unmet and unwaived.** Actual display/DPI/input, native accessibility,
+devices, DAWs, callback lifetime/deadlines and signed distribution retain separate
+requirements.
+
+## Find the right entry point
+
+| Question | Read |
+| --- | --- |
+| What works and what has actually passed? | [STATUS.md](STATUS.md): current behavior, source-bound local/hosted observations, milestone position and preserved historical results. |
+| What is the complete product roadmap? | [PLAN.md](PLAN.md): all M0–M9 deliverables, dependencies and engineering/physical exits. |
+| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md) and the [current plan sequence](PLAN.md#dependency-ready-continuation): complete current visual/resource/integration/publication gates, then recover the owner before another UI, full-organ contact/audio, scanner/crossover or adapter task. Physical acquisition, native accessibility and real-device acceptance remain distinct. |
+| How does a future agent recover this workspace? | [Current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [session](development/2026-11-16-heading-title-continuation/README.md), [actual ledger](development/2026-11-16-heading-title-continuation/assignments.json), [current setup](STATUS.md#current-workspace-and-setup) and [ownership map](PLAN.md#current-ownership-and-source). Inspect live HEAD/tree/index/dirty files/remote; older workspace labels do not transfer ownership. |
+| How are this session's actual records checked? | The [current checker](development/2026-11-16-heading-title-continuation/check_session.py) validates the [current ledger](development/2026-11-16-heading-title-continuation/assignments.json); run it with `--strict` only for closure of all 60 accepted notes in ten waves. It verifies records, not external dispatch, product quality or publication. Old workers and follow-ups supply no new credit. |
+| How do I inspect the isolated causal trajectory? | [Developer guide](CAUSAL_CONTACT_GRID_GUIDE.md), [frozen contract](CAUSAL_CONTACT_GRID_CONTRACT.md), [implementation review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) and [resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md). The finite integer API remains distinct from the later certified conversion and isolated audio work; recover those owners through the current plan. |
+| How do I reproduce the earlier offline contact study? | [Operating guide](CONTACT_SWITCHING_GUIDE.md), [executed results](CONTACT_SWITCHING_RESULTS.md) and [ContactReferenceTools installation](CONTACT_REFERENCE_INSTALL.md). The acausal binary64-input reference and its original 36×4 results remain separate from causal-grid acceptance. |
+| How do I build and play with MIDI/calibration? | [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md), [INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md) and [PRESET_RUNBOOK.md](PRESET_RUNBOOK.md): platform prerequisites, exact options, eleven modal stops, applied-state observations, recovery and Save/Load. |
+| How do I build or install the crossover tools? | [Developer guide](CROSSOVER_DEVELOPER_GUIDE.md), [explicit CrossoverTools installation](CROSSOVER_INSTALL.md), [contract](LESLIE_CROSSOVER_CONTRACT.md) and [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md). The component is separate from Engine and the standalone. |
+| Where is current UI evidence? | [Current H1 capture provenance](design/native-gallery-header-h1-v1/provenance.json), [canonical application frame](design/native-gallery-header-h1-v1/images/play-reference-1672x941.png), [genuine immediately-before gallery](design/native-gallery-header-before-v1/provenance.json), [H1 comparison](development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json) and [T3 visual admission](reviews/TITLE_T3_VISUAL_ADMISSION.md). Current app hash begins `bfe8e36d`; root records final H1 visual/resource admission separately. Earlier galleries keep their original identities. |
+| Who owns the other active tracks? | [Current ownership map](PLAN.md#current-ownership-and-source): execution/contact/composition, audio/leakage, playable/harmonic sources, scanner/library, fidelity/crossover/native retirement and waveform/R4 keep distinct recovery authorities. |
+| Who owns R4? | The separate [waveform session](development/2026-11-14-waveform-continuation/README.md) and its [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md). R5 audible policy and R6 runtime/Engine integration have distinct gates. |
+| What prevents a physical or release claim? | [Acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md), [release readiness](RELEASE_READINESS.md), [rights inventory](DEPENDENCIES_AND_RIGHTS.md) and current milestone rows in STATUS/PLAN. |
+| Why did something change, and what failed? | [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md), the owning session's actual notes and original source-bound reports. |
+
+## Current source and evidence map
+
+The current request starts from `113c29b7b14c8fde0859bc405ef8e4141a131ea6`.
+The verified T2 publication is `6047723b595259de355c74342e48a8ae2ee1e228`, tree
+`8bb162b1d5bd153436649339cf9253eaee5c28eb`; its exact parent, changed contents and
+local/provider commit relationship are retained in the publication receipt.
+The H1 comparison and gallery pin painter `0bf731a6…` and app `bfe8e36d…`.
+These are source identities, not a claim that an unpublished overlay is already
+on the remote branch. Inspect live state and the current checkpoint for later
+acceptance, commits and hosted results.
+
+| Current record | What it establishes |
+| --- | --- |
+| [T2 acceptance](development/2026-11-16-heading-title-continuation/reports/t2-acceptance.json) and [publication](development/2026-11-16-heading-title-continuation/reports/t2-publication.json) | 158 genuine paired cases, 92 complete-model pairs, zero forbidden changes and independent full-frame review; accepted headings and UI-only replay repair published with a guarded nonforced update and independently verified tree/parent/contents. |
+| [T3 revision 2 acceptance](development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json) and [visual review](reviews/TITLE_T3_VISUAL_ADMISSION.md) | 158 pairs, 1,317 native material assertions, 18 permanent density cases, all 213 protected inputs and zero outside changes. Canonical local warm-ink count is 5,512 versus reference 5,415. Original revision-1 geometry failures remain retained. |
+| [H1 comparison](development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json), [contract](design/HEADER_MATERIAL_H1_CONTRACT.md) and [admission](reviews/HEADER_MATERIAL_H1_ADMISSION.md) | 103/103 fixed numerical criteria; 48 main + 16 companion pairs and repeats; 10,542 candidate fixture checks including 95 helper-restoration probes; 1,317 material assertions; all 213 protected paths and zero outside changes. Genuine before reproduces 44 pass / 59 fail. Final visual/resource/integrated acceptance is separate. |
+| [Actual H1 frames](design/native-gallery-header-h1-v1/provenance.json) and [genuine before frames](design/native-gallery-header-before-v1/provenance.json) | Fifteen app views each, including 1920×820 and 1400×1080. Captured source/executable/state/pixel identities are retained; runtime meter/counter drift differs from exact-state paired fixtures. These software captures do not establish whole-interface parity or hardware display acceptance. |
+| [Compatibility review](reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md) | All 213 original protected files independently reproduced; only the admitted original-base `main.cpp` replay change differs. State4/readers 1–3, 47 parameter IDs, plugin UUIDs, 91 shared sources and the dry Engine retain their meanings. Three additive schema-3 UI-replay members are an explicit diagnostic compatibility exception. |
+| [T2 hosted completion](development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json) and [sanitizer review](reviews/T2_HOSTED_SANITIZER_REVIEW.md) | All 16 latest job families pass at `6047723b…`, including both macOS architectures, after one unchanged failed-job retry. Original first-attempt 15 successes / one timeout remains retained. This is not T3/H1 or changed-test qualification. |
+| [Renderer race review](reviews/RENDER_RACE_COMPLETION_REVIEW.md) | The later test-only post-resume guard changes from 15 to 45 seconds inside the unchanged 90-second CTest limit. Assertions and workload remain exact; local Release and ASan/UBSan observations are recorded. The local LSan runtime limitation and changed-source hosted leak gate remain explicit. |
+
+### Historical streaming source and evidence
+
 **Code qualification update, 16 November 2026:** implementation `af2b747` and the
 Windows I/O repair `2f57723` are published and independently fetched. All **13
 hosted jobs pass at `2f57723`**, as recorded in the
@@ -14,52 +90,6 @@ records completed worker closure and source-qualified publication history.
 [All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
 Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
 
-The repository provides a nominal dry-organ Engine, offline evidence tools,
-an optional VST3 instrument and a native standalone window. Two 61-key manuals
-and 25 pedals share 91 free-running sources: **147 playing keys**, separate
-from **24 reversed presets**. Four retained drawbar banks, fixed registrations,
-contacts, percussion and typed note ownership are implemented. The **47 sound
-parameters**, **`B3CONTROLS4`** writer and readers 1–3 retain their meanings.
-Physical organ/cabinet fidelity and full product release remain separate gates.
-
-The active [streaming/material continuation](development/2026-11-15-streaming-continuation/README.md)
-adds the isolated `causal-contact-grid-v1` trajectory and a narrow Upper-rack
-inner-metal refinement. Its coherent Linux Release gate passed **210/210 CTests
-in 191.89 seconds** at its original inputs. Implementation `af2b747` and repair
-`2f57723` are published; all 13 repaired-source hosted jobs pass. The requested
-sixty-worker record closure passes with all 60 scoped deliveries accepted. Start with the
-[causal-grid guide](CAUSAL_CONTACT_GRID_GUIDE.md) for this finite research API or
-the [current gallery](../examples/demos/upper-rack-material-v1/README.md) for
-actual native UI evidence. Before development, read
-[AGENTS.md](../AGENTS.md), the [whole M0–M9 plan](PLAN.md) and the
-[active checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md).
-The [MIDI operating guide](MIDI_EXPRESSION_GUIDE.md) retains playing/configuration
-instructions, while the [crossover guide](CROSSOVER_DEVELOPER_GUIDE.md) covers
-separate electrical research. The default core remains SDK-free; the playable
-Engine remains dry. Literal whole-interface 1:1 and physical/display/accessibility
-gates remain open.
-
-## Find the right entry point
-
-| Question | Read |
-| --- | --- |
-| What works and what has actually passed? | [STATUS.md](STATUS.md): current behavior, source-bound local/hosted observations, milestone position and preserved historical results. |
-| What is the complete product roadmap? | [PLAN.md](PLAN.md): all M0–M9 deliverables, dependencies and engineering/physical exits. |
-| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md): converter and causal audio schedule/partial-cell/filter/drain/full-window work after the completed trajectory; full-organ/indefinite and Engine lifecycle gates; remaining UI materials/type, display/accessibility and separately owned numerical/adapter tracks. |
-| How does a future agent recover this workspace? | [Current checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md), [scope](development/2026-11-15-streaming-continuation/SCOPE.md), [current setup](STATUS.md#current-workspace-and-setup) and [ownership map](PLAN.md#current-ownership-and-source). [PRODUCT_HANDOFF.md](PRODUCT_HANDOFF.md) retains dated product recovery and clean-checkout recipes; its earlier paths and results do not override this session's ownership. |
-| How are this session's actual records checked? | [Current record guidance](NEXT_STEPS.md#validate-this-sessions-actual-records) and [actual streaming ledger](development/2026-11-15-streaming-continuation/assignments.json). All 60 scoped deliveries are accepted in ten waves; the [matching strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json) verifies the retained records/notes. Older results and followups supply no worker credit; the checker is not external-dispatch or product proof. |
-| How do I inspect the new causal trajectory? | [Developer guide](CAUSAL_CONTACT_GRID_GUIDE.md), [frozen contract](CAUSAL_CONTACT_GRID_CONTRACT.md), [implementation review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) and [resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md). Exactness applies to the declared finite integer domain, without a float converter, audio stage or Engine route. |
-| How do I reproduce the earlier offline contact study? | [Operating guide](CONTACT_SWITCHING_GUIDE.md), [executed results](CONTACT_SWITCHING_RESULTS.md) and [ContactReferenceTools installation](CONTACT_REFERENCE_INSTALL.md). The acausal binary64-input reference and its original 36×4 results remain separate from causal-grid acceptance. |
-| How do I build and play with MIDI/calibration? | [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md), [INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md) and [PRESET_RUNBOOK.md](PRESET_RUNBOOK.md): platform prerequisites, exact options, eleven modal stops, applied-state observations, recovery and Save/Load. |
-| How do I build or install the crossover tools? | [Developer guide](CROSSOVER_DEVELOPER_GUIDE.md), [explicit CrossoverTools installation](CROSSOVER_INSTALL.md), [contract](LESLIE_CROSSOVER_CONTRACT.md) and [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md). The component is separate from Engine and the standalone. |
-| Where is current UI evidence? | [Twelve Upper-rack material views](../examples/demos/upper-rack-material-v1/README.md), [gallery admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md), [paired-comparison admission](reviews/UPPER_RACK_COMPARISON_ADMISSION.md) and [painter review](reviews/UPPER_RACK_PAINTER_REVIEW.md). The actual app hash begins `c29495e9`; the [earlier wide-composition gallery](../examples/demos/whole-reference-layout-v1/README.md), product captures and v5 retain their own identities. Whole-interface 1:1 remains unmet. |
-| Who owns the other active tracks? | [Current ownership map](PLAN.md#current-ownership-and-source): execution/contact/composition, audio/leakage, playable/harmonic sources, scanner/library, fidelity/crossover/native retirement and waveform/R4 keep distinct recovery authorities. |
-| Who owns R4? | The separate [waveform session](development/2026-11-14-waveform-continuation/README.md) and its [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md). R5 audible policy and R6 runtime/Engine integration have distinct gates. |
-| What prevents a physical or release claim? | [Acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md), [release readiness](RELEASE_READINESS.md), [rights inventory](DEPENDENCIES_AND_RIGHTS.md) and current milestone rows in STATUS/PLAN. |
-| Why did something change, and what failed? | [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md), the owning session's actual notes and original source-bound reports. |
-
-## Current source and evidence map
-
 The streaming session started from `4aac394cde4da40906b615573a8779aee2d9a37a`,
 tree `3605c9ce098a052afc10b2969fefe31e15644fe9`. The
 [implementation publication](development/2026-11-15-streaming-continuation/reports/implementation-publication.json)
@@ -73,17 +103,22 @@ records are accepted and strictly verified. Inspect checkout/index/HEAD/remote
 and checkpoint before resuming;
 receipts do not qualify changed inputs or real devices.
 
-| Current record | What it establishes |
+| Historical streaming record | What it establishes |
 | --- | --- |
 | [Baseline qualification](development/2026-11-15-streaming-continuation/reports/baseline-qualification.json) and [coherent qualification](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json) | The unchanged starting source passed 203/203 in 192.21 s; the later identified streaming/material inputs passed 210/210 in 191.89 s. Their original logs, configurations and executable hashes remain distinct. |
 | [Causal contract admission](reviews/CAUSAL_CONTACT_GRID_ADMISSION.md) and [implementation review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) | The finite integer model's arithmetic, exact roots/order, anchor persistence, causal partitions and transactional lifecycle have independently reviewed source arguments. No binary64 conversion, audio or physical grade follows. |
 | [Independent differential suite](development/2026-11-15-streaming-continuation/notes/A21.md), [lifecycle suite](development/2026-11-15-streaming-continuation/notes/A22.md) and [transport suite](development/2026-11-15-streaming-continuation/notes/A24.md) | The Fraction/native comparison passed 11 methods / 199 probe invocations; separate lifecycle/rollback and 17-method / 150-process CLI checks retain their own boundaries. Coherent qualification supplies the final integrated Linux result. |
 | [Resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md) and [portability review](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) | Both retained resource binaries reproduced the receipts: 192 scopes with zero hooked C++ allocations/frees, local object size 113,056 B and bounded per-call work. Hook/ABI/epoch limits remain explicit. Windows raw-stdin was repaired in source; [initial hosted review](reviews/STREAMING_INITIAL_HOSTED_ADMISSION.md) verifies all six causal suites on Windows and the other core jobs. Repaired `2f57723` passes Windows 185/185. The forced mode-failure branch remains unexecuted. |
 | [Upper material contract](design/UPPER_RACK_MATERIAL_CONTRACT.md), [comparison admission](reviews/UPPER_RACK_COMPARISON_ADMISSION.md) and [painter review](reviews/UPPER_RACK_PAINTER_REVIEW.md) | 96 genuine old/new pairs cover 307,095,606 pixels with zero support escapes, 37 exact required whole frames and five passing local reference screens. Baseline failures remain; resource crops protect zero exterior pixels. Source review separately admits painter arithmetic/state/work limits. |
-| [Current gallery](../examples/demos/upper-rack-material-v1/README.md) and [gallery admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md) | Twelve actual app images pass 641 identity/state/pixel checks and direct full-frame inspection at app hash `c29495e9…`. Runtime counter/meter drift remains; these are separate from exact-state comparison pairs. Whole-interface 1:1, display/DPI and semantic accessibility remain open. |
+| [Retained gallery](../examples/demos/upper-rack-material-v1/README.md) and [gallery admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md) | Twelve actual app images pass 641 identity/state/pixel checks and direct full-frame inspection at app hash `c29495e9…`. Runtime counter/meter drift remains; these are separate from exact-state comparison pairs. Whole-interface 1:1, display/DPI and semantic accessibility remain open. |
 | [Compatibility review](reviews/STREAMING_CONTINUATION_COMPATIBILITY.md) | Original Engine, 91-source, 47-parameter, state4/readers 1–3, UUID, PDF/art and earlier fixture identities are retained. One dry fixture matches its full WAV and all 16,384 decoded samples. The old receipt's mislabeled WAV/PCM hash is explained without rewriting that evidence. Its original 48-file package equality is source-bound: the [later I/O repair](reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md) changes one wrapper, preserving all 48 names, other 47 hashes and install rules. |
 
-### Prepared continuation routes
+### Historical prepared continuation routes
+
+These were planning inputs at the streaming checkpoint. Certified conversion,
+isolated audio, Lower material and T1 typography subsequently advanced under
+their separate owners; this text does not assign them again. Use the current
+plan and owning checkpoint before extending their accepted scope.
 
 The [reviewed next-proposal table](NEXT_STEPS.md#reviewed-next-proposals-and-decisions)
 records concrete blockers and exclusive-owner boundaries. Start from
@@ -181,13 +216,16 @@ compiler, CMake/CTest/Ninja and read-only dependency paths.
 | Acquire the next physical evidence | [A1–A6 acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md), [capture protocol](CAPTURE_PROTOCOL.md) and [validation](CAPTURE_VALIDATION.md). |
 | Measure declared workloads | [Standalone benchmark](STANDALONE_BENCHMARK.md), [core benchmark](BENCHMARKING.md), [causal-grid resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md), [Upper painter work review](reviews/UPPER_RACK_PAINTER_REVIEW.md) and [earlier paint observations](development/2026-11-15-product-continuation/notes/A27-paint-performance.md). Work bounds, relative regression results and raw intervals do not qualify device deadlines. |
 
-Agree one configure/build/CTest owner per build tree. The current integrator owns
-`/workspace/scratch/177e78b1ac09/build-native` beside the sole writable session
-checkout `/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`. Its pinned SDL
-dependency `/workspace/scratch/ade21b726509/SDL2` is read-only. The earlier product
-build `/workspace/scratch/5b7d983ac078/build-native`, execution checkout/build
-under `/workspace/scratch/ade21b726509/` and waveform checkout/build under
-`/workspace/scratch/e3cacb90cc81/` retain their owners. Reuse pinned
+Agree one configure/build/CTest owner per build tree. Root owns the current
+`/workspace/scratch/5a28c3564dbf/build-native` beside the sole writable checkout
+`/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ`. SDL 2.32.10 at
+`/workspace/scratch/3edffb787db3/SDL2`, commit
+`5d249570393f7a37e037abf22cd6012a4cc56a71`, and the borrowed CMake/CTest tools in
+`/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin` are read-only. The
+current local recovery configuration is Release, standalone/testing ON,
+MIDI/VST3 OFF and dummy SDL; it is separate from normal desktop setup and cannot
+qualify physical devices. All earlier checkouts, builds and dependencies retain
+their owners in the [ownership map](PLAN.md#current-ownership-and-source). Reuse pinned
 dependencies, freeze relevant source and rebuild changed consumers coherently.
 Build required inputs before CTest and use `--no-tests=error` for required
 filtered gates. Never mix an old library with changed live headers or reset
@@ -202,9 +240,9 @@ copying a historical payload count into a new package claim.
 | Musical controls and persistence | [State format](CONTROL_STATE_FORMAT.md), [parameters](PARAMETERS.md), [preset contract](PRESET_SELECTION_CONTRACT.md) and [compatibility review](PRODUCT_COMPATIBILITY.md). Saved controls exclude key owners, source phase and transient DSP history. |
 | Console and pedals | [Console dynamics](CONSOLE_DYNAMICS.md), [M3 acceptance](M3_ACCEPTANCE_CONTRACT.md), [pedal routing](PEDAL_ROUTING.md), [pedal Engine](PEDAL_ENGINE.md) and [pedal audio acceptance](PEDAL_AUDIO_ACCEPTANCE.md). Nominal behavior is distinct from physical loading. |
 | Isolated causal contact trajectory | [Grid contract](CAUSAL_CONTACT_GRID_CONTRACT.md), [guide](CAUSAL_CONTACT_GRID_GUIDE.md), [source review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) and [resources](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md). 44,100/48,000/96,000 Hz fixed per epoch; 65,536 ticks/frame; 1–4 keys × nine contacts; integer positions 0–`2^48`, speeds 1–`UINT32_MAX`; at most 4,096 frames, 512 supplied commands and 4,608 edges. Exact rational outputs do not establish binary64 conversion, indefinite performance or audio parity. |
-| Contact audio continuation | [Earlier reference](FRACTIONAL_CONTACT_REFERENCE.md), [frozen validation](CONTACT_SWITCHING_VALIDATION.md), [results](CONTACT_SWITCHING_RESULTS.md), [streaming proposal](CONTACT_STREAMING_NEXT_DESIGN.md) and [independent design review](reviews/CONTACT_STREAMING_DESIGN_REVIEW.md). Next admit conversion/error policy, absolute phase, proposed D=16 schedule, partial-cell integration/filter, 33-sample nonempty drain and full-window criteria; full-organ/Engine/host lifecycle remains separate. |
+| Contact audio continuation | [Earlier reference](FRACTIONAL_CONTACT_REFERENCE.md), [frozen validation](CONTACT_SWITCHING_VALIDATION.md), [results](CONTACT_SWITCHING_RESULTS.md), [streaming proposal](CONTACT_STREAMING_NEXT_DESIGN.md) and [independent design review](reviews/CONTACT_STREAMING_DESIGN_REVIEW.md). These retain the original conversion/audio proposal and criteria. Recover the later [conversion](development/2026-11-16-conversion-material/CHECKPOINT.md) and [runtime](development/2026-11-16-runtime-continuation/CHECKPOINT.md) owners before assigning subsequent work; full-organ capacity, Engine/host scheduling, lifetime and physical validation remain separate. |
 | Input ownership and native calibration | [Performance input](PERFORMANCE_INPUT.md), [manual ownership](NOTE_OWNERSHIP.md), [pedal ownership](PEDAL_NOTE_OWNERSHIP.md), [channel modes](MIDI_CHANNEL_MODE_CONTRACT.md), [expression calibration](MIDI_EXPRESSION_CALIBRATION.md), [sample-rate lifecycle](SAMPLE_RATE_LIFECYCLE.md) and [native recovery review](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md). Calibration belongs to the adapter, outside sound state; below-RtMidi callback retirement needs its own evidence. |
-| Native UI and copied inspection | [Workspace](INTERFACE_WORKSPACE_CONTRACT.md), [geometry](INTERFACE_GEOMETRY_CONTRACT.md), [inspection](INTERFACE_INSPECTION_CONTRACT.md), [wide composition](WHOLE_REFERENCE_LAYOUT_CONTRACT.md), [Upper material](design/UPPER_RACK_MATERIAL_CONTRACT.md), [earlier visual refinement](PRODUCT_VISUAL_REFINEMENT.md) and [reference gaps](design/PRODUCT_REFERENCE_GAPS.md). Keep 147 playing keys, 24 presets and 68 controls including presets. Scoped material/containment does not close whole-interface 1:1. |
+| Native UI and copied inspection | [Workspace](INTERFACE_WORKSPACE_CONTRACT.md), [geometry](INTERFACE_GEOMETRY_CONTRACT.md), [inspection](INTERFACE_INSPECTION_CONTRACT.md), [wide composition](WHOLE_REFERENCE_LAYOUT_CONTRACT.md), [Upper material](design/UPPER_RACK_MATERIAL_CONTRACT.md), [T2 rack headings](design/RACK_HEADING_T2_CONTRACT.md), [T3 revision 2](design/TITLE_T3_REVISION_2.md), [H1 header material](design/HEADER_MATERIAL_H1_CONTRACT.md), [earlier visual refinement](PRODUCT_VISUAL_REFINEMENT.md) and [reference gaps](design/PRODUCT_REFERENCE_GAPS.md). Keep 147 playing keys, 24 presets and 68 controls including presets. Scoped material/containment does not close whole-interface 1:1. |
 | VST3 audio/state/automation | [Processor](VST3_PROCESSOR.md), [controller](VST3_CONTROLLER.md), [timeline](HOST_TIMELINE.md), [state exchange](STATE_EXCHANGE.md), [ABI](VST3_ABI_ACCEPTANCE.md) and [behavior](VST3_BEHAVIOR_ACCEPTANCE.md). Native MIDI channel-mode changes do not add a VST3 mapping. |
 | Runtime resources and concurrency | [Core callback audit](REALTIME.md), [native allocation](VST3_REALTIME.md), [automation review](VST3_AUTOMATION_REVIEW.md), [VST3 concurrency](VST3_CONCURRENCY.md) and [numerical bounds](NUMERICAL_BOUNDS.md). Each result retains its instrumented workload and exclusions. |
 | Scanner | [Scanner handoff](SCANNER_HANDOFF.md), [numerical contract](SCANNER_NUMERICAL_CONTRACT.md) and [AC parity](SCANNER_AC_PARITY.md). Preserve the unresolved G5 same-Hz failure before live integration. |
@@ -216,8 +254,8 @@ Evidence classes describe inputs: `documented`, `measured`, `derived`, `proposed
 and `unknown`. Outcomes describe execution: `pass`, `failed`, `blocked`,
 `not_run` and `inconclusive`. Keep the input identity, setup, criterion, actual
 result and limitation together. The [acceptance matrix](ACCEPTANCE_MATRIX.md)
-retains earlier milestone assessments; current STATUS/PLAN own the isolated M3/M9
-scope and preserve the complete M0–M9 exits and independent owners.
+retains earlier milestone assessments; current STATUS/PLAN route the accepted
+M3/M9 scopes and preserve the complete M0–M9 exits and independent owners.
 
 ## Source and reading records
 
@@ -225,12 +263,30 @@ The unchanged [500-page atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf) ha
 SHA-256 `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
 The [source manifest](research/source-manifest.json), [chapter index](research/chapter-index.json)
 and [errata](research/ERRATA.md) retain its provenance, 80 chapters and known
-implementation hazards. The streaming session's **six new readers** cover all
-500 textual pages without gaps or overlap; their note/extract hashes and actual
-identities are retained in the
-[current coverage receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
+implementation hazards. This heading/title/header session's **six new readers**
+cover all 500 textual pages without gaps or overlap. Their actual identities,
+extract and note hashes are retained in the
+[current coverage receipt](development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json).
+Root also read the project/UI/acceptance pages and directly viewed the artwork.
+This does not claim visual inspection of every figure, independent retrieval of
+every source or acquisition of any physical measurement.
 
-| Pages | Current streaming-session reading |
+| Pages | Current heading/title/header reading and plan topics |
+| --- | --- |
+| 1–84 | [A01](development/2026-11-16-heading-title-continuation/notes/A01.md): evidence boundaries, reference lock, mechanism, source identity, pickups, filters and leakage. |
+| 85–168 | [A02](development/2026-11-16-heading-title-continuation/notes/A02.md): calibration schema, manual routing, shared generator, drawbars, contacts, presets, percussion, pedals, expression and scanner foundations. |
+| 169–252 | [A03](development/2026-11-16-heading-title-continuation/notes/A03.md): scanner routing/numerics/captures, revision-specific AO-28 connectivity, devices, nonlinearities, supply, oversampling and dry-organ validation. |
+| 253–336 | [A04](development/2026-11-16-heading-title-continuation/notes/A04.md): distinct Leslie 122/147 electronics, power stage/crossover, horn/drum/motors, cabinet, propagation, directivity, microphones, convolution and room ownership. |
+| 337–420 | [A05](development/2026-11-16-heading-title-continuation/notes/A05.md): driver/cabinet validation, acquisition, provenance/fitting/listening, runtime/adapters, compatibility/release and player-interface requirements. |
+| 421–500 | [A06](development/2026-11-16-heading-title-continuation/notes/A06.md): Service inspection, assets, accessibility, prototype limits, complete M0–M9 exits, agent contract, risk/audit/acquisition/rights, final integration and all source-directory pages. |
+
+### Earlier streaming-session coverage
+
+The separate [streaming coverage receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json)
+retains that session's six readers and original identities. They supply no worker
+credit to the current request.
+
+| Pages | Historical streaming-session reading |
 | --- | --- |
 | 1–84 | [A01 atlas and governance](development/2026-11-15-streaming-continuation/notes/A01-atlas-governance.md) |
 | 85–168 | [A02 atlas and UI](development/2026-11-15-streaming-continuation/notes/A02-atlas-ui.md) |
@@ -277,7 +333,12 @@ and [waveform review](research/WAVEFORM_ATLAS_REVIEW.md) remain separate records
 
 | Session | Recovery records |
 | --- | --- |
-| Active streaming/material continuation | [Scope](development/2026-11-15-streaming-continuation/SCOPE.md), [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md) and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json). Current isolated causal grid and Upper material, single coordinated build and closed sixty-worker/ten-wave records; root owns integration/publication. See the [closure handoff](STREAMING_CONTINUATION_CLOSURE.md). |
+| Current heading/title/header continuation | [Session](development/2026-11-16-heading-title-continuation/README.md), [checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and [actual ledger](development/2026-11-16-heading-title-continuation/assignments.json). T2/T3/H1 and delivery qualification; root owns the current coordinated build, acceptance and publication. |
+| Portable registrations/reference apron | [Session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md) and [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Retain CLI/render/pack/apron acceptance and separate native browser ownership. |
+| Accessibility continuation | [Scope](development/2026-11-16-accessibility-continuation/SCOPE.md) and [checkpoint](development/2026-11-16-accessibility-continuation/CHECKPOINT.md). Retain numeric editing, semantic and drawbar/cap ownership; semantic inspection is not native accessibility qualification. |
+| Runtime/interface continuation | [Session](development/2026-11-16-runtime-continuation/README.md) and [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md). Preserve isolated causal audio and manual-material scope and unfinished acceptance. |
+| Conversion/material continuation | [Handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md) and [ledger](development/2026-11-16-conversion-material/assignments.json). Preserve certified conversion, Lower/T1 and rim owner boundaries. |
+| Historical streaming/material continuation | [Scope](development/2026-11-15-streaming-continuation/SCOPE.md), [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md) and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json). Retained isolated causal grid and Upper material, that session's coordinated build and closed sixty-worker/ten-wave records; root owns integration/publication. See the [closure handoff](STREAMING_CONTINUATION_CLOSURE.md). |
 | Earlier execution continuation | [Scope](development/2026-11-15-execution-continuation/SCOPE.md), [checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md) and [actual ledger](development/2026-11-15-execution-continuation/assignments.json). Preserve offline contact/composition results and unfinished owner-local work; no ledger closure is inferred. |
 | Audio continuation | [Checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md) owns additive sparse leakage/offline audition and remaining local work; earlier percussion captures keep their identities. |
 | Playable continuation | [Checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md) owns harmonic-source/offline and reference-rack work. Recover actual source/publication before integration. |
@@ -297,14 +358,16 @@ setup/status/next steps/log through the assigned owner. Interface changes need
 new actual captures before README promotion. Checkpoint each wave; preserve
 compact evidence before removing only owned reproducible intermediates.
 
-The current request's sixty actual scoped deliveries are accepted in ten waves,
-and the matching strict record check passes. Preserve those source-bound records
-and the [closure handoff](STREAMING_CONTINUATION_CLOSURE.md) when assigning new work.
+This request requires its own sixty actual distinct workers in ten waves of six;
+read the current ledger for accepted deliveries and run its matching checker for
+record consistency. A strict closure claim needs the actual completed records
+and retained result. The historical streaming session's sixty accepted deliveries
+and [closure handoff](STREAMING_CONTINUATION_CLOSURE.md) remain separate evidence.
 The passing strict [product-checker result](development/2026-11-15-product-continuation/reports/product-session-strict.json)
 and thirteen required jobs at 80b8cce belong only to that completed older batch;
-the previous execution ledger is not declared complete. Continue from the
-implemented trajectory and Upper material into their admitted next gates, and
-coordinate with the M6/native-close and other independent owners. Keep updating
+the previous execution ledger is not declared complete. Continue from the current accepted source and dependency-ready sequence, and
+coordinate with the contact/audio, manual/rim/cap, native browser, M6/native-close
+and other independent owners. Keep updating
 the actual source/evidence and publishing authorized accepted work
 with a fresh expected head and no force; verify the fetched commit/tree and
 its required hosted results. Do not recount the completed product batch.

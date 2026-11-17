@@ -1,13 +1,108 @@
 # Project plan: Hammond B-3 and Leslie
 
+<!-- heading-title-plan-current:start -->
+## Current heading, title and header continuation — 17 November 2026
+
+Start with the [session](development/2026-11-16-heading-title-continuation/README.md),
+[checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and
+[actual ledger](development/2026-11-16-heading-title-continuation/assignments.json).
+This request owns `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ`; root alone
+coordinates its `../build-native`, acceptance and publication. Other checkouts,
+indexes, builds and unfinished owners remain separate. The requested **60 distinct
+workers in ten waves of six** are recorded only when actually dispatched and
+accepted; earlier workers and follow-ups do not count again. The ledger and its
+matching checker, rather than a planned wave table, establish record progress.
+
+Six new readers, A01–A06, freshly covered **all 500 atlas pages** in contiguous
+ranges 1–84, 85–168, 169–252, 253–336, 337–420 and 421–500. Their
+[coverage receipt](development/2026-11-16-heading-title-continuation/reports/atlas-reading-coverage.json)
+and [reading map](PROJECT_GUIDE.md#source-and-reading-records) retain the unchanged
+PDF, extraction and note identities. This is complete textual coverage, not
+visual inspection of every figure or independent retrieval of every citation.
+The atlas's 80 chapters / ten research waves, this request's staffing waves and
+M0–M9 product milestones are different organizations of work. **Every milestone
+exit below remains binding.** The atlas explicitly supplies no newly acquired
+instrument measurements (p. 2).
+
+### Implemented scope and observed evidence
+
+This continuation advances bounded M9 interface and delivery work. The playable
+Engine remains **nominal and dry**: 91 shared free-running sources, 47 parameter
+identities, `B3CONTROLS4` with readers 1–3, plugin UUIDs, four retained banks,
+147 playing keys, 24 presets and 68 controls retain their meanings. Isolated
+scanner, AO-28 and Leslie research does not become a live audio route. The
+[independent compatibility review](reviews/HEADING_HEADER_COMPATIBILITY_REVIEW.md)
+reproduces all 213 protected identities through T3/H1; the original-base exception
+is the separately admitted `main.cpp` UI-replay observation repair. Its three
+additive diagnostics members require accommodation by external exact-key
+UI-replay consumers; no saved-control or musical-state migration is introduced.
+
+| Stage | Actual progress and acceptance boundary |
+| --- | --- |
+| **T2 rack headings** | [Accepted](development/2026-11-16-heading-title-continuation/reports/t2-acceptance.json): 158 genuine pairs, 92 complete-model pairs and zero forbidden pixel changes, with independent full-frame review. Live Upper/Lower text and side rules follow the separately frozen contract. The bounded UI-only replay history retains initial focus without changing the musical acknowledgment guard. |
+| **T3 title, revision 2** | [Accepted within title scope](development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json): 158 pairs, 213 protected inputs, zero outside changes, 1,317 material assertions and 18 density cases. Canonical warm-ink count is 5,512 against reference 5,415; this is a local typography metric. The original revision's two geometry failures remain retained. |
+| **H1 header interior** | The [complete numerical comparison](development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json) passes 103/103 frozen criteria, 48 main + 16 companion pairs, repeats, 10,542 candidate fixture checks including 95 helper-restoration probes, 1,317 material assertions and all 213 protected paths, with zero outside changes. Genuine before results remain 44 passing / 59 failing criteria. The [15-view actual capture](design/native-gallery-header-h1-v1/provenance.json) records painter `0bf731a6…` and app `bfe8e36d…`; final visual, timing, integrated-regression and publication admission remains root-owned in the current checkpoint. |
+
+These results concern named software inputs. The original T3 rejection, initial
+H1 fixture/checker failures and tiny-scale grain-culling rejection remain
+preserved with their separately reviewed corrections. A later pass never
+rewrites an earlier outcome. Numeric patch agreement does not establish measured
+metal, a calibrated instrument or **literal whole-interface 1:1**, which remains
+**unmet and unwaived**. Truthful controls, labels, keyboard inventory, focus,
+Flat presentation and shared hit/paint geometry remain required.
+
+The [verified T2 publication](development/2026-11-16-heading-title-continuation/reports/t2-publication.json)
+is `6047723b595259de355c74342e48a8ae2ee1e228`, tree
+`8bb162b1d5bd153436649339cf9253eaee5c28eb`. Its
+[latest 16 hosted job families](development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json)
+all succeed, including both macOS architectures, after one unchanged core
+sanitizer retry. The first attempt remains 15 successes and one 15-second
+completion timeout. The later [test-only 45-second guard repair](reviews/RENDER_RACE_COMPLETION_REVIEW.md)
+preserves the assertions and workload; local ASan/UBSan evidence with leak
+checking disabled for the documented environment limitation is not hosted leak
+qualification. T2 results do not qualify the changed T3/H1/test sources. Root
+records subsequent guarded publications and exact-source hosted outcomes in the
+current checkpoint; this plan does not substitute an assumed final HEAD.
+
+### Dependency-ready continuation
+
+1. Complete H1's separate visual and representative before/after paint-cost
+   admission, integrate the permanent numerical and tiny-scale grain regressions,
+   and qualify the coherent source. Update README with actual accepted app
+   captures, source identities and residual differences.
+2. Verify installed operator workflows, publish accepted work with a fresh
+   expected remote parent and no force, then observe the required hosted jobs at
+   that exact source. Keep failed, cancelled and unrun outcomes distinct.
+3. Reconcile the existing manual/rim/cap and native browser/semantic owners before
+   assigning another UI slice. Freeze its support, reference criteria and genuine
+   baseline; follow with full-frame legibility and real display/DPI/input and
+   accessibility journeys. Scoped heading/title/header passes do not close M9.
+4. Recover M3 contact/audio and scanner/crossover/waveform owners before extending
+   their modules. Full-organ capacity, scheduling, lifetime and callback deadlines
+   require their own contracts and executed evidence. Preserve scanner G5
+   same-Hz failure, ScannerLineFoh gates, R4 owner acceptance, R5 audible policy
+   and R6 runtime integration as distinct requirements.
+5. For M5–M8, first identify specimen/revision and independently trace complete
+   loaded AO-28 and Leslie electrical boundaries; obtain transformer, driver,
+   contact, source/scanner and dry G–G captures with units and uncertainty before
+   downstream fitting. Unknown values are not zero. Acquire immutable raw and
+   held-out evidence through the [acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md).
+
+Keep setup, actual commands/results, ownership, missing inputs and concrete next
+steps current after each accepted stage. Checkpoint before long work or context
+changes; retain original evidence and clean only owned reproducible intermediates.
+The dated sections below remain source-specific history and preserve unfinished
+ownership; their former “current” labels are not new assignments.
+<!-- heading-title-plan-current:end -->
+
 <!-- preset-plan-current:start -->
-## Current portable registrations and reference apron — 16 November 2026
+## Retained portable registrations and reference apron — 16 November 2026
 
 The [session scope](development/2026-11-16-preset-library-continuation/README.md),
 [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
 [actual ledger](development/2026-11-16-preset-library-continuation/assignments.json)
 and [integration decisions](development/2026-11-16-preset-library-continuation/ROOT_DECISIONS.md)
-govern this continuation. Its writable checkout is
+governed that continuation. Its then-writable checkout was
 `/workspace/scratch/3edffb787db3/Hammond-B3-Organ`; root coordinates
 `../build-native`. **All 60 new distinct workers are accepted across ten complete
 staffing waves of six**, with a passing [strict record check](development/2026-11-16-preset-library-continuation/reports/final-session-validation.json).
@@ -162,7 +257,8 @@ unfinished owner-local work or permits edits to another checkout.
 
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Current complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
+| **Heading/title/header continuation**, base `113c29b7b14c8fde0859bc405ef8e4141a131ea6` | Current bounded T2/T3/H1 interface and delivery scope; [session](development/2026-11-16-heading-title-continuation/README.md), [checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-heading-title-continuation/assignments.json). Root coordinates the sole writable checkout/build and staged acceptance/publication. Existing manual/rim/cap/browser/contact/scanner owners remain separate. |
+| **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Retained complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
 | Accessibility continuation, base `0865bc1584e4bda569fe2ccacfac87b842b8d906` | Usable numeric values, semantics and drawbar/cap surfaces; [scope](development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](development/2026-11-16-accessibility-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-accessibility-continuation/assignments.json). Semantic inspection does not establish a native accessibility provider. |
 | Runtime/interface continuation, base `3520c96` | Isolated causal contact audio and live manual key materials; [session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-runtime-continuation/assignments.json). Recover current accepted source before extending these scopes. |
 | Conversion/material continuation, base `a411268fd498f65c083203137831bf5afed83bd8` | Certified fractional-to-grid conversion, Lower rack, T1 typography and retained rim/material work; [handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md), [ledger](development/2026-11-16-conversion-material/assignments.json). Published delivery does not transfer unfinished acceptance. |
@@ -486,7 +582,7 @@ source-derived support and **37 exact required whole frames**. Five local
 reference screens pass; genuine baseline failures remain. Resource crops have
 zero protected exterior pixels and supply no external-containment claim.
 
-The [current twelve-frame gallery](../examples/demos/upper-rack-material-v1/README.md)
+The [retained twelve-frame gallery](../examples/demos/upper-rack-material-v1/README.md)
 and [independent 641-check admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md)
 bind actual application `c29495e9…` to its source, state and pixels; direct
 full-frame inspection found no new visual blocker within this scope. The
@@ -555,7 +651,7 @@ The historical streaming session has sixty accepted scoped deliveries in ten wav
 its own [strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
 verifies all sixty retained identities and note hashes. The completed product
 batch's strict checker and thirteen jobs at 80b8cce remain historical evidence,
-not validation of the current portable-registration session; the previous execution ledger is not declared
+not validation of this heading/title/header continuation; the previous execution ledger is not declared
 complete. [Record guidance](NEXT_STEPS.md#validate-this-sessions-actual-records)
 keeps the distinction explicit. Planned assignments, earlier workers and repeated
 followups cannot create new worker credit or close unfinished product gates.

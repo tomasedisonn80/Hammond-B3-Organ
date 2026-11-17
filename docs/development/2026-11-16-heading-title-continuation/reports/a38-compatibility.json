@@ -1,0 +1,546 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w07_a38",
+  "observed_at_utc": "2026-11-17T01:48:35.549590+00:00",
+  "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+  "base_commit": "113c29b7b14c8fde0859bc405ef8e4141a131ea6",
+  "published_t2_head": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "scope": "Independent source/identity compatibility audit; existing root-owned native reports inspected and binaries rehashed. No build, native execution, source mutation, commit, push or remote operation by A38.",
+  "conclusion": "No new musical, saved-state, public parameter or plugin identity incompatibility found at the pinned candidate. One separately admitted UI-replay JSON extension is intentional. H1 numerical pass is observed evidence, not final H1 or product-release acceptance.",
+  "inventory": {
+    "original_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/a09-compatibility-baseline.json",
+    "sha256": "7cdfb46aea8c3682b688ef965840af5ff76f46275add323f4aac783fcdbbf2c6",
+    "bytes": 42529,
+    "count": 213,
+    "manifest_encoding": "UTF-8 of path + NUL + lowercase SHA-256 + LF, paths sorted lexicographically",
+    "original_receipt_verified_against_git_base": true,
+    "base_manifest_sha256": "ca8a6c8e1ca7bc949a463ae3f24a7d4c9d1fe6cb41ac1e4ef02213641fdd0780",
+    "current_manifest_sha256": "5dcb3ec3ef53d1560aeac0a76b8243514c80a54168eefccbc826e561e7ae158e",
+    "groups": {
+      "core_headers": {
+        "count": 31,
+        "original_receipt_mismatches": [],
+        "current_changed_paths": [],
+        "base_manifest_sha256": "344d37cf0b58ba8dfe5b5829ea2b437da72b439458b413ff195a1a9967a84449",
+        "current_manifest_sha256": "344d37cf0b58ba8dfe5b5829ea2b437da72b439458b413ff195a1a9967a84449"
+      },
+      "core_sources": {
+        "count": 30,
+        "original_receipt_mismatches": [],
+        "current_changed_paths": [],
+        "base_manifest_sha256": "6684d0943d91fb701f0b3c1e14f2e444fb4d1149f4c94d094078d2903f329847",
+        "current_manifest_sha256": "6684d0943d91fb701f0b3c1e14f2e444fb4d1149f4c94d094078d2903f329847"
+      },
+      "plugin": {
+        "count": 20,
+        "original_receipt_mismatches": [],
+        "current_changed_paths": [],
+        "base_manifest_sha256": "08df9b4f3579c746892af04d291e8703f8505e0dac610f856db7cc8d59f08e5b",
+        "current_manifest_sha256": "08df9b4f3579c746892af04d291e8703f8505e0dac610f856db7cc8d59f08e5b"
+      },
+      "authoring_data": {
+        "count": 98,
+        "original_receipt_mismatches": [],
+        "current_changed_paths": [],
+        "base_manifest_sha256": "074f07bfe1b167d48c918a55988c3f72bddb9e5257108626b781fbddf72f0fff",
+        "current_manifest_sha256": "074f07bfe1b167d48c918a55988c3f72bddb9e5257108626b781fbddf72f0fff"
+      },
+      "assets": {
+        "count": 16,
+        "original_receipt_mismatches": [],
+        "current_changed_paths": [],
+        "base_manifest_sha256": "4db33ace030b00d71951bb8c1196c3a887fe9cef7be329d06f52cfaecf8a5507",
+        "current_manifest_sha256": "4db33ace030b00d71951bb8c1196c3a887fe9cef7be329d06f52cfaecf8a5507"
+      },
+      "ui_state_drawing": {
+        "count": 15,
+        "original_receipt_mismatches": [],
+        "current_changed_paths": [
+          "apps/standalone/main.cpp"
+        ],
+        "base_manifest_sha256": "982f2d3a9b4fb1cb2537b5a4d573a20e503caa7ee21ac5492ad34bc8ea91728b",
+        "current_manifest_sha256": "4f32134ad08c0e7fc93706138d375bd66c9ecb33c0a6720956f6c13334fee76f"
+      },
+      "reference": {
+        "count": 3,
+        "original_receipt_mismatches": [],
+        "current_changed_paths": [],
+        "base_manifest_sha256": "8bad0a226a69439586fbf6e00019638b85c3bb00db5e88dab6ee2df95f3ecdf6",
+        "current_manifest_sha256": "8bad0a226a69439586fbf6e00019638b85c3bb00db5e88dab6ee2df95f3ecdf6"
+      }
+    },
+    "base_to_current_changed_paths": [
+      "apps/standalone/main.cpp"
+    ],
+    "exception": {
+      "path": "apps/standalone/main.cpp",
+      "base_sha256": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+      "current_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+      "introduced": "original base to accepted/published T2 only; identical through T3 and H1",
+      "admission": "docs/reviews/REPLAY_UI_HISTORY_ADMISSION.md",
+      "admission_sha256": "77d10f9a2275fd7217f8fcfeef594140d12a0c6572f1d9a8d815a923dc04b1b6"
+    }
+  },
+  "stage_comparisons": [
+    {
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/t3-baseline-identity.json",
+      "sha256": "e17932cf7b43c85e8f92e77010af4dfee1691b4256e6d14843c2e9a778da37c3",
+      "bytes": 38101,
+      "protected_paths": 213,
+      "same_213_path_set": true,
+      "current_protected_mismatches": [],
+      "painter_sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db",
+      "application_sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a"
+    },
+    {
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-build-identity.json",
+      "sha256": "94d4a301732215e32a909dd73f027738b49831c9718e6eb6348e19934767aaad",
+      "bytes": 37280,
+      "protected_paths": 213,
+      "same_213_path_set": true,
+      "current_protected_mismatches": [],
+      "painter_sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+      "application_sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3"
+    },
+    {
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-identity.json",
+      "sha256": "882773ad5771de15aad0889e957c07e5aa4d73c38f4736e641122eff1943eff8",
+      "bytes": 43793,
+      "protected_paths": 213,
+      "same_213_path_set": true,
+      "current_protected_mismatches": [],
+      "painter_sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+      "application_sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3"
+    },
+    {
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/h1-candidate-build-identity.json",
+      "sha256": "60b29a674118ef640948314e479dd723f2cf126c62b8ec59068e8b93907b8e9c",
+      "bytes": 38343,
+      "protected_paths": 213,
+      "same_213_path_set": true,
+      "current_protected_mismatches": [],
+      "painter_sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+      "application_sha256": "bfe8e36d16f4c5fd15009f2fc4707c06c93388f40870dc9f84696d3367447e7b"
+    }
+  ],
+  "genuine_binary_rechecks": [
+    {
+      "directory": "../baseline-native",
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/baseline-identity.json",
+      "files_rehashed": 4,
+      "mismatches": []
+    },
+    {
+      "directory": "../t2-native",
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/t3-baseline-identity.json",
+      "files_rehashed": 5,
+      "mismatches": []
+    },
+    {
+      "directory": "../t3-native",
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/h1-baseline-identity.json",
+      "files_rehashed": 6,
+      "mismatches": []
+    },
+    {
+      "directory": "../build-native/apps/standalone",
+      "receipt": "docs/development/2026-11-16-heading-title-continuation/reports/h1-candidate-build-identity.json",
+      "files_rehashed": 7,
+      "mismatches": []
+    }
+  ],
+  "genuine_pre_h1_fixture": {
+    "path": "../t3-native/test_standalone_header_material",
+    "sha256": "c598ff864f4a9024f717563c002f7742baf8eae4c277aea4390de3b66f7658e1",
+    "bytes": 3812984
+  },
+  "source_invariants": [
+    {
+      "invariant": "91 shared free-running sources",
+      "finding": "Types fixes 91. Engine::process calls source_bank_.process_frame once before output presence is tested; each tone sample is shared by all coefficients. Note events change contacts/ownership, never source phase. Positive velocity selects target 1, not gain; coherent summation has no polyphony normalization. Existing source/mapping/profile bytes are unchanged."
+    },
+    {
+      "invariant": "47 parameters, IDs/units/defaults/events preserved",
+      "native_json_records_compared": 47,
+      "metadata_mismatches": 0,
+      "canonical_47_record_sha256": "0dff0bce0155757670ce2f0cbc904456c1afac307de0fa30f3dd4cf0ab584e89",
+      "canonical_45_record_sha256": "13ba488bec90154c960c3fd700dc4a774aff5664caf5d68472821493f22d1cad",
+      "finding": "Native table and registry agree on ID/path/kind/unit/maximum/default/steps/event/manual/index. Threshold tables and normalized metadata are unchanged."
+    },
+    {
+      "invariant": "State4 and legacy readers1-3",
+      "finding": "ControlStateIO still writes B3CONTROLS4 and accepts versions1-4; fresh-candidate migration and catalog validation stay atomic. ControlSnapshot retains four banks and routing/fixed mode separately, excluding held notes, phases, contact/percussion histories, clocks and UI state."
+    },
+    {
+      "invariant": "Plugin class identities",
+      "processor_uuid": "19F9ADC0-533F42B4-B96BD51D-6547E838",
+      "controller_uuid": "0DEE76AB-26BC475A-BF64F138-C89FB0E0",
+      "finding": "All 20 plugin files and all 31 core headers match initial base. No public ABI, parameter automation, state or class-ID source edit; no new host execution is inferred."
+    },
+    {
+      "invariant": "Nominal dry Engine",
+      "finding": "Existing source-field/manual/percussion/pedal mixing and normalized expression output remain exact. Engine gains no Scanner/AO-28/Leslie route; InspectionModel still marks all three complete paths unconnected."
+    },
+    {
+      "invariant": "Control/key/bank/focus inventory",
+      "controls_including_presets": 68,
+      "playing_keys": 147,
+      "manual_keys_each": 61,
+      "pedals": 25,
+      "preset_controls": 24,
+      "drawbar_banks": 4,
+      "play_focus_stops": 71,
+      "rotary_service_focus_stops": 10,
+      "midi_modal_focus_stops": 11,
+      "finding": "Unchanged UiModel owns shared paint/hit layout and ordered focus; 68 visible controls plus three roving playing-key stops in Play, ten common controls elsewhere. Unchanged main modal selector retains 11 MIDI stops. Stored control slots are not all visible in other workspaces."
+    }
+  ],
+  "replay_review": {
+    "capacity": 512,
+    "deduplication": "Adjacent overlay/focus pairs compared before capacity; unchanged pair at capacity succeeds; revisits remain ordered.",
+    "overflow": "New distinct pair at 512 sets sticky truncation/fatal, reports once, stops loop, appends nothing; existing success and exit predicates fail closed.",
+    "musical_suffix_identical_to_base": true,
+    "musical_suffix_sha256": "43a0234454ff6204fca949cbabeaf0e92089b156062fb84059252d734ed4b4be",
+    "musical_suffix_extraction": "Bytes after the exact preparation-guard comment through just before four-space-indented static void write_replay_snapshot(.",
+    "ack_predicate_identical_to_base": true,
+    "ack_predicate_sha256": "ee11dab51af1478358c30f28c5b89c5993d8e58aee7da78f8442b5bb639bbe6d",
+    "path": "Reservation only for input_script; recorder called on application-thread observations/input handlers, never AudioDevice/Session callback. Normal and MIDI-only operation do not record/reserve the trace.",
+    "intentional_diagnostic_interface_change": [
+      "ui_observation_capacity",
+      "ui_observations_truncated",
+      "ui_observations"
+    ],
+    "schema_version_retained": 3,
+    "consumer_boundary": "Repository exact-key schemas add required exact types. External exact-key UI-replay consumers must accept these members; this is not a promise of unchanged diagnostic object shape.",
+    "observed_native_regression": "Root 23-method CLI pass; A15 immediate keyboard/pointer focus0..10 and A20 full256-event changing/deduplicating histories preserve literal restored musical-state assertions.",
+    "unexecuted_boundary": "512 accepted / 513th changed transition is source-reviewed only; existing parser maximum256 remains unchanged."
+  },
+  "painter_preservation": {
+    "unchanged_pre_h1_functions": {
+      "reference_upper_rack_material": {
+        "identical_to_pre_h1": true,
+        "sha256": "a88fe7aaf3bf92f54c0c23853c5705b542b31962684a95cb899aac45e45bd82e"
+      },
+      "reference_lower_rack_material": {
+        "identical_to_pre_h1": true,
+        "sha256": "7ed4fd4fc313502a22b1bd5dfb71891f49ffd0c74828ddd40a3e96367fd3b257"
+      },
+      "reference_rack_heading": {
+        "identical_to_pre_h1": true,
+        "sha256": "e0426a6a6ad9d058eb0b17c0f96cf4272e20ddf3381a454c033c4efc44be636c"
+      },
+      "reference_heading": {
+        "identical_to_pre_h1": true,
+        "sha256": "6d72f0c34969935d3bc6d5592a226cb40d3fe74fa79d5fb5c8dd617e023976bb"
+      }
+    },
+    "header_children_identical_after_normalizing_material_selector": true,
+    "header_child_suffix_sha256": "f2ffa7f729ba03b10a865ac507bed3aeaf58be0f3b633874b0dfc1b5bbf116bf",
+    "finding": "H1 adds private HeaderH1 and one header material helper/selector with renderer-domain fallback. Accepted T3r2 title calls and all caption/rule/control call arguments/order remain exact; no UiModel, shared Drawing, font, state or audio changes."
+  },
+  "changed_production_and_support": [
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "purpose": "Only changed app painter: T2 private rack-heading helper/two call sites; T3 five live-title passes with admitted 0.125 highlight; H1 private inset field/grain and header selector/fallback. H1 old grain-cull rejection retained; corrected candidate removes only the admitted early return."
+    },
+    {
+      "path": "apps/standalone/main.cpp",
+      "purpose": "Separately admitted bounded UI replay history in published T2; unchanged after T2."
+    },
+    {
+      "path": "tools/capture_standalone_interface.py",
+      "purpose": "Offline capture utility adds opt-in two unequal-aspect views; default thirteen cases unchanged."
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "purpose": "Test-only registrations for title density, typography clips and H1 fixture at observed snapshot; no core/plugin dependency or application target behavior change."
+    },
+    {
+      "path": "tools/compare_heading_typography.py, tools/compare_title_typography.py, tools/compare_header_material.py",
+      "purpose": "Independent offline verification tools, not product audio/UI execution."
+    },
+    {
+      "path": "apps/standalone/native_tests and tests",
+      "purpose": "New fixtures/regressions, strict additive replay schema, two admitted literal heading-oracle transitions, capture tests; A31 timeout-only completion change. Concurrent A37/A39 deliveries are outside this acceptance review."
+    }
+  ],
+  "a31_test_only_review": {
+    "source": "tests/test_render_controls_admission.py",
+    "sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+    "bytes": 18812,
+    "only_45_timeout_constant": 1,
+    "ast_identical_after_replacing_that_timeout_with15": true,
+    "correctness_assertions_changed": false,
+    "workload": "1200000 frames, block1, 48000Hz, seed191; unchanged synchronization/refusal/sentinel/content/inode/input/cleanup assertions",
+    "ctest_limit_seconds": 90,
+    "local_root_results": "5 methods/45 CLI invocations pass in Release4.253s and ASan+UBSan20.095s with documented local detect_leaks=0. Hosted changed-source leak qualification remains separate."
+  },
+  "observed_root_native_reports": [
+    {
+      "report": "docs/development/2026-11-16-heading-title-continuation/reports/t2-complete/report.json",
+      "sha256": "db18227d886d345b88620ad3fa719d9e5f46b3d603e275b4ac904916538ad89f",
+      "bytes": 211852,
+      "observed_status": "passed",
+      "elapsed_seconds": 104.216,
+      "coverage": {
+        "attempted_pairs": 158,
+        "canonical_placement_pairs": 18,
+        "clip_assertion_runs_passed": 2,
+        "clip_complete_model_pairs": 48,
+        "compact_960x700_covered": true,
+        "complete_model_pairs": 92,
+        "completed_pairs": 158,
+        "declared_pairs": 158,
+        "empty_or_disjoint_clip_cases": 8,
+        "full_t2_matrix_complete": true,
+        "inactive_pairs": 39,
+        "inputs_unchanged": true,
+        "partial_heading_clip_cases": 24,
+        "partial_heading_glyph_clip_cases": 16,
+        "partial_heading_rule_clip_cases": 8,
+        "percussion_pairs": 66,
+        "required_pairs": 158,
+        "required_suites": {
+          "clips": 48,
+          "percussion": 66,
+          "typography": 44
+        },
+        "title_preservation_clip_cases": 8,
+        "typography_complete_model_pairs": 44,
+        "whole_frame_exact_pairs": 74
+      },
+      "all_case_statuses_passed": true,
+      "all_case_metadata_equal": true,
+      "painter_sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db",
+      "a38_execution": false
+    },
+    {
+      "report": "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-paired/report.json",
+      "sha256": "efcf5fb65ae00d97bc830e63f99744c5aa3c0a91b974283c3bbd4b3b3e3c496a",
+      "bytes": 364159,
+      "observed_status": "passed",
+      "elapsed_seconds": 113.627,
+      "coverage": {
+        "allowed_pixels": 1308542,
+        "attempted_pairs": 158,
+        "canonical_original_18_density_pairs": 18,
+        "canonical_warm_geometry_pairs": 35,
+        "canonical_zero_origin_density_pairs": 17,
+        "changed_pixels": 679863,
+        "clip_assertion_runs_passed": 2,
+        "compared_pixels": 383790445,
+        "complete_model_pairs": 92,
+        "complete_tool_acceptance": true,
+        "completed_pairs": 158,
+        "declared_pairs": 158,
+        "empty_or_disjoint_clip_pairs": 8,
+        "full_t3_matrix_complete": true,
+        "inactive_pairs": 39,
+        "inputs_unchanged": true,
+        "material_assertion_runs_passed": 1,
+        "outside_pixels": 0,
+        "partial_title_clip_pairs": 8,
+        "protected_inputs": 213,
+        "rack_heading_preservation_clip_pairs": 24,
+        "required_pairs": 158,
+        "required_suites": {
+          "clips": 48,
+          "percussion": 66,
+          "typography": 44
+        },
+        "whole_frame_exact_pairs": 90
+      },
+      "all_case_statuses_passed": true,
+      "all_case_metadata_equal": true,
+      "painter_sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+      "a38_execution": false,
+      "native_material": {
+        "checks": 1317,
+        "failures": 0
+      }
+    },
+    {
+      "report": "docs/development/2026-11-16-heading-title-continuation/reports/h1-candidate-comparison/report.json",
+      "sha256": "058cfb0b13554789f5e8e27fe6328b2b70ba75147b157179609a76b78e7f9e15",
+      "bytes": 1282472,
+      "observed_status": "passed",
+      "elapsed_seconds": 233.244,
+      "coverage": {
+        "baseline_source_map": 229,
+        "companion_compared_pixels": 54635662,
+        "companion_pairs_completed": 16,
+        "inputs_unchanged": true,
+        "main_compared_pixels": 131641918,
+        "main_pairs_completed": 48,
+        "matrix_complete": true,
+        "outside_changed_pixels": 0,
+        "protected_sources": 213,
+        "repeats_complete": true,
+        "required_companion_pairs": 16,
+        "required_main_pairs": 48,
+        "required_repeats_per_side": 2
+      },
+      "all_case_statuses_passed": true,
+      "all_case_metadata_equal": true,
+      "painter_sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+      "a38_execution": false,
+      "native_material": {
+        "checks": 1317,
+        "failures": 0
+      },
+      "numerical_summary": {
+        "after_RMS_error": 0.3182611192893787,
+        "after_RMS_error_hex": "0x1.45e63e2bbeb4cp-2",
+        "after_failed": 0,
+        "after_mean_error_exact": "7620796849/20736000000",
+        "after_passed": 103,
+        "baseline_reproduced": true,
+        "before_failed": 59,
+        "before_passed": 44
+      }
+    }
+  ],
+  "other_evidence": {
+    "docs/development/2026-11-16-heading-title-continuation/reports/baseline-identity.json": {
+      "sha256": "0e09f09e0c53e1a66aa3edc388bf48d2623a3e39d4cc30b3ebac5905506bc80a",
+      "bytes": 3886
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t2-build-identity.json": {
+      "sha256": "5f01150960f304465f0b0b746f84114f41db41b53782dba308d312716eb0cb53",
+      "bytes": 3332
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t2-acceptance.json": {
+      "sha256": "34d613f2f481299159564770b7e65af6ba9b2edf5501a7cd6cdec111fbc7eece",
+      "bytes": 855
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-acceptance.json": {
+      "sha256": "6177971220ce08ba879bf2c7a5f398166235382bbe199b862f55b54fc19dfddf",
+      "bytes": 2065
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-integration-supplement.json": {
+      "sha256": "51d1f5a5915c7291d0fbc9f0494229806507aadea8b569b5e7a4660ed524df3f",
+      "bytes": 320
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-material-complete.json": {
+      "sha256": "59effaaf7cac03122d420f21543577b961a0f9342fe9946815cd14fa48f8417d",
+      "bytes": 9129
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-density.json": {
+      "sha256": "555288ff386a204c935a0c84de1d0fbf9da6ae8fa0b8ff7b116d886af1914018",
+      "bytes": 22005
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/replay-cli-23.log": {
+      "sha256": "1802ff55c85e9bbebf75dd1ea7fa564103519e2d41f614f419c14da34abc3abc",
+      "bytes": 394
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t2-fixture-and-calibration-tests-complete.log": {
+      "sha256": "1e0f2fc7871757edcae28347fde9234d0fa20e7de79be3d3c69fe1eff525b4db",
+      "bytes": 956
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/t3-r2-affected-tests-complete.log": {
+      "sha256": "8f19e3db575882d5d5b8ffbee6a90533fcd61c9a8d86839a4759ff74ad283285",
+      "bytes": 1070
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/render-race-repair-root-verification.json": {
+      "sha256": "90044b00345ffd25ec6cf46d7d30c6d3fd33c4943894351e3525c29537a42447",
+      "bytes": 1544
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/render-race-repaired-release.log": {
+      "sha256": "f87864a3bf56b21231dd89ac141c9e85c82b4d853f53c178786d671b43f82bc9",
+      "bytes": 1029
+    },
+    "docs/development/2026-11-16-heading-title-continuation/reports/render-race-repaired-local-asan-ubsan-no-lsan.log": {
+      "sha256": "210e5dd7ceef88934421c879053136863e8e07783b927f17da5680dddd886db3",
+      "bytes": 1030
+    }
+  },
+  "critical_source_identities": {
+    "apps/standalone/InstrumentView.cpp": {
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+      "bytes": 171413
+    },
+    "apps/standalone/main.cpp": {
+      "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+      "bytes": 146859
+    },
+    "include/hammond/Types.h": {
+      "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "bytes": 6015
+    },
+    "include/hammond/ParameterBridge.h": {
+      "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "bytes": 2952
+    },
+    "src/ParameterBridge.cpp": {
+      "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "bytes": 11334
+    },
+    "src/Engine.cpp": {
+      "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+      "bytes": 28448
+    },
+    "src/TonewheelBank.cpp": {
+      "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "bytes": 4390
+    },
+    "include/hammond/ControlState.h": {
+      "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "bytes": 5751
+    },
+    "src/ControlStateIO.cpp": {
+      "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "bytes": 13152
+    },
+    "plugins/vst3/PluginIds.h": {
+      "sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+      "bytes": 746
+    },
+    "apps/standalone/UiModel.h": {
+      "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "bytes": 18547
+    },
+    "apps/standalone/UiModel.cpp": {
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "bytes": 83758
+    },
+    "apps/standalone/Session.cpp": {
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+      "bytes": 31176
+    },
+    "apps/standalone/AudioDevice.cpp": {
+      "sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0",
+      "bytes": 12072
+    },
+    "apps/standalone/ScriptedInput.cpp": {
+      "sha256": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23",
+      "bytes": 22586
+    },
+    "data/parameter-registry.json": {
+      "sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+      "bytes": 36882
+    },
+    "data/profiles/nominal-unmeasured-v1.json": {
+      "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+      "bytes": 19627
+    },
+    "data/pedal-map.json": {
+      "sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+      "bytes": 3267
+    },
+    "tools/render.cpp": {
+      "sha256": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928",
+      "bytes": 50112
+    },
+    "tests/test_render_controls_admission.py": {
+      "sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+      "bytes": 18812
+    }
+  },
+  "remaining_limits": [
+    "This source/UI and plugin-identity audit is not product-release qualification or a new ABI execution test.",
+    "No A38 native rerun, real device/display/DPI/input, native accessibility, DAW, callback deadline/retirement, measured physical fidelity or literal whole-interface1:1 claim.",
+    "H1 numeric result observed; independent visual/performance and final coherent/source-specific hosted acceptance remain root-owned.",
+    "Original baseline, stale-probe, invalidated T2, rejected T3v1, initial H1/checker/grain-cull and sanitizer failures remain unmodified.",
+    "Fresh final source/build/test changes require root affected qualification; existing T2 platform results do not qualify unpublished T3/H1."
+  ]
+}

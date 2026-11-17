@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "status": "rejected",
+  "candidate": "original exact admitted T3 five-pass proposal",
+  "painter_sha256": "40de44893f3b88fef04732bf5a7607d4ce7db3cd4206f3712a5b71fa070a9029",
+  "material_test_checks": 1317,
+  "material_test_failures": 2,
+  "failed_cases": [
+    {
+      "size": [
+        1400,
+        820
+      ],
+      "renderer_scale": 1,
+      "title": [
+        504,
+        16,
+        389,
+        28
+      ],
+      "expected_top": 17.138478865504986,
+      "absolute_top_error": 1.138478865504986,
+      "maximum_allowed": 1
+    },
+    {
+      "size": [
+        1400,
+        820
+      ],
+      "renderer_scale": 1.25,
+      "title": [
+        504,
+        16,
+        388.8,
+        28
+      ],
+      "expected_top": 17.138478865504986,
+      "absolute_top_error": 1.138478865504986,
+      "maximum_allowed": 1
+    }
+  ],
+  "canonical_density": {
+    "baseline": 3863,
+    "candidate": 5512,
+    "reference": 5415,
+    "frozen_band": [
+      4500,
+      6000
+    ],
+    "passed": true
+  },
+  "report": "reports/t3-affected-tests.log",
+  "captures": "docs/design/native-gallery-heading-title-v1",
+  "source_receipt": "reports/t3-build-identity.json",
+  "frozen_binaries": "/workspace/scratch/5a28c3564dbf/t3-rejected-native",
+  "files": {
+    "hammond_standalone": {
+      "sha256": "7c5aab61f8a4e3711e8a96d4f35949455aead2b76a6f8806837a270efe92293d",
+      "bytes": 4094560
+    },
+    "test_standalone_footage_typography_raster": {
+      "sha256": "5666fa228cd0cd8bb4677de8af4eeec49610999bc5c91426baf1d2fb7c02dc99",
+      "bytes": 3800416
+    },
+    "test_standalone_percussion_raster": {
+      "sha256": "b9e0b9fb93badbbf7eb806b6e848c842c568bc4062db954804e2f7ccfdb3990d",
+      "bytes": 3761040
+    },
+    "test_standalone_typography_clips": {
+      "sha256": "119b27d54497dde43ae0c93b0302e81bef92b2eac8cbf84fa469ea40142b7989",
+      "bytes": 3779808
+    },
+    "hammond_standalone_paint_benchmark": {
+      "sha256": "b00f2e78169bfbedc64943e6fe4ada16accd0879b13c481a21c56da463304750",
+      "bytes": 3756168
+    },
+    "test_standalone_material_acceptance": {
+      "sha256": "153582cdaf911b2bdb8907365661ce2364771e64b3cb492073271535f9cdf66d",
+      "bytes": 3834808
+    }
+  },
+  "full_paired_comparison": "not run: existing material geometry gate already fails; retain this candidate before independently reviewing a narrow revised implementation",
+  "threshold_policy": "all original geometry/density/state/containment criteria remain unchanged",
+  "whole_interface_1_to_1": "unmet and unwaived"
+}

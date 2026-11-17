@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T02:20:57.931993+00:00",
+  "decision": "Admit the A47 independently reviewed test-protocol clarification and stronger copied-state chronology; no runtime change or retrospective pass",
+  "original_fixture": "docs/development/2026-11-16-heading-title-continuation/inputs/test_standalone_starter_load-before-observation.py",
+  "original_sha256": "22285ddcaec03adf61f97b1d65c7e70de4ee6c6437480267b4784ab8d360f5c7",
+  "original_admission_sha256": "e6fcc10748086c817e7b3b19919126cd37d5e32270737f693f27105167f86bc8",
+  "review_path": "docs/reviews/STARTER_LOAD_OBSERVATION_DIAGNOSIS.md",
+  "review_sha256": "7c5e9bf8793c0da16da41b98e29fa7abb016e0296b66bb70ac0505feae043495",
+  "retired_assumptions": [
+    "edited copied snapshot elapsed time <2200ms",
+    "edited last_submitted_sequence equals its last_applied_sequence"
+  ],
+  "preserved": [
+    "startup full state observed before750ms",
+    "restored full state observed at or after2200ms",
+    "full independently specified snapshots",
+    "applied/resolved equality and strictly ordered applied sequence transitions",
+    "all152actions and3479script bytes",
+    "2700ms duration and9sprocess bound",
+    "allfour native andtwoCLIprocesses",
+    "allfile/script/directory andfault/shutdownassertions"
+  ],
+  "added_requirements": [
+    "nonsorted chronological history andmonotone elapsed/submitted/resolved/applied sequences",
+    "sequence bounds andno controlchange atunchanged appliedsequence",
+    "actualstartup < edited < restoredindices andappliedsequences",
+    "purepositive andnegativecoverage perreview"
+  ],
+  "qualification": [
+    "original andcorrectedchecker onbothretainedactualdiagnosticobjects",
+    "changedfixture onpreservedgenuineoriginalapp toisolatethis test-onlycorrection",
+    "integratedcoherentfinalsuite andhostedCI"
+  ],
+  "limits": "The old failures remain failures. Their post-diagnostics file/script/directory assertions did not execute. No pre-Ctrl+O callback timestamp or physical/deadline/fidelity claim is made."
+}

@@ -344,6 +344,15 @@ if(HAMMOND_BUILD_STANDALONE)
             set_tests_properties(test_standalone_footage_typography_raster PROPERTIES TIMEOUT 240)
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_footage_typography_raster)
+        add_test(NAME test_standalone_title_density
+            COMMAND "${Python3_EXECUTABLE}" -B
+                "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_title_density.py"
+                --executable "$<TARGET_FILE:test_standalone_footage_typography_raster>")
+        set_tests_properties(test_standalone_title_density PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;typography")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_title_density PROPERTIES TIMEOUT 240)
+        endif()
         add_executable(test_standalone_typography_clips
             native_tests/test_standalone_typography_clips.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_typography_clips PRIVATE
@@ -358,6 +367,52 @@ if(HAMMOND_BUILD_STANDALONE)
             set_tests_properties(test_standalone_typography_clips PROPERTIES TIMEOUT 240)
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_typography_clips)
+        # The fixture includes the real painter to inspect the private material
+        # helper without adding a production test API or a before-image switch.
+        add_executable(test_standalone_header_material
+            native_tests/test_standalone_header_material.cpp)
+        target_link_libraries(test_standalone_header_material PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_header_material PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_header_material)
+        add_test(NAME test_standalone_header_material
+            COMMAND test_standalone_header_material)
+        set_tests_properties(test_standalone_header_material PROPERTIES
+            TIMEOUT 180 LABELS "standalone;native;material;geometry")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_header_material PROPERTIES TIMEOUT 480)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_header_material)
+        set(HAMMOND_HEADER_STATISTICS_CHILD_TIMEOUT 20)
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set(HAMMOND_HEADER_STATISTICS_CHILD_TIMEOUT 60)
+        endif()
+        add_test(NAME test_standalone_header_statistics
+            COMMAND "${Python3_EXECUTABLE}" -B
+                "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_header_statistics.py"
+                --executable "$<TARGET_FILE:test_standalone_header_material>"
+                --timeout-seconds "${HAMMOND_HEADER_STATISTICS_CHILD_TIMEOUT}")
+        set_tests_properties(test_standalone_header_statistics PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;material")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_header_statistics PROPERTIES TIMEOUT 240)
+        endif()
+        # Like the full header fixture, this regression includes the painter
+        # exactly once and exposes no production test hook.
+        add_executable(test_standalone_header_grain_bounds
+            native_tests/test_standalone_header_grain_bounds.cpp)
+        target_link_libraries(test_standalone_header_grain_bounds PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_header_grain_bounds PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_header_grain_bounds)
+        add_test(NAME test_standalone_header_grain_bounds
+            COMMAND test_standalone_header_grain_bounds)
+        set_tests_properties(test_standalone_header_grain_bounds PROPERTIES
+            TIMEOUT 30 LABELS "standalone;native;material;geometry")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_header_grain_bounds PROPERTIES TIMEOUT 90)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_header_grain_bounds)
         add_executable(test_standalone_manual_key_material_raster
             native_tests/test_standalone_manual_key_material_raster.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_manual_key_material_raster PRIVATE
@@ -528,6 +583,20 @@ if(HAMMOND_BUILD_STANDALONE)
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_workspace_replay.py")
         set_tests_properties(test_standalone_workspace_replay PROPERTIES
             TIMEOUT 90 LABELS "standalone;native;workspace")
+        set(HAMMOND_REPLAY_PAINT_CHILD_TIMEOUT 12)
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set(HAMMOND_REPLAY_PAINT_CHILD_TIMEOUT 30)
+        endif()
+        add_test(NAME test_standalone_replay_paint_boundary
+            COMMAND "${Python3_EXECUTABLE}" -B
+                "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_replay_paint_boundary.py"
+                --executable "$<TARGET_FILE:hammond_standalone>"
+                --timeout-seconds "${HAMMOND_REPLAY_PAINT_CHILD_TIMEOUT}")
+        set_tests_properties(test_standalone_replay_paint_boundary PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;workspace")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_replay_paint_boundary PROPERTIES TIMEOUT 90)
+        endif()
         add_test(NAME test_standalone_replay_boundaries
             COMMAND "${CMAKE_COMMAND}" -E env
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"

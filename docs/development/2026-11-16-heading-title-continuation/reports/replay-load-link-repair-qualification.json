@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T02:25:27.894195+00:00",
+  "scope": "Scoped replay repair and initial three-failure resolution; final reconciled integration and hosted qualification remain pending",
+  "main_sha256": "361ae03aa9e1a369a8fd8d125c21b10e40841d08d768a4c5637b2a3ecf0232f3",
+  "application_sha256": "2c64e585d8f1da521ff4c4dafe51613dd3aa0692461bfcb8d6450f9ca4971479",
+  "painter_sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d",
+  "reports": {
+    "a45-before.json": "67daa292be8fb333e7bab9130802b76a87d9f52d5bdc0f0f947c6baf11941645",
+    "a45-after.json": "56bcfba70a71d300c9cd12b908206f82d241ea7c6bb7c585818dd081d500ac06",
+    "replay-repair-affected.json": "0a238e05f729212ee4b922aae302e1ab5ec6873eefb0533268b0cf6b29cb879d",
+    "archive-link-integrity-requalification.json": "26770dc4e051f76a72844e1442aac14d4381068450b6b8f65c0641da39765534",
+    "starter-load-oracle-root-qualification.json": "98ff56872bfeffccc0b22b472c25a361c0ea98367bbb6e6f00202ef34289a48a"
+  },
+  "results": {
+    "genuine_original_paint_regression": "two expected assertion failures, native children exited zero",
+    "rebuilt_paint_regression": "both variants passed",
+    "unchanged_workspace_boundaries_input_replay": "3/3 passed in55.527753s",
+    "archive_links": "passed",
+    "load_original_checker": "both retained actual histories rejected by original predicates",
+    "load_corrected_checker": "both retained actual histories pass all diagnostic assertions",
+    "load_corrected_fixture_original_app": "all eight methods passed; four native processes andtwoCLIprocesses; alltailbytechecks executed"
+  },
+  "concurrent_remote": {
+    "head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+    "parent": "6047723b595259de355c74342e48a8ae2ee1e228",
+    "tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+    "action": "fetched; preserve and independently reconcile before publishing, no force or overwrite"
+  }
+}

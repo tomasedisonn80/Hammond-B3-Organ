@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w06_a31",
+  "status": "frozen; modified local Release and ASan/UBSan no-LSan suites passed; exact-published full sanitizer qualification pending",
+  "unchanged_local_suite": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "tests/test_render_controls_admission.py",
+      "--renderer",
+      "/workspace/scratch/5a28c3564dbf/build-native/hammond_render",
+      "--profile",
+      "/workspace/scratch/5a28c3564dbf/build-native/nominal.b3p",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+    "exit_code": 0,
+    "wall_seconds": 3.277927,
+    "stdout": "saved-controls independent admission: 45 actual CLI invocations\n",
+    "stderr": "test_all_restored_fixed_modes_match_literal_rows_and_retained_banks (__main__.RenderControlsAdmissionTests.test_all_restored_fixed_modes_match_literal_rows_and_retained_banks) ... ok\ntest_destination_appearing_after_preflight_is_never_replaced (__main__.RenderControlsAdmissionTests.test_destination_appearing_after_preflight_is_never_replaced) ... ok\ntest_empty_score_restores_no_held_notes_or_percussion_history (__main__.RenderControlsAdmissionTests.test_empty_score_restores_no_held_notes_or_percussion_history) ... ok\ntest_invalid_inputs_precede_even_temporary_output_mutation (__main__.RenderControlsAdmissionTests.test_invalid_inputs_precede_even_temporary_output_mutation) ... ok\ntest_replacing_every_saved_field_at_zero_keeps_initial_provenance (__main__.RenderControlsAdmissionTests.test_replacing_every_saved_field_at_zero_keeps_initial_provenance) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 3.166s\n\nOK\n",
+    "source_sha256": {
+      "tests/test_render_controls_admission.py": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411",
+      "tools/render.cpp": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928",
+      "CMakeLists.txt": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+      "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      ".github/workflows/ci.yml": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+      "../build-native/hammond_render": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263",
+      "../build-native/nominal.b3p": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "../build-native/CMakeFiles/hammond_render.dir/flags.make": "12f9c10130ef5d28504c3cdd37165779ac16744f8d2e3e7d168eb8423ed3d642",
+      "../build-native/CMakeFiles/hammond_render.dir/link.txt": "01461e3ffd2f1e7151acc0edfc1979890a18177738e202bc2eb1b4773ce1654e"
+    },
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "configuration": "Release -O3 -DNDEBUG; HAMMOND_ENABLE_SANITIZERS=OFF; existing root-coordinated artifact; no build or configuration run"
+  },
+  "source_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "preserved_hosted_failure": {
+    "investigation": "docs/development/2026-11-16-heading-title-continuation/reports/t2-core-sanitizer-investigation.json",
+    "investigation_sha256": "49c0e5d6ca51b748bdc2f03ff02733224d84e36f0f7e7c27f5fab8616f2a9607",
+    "decoded_log_sha256": "058cd0f6dc6bbb94ececb420f825cb4dad0cac6807d0e50639deb7573107c320",
+    "decoded_log_bytes": 465655,
+    "integrity_verified": true,
+    "job_id": 133715652514,
+    "ctest_passed": 201,
+    "ctest_total": 202,
+    "ctest_seconds": 408.26,
+    "python_runtime_seconds": 16.9,
+    "observed_failure": "15-second post-resume subprocess.TimeoutExpired; later publication/refusal assertions not reached; no sanitizer diagnostic in retained log",
+    "root_owned_rerun_job_id": 133729308448,
+    "root_owned_rerun_status": "Root reported successful completion at unchanged T2 source; original failure retained; A31 did not independently observe provider",
+    "root_owned_completed_receipt": "docs/development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json"
+  },
+  "inspection": {
+    "registered_suite_timeout_seconds": 90,
+    "staging_observation_timeout_seconds": 5,
+    "stopped_child_confirmation_timeout_seconds": 2,
+    "ordinary_small_render_timeout_seconds": 15,
+    "race_completion_timeout_seconds": 15,
+    "final_cleanup_communicate_timeout_seconds": 5,
+    "race_frames": 1200000,
+    "race_block_frames": 1,
+    "race_sample_rate_hz": 48000,
+    "race_seed": 191,
+    "race_contacts": "ideal",
+    "source_path_order": [
+      "admit all inputs and absent destination",
+      "create temporary staging",
+      "render all 1,200,000 frames",
+      "flush and close temporary WAV",
+      "create hard link without replacing destination",
+      "destroy temporary staging on failure"
+    ],
+    "unchanged_checks": [
+      "observe actual inotify staging creation",
+      "observe WIFSTOPPED after SIGSTOP",
+      "assert destination absent while renderer stopped",
+      "create sentinel using exclusive xb",
+      "resume using SIGCONT",
+      "require exit status 1 and empty stdout",
+      "require cannot-publish-without-overwriting diagnostic",
+      "require exact sentinel bytes",
+      "require identical sentinel device and inode",
+      "require unchanged complete input snapshot and no staging",
+      "kill and drain unfinished child in finally"
+    ],
+    "policy": "Initial decision: do not infer a replacement budget from Release timing or a right-censored 15-second sanitizer wait. Subsequent root-authorized instrumented observations and the supported source repair are recorded separately below.",
+    "scope": "Original unmodified test before instrumented observations and repair"
+  },
+  "unchanged_instrumented_race": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "tests/test_render_controls_admission.py",
+      "--renderer",
+      "/workspace/scratch/5a28c3564dbf/build-race-sanitizer/hammond_render",
+      "--profile",
+      "/workspace/scratch/5a28c3564dbf/build-native/nominal.b3p",
+      "RenderControlsAdmissionTests.test_destination_appearing_after_preflight_is_never_replaced",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+    "environment": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "exit_code": 1,
+    "wall_seconds": 15.288052,
+    "outer_timeout_seconds": 90,
+    "stdout": "saved-controls independent admission: 1 actual CLI invocations\n",
+    "stderr": "test_destination_appearing_after_preflight_is_never_replaced (__main__.RenderControlsAdmissionTests.test_destination_appearing_after_preflight_is_never_replaced) ... ERROR\n\n======================================================================\nERROR: test_destination_appearing_after_preflight_is_never_replaced (__main__.RenderControlsAdmissionTests.test_destination_appearing_after_preflight_is_never_replaced)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tests/test_render_controls_admission.py\", line 366, in test_destination_appearing_after_preflight_is_never_replaced\n    stdout, stderr = process.communicate(timeout=15)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 1209, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 2116, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 1253, in _check_timeout\n    raise TimeoutExpired(\nsubprocess.TimeoutExpired: Command '['/workspace/scratch/5a28c3564dbf/build-race-sanitizer/hammond_render', '--profile', '/tmp/hammond-controls-admission-r9s6pg9e/nominal profile.b3p', '--output', '/tmp/hammond-controls-admission-r9s6pg9e/output 2.wav', '--frames', '1200000', '--sample-rate', '48000', '--block-size', '1', '--seed', '191', '--contacts', 'ideal', '--controls', '/tmp/hammond-controls-admission-r9s6pg9e/input 1.b3controls']' timed out after 15 seconds\n\n----------------------------------------------------------------------\nRan 1 test in 15.092s\n\nFAILED (errors=1)\n",
+    "source_sha256": {
+      "tests/test_render_controls_admission.py": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411",
+      "tools/render.cpp": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928",
+      "CMakeLists.txt": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+      "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      ".github/workflows/ci.yml": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+      "../build-race-sanitizer/hammond_render": "2c6cf2d21fd3704f6e3f6467374f7d427018ba0022f03473b43b55a0c0dd99b9",
+      "../build-native/nominal.b3p": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "../build-race-sanitizer/CMakeFiles/hammond_render.dir/flags.make": "62b6555cdcf9de7a08499dded22365365f1dfa1efe5ffd93b3c97128f1ccd5af",
+      "../build-race-sanitizer/CMakeFiles/hammond_render.dir/link.txt": "3c42881c3f9806d1d403eaa2532391289661ad61e235982d6ac4783ea6daf3f1",
+      "docs/development/2026-11-16-heading-title-continuation/reports/race-sanitizer-configure.log": "21b00d24b2ce7d96825b8d1dbd657f949d64a273822e639adb07aeed71b983f8",
+      "docs/development/2026-11-16-heading-title-continuation/reports/race-sanitizer-build.log": "a9d0de07bec14beab33253d6b92d9e06d7b3126ba83cf2dfd63e12dd08bd7657"
+    },
+    "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+    "configuration": "Root-built separate Debug artifact; ASan+UBSan and leak detection enabled; standalone/VST3 OFF; no A31 build or configuration run"
+  },
+  "instrumented_completion_diagnostic": {
+    "command": [
+      "python3",
+      "-B",
+      "-c",
+      "diagnostic_python_source",
+      "/workspace/scratch/5a28c3564dbf/build-race-sanitizer/hammond_render",
+      "/workspace/scratch/5a28c3564dbf/build-native/nominal.b3p"
+    ],
+    "diagnostic_python_source": "import contextlib,hashlib,io,json,subprocess,sys,time,unittest\nfrom pathlib import Path\nfrom unittest.mock import patch\npath=Path(\"tests/test_render_controls_admission.py\").resolve()\noriginal=path.read_text()\nold=\"stdout, stderr = process.communicate(timeout=15)\"\nnew=\"stdout, stderr = process.communicate(timeout=60)\"\nassert original.count(old)==1\ncandidate=original.replace(old,new,1)\nnamespace={\"__file__\":str(path),\"__name__\":\"a31_race_diagnostic\"}\nexec(compile(candidate,str(path)+\"[in-memory-60-second-diagnostic]\",\"exec\"),namespace)\nnamespace[\"RENDERER_OVERRIDE\"]=sys.argv[1]\nnamespace[\"PROFILE_OVERRIDE\"]=sys.argv[2]\ncommunicate=subprocess.Popen.communicate\nobservations=[]\ndef measured_communicate(self,*args,**kwargs):\n    started=time.monotonic()\n    entry={\"timeout_seconds\":kwargs.get(\"timeout\")}\n    try:\n        stdout,stderr=communicate(self,*args,**kwargs)\n        entry.update(returncode=self.returncode,stdout=stdout.decode(\"utf-8\",errors=\"backslashreplace\"),stderr=stderr.decode(\"utf-8\",errors=\"backslashreplace\"))\n        return stdout,stderr\n    except BaseException as error:\n        entry[\"exception\"]=type(error).__name__\n        raise\n    finally:\n        entry[\"wall_seconds\"]=round(time.monotonic()-started,6)\n        observations.append(entry)\ncase=namespace[\"RenderControlsAdmissionTests\"](\"test_destination_appearing_after_preflight_is_never_replaced\")\nstream=io.StringIO()\nstdout=io.StringIO()\nwith patch.object(subprocess.Popen,\"communicate\",measured_communicate),contextlib.redirect_stdout(stdout):\n    result=unittest.TextTestRunner(stream=stream,verbosity=2).run(unittest.TestSuite([case]))\nprint(json.dumps({\"classification\":\"Changed-budget diagnostic only; original source file unchanged\", \"original_source_sha256\":hashlib.sha256(original.encode()).hexdigest(),\"in_memory_source_sha256\":hashlib.sha256(candidate.encode()).hexdigest(),\"only_source_replacement\":{\"old\":old,\"new\":new,\"count\":1},\"tests_run\":result.testsRun,\"successful\":result.wasSuccessful(),\"test_output\":stream.getvalue(),\"stdout\":stdout.getvalue(),\"communicate_observations\":observations},indent=2))\nraise SystemExit(0 if result.wasSuccessful() else 1)\n",
+    "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+    "environment": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "exit_code": 1,
+    "wall_seconds": 15.926576,
+    "outer_timeout_seconds": 90,
+    "stderr": "",
+    "result": {
+      "classification": "Changed-budget diagnostic only; original source file unchanged",
+      "original_source_sha256": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411",
+      "in_memory_source_sha256": "2bfa860c50a19f80ac05409dc56cd2d6a3bd701d9cb361abd2a7f69b74210c2e",
+      "only_source_replacement": {
+        "old": "stdout, stderr = process.communicate(timeout=15)",
+        "new": "stdout, stderr = process.communicate(timeout=60)",
+        "count": 1
+      },
+      "tests_run": 1,
+      "successful": false,
+      "test_output": "test_destination_appearing_after_preflight_is_never_replaced (a31_race_diagnostic.RenderControlsAdmissionTests.test_destination_appearing_after_preflight_is_never_replaced) ... FAIL\n\n======================================================================\nFAIL: test_destination_appearing_after_preflight_is_never_replaced (a31_race_diagnostic.RenderControlsAdmissionTests.test_destination_appearing_after_preflight_is_never_replaced)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tests/test_render_controls_admission.py[in-memory-60-second-diagnostic]\", line 367, in test_destination_appearing_after_preflight_is_never_replaced\nAssertionError: 23 != 1 : b'hammond_render: Cannot publish WAV without overwriting (a filesystem supporting hard links is required): File exists\\n==7==LeakSanitizer has encountered a fatal error.\\n==7==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\\n==7==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\\n'\n\n----------------------------------------------------------------------\nRan 1 test in 15.576s\n\nFAILED (failures=1)\n",
+      "stdout": "saved-controls independent admission: 1 actual CLI invocations\n",
+      "communicate_observations": [
+        {
+          "timeout_seconds": 60,
+          "returncode": 23,
+          "stdout": "",
+          "stderr": "hammond_render: Cannot publish WAV without overwriting (a filesystem supporting hard links is required): File exists\n==7==LeakSanitizer has encountered a fatal error.\n==7==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==7==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n",
+          "wall_seconds": 15.501138
+        },
+        {
+          "timeout_seconds": 5,
+          "returncode": 23,
+          "stdout": "",
+          "stderr": "hammond_render: Cannot publish WAV without overwriting (a filesystem supporting hard links is required): File exists\n==7==LeakSanitizer has encountered a fatal error.\n==7==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==7==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n",
+          "wall_seconds": 0.000162
+        }
+      ]
+    },
+    "test_file_sha256_after": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411"
+  },
+  "instrumented_completion_without_lsan_diagnostic": {
+    "classification": "Root-authorized one local isolation diagnostic; ASan+UBSan active, LSan disabled only for this process; not full sanitizer qualification or hosted acceptance",
+    "command": [
+      "python3",
+      "-B",
+      "-c",
+      "instrumented_completion_diagnostic.diagnostic_python_source",
+      "/workspace/scratch/5a28c3564dbf/build-race-sanitizer/hammond_render",
+      "/workspace/scratch/5a28c3564dbf/build-native/nominal.b3p"
+    ],
+    "diagnostic_source_same_as": "instrumented_completion_diagnostic.diagnostic_python_source",
+    "diagnostic_source_sha256": "cef721a4b64ea36254a1ec2187efdf61e26a349b09370adaf9caca6a1fad7376",
+    "cwd": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+    "environment": {
+      "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "exit_code": 0,
+    "wall_seconds": 16.732026,
+    "outer_timeout_seconds": 90,
+    "stderr": "",
+    "result": {
+      "classification": "Changed-budget diagnostic only; original source file unchanged",
+      "original_source_sha256": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411",
+      "in_memory_source_sha256": "2bfa860c50a19f80ac05409dc56cd2d6a3bd701d9cb361abd2a7f69b74210c2e",
+      "only_source_replacement": {
+        "old": "stdout, stderr = process.communicate(timeout=15)",
+        "new": "stdout, stderr = process.communicate(timeout=60)",
+        "count": 1
+      },
+      "tests_run": 1,
+      "successful": true,
+      "test_output": "test_destination_appearing_after_preflight_is_never_replaced (a31_race_diagnostic.RenderControlsAdmissionTests.test_destination_appearing_after_preflight_is_never_replaced) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 16.523s\n\nOK\n",
+      "stdout": "saved-controls independent admission: 1 actual CLI invocations\n",
+      "communicate_observations": [
+        {
+          "timeout_seconds": 60,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "hammond_render: Cannot publish WAV without overwriting (a filesystem supporting hard links is required): File exists\n",
+          "wall_seconds": 16.474323
+        },
+        {
+          "timeout_seconds": 5,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "hammond_render: Cannot publish WAV without overwriting (a filesystem supporting hard links is required): File exists\n",
+          "wall_seconds": 3.4e-05
+        }
+      ]
+    },
+    "test_file_sha256_after": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411"
+  },
+  "repair": {
+    "path": "tests/test_render_controls_admission.py",
+    "before_sha256": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411",
+    "after_sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+    "old_completion_timeout_seconds": 15,
+    "new_completion_timeout_seconds": 45,
+    "only_executable_change_proved_by_normalized_ast": true,
+    "ast_comparison": "After replacing the one timeout=45 constant in the race method with 15, complete module AST equals HEAD; comments and line locations ignored.",
+    "preserved_registered_suite_timeout_seconds": 90,
+    "worst_case_staging_stop_completion_cleanup_seconds": 57,
+    "remaining_suite_envelope_seconds": 33,
+    "measured_complete_asan_ubsan_race_seconds": 16.474323,
+    "completion_budget_to_observed_ratio": 2.731523,
+    "rationale": "The original guard expired locally with exact hosted sanitizer settings. A 60-second bounded diagnostic observed renderer refusal after 15.501138 seconds but local LSan runtime fatal exit 23. An explicitly isolated ASan+UBSan diagnostic without local LSan reached every unchanged correctness assertion after 16.474323 seconds. Choose fixed 45 seconds (about 2.7 times that complete observation), below both the diagnostic ceiling and unchanged 90-second suite cap, leaving 33 seconds after all phase maxima for remaining methods/overhead. This is a bounded harness allowance, not a measured platform percentile or deadline guarantee.",
+    "guards_unchanged": {
+      "ordinary_small_render": 15,
+      "staging_observation": 5,
+      "stopped_child_confirmation": 2,
+      "final_child_drain": 5,
+      "ctest_suite": 90
+    }
+  },
+  "verification": {
+    "source_diff_check": "pass",
+    "module_ast_only_timeout_change": "pass",
+    "changed_suite_execution": "Root executed actual modified source: Release 5/5 and 45 invocations in 4.253 s; ASan/UBSan with local LSan disabled 5/5 and 45 invocations in 20.095 s; both exit 0. A31 read complete logs; no A31 rerun.",
+    "hosted_new_source": "Pending root publication and exact-source ASan+UBSan+leaks qualification",
+    "lsan_limitation": "With leak checking enabled, local runtime reported fatal error with ptrace hint and exited 23 after renderer publication refusal. Actual ptrace/seccomp cause unestablished; no leak finding or pass inferred.",
+    "local_isolation_limits": "A31 used detect_leaks=0 only for one root-authorized diagnostic subprocess. Root separately verified the modified full suite with the same local LSan limitation. Production test and hosted workflow never disable leak checking."
+  },
+  "not_performed": [
+    "A31 builds or configuration",
+    "A31 hosted rerun",
+    "workflow edits",
+    "production edits",
+    "all-suite sanitizer acceptance",
+    "macOS or Windows execution",
+    "changed-source test execution by A31",
+    "commit or push"
+  ],
+  "root_modified_source_verification": [
+    {
+      "owner": "root",
+      "source_test_sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+      "configuration": "Release; sanitizers OFF",
+      "methods_passed": 5,
+      "methods_total": 5,
+      "actual_cli_invocations": 45,
+      "unittest_seconds": 4.253,
+      "exit_code": 0,
+      "exit_code_basis": "Root confirmed collected exit_code 0; A31 independently read complete log",
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/render-race-repaired-release.log",
+      "log_sha256": "f87864a3bf56b21231dd89ac141c9e85c82b4d853f53c178786d671b43f82bc9"
+    },
+    {
+      "owner": "root",
+      "source_test_sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+      "configuration": "Debug ASan+UBSan; local detect_leaks=0; not full sanitizer qualification",
+      "methods_passed": 5,
+      "methods_total": 5,
+      "actual_cli_invocations": 45,
+      "unittest_seconds": 20.095,
+      "exit_code": 0,
+      "exit_code_basis": "Root confirmed collected exit_code 0; A31 independently read complete log",
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/render-race-repaired-local-asan-ubsan-no-lsan.log",
+      "log_sha256": "210e5dd7ceef88934421c879053136863e8e07783b927f17da5680dddd886db3"
+    }
+  ],
+  "root_build_identity": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/race-sanitizer-build-identity.json",
+    "sha256": "545d636ee5972036aebc8de611e549f862433811f5e021afea617f68f8c0c27e"
+  },
+  "frozen_at_utc": "2026-11-17T01:00:06.879500+00:00",
+  "deliverable_sha256": {
+    "tests/test_render_controls_admission.py": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+    "docs/reviews/RENDER_RACE_COMPLETION_REVIEW.md": "7aadd7fc350974450ae483b4d426ef5008efa720b325fa028572cf9eb5af346f",
+    "docs/development/2026-11-16-heading-title-continuation/notes/A31.md": "525ece4fd7398996d386c2708cb1acf7ef7b6718e057c4d981fc34ea5a0126a1"
+  }
+}

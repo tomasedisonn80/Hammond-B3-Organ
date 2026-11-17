@@ -1,7 +1,145 @@
 # Next steps
 
+<!-- heading-title-next-current:start -->
+## Current heading, title and header continuation — 17 November 2026
+
+Recover the complete [M0–M9 plan](PLAN.md), [agent instructions](../AGENTS.md),
+[current session](development/2026-11-16-heading-title-continuation/README.md),
+[checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and
+[actual ledger](development/2026-11-16-heading-title-continuation/assignments.json)
+before assigning work. Root owns this checkout's shared integration, native
+build, acceptance and publication. Use [current setup](STATUS.md#current-workspace-and-setup),
+not a historical workspace or another owner's build. Check live HEAD, index,
+worktree and remote state; preserve unpublished overlays and declared ownership.
+
+T2 rack headings and T3 title revision 2 are implemented and accepted within
+their frozen scopes. H1 has complete numerical, actual-frame visual and
+representative software timing evidence; its permanent regressions are integrated.
+These are no longer unimplemented proposals. Use the current
+[status](STATUS.md#current-heading-title-and-header-continuation--17-november-2026)
+and stage receipts for exact results. The following sequence is dependency
+ordered: consult root's current checkpoint and skip gates already completed at
+the same qualified source rather than repeating historical work.
+
+### 1. Complete the current source's integration and delivery gates
+
+1. Resolve the observed [workspace-replay failure](development/2026-11-16-heading-title-continuation/reports/h1-final-ctest.log)
+   through the assigned independent event/render-order diagnosis. The current
+   240-test run omitted a required painted Play/Flat 1280×900 state before its
+   960×700 resize. Preserve the exact expectation and original failure; a
+   timing-only repeat cannot replace a deterministic correction. Then verify the
+   coherent build and appropriate corrected CTest result. Keep the genuine
+   before's expected numerical failures distinct from transport failures; retain
+   the [archived grain-culling source's actual rejection](development/2026-11-16-heading-title-continuation/reports/h1-grain-bounds-qualification.json)
+   separately. Required
+   filtered selections use `--no-tests=error`; a stale binary cannot qualify
+   changed source or headers. Root alone controls configure/build/CTest.
+2. Preserve the [installed operator evidence](development/2026-11-16-heading-title-continuation/reports/a41-installed-journeys.json):
+   seventeen unchanged payloads, five expected original journey outcomes, the
+   failed 600 ms canonical note/release observation and the separately passing
+   2,000 ms diagnostic. The longer run is not a repaired 600 ms result, a
+   hardware journey or frame-deadline acceptance. Investigate a new timing claim
+   at its declared workload and backend before publishing it.
+3. Bind README's current design/captures to the accepted source, review remaining
+   differences against the unchanged original, and preserve failed candidates
+   and genuine baselines. Numerical containment, full-frame visual review,
+   source compatibility and resources are separate gates; none may silently
+   replace another.
+4. Root stages accepted paths, inspects a fresh remote head, commits and pushes
+   with that expected parent and no force, then independently verifies remote
+   commit/tree/parent and contents. Observe the complete required hosted matrix
+   at the newly published source. T2's [sixteen latest successful job families](development/2026-11-16-heading-title-continuation/reports/t2-hosted-complete.json)
+   qualify T2 only; retain its original sanitizer timeout and single unchanged
+   retry. The later 45-second test guard needs its own hosted leak-check result.
+
+The root-owned recovery build uses the commands below from the current checkout.
+They operate only the already configured local dummy-SDL build; normal desktop
+and platform setup remains in [README](../README.md#build-and-launch-the-native-application).
+
+```sh
+/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake --build ../build-native --parallel 2
+/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest --test-dir ../build-native --output-on-failure --no-tests=error --parallel 2
+```
+
+Do not run configure/build while a provenance-locked comparison or timing run is
+active. Inspect the live owner checkpoint first; these commands are recovery
+instructions, not an assertion that this document executed them.
+
+### 2. Continue the reference interface from accepted H1
+
+Start with the original [atlas reference](design/atlas-reference.json), actual
+[H1 gallery provenance](design/native-gallery-header-h1-v1/provenance.json),
+[visual residuals](reviews/HEADER_MATERIAL_H1_VISUAL.md#residuals-and-handoff) and
+the [ownership map](PLAN.md#current-ownership-and-source). Root must reconcile
+the manual/rim/cap and native browser/semantic owners before assigning another
+shared-painter or interaction change.
+
+| Next bounded work | Inputs and acceptance before promotion |
+| --- | --- |
+| Remaining material and typography differences | Choose one owned surface or live-label scope: manual/rim/shadow geometry, cap/recess lighting, small utility lettering or another panel. Freeze reference observations, literal arithmetic, support, resource limits and rejection criteria before implementation. Preserve accepted T2/T3/H1 and genuine same-state baseline binaries. |
+| Whole-interface composition | Define a complete reference/source/state/dimension comparison that preserves truthful controls and engineering inventory. The illustrated preset/vibrato/microphone arrangement cannot justify hiding live controls or implying connected models. Review full application frames, not only favorable crops. |
+| Real native use | Execute the [display/device journey](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey) on identified OS/backend/display/DPI/audio/MIDI hardware: both resize/navigation directions, pre-held notes, off-window release/fresh press, focus loss, modal cleanup, Save/Load and joined shutdown. Retain actual frames, diagnostics and numeric exits. |
+| Native accessibility | Recover the existing semantic owner, freeze the platform bridge's names/roles/values/actions and status announcements, then execute screen-reader and keyboard journeys including pending/applied controls, modal/numeric entry, reduced motion and Flat. A copied semantic inventory or screenshot contrast is not an OS provider result. |
+
+Every visual slice still needs genuine before/after app/fixture identities,
+canonical, minimum-active, unequal-aspect, compact, Flat and supported-scale
+coverage; exact inactive paths; zero changes beyond admitted support; preserved
+state, input and focus; independent whole-frame review; and an actual README
+capture refresh. Keep 68 controls including 24 presets, 147 playing keys, four
+banks and honest unconnected-model labels. **Literal whole-interface 1:1 remains
+unmet and unwaived.** The header's 103 passing patch criteria do not close it.
+
+### 3. Preserve dependent engineering and acquisition work
+
+| Area and owner recovery | Concrete prerequisite and remaining exit |
+| --- | --- |
+| M3 contact/audio, runtime and conversion owners | Recover the accepted finite conversion/audio contracts before extending full-organ or indefinite capacity. Independently specify absolute scheduling, partition/reset/drain behavior, history publication and retirement, default-PCM preservation, callback work and deadline evidence before Engine/adapter integration. Acquire identified synchronized contact/source/dry captures for physical bounce, resistance, loading and timing. |
+| M4 scanner / ScannerLineFoh owner | Preserve the original G5 same-Hz failure and each realization's own frozen gates. Verify revision-specific loaded connectivity, independent AC/transient/mode transitions, stability and actual scanner captures before any live connection. |
+| M5 organ electronics | Independently trace the complete identified AO-28 graph, transformer/loading and operating-point inputs. Validate the whole dry G–G boundary, nonlinear convergence and alias behavior before fitting a cabinet downstream. Missing values remain explicit unknowns. |
+| M6–M7 Leslie, crossover/fidelity and waveform owners | Keep 122/147 variants separate; acquire amplifier/transformer/crossover/driver loading and electrical captures. Preserve one owner per effect and separate horn/drum radiation. R4 acceptance stays with its owner; R5 audible policy and R6 runtime/Engine integration remain separate. |
+| M8 calibration | Follow [A1–A6 acquisition](CALIBRATION_NEXT_ACQUISITION.md): specimen/revision, permissions, calibrated chain/clock, immutable raw files, uncertainty and frozen held-out groups precede fitting. A synthetic audition or schema pass is not an acquired measurement. |
+| M9 product release | Execute actual platform/DAW/device journeys, native accessibility and callback deadline/retirement gates. Complete [rights](DEPENDENCIES_AND_RIGHTS.md), packaging and [signed distribution](RELEASE_READINESS.md) independently of numerical/UI passes. |
+
+Preserve the nominal dry Engine, 91 shared free-running sources, 47 parameter
+identities, state4/readers 1–3, plugin UUIDs and existing musical histories.
+Recover the [native-close review](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md)
+before below-RtMidi fault injection or checked-close work; a source-proven risk
+is not an observed hardware failure, and synchronous fixtures do not establish
+OS callback retirement.
+
+### Validate this session's actual records
+
+This request's [ledger](development/2026-11-16-heading-title-continuation/assignments.json)
+and checker belong to the heading/title/header continuation. From the repository
+root:
+
+```sh
+python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py
+python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py --strict
+```
+
+The current checker has **no `--repo` option**. Progress mode permits truthful
+unfinished assignments; strict closure requires all sixty accepted distinct
+records and substantive matching notes in ten six-worker waves. It validates
+record consistency, not external dispatch, product quality, publication, CI or
+fidelity. Planned slots, earlier sessions and follow-ups never count as new
+workers. Preserve the actual result only after execution; no closure is implied
+by this command example.
+
+Checkpoint after every wave and before long operations/context changes: current
+source and dependencies, exclusive paths, actual outcomes and retained failures,
+resource use and concrete next inputs/acceptance. Root publishes accepted
+authorized work, independently verifies it, and updates the handoff without
+requesting renewed permission for this scope. Preserve original evidence and
+other workspaces; remove only owned reproducible intermediates when needed.
+<!-- heading-title-next-current:end -->
+
 <!-- preset-library-next:start -->
-## Current portable registration/apron continuation — 16 November 2026
+## Retained portable registration/apron continuation — 16 November 2026
+
+This section preserves that session's dated state and proposals. The current
+sequence above supersedes its former next-task and workspace routing; its
+original failures, source-specific passes and separate owners remain intact.
 
 Resume this [session](development/2026-11-16-preset-library-continuation/README.md),
 [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md),
@@ -389,7 +527,7 @@ unmet and unwaived.** A whole-interface comparison needs its own complete
 reference/source/state/dimension criteria; a protected crop, patch statistic or
 decorative cabinet equality cannot close it.
 
-### Validate this session's actual records
+### Validate the historical streaming records
 
 Use only this streaming session's
 [actual assignments](development/2026-11-15-streaming-continuation/assignments.json).
