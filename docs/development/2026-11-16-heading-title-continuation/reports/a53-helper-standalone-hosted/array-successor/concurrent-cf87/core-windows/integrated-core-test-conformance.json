@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "scope": "Read-only conformance of root integrated header mock-path change and incoming capture test bytes; no source mutation or project execution by A53.",
+  "incoming_source": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "header": {
+    "path": "tests/test_compare_header_material.py",
+    "A52_before": {
+      "bytes": 34435,
+      "sha256": "4832837c0465e875ac7873ada1d7b005f7da8c727fa7467621f85aa6d7adb8f8"
+    },
+    "root_current": {
+      "bytes": 34446,
+      "sha256": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+    },
+    "complete_file_inverse_exactly_restores_A52_bytes": true,
+    "sole_change": "Insertion key row[\"path\"] becomes str(Path(row[\"path\"])); original record values preserved.",
+    "all_32_test_method_ASTs_identical": true,
+    "top_level_constant_ASTs_identical": true,
+    "all_indexed_array_additions_preserved": true
+  },
+  "capture": {
+    "path": "tests/test_capture_standalone_interface.py",
+    "root_current": {
+      "bytes": 58284,
+      "sha256": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc"
+    },
+    "byte_identical_to_incoming_d2ed": true,
+    "method_count": 45
+  },
+  "unchanged_production_tools": {
+    "tools/capture_standalone_interface.py": {
+      "bytes": 41587,
+      "sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 100851,
+      "sha256": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328"
+    }
+  },
+  "A56_actual_retained_streams": [
+    {
+      "stdout": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-repair-test_capture_standalone_interface.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-repair-test_capture_standalone_interface.stderr",
+        "bytes": 8341,
+        "sha256": "959b490dad80df99b36ebffe6e7288723e6cccf6600686c8dd869cb07b742bc2"
+      },
+      "tail": [
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 45 tests in 1.813s",
+        "",
+        "OK"
+      ],
+      "recorded_exit_code": 0
+    },
+    {
+      "stdout": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-repair-test_compare_header_material.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/windows-repair-test_compare_header_material.stderr",
+        "bytes": 4077,
+        "sha256": "9a3ab0cdb054ab8b49125b13534f2d811599081418a1d998a2cc38d72d4a4c32"
+      },
+      "tail": [
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 24 tests in 0.629s",
+        "",
+        "OK"
+      ],
+      "recorded_exit_code": 0
+    }
+  ],
+  "qualification_boundary": "The retained A56 source suites ran on Linux, not Windows. Pure path/source checks and exact file conformance do not replace the upcoming actual reconciled-source Windows run."
+}

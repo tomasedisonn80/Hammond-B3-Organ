@@ -1,0 +1,626 @@
+{
+  "recorded_utc": "2026-11-17T05:50:46.884Z",
+  "run": {
+    "id": 44026516616,
+    "name": "Native VST3",
+    "path": ".github/workflows/native-vst3.yml",
+    "event": "push",
+    "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "head_branch": "main",
+    "status": "queued",
+    "conclusion": null,
+    "run_attempt": 1,
+    "created_at": "2026-11-17T05:47:11Z",
+    "updated_at": "2026-11-17T05:47:11Z",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616"
+  },
+  "source": {
+    "sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "tree": {
+      "sha": "c96fe07c4241f5afe423306945508a114506f0c2",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/trees/c96fe07c4241f5afe423306945508a114506f0c2"
+    },
+    "parents": [
+      {
+        "sha": "03c70c103a4a0dd72b323529416b909c19a4e139",
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits/03c70c103a4a0dd72b323529416b909c19a4e139",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/03c70c103a4a0dd72b323529416b909c19a4e139"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "id": 133848046537,
+      "run_id": 44026516616,
+      "workflow_name": "Native VST3",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfKfcbyQ",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046537",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046537",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T05:47:12Z",
+      "started_at": "2026-11-17T05:47:14Z",
+      "completed_at": "2026-11-17T05:49:23Z",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:14Z",
+          "completed_at": "2026-11-17T05:47:15Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:15Z",
+          "completed_at": "2026-11-17T05:47:29Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:29Z",
+          "completed_at": "2026-11-17T05:47:29Z"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:29Z",
+          "completed_at": "2026-11-17T05:47:32Z"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:32Z",
+          "completed_at": "2026-11-17T05:47:38Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:38Z",
+          "completed_at": "2026-11-17T05:47:38Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:38Z",
+          "completed_at": "2026-11-17T05:47:58Z"
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:47:58Z",
+          "completed_at": "2026-11-17T05:49:08Z"
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:49:08Z",
+          "completed_at": "2026-11-17T05:49:16Z"
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T05:49:16Z",
+          "completed_at": "2026-11-17T05:49:16Z"
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T05:49:16Z",
+          "completed_at": "2026-11-17T05:49:17Z"
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T05:49:17Z",
+          "completed_at": "2026-11-17T05:49:19Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-17T05:49:19Z",
+          "completed_at": "2026-11-17T05:49:19Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-17T05:49:19Z",
+          "completed_at": "2026-11-17T05:49:21Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-11-17T05:49:21Z",
+          "completed_at": "2026-11-17T05:49:21Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046537",
+      "labels": [
+        "windows-2022"
+      ],
+      "runner_id": 1000001411,
+      "runner_name": "GitHub Actions 1000001411",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 133848046789,
+      "run_id": 44026516616,
+      "workflow_name": "Native VST3",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfKfccxQ",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046789",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046789",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-11-17T05:47:12Z",
+      "started_at": "2026-11-17T05:47:17Z",
+      "completed_at": null,
+      "name": "Native VST3 (macOS Intel AppleClang)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:18Z",
+          "completed_at": "2026-11-17T05:47:22Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:22Z",
+          "completed_at": "2026-11-17T05:47:35Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:35Z",
+          "completed_at": "2026-11-17T05:47:36Z"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:36Z",
+          "completed_at": "2026-11-17T05:47:37Z"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:37Z",
+          "completed_at": "2026-11-17T05:47:42Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:42Z",
+          "completed_at": "2026-11-17T05:47:59Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:59Z",
+          "completed_at": "2026-11-17T05:47:59Z"
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:47:59Z",
+          "completed_at": "2026-11-17T05:50:06Z"
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:50:06Z",
+          "completed_at": "2026-11-17T05:50:14Z"
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T05:50:14Z",
+          "completed_at": "2026-11-17T05:50:14Z"
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T05:50:14Z",
+          "completed_at": "2026-11-17T05:50:16Z"
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T05:50:16Z",
+          "completed_at": "2026-11-17T05:50:18Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-17T05:50:18Z",
+          "completed_at": "2026-11-17T05:50:18Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-17T05:50:18Z",
+          "completed_at": "2026-11-17T05:50:19Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 25,
+          "started_at": "2026-11-17T05:50:19Z",
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046789",
+      "labels": [
+        "macos-15-intel"
+      ],
+      "runner_id": 1000001412,
+      "runner_name": "GitHub Actions 1000001412",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 133848046857,
+      "run_id": 44026516616,
+      "workflow_name": "Native VST3",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfKfcdCQ",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046857",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046857",
+      "status": "queued",
+      "conclusion": null,
+      "created_at": "2026-11-17T05:47:12Z",
+      "started_at": "2026-11-17T05:47:12Z",
+      "completed_at": null,
+      "name": "Native VST3 (macOS AppleClang)",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046857",
+      "labels": [
+        "macos-15"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 133848046935,
+      "run_id": 44026516616,
+      "workflow_name": "Native VST3",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVrmZNc8AAAAfKfcdVw",
+      "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/jobs/133848046935",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616/job/133848046935",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T05:47:12Z",
+      "started_at": "2026-11-17T05:47:14Z",
+      "completed_at": "2026-11-17T05:48:22Z",
+      "name": "Native VST3 (Linux GCC)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T05:47:14Z",
+          "completed_at": "2026-11-17T05:47:16Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T05:47:16Z",
+          "completed_at": "2026-11-17T05:47:23Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T05:47:23Z",
+          "completed_at": "2026-11-17T05:47:23Z"
+        },
+        {
+          "name": "Record actual source and runner provenance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T05:47:23Z",
+          "completed_at": "2026-11-17T05:47:25Z"
+        },
+        {
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T05:47:25Z",
+          "completed_at": "2026-11-17T05:47:27Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T05:47:27Z",
+          "completed_at": "2026-11-17T05:47:29Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-11-17T05:47:29Z",
+          "completed_at": "2026-11-17T05:47:29Z"
+        },
+        {
+          "name": "Build the bundle and every native test input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T05:47:29Z",
+          "completed_at": "2026-11-17T05:48:14Z"
+        },
+        {
+          "name": "Validate the actual module and run the native tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T05:48:14Z",
+          "completed_at": "2026-11-17T05:48:19Z"
+        },
+        {
+          "name": "Inventory and archive the validated native bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T05:48:19Z",
+          "completed_at": "2026-11-17T05:48:19Z"
+        },
+        {
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T05:48:19Z",
+          "completed_at": "2026-11-17T05:48:20Z"
+        },
+        {
+          "name": "Retain the qualified bundle and byte inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T05:48:20Z",
+          "completed_at": "2026-11-17T05:48:21Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-17T05:48:21Z",
+          "completed_at": "2026-11-17T05:48:21Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-17T05:48:21Z",
+          "completed_at": "2026-11-17T05:48:21Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-11-17T05:48:21Z",
+          "completed_at": "2026-11-17T05:48:21Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-runs/133848046935",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001421,
+      "runner_name": "GitHub Actions 1000001421",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14304175065,
+      "node_id": "MDg6QXJ0aWZhY3QxNDMwNDE3NTA2NQ==",
+      "name": "native-vst3-macos-15-intel-X64-release-diagnostics-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+      "size_in_bytes": 49255,
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14304175065",
+      "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14304175065/zip",
+      "expired": false,
+      "digest": "sha256:dd7dd267cf6ff758c3ae9f1066da060344062a60cf91e548206d8f1933dd1151",
+      "created_at": "2026-11-17T05:50:17Z",
+      "updated_at": "2026-11-17T05:50:17Z",
+      "expires_at": "2026-12-01T05:50:15Z",
+      "workflow_run": {
+        "id": 44026516616,
+        "repository_id": 1455003957,
+        "head_repository_id": 1455003957,
+        "head_branch": "main",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      }
+    },
+    {
+      "id": 14303830651,
+      "node_id": "MDg6QXJ0aWZhY3QxNDMwMzgzMDY1MQ==",
+      "name": "native-vst3-ubuntu-24.04-X64-release-diagnostics-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+      "size_in_bytes": 41307,
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14303830651",
+      "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14303830651/zip",
+      "expired": false,
+      "digest": "sha256:5c63e496472d82c1d08fc9f437659622b05d0c4110ac6fef54e728f40aa7eb1a",
+      "created_at": "2026-11-17T05:48:20Z",
+      "updated_at": "2026-11-17T05:48:20Z",
+      "expires_at": "2026-12-01T05:48:19Z",
+      "workflow_run": {
+        "id": 44026516616,
+        "repository_id": 1455003957,
+        "head_repository_id": 1455003957,
+        "head_branch": "main",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      }
+    },
+    {
+      "id": 14303491520,
+      "node_id": "MDg6QXJ0aWZhY3QxNDMwMzQ5MTUyMA==",
+      "name": "native-vst3-macos-15-intel-X64-release-bundle-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+      "size_in_bytes": 179340,
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14303491520",
+      "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14303491520/zip",
+      "expired": false,
+      "digest": "sha256:1899cfad433efcad104e798009b54796967d2f344cd73d0772eb177da6830711",
+      "created_at": "2026-11-17T05:50:18Z",
+      "updated_at": "2026-11-17T05:50:18Z",
+      "expires_at": "2026-12-01T05:50:16Z",
+      "workflow_run": {
+        "id": 44026516616,
+        "repository_id": 1455003957,
+        "head_repository_id": 1455003957,
+        "head_branch": "main",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      }
+    },
+    {
+      "id": 14303411177,
+      "node_id": "MDg6QXJ0aWZhY3QxNDMwMzQxMTE3Nw==",
+      "name": "native-vst3-ubuntu-24.04-X64-release-bundle-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+      "size_in_bytes": 198624,
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14303411177",
+      "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14303411177/zip",
+      "expired": false,
+      "digest": "sha256:211cd532c811559625c6b5dcbee596447100b2fa3982b9536007ac6a79f8ab0c",
+      "created_at": "2026-11-17T05:48:21Z",
+      "updated_at": "2026-11-17T05:48:21Z",
+      "expires_at": "2026-12-01T05:48:20Z",
+      "workflow_run": {
+        "id": 44026516616,
+        "repository_id": 1455003957,
+        "head_repository_id": 1455003957,
+        "head_branch": "main",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      }
+    },
+    {
+      "id": 14302804248,
+      "node_id": "MDg6QXJ0aWZhY3QxNDMwMjgwNDI0OA==",
+      "name": "native-vst3-windows-2022-X64-release-bundle-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+      "size_in_bytes": 421160,
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14302804248",
+      "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14302804248/zip",
+      "expired": false,
+      "digest": "sha256:b896b5583cc4596631ad7a4a35792ea77ac84c407eddbad7aa7a34b4f965d8ec",
+      "created_at": "2026-11-17T05:49:19Z",
+      "updated_at": "2026-11-17T05:49:19Z",
+      "expires_at": "2026-12-01T05:49:18Z",
+      "workflow_run": {
+        "id": 44026516616,
+        "repository_id": 1455003957,
+        "head_repository_id": 1455003957,
+        "head_branch": "main",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      }
+    },
+    {
+      "id": 14302789450,
+      "node_id": "MDg6QXJ0aWZhY3QxNDMwMjc4OTQ1MA==",
+      "name": "native-vst3-windows-2022-X64-release-diagnostics-6287055a111dc4e2747564da3d48edc9b65e2e3e-1",
+      "size_in_bytes": 37716,
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14302789450",
+      "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14302789450/zip",
+      "expired": false,
+      "digest": "sha256:c21137778c7d4387852d73dbe2117d9e813d2fe4f18954005dc986d1ded7e64f",
+      "created_at": "2026-11-17T05:49:17Z",
+      "updated_at": "2026-11-17T05:49:17Z",
+      "expires_at": "2026-12-01T05:49:17Z",
+      "workflow_run": {
+        "id": 44026516616,
+        "repository_id": 1455003957,
+        "head_repository_id": 1455003957,
+        "head_branch": "main",
+        "head_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+      }
+    }
+  ]
+}

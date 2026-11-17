@@ -1,0 +1,125 @@
+{
+  "affected_ctests": [
+    {
+      "case_result": "test_standalone_footage_typography_raster-result.json",
+      "name": "test_standalone_footage_typography_raster",
+      "seconds": 12.5813,
+      "status": "passed"
+    },
+    {
+      "case_result": "test_standalone_title_density-result.json",
+      "name": "test_standalone_title_density",
+      "seconds": 4.53338,
+      "status": "passed"
+    },
+    {
+      "case_result": "test_standalone_header_material-result.json",
+      "name": "test_standalone_header_material",
+      "seconds": 29.8605,
+      "status": "passed"
+    },
+    {
+      "case_result": "test_standalone_header_statistics-result.json",
+      "name": "test_standalone_header_statistics",
+      "seconds": 0.551328,
+      "status": "passed"
+    }
+  ],
+  "all_four_original_ctests_passed": true,
+  "before_after_exact_inventory_header_and_pixels_identical": true,
+  "captures": [
+    {
+      "case": 0,
+      "child_timeout_seconds": 20,
+      "cleanup_timeout_seconds": 5,
+      "executable": {
+        "bytes": 3813304,
+        "sha256": "d8de88b376232b075b5a95d3e79bfdde3c5fda7219fc4fa158f46f70c54638f6"
+      },
+      "fixture": "test_standalone_footage_typography_raster",
+      "header_archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-array-local/after-test_standalone_footage_typography_raster-header.bin.gz",
+      "header_archive_identity": {
+        "bytes": 10699,
+        "sha256": "3801d98248f3ef5e553b6817b66445b61c7a5817ba88aaf307c3b95323693ba6"
+      },
+      "header_bytes": 59719,
+      "header_sha256": "ed941d4d8096bfabfc9b56454e9bf98e1c07fce11a97dc1b6542e41e3230704f",
+      "images_persisted": 0,
+      "inventory_bytes": 11377,
+      "inventory_cap_bytes": 65536,
+      "inventory_cases": 44,
+      "inventory_sha256": "9a2a98fbafaa50354c3304b8ca33054e4d4b8cd86d33a0f02b90ce2e8a725c02",
+      "reader": {
+        "bytes": 23467,
+        "sha256": "e1dc7a895032c5a1aeb565007f87297adc819fe513cec7ddc74a757df394340c"
+      },
+      "rgba_bytes": 6622200,
+      "rgba_sha256": "0567c4102101e3a077dd10014403a97e5613ab5d1ff44b0f0b3efa4d598cbdd5",
+      "stderr_cap_bytes": 65536,
+      "stdout_bytes": 6681919,
+      "stdout_cap_bytes": 7146489,
+      "stdout_sha256": "48a1944613d81a8d34bbc1a20423851b1a5a8b8ec43fbc529634eb6704251af9",
+      "strict_original_protocol_parser_passed": true
+    },
+    {
+      "case": 46,
+      "child_timeout_seconds": 20,
+      "cleanup_timeout_seconds": 5,
+      "executable": {
+        "bytes": 3817680,
+        "sha256": "e4ad5db13f2423cb63e5765ca6569977d3d8c08fe649ae43e4a643ac2f4b4920"
+      },
+      "fixture": "test_standalone_header_material",
+      "header_archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-array-local/after-test_standalone_header_material-header.bin.gz",
+      "header_archive_identity": {
+        "bytes": 37884,
+        "sha256": "d9fe67b5a67671feaf3ed3ef29969268f226330350bf36d651d2a1d102538b47"
+      },
+      "header_bytes": 231432,
+      "header_sha256": "eefcf5c0fba5fdb77b4fbcc878c4a4cf9fd0d7855e979de24478ae5fb8efc273",
+      "images_persisted": 0,
+      "inventory_bytes": 24054,
+      "inventory_cap_bytes": 65536,
+      "inventory_cases": 48,
+      "inventory_sha256": "feba3c0358c376de2026a91fb419a9f741f8f31ad93062a907f1116cb1597558",
+      "reader": {
+        "bytes": 34239,
+        "sha256": "8391e2c0b8338a50e2d374c676ff1cbf4793af4c3be76d9e346e69e53f477f75"
+      },
+      "rgba_bytes": 6293408,
+      "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+      "stderr_cap_bytes": 65536,
+      "stdout_bytes": 6524840,
+      "stdout_cap_bytes": 6817697,
+      "stdout_sha256": "1c073c5f6b88934dde06d6670db617e321b66641f0ddb01f097a77862df9c052",
+      "strict_original_protocol_parser_passed": true
+    }
+  ],
+  "changed_code_inputs": [
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+    "apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "apps/standalone/native_tests/test_standalone_header_statistics.py",
+    "apps/standalone/native_tests/test_standalone_title_density.py"
+  ],
+  "compared_fields": [
+    "inventory_bytes",
+    "inventory_sha256",
+    "inventory_cases",
+    "stdout_bytes",
+    "stdout_sha256",
+    "header_bytes",
+    "header_sha256",
+    "rgba_bytes",
+    "rgba_sha256"
+  ],
+  "original_fixture_sources_and_binaries_preserved_in_scratch": "/workspace/scratch/5a28c3564dbf/windows-array-original-native",
+  "other_code_inputs_unchanged": 471,
+  "production_application": {
+    "bytes": 4103352,
+    "sha256": "1fa2a247e6e90379540ad431776241a885b93223430ac3b0798480d58e96a28a"
+  },
+  "proposal_patch_sha256": "339110fb94af1658251ea0e7939c539798bd6d9f35b3b5725303f37fc4fb9d48",
+  "recorded_utc": "2026-11-17T06:25:49.679171+00:00",
+  "scope": "Once-only affected Linux Release qualification; Windows repair requires its separate actual execution. No production, Python predicates, fixture workload or deadline changes; no full-suite pass inferred.",
+  "source_base": "6287055a111dc4e2747564da3d48edc9b65e2e3e"
+}

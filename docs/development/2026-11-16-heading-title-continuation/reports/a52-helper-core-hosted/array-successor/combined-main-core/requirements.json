@@ -1,0 +1,57 @@
+{
+  "additional_source_affected_tests": [
+    "python_test_compare_header_material",
+    "python_test_compare_performance_plate",
+    "python_test_capture_standalone_interface",
+    "test_standalone_library_model",
+    "test_standalone_library_session",
+    "test_standalone_library_storage",
+    "test_standalone_library_recall",
+    "test_standalone_library_roundtrip"
+  ],
+  "artifacts": "Metadata and log-upload identities will be checked. Artifact bodies will be labeled unread unless independently retrieved.",
+  "attempt": 1,
+  "expected_registered_test_count": 209,
+  "no_native_execution_or_rerun": true,
+  "no_source_or_test_mutations": true,
+  "preserved_previous_files": 110,
+  "r4": "Require actual report-admission self-test and check_rotary_waveform_full completion/result, including full qualification duration and zero failures.",
+  "release_timeout_seconds": 300,
+  "required_families": [
+    "Release (Linux GCC)",
+    "Release (macOS AppleClang)",
+    "Release (macOS Intel AppleClang)",
+    "Release (Windows MSVC)",
+    "Linux GCC ASan + UBSan + leaks",
+    "Complete R4 waveform qualification (Linux GCC)"
+  ],
+  "required_registration_apron_tests": [
+    "test_control_file_input",
+    "test_standalone_registration_library",
+    "python_test_registration_cli",
+    "python_test_registration_cli_admission",
+    "python_test_render_controls",
+    "python_test_render_controls_admission",
+    "python_test_starter_registration_generator",
+    "python_test_starter_registration_oracle",
+    "python_test_starter_auditions",
+    "python_test_registration_install",
+    "python_test_reference_apron_art",
+    "python_test_reference_apron_raster_checker"
+  ],
+  "run_id": 44038196587,
+  "sanitizer_job_environment": {
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+  },
+  "sanitizer_scope": "Require actual GNU compile/link instrumentation and executed job policies. Existing test_standalone_midi_backend_quarantine alone has an intentional CMake detect_leaks=0 override; it remains explicitly scoped, not misdescribed as leak checked.",
+  "sanitizer_timeout_seconds": 600,
+  "source_commit": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "source_tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+  "test_count_scope": "Expectation to be compared with actual five unfiltered CTest logs, not an execution claim.",
+  "workflow": {
+    "bytes": 20374,
+    "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+  }
+}

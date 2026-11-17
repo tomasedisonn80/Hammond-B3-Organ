@@ -1,0 +1,1019 @@
+{
+  "schema": 1,
+  "observed_utc": "2026-11-17T07:07:58Z",
+  "observer": "A53 same accepted worker; bounded read-only follow-up",
+  "source_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "source_tree": "45f3f2bc1bc844061be7d1303b13b10bfaba9938",
+  "parent": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "run": {
+    "id": 44034656779,
+    "run_attempt": 1,
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44034656779",
+    "status": "in_progress",
+    "conclusion": null,
+    "created_at": "2026-11-17T06:54:20Z",
+    "updated_at": "2026-11-17T06:54:31Z"
+  },
+  "jobs": [
+    {
+      "id": 133874509009,
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "run_attempt": 1,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001447,
+      "runner_name": "GitHub Actions 1000001447",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "completed_at": "2026-11-17T06:54:27Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:27Z",
+          "completed_at": "2026-11-17T06:54:47Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:47Z",
+          "completed_at": "2026-11-17T06:54:48Z"
+        },
+        {
+          "name": "Record the revision, sanitizer policy and tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:48Z",
+          "completed_at": "2026-11-17T06:54:52Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "completed_at": "2026-11-17T06:54:55Z"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:55Z",
+          "completed_at": "2026-11-17T06:55:26Z"
+        },
+        {
+          "name": "Configure native Release with project and SDL sanitizers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:26Z",
+          "completed_at": "2026-11-17T06:55:42Z"
+        },
+        {
+          "name": "Build the thirty-seven selected acceptance inputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:42Z",
+          "completed_at": "2026-11-17T07:01:49Z"
+        },
+        {
+          "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T07:01:49Z",
+          "completed_at": "2026-11-17T07:01:50Z"
+        },
+        {
+          "name": "Discover exactly forty-one gates and run with leak checking",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 10,
+          "started_at": "2026-11-17T07:01:50Z",
+          "completed_at": null
+        },
+        {
+          "name": "Reverify source and locked SDL2 after acceptance",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain native sanitizer diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 23,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 24,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133874509183,
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "run_attempt": 1,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001448,
+      "runner_name": "GitHub Actions 1000001448",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T07:05:40Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "completed_at": "2026-11-17T06:54:24Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:24Z",
+          "completed_at": "2026-11-17T06:54:49Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:49Z",
+          "completed_at": "2026-11-17T06:54:49Z"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:49Z",
+          "completed_at": "2026-11-17T06:54:52Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "completed_at": "2026-11-17T06:54:54Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:54Z",
+          "completed_at": "2026-11-17T06:54:55Z"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:55Z",
+          "completed_at": "2026-11-17T06:55:12Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:12Z",
+          "completed_at": "2026-11-17T06:55:35Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:35Z",
+          "completed_at": "2026-11-17T06:55:35Z"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:35Z",
+          "completed_at": "2026-11-17T06:55:35Z"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:35Z",
+          "completed_at": "2026-11-17T06:58:06Z"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T06:58:06Z",
+          "completed_at": "2026-11-17T06:58:06Z"
+        },
+        {
+          "name": "Run all required standalone and capture acceptance tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-17T06:58:06Z",
+          "completed_at": "2026-11-17T07:05:30Z"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-17T07:05:30Z",
+          "completed_at": "2026-11-17T07:05:31Z"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T07:05:31Z",
+          "completed_at": "2026-11-17T07:05:33Z"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-17T07:05:33Z",
+          "completed_at": "2026-11-17T07:05:35Z"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-17T07:05:35Z",
+          "completed_at": "2026-11-17T07:05:37Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-11-17T07:05:37Z",
+          "completed_at": "2026-11-17T07:05:37Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-11-17T07:05:37Z",
+          "completed_at": "2026-11-17T07:05:37Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-11-17T07:05:37Z",
+          "completed_at": "2026-11-17T07:05:37Z"
+        }
+      ]
+    },
+    {
+      "id": 133874509242,
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "run_attempt": 1,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001452,
+      "runner_name": "GitHub Actions 1000001452",
+      "labels": [
+        "windows-2022"
+      ],
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "completed_at": "2026-11-17T06:54:25Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:25Z",
+          "completed_at": "2026-11-17T06:54:55Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:55Z",
+          "completed_at": "2026-11-17T06:54:55Z"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:55Z",
+          "completed_at": "2026-11-17T06:55:00Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:55:00Z",
+          "completed_at": "2026-11-17T06:55:02Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:55:02Z",
+          "completed_at": "2026-11-17T06:55:04Z"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:04Z",
+          "completed_at": "2026-11-17T06:55:04Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:04Z",
+          "completed_at": "2026-11-17T06:55:04Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:04Z",
+          "completed_at": "2026-11-17T06:55:50Z"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:50Z",
+          "completed_at": "2026-11-17T06:55:51Z"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:51Z",
+          "completed_at": "2026-11-17T07:00:04Z"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T07:00:04Z",
+          "completed_at": "2026-11-17T07:00:04Z"
+        },
+        {
+          "name": "Run all required standalone and capture acceptance tests",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 13,
+          "started_at": "2026-11-17T07:00:04Z",
+          "completed_at": null
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 16,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "pending",
+          "conclusion": null,
+          "number": 17,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 33,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 34,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "id": 133874509299,
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "run_attempt": 1,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001455,
+      "runner_name": "GitHub Actions 1000001455",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T07:05:11Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:24Z",
+          "completed_at": "2026-11-17T06:54:26Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:26Z",
+          "completed_at": "2026-11-17T06:54:47Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:47Z",
+          "completed_at": "2026-11-17T06:54:48Z"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:48Z",
+          "completed_at": "2026-11-17T06:54:52Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "completed_at": "2026-11-17T06:54:55Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:55Z",
+          "completed_at": "2026-11-17T06:54:55Z"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:55Z",
+          "completed_at": "2026-11-17T06:55:31Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:31Z",
+          "completed_at": "2026-11-17T06:55:46Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:46Z",
+          "completed_at": "2026-11-17T06:55:46Z"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:46Z",
+          "completed_at": "2026-11-17T06:55:46Z"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:46Z",
+          "completed_at": "2026-11-17T06:58:06Z"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T06:58:06Z",
+          "completed_at": "2026-11-17T06:58:06Z"
+        },
+        {
+          "name": "Run all required standalone and capture acceptance tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-17T06:58:06Z",
+          "completed_at": "2026-11-17T07:05:00Z"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-17T07:05:00Z",
+          "completed_at": "2026-11-17T07:05:01Z"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T07:05:01Z",
+          "completed_at": "2026-11-17T07:05:04Z"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-17T07:05:04Z",
+          "completed_at": "2026-11-17T07:05:06Z"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-17T07:05:06Z",
+          "completed_at": "2026-11-17T07:05:08Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-11-17T07:05:08Z",
+          "completed_at": "2026-11-17T07:05:08Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-11-17T07:05:08Z",
+          "completed_at": "2026-11-17T07:05:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-11-17T07:05:08Z",
+          "completed_at": "2026-11-17T07:05:08Z"
+        }
+      ]
+    },
+    {
+      "id": 133874509422,
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "run_attempt": 1,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_id": 1000001458,
+      "runner_name": "GitHub Actions 1000001458",
+      "labels": [
+        "macos-15"
+      ],
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": "2026-11-17T07:04:51Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "completed_at": "2026-11-17T06:54:24Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:24Z",
+          "completed_at": "2026-11-17T06:54:50Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:50Z",
+          "completed_at": "2026-11-17T06:54:50Z"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:50Z",
+          "completed_at": "2026-11-17T06:54:52Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:52Z",
+          "completed_at": "2026-11-17T06:54:55Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:55Z",
+          "completed_at": "2026-11-17T06:54:56Z"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-11-17T06:54:56Z",
+          "completed_at": "2026-11-17T06:54:56Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:54:56Z",
+          "completed_at": "2026-11-17T06:55:44Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-17T06:55:44Z",
+          "completed_at": "2026-11-17T06:55:44Z"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T06:55:44Z",
+          "completed_at": "2026-11-17T06:55:44Z"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T06:55:44Z",
+          "completed_at": "2026-11-17T06:57:47Z"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T06:57:47Z",
+          "completed_at": "2026-11-17T06:57:48Z"
+        },
+        {
+          "name": "Run all required standalone and capture acceptance tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-17T06:57:48Z",
+          "completed_at": "2026-11-17T07:04:41Z"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-17T07:04:41Z",
+          "completed_at": "2026-11-17T07:04:43Z"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T07:04:43Z",
+          "completed_at": "2026-11-17T07:04:45Z"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-17T07:04:45Z",
+          "completed_at": "2026-11-17T07:04:46Z"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-17T07:04:46Z",
+          "completed_at": "2026-11-17T07:04:47Z"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-11-17T07:04:47Z",
+          "completed_at": "2026-11-17T07:04:47Z"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-11-17T07:04:47Z",
+          "completed_at": "2026-11-17T07:04:48Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-11-17T07:04:48Z",
+          "completed_at": "2026-11-17T07:04:49Z"
+        }
+      ]
+    },
+    {
+      "id": 133874509606,
+      "head_sha": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+      "run_attempt": 1,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_id": 1000001449,
+      "runner_name": "GitHub Actions 1000001449",
+      "labels": [
+        "macos-15-intel"
+      ],
+      "started_at": "2026-11-17T06:54:23Z",
+      "completed_at": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T06:54:23Z",
+          "completed_at": "2026-11-17T06:54:26Z"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T06:54:26Z",
+          "completed_at": "2026-11-17T06:54:52Z"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T06:54:52Z",
+          "completed_at": "2026-11-17T06:54:53Z"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T06:54:53Z",
+          "completed_at": "2026-11-17T06:54:54Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T06:54:54Z",
+          "completed_at": "2026-11-17T06:54:57Z"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-17T06:54:57Z",
+          "completed_at": "2026-11-17T06:55:00Z"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-11-17T06:55:00Z",
+          "completed_at": "2026-11-17T06:55:00Z"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-17T06:55:00Z",
+          "completed_at": "2026-11-17T06:56:38Z"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-17T06:56:38Z",
+          "completed_at": "2026-11-17T06:56:38Z"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T06:56:38Z",
+          "completed_at": "2026-11-17T06:56:38Z"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T06:56:38Z",
+          "completed_at": "2026-11-17T07:00:26Z"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-17T07:00:26Z",
+          "completed_at": "2026-11-17T07:00:26Z"
+        },
+        {
+          "name": "Run all required standalone and capture acceptance tests",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 13,
+          "started_at": "2026-11-17T07:00:26Z",
+          "completed_at": null
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "pending",
+          "conclusion": null,
+          "number": 16,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "pending",
+          "conclusion": null,
+          "number": 17,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "pending",
+          "conclusion": null,
+          "number": 33,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "pending",
+          "conclusion": null,
+          "number": 34,
+          "started_at": null,
+          "completed_at": null
+        }
+      ]
+    }
+  ],
+  "scope": "Final run/job metadata and original complete Windows failure log if it fails. Other root retains the full suite. No source-result transfer, retry or mutation.",
+  "windows_observed_boundary": "Build completed successfully and all required standalone/capture acceptance tests are currently running. No final Windows test outcome yet."
+}

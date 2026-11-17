@@ -1,3 +1,312 @@
+## Current reconciled source and continuation — 17 November 2026
+
+**Next development:** independently admit model-owned Save availability and fresh
+post-Start proof, then input/focus/main-loop routing and the native browser.
+Recover current owners first; the bounded reference-interface work and full
+M0–M9 exits remain binding.
+
+[Published source and preserving integration](reports/reconciled-integration/incoming-application.json):
+`523c1979334b0fbb624ce120128a0b8ada078383`, tree `893441fe87859b9dbad81a5d81a453f7c96030f8`.
+**All sixteen required jobs succeeded on attempt 1 at this source.**
+Its five Python reader/admission/diagnostic changes preserve the production
+application, C++ fixtures, build/workflow inputs, numerical criteria and limits.
+The [independent source review](reports/a52-helper-core-hosted/array-successor/reconciled-main-core/incoming-source-review.json)
+retains every earlier test method and the strict complete-source reversals.
+
+| Workflow | Required jobs | Actual outcome at this source |
+| --- | ---: | --- |
+| Core | 6 | 6/6 passed: five 209/209 registered CTest suites and full R4 [run 44043394024](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024) |
+| Native standalone | 6 | 6/6 passed: five normal 78/78 suites; sanitizer 41/41 [run 44043394005](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005) |
+| Native VST3 | 4 | 4/4 passed: 29 native CTest observations; actual module validator 47 passed / zero failed per platform [run 44043394002](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002) |
+
+The [complete terminal matrix](reports/reconciled-ci-complete.json)
+and independent [Core](reports/a52-helper-core-hosted/array-successor/reconciled-main-core/CORE_REVIEW.md), [standalone](reports/a53-helper-standalone-hosted/array-successor/reconciled-main-standalone/review.md)
+and [VST3](reports/a54-helper-vst3-hosted/array-successor/reconciled-main-vst3/review.md) reviews bind these executions.
+The [source/input-equivalence record](reports/reconciled-final-integrity.json)
+identifies the stage and inputs root actually verified; final staged acceptance
+and guarded documentary publication remain root-owned operations recorded there.
+Recover actual live HEAD/tree and fresh remote state from the
+[checkpoint](CHECKPOINT.md). A later documentation descendant is distinct
+from this tested source and creates no new native execution.
+The [previous 548 matrix](reports/combined-ci-complete.json)
+and every original failed outcome remain immutable.
+
+This heading continuation retains **60 accepted workers / ten complete waves**
+and fresh textual coverage of **all 500 pages** in its
+[ledger](assignments.json), [strict result](reports/helper-worker-strict.json)
+and [reading receipt](reports/atlas-reading-coverage.json).
+The separate [console owner's ledger](../2026-11-16-console-completion/assignments.json) also closes
+its own **60 accepted workers in ten waves**. Its [executed strict check](../2026-11-16-console-completion/reports/final-worker-strict.json)
+verifies all sixty note hashes with zero errors, and its
+[500-page reading record](../2026-11-16-console-completion/reports/atlas-reading-coverage.json) retains its
+own coverage. These owner-local records remain separate from this continuation;
+follow-ups and the other session provide no additional worker credit here.
+
+The guarded publication attempt preserved the accepted 548 documentary work on
+`delivery/heading-final-records-e057dcc` at
+`e057dcc02897df1b3a0463e79f43eb11336b52d4` when fresh main had advanced to 523.
+Root's [incoming preservation receipt](reports/reconciled-integration/incoming-application.json)
+binds the 306 imported paths and all 7,900 incoming noncurrent-document entries.
+Both histories and their original failures/evidence remain preserved.
+A later documentation/evidence descendant must be distinguished from actual
+source523 execution; recover live HEAD rather than assuming a named source is
+still the remote tip.
+
+The incoming console record preserves its separately executed
+[71 P1 / 41 H1 source-only methods](../2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-only-qualification.json)
+and [3/3 affected native-reader CTests](../2026-11-16-console-completion/reports/combined-indexed-local-qualification.json).
+Exactly five Python inputs differ from `5485988`; **582/587** owner-recorded
+inputs and the actual application remain unchanged. Current hosted Python
+suites execute **45 capture / 41 H1 / 71 P1 methods**. Original and active
+reader identities stay separate; P1 failures gain only bounded diagnostics.
+The earlier [seven-gate run](../2026-11-16-console-completion/reports/array-local-qualification.json)
+and three identical complete Linux streams keep their original source.
+
+The [incoming source admission](reports/a52-helper-core-hosted/array-successor/reconciled-main-core/incoming-source-review.json)
+preserves all production inputs, including the **150 identities** bound by the
+existing combined gallery. The `3bb46f2f…` application and all fifteen actual
+frames remain unchanged. The retained local build was executed at `5485988`;
+its byte identity to the captured app is not relabeled as a new 523 build or capture.
+
+The sole coordinated build remains `../build-native` in
+`/workspace/scratch/5a28c3564dbf`. The independent console workspace stays
+read-only here. Recover [setup and operation](../../HEADING_TITLE_HEADER_HANDOFF.md#setup-and-operation),
+check real disk use, preserve original logs/baselines and clean only owned,
+reproducible intermediates. No unchanged-source retry or extra worker credit
+follows from this checkpoint.
+
+The [native integration plan](../../design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+requires a model-owned projection with basis/revision/sequence/reason and fresh
+post-Start control proof. Preserve real held-key/pointer releases, pending CC11,
+both recall scopes, lifecycle/submission acknowledgement and final create-only
+storage authorization before browser/view integration.
+**Literal whole-interface 1:1 remains unmet and unwaived.** Native accessibility,
+real device/display/DPI/DAW journeys, connected audio, physical measurements,
+callback lifetime/deadlines, rights and signed distribution retain their own gates.
+
+All checkpoint text below is dated history, preserved byte-for-byte.
+Its earlier pending worker/publication/matrix states are superseded by this entry.
+
+---
+
+## Current integrated source and continuation — 17 November 2026
+
+**Next development:** independently admit model-owned Save availability and fresh post-Start control proof, then input/focus/main-loop routing and the native browser. Recover existing owners before implementation; continue the bounded reference-interface work under the unchanged full M0–M9 exits.
+
+[Source publication](reports/combined-main-publication.json): `54859886268ce83c36f359c43327f7c72a77ae82`,
+tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a`. This is the tested implementation published on main. All sixteen required jobs completed successfully on attempt 1. Later documentation/evidence commits retain a separate source-equivalence boundary; retrieve the actual live HEAD instead of assuming it is this tested commit.
+
+| Workflow | Required jobs | Actual outcome at this source |
+| --- | ---: | --- |
+| Core | 6 | 6/6 jobs passed: five 209/209 registered CTest suites and full R4 qualification [run 44038196587](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196587) |
+| Native standalone | 6 | 6/6 jobs passed: five normal 78/78 suites; sanitizer 41/41 [run 44038196285](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196285) |
+| Native VST3 | 4 | 4/4 jobs passed: 29 native CTests; actual module validator 47/0 on each platform [run 44038196255](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44038196255) |
+
+The [complete terminal matrix](reports/combined-ci-complete.json) records job IDs, attempts and outcomes. Root’s [source/input-equivalence record](reports/combined-final-integrity.json)
+identifies the verification stage and inputs compared with this tested source.
+Root owns the final staged repository/ledger checks and guarded documentary
+publication; use that receipt’s recorded execution and outcome.
+
+Independent completed reviews: [Core](reports/a52-helper-core-hosted/array-successor/combined-main-core/CORE_REVIEW.md) · [Standalone](reports/a53-helper-standalone-hosted/array-successor/combined-main-standalone/review.md) · [VST3](reports/a54-helper-vst3-hosted/array-successor/combined-main-vst3/review.md). Recover actual live HEAD, tree and fresh remote state from the
+[checkpoint](CHECKPOINT.md) before new work. A documentation descendant
+does not create new native execution or replace any earlier failed result.
+
+This heading/title/header continuation completed **60 accepted distinct workers
+in ten waves of six**, with fresh textual coverage of **all 500 atlas pages**.
+The [actual ledger](assignments.json), [strict record result](reports/helper-worker-strict.json)
+and [reading receipt](reports/atlas-reading-coverage.json) retain the evidence.
+Follow-ups keep their original identities and add no worker credit.
+The [console owner's ledger](../2026-11-16-console-completion/assignments.json) is a separate record. At its retained `d2ed03b` source it has
+60 records: 59 accepted and
+1 still running. Its owner and checkpoint govern subsequent
+closure; these records are never combined with this continuation's sixty.
+
+Production combines H1/P1 with the published semantic-paint main and the
+LibraryModel/UiModel recall foundation. The exact fixture/reader transition
+keeps production/build/workflow inputs, strict complete copied state, workload,
+numerical criteria, original source admissions and upstream tests unchanged.
+Local [first combined qualification](reports/console-integration/first-combined-local-qualification.json)
+is 14/14 at its recorded tool inputs. The
+[final consumer qualification](reports/console-integration/final-local-qualification.json)
+is 4/4 at `5485988`, with 64 P1, 32 H1 and 45 capture methods plus the actual
+191-check/62-screen reader. The unchanged native fixture/binary was not repeated
+only for the final comparator/test extension.
+
+The [combined gallery](../../design/native-gallery-console-combined/manifest.json)
+retains captured app `3bb46f2f…` and 150 production input identities.
+The test-only integration does not create new captures. Earlier app `1fa2a247…`
+installed views remain pre-P1 history. Original Windows compile/protocol
+failures, P1's separately unidentified numerical failure, timed-out gates,
+cancellations and failed full aggregates remain immutable.
+
+### Resume from the delivered source
+
+Recover actual live HEAD and any later remote advance, then read the exact
+publication, terminal matrix and input-equivalence receipts above. Preserve the
+completed qualification; a later change needs the gates affected by that change.
+Keep original failures, immutable reports, historical comparator pins and both
+owner-local ledgers. Root coordinates any new shared-file or build assignment,
+and records the new source, commands, results and next acceptance before
+committing and pushing an authorized, reviewed chunk.
+
+The next model step is a reviewed, read-only **Save-availability projection**
+and **fresh post-Start control proof**, followed by input/gesture/focus hooks,
+main-loop lifecycle/submission/storage routing, then the native browser model,
+view and painter. `controls_pending == false` and a queued pre-Start restore
+are insufficient proof. Preserve original held-note releases across modal
+open/close, pending CC11, both recall scopes, startup/restart/stopped Load,
+timeout/recovery, fresh final storage authorization, create-only collisions and
+protected paths. The [native integration plan](../../design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+and [LibraryModel guide](../../LIBRARY_MODEL_GUIDE.md) define the dependencies.
+
+The sole coordinated build is `../build-native` in this continuation's
+`/workspace/scratch/5a28c3564dbf` workspace. Recover exact configuration and
+normal/headless distinctions from the [handoff](../../HEADING_TITLE_HEADER_HANDOFF.md).
+Check actual disk use before further work; retain compact originals and clean
+only owned reproducible intermediates. Root alone handles staging, native
+execution, final acceptance and guarded publication. Accepted notes remain
+frozen; follow-ups use separate receipts.
+
+**Literal whole-interface 1:1 remains unmet and unwaived.** The next native
+library/UI work and complete physical/product dependencies remain in
+[NEXT_STEPS](../../NEXT_STEPS.md) and the [full plan](../../PLAN.md).
+All checkpoint text below is preserved dated history; its old pending source
+or worker states are superseded by this current entry.
+
+---
+
+## Current published source checkpoint — 17 November 2026, 07:23 UTC
+
+**Main is `54859886268ce83c36f359c43327f7c72a77ae82`, tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a`.** The guarded, nonforced update from d2ed succeeded after all its prior workflows were terminal. Both the concurrent console history and separately qualified ea02 array-repair history are parents/ancestors. Root independently verified the remote ref, normal Git fetch, exact tree and parents; read [publication proof](reports/combined-main-publication.json).
+
+The focused Windows run **44036732040**, attempt one, passed **9/9 in 76.52 seconds** under actual `/W4 /WX` for all three fixtures. All **566** recorded source inputs match the published Git source and remain unchanged after execution. Root verified the complete original artifact (41 members), all strict readers and source admissions, and retained P1 numerical output (191 checks, zero failures, 62/62 screens). Its complete canonical stream exactly matches Linux; the raw inventory differs only by the sole Windows CRLF ending, while both original strict typed validators pass. The [closed focused condition](reports/combined-windows-focused/candidate-qualified.json) retains these precise boundaries.
+
+The actual full matrix is now running at this exact main source: Core **44038196587** (A52), standalone **44038196285** (A53), VST3 **44038196255** (A54). Do not transfer older results or claim the new sixteen families complete. Root must wait for all jobs to become terminal, review original failures if any, then update current README/handoff/setup/next steps and publish all accepted evidence with complete source-equivalence and fresh expected-main checks. No additional workers or native retries are authorized by this checkpoint; the original 60/10 ledger is complete.
+
+Only current documentation/evidence is pending in this checkout. The previous checkpoint is retained verbatim below. Other checkouts remain read-only. Approximately 40 GiB is free. Literal whole-interface 1:1, physical calibration and real-device/release gates remain open.
+
+---
+
+## Latest integration checkpoint — concurrent d2ed successor
+
+Local/main now preserves published `d2ed03b94114e35d0caa65968d11afe896a5e9f5` (parent cf87). Its 186 incoming paths, original CI evidence and independent console ledger are preserved. Our first combined source completed all **14/14 selected CTests in 98.686756 seconds** once. The original and indexed P1 fixture inventories and entire 6,561,750-byte canonical streams are identical; this is the actual combined painter, with RGBA SHA-256 `34bb954838cd156d8bb057eaf0cc6965feda3b8821d43c20ac4e0433c95511bf`. Read [first combined qualification](reports/console-integration/first-combined-local-qualification.json) and [incoming preservation](reports/console-integration/d2ed-incoming-application.json).
+
+The incoming Core Windows fixes preserve native Path keys/newline bytes in capture-test expectations and normalize only mocked header-input lookup keys. The actual cf87 failure was **207/209**, with those two Python gates failing; the standalone failure was separately P1 C4702 during compilation. The incoming P1 constexpr-only source is now an independently admitted historical variant. A54 is composing its exact admission and all tests with our indexed fixture; final comparator integration, Windows qualification and publication remain pending. The already-qualified P1 native fixture and all production inputs remain unchanged. No acceptance thresholds or deadlines were changed.
+
+At the last observation, d2ed Core `44034656790` and standalone `44034656779` were running, and VST3 `44034656821` succeeded. Do not push main over live same-ref jobs. The focused combined Windows workflow can run on its separate branch after exact candidate publication. A52/A53/A54 remain the same accepted workers; our original 60/10 ledger is unchanged.
+
+---
+
+## Current combined-source checkpoint — 17 November 2026 UTC
+
+Published main is now `cf87a587d0002d106e5210b57a39fd1967245a8f`, tree `2565ac86f9d31b7ab9d24d0d5353289c2359bf12`. Its 930 incoming paths are preserved, including the P1 painter, copied LibraryModel and both histories. The independent four-file array candidate `ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9` passed its focused Windows run `44031603512`; that success belongs to its older source and does not qualify this combined painter.
+
+Root has applied A52’s exact two-file header source-transition proposal and A54’s exact three-file P1 portability proposal after preserving a genuine original P1 binary, complete 34-case inventory and canonical raw stream. Together with the two indexed fixtures and their active reader pins, exactly nine source files differ from cf87; production code, build configuration, workflows, test limits and workloads remain unchanged. The [application record](reports/console-integration/proposal-application.json) pins every change. Combined local, focused Windows and full hosted qualification are pending.
+
+Original cf87 standalone has five successful jobs and one Windows P1 C4702 compilation failure with zero CTests executed. Its Core run also has a Windows test-stage failure whose exact gate is under independent log review; do not infer a shared cause. All previous failures remain immutable. Three already accepted reviewers continue under A52/A53/A54; our 60-worker, ten-wave ledger remains complete with no additional credit. Root owns the one existing build; approximately 40 GiB remains free.
+
+Next: qualify the exact combined source with unchanged gates and bounded canonical captures, resolve only evidenced blockers, then publish with a fresh guarded main SHA preserving the reachable array-candidate history. Observe all 16 exact-source hosted jobs before final current documentation/evidence publication. Literal whole-interface 1:1 and physical/real-device gates remain open.
+
+---
+
+## Current candidate checkpoint — Windows array serialization
+
+Main is still `6287055a111dc4e2747564da3d48edc9b65e2e3e`. Its complete hosted
+matrix is terminal: **15 successful jobs and one Windows standalone failure**;
+the root receipt is [helper-ci-complete.json](reports/helper-ci-complete.json).
+All 60 real workers / ten six-worker waves remain accepted; follow-ups add no credit.
+
+The original-source diagnostic used workflow `44a63d19`, run `44029895588`, job
+`133859025258`, explicitly checking out `6287055`. Its two CTests remained failed
+while bounded raw headers exposed empty later nested drawbar and held-key arrays.
+Both canonical images match the observed Linux pixel hashes. Original failures,
+complete raw artifact and before/after source/dependency checks are retained in
+[windows-protocol-diagnostic](reports/windows-protocol-diagnostic/publication.json).
+No compiler root cause is claimed; copied manual geometry was complete.
+
+The independently admitted four-file candidate is
+`ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9`, tree
+`e46c65173517956d6eda69086f4ee428aeae8782`, sole parent `6287055`, published only on
+`fix/windows-array-serialization-ea02c54`. It replaces two test-only array
+iteration bodies with indexed enumeration and updates the two active source pins.
+Strict Python predicates, complete fields, workloads, bounds, production code and
+workflows are unchanged. Root's [local qualification](reports/windows-array-local/qualification.json)
+records **4/4 affected CTests passed in 47.554 s**, with both complete canonical
+headers, pixel streams and inventories byte-identical before/after. The original
+two fixture sources and binaries are preserved in the sibling scratch directory
+`windows-array-original-native`. No full local aggregate pass is substituted.
+
+The focused candidate workflow is `894b6246fda3a26b92c5673619eb2e21f743769b`,
+tree `802e316f16ad207afb06d04aacf8a6edbe224aa5`, on
+`investigate/windows-array-candidate-ea02c54`. It checks out exact `ea02c54`;
+its reviewed workflow SHA-256 is
+`45357216d41025d882b47296d328f0053965f16844807239ab9a2376499efdad`.
+**Its actual Windows result is still pending at this checkpoint.** Do not update
+main until the two unchanged strict readers and bounded complete-header checks
+pass with source/dependency re-verification. Then fast-forward main with the
+expected-head guard, observe all sixteen source-specific jobs, and finish the
+reserved current-document patch plus an exact-source-equivalence publication.
+
+A52 owns focused workflow/qualification review and later Core observations;
+A53 owns original/focused/full standalone observations; A54 owns independent source
+review, later VST3 observation and the eleven current-document patch. Root alone
+owns builds/native execution, source edits, publication and final integration.
+No worker is authorized to rerun native tests or mutate remote refs. Preserve all
+frozen evidence. Literal whole-interface 1:1 and remaining physical-model, device,
+accessibility and release gates remain open and unwaived.
+
+---
+
+# Helper correction published; exact-source CI running — 17 November 2026
+
+**Main is published at `6287055a111dc4e2747564da3d48edc9b65e2e3e`, tree
+`c96fe07c4241f5afe423306945508a114506f0c2`, with sole parent
+`03c70c103a4a0dd72b323529416b909c19a4e139`.** The
+[publication receipt](reports/helper-branch-publication.json) records the guarded,
+nonforced update, independent API verification and normal Git fetch with exact
+commit/tree/parent/content equality. Local main follows the provider commit
+without a reset; `session/heading-helper-local-d083` preserves the same-tree
+authored commit `d0834a1eb64748711f6f904ab87a443cd3f01166`. The checkout was clean
+immediately after alignment. Later evidence here is awaiting final publication.
+
+Only the admitted helper constexpr-else and active fixture-hash pair change
+relative to `03c70c1`; all other 473 qualified inputs remain unchanged.
+Production, the application and captures, preset workload/assertions/30-second
+guard, CMake and the 35-minute sanitizer job allowance remain unchanged.
+Both affected local CTests pass, with exact Linux binary/inventory/default and
+canonical numerical/pixel equivalence except two source identities. The
+[exact staged archive](reports/helper-branch-integrity.json) passes repository
+and strict sixty-worker checks. All 131 published changed paths were checked
+against their actual staged bytes; four proof records were the only additions
+after the archive checks. The complete prior `03c70c1` matrix remains 14
+successes/two failures; the independent Intel review preserves its timeout,
+skipped workflow tail and unproven cause. The helper is not a preset timing fix.
+
+| Same accepted reviewer | Helper-source run, attempt 1 | Required jobs |
+| --- | --- | ---: |
+| A52 Core | [44026516631](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516631) | 6 |
+| A53 standalone | [44026516737](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516737) | 6 |
+| A54 VST3 | [44026516616](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44026516616) | 4 |
+
+**Next:** independently inspect all sixteen actual outcomes at `6287055`,
+especially MSVC compilation, complete Windows/native packaging, Intel's unchanged
+preset gate and all 34 instrumented native gates. Preserve every failure and
+unreached step. Do not push while these runs remain active; same-ref concurrency
+would cancel them. After all reviews finish, root updates current README, plan,
+status, next actions, handoff and final source-equivalence/integrity records;
+commits/pushes the completed evidence and verifies the remote tree. Keep this
+actually tested code commit distinct from the later documentary publication.
+No automatic retry, additional native run or broader source edit is admitted.
+
+All **60 distinct workers remain accepted in ten complete waves of six**;
+follow-ups add no credit and original notes are immutable. About **42.57 GiB**
+was free at this verified publication. Keep one coordinated build and preserve
+originals; cleanup is limited to owned reproducible intermediates. All M0–M9
+exits, native device/accessibility/physical requirements and the literal whole-
+interface 1:1 target remain open at their documented scopes.
+
+---
+
 # Published outcomes retained; helper publication admitted — 17 November 2026
 
 The [current verified publication](reports/hosted-repair-publication.json) is

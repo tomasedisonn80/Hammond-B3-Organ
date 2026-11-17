@@ -1,0 +1,109 @@
+{
+  "actions": {
+    "git_index_ref_or_remote_mutation": false,
+    "native_build_test_or_ci_execution": false,
+    "source_workflow_or_helper_edits": false,
+    "writes": "Only additive files in this new final-publication-safety folder."
+  },
+  "archive_attributes": {
+    "local_info_attributes_exists": false,
+    "no_local_export_ignore_or_export_subst": true,
+    "no_tracked_export_ignore_or_export_subst": true,
+    "tracked_files": [
+      {
+        "bytes": 1788,
+        "path": ".gitattributes",
+        "sha256": "cf3b4abf5a14565327f0dda04ff385525a890794ae8fa25e02fdfb66eb798c43"
+      },
+      {
+        "bytes": 213,
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-vst3-hosted/.gitattributes",
+        "sha256": "7676579ede0e56059a1c768ec578f042b2006b02dfcff7a0e380c452abb4d356"
+      }
+    ]
+  },
+  "authorization": "The user already authorized repository commit and push. No additional user approval requirement is introduced.",
+  "change_verification": "Remove the one new document entry guard and restore the one counter expression: all original bytes and SHA-256 are reconstructed. Both current helpers parse; neither was executed.",
+  "corrected_checker": {
+    "bytes": 6260,
+    "path": "/workspace/scratch/5a28c3564dbf/check_combined_stage.py",
+    "sha256": "c5cdb7d9ec85f5c64435f74b9bb59990672d4dafc5d12c070afbe99bfbec8f1e"
+  },
+  "disposition": "No remaining identified blocker in corrected helper logic, conditional on explicit final-index, commit-tree, remote-tree and nonforced expected-main guards. Final staging and publication remain root-owned.",
+  "existing_strong_properties": [
+    "Every existing noncurrent path is compared by full Git mode/type/SHA, including production, tests, tools, build/workflow inputs, assets and historical evidence. Added paths are restricted to declared evidence/review locations.",
+    "Preparation enumerates complete base/target trees, preserves changed blob modes, verifies exact Git object bytes and refuses all deletions before emitting a manifest.",
+    "Neither helper updates remote refs; expected-head and nonforced race protection are root sequence requirements, not implied helper guarantees."
+  ],
+  "matrix_scope": "16 successful source548 jobs; 1,505 CTest observations across configurations, not distinct tests; full R4 separate.",
+  "only_two_reviewed_checker_changes": true,
+  "original_checker": {
+    "bytes": 6004,
+    "sha256": "8b226285e8725a9b5ed7dbcf991b0e67caf7c45ac5d12be50fdf0b4bfde86c13"
+  },
+  "original_findings": [
+    {
+      "finding": "The original eleven-document exception permitted missing documents or unintended mode/type changes. Preparation separately rejected deletion, but would preserve an executable-bit-only change.",
+      "id": "document-entry-preservation",
+      "resolution": "Root now requires all eleven documents to exist in both trees with equal mode and type.",
+      "status": "resolved in observed corrected checker"
+    },
+    {
+      "finding": "Subtracting only the earlier nine source changes would overstate unchanged paths once current documents change.",
+      "id": "unchanged-base-counter",
+      "resolution": "Root now counts actual equal mode/type/SHA entries.",
+      "status": "resolved in observed corrected checker"
+    }
+  ],
+  "preparation_helper": {
+    "bytes": 2582,
+    "path": "/workspace/scratch/5a28c3564dbf/prepare_guarded_publication.py",
+    "sha256": "ef0b4bc906355ce29f6c92966901a56c59419c7542b3d313e26da3d50cc02a5a"
+  },
+  "preuploaded_core_vst3": {
+    "all_match_manifest_raw_bytes_and_git_checkin_blob_sha": true,
+    "manifest": {
+      "bytes": 24364,
+      "path": "/workspace/scratch/5a28c3564dbf/publication-terminal-core-vst3-preupload-manifest.json",
+      "sha256": "7ea64c99c8519033b78fbbe298652ceb228cf24af34e13166d4d65a569714b82"
+    },
+    "new_remote_operations": false,
+    "remote_objects_requeried": false,
+    "rows": 71,
+    "state": {
+      "bytes": 17441,
+      "path": "/workspace/scratch/5a28c3564dbf/publication-terminal-core-vst3-upload-state.json",
+      "sha256": "2ea8c8e2adc8de393e0f5992c43af3ae58f3a35a481d8cfe0c98dd32e301f413"
+    }
+  },
+  "prior_evidence": {
+    "all_110_earlier_frozen_files_unchanged": true,
+    "all_35_main_core_files_and_manifest_unchanged": true,
+    "main_core_freeze": {
+      "bytes": 5716,
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/combined-main-core/freeze-manifest.json",
+      "sha256": "f37edfad5ee3df7192b7cc6a8f4ea5856e7e075c5ca4bd8b5593fe364fdae064"
+    }
+  },
+  "recorded_utc": "2026-11-17T08:03:57.653483+00:00",
+  "required_publication_guards": [
+    "Use the literal tested source548 and accepted nine-file source-delta identities with check_combined_stage.py, not the legacy check_guarded_stage.py.",
+    "Freeze the write-tree result before integrity checks. The checker archive belongs to that immutable tree; generated proofs do not retroactively belong to it.",
+    "After successful checks stage only LABEL-repository-integrity.log, LABEL-session-integrity.log, LABEL-whitespace-original.log.gz and LABEL-integrity.json. Compare final index full mode/type/SHA entries to the checked tree: exactly those four paths may differ, with their expected identities.",
+    "Keep the post-proof comparison receipt outside the already frozen index, or explicitly account for it before commit. Do not silently stage a fifth proof or perform another broad add.",
+    "Capture the final index tree and require the actual local commit tree to equal it, with source548 as sole parent. Halt if a concurrent index or HEAD change alters that binding.",
+    "Prepare immutable uploads from that exact commit and source548 base. Require the remote Git Data tree to equal the complete expected local tree before any ref update. Missing previously uploaded blobs must fail closed; never substitute working-copy content.",
+    "Immediately before publication require a fresh main ref equal to source548. Use a nonforced update with the intended parent. A concurrent published descendant not contained in the candidate must stop the update; do not force or discard history.",
+    "Independently verify the final API ref/commit/tree/parents and Git-fetched contents. Align local HEAD/index only after identities and outstanding evidence are accounted for; no destructive reset or cleanup.",
+    "Keep all hosted execution claims at source548. The documentary successor receives separate staged integrity evidence and source-equivalence only; prior failures and open physical/UI gates remain preserved."
+  ],
+  "same_accepted_worker_no_new_credit": true,
+  "schema": 1,
+  "scope": "Read-only static review of publication helpers and specified prospective sequence. No final commit or ref update is certified as already executed.",
+  "terminal_source_receipt": {
+    "bytes": 17778,
+    "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/combined-ci-complete.json",
+    "sha256": "d2cf446d4ee22ef415fb46dd019958617de8a30d5124a733ede986225c60af2c"
+  },
+  "worker": "A52"
+}

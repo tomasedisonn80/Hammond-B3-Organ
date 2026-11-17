@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "attempt": 1,
+  "required_registration_apron_tests": [
+    "test_control_file_input",
+    "test_standalone_registration_library",
+    "python_test_registration_cli",
+    "python_test_registration_cli_admission",
+    "python_test_render_controls",
+    "python_test_render_controls_admission",
+    "python_test_starter_registration_generator",
+    "python_test_starter_registration_oracle",
+    "python_test_starter_auditions",
+    "python_test_registration_install",
+    "python_test_reference_apron_art",
+    "python_test_reference_apron_raster_checker"
+  ],
+  "required_families": [
+    "Release (Linux GCC)",
+    "Release (macOS AppleClang)",
+    "Release (macOS Intel AppleClang)",
+    "Release (Windows MSVC)",
+    "Linux GCC ASan + UBSan + leaks",
+    "Complete R4 waveform qualification (Linux GCC)"
+  ],
+  "qualification_limit": "Inventory and runner assignment only. Actual terminal outcomes/full logs must qualify this helper source independently.",
+  "sanitizer_policy": {
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23"
+  },
+  "budgets_minutes": {
+    "release": 20,
+    "core_sanitizers": 25,
+    "full_r4_job": 35,
+    "full_r4_step": 30
+  },
+  "test_commands": {
+    "release": "ctest --preset release --parallel 2 --timeout 300 --no-tests=error",
+    "core_sanitizers": "ctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error"
+  },
+  "source_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+  "source_tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+  "parents": [
+    "03c70c103a4a0dd72b323529416b909c19a4e139"
+  ],
+  "run_id": 44026516631,
+  "workflow": {
+    "path": ".github/workflows/ci.yml",
+    "bytes": 20374,
+    "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+    "git_blob": "295897e4b960f0fdc7fe55ba55e6cad5e23c2501",
+    "fetched_helper_equals_local_and_both_prior_workflows": true
+  }
+}

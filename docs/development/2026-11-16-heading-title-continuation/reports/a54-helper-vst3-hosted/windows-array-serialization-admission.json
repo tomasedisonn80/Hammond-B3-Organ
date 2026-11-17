@@ -1,0 +1,1275 @@
+{
+  "schema_version": 1,
+  "worker": "A54",
+  "same_accepted_worker_followup": true,
+  "additional_worker_credit": false,
+  "recorded_utc": "2026-11-17T06:26:36.718718+00:00",
+  "review_kind": "Prospective admission of a bounded test-fixture serialization candidate; no qualification outcome invented",
+  "decision": {
+    "admitted": true,
+    "scope": "Apply exactly the reviewed four-file patch to an isolated candidate and perform the separately admitted local/focused-Windows qualification. Main publication and full exact-source qualification remain conditional.",
+    "patch_sha256": "339110fb94af1658251ea0e7939c539798bd6d9f35b3b5725303f37fc4fb9d48",
+    "reason": "Original-source Windows streams contain incomplete fixed-size nested arrays. The candidate preserves every element writer and complete strict reader while replacing only the shared anonymous-namespace fixture array traversal with explicit indexing.",
+    "runtime_fix_proven": false,
+    "compiler_bug_proven": false,
+    "prospective_message_sent_before_formal_receipt": true,
+    "prior_original_failures_remain_failed": true
+  },
+  "source_identity": {
+    "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "source_tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+    "diagnostic_workflow_commit": "44a63d19aa7f3e705c7f434fa7b85233886c6d03",
+    "run_id": 44029895588,
+    "attempt": 1,
+    "job_id": 133859025258,
+    "original_failed_run": 44026516737,
+    "original_failed_job": 133848047271,
+    "compiler": "MSVC 19.44.35230.0",
+    "configuration": "Release / Windows x64 / MIDI ON / WinMM",
+    "native_execution_by_reviewer": false
+  },
+  "retention_and_provenance": {
+    "archive": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip",
+      "bytes": 188468,
+      "sha256": "4082d8bf0f6abec31adab3439bd5d2c6ce3be15cce86a96b96c40a36d57ac41b"
+    },
+    "root_retention": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-retention.json",
+      "bytes": 6232,
+      "sha256": "bc65551148c78ab3183b0bdb44ee703f16e19c021b421524b4f711be4032b48d"
+    },
+    "provider_digest_status": "Root retention records provider_digest_verified=true; A54 independently rehashed the local ZIP, not a fresh provider API request.",
+    "members_verified": 31,
+    "all_retention_member_hashes_and_lengths_verified": true,
+    "all_extracted_bytes_equal_zip_members": true,
+    "raw_headers_parsed_with_duplicate_key_rejection": true,
+    "raw_headers_equal_pretty_parsed_artifacts_with_exact_types": true,
+    "source_manifest_inputs_independently_matched_to_exact_git_source": 554,
+    "source_manifest_mismatches": [],
+    "post_run_source_verification": {
+      "changed_source_inputs": [],
+      "checked_inputs": 554,
+      "original_ctest_exit": "8",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "workflow_commit": "44a63d19aa7f3e705c7f434fa7b85233886c6d03"
+    },
+    "dependency_before_after_hashes_match": true,
+    "selected_original_members": [
+      {
+        "path": "windows-protocol-diagnostics/compiler-and-backends.json",
+        "bytes": 790,
+        "sha256": "8f6b49a5b99747fd2593efa835fdd59c8e9d97dd24a7a51c9c28d0d3713213b0",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/ctest-discovered.json",
+        "bytes": 2508,
+        "sha256": "21e7e81cddea365ac37312e112a95a92a5b384b62d7d3b7b8d5ccb6652be1c40",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/ctest.log",
+        "bytes": 6332,
+        "sha256": "7ff64369afc71d756b78271abe50fdada378ee4d9a02135903351dcbc51250fb",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/ctest.xml",
+        "bytes": 4221,
+        "sha256": "554f95f21d8cf6937224fc2a1bcf76c39c59b633ba4302b65a6aa41c6e97f38d",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/header-case46-capture.json",
+        "bytes": 2211,
+        "sha256": "6212f8f026734609f58f9a49becd12a16b4b83d413c46b0af855c019bb88ec3f",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/header-case46-header.bin",
+        "bytes": 229640,
+        "sha256": "4a922b0f999b7050aac40d890647236d7fb71f627a68bd2690bb554ae9c49389",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/header-case46-stderr.bin",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/original-ctest-exit.txt",
+        "bytes": 2,
+        "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/provenance.json",
+        "bytes": 64259,
+        "sha256": "5323843cd93c68b4e634af5f839a894c0b2223b334ee91dd10af870eafc04bf2",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/rtmidi-verification-after.log",
+        "bytes": 297,
+        "sha256": "c01dadab174525aafd68bb2573d139838926ca7f976b1c0f3154e4a925ee82a8",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/rtmidi-verification.log",
+        "bytes": 297,
+        "sha256": "c01dadab174525aafd68bb2573d139838926ca7f976b1c0f3154e4a925ee82a8",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/sdl-verification-after.log",
+        "bytes": 278,
+        "sha256": "dfa994b4b709463e5ad84f40a6caec0af7f7b1f3b4583fc8c63310a4289911b7",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/sdl-verification.log",
+        "bytes": 278,
+        "sha256": "dfa994b4b709463e5ad84f40a6caec0af7f7b1f3b4583fc8c63310a4289911b7",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/source-verification-after.json",
+        "bytes": 224,
+        "sha256": "d8c93d3e2306bb8909e8aa838c60dd52b7ddf7a61e3ab5a990ccaf0b23a3ca23",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/title-case0-capture.json",
+        "bytes": 1668,
+        "sha256": "cf1c0d412a279f0440fe02d2fece8f3ffb2c1280a1688066732d31e4e27fd0f6",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/title-case0-header.bin",
+        "bytes": 59242,
+        "sha256": "95927e2c9e1a213071174f328dda8f48d211622d09b416eefe7fb5ee15b8d76e",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      },
+      {
+        "path": "windows-protocol-diagnostics/title-case0-stderr.bin",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "archive": "docs/development/2026-11-16-heading-title-continuation/reports/windows-protocol-diagnostic/artifact-original.zip"
+      }
+    ]
+  },
+  "original_diagnostic_result": {
+    "ctest_total": 2,
+    "passed": 0,
+    "failed": 2,
+    "ctest_exit": 8,
+    "ctest_wall_seconds": 0.56,
+    "tests": [
+      {
+        "name": "test_standalone_title_density",
+        "seconds": 0.18,
+        "computed_ctest_timeout_seconds": 90,
+        "error": "copied view controls differs",
+        "completed_numeric_cases": 0,
+        "inventory_validated": true,
+        "inventory_cases": 44
+      },
+      {
+        "name": "test_standalone_header_statistics",
+        "seconds": 0.35,
+        "computed_ctest_timeout_seconds": 90,
+        "error": "complete canonical copied session differs",
+        "numerical_required": 103,
+        "numerical_evaluated": 0,
+        "numerical_passed": 0,
+        "numerical_failed": 0
+      }
+    ],
+    "interpretation": "Both originals fail before numerical measurements. Zero numerical evaluations is not 103 failed inequalities. Diagnostic capture success and final source/dependency verification do not change either CTest conclusion.",
+    "captures": {
+      "title-case0": {
+        "capture_errors": [],
+        "case": 0,
+        "child_timeout_seconds": 20,
+        "cleanup_timeout_seconds": 5,
+        "command": [
+          "D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\apps\\standalone\\Release\\test_standalone_footage_typography_raster.exe",
+          "--case",
+          "0"
+        ],
+        "elapsed_seconds": 0.125,
+        "executable_bytes": 3295744,
+        "executable_sha256": "16040af34f09105e348d6767d6e4ad62afa5bac50562b35e0875cb37dbc03633",
+        "header_cap_bytes": 524288,
+        "images_persisted": 0,
+        "raw_header_bytes": 59242,
+        "raw_header_includes_newline": true,
+        "raw_header_sha256": "95927e2c9e1a213071174f328dda8f48d211622d09b416eefe7fb5ee15b8d76e",
+        "read_bytes": 65536,
+        "returncode": 0,
+        "rgba_bytes": 6622200,
+        "rgba_sha256": "0567c4102101e3a077dd10014403a97e5613ab5d1ff44b0f0b3efa4d598cbdd5",
+        "scope": "diagnostic acquisition only; original test failures remain failures",
+        "source_sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2",
+        "stderr_bytes": 0,
+        "stderr_cap_bytes": 65536,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_bytes": 6681442,
+        "stdout_cap_bytes": 7146489,
+        "stdout_sha256": "1c594a7c70074b6178b9915c032da6fccc1dbe3a3ef3536a1cb905fbaeb17ab1",
+        "strict_differences": [
+          {
+            "actual_length": 0,
+            "expected_length": 9,
+            "path": "$.model.view.controls.drawbars[0][1]"
+          },
+          {
+            "actual_length": 0,
+            "expected_length": 2,
+            "path": "$.model.view.controls.drawbars[1]"
+          }
+        ],
+        "unchanged_protocol_error": "copied view controls differs",
+        "unchanged_protocol_parser": "failed"
+      },
+      "header-case46": {
+        "capture_errors": [],
+        "case": 46,
+        "child_timeout_seconds": 20.0,
+        "cleanup_timeout_seconds": 5.0,
+        "command": [
+          "D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\apps\\standalone\\Release\\test_standalone_header_material.exe",
+          "--case",
+          "46"
+        ],
+        "elapsed_seconds": 0.25,
+        "executable_bytes": 3304960,
+        "executable_sha256": "e4dbbd4f7825cbc4ff78c10de3ad94481f3a05ac1d2be2832bd9a001b914f3c0",
+        "header_cap_bytes": 524288,
+        "images_persisted": 0,
+        "raw_header_bytes": 229640,
+        "raw_header_includes_newline": true,
+        "raw_header_sha256": "4a922b0f999b7050aac40d890647236d7fb71f627a68bd2690bb554ae9c49389",
+        "read_bytes": 65536,
+        "returncode": 0,
+        "rgba_bytes": 6293408,
+        "rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+        "scope": "diagnostic acquisition only; original test failures remain failures",
+        "source_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+        "stderr_bytes": 0,
+        "stderr_cap_bytes": 65536,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_bytes": 6523048,
+        "stdout_cap_bytes": 6817697,
+        "stdout_sha256": "e0ec02aca8190d9c764b3ae6df2407cd19aab7b38b346cf9e28e60a2d2dded3d",
+        "strict_differences": [
+          {
+            "actual_length": 0,
+            "expected_length": 9,
+            "path": "$.session_before.controls.drawbars[0][1]"
+          },
+          {
+            "actual_length": 0,
+            "expected_length": 2,
+            "path": "$.session_before.controls.drawbars[1]"
+          },
+          {
+            "actual_length": 0,
+            "expected_length": 61,
+            "path": "$.session_before.held_keys[1]"
+          },
+          {
+            "actual_length": 0,
+            "expected_length": 9,
+            "path": "$.model_before.view.applied.controls.drawbars[0][1]"
+          },
+          {
+            "actual_length": 0,
+            "expected_length": 2,
+            "path": "$.model_before.view.applied.controls.drawbars[1]"
+          },
+          {
+            "actual_length": 0,
+            "expected_length": 61,
+            "path": "$.model_before.view.applied.held_keys[1]"
+          }
+        ],
+        "unchanged_protocol_error": "complete canonical copied session differs",
+        "unchanged_protocol_parser": "failed"
+      }
+    }
+  },
+  "independent_raw_byte_findings": {
+    "first_title_difference": {
+      "path": "$.model.view.controls.drawbars[0][1]",
+      "actual_type": "list",
+      "expected_type": "list",
+      "actual_length": 0,
+      "expected_length": 9,
+      "actual": [],
+      "expected": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "first_header_difference": {
+      "path": "$.session_before.controls.drawbars[0][1]",
+      "actual_type": "list",
+      "expected_type": "list",
+      "actual_length": 0,
+      "expected_length": 9,
+      "actual": [],
+      "expected": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "title_controls_and_applied_session_differences": [
+      {
+        "path": "$.model.view.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "path": "$.model.view.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "path": "$.model.view.applied.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "path": "$.model.view.applied.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "path": "$.model.view.applied.held_keys[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 61,
+        "actual": [],
+        "expected_element_type": "bool",
+        "expected_true_indices": []
+      }
+    ],
+    "header_controls_and_complete_sessions_differences": [
+      {
+        "path": "$.session_before.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "path": "$.session_before.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        ]
+      },
+      {
+        "path": "$.session_before.held_keys[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 61,
+        "actual": [],
+        "expected_element_type": "bool",
+        "expected_true_indices": [
+          36
+        ]
+      },
+      {
+        "path": "$.session_after.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "path": "$.session_after.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        ]
+      },
+      {
+        "path": "$.session_after.held_keys[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 61,
+        "actual": [],
+        "expected_element_type": "bool",
+        "expected_true_indices": [
+          36
+        ]
+      },
+      {
+        "path": "$.model_before.view.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "path": "$.model_before.view.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        ]
+      },
+      {
+        "path": "$.model_before.view.applied.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "path": "$.model_before.view.applied.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        ]
+      },
+      {
+        "path": "$.model_before.view.applied.held_keys[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 61,
+        "actual": [],
+        "expected_element_type": "bool",
+        "expected_true_indices": [
+          36
+        ]
+      },
+      {
+        "path": "$.model_after.view.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "path": "$.model_after.view.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        ]
+      },
+      {
+        "path": "$.model_after.view.applied.controls.drawbars[0][1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 9,
+        "actual": [],
+        "expected": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ]
+      },
+      {
+        "path": "$.model_after.view.applied.controls.drawbars[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 2,
+        "actual": [],
+        "expected": [
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ]
+        ]
+      },
+      {
+        "path": "$.model_after.view.applied.held_keys[1]",
+        "actual_type": "list",
+        "expected_type": "list",
+        "actual_length": 0,
+        "expected_length": 61,
+        "actual": [],
+        "expected_element_type": "bool",
+        "expected_true_indices": [
+          36
+        ]
+      }
+    ],
+    "all_other_values_in_those_compared_controls_and_sessions_match_strictly": true,
+    "missing_drawbar_scalar_count_per_controls_record": 27,
+    "missing_held_boolean_count_per_session_record": 61,
+    "basis_for_expected_records": "Manually reconstructed from the unchanged expected_controls/validate_model title source and expected_session header source at 6287055. Offline comparison of already retained JSON only; no test entry point or native executable invoked.",
+    "header_model_session_hit_before_after_exact_typed_equal": true,
+    "copied_layout_inventory": [
+      {
+        "record": "title-case0.model",
+        "manual_key_counts": [
+          61,
+          61
+        ],
+        "pedal_key_count": 25,
+        "controls_count": 68,
+        "named_rectangles": {
+          "registration_panels": 2,
+          "manual_panels": 2,
+          "manual_rail_panels": 2,
+          "preset_key_panels": 2
+        },
+        "quad_count": 441,
+        "quad_point_count": 1764,
+        "incomplete_quads_or_points": [],
+        "scope": "Offline shape inspection of retained original headers, not a rerun or successful original Python gate."
+      },
+      {
+        "record": "header-case46.model_before",
+        "manual_key_counts": [
+          61,
+          61
+        ],
+        "pedal_key_count": 25,
+        "controls_count": 68,
+        "named_rectangles": {
+          "registration_panels": 2,
+          "manual_panels": 2,
+          "manual_rail_panels": 2,
+          "preset_key_panels": 2
+        },
+        "quad_count": 441,
+        "quad_point_count": 1764,
+        "incomplete_quads_or_points": [],
+        "scope": "Offline shape inspection of retained original headers, not a rerun or successful original Python gate."
+      },
+      {
+        "record": "header-case46.model_after",
+        "manual_key_counts": [
+          61,
+          61
+        ],
+        "pedal_key_count": 25,
+        "controls_count": 68,
+        "named_rectangles": {
+          "registration_panels": 2,
+          "manual_panels": 2,
+          "manual_rail_panels": 2,
+          "preset_key_panels": 2
+        },
+        "quad_count": 441,
+        "quad_point_count": 1764,
+        "incomplete_quads_or_points": [],
+        "scope": "Offline shape inspection of retained original headers, not a rerun or successful original Python gate."
+      }
+    ],
+    "header_hit_inventory": {
+      "before_after_equal": true,
+      "controls": 68,
+      "manual_keys": [
+        61,
+        61
+      ],
+      "pedal_keys": 25
+    },
+    "manual_layout_omission_observed": false,
+    "rgba_comparison": {
+      "original_windows_header_case46_rgba_sha256": "20eea493c5b2fe75c467a5964b54a28c832edf7639f034d8eb83daf4036d4557",
+      "retained_local_linux_canonical_receipt": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/windows-helper-statistics-after.json",
+        "bytes": 87929,
+        "sha256": "3d511dc9ac8ae6541fec932ced7161f82afdd3b209297e17b5c43ebb05d54f7c"
+      },
+      "same_digest": true,
+      "images_persisted_in_diagnostic": 0,
+      "scope": "The digest matches the retained canonical image observation. It does not itself establish all model fields, all cases, all numerical gates, or whole-interface 1:1."
+    }
+  },
+  "source_diagnosis": {
+    "established": [
+      "The malformed arrays occur in valid complete newline-delimited JSON emitted by child processes that exited 0 with empty stderr and exact bounded RGBA lengths.",
+      "The first title predicate compares view.controls; the first header canonical predicate compares session_before, before the applied-session conjunct can establish success. Each first mismatch is list extent, not a numeric rounding or bool/integer type mismatch.",
+      "Drawbars are fixed std::array extents 2x2x9 and held keys are fixed std::array extents 2x61. Empty nested JSON lists do not represent their complete declared C++ storage extent.",
+      "Both fixtures serialize these records through structurally identical nested array() helpers. Non-array controls values (.625, .125, route, pedal and percussion fields) match the expected typed values in the captured records.",
+      "state_for initialization, ControlState restore/select, and UiModel copying were read. The candidate leaves all initialization/copying and all expected values intact; any unseen wrong bank or held value must still fail the unchanged full canonical predicates.",
+      "The captured layout manual arrays are complete [61,61]; all 147 playing keys retain three four-point quads in each inspected model. No additional manual-layout omission was observed in these raw headers."
+    ],
+    "causal_limits": [
+      "The range-for source is intended to traverse the complete range. The retained headers do not establish a specific MSVC defect, optimization defect, generated-instruction failure, or a source-level undefined behavior cause.",
+      "The proposed indexed loop is a narrowly controlled serialization candidate, not proof that indexing repairs the observed Windows binary. Its success must be established on the candidate source with the same strict original gates.",
+      "A complete matching RGBA digest does not rescue failed copied-model protocol validation. Before/after equality can preserve the same incomplete serialization."
+    ]
+  },
+  "exact_candidate_review": {
+    "patch": {
+      "path": "/workspace/scratch/5a28c3564dbf/windows-array-candidate.patch",
+      "bytes": 2344,
+      "sha256": "339110fb94af1658251ea0e7939c539798bd6d9f35b3b5725303f37fc4fb9d48"
+    },
+    "proposal": {
+      "path": "/workspace/scratch/5a28c3564dbf/windows-array-candidate-proposal.json",
+      "bytes": 1634,
+      "sha256": "ba580d5c6bb623a29f07fa7b598a21bfb88dfcf66595cb72b11da093de97979b"
+    },
+    "independently_reconstructed_patch_byte_equal": true,
+    "files": [
+      {
+        "path": "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+        "before_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+        "candidate_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+        "before_bytes": 49033,
+        "candidate_bytes": 49026
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_title_density.py",
+        "before_sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2",
+        "candidate_sha256": "e1dc7a895032c5a1aeb565007f87297adc819fe513cec7ddc74a757df394340c",
+        "before_bytes": 23467,
+        "candidate_bytes": 23467
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+        "before_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "candidate_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+        "before_bytes": 61275,
+        "candidate_bytes": 61268
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+        "before_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+        "candidate_sha256": "8391e2c0b8338a50e2d374c676ff1cbf4793af4c3be76d9e346e69e53f477f75",
+        "before_bytes": 34239,
+        "candidate_bytes": 34239
+      }
+    ],
+    "cpp_old_body": "    bool first = true;\n    for (const auto& value : values) {\n        if (!first) out << ',';\n        first = false;\n        write(out, value);\n    }\n",
+    "cpp_new_body": "    for (std::size_t index = 0; index < values.size(); ++index) {\n        if (index != 0) out << ',';\n        write(out, values[index]);\n    }\n",
+    "only_cpp_body_replaced_once_per_fixture": true,
+    "only_python_fixture_hash_assignment_changed_once_per_reader": true,
+    "python_ast_equal_after_normalizing_only_fixture_hash_assignment": true,
+    "all_current_helper_calls": {
+      "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+        "static_call_expressions": 19,
+        "definition_line": 158,
+        "call_lines": [
+          180,
+          199,
+          200,
+          203,
+          205,
+          210,
+          212,
+          219,
+          220,
+          223,
+          254,
+          258,
+          269,
+          282,
+          295,
+          309,
+          310,
+          313
+        ]
+      },
+      "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+        "static_call_expressions": 20,
+        "definition_line": 212,
+        "call_lines": [
+          234,
+          253,
+          254,
+          257,
+          259,
+          264,
+          266,
+          273,
+          274,
+          277,
+          308,
+          312,
+          323,
+          336,
+          349,
+          363,
+          364,
+          367,
+          528
+        ]
+      }
+    },
+    "range_type_inventory": [
+      {
+        "expression": "value.points",
+        "type": "std::array<UiPoint, 4>",
+        "extents": [
+          4
+        ],
+        "declaration": "apps/standalone/UiModel.h:UiQuad"
+      },
+      {
+        "expression": "value.drawbars; nested manual; nested bank",
+        "type": "std::array<std::array<std::array<std::uint8_t, 9>, 2>, 2>",
+        "extents": [
+          2,
+          2,
+          9
+        ],
+        "declaration": "include/hammond/ControlState.h:AllDrawbarBanks/ManualDrawbarBanks/DrawbarPositions"
+      },
+      {
+        "expression": "value.selected_banks; view.edited_banks",
+        "type": "std::array<DrawbarBank, 2>",
+        "extents": [
+          2
+        ],
+        "declaration": "ControlSnapshot / UiViewState"
+      },
+      {
+        "expression": "value.route_enabled",
+        "type": "std::array<bool, 2>",
+        "extents": [
+          2
+        ],
+        "declaration": "ControlSnapshot"
+      },
+      {
+        "expression": "value.pedal_drawbars",
+        "type": "std::array<std::uint8_t, 2>",
+        "extents": [
+          2
+        ],
+        "declaration": "include/hammond/PedalVoice.h:PedalDrawbarPositions"
+      },
+      {
+        "expression": "value.fixed_registrations",
+        "type": "std::array<FixedRegistration, 2>",
+        "extents": [
+          2
+        ],
+        "declaration": "ControlSnapshot"
+      },
+      {
+        "expression": "value.held_keys; nested manual",
+        "type": "std::array<std::array<bool, 61>, 2>",
+        "extents": [
+          2,
+          61
+        ],
+        "declaration": "apps/standalone/Session.h:SessionSnapshot"
+      },
+      {
+        "expression": "value.held_pedals",
+        "type": "std::array<bool, 25>",
+        "extents": [
+          25
+        ],
+        "declaration": "SessionSnapshot"
+      },
+      {
+        "expression": "view.roving_manual_keys",
+        "type": "std::array<std::uint8_t, 2>",
+        "extents": [
+          2
+        ],
+        "declaration": "UiViewState"
+      },
+      {
+        "expression": "view.workspace_focus",
+        "type": "std::array<UiControlId, 3>",
+        "extents": [
+          3
+        ],
+        "declaration": "UiViewState"
+      },
+      {
+        "expression": "named_rects bounds from registration_panels, manual_panels, manual_rail_panels, preset_key_panels",
+        "type": "std::array<UiRect, 2>",
+        "extents": [
+          2
+        ],
+        "declaration": "UiLayout; all four named_rects call sites inspected in each fixture"
+      },
+      {
+        "expression": "layout.controls",
+        "type": "std::array<UiControlGeometry, 68>",
+        "extents": [
+          68
+        ],
+        "declaration": "UiLayout"
+      },
+      {
+        "expression": "layout.manual_keys; nested manual",
+        "type": "std::array<std::array<UiKeyGeometry, 61>, 2>",
+        "extents": [
+          2,
+          61
+        ],
+        "declaration": "UiLayout"
+      },
+      {
+        "expression": "layout.pedal_keys",
+        "type": "std::array<UiKeyGeometry, 25>",
+        "extents": [
+          25
+        ],
+        "declaration": "UiLayout"
+      },
+      {
+        "expression": "t.color (header fixture only)",
+        "type": "Pixel = std::array<std::uint8_t, 4>",
+        "extents": [
+          4
+        ],
+        "declaration": "test_standalone_header_material.cpp:Transform"
+      }
+    ],
+    "all_current_ranges_support_const_size_and_index": true,
+    "both_fixtures_already_include_cstddef": true,
+    "iteration_reasoning": "For each current std::array, size() is its fixed extent and values[index] is the const element reference in declared order for 0 <= index < size(). Each invocation retains an independent local std::size_t. A comma is emitted precisely before every element after index 0. Brackets, writer object/captures, scalar casts, precision, bool formatting and element bodies stay byte-identical.",
+    "generic_scope": "Both helpers are private to their test translation units. The candidate requires size()/operator[] rather than arbitrary iterator-only ranges; the exhaustive present call inventory contains only std::array and is compatible.",
+    "preserved_contract": [
+      "All complete controls, session, view, layout, renderer, hit and helper records remain required; no field omission, value substitution or missing-array exception is permitted.",
+      "Python exact-type recursive equality, expected models, schema and inventory checks, pixel/numerical criteria, reference/source pins other than the two necessary fixture pins, and comparison ordering remain unchanged.",
+      "All 44 footage cases, 18 title numerical cases, 48 header cases, canonical case46, geometry/clip/history/helper work and both helper specializations remain intact.",
+      "Production app, painter, model/session/control implementation, plugin UUIDs/parameters/state, dependencies, CMake, workflows, warning policies, sanitizer settings and resource bounds are untouched by the candidate.",
+      "Normal affected CTest limits remain footage 90s, title 90s, header 180s and statistics 90s; existing sanitizer overrides remain 240/240/480/240s. Original child 20s, cleanup 5s and header/stderr/output caps remain unchanged.",
+      "No new absent-helper runtime execution is claimed."
+    ]
+  },
+  "qualification_conditions": [
+    "Root/A52 own the separate qualification admission. Execute the bounded before/after inventories and canonical captures, rebuild only the two fixture targets, and run the four original affected local CTests once under their original limits. No retry-until-green.",
+    "Record every candidate source hash and exact executable identity. Verify generated fixture hash pins equal the actual native source bytes and that only the admitted four files changed.",
+    "Require complete typed drawbars 2x2x9 with all expected levels, held keys 2x61 with the exact original true/false positions, all copied sessions and models, and the complete control/layout/hit inventory. Checking only lengths or the formerly first failed field is insufficient.",
+    "Require the original strict title 18-case and header 103-inequality readers to finish all required cases/criteria; do not replace them with diagnostic comparators or numerical-only checks.",
+    "On a separate exact-candidate Windows source/workflow, retain original two CTest outcomes plus bounded raw canonical headers and captures with source/dependency re-verification. Preserve the original-source failed diagnostic and main-job failures.",
+    "Confirm unchanged complete inventories and canonical RGBA observations against the bounded before captures; explain any material difference before main publication.",
+    "Only if the admitted local/focused Windows candidate evidence succeeds may root consider the separate main-source publication and observe all sixteen actual source-specific hosted families. No source SHA, future pass, or complete matrix is asserted here."
+  ],
+  "reviewed_exact_source_files": [
+    {
+      "path": "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 49033,
+      "sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_title_density.py",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 23467,
+      "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 61275,
+      "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 34239,
+      "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+    },
+    {
+      "path": "apps/standalone/UiModel.h",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 18547,
+      "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1"
+    },
+    {
+      "path": "apps/standalone/Session.h",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 8982,
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929"
+    },
+    {
+      "path": "include/hammond/ControlState.h",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 5751,
+      "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856"
+    },
+    {
+      "path": "include/hammond/PedalVoice.h",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 3384,
+      "sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf"
+    },
+    {
+      "path": "include/hammond/PedalRouting.h",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 6909,
+      "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8"
+    },
+    {
+      "path": "include/hammond/Types.h",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 6015,
+      "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8"
+    },
+    {
+      "path": "apps/standalone/UiModel.cpp",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 83758,
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+    },
+    {
+      "path": "src/ControlState.cpp",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 7673,
+      "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d"
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "source_commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "bytes": 44941,
+      "sha256": "642655110b803592e0943d6bb1aa367cd74c81d72b6ebef0b3f1058916157a96"
+    }
+  ],
+  "frozen_prior_evidence_reverified": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/windows-copied-model-independent-review.json",
+      "bytes": 20338,
+      "sha256": "28893361527b92d78d6d5d20a1ae2fbed7701193047af33e48eaf909563500ee"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted.json",
+      "bytes": 74160,
+      "sha256": "7c975d5feee2f95b576d4acc4959314322959303c0921a7b96279b7dd566f7a8"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/retention.json",
+      "bytes": 16322,
+      "sha256": "ba02aa100e0abd2d7f0ac8755117b5c38524aaa33ca0b3c523a2a27be9111eb4"
+    },
+    {
+      "path": "docs/reviews/HEADING_HEADER_HELPER_VST3_HOSTED.md",
+      "bytes": 13009,
+      "sha256": "064b05dc7af305f2ce9506fe4730e1c5595b84b65ef61236dc1e4da29c0fc339"
+    }
+  ],
+  "independent_A53_original_diagnostic_receipt": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/windows-original-diagnostic-run-44029895588.json",
+    "bytes": 17587,
+    "sha256": "e9862f71402cb74a2e82427dde4c7bf8383aaa0fdb80ce05055a0236d9936660"
+  },
+  "output_boundary": {
+    "only_new_repo_file": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/windows-array-serialization-admission.json",
+    "source_edits": 0,
+    "native_builds_runs_tests_or_retries": 0,
+    "remote_mutations": 0,
+    "final_docs_patch": "paused",
+    "prior_reports_and_notes": "unchanged"
+  }
+}

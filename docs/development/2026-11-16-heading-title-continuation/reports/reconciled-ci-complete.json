@@ -1,0 +1,399 @@
+{
+  "schema": 1,
+  "utc": "2026-11-17T08:31:51.645032+00:00",
+  "actually_tested_source": "523c1979334b0fbb624ce120128a0b8ada078383",
+  "tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+  "parents": [
+    "8189a49eacab5d4e6ce6c178862e83b03bdec437",
+    "54859886268ce83c36f359c43327f7c72a77ae82"
+  ],
+  "all_sixteen_required_jobs_terminal_success": true,
+  "workflow_attempts": [
+    1,
+    1,
+    1
+  ],
+  "all_sixteen_actually_executed": true,
+  "failures": 0,
+  "cancellations": 0,
+  "required_jobs": 16,
+  "executed_ctest_observations": 1505,
+  "count_note": "1,505 CTest observations across configurations, not 1,505 distinct project tests. Full R4 admission methods and full waveform execution are separate from that total. Optional internal Python and Windows FIFO subcase skips remain explicitly recorded in family reviews.",
+  "families": {
+    "core": {
+      "workflow_run": {
+        "id": 44043394024,
+        "name": "CI",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024",
+        "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+        "head_branch": "main",
+        "event": "push",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-17T08:02:43Z",
+        "updated_at": "2026-11-17T08:23:22Z"
+      },
+      "required_jobs": 6,
+      "all_terminal_success": true,
+      "jobs": [
+        {
+          "id": 133903128309,
+          "name": "Linux GCC ASan + UBSan + leaks",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024/job/133903128309",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:45Z",
+          "completed_at": "2026-11-17T08:10:49Z",
+          "runner_id": 1000001488,
+          "runner_name": "GitHub Actions 1000001488",
+          "passed_ctest_observations": 209,
+          "ctest_seconds": 332.67
+        },
+        {
+          "id": 133903128374,
+          "name": "Release (macOS AppleClang)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024/job/133903128374",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:45Z",
+          "completed_at": "2026-11-17T08:07:24Z",
+          "runner_id": 1000001491,
+          "runner_name": "GitHub Actions 1000001491",
+          "passed_ctest_observations": 209,
+          "ctest_seconds": 151.72
+        },
+        {
+          "id": 133903128389,
+          "name": "Release (Windows MSVC)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024/job/133903128389",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:45Z",
+          "completed_at": "2026-11-17T08:14:59Z",
+          "runner_id": 1000001492,
+          "runner_name": "GitHub Actions 1000001492",
+          "passed_ctest_observations": 209,
+          "ctest_seconds": 346.52
+        },
+        {
+          "id": 133903128480,
+          "name": "Release (Linux GCC)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024/job/133903128480",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:45Z",
+          "completed_at": "2026-11-17T08:07:05Z",
+          "runner_id": 1000001489,
+          "runner_name": "GitHub Actions 1000001489",
+          "passed_ctest_observations": 209,
+          "ctest_seconds": 122.54
+        },
+        {
+          "id": 133903128616,
+          "name": "Release (macOS Intel AppleClang)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024/job/133903128616",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:05:17Z",
+          "completed_at": "2026-11-17T08:23:21Z",
+          "runner_id": 1000001501,
+          "runner_name": "GitHub Actions 1000001501",
+          "passed_ctest_observations": 209,
+          "ctest_seconds": 555.07
+        },
+        {
+          "id": 133903128709,
+          "name": "Complete R4 waveform qualification (Linux GCC)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024/job/133903128709",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:46Z",
+          "completed_at": "2026-11-17T08:12:44Z",
+          "runner_id": 1000001496,
+          "runner_name": "GitHub Actions 1000001496",
+          "r4_admission_methods": 14,
+          "full_r4_mode": "full",
+          "full_r4_status": "pass",
+          "full_r4_failures": [],
+          "full_r4_qualification_wall_seconds": 532.158836296
+        }
+      ],
+      "root_read_and_accepted_review": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/reconciled-main-core/CORE_REVIEW.md",
+        "bytes": 6057,
+        "sha256": "29ac42fa0e8ea7730d88779e5d46ece0b2a8aa4ed7d19a3d54ed3db6b6921d16"
+      },
+      "machine_readable_review": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/reconciled-main-core/core-review.json",
+        "bytes": 30168,
+        "sha256": "e96d180e0a1adc8c4a4c199c321cdc39d0361a5b60d300b584ba8155e8275028"
+      }
+    },
+    "standalone": {
+      "workflow_run": {
+        "id": 44043394005,
+        "name": "Native standalone",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005",
+        "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+        "head_branch": "main",
+        "event": "push",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-17T08:02:43Z",
+        "updated_at": "2026-11-17T08:25:41Z"
+      },
+      "required_jobs": 6,
+      "all_terminal_success": true,
+      "jobs": [
+        {
+          "id": 133903128857,
+          "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903128857",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:45Z",
+          "completed_at": "2026-11-17T08:24:11Z",
+          "runner_id": 1000001497,
+          "runner_name": "GitHub Actions 1000001497",
+          "passed_ctest_observations": 41,
+          "ctest_seconds": 785.99
+        },
+        {
+          "id": 133903129154,
+          "name": "Native standalone (macOS AppleClang, MIDI ON)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129154",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:46Z",
+          "completed_at": "2026-11-17T08:14:11Z",
+          "runner_id": 1000001494,
+          "runner_name": "GitHub Actions 1000001494",
+          "passed_ctest_observations": 78,
+          "ctest_seconds": 456.23
+        },
+        {
+          "id": 133903129162,
+          "name": "Native standalone (Linux GCC, MIDI ON)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129162",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:46Z",
+          "completed_at": "2026-11-17T08:13:47Z",
+          "runner_id": 1000001498,
+          "runner_name": "GitHub Actions 1000001498",
+          "passed_ctest_observations": 78,
+          "ctest_seconds": 412.77
+        },
+        {
+          "id": 133903129190,
+          "name": "Native standalone (Linux GCC, MIDI OFF)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129190",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:46Z",
+          "completed_at": "2026-11-17T08:15:22Z",
+          "runner_id": 1000001499,
+          "runner_name": "GitHub Actions 1000001499",
+          "passed_ctest_observations": 78,
+          "ctest_seconds": 499.09
+        },
+        {
+          "id": 133903129277,
+          "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129277",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:06:41Z",
+          "completed_at": "2026-11-17T08:21:36Z",
+          "runner_id": 1000001502,
+          "runner_name": "GitHub Actions 1000001502",
+          "passed_ctest_observations": 78,
+          "ctest_seconds": 549.92
+        },
+        {
+          "id": 133903129393,
+          "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/job/133903129393",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:07:27Z",
+          "completed_at": "2026-11-17T08:25:41Z",
+          "runner_id": 1000001503,
+          "runner_name": "GitHub Actions 1000001503",
+          "passed_ctest_observations": 78,
+          "ctest_seconds": 574.83
+        }
+      ],
+      "root_read_and_accepted_review": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/reconciled-main-standalone/review.md",
+        "bytes": 6312,
+        "sha256": "232f7be0e07cea3e2a1f1aa44becd9812e91fe34b7761fd9d516463642919dc1"
+      },
+      "machine_readable_review": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/reconciled-main-standalone/summary.json",
+        "bytes": 25028,
+        "sha256": "ed9600f5822521879c0ed193963593c20fa0bca7e7732b4d5dcc990a6317f199"
+      }
+    },
+    "vst3": {
+      "workflow_run": {
+        "id": 44043394002,
+        "name": "Native VST3",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002",
+        "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+        "head_branch": "main",
+        "event": "push",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-17T08:02:43Z",
+        "updated_at": "2026-11-17T08:08:37Z"
+      },
+      "required_jobs": 4,
+      "all_terminal_success": true,
+      "jobs": [
+        {
+          "id": 133903128269,
+          "name": "Native VST3 (Linux GCC)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002/job/133903128269",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:46Z",
+          "completed_at": "2026-11-17T08:04:19Z",
+          "runner_id": 1000001490,
+          "runner_name": "GitHub Actions 1000001490",
+          "passed_ctest_observations": 8,
+          "ctest_seconds": 6.68
+        },
+        {
+          "id": 133903128533,
+          "name": "Native VST3 (macOS AppleClang)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002/job/133903128533",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:46Z",
+          "completed_at": "2026-11-17T08:05:13Z",
+          "runner_id": 1000001493,
+          "runner_name": "GitHub Actions 1000001493",
+          "passed_ctest_observations": 7,
+          "ctest_seconds": 5.1
+        },
+        {
+          "id": 133903128675,
+          "name": "Native VST3 (Windows MSVC x64)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002/job/133903128675",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:04:21Z",
+          "completed_at": "2026-11-17T08:06:39Z",
+          "runner_id": 1000001500,
+          "runner_name": "GitHub Actions 1000001500",
+          "passed_ctest_observations": 7,
+          "ctest_seconds": 7.58
+        },
+        {
+          "id": 133903128818,
+          "name": "Native VST3 (macOS Intel AppleClang)",
+          "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002/job/133903128818",
+          "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-17T08:02:47Z",
+          "completed_at": "2026-11-17T08:08:36Z",
+          "runner_id": 1000001495,
+          "runner_name": "GitHub Actions 1000001495",
+          "passed_ctest_observations": 7,
+          "ctest_seconds": 12.1
+        }
+      ],
+      "root_read_and_accepted_review": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/reconciled-main-vst3/review.md",
+        "bytes": 9462,
+        "sha256": "83f43b1209c96a69d7d6e2498abe0a117b909374c769a642c68d4a00a85f3db5"
+      },
+      "machine_readable_review": {
+        "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/reconciled-main-vst3/summary.json",
+        "bytes": 6968,
+        "sha256": "2c93e2c263da6796fa0696d68504902945a8e265e47d13e78492fe0693dbb851"
+      }
+    }
+  },
+  "root_independent_api": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/reconciled-main-terminal-api.json",
+    "bytes": 151959,
+    "sha256": "506d8ec9aabc0abbbe0320e092a204efffb883550a8b092ec025873d197a4387"
+  },
+  "actual_main_publication": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/reconciled-integration/incoming-application.json",
+    "bytes": 34784,
+    "sha256": "664962e25324cf6b7c20234745f773c8e44ab3a952f290655de246eadbe5bd71"
+  },
+  "source_equivalence_preflight": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/reconciled-final-preflight.json",
+    "bytes": 1662,
+    "sha256": "85ade769e56a1ee52daf675ee09dd111d51ec1d413b2b5de273120a54d3b7d57"
+  },
+  "local_app_refresh": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/combined-local-app-build.json",
+    "bytes": 2435,
+    "sha256": "031b25dee019e9af97d86f8c18e1555a25b2978eb56880d694af65053afb4de4"
+  },
+  "review_scope": "Root independently fetched terminal run/job APIs, matched all sixteen exact523 source jobs and original attempt one, read and accepted every complete frozen family review, and verified its hash. Those reviews inspect all complete original job logs and actual assertions. No current523 artifact ZIP bodies were independently downloaded by these reviewers; earlier548 artifact inspection retains its own source. Final documentary-stage integrity and preserving merge publication follow in separate receipts. No older pass is transferred to changed source.",
+  "retained_limitations": [
+    "Literal whole-interface photo 1:1 remains unmet; scoped software raster gates do not close it.",
+    "No new physical measurements or measured calibration. Live scanner, loaded AO-28 and Leslie paths remain separate project phases.",
+    "Actual devices/displays, all-host DAW compatibility, native accessibility, hardware callback deadlines and signed release remain open.",
+    "Core retains its previously declared quarantine-only leak exception and optional stdlib image-method skips. Standalone sanitizer has its own strict instrumentation/policy admission.",
+    "VST3 retains original teardown and unsupported 64-bit diagnostics; actual validator is 47 passed / zero failed per platform. Linux real-time interception scope is calling-thread global C++ new/delete.",
+    "Earlier failures, cancellations, timeouts and original evidence remain immutable. Later success is not a cause, repair or stability claim for those earlier timing failures.",
+    "The original sixty-worker/ten-wave session is complete. These three reviews are same-worker follow-ups and add no staffing credit.",
+    "A later documentation/evidence commit is distinct from this actually executed source; its production/source equivalence must be verified explicitly.",
+    "Incoming console closure has its own sixty accepted workers; it remains separate from the heading continuation and creates no extra staffing credit here."
+  ],
+  "native_rerun_by_this_aggregate": false,
+  "ci_retry_by_this_aggregate": false,
+  "normal_python_method_observations": {
+    "capture": 45,
+    "header": 41,
+    "performance_plate": 71,
+    "scope": "Actually reported successful methods in each of the five normal standalone configurations. They are internal methods, not extra registered CTests."
+  },
+  "incoming_source_admission": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a52-helper-core-hosted/array-successor/reconciled-main-core/incoming-source-review.json",
+    "bytes": 7643,
+    "sha256": "185dc0ba6c638e8c4854670145273af67f8d68e247f0df549bab29a8257c44d8"
+  },
+  "frozen_predecessor_matrix": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-ci-complete.json",
+    "bytes": 17778,
+    "sha256": "d2cf446d4ee22ef415fb46dd019958617de8a30d5124a733ede986225c60af2c"
+  },
+  "preserved_previous_documentary_publication": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/reconciled-integration/preserved-docs-publication.json",
+    "bytes": 3924,
+    "sha256": "a7bb9355da26f9c9b4f4e8ea9593910d8004edf3f07370684bbba82211f6702f"
+  },
+  "predecessor_focused_windows": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/combined-windows-focused/candidate-qualified.json",
+    "bytes": 9266,
+    "sha256": "112db41dabc98abe35c85e2c54eef924c69a5c8b019685cab5050c757c95e045"
+  },
+  "local_app_refresh_scope": "The linked build was executed at548. Its binary equals the earlier combined gallery app; all150 production inputs remain unchanged in523. No new build or capture at523 is claimed."
+}

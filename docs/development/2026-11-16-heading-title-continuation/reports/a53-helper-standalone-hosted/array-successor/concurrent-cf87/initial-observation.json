@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "worker": "A53",
+  "same_accepted_worker_followup": true,
+  "observed_utc": "2026-11-17 06:38:39 UTC",
+  "source_sha": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "tree": "2565ac86f9d31b7ab9d24d0d5353289c2359bf12",
+  "parents": [
+    "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "8cd9034f7e1dd21dab373f0e4ad0d1be0bab61e7"
+  ],
+  "run_id": 44030833294,
+  "attempt": 1,
+  "workflow": {
+    "bytes": 78398,
+    "sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659"
+  },
+  "status": "Concurrent main source; Windows compile failure, three successful normal jobs, Intel and sanitizer still live. No result transfers to a future reconciliation.",
+  "concurrency": {
+    "group": "${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}",
+    "cancel_in_progress": true
+  },
+  "jobs": [
+    {
+      "id": 133862108476,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001430",
+      "runner_id": 1000001430,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "current": [
+        "Discover exactly forty-one gates and run with leak checking"
+      ]
+    },
+    {
+      "id": 133862108651,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "runner_name": "GitHub Actions 1000001428",
+      "runner_id": 1000001428,
+      "labels": [
+        "macos-15-intel"
+      ],
+      "current": [
+        "Run all required standalone and capture acceptance tests"
+      ]
+    },
+    {
+      "id": 133862108913,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "completed",
+      "conclusion": "failure",
+      "runner_name": "GitHub Actions 1000001433",
+      "runner_id": 1000001433,
+      "labels": [
+        "windows-2022"
+      ],
+      "current": []
+    },
+    {
+      "id": 133862109037,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000001440",
+      "runner_id": 1000001440,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "current": []
+    },
+    {
+      "id": 133862109056,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000001436",
+      "runner_id": 1000001436,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "current": []
+    },
+    {
+      "id": 133862109073,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000001441",
+      "runner_id": 1000001441,
+      "labels": [
+        "macos-15"
+      ],
+      "current": []
+    }
+  ],
+  "windows": {
+    "job": 133862108913,
+    "file": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+    "line": 50,
+    "warning": "C4702",
+    "error": "C2220",
+    "build_exit": 1,
+    "CTest_executed": 0,
+    "new_failure_only_Python_diagnostics": "unreached"
+  },
+  "next": "Retain source-specific logs/outcomes and audit expanded normal/sanitizer inventory; leave live same-ref work untouched."
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/5a28c3564dbf/build-native",
+    "-C",
+    "Release",
+    "-R",
+    "^(python_test_(compare_header_material|compare_performance_plate|capture_standalone_interface)|test_standalone_performance_plate_numerical)$",
+    "--parallel",
+    "1",
+    "--verbose",
+    "--output-junit",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.xml"
+  ],
+  "exit_code": 0,
+  "seconds": 5.616027559997747,
+  "log": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/final-consumer-ctest.log",
+  "bytes": 12739,
+  "sha256": "5dbd44d2dcebc617e708b6fd9d948122706fff6c55b08bfe3126e8bdaa9177d7",
+  "source_unchanged": true,
+  "native_default_34_case_test_repeated_locally": false,
+  "qualification_reason": "New additive source admission and incoming test path/newline portability changes; re-execute only their three Python suites and actual numerical consumer. Original native fixtures/painter/binaries remain unchanged; focused Windows/full matrix will execute all required native gates at published source."
+}

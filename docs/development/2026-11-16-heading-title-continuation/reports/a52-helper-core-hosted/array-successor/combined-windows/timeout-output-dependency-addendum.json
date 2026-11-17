@@ -1,0 +1,106 @@
+{
+  "build_executions": 0,
+  "dependency_inspection": {
+    "conclusion": "P1 is standard-library-only. The selected header/capture unit tests provide controlled image placeholders for their optional authoring/capture boundaries. No Pillow installation/version policy exists to copy from the normal standalone workflow.",
+    "normal_standalone_workflow": {
+      "Pillow_or_pip_install_step": false,
+      "bytes": 78398,
+      "path": ".github/workflows/standalone.yml",
+      "sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659"
+    },
+    "p1_comparator": {
+      "all_import_modules": [
+        "__future__",
+        "argparse",
+        "datetime",
+        "fractions",
+        "hashlib",
+        "json",
+        "math",
+        "os",
+        "pathlib",
+        "platform",
+        "re",
+        "signal",
+        "struct",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "threading",
+        "time",
+        "zlib"
+      ],
+      "bytes": 90994,
+      "path": "tools/compare_performance_plate.py",
+      "sha256": "d6fcd559d43cec25fb2d3157a9291cfe2608289465278a1e53c6da5ec2587ca5"
+    },
+    "root_correction": "Root withdrew the Pillow concern after reading actual imports and the main workflow. The frozen original template remains admitted; no version 2 or added dependency was created.",
+    "selected_unit_test_sources": {
+      "tests/test_capture_standalone_interface.py": {
+        "PIL_mentions": [
+          310
+        ],
+        "bytes": 58284,
+        "sha256": "2ee08931dbef930c91d6b1f591592c65dec359c3de089c6bcf3841b686ab9ccc"
+      },
+      "tests/test_compare_header_material.py": {
+        "PIL_mentions": [
+          68,
+          70
+        ],
+        "bytes": 34446,
+        "sha256": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+      }
+    }
+  },
+  "focused_python_limit": {
+    "comparison": "Core Release at cf87 uses --timeout 300. Thus the focused observation has a separate narrower global Python limit. All six native CTest property deadlines remain unchanged.",
+    "effective_seconds": 180,
+    "policy": "No claim of identical global timeout to Core. Timeout remains failure, with no automatic retries or deadline relaxation.",
+    "source": "Existing focused CTest --timeout 180; the three added Python tests have no per-test TIMEOUT property."
+  },
+  "frozen_admission_sha256": "24d8c14217b94bb80a31cfc0edfc3bd3415c6d0df4b28fc7592deedc2082fba5",
+  "live_source_edits": 0,
+  "native_invocations_added": 0,
+  "p1_unit_test_output_isolation": {
+    "bytes": 53469,
+    "conclusion": "Every actual p1.execute call supplies explicit --output beneath TemporaryDirectory. The exact 64-method suite therefore does not create p1-frozen62-* outputs; the original numerical CTest is the intended sole new directory producer.",
+    "default_p1_temp_prefix_or_mkdtemp_in_test_source": false,
+    "execute_methods": [
+      {
+        "cli_line": 459,
+        "execute_line": 463,
+        "method": "FixtureSourceTransitionTests.test_execute_refuses_changed_fixture_before_any_native_launch",
+        "native_runner_mock": "Raises if native launch attempted; each test asserts it was not called.",
+        "output": "Explicit --output <TemporaryDirectory>/report",
+        "root_binding": "Path(directory) directly"
+      },
+      {
+        "cli_line": 728,
+        "execute_line": 731,
+        "method": "UiModelSourceTransitionTests.test_execute_refuses_bad_sources_before_any_native_launch",
+        "native_runner_mock": "Raises if native launch attempted; each test asserts it was not called.",
+        "output": "Explicit --output <TemporaryDirectory>/report",
+        "root_binding": "Path(directory) directly"
+      },
+      {
+        "cli_line": 869,
+        "execute_line": 873,
+        "method": "FixtureHelperTransitionTests.test_execute_rejects_bad_fixture_before_any_native_launch",
+        "native_runner_mock": "Raises if native launch attempted; each test asserts it was not called.",
+        "output": "Explicit --output <TemporaryDirectory>/report",
+        "root_binding": "root = Path(directory)"
+      }
+    ],
+    "inspection_note": "An initial static inspection required the literal Path(directory) / report assignment and stopped on an equivalent root / report expression. Inspection of root = Path(directory) resolved that reviewer-side check. No unit or native test was executed or failed by this inspection.",
+    "inspection_only": true,
+    "proposed_test_sha256": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932",
+    "proposed_test_source": "tests/test_compare_performance_plate.py",
+    "test_methods": 64
+  },
+  "previous_frozen_files_modified": 0,
+  "recorded_utc": "2026-11-17T07:09:51.999218+00:00",
+  "reviewer": "A52, same accepted worker",
+  "schema": 1,
+  "template_sha256": "d236ef46a4d0069e7865abd47bbef02f99c25337c7e28d853ac373b9951d2c54"
+}

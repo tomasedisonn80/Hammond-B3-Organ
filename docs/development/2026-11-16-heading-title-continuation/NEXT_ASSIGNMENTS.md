@@ -1,110 +1,97 @@
 # Current staffing and next sequence — 17 November 2026
 
-All **60 distinct workers in ten waves of six are accepted**. All ten waves
-have six accepted deliveries, and the [strict record check](reports/helper-worker-strict.json)
-passes with zero pending/errors. Follow-ups keep the same worker identities;
-no planned slot, historical worker or follow-up adds credit. Accepted notes
-remain frozen and new observations use separate receipts.
+This heading/title/header continuation completed **60 accepted distinct workers
+in ten waves of six**, with fresh textual coverage of **all 500 atlas pages**.
+The [actual ledger](assignments.json), [strict record result](reports/helper-worker-strict.json)
+and [reading receipt](reports/atlas-reading-coverage.json) retain the evidence.
+Follow-ups keep their original identities and add no worker credit.
+The separate [console owner's ledger](../2026-11-16-console-completion/assignments.json) also closes
+its own **60 accepted workers in ten waves**. Its [executed strict check](../2026-11-16-console-completion/reports/final-worker-strict.json)
+verifies all sixty note hashes with zero errors, and its
+[500-page reading record](../2026-11-16-console-completion/reports/atlas-reading-coverage.json) retains its
+own coverage. These owner-local records remain separate from this continuation;
+follow-ups and the other session provide no additional worker credit here.
 
-| Same worker | Current follow-up and next release duty |
+| Same accepted worker | Follow-up boundary |
 | --- | --- |
-| A52 | Preserve original and published `03c70c1` Core reviews; observe the next helper source only after root supplies its exact publication. |
-| A53 | Preserve original standalone failures/cancellation and the `03c70c1` C4702 failure. Retain the completed Intel timeout review, unchanged 30-second guard and helper-specialization admission; all next-source Windows/native qualification follows exact publication. |
-| A54 | Accepted published `03c70c1` VST3 4/4 and prepared the current-document patch for root integration. Observe all four next-source VST3 families after root's exact release. No accepted note or original review is rewritten. |
+| A52 | Core workflow/source admission and exact-source matrix evidence; preserve every predecessor review and original failure. |
+| A53 | Standalone platform/sanitizer/package evidence and original Windows diagnostics; retain complete raw bytes and distinguish failed, cancelled and unrun gates. |
+| A54 | Four-platform VST3 evidence, bounded independent portability admissions and the current-document patch; all accepted notes and prior reports remain frozen. |
 
-The [current verified publication](reports/hosted-repair-publication.json) is
-`03c70c103a4a0dd72b323529416b909c19a4e139`, tree
-`f639acf69061a4b66a0bd3d2219b1ed890e74e42`, with sole parent
-`fba1911259346bfc6fd3ba7ec78b5cf6c4d1a6b2`. Root's guarded, nonforced update
-and independent API/Git checks verify the exact commit, tree, parent and contents.
-This is the published three-input repair, separate from the next locally
-qualified helper correction, which is not yet published.
+Their exact-source terminal reviews and final documentation proposal are retained; future follow-ups require a new named source or concrete uncovered gate. No follow-up, plan, old worker or other owner's record creates new credit.
 
-The [complete published-source matrix](reports/hosted-repair-ci-complete.json)
-contains **14 successes and two failures**, with all sixteen attempt-one jobs
-terminal and **no cancellations**. **Core 6/6 and VST3 4/4 pass**. Standalone's
-Linux MIDI OFF/ON and ARM macOS normal jobs succeed; its Linux ASan/UBSan/leaks
-job executes and passes **34/34 gates**. Windows job `133832484867` fails
-C4702 at fixture line 49 under unchanged `/W4 /WX`. Intel macOS job
-`133832484811` completes **67/68**, with preset raster timing out at **30.05
-seconds** under its unchanged **30-second** guard; post-acceptance source/
-dependency verification and relocated executable packaging remain skipped.
-The [independent Intel review](reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-and [root publication admission](reports/helper-publication-admission.json)
-are complete. They retain that failed gate, its full workload and unchanged
-guard, and permit only the separately qualified Windows helper publication
-with complete evidence and current documentation. The timeout supplies no
-completed counters or measured remaining runtime; no timing fix, specific
-cause or repeated stability is claimed. No local or CI retry is admitted.
+[Published source and preserving integration](reports/reconciled-integration/incoming-application.json):
+`523c1979334b0fbb624ce120128a0b8ada078383`, tree `893441fe87859b9dbad81a5d81a453f7c96030f8`.
+**All sixteen required jobs succeeded on attempt 1 at this source.**
+Its five Python reader/admission/diagnostic changes preserve the production
+application, C++ fixtures, build/workflow inputs, numerical criteria and limits.
+The [independent source review](reports/a52-helper-core-hosted/array-successor/reconciled-main-core/incoming-source-review.json)
+retains every earlier test method and the strict complete-source reversals.
 
-The [next two-file helper correction](reports/windows-helper-local-qualification.json)
-is implemented and locally qualified. It moves the same false return into an
-explicit `else` for the dependent `if constexpr` helper predicate and updates
-the one active fixture-hash literal. Both existing affected CTests pass
-**2/2 in 38.725693459 seconds**, with an identical Linux fixture binary, all
-48 actual cases, the exact **10,542-check/163-painting** default result and
-**103/103** canonical criteria. Complete statistics differ only in the two
-recorded source identities; canonical pixels and historical comparators are
-unchanged. Both helper-present and helper-absent specializations are preserved
-by independent source/instantiation review; **no new helper-absent runtime
-execution is claimed**.
+| Workflow | Required jobs | Actual outcome at this source |
+| --- | ---: | --- |
+| Core | 6 | 6/6 passed: five 209/209 registered CTest suites and full R4 [run 44043394024](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024) |
+| Native standalone | 6 | 6/6 passed: five normal 78/78 suites; sanitizer 41/41 [run 44043394005](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005) |
+| Native VST3 | 4 | 4/4 passed: 29 native CTest observations; actual module validator 47 passed / zero failed per platform [run 44043394002](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002) |
 
-Relative to published `03c70c1`, exactly **two of 475 inputs change and 473
-remain unchanged**. Relative to original `fba1911`, the total is still **three
-changed and 472 unchanged**. Production app `1fa2a247…`, `main.cpp`
-`0c02c619…`, painter `0bf731a6…`, and the already-published **35-minute**
-sanitizer job allowance remain unchanged. Every test/child bound, workload,
-instrumented input and leak policy is preserved. **The next helper-source
-publication and all of its exact-source hosted results remain pending; no
-publication SHA is recorded for it.** Local Linux equivalence is not MSVC
-compilation or execution evidence. The [independent Intel review](reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-and [root publication admission](reports/helper-publication-admission.json)
-permit publishing only this separately qualified helper pair with complete
-evidence and current documentation. The preset raster retains its failed
-Intel result, unchanged 30-second guard and full workload; the helper pair
-is not admitted as a timing fix.
+The [complete terminal matrix](reports/reconciled-ci-complete.json)
+and independent [Core](reports/a52-helper-core-hosted/array-successor/reconciled-main-core/CORE_REVIEW.md), [standalone](reports/a53-helper-standalone-hosted/array-successor/reconciled-main-standalone/review.md)
+and [VST3](reports/a54-helper-vst3-hosted/array-successor/reconciled-main-vst3/review.md) reviews bind these executions.
+The [source/input-equivalence record](reports/reconciled-final-integrity.json)
+identifies the stage and inputs root actually verified; final staged acceptance
+and guarded documentary publication remain root-owned operations recorded there.
+Recover actual live HEAD/tree and fresh remote state from the
+[checkpoint](CHECKPOINT.md). A later documentation descendant is distinct
+from this tested source and creates no new native execution.
+The [previous 548 matrix](reports/combined-ci-complete.json)
+and every original failed outcome remain immutable.
+
+The independent console record is now closed at sixty accepted notes and
+ten complete waves. Its [handoff](../../CONSOLE_COMPLETION_HANDOFF.md),
+[root queue](../2026-11-16-console-completion/ROOT_NEXT_QUEUE.md) and [strict receipt](../2026-11-16-console-completion/reports/final-worker-strict.json)
+retain that owner's recovery information. Native/browser implementation remains
+a separately assigned next phase; neither ledger adds follow-up worker credit.
 
 ## Dependency-ready work now
 
-The complete published `03c70c1` matrix remains **14 successes and two
-failures**, including Windows C4702 and the Intel preset-raster timeout.
-The [independent Intel review](reports/a52-repair-core-hosted/intel-standalone-independent-review.json)
-is complete, and [root's publication admission](reports/helper-publication-admission.json)
-permits publishing only the separately reviewed, locally qualified two-file
-Windows helper correction with complete evidence and current documentation.
-Preserve the normal preset **30-second guard**, all **256 paints/272 readbacks**,
-every assertion and the original failed result. The timeout provides no
-completed counters or measured remaining runtime; no timing fix or specific
-cause is claimed. A later pass would be a separate source/runner observation,
-not proof of repaired cause or repeated stability.
+### Resume from the delivered source
 
-Root must check the exact staged repository and strict worker records, publish
-with a fresh expected remote head and no force, independently verify the exact
-commit/tree/parent/contents, and release the same A52 Core, A53 standalone and
-A54 VST3 reviewers for **all sixteen new-source families**. The next helper
-publication and its CI remain pending; do not invent a SHA or transfer earlier
-passes. Preserve both earlier Windows failures, the Intel failure and its
-skipped post-acceptance/package steps, and the original sanitizer cancellation.
-Keep both helper specializations and do not claim a new helper-absent runtime
-run. Wait for all next-source jobs before another same-ref push, because
-workflow concurrency cancels older runs. All 60 deliveries and strict record
-closure remain complete; follow-ups add no worker credit. Root then commits
-and pushes accepted final evidence, README/current-plan/status/handoff and
-concrete next actions, and verifies remote contents. No local test or CI retry,
-aggregate-only rerun, timeout/oracle change or broader source repair is admitted.
+Recover actual live HEAD and any later remote advance, then read the exact
+publication, terminal matrix and input-equivalence receipts above. Preserve the
+completed qualification; a later change needs the gates affected by that change.
+Keep original failures, immutable reports, historical comparator pins and both
+owner-local ledgers. Root coordinates any new shared-file or build assignment,
+and records the new source, commands, results and next acceptance before
+committing and pushing an authorized, reviewed chunk.
 
-The exact record-check command, from the repository root, is:
+The next model step is a reviewed, read-only **Save-availability projection**
+and **fresh post-Start control proof**, followed by input/gesture/focus hooks,
+main-loop lifecycle/submission/storage routing, then the native browser model,
+view and painter. `controls_pending == false` and a queued pre-Start restore
+are insufficient proof. Preserve original held-note releases across modal
+open/close, pending CC11, both recall scopes, startup/restart/stopped Load,
+timeout/recovery, fresh final storage authorization, create-only collisions and
+protected paths. The [native integration plan](../../design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+and [LibraryModel guide](../../LIBRARY_MODEL_GUIDE.md) define the dependencies.
+
+[Current visual residuals](../../../README.md#remaining-reference-and-usability-work),
+[full M0–M9 exits](../../PLAN.md#milestones-and-exit-evidence) and the
+[owner map](../../PLAN.md#current-ownership-and-source) govern subsequent work.
+No additional worker is invented to close a task. Record the actual owner,
+exclusive paths, inputs, acceptance and substantive outcome before integration.
+
+The exact heading record-check command from the repository root is:
 
 ~~~sh
 python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py --strict
 ~~~
 
-The retained execution already passes; this example is recovery guidance,
-not a request to manufacture a new result. The checker has no `--repo`
-option and validates records only. Full staffing does not establish physical
-calibration, connected audio, devices/DAWs, accessibility or release readiness.
-All permanent [instructions](../../../AGENTS.md), [M0–M9 exits](../../PLAN.md),
-ownership and bounded-storage rules remain binding. **Literal whole-interface
+The retained execution already passes. This is recovery guidance, not an
+instruction to rerun a native suite for an aggregate or manufacture new workers.
+The checker has no `--repo` option and validates records only.
+The independent console ledger uses its own checker and owner acceptance.
+Follow all permanent [instructions](../../../AGENTS.md), storage/checkpoint rules and
+guarded commit/push/remote-verification requirements. **Literal whole-interface
 1:1 remains unmet and unwaived.**
 
 ---

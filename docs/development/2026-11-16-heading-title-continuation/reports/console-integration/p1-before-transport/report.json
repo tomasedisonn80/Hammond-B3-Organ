@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "phase": "before",
+  "inputs": {
+    "binary": {
+      "path": "/workspace/scratch/5a28c3564dbf/p1-original-native-cf87/test_standalone_performance_plate",
+      "bytes": 3862304,
+      "sha256": "60e951c907bf177b190e1a8abee9246a472b5e1d8ddc957b5ba5e2ce5179ecd5"
+    },
+    "fixture": {
+      "path": "/workspace/scratch/5a28c3564dbf/p1-original-native-cf87/test_standalone_performance_plate.cpp",
+      "bytes": 75570,
+      "sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    },
+    "comparator": {
+      "path": "/workspace/scratch/5a28c3564dbf/p1-original-native-cf87/compare_performance_plate.py",
+      "bytes": 84566,
+      "sha256": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "bytes": 179890,
+      "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+    },
+    "apps/standalone/UiModel.cpp": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/UiModel.cpp",
+      "bytes": 83993,
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+    },
+    "apps/standalone/UiModel.h": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/UiModel.h",
+      "bytes": 18956,
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+    },
+    "apps/standalone/Drawing.cpp": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/Drawing.cpp",
+      "bytes": 22378,
+      "sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a"
+    },
+    "apps/standalone/main.cpp": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/main.cpp",
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    }
+  },
+  "scope": "Transport, complete frozen inventory, and canonical stream equivalence only; existing CTests cover native and numerical acceptance.",
+  "timeout_seconds": 60,
+  "whole_run_seconds": 1200,
+  "retry": false,
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/p1-original-native-cf87/test_standalone_performance_plate",
+        "--list"
+      ],
+      "utc_started": "2026-11-17T06:55:16.458414+00:00",
+      "name": "inventory",
+      "stdout_limit": 2097152,
+      "stderr_limit": 65536,
+      "timeout_seconds": 60,
+      "exit_code": 0,
+      "utc_finished": "2026-11-17T06:55:16.468018+00:00",
+      "duration_seconds": 0.010029420998762362,
+      "errors": [],
+      "stdout": {
+        "path": "inventory.stdout.zlib",
+        "bytes": 2412,
+        "sha256": "df37c31b128027142d7e712759c103b3ae43d3a5ec320760b50e37e34504cb61",
+        "raw_bytes": 27310,
+        "raw_sha256": "453447b786f4585069c34eb3b52ec21e8f2d85362cb389bb2ff58446a24f2125",
+        "encoding": "zlib"
+      },
+      "stderr": {
+        "path": "inventory.stderr.zlib",
+        "bytes": 8,
+        "sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb",
+        "raw_bytes": 0,
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "zlib"
+      }
+    },
+    {
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/p1-original-native-cf87/test_standalone_performance_plate",
+        "--case",
+        "0"
+      ],
+      "utc_started": "2026-11-17T06:55:16.471960+00:00",
+      "name": "canonical",
+      "stdout_limit": 36025169,
+      "stderr_limit": 65536,
+      "timeout_seconds": 60,
+      "exit_code": 0,
+      "utc_finished": "2026-11-17T06:55:17.047265+00:00",
+      "duration_seconds": 0.5753492430012557,
+      "errors": [],
+      "stdout": {
+        "path": "canonical.stdout.zlib",
+        "bytes": 1100577,
+        "sha256": "d03aa8aa2b81f0be063369793621226c6c4047aed473de9f2e3dccc6e85b0366",
+        "raw_bytes": 6561750,
+        "raw_sha256": "371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55",
+        "encoding": "zlib"
+      },
+      "stderr": {
+        "path": "canonical.stderr.zlib",
+        "bytes": 8,
+        "sha256": "aca503def43dc086a5aaa5c3d6f86bcbbc2aa6a80007ddea4a81bce2b376fceb",
+        "raw_bytes": 0,
+        "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "encoding": "zlib"
+      }
+    }
+  ],
+  "passed": true,
+  "canonical": {
+    "width": 1672,
+    "height": 941,
+    "stream_bytes": 6561750,
+    "stream_sha256": "371272d4777473f77a49e76c7efc352b5d26897f00e9c11631c689bb6055ef55",
+    "header_bytes": 268342,
+    "header_sha256": "a92a7e6fdc9d12a9cf23f096236031cee74e87018130f7429df97bd0947dd5b6",
+    "rgba_bytes": 6293408,
+    "rgba_sha256": "34bb954838cd156d8bb057eaf0cc6965feda3b8821d43c20ac4e0433c95511bf"
+  },
+  "inventory_sha256": "453447b786f4585069c34eb3b52ec21e8f2d85362cb389bb2ff58446a24f2125",
+  "complete_inventory_matches_frozen_34_cases": true,
+  "inputs_unchanged": true
+}

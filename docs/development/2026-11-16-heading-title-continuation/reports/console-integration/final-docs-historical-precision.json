@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "utc": "2026-11-17T08:02:56.924972+00:00",
+  "path": "docs/STATUS.md",
+  "before_sha256": "d1213d58193c44713d2dd1b6a00e2d665f6877381c866cd7647066c826b4fc9a",
+  "after_sha256": "18b368f34bd29b688243e95119609f1f6ae4040205d6fb04bf0bad89f67e927e",
+  "old": "Core Windows separately records **207/209**, with capture path/newline and mocked header-input path failures. The d2ed successor's fixes preserve real paths, file bytes and original source-admission requirements.",
+  "new": "Core Windows separately records **207/209**, with capture path and mocked header-input path failures. The capture failure stopped at the native-path KeyError before hash equality; the subsequent test fixes also preserve platform newline bytes. The d2ed successor's fixes preserve real paths, file bytes and original source-admission requirements.",
+  "reason": "A53 final documentary review: actual cf87 capture execution stopped at the native-path lookup KeyError. Platform newline expectations were a separately inferred latent source issue corrected upstream, not an additional observed cf87 execution failure. Clarify that boundary without changing any original failure evidence, source, native gate, workload or deadline.",
+  "original_A54_proposal_and_application_preserved": true,
+  "native_or_ci_execution": false
+}

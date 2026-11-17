@@ -1,0 +1,55 @@
+{
+  "setup_failure": "First build request returned no rule for the new target before CMake regeneration; zero compilation or tests ran. Original log/result retained.",
+  "resolution": "Reconfigured the same existing coordinated build using its existing options, then built only the new original P1 target. No native acceptance test run.",
+  "cache_options_before_and_after_identical": {
+    "BUILD_TESTING": "ON",
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "CMAKE_C_COMPILER": "/usr/bin/cc",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_BUILD_VST3": "OFF",
+    "HAMMOND_ENABLE_MIDI": "OFF",
+    "HAMMOND_ENABLE_SANITIZERS": "OFF",
+    "HAMMOND_SDL2_ROOT": "/workspace/scratch/3edffb787db3/SDL2"
+  },
+  "original_fixture_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+  "original_binary": {
+    "path": "/workspace/scratch/5a28c3564dbf/p1-original-native-cf87/test_standalone_performance_plate",
+    "bytes": 3862304,
+    "sha256": "60e951c907bf177b190e1a8abee9246a472b5e1d8ddc957b5ba5e2ce5179ecd5"
+  },
+  "executions": [
+    {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+        "-B",
+        "/workspace/scratch/5a28c3564dbf/build-native"
+      ],
+      "exit_code": 0,
+      "seconds": 5.769550454002456,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/configure.log",
+      "log_bytes": 7971,
+      "log_sha256": "4ced0e2177ec569c944bb63ec4d8a7beca35ff1aa2e285a530cb6b80366ae031"
+    },
+    {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/5a28c3564dbf/build-native",
+        "--config",
+        "Release",
+        "--target",
+        "test_standalone_performance_plate",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "seconds": 24.39500997900177,
+      "log": "docs/development/2026-11-16-heading-title-continuation/reports/console-integration/p1-original-build.log",
+      "log_bytes": 1135,
+      "log_sha256": "fb59f0ce3790253368d6c0ddc3f665aeefdc50aad10991b5b774487a4f66b8ba"
+    }
+  ]
+}

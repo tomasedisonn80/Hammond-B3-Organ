@@ -1,0 +1,360 @@
+--- a/.github/workflows/windows-array-focused.yml
++++ b/.github/workflows/windows-combined-focused.yml
+@@ -1,14 +1,14 @@
+-name: Windows copied-state candidate check
++name: Windows combined fixture and Python check
+ 
+ on:
+   push:
+-    branches: [investigate/windows-array-candidate-ea02c54]
++    branches: [investigate/windows-combined-candidate-__COMBINED_SOURCE_SHORT__]
+ 
+ permissions:
+   contents: read
+ 
+ concurrency:
+-  group: windows-copied-state-investigation-${{ github.ref }}
++  group: windows-combined-source-investigation-${{ github.ref }}
+   cancel-in-progress: false
+ 
+ defaults:
+@@ -21,18 +21,21 @@
+   HAMMOND_CI_MIDI_BACKEND: WinMM
+   SDL_AUDIODRIVER: dummy
+   SDL_VIDEODRIVER: dummy
+-  INVESTIGATION_SOURCE: ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9
++  INVESTIGATION_SOURCE: __COMBINED_SOURCE_SHA__
++  INVESTIGATION_TREE: __COMBINED_SOURCE_TREE__
++  HAMMOND_FOCUSED_CTEST_FILTER: >-
++    ^(test_standalone_(footage_typography_raster|title_density|header_material|header_statistics|performance_plate|performance_plate_numerical)|python_test_(compare_header_material|compare_performance_plate|capture_standalone_interface))$
+ 
+ jobs:
+-  original-source-protocol:
+-    name: Candidate Windows source protocol evidence
++  combined-source-protocol:
++    name: Combined Windows fixture and source evidence
+     runs-on: windows-2022
+     timeout-minutes: 25
+     steps:
+-      - name: Check out the exact reviewed candidate source
++      - name: Check out the exact reviewed combined source
+         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+         with:
+-          ref: ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9
++          ref: __COMBINED_SOURCE_SHA__
+           persist-credentials: false
+ 
+       - name: Set up original Python version
+@@ -41,22 +44,26 @@
+         with:
+           python-version: "3.12"
+ 
+-      - name: Bind candidate source and investigation provenance
++      - name: Bind combined source and investigation provenance
+         id: provenance
+         run: |
+           set -euo pipefail
+           mkdir -p windows-protocol-diagnostics
+           python - <<'PY'
+-          import hashlib, json, os, pathlib, platform, subprocess, sys
++          import hashlib, json, os, pathlib, platform, re, subprocess, sys
+           head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+-          assert head == os.environ["INVESTIGATION_SOURCE"]
++          tree = subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip()
++          assert re.fullmatch(r"[0-9a-f]{40}", os.environ["INVESTIGATION_SOURCE"])
++          assert re.fullmatch(r"[0-9a-f]{40}", os.environ["INVESTIGATION_TREE"])
++          assert head == os.environ["INVESTIGATION_SOURCE"] and tree == os.environ["INVESTIGATION_TREE"]
+           subprocess.run(["git", "diff", "--exit-code", "HEAD"], check=True)
+           names = subprocess.check_output(["git", "ls-files", "-z"], text=True).split("\0")
+           sources = {name: hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() for name in names
+                      if name and (name.startswith(("apps/", "src/", "include/", "tests/", "tools/", "data/", "cmake/", ".github/workflows/"))
+                                   or name in ("CMakeLists.txt", "CMakePresets.json"))}
+-          record = {"source_commit": head, "workflow_commit": os.environ["GITHUB_SHA"],
+-                    "scope": "Candidate protocol qualification only; complete main matrix remains separate",
++          record = {"source_commit": head, "source_tree": tree, "workflow_commit": os.environ["GITHUB_SHA"],
++                    "scope": "Focused combined-source nine-test qualification only; complete main matrix remains separate",
++                    "prior_concurrent_core_run": 44030833273,
+                     "python": sys.version, "platform": platform.platform(),
+                     "source_sha256": sources, "original_failed_job": 133848047271,
+                     "original_failed_run": 44026516737, "run_id": os.environ["GITHUB_RUN_ID"],
+@@ -65,6 +72,7 @@
+           print(json.dumps({key: value for key, value in record.items() if key != "source_sha256"}, sort_keys=True))
+           PY
+           cmake --version | tee windows-protocol-diagnostics/cmake-version.log
++          ctest --version | tee windows-protocol-diagnostics/ctest-version.log
+ 
+       - name: Acquire and verify the unchanged locked SDL2 and RtMidi
+         id: dependencies
+@@ -89,32 +97,82 @@
+             -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
+             2>&1 | tee windows-protocol-diagnostics/configure.log
+ 
+-      - name: Build only the two reviewed existing fixture targets
++      - name: Build only the three reviewed fixture targets
+         id: build
+         run: |
+           set -euo pipefail
+           cmake --build build-standalone --config Release \
+-            --target test_standalone_footage_typography_raster test_standalone_header_material \
++            --target test_standalone_footage_typography_raster test_standalone_header_material test_standalone_performance_plate \
+             --parallel 2 --verbose 2>&1 | tee windows-protocol-diagnostics/build.log
+ 
+-      - name: Verify original test commands and deadlines and compiler identities
++      - name: Verify all nine original commands, deadlines and actual MSVC flags
+         id: discover
+         run: |
+           set -euo pipefail
+           ctest --test-dir build-standalone -C Release --show-only=json-v1 --no-tests=error \
+-            -R '^test_standalone_(title_density|header_statistics)$' > windows-protocol-diagnostics/ctest-discovered.json
++            -R "$HAMMOND_FOCUSED_CTEST_FILTER" > windows-protocol-diagnostics/ctest-discovered.json
+           python - <<'PY'
+-          import hashlib, json, pathlib, re, shutil
++          import hashlib, json, pathlib, re, shutil, tempfile
+           logs = pathlib.Path("windows-protocol-diagnostics")
+           tests = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
+-          assert {test["name"] for test in tests} == {"test_standalone_title_density", "test_standalone_header_statistics"}
++          targets = ("test_standalone_footage_typography_raster", "test_standalone_header_material",
++                     "test_standalone_performance_plate")
++          executables = {name: pathlib.Path("build-standalone/apps/standalone/Release", name + ".exe").resolve(strict=True)
++                         for name in targets}
++          limits = {"test_standalone_footage_typography_raster": 90, "test_standalone_title_density": 90,
++                    "test_standalone_header_material": 180, "test_standalone_header_statistics": 90,
++                    "test_standalone_performance_plate": 180, "test_standalone_performance_plate_numerical": 180}
++          python_tools = {name: pathlib.Path("tests", name.removeprefix("python_") + ".py").resolve(strict=True)
++                          for name in ("python_test_compare_header_material", "python_test_compare_performance_plate",
++                                       "python_test_capture_standalone_interface")}
++          names = [test["name"] for test in tests]
++          assert len(names) == len(set(names)) == 9 and set(names) == set(limits) | set(python_tools), names
+           for test in tests:
++              name = test["name"]
+               properties = {item["name"]: item["value"] for item in test.get("properties", [])}
+-              assert properties["TIMEOUT"] == 90 and not properties.get("DISABLED", False), test
++              assert not properties.get("DISABLED", False), test
+               command = test["command"]
+-              assert command[1] == "-B" and pathlib.Path(command[2]).resolve() == pathlib.Path("apps/standalone/native_tests", test["name"] + ".py").resolve()
+-              assert command[3] == "--executable" and pathlib.Path(command[4]).is_file(), command
+-              assert (len(command) == 5 if test["name"] == "test_standalone_title_density" else command[5:] == ["--timeout-seconds", "20"]), command
++              assert command and pathlib.Path(command[0]).is_file(), command
++              assert properties.get("TIMEOUT") == limits[name] if name in limits else properties.get("TIMEOUT", 0) in (0, None), test
++              if name in executables:
++                  assert len(command) == 1 and pathlib.Path(command[0]).resolve() == executables[name], command
++              elif name in python_tools:
++                  assert len(command) == 2 and pathlib.Path(command[1]).resolve(strict=True) == python_tools[name], command
++              elif name == "test_standalone_performance_plate_numerical":
++                  assert len(command) == 6 and command[1] == "-B" and command[3:5] == ["--candidate-only", "--after"], command
++                  assert pathlib.Path(command[2]).resolve(strict=True) == pathlib.Path("tools/compare_performance_plate.py").resolve(strict=True), command
++                  assert pathlib.Path(command[5]).resolve(strict=True) == executables["test_standalone_performance_plate"], command
++                  assert {"standalone", "native", "material", "performance-plate", "numerical"} <= set(properties.get("LABELS", [])), test
++              else:
++                  target = ("test_standalone_footage_typography_raster" if name == "test_standalone_title_density"
++                            else "test_standalone_header_material")
++                  assert command[1] == "-B" and pathlib.Path(command[2]).resolve(strict=True) == pathlib.Path("apps/standalone/native_tests", name + ".py").resolve(strict=True), command
++                  assert command[3] == "--executable" and pathlib.Path(command[4]).resolve(strict=True) == executables[target], command
++                  assert (len(command) == 5 if name == "test_standalone_title_density"
++                          else len(command) == 7 and command[5:] == ["--timeout-seconds", "20"]), command
++          build_lines = (logs / "build.log").read_text(encoding="utf-8").splitlines()
++          actual_compile_commands = {}
++          for name in targets:
++              rows = [{"line": index + 1, "command": line} for index, line in enumerate(build_lines)
++                      if "cl.exe" in line.lower() and ("native_tests/" + name + ".cpp") in line.replace("\\", "/")]
++              assert rows, "No actual MSVC compile invocation for " + name
++              for row in rows:
++                  warnings = re.findall(r"(?:^|\s)(/W[0-4])(?=\s|$)", row["command"], re.I)
++                  errors = re.findall(r"(?:^|\s)(/WX-?)(?=\s|$)", row["command"], re.I)
++                  assert warnings and warnings[-1].upper() == "/W4", row
++                  assert errors and errors[-1].upper() == "/WX", row
++              actual_compile_commands[name] = rows
++          executable_identities = {name: {"path": str(path), "bytes": path.stat().st_size,
++                                        "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
++                                   for name, path in executables.items()}
++          (logs / "fixture-compile-and-executable-identities.json").write_text(
++              json.dumps({"actual_msvc_commands": actual_compile_commands, "executables": executable_identities},
++                         indent=2, sort_keys=True) + "\n")
++          temp_root = pathlib.Path(tempfile.gettempdir()).resolve(strict=True)
++          existing = sorted(str(path.resolve()) for path in temp_root.glob("p1-frozen62-*") if path.is_dir())
++          assert len(existing) <= 8, "Unexpected pre-existing P1 output inventory"
++          (logs / "p1-output-baseline.json").write_text(json.dumps(
++              {"temp_root": str(temp_root), "existing_output_directories": existing}, indent=2, sort_keys=True) + "\n")
+           compiler = {}
+           for language in ("C", "CXX"):
+               candidates = list(pathlib.Path("build-standalone").glob("CMakeFiles/*/CMake" + language + "Compiler.cmake"))
+@@ -134,25 +192,131 @@
+           print(json.dumps({"compiler": compiler, "original_tests": tests}, sort_keys=True))
+           PY
+ 
+-      - name: Retain the actual results of both unchanged CTest commands
++      - name: Retain the actual results of all nine unchanged CTest commands
+         id: original_tests
+         run: |
+           set -uo pipefail
+           set +e
+           ctest --test-dir build-standalone -C Release -V --parallel 1 --no-tests=error --timeout 180 \
+-            -R '^test_standalone_(title_density|header_statistics)$' \
++            -R "$HAMMOND_FOCUSED_CTEST_FILTER" \
+             --output-junit "$GITHUB_WORKSPACE/windows-protocol-diagnostics/ctest.xml" \
+             2>&1 | tee windows-protocol-diagnostics/ctest.log
+           result=${PIPESTATUS[0]}
+           echo "$result" > windows-protocol-diagnostics/original-ctest-exit.txt
+           exit "$result"
+ 
+-      - name: Capture candidate raw case headers with unchanged bounds
++      - name: Retain the original P1 numerical report and bounded raw streams
++        if: always() && steps.discover.outcome == 'success' && steps.original_tests.outcome != 'skipped'
++        run: |
++          set -euo pipefail
++          python - <<'PY'
++          import hashlib, json, pathlib, shutil, zlib
++          logs = pathlib.Path("windows-protocol-diagnostics")
++          baseline = json.loads((logs / "p1-output-baseline.json").read_text())
++          temp_root = pathlib.Path(baseline["temp_root"]).resolve(strict=True)
++          old = set(baseline["existing_output_directories"])
++          created = [path.resolve() for path in temp_root.glob("p1-frozen62-*")
++                     if path.is_dir() and str(path.resolve()) not in old]
++          dest = logs / "p1-numerical"
++          dest.mkdir(exist_ok=False)
++          manifest = {"scope": "Copy only; original CTest result and original P1 report remain authoritative",
++                      "new_output_directories": [str(path) for path in created], "copied_files": [],
++                      "decoded_streams": [], "extra_native_invocations": 0, "errors": []}
++          def sha(value):
++              return hashlib.sha256(value).hexdigest()
++          def require(condition, message):
++              if not condition:
++                  raise ValueError(message)
++          max_header, max_stderr, max_report = 2 * 1024**2, 64 * 1024, 16 * 1024**2
++          max_stream = max_header + 1 + 4 * 3866 * 2194
++          caps = {"report.json": max_report, "after-list.stdout.zlib": max_header + 65536,
++                  "after-list.stderr.zlib": max_stderr + 65536,
++                  "after-00.stdout.zlib": max_stream + 65536,
++                  "after-00.stderr.zlib": max_stderr + 65536}
++          try:
++              require(len(created) == 1, "Expected exactly one new P1 candidate-only output directory")
++              source = created[0]
++              require(source.parent == temp_root and source.name.startswith("p1-frozen62-"),
++                      "P1 output is outside the original temporary root")
++              files = sorted(source.iterdir())
++              require(len(files) <= len(caps), "Unexpected P1 candidate-only file count")
++              for path in files:
++                  require(path.is_file() and not path.is_symlink() and path.name in caps,
++                          "Unexpected P1 output entry: " + path.name)
++                  require(path.stat().st_size <= caps[path.name], "P1 output exceeds retained byte ceiling")
++                  data = path.read_bytes()
++                  target = dest / path.name
++                  shutil.copyfile(path, target)
++                  require(target.read_bytes() == data, "Copied P1 artifact differs")
++                  manifest["copied_files"].append({"name": path.name, "original_path": str(path),
++                      "bytes": len(data), "sha256": sha(data), "copy_sha256": sha(target.read_bytes())})
++              report_path = source / "report.json"
++              require(report_path.is_file(), "Original P1 report was not completed; partial streams retained")
++              report = json.loads(report_path.read_bytes())
++              require(report["mode"] == "candidate-only-frozen62" and report["model"] == "performance-plate-p1-independent-v1",
++                      "Unexpected original P1 report mode")
++              require(pathlib.Path(report["output"]).resolve() == source, "P1 report output identity differs")
++              provenance = json.loads((logs / "provenance.json").read_text())
++              fixture = json.loads((logs / "fixture-compile-and-executable-identities.json").read_text())["executables"]["test_standalone_performance_plate"]
++              require(pathlib.Path(report["root"]).resolve() == pathlib.Path.cwd().resolve(), "P1 report names a different checkout")
++              actual_after = report.get("inputs", {}).get("after_executable")
++              if actual_after is not None:
++                  require(all(actual_after[key] == fixture[key] for key in ("bytes", "sha256")), "P1 executable identity differs")
++              manifest.update(source_commit=provenance["source_commit"], source_tree=provenance["source_tree"],
++                              original_report_passed=report["passed"], original_report_failures=report["failures"])
++              commands = report["commands"]
++              require(len(commands) <= 2, "Unexpected extra P1 candidate-only native commands")
++              for command in commands:
++                  name = command["name"]
++                  require(name in ("after-list", "after-00"), "Unexpected P1 retained command")
++                  args = ["--list"] if name == "after-list" else ["--case", "0"]
++                  require(command["command"][1:] == args and pathlib.Path(command["command"][0]).resolve() ==
++                          pathlib.Path(fixture["path"]).resolve(), "P1 command identity differs")
++                  for channel in ("stdout", "stderr"):
++                      item = command[channel]
++                      require(item["path"] == name + "." + channel + ".zlib", "P1 stream filename differs")
++                      packed = (dest / item["path"]).read_bytes()
++                      require(len(packed) == item["bytes"] and sha(packed) == item["sha256"], "Original P1 compressed stream identity differs")
++                      cap = max_stderr if channel == "stderr" else (max_header if name == "after-list" else max_stream)
++                      decoder = zlib.decompressobj()
++                      raw = decoder.decompress(packed, cap + 1)
++                      require(len(raw) <= cap and decoder.eof and not decoder.unused_data and not decoder.unconsumed_tail,
++                              "P1 retained stream decompression/trailer bound failed")
++                      require(len(raw) == item["raw_bytes"] and sha(raw) == item["raw_sha256"], "Original P1 raw stream identity differs")
++                      row = {"name": name, "channel": channel, "raw_bytes": len(raw), "raw_sha256": sha(raw)}
++                      if channel == "stdout" and raw:
++                          if name == "after-list":
++                              (dest / "after-list.raw.bin").write_bytes(raw)
++                              row["extracted_path"] = "after-list.raw.bin"
++                          else:
++                              end = raw.find(b"\n", 0, max_header + 1)
++                              if 0 < end <= max_header:
++                                  header = raw[:end + 1]
++                                  (dest / "after-00.header.bin").write_bytes(header)
++                                  row.update(header_bytes=len(header), header_sha256=sha(header),
++                                             rgba_bytes=len(raw)-end-1, rgba_sha256=sha(raw[end+1:]),
++                                             extracted_path="after-00.header.bin")
++                      manifest["decoded_streams"].append(row)
++              if report["passed"]:
++                  require({c["name"] for c in commands} == {"after-list", "after-00"} and len(commands) == 2,
++                          "Passing P1 report lacks both original native commands")
++                  require(set(path.name for path in files) == set(caps), "Passing P1 output is incomplete")
++              manifest["retention_complete"] = True
++          except (ValueError, OSError, KeyError, TypeError, zlib.error) as error:
++              manifest["errors"].append(type(error).__name__ + ": " + str(error)[:4096])
++              manifest["retention_complete"] = False
++          finally:
++              (logs / "p1-output-retention.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
++              print(json.dumps({key: value for key, value in manifest.items() if key not in ("copied_files", "decoded_streams", "original_report_failures")}, sort_keys=True))
++          raise SystemExit(0 if manifest["retention_complete"] else 1)
++          PY
++
++      - name: Capture combined-source raw case headers with unchanged bounds
+         if: always() && steps.discover.outcome == 'success'
+         run: |
+           set -euo pipefail
+           python - <<'PY'
+-          """Acquire missing protocol bytes from original source; never qualify a product."""
++          """Acquire bounded protocol bytes from combined source; never claim whole-product acceptance."""
+           import hashlib
+           import importlib.util
+           import json
+@@ -318,7 +482,7 @@
+           raise SystemExit(0 if valid else 1)
+           PY
+ 
+-      - name: Reverify original source and dependencies even after test failure
++      - name: Reverify combined source, built fixtures and dependencies even after test failure
+         if: always() && steps.dependencies.outcome == 'success'
+         run: |
+           set -euo pipefail
+@@ -329,20 +493,30 @@
+           logs = pathlib.Path("windows-protocol-diagnostics")
+           before = json.loads((logs / "provenance.json").read_text())
+           head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
++          tree = subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip()
++          fixture_record = logs / "fixture-compile-and-executable-identities.json"
++          fixture_changes = []
++          if fixture_record.is_file():
++              for name, previous in json.loads(fixture_record.read_text())["executables"].items():
++                  path = pathlib.Path(previous["path"])
++                  if path.stat().st_size != previous["bytes"] or hashlib.sha256(path.read_bytes()).hexdigest() != previous["sha256"]:
++                      fixture_changes.append(name)
+           changed = [name for name, value in before["source_sha256"].items() if hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() != value]
+           subprocess.run(["git", "diff", "--exit-code", "HEAD"], check=True)
+-          result = {"source_commit": head, "workflow_commit": os.environ["GITHUB_SHA"], "changed_source_inputs": changed,
++          result = {"source_commit": head, "source_tree": tree, "workflow_commit": os.environ["GITHUB_SHA"], "changed_source_inputs": changed,
++                    "changed_fixture_executables": fixture_changes,
+                     "checked_inputs": len(before["source_sha256"]), "original_ctest_exit": (logs / "original-ctest-exit.txt").read_text().strip() if (logs / "original-ctest-exit.txt").exists() else "not executed"}
+           (logs / "source-verification-after.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+-          assert head == before["source_commit"] == os.environ["INVESTIGATION_SOURCE"] and not changed, result
++          assert head == before["source_commit"] == os.environ["INVESTIGATION_SOURCE"] and not changed and not fixture_changes, result
++          assert tree == before["source_tree"] == os.environ["INVESTIGATION_TREE"], result
+           print(json.dumps(result, sort_keys=True))
+           PY
+ 
+-      - name: Always retain missing protocol evidence and original failure results
++      - name: Always retain combined-source evidence and original failure results
+         if: always()
+         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+         with:
+-          name: windows-candidate-protocol-${{ github.sha }}-${{ github.run_attempt }}
++          name: windows-combined-protocol-${{ github.sha }}-${{ github.run_attempt }}
+           retention-days: 14
+           if-no-files-found: error
+           path: |

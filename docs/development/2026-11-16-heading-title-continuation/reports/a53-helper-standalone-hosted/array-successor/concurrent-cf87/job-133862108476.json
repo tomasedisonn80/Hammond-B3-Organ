@@ -1,0 +1,950 @@
+{
+  "schema": 1,
+  "observer": "A53, same accepted worker; read-only source-specific observation",
+  "source_sha": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "source_tree": "2565ac86f9d31b7ab9d24d0d5353289c2359bf12",
+  "run_id": 44030833294,
+  "run_attempt": 1,
+  "job_id": 133862108476,
+  "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44030833294/job/133862108476",
+  "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+  "state": {
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-17T06:23:22Z",
+    "completed_at": "2026-11-17T06:40:33Z"
+  },
+  "runner": {
+    "id": 1000001430,
+    "name": "GitHub Actions 1000001430",
+    "labels": [
+      "ubuntu-24.04"
+    ]
+  },
+  "complete_log": {
+    "job_id": 133862108476,
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a53-helper-standalone-hosted/array-successor/concurrent-cf87/job-133862108476-complete.log.gz",
+    "stored_bytes": 125821,
+    "stored_sha256": "02ca95665d5c310a16eacde860f15c95b57fec487a96f52b2dc84b34214d18ae",
+    "decoded_bytes": 1453336,
+    "decoded_sha256": "80c165b21963926b5ffd4025288f87e40fe2f9debff070f7504b82a9aeb22bf4",
+    "gzip_mtime": 0,
+    "round_trip_verified": true
+  },
+  "source_inventory": "inventory.json",
+  "actual_checkout_evidence": [
+    {
+      "line": 116,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    },
+    {
+      "line": 177,
+      "text": "HEAD is now at cf87a58 Preserve Windows fixture repair and expose exact copied-state failures"
+    },
+    {
+      "line": 180,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    }
+  ],
+  "compiler_evidence": [
+    {
+      "line": 724,
+      "text": "-- The CXX compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 738,
+      "text": "-- The C compiler identification is GNU 13.3.0"
+    }
+  ],
+  "steps": [
+    {
+      "number": 2,
+      "name": "Check out the exact tested revision",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:23Z",
+      "completed_at": "2026-11-17T06:23:41Z"
+    },
+    {
+      "number": 3,
+      "name": "Set up Python 3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:41Z",
+      "completed_at": "2026-11-17T06:23:41Z"
+    },
+    {
+      "number": 4,
+      "name": "Record the revision, sanitizer policy and tools",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:41Z",
+      "completed_at": "2026-11-17T06:23:42Z"
+    },
+    {
+      "number": 5,
+      "name": "Explicitly acquire and locally verify locked external SDL2",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:42Z",
+      "completed_at": "2026-11-17T06:23:44Z"
+    },
+    {
+      "number": 6,
+      "name": "Install Ubuntu desktop and audio development headers",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:44Z",
+      "completed_at": "2026-11-17T06:23:59Z"
+    },
+    {
+      "number": 7,
+      "name": "Configure native Release with project and SDL sanitizers",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:23:59Z",
+      "completed_at": "2026-11-17T06:24:19Z"
+    },
+    {
+      "number": 8,
+      "name": "Build the thirty-seven selected acceptance inputs",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:24:19Z",
+      "completed_at": "2026-11-17T06:30:31Z"
+    },
+    {
+      "number": 9,
+      "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:30:31Z",
+      "completed_at": "2026-11-17T06:30:33Z"
+    },
+    {
+      "number": 10,
+      "name": "Discover exactly forty-one gates and run with leak checking",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:30:33Z",
+      "completed_at": "2026-11-17T06:40:29Z"
+    },
+    {
+      "number": 11,
+      "name": "Reverify source and locked SDL2 after acceptance",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:40:29Z",
+      "completed_at": "2026-11-17T06:40:29Z"
+    },
+    {
+      "number": 12,
+      "name": "Retain native sanitizer diagnostics",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-17T06:40:29Z",
+      "completed_at": "2026-11-17T06:40:31Z"
+    }
+  ],
+  "ctest": {
+    "expected_count": 41,
+    "executed": 41,
+    "passed": 41,
+    "failed": 0,
+    "not_executed": 0,
+    "actual_names_equal_source_inventory": true,
+    "total_seconds": 595.9,
+    "results": [
+      {
+        "ordinal": 1,
+        "total": 41,
+        "test_number": 178,
+        "name": "test_standalone_channel_acceptance",
+        "status": "Passed",
+        "seconds": 0.13,
+        "line": 5782
+      },
+      {
+        "ordinal": 2,
+        "total": 41,
+        "test_number": 179,
+        "name": "test_standalone_channel_modes",
+        "status": "Passed",
+        "seconds": 0.02,
+        "line": 5790
+      },
+      {
+        "ordinal": 3,
+        "total": 41,
+        "test_number": 181,
+        "name": "test_standalone_expression_calibration",
+        "status": "Passed",
+        "seconds": 0.01,
+        "line": 5798
+      },
+      {
+        "ordinal": 4,
+        "total": 41,
+        "test_number": 183,
+        "name": "test_standalone_inspection_acceptance",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 5806
+      },
+      {
+        "ordinal": 5,
+        "total": 41,
+        "test_number": 184,
+        "name": "test_standalone_inspection_author",
+        "status": "Passed",
+        "seconds": 0.02,
+        "line": 5814
+      },
+      {
+        "ordinal": 6,
+        "total": 41,
+        "test_number": 185,
+        "name": "test_standalone_library_model",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 5822
+      },
+      {
+        "ordinal": 7,
+        "total": 41,
+        "test_number": 186,
+        "name": "test_standalone_library_recall",
+        "status": "Passed",
+        "seconds": 0.07,
+        "line": 5839
+      },
+      {
+        "ordinal": 8,
+        "total": 41,
+        "test_number": 187,
+        "name": "test_standalone_library_roundtrip",
+        "status": "Passed",
+        "seconds": 0.04,
+        "line": 5847
+      },
+      {
+        "ordinal": 9,
+        "total": 41,
+        "test_number": 188,
+        "name": "test_standalone_library_session",
+        "status": "Passed",
+        "seconds": 0.06,
+        "line": 5855
+      },
+      {
+        "ordinal": 10,
+        "total": 41,
+        "test_number": 189,
+        "name": "test_standalone_library_storage",
+        "status": "Passed",
+        "seconds": 0.07,
+        "line": 5863
+      },
+      {
+        "ordinal": 11,
+        "total": 41,
+        "test_number": 197,
+        "name": "test_standalone_preset_ui",
+        "status": "Passed",
+        "seconds": 2.48,
+        "line": 5871
+      },
+      {
+        "ordinal": 12,
+        "total": 41,
+        "test_number": 198,
+        "name": "test_standalone_projection",
+        "status": "Passed",
+        "seconds": 1.56,
+        "line": 5880
+      },
+      {
+        "ordinal": 13,
+        "total": 41,
+        "test_number": 199,
+        "name": "test_standalone_reference_layout",
+        "status": "Passed",
+        "seconds": 0.15,
+        "line": 5888
+      },
+      {
+        "ordinal": 14,
+        "total": 41,
+        "test_number": 203,
+        "name": "test_standalone_ui",
+        "status": "Passed",
+        "seconds": 0.22,
+        "line": 5896
+      },
+      {
+        "ordinal": 15,
+        "total": 41,
+        "test_number": 205,
+        "name": "test_standalone_workspace_acceptance",
+        "status": "Passed",
+        "seconds": 0.21,
+        "line": 5904
+      },
+      {
+        "ordinal": 16,
+        "total": 41,
+        "test_number": 206,
+        "name": "test_standalone_workspace_continuity",
+        "status": "Passed",
+        "seconds": 5.84,
+        "line": 5975
+      },
+      {
+        "ordinal": 17,
+        "total": 41,
+        "test_number": 207,
+        "name": "test_standalone_workspaces_author",
+        "status": "Passed",
+        "seconds": 0.01,
+        "line": 5983
+      },
+      {
+        "ordinal": 18,
+        "total": 41,
+        "test_number": 211,
+        "name": "test_standalone_reference_apron_raster",
+        "status": "Passed",
+        "seconds": 14.94,
+        "line": 5991
+      },
+      {
+        "ordinal": 19,
+        "total": 41,
+        "test_number": 212,
+        "name": "test_standalone_reference_apron_art",
+        "status": "Passed",
+        "seconds": 0.14,
+        "line": 6000
+      },
+      {
+        "ordinal": 20,
+        "total": 41,
+        "test_number": 213,
+        "name": "test_standalone_reference_apron_unavailable",
+        "status": "Passed",
+        "seconds": 14.87,
+        "line": 6008
+      },
+      {
+        "ordinal": 21,
+        "total": 41,
+        "test_number": 214,
+        "name": "test_standalone_drawing",
+        "status": "Passed",
+        "seconds": 0.38,
+        "line": 6017
+      },
+      {
+        "ordinal": 22,
+        "total": 41,
+        "test_number": 215,
+        "name": "test_standalone_quad_drawing",
+        "status": "Passed",
+        "seconds": 0.03,
+        "line": 6025
+      },
+      {
+        "ordinal": 23,
+        "total": 41,
+        "test_number": 216,
+        "name": "test_standalone_workspace_raster",
+        "status": "Passed",
+        "seconds": 31.17,
+        "line": 6033
+      },
+      {
+        "ordinal": 24,
+        "total": 41,
+        "test_number": 217,
+        "name": "test_standalone_inspection_raster",
+        "status": "Passed",
+        "seconds": 2.17,
+        "line": 6042
+      },
+      {
+        "ordinal": 25,
+        "total": 41,
+        "test_number": 218,
+        "name": "test_standalone_material_acceptance",
+        "status": "Passed",
+        "seconds": 24.72,
+        "line": 6050
+      },
+      {
+        "ordinal": 26,
+        "total": 41,
+        "test_number": 220,
+        "name": "test_standalone_product_visual",
+        "status": "Passed",
+        "seconds": 77.33,
+        "line": 6058
+      },
+      {
+        "ordinal": 27,
+        "total": 41,
+        "test_number": 222,
+        "name": "test_standalone_upper_rack_material_raster",
+        "status": "Passed",
+        "seconds": 34.61,
+        "line": 6066
+      },
+      {
+        "ordinal": 28,
+        "total": 41,
+        "test_number": 223,
+        "name": "test_standalone_lower_rack_material_raster",
+        "status": "Passed",
+        "seconds": 37.32,
+        "line": 6074
+      },
+      {
+        "ordinal": 29,
+        "total": 41,
+        "test_number": 224,
+        "name": "test_standalone_footage_typography_raster",
+        "status": "Passed",
+        "seconds": 32.76,
+        "line": 6082
+      },
+      {
+        "ordinal": 30,
+        "total": 41,
+        "test_number": 225,
+        "name": "test_standalone_title_density",
+        "status": "Passed",
+        "seconds": 10.86,
+        "line": 7253
+      },
+      {
+        "ordinal": 31,
+        "total": 41,
+        "test_number": 227,
+        "name": "test_standalone_header_material",
+        "status": "Passed",
+        "seconds": 90.7,
+        "line": 7261
+      },
+      {
+        "ordinal": 32,
+        "total": 41,
+        "test_number": 228,
+        "name": "test_standalone_performance_plate",
+        "status": "Passed",
+        "seconds": 54.4,
+        "line": 7269
+      },
+      {
+        "ordinal": 33,
+        "total": 41,
+        "test_number": 229,
+        "name": "test_standalone_performance_plate_numerical",
+        "status": "Passed",
+        "seconds": 1.57,
+        "line": 7277
+      },
+      {
+        "ordinal": 34,
+        "total": 41,
+        "test_number": 230,
+        "name": "test_standalone_header_statistics",
+        "status": "Passed",
+        "seconds": 1.35,
+        "line": 7285
+      },
+      {
+        "ordinal": 35,
+        "total": 41,
+        "test_number": 231,
+        "name": "test_standalone_header_grain_bounds",
+        "status": "Passed",
+        "seconds": 0.07,
+        "line": 7293
+      },
+      {
+        "ordinal": 36,
+        "total": 41,
+        "test_number": 232,
+        "name": "test_standalone_manual_key_material_raster",
+        "status": "Passed",
+        "seconds": 14.97,
+        "line": 7301
+      },
+      {
+        "ordinal": 37,
+        "total": 41,
+        "test_number": 234,
+        "name": "test_standalone_scaled_view",
+        "status": "Passed",
+        "seconds": 63.04,
+        "line": 7366
+      },
+      {
+        "ordinal": 38,
+        "total": 41,
+        "test_number": 235,
+        "name": "test_standalone_preset_raster",
+        "status": "Passed",
+        "seconds": 54.5,
+        "line": 7374
+      },
+      {
+        "ordinal": 39,
+        "total": 41,
+        "test_number": 242,
+        "name": "test_standalone_native_calibration",
+        "status": "Passed",
+        "seconds": 21.1,
+        "line": 7397
+      },
+      {
+        "ordinal": 40,
+        "total": 41,
+        "test_number": 246,
+        "name": "test_standalone_replay_paint_boundary",
+        "status": "Passed",
+        "seconds": 0.93,
+        "line": 7407
+      },
+      {
+        "ordinal": 41,
+        "total": 41,
+        "test_number": 247,
+        "name": "test_standalone_semantic_paint_boundary",
+        "status": "Passed",
+        "seconds": 0.98,
+        "line": 7417
+      }
+    ],
+    "discovery_evidence": [
+      {
+        "line": 5762,
+        "text": "Discovered exactly 41 gates from 37 built interface, channel, calibration, library, product paint, title, header, P1, replay and apron inputs; job sanitizer policy applies to every gate."
+      }
+    ],
+    "summary_evidence": [
+      {
+        "line": 7462,
+        "text": "100% tests passed, 0 tests failed out of 41"
+      },
+      {
+        "line": 7478,
+        "text": "Total Test time (real) = 595.90 sec"
+      }
+    ]
+  },
+  "protocols": [
+    {
+      "name": "test_standalone_title_density",
+      "result": {
+        "ordinal": 30,
+        "total": 41,
+        "test_number": 225,
+        "name": "test_standalone_title_density",
+        "status": "Passed",
+        "seconds": 10.86,
+        "line": 7253
+      },
+      "first_output_line": 6089,
+      "last_output_line": 7252,
+      "scalar": {
+        "schema": 1,
+        "test": "standalone-title-density-v1",
+        "status": "passed",
+        "required_cases": 18,
+        "native_protocol": "footage-typography-v1",
+        "native_fixture_cases": 44,
+        "fixture_source_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+        "bounds_coordinates": "canonical half-open bounds, with integer viewport origin subtracted",
+        "predicate": "2126*R+7152*G+722*B >= threshold*10000; no hue or alpha predicate",
+        "minimum_error_reduction": 0.4,
+        "executable_sha256": "1fac0dcb45f31deb185d220284acf845c348d8b29978179770b74eaa715d4591"
+      },
+      "cases": {
+        "count": 18,
+        "all_passed": true
+      },
+      "resources": {
+        "one_frame_at_a_time": true,
+        "process_timeout_seconds": 20,
+        "stdout_max_bytes": 7146489,
+        "stderr_max_bytes": 65536,
+        "inventory_max_bytes": 65536,
+        "json_max_depth": 16,
+        "number_token_max_characters": 64,
+        "images_persisted": 0
+      },
+      "inventory": {
+        "case_count": 44,
+        "validated": true,
+        "payload_sha256": "9a2a98fbafaa50354c3304b8ca33054e4d4b8cd86d33a0f02b90ce2e8a725c02"
+      }
+    },
+    {
+      "name": "test_standalone_header_material",
+      "result": {
+        "ordinal": 31,
+        "total": 41,
+        "test_number": 227,
+        "name": "test_standalone_header_material",
+        "status": "Passed",
+        "seconds": 90.7,
+        "line": 7261
+      },
+      "first_output_line": 7260,
+      "last_output_line": 7260,
+      "scalar": {
+        "schema": 1,
+        "protocol": "header-material-h1-v1",
+        "status": "passed",
+        "cases": 48,
+        "checks": 10542,
+        "paintings": 163,
+        "clipped_cases": 16,
+        "empty_cases": 2,
+        "inactive_cases": 8,
+        "protected_pixels": 56329523,
+        "deterministic_repaints": 48,
+        "clip_companions": 16,
+        "quiet_clip_pixels": 33462,
+        "history_states": 48,
+        "history_repaints": 1,
+        "fresh_repaints": 1,
+        "helper_present": true,
+        "helper_probes": 95,
+        "backend": "SDL software surface; copied state; no audio/window"
+      }
+    },
+    {
+      "name": "test_standalone_header_statistics",
+      "result": {
+        "ordinal": 34,
+        "total": 41,
+        "test_number": 230,
+        "name": "test_standalone_header_statistics",
+        "status": "Passed",
+        "seconds": 1.35,
+        "line": 7285
+      },
+      "first_output_line": 7284,
+      "last_output_line": 7284,
+      "scalar": {
+        "schema": 1,
+        "test": "standalone-header-statistics-v1",
+        "status": "passed",
+        "native_protocol": "header-material-h1-v1",
+        "case": 46,
+        "protocol_passed": true,
+        "helper_passed": true,
+        "python": "3.12.16",
+        "scope": "one canonical numerical regression; complete paired, visual, timing and platform gates remain separate"
+      },
+      "identities": {
+        "frozen_fixture_source_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "contract_sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+        "reference_observations_sha256": "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b",
+        "reference_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "reference_decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+        "independent_comparator_sha256": "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b",
+        "reference_origin": "immutable literals from A22 reference observations; no runtime image decode",
+        "test_source_sha256": "455c42c9be0e9714fadcaefbd269fbe4de5ece4439e9334d893cf5d64856ae8f",
+        "executable": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/apps/standalone/test_standalone_header_material",
+        "executable_sha256": "855b62a29d53747f5183e3aa4d45fc1d8f49a8440e381c3e341e0022467e1466",
+        "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+        "rgba_sha256": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2"
+      },
+      "resources": {
+        "native_invocations": 1,
+        "canonical_rgba_bytes": 6293408,
+        "header_max_bytes": 524288,
+        "stdout_max_bytes": 6817697,
+        "stderr_max_bytes": 65536,
+        "process_timeout_seconds": 60,
+        "cleanup_wait_seconds": 5,
+        "retained_frames": 1,
+        "images_persisted": 0
+      },
+      "numerical": {
+        "inequality_count": 103,
+        "evaluated_count": 103,
+        "passed_count": 103,
+        "failed_count": 0,
+        "passed": true,
+        "mean_error_exact": "7620796849/20736000000",
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+      }
+    },
+    {
+      "name": "test_standalone_header_grain_bounds",
+      "result": {
+        "ordinal": 35,
+        "total": 41,
+        "test_number": 231,
+        "name": "test_standalone_header_grain_bounds",
+        "status": "Passed",
+        "seconds": 0.07,
+        "line": 7293
+      },
+      "first_output_line": 7292,
+      "last_output_line": 7292,
+      "scalar": {
+        "schema": 1,
+        "protocol": "header-h1-grain-bounds-v1",
+        "status": "passed",
+        "cases": 4,
+        "checks": 170,
+        "pixels_checked": 96000,
+        "grain_pixels_checked": 18,
+        "unchanged_pixels_checked": 95982,
+        "backend": "SDL software surface; no window or audio"
+      }
+    },
+    {
+      "name": "test_standalone_performance_plate",
+      "result": {
+        "ordinal": 32,
+        "total": 41,
+        "test_number": 228,
+        "name": "test_standalone_performance_plate",
+        "status": "Passed",
+        "seconds": 54.4,
+        "line": 7269
+      },
+      "first_output_line": 7268,
+      "last_output_line": 7268,
+      "scalar": {
+        "schema": 1,
+        "protocol": "performance-plate-p1-v1",
+        "status": "passed",
+        "cases": 34,
+        "main_cases": 24,
+        "checks": 53648,
+        "paintings": 111,
+        "clipped_cases": 5,
+        "empty_cases": 1,
+        "inactive_cases": 7,
+        "protected_pixels": 17527448,
+        "deterministic_repaints": 34,
+        "clip_companions": 10,
+        "quiet_clip_pixels": 10914,
+        "history_states": 32,
+        "history_repaints": 1,
+        "fresh_repaints": 1,
+        "eligibility_witnesses": 3,
+        "opaque_probes": 513,
+        "opaque_pixels": 39462,
+        "text_runs": 459,
+        "nonempty_text_runs": 340,
+        "glyph_core_pixels": 41116,
+        "focus_witnesses": 27,
+        "focus_pixels": 26204,
+        "helper_present": true,
+        "helper_probes": 61,
+        "backend": "SDL software surface; fixed copied state; no audio/window"
+      }
+    },
+    {
+      "name": "test_standalone_performance_plate_numerical",
+      "result": {
+        "ordinal": 33,
+        "total": 41,
+        "test_number": 229,
+        "name": "test_standalone_performance_plate_numerical",
+        "status": "Passed",
+        "seconds": 1.57,
+        "line": 7277
+      },
+      "first_output_line": 7276,
+      "last_output_line": 7276,
+      "scalar": {
+        "model": "performance-plate-p1-independent-v1",
+        "mode": "candidate-only-frozen62",
+        "passed": true,
+        "checks_evaluated": 191,
+        "failed_checks": 0,
+        "report": "/tmp/p1-frozen62-36xl_xo1/report.json"
+      },
+      "candidate_screens": {
+        "passed": 62,
+        "failed": 0,
+        "total": 62,
+        "all_passed": true
+      }
+    }
+  ],
+  "native_invocations": [
+    {
+      "line": 7391,
+      "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+    },
+    {
+      "line": 7406,
+      "text": "246: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    },
+    {
+      "line": 7416,
+      "text": "247: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    }
+  ],
+  "actual_evidence": [
+    {
+      "line": 116,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    },
+    {
+      "line": 177,
+      "text": "HEAD is now at cf87a58 Preserve Windows fixture repair and expose exact copied-state failures"
+    },
+    {
+      "line": 180,
+      "text": "cf87a587d0002d106e5210b57a39fd1967245a8f"
+    },
+    {
+      "line": 724,
+      "text": "-- The CXX compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 738,
+      "text": "-- The C compiler identification is GNU 13.3.0"
+    },
+    {
+      "line": 5762,
+      "text": "Discovered exactly 41 gates from 37 built interface, channel, calibration, library, product paint, title, header, P1, replay and apron inputs; job sanitizer policy applies to every gate."
+    },
+    {
+      "line": 7381,
+      "text": "242: Native calibration fixture SHA-256: 36437f34886696d306a69b11878459530c74e4f21c00b902317535b173aa3c5b"
+    },
+    {
+      "line": 7391,
+      "text": "242: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+    },
+    {
+      "line": 7394,
+      "text": "242: Ran 9 tests in 20.876s"
+    },
+    {
+      "line": 7396,
+      "text": "242: OK"
+    },
+    {
+      "line": 7406,
+      "text": "246: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    },
+    {
+      "line": 7416,
+      "text": "247: Actual native subprocesses: 2; executable SHA-256: b7f298ddaaef04cd376020ba488d68777dc4d074cc1ab7029713667de4029de7"
+    },
+    {
+      "line": 7462,
+      "text": "100% tests passed, 0 tests failed out of 41"
+    },
+    {
+      "line": 7478,
+      "text": "Total Test time (real) = 595.90 sec"
+    },
+    {
+      "line": 7479,
+      "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+    }
+  ],
+  "final_source_dependency_reverification": {
+    "status": "success",
+    "basis": "Actual API step status, exact executed workflow script and complete log; no source result is transferred from another commit."
+  },
+  "install_and_package": {
+    "status": "not a sanitizer job stage"
+  },
+  "sanitizer": {
+    "job_budget_minutes": 35,
+    "ctest_parallel": 1,
+    "policies": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "instrumentation_step": "success",
+    "instrumentation_source_assertions": [
+      "all selected SDL C and project C++ compile commands contain address,undefined sanitizers and frame pointers; actual nonempty object files exist",
+      "37 target executables and 7 archives have required identities and linked sanitizer runtimes/references",
+      "real application and calibration probe link six instrumented archives; P1 links painter/support/core/SDL; library gates link model/core",
+      "production support privately defines HAMMOND_HAS_RTMIDI=0; only isolated calibration probe defines 1 and uses the fake dependency first",
+      "exact 41 discovered enabled test commands and expected finite timeouts; no per-test ASAN/UBSAN/LSAN overrides"
+    ],
+    "calibration_postcheck": {
+      "line": 7479,
+      "text": "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+    },
+    "calibration_expected": {
+      "subprocesses": 10,
+      "native_lifecycles": 7,
+      "deliberately_failed_replays": 2,
+      "all_common_assertions": true,
+      "stderr_sanitizer_scan": true
+    },
+    "paint_gates": [
+      {
+        "ordinal": 40,
+        "total": 41,
+        "test_number": 246,
+        "name": "test_standalone_replay_paint_boundary",
+        "status": "Passed",
+        "seconds": 0.93,
+        "line": 7407
+      },
+      {
+        "ordinal": 41,
+        "total": 41,
+        "test_number": 247,
+        "name": "test_standalone_semantic_paint_boundary",
+        "status": "Passed",
+        "seconds": 0.98,
+        "line": 7417
+      }
+    ],
+    "limits_seconds": {
+      "workspace_raster": 180,
+      "scaled_view": 360,
+      "preset_raster": 300,
+      "inspection_raster": 60,
+      "material_acceptance": 60,
+      "product_visual": 240,
+      "upper_rack": 240,
+      "lower_rack": 240,
+      "footage": 240,
+      "title_density": 240,
+      "header_material": 480,
+      "performance_plate": 480,
+      "performance_plate_numerical": 480,
+      "header_statistics": 240,
+      "header_grain": 90,
+      "replay_paint": 90,
+      "semantic_paint": 90,
+      "manual_keys": 240,
+      "apron_art": 30,
+      "apron_raster": 60,
+      "apron_unavailable": 60,
+      "native_calibration": 180,
+      "header_statistics_child": 60,
+      "paint_child": 30
+    }
+  },
+  "failure": null,
+  "observation_limits": [
+    "No local native executions, builds, tests, remote mutations or CI retries by A53.",
+    "Complete original decoded job log retained losslessly; artifact API metadata and actual archive assertions inspected, no artifact directly downloaded by A53.",
+    "This exact concurrent source has its own P1/library and canonical paint changes; no previous-source pixel, success or failure is silently transferred.",
+    "Dummy-device and copied/software-paint acceptance does not close physical MIDI/audio, real-display/DPI, native accessibility or whole-UI literal 1:1 gates."
+  ]
+}

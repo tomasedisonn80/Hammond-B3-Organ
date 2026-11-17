@@ -1,0 +1,100 @@
+{
+  "schema": 1,
+  "observer": "A53/60 wave9; same accepted worker",
+  "observed_at": "2026-11-17 08:10:12 UTC",
+  "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+  "source_tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+  "run_id": 44043394005,
+  "attempt": 1,
+  "jobs": [
+    {
+      "id": 133903128857,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T08:02:45Z",
+      "runner_id": 1000001497,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "active_steps": [
+        "Build the thirty-seven selected acceptance inputs"
+      ]
+    },
+    {
+      "id": 133903129154,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T08:02:46Z",
+      "runner_id": 1000001494,
+      "labels": [
+        "macos-15"
+      ],
+      "active_steps": [
+        "Run all required standalone and capture acceptance tests"
+      ]
+    },
+    {
+      "id": 133903129162,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T08:02:46Z",
+      "runner_id": 1000001498,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "active_steps": [
+        "Run all required standalone and capture acceptance tests"
+      ]
+    },
+    {
+      "id": 133903129190,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T08:02:46Z",
+      "runner_id": 1000001499,
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "active_steps": [
+        "Run all required standalone and capture acceptance tests"
+      ]
+    },
+    {
+      "id": 133903129277,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T08:06:41Z",
+      "runner_id": 1000001502,
+      "labels": [
+        "windows-2022"
+      ],
+      "active_steps": [
+        "Build the application and every standalone acceptance input"
+      ]
+    },
+    {
+      "id": 133903129393,
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-17T08:07:27Z",
+      "runner_id": 1000001503,
+      "labels": [
+        "macos-15-intel"
+      ],
+      "active_steps": [
+        "Build the application and every standalone acceptance input"
+      ]
+    }
+  ],
+  "boundaries": [
+    "All six were active at this initial observation; no future outcome claimed.",
+    "Earlier548 and previous failed-source records remain frozen.",
+    "No native/build/project-test execution, CI retry, remote mutation or new worker."
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "worker": "A54",
+  "same_accepted_worker_followup": true,
+  "additional_worker_credit": false,
+  "recorded_utc": "2026-11-17T07:04:32.492018+00:00",
+  "decision": "Prospectively admit this exact two-file extension of d2ed for root-owned source/native qualification. It preserves upstream original/helper-only behavior and tests, adding the indexed successor. No qualification result is claimed.",
+  "base_commit": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "base_parent": "cf87a587d0002d106e5210b57a39fd1967245a8f",
+  "patch": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/d2ed-integration/p1-comparator-indexed-superset.patch",
+    "bytes": 15788,
+    "sha256": "91ce2531c4bf65350cc20af10ae6a6ec6fb5854ed4d9834d982b22fe46c19fe8"
+  },
+  "files": [
+    {
+      "path": "tools/compare_performance_plate.py",
+      "base_bytes": 87740,
+      "base_sha256": "46ce7721d2cb884b08f231249ffc0fc7f80a3d9a33657c0519216d68087671b2",
+      "candidate_bytes": 90994,
+      "candidate_sha256": "d6fcd559d43cec25fb2d3157a9291cfe2608289465278a1e53c6da5ec2587ca5"
+    },
+    {
+      "path": "tests/test_compare_performance_plate.py",
+      "base_bytes": 43217,
+      "base_sha256": "97bf84741a1954fbd16ba5992862cdfef0393e50e8c5d3ba3b15b9ceda344bdd",
+      "candidate_bytes": 53469,
+      "candidate_sha256": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932"
+    }
+  ],
+  "native_fixture": {
+    "path": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+    "d2ed_helper_only_bytes": 75587,
+    "d2ed_helper_only_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+    "required_current_indexed_bytes": 75580,
+    "required_current_indexed_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+    "current_worktree_bytes_match_required_indexed_fixture": true,
+    "fixture_changed_by_this_patch": false,
+    "only_difference_from_d2ed_fixture": "Exact previously admitted range-for to indexed-array traversal; constexpr else already present upstream."
+  },
+  "admission_chain": [
+    {
+      "form": "original",
+      "sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "modes": [
+        "original paired",
+        "candidate-only"
+      ],
+      "behavior": "Entire d2ed original branch remains unchanged."
+    },
+    {
+      "form": "constexpr else only",
+      "sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+      "modes": [
+        "candidate-only"
+      ],
+      "behavior": "Entire d2ed helper guard/reversal/hash/metadata branch remains unchanged; all original test methods remain exact."
+    },
+    {
+      "form": "constexpr else plus indexed array",
+      "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "modes": [
+        "candidate-only"
+      ],
+      "behavior": "Exact complete SHA selects new branch; exactly one complete indexed helper and no original helper; reversing yields exact helper-only SHA, then the original admission function must admit that predecessor and fully reverse it to original."
+    }
+  ],
+  "preservation": {
+    "every_upstream_assignment_ast_unchanged": 39,
+    "upstream_definitions_unchanged_except_admit_fixture_source": 72,
+    "old_admit_body_ast_equal_after_removing_only_added_indexed_branch": true,
+    "all_upstream_test_methods_retained_ast_identically": 54,
+    "upstream_fixture_helper_test_methods_retained_ast_identically": 9,
+    "only_existing_test_setup_adjustment": "FixtureHelperTransitionTests.setUpClass gains an exact-hash/exact-block indexed-to-helper reversal before its original code; all pre-existing setup statements and every test method remain intact.",
+    "new_indexed_test_methods": 10,
+    "original_PINNED_baseline_executable_painter_reference_and_limit_constants_unchanged": true,
+    "UiModel_transition_and_report_execution_path_unchanged_from_d2ed": true
+  },
+  "test_scope": {
+    "upstream_methods": 54,
+    "proposed_methods": 64,
+    "added_coverage": [
+      "original fixture in both modes",
+      "upstream helper-only predecessor still admitted with unchanged metadata",
+      "indexed full-source chain and typed metadata",
+      "indexed refused in paired mode",
+      "index-only original and unrelated/CRLF/bounds/workload mutations refused",
+      "relocated helper refused",
+      "forced new hash still requires exact helper predecessor",
+      "bytes/boolean-mode types",
+      "registered input final drift",
+      "bad fixture rejected before native launch"
+    ],
+    "execution_by_reviewer": "AST parse, exact byte reconstruction and source inspection only. No unittest/native run or build was executed."
+  },
+  "honest_scope": [
+    "The original cf87 C4702/C2220 compilation failure remains; no P1 malformed Windows stream was observed before it.",
+    "The successful ea02 Windows footage/header run is separate from P1 and the combined painter.",
+    "Source admission does not establish a compiler bug, native runtime result, all-frame comparison, Windows pass, hardware behavior or whole-interface 1:1.",
+    "Historical P1 paired mode still requires original 4f187527 fixture and protected original source/baseline inputs."
+  ],
+  "root_required_next": [
+    "Finish the active original nine-file/fourteen-gate run before applying any new proposal. Preserve that result under its actual frozen inputs.",
+    "Preserve upstream d2ed helper-only admission and all its tests plus both Windows path fixes/history. Apply the exact comparator/test superset and retain the already indexed 026489 fixture.",
+    "Run the affected Python source-conformance gate against the coherent final files and exact fixture; require every original and added method, then qualify the actual native P1 34-scenario fixture and 62-screen persistent reader without changing any bounds or workload.",
+    "Refresh coherent configured test inventory and actual input hashes for combined-source local/focused Windows/full sixteen-family qualification. Do not transfer any earlier result.",
+    "After actual integrated-source results, resume eleven-document patch using the fresh d2ed-plus-root-checkpoint base and retain both owner-local ledgers."
+  ],
+  "frozen_previous_proposal": {
+    "patch_path": "docs/development/2026-11-16-heading-title-continuation/reports/a54-helper-vst3-hosted/array-successor/p1-portability-candidate.patch",
+    "patch_sha256": "7894d1cc17feff917afee4570d4af7e40161d6ffaee7d79a27d9b4a4c5175d43",
+    "admission_sha256": "2477b75f3d8c29471631f2f7db5826391988c75ceed205e3f7ab565684b68535",
+    "changed": false
+  },
+  "activity": {
+    "source_or_reserved_docs_edited": 0,
+    "native_builds_runs": 0,
+    "unit_tests_run": 0,
+    "remote_mutations": 0,
+    "new_workers": 0
+  }
+}
