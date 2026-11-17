@@ -1,0 +1,922 @@
+{
+  "artifact_id": 14310752818,
+  "source": "523c1979334b0fbb624ce120128a0b8ada078383",
+  "qualification_path": "build-waveform/rotary-waveform/Release/full/full-20261117T080347.619441Z-632af595/qualification.json",
+  "qualification_sha256": "479c803b7001f2218058df99caeb918a97df587ce9e00efa830e04a7702d74f6",
+  "status": "pass",
+  "mode": "full",
+  "completed": true,
+  "started_utc": "2026-11-17T08:03:47.619504+00:00",
+  "finished_utc": "2026-11-17T08:12:39.778332+00:00",
+  "wall_seconds": 532.158836296,
+  "failures": [],
+  "groups": {
+    "source_before": "pass",
+    "executable_before": "pass",
+    "build_metadata_before": "pass",
+    "build_options": "pass",
+    "native_process_capture": "pass",
+    "native_process_exit": "pass",
+    "native_json": "pass",
+    "native_report_admission": "pass",
+    "selected_decimal_crosscheck": "pass",
+    "retained_static_grid": "pass",
+    "source_after": "pass",
+    "source_stability": "pass",
+    "executable_after": "pass",
+    "executable_stability": "pass",
+    "build_metadata_after": "pass",
+    "build_metadata_stability": "pass"
+  },
+  "native_process": {
+    "argv": [
+      "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/hammond_rotary_waveform_probe",
+      "--mode",
+      "full"
+    ],
+    "cwd": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T080347.619441Z-632af595",
+    "timeout_seconds": 1500.0,
+    "exit_code": 0,
+    "timed_out": false,
+    "resource_limit_exceeded": null,
+    "started_utc": "2026-11-17T08:03:48.689900+00:00",
+    "started": true,
+    "wall_seconds": 529.6399731710001,
+    "finished_utc": "2026-11-17T08:12:38.329893+00:00",
+    "peak_observed_run_bytes": 407443,
+    "stdout": {
+      "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T080347.619441Z-632af595/native.stdout.json",
+      "bytes": 405132,
+      "sha256": "6fcd491149c42484b191a876688e256d57087185c55a0fd6b29e536bcbee8920"
+    },
+    "stderr": {
+      "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261117T080347.619441Z-632af595/native.stderr.txt",
+      "bytes": 2311,
+      "sha256": "3f90f8c21a015aff2494929fd398a5e792f8ba9c5081422a151da601dab28033"
+    }
+  },
+  "native_totals": {
+    "rate_count": 4,
+    "completed_partitions": 24,
+    "reference_frames": 3801000,
+    "reference_scalar_comparisons": 7602000,
+    "reference_path_solutions": 15204000,
+    "native_frames": 22806000,
+    "native_path_solutions": 91224000,
+    "partition_compared_samples": 38010000,
+    "partition_equal_samples": 38010000,
+    "native_events_consumed": 840,
+    "selected_trace_paths": 176,
+    "convergence_pairs": 288,
+    "auxiliary_convergence_path_solutions": 576
+  },
+  "native_admission": {
+    "status": "pass",
+    "mode": "full",
+    "fixture_id": "rotary-r4-full-stream-v1",
+    "totals": {
+      "rate_count": 4,
+      "completed_partitions": 24,
+      "reference_frames": 3801000,
+      "reference_scalar_comparisons": 7602000,
+      "reference_path_solutions": 15204000,
+      "native_frames": 22806000,
+      "native_path_solutions": 91224000,
+      "partition_compared_samples": 38010000,
+      "partition_equal_samples": 38010000,
+      "native_events_consumed": 840,
+      "selected_trace_paths": 176,
+      "convergence_pairs": 288,
+      "auxiliary_convergence_path_solutions": 576
+    },
+    "maximum_normalized_error": "1.93574020587629201495E-9"
+  },
+  "native_report_totals_match_qualification": true,
+  "original_stdout_stderr_digests_verified": true,
+  "source_before": {
+    "git_head": "523c1979334b0fbb624ce120128a0b8ada078383",
+    "git_tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+    "dirty_overlay": false,
+    "relevant_status_porcelain": "",
+    "tracked_overlay_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tracked_overlay_diff_bytes": 0,
+    "worktree_source_sha256": {
+      ".github/workflows/ci.yml": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+      "CMakeLists.txt": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+      "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "cmake/CompileChapelCatalog.cmake": "0af69e3d2d779c86a0b646545a6377b41ce0d5c4fff79f02e890a9d35e7d552e",
+      "cmake/CompileFixedRegistrations.cmake": "c9dba11f08dac36317a02028bb706d73fc39a91ede3776e9fcdce0d08cea5e1c",
+      "cmake/InstallCaptureTools.cmake": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015",
+      "cmake/InstallContactGridConversionTools.cmake": "50b9cf6c4a46ec41c74d6a76bc693c8633f8ae7f8229f4ab004051067b6e025c",
+      "cmake/InstallContactReferenceTools.cmake": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea",
+      "cmake/InstallCrossoverTools.cmake": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844",
+      "cmake/InstallHammondTools.cmake": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+      "cmake/InstallRegistrationTools.cmake": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+      "cmake/InstallSourceLeakageTools.cmake": "1307f47bba569812e2f94b42a23eb5184fb188f87071c1470754f84c0ef69cd1",
+      "cmake/InstallStandalone.cmake": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+      "cmake/StandaloneBenchmark.cmake": "e9e9469715ec73feb71940cd272176f77ec2e93e0fc262fa1abf5bc65750e666",
+      "cmake/VerifyRtMidi.cmake": "fe2f76f57ca3384aedf05da1afbe0cc3fd3989bee29120bbb252249368bbccdd",
+      "cmake/VerifySdl2.cmake": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e",
+      "cmake/VerifyVst3Sdk.cmake": "4feeb4cfabf1560cfd3487859b88d40974b47801753aeccf848517717443e6eb",
+      "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+      "docs/ROTARY_PROPAGATION_CONTRACT.md": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+      "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+      "docs/ROTARY_WAVEFORM_ACCEPTANCE.md": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa",
+      "docs/WAVEFORM_BUILD_PLAN.md": "5f7cfef2b9b98f5c5151ba441539f46224c13fa40a98d9c23adb80fcf89cc9aa",
+      "docs/development/2026-11-14-waveform-continuation/reports/a14-history-acceptance.json": "3ebb5feacd33afbe94b1aa033776001df7a6287394aa8c28c6f5c257f5f469cc",
+      "docs/development/2026-11-14-waveform-continuation/reports/a14-static-grid.csv.gz": "03a56786a5d929d9a942048091b91fb5e791926019a0e0f3f0dc8aeceb0a2e77",
+      "include/hammond/ConsoleModel.h": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+      "include/hammond/ContactBank.h": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "include/hammond/ControlState.h": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "include/hammond/ControlStateIO.h": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+      "include/hammond/Engine.h": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+      "include/hammond/FixedRegistration.h": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+      "include/hammond/HostTimeline.h": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+      "include/hammond/InputProcessor.h": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+      "include/hammond/LeslieCrossover.h": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+      "include/hammond/NoteOwnership.h": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "include/hammond/ParameterBridge.h": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "include/hammond/PedalNoteOwnership.h": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "include/hammond/PedalRouting.h": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+      "include/hammond/PedalVoice.h": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+      "include/hammond/Percussion.h": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+      "include/hammond/PerformanceInput.h": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+      "include/hammond/Profile.h": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+      "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+      "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+      "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+      "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+      "include/hammond/ScannerLine.h": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+      "include/hammond/ScannerLineFoh.h": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+      "include/hammond/ScannerRotor.h": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+      "include/hammond/SourceLeakage.h": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+      "include/hammond/StateExchange.h": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+      "include/hammond/TonewheelBank.h": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+      "include/hammond/Types.h": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "include/hammond/detail/Decimal.h": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+      "include/hammond/research/CausalContactGrid.h": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+      "src/ContactBank.cpp": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+      "src/ControlState.cpp": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "src/Engine.cpp": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+      "src/FixedRegistration.cpp": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+      "src/HostTimeline.cpp": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+      "src/InputProcessor.cpp": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+      "src/LeslieCrossover.cpp": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+      "src/NoteOwnership.cpp": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "src/ParameterBridge.cpp": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "src/PedalNoteOwnership.cpp": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+      "src/PedalRouting.cpp": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+      "src/PedalVoice.cpp": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+      "src/Percussion.cpp": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+      "src/PerformanceInput.cpp": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+      "src/Profile.cpp": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+      "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+      "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+      "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+      "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+      "src/RotaryRendererInternal.h": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+      "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+      "src/ScannerLine.cpp": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+      "src/ScannerLineFoh.cpp": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+      "src/ScannerRotor.cpp": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+      "src/SourceLeakage.cpp": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+      "src/SourceLeakageIO.cpp": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+      "src/StateExchange.cpp": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+      "src/TonewheelBank.cpp": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "src/research/CausalContactGrid.cpp": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+      "tests/probes/rotary_motion_probe.cpp": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e",
+      "tests/probes/rotary_propagation_probe.cpp": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768",
+      "tests/probes/rotary_waveform_probe.cpp": "922c92ab81d2fcc8a5a0948c7c85ee496cf6816bdc57b20dddba7474899ef577",
+      "tests/reference/rotary_waveform_reference.h": "3c24792f80f86f903926622f4bf016984caf44d727ad3913e4570738ac9c8f21",
+      "tests/test_capture_install.py": "f435bdc83ec5e68d3fce04198b88534af10cd3323d20f9940628960185a94a5e",
+      "tests/test_rotary_history_acceptance.cpp": "839f85847e381c536549829395fb436964bb03e80092802ba5f700a495b59c03",
+      "tests/test_rotary_motion_acceptance.py": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366",
+      "tests/test_rotary_propagation_acceptance.py": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+      "tests/test_rotary_reference.py": "1f4b86baa292723027a65349a113d1e6fec21477a92516d4cba2951c43c0c223",
+      "tests/test_rotary_waveform_acceptance.py": "e2a21f1b5181ae7b46c776e96041a95b24ca2e2391f1e55ff5aed3e0d03e688d",
+      "tools/rotary_reference.py": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d"
+    },
+    "untracked_overlay_policy": "included by exact worktree SHA-256, even when absent from Git HEAD"
+  },
+  "source_after": {
+    "git_head": "523c1979334b0fbb624ce120128a0b8ada078383",
+    "git_tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+    "dirty_overlay": false,
+    "relevant_status_porcelain": "",
+    "tracked_overlay_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tracked_overlay_diff_bytes": 0,
+    "worktree_source_sha256": {
+      ".github/workflows/ci.yml": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa",
+      "CMakeLists.txt": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+      "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "cmake/CompileChapelCatalog.cmake": "0af69e3d2d779c86a0b646545a6377b41ce0d5c4fff79f02e890a9d35e7d552e",
+      "cmake/CompileFixedRegistrations.cmake": "c9dba11f08dac36317a02028bb706d73fc39a91ede3776e9fcdce0d08cea5e1c",
+      "cmake/InstallCaptureTools.cmake": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015",
+      "cmake/InstallContactGridConversionTools.cmake": "50b9cf6c4a46ec41c74d6a76bc693c8633f8ae7f8229f4ab004051067b6e025c",
+      "cmake/InstallContactReferenceTools.cmake": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea",
+      "cmake/InstallCrossoverTools.cmake": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844",
+      "cmake/InstallHammondTools.cmake": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+      "cmake/InstallRegistrationTools.cmake": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+      "cmake/InstallSourceLeakageTools.cmake": "1307f47bba569812e2f94b42a23eb5184fb188f87071c1470754f84c0ef69cd1",
+      "cmake/InstallStandalone.cmake": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+      "cmake/StandaloneBenchmark.cmake": "e9e9469715ec73feb71940cd272176f77ec2e93e0fc262fa1abf5bc65750e666",
+      "cmake/VerifyRtMidi.cmake": "fe2f76f57ca3384aedf05da1afbe0cc3fd3989bee29120bbb252249368bbccdd",
+      "cmake/VerifySdl2.cmake": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e",
+      "cmake/VerifyVst3Sdk.cmake": "4feeb4cfabf1560cfd3487859b88d40974b47801753aeccf848517717443e6eb",
+      "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+      "docs/ROTARY_PROPAGATION_CONTRACT.md": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+      "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+      "docs/ROTARY_WAVEFORM_ACCEPTANCE.md": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa",
+      "docs/WAVEFORM_BUILD_PLAN.md": "5f7cfef2b9b98f5c5151ba441539f46224c13fa40a98d9c23adb80fcf89cc9aa",
+      "docs/development/2026-11-14-waveform-continuation/reports/a14-history-acceptance.json": "3ebb5feacd33afbe94b1aa033776001df7a6287394aa8c28c6f5c257f5f469cc",
+      "docs/development/2026-11-14-waveform-continuation/reports/a14-static-grid.csv.gz": "03a56786a5d929d9a942048091b91fb5e791926019a0e0f3f0dc8aeceb0a2e77",
+      "include/hammond/ConsoleModel.h": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+      "include/hammond/ContactBank.h": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "include/hammond/ControlState.h": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "include/hammond/ControlStateIO.h": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+      "include/hammond/Engine.h": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+      "include/hammond/FixedRegistration.h": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+      "include/hammond/HostTimeline.h": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+      "include/hammond/InputProcessor.h": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+      "include/hammond/LeslieCrossover.h": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+      "include/hammond/NoteOwnership.h": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "include/hammond/ParameterBridge.h": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "include/hammond/PedalNoteOwnership.h": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "include/hammond/PedalRouting.h": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+      "include/hammond/PedalVoice.h": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+      "include/hammond/Percussion.h": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+      "include/hammond/PerformanceInput.h": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+      "include/hammond/Profile.h": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+      "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+      "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+      "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+      "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+      "include/hammond/ScannerLine.h": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+      "include/hammond/ScannerLineFoh.h": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+      "include/hammond/ScannerRotor.h": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+      "include/hammond/SourceLeakage.h": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+      "include/hammond/StateExchange.h": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+      "include/hammond/TonewheelBank.h": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+      "include/hammond/Types.h": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "include/hammond/detail/Decimal.h": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+      "include/hammond/research/CausalContactGrid.h": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+      "src/ContactBank.cpp": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+      "src/ControlState.cpp": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "src/Engine.cpp": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+      "src/FixedRegistration.cpp": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+      "src/HostTimeline.cpp": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+      "src/InputProcessor.cpp": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+      "src/LeslieCrossover.cpp": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+      "src/NoteOwnership.cpp": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "src/ParameterBridge.cpp": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "src/PedalNoteOwnership.cpp": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+      "src/PedalRouting.cpp": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+      "src/PedalVoice.cpp": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+      "src/Percussion.cpp": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+      "src/PerformanceInput.cpp": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+      "src/Profile.cpp": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+      "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+      "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+      "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+      "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+      "src/RotaryRendererInternal.h": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+      "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+      "src/ScannerLine.cpp": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+      "src/ScannerLineFoh.cpp": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+      "src/ScannerRotor.cpp": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+      "src/SourceLeakage.cpp": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+      "src/SourceLeakageIO.cpp": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+      "src/StateExchange.cpp": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+      "src/TonewheelBank.cpp": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "src/research/CausalContactGrid.cpp": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+      "tests/probes/rotary_motion_probe.cpp": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e",
+      "tests/probes/rotary_propagation_probe.cpp": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768",
+      "tests/probes/rotary_waveform_probe.cpp": "922c92ab81d2fcc8a5a0948c7c85ee496cf6816bdc57b20dddba7474899ef577",
+      "tests/reference/rotary_waveform_reference.h": "3c24792f80f86f903926622f4bf016984caf44d727ad3913e4570738ac9c8f21",
+      "tests/test_capture_install.py": "f435bdc83ec5e68d3fce04198b88534af10cd3323d20f9940628960185a94a5e",
+      "tests/test_rotary_history_acceptance.cpp": "839f85847e381c536549829395fb436964bb03e80092802ba5f700a495b59c03",
+      "tests/test_rotary_motion_acceptance.py": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366",
+      "tests/test_rotary_propagation_acceptance.py": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+      "tests/test_rotary_reference.py": "1f4b86baa292723027a65349a113d1e6fec21477a92516d4cba2951c43c0c223",
+      "tests/test_rotary_waveform_acceptance.py": "e2a21f1b5181ae7b46c776e96041a95b24ca2e2391f1e55ff5aed3e0d03e688d",
+      "tools/rotary_reference.py": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d"
+    },
+    "untracked_overlay_policy": "included by exact worktree SHA-256, even when absent from Git HEAD"
+  },
+  "source_stability_verified": true,
+  "executable_before": {
+    "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/hammond_rotary_waveform_probe",
+    "bytes": 203120,
+    "sha256": "8e103052f6e6176b52a6337352e2e419ab5c83a24338b638a445128c0f0f3c0f"
+  },
+  "executable_after": {
+    "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/hammond_rotary_waveform_probe",
+    "bytes": 203120,
+    "sha256": "8e103052f6e6176b52a6337352e2e419ab5c83a24338b638a445128c0f0f3c0f"
+  },
+  "build_before": {
+    "status": "observed",
+    "build_root": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+    "cache": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+      "CMAKE_CXX_COMPILER_AR": "/usr/bin/gcc-ar-13",
+      "CMAKE_CXX_COMPILER_RANLIB": "/usr/bin/gcc-ranlib-13",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_DEBUG": "-g",
+      "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+      "HAMMOND_ENABLE_SANITIZERS": "OFF",
+      "CMAKE_CXX_COMPILER-ADVANCED": "1",
+      "CMAKE_CXX_COMPILER_AR-ADVANCED": "1",
+      "CMAKE_CXX_COMPILER_RANLIB-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+      "CMAKE_GENERATOR": "Unix Makefiles",
+      "CMAKE_HOME_DIRECTORY": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ"
+    },
+    "files": [
+      {
+        "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/CMakeCache.txt",
+        "bytes": 20005,
+        "sha256": "54ff8e47cf784f60fecd6e14f0c11d42ace608b8a06d3af682765067f4dbeb02"
+      },
+      {
+        "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/compile_commands.json",
+        "bytes": 134680,
+        "sha256": "ec268629f66b0b944f3afdc6845a3f3db60166a3c2cbc8aa936ca495dd2c2d99"
+      }
+    ],
+    "compile_commands": [
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ContactBank.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ContactBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlState.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlState.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlState.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlStateIO.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlStateIO.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Engine.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Engine.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Engine.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Engine.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/FixedRegistration.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/FixedRegistration.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/FixedRegistration.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/FixedRegistration.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/HostTimeline.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/HostTimeline.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/InputProcessor.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/InputProcessor.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/LeslieCrossover.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/LeslieCrossover.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/LeslieCrossover.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/LeslieCrossover.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/NoteOwnership.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/NoteOwnership.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ParameterBridge.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ParameterBridge.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalNoteOwnership.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalNoteOwnership.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalRouting.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalRouting.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalVoice.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalVoice.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Percussion.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Percussion.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Percussion.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Percussion.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PerformanceInput.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PerformanceInput.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Profile.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Profile.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Profile.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Profile.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryHistory.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryHistory.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryMotion.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryMotion.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryPropagation.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryPropagation.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryRenderer.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryRenderer.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryStreamingPath.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryStreamingPath.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerLine.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLine.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLine.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ScannerLine.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerLineFoh.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLineFoh.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLineFoh.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ScannerLineFoh.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerRotor.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerRotor.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerRotor.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ScannerRotor.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/SourceLeakage.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakage.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakage.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/SourceLeakage.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/SourceLeakageIO.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakageIO.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakageIO.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/SourceLeakageIO.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/StateExchange.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/StateExchange.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/TonewheelBank.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/TonewheelBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_rotary_waveform_probe.dir/tests/probes/rotary_waveform_probe.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/probes/rotary_waveform_probe.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/probes/rotary_waveform_probe.cpp",
+        "output": "CMakeFiles/hammond_rotary_waveform_probe.dir/tests/probes/rotary_waveform_probe.cpp.o"
+      }
+    ],
+    "source_to_binary_attestation": false,
+    "attestation_limit": "source and executable bytes are bound at execution; build freshness is the build-before-run target's responsibility",
+    "has_probe_command": true,
+    "has_required_core_commands": true,
+    "unsafe_float_options": [],
+    "explicit_float_options": [],
+    "floating_contraction_policy": "explicit option above, otherwise compiler default; no stronger policy inferred"
+  },
+  "build_after": {
+    "status": "observed",
+    "build_root": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+    "cache": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+      "CMAKE_CXX_COMPILER_AR": "/usr/bin/gcc-ar-13",
+      "CMAKE_CXX_COMPILER_RANLIB": "/usr/bin/gcc-ranlib-13",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_DEBUG": "-g",
+      "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+      "HAMMOND_ENABLE_SANITIZERS": "OFF",
+      "CMAKE_CXX_COMPILER-ADVANCED": "1",
+      "CMAKE_CXX_COMPILER_AR-ADVANCED": "1",
+      "CMAKE_CXX_COMPILER_RANLIB-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+      "CMAKE_GENERATOR": "Unix Makefiles",
+      "CMAKE_HOME_DIRECTORY": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ"
+    },
+    "files": [
+      {
+        "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/CMakeCache.txt",
+        "bytes": 20005,
+        "sha256": "54ff8e47cf784f60fecd6e14f0c11d42ace608b8a06d3af682765067f4dbeb02"
+      },
+      {
+        "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/compile_commands.json",
+        "bytes": 134680,
+        "sha256": "ec268629f66b0b944f3afdc6845a3f3db60166a3c2cbc8aa936ca495dd2c2d99"
+      }
+    ],
+    "compile_commands": [
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ContactBank.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ContactBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlState.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlState.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlState.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlStateIO.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlStateIO.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Engine.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Engine.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Engine.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Engine.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/FixedRegistration.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/FixedRegistration.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/FixedRegistration.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/FixedRegistration.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/HostTimeline.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/HostTimeline.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/InputProcessor.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/InputProcessor.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/LeslieCrossover.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/LeslieCrossover.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/LeslieCrossover.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/LeslieCrossover.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/NoteOwnership.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/NoteOwnership.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ParameterBridge.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ParameterBridge.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalNoteOwnership.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalNoteOwnership.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalRouting.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalRouting.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalVoice.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalVoice.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Percussion.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Percussion.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Percussion.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Percussion.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PerformanceInput.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PerformanceInput.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Profile.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Profile.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Profile.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Profile.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryHistory.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryHistory.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryMotion.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryMotion.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryPropagation.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryPropagation.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryRenderer.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryRenderer.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryStreamingPath.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryStreamingPath.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerLine.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLine.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLine.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ScannerLine.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerLineFoh.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLineFoh.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerLineFoh.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ScannerLineFoh.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerRotor.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerRotor.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ScannerRotor.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ScannerRotor.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/SourceLeakage.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakage.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakage.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/SourceLeakage.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/SourceLeakageIO.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakageIO.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/SourceLeakageIO.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/SourceLeakageIO.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/StateExchange.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/StateExchange.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/TonewheelBank.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/TonewheelBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o"
+      },
+      {
+        "directory": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform",
+        "command": "/usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_rotary_waveform_probe.dir/tests/probes/rotary_waveform_probe.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/probes/rotary_waveform_probe.cpp",
+        "file": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/probes/rotary_waveform_probe.cpp",
+        "output": "CMakeFiles/hammond_rotary_waveform_probe.dir/tests/probes/rotary_waveform_probe.cpp.o"
+      }
+    ],
+    "source_to_binary_attestation": false,
+    "attestation_limit": "source and executable bytes are bound at execution; build freshness is the build-before-run target's responsibility",
+    "has_probe_command": true,
+    "has_required_core_commands": true,
+    "unsafe_float_options": [],
+    "explicit_float_options": [],
+    "floating_contraction_policy": "explicit option above, otherwise compiler default; no stronger policy inferred"
+  },
+  "selected_decimal_crosscheck": {
+    "status": "pass",
+    "selected_paths": 176,
+    "motion_precision_digits": 80,
+    "cartesian_precision_digits": 100,
+    "motion_queries": "actual long-double split emission positions",
+    "root_queries": "original integer n-2 observation positions; independent motion and Cartesian bisection",
+    "root_target_s": "1e-16",
+    "root_difference_limit_s": "1e-14",
+    "maximum_bisections": 43,
+    "maximum_bisection_residual_s": "9.9705057870525550406535688431887818553363619520338550319120660996402817973636467149951E-17",
+    "metrics": {
+      "motion_angle_rad": {
+        "count": 176,
+        "maximum_absolute_error": "2.244417994016154703830953997108016869041489225794663588581453E-17",
+        "maximum_budget_fraction": "0.000003720544828576207185049798547743546088822524997236777493502078148231609409420407293346328269974534849",
+        "worst": {
+          "position": {
+            "rate": 192000,
+            "frame": 1728000,
+            "rotor": 0,
+            "channel": 1,
+            "emission_frame": 1727285,
+            "fraction": "0.855230214312818370903"
+          },
+          "actual": "285.203422687694359394",
+          "reference": "285.20342268769435937155582005983845296169046002891983130958510774205336411418547",
+          "absolute_error": "2.244417994016154703830953997108016869041489225794663588581453E-17",
+          "budget": "6.14081369075077743748622328023935381184676184011567932523834043096821345645674188E-12"
+        },
+        "rms_error": "6.106505985463701916893170622832706177925753786498550332832804463620201890169259075276838433724146669E-18"
+      },
+      "motion_speed_rad_s": {
+        "count": 176,
+        "maximum_absolute_error": "1.780654344114073771344841425124444064494882852096022337404916E-18",
+        "maximum_budget_fraction": "3.001099876375410323703593541009420618291852671271968386308568655551461143807394405503238828849763992E-7",
+        "worst": {
+          "position": {
+            "rate": 192000,
+            "frame": 384000,
+            "rotor": 0,
+            "channel": 0,
+            "emission_frame": 383134,
+            "fraction": "0.84372270068221810746"
+          },
+          "actual": "36.817283004761216559",
+          "reference": "36.817283004761216557219345655885926228655158574875555935505117147903977662595084",
+          "absolute_error": "1.780654344114073771344841425124444064494882852096022337404916E-18",
+          "budget": "6.47269132019044866228877382623543704914620634299502223742020468591615910650380336E-12"
+        },
+        "rms_error": "6.037213146527658447856893884611496873077219680842527821273273280172523513410227921310962315273051026E-19"
+      },
+      "distance_m": {
+        "count": 176,
+        "maximum_absolute_error": "4.002030158120896439070996671182910217346411771764574450884918602494213791505718673E-18",
+        "maximum_budget_fraction": "0.0000020010150790604482195354983355914551086732058858822872254424593012471068957528593365",
+        "worst": {
+          "position": {
+            "rate": 192000,
+            "frame": 1728000,
+            "rotor": 0,
+            "channel": 1,
+            "emission_frame": 1727285,
+            "fraction": "0.855230214312818370903"
+          },
+          "actual": "1.27221695852335619874",
+          "reference": "1.272216958523356202742030158120896439070996671182910217346411771764574450884918602494213791505718673",
+          "absolute_error": "4.002030158120896439070996671182910217346411771764574450884918602494213791505718673E-18",
+          "budget": "2E-12"
+        },
+        "rms_error": "7.152008316933389962529757711987783710191746407218197641722055218011177628917413351059898023094847909E-19"
+      },
+      "frequency_ratio": {
+        "count": 176,
+        "maximum_absolute_error": "3.125115371771727841275547989195083485037616578162658045510116562436509445430573454E-19",
+        "maximum_budget_fraction": "1.562557685885863920637773994597541742518808289081329022755058281218254722715286727E-9",
+        "worst": {
+          "position": {
+            "rate": 192000,
+            "frame": 1919999,
+            "rotor": 0,
+            "channel": 1,
+            "emission_frame": 1919168,
+            "fraction": "0.986895875560971136409"
+          },
+          "actual": "0.993697010412029691818",
+          "reference": "0.9936970104120296915054884628228272158724452010804916514962383421837341954489883437563490554569426546",
+          "absolute_error": "3.125115371771727841275547989195083485037616578162658045510116562436509445430573454E-19",
+          "budget": "2E-10"
+        },
+        "rms_error": "6.679579688291478185265872947151155619853998051182268057025497328574698470580871482968770167488928714E-20"
+      },
+      "root_delay_s": {
+        "count": 176,
+        "maximum_absolute_error": "4.837748053930666318937094583376304087525797417521985819066057319964456768668108958105957E-15",
+        "maximum_budget_fraction": "0.4837748053930666318937094583376304087525797417521985819066057319964456768668108958105957",
+        "worst": {
+          "position": {
+            "rate": 192000,
+            "frame": 1919999,
+            "rotor": 0,
+            "channel": 1,
+            "emission_frame": 1919168,
+            "fraction": "0.986895875560971136409"
+          },
+          "actual": "0.00431256825064811994193",
+          "reference": "0.004312568250643282193876069333681062905416623695912474202582478014180933942680035543231331891041894043",
+          "absolute_error": "4.837748053930666318937094583376304087525797417521985819066057319964456768668108958105957E-15",
+          "budget": "1E-14"
+        },
+        "rms_error": "1.353939589001115955626773909467232757838222976872282714960923698736722194043880583212568237506206237E-15"
+      }
+    },
+    "failures": [],
+    "wall_seconds": 1.2390301049999835,
+    "scope": "qualifies selected independent long-double reference queries; complete native audio is compared by the C++ probe"
+  },
+  "retained_static_grid": {
+    "status": "pass",
+    "execution": "retained external A14 result; native grid not rerun",
+    "report": {
+      "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/a14-history-acceptance.json",
+      "bytes": 9654,
+      "sha256": "3ebb5feacd33afbe94b1aa033776001df7a6287394aa8c28c6f5c257f5f469cc"
+    },
+    "grid": {
+      "path": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/a14-static-grid.csv.gz",
+      "bytes": 2056124,
+      "sha256": "03a56786a5d929d9a942048091b91fb5e791926019a0e0f3f0dc8aeceb0a2e77"
+    },
+    "rows": 33280,
+    "raw_sha256": "34434383696384062b622de40ac08a29ab52f33a583b85d5764fadda12db367c",
+    "raw_bytes": 4890892,
+    "native_sources_match": true,
+    "other_recorded_source_differences": [],
+    "tested_source_sha256": {
+      "tests/test_rotary_history_acceptance.cpp": "839f85847e381c536549829395fb436964bb03e80092802ba5f700a495b59c03",
+      "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+      "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+      "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+      "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+      "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+      "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+      "docs/ROTARY_WAVEFORM_ACCEPTANCE.md": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa"
+    },
+    "maximum_low_band_error": "0.0034805641422248736",
+    "maximum_full_band_error": "0.9953980792939058",
+    "scope": "low-band cubic limit and complete high-band characterization; no broadband audible-fidelity claim"
+  },
+  "report_admission_self_test_methods": 14,
+  "report_admission_self_test_seconds": 0.391,
+  "scope": "native R4 waveform and exact partition qualification plus selected reference and retained static-grid checks",
+  "separate_gates": {
+    "transaction_lifecycle": "not_run",
+    "R5_audible_policy": "not_run",
+    "R6_device_deadlines": "not_run",
+    "physical_fidelity": "not_run"
+  }
+}

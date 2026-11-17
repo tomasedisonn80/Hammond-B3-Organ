@@ -1,0 +1,1133 @@
+{
+  "actual_worker": 57,
+  "all_5_installed_staged_inventories_and_relocated_smokes_verified": true,
+  "all_6_diagnostic_zip_API_hashes_and_sizes_verified": true,
+  "all_steps_terminal": true,
+  "artifact_index": "artifacts-index.json",
+  "cancelled_jobs": 0,
+  "completed_jobs": 6,
+  "ctest_instances_disabled": 0,
+  "ctest_instances_executed": 431,
+  "ctest_instances_failed": 0,
+  "ctest_instances_passed": 431,
+  "ctest_instances_skipped": 0,
+  "extra_worker_credit": false,
+  "failed_jobs": 0,
+  "family_results": [
+    {
+      "H1_fixture_cases": 48,
+      "H1_fixture_checks": 10542,
+      "H1_inequalities": {
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0",
+        "evaluated_count": 103,
+        "failed_count": 0,
+        "inequality_count": 103,
+        "mean_error_exact": "7620796849/20736000000",
+        "passed": true,
+        "passed_count": 103,
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2"
+      },
+      "P1_checks_evaluated": 191,
+      "P1_checks_failed": 0,
+      "P1_fixture_cases": 34,
+      "P1_fixture_checks": 53648,
+      "P1_screens": {
+        "all_passed": true,
+        "failed": 0,
+        "passed": 62,
+        "total": 62
+      },
+      "all_steps_terminal": true,
+      "canonical_reader_source_admission": {
+        "both_active_indexed_sources_and_distinct_original_reversals_observed": true,
+        "header": {
+          "candidate_only": true,
+          "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+          "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        },
+        "title": {
+          "candidate_only": true,
+          "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+          "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        }
+      },
+      "conclusion": "success",
+      "conditional_step_skips": [
+        {
+          "completed_at": "2026-11-17T08:03:15Z",
+          "conclusion": "skipped",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "started_at": "2026-11-17T08:03:15Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T08:03:46Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T08:03:46Z",
+          "status": "completed"
+        }
+      ],
+      "ctest_seconds": 499.09,
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "diagnostic_zip": {
+        "bytes": 401595,
+        "id": 14310239827,
+        "path": "artifact-14310239827.zip",
+        "sha256": "9fa544c095db8914f1d0c71ebfb8f9bcd69fd6a96242cb7b161feb8bddb38342"
+      },
+      "family": "Native standalone (Linux GCC, MIDI OFF)",
+      "image_version": "20261111.370.1",
+      "job_id": 133903129190,
+      "job_review": "job-133903129190-review.json",
+      "method_subcase_skip_count": 0,
+      "package_review": {
+        "payload_files": 17,
+        "physical_device_qualification": false,
+        "relocated_dummy_smoke_ms": 600,
+        "relocated_help_passed": true,
+        "relocated_smoke_passed": true,
+        "smoke_diagnostics_match_inventory_hash": true,
+        "staged_payload_exactly_equals_installed_inventory": true
+      },
+      "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "python": "3.12.16",
+      "raw_log": {
+        "compressed_bytes": 124552,
+        "compressed_sha256": "0ae377ce296185c887a90e5de44286b70fb4551cdd53702172a002a5b8796917",
+        "decoded_sha256": "558601a84d498825fb9c7dd09357b9ec6f39088cd48bc429b24caac705f894b7",
+        "decoded_utf8_bytes": 1075416,
+        "path": "job-133903129190.log.gz",
+        "retention": "Lossless gzip of complete decoded connector UTF-8 stream; no clipping or line normalization"
+      },
+      "required_names_passed": 55,
+      "required_names_present": 55,
+      "run_attempt": 1,
+      "selected_deadlines_and_serial_properties_equal_previous_policy": true,
+      "source_only_python_suites": {
+        "python_test_capture_standalone_interface": {
+          "method_skip_count": 0,
+          "methods": 45,
+          "seconds": 1.47,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "method_skip_count": 0,
+          "methods": 41,
+          "seconds": 0.769,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "method_skip_count": 0,
+          "methods": 71,
+          "seconds": 0.711,
+          "status": "passed"
+        }
+      },
+      "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+      "status": "completed",
+      "title_cases_passed": 18,
+      "toolchain": {
+        "C": {
+          "compiler": "/usr/bin/gcc",
+          "compiler_id": "GNU",
+          "compiler_version": "13.3.0"
+        },
+        "CXX": {
+          "compiler": "/usr/bin/g++",
+          "compiler_id": "GNU",
+          "compiler_version": "13.3.0"
+        }
+      }
+    },
+    {
+      "H1_fixture_cases": 48,
+      "H1_fixture_checks": 10542,
+      "H1_inequalities": {
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0",
+        "evaluated_count": 103,
+        "failed_count": 0,
+        "inequality_count": 103,
+        "mean_error_exact": "7620796849/20736000000",
+        "passed": true,
+        "passed_count": 103,
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2"
+      },
+      "P1_checks_evaluated": 191,
+      "P1_checks_failed": 0,
+      "P1_fixture_cases": 34,
+      "P1_fixture_checks": 53648,
+      "P1_screens": {
+        "all_passed": true,
+        "failed": 0,
+        "passed": 62,
+        "total": 62
+      },
+      "all_steps_terminal": true,
+      "canonical_reader_source_admission": {
+        "both_active_indexed_sources_and_distinct_original_reversals_observed": true,
+        "header": {
+          "candidate_only": true,
+          "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+          "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        },
+        "title": {
+          "candidate_only": true,
+          "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+          "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        }
+      },
+      "conclusion": "success",
+      "conditional_step_skips": [
+        {
+          "completed_at": "2026-11-17T08:04:20Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T08:04:20Z",
+          "status": "completed"
+        }
+      ],
+      "ctest_seconds": 412.77,
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "diagnostic_zip": {
+        "bytes": 413140,
+        "id": 14310084820,
+        "path": "artifact-14310084820.zip",
+        "sha256": "2b562e8539717ee0580267f9872a3f7546e53884cdce6f4fbcd01134dd607500"
+      },
+      "family": "Native standalone (Linux GCC, MIDI ON)",
+      "image_version": "20261111.127.1",
+      "job_id": 133903129162,
+      "job_review": "job-133903129162-review.json",
+      "method_subcase_skip_count": 0,
+      "package_review": {
+        "payload_files": 21,
+        "physical_device_qualification": false,
+        "relocated_dummy_smoke_ms": 600,
+        "relocated_help_passed": true,
+        "relocated_smoke_passed": true,
+        "smoke_diagnostics_match_inventory_hash": true,
+        "staged_payload_exactly_equals_installed_inventory": true
+      },
+      "platform": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+      "python": "3.12.16",
+      "raw_log": {
+        "compressed_bytes": 125896,
+        "compressed_sha256": "b7548c52ea8aa71087fd72bf25abd895608d050a1001e2740f870ed0eef40f55",
+        "decoded_sha256": "67d1fed2c78f6aaeb77c131e45f6b79fa3c212bc15938715522dd77691b3f82b",
+        "decoded_utf8_bytes": 1089316,
+        "path": "job-133903129162.log.gz",
+        "retention": "Lossless gzip of complete decoded connector UTF-8 stream; no clipping or line normalization"
+      },
+      "required_names_passed": 55,
+      "required_names_present": 55,
+      "run_attempt": 1,
+      "selected_deadlines_and_serial_properties_equal_previous_policy": true,
+      "source_only_python_suites": {
+        "python_test_capture_standalone_interface": {
+          "method_skip_count": 0,
+          "methods": 45,
+          "seconds": 1.024,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "method_skip_count": 0,
+          "methods": 41,
+          "seconds": 0.501,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "method_skip_count": 0,
+          "methods": 71,
+          "seconds": 0.476,
+          "status": "passed"
+        }
+      },
+      "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+      "status": "completed",
+      "title_cases_passed": 18,
+      "toolchain": {
+        "C": {
+          "compiler": "/usr/bin/gcc",
+          "compiler_id": "GNU",
+          "compiler_version": "13.3.0"
+        },
+        "CXX": {
+          "compiler": "/usr/bin/g++",
+          "compiler_id": "GNU",
+          "compiler_version": "13.3.0"
+        }
+      }
+    },
+    {
+      "H1_fixture_cases": 48,
+      "H1_fixture_checks": 10542,
+      "H1_inequalities": {
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0",
+        "evaluated_count": 103,
+        "failed_count": 0,
+        "inequality_count": 103,
+        "mean_error_exact": "7620796849/20736000000",
+        "passed": true,
+        "passed_count": 103,
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2"
+      },
+      "P1_checks_evaluated": 191,
+      "P1_checks_failed": 0,
+      "P1_fixture_cases": 34,
+      "P1_fixture_checks": 53648,
+      "P1_screens": {
+        "all_passed": true,
+        "failed": 0,
+        "passed": 62,
+        "total": 62
+      },
+      "all_steps_terminal": true,
+      "canonical_reader_source_admission": {
+        "both_active_indexed_sources_and_distinct_original_reversals_observed": true,
+        "header": {
+          "candidate_only": true,
+          "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+          "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        },
+        "title": {
+          "candidate_only": true,
+          "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+          "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        }
+      },
+      "conclusion": "success",
+      "conditional_step_skips": [
+        {
+          "completed_at": "2026-11-17T08:07:16Z",
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T08:07:16Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T08:07:16Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "started_at": "2026-11-17T08:07:16Z",
+          "status": "completed"
+        }
+      ],
+      "ctest_seconds": 549.92,
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "diagnostic_zip": {
+        "bytes": 386306,
+        "id": 14310674192,
+        "path": "artifact-14310674192.zip",
+        "sha256": "c6c869ebc35616ce6a0a7e749e724d8d00098db4328d53572bc32c177b790a72"
+      },
+      "family": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "image_version": "20261112.366.7",
+      "job_id": 133903129277,
+      "job_review": "job-133903129277-review.json",
+      "method_subcase_skip_count": 1,
+      "package_review": {
+        "payload_files": 21,
+        "physical_device_qualification": false,
+        "relocated_dummy_smoke_ms": 600,
+        "relocated_help_passed": true,
+        "relocated_smoke_passed": true,
+        "smoke_diagnostics_match_inventory_hash": true,
+        "staged_payload_exactly_equals_installed_inventory": true
+      },
+      "platform": "Windows-2022Server-10.0.20348-SP0",
+      "python": "3.12.10",
+      "raw_log": {
+        "compressed_bytes": 119225,
+        "compressed_sha256": "591e603fb6c5bf77a4e163756a9042fe434e0cb0caebc72ca0278c76ed707b4a",
+        "decoded_sha256": "f6da24a0b7de401383a8669d4e34a15f0ae241f7e01f5bc926b7433ec4127c6d",
+        "decoded_utf8_bytes": 806945,
+        "path": "job-133903129277.log.gz",
+        "retention": "Lossless gzip of complete decoded connector UTF-8 stream; no clipping or line normalization"
+      },
+      "required_names_passed": 55,
+      "required_names_present": 55,
+      "run_attempt": 1,
+      "selected_deadlines_and_serial_properties_equal_previous_policy": true,
+      "source_only_python_suites": {
+        "python_test_capture_standalone_interface": {
+          "method_skip_count": 0,
+          "methods": 45,
+          "seconds": 3.709,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "method_skip_count": 0,
+          "methods": 41,
+          "seconds": 1.315,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "method_skip_count": 0,
+          "methods": 71,
+          "seconds": 0.976,
+          "status": "passed"
+        }
+      },
+      "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+      "status": "completed",
+      "title_cases_passed": 18,
+      "toolchain": {
+        "C": {
+          "compiler": "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+          "compiler_id": "MSVC",
+          "compiler_version": "19.44.35230.0"
+        },
+        "CXX": {
+          "compiler": "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+          "compiler_id": "MSVC",
+          "compiler_version": "19.44.35230.0"
+        }
+      }
+    },
+    {
+      "H1_fixture_cases": 48,
+      "H1_fixture_checks": 10542,
+      "H1_inequalities": {
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0",
+        "evaluated_count": 103,
+        "failed_count": 0,
+        "inequality_count": 103,
+        "mean_error_exact": "7620796849/20736000000",
+        "passed": true,
+        "passed_count": 103,
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2"
+      },
+      "P1_checks_evaluated": 191,
+      "P1_checks_failed": 0,
+      "P1_fixture_cases": 34,
+      "P1_fixture_checks": 53648,
+      "P1_screens": {
+        "all_passed": true,
+        "failed": 0,
+        "passed": 62,
+        "total": 62
+      },
+      "all_steps_terminal": true,
+      "canonical_reader_source_admission": {
+        "both_active_indexed_sources_and_distinct_original_reversals_observed": true,
+        "header": {
+          "candidate_only": true,
+          "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+          "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        },
+        "title": {
+          "candidate_only": true,
+          "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+          "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        }
+      },
+      "conclusion": "success",
+      "conditional_step_skips": [
+        {
+          "completed_at": "2026-11-17T08:03:16Z",
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T08:03:16Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T08:04:02Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T08:04:02Z",
+          "status": "completed"
+        }
+      ],
+      "ctest_seconds": 456.23,
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "diagnostic_zip": {
+        "bytes": 402316,
+        "id": 14311196723,
+        "path": "artifact-14311196723.zip",
+        "sha256": "f4facd682740f5ec97cbaab4f9de1cab8eeedfbf719dd1da1e7901d1f14047e1"
+      },
+      "family": "Native standalone (macOS AppleClang, MIDI ON)",
+      "image_version": "20261112.0539.3",
+      "job_id": 133903129154,
+      "job_review": "job-133903129154-review.json",
+      "method_subcase_skip_count": 0,
+      "package_review": {
+        "payload_files": 21,
+        "physical_device_qualification": false,
+        "relocated_dummy_smoke_ms": 600,
+        "relocated_help_passed": true,
+        "relocated_smoke_passed": true,
+        "smoke_diagnostics_match_inventory_hash": true,
+        "staged_payload_exactly_equals_installed_inventory": true
+      },
+      "platform": "macOS-15.8.2-arm64-arm-64bit",
+      "python": "3.12.10",
+      "raw_log": {
+        "compressed_bytes": 117803,
+        "compressed_sha256": "700144f55b8b5f06a0a22bc327ae265b8780073b7b6b11e37e1979212cc69d3f",
+        "decoded_sha256": "cf08b137e7a03a808c8e1d4aa8400607286a66bbf3ac91f32d44c122197f4924",
+        "decoded_utf8_bytes": 1069412,
+        "path": "job-133903129154.log.gz",
+        "retention": "Lossless gzip of complete decoded connector UTF-8 stream; no clipping or line normalization"
+      },
+      "required_names_passed": 55,
+      "required_names_present": 55,
+      "run_attempt": 1,
+      "selected_deadlines_and_serial_properties_equal_previous_policy": true,
+      "source_only_python_suites": {
+        "python_test_capture_standalone_interface": {
+          "method_skip_count": 0,
+          "methods": 45,
+          "seconds": 1.474,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "method_skip_count": 0,
+          "methods": 41,
+          "seconds": 0.73,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "method_skip_count": 0,
+          "methods": 71,
+          "seconds": 0.706,
+          "status": "passed"
+        }
+      },
+      "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+      "status": "completed",
+      "title_cases_passed": 18,
+      "toolchain": {
+        "C": {
+          "compiler": "/usr/bin/clang",
+          "compiler_architecture_id": "arm64",
+          "compiler_id": "AppleClang",
+          "compiler_version": "17.0.0.17000013"
+        },
+        "CXX": {
+          "compiler": "/usr/bin/clang++",
+          "compiler_architecture_id": "arm64",
+          "compiler_id": "AppleClang",
+          "compiler_version": "17.0.0.17000013"
+        }
+      }
+    },
+    {
+      "H1_fixture_cases": 48,
+      "H1_fixture_checks": 10542,
+      "H1_inequalities": {
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0",
+        "evaluated_count": 103,
+        "failed_count": 0,
+        "inequality_count": 103,
+        "mean_error_exact": "7620796849/20736000000",
+        "passed": true,
+        "passed_count": 103,
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2"
+      },
+      "P1_checks_evaluated": 191,
+      "P1_checks_failed": 0,
+      "P1_fixture_cases": 34,
+      "P1_fixture_checks": 53648,
+      "P1_screens": {
+        "all_passed": true,
+        "failed": 0,
+        "passed": 62,
+        "total": 62
+      },
+      "all_steps_terminal": true,
+      "canonical_reader_source_admission": {
+        "both_active_indexed_sources_and_distinct_original_reversals_observed": true,
+        "header": {
+          "candidate_only": true,
+          "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+          "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        },
+        "title": {
+          "candidate_only": true,
+          "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+          "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        }
+      },
+      "conclusion": "success",
+      "conditional_step_skips": [
+        {
+          "completed_at": "2026-11-17T08:08:03Z",
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "started_at": "2026-11-17T08:08:03Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-11-17T08:09:26Z",
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "started_at": "2026-11-17T08:09:26Z",
+          "status": "completed"
+        }
+      ],
+      "ctest_seconds": 574.83,
+      "ctests_executed": 78,
+      "ctests_failed": 0,
+      "ctests_passed": 78,
+      "ctests_skipped": 0,
+      "diagnostic_zip": {
+        "bytes": 401303,
+        "id": 14311188606,
+        "path": "artifact-14311188606.zip",
+        "sha256": "1349405b36fb10da0e19d9cc04f7e2041833dde1a6a5b7f63fdba3e93c65bedf"
+      },
+      "family": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "image_version": "20260824.0482.1",
+      "job_id": 133903129393,
+      "job_review": "job-133903129393-review.json",
+      "method_subcase_skip_count": 0,
+      "package_review": {
+        "payload_files": 21,
+        "physical_device_qualification": false,
+        "relocated_dummy_smoke_ms": 600,
+        "relocated_help_passed": true,
+        "relocated_smoke_passed": true,
+        "smoke_diagnostics_match_inventory_hash": true,
+        "staged_payload_exactly_equals_installed_inventory": true
+      },
+      "platform": "macOS-15.7.9-x86_64-i386-64bit",
+      "python": "3.12.10",
+      "raw_log": {
+        "compressed_bytes": 119932,
+        "compressed_sha256": "b08f607e7fd46d3c099fd7186770fe165c3adf2d645301693546156002e6c832",
+        "decoded_sha256": "6c09c44bf630846ff06e98d357e8c1c9f725ef6d0023afd7c805e198af9ecc15",
+        "decoded_utf8_bytes": 1076954,
+        "path": "job-133903129393.log.gz",
+        "retention": "Lossless gzip of complete decoded connector UTF-8 stream; no clipping or line normalization"
+      },
+      "required_names_passed": 55,
+      "required_names_present": 55,
+      "run_attempt": 1,
+      "selected_deadlines_and_serial_properties_equal_previous_policy": true,
+      "source_only_python_suites": {
+        "python_test_capture_standalone_interface": {
+          "method_skip_count": 0,
+          "methods": 45,
+          "seconds": 3.577,
+          "status": "passed"
+        },
+        "python_test_compare_header_material": {
+          "method_skip_count": 0,
+          "methods": 41,
+          "seconds": 1.599,
+          "status": "passed"
+        },
+        "python_test_compare_performance_plate": {
+          "method_skip_count": 0,
+          "methods": 71,
+          "seconds": 1.505,
+          "status": "passed"
+        }
+      },
+      "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+      "status": "completed",
+      "title_cases_passed": 18,
+      "toolchain": {
+        "C": {
+          "compiler": "/usr/bin/clang",
+          "compiler_architecture_id": "x86_64",
+          "compiler_id": "AppleClang",
+          "compiler_version": "17.0.0.17000013"
+        },
+        "CXX": {
+          "compiler": "/usr/bin/clang++",
+          "compiler_architecture_id": "x86_64",
+          "compiler_id": "AppleClang",
+          "compiler_version": "17.0.0.17000013"
+        }
+      }
+    },
+    {
+      "H1_fixture_cases": 48,
+      "H1_fixture_checks": 10542,
+      "H1_inequalities": {
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0",
+        "evaluated_count": 103,
+        "failed_count": 0,
+        "inequality_count": 103,
+        "mean_error_exact": "7620796849/20736000000",
+        "passed": true,
+        "passed_count": 103,
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2"
+      },
+      "P1_checks_evaluated": 191,
+      "P1_checks_failed": 0,
+      "P1_fixture_cases": 34,
+      "P1_fixture_checks": 53648,
+      "P1_screens": {
+        "all_passed": true,
+        "failed": 0,
+        "passed": 62,
+        "total": 62
+      },
+      "all_steps_terminal": true,
+      "canonical_reader_source_admission": {
+        "both_active_indexed_sources_and_distinct_original_reversals_observed": true,
+        "header": {
+          "candidate_only": true,
+          "observed_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+          "original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "reversed_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        },
+        "title": {
+          "candidate_only": true,
+          "observed_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+          "original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "reversed_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+          "variant": "indexed-array-v1",
+          "whole_file_reversal_verified": true
+        }
+      },
+      "conclusion": "success",
+      "conditional_step_skips": [],
+      "ctest_seconds": 785.99,
+      "ctests_executed": 41,
+      "ctests_failed": 0,
+      "ctests_passed": 41,
+      "ctests_skipped": 0,
+      "diagnostic_zip": {
+        "bytes": 251378,
+        "id": 14311138530,
+        "path": "artifact-14311138530.zip",
+        "sha256": "b9f3b37109e24bbf34f2673b5f406e677346903e1bcf9cffab5a37bf523903f1"
+      },
+      "family": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "image_version": "20261111.370.1",
+      "job_id": 133903128857,
+      "job_review": "job-133903128857-review.json",
+      "method_subcase_skip_count": 0,
+      "package_review": null,
+      "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "python": "3.12.16; full sanitizer toolchain.log retained",
+      "raw_log": {
+        "compressed_bytes": 126674,
+        "compressed_sha256": "9b4c221491df5a63edbd9ce003a8830cb456bdf266da98ecab3458056e7b2a62",
+        "decoded_sha256": "cf972d32e8eddb76490911544f804153d65996aa2197f394ccf4e8e1c4aaa7b3",
+        "decoded_utf8_bytes": 1454820,
+        "path": "job-133903128857.log.gz",
+        "retention": "Lossless gzip of complete decoded connector UTF-8 stream; no clipping or line normalization"
+      },
+      "required_names_passed": 41,
+      "required_names_present": 41,
+      "run_attempt": 1,
+      "selected_deadlines_and_serial_properties_equal_previous_policy": true,
+      "source_only_python_suites": {},
+      "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+      "status": "completed",
+      "title_cases_passed": 18,
+      "toolchain": "GCC 13.3.0; full sanitizer toolchain.log retained"
+    }
+  ],
+  "final_run_observed_utc": "2026-11-17T08:27:05.018Z",
+  "immutable_prior_evidence": "immutable-prior-evidence.json",
+  "limits": [
+    "Only this exact published source and attempt are admitted; the five changed Python inputs have fresh hosted execution.",
+    "One Windows FIFO subcase is skipped because FIFO creation is unsupported; zero selected CTests are skipped or disabled.",
+    "The ordinary MIDI backend quarantine retains ASAN_OPTIONS=detect_leaks=0:halt_on_error=1 and is excluded from strict selection. All 41 strict tests retain fail-fast ASan/UBSan/leak policy with no overrides.",
+    "The precise original MSVC mechanism and the d2ed unnamed P1 non-screen failure remain unproven; all prior original failures and receipts are preserved.",
+    "CI did not upload raw native frame streams or the complete temporary P1 report. Complete available stdout, XML, provenance, diagnostics and numerical summaries are retained.",
+    "The native P1 failure-summary branch and a new helper-absent native runtime are not claimed from passing jobs.",
+    "No physical hardware, driver timing, accessibility, native browser/main integration, DAW, callback retirement, physical fidelity, signed release, or whole-interface 1:1 qualification.",
+    "System libraries are not rebuilt. Real application/dummy SDL callbacks and substituted-MIDI calibration qualify only their stated boundary."
+  ],
+  "method_subcases_skipped": 1,
+  "no_CI_cancellation": true,
+  "no_CI_rerun": true,
+  "no_local_native_build_repository_test_or_git_execution": true,
+  "no_source_edits": true,
+  "no_timeout_relaxation": true,
+  "observed_all_jobs_terminal_utc": "2026-11-17T08:26:39.547Z",
+  "ordered_parents": [
+    "8189a49eacab5d4e6ce6c178862e83b03bdec437",
+    "54859886268ce83c36f359c43327f7c72a77ae82"
+  ],
+  "original_logs_complete": true,
+  "policy_reference": "../A57-native-hosted/source-policy-preflight.json",
+  "preflight": "preflight.json",
+  "prior_evidence_references": [
+    "../A57-native-hosted.json",
+    "../A57-repair-hosted/report.json",
+    "../A57-indexed-hosted/report.json"
+  ],
+  "qualification_claimed": true,
+  "qualification_scope": "Only published 523c1979334b0fbb624ce120128a0b8ada078383, Native standalone run 44043394005 attempt 1, all six required families. Earlier passes are not transferred and this does not qualify later source changes or whole-product release.",
+  "readable_review": "admission.md",
+  "required_families": 6,
+  "retained_compressed_log_bytes": 734082,
+  "retained_diagnostic_zip_bytes": 2256038,
+  "retained_log_bytes": 6572863,
+  "review_completed_utc": "2026-11-17T08:30:19.948991+00:00",
+  "run": {
+    "actor": {
+      "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+      "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+      "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+      "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+      "gravatar_id": "",
+      "html_url": "https://github.com/tomasedisonn80",
+      "id": 355213237,
+      "login": "tomasedisonn80",
+      "node_id": "U_kgDOFSwftQ",
+      "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+      "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+      "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+      "site_admin": false,
+      "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+      "type": "User",
+      "url": "https://api.github.com/users/tomasedisonn80",
+      "user_view_type": "public"
+    },
+    "artifacts_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/artifacts",
+    "cancel_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/cancel",
+    "check_suite_id": 119226120176,
+    "check_suite_node_id": "CS_kwDOVrmZNc8AAAAbwm438A",
+    "check_suite_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/check-suites/119226120176",
+    "conclusion": "success",
+    "created_at": "2026-11-17T08:02:43Z",
+    "display_title": "Merge indexed fixture admission and accepted console evidence",
+    "event": "push",
+    "head_branch": "main",
+    "head_commit": {
+      "author": {
+        "email": "tomasedisonn4@gmail.com",
+        "name": "tomasedisonn80"
+      },
+      "committer": {
+        "email": "tomasedisonn4@gmail.com",
+        "name": "tomasedisonn80"
+      },
+      "id": "523c1979334b0fbb624ce120128a0b8ada078383",
+      "message": "Merge indexed fixture admission and accepted console evidence\n\nPreserve both the published indexed Windows repair and the independently\nqualified local candidate with all sixty accepted worker records.\n\nKeep published H1/P1 source-transition schemas, separate immutable original\nand active canonical-reader identities, retain every published test body,\nand add bounded failure-only P1 diagnostics.\n\nRecord first-only 71/41 source suites, three native reader passes, final\nrepository integrity, independent reviews, all original failures and the\npublished predecessor's complete sixteen-job success. Production, visual\ncriteria, deadlines and workflows remain unchanged. Final merged-source\nhosted qualification remains separate.",
+      "timestamp": "2026-11-17T08:02:30Z",
+      "tree_id": "893441fe87859b9dbad81a5d81a453f7c96030f8"
+    },
+    "head_repository": {
+      "archive_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/{archive_format}{/ref}",
+      "assignees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/assignees{/user}",
+      "blobs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/blobs{/sha}",
+      "branches_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/branches{/branch}",
+      "collaborators_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/collaborators{/collaborator}",
+      "comments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/comments{/number}",
+      "commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/commits{/sha}",
+      "compare_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/compare/{base}...{head}",
+      "contents_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contents/{+path}",
+      "contributors_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contributors",
+      "deployments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/deployments",
+      "description": null,
+      "downloads_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/downloads",
+      "events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/events",
+      "fork": false,
+      "forks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/forks",
+      "full_name": "tomasedisonn80/Hammond-B3-Organ",
+      "git_commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits{/sha}",
+      "git_refs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/refs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/tags{/sha}",
+      "hooks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/hooks",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ",
+      "id": 1455003957,
+      "issue_comment_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/comments{/number}",
+      "issue_events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/events{/number}",
+      "issues_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues{/number}",
+      "keys_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/keys{/key_id}",
+      "labels_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/labels{/name}",
+      "languages_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/languages",
+      "merges_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/merges",
+      "milestones_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/milestones{/number}",
+      "name": "Hammond-B3-Organ",
+      "node_id": "R_kgDOVrmZNQ",
+      "notifications_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/notifications{?since,all,participating}",
+      "owner": {
+        "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+        "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+        "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+        "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+        "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+        "gravatar_id": "",
+        "html_url": "https://github.com/tomasedisonn80",
+        "id": 355213237,
+        "login": "tomasedisonn80",
+        "node_id": "U_kgDOFSwftQ",
+        "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+        "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+        "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+        "site_admin": false,
+        "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+        "type": "User",
+        "url": "https://api.github.com/users/tomasedisonn80",
+        "user_view_type": "public"
+      },
+      "private": false,
+      "pulls_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/pulls{/number}",
+      "releases_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/releases{/id}",
+      "stargazers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/stargazers",
+      "statuses_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/statuses/{sha}",
+      "subscribers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscribers",
+      "subscription_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscription",
+      "tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/tags",
+      "teams_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/teams",
+      "trees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/trees{/sha}",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ"
+    },
+    "head_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005",
+    "id": 44043394005,
+    "jobs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/jobs",
+    "logs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/logs",
+    "name": "Native standalone",
+    "node_id": "WFR_kwLOVrmZNc8AAAAKQTDb1Q",
+    "path": ".github/workflows/standalone.yml",
+    "previous_attempt_url": null,
+    "pull_requests": [],
+    "referenced_workflows": [],
+    "repository": {
+      "archive_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/{archive_format}{/ref}",
+      "assignees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/assignees{/user}",
+      "blobs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/blobs{/sha}",
+      "branches_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/branches{/branch}",
+      "collaborators_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/collaborators{/collaborator}",
+      "comments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/comments{/number}",
+      "commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/commits{/sha}",
+      "compare_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/compare/{base}...{head}",
+      "contents_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contents/{+path}",
+      "contributors_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/contributors",
+      "deployments_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/deployments",
+      "description": null,
+      "downloads_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/downloads",
+      "events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/events",
+      "fork": false,
+      "forks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/forks",
+      "full_name": "tomasedisonn80/Hammond-B3-Organ",
+      "git_commits_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits{/sha}",
+      "git_refs_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/refs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/tags{/sha}",
+      "hooks_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/hooks",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ",
+      "id": 1455003957,
+      "issue_comment_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/comments{/number}",
+      "issue_events_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues/events{/number}",
+      "issues_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/issues{/number}",
+      "keys_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/keys{/key_id}",
+      "labels_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/labels{/name}",
+      "languages_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/languages",
+      "merges_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/merges",
+      "milestones_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/milestones{/number}",
+      "name": "Hammond-B3-Organ",
+      "node_id": "R_kgDOVrmZNQ",
+      "notifications_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/notifications{?since,all,participating}",
+      "owner": {
+        "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+        "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+        "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+        "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+        "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+        "gravatar_id": "",
+        "html_url": "https://github.com/tomasedisonn80",
+        "id": 355213237,
+        "login": "tomasedisonn80",
+        "node_id": "U_kgDOFSwftQ",
+        "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+        "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+        "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+        "site_admin": false,
+        "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+        "type": "User",
+        "url": "https://api.github.com/users/tomasedisonn80",
+        "user_view_type": "public"
+      },
+      "private": false,
+      "pulls_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/pulls{/number}",
+      "releases_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/releases{/id}",
+      "stargazers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/stargazers",
+      "statuses_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/statuses/{sha}",
+      "subscribers_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscribers",
+      "subscription_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/subscription",
+      "tags_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/tags",
+      "teams_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/teams",
+      "trees_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/trees{/sha}",
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ"
+    },
+    "rerun_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005/rerun",
+    "run_attempt": 1,
+    "run_number": 73,
+    "run_started_at": "2026-11-17T08:02:43Z",
+    "status": "completed",
+    "triggering_actor": {
+      "avatar_url": "https://avatars.githubusercontent.com/u/355213237?v=4",
+      "events_url": "https://api.github.com/users/tomasedisonn80/events{/privacy}",
+      "followers_url": "https://api.github.com/users/tomasedisonn80/followers",
+      "following_url": "https://api.github.com/users/tomasedisonn80/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tomasedisonn80/gists{/gist_id}",
+      "gravatar_id": "",
+      "html_url": "https://github.com/tomasedisonn80",
+      "id": 355213237,
+      "login": "tomasedisonn80",
+      "node_id": "U_kgDOFSwftQ",
+      "organizations_url": "https://api.github.com/users/tomasedisonn80/orgs",
+      "received_events_url": "https://api.github.com/users/tomasedisonn80/received_events",
+      "repos_url": "https://api.github.com/users/tomasedisonn80/repos",
+      "site_admin": false,
+      "starred_url": "https://api.github.com/users/tomasedisonn80/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tomasedisonn80/subscriptions",
+      "type": "User",
+      "url": "https://api.github.com/users/tomasedisonn80",
+      "user_view_type": "public"
+    },
+    "updated_at": "2026-11-17T08:25:41Z",
+    "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005",
+    "workflow_id": 417795651,
+    "workflow_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/workflows/417795651"
+  },
+  "run_attempt": 1,
+  "run_attempts_observed": [
+    1
+  ],
+  "run_id": 44043394005,
+  "schema_version": 1,
+  "source_identity": "source-identity.json",
+  "source_inspection": "combined-python-source-review.json",
+  "source_only_methods_per_normal_family": {
+    "H1": 41,
+    "P1": 71,
+    "capture": 45
+  },
+  "source_policy_unchanged": true,
+  "source_sha": "523c1979334b0fbb624ce120128a0b8ada078383",
+  "source_tree": "893441fe87859b9dbad81a5d81a453f7c96030f8",
+  "status": "ADMITTED_EXACT_FINAL_SOURCE_SIX_NATIVE_HOSTED_FAMILIES",
+  "strict_sanitizer": {
+    "SDL_C_sources": 196,
+    "SDL_instrumented_objects": 196,
+    "actual_sanitizer_diagnostics": [],
+    "all_37_runtime_records_have_ASan_UBSan_without_missing_dependencies": true,
+    "archives": 7,
+    "changed_source_inputs": 5,
+    "environment": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23",
+      "SDL_AUDIODRIVER": "dummy",
+      "SDL_RENDER_DRIVER": "software",
+      "SDL_VIDEODRIVER": "dummy",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+    },
+    "generated_compile_commands": 411,
+    "job_id": 133903128857,
+    "native_calibration": {
+      "boundary": "Real application/adapter and SDL dummy callbacks; substituted MIDI dependency, synchronous callback offers, no hardware or driver timing qualification",
+      "deliberately_failed_replays": 2,
+      "native_lifecycles": 7,
+      "subprocesses": 10
+    },
+    "selected_compile_commands": 291,
+    "selected_compiled_groups": 44,
+    "source_hashes_changed_vs_5485988": {
+      "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+        "523c197": "c3b52ee56645e51d4144c296d4fd0b6579c93e13b11b117fb4d67f2a98a9c4bd",
+        "5485988": "000aa38a03402e64a0bb5ef6642294973637fa0b7270659c8c23af60eaf40d18"
+      },
+      "apps/standalone/native_tests/test_standalone_title_density.py": {
+        "523c197": "012cb2ccb260ecb433f53f04049740e6fed687bb94143ee4261bf50e771b2999",
+        "5485988": "d37591ec80910769d61f81cf90e7d937bf4844dcd307ae887ac5099c440a8a79"
+      },
+      "tests/test_compare_header_material.py": {
+        "523c197": "b33b44d2a2459a274fad35580e0a9ce08fb6b3df834b388b51fa98e01a1473e4",
+        "5485988": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+      },
+      "tests/test_compare_performance_plate.py": {
+        "523c197": "edcf02e99ce66a9910e8f3173d6a66e929390321280581678e91fb277f93a4ba",
+        "5485988": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932"
+      },
+      "tools/compare_performance_plate.py": {
+        "523c197": "aab3b5acb2b4e9ff8d6c9491854d81f02a70f20ba618ef7424ace56cbb9744b5",
+        "5485988": "d6fcd559d43cec25fb2d3157a9291cfe2608289465278a1e53c6da5ec2587ca5"
+      }
+    },
+    "source_inputs": 63,
+    "source_reverification": {
+      "completed_at": "2026-11-17T08:24:05Z",
+      "conclusion": "success",
+      "name": "Reverify source and locked SDL2 after acceptance",
+      "number": 11,
+      "started_at": "2026-11-17T08:24:05Z",
+      "status": "completed"
+    },
+    "system_libraries_rebuilt": false,
+    "targets": 37,
+    "tests": 41,
+    "unchanged_source_inputs": 58
+  },
+  "successful_jobs": 6,
+  "terminal_observation": "observation-terminal.json.gz",
+  "wave": 10,
+  "windows_result": "windows-result.json",
+  "worker": "A57"
+}

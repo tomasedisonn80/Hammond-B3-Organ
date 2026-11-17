@@ -1,0 +1,415 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  HAMMOND_REGISTRATION_CTESTS: >-
+    test_control_file_input
+    test_standalone_registration_library
+    python_test_registration_cli
+    python_test_registration_cli_admission
+    python_test_render_controls
+    python_test_render_controls_admission
+    python_test_starter_registration_generator
+    python_test_starter_registration_oracle
+    python_test_starter_auditions
+    python_test_registration_install
+    python_test_reference_apron_art
+    python_test_reference_apron_raster_checker
+
+jobs:
+  release:
+    name: Release (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Linux GCC
+            os: ubuntu-24.04
+            compiler: g++
+          - platform: macOS AppleClang
+            os: macos-15
+            compiler: clang++
+          - platform: macOS Intel AppleClang
+            os: macos-15-intel
+            compiler: clang++
+          - platform: Windows MSVC
+            os: windows-2022
+            compiler: cl
+    steps:
+      - name: Check out the tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record the revision and tools
+        run: |
+          mkdir -p ci-logs
+          git rev-parse HEAD | tee ci-logs/source-revision.txt
+          cmake --version 2>&1 | tee ci-logs/toolchain.log
+          ctest --version 2>&1 | tee -a ci-logs/toolchain.log
+          python --version 2>&1 | tee -a ci-logs/toolchain.log
+          python -c "import platform; print(platform.platform()); print(platform.machine())" | tee -a ci-logs/toolchain.log
+
+      - name: Configure Release on Linux or macOS
+        if: runner.os != 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+          CXX_COMPILER: ${{ matrix.compiler }}
+        run: |
+          cmake --preset release -G "Unix Makefiles" \
+            -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log
+
+      - name: Configure Release on Windows
+        if: runner.os == 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          cmake --preset release -G "Visual Studio 17 2022" -A x64 \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log
+
+      - name: Build Release
+        run: |
+          cmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+
+      - name: Require registration and apron tools in the full Release test inventory
+        run: |
+          set -euo pipefail
+          ctest --preset release --show-only=json-v1 --no-tests=error > ci-logs/ctest-discovered.json
+          python - <<'PY'
+          import json, os, pathlib
+          discovered = json.loads(pathlib.Path("ci-logs/ctest-discovered.json").read_text(encoding="utf-8"))["tests"]
+          tests = {test["name"]: test for test in discovered}
+          required = set(os.environ["HAMMOND_REGISTRATION_CTESTS"].split())
+          assert required <= tests.keys(), "Missing required tests: " + ", ".join(sorted(required - tests.keys()))
+          for name in sorted(required):
+              test = tests[name]
+              properties = {item["name"]: item["value"] for item in test.get("properties", [])}
+              assert test.get("command") and not properties.get("DISABLED", False), name
+          print("The unfiltered Release run includes all", len(required), "required registration and apron tool gates.", flush=True)
+          PY
+
+      - name: Run every registered Release test
+        run: |
+          ctest --preset release --parallel 2 --timeout 300 --no-tests=error \
+            --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log
+
+      - name: Verify apron tooling with only the Python standard library
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          # Optional Pillow source decoding and NumPy pixel methods report skips;
+          # their absence must not disable the compiler or transport admission.
+          python -B -S tests/test_reference_apron_art.py -v 2>&1 | tee ci-logs/apron-art-stdlib.log
+          python -B -S tests/test_reference_apron_raster_checker.py -v 2>&1 | tee ci-logs/apron-raster-stdlib.log
+
+      - name: Qualify the actual starter generator from a Windows Unicode checkout
+        if: runner.os == 'Windows'
+        timeout-minutes: 10
+        env:
+          PYTHONUTF8: "1"
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os, pathlib, shutil, subprocess, sys, tarfile
+          repo = pathlib.Path.cwd().resolve()
+          logs = repo / "ci-logs/windows-unicode-generator"
+          logs.mkdir()
+          workspace = pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond generator \u00e9 \u6f22\u5b57"
+          workspace.mkdir(exist_ok=False)
+          source, build = workspace / "source", workspace / "build"
+          output = workspace / "outputs" / "generated \u00e9 \u6f22\u5b57"
+          source.mkdir()
+          # Distinct ASCII source/outputs branches preserve conservative alias
+          # admission while both the source root and output leaf contain Unicode.
+          output.parent.mkdir()
+          archive = workspace / "source.tar"
+          revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          source_tree = subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip()
+          assert revision == os.environ["GITHUB_SHA"]
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          subprocess.run(["git", "archive", "--format=tar", "--output", str(archive), "HEAD"], check=True)
+          with tarfile.open(archive, "r:") as stream:
+              stream.extractall(source, filter="data")
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          pack = source / "data/registrations/starter-v1"
+          def inventory(directory):
+              items = {}
+              for path in sorted(directory.rglob("*")):
+                  assert not path.is_symlink(), path
+                  if path.is_file():
+                      items[path.relative_to(directory).as_posix()] = {"bytes": path.stat().st_size, "sha256": digest(path)}
+                  else:
+                      assert path.is_dir(), path
+              return items
+          before = inventory(pack)
+          assert len(before) == 26
+          commands = []
+          def run(arguments, name, timeout, expected=0):
+              arguments = [str(value) for value in arguments]
+              commands.append({"command": arguments, "cwd": str(workspace), "timeout_seconds": timeout,
+                               "expected_exit": expected})
+              (logs / "commands.json").write_text(json.dumps(commands, indent=2) + "\n", encoding="utf-8")
+              with (logs / (name + ".stdout")).open("wb") as stdout, (logs / (name + ".stderr")).open("wb") as stderr:
+                  result = subprocess.run(arguments, cwd=workspace, stdout=stdout, stderr=stderr, timeout=timeout)
+              print((logs / (name + ".stdout")).read_text(encoding="utf-8", errors="replace"), end="", flush=True)
+              print((logs / (name + ".stderr")).read_text(encoding="utf-8", errors="replace"), end="", flush=True)
+              assert result.returncode == expected, (name, result.returncode, expected)
+              return (logs / (name + ".stdout")).read_bytes(), (logs / (name + ".stderr")).read_bytes()
+          query = build / ".cmake/api/v1/query"
+          query.mkdir(parents=True)
+          (query / "codemodel-v2").touch()
+          run(["cmake", "-S", source, "-B", build, "-G", "Visual Studio 17 2022", "-A", "x64",
+               "-DBUILD_TESTING=OFF", "-DHAMMOND_BUILD_STANDALONE=OFF", "-DHAMMOND_BUILD_VST3=OFF",
+               "-DHAMMOND_ENABLE_MIDI=OFF", "-DPython3_EXECUTABLE=" + sys.executable], "configure", 120)
+          shutil.copyfile(build / "CMakeCache.txt", logs / "CMakeCache.txt")
+          reply = build / ".cmake/api/v1/reply"
+          index = json.loads(sorted(reply.glob("index-*.json"))[-1].read_text(encoding="utf-8"))
+          model = json.loads((reply / index["reply"]["codemodel-v2"]["jsonFile"]).read_text(encoding="utf-8"))
+          release, = [item for item in model["configurations"] if item["name"] == "Release"]
+          target, = [item for item in release["targets"] if item["name"] == "hammond_generate_starter_registrations"]
+          target_path = reply / target["jsonFile"]
+          target_model = json.loads(target_path.read_text(encoding="utf-8"))
+          shutil.copyfile(target_path, logs / "generator-target-Release.json")
+          groups = [group for group in target_model["compileGroups"] if group["language"] == "CXX"]
+          assert groups and all("/utf-8" in {flag for fragment in group["compileCommandFragments"]
+                                            for flag in fragment["fragment"].split()} for group in groups)
+          source_definition = 'HAMMOND_STARTER_SOURCE_DIR="' + source.as_posix() + '"'
+          assert all(source_definition in {item["define"] for item in group["defines"]} for group in groups)
+          run(["cmake", "--build", build, "--config", "Release", "--target",
+               "hammond_generate_starter_registrations", "--parallel", "2", "--verbose"], "build", 360)
+          executable = build / "Release/hammond_generate_starter_registrations.exe"
+          stdout, stderr = run([executable, "--output", output], "generate", 30)
+          assert not stderr and stdout.endswith(b"\n") and b"\r" not in stdout
+          records = [json.loads(line) for line in stdout.decode("utf-8").splitlines()]
+          assert len(records) == 25 and all(item["schema"] == "hammond-starter-generator-v1" for item in records)
+          assert all(item["event"] == "file" and item["status"] == "Saved" and item["committed"] is True
+                     for item in records[:-1])
+          summary = records[-1]
+          assert summary["event"] == "summary" and summary["status"] == "Complete"
+          assert summary["committed_count"] == summary["attempted_count"] == 24
+          assert summary["unattempted_count"] == 0 and summary["uncertain_file"] is None
+          expected = inventory(pack / "entries")
+          actual = inventory(output)
+          assert len(actual) == 24 and actual == expected
+          assert len(list(output.iterdir())) == 24
+          assert all((output / name).read_bytes() == (pack / "entries" / name).read_bytes() for name in actual)
+          assert set(actual) == {item["file"] for item in records[:-1]}
+          # An absent child proves the compiled Unicode source root protects the
+          # actual pack; an already populated destination could refuse for another reason.
+          protected = pack / "must stay absent \u00e9 \u6f22\u5b57"
+          stdout, stderr = run([executable, "--output", protected], "protected-source", 15, expected=3)
+          refusal, = [json.loads(line) for line in stdout.decode("utf-8").splitlines()]
+          assert not stderr and refusal["event"] == "summary" and refusal["status"] == "ProtectedPath"
+          assert refusal["committed_count"] == refusal["attempted_count"] == 0
+          assert not protected.exists() and inventory(pack) == before
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], cwd=repo, check=True)
+          record = {"source_commit": revision, "source_tree": source_tree, "source_archive_sha256": digest(archive),
+                    "unicode_source_root": str(source), "compiled_source_definition": source_definition,
+                    "generator_sha256": digest(executable), "payloads": actual,
+                    "source_pack_unchanged": True, "protected_source_refusal": refusal,
+                    "scope": "MSVC Release actual generator and 24 exact files; no SDL, VST3, native UI or device qualification."}
+          (logs / "qualification.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Verify the completed interface session
+        if: runner.os == 'Linux'
+        run: |
+          set -o pipefail
+          python tools/check_interface_session.py --repo . --json | tee ci-logs/interface-session-completion.json
+
+      - name: Verify the completed refinement session
+        if: runner.os == 'Linux'
+        run: |
+          set -o pipefail
+          python tools/check_refinement_session.py --repo . --json | tee ci-logs/refinement-session-completion.json
+
+      - name: Verify the actual product session records
+        if: runner.os == 'Linux'
+        run: |
+          set -o pipefail
+          # All 60 actual product-session results are accepted; closure is strict.
+          python tools/check_product_session.py --repo . --json | tee ci-logs/product-session-records.json
+
+      - name: Retain configure, build, and test diagnostics
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ci-${{ matrix.os }}-release-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            ci-logs/
+            build-release/CMakeCache.txt
+            build-release/CMakeFiles/CMakeConfigureLog.yaml
+            build-release/CMakeFiles/CMakeOutput.log
+            build-release/CMakeFiles/CMakeError.log
+            build-release/Testing/Temporary/LastTest.log
+            build-release/Testing/Temporary/LastTestsFailed.log
+            build-release/rotary-waveform/
+
+  rotary-waveform:
+    name: Complete R4 waveform qualification (Linux GCC)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record source and tools
+        run: |
+          mkdir -p waveform-ci-logs
+          git rev-parse HEAD | tee waveform-ci-logs/source-revision.txt
+          cmake --version 2>&1 | tee waveform-ci-logs/toolchain.log
+          g++ --version 2>&1 | tee -a waveform-ci-logs/toolchain.log
+          python --version 2>&1 | tee -a waveform-ci-logs/toolchain.log
+
+      - name: Configure the independent core qualification
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          cmake -S . -B build-waveform -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+            -DHAMMOND_BUILD_STANDALONE=OFF -DHAMMOND_BUILD_VST3=OFF \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            2>&1 | tee waveform-ci-logs/configure.log
+
+      - name: Require strict report admission
+        run: |
+          python tests/test_rotary_waveform_acceptance.py --self-test \
+            2>&1 | tee waveform-ci-logs/report-admission.log
+
+      - name: Build and run all full waveform experiments
+        timeout-minutes: 30
+        run: |
+          set -o pipefail
+          cmake --build build-waveform --target check_rotary_waveform_full \
+            --parallel 2 --verbose 2>&1 | tee waveform-ci-logs/full.log
+
+      - name: Retain exact complete waveform evidence
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rotary-waveform-full-linux-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            waveform-ci-logs/
+            build-waveform/rotary-waveform/
+            build-waveform/CMakeCache.txt
+            build-waveform/compile_commands.json
+            build-waveform/CMakeFiles/CMakeConfigureLog.yaml
+
+  sanitizers:
+    name: Linux GCC ASan + UBSan + leaks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+      UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+      LSAN_OPTIONS: exitcode=23
+    steps:
+      - name: Check out the tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record the revision and tools
+        run: |
+          mkdir -p ci-logs
+          git rev-parse HEAD | tee ci-logs/source-revision.txt
+          cmake --version 2>&1 | tee ci-logs/toolchain.log
+          ctest --version 2>&1 | tee -a ci-logs/toolchain.log
+          python --version 2>&1 | tee -a ci-logs/toolchain.log
+          g++ --version 2>&1 | tee -a ci-logs/toolchain.log
+
+      - name: Configure Debug with ASan and UBSan
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          cmake --preset sanitizers -G "Unix Makefiles" \
+            -DCMAKE_CXX_COMPILER=g++ \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log
+
+      - name: Build with sanitizers
+        run: |
+          cmake --build --preset sanitizers --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+
+      - name: Require registration and apron tools in the full sanitizer test inventory
+        run: |
+          set -euo pipefail
+          ctest --preset sanitizers --show-only=json-v1 --no-tests=error > ci-logs/ctest-discovered.json
+          python - <<'PY'
+          import json, os, pathlib
+          discovered = json.loads(pathlib.Path("ci-logs/ctest-discovered.json").read_text(encoding="utf-8"))["tests"]
+          tests = {test["name"]: test for test in discovered}
+          required = set(os.environ["HAMMOND_REGISTRATION_CTESTS"].split())
+          assert required <= tests.keys(), "Missing required tests: " + ", ".join(sorted(required - tests.keys()))
+          for name in sorted(required):
+              test = tests[name]
+              properties = {item["name"]: item["value"] for item in test.get("properties", [])}
+              assert test.get("command") and not properties.get("DISABLED", False), name
+          print("The unfiltered sanitizer run includes all", len(required), "required registration and apron tool gates.", flush=True)
+          PY
+
+      - name: Run every registered test with leak checking
+        run: |
+          ctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \
+            --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log
+
+      - name: Retain configure, build, and test diagnostics
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ci-linux-gcc-sanitizers-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            ci-logs/
+            build-sanitizers/CMakeCache.txt
+            build-sanitizers/CMakeFiles/CMakeConfigureLog.yaml
+            build-sanitizers/CMakeFiles/CMakeOutput.log
+            build-sanitizers/CMakeFiles/CMakeError.log
+            build-sanitizers/Testing/Temporary/LastTest.log
+            build-sanitizers/Testing/Temporary/LastTestsFailed.log
+            build-sanitizers/rotary-waveform/

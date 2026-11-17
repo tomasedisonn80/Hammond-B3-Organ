@@ -9,45 +9,63 @@ the [strict record check](reports/final-worker-strict.json): 60 note hashes veri
 zero running workers and zero errors. This closes worker records; hosted/product
 qualification remains separate. The [ledger](assignments.json) records every review.
 
-## Current reconciled source — 17 November 2026 UTC
+## Current qualified publication and final handoff — 17 November 2026 UTC
 
-Root committed the separately qualified eight-input candidate and accepted worker
-records locally as `4378fff74a3a11de400e3a38b877d170bad6c57e`, tree
-`5248bcfe68f15225060dd09adec1e7d6849d6e20`. Its independently API/Git-verified
-[equivalent immutable object](reports/combined-indexed-object-preparation.json) is
-`8189a49eacab5d4e6ce6c178862e83b03bdec437`; preparing it did not move `main`.
-The remote advanced independently to `54859886268ce83c36f359c43327f7c72a77ae82`,
-tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a`; the preserving merge is in progress.
-The three indexed C++ serializers are byte-identical in both branches. The
-[remote delta review](reports/A59-copied-state-followup/remote-548-source-review.json)
-admits its exact H1/P1 source transitions. The merge keeps those published schemas,
-adds bounded failure-only P1 diagnostics, and separates original/active reader pins.
+The [combined implementation publication](reports/combined-indexed-publication.json)
+is `523c1979334b0fbb624ce120128a0b8ada078383`, tree
+`893441fe87859b9dbad81a5d81a453f7c96030f8`, with ordered parents
+`8189a49eacab5d4e6ce6c178862e83b03bdec437` and
+`54859886268ce83c36f359c43327f7c72a77ae82`. Guarded nonforced publication and
+independent API/Git checks verify all 7,911 tree entries, 587 qualified source
+inputs and 12 reviewed Markdown inputs at that publication. Local authored merge
+`78c63c3e…` has the same tree; local main was aligned only after exact equivalence.
+Both histories and all accepted source evidence are preserved.
 
-Source `5485988` now has [all sixteen attempt-one jobs successful](reports/indexed-remote-ci-complete.json),
-with no cancellations: Core 6/6, native 6/6 and VST3 4/4. Windows native passes 78/78,
-including title 18, header 103 and P1's 191 checks/62 screens; strict sanitizer passes 41/41.
-A57 independently retains the complete six-job Native evidence, all deadlines,
-37 instrumented executables and 63 inputs. No result transfers to the merged Python.
+**All 16 source `523c197` hosted jobs are terminal success, attempt one, with no
+cancellation or retry.** Root independently observes their completed API records
+in [final-ci-api-observation.json](reports/final-ci-api-observation.json); the
+[complete admission matrix](reports/final-ci-complete.json) binds the source-specific
+original logs, artifacts and independent reviews.
 
-The [merged source-only suites](reports/A56-combined-indexed-regressions/source-only-qualification.json)
-pass 71/71 P1 and 41/41 header methods, first invocation without skips; every
-published 64/32 method body is retained. The separate
-[real-reader selection](reports/combined-indexed-local-qualification.json) passes
-3/3 in 9.461962 seconds, with all 587 inputs stable. Five Python inputs change from `5485988`;
-582 inputs, all C++ fixtures, the application, workflows and numerical/deadline
-criteria remain unchanged. The [complete P1 output](reports/combined-indexed-p1-retention.json)
-was copied without reexecution and its temporary originals remain present. Earlier
-[seven-test and byte-identical stream evidence](reports/array-local-qualification.json)
-retains its original source boundary.
+| Reviewer / workflow | Actual final result |
+| --- | --- |
+| [A56 Core 44043394024](reports/A56-final-hosted/README.md) | 6/6 jobs; five 209/209 families and full R4, including 38,010,000 equal partition comparisons |
+| [A57 Native 44043394005](reports/A57-final-hosted/admission.md) | 6/6 jobs; five 78/78 families plus strict 41/41, totaling 431 CTest instances |
+| [A58 VST3 44043394002](../../reviews/CONSOLE_FINAL_VST3_HOSTED_ADMISSION.md) | 4/4 jobs; 29/29 CTests and 47 actual-module validator passes on each platform |
 
-Root has refreshed the current README, agent instructions, plan/status/next steps,
-log and handoff. Next: finish document integrity after authoring; accept A56/A57/A59
-follow-up reports; resolve/stage the owned merge; preserve both parents in the
-published commit; use a fresh expected remote SHA without force; independently
-verify commit/tree/parents/content and observe all new-source hosted families.
-All `5485988` jobs are terminal, so they will not be cancelled by the next push.
-All 60 accepted notes and strict record closure remain unchanged. More than 40 GiB
-is free; no original evidence or another workspace requires cleanup.
+Windows executes and passes 45 capture, 41 header and 71 P1 methods, plus title 18,
+H1 103 and P1 191 checks/62 visual screens. The strict native lane retains 41 tests,
+37 executables, 63 source inputs, 291 selected compile commands and 196 instrumented
+SDL C objects, with actual sanitizer runtime/flags and unchanged deadlines. No
+CTest is skipped or disabled. Optional internal subcases, including the one
+Windows FIFO skip, remain disclosed; actual warning/expected-error diagnostics
+are preserved. Device, host, physical and literal 1:1 claims remain separate.
+
+All 60 actual workers are accepted in ten waves of six, with strict note-hash
+closure. The [local combined admission](reports/A59-copied-state-followup/combined-admission.json)
+retains first-only 71/41 source suites, 3/3 native reader CTests and 1/1 repository
+integrity (41 methods), with all 587 inputs stable. Every one of the 96 published
+source-test bodies is preserved. Original cf87/d2ed failures, the earlier local
+246/247 full failure, the indexed predecessor's 16-job success and all original
+logs remain immutable. No retrospective P1 failure identity or precise MSVC
+mechanism is invented.
+
+Current closure changes are documentation and retained evidence only. All 587
+qualified source inputs remain identical to `523c197`. Root completes A60's frozen
+navigation audit and final document integrity after all authoring, then commits
+and pushes accepted closure records with a fresh expected SHA and independently
+verifies the final commit/tree/parents/contents. Check live Git state and active
+same-ref CI before any further publication; source changes require affected
+qualification and older passes cannot be transferred.
+
+The next product implementation is
+[model-owned Save availability and genuine post-Start proof](../../design/LIBRARY_NATIVE_INTEGRATION_NEXT.md),
+then UiModel input/gesture/focus, main lifecycle/submission/fresh-read/storage and
+browser/view integration with actual native journeys. Native library browser/main
+wiring and `--library` are absent. Literal whole-interface 1:1 remains unmet and
+unwaived; README's actual gallery and remaining-reference section show the boundary.
+At this closure checkpoint, **39.76 GiB is free**. Preserve original evidence
+and other workspaces; no cleanup is necessary for this delivery.
 
 ## Historical checkpoint sequence
 

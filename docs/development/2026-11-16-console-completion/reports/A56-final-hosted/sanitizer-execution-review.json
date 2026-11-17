@@ -1,0 +1,66 @@
+{
+  "source": "523c1979334b0fbb624ce120128a0b8ada078383",
+  "job_id": 133903128309,
+  "artifact_id": 14311186313,
+  "checks": {
+    "engine_compilation": true,
+    "library_model_compilation": true,
+    "model_test_compilation": true,
+    "model_test_linkage": true,
+    "ASAN_OPTIONS_detect_leaks_1_halt": true,
+    "UBSAN_OPTIONS_stacktrace_halt": true,
+    "LSAN_OPTIONS_exitcode23": true
+  },
+  "cache_sha256": "82d7def2fdb7d8661c86131e0bd5134e24bcbcfdd53b44005ac0af8a1dbee5f9",
+  "cache_definitions": [
+    "CMAKE_BUILD_TYPE:STRING=Debug",
+    "HAMMOND_ENABLE_SANITIZERS:BOOL=ON",
+    "HAMMOND_SANITIZERS_AVAILABLE:INTERNAL=1"
+  ],
+  "instrumented_compilation_and_linkage_lines": [
+    "2026-11-17T08:03:16.9693197Z /usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/generated -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/Engine.cpp.o -MF CMakeFiles/hammond_core.dir/src/Engine.cpp.o.d -o CMakeFiles/hammond_core.dir/src/Engine.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/Engine.cpp",
+    "2026-11-17T08:03:46.9114646Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/apps/standalone && /usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT apps/standalone/CMakeFiles/hammond_standalone_support.dir/LibraryModel.cpp.o -MF CMakeFiles/hammond_standalone_support.dir/LibraryModel.cpp.o.d -o CMakeFiles/hammond_standalone_support.dir/LibraryModel.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/LibraryModel.cpp",
+    "2026-11-17T08:04:41.4775988Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/apps/standalone && /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\\\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT apps/standalone/CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o -MF CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o.d -o CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_model.cpp",
+    "2026-11-17T08:04:41.6058389Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/apps/standalone && /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\\\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT apps/standalone/CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o -MF CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o.d -o CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_recall.cpp",
+    "2026-11-17T08:04:43.6777577Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_standalone_library_recall.dir/link.d CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o -o test_standalone_library_recall  libhammond_standalone_support.a ../../libhammond_core.a",
+    "2026-11-17T08:04:43.6890881Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/apps/standalone && /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\\\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT apps/standalone/CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o -MF CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o.d -o CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+    "2026-11-17T08:04:45.5010797Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_standalone_library_model.dir/link.d CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o -o test_standalone_library_model  libhammond_standalone_support.a ../../libhammond_core.a",
+    "2026-11-17T08:04:45.5127410Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/apps/standalone && /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\\\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT apps/standalone/CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o -MF CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o.d -o CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_session.cpp",
+    "2026-11-17T08:04:46.7642468Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_standalone_library_roundtrip.dir/link.d CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o -o test_standalone_library_roundtrip  libhammond_standalone_support.a ../../libhammond_core.a",
+    "2026-11-17T08:04:46.7747607Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/apps/standalone && /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\\\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT apps/standalone/CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o -MF CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o.d -o CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_storage.cpp",
+    "2026-11-17T08:04:47.8122160Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_standalone_library_session.dir/link.d CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o -o test_standalone_library_session  libhammond_standalone_support.a ../../libhammond_core.a",
+    "2026-11-17T08:04:49.7803431Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_standalone_library_storage.dir/link.d CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o -o test_standalone_library_storage  libhammond_standalone_support.a ../../libhammond_core.a"
+  ],
+  "environment_lines": [
+    "2026-11-17T08:02:47.6447088Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:02:47.6447595Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:02:47.6448079Z   LSAN_OPTIONS: exitcode=23",
+    "2026-11-17T08:03:10.8889844Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:03:10.8890101Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:03:10.8890346Z   LSAN_OPTIONS: exitcode=23",
+    "2026-11-17T08:03:11.0752214Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:03:11.0752477Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:03:11.0752723Z   LSAN_OPTIONS: exitcode=23",
+    "2026-11-17T08:03:12.2331931Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:03:12.2332192Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:03:12.2332444Z   LSAN_OPTIONS: exitcode=23",
+    "2026-11-17T08:03:15.7155647Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:03:15.7155950Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:03:15.7156208Z   LSAN_OPTIONS: exitcode=23",
+    "2026-11-17T08:05:12.2725599Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:05:12.2725861Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:05:12.2726112Z   LSAN_OPTIONS: exitcode=23",
+    "2026-11-17T08:05:12.3425177Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:05:12.3425684Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:05:12.3425937Z   LSAN_OPTIONS: exitcode=23",
+    "2026-11-17T08:10:45.0268814Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1",
+    "2026-11-17T08:10:45.0269078Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1",
+    "2026-11-17T08:10:45.0269331Z   LSAN_OPTIONS: exitcode=23"
+  ],
+  "passed_ctests": 209,
+  "ctest_seconds": [
+    332.67
+  ],
+  "source_method_receipt": "artifact-14311186313.review.json",
+  "scope": "Actual Core/headless Engine and library model/test instrumentation plus209 registered CTests. SDL/native sanitizer and physical-device qualification remain separate."
+}

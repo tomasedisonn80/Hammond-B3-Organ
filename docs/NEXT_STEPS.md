@@ -14,30 +14,55 @@ Root owns integration, the one `../build-native`, acceptance and publication in
 HEAD/tree/index/dirty files and fresh remote before acting; other workspaces and
 older dated entries below remain read-only/historical.
 
-### 1. Publish and qualify the reconciled indexed source
+### 1. Recover the completed source and qualification
 
-The published indexed-fixture source is `54859886268ce83c36f359c43327f7c72a77ae82`,
-with tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a` and parents `d2ed03b9…`
-and `ea02c546…`. The [complete source-specific hosted record](development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json)
-observes **16/16 successful jobs, attempt one, with no cancellations**: Core 6/6,
-native standalone 6/6 and VST3 4/4. Windows native now passes **78/78**;
-the title's 18 cases, header's 103 inequalities and P1's 191 checks / 62 visual
-screens all execute successfully. The strict native sanitizer passes **41/41**.
-These results retain the original failures and qualify only that published source.
+<!-- console-final-publication:start -->
+The [verified combined implementation publication](development/2026-11-16-console-completion/reports/combined-indexed-publication.json)
+is `523c1979334b0fbb624ce120128a0b8ada078383`, tree
+`893441fe87859b9dbad81a5d81a453f7c96030f8`, with ordered parents
+`8189a49eacab5d4e6ce6c178862e83b03bdec437` and
+`54859886268ce83c36f359c43327f7c72a77ae82`. Guarded nonforced publication and
+independent API/Git verification preserve both histories and verify the full
+7,911-file tree, all 587 qualified source inputs and 12 reviewed Markdown inputs.
+The [independent combined admission](development/2026-11-16-console-completion/reports/A59-copied-state-followup/combined-admission.json)
+and [root review](development/2026-11-16-console-completion/reports/combined-indexed-root-admission.json)
+retain the exact local qualification: **71/71 P1 and 41/41 header source methods**,
+**3/3 native reader CTests**, and **1/1 repository-integrity CTest (41 methods)**.
+All 96 published source-test bodies remain unchanged. Five Python files differ
+from `5485988`; the other 582 inputs, all C++ fixtures, production application,
+workflows, criteria and deadlines remain unchanged. Published comparator schemas,
+strict original/active reader identities and bounded failure diagnostics are retained.
 
-Root is finishing a preserving merge with the accepted local evidence and worker
-records. Its [separate merged-source local qualification](development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json)
-passes **3/3 affected native reader CTests**; the
-[merged source-only suites](development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-only-qualification.json)
-pass **71/71 P1 and 41/41 header methods**, first invocation without skips. Five
-Python inputs differ from `5485988`; the other 582/587 inputs, all C++ fixtures,
-production application, workflows, criteria and deadlines remain unchanged.
-Published comparator schemas are preserved, original and active reader identities
-are separate, and P1 failures expose a bounded diagnostic summary. The
-[earlier seven-test qualification](development/2026-11-16-console-completion/reports/array-local-qualification.json)
-and three byte-identical complete Linux fixture streams retain their own source.
-Final document integrity, independent combined admission, guarded publication and
-new-source hosted qualification follow in the [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md).
+<!-- console-final-ci:start -->
+**All sixteen hosted jobs pass at source `523c197`, attempt one, with no cancellations
+or retries.** The [complete source-specific CI record](development/2026-11-16-console-completion/reports/final-ci-complete.json)
+binds root's independent API observation and the three retained admissions:
+
+| Workflow | Actual result at `523c197` | Independent evidence |
+| --- | --- | --- |
+| [Core 44043394024](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394024) | 6/6 jobs; five 209/209 CTest families plus full R4 | [A56 Core admission](development/2026-11-16-console-completion/reports/A56-final-hosted/README.md) |
+| [Native 44043394005](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394005) | 6/6 jobs; five 78/78 families and strict 41/41, totaling 431/431 instances | [A57 Native admission](development/2026-11-16-console-completion/reports/A57-final-hosted/admission.md) |
+| [VST3 44043394002](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/44043394002) | 4/4 jobs; 29/29 CTests and 47 actual-module validator passes on every platform | [A58 VST3 admission](reviews/CONSOLE_FINAL_VST3_HOSTED_ADMISSION.md) |
+
+Windows actually runs 45 capture, 41 header and 71 P1 source methods, then reaches
+all 18 title cases, 103 H1 inequalities and 191 P1 checks/62 screens successfully.
+Strict native evidence verifies 41 tests, 37 executables and 63 source inputs with
+ASan/UBSan/leaks and unchanged deadlines. Optional internal Python subcase skips,
+including the Windows FIFO case, remain disclosed in the full receipts; no CTest
+is skipped or disabled. These results qualify this exact implementation source.
+The same reviewers add no worker credit, and all earlier failures remain intact.
+<!-- console-final-ci:end -->
+
+The preceding indexed source `5485988` has [16/16 successful hosted jobs](development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json),
+including Windows native 78/78 and strict sanitizer 41/41. Its
+[complete Native admission](development/2026-11-16-console-completion/reports/A57-indexed-hosted/admission.md)
+preserves actual title 18/H1 103/P1 191+62 outcomes, full logs, package checks and
+instrumentation. The earlier seven-test local qualification and complete Linux
+stream equality remain separate source-bound observations. Original cf87/d2ed
+failures are retained; the exact MSVC mechanism and d2ed P1 non-screen failure
+identity remain unproven. Later closure documentation retains these source identities;
+the [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md) records current publication and next work.
+<!-- console-final-publication:end -->
 
 First console source [cf87a587](development/2026-11-16-console-completion/reports/implementation-publication.json)
 is already published and independently verified. All sixteen attempt-one jobs
@@ -56,26 +81,19 @@ identities and all 587 inputs; do not republish that completed stage. The same
 A56/A57/A58 reviewers inspect every new-source family and retain separate receipts.
 Their follow-ups create no new worker credit.
 
-The d2ed03b Core repair actually passes both formerly failed suites and its
-Unicode-checkout generator. Its native run identifies the two empty drawbar
-arrays and leaves one P1 non-screen failure unidentified; all three later pass
-at `5485988`. Preserve those source-specific observations and original logs. The
-next published merge contains new Python admissions and 71/41-method suites,
-so its own Core/native/VST3 families still require observation. Record failures,
-cancellations and unrun gates without transferring older passes. Wait for all
-sixteen jobs to become terminal before another same-ref push; keep every typed
-equality, expected value, numerical screen, timeout and workload. No unchanged-
-source retry or relaxed oracle is admitted.
+The d2ed03b and `5485988` outcomes remain separate history. The final `523c197`
+source now has all sixteen hosted families independently reviewed and successful;
+no unchanged-source retry or relaxed oracle was used. All sixty workers are
+accepted, six per wave, with strict note-hash closure. Preserve the original
+246/247 full failure and later source-specific qualifications without rewriting
+or transferring their results. Final closure records update documentation and
+retained evidence while preserving all 587 qualified source identities.
 
-All sixty actual workers are root-accepted, six per wave. The
-[executed strict check](development/2026-11-16-console-completion/reports/final-worker-strict.json)
-verifies every accepted note hash with zero errors. Preserve those notes and
-execute final documentary integrity after authoring. The earlier
-246/247 full failure and later 78-test affected selection remain separate;
-strict worker closure proves record consistency, not product acceptance. Publish
-accepted closure evidence/current navigation and independently verify the final
-remote contents and any required source-specific CI. Use the live checkpoint to
-skip work already observed at the same source.
+Before new implementation, recover the actual current HEAD/index/remote and the
+[final handoff](CONSOLE_COMPLETION_HANDOFF.md). Do not repeat completed local or
+hosted gates solely for worker accounting. New source changes need affected
+qualification; documentation changes need their own integrity check. Wait for
+any active same-ref CI before another push so it is not cancelled by concurrency.
 
 ### 2. Implement native library integration in dependency order
 

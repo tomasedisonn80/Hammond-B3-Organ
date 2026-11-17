@@ -1,5 +1,35 @@
 # Development log
 
+## 2026-11-17 UTC — Reconciled console implementation published as `523c197`
+
+The [verified combined publication](development/2026-11-16-console-completion/reports/combined-indexed-publication.json)
+is `523c1979334b0fbb624ce120128a0b8ada078383`, tree
+`893441fe87859b9dbad81a5d81a453f7c96030f8`, preserving both mapped local and
+concurrent indexed-source histories. Root used a fresh expected `5485988` ref
+without force, then independently checked the API and public Git objects,
+all 7,911 tree entries, 587 qualified source identities and 12 reviewed Markdown
+identities. Local main was aligned only after exact tree equivalence was proved.
+
+The merged local source-only suites pass 71/41 on their first invocations;
+three affected native readers and the final repository-integrity CTest also pass.
+[A59's combined admission](development/2026-11-16-console-completion/reports/A59-copied-state-followup/combined-admission.json)
+and [root review](development/2026-11-16-console-completion/reports/combined-indexed-root-admission.json)
+retain the independent source/evidence boundaries. All 60 actual workers are
+accepted with strict closure. Production/app/gallery and all frozen numerical,
+workflow and deadline inputs remain unchanged.
+
+The new source completes Core 44043394024, Native 44043394005 and VST3 44043394002
+with all 16 jobs successful on attempt one, without cancellation or retry. Core
+has five 209/209 families plus full R4 (38,010,000 equal partition comparisons).
+Native has five 78/78 families plus strict 41/41, totaling 431 CTest instances.
+VST3 passes 29/29 CTests and 47 actual-module validator checks per platform.
+The [complete final matrix](development/2026-11-16-console-completion/reports/final-ci-complete.json)
+binds the original logs/artifacts and independent reviews. No old-source pass is
+transferred. Every source `523c197` job is terminal before closure publication.
+Current documentation points to the real published source and preserves setup,
+known failures and the exact next native-library implementation order. Literal
+whole-interface 1:1 and native browser/main wiring remain open and unwaived.
+
 ## 2026-11-17 UTC — Indexed fixtures pass Windows; both branches reconciled
 
 The published source `54859886268ce83c36f359c43327f7c72a77ae82` has
