@@ -1,0 +1,595 @@
+{
+  "agent": "/root/w06_a32",
+  "build_directory": "/workspace/scratch/21cce69f7784/a32-headless",
+  "build_steps": 68,
+  "checkout": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.013296512999659171,
+      "ended_utc": "2026-11-17T04:33:40.652535+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "01-cmake-version.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:33:40.639240+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "01-cmake-version.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 90,
+        "path": "01-cmake-version.stdout.log",
+        "sha256": "f05fe86b5001ce00292a42883a46ecdeee3a88e96401f2d833aa0a1cb4f223ee"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.008339957999851322,
+      "ended_utc": "2026-11-17T04:33:40.633298+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "02-ctest-version.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:33:40.624955+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "02-ctest-version.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 90,
+        "path": "02-ctest-version.stdout.log",
+        "sha256": "936bc6797985c163dec9e735c7ebe4068c3b7113819bcd11dafbce61f79f8e5d"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/bin/ninja",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.004283607002435019,
+      "ended_utc": "2026-11-17T04:33:40.682309+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "03-ninja-version.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:33:40.678023+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "03-ninja-version.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 31,
+        "path": "03-ninja-version.stdout.log",
+        "sha256": "e0f607ba3199c51172ae8a793ec2348f4a0550c7d5039a6800d38d64b8efccc3"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/usr/bin/g++",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.0049086649996752385,
+      "ended_utc": "2026-11-17T04:33:40.635167+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "04-cxx-version.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:33:40.630257+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "04-cxx-version.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 232,
+        "path": "04-cxx-version.stdout.log",
+        "sha256": "5f6798e87440f1e8b88bf6822c33bebe434f83374640a7f8ba967902ee1ea098"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+        "-B",
+        "/workspace/scratch/21cce69f7784/a32-headless",
+        "-G",
+        "Ninja",
+        "-DCMAKE_MAKE_PROGRAM=/workspace/scratch/3edffb787db3/build-tools/bin/ninja",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++",
+        "-DCMAKE_CXX_STANDARD=20",
+        "-DCMAKE_CXX_STANDARD_REQUIRED=ON",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_TESTING=ON",
+        "-DHAMMOND_BUILD_STANDALONE=OFF",
+        "-DHAMMOND_BUILD_VST3=OFF",
+        "-DHAMMOND_ENABLE_MIDI=OFF",
+        "-DHAMMOND_ENABLE_SANITIZERS=OFF"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.9372649889992317,
+      "ended_utc": "2026-11-17T04:33:51.201143+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "05-configure.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:33:50.263748+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "05-configure.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 701,
+        "path": "05-configure.stdout.log",
+        "sha256": "116688ee5938f5f81dd521ca595c4e8cd2a7907d550938c4e174b6d71ae02cfe"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/bin/ninja",
+        "-t",
+        "list"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.0037308779974409845,
+      "ended_utc": "2026-11-17T04:34:04.394486+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "06-ninja-tools.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:34:04.390636+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "06-ninja-tools.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 759,
+        "path": "06-ninja-tools.stdout.log",
+        "sha256": "381babc376749840689a317aa9fb12ff930012c70b660b0f173d26e14ec9bb1c"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/21cce69f7784/a32-headless",
+        "--config",
+        "Release",
+        "--parallel",
+        "2",
+        "--target",
+        "test_standalone_library_model",
+        "test_standalone_library_session",
+        "test_standalone_library_storage",
+        "test_standalone_library_recall",
+        "test_standalone_library_roundtrip",
+        "test_standalone_ui",
+        "test_standalone_preset_ui",
+        "test_standalone_external_control",
+        "test_standalone_workspace_continuity",
+        "test_standalone_session",
+        "test_standalone_registration_library",
+        "test_standalone_state_files"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 81.27848676400026,
+      "ended_utc": "2026-11-17T04:35:45.831437+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "07-first-build.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:34:24.552997+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "07-first-build.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 6441,
+        "path": "07-first-build.stdout.log",
+        "sha256": "bff29c38f75f6134f81c0c69c42489fc71377a4b91bfe42dccb33290e4420e2b"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/21cce69f7784/a32-headless",
+        "-C",
+        "Release",
+        "--show-only=json-v1",
+        "--no-tests=error",
+        "-R",
+        "^(test_standalone_library_model|test_standalone_library_session|test_standalone_library_storage|test_standalone_library_recall|test_standalone_library_roundtrip|test_standalone_ui|test_standalone_preset_ui|test_standalone_external_control|test_standalone_workspace_continuity|test_standalone_session|test_standalone_registration_library|test_standalone_state_files)$"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.06423554400316789,
+      "ended_utc": "2026-11-17T04:36:03.115210+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "08-ctest-discover.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:36:03.050976+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "08-ctest-discover.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 7406,
+        "path": "08-ctest-discover.stdout.log",
+        "sha256": "8c4a48c290a036b1203ecc5da31e038f70318f58bc85cff871dee443a466b799"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/bin/ninja",
+        "-C",
+        "/workspace/scratch/21cce69f7784/a32-headless",
+        "-t",
+        "commands",
+        "test_standalone_library_model",
+        "test_standalone_library_session",
+        "test_standalone_library_storage",
+        "test_standalone_library_recall",
+        "test_standalone_library_roundtrip",
+        "test_standalone_ui",
+        "test_standalone_preset_ui",
+        "test_standalone_external_control",
+        "test_standalone_workspace_continuity",
+        "test_standalone_session",
+        "test_standalone_registration_library",
+        "test_standalone_state_files"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.03644715100017493,
+      "ended_utc": "2026-11-17T04:36:03.100357+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "09-ninja-commands.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:36:03.063921+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "09-ninja-commands.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 38968,
+        "path": "09-ninja-commands.stdout.log",
+        "sha256": "c77444a9cc6ad09af4d2992a19ab53388e0f31974b9209f41abebbecbb751de8"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/21cce69f7784/a32-headless",
+        "-C",
+        "Release",
+        "-V",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "2",
+        "--timeout",
+        "180",
+        "-R",
+        "^(test_standalone_library_model|test_standalone_library_session|test_standalone_library_storage|test_standalone_library_recall|test_standalone_library_roundtrip|test_standalone_ui|test_standalone_preset_ui|test_standalone_external_control|test_standalone_workspace_continuity|test_standalone_session|test_standalone_registration_library|test_standalone_state_files)$",
+        "--output-junit",
+        "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/A32-headless/ctest-first.xml"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 5.699448762999964,
+      "ended_utc": "2026-11-17T04:36:22.650674+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "10-first-ctest.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:36:16.951240+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "10-first-ctest.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 20494,
+        "path": "10-first-ctest.stdout.log",
+        "sha256": "f94a12bbb8f9be87e355f83a5d7d2fd6243c5896feb72c63af50f1a4eb36ad37"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/bin/ninja",
+        "-C",
+        "/workspace/scratch/21cce69f7784/a32-headless",
+        "-t",
+        "inputs",
+        "test_standalone_library_model",
+        "test_standalone_library_session",
+        "test_standalone_library_storage",
+        "test_standalone_library_recall",
+        "test_standalone_library_roundtrip",
+        "test_standalone_ui",
+        "test_standalone_preset_ui",
+        "test_standalone_external_control",
+        "test_standalone_workspace_continuity",
+        "test_standalone_session",
+        "test_standalone_registration_library",
+        "test_standalone_state_files"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.016848253002535785,
+      "ended_utc": "2026-11-17T04:36:34.271435+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "11-ninja-inputs.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:36:34.254591+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "11-ninja-inputs.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 10057,
+        "path": "11-ninja-inputs.stdout.log",
+        "sha256": "9a0921dbf2ae61709b9324de2306c2c2d4de255744156c900d460d002a490495"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/3edffb787db3/build-tools/bin/ninja",
+        "-C",
+        "/workspace/scratch/21cce69f7784/a32-headless",
+        "-t",
+        "deps"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.018962709000334144,
+      "ended_utc": "2026-11-17T04:36:41.699916+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "12-ninja-deps.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:36:41.680951+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "12-ninja-deps.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 620246,
+        "path": "12-ninja-deps.stdout.log",
+        "sha256": "64fd8ba2de46a27f377420ed953e34c59826b230e0d2c3018b37ea5dbd4836e4"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/usr/bin/readelf",
+        "--dynamic",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_model",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_session",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_storage",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_recall",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_roundtrip",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_ui",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_preset_ui",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_external_control",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_workspace_continuity",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_session",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_registration_library",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_state_files"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.00700732000041171,
+      "ended_utc": "2026-11-17T04:36:51.665159+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "13-elf-dynamic.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:36:51.658143+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "13-elf-dynamic.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 20553,
+        "path": "13-elf-dynamic.stdout.log",
+        "sha256": "12b7db1bb8604198719c044b7c296c094bf32a45e37909f0df9f72a6608bbff2"
+      },
+      "worker": "A32"
+    },
+    {
+      "argv": [
+        "/usr/bin/ar",
+        "t",
+        "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/libhammond_standalone_support.a"
+      ],
+      "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+      "elapsed_seconds": 0.010220708001725143,
+      "ended_utc": "2026-11-17T04:36:51.578937+00:00",
+      "environment_override": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "record": "14-support-members.json",
+      "schema_version": 1,
+      "started_utc": "2026-11-17T04:36:51.568713+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "14-support-members.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 162,
+        "path": "14-support-members.stdout.log",
+        "sha256": "d9929a2cd7aa2f19d23dc0642040c8566aa614ad26b1d82872b93fa2c8194ba4"
+      },
+      "worker": "A32"
+    }
+  ],
+  "compile_units": 50,
+  "configuration": "Release/Ninja/GNU 14.2.0/C++20",
+  "disabled_or_skipped": 0,
+  "evidence_inspection_original_failure": "inspection-v1-failure.json; retained missing-map-key failure recovered only from an existing preconfigure hash, with no source or test repair or rerun",
+  "failed": 0,
+  "first_build_passed": true,
+  "first_configure_passed": true,
+  "first_ctest_passed": true,
+  "full_suite_executed": false,
+  "native_processes_executed": 0,
+  "ownership": "Root retains integration, acceptance, ledger, publication and release; A32 changed only assigned documentation/report artifacts and the distinct headless directory.",
+  "parallelism": 2,
+  "passed": 12,
+  "recorded_utc": "2026-11-17T04:39:21.626936+00:00",
+  "remaining_limits": [
+    "Root native/full-suite and sanitizer qualification",
+    "Exact-source Windows/macOS and VST3/host gates",
+    "Native main/browser and modal/gesture integration",
+    "Actual SDL/display/DPI/controller/audio-device journeys",
+    "Native semantic accessibility",
+    "Callback deadlines and OS retirement",
+    "Physical instrument/cabinet fidelity",
+    "Literal whole-interface 1:1",
+    "Root publication and exact-source hosted/release acceptance"
+  ],
+  "results": [
+    {
+      "name": "test_standalone_external_control",
+      "output": "External controls preserve shared pending UI intent\n",
+      "status": "PASSED",
+      "time_seconds": 0.00457624
+    },
+    {
+      "name": "test_standalone_library_model",
+      "output": "Independent LibraryModel contract: 32 groups, 3250 assertions, 0 failed groups\n",
+      "status": "PASSED",
+      "time_seconds": 0.00481605
+    },
+    {
+      "name": "test_standalone_library_recall",
+      "output": "PASS complete snapshot and copied lifetime\nPASS clean equal recall and sequence\nPASS dirty equal recall and supersession\nPASS retained baseline and legacy Load/Save\nPASS invalid complete snapshot atomicity\nPASS presentation and original UI owners\nPASS active parameter and pointer gestures\nPASS synchronous recall rejection\nPASS resolved rejection and recovery observations\nStandalone named recall: 9 groups, 743728 assertions, 98 invalid snapshots, 72 presentation/owner contexts, 0 failures (synthetic UiModel boundary inputs)\n",
+      "status": "PASSED",
+      "time_seconds": 0.016503
+    },
+    {
+      "name": "test_standalone_library_roundtrip",
+      "output": "library_roundtrip groups=4 checks=1489 snapshots=138 renders=20 posts=24 library_reports=24 ui_reports=24 ordinary_intents=12 recall_dispatches=4 storage_calls=7 authorizer_calls=7 failures=0 Session=real storage=real native_browser=unqualified\n",
+      "status": "PASSED",
+      "time_seconds": 0.0109204
+    },
+    {
+      "name": "test_standalone_library_session",
+      "output": "Real Session LibraryModel boundary: 12 groups, 42634 assertions, 696 real snapshots, 150 renders, 428 accepted posts, 6252 bit-exact paired stereo samples, 10101 source-phase checks, 60 percussion-history checks, 0 failed groups\n",
+      "status": "PASSED",
+      "time_seconds": 0.0313507
+    },
+    {
+      "name": "test_standalone_library_storage",
+      "output": "library_storage groups=9 checks=1115 failures=0 control_proof=synthetic filesystem=real\n",
+      "status": "PASSED",
+      "time_seconds": 0.0203951
+    },
+    {
+      "name": "test_standalone_preset_ui",
+      "output": "Independent preset UI acceptance: 12 layouts, 604618 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed\n",
+      "status": "PASSED",
+      "time_seconds": 0.676027
+    },
+    {
+      "name": "test_standalone_registration_library",
+      "output": "registration_library checks=195 symlink_unavailable=0\n",
+      "status": "PASSED",
+      "time_seconds": 0.0259587
+    },
+    {
+      "name": "test_standalone_session",
+      "output": "standalone Session acceptance: 9 rate/partition scores, 4929 successful renders, 157552 bit-exact stereo samples, 6432 partition samples, 15860 coherent snapshots, 5563 accepted posts, 534 rejected posts, 20 rejected renders, 70 future-output probes, 1600 fixed-mode publications\n",
+      "status": "PASSED",
+      "time_seconds": 0.318241
+    },
+    {
+      "name": "test_standalone_state_files",
+      "output": "TESTED: regular and dangling symbolic-link load/save rejection\nTESTED: failed write under RLIMIT_FSIZE and temporary cleanup\nNOT TESTED: POSIX failed replacement after a complete temporary write; no deterministic non-racing fixture\nStandalone state-file acceptance: 7 scenarios completed; platform exclusions are reported above\n",
+      "status": "PASSED",
+      "time_seconds": 0.0118322
+    },
+    {
+      "name": "test_standalone_ui",
+      "output": "Standalone UI acceptance: 9 behavioral scenarios passed\n",
+      "status": "PASSED",
+      "time_seconds": 0.155634
+    },
+    {
+      "name": "test_standalone_workspace_continuity",
+      "output": "case kind=registration variant=0 rate=44100 seed=11740672 frames=8874 commands=20 peak=0.15445317327976227 energy=12.388344111279981 isolated_energy=0 pcm_fnv1a64=6be70c82e36cb701\ncase kind=registration variant=1 rate=44100 seed=11740673 frames=8874 commands=20 peak=0.14571726322174072 energy=14.819911340016612 isolated_energy=0 pcm_fnv1a64=465b8523baa45379\ncase kind=registration variant=2 rate=44100 seed=11740674 frames=8874 commands=20 peak=0.15826630592346191 energy=14.456555723508712 isolated_energy=0 pcm_fnv1a64=989e678ea6097ae9\ncase kind=registration variant=3 rate=44100 seed=11740675 frames=8874 commands=20 peak=0.17036087810993195 energy=12.723127669830598 isolated_energy=0 pcm_fnv1a64=470d5f7b4ac7b6c9\ncase kind=registration variant=4 rate=44100 seed=11740676 frames=8874 commands=20 peak=0.1711624413728714 energy=15.243782869395975 isolated_energy=0 pcm_fnv1a64=4a2eb24f02c07619\ncase kind=registration variant=5 rate=44100 seed=11740677 frames=8874 commands=20 peak=0.11457514762878418 energy=8.365804732...\n[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]\n",
+      "status": "PASSED",
+      "time_seconds": 5.12176
+    }
+  ],
+  "runtime_attempts": 1,
+  "schema_version": 1,
+  "selected_count": 12,
+  "source_and_config_inputs_unchanged": 112,
+  "source_or_test_repairs": [],
+  "specific_unrun_fixture": "test_standalone_state_files explicitly did not test POSIX failed replacement after a complete temporary write: no deterministic non-racing fixture.",
+  "status": "PASSED_DISTINCT_LINUX_SDK_FREE_SELECTION",
+  "wave": 6,
+  "worker": "A32"
+}

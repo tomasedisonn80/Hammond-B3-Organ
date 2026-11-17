@@ -1,0 +1,408 @@
+{
+  "P1_scope": {
+    "execution_at628": "P1 is absent from this source; no P1 result can be inferred.",
+    "interpretation": "A common transport/state mismatch could affect P1, but a harmless numeric token type mismatch would be treated differently. The absent Windows header prevents deciding which applies.",
+    "reader_comparison_difference": "P1 equal() accepts exact finite numerical equality across int/float; title/header typed_equal() additionally requires identical JSON-loaded numeric types. Both keep booleans distinct.",
+    "same_controls_and_session_writer_bytes": true
+  },
+  "actual_worker": "/root/w10_a57",
+  "api_observation_limits": [
+    "Direct actions/jobs/133848047271 GET was refused by the connector400 URL allowlist; the supported run-jobs wrapper supplied terminal job and step summaries. No CI execution was repeated."
+  ],
+  "exact_source_inputs": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49033,
+      "git_blob": "bd718983003a27de0ca8c42ca11c8c223d9dc800",
+      "sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61275,
+      "git_blob": "b0afc8ccbc436b09012f41323bd1b7412c1f5ae5",
+      "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "bytes": 34239,
+      "git_blob": "3255a5a84a3e84b458a27f415372aa0cb93bceaa",
+      "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 23467,
+      "git_blob": "4b46508ba7276a52c4bb3f1fc8a8855bd20e132a",
+      "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2"
+    }
+  },
+  "execution_boundary": "A57 used read-only connector fetches and local AST/hash/log inspection, plus owned evidence writes. No build/test/native execution, source edits, Git/index/ref command, CI trigger/retry or child worker.",
+  "job": {
+    "conclusion": "failure",
+    "id": 133848047271,
+    "logs_url": null,
+    "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+    "run_id": 44026516737,
+    "status": "completed",
+    "steps": [
+      {
+        "conclusion": "success",
+        "name": "Set up job",
+        "number": 1,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Check out the exact tested revision",
+        "number": 2,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Set up Python 3.12",
+        "number": 3,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Record exact source and dependency identities",
+        "number": 4,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Explicitly acquire and locally verify locked external SDL2",
+        "number": 5,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Explicitly acquire and locally verify locked external RtMidi",
+        "number": 6,
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Install Ubuntu desktop and audio development headers",
+        "number": 7,
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Configure native Release on Linux or macOS",
+        "number": 8,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Configure native Release on Windows",
+        "number": 9,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Retain actual compiler identities and require native SDL backends",
+        "number": 10,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Build the application and every standalone acceptance input",
+        "number": 11,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Verify the compiled MIDI backend and retain prepared identities",
+        "number": 12,
+        "status": "completed"
+      },
+      {
+        "conclusion": "failure",
+        "name": "Run all required standalone acceptance tests",
+        "number": 13,
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Reverify source and dependencies after acceptance",
+        "number": 14,
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Stage, relocate, smoke and archive the exact installed payload",
+        "number": 15,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+        "number": 16,
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Retain the successful executable package and byte inventory",
+        "number": 17,
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Post Set up Python 3.12",
+        "number": 33,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Check out the exact tested revision",
+        "number": 34,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Complete job",
+        "number": 35,
+        "status": "completed"
+      }
+    ]
+  },
+  "observed_utc": "2026-11-17T06:18:24.577959+00:00",
+  "outcome": {
+    "build_step": "success",
+    "ctest_registered": 68,
+    "diagnostics_upload": "success",
+    "downstream_skipped": [
+      "Install Ubuntu desktop and audio development headers",
+      "Configure native Release on Linux or macOS",
+      "Reverify source and dependencies after acceptance",
+      "Stage, relocate, smoke and archive the exact installed payload",
+      "Retain the successful executable package and byte inventory",
+      "Post Set up Python 3.12"
+    ],
+    "failed": 2,
+    "failed_log_lines": [
+      "2026-11-17T05:52:54.6596006Z 44/68 Test #218: test_standalone_title_density .................***Failed    0.23 sec",
+      "2026-11-17T05:53:24.3297812Z 47/68 Test #221: test_standalone_header_statistics .............***Failed    0.44 sec"
+    ],
+    "header_default_fixture": {
+      "backend": "SDL software surface; copied state; no audio/window",
+      "cases": 48,
+      "checks": 10542,
+      "clip_companions": 16,
+      "clipped_cases": 16,
+      "deterministic_repaints": 48,
+      "empty_cases": 2,
+      "fresh_repaints": 1,
+      "helper_present": true,
+      "helper_probes": 95,
+      "history_repaints": 1,
+      "history_states": 48,
+      "inactive_cases": 8,
+      "paintings": 163,
+      "protected_pixels": 56329523,
+      "protocol": "header-material-h1-v1",
+      "quiet_clip_pixels": 33462,
+      "schema": 1,
+      "status": "passed"
+    },
+    "header_reader": {
+      "case": 46,
+      "error": "complete canonical copied session differs",
+      "helper_passed": false,
+      "identities": {
+        "contract_sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+        "executable": "D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\apps\\standalone\\Release\\test_standalone_header_material.exe",
+        "executable_sha256": "563397c1df5a3a72458258e6fceed1d256c35decf53a9bef390612841774509f",
+        "frozen_fixture_source_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "independent_comparator_sha256": "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b",
+        "reference_decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+        "reference_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "reference_observations_sha256": "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b",
+        "reference_origin": "immutable literals from A22 reference observations; no runtime image decode",
+        "test_source_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+      },
+      "logical_size": [
+        1672,
+        941
+      ],
+      "native_protocol": "header-material-h1-v1",
+      "numerical": {
+        "evaluated_count": 0,
+        "failed_count": 0,
+        "inequality_count": 103,
+        "passed": false,
+        "passed_count": 0,
+        "results": []
+      },
+      "primary_patch_order": [
+        "L",
+        "TL",
+        "TM",
+        "TR",
+        "CLT",
+        "CL",
+        "CR",
+        "RT",
+        "RU",
+        "RF",
+        "CM1",
+        "CM2",
+        "CM3",
+        "BL",
+        "BC1",
+        "BC2",
+        "BC3",
+        "BR"
+      ],
+      "protocol_passed": false,
+      "python": "3.12.10",
+      "resources": {
+        "canonical_rgba_bytes": 6293408,
+        "cleanup_wait_seconds": 5.0,
+        "header_max_bytes": 524288,
+        "images_persisted": 0,
+        "native_invocations": 1,
+        "process_timeout_seconds": 20.0,
+        "retained_frames": 1,
+        "stderr_max_bytes": 65536,
+        "stdout_max_bytes": 6817697
+      },
+      "schema": 1,
+      "scope": "one canonical numerical regression; complete paired, visual, timing and platform gates remain separate",
+      "status": "failed",
+      "test": "standalone-header-statistics-v1"
+    },
+    "passed": 66,
+    "successful_package_upload": "skipped",
+    "title_reader": {
+      "bounds_coordinates": "canonical half-open bounds, with integer viewport origin subtracted",
+      "cases": [],
+      "error": "copied view controls differs",
+      "executable_sha256": "c2f1c690b4c6761d6cf5bd32b297d1985fa02ea7b2ddf2acff1b540e2a5288f8",
+      "fixture_source_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+      "inventory": {
+        "case_count": 44,
+        "payload_sha256": "ef9e743dd2644ccecb09ef08c597ceb3d158bce90ed627527e96b22bd4536e82",
+        "validated": true
+      },
+      "logical_size": [
+        1672,
+        941
+      ],
+      "minimum_error_reduction": 0.4,
+      "native_fixture_cases": 44,
+      "native_protocol": "footage-typography-v1",
+      "output_size": [
+        1698,
+        975
+      ],
+      "pre_T3_baseline_counts": [
+        4150,
+        3863,
+        3601,
+        3200,
+        2690
+      ],
+      "predicate": "2126*R+7152*G+722*B >= threshold*10000; no hue or alpha predicate",
+      "primary_band": [
+        4500,
+        6000
+      ],
+      "reference_counts": [
+        5639,
+        5415,
+        4991,
+        4502,
+        3785
+      ],
+      "required_cases": 18,
+      "resources": {
+        "images_persisted": 0,
+        "inventory_max_bytes": 65536,
+        "json_max_depth": 16,
+        "number_token_max_characters": 64,
+        "one_frame_at_a_time": true,
+        "process_timeout_seconds": 20,
+        "stderr_max_bytes": 65536,
+        "stdout_max_bytes": 7146489
+      },
+      "roi_xywh": [
+        590,
+        14,
+        490,
+        46
+      ],
+      "schema": 1,
+      "status": "failed",
+      "test": "standalone-title-density-v1",
+      "viewport_origin": [
+        13,
+        17
+      ]
+    }
+  },
+  "precise_cause": {
+    "boundary": "JSON model/session exact expected-state comparison",
+    "do_not_claim": [
+      "numerical criterion failure",
+      "timeout",
+      "C4702 at this source",
+      "whole model preservation failure",
+      "physical or product regression",
+      "P1 failure without execution"
+    ],
+    "established": false,
+    "unknown": "Actual mismatching path, type, value, key-set or length is absent. Source alone does not prove a serialization defect, model defect, number-token difference or compiler cause."
+  },
+  "proof": [
+    "The exact SHA is checked out in the full job log; independent run response binds run44026516737 attempt1 to6287055.",
+    "The Windows compiler completes every standalone acceptance input and the compiled WinMM identity step succeeds.",
+    "Title validates the44-case inventory, captures case0 successfully, then rejects view.controls by exact recursive typed equality before retaining any of18density results.",
+    "Header default native fixture passes all48cases,10542checks and163paintings with helper present and95probes.",
+    "Header statistics captures canonical case46, passes earlier fixed protocol and before/after invariance checks, then fails session and/or applied expected-state equality before evaluating any of103numerical inequalities.",
+    "The original readers report no rejected header, actual copied value or first mismatching path. Their capture buffers are memory-only and not written as a raw header artifact.",
+    "All four exact628fixture/reader files were independently fetched and were byte-equal to local sources before root diagnostic change."
+  ],
+  "resolution_path": {
+    "diagnostic_admission": "windows-diagnostic-source-admission.json",
+    "next": "Root qualifies the changed readers with existing affected gates and publishes actual source; new exact-source Windows execution supplies a specific mismatch or pass. Preserve this66/68failed result unchanged.",
+    "root_change": "Failure-only first path/type/value diagnostics in the two readers; original rejection predicates, expected state, numerical code and guards preserved."
+  },
+  "retained_exact_source": "prepublication-windows-sources.json.gz",
+  "retained_metadata": "prepublication-windows-metadata.json.gz",
+  "retained_stream": {
+    "decoded_characters": 605928,
+    "original_sha256": "285945725cd6b549ab7c942a99f7e8a951debed844b62b2e6eb1abb61dd09517",
+    "original_utf8_bytes": 605930,
+    "path": "prepublication-windows-job-133848047271.connector.log.gz",
+    "scope": "Exact UTF-8 encoding of the connector-decoded job text, including BOM and CRLF. Original transport/archive binary bytes are not claimed."
+  },
+  "run_attempt": 1,
+  "run_id": 44026516737,
+  "runner_from_actual_log": {
+    "compiler": "MSVC 19.44.35230.0",
+    "configuration": "Release",
+    "floating_point_flag": "/fp:precise",
+    "label": "windows-2022",
+    "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+    "python": "3.12.10",
+    "runner_image_version": "20261112.366.7",
+    "runner_version": "2.338.2",
+    "warning_policy": "/W4 /WX"
+  },
+  "schema_version": 1,
+  "shared_writer_evidence": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "controls_sha256": "67bf4ce431fc3784abc1aba76d7a4a818e6d52eeee10f751f314a29c3f88107b",
+      "session_sha256": "6804a24b3abd6713b30d5f715b7362035ee00dd8a3464f5595b7e5b778f8bb0d"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "controls_sha256": "67bf4ce431fc3784abc1aba76d7a4a818e6d52eeee10f751f314a29c3f88107b",
+      "session_sha256": "6804a24b3abd6713b30d5f715b7362035ee00dd8a3464f5595b7e5b778f8bb0d"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "controls_sha256": "67bf4ce431fc3784abc1aba76d7a4a818e6d52eeee10f751f314a29c3f88107b",
+      "session_sha256": "6804a24b3abd6713b30d5f715b7362035ee00dd8a3464f5595b7e5b778f8bb0d"
+    }
+  },
+  "source_scope": "Other-owner 6287055 source; diagnostic review only. Not acceptance or publication evidence for the upcoming combined console source.",
+  "source_sha": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+  "status": "PREPUBLICATION_WINDOWS_FAILURE_CONFIRMED_EXACT_DIFFERING_LEAF_NOT_RECORDED",
+  "worker": "A57"
+}

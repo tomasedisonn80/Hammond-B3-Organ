@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "reviewer": "A54",
+  "actual_worker": "/root/w09_a54",
+  "staffing_wave": 9,
+  "observed_utc": "2026-11-17T06:04:20.567565+00:00",
+  "decision": "ADMIT exact reviewed content and local recovery preservation; HOLD publication until fresh 6287055 source/document reconciliation, independent fixture-transition admission and affected qualification.",
+  "content_blockers": [],
+  "git_snapshot": {
+    "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+    "base_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+    "head_at_final_read": "3263b177d42e96309dcc23a287c586150ab2378e",
+    "local_recovery_commit": "3263b177d42e96309dcc23a287c586150ab2378e",
+    "local_recovery_tree": "b91a76809b8a432bf9a32d2c5032037e64dbec6f",
+    "reconciled_remote_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+    "reconciled_remote_tree": "f639acf69061a4b66a0bd3d2219b1ed890e74e42",
+    "reviewed_index_tree": "34f4f497350b5a487328379d641d947be98e5f8f",
+    "root_expected_tree": "34f4f497350b5a487328379d641d947be98e5f8f",
+    "index_entries": 7283,
+    "index_entries_sha256": "f62bf80e979517b4a051306c35f75c0b005a2cad57ebbf816138fdb32e6487d2",
+    "index_snapshot_stable": true,
+    "working_files_blob_checked": 7283,
+    "working_file_bytes": 538474028,
+    "working_blob_mismatches": [],
+    "unstaged": [],
+    "untracked_before_A54_artifacts": [],
+    "unmerged": [],
+    "tree_derivation": "Recursively SHA-1 hash Git tree serialization from read-only ls-files --stage; no write-tree or Git mutation.",
+    "delta_from_c257": [
+      "docs/PROJECT_GUIDE.md"
+    ],
+    "code_subtrees": {
+      "apps": "668d9576ebe757539c559fb6b8f14c2fbf124033",
+      "include": "9a3c71eacf360e9dab78e74c0e675cd74e778f2c",
+      "src": "09948c8801c1f37c0eb3bde7700234a16adaed97",
+      "plugins": "b13032ad4419df067f3a2ce65dc92ed17fd854c4",
+      "tools": "6793be0371c4a4a15b91b91f2651b1499a41f4ca",
+      "tests": "457db96cc867d640c4b7a533ada434a5b9a56f3d",
+      ".github": "793d1312ef0ab8e7bad495bcd3b04261f5445f4d"
+    }
+  },
+  "scope_vs_03c70": {
+    "changed_paths": 894,
+    "added": 879,
+    "modified": 15,
+    "deleted": [],
+    "existing_modified": [
+      ".github/workflows/standalone.yml",
+      "AGENTS.md",
+      "README.md",
+      "apps/standalone/CMakeLists.txt",
+      "apps/standalone/InstrumentView.cpp",
+      "apps/standalone/UiModel.cpp",
+      "apps/standalone/UiModel.h",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/NEXT_STEPS.md",
+      "docs/PLAN.md",
+      "docs/PROJECT_GUIDE.md",
+      "docs/STATUS.md",
+      "tests/test_capture_standalone_interface.py",
+      "tools/capture_standalone_interface.py",
+      "tools/compare_header_material.py"
+    ],
+    "execution_input_paths": [
+      ".github/workflows/standalone.yml",
+      "apps/standalone/CMakeLists.txt",
+      "apps/standalone/InstrumentView.cpp",
+      "apps/standalone/LibraryModel.cpp",
+      "apps/standalone/LibraryModel.h",
+      "apps/standalone/UiModel.cpp",
+      "apps/standalone/UiModel.h",
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "apps/standalone/tests/test_standalone_library_model.cpp",
+      "apps/standalone/tests/test_standalone_library_recall.cpp",
+      "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "apps/standalone/tests/test_standalone_library_session.cpp",
+      "apps/standalone/tests/test_standalone_library_storage.cpp",
+      "tests/test_capture_standalone_interface.py",
+      "tests/test_compare_header_material.py",
+      "tests/test_compare_performance_plate.py",
+      "tools/capture_standalone_interface.py",
+      "tools/compare_header_material.py",
+      "tools/compare_performance_plate.py",
+      "tools/standalone_flat_pixel_capture.cpp"
+    ],
+    "remote_only_additions_preserved": 1026,
+    "remote_only_mismatches": [],
+    "recovery_report_paths_preserved": 535,
+    "recovery_report_mismatches": [],
+    "suspicious_build_temp_paths": [],
+    "native_executable_archive_magic_paths": [],
+    "nonregular_changed_modes": [],
+    "code_diff_check_exit": 0
+  },
+  "compatibility": {
+    "protected_include_src_plugin_paths": 81,
+    "mismatches_base_reconciled_fresh_remote_index": [],
+    "compiled_parameter_id_path_pairs": 47,
+    "registry_parameters": 47,
+    "compiled_projection_equals_registry": true,
+    "preserved": [
+      "47 parameter identities and meanings",
+      "B3CONTROLS4 writer and readers 1-3",
+      "91 shared free-running sources and nominal dry Engine",
+      "plugin UUIDs",
+      "musical ownership and phase/contact/percussion histories",
+      "four banks, 147 playing keys, 24 presets and 68 controls"
+    ],
+    "native_library_main_wiring_added": false,
+    "current_main_matches_03c70_and_6287055": true
+  },
+  "qualified_inputs": {
+    "count": 587,
+    "canonical_manifest_sha256": "246cdbadc763f79d388ef502eb98fc1d88443d5cc15346af4199982cb3d6dca8",
+    "canonical_encoding": "UTF-8 json.dumps(source_sha256,sort_keys=True,separators=(comma,colon)), no trailing newline",
+    "working_sha256_mismatches": [],
+    "index_working_equality_established_for_all_paths": true,
+    "selected_input_identities": {
+      ".github/workflows/standalone.yml": {
+        "bytes": 78398,
+        "sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659",
+        "git_blob": "72040bfc31ceb14396d035a69703a07a01f01838"
+      },
+      "apps/standalone/CMakeLists.txt": {
+        "bytes": 46805,
+        "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+        "git_blob": "587b5132586ee2e2b03d45c7c8231438b24c9492"
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "bytes": 179890,
+        "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105",
+        "git_blob": "4acccc5adb0ae88ff4ce5ad3c25581e30267db21"
+      },
+      "apps/standalone/LibraryModel.cpp": {
+        "bytes": 54280,
+        "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98",
+        "git_blob": "cbcf5589ded92dc70231418d32fc253b6192ad86"
+      },
+      "apps/standalone/LibraryModel.h": {
+        "bytes": 9993,
+        "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2",
+        "git_blob": "6f4db18277dddf2ddc70cf5689c26e2f11275a0c"
+      },
+      "apps/standalone/UiModel.cpp": {
+        "bytes": 83993,
+        "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
+        "git_blob": "ed700ab5c9a3b0f6c2e442cebc382cf1b633ddc1"
+      },
+      "apps/standalone/UiModel.h": {
+        "bytes": 18956,
+        "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+        "git_blob": "66d29174b882fd97f6dd3d0bcbdf1de778da7fea"
+      },
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+        "bytes": 75570,
+        "sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+        "git_blob": "1bfead7f707efdf88e17f587d90aee574093e085"
+      },
+      "apps/standalone/tests/test_standalone_library_model.cpp": {
+        "bytes": 79171,
+        "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d",
+        "git_blob": "5d8449f7dc2ec3be5c722742b1b415af276eff07"
+      },
+      "apps/standalone/tests/test_standalone_library_recall.cpp": {
+        "bytes": 44191,
+        "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae",
+        "git_blob": "214b6a9120c5cd606aa2de20923e5054a50ceded"
+      },
+      "apps/standalone/tests/test_standalone_library_roundtrip.cpp": {
+        "bytes": 34998,
+        "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0",
+        "git_blob": "81c8f8ec6f08b2553f4c5cee8bac97a5991102dc"
+      },
+      "apps/standalone/tests/test_standalone_library_session.cpp": {
+        "bytes": 47769,
+        "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279",
+        "git_blob": "9f7c31a4f542f8ce92d8dfd160ed4d705f804557"
+      },
+      "apps/standalone/tests/test_standalone_library_storage.cpp": {
+        "bytes": 39345,
+        "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793",
+        "git_blob": "cfa577fa2e3aebaa6278422fdef4a923e52cd76c"
+      },
+      "tests/test_capture_standalone_interface.py": {
+        "bytes": 58181,
+        "sha256": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56",
+        "git_blob": "1ddb5ae8ee3bd76e7f685c484fa1d00075b27a72"
+      },
+      "tests/test_compare_header_material.py": {
+        "bytes": 19123,
+        "sha256": "2ef6f296b56cad306012178b05a11555f966d770cfbe23432dcbe05095d168a5",
+        "git_blob": "6e8853f3dccf3789f122a67a6bf5543f9d1301d9"
+      },
+      "tests/test_compare_performance_plate.py": {
+        "bytes": 34820,
+        "sha256": "cba6e56cbcf7dd3fe16924e21ae0f1bec2d76215a7df4abcbede600be327bd8c",
+        "git_blob": "dfb2145617311b547dd3c5424bd47d50a22fa29c"
+      },
+      "tools/capture_standalone_interface.py": {
+        "bytes": 41587,
+        "sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487",
+        "git_blob": "8ec2dcb913b9b2e7337f904a2aeffc6dba02aa68"
+      },
+      "tools/compare_header_material.py": {
+        "bytes": 96675,
+        "sha256": "8c49bad85ff311d0cc598e8bbe1c951f8013661ea123b49abb2d367d969eac5e",
+        "git_blob": "6c0267a20db6e0ea3dcfaa76fe8adf989a8aff06"
+      },
+      "tools/compare_performance_plate.py": {
+        "bytes": 84566,
+        "sha256": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923",
+        "git_blob": "035f9f8e9ae3c49c403d99f67a3f17b1d0c3fd0c"
+      },
+      "tools/standalone_flat_pixel_capture.cpp": {
+        "bytes": 8293,
+        "sha256": "af2a675a5aeb7925d2a752f9897eca7bf5d70aa0b55aac1c1476d869c0e227ad",
+        "git_blob": "533bdffa74de6ecf9b507c0a5a06754caa75bb93"
+      }
+    }
+  },
+  "retained_execution_evidence": {
+    "execution_by_A54": false,
+    "build_exit": 0,
+    "ordered_build_steps": 46,
+    "affected_unique_tests": 78,
+    "junit_test_count": 78,
+    "junit_failures": 0,
+    "junit_errors": 0,
+    "junit_skips": 0,
+    "junit_names_equal_discovery_and_receipt": true,
+    "all_discovered": 251,
+    "full_251_test_execution_claimed": false,
+    "build_test_capture_logs_match_receipt": {
+      "build": true,
+      "affected_ctest": true,
+      "capture": true
+    },
+    "gallery_cases": 15,
+    "gallery_payloads": 69,
+    "gallery_payload_mismatches": [],
+    "gallery_visual_authority": "A48; A54 checked identity/retained evidence, not images.",
+    "reported_application_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9",
+    "binary_rehashed_by_A54": false,
+    "document_ctest": {
+      "tests": 1,
+      "name": "python_test_repository_integrity",
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "xml_hash_matches": true,
+      "seconds_reported": 10.12,
+      "scope": "Existing 1/1 affected result predates final PROJECT_GUIDE correction and A54 additions; root owes their final affected documentary qualification."
+    },
+    "original_full_run": "246/247, exit 8, retained unchanged; no aggregate-green reinterpretation."
+  },
+  "pins_and_gates": {
+    "existing_header_top_level_assignments": 37,
+    "changed_existing_assignments": [],
+    "only_header_exception": "Exact A18/A45 float-literal/cast fixture reversal to original baseline; current cast fixture 96149cf… . Historical main/UiModel pins remain strict. Fresh 6287055 constexpr-else fixture is not admitted here.",
+    "P1_comparator_matches_recovery": true,
+    "sanitizer_test_count": 41,
+    "sanitizer_target_count": 37,
+    "mandatory_platform_subset": 55,
+    "hosted_job_families": {
+      "standalone": 6,
+      "core": 6,
+      "vst3": 4
+    },
+    "retained_policy": "A51 exact additive union, existing test/child limits, serial execution, warnings, instrumentation and leak policy; no sanitizer/hosted execution by A54.",
+    "tiny_scale_limit": "A47 H1/P1 pixel overlap near renderer (1,float32(0.01)); no universal nonoverlap or new cutoff."
+  },
+  "documentation_finding": {
+    "id": "A54-NAV-01",
+    "status": "resolved_in_reviewed_tree",
+    "finding": "PROJECT_GUIDE current recovery/checker/gallery rows and unqualified source-map heading still selected the heading/header session.",
+    "resolution": "Root changed the three current rows to console sources and labeled the old map retained heading/header history; sole change from c257 to 34f4."
+  },
+  "fresh_remote_publication_hold": {
+    "commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+    "parent": "03c70c103a4a0dd72b323529416b909c19a4e139",
+    "observation": "Read-only inspection of root-fetched immutable Git commit; A54 did not fetch or contact the remote.",
+    "changed_paths_since_03c70": 131,
+    "added": 117,
+    "modified": 14,
+    "non_document_changes": [
+      [
+        "M",
+        "apps/standalone/native_tests/test_standalone_header_material.cpp"
+      ],
+      [
+        "M",
+        "apps/standalone/native_tests/test_standalone_header_statistics.py"
+      ]
+    ],
+    "new_fixture_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+    "applied_to_reviewed_tree": false,
+    "next_owner": "Root reconciles every fresh remote path; new A55 independently admits the exact fixture/comparator transition before affected qualification and publication.",
+    "existing_78_passes_qualify_new_fixture": false
+  },
+  "publication_protocol": {
+    "performed_by_A54": false,
+    "publication_claimed": false,
+    "next_steps": [
+      "Preserve reviewed local content history and every newly fetched remote addition/change.",
+      "Review and qualify the exact fresh-source fixture/pin reconciliation; retain original receipts.",
+      "Add A54 artifacts and acceptance records, then check the documentary delta and affected integrity gate.",
+      "Use immutable verified Git Data API blobs and SHA-only trees; resulting tree must equal the final reviewed local tree, with fresh remote and preserved recovery history reachable.",
+      "Update main with fresh expected SHA and force:false; inspect any further remote advance before changing a ref.",
+      "Independently verify published commit/tree/parents/contents and exact-source 6 standalone, 6 core and 4 VST3 job families."
+    ]
+  },
+  "remaining_limits": [
+    "Native library browser/main integration",
+    "Fresh-source affected and hosted/sanitizer qualification",
+    "Sixty actual accepted workers and strict closure",
+    "Real devices/display/DPI/DAW/native accessibility",
+    "Callback deadlines and OS retirement",
+    "Physical AO-28/scanner/Leslie fidelity, rights and signed release",
+    "Literal whole-interface 1:1 remains unmet and unwaived"
+  ],
+  "evidence_identities": {
+    "docs/development/2026-11-16-console-completion/reports/combined-qualification.json": {
+      "bytes": 82482,
+      "sha256": "5130fecaa1da35ad76bfe1ba1c07d23d9204adfc4e7e390e745c08edbd555d99",
+      "git_blob": "58286227807c369734714b5afe8ff92811dff819"
+    },
+    "docs/development/2026-11-16-console-completion/reports/combined-application-qualification.json": {
+      "bytes": 17513,
+      "sha256": "b9d03598b0e41f2ecb2115dcd75d1b8218dc054fb05f3292a6e9d6587baad9c2",
+      "git_blob": "24f6f6fdce6e3c0ce6054fcd64980d25b9b623aa"
+    },
+    "docs/development/2026-11-16-console-completion/reports/combined-affected-ctest.xml": {
+      "bytes": 56418,
+      "sha256": "99afde4e539dcfa2fe21f506dd64111573bde7e772df3eda3844f7a481e4ff10",
+      "git_blob": "de955666e67d94cecf21df564fd89fdf638c6d41"
+    },
+    "docs/development/2026-11-16-console-completion/reports/combined-affected-ctest.log": {
+      "bytes": 11890,
+      "sha256": "d621db3e761c2c79be46c6684e0539794ea81bd3b16fbff1049e51b849303af6",
+      "git_blob": "3f98cbaa15c5b3d4839c52975b8fff0bb727cdcd"
+    },
+    "docs/development/2026-11-16-console-completion/reports/combined-build.log": {
+      "bytes": 13687,
+      "sha256": "8d6007b1eb609aef0c6fb8b1f2d458a38bb654c95d784cd234c899a2cf53a0b5",
+      "git_blob": "3db39822e58f9449c0bce53e3f6d7c6f05036f5a"
+    },
+    "docs/development/2026-11-16-console-completion/reports/combined-capture.log": {
+      "bytes": 186,
+      "sha256": "b4cccd905d20bcf546407aaf357d526a3e5f889f940187f9ff5ab20fef53f1ff",
+      "git_blob": "579db18b66d0bf57a2bd263c35ff883525be875f"
+    },
+    "docs/development/2026-11-16-console-completion/reports/document-integrity-after-combined.json": {
+      "bytes": 769,
+      "sha256": "5722d92ab4f28014c62b02ee796276f053611b40a044d00e11bfde89bd071216",
+      "git_blob": "0b97ebefa63687eec1dd8bc63ad4e918a210a301"
+    },
+    "docs/development/2026-11-16-console-completion/reports/document-integrity-after-combined.xml": {
+      "bytes": 526,
+      "sha256": "d8d7bd712e305693e0428bb02a5ea3e16d90781831f18e6837b04a1112c18296",
+      "git_blob": "9c1f45256e765fb18ed6a7595d4cabe344951258"
+    },
+    "docs/development/2026-11-16-console-completion/reports/document-integrity-after-combined-detail.log": {
+      "bytes": 1014,
+      "sha256": "39c36d9c71f8ffddfdaba128246bc950c6f894195ac538d6277e5ccd99802305",
+      "git_blob": "484007642d937880b638a3151ed6c63830927961"
+    },
+    "docs/development/2026-11-16-console-completion/reports/prepublication-source-stability.json": {
+      "bytes": 229,
+      "sha256": "105fa0ce4b18db6e5441843f4634ddb37214d827e384989117f315fc6039545c",
+      "git_blob": "5cbafb2f346c0f50f991418b796e10ad8168ae23"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A45-header-transition.json": {
+      "bytes": 160642,
+      "sha256": "540413b7a91145d8c881d768a20a5acc7791ad7609f8be741d1e373a106a0bdb",
+      "git_blob": "84dc885ccf87e980dc06a9caae10c023791f3fc0"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A47-source-reconciliation.json": {
+      "bytes": 51494,
+      "sha256": "ea459391dfc2d66aec76a5fd1dfa8e293449fa79694fbcbd8a8e6af5c63b20ea",
+      "git_blob": "41649eef4cae27156df610f2fd194c94f7f4ba78"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A48-gallery.json": {
+      "bytes": 1112122,
+      "sha256": "6347ed0307bfb02caf8fe90b6a696056d58a5fb2f444bb77d6b43e7939fea5e0",
+      "git_blob": "58fc4f56511925785def147759a6badee27ee390"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A51-ci-gates.json": {
+      "bytes": 66011,
+      "sha256": "8acaf86960a983dae4fd586f29f43415005908f22eadc2b6e4b8ca339c27c777",
+      "git_blob": "8af0d86c351779d283db6ac0c6b97b114f5d3c5f"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A52-retention.json": {
+      "bytes": 39340,
+      "sha256": "c7a8c0a378fea0a55fc248da91af511e848d783542a49e21833cededf569f05a",
+      "git_blob": "f8fd0a38332b075a44eb076c003ea1909b8bc53b"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A53-handoff.json": {
+      "bytes": 17847,
+      "sha256": "edb62187dfff75387cce3e356eba89e0b0dcc15021c9d0abef7de2b562c5ccbc",
+      "git_blob": "2fc5e868712ae0e56ea7b2b2ce4a7eac0386ac8a"
+    },
+    "docs/development/2026-11-16-console-completion/reports/A52-baseline-capture-original.tar.gz": {
+      "bytes": 1006057,
+      "sha256": "001252c0dbbafe91cb2f3a5c77ea54b49c111cdccb5e52a4553d3c441b8495e9",
+      "git_blob": "aec811be271b6830f1d20d323953443f2c19d6ea"
+    },
+    "docs/design/native-gallery-console-combined/manifest.json": {
+      "bytes": 11442,
+      "sha256": "6619a40d835e8f90d52e2bec6ab6fa9bfb5cdb39b8c8b15c0f007d7833ee0a8b",
+      "git_blob": "eefdb9b898287f96f4299c132b7d03b138ad32cd"
+    },
+    "docs/design/native-gallery-console-combined/provenance.json": {
+      "bytes": 125463,
+      "sha256": "ec1466460908a34decbed4c17f27e11fec725dda74998c69e49ed46bf5da04c2",
+      "git_blob": "babc385902905adfbd8933b218c852039bfb6e07"
+    }
+  },
+  "owned_deliverables": [
+    "docs/reviews/CONSOLE_PREPUBLICATION_ADMISSION.md",
+    "docs/development/2026-11-16-console-completion/reports/A54-staged-review.json",
+    "docs/development/2026-11-16-console-completion/notes/A54.md"
+  ],
+  "execution_boundary": "Read-only Git, filesystem, hashes, AST and retained XML/log inspection only. No build, test, native process, capture, benchmark, other-workspace operation, Git/index/ref mutation, remote action or child worker."
+}

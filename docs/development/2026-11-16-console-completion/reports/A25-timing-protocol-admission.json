@@ -1,0 +1,412 @@
+{
+  "admitted_for_timing_execution": true,
+  "before_binary_sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f",
+  "before_execution_input_is_genuine_retained_binary": true,
+  "before_provenance": {
+    "compared_binary_bytes": 3756168,
+    "meaning": "Newly compiled original painter plus current selected objects reproduces genuine retained original; supplemental reproducibility, not original-object evidence.",
+    "original_painter_object_retained": false,
+    "reconstructed_binary_direct_byte_equality": true,
+    "reproduction_receipt": {
+      "bytes": 6134,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-before-reproduction.json",
+      "sha256": "cd96c9ea3eb5bf5516dd78c538e260fc964dc28634bbaaf0304c929447956d14"
+    }
+  },
+  "candidate_binary_sha256": "5cf0d9046e05bf10178b70caee1c3996c719956dad364397ad7befbf46544d4e",
+  "child_environment": {
+    "LANG": "C",
+    "LC_ALL": "C",
+    "PATH": "/usr/bin:/bin",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy",
+    "TZ": "UTC"
+  },
+  "contract": {
+    "bytes": 18037,
+    "path": "docs/design/PERFORMANCE_PLATE_P1_CONTRACT.md",
+    "sha256": "20c8839d38229bf24d983eac0baad7381f601c4e6763bbbe556bcdfa6c75ae45"
+  },
+  "cpu": 0,
+  "execution_claim_exists_at_admission": false,
+  "execution_conditions": [
+    "Root reserves quiet interval and records actual workload statement. CPU affinity is not shared-host isolation.",
+    "No source/object/binary/dependency/build changes during the batch. Preserve every raw sample, failed process and any explicitly truncated invalid prefix.",
+    "Keep this admission and its source note immutable once execution is claimed; publish observations in a separate report.",
+    "Single eight-process attempt only; any further run requires a new prospective reason and independent protocol."
+  ],
+  "flat_witness": {
+    "build_receipt": {
+      "bytes": 7260,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-build/report.json",
+      "sha256": "bb35f32a2c39b74a310cdb357333c3f989724b7ced19c7d6502f69dba50b7eba"
+    },
+    "capture_driver": {
+      "bytes": 9322,
+      "path": "docs/development/2026-11-16-console-completion/run_p1_flat_witness.py",
+      "sha256": "a504823e3e517cc116e8ff2ca80267b9e5e95b9294e13b5f1229687305b15164"
+    },
+    "capture_executables": [
+      {
+        "bytes": 3764616,
+        "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-before",
+        "sha256": "14ace3dc843d8565e60f998add357475bd9ec8084c06333d59532db24a2a805d"
+      },
+      {
+        "bytes": 3773248,
+        "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-after",
+        "sha256": "e62d0894547a9151ea4ce9840e2372b8e59c0ebffd343407fe2f18d2b334fa0c"
+      }
+    ],
+    "capture_headers_equal": true,
+    "capture_receipt": {
+      "bytes": 28442,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v2/report.json",
+      "sha256": "6aa697bdfbb27220d7515883cfde520def1822d0cb563e04e3b32bce8f073314"
+    },
+    "companion_source": {
+      "bytes": 8293,
+      "path": "tools/standalone_flat_pixel_capture.cpp",
+      "sha256": "af2a675a5aeb7925d2a752f9897eca7bf5d70aa0b55aac1c1476d869c0e227ad"
+    },
+    "compared_pixels": 1573352,
+    "compared_rgba_bytes": 6293408,
+    "exact_same_scene_raw_equality_admitted": true,
+    "expected_timing_layout_fnv1a64": "9ac2bac0db68cf6f",
+    "expected_timing_pixels_fnv1a64": "aa58ce2e68f71fbe",
+    "method": "Independent bounded gzip decode and direct RGBA byte comparison; independently recomputed FNV1a64. This is same-scene companion evidence, not raw output from the unchanged timing executable.",
+    "paints_per_capture": 331,
+    "preservation_assertion_verbatim_bytes": 330,
+    "rgba_sha256": "cedf2297c01d868ec591ca3286033f883a3babef0caff4e64e37aeefd80e0910",
+    "setup_sha256": "93cd6e9212287d9dc0c2c439bf19f5c2cb3471a81697b857c69a8d2010a19e02",
+    "setup_verbatim_bytes": 3989,
+    "streams": [
+      {
+        "cpu_affinity": [
+          0
+        ],
+        "exit_code": 0,
+        "independent_fnv1a64": "aa58ce2e68f71fbe",
+        "raw_pipe_eof_observed": {
+          "stderr": true,
+          "stdout": true
+        },
+        "raw_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "raw_stdout": {
+          "bytes": 6294029,
+          "sha256": "10c7bce48e9d2c76d7089c02da6122f02e53adfeaf0d6e63595243b2886d622c"
+        },
+        "retained_prefix_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "retained_stderr_gzip": {
+          "bytes": 20,
+          "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v2/01-before.stderr.gz",
+          "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+        },
+        "retained_stdout_gzip": {
+          "bytes": 500032,
+          "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v2/01-before.stdout.gz",
+          "sha256": "bc24358fdfe0b464b78c860d02250a775ba4c0a49b9049ae897162be5babd62e"
+        },
+        "rgba_bytes": 6293408,
+        "rgba_sha256": "cedf2297c01d868ec591ca3286033f883a3babef0caff4e64e37aeefd80e0910",
+        "side": "before"
+      },
+      {
+        "cpu_affinity": [
+          0
+        ],
+        "exit_code": 0,
+        "independent_fnv1a64": "aa58ce2e68f71fbe",
+        "raw_pipe_eof_observed": {
+          "stderr": true,
+          "stdout": true
+        },
+        "raw_stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "raw_stdout": {
+          "bytes": 6294029,
+          "sha256": "10c7bce48e9d2c76d7089c02da6122f02e53adfeaf0d6e63595243b2886d622c"
+        },
+        "retained_prefix_truncated": {
+          "stderr": false,
+          "stdout": false
+        },
+        "retained_stderr_gzip": {
+          "bytes": 20,
+          "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v2/02-after.stderr.gz",
+          "sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+        },
+        "retained_stdout_gzip": {
+          "bytes": 500032,
+          "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v2/02-after.stdout.gz",
+          "sha256": "bc24358fdfe0b464b78c860d02250a775ba4c0a49b9049ae897162be5babd62e"
+        },
+        "rgba_bytes": 6293408,
+        "rgba_sha256": "cedf2297c01d868ec591ca3286033f883a3babef0caff4e64e37aeefd80e0910",
+        "side": "after"
+      }
+    ],
+    "timing_samples": 0,
+    "witness_input_drift": [],
+    "witness_inputs_rechecked": 20
+  },
+  "independent_python_checks": {
+    "raw_audit_first_snippet": "A missing space in a Python conditional caused SyntaxError before execution; corrected read-only audit passed. No native run or file modification occurred.",
+    "refusal_cases": [
+      "duplicate-key",
+      "299-samples",
+      "301-samples",
+      "boolean-sample",
+      "float-sample",
+      "negative-sample",
+      "paired-instrument",
+      "heap-observer",
+      "wrong-warmups",
+      "wrong-p95",
+      "wrong-scene",
+      "nan"
+    ],
+    "sorted_sample_oracle": {
+      "maximum_ns": 1299001,
+      "median_twice_ns": 2299002,
+      "minimum_ns": 1000001,
+      "p95_ns": 1284001
+    },
+    "strict_threshold_boundary_cases": 7
+  },
+  "limitations": [
+    "Timing benchmark emits only FNV1a64 pixels; direct same-scene raw equality comes from the admitted capture-only companion.",
+    "Supplied paint/flush statistics have no available raw component samples.",
+    "Source/state/renderer assertions and metadata have their exact emitted scope; no full serialized state is claimed for the benchmark.",
+    "No confidence/equivalence/causality/display-smoothness/audio-deadline/full-domain-performance claim.",
+    "Actual full-frame visual rejection is decisive; separate native/platform/device/accessibility/physical-fidelity/release gates and all M0-M9 exits remain binding."
+  ],
+  "limits": {
+    "batch_seconds": 1500,
+    "flat_decoded_bytes_each": 9437184,
+    "identity_file_bytes": 67108864,
+    "identity_files": 4096,
+    "identity_total_bytes": 536870912,
+    "kill_reap_seconds": 2,
+    "process_seconds": 180,
+    "processes": 8,
+    "raw_output_bytes_batch": 1572864,
+    "samples_each": 300,
+    "stderr_bytes_each": 65536,
+    "stdout_bytes_each": 131072,
+    "warmups_each": 30
+  },
+  "mandatory_post_batch_gate": {
+    "binding": "Each timing Flat metadata record must also match captured width/height/presentation/scenario/workspace/overlay/renderer/SDL/format/batching hint/scale/viewport/clip.",
+    "both_flat_timing_fingerprints_equal": "aa58ce2e68f71fbe",
+    "both_flat_timing_layout_fingerprints_equal": "9ac2bac0db68cf6f",
+    "enforcement": "Frozen runner compares the two timing fingerprints only. Root records the additional witness comparison in a separate retained post-batch report, and final independent P1 reviewer verifies it.",
+    "mismatch_result": "HOLD regardless of runner timing-screen status; no replacement samples or automatic retry.",
+    "required": true
+  },
+  "native_processes_executed_by_reviewer": 0,
+  "observed_allowed_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "order": [
+    {
+      "case": "canonical",
+      "command": [
+        "/workspace/scratch/21cce69f7784/baseline-native/hammond_standalone_paint_benchmark",
+        "1672",
+        "941",
+        "dimensional",
+        "mixed-held"
+      ],
+      "order": 1,
+      "side": "before"
+    },
+    {
+      "case": "canonical",
+      "command": [
+        "/workspace/scratch/21cce69f7784/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+        "1672",
+        "941",
+        "dimensional",
+        "mixed-held"
+      ],
+      "order": 2,
+      "side": "after"
+    },
+    {
+      "case": "minimum-active",
+      "command": [
+        "/workspace/scratch/21cce69f7784/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+        "1400",
+        "820",
+        "dimensional",
+        "mixed-held"
+      ],
+      "order": 3,
+      "side": "after"
+    },
+    {
+      "case": "minimum-active",
+      "command": [
+        "/workspace/scratch/21cce69f7784/baseline-native/hammond_standalone_paint_benchmark",
+        "1400",
+        "820",
+        "dimensional",
+        "mixed-held"
+      ],
+      "order": 4,
+      "side": "before"
+    },
+    {
+      "case": "wide",
+      "command": [
+        "/workspace/scratch/21cce69f7784/baseline-native/hammond_standalone_paint_benchmark",
+        "1920",
+        "1080",
+        "dimensional",
+        "mixed-held"
+      ],
+      "order": 5,
+      "side": "before"
+    },
+    {
+      "case": "wide",
+      "command": [
+        "/workspace/scratch/21cce69f7784/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+        "1920",
+        "1080",
+        "dimensional",
+        "mixed-held"
+      ],
+      "order": 6,
+      "side": "after"
+    },
+    {
+      "case": "flat-control",
+      "command": [
+        "/workspace/scratch/21cce69f7784/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+        "1672",
+        "941",
+        "flat",
+        "mixed-held"
+      ],
+      "order": 7,
+      "side": "after"
+    },
+    {
+      "case": "flat-control",
+      "command": [
+        "/workspace/scratch/21cce69f7784/baseline-native/hammond_standalone_paint_benchmark",
+        "1672",
+        "941",
+        "flat",
+        "mixed-held"
+      ],
+      "order": 8,
+      "side": "before"
+    }
+  ],
+  "registered_input_bytes": 83723847,
+  "retained_history": {
+    "corrected_paired_v2_passed": true,
+    "corrected_paired_v2_report": {
+      "bytes": 179829,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v2/report.json",
+      "sha256": "f64b634d5455e69e506730acac036e6b3764804d775ff4bdabb4d0a4e0abe1d4"
+    },
+    "environment_correction": "Remove only SDL_RENDER_BATCHING from clean environment; unchanged native code must successfully set and report batching hint1. SDL environment override priority caused the original prepaint setup failure.",
+    "initial_capture_after_unrun": true,
+    "initial_capture_driver_source": {
+      "bytes": 9313,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/root-run_p1_flat_witness-v1.py.txt",
+      "sha256": "a0d5fbe06e71ac6ef9f44522055a1a8595e785b7040ce2bbed5ed64339c01b39"
+    },
+    "initial_capture_exit_code": 1,
+    "initial_capture_failed_receipt": {
+      "bytes": 17674,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v1/report.json",
+      "sha256": "02646a116a93a234ac7826d00a65bf1a8e7811a8f54bda21bac7c0402b75a521"
+    },
+    "initial_capture_stderr": "Flat capture failed: enable fixed renderer batching: \n",
+    "initial_capture_timing_samples": 0,
+    "initial_timing_protocol": {
+      "bytes": 3203873,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-timing-prospective-v1/protocol.json",
+      "sha256": "f8740307f5e5cadf86834bd0cf444c9ae98fe4200aa36ac80566b7a39cec2314"
+    },
+    "initial_timing_runner_source": {
+      "bytes": 52103,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A23-run_p1_timing-v1.py.txt",
+      "sha256": "d53e5147cce85abb8bec3492dc2c63a9fd383be20d47fbc0ae606a78f0991f40"
+    },
+    "original_paired_v1_passed": false,
+    "original_paired_v1_report": {
+      "bytes": 180107,
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/report.json",
+      "sha256": "4895fdbb8f79e07cc4ad2b6d672807433a98e5a08689c323547432ca88725ab7"
+    },
+    "sdl_hints_c_sha256": "6fb9bc23d140ff5cee40149b50c02780e10e02efdbca6ffaf3abfa661e5b7ad5",
+    "v1_supplement_section_sha256": "2d16717b3b7081b7ea4ccea3a467ed8a51fd36662e0a144e2cd5f9b7cc30489d",
+    "v2_environment_admission_snapshot": {
+      "bytes": 23867,
+      "path": "docs/development/2026-11-16-console-completion/reports/source-history/A25-environment-v2-prospective-admission.md.txt",
+      "sha256": "3396a17b782fbc7a497cdfd9d54400985f2deccf1eafcbda150b3f1b19411392"
+    },
+    "v2_supplement_section_sha256": "8c4b5c5667a159f6d2531b732b40c301ea9e657abf8c79cf92d9157dd21bd679"
+  },
+  "review_path": "docs/reviews/PERFORMANCE_PLATE_TIMING_PROTOCOL_ADMISSION.md",
+  "reviewed_utc": "2026-11-17T04:19:38.764624+00:00",
+  "reviewer": "A25 /root/w05_a25",
+  "schema_version": 1,
+  "source_input_drift": [],
+  "source_inputs_rechecked": 1507,
+  "statistics": {
+    "automatic_retry": false,
+    "component_samples_available": false,
+    "hold": "For either median or p95, growth strictly greater than 2ms AND 15percent; exact integer comparison, equality does not trigger.",
+    "median_twice_ns_exact": true,
+    "one_based_median_positions": [
+      150,
+      151
+    ],
+    "one_based_p95_rank": 285,
+    "pooling": false,
+    "sample_count": 300,
+    "trimming": false,
+    "warmup_count": 30
+  },
+  "status": "ADMIT_SINGLE_PROSPECTIVE_TIMING_BATCH_WITH_MANDATORY_POST_BATCH_FLAT_WITNESS_GATE",
+  "timing_processes_executed_at_admission": 0,
+  "timing_protocol": {
+    "bytes": 3203779,
+    "path": "docs/development/2026-11-16-console-completion/reports/p1-timing-prospective-v2/protocol.json",
+    "sha256": "9b9cef5f2c1ea0d6900c90ef6df63da5c5f7f9aaca9a91505f5b94192e2aa8f6"
+  },
+  "timing_runner": {
+    "bytes": 52075,
+    "path": "docs/development/2026-11-16-console-completion/run_p1_timing.py",
+    "sha256": "0a5b7a42a17a93bc44f0abab0d26ce0d05c955c511d0bb34fbf399fd611ffedb"
+  },
+  "unchanged_benchmark_source": {
+    "bytes": 30354,
+    "path": "tools/standalone_paint_benchmark.cpp",
+    "sha256": "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338"
+  }
+}

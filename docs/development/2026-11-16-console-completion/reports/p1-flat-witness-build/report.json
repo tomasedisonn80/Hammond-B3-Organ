@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-11-17T04:07:07.377676+00:00",
+  "source": {
+    "path": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tools/standalone_flat_pixel_capture.cpp",
+    "bytes": 8293,
+    "sha256": "af2a675a5aeb7925d2a752f9897eca7bf5d70aa0b55aac1c1476d869c0e227ad"
+  },
+  "benchmark_source": {
+    "path": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tools/standalone_paint_benchmark.cpp",
+    "bytes": 30354,
+    "sha256": "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338"
+  },
+  "source_admission": {
+    "path": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/source-history/A25-precompile-timing-admission.md.txt",
+    "bytes": 19702,
+    "sha256": "0d494a915aa35850b9570e8a6ef2a2e2db85cb1341f82f35a0b5e6dc690bd1b3"
+  },
+  "compile_command": [
+    "/usr/bin/c++",
+    "-DSDL_MAIN_HANDLED",
+    "-I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone",
+    "-I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include",
+    "-I/workspace/scratch/21cce69f7784/build-native/_sdl2/include",
+    "-I/workspace/scratch/21cce69f7784/build-native/_sdl2/include/SDL2",
+    "-I/workspace/scratch/21cce69f7784/build-native/_sdl2/include-config-release/SDL2",
+    "-O3",
+    "-DNDEBUG",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "-o",
+    "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture.cpp.o",
+    "-c",
+    "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tools/standalone_flat_pixel_capture.cpp"
+  ],
+  "cwd": "/workspace/scratch/21cce69f7784/build-native",
+  "runs": [
+    {
+      "side": "before",
+      "command": [
+        "/usr/bin/c++",
+        "-O3",
+        "-DNDEBUG",
+        "-Wl,--dependency-file=/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-before.d",
+        "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture.cpp.o",
+        "/workspace/scratch/21cce69f7784/p1-timing-qualification/before-InstrumentView.cpp.o",
+        "-o",
+        "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-before",
+        "apps/standalone/libhammond_standalone_drawing.a",
+        "apps/standalone/libhammond_standalone_support.a",
+        "_sdl2/libSDL2.a",
+        "-lm",
+        "-pthread",
+        "libhammond_core.a"
+      ],
+      "exit_code": 0,
+      "inputs": [
+        {
+          "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture.cpp.o",
+          "bytes": 61272,
+          "sha256": "45083b7188f2851135fc2dbd304c0284fa8f490894e3a1005c7b1c62f40d0299"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/before-InstrumentView.cpp.o",
+          "bytes": 287152,
+          "sha256": "aee8d1b133e3fec7d7217a6d45efa7b02f890f23c448285868898f6cfb30fc72"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/libhammond_standalone_drawing.a",
+          "bytes": 1283262,
+          "sha256": "ffc41ccf55b0268f6b01af36d3e1b97cecb7b79f14e574cb7cc2178c12a853e7"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/libhammond_standalone_support.a",
+          "bytes": 557694,
+          "sha256": "27581c71dbed789a9c13e0c324500f42a3dd9325086e8ec8c0fdb6a5c992de8c"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/_sdl2/libSDL2.a",
+          "bytes": 3245774,
+          "sha256": "383aee215b2eaa4f716623113fc0481af90ac55bfa56fca261c157241a1a1977"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/libhammond_core.a",
+          "bytes": 460336,
+          "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+        }
+      ],
+      "executable": {
+        "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-before",
+        "bytes": 3764616,
+        "sha256": "14ace3dc843d8565e60f998add357475bd9ec8084c06333d59532db24a2a805d"
+      }
+    },
+    {
+      "side": "after",
+      "command": [
+        "/usr/bin/c++",
+        "-O3",
+        "-DNDEBUG",
+        "-Wl,--dependency-file=/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-after.d",
+        "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture.cpp.o",
+        "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o",
+        "-o",
+        "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-after",
+        "apps/standalone/libhammond_standalone_drawing.a",
+        "apps/standalone/libhammond_standalone_support.a",
+        "_sdl2/libSDL2.a",
+        "-lm",
+        "-pthread",
+        "libhammond_core.a"
+      ],
+      "exit_code": 0,
+      "inputs": [
+        {
+          "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture.cpp.o",
+          "bytes": 61272,
+          "sha256": "45083b7188f2851135fc2dbd304c0284fa8f490894e3a1005c7b1c62f40d0299"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o",
+          "bytes": 301288,
+          "sha256": "5d3d7d40efbac24704c81944a70ffa1b3b1c4710a59556e87fdd96feaf59b790"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/libhammond_standalone_drawing.a",
+          "bytes": 1283262,
+          "sha256": "ffc41ccf55b0268f6b01af36d3e1b97cecb7b79f14e574cb7cc2178c12a853e7"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/libhammond_standalone_support.a",
+          "bytes": 557694,
+          "sha256": "27581c71dbed789a9c13e0c324500f42a3dd9325086e8ec8c0fdb6a5c992de8c"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/_sdl2/libSDL2.a",
+          "bytes": 3245774,
+          "sha256": "383aee215b2eaa4f716623113fc0481af90ac55bfa56fca261c157241a1a1977"
+        },
+        {
+          "path": "/workspace/scratch/21cce69f7784/build-native/libhammond_core.a",
+          "bytes": 460336,
+          "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+        }
+      ],
+      "executable": {
+        "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture-after",
+        "bytes": 3773248,
+        "sha256": "e62d0894547a9151ea4ce9840e2372b8e59c0ebffd343407fe2f18d2b334fa0c"
+      }
+    }
+  ],
+  "meaning": "Capture-only companion; neither timing executable is changed, and no timing sample or native capture is run by this build step.",
+  "preflight_correction": "Initial row lookup omitted the output path prefix and stopped before compiler launch. Selection now uses exact source plus target, retaining all flags.",
+  "compile_exit": 0,
+  "companion_object": {
+    "path": "/workspace/scratch/21cce69f7784/p1-timing-qualification/flat-capture.cpp.o",
+    "bytes": 61272,
+    "sha256": "45083b7188f2851135fc2dbd304c0284fa8f490894e3a1005c7b1c62f40d0299"
+  },
+  "finished_utc": "2026-11-17T04:07:11.901623+00:00",
+  "passed": true
+}

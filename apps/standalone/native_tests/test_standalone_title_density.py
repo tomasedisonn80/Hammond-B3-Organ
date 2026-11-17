@@ -80,6 +80,30 @@ def typed_equal(actual, expected):
     return actual == expected
 
 
+def copied_state_difference(actual, expected, path="root"):
+    """Describe the first exact mismatch; never alter equality or accept data."""
+    def value_text(value):
+        return repr(value)[:96]
+    if type(actual) is not type(expected):
+        return (path + ": actual " + type(actual).__name__ + " " + value_text(actual) +
+                "; expected " + type(expected).__name__ + " " + value_text(expected))
+    if type(expected) is dict:
+        if actual.keys() != expected.keys():
+            return path + ": dictionary keys differ"
+        for key, value in expected.items():
+            if not typed_equal(actual[key], value):
+                return copied_state_difference(actual[key], value, path + "." + key)
+    elif type(expected) is list:
+        if len(actual) != len(expected):
+            return path + ": list lengths " + str(len(actual)) + " / " + str(len(expected))
+        for index, (left, right) in enumerate(zip(actual, expected)):
+            if not typed_equal(left, right):
+                return copied_state_difference(left, right, path + "[" + str(index) + "]")
+    elif actual != expected:
+        return path + ": actual " + value_text(actual) + "; expected " + value_text(expected)
+    return path + ": no difference"
+
+
 def unique_members(pairs):
     result = {}
     for key, value in pairs:
@@ -313,7 +337,9 @@ def validate_model(model, spec):
         "edited_banks": [spec["route_index"] - 10] * 2, "controls_pending": spec["pending"],
         "workspace": 0, "presentation": 0,
     }.items():
-        require(typed_equal(view[key], expected), "copied view " + key + " differs")
+        if not typed_equal(view[key], expected):
+            require(False, "copied view " + key + " differs; " +
+                    copied_state_difference(view[key], expected, "view." + key))
     integer_vector(view["roving_manual_keys"], 2, 0, 60, "roving manual keys")
     for key, lower, upper in (("roving_pedal_key", 0, 24), ("keyboard_target", 0, 2),
                               ("manual_base_midi", 36, 84), ("pedal_octave", 0, 2),

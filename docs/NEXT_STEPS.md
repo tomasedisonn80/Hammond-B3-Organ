@@ -1,5 +1,85 @@
 # Next steps
 
+<!-- console-next-current:start -->
+<a id="current-console-continuation--17-november-2026"></a>
+## Current console continuation — 16 November 2026
+
+Read the complete [M0–M9 plan](PLAN.md), [standing instructions](../AGENTS.md),
+[current handoff](CONSOLE_COMPLETION_HANDOFF.md), [setup](CONSOLE_SETUP_AND_HANDOFF.md),
+[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-console-completion/assignments.json) and
+[root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
+Root owns integration, `../build-native`, acceptance and publication in
+`/workspace/scratch/21cce69f7784/Hammond-B3-Organ`. Older workspace commands
+below are historical; other owners' unfinished work remains separate.
+
+### 1. Finish documentary qualification, publication and actual worker closure
+
+The [combined result](development/2026-11-16-console-completion/reports/combined-qualification.json)
+passes **46 build steps, 78 affected tests and 15 captures** with all 587 inputs
+stable. All 69 gallery payloads and the [independent all-frame review](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md)
+are complete. README shows the combined gallery. Preserve the original **246/247**
+full run and rerun the affected document gate after authoring; do not relabel
+the 78-test result as a full 251-test run.
+
+Root reviews the final staged tree, reconciles any fresh remote advance and
+publishes accepted paths with an exact expected parent and no force. Independently
+fetch and verify remote commit/tree/parents/contents, then observe all required
+hosted jobs at that source. Record passing, failed, cancelled and unrun outcomes
+separately. Finish sixty actual accepted notes in ten waves and the matching
+strict record check. Planned workers, follow-ups and historical sessions count
+for no new credit. Check the live checkpoint before repeating completed work.
+
+### 2. Admit native library integration in dependency order
+
+The [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md) owns
+the detailed hook map and acceptance cases; the [LibraryModel guide](LIBRARY_MODEL_GUIDE.md)
+describes the implemented foundation. First freeze and independently review a
+model-owned read-only Save-availability projection and real post-Start proof.
+`controls_pending == false` alone is insufficient, as is a queued pre-Start
+restore. Next assign input/gesture/focus hooks, main-loop lifecycle/submission/
+storage routing, then browser model/view and painter changes. Keep one owner
+per shared file and recover existing native/browser owners before overlap.
+
+Actual app acceptance must cover startup/restart/stopped Load, original held-note
+releases across modal open/close, pending CC11 and both scopes, timeout/recovery,
+fresh final storage authorization, create-only collisions and protected paths.
+Then require full-frame/input and exact-source platform admission. Existing
+five harnesses do not complete this native journey.
+
+### 3. Preserve source boundaries and every product exit
+
+Published `03c70c1` H1/header and semantic-paint work is retained in the
+[admitted combined source](reviews/CONSOLE_SOURCE_RECONCILIATION_ADMISSION.md).
+Its original timing/source evidence stays immutable; old-source comparisons
+do not qualify changed inputs. H1/P1 support separation is limited to qualified
+domains, with a documented tiny-scale pixel overlap. Recover all
+[other owners](PLAN.md#current-ownership-and-source) before shared work.
+Preserve 47 parameters, state4/readers 1–3, 91 sources, UUIDs, 147 keys,
+24 presets, four banks and the nominal dry Engine. The
+[atlas crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md) retains physical acquisition,
+scanner G5/ScannerLineFoh, M5/M6 graphs and dry validation, R4/R5/R6, native
+accessibility, device/DAW journeys, callback deadlines/retirement, rights and
+signed release. **Literal whole-interface 1:1 remains unmet and unwaived.**
+
+**Latest test-source reconciliation:** Published `6287055` is preserved,
+including its two-file Windows helper repair and all 117 added evidence files.
+The [exact helper transition](reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
+has a separate [4/4 local qualification](development/2026-11-16-console-completion/reports/helper-transition-qualification.json).
+The predecessor's Windows run then exposed two copied-state protocol mismatches
+before title/header numerical evaluation. Its [original log and outcome](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
+remain retained; the differing leaf and cause are not yet known. Independently
+admitted failure-only diagnostics keep every equality predicate, expected value,
+numerical criterion and timeout unchanged. Their [3/3 affected local checks](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
+pass, with 582 of 587 original inputs unchanged and only five test/tool inputs
+changed in total. The actual application and all 150 application source inputs
+remain unchanged. Publication and new exact-source Windows/complete hosted
+qualification are next; no platform repair or all-green claim is made.
+
+<!-- console-next-current:end -->
+
+> The following heading/header entries retain the published track's original
+> workspace, source identities and observations. They do not assign this checkout.
 <!-- heading-title-next-current:start -->
 ## Current heading, title and header continuation — 17 November 2026
 

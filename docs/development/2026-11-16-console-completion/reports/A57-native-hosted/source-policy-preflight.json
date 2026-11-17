@@ -1,0 +1,1179 @@
+{
+  "actual_worker": "/root/w10_a57",
+  "check_count": 15,
+  "checks": {
+    "cmake_matches_A51": true,
+    "concurrency_cancel_in_progress": true,
+    "ctest_global_policy_both": true,
+    "fail_fast_disabled": true,
+    "normal_40_minutes": true,
+    "quarantine_excluded_from_sanitizer": true,
+    "required_platform_names_exact": true,
+    "sanitizer_35_minutes": true,
+    "sanitizer_leaks_and_halt": true,
+    "sanitizer_limits_exact": true,
+    "sanitizer_selection_exact": true,
+    "sanitizer_sources_exact": true,
+    "sanitizer_targets_exact": true,
+    "six_families": true,
+    "workflow_matches_A51": true
+  },
+  "child_timeouts_seconds": {
+    "header_statistics": {
+      "ordinary": 20,
+      "sanitizer": 60
+    },
+    "native_calibration": {
+      "ordinary": 15,
+      "sanitizer": 15
+    },
+    "performance_plate_numerical": {
+      "ordinary": 60,
+      "sanitizer": 60
+    },
+    "replay_paint_boundary": {
+      "ordinary": 12,
+      "sanitizer": 30
+    },
+    "semantic_paint_boundary": {
+      "ordinary": 12,
+      "sanitizer": 30
+    },
+    "title_density": {
+      "ordinary": 20,
+      "sanitizer": 20
+    }
+  },
+  "hosted_execution_observed": false,
+  "inspection_only": "AST/literal YAML and local-file hashes only. No configure, build, test, native execution, benchmark, CI trigger/rerun, Git/index/ref command, other-workspace access or child agent.",
+  "mandatory_platform_names": [
+    "python_test_capture_standalone_interface",
+    "python_test_compare_header_material",
+    "python_test_compare_performance_plate",
+    "test_standalone_channel_acceptance",
+    "test_standalone_channel_modes",
+    "test_standalone_drawing",
+    "test_standalone_expression_calibration",
+    "test_standalone_expression_diagnostics",
+    "test_standalone_footage_typography_raster",
+    "test_standalone_header_grain_bounds",
+    "test_standalone_header_material",
+    "test_standalone_header_statistics",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_inspection_raster",
+    "test_standalone_install",
+    "test_standalone_library_model",
+    "test_standalone_library_recall",
+    "test_standalone_library_roundtrip",
+    "test_standalone_library_session",
+    "test_standalone_library_storage",
+    "test_standalone_lower_rack_material_raster",
+    "test_standalone_manual_key_material_raster",
+    "test_standalone_material_acceptance",
+    "test_standalone_midi_backend",
+    "test_standalone_midi_backend_quarantine",
+    "test_standalone_midi_cli",
+    "test_standalone_midi_concurrency",
+    "test_standalone_midi_discovery",
+    "test_standalone_midi_input",
+    "test_standalone_midi_replay",
+    "test_standalone_midi_session",
+    "test_standalone_native_calibration",
+    "test_standalone_native_midi_replay",
+    "test_standalone_performance_plate",
+    "test_standalone_performance_plate_numerical",
+    "test_standalone_product_visual",
+    "test_standalone_projection",
+    "test_standalone_quad_drawing",
+    "test_standalone_reference_apron_art",
+    "test_standalone_reference_apron_raster",
+    "test_standalone_reference_apron_unavailable",
+    "test_standalone_reference_layout",
+    "test_standalone_replay_paint_boundary",
+    "test_standalone_scaled_view",
+    "test_standalone_semantic_paint_boundary",
+    "test_standalone_starter_load",
+    "test_standalone_title_density",
+    "test_standalone_upper_rack_material_raster",
+    "test_standalone_waveform_material",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspace_replay",
+    "test_standalone_workspaces_author"
+  ],
+  "native_filter": "^(test_standalone_|python_test_(compare_performance_plate|compare_header_material|capture_standalone_interface)$)",
+  "native_matrix": [
+    {
+      "c_compiler": "gcc",
+      "cxx_compiler": "g++",
+      "midi": "ON",
+      "midi_backend": "ALSA",
+      "os": "ubuntu-24.04",
+      "platform": "Linux GCC"
+    },
+    {
+      "c_compiler": "clang",
+      "cxx_compiler": "clang++",
+      "midi": "ON",
+      "midi_backend": "CoreMIDI",
+      "os": "macos-15",
+      "platform": "macOS AppleClang"
+    },
+    {
+      "c_compiler": "clang",
+      "cxx_compiler": "clang++",
+      "midi": "ON",
+      "midi_backend": "CoreMIDI",
+      "os": "macos-15-intel",
+      "platform": "macOS Intel AppleClang"
+    },
+    {
+      "c_compiler": "cl",
+      "cxx_compiler": "cl",
+      "midi": "ON",
+      "midi_backend": "WinMM",
+      "os": "windows-2022",
+      "platform": "Windows MSVC x64"
+    },
+    {
+      "c_compiler": "gcc",
+      "cxx_compiler": "g++",
+      "midi": "OFF",
+      "midi_backend": "unavailable",
+      "os": "ubuntu-24.04",
+      "platform": "Linux GCC"
+    }
+  ],
+  "native_steps": [
+    {
+      "if": null,
+      "name": "Check out the exact tested revision",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Set up Python 3.12",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Record exact source and dependency identities",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Explicitly acquire and locally verify locked external SDL2",
+      "timeout_minutes": null
+    },
+    {
+      "if": "matrix.midi == 'ON'",
+      "name": "Explicitly acquire and locally verify locked external RtMidi",
+      "timeout_minutes": null
+    },
+    {
+      "if": "runner.os == 'Linux'",
+      "name": "Install Ubuntu desktop and audio development headers",
+      "timeout_minutes": 8
+    },
+    {
+      "if": "runner.os != 'Windows'",
+      "name": "Configure native Release on Linux or macOS",
+      "timeout_minutes": null
+    },
+    {
+      "if": "runner.os == 'Windows'",
+      "name": "Configure native Release on Windows",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Retain actual compiler identities and require native SDL backends",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Build the application and every standalone acceptance input",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Verify the compiled MIDI backend and retain prepared identities",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Run all required standalone and capture acceptance tests",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Reverify source and dependencies after acceptance",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Stage, relocate, smoke and archive the exact installed payload",
+      "timeout_minutes": null
+    },
+    {
+      "if": "${{ always() }}",
+      "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+      "timeout_minutes": null
+    },
+    {
+      "if": "${{ success() }}",
+      "name": "Retain the successful executable package and byte inventory",
+      "timeout_minutes": null
+    }
+  ],
+  "normal_selected_test_properties_from_A51": {
+    "python_test_capture_standalone_interface": {
+      "ENVIRONMENT": [
+        "PYTHONDONTWRITEBYTECODE=1",
+        "HAMMOND_TEST_PROFILE=/workspace/scratch/21cce69f7784/build-native/nominal.b3p",
+        "HAMMOND_SOURCE_DIR=/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+        "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_scanner_line_probe",
+        "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_scanner_line_foh_probe",
+        "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_render",
+        "HAMMOND_CONSOLE_TRACE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_console_trace",
+        "HAMMOND_PEDAL_TRACE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_pedal_trace"
+      ]
+    },
+    "python_test_compare_header_material": {
+      "ENVIRONMENT": [
+        "PYTHONDONTWRITEBYTECODE=1",
+        "HAMMOND_TEST_PROFILE=/workspace/scratch/21cce69f7784/build-native/nominal.b3p",
+        "HAMMOND_SOURCE_DIR=/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+        "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_scanner_line_probe",
+        "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_scanner_line_foh_probe",
+        "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_render",
+        "HAMMOND_CONSOLE_TRACE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_console_trace",
+        "HAMMOND_PEDAL_TRACE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_pedal_trace"
+      ]
+    },
+    "python_test_compare_performance_plate": {
+      "ENVIRONMENT": [
+        "PYTHONDONTWRITEBYTECODE=1",
+        "HAMMOND_TEST_PROFILE=/workspace/scratch/21cce69f7784/build-native/nominal.b3p",
+        "HAMMOND_SOURCE_DIR=/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+        "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_scanner_line_probe",
+        "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_scanner_line_foh_probe",
+        "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_render",
+        "HAMMOND_CONSOLE_TRACE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_console_trace",
+        "HAMMOND_PEDAL_TRACE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/hammond_pedal_trace"
+      ]
+    },
+    "test_standalone_app": {
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "RUN_SERIAL": true,
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_audio_device": {
+      "ENVIRONMENT": [
+        "SDL_AUDIODRIVER=dummy"
+      ],
+      "TIMEOUT": 15.0
+    },
+    "test_standalone_benchmark": {
+      "LABELS": [
+        "benchmark",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_callback_allocation": {
+      "ENVIRONMENT": [
+        "SDL_AUDIODRIVER=dummy"
+      ],
+      "TIMEOUT": 15.0
+    },
+    "test_standalone_channel_acceptance": {},
+    "test_standalone_channel_modes": {},
+    "test_standalone_chapel": {
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_concurrency": {},
+    "test_standalone_device_removal": {
+      "ENVIRONMENT": [
+        "SDL_AUDIODRIVER=dummy"
+      ],
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 15.0
+    },
+    "test_standalone_drawing": {
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 15.0
+    },
+    "test_standalone_expression_calibration": {},
+    "test_standalone_expression_diagnostics": {
+      "LABELS": [
+        "midi",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_external_control": {},
+    "test_standalone_footage_typography_raster": {
+      "LABELS": [
+        "geometry",
+        "native",
+        "standalone",
+        "typography"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_header_grain_bounds": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 30.0
+    },
+    "test_standalone_header_material": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 180.0
+    },
+    "test_standalone_header_statistics": {
+      "LABELS": [
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_input_replay": {
+      "ENVIRONMENT": [
+        "SDL_VIDEODRIVER=dummy"
+      ],
+      "TIMEOUT": 15.0
+    },
+    "test_standalone_inspection_acceptance": {},
+    "test_standalone_inspection_author": {},
+    "test_standalone_inspection_raster": {
+      "LABELS": [
+        "inspection",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_install": {
+      "ENVIRONMENT": [
+        "PYTHONDONTWRITEBYTECODE=1",
+        "HAMMOND_TEST_CMAKE=/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "HAMMOND_TEST_BUILD_DIR=/workspace/scratch/21cce69f7784/build-native",
+        "HAMMOND_TEST_CONFIG=Release",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/21cce69f7784/build-native/apps/standalone/hammond_standalone",
+        "HAMMOND_SDL2_ROOT=/workspace/scratch/3edffb787db3/SDL2",
+        "HAMMOND_INSTALL_BINDIR=bin",
+        "HAMMOND_INSTALL_DATADIR=share",
+        "HAMMOND_TEST_ENABLE_MIDI=0",
+        "HAMMOND_STANDALONE_CAPABILITIES=/workspace/scratch/21cce69f7784/build-native/generated/standalone-capabilities.json",
+        "HAMMOND_RTMIDI_PREPARED_ROOT=",
+        "HAMMOND_RTMIDI_BACKEND="
+      ],
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_keyboard_rim_raster": {
+      "LABELS": [
+        "geometry",
+        "native",
+        "rim",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_library_model": {},
+    "test_standalone_library_recall": {},
+    "test_standalone_library_roundtrip": {},
+    "test_standalone_library_session": {},
+    "test_standalone_library_storage": {},
+    "test_standalone_lower_rack_material_raster": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_manual_key_material_raster": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_material_acceptance": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_midi_backend": {
+      "LABELS": [
+        "backend",
+        "standalone"
+      ],
+      "TIMEOUT": 30.0
+    },
+    "test_standalone_midi_backend_quarantine": {
+      "ENVIRONMENT": [
+        "ASAN_OPTIONS=detect_leaks=0:halt_on_error=1"
+      ],
+      "LABELS": [
+        "backend",
+        "intentional-quarantine",
+        "standalone"
+      ],
+      "TIMEOUT": 30.0
+    },
+    "test_standalone_midi_cli": {
+      "LABELS": [
+        "midi",
+        "native",
+        "standalone"
+      ],
+      "RUN_SERIAL": true,
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_midi_concurrency": {
+      "LABELS": [
+        "concurrency",
+        "standalone"
+      ],
+      "TIMEOUT": 45.0
+    },
+    "test_standalone_midi_discovery": {},
+    "test_standalone_midi_input": {},
+    "test_standalone_midi_replay": {},
+    "test_standalone_midi_session": {},
+    "test_standalone_native_calibration": {
+      "LABELS": [
+        "midi",
+        "native",
+        "standalone"
+      ],
+      "RUN_SERIAL": true,
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_native_midi_replay": {
+      "LABELS": [
+        "midi",
+        "native",
+        "standalone"
+      ],
+      "RUN_SERIAL": true,
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_percussion_raster": {
+      "LABELS": [
+        "geometry",
+        "native",
+        "percussion",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_percussion_reference": {},
+    "test_standalone_performance_plate": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "performance-plate",
+        "standalone"
+      ],
+      "TIMEOUT": 180.0
+    },
+    "test_standalone_performance_plate_numerical": {
+      "LABELS": [
+        "material",
+        "native",
+        "numerical",
+        "performance-plate",
+        "standalone"
+      ],
+      "TIMEOUT": 180.0
+    },
+    "test_standalone_preset_concurrency": {},
+    "test_standalone_preset_raster": {
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 30.0
+    },
+    "test_standalone_preset_ui": {},
+    "test_standalone_product_visual": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_projection": {},
+    "test_standalone_quad_drawing": {
+      "LABELS": [
+        "geometry",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 30.0
+    },
+    "test_standalone_reference_apron_art": {
+      "LABELS": [
+        "native",
+        "reference-apron",
+        "standalone"
+      ],
+      "TIMEOUT": 30.0
+    },
+    "test_standalone_reference_apron_raster": {
+      "LABELS": [
+        "native",
+        "reference-apron",
+        "standalone"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_reference_apron_unavailable": {
+      "LABELS": [
+        "fallback",
+        "native",
+        "reference-apron",
+        "standalone"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_reference_layout": {},
+    "test_standalone_registration_library": {
+      "LABELS": [
+        "filesystem",
+        "library",
+        "standalone"
+      ],
+      "TIMEOUT": 30.0
+    },
+    "test_standalone_replay_boundaries": {
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_replay_paint_boundary": {
+      "LABELS": [
+        "native",
+        "standalone",
+        "workspace"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_scaled_view": {
+      "LABELS": [
+        "native",
+        "standalone",
+        "workspace"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_semantic_paint_boundary": {
+      "LABELS": [
+        "native",
+        "standalone",
+        "workspace"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_session": {},
+    "test_standalone_starter_load": {
+      "LABELS": [
+        "native",
+        "registration",
+        "standalone"
+      ],
+      "RUN_SERIAL": true,
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_state_files": {},
+    "test_standalone_title_density": {
+      "LABELS": [
+        "native",
+        "standalone",
+        "typography"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_typography_clips": {
+      "LABELS": [
+        "geometry",
+        "native",
+        "standalone",
+        "typography"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_ui": {},
+    "test_standalone_upper_rack_material_raster": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_waveform_material": {
+      "LABELS": [
+        "geometry",
+        "material",
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_whole_reference": {},
+    "test_standalone_workflows": {
+      "LABELS": [
+        "native",
+        "standalone"
+      ],
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_workspace_acceptance": {},
+    "test_standalone_workspace_continuity": {},
+    "test_standalone_workspace_raster": {
+      "LABELS": [
+        "geometry",
+        "native",
+        "standalone",
+        "workspace"
+      ],
+      "TIMEOUT": 60.0
+    },
+    "test_standalone_workspace_replay": {
+      "LABELS": [
+        "native",
+        "standalone",
+        "workspace"
+      ],
+      "RUN_SERIAL": true,
+      "TIMEOUT": 90.0
+    },
+    "test_standalone_workspaces_author": {}
+  },
+  "observed_utc": "2026-11-17T06:10:14.198764+00:00",
+  "policy": {
+    "ctest_global_timeout_seconds": 180,
+    "ctest_parallelism": 1,
+    "job_budgets_minutes": {
+      "native": 40,
+      "native-sanitizers": 35
+    },
+    "library_gate_timeout": "No explicit CTest property; CI global default 180 seconds.",
+    "required_empty_selection_policy": "--no-tests=error",
+    "sanitizer_environment": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+    }
+  },
+  "preserved_limits": [
+    "Other-owner 6287055 CI is not accepted as console qualification.",
+    "Earlier 46 build/78 test/15 capture result does not qualify the fresh helper fixture or new hosted source.",
+    "Normal preset raster keeps 30-second guard; sanitizer keeps 300 seconds.",
+    "Original failures/timeouts/cancellations remain preserved; no automatic retry or timeout relaxation is authorized.",
+    "Whole-interface 1:1, hardware/display/DAW, native accessibility, OS callback retirement, physical fidelity and signed release remain separate."
+  ],
+  "prior_discovery_count": 78,
+  "prior_discovery_scope": "A51 static existing discovery; future actual exact-source hosted discovery and execution must be observed independently.",
+  "publication_sha": null,
+  "python_tools": {
+    "python_test_capture_standalone_interface": "tests/test_capture_standalone_interface.py",
+    "python_test_compare_header_material": "tests/test_compare_header_material.py",
+    "python_test_compare_performance_plate": "tests/test_compare_performance_plate.py"
+  },
+  "repository": "tomasedisonn80/Hammond-B3-Organ",
+  "run_serial_names": [
+    "test_standalone_app",
+    "test_standalone_midi_cli",
+    "test_standalone_native_calibration",
+    "test_standalone_native_midi_replay",
+    "test_standalone_starter_load",
+    "test_standalone_workspace_replay"
+  ],
+  "sanitizer_limits_seconds": {
+    "test_standalone_footage_typography_raster": 240,
+    "test_standalone_header_grain_bounds": 90,
+    "test_standalone_header_material": 480,
+    "test_standalone_header_statistics": 240,
+    "test_standalone_inspection_raster": 60,
+    "test_standalone_lower_rack_material_raster": 240,
+    "test_standalone_manual_key_material_raster": 240,
+    "test_standalone_material_acceptance": 60,
+    "test_standalone_native_calibration": 180,
+    "test_standalone_performance_plate": 480,
+    "test_standalone_performance_plate_numerical": 480,
+    "test_standalone_preset_raster": 300,
+    "test_standalone_product_visual": 240,
+    "test_standalone_reference_apron_art": 30,
+    "test_standalone_reference_apron_raster": 60,
+    "test_standalone_reference_apron_unavailable": 60,
+    "test_standalone_replay_paint_boundary": 90,
+    "test_standalone_scaled_view": 360,
+    "test_standalone_semantic_paint_boundary": 90,
+    "test_standalone_title_density": 240,
+    "test_standalone_upper_rack_material_raster": 240,
+    "test_standalone_workspace_raster": 180
+  },
+  "sanitizer_source_inventory": {
+    ".github/workflows/standalone.yml": {
+      "bytes": 78398,
+      "sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659"
+    },
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "apps/standalone/AudioDevice.cpp": {
+      "bytes": 12072,
+      "sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 46805,
+      "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07"
+    },
+    "apps/standalone/Drawing.cpp": {
+      "bytes": 22378,
+      "sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a"
+    },
+    "apps/standalone/Drawing.h": {
+      "bytes": 2617,
+      "sha256": "36663f449abfbf01c755b8ab718b2a75252709b68ed38df9452d446ea82289f3"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "bytes": 179890,
+      "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+    },
+    "apps/standalone/LibraryModel.cpp": {
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98"
+    },
+    "apps/standalone/LibraryModel.h": {
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2"
+    },
+    "apps/standalone/MidiDevice.cpp": {
+      "bytes": 22400,
+      "sha256": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324"
+    },
+    "apps/standalone/MidiInput.cpp": {
+      "bytes": 12250,
+      "sha256": "4ddd655fb4a21040f2f83228fb23e38f98d0abe21d5bce7f0e28d064b5b7477c"
+    },
+    "apps/standalone/RegistrationLibrary.cpp": {
+      "bytes": 39180,
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc"
+    },
+    "apps/standalone/RegistrationLibrary.h": {
+      "bytes": 5982,
+      "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb"
+    },
+    "apps/standalone/ScriptedInput.cpp": {
+      "bytes": 22586,
+      "sha256": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23"
+    },
+    "apps/standalone/Session.cpp": {
+      "bytes": 31176,
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3"
+    },
+    "apps/standalone/StateFiles.cpp": {
+      "bytes": 4844,
+      "sha256": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6"
+    },
+    "apps/standalone/StateFiles.h": {
+      "bytes": 789,
+      "sha256": "ccf0aa7cb6d88df7c5e582a6154a12d28d9db97ab97d2833529ba8a328354a67"
+    },
+    "apps/standalone/UiModel.cpp": {
+      "bytes": 83993,
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+    },
+    "apps/standalone/UiModel.h": {
+      "bytes": 18956,
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+    },
+    "apps/standalone/main.cpp": {
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": {
+      "bytes": 5011,
+      "sha256": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6"
+    },
+    "apps/standalone/native_tests/fake_calibration/RtMidi.h": {
+      "bytes": 12049,
+      "sha256": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041"
+    },
+    "apps/standalone/native_tests/reference_apron_unavailable_texture.cpp": {
+      "bytes": 650,
+      "sha256": "a961981834c279397e25275c569c61fe08daee0747f3559db4a5ca839b1b37ce"
+    },
+    "apps/standalone/native_tests/test_standalone_app.py": {
+      "bytes": 63706,
+      "sha256": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236"
+    },
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49033,
+      "sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
+    },
+    "apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp": {
+      "bytes": 10554,
+      "sha256": "254f66fbd3f2ab86b63000d5eb8f59826775c1db61752c0ac4e173029494fc0a"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61275,
+      "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "bytes": 34239,
+      "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+    },
+    "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp": {
+      "bytes": 49894,
+      "sha256": "dbe8359fa9678f5ca2cc11b10868f78ed91aae94dfb47f312da0f5831857d580"
+    },
+    "apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp": {
+      "bytes": 67603,
+      "sha256": "5dcd41e4ee2e0ceb3ff106b2b6efca5dd63f680b4dd9221a9e6b2038d34b6b3e"
+    },
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+      "bytes": 54939,
+      "sha256": "fa2e957bc49fc104aaba2b9a16cc671549018a133157841ad3f58d7362602fcf"
+    },
+    "apps/standalone/native_tests/test_standalone_native_calibration.py": {
+      "bytes": 31325,
+      "sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75570,
+      "sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    },
+    "apps/standalone/native_tests/test_standalone_product_visual.cpp": {
+      "bytes": 42436,
+      "sha256": "f9b6d76250cb10d9c75210b8bccae8c426bde079fc49c0b29650952aaa48c040"
+    },
+    "apps/standalone/native_tests/test_standalone_reference_apron_art.cpp": {
+      "bytes": 16146,
+      "sha256": "3d27f16a145e1da94052c31979914a83e32d31b9da8129f236eb5edbba42a8cd"
+    },
+    "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp": {
+      "bytes": 51184,
+      "sha256": "59cecf6ba99bf9361f506954758a500845f2298bf934ceef27ba69d995743f73"
+    },
+    "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py": {
+      "bytes": 14225,
+      "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822"
+    },
+    "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py": {
+      "bytes": 16743,
+      "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 23467,
+      "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2"
+    },
+    "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp": {
+      "bytes": 49011,
+      "sha256": "c67f00c7f62693552521d0b05bd131ec6ccfdc9fa71901882114ad7c90688bb0"
+    },
+    "apps/standalone/native_tests/test_standalone_workflows.py": {
+      "bytes": 41796,
+      "sha256": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+    },
+    "apps/standalone/tests/test_standalone_channel_acceptance.cpp": {
+      "bytes": 16647,
+      "sha256": "22dc6f09c3c89395dfb7c2cf24a7655649fbf020c140f68d32285ac26896533d"
+    },
+    "apps/standalone/tests/test_standalone_channel_modes.cpp": {
+      "bytes": 10082,
+      "sha256": "fad048ad48995d300c348d8b346ca0174b8b46dce615ee9314d3527277914037"
+    },
+    "apps/standalone/tests/test_standalone_expression_calibration.cpp": {
+      "bytes": 8850,
+      "sha256": "bde29561dba7853b96c6eb92f32b8fff12b2c99dd4891dbe6c9be951245dc061"
+    },
+    "apps/standalone/tests/test_standalone_library_model.cpp": {
+      "bytes": 79171,
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d"
+    },
+    "apps/standalone/tests/test_standalone_library_recall.cpp": {
+      "bytes": 44191,
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae"
+    },
+    "apps/standalone/tests/test_standalone_library_roundtrip.cpp": {
+      "bytes": 34998,
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0"
+    },
+    "apps/standalone/tests/test_standalone_library_session.cpp": {
+      "bytes": 47769,
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279"
+    },
+    "apps/standalone/tests/test_standalone_library_storage.cpp": {
+      "bytes": 39345,
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793"
+    },
+    "assets/standalone/reference-apron-v1/apron.rgba.gz": {
+      "bytes": 61162,
+      "sha256": "87387e6c0bbd54012f0e0b23560175781a6515483b047822e4b64e4adfaac06c"
+    },
+    "assets/standalone/reference-apron-v1/manifest.json": {
+      "bytes": 2416,
+      "sha256": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8"
+    },
+    "cmake/VerifySdl2.cmake": {
+      "bytes": 1334,
+      "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e"
+    },
+    "data/dependencies/sdl2-lock.json": {
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    "docs/design/PERFORMANCE_PLATE_P1_CONTRACT.md": {
+      "bytes": 18037,
+      "sha256": "20c8839d38229bf24d983eac0baad7381f601c4e6763bbbe556bcdfa6c75ae45"
+    },
+    "docs/development/2026-11-16-console-completion/reports/p1-authoring.json": {
+      "bytes": 40032,
+      "sha256": "f25c5c479c6c1ffb304028c8a306a7873f155eec6f6d5f9831ed6e93862290e2"
+    },
+    "tests/test_capture_standalone_interface.py": {
+      "bytes": 58181,
+      "sha256": "a4148ccaf5343934bec07068518a3c7e80172f67355ef2757f5ef773814b8a56"
+    },
+    "tests/test_compare_header_material.py": {
+      "bytes": 25550,
+      "sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125"
+    },
+    "tests/test_compare_performance_plate.py": {
+      "bytes": 34820,
+      "sha256": "cba6e56cbcf7dd3fe16924e21ae0f1bec2d76215a7df4abcbede600be327bd8c"
+    },
+    "tools/acquire_sdl2.py": {
+      "bytes": 10546,
+      "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3"
+    },
+    "tools/capture_standalone_interface.py": {
+      "bytes": 41587,
+      "sha256": "ad0b813a378f259e471a9b2901902cc4f75f0ba7feb021e6c3c1c929bdb5b487"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 98489,
+      "sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 84566,
+      "sha256": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923"
+    },
+    "tools/compile_reference_apron.py": {
+      "bytes": 14273,
+      "sha256": "13d8fbbeafb482332d7be4909ad8e2338632bd98797813233c84289ca3b57aac"
+    }
+  },
+  "sanitizer_steps": [
+    {
+      "if": null,
+      "name": "Check out the exact tested revision",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Set up Python 3.12",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Record the revision, sanitizer policy and tools",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Explicitly acquire and locally verify locked external SDL2",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Install Ubuntu desktop and audio development headers",
+      "timeout_minutes": 8
+    },
+    {
+      "if": null,
+      "name": "Configure native Release with project and SDL sanitizers",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Build the thirty-seven selected acceptance inputs",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Discover exactly forty-one gates and run with leak checking",
+      "timeout_minutes": null
+    },
+    {
+      "if": null,
+      "name": "Reverify source and locked SDL2 after acceptance",
+      "timeout_minutes": null
+    },
+    {
+      "if": "${{ always() }}",
+      "name": "Retain native sanitizer diagnostics",
+      "timeout_minutes": null
+    }
+  ],
+  "sanitizer_targets": [
+    "hammond_standalone",
+    "hammond_standalone_calibration_probe",
+    "test_standalone_channel_acceptance",
+    "test_standalone_channel_modes",
+    "test_standalone_drawing",
+    "test_standalone_expression_calibration",
+    "test_standalone_footage_typography_raster",
+    "test_standalone_header_grain_bounds",
+    "test_standalone_header_material",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_inspection_raster",
+    "test_standalone_library_model",
+    "test_standalone_library_recall",
+    "test_standalone_library_roundtrip",
+    "test_standalone_library_session",
+    "test_standalone_library_storage",
+    "test_standalone_lower_rack_material_raster",
+    "test_standalone_manual_key_material_raster",
+    "test_standalone_material_acceptance",
+    "test_standalone_performance_plate",
+    "test_standalone_preset_raster",
+    "test_standalone_preset_ui",
+    "test_standalone_product_visual",
+    "test_standalone_projection",
+    "test_standalone_quad_drawing",
+    "test_standalone_reference_apron_art",
+    "test_standalone_reference_apron_raster",
+    "test_standalone_reference_apron_unavailable",
+    "test_standalone_reference_layout",
+    "test_standalone_scaled_view",
+    "test_standalone_ui",
+    "test_standalone_upper_rack_material_raster",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspaces_author"
+  ],
+  "sanitizer_test_to_target": {
+    "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+    "test_standalone_channel_modes": "test_standalone_channel_modes",
+    "test_standalone_drawing": "test_standalone_drawing",
+    "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+    "test_standalone_footage_typography_raster": "test_standalone_footage_typography_raster",
+    "test_standalone_header_grain_bounds": "test_standalone_header_grain_bounds",
+    "test_standalone_header_material": "test_standalone_header_material",
+    "test_standalone_header_statistics": "test_standalone_header_material",
+    "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author": "test_standalone_inspection_author",
+    "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+    "test_standalone_library_model": "test_standalone_library_model",
+    "test_standalone_library_recall": "test_standalone_library_recall",
+    "test_standalone_library_roundtrip": "test_standalone_library_roundtrip",
+    "test_standalone_library_session": "test_standalone_library_session",
+    "test_standalone_library_storage": "test_standalone_library_storage",
+    "test_standalone_lower_rack_material_raster": "test_standalone_lower_rack_material_raster",
+    "test_standalone_manual_key_material_raster": "test_standalone_manual_key_material_raster",
+    "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+    "test_standalone_native_calibration": "hammond_standalone_calibration_probe",
+    "test_standalone_performance_plate": "test_standalone_performance_plate",
+    "test_standalone_performance_plate_numerical": "test_standalone_performance_plate",
+    "test_standalone_preset_raster": "test_standalone_preset_raster",
+    "test_standalone_preset_ui": "test_standalone_preset_ui",
+    "test_standalone_product_visual": "test_standalone_product_visual",
+    "test_standalone_projection": "test_standalone_projection",
+    "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+    "test_standalone_reference_apron_art": "test_standalone_reference_apron_art",
+    "test_standalone_reference_apron_raster": "test_standalone_reference_apron_raster",
+    "test_standalone_reference_apron_unavailable": "test_standalone_reference_apron_unavailable",
+    "test_standalone_reference_layout": "test_standalone_reference_layout",
+    "test_standalone_replay_paint_boundary": "hammond_standalone",
+    "test_standalone_scaled_view": "test_standalone_scaled_view",
+    "test_standalone_semantic_paint_boundary": "hammond_standalone",
+    "test_standalone_title_density": "test_standalone_footage_typography_raster",
+    "test_standalone_ui": "test_standalone_ui",
+    "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+    "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+    "test_standalone_workspaces_author": "test_standalone_workspaces_author"
+  },
+  "schema_version": 1,
+  "source_binding": "Current local source-policy snapshot only; no Git/index/ref access. Parent owns exact publication identity and will supply actual SHA.",
+  "source_snapshots": {
+    "prepublication-standalone-cmake.txt.gz": {
+      "gzip_bytes": 6523,
+      "gzip_sha256": "392503feb9c415d68773177f1a87f3862a8b5c8d9326eab3d8e028f2e49111ac",
+      "original_bytes": 46805,
+      "original_sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+      "source_path": "apps/standalone/CMakeLists.txt"
+    },
+    "prepublication-standalone-workflow.yml.gz": {
+      "gzip_bytes": 16920,
+      "gzip_sha256": "c4c980482545eefd0069986cc8c3b909bc6457c6c59f258df2b51de2c2d9e103",
+      "original_bytes": 78398,
+      "original_sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659",
+      "source_path": ".github/workflows/standalone.yml"
+    }
+  },
+  "status": "PREPUBLICATION_SOURCE_POLICY_RECOVERED_AWAIT_ACTUAL_ROOT_PUBLICATION_SHA",
+  "wave": 10,
+  "worker": "A57",
+  "workflow_path": ".github/workflows/standalone.yml"
+}

@@ -1,5 +1,80 @@
 # Development status
 
+<!-- console-status-current:start -->
+<a id="current-console-continuation--17-november-2026"></a>
+## Current console continuation — 16 November 2026
+
+Use the [current handoff](CONSOLE_COMPLETION_HANDOFF.md),
+[setup](CONSOLE_SETUP_AND_HANDOFF.md), [checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-console-completion/assignments.json) and
+[root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
+This session starts at `9d60dbf462a90fe422fd4e69757fe202264acb7c`; the working
+source now preserves fresh published `03c70c1` H1/header and semantic-paint work.
+Its six new readers covered [all 500 pages](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
+The required sixty actual workers/ten waves are counted only in this session's ledger.
+
+### Implemented behavior and source-bound evidence
+
+LibraryModel owns copied catalog, selection, draft and named-operation state.
+Registration recall preserves latest desired expression; Performance restores
+saved expression. The validated `UiModel::recall_controls` publishes one whole
+control action even for equal values and preserves the legacy saved baseline.
+Read the [guide](LIBRARY_MODEL_GUIDE.md) and [source admission](reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md).
+Native browser and main-loop library hooks remain absent.
+
+| Recorded gate | Result and evidence boundary |
+| --- | --- |
+| [Combined qualification](development/2026-11-16-console-completion/reports/combined-qualification.json) | **46/46 build steps; 78/78 affected CTests; 15/15 captures**. All 587 production/test/build inputs stayed unchanged. The selection includes every standalone test and three comparator/capture Python suites; it is not a full 251-test rerun. |
+| [Combined gallery admission](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md) | All 69 payloads verified; reference and sixty retained full frames inspected. Current seven active views retain exact P1/H1 material-support pixels against their qualified predecessors. README displays this actual gallery. |
+| [Library foundation](development/2026-11-16-console-completion/reports/library-integrated-result.json) | **5/5 suites pass** across model, real Session, real filesystem with synthetic proof, public-API recall and combined roundtrips. Also included in the combined run; native browser routing is unimplemented. |
+| [SDK-free configuration](reviews/CONSOLE_HEADLESS_ADMISSION.md) | Fresh Linux Release build and **12/12 selected tests** pass without SDL/RtMidi/VST3 dependencies. |
+| [First full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json) | **246/247**, exit 8. The only failure was repository integrity while A33's linked report was unwritten. Preserve this failure and record the affected document rerun separately. |
+| [P1 paired v2](development/2026-11-16-console-completion/reports/p1-paired-v2-summary.json) | **62 screens, 34 pairs, 74,008,097 pixel positions**, zero forbidden changes. Original v1 metadata-oracle failure and both sets of streams remain retained. |
+| [P1 timing](development/2026-11-16-console-completion/reports/p1-timing-summary.json) | One eight-process, 2,400-sample batch has no investigation signal and passes its exact Flat cross-witness gate. Pre-helper/pre-H1 source only; descriptive shared-host evidence does not establish equivalence or a deadline. |
+| [Combined source](reviews/CONSOLE_SOURCE_RECONCILIATION_ADMISSION.md) and [CI gate audit](reviews/CONSOLE_CI_GATE_ADMISSION.md) | Exact H1/P1 addition and published main preserved. All persistent gates remain: 41 sanitizer checks/37 targets, 55 mandatory native platform checks, original per-test bounds and serial policies. |
+
+Current app SHA-256 is `3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9`.
+The [manifest](design/native-gallery-console-combined/manifest.json) binds the
+fifteen actual captures. Earlier galleries, failures, timing, binaries and
+source pins retain their original scope. Staged review, separate document
+qualification, actual publication and exact-source hosted outcomes are tracked
+in the live checkpoint; local passes supply no new Windows/macOS execution.
+
+### Workspace and next implementation
+
+Root owns `/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and its single
+coordinated `../build-native`. Read-only pinned dependencies are under
+`/workspace/scratch/3edffb787db3`; `../a32-headless` was separately authorized.
+Use the [setup guide](CONSOLE_SETUP_AND_HANDOFF.md). Other sessions' checkouts,
+indexes, builds and evidence remain read-only.
+
+Follow the [native plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md): model-owned
+Save availability and actual post-Start proof precede browser/main wiring and
+modal held-input routing. Preserve all [owner boundaries](PLAN.md#current-ownership-and-source)
+and [M0–M9 exits](PLAN.md#milestones-and-exit-evidence). H1/P1 supports are
+separate at qualified fixture scales and actual scale-1 captures; arbitrarily
+tiny positive scales can alias a pixel. **Literal whole-interface 1:1 remains
+unmet and unwaived.** Real device/display/DPI/DAW journeys, native accessibility,
+callback lifetime/deadlines, physical fidelity, rights and signed release remain separate.
+
+**Latest test-source reconciliation:** Published `6287055` is preserved,
+including its two-file Windows helper repair and all 117 added evidence files.
+The [exact helper transition](reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
+has a separate [4/4 local qualification](development/2026-11-16-console-completion/reports/helper-transition-qualification.json).
+The predecessor's Windows run then exposed two copied-state protocol mismatches
+before title/header numerical evaluation. Its [original log and outcome](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
+remain retained; the differing leaf and cause are not yet known. Independently
+admitted failure-only diagnostics keep every equality predicate, expected value,
+numerical criterion and timeout unchanged. Their [3/3 affected local checks](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
+pass, with 582 of 587 original inputs unchanged and only five test/tool inputs
+changed in total. The actual application and all 150 application source inputs
+remain unchanged. Publication and new exact-source Windows/complete hosted
+qualification are next; no platform repair or all-green claim is made.
+
+<!-- console-status-current:end -->
+
+> The following heading/header entries retain the published track's original
+> workspace, source identities and observations. They do not assign this checkout.
 <!-- heading-title-status-current:start -->
 ## Current heading, title and header continuation — 17 November 2026
 

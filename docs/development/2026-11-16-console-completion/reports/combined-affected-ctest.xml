@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="78"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="2e92012a1646"
+	time="541"
+	timestamp="2026-11-16T22:24:20"
+	>
+	<testcase name="python_test_capture_standalone_interface" classname="python_test_capture_standalone_interface" time="1.48844" status="run">
+		<properties/>
+		<system-out>.............................................
+----------------------------------------------------------------------
+Ran 45 tests in 1.293s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_compare_header_material" classname="python_test_compare_header_material" time="0.800892" status="run">
+		<properties/>
+		<system-out>.................
+----------------------------------------------------------------------
+Ran 17 tests in 0.368s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_compare_performance_plate" classname="python_test_compare_performance_plate" time="0.829715" status="run">
+		<properties/>
+		<system-out>.............................................
+----------------------------------------------------------------------
+Ran 45 tests in 0.612s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_install" classname="test_standalone_install" time="8.65637" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>{"binary_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "unavailable", "midi_enabled": false, "payload_files": 17, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 58, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 29696, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_channel_acceptance" classname="test_standalone_channel_acceptance" time="0.0075576" status="run">
+		<properties/>
+		<system-out>channel acceptance: 2 saturated batches, 3444 invalid typed scopes, 3 partial-ack reset cases, 812 exact stereo sample comparisons passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_channel_modes" classname="test_standalone_channel_modes" time="0.00774833" status="run">
+		<properties/>
+		<system-out>standalone channel modes: isolation, ideal silence, continuity and admission passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_concurrency" classname="test_standalone_concurrency" time="0.106702" status="run">
+		<properties/>
+		<system-out>Session concurrency cleanup: exception-unwind stop observed, worker joined
+Session concurrency: 8192 ordered posts, 490 free callbacks, 8189 posts observed the callback activity flag; 64 recovery epochs, 256 recovery callbacks, 14999 accepted = 3648 applied + 32 rejected + 11319 discarded; 64 immediate rejects, 32 overflows, 3081 recovery-pending posts; 256 exhausted reads preserved
+Controlled recovery boundaries: 4 epochs, 96 pre-render posts pending, 96 pre-render admitted posts discarded, 192 post-render posts accepted after ack
+Concurrent recovery schedules: 60 epochs, 2953 posts pending, 2807 admitted posts discarded, 0 posts accepted after ack
+Active overflow: 16 rounds, 48 callbacks, 1 controlled after-callback overflow deferred, 15 QueueFull calls observed the activity flag, 15 flagged recoveries deferred past that callback; 4176 accepted = 80 applied + 4096 discarded
+free reader 0: 5664 coherent, 3 busy preserved, 491 distinct revisions, 5567 activity-flag attempts, 4 -&gt; 984 exact publication checkpo...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_expression_calibration" classname="test_standalone_expression_calibration" time="0.00714094" status="run">
+		<properties/>
+		<system-out>standalone expression calibration: endpoints, immutable epochs and reset pipeline passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_external_control" classname="test_standalone_external_control" time="0.00464988" status="run">
+		<properties/>
+		<system-out>External controls preserve shared pending UI intent
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_inspection_acceptance" classname="test_standalone_inspection_acceptance" time="0.00684685" status="run">
+		<properties/>
+		<system-out>Inspection independent acceptance passed: 34 source-qualified rows, actual Session commands, three-division UI/MIDI ownership and count units, four selections per manual, real failed reads, owned immutable copies and finite admission.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_inspection_author" classname="test_standalone_inspection_author" time="0.00509475" status="run">
+		<properties/>
+		<system-out>Inspection author checks passed: bounded copied facts, held-count units, truthful models and observations.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_model" classname="test_standalone_library_model" time="0.00447005" status="run">
+		<properties/>
+		<system-out>Independent LibraryModel contract: 32 groups, 3250 assertions, 0 failed groups
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_recall" classname="test_standalone_library_recall" time="0.0134474" status="run">
+		<properties/>
+		<system-out>PASS complete snapshot and copied lifetime
+PASS clean equal recall and sequence
+PASS dirty equal recall and supersession
+PASS retained baseline and legacy Load/Save
+PASS invalid complete snapshot atomicity
+PASS presentation and original UI owners
+PASS active parameter and pointer gestures
+PASS synchronous recall rejection
+PASS resolved rejection and recovery observations
+Standalone named recall: 9 groups, 743728 assertions, 98 invalid snapshots, 72 presentation/owner contexts, 0 failures (synthetic UiModel boundary inputs)
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_roundtrip" classname="test_standalone_library_roundtrip" time="0.0101187" status="run">
+		<properties/>
+		<system-out>library_roundtrip groups=4 checks=1489 snapshots=138 renders=20 posts=24 library_reports=24 ui_reports=24 ordinary_intents=12 recall_dispatches=4 storage_calls=7 authorizer_calls=7 failures=0 Session=real storage=real native_browser=unqualified
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_session" classname="test_standalone_library_session" time="0.0240027" status="run">
+		<properties/>
+		<system-out>Real Session LibraryModel boundary: 12 groups, 42634 assertions, 696 real snapshots, 150 renders, 428 accepted posts, 6252 bit-exact paired stereo samples, 10101 source-phase checks, 60 percussion-history checks, 0 failed groups
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_storage" classname="test_standalone_library_storage" time="0.0146922" status="run">
+		<properties/>
+		<system-out>library_storage groups=9 checks=1115 failures=0 control_proof=synthetic filesystem=real
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_concurrency" classname="test_standalone_midi_concurrency" time="0.0971922" status="run">
+		<properties>
+			<property name="cmake_labels" value="concurrency;standalone"/>
+		</properties>
+		<system-out>Standalone MIDI concurrency: 262436 FIFO transfers across 4 epochs; 8 joined fault races; explicit capacity overflow passed.
+Observed 281887 pushes, 344956 pops, 279113 decodes, 1026 fault signals: zero C++ allocations/deallocations in every measured operation.
+Calibration separately observed all 12 C++ allocation and deallocation overload paths on the main thread and each worker; no physical/backend/timing qualification implied.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_discovery" classname="test_standalone_midi_discovery" time="0.00783377" status="run">
+		<properties/>
+		<system-out>MIDI discovery: blocked probe permits 4096 owner polls; exact results, failures, exceptions, single-worker admission, 32 generations and joined cleanup passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_input" classname="test_standalone_midi_input" time="0.004071" status="run">
+		<properties/>
+		<system-out>Standalone MIDI inbox/decoder acceptance: 10 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_replay" classname="test_standalone_midi_replay" time="0.00791738" status="run">
+		<properties/>
+		<system-out>Standalone MIDI replay acceptance: 8 scenarios passed; 18 parsed, 237 parse rejections, 3 loaded, 13 load rejections, 0 capability skips
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_session" classname="test_standalone_midi_session" time="0.04036" status="run">
+		<properties/>
+		<system-out>MIDI/Session/UI acceptance: 26 scenarios, 197 decoded packets, 308 commands, 343 callbacks, 17466 finite stereo samples, 8433 physical-reference sample comparisons, 5622 timestamp/velocity/partition sample comparisons
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_percussion_reference" classname="test_standalone_percussion_reference" time="0.0112803" status="run">
+		<properties/>
+		<system-out>Independent percussion acceptance: frozen geometry, predicate/target boundaries, transactional layout rejection, semantic controls/repeats, focus/reflow, and pending/applied MIDI/UI ownership passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_concurrency" classname="test_standalone_preset_concurrency" time="0.020144" status="run">
+		<properties/>
+		<system-out>preset Session concurrency: rates=3 controlled_pending=192 restored_snapshots=3264 callbacks=235 observer_reads=12138 busy_reads=1 copied_state4_saves=19 hidden_fixed_observations=152 hidden_none_observations=17 queue_recoveries=6 discarded_restores=1536 rejected_calls=24 exact_priming_stereo_samples=768 exact_future_stereo_samples=1524 audible_stereo_samples=2292
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_ui" classname="test_standalone_preset_ui" time="0.598818" status="run">
+		<properties/>
+		<system-out>Independent preset UI acceptance: 12 layouts, 604618 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_projection" classname="test_standalone_projection" time="0.398351" status="run">
+		<properties/>
+		<system-out>projection matrix: 528 layouts, 77616 playing-key records, 12672 preset records
+independent projection, silhouette, half-open ownership and rollback acceptance passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_reference_layout" classname="test_standalone_reference_layout" time="0.0351323" status="run">
+		<properties/>
+		<system-out>Independent reference layout: 78 layouts, 11466 playing-key records, 5304 control records including 1872 presets, 2366 unique focus stops, 144 empty-gap hits, 8 old-location classifications, 24 literal landmark layouts; passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_registration_library" classname="test_standalone_registration_library" time="0.0338608" status="run">
+		<properties>
+			<property name="cmake_labels" value="filesystem;library;standalone"/>
+		</properties>
+		<system-out>registration_library checks=195 symlink_unavailable=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_session" classname="test_standalone_session" time="0.349248" status="run">
+		<properties/>
+		<system-out>standalone Session acceptance: 9 rate/partition scores, 4929 successful renders, 157552 bit-exact stereo samples, 6432 partition samples, 15860 coherent snapshots, 5563 accepted posts, 534 rejected posts, 20 rejected renders, 70 future-output probes, 1600 fixed-mode publications
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_state_files" classname="test_standalone_state_files" time="0.00812379" status="run">
+		<properties/>
+		<system-out>TESTED: regular and dangling symbolic-link load/save rejection
+TESTED: failed write under RLIMIT_FSIZE and temporary cleanup
+NOT TESTED: POSIX failed replacement after a complete temporary write; no deterministic non-racing fixture
+Standalone state-file acceptance: 7 scenarios completed; platform exclusions are reported above
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_ui" classname="test_standalone_ui" time="0.111013" status="run">
+		<properties/>
+		<system-out>Standalone UI acceptance: 9 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_whole_reference" classname="test_standalone_whole_reference" time="0.179359" status="run">
+		<properties/>
+		<system-out>whole reference: 52 canonical layouts, 380 inactive predicate cases, 3536 controls, 7644 key quads, 624 exact preset joins, 4368 exact natural joins; 544 pointer and 544 keyboard control journeys, 441 pointer and 441 keyboard note journeys; passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_acceptance" classname="test_standalone_workspace_acceptance" time="0.0443583" status="run">
+		<properties/>
+		<system-out>Workspace acceptance: 42 layout/mode/view cases, 5740 hidden semantic/pointer rejections, 56 focus-memory returns, 2041 atomic invalid operations, 14 real-Session ownership runs, 63 closed parameter gestures, 120 shortcut suppression cases passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_continuity" classname="test_standalone_workspace_continuity" time="5.2217" status="run">
+		<properties/>
+		<system-out>case kind=registration variant=0 rate=44100 seed=11740672 frames=8874 commands=20 peak=0.15445317327976227 energy=12.388344111279981 isolated_energy=0 pcm_fnv1a64=6be70c82e36cb701
+case kind=registration variant=1 rate=44100 seed=11740673 frames=8874 commands=20 peak=0.14571726322174072 energy=14.819911340016612 isolated_energy=0 pcm_fnv1a64=465b8523baa45379
+case kind=registration variant=2 rate=44100 seed=11740674 frames=8874 commands=20 peak=0.15826630592346191 energy=14.456555723508712 isolated_energy=0 pcm_fnv1a64=989e678ea6097ae9
+case kind=registration variant=3 rate=44100 seed=11740675 frames=8874 commands=20 peak=0.17036087810993195 energy=12.723127669830598 isolated_energy=0 pcm_fnv1a64=470d5f7b4ac7b6c9
+case kind=registration variant=4 rate=44100 seed=11740676 frames=8874 commands=20 peak=0.1711624413728714 energy=15.243782869395975 isolated_energy=0 pcm_fnv1a64=4a2eb24f02c07619
+case kind=registration variant=5 rate=44100 seed=11740677 frames=8874 commands=20 peak=0.11457514762878418 energy=8.365804732...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspaces_author" classname="test_standalone_workspaces_author" time="0.00783599" status="run">
+		<properties/>
+		<system-out>Workspace author checks: 6 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_backend" classname="test_standalone_midi_backend" time="0.00755898" status="run">
+		<properties>
+			<property name="cmake_labels" value="backend;standalone"/>
+		</properties>
+		<system-out>PASS ordinary: metadata without native construction
+PASS ordinary: exact enumeration and caps
+PASS ordinary: enumeration faults and refused fallback
+PASS ordinary: argument rejection preserves epoch
+PASS ordinary: exact selection and successful generations
+PASS ordinary: open caps and refused fallback
+PASS ordinary: topology changes around activation
+PASS ordinary: actual callback bytes, storage lifetime and sizes
+PASS ordinary: actual callback queue overflow
+PASS ordinary: backend error callback admission
+PASS ordinary: open errors that return normally
+PASS ordinary: partial activation and stale-prefix retirement
+PASS ordinary: bounded worker callback during native close
+PASS ordinary: poll scope and no automatic reconnect
+PASS ordinary: ordinary destruction exactly once
+PASS 15 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_backend_quarantine" classname="test_standalone_midi_backend_quarantine" time="0.00681494" status="run">
+		<properties>
+			<property name="cmake_labels" value="backend;intentional-quarantine;standalone"/>
+		</properties>
+		<system-out>PASS quarantine: six failure paths retain context/inbox and refuse reopen
+PASS 1 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_benchmark" classname="test_standalone_benchmark" time="3.08864" status="run">
+		<properties>
+			<property name="cmake_labels" value="benchmark;standalone"/>
+		</properties>
+		<system-out>.........
+----------------------------------------------------------------------
+Ran 9 tests in 2.934s
+
+OK
+standalone benchmark CLI calls: 111; no elapsed-time correctness threshold applied
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_reference_apron_raster" classname="test_standalone_reference_apron_raster" time="5.28621" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;reference-apron;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"reference-apron-v1","status":"passed","cases":25,"checks":21995620,"state_restorations":28,"same_and_fresh_repeats":2,"clip_companions":6,"visible_clip_pixels":20656,"reported_clip_interior_differences":728,"protected_exterior_pixels":21994736,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_reference_apron_art" classname="test_standalone_reference_apron_art" time="0.0611026" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;reference-apron;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10; renderer=software; bounded direct apron probe
+{"checks":95,"failures":0,"canonical_probes":4,"renderer_state_probes":5,"invalid_bounds_probes":16,"hole_texels_per_canonical_probe":56016,"opaque_texels_per_canonical_probe":32544,"backend":"SDL software surface; no audio or window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_reference_apron_unavailable" classname="test_standalone_reference_apron_unavailable" time="5.24185" status="run">
+		<properties>
+			<property name="cmake_labels" value="fallback;native;reference-apron;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"reference-apron-v1","status":"passed","cases":25,"checks":21995620,"state_restorations":28,"same_and_fresh_repeats":2,"clip_companions":6,"visible_clip_pixels":20656,"reported_clip_interior_differences":647,"protected_exterior_pixels":21994736,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_drawing" classname="test_standalone_drawing" time="0.122882" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10, renderer=software, no window/audio
+144 individual glyph cases, 18 normal-size labels, 12 width/multiline/space cases; 298 full-target surface checks (18309120 pixels); failures=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_quad_drawing" classname="test_standalone_quad_drawing" time="0.00889949" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10, renderer=software, no window/audio; 17 full-target coverage checks; failures=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_raster" classname="test_standalone_workspace_raster" time="11.0684" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone;workspace"/>
+		</properties>
+		<system-out>Native workspace raster: 150 frames; 108 held, 108 held+focus, 108 front/Flat, 54 two-natural occlusion, 12 sloped-corner, 12 hidden-body checks; failures=0; 11.0635 seconds; minimum top/front mean contrast=94.1603 natural / 15.9033 accidental; actual paint_instrument, independent half-plane oracle, SDL software surface, no window/audio
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_inspection_raster" classname="test_standalone_inspection_raster" time="0.817075" status="run">
+		<properties>
+			<property name="cmake_labels" value="inspection;native;standalone"/>
+		</properties>
+		<system-out>Native inspection rendering harness: 6 frames; q=2; frame clock pending/acknowledged=32/32; publication pending/acknowledged=6/8; changed pixels=4485,2918,2698; assertions=947; no application window or audio device
+Elapsed 0.809116 seconds
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_material_acceptance" classname="test_standalone_material_acceptance" time="8.89523" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"checks":1317,"failures":0,"frames":117,"state_checks":117,"clip_frames":117,"outside_pixels":13420605,"held_keys":588,"focused_keys":24,"surfaces":72,"sloped_corners":8,"cut_clips":4,"status_frames":4,"status_ink_pixels":10246,"last_row_ink_pixels":2048,"minimum_natural_top_front_srgb_levels":91.2793,"minimum_accidental_top_front_srgb_levels":14.4042,"overlay_panels":12,"overlay_buttons":60,"backend":"SDL software surface; no window/audio","overlays":[{"overlay":"Audio","flat":false,"scale":1,"panel_pixels":2130,"panel_nonflat_pixels":2130,"button_pixels":504,"button_nonflat_pixels":492,"rgba_fnv1a64":"ec0dbbb1d36ad324"},{"overlay":"MIDI","flat":false,"scale":1,"panel_pixels":3090,"panel_nonflat_pixels":3090,"button_pixels":726,"button_nonflat_pixels":708,"rgba_fnv1a64":"d8949a33a37c8590"},{"overlay":"Help","flat":false,"scale":1,"panel_pixels":2130,"panel_nonflat_pixels":2130,"button_pixels":72,"button_nonflat_pixels":72,"rgba_fnv1a64":"5a0b2c37a422e2e3"},{"overlay":"Audio","flat":true,"scale":1,"panel_pix...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_waveform_material" classname="test_standalone_waveform_material" time="10.0004" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"summary":true,"checks":1917,"failures":0,"cases":55,"frames":55,"compared_pairs":0,"compared_pixels":0,"changed_pixels":0,"drawbar_changes":0,"idle_front_changes":0,"escaped_pixels":0,"flat_pairs":0,"hidden_pairs":0,"cap_joins":780,"shaft_sections":830,"front_patches":234,"focused_clips":16,"reference_front_median":130.2722,"reference_top_median":240.8184,"reference_stem_widths":[8,8,8],"baseline_comparison":false,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_product_visual" classname="test_standalone_product_visual" time="28.6894" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"schema_version":1,"protocol":"product-visual-t1-v1","checks":12952,"failures":0,"cases":76,"frames":148,"cap_measurements":1296,"literal_glyphs":8717,"strong_text_pixels":385644,"compared_pairs":0,"compared_pixels":0,"changed_pixels":0,"rack_changes":0,"idle_top_changes":0,"escaped_pixels":0,"byte_identical_pairs":0,"clipped_cases":4,"pending_cases":42,"focused_cases":76,"changed_idle_keys":0,"readout_shadow_leaks":0,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_percussion_raster" classname="test_standalone_percussion_raster" time="17.7982" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;percussion;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"status":"passed","cases":66,"checks":22925426,"literal_glyphs":1410,"strong_ink_pixels":64734,"focus_cases":32,"clipped_cases":6,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_upper_rack_material_raster" classname="test_standalone_upper_rack_material_raster" time="13.9898" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"upper-rack-material-v1.3","status":"passed","cases":30,"checks":58877477,"state_restorations":49,"clip_companions":15,"visible_clip_pixels":29916,"opaque_child_probes":216,"opaque_probe_pixels":121526,"literal_glyphs":708,"strong_ink_pixels":36435,"focus_cases":12,"cyan_focus_pixels":21864,"case_28_repeats":2,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_lower_rack_material_raster" classname="test_standalone_lower_rack_material_raster" time="14.6103" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"lower-rack-material-v1.2","status":"passed","cases":32,"checks":58958029,"state_restorations":51,"clip_companions":15,"visible_clip_pixels":29340,"opaque_child_probes":252,"opaque_probe_pixels":142099,"literal_glyphs":826,"strong_ink_pixels":42424,"focus_cases":14,"cyan_focus_pixels":25508,"case_28_repeats":2,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_footage_typography_raster" classname="test_standalone_footage_typography_raster" time="14.801" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone;typography"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"footage-typography-v1","status":"passed","cases":44,"checks":23501530,"state_restorations":59,"clip_companions":11,"visible_clip_pixels":439,"clip_glyph_pixels":707,"clip_glyph_differences":128,"opaque_child_probes":936,"opaque_probe_pixels":231858,"literal_glyphs":2097,"strong_ink_pixels":45208,"focus_cases":26,"cyan_focus_pixels":25690,"case_1_repeats":2,"expected_typography":"admitted-runs","backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_title_density" classname="test_standalone_title_density" time="5.96767" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;typography"/>
+		</properties>
+		<system-out>{
+  "schema": 1,
+  "test": "standalone-title-density-v1",
+  "status": "passed",
+  "required_cases": 18,
+  "native_protocol": "footage-typography-v1",
+  "native_fixture_cases": 44,
+  "fixture_source_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+  "logical_size": [
+    1672,
+    941
+  ],
+  "output_size": [
+    1698,
+    975
+  ],
+  "viewport_origin": [
+    13,
+    17
+  ],
+  "roi_xywh": [
+    590,
+    14,
+    490,
+    46
+  ],
+  "bounds_coordinates": "canonical half-open bounds, with integer viewport origin subtracted",
+  "predicate": "2126*R+7152*G+722*B &gt;= threshold*10000; no hue or alpha predicate",
+  "reference_counts": [
+    5639,
+    5415,
+    4991,
+    4502,
+    3785
+  ],
+  "pre_T3_baseline_counts": [
+    4150,
+    3863,
+    3601,
+    3200,
+    2690
+  ],
+  "primary_band": [
+    4500,
+    6000
+  ],
+  "minimum_error_reduction": 0.4,
+  "resources": {
+    "one_frame_at_a_time": true,
+    "process_timeout_seconds": 20,
+    "stdout_max_bytes": 7146489,
+    "stderr_max_bytes": 65536,...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_typography_clips" classname="test_standalone_typography_clips" time="4.59132" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone;typography"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"typography-clips-v1","status":"passed","cases":48,"checks":4064,"paintings":99,"clipped_cases":40,"empty_or_disjoint_cases":8,"inactive_cases":6,"protected_pixels":83712473,"deterministic_repaints":48,"history_repaints":2,"backend":"SDL software surface; copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_header_material" classname="test_standalone_header_material" time="33.6411" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"header-material-h1-v1","status":"passed","cases":48,"checks":10542,"paintings":163,"clipped_cases":16,"empty_cases":2,"inactive_cases":8,"protected_pixels":56329523,"deterministic_repaints":48,"clip_companions":16,"quiet_clip_pixels":33462,"history_states":48,"history_repaints":1,"fresh_repaints":1,"helper_present":true,"helper_probes":95,"backend":"SDL software surface; copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_performance_plate" classname="test_standalone_performance_plate" time="20.1768" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;performance-plate;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"performance-plate-p1-v1","status":"passed","cases":34,"main_cases":24,"checks":53648,"paintings":111,"clipped_cases":5,"empty_cases":1,"inactive_cases":7,"protected_pixels":17527448,"deterministic_repaints":34,"clip_companions":10,"quiet_clip_pixels":10914,"history_states":32,"history_repaints":1,"fresh_repaints":1,"eligibility_witnesses":3,"opaque_probes":513,"opaque_pixels":39462,"text_runs":459,"nonempty_text_runs":340,"glyph_core_pixels":41116,"focus_witnesses":27,"focus_pixels":26204,"helper_present":true,"helper_probes":61,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_performance_plate_numerical" classname="test_standalone_performance_plate_numerical" time="0.943232" status="run">
+		<properties>
+			<property name="cmake_labels" value="material;native;numerical;performance-plate;standalone"/>
+		</properties>
+		<system-out>{"model": "performance-plate-p1-independent-v1", "mode": "candidate-only-frozen62", "passed": true, "checks_evaluated": 191, "failed_checks": 0, "candidate_screens": {"checks": [{"id": "TL:Ymean", "difference": 1.7094826388888889, "limit": 3.0, "pass": true, "difference_ratio": [492331, 288000]}, {"id": "TL:Rmean", "difference": 1.5740740740740742, "limit": 4.0, "pass": true, "difference_ratio": [85, 54]}, {"id": "TL:Gmean", "difference": 1.7534722222222223, "limit": 4.0, "pass": true, "difference_ratio": [505, 288]}, {"id": "TL:Bmean", "difference": 1.6724537037037037, "limit": 4.0, "pass": true, "difference_ratio": [1445, 864]}, {"id": "TL:RMS", "difference": 0.7821751310491223, "limit": 1.2, "pass": true}, {"id": "L:Ymean", "difference": 0.15309772135416666, "limit": 3.0, "pass": true, "difference_ratio": [2351581, 15360000]}, {"id": "L:Rmean", "difference": 0.10546875, "limit": 4.0, "pass": true, "difference_ratio": [27, 256]}, {"id": "L:Gmean", "difference": 0.16927083333333334, "limit": 4.0, "pass": tru...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_header_statistics" classname="test_standalone_header_statistics" time="0.624155" status="run">
+		<properties>
+			<property name="cmake_labels" value="material;native;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"test":"standalone-header-statistics-v1","status":"passed","native_protocol":"header-material-h1-v1","case":46,"logical_size":[1672,941],"primary_patch_order":["L","TL","TM","TR","CLT","CL","CR","RT","RU","RF","CM1","CM2","CM3","BL","BC1","BC2","BC3","BR"],"protocol_passed":true,"helper_passed":true,"identities":{"frozen_fixture_source_sha256":"96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809","contract_sha256":"07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282","reference_observations_sha256":"8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b","reference_image_sha256":"9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187","reference_decoded_rgb_sha256":"07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb","independent_comparator_sha256":"098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b","reference_origin":"immutable literals from A22 reference observations; no runtime image decode","test_source_sha256":"5f87608...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_header_grain_bounds" classname="test_standalone_header_grain_bounds" time="0.0131354" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"header-h1-grain-bounds-v1","status":"passed","cases":4,"checks":170,"pixels_checked":96000,"grain_pixels_checked":18,"unchanged_pixels_checked":95982,"backend":"SDL software surface; no window or audio"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_manual_key_material_raster" classname="test_standalone_manual_key_material_raster" time="5.40667" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;material;native;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"manual-key-material-v1","status":"passed","scope":"fixture-only; paired-material-and-whole-interface-admission-remain-separate","cases":16,"checks":93462854,"state_restorations":24,"independently_checked_geometry_keys":1764,"editable_pixels":2738764,"protected_exterior_pixels":32204413,"visible_focus_pixels":2497,"visible_held_pixels":256272,"visible_held_cue_pixels":10924,"visible_unchanged_outline_pixels":208097,"clip_companions":2,"visible_clip_pixels":260400,"empty_clip_pixels":4855144,"same_and_fresh_repeats":4,"material_sample_windows":144}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_keyboard_rim_raster" classname="test_standalone_keyboard_rim_raster" time="13.6338" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;rim;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"protocol":"keyboard-rim-art-v1.1","status":"passed","cases":32,"checks":59134334,"state_restorations":53,"clip_companions":15,"visible_clip_pixels":46200,"opaque_child_probes":84,"opaque_probe_pixels":255892,"focus_cases":14,"cyan_focus_pixels":24602,"same_and_fresh_repeats":4,"reported_clip_interior_differences":393,"protected_exterior_pixels":104614874,"backend":"SDL software surface; fixed copied state; no audio/window"}
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_scaled_view" classname="test_standalone_scaled_view" time="21.7635" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out>SERVICE|960x700|generator.model|10.5|1|284.667|193.5|204|145.5|ideal-shared-sine-v1
+SERVICE|960x700|generator.sources|10.5|1|284.667|221.125|231.625|117.875|91 sources
+SERVICE|960x700|generator.tone46_hz|10.5|1|284.667|248.75|259.25|90.25|442.125 Hz
+SERVICE|960x700|generator.output_gain|10.5|1|284.667|276.375|286.875|62.625|0.0123456 normalized amplitude
+SERVICE|960x700|contacts.model|10.5|1|284.667|193.5|204|145.5|ideal-contacts-v1
+SERVICE|960x700|contacts.upper_held|10.5|1|284.667|221.125|231.625|117.875|2 targets
+SERVICE|960x700|contacts.lower_held|10.5|1|284.667|248.75|259.25|90.25|1 target
+SERVICE|960x700|contacts.pedals_held|10.5|1|284.667|276.375|286.875|62.625|1 target
+SERVICE|960x700|contacts.inventory|10.5|1|284.667|304|314.5|35|61 + 61 manual keys / 25 pedals
+SERVICE|960x700|contacts.pedal_model|10.5|1|284.667|331.625|342.125|7.375|nominal-static-pedal-mixture-v1
+SERVICE|960x700|scanner.audio|10.5|1|284.667|193.5|204|145.5|Not connected
+SERVICE|960x700|scanner.research_model|10.5|1|284.667|221.125|...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_raster" classname="test_standalone_preset_raster" time="18.1148" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_audio_device" classname="test_standalone_audio_device" time="2.89837" status="run">
+		<properties/>
+		<system-out>SDL 2.32.10, driver=dummy, 1 copied output name(s)
+dummy obtained 44100 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 44100 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+dummy obtained 44100 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+dummy obtained 44100 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+dummy obtained 44100 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+dummy obtained 48000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 48000 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+dummy obtained 48000 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+dummy obtained 48000 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+dummy obtained 48000 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+dummy obtained 96000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 96000 Hz / 256 frame...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_device_removal" classname="test_standalone_device_removal" time="0.230214" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>PASS: 3 actual SDL lifecycle cycles; 93 queued events; 78 ignored events; 10 matching pure queries; 3 matched joined closes; 10 rejected opens; 2 observed ID reuses; 12 callbacks; 3584 rendered frames.
+Scope: explicit dummy backend and software event injection; no physical disconnect or application-handler execution.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_callback_allocation" classname="test_standalone_callback_allocation" time="0.960962" status="run">
+		<properties/>
+		<system-out>128 frames / cold controls/manuals/pedals/percussion: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / full 256-command prefix: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / manual and pedal note-off: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / scoped UI release: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / global Panic: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / active owners before recovery: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / pending-release queue overflow: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / authoritative command rejection: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+2048 frames / cold controls/manuals/pedals...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_app" classname="test_standalone_app" time="15.4308" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+ok
+test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+test_invalid_workspaces_reject_before_device_or_output (__main__....
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_cli" classname="test_standalone_midi_cli" time="22.2809" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>MIDI CLI/modal executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+test_cli_expression_configuration_does_not_write_musical_expression (__main__.NativeMidiAcceptance.test_cli_expression_configuration_does_not_write_musical_expression) ... ok
+test_cli_expression_endpoints_refuse_before_sdl_or_outputs (__main__.NativeMidiAcceptance.test_cli_expression_endpoints_refuse_before_sdl_or_outputs) ... ok
+test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_nam...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_expression_diagnostics" classname="test_standalone_expression_diagnostics" time="3.16261" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>test_strict_checker_rejects_malformed_or_contradictory_records (__main__.CalibrationDiagnosticAdmission.test_strict_checker_rejects_malformed_or_contradictory_records) ... ok
+Expression diagnostics executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+test_configured_inverted_interval_is_inactive_without_an_epoch (__main__.NativeExpressionDiagnostics.test_configured_inverted_interval_is_inactive_without_an_epoch) ... ok
+test_reconnect_copies_pending_request_and_retirement_reports_inactive (__main__.NativeExpressionDiagnostics.test_reconnect_copies_pending_request_and_retirement_reports_inactive) ... ok
+test_selected_edits_and_invalid_pair_remain_distinct_from_active_epoch (__main__.NativeExpressionDiagnostics.test_selected_edits_and_invalid_pair_remain_distinct_from_active_epoch) ... ok
+Actual expression diagnostics subprocesses: 3
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.013s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_native_calibration" classname="test_standalone_native_calibration" time="20.6426" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>Native calibration fixture SHA-256: b175649807a0277025756b9195de9bbe4a909ff0ad12542ee955500f2f10dc8e
+test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11) ... ok
+test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration) ... ok
+test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel) ... ok
+test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry) ... ok
+test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio) ... ok
+test_fixture_rejects_missing...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_native_midi_replay" classname="test_standalone_native_midi_replay" time="41.4695" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>Native MIDI replay executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect) ... ok
+test_calibrated_cc11_and_cc121_reset_preserve_all_division_owners (__main__.NativeMidiReplayAcceptance.test_calibrated_cc11_and_cc121_reset_preserve_all_division_owners) ... ok
+test_cc11_and_bank_b_edits_share_pending_ui_controls (__main__.NativeMidiReplayAcceptance.test_cc11_and_bank_b_edits_share_pending_ui_controls) ... ok
+test_cc120_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc120_releases_only_its_external_division_and_preserves_ui) ... ok
+test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui) ... ok
+test_division_channel_range_routing_and_ignored_packe...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workflows" classname="test_standalone_workflows" time="65.0381" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Workflow executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+test_all_twenty_four_presets_at_minimum_size_preserve_owners (__main__.NativeWorkflowAcceptance.test_all_twenty_four_presets_at_minimum_size_preserve_owners) ... ok
+test_cancel_retains_held_notes_and_panic_releases_every_ui_part (__main__.NativeWorkflowAcceptance.test_cancel_retains_held_notes_and_panic_releases_every_ui_part) ... ok
+test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes (__main__.NativeWorkflowAcceptance.test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes) ... ok
+test_edit_bank_and_sounding_bank_remain_independent (__main__.NativeWorkflowAcceptance.test_edit_bank_and_sounding_bank_remain_independent) ... ok
+test_empty_replay_has_no_automatic_smoke_note_or_file_write (__main__.NativeWorkflowAcceptance.test_empty_replay_has_no_automatic_smoke_note_or_file_write) ... ok
+test_fixed_cancel_save_live_load_cold_load_and_audio_restart (__main__.NativeWorkflowAcceptance.test_fixed_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_replay" classname="test_standalone_workspace_replay" time="52.1356" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out>Native workspace executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+test_capture_failure_closes_parameter_gesture_before_view_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_capture_failure_closes_parameter_gesture_before_view_and_resize) ... ok
+test_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns) ... ok
+test_hidden_play_regions_cannot_edit_redirect_or_audition (__main__.NativeWorkspaceReplayAcceptance.test_hidden_play_regions_cannot_edit_redirect_or_audition) ... ok
+test_pointer_capture_failure_preserves_keyboard_owner_during_navigation (__main__.NativeWorkspaceReplayAcceptance.test_pointer_capture_failure_preserves_keyboard_owner_during_navigation) ... ok
+test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok
+test_synthetic...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_replay_paint_boundary" classname="test_standalone_replay_paint_boundary" time="0.923026" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out>dimensional: passed; actual visits: [{"view": ["play", "flat", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 0}, {"view": ["play", "dimensional", 960, 700, "none"], "rendered_image": 2, "elapsed_ms": 16}, {"view": ["play", "dimensional", 1280, 900, "none"], "rendered_image": 3, "elapsed_ms": 47}]
+flat: passed; actual visits: [{"view": ["play", "dimensional", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 0}, {"view": ["play", "flat", 960, 700, "none"], "rendered_image": 2, "elapsed_ms": 49}, {"view": ["play", "flat", 1280, 900, "none"], "rendered_image": 3, "elapsed_ms": 57}]
+Actual native subprocesses: 2; executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_semantic_paint_boundary" classname="test_standalone_semantic_paint_boundary" time="0.891205" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out>dimensional: passed; actual visits: [{"view": ["rotary", "dimensional", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 0}, {"view": ["rotary", "flat", 1280, 900, "none"], "rendered_image": 2, "elapsed_ms": 41}, {"view": ["rotary", "flat", 1280, 900, "audio"], "rendered_image": 3, "elapsed_ms": 50}, {"view": ["rotary", "flat", 1280, 900, "none"], "rendered_image": 4, "elapsed_ms": 73}, {"view": ["service", "flat", 1280, 900, "none"], "rendered_image": 5, "elapsed_ms": 84}, {"view": ["play", "flat", 1280, 900, "none"], "rendered_image": 6, "elapsed_ms": 94}]
+flat: passed; actual visits: [{"view": ["rotary", "flat", 1280, 900, "none"], "rendered_image": 1, "elapsed_ms": 0}, {"view": ["rotary", "dimensional", 1280, 900, "none"], "rendered_image": 2, "elapsed_ms": 8}, {"view": ["rotary", "dimensional", 1280, 900, "audio"], "rendered_image": 3, "elapsed_ms": 47}, {"view": ["rotary", "dimensional", 1280, 900, "none"], "rendered_image": 4, "elapsed_ms": 108}, {"view": ["service", "dimensional", 1280, 900, "no...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_replay_boundaries" classname="test_standalone_replay_boundaries" time="5.41014" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Replay boundary executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_chapel" classname="test_standalone_chapel" time="20.2265" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native chapel executable SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9
+Native chapel main SHA-256: 0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537
+..Native chapel acceptance: 22 exported states, 22 actual SDL application invocations
+
+----------------------------------------------------------------------
+Ran 2 tests in 19.998s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_starter_load" classname="test_standalone_starter_load" time="11.4611" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;registration;standalone"/>
+		</properties>
+		<system-out>test_accepts_complete_applied_edits_with_or_without_pending_load (__main__.LoadObservationOrderTests.test_accepts_complete_applied_edits_with_or_without_pending_load) ... ok
+test_rejects_backward_times_and_preserves_existing_time_checks (__main__.LoadObservationOrderTests.test_rejects_backward_times_and_preserves_existing_time_checks) ... ok
+test_rejects_control_changes_at_unchanged_or_restored_sequence (__main__.LoadObservationOrderTests.test_rejects_control_changes_at_unchanged_or_restored_sequence) ... ok
+test_rejects_invalid_or_nonadvancing_sequences (__main__.LoadObservationOrderTests.test_rejects_invalid_or_nonadvancing_sequences) ... ok
+test_rejects_missing_or_reordered_copied_states (__main__.LoadObservationOrderTests.test_rejects_missing_or_reordered_copied_states) ... ok
+test_rejects_wrong_or_incomplete_full_controls (__main__.LoadObservationOrderTests.test_rejects_wrong_or_incomplete_full_controls) ... ok
+HAMMOND_STANDALONE_EXECUTABLE SHA-256: 3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c23...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_input_replay" classname="test_standalone_input_replay" time="0.0278552" status="run">
+		<properties/>
+		<system-out>standalone replay acceptance (SDL dummy): 654 valid parses, 188 atomic parser rejections, 3 regular-file loads, 12 atomic file rejections, 51 forged-plan rejections, 130 checked queue actions, 14 acknowledged markers, 5 expected runtime failures, 4 lifetime cycles
+</system-out>
+	</testcase>
+</testsuite>

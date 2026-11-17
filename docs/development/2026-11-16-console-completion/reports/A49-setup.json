@@ -1,0 +1,1369 @@
+{
+  "agent": "/root/w09_a49",
+  "command_verification_mapping": [
+    {
+      "command": "cmake -S . -B build-core -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON   -DHAMMOND_BUILD_STANDALONE=OFF -DHAMMOND_BUILD_VST3=OFF   -DHAMMOND_ENABLE_MIDI=OFF",
+      "evidence": [
+        {
+          "lines": [
+            1
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "cmake_minimum_required(VERSION 3.21)"
+        },
+        {
+          "lines": [
+            11
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "option(HAMMOND_BUILD_STANDALONE"
+        },
+        {
+          "lines": [
+            9
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "option(HAMMOND_BUILD_VST3"
+        },
+        {
+          "lines": [
+            13
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "option(HAMMOND_ENABLE_MIDI"
+        },
+        {
+          "lines": [
+            18
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "find_package(Python3 3.10 REQUIRED"
+        },
+        {
+          "lines": [
+            40
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "cxx_std_20"
+        },
+        {
+          "lines": [
+            19
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "include(CTest)"
+        },
+        {
+          "lines": [
+            4
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_library(hammond_standalone_support STATIC"
+        },
+        {
+          "lines": [
+            77
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "if(HAMMOND_BUILD_STANDALONE)"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C01",
+      "purpose": "core_configure",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "cmake --build build-core --config Release --parallel 2",
+      "evidence": [
+        {
+          "lines": [
+            63
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "add_library(hammond_core STATIC"
+        },
+        {
+          "lines": [
+            121
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "add_custom_target(hammond_profile ALL"
+        },
+        {
+          "lines": [
+            276
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "if(BUILD_TESTING)"
+        },
+        {
+          "lines": [
+            253
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "add_executable(hammond_registration"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C02",
+      "purpose": "core_build",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "ctest --test-dir build-core -C Release --output-on-failure --no-tests=error",
+      "evidence": [
+        {
+          "lines": [
+            19
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "include(CTest)"
+        },
+        {
+          "lines": [
+            295
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "file(GLOB HAMMOND_CPP_TESTS"
+        },
+        {
+          "lines": [
+            323
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "file(GLOB HAMMOND_PYTHON_TESTS"
+        },
+        {
+          "lines": [
+            315
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "add_test(NAME ${test_name} COMMAND ${test_name})"
+        },
+        {
+          "lines": [
+            25
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "file(GLOB HAMMOND_STANDALONE_CPP_TESTS"
+        },
+        {
+          "lines": [
+            37
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_test(NAME ${test_name} COMMAND ${test_name})"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C03",
+      "purpose": "core_ctest",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "python3 tools/acquire_sdl2.py --destination ../SDL2",
+      "evidence": [
+        {
+          "lines": [
+            216
+          ],
+          "path": "tools/acquire_sdl2.py",
+          "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3",
+          "source_anchor": "choice.add_argument(\"--destination\""
+        },
+        {
+          "lines": [
+            184
+          ],
+          "path": "tools/acquire_sdl2.py",
+          "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3",
+          "source_anchor": "def acquire_sdl2("
+        },
+        {
+          "lines": [
+            187
+          ],
+          "path": "tools/acquire_sdl2.py",
+          "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3",
+          "source_anchor": "acquisition destination already exists"
+        },
+        {
+          "lines": [
+            189
+          ],
+          "path": "tools/acquire_sdl2.py",
+          "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3",
+          "source_anchor": "acquisition destination parent must already exist"
+        },
+        {
+          "lines": [
+            25
+          ],
+          "path": "tools/acquire_sdl2.py",
+          "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3",
+          "source_anchor": "REVIEWED_VERSION = \"2.32.10\""
+        },
+        {
+          "lines": [
+            4
+          ],
+          "path": "data/dependencies/sdl2-lock.json",
+          "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+          "source_anchor": "\"version\": \"2.32.10\""
+        },
+        {
+          "lines": [
+            7
+          ],
+          "path": "data/dependencies/sdl2-lock.json",
+          "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+          "source_anchor": "\"commit\": \"5d249570393f7a37e037abf22cd6012a4cc56a71\""
+        }
+      ],
+      "execution": "not executed",
+      "id": "C04",
+      "purpose": "sdl_acquire",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON   -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT=\"$PWD/../SDL2\"   -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_ENABLE_MIDI=OFF",
+      "evidence": [
+        {
+          "lines": [
+            11
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "option(HAMMOND_BUILD_STANDALONE"
+        },
+        {
+          "lines": [
+            12
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "set(HAMMOND_SDL2_ROOT"
+        },
+        {
+          "lines": [
+            9
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "option(HAMMOND_BUILD_VST3"
+        },
+        {
+          "lines": [
+            13
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "option(HAMMOND_ENABLE_MIDI"
+        },
+        {
+          "lines": [
+            77
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "if(HAMMOND_BUILD_STANDALONE)"
+        },
+        {
+          "lines": [
+            79
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "hammond_verify_sdl2(\"${HAMMOND_SDL2_ROOT}\")"
+        },
+        {
+          "lines": [
+            91
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "enable_language(C)"
+        },
+        {
+          "lines": [
+            93
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "set(SDL_STATIC ON"
+        },
+        {
+          "lines": [
+            17
+          ],
+          "path": "cmake/VerifySdl2.cmake",
+          "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e",
+          "source_anchor": "--verify-existing \"${sdl2_root}\""
+        }
+      ],
+      "execution": "not executed",
+      "id": "C05",
+      "purpose": "native_configure",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "cmake --build build-native --config Release --parallel 2   --target hammond_standalone_test_inputs",
+      "evidence": [
+        {
+          "lines": [
+            671
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_custom_target(hammond_standalone_test_inputs"
+        },
+        {
+          "lines": [
+            672
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "DEPENDS hammond_profile hammond_registration ${HAMMOND_STANDALONE_TEST_TARGETS}"
+        },
+        {
+          "lines": [
+            670
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "test_standalone_input_replay hammond_standalone)"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C06",
+      "purpose": "native_inputs_build",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "ctest --test-dir build-native -C Release --output-on-failure --no-tests=error   -R '^test_standalone_'",
+      "evidence": [
+        {
+          "lines": [
+            547
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_test(NAME test_standalone_app"
+        },
+        {
+          "lines": [
+            614
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_test(NAME test_standalone_workspace_replay"
+        },
+        {
+          "lines": [
+            37
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_test(NAME ${test_name} COMMAND ${test_name})"
+        },
+        {
+          "lines": [
+            521
+          ],
+          "path": "CMakeLists.txt",
+          "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+          "source_anchor": "add_test(NAME test_standalone_install"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C07",
+      "purpose": "native_ctest",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "./build-native/apps/standalone/hammond_standalone --width 1672 --height 941",
+      "evidence": [
+        {
+          "lines": [
+            99
+          ],
+          "path": "apps/standalone/main.cpp",
+          "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+          "source_anchor": "--width N"
+        },
+        {
+          "lines": [
+            100
+          ],
+          "path": "apps/standalone/main.cpp",
+          "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+          "source_anchor": "--height N"
+        },
+        {
+          "lines": [
+            99
+          ],
+          "path": "apps/standalone/main.cpp",
+          "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+          "source_anchor": "default 1280"
+        },
+        {
+          "lines": [
+            100
+          ],
+          "path": "apps/standalone/main.cpp",
+          "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+          "source_anchor": "default 900"
+        },
+        {
+          "lines": [
+            155,
+            164,
+            573
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_executable(hammond_standalone"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C08",
+      "purpose": "native_launch",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "cmake --install build-native --config Release --component Standalone   --prefix \"$PWD/stage-console\"",
+      "evidence": [
+        {
+          "lines": [
+            27,
+            266,
+            270,
+            275
+          ],
+          "path": "cmake/InstallStandalone.cmake",
+          "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+          "source_anchor": "COMPONENT Standalone EXCLUDE_FROM_ALL"
+        },
+        {
+          "lines": [
+            269
+          ],
+          "path": "cmake/InstallStandalone.cmake",
+          "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+          "source_anchor": "install(PROGRAMS \"$<TARGET_FILE:hammond_standalone>\""
+        },
+        {
+          "lines": [
+            247
+          ],
+          "path": "cmake/InstallStandalone.cmake",
+          "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+          "source_anchor": "destination already exists:"
+        },
+        {
+          "lines": [
+            202
+          ],
+          "path": "cmake/InstallStandalone.cmake",
+          "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+          "source_anchor": "CMAKE_INSTALL_MODE=COPY"
+        },
+        {
+          "lines": [
+            302
+          ],
+          "path": "apps/standalone/native_tests/test_standalone_install.py",
+          "sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+          "source_anchor": "21 if self.midi_enabled else 17"
+        },
+        {
+          "lines": [
+            304
+          ],
+          "path": "apps/standalone/native_tests/test_standalone_install.py",
+          "sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6",
+          "source_anchor": "def test_actual_component_relocates_and_runs"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C09",
+      "purpose": "native_install",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "cmake --install build-core --config Release --component OfflineTools   --prefix \"$PWD/stage-tools\"",
+      "evidence": [
+        {
+          "lines": [
+            95,
+            98,
+            101,
+            103,
+            105,
+            107,
+            109
+          ],
+          "path": "cmake/InstallHammondTools.cmake",
+          "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+          "source_anchor": "COMPONENT OfflineTools"
+        },
+        {
+          "lines": [
+            96
+          ],
+          "path": "cmake/InstallHammondTools.cmake",
+          "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+          "source_anchor": "install(TARGETS hammond_render hammond_model_info hammond_parameter_info"
+        },
+        {
+          "lines": [
+            97
+          ],
+          "path": "cmake/InstallHammondTools.cmake",
+          "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+          "source_anchor": "hammond_console_trace hammond_pedal_trace"
+        },
+        {
+          "lines": [
+            80
+          ],
+          "path": "cmake/InstallHammondTools.cmake",
+          "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+          "source_anchor": "@HAMMOND_COMPILED_PROFILE@"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C10",
+      "purpose": "offline_install",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "cmake --install build-core --config Release --component RegistrationTools   --prefix \"$PWD/stage-tools\"",
+      "evidence": [
+        {
+          "lines": [
+            90,
+            118,
+            123,
+            126
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "COMPONENT RegistrationTools EXCLUDE_FROM_ALL"
+        },
+        {
+          "lines": [
+            122
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "install(PROGRAMS \"$<TARGET_FILE:hammond_registration>\""
+        },
+        {
+          "lines": [
+            12,
+            96,
+            124
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "REGISTRATION_GUIDE.md"
+        },
+        {
+          "lines": [
+            51
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "existing files or packages are never replaced or merged"
+        },
+        {
+          "lines": [
+            281
+          ],
+          "path": "tests/test_registration_install.py",
+          "sha256": "d39978fba23326076b080f8347cd18e44637b56ed987a5a26846af40baba2d0c",
+          "source_anchor": "def test_exact_explicit_inventory_and_component_independence"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C11",
+      "purpose": "registration_install",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "cmake --install build-core --config Release --component StarterRegistrations   --prefix \"$PWD/stage-tools\"",
+      "evidence": [
+        {
+          "lines": [
+            174,
+            177,
+            180
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "COMPONENT StarterRegistrations EXCLUDE_FROM_ALL"
+        },
+        {
+          "lines": [
+            131
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "set(_hammond_starter_entries"
+        },
+        {
+          "lines": [
+            165
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "foreach(metadata README.md recipes.json)"
+        },
+        {
+          "lines": [
+            13
+          ],
+          "path": "cmake/InstallRegistrationTools.cmake",
+          "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274",
+          "source_anchor": "hammond/registrations/starter-v1"
+        },
+        {
+          "lines": [
+            539
+          ],
+          "path": "tests/test_registration_install.py",
+          "sha256": "d39978fba23326076b080f8347cd18e44637b56ed987a5a26846af40baba2d0c",
+          "source_anchor": "def test_root_rules_relocate_and_native_list_inspect_materialize"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C12",
+      "purpose": "starter_install",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "./stage-console/bin/hammond_standalone --width 1672 --height 941",
+      "evidence": [
+        {
+          "lines": [
+            269
+          ],
+          "path": "cmake/InstallStandalone.cmake",
+          "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+          "source_anchor": "install(PROGRAMS \"$<TARGET_FILE:hammond_standalone>\""
+        },
+        {
+          "lines": [
+            270
+          ],
+          "path": "cmake/InstallStandalone.cmake",
+          "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5",
+          "source_anchor": "DESTINATION \"${CMAKE_INSTALL_BINDIR}\""
+        },
+        {
+          "lines": [
+            21,
+            25,
+            26,
+            64,
+            65,
+            93,
+            94,
+            121,
+            155,
+            203
+          ],
+          "path": "docs/STANDALONE_INSTALL.md",
+          "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba",
+          "source_anchor": "bin/hammond_standalone"
+        },
+        {
+          "lines": [
+            189
+          ],
+          "path": "docs/STANDALONE_INSTALL.md",
+          "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba",
+          "source_anchor": "Defaults are `bin` and"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C13",
+      "purpose": "installed_launch",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "ctest --test-dir build-core -C Release --output-on-failure --no-tests=error   -R '^test_standalone_library_(model|session|storage|recall|roundtrip)$'",
+      "evidence": [
+        {
+          "lines": [
+            25
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "file(GLOB HAMMOND_STANDALONE_CPP_TESTS"
+        },
+        {
+          "lines": [
+            26
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "\"${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp\""
+        },
+        {
+          "lines": [
+            29
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_executable(${test_name}"
+        },
+        {
+          "lines": [
+            37
+          ],
+          "path": "apps/standalone/CMakeLists.txt",
+          "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07",
+          "source_anchor": "add_test(NAME ${test_name} COMMAND ${test_name})"
+        }
+      ],
+      "execution": "not executed",
+      "id": "C14",
+      "purpose": "library_selection",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    },
+    {
+      "command": "python3 tools/acquire_sdl2.py --verify-existing ../SDL2",
+      "evidence": [
+        {
+          "lines": [
+            218
+          ],
+          "path": "tools/acquire_sdl2.py",
+          "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3",
+          "source_anchor": "choice.add_argument(\"--verify-existing\""
+        },
+        {
+          "lines": [
+            219
+          ],
+          "path": "tools/acquire_sdl2.py",
+          "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3",
+          "source_anchor": "read-only local identity check; never fetches or repairs"
+        },
+        {
+          "lines": [
+            17
+          ],
+          "path": "cmake/VerifySdl2.cmake",
+          "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e",
+          "source_anchor": "--verify-existing \"${sdl2_root}\""
+        }
+      ],
+      "execution": "not executed",
+      "id": "C15",
+      "purpose": "sdl_verify_existing",
+      "verification": "supported by inspected declarations/arguments and existing setup routes"
+    }
+  ],
+  "declarative_ci_inventory": {
+    "explicit_sdl_c_flags": "-fsanitize=address,undefined -fno-omit-frame-pointer",
+    "normal_python_tools": {
+      "python_test_capture_standalone_interface": "tests/test_capture_standalone_interface.py",
+      "python_test_compare_header_material": "tests/test_compare_header_material.py",
+      "python_test_compare_performance_plate": "tests/test_compare_performance_plate.py"
+    },
+    "normal_required_subset": [
+      "python_test_capture_standalone_interface",
+      "python_test_compare_header_material",
+      "python_test_compare_performance_plate",
+      "test_standalone_channel_acceptance",
+      "test_standalone_channel_modes",
+      "test_standalone_drawing",
+      "test_standalone_expression_calibration",
+      "test_standalone_expression_diagnostics",
+      "test_standalone_footage_typography_raster",
+      "test_standalone_header_grain_bounds",
+      "test_standalone_header_material",
+      "test_standalone_header_statistics",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "test_standalone_inspection_raster",
+      "test_standalone_install",
+      "test_standalone_library_model",
+      "test_standalone_library_recall",
+      "test_standalone_library_roundtrip",
+      "test_standalone_library_session",
+      "test_standalone_library_storage",
+      "test_standalone_lower_rack_material_raster",
+      "test_standalone_manual_key_material_raster",
+      "test_standalone_material_acceptance",
+      "test_standalone_midi_backend",
+      "test_standalone_midi_backend_quarantine",
+      "test_standalone_midi_cli",
+      "test_standalone_midi_concurrency",
+      "test_standalone_midi_discovery",
+      "test_standalone_midi_input",
+      "test_standalone_midi_replay",
+      "test_standalone_midi_session",
+      "test_standalone_native_calibration",
+      "test_standalone_native_midi_replay",
+      "test_standalone_performance_plate",
+      "test_standalone_performance_plate_numerical",
+      "test_standalone_product_visual",
+      "test_standalone_projection",
+      "test_standalone_quad_drawing",
+      "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable",
+      "test_standalone_reference_layout",
+      "test_standalone_replay_paint_boundary",
+      "test_standalone_scaled_view",
+      "test_standalone_semantic_paint_boundary",
+      "test_standalone_starter_load",
+      "test_standalone_title_density",
+      "test_standalone_upper_rack_material_raster",
+      "test_standalone_waveform_material",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster",
+      "test_standalone_workspace_replay",
+      "test_standalone_workspaces_author"
+    ],
+    "normal_required_subset_count": 55,
+    "sanitizer_build_target_count": 37,
+    "sanitizer_job_timeout_minutes": 35,
+    "sanitizer_test_count": 41,
+    "sanitizer_test_to_target": {
+      "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+      "test_standalone_channel_modes": "test_standalone_channel_modes",
+      "test_standalone_drawing": "test_standalone_drawing",
+      "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+      "test_standalone_footage_typography_raster": "test_standalone_footage_typography_raster",
+      "test_standalone_header_grain_bounds": "test_standalone_header_grain_bounds",
+      "test_standalone_header_material": "test_standalone_header_material",
+      "test_standalone_header_statistics": "test_standalone_header_material",
+      "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author": "test_standalone_inspection_author",
+      "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+      "test_standalone_library_model": "test_standalone_library_model",
+      "test_standalone_library_recall": "test_standalone_library_recall",
+      "test_standalone_library_roundtrip": "test_standalone_library_roundtrip",
+      "test_standalone_library_session": "test_standalone_library_session",
+      "test_standalone_library_storage": "test_standalone_library_storage",
+      "test_standalone_lower_rack_material_raster": "test_standalone_lower_rack_material_raster",
+      "test_standalone_manual_key_material_raster": "test_standalone_manual_key_material_raster",
+      "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+      "test_standalone_native_calibration": "hammond_standalone_calibration_probe",
+      "test_standalone_performance_plate": "test_standalone_performance_plate",
+      "test_standalone_performance_plate_numerical": "test_standalone_performance_plate",
+      "test_standalone_preset_raster": "test_standalone_preset_raster",
+      "test_standalone_preset_ui": "test_standalone_preset_ui",
+      "test_standalone_product_visual": "test_standalone_product_visual",
+      "test_standalone_projection": "test_standalone_projection",
+      "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+      "test_standalone_reference_apron_art": "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster": "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable": "test_standalone_reference_apron_unavailable",
+      "test_standalone_reference_layout": "test_standalone_reference_layout",
+      "test_standalone_replay_paint_boundary": "hammond_standalone",
+      "test_standalone_scaled_view": "test_standalone_scaled_view",
+      "test_standalone_semantic_paint_boundary": "hammond_standalone",
+      "test_standalone_title_density": "test_standalone_footage_typography_raster",
+      "test_standalone_ui": "test_standalone_ui",
+      "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+      "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+      "test_standalone_workspaces_author": "test_standalone_workspaces_author"
+    },
+    "scope": "Static workflow declarations only; not CTest discovery or CI results.",
+    "source": ".github/workflows/standalone.yml"
+  },
+  "deliverable": {
+    "bytes": 8303,
+    "path": "docs/CONSOLE_SETUP_AND_HANDOFF.md",
+    "sha256": "7ac45530867221da3a350c56ec1d098c7bd65f58266d84073773e7822a392ebc",
+    "words": 896
+  },
+  "document_integrity": {
+    "final_newline": true,
+    "input_bytes_unchanged_during_receipt_generation": true,
+    "local_link_count": 22,
+    "local_links": [
+      {
+        "exists": true,
+        "target": "development/2026-11-16-console-completion/CHECKPOINT.md"
+      },
+      {
+        "exists": true,
+        "target": "MIDI_EXPRESSION_GUIDE.md#build-the-native-application"
+      },
+      {
+        "exists": true,
+        "target": "MIDI_EXPRESSION_GUIDE.md#build-the-native-application"
+      },
+      {
+        "exists": true,
+        "target": "BUILD.md"
+      },
+      {
+        "exists": true,
+        "target": "RENDER_FORMAT.md"
+      },
+      {
+        "exists": true,
+        "target": "../data/dependencies/sdl2-lock.json"
+      },
+      {
+        "exists": true,
+        "target": "MIDI_EXPRESSION_GUIDE.md"
+      },
+      {
+        "exists": true,
+        "target": "VST3_BUILD.md"
+      },
+      {
+        "exists": true,
+        "target": "STANDALONE_INSTALL.md"
+      },
+      {
+        "exists": true,
+        "target": "OFFLINE_INSTALL.md"
+      },
+      {
+        "exists": true,
+        "target": "REGISTRATION_GUIDE.md"
+      },
+      {
+        "exists": true,
+        "target": "LIBRARY_MODEL_GUIDE.md"
+      },
+      {
+        "exists": true,
+        "target": "design/LIBRARY_NATIVE_INTEGRATION_NEXT.md"
+      },
+      {
+        "exists": true,
+        "target": "../.github/workflows/standalone.yml"
+      },
+      {
+        "exists": true,
+        "target": "design/native-gallery-console-integrated/manifest.json"
+      },
+      {
+        "exists": true,
+        "target": "design/native-gallery-header-h1-v1/README.md"
+      },
+      {
+        "exists": true,
+        "target": "../AGENTS.md"
+      },
+      {
+        "exists": true,
+        "target": "PLAN.md"
+      },
+      {
+        "exists": true,
+        "target": "development/2026-11-16-console-completion/README.md"
+      },
+      {
+        "exists": true,
+        "target": "PRESET_RUNBOOK.md"
+      },
+      {
+        "exists": true,
+        "target": "STANDALONE_MODEL.md"
+      },
+      {
+        "exists": true,
+        "target": "RELEASE_READINESS.md"
+      }
+    ],
+    "normal_setup_has_ephemeral_absolute_paths": false,
+    "shell_check": "bash -n: syntax parsing only, no documented command executed",
+    "shell_code_blocks_syntax_checked": 4,
+    "trailing_whitespace": false,
+    "word_limit_1000": true
+  },
+  "execution_boundary": {
+    "actual_work": "Local source/document reading, SHA-256, static mapping/counts, Markdown target existence and bash -n syntax inspection.",
+    "build": false,
+    "children_spawned": false,
+    "configure": false,
+    "ctest_discovery_or_execution": false,
+    "dependency_acquisition_or_verification": false,
+    "git_write_or_remote_operation": false,
+    "installation_or_relocation": false,
+    "native_application_or_device": false,
+    "other_workspace_access": false,
+    "package_install": false
+  },
+  "foundation": {
+    "native_main_library_tokens_found": [],
+    "next_plan": "docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md",
+    "recall_helper_present": true,
+    "remaining_implementation": [
+      "independently admitted model-owned Save availability/proof projection",
+      "new genuine post-Start control proof",
+      "main submission/lifecycle and synchronous storage hooks",
+      "browser/modal held-input routing and native journeys"
+    ],
+    "support_target": "hammond_standalone_support",
+    "test_targets": [
+      "test_standalone_library_model",
+      "test_standalone_library_session",
+      "test_standalone_library_storage",
+      "test_standalone_library_recall",
+      "test_standalone_library_roundtrip"
+    ]
+  },
+  "handoff": "Root reviews the guide, adds navigation, completes actual combined qualification, records remaining gates and publishes accepted work; original failures and source-bound galleries remain separate.",
+  "installation_source_mapping": {
+    "OfflineTools": {
+      "existing_selected_files_can_be_replaced": true,
+      "native_executable_count": 5,
+      "ordinary_install_component": true,
+      "profile_and_declared_data_scripts": true
+    },
+    "RegistrationTools": {
+      "create_only": true,
+      "explicit_component": true,
+      "files": 2
+    },
+    "Standalone": {
+      "disabled_midi_files": 17,
+      "enabled_midi_files": 21,
+      "explicit_component": true,
+      "fresh_destination_required": true,
+      "prebuilt_binary_required": true
+    },
+    "StarterRegistrations": {
+      "create_only": true,
+      "explicit_component": true,
+      "files": 26,
+      "metadata_files": 2,
+      "saved_control_files": 24
+    },
+    "installation_executed_by_A49": false
+  },
+  "recorded_at_utc": "2026-11-17T05:27:14.425137+00:00",
+  "recovered_atlas_coverage": {
+    "pages": 500,
+    "receipt": "docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json",
+    "scope": "Recovered the existing six-reader receipt; A49 claims no new atlas reading."
+  },
+  "repository": {
+    "basis": "Inspected combined working-tree bytes; HEAD is a recovery commit, not a claim that these working-tree inputs were executed or published.",
+    "head": "3263b177d42e96309dcc23a287c586150ab2378e",
+    "head_tree": "b91a76809b8a432bf9a32d2c5032037e64dbec6f"
+  },
+  "review_type": "independent clean-checkout setup and handoff source review",
+  "schema_version": 1,
+  "source_files_read": [
+    {
+      "bytes": 28979,
+      "inspection": "full text recovered/reviewed",
+      "path": "AGENTS.md",
+      "sha256": "76d10774d70618fde3e004be0be6a3f72dc8c2ef44b40fbfb6756b8b6c91b61c"
+    },
+    {
+      "bytes": 68661,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/PLAN.md",
+      "sha256": "e2cbc7d5d71d594a7bfb12ebabd05eb15c3024423436b72979252ccf7514cdfd"
+    },
+    {
+      "bytes": 3856,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/development/2026-11-16-console-completion/README.md",
+      "sha256": "0713bedd0cf9c29c852b9633732b5b59cc67623052ad9e11bdd252d968226ecd"
+    },
+    {
+      "bytes": 11924,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/development/2026-11-16-console-completion/CHECKPOINT.md",
+      "sha256": "337af9e87dbf608d8f24fff3c0c7177eb7ba072459b245d3ccff299e3f734f3d"
+    },
+    {
+      "bytes": 4774,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md",
+      "sha256": "3cef324e3f1ba0f362bee59c94d3be3a59d759e302f91cef90b7f3c705194afb"
+    },
+    {
+      "bytes": 2034,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json",
+      "sha256": "e8d9f75992c972a7534778e626eb7ed1118b622a47ec9eaf1af955ef8327eeaf"
+    },
+    {
+      "bytes": 375,
+      "inspection": "full text recovered/reviewed",
+      "path": "data/dependencies/sdl2-lock.json",
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    {
+      "bytes": 1334,
+      "inspection": "full text recovered/reviewed",
+      "path": "cmake/VerifySdl2.cmake",
+      "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e"
+    },
+    {
+      "bytes": 11397,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/LIBRARY_MODEL_GUIDE.md",
+      "sha256": "f53ce88c7d82a797d7727c60a8feea3bcc8449e115bd7070c5de5eeb89273629"
+    },
+    {
+      "bytes": 18092,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md",
+      "sha256": "81d79a7f4d8a3cd7b8d85849254969264d7c910d03a9f1afba526e8d6cb5ab4b"
+    },
+    {
+      "bytes": 5456,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/development/2026-11-16-console-completion/notes/A33.md",
+      "sha256": "b0fc76219b552334ab12c9a4395170d86ac1d6764b6444bed4c6d877c52a4573"
+    },
+    {
+      "bytes": 13596,
+      "inspection": "full text recovered/reviewed",
+      "path": "docs/BUILD.md",
+      "sha256": "502e0d66384a5c963a486dbbcd93ca43a72520c90ebc08b925e6f97f4fa3225d"
+    },
+    {
+      "bytes": 9993,
+      "inspection": "full text recovered/reviewed",
+      "path": "apps/standalone/LibraryModel.h",
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2"
+    },
+    {
+      "bytes": 17817,
+      "inspection": "full text recovered/reviewed",
+      "path": "cmake/InstallStandalone.cmake",
+      "sha256": "78259c01339f35fbef19a091acfaa7a33d971e6a6aa1bae444b837b0c2a72fd5"
+    },
+    {
+      "bytes": 10971,
+      "inspection": "full text recovered/reviewed",
+      "path": "cmake/InstallHammondTools.cmake",
+      "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355"
+    },
+    {
+      "bytes": 6201,
+      "inspection": "full text recovered/reviewed",
+      "path": "cmake/StandaloneBenchmark.cmake",
+      "sha256": "e9e9469715ec73feb71940cd272176f77ec2e93e0fc262fa1abf5bc65750e666"
+    },
+    {
+      "bytes": 88729,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "README.md",
+      "sha256": "2f0e8dd699851165c86a8ea9e926a0033f801595526604539845acebd4a3c574"
+    },
+    {
+      "bytes": 30784,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "CMakeLists.txt",
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    {
+      "bytes": 46805,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "apps/standalone/CMakeLists.txt",
+      "sha256": "927f48c1feba27889a63c73d7b8223b40b33c8851a07ac3b7feec9a88e713e07"
+    },
+    {
+      "bytes": 78398,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": ".github/workflows/standalone.yml",
+      "sha256": "d298ac55d78ae242b97c5de73be138b4a87c4d4fb343872e58a5c0bd5dc08659"
+    },
+    {
+      "bytes": 10701,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "cmake/InstallRegistrationTools.cmake",
+      "sha256": "9f77bf59750bc4e3850e2aaa9712fec2ee5769b54c4e2b20fb60959d77714274"
+    },
+    {
+      "bytes": 19010,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/STANDALONE_INSTALL.md",
+      "sha256": "a4ad208456b4ed3521c24050d2d9d9a877662ae8ff3e96cff00ef388be1e8cba"
+    },
+    {
+      "bytes": 10546,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "tools/acquire_sdl2.py",
+      "sha256": "a0555aefe37b37621e2602eea9035b4d048c81c1cca0c3d5442c1f638d927ab3"
+    },
+    {
+      "bytes": 147938,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "apps/standalone/main.cpp",
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    {
+      "bytes": 44926,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "apps/standalone/native_tests/test_standalone_install.py",
+      "sha256": "0dffa82863f4ddd80e48cc8afc05329af60ae9ec028e5951638b57db16f84fb6"
+    },
+    {
+      "bytes": 32725,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "tests/test_registration_install.py",
+      "sha256": "d39978fba23326076b080f8347cd18e44637b56ed987a5a26846af40baba2d0c"
+    },
+    {
+      "bytes": 18545,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/PRESET_RUNBOOK.md",
+      "sha256": "8a2a8a2eed10ff69871e86a2d914ad9278d03433ed96e8c621fe6730b2e29cde"
+    },
+    {
+      "bytes": 9182,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/STANDALONE_MODEL.md",
+      "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3"
+    },
+    {
+      "bytes": 11757,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/FACTORY_REFERENCE.md",
+      "sha256": "5f6f3fc6fd633ad6aeb51e9fdc781fffa9a5fc37ca7d2beede839873267cd57a"
+    },
+    {
+      "bytes": 12884,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/REGISTRATION_GUIDE.md",
+      "sha256": "e844bacd28e7e30a1c3ad90c46189162cb9fffcd5e61d64f17bb6ad0027402b3"
+    },
+    {
+      "bytes": 23478,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/MIDI_EXPRESSION_GUIDE.md",
+      "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c"
+    },
+    {
+      "bytes": 13401,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/VST3_BUILD.md",
+      "sha256": "659db375ab7015317184943ea871a766ef392829d9fae242328cf26b29eaeb79"
+    },
+    {
+      "bytes": 18956,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "apps/standalone/UiModel.h",
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15"
+    },
+    {
+      "bytes": 83993,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "apps/standalone/UiModel.cpp",
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+    },
+    {
+      "bytes": 6900,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "cmake/InstallContactReferenceTools.cmake",
+      "sha256": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea"
+    },
+    {
+      "bytes": 7434,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "cmake/InstallContactGridConversionTools.cmake",
+      "sha256": "50b9cf6c4a46ec41c74d6a76bc693c8633f8ae7f8229f4ab004051067b6e025c"
+    },
+    {
+      "bytes": 9498,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "cmake/InstallSourceLeakageTools.cmake",
+      "sha256": "1307f47bba569812e2f94b42a23eb5184fb188f87071c1470754f84c0ef69cd1"
+    },
+    {
+      "bytes": 8325,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "cmake/InstallCrossoverTools.cmake",
+      "sha256": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844"
+    },
+    {
+      "bytes": 11069,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "cmake/InstallCaptureTools.cmake",
+      "sha256": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015"
+    },
+    {
+      "bytes": 24950,
+      "inspection": "targeted source excerpts and relevant declarations",
+      "path": "docs/development/2026-11-16-console-completion/assignments.json",
+      "sha256": "7b9df5bf4c76fc3b1d34c89bdd7393a810c8c3aca27029a4eb95fc034ae14f56"
+    },
+    {
+      "bytes": 79171,
+      "inspection": "target filename existence and CMake glob registration; bytes hashed, test body not reviewed",
+      "path": "apps/standalone/tests/test_standalone_library_model.cpp",
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d"
+    },
+    {
+      "bytes": 47769,
+      "inspection": "target filename existence and CMake glob registration; bytes hashed, test body not reviewed",
+      "path": "apps/standalone/tests/test_standalone_library_session.cpp",
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279"
+    },
+    {
+      "bytes": 39345,
+      "inspection": "target filename existence and CMake glob registration; bytes hashed, test body not reviewed",
+      "path": "apps/standalone/tests/test_standalone_library_storage.cpp",
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793"
+    },
+    {
+      "bytes": 44191,
+      "inspection": "target filename existence and CMake glob registration; bytes hashed, test body not reviewed",
+      "path": "apps/standalone/tests/test_standalone_library_recall.cpp",
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae"
+    },
+    {
+      "bytes": 34998,
+      "inspection": "target filename existence and CMake glob registration; bytes hashed, test body not reviewed",
+      "path": "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0"
+    }
+  ],
+  "unresolved_acceptance": [
+    "combined-source runtime/gallery and source-specific hosted qualification as tracked by root checkpoint",
+    "native browser/main integration",
+    "factory Table IV, loaded gain and physical latch evidence",
+    "literal whole-interface 1:1",
+    "real display/DPI/input/audio/MIDI and host journeys",
+    "native accessibility",
+    "callback deadlines and native callback retirement",
+    "physical calibration and signed distribution"
+  ],
+  "wave": 9,
+  "worker": "A49"
+}

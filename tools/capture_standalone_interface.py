@@ -3,6 +3,9 @@
 
 --include-header-aspects appends two unequal-aspect Dimensional Play views,
 1920x820 and 1400x1080, for a fifteen-view gallery. The default stays thirteen.
+--replay-time-scale explicitly multiplies every event timestamp and the 1800 ms
+duration by an integer 1..10. The default is 1; state assertions and the separate
+--timeout-seconds limit do not change, and failed captures are never retried.
 
 Requires Python 3.10+, Pillow, an already built standalone and a source/build
 qualification JSON with ``binary_sha256`` and ``source_sha256`` members. The
@@ -149,7 +152,14 @@ def read_json(path: Path) -> dict:
     def bad_number(value: str) -> None:
         raise ValueError(f"invalid JSON numeric token: {value}")
 
-    result = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=pairs, parse_constant=bad_number)
+    def finite_float(value: str) -> float:
+        # Standard JSON numbers such as 1e999 do not reach parse_constant.
+        result = float(value)
+        require(math.isfinite(result), f"non-finite JSON numeric token: {value}")
+        return result
+
+    result = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=pairs,
+                        parse_constant=bad_number, parse_float=finite_float)
     require(isinstance(result, dict), f"expected a JSON object: {path}")
     return result
 
@@ -228,10 +238,25 @@ def qualification(path: Path, source: Path, exe: dict) -> dict:
             "meaning": "Supplied author build report matched the current files and executable. This utility did not rebuild or independently attest source-to-binary provenance."}
 
 
-def replay(workspace: str, presentation: str, scene: str = "standard") -> tuple[str, int]:
+def replay_timing(replay_time_scale: int = 1) -> dict:
+    require(type(replay_time_scale) is int and 1 <= replay_time_scale <= 10,
+            "replay time scale must be an integer 1..10")
+    return {"time_scale": replay_time_scale, "base_duration_ms": DURATION_MS,
+            "duration_ms": DURATION_MS * replay_time_scale}
+
+
+def replay(workspace: str, presentation: str, scene: str = "standard",
+           replay_time_scale: int = 1) -> tuple[str, int]:
+    timing = replay_timing(replay_time_scale)
     require(scene == "standard" or scene in FOCUS_SCENES, "unknown capture scene")
     require(scene == "standard" or (workspace, presentation) == ("play", "dimensional"),
             "focused scenes require Dimensional Play")
+
+    def scheduled(records: list[str]) -> str:
+        # Alter only each leading timestamp, retaining event order and payload.
+        return "\n".join(f"{int(timestamp) * replay_time_scale} {event}"
+                         for record in records for timestamp, event in (record.split(" ", 1),))
+
     # Keyboard-only replay works at every size and does not rely on dummy mouse
     # capture. Each held physical key owns a distinct logical target.
     events = [
@@ -250,17 +275,18 @@ def replay(workspace: str, presentation: str, scene: str = "standard") -> tuple[
     events.extend((f"1100 key_down {key} none 0", f"1110 key_up {key} none"))
     if presentation == "flat":
         events.extend(("1150 key_down F7 none 0", "1160 key_up F7 none"))
-    script = (f"B3UIREPLAY1\nduration_ms {DURATION_MS}\n"
+    script = (f"B3UIREPLAY1\nduration_ms {timing['duration_ms']}\n"
               "# Upper 60/64, Lower 67 and pedal 3 stay held through the captured endpoint.\n"
               "# Change retained Upper B 16-foot drawbar 7 -> 8 while notes are held.\n"
               "# Upper fixed C# continues sounding; Lower uses adjustable A. No Save.\n"
-              + "\n".join(events) + "\n")
+              + scheduled(events) + "\n")
     if scene == "standard":
         return script, len(events)  # Preserve the original eight replay bytes.
     extra = []
     # The model inserts 68 ordinary controls, then Upper/Lower/Pedal roving
     # keys: 71 Play stops. From ordinal 25, Pedals is 66 and the pedal group 71.
-    # Short key taps remain ordered and leave a 250 ms applied/painted dwell.
+    # Short key taps remain ordered and leave a 250 ms applied/painted dwell
+    # at scale 1. The explicit scale multiplies this dwell with every timestamp.
     for index in range(FOCUS_SCENES[scene]["tabs_after_drawbar"]):
         offset = 1200 + 6 * index
         extra.extend((f"{offset} key_down Tab none 0", f"{offset + 1} key_up Tab none"))
@@ -269,12 +295,13 @@ def replay(workspace: str, presentation: str, scene: str = "standard") -> tuple[
         extra.extend(("1500 key_down Return none 0", "1510 key_up Return none", "1550 key_down W none 0"))
     else:
         extra.extend(("1500 key_down End none 0", "1510 key_up End none", "1550 key_down Space none 0"))
-    return (script + "# " + FOCUS_SCENES[scene]["action"] + "\n" + "\n".join(extra) + "\n",
+    return (script + "# " + FOCUS_SCENES[scene]["action"] + "\n" + scheduled(extra) + "\n",
             len(events) + len(extra))
 
 
 def validate(data: dict, width: int, height: int, workspace: str, presentation: str, event_count: int,
-             scene: str = "standard") -> dict:
+             scene: str = "standard", replay_time_scale: int = 1) -> dict:
+    timing = replay_timing(replay_time_scale)
     require(scene == "standard" or scene in FOCUS_SCENES, "unknown capture scene")
     require(scene == "standard" or (width, height, workspace, presentation) == (1672, 941, "play", "dimensional"),
             "focused scenes require reference-size Dimensional Play")
@@ -336,7 +363,8 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
     for key in ("completed", "delivered", "passed", "final_acknowledged", "snapshot_available_before_shutdown",
                 "session_running_before_shutdown"):
         require(record[key] is True, f"replay.{key} is false")
-    require(record["duration_ms"] == DURATION_MS and record["scheduled_events"] == record["pushed_events"] == event_count,
+    require(type(record["duration_ms"]) is int and record["duration_ms"] == timing["duration_ms"]
+            and record["scheduled_events"] == record["pushed_events"] == event_count,
             "replay duration or event delivery differs")
     require(record["accepted_note_on_commands"] == expected_note_ons and record["accepted_note_off_commands"] == 0
             and record["device_starts"] == 1 and record["observations_truncated"] is False,
@@ -366,7 +394,7 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
     require(painted["workspace"] == workspace and painted["presentation"] == presentation
             and painted["overlay"] == "none" and [painted["window_width"], painted["window_height"]] == [width, height],
             "actual painted screenshot is not the requested view/size")
-    require(painted["elapsed_ms"] >= DURATION_MS and 0 < painted["rendered_image"] <= runtime["rendered_images"]
+    require(painted["elapsed_ms"] >= timing["duration_ms"] and 0 < painted["rendered_image"] <= runtime["rendered_images"]
             and painted == view["before_shutdown"] == view["last_painted"], "capture is not the final replay-painted frame")
     held = painted.get("held_targets")
     require(held == {"upper": 2, "lower": 1, "pedals": len(expected_pedals)}
@@ -383,7 +411,7 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
             and copied["snapshot_state"] == "current" and copied["controls_pending"] is False
             and copied["frame_clock"] > 0 and copied["publication_revision"] > 0,
             "captured frame lacks a current acknowledged copied state")
-    result = {"passed": True, "actual_painted_view": painted, "callbacks": audio["callback_count"],
+    result = {"passed": True, "replay_timing": timing, "actual_painted_view": painted, "callbacks": audio["callback_count"],
             "rendered_frames": audio["rendered_frames"], "ui_events": event_count,
             "held_manual_notes": endpoint["manual_notes"], "held_pedal_ids": endpoint["pedal_ids"],
             "live_edit": {"target": "Upper B 16-foot retained drawbar", "before": 7, "after": 8},
@@ -441,8 +469,12 @@ def main() -> int:
                         help="acknowledge dummy audio/video and software rendering; no physical device claim")
     parser.add_argument("--include-header-aspects", action="store_true",
                         help="append full-frame 1920x820 and 1400x1080 Dimensional Play views (15 total; default 13)")
-    parser.add_argument("--timeout-seconds", type=float, default=12.0)
+    parser.add_argument("--replay-time-scale", type=int, choices=range(1, 11), default=1,
+                        help="multiply every replay timestamp and duration by this integer (default: 1; 1800 ms)")
+    parser.add_argument("--timeout-seconds", type=float, default=12.0,
+                        help="per-process wall timeout, independent of replay scale (default: 12; finite 4..60 seconds)")
     args = parser.parse_args()
+    timing = replay_timing(args.replay_time_scale)
     cases = CASES + HEADER_ASPECT_CASES if args.include_header_aspects else CASES
     require(math.isfinite(args.timeout_seconds) and 4 <= args.timeout_seconds <= 60, "timeout must be finite, 4..60 seconds")
     require(not os.path.lexists(args.output), "output already exists; refusing to overwrite any gallery")
@@ -474,6 +506,7 @@ def main() -> int:
             if args.include_header_aspects else
             "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection."),
         "started_at_utc": datetime.now(timezone.utc).isoformat(), "command": [sys.executable, *sys.argv],
+        "replay_timing": timing,
         "output_directory_at_capture": str(output), "platform": platform.platform(),
         "python": platform.python_version(), "pillow": pillow_version,
         "qualification": "Actual native screenshots with SDL dummy audio/video and software renderer; no physical device, deadline, accessibility, measured instrument or literal 1:1 reference qualification.",
@@ -498,7 +531,7 @@ def main() -> int:
         plans = {}
         for workspace, presentation, scene in sorted(set(
                 (c[3], c[4], CASE_SCENES.get(c[0], "standard")) for c in cases)):
-            script, events = replay(workspace, presentation, scene)
+            script, events = replay(workspace, presentation, scene, args.replay_time_scale)
             suffix = "" if scene == "standard" else f"-{scene}"
             path = output / "inputs" / f"{workspace}-{presentation}{suffix}.b3uireplay"
             path.write_text(script, encoding="ascii")
@@ -546,7 +579,11 @@ def main() -> int:
             require(not process.stdout and not process.stderr, f"{name}: unexpected native output; logs retained")
             require(inventory(list((output / "inputs").iterdir()), output) == inputs_before,
                     f"{name}: input/state bytes changed")
-            case["validation"] = validate(read_json(diagnostics), width, height, workspace, presentation, events, scene)
+            case["validation"] = validate(read_json(diagnostics), width, height, workspace, presentation, events, scene,
+                                          args.replay_time_scale)
+            validated_timing = case["validation"].get("replay_timing")
+            require(validated_timing == timing and all(type(value) is int for value in validated_timing.values()),
+                    f"{name}: validated replay timing differs from selected provenance")
             case["diagnostics"] = {"path": str(diagnostics.relative_to(output)), **identity(diagnostics)}
             bmp_identity = identity(bmp)
             with Image.open(bmp) as native:

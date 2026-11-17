@@ -1,0 +1,122 @@
+--- a/tools/capture_standalone_interface.py
++++ b/tools/capture_standalone_interface.py
+@@ -152,7 +152,14 @@
+     def bad_number(value: str) -> None:
+         raise ValueError(f"invalid JSON numeric token: {value}")
+ 
+-    result = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=pairs, parse_constant=bad_number)
++    def finite_float(value: str) -> float:
++        # Standard JSON numbers such as 1e999 do not reach parse_constant.
++        result = float(value)
++        require(math.isfinite(result), f"non-finite JSON numeric token: {value}")
++        return result
++
++    result = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=pairs,
++                        parse_constant=bad_number, parse_float=finite_float)
+     require(isinstance(result, dict), f"expected a JSON object: {path}")
+     return result
+ 
+--- a/tests/test_capture_standalone_interface.py
++++ b/tests/test_capture_standalone_interface.py
+@@ -103,6 +103,101 @@
+         with self.assertRaisesRegex(ValueError, message):
+             CAPTURE.validate(data, *CASES[0][1:])
+ 
++    def read_json_text(self, payload):
++        with tempfile.TemporaryDirectory() as temporary:
++            path = Path(temporary) / "evidence.json"
++            path.write_text(payload, encoding="utf-8")
++            return CAPTURE.read_json(path)
++
++    def test_json_rejects_overflow_in_objects_and_arrays(self):
++        tokens = ("1e999", "-1e999", "1E+999", "-1E+999",
++                  "1.7976931348623159e308", "-1.7976931348623159e308",
++                  "9" * 400 + ".0", "-" + "9" * 400 + ".0")
++        for token in tokens:
++            for template in ('{"number":TOKEN}', '{"outer":{"number":TOKEN}}',
++                             '{"outer":[0,{"inner":[true,TOKEN,null]}]}'):
++                with self.subTest(token=token, template=template):
++                    with self.assertRaises(ValueError) as refused:
++                        self.read_json_text(template.replace("TOKEN", token))
++                    self.assertEqual(str(refused.exception), f"non-finite JSON numeric token: {token}")
++
++    def test_json_preserves_finite_float_boundaries_and_exponents(self):
++        cases = (
++            ("1.7976931348623157e308", sys.float_info.max),
++            ("-1.7976931348623157e308", -sys.float_info.max),
++            ("1.7976931348623158e308", sys.float_info.max),
++            ("-1.7976931348623158e308", -sys.float_info.max),
++            ("2.2250738585072014e-308", sys.float_info.min),
++            ("5e-324", float.fromhex("0x0.0000000000001p-1022")),
++            ("-5e-324", -float.fromhex("0x0.0000000000001p-1022")),
++            ("1e-999", 0.0), ("-1e-999", -0.0),
++            ("0e999", 0.0), ("-0e999", -0.0),
++            ("3.25E+2", 325.0), ("-7.5e-2", -0.075), ("1e0", 1.0), ("0.75", 0.75),
++        )
++        for token, expected in cases:
++            with self.subTest(token=token):
++                result = self.read_json_text('{"number":TOKEN,"nested":[TOKEN]}'.replace("TOKEN", token))
++                for actual in (result["number"], result["nested"][0]):
++                    self.assertIs(type(actual), float)
++                    self.assertEqual(actual.hex(), expected.hex())  # Includes the sign of zero.
++
++    def test_json_preserves_other_types_member_scopes_and_object_boundary(self):
++        payload = ('{"integer":' + "1" + "0" * 400 + ',"flags":[true,false,null],'
++                   '"objects":[{"number":1},{"number":2}],'
++                   '"strings":["1e999","-1e999","NaN","Infinity","-Infinity"]}')
++        result = self.read_json_text(payload)
++        self.assertIs(type(result["integer"]), int)
++        self.assertEqual(result["integer"], 10 ** 400)
++        self.assertIs(result["flags"][0], True)
++        self.assertIs(result["flags"][1], False)
++        self.assertIsNone(result["flags"][2])
++        self.assertEqual(result["objects"], [{"number": 1}, {"number": 2}])
++        self.assertEqual(result["strings"], ["1e999", "-1e999", "NaN", "Infinity", "-Infinity"])
++        for payload in ('[]', '1', '1.0', 'true', 'null', '"1e999"'):
++            with self.subTest(payload=payload):
++                with self.assertRaisesRegex(ValueError, "expected a JSON object:"):
++                    self.read_json_text(payload)
++
++    def test_json_retains_duplicate_member_refusal(self):
++        for payload in ('{"number":1.0,"number":2.0}',
++                        '{"outer":[{"number":1.0,"number":2.0}]}',
++                        r'{"number":1.0,"\u006eumber":2.0}'):
++            with self.subTest(payload=payload):
++                with self.assertRaisesRegex(ValueError, "duplicate JSON member: number"):
++                    self.read_json_text(payload)
++
++    def test_json_retains_nonstandard_constant_refusal(self):
++        for token in ("NaN", "Infinity", "-Infinity"):
++            for template in ('{"number":TOKEN}', '{"outer":[{"number":TOKEN}]}'):
++                with self.subTest(token=token, template=template):
++                    with self.assertRaises(ValueError) as refused:
++                        self.read_json_text(template.replace("TOKEN", token))
++                    self.assertEqual(str(refused.exception), f"invalid JSON numeric token: {token}")
++
++    def test_json_rejects_overflow_before_capture_evidence_validation(self):
++        # These inequality-only fields are not copied into the validation result;
++        # a later allow_nan=False writer cannot supply their missing decode guard.
++        cases = (
++            (("runtime", "rendered_images"), "1e999"),
++            (("replay", "before_shutdown", "resolved_sequence"), "1e999"),
++            (("replay", "before_shutdown", "last_applied_sequence"), "1e999"),
++            (("replay", "last_submitted_sequence"), "-1e999"),
++        )
++        marker = "__capture_numeric_overflow__"
++        for keys, token in cases:
++            with self.subTest(field=keys, token=token):
++                data = deepcopy(self.diagnostics[CASES[0][0]])
++                target = data
++                for key in keys[:-1]:
++                    target = target[key]
++                target[keys[-1]] = marker
++                payload = json.dumps(data)
++                self.assertEqual(payload.count(json.dumps(marker)), 1)
++                payload = payload.replace(json.dumps(marker), token)
++                with self.assertRaises(ValueError) as refused:
++                    CAPTURE.validate(self.read_json_text(payload), *CASES[0][1:])
++                self.assertEqual(str(refused.exception), f"non-finite JSON numeric token: {token}")
++
+     def test_all_eight_retained_native_diagnostics_pass(self):
+         for name, *arguments in CASES:
+             with self.subTest(case=name):

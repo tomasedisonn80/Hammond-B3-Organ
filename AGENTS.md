@@ -3,9 +3,42 @@
 Applies to all future sessions. This archival reorganization grants no permissions
 and changes no authorities, approvals, obligations or frozen criteria.
 
-## Current session and recovery
+## Current console continuation
 
-**Active heading/title/header continuation, 17 November 2026.** This request owns
+**Console continuation, 16 November 2026**, base
+`9d60dbf462a90fe422fd4e69757fe202264acb7c`: this request owns
+`/workspace/scratch/21cce69f7784/Hammond-B3-Organ` and the single coordinated
+`../build-native`. Read its [scope](docs/development/2026-11-16-console-completion/README.md),
+[checkpoint](docs/development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](docs/development/2026-11-16-console-completion/assignments.json)
+and fresh [all-500-page coverage](docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
+This request has its own 60 distinct workers in ten waves. Its complementary
+scope is the copied registration-library model and independently reviewed P1
+percussion/expression plate material. Published main `03c70c1` adds the separately accepted H1/header and scripted
+semantic-paint work. This root preserves both tracks and qualifies their exact
+combined source. Other workspaces remain read-only; inspect and reconcile any
+further published advances before publication.
+Every future session must recover the complete plan, record setup and actual
+progress, distinguish tested/failed/unrun gates, state concrete next work,
+update README with real captures after UI changes, and commit/push accepted
+authorized work with independent remote and source-specific CI verification.
+All standing compatibility, ownership and literal 1:1 obligations below remain.
+
+Current test-only successor recovery also includes published `6287055`,
+[A55's exact helper transition](docs/reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
+and the [separately qualified failure-only reader diagnostics](docs/development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json).
+Preserve the predecessor Windows title/header protocol failures; no differing
+leaf or cause is yet established. Do not loosen typed equality, numerical
+criteria, deadlines or workloads. Observe the next exact-source Windows result
+before choosing a corrective change. Root publishes with a fresh expected SHA
+and no force after prior same-ref jobs finish, then records all new outcomes.
+
+## Published heading/header recovery record
+
+The following owner record remains historical for this checkout; its original
+workspace, results and unfinished acceptance are preserved.
+
+**Heading/title/header continuation, 17 November 2026 UTC.** This request owns
 `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ` and root's coordinated
 `../build-native`. Read the [handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md),
 [session](docs/development/2026-11-16-heading-title-continuation/README.md), [latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md) and
@@ -190,11 +223,12 @@ after a context reset.** Use this order:
 
 1. Read this entire file and the complete [M0–M9 plan](docs/PLAN.md), including
    every exit and owner boundary. A current summary does not replace the plan.
-2. Read the [current handoff](docs/HEADING_TITLE_HEADER_HANDOFF.md),
-   [session scope](docs/development/2026-11-16-heading-title-continuation/README.md),
-   [latest checkpoint](docs/development/2026-11-16-heading-title-continuation/CHECKPOINT.md),
-   [assignment sequence](docs/development/2026-11-16-heading-title-continuation/NEXT_ASSIGNMENTS.md)
-   and [actual ledger](docs/development/2026-11-16-heading-title-continuation/assignments.json).
+2. Read the [current handoff](docs/CONSOLE_COMPLETION_HANDOFF.md),
+   [source-verified setup](docs/CONSOLE_SETUP_AND_HANDOFF.md),
+   [session scope](docs/development/2026-11-16-console-completion/README.md),
+   [latest checkpoint](docs/development/2026-11-16-console-completion/CHECKPOINT.md),
+   [root queue](docs/development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md)
+   and [actual ledger](docs/development/2026-11-16-console-completion/assignments.json).
    Recover each assigned change's frozen contract, independent admission and
    original evidence before implementation or acceptance.
 3. Recover [README/setup](README.md), [status](docs/STATUS.md),
@@ -256,8 +290,8 @@ it; it does not govern unrelated tasks. Read actual progress from the ledger;
 never count planned workers, follow-ups or historical sessions. From this checkout:
 
 ```sh
-python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py
-python3 -B docs/development/2026-11-16-heading-title-continuation/check_session.py --strict
+python3 -B docs/development/2026-11-16-console-completion/check_session.py
+python3 -B docs/development/2026-11-16-console-completion/check_session.py --strict
 ```
 
 The second command is the closure check; this checker has no `--repo` option.

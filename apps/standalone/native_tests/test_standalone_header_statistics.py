@@ -133,6 +133,30 @@ def typed_equal(actual, expected):
     return actual == expected
 
 
+def copied_state_difference(actual, expected, path="root"):
+    """Describe the first exact mismatch; never alter equality or accept data."""
+    def value_text(value):
+        return repr(value)[:96]
+    if type(actual) is not type(expected):
+        return (path + ": actual " + type(actual).__name__ + " " + value_text(actual) +
+                "; expected " + type(expected).__name__ + " " + value_text(expected))
+    if type(expected) is dict:
+        if actual.keys() != expected.keys():
+            return path + ": dictionary keys differ"
+        for key, value in expected.items():
+            if not typed_equal(actual[key], value):
+                return copied_state_difference(actual[key], value, path + "." + key)
+    elif type(expected) is list:
+        if len(actual) != len(expected):
+            return path + ": list lengths " + str(len(actual)) + " / " + str(len(expected))
+        for index, (left, right) in enumerate(zip(actual, expected)):
+            if not typed_equal(left, right):
+                return copied_state_difference(left, right, path + "[" + str(index) + "]")
+    elif actual != expected:
+        return path + ": actual " + value_text(actual) + "; expected " + value_text(expected)
+    return path + ": no difference"
+
+
 def unique_members(pairs):
     result = {}
     for key, value in pairs:
@@ -285,8 +309,12 @@ def validate_model(model, session, hit):
     require(type(view) is dict and set(view) == view_keys and
             type(layout) is dict and set(layout) == layout_keys, "incomplete view/layout record")
     expected = expected_session()
-    require(typed_equal(session, expected) and typed_equal(view["applied"], expected),
-            "complete canonical copied session differs")
+    if not typed_equal(session, expected):
+        require(False, "complete canonical copied session differs; " +
+                copied_state_difference(session, expected, "session"))
+    if not typed_equal(view["applied"], expected):
+        require(False, "complete canonical copied session differs; " +
+                copied_state_difference(view["applied"], expected, "view.applied"))
     for key, value in {"controls": expected["controls"], "edited_banks": [1, 1],
                        "focus": [4, 0, 1, 4], "controls_pending": False,
                        "workspace": 0, "presentation": 0}.items():

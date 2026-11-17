@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "reviewer": "A50",
+  "actual_worker": "/root/w09_a50",
+  "staffing_wave": 9,
+  "recorded_utc": "2026-11-17T05:31:23.039086+00:00",
+  "decision": "PROSPECTIVE_ADMISSION_HOLD_FOR_ROOT_APPLY_GATES",
+  "scope": "Static README claims/source/link audit only; no direct README edit or execution qualification.",
+  "readme_preimage": {
+    "path": "README.md",
+    "bytes": 88729,
+    "sha256": "2f0e8dd699851165c86a8ea9e926a0033f801595526604539845acebd4a3c574",
+    "local_head": "3263b177d42e96309dcc23a287c586150ab2378e",
+    "merge_head": "03c70c103a4a0dd72b323529416b909c19a4e139"
+  },
+  "patch": {
+    "path": "docs/development/2026-11-16-console-completion/reports/A50-readme.patch",
+    "sha256": "c14e5a0f78ef06aa60b4c0adde47bdd09fe29bc1d40884fbaa42462a8b865eee",
+    "prospective_readme_sha256": "1c3e0ffb66fbbc46f3e49f6e543f70ea31757fd0069514649e23cb92ef06ddbd",
+    "applied": false
+  },
+  "source_sha256": {
+    "apps/standalone/InstrumentView.cpp": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105",
+    "apps/standalone/main.cpp": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537",
+    "apps/standalone/UiModel.cpp": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
+    "apps/standalone/LibraryModel.cpp": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98",
+    "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+  },
+  "apply_prerequisites": [
+    {
+      "id": "exact_readme_preimage",
+      "required": "2f0e8dd699851165c86a8ea9e926a0033f801595526604539845acebd4a3c574",
+      "state": "matched_at_preparation",
+      "owner": "root",
+      "action": "Recheck README SHA-256; rebase and review if changed. Apply only to the exact preimage."
+    },
+    {
+      "id": "combined_affected_qualification",
+      "required": "All 78 registered affected CTests pass at frozen combined source, including both canonical numerical gates; no changed inputs or waived criteria.",
+      "state": "running_when_reviewed",
+      "owner": "root",
+      "evidence": "docs/development/2026-11-16-console-completion/reports/combined-qualification.json"
+    },
+    {
+      "id": "combined_gallery_identity",
+      "required": "Complete 69-entry manifest, fifteen successful captures and fifteen decoded images; verify every size/hash, source qualification, executable/state/input identities and scale-one diagnostics.",
+      "state": "not_yet_created_when_reviewed",
+      "owner": "root",
+      "directory": "docs/design/native-gallery-console-combined"
+    },
+    {
+      "id": "independent_visual_admission",
+      "required": "A48 directly reviews the unchanged reference and all fifteen combined full frames, accepts the bounded combined change and retains whole-interface residuals.",
+      "state": "pending",
+      "owner": "A48/root"
+    },
+    {
+      "id": "final_static_links_and_source",
+      "required": "Resolve all eighteen staged gallery targets, confirm unchanged approved source or independently qualify any change, and review this exact patch before application.",
+      "state": "pending",
+      "owner": "root"
+    },
+    {
+      "id": "a49_guide",
+      "required": "A49 guide is not linked by this patch; root may add its setup/handoff link only after accepting that delivery.",
+      "state": "excluded_pending_review",
+      "owner": "root"
+    }
+  ],
+  "changed_section_inventory": [
+    {
+      "section": "Current development summary",
+      "original_start_line": 5,
+      "original_end_line": 45,
+      "old_sha256": "47982137f75bcbe65df685966ebcce1adfd664bd1a5469bf8432eb2a2623488b",
+      "new_sha256": "30e644f5bf2eef9330943b78c01119fb0052e5a5715bb3bf72e22826b6d9fff2"
+    },
+    {
+      "section": "Navigation / current recovery checkpoint",
+      "original_start_line": 224,
+      "original_end_line": 224,
+      "old_sha256": "bde7c09a7e3d7370f1f34bc9ab614594ed41b2bf77d5f3b707e1d9a71d4f6704",
+      "new_sha256": "b9aadf86ec66269156326cd4dcf1f465082296b14a8beab0fab328d636c2d411"
+    },
+    {
+      "section": "Current native interface",
+      "original_start_line": 508,
+      "original_end_line": 551,
+      "old_sha256": "22fd658cacfc20bab66a63640d48c78e4656e6b0bda519f7390fe8e4b525f26a",
+      "new_sha256": "377bef6ba05f829297532967dc47e892b1b90f1bdc4c1a07afe8af4464467e22"
+    },
+    {
+      "section": "What changed in UI design / H1 and P1 evidence rows",
+      "original_start_line": 558,
+      "original_end_line": 558,
+      "old_sha256": "0e2575632d638239c47fa7e67d1ad50ea826cac1b2b55cd40d2e61e2aec1a6df",
+      "new_sha256": "427ea803640165afa514bf59825444d40e2f2e11f31f365ed82804205e528475"
+    },
+    {
+      "section": "What changed in UI design / title evidence qualifier",
+      "original_start_line": 557,
+      "original_end_line": 557,
+      "old_sha256": "72ecff5fbbb0d3dff68b1386180123dcfb46d44b15b2b2ee0a66b228507055e0",
+      "new_sha256": "257469c05e1eb849c27b11e9d29768c2247929b26938635f1768c5c1f687aaae"
+    },
+    {
+      "section": "What changed in UI design / source and timing boundaries",
+      "original_start_line": 560,
+      "original_end_line": 571,
+      "old_sha256": "24af375835b2c4137701b1d07979fab0ccc7f8ec702e0ce8bf5116178c40a7ab",
+      "new_sha256": "7c691dc845c6f272ce25ad693a6b39e58fd1e80053b0339407ffc2e31225b089"
+    },
+    {
+      "section": "Remaining reference and usability work",
+      "original_start_line": 572,
+      "original_end_line": 590,
+      "old_sha256": "ad19058fa7cc6739a55bc95a545729a7a223374c3c2b43307980aefabedc3aaf",
+      "new_sha256": "9bf5fc1ab45d4c574fdf1627af77aeaa015e81fa7f79e50ad91261ce2e62c276"
+    },
+    {
+      "section": "Retained Upper material / latest residual pointer",
+      "original_start_line": 664,
+      "original_end_line": 665,
+      "old_sha256": "53fd6fbe920275e481036f563dc4d6c68df8d6d5fd6101e44770f9bf704cf8a6",
+      "new_sha256": "1209e147fc6861357958494b296e9c240f554de88fded6edd84b3bb23b104736"
+    },
+    {
+      "section": "Whole project plan / M3 foundation and native continuation",
+      "original_start_line": 733,
+      "original_end_line": 733,
+      "old_sha256": "60369cf369c452ee2b6316dfba0f4555988f8bbd83b0382b53fe0d1f0d3c0629",
+      "new_sha256": "123d727fa2fa28751f98e3e4a04c98463a9dd468fd54e7ce846d9e6fa39673cf"
+    },
+    {
+      "section": "Whole project plan / M9 foundation",
+      "original_start_line": 739,
+      "original_end_line": 739,
+      "old_sha256": "b9cb929f92c7401d360c3c9b7725313c205b0ec612290aa417ac4301462f532b",
+      "new_sha256": "038c3359bfa89c55869de30ddb2081c30a1707065855bbb6d7650edb0d4e1026"
+    },
+    {
+      "section": "Whole project plan / source and ownership guidance",
+      "original_start_line": 741,
+      "original_end_line": 746,
+      "old_sha256": "7a49bce0f09613ac0f004272003687eb302f6619f66778eb34dd2f86d59a4b3e",
+      "new_sha256": "0c6a195207e97bf044db4a69957496fd39c377d7ab914bee12fbbf4bb46aff4e"
+    },
+    {
+      "section": "Whole project plan / first concrete next action",
+      "original_start_line": 756,
+      "original_end_line": 756,
+      "old_sha256": "26268071c0f62911e97f51352f31a04185b21524e11f3ecf4d54e943aa7f7926",
+      "new_sha256": "72ce172418678f2d10589dcf2ae16d473aaa1be93dc82b6f06703a347ae67384"
+    },
+    {
+      "section": "Whole project plan / active records",
+      "original_start_line": 762,
+      "original_end_line": 764,
+      "old_sha256": "280e11da4399958b5ac65b0ef305da820e41d27d497b11fe0e1f6100875f265a",
+      "new_sha256": "7f5a1c3860dddbd798088987c8a195b4ee577e6eb21d561b6901a3bc4406b9f2"
+    },
+    {
+      "section": "Source-specific qualification / current console introduction",
+      "original_start_line": 769,
+      "original_end_line": 770,
+      "old_sha256": "0fb7d7386a45ef5f8c98001e6038df7219b201908c757f703dc689e2be50bfb8",
+      "new_sha256": "d6f22178d4616b03eba9ea8260a16f7985feb2963591c25d5a1655d34af59401"
+    },
+    {
+      "section": "Documentation and source / active and retained sessions",
+      "original_start_line": 922,
+      "original_end_line": 922,
+      "old_sha256": "75b7d480512e94beb45feb5a2338e1cc5cd4c4c528fc38c0c35a5d7467d278a4",
+      "new_sha256": "14411477bdcb1513bf042dcfb8c0abfb837fe8626eb5695c16f2da4e4b15f35e"
+    },
+    {
+      "section": "Documentation and source / current reading record",
+      "original_start_line": 938,
+      "original_end_line": 938,
+      "old_sha256": "5c47eaedb046a0aba6a6d60e27c33e8db337cd9828744bc3475cf30720cfb07f",
+      "new_sha256": "03cf51eb5b408caa78fe2e2ba59ee08996481f78ab2e700ba4a758445c325620"
+    }
+  ],
+  "static_review": {
+    "readme_unchanged": true,
+    "all_fenced_commands_byte_identical": true,
+    "published_heading_and_preset_blocks_byte_identical": true,
+    "all_old_heading_anchors_preserved": true,
+    "existing_relative_link_targets_checked": 246,
+    "new_unique_targets": 26,
+    "unexpected_missing_targets": [],
+    "staged_pending_gallery_targets": [
+      "docs/design/native-gallery-console-combined/images/flat-minimum-960x700.png",
+      "docs/design/native-gallery-console-combined/images/flat-reference-1672x941.png",
+      "docs/design/native-gallery-console-combined/images/play-default-1280x900.png",
+      "docs/design/native-gallery-console-combined/images/play-header-tall-1400x1080.png",
+      "docs/design/native-gallery-console-combined/images/play-header-wide-1920x820.png",
+      "docs/design/native-gallery-console-combined/images/play-minimum-960x700.png",
+      "docs/design/native-gallery-console-combined/images/play-minimum-active-1400x820.png",
+      "docs/design/native-gallery-console-combined/images/play-pedal-focus-1672x941.png",
+      "docs/design/native-gallery-console-combined/images/play-reference-1672x941.png",
+      "docs/design/native-gallery-console-combined/images/play-toolbar-focus-1672x941.png",
+      "docs/design/native-gallery-console-combined/images/play-wide-1920x1080.png",
+      "docs/design/native-gallery-console-combined/images/rotary-minimum-960x700.png",
+      "docs/design/native-gallery-console-combined/images/rotary-reference-1672x941.png",
+      "docs/design/native-gallery-console-combined/images/service-minimum-960x700.png",
+      "docs/design/native-gallery-console-combined/images/service-reference-1672x941.png",
+      "docs/design/native-gallery-console-combined/inputs/source-qualification.json",
+      "docs/design/native-gallery-console-combined/manifest.json",
+      "docs/design/native-gallery-console-combined/provenance.json"
+    ],
+    "no_native_build_or_test_execution": true,
+    "no_direct_image_review": true,
+    "no_threshold_changes": true,
+    "unified_patch_exact_preimage_reconstruction": true,
+    "existing_owned_report_links_checked": true
+  },
+  "evidence_boundaries": {
+    "H1": "Original 103 criteria and RGB/quiet-patch statistics remain at their recorded H1 source.",
+    "P1": "Original 62 screens / 34 pairs / 70 processes are pre-helper; timing and first gallery also retain original inputs.",
+    "combination": "A47 exact additive source admission; possible overlap at arbitrarily tiny positive renderer scales is retained.",
+    "library": "Copied model plus recall helper are present; browser/main wiring and native --library remain absent.",
+    "whole_interface": "Literal 1:1 remains unmet and unwaived; no physical/device/accessibility/release promotion."
+  },
+  "files_owned": [
+    "docs/development/2026-11-16-console-completion/reports/A50-readme.patch",
+    "docs/development/2026-11-16-console-completion/reports/A50-readme-review.json",
+    "docs/reviews/CONSOLE_README_CLAIMS_ADMISSION.md",
+    "docs/development/2026-11-16-console-completion/notes/A50.md"
+  ],
+  "admission": {
+    "path": "docs/reviews/CONSOLE_README_CLAIMS_ADMISSION.md",
+    "sha256": "12aeceee40a653df487c6fc81e0936beb16c656489fc355c6136ee7b702ab011",
+    "word_count": 662
+  },
+  "changed_section_inventory_range_semantics": "One-based inclusive original README lines; inline replacements may occupy only part of the listed line."
+}

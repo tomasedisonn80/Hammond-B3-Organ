@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "worker": "A41",
+  "agent": "/root/w07_a41",
+  "wave": 7,
+  "recorded_utc": "2026-11-17T05:07:17.481877+00:00",
+  "scope": "Final independent adversarial coverage review of the copied-state LibraryModel and named recall foundation only.",
+  "reconciliation_boundary": "Pinned pre-reconciliation LibraryModel/helper/five-harness sources only. Later combined main/H1/CI reconciliation requires its owner's affected qualification; this review makes no claim about that new combined source.",
+  "verdict": "ADMIT_REVIEWED_FOUNDATION_COVERAGE_NO_NEW_BLOCKING_DEFECT_FOUND",
+  "root_acceptance_and_publication": "Pending root; this report does not accept another owner's unfinished scope or publish source.",
+  "workspace": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "base_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "working_tree_basis": "The implementation and tests are working-tree additions/changes; HEAD alone does not identify them. Other concurrent files were not edited.",
+  "method": {
+    "full_read": [
+      "AGENTS.md",
+      "docs/PLAN.md",
+      "docs/development/2026-11-16-console-completion/README.md",
+      "docs/development/2026-11-16-console-completion/CHECKPOINT.md",
+      "docs/development/2026-11-16-console-completion/assignments.json",
+      "apps/standalone/LibraryModel.h",
+      "docs/LIBRARY_MODEL_DESIGN.md",
+      "docs/reviews/LIBRARY_MODEL_DESIGN_ADMISSION.md",
+      "docs/reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md",
+      "docs/reviews/LIBRARY_RESOLVED_RECEIPT_ADMISSION.md",
+      "apps/standalone/LibraryModel.cpp",
+      "apps/standalone/tests/test_standalone_library_model.cpp",
+      "apps/standalone/tests/test_standalone_library_session.cpp",
+      "apps/standalone/tests/test_standalone_library_storage.cpp",
+      "apps/standalone/tests/test_standalone_library_recall.cpp",
+      "apps/standalone/tests/test_standalone_library_roundtrip.cpp"
+    ],
+    "targeted_source_read": [
+      "UiModel recall/load/publish/submitted/observe paths and header declarations",
+      "Session prepare/start/stop/post/render/discard paths",
+      "RegistrationLibrary final authorization/no-replace publication/result path",
+      "main open_audio and open_overlay",
+      "docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md"
+    ],
+    "executed_by_A41": {
+      "builds": 0,
+      "ctest_runs": 0,
+      "native_processes": 0,
+      "product_source_mutations": 0,
+      "test_source_mutations": 0,
+      "filesystem_publication_experiments": 0,
+      "nested_agents": 0
+    },
+    "performed": "Read-only source/evidence inspection, source/log SHA-256 comparison, independent retained JUnit parsing and owned-document integrity checks only."
+  },
+  "source_identities": [
+    {
+      "path": "apps/standalone/LibraryModel.h",
+      "bytes": 9993,
+      "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/LibraryModel.cpp",
+      "bytes": 54280,
+      "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/UiModel.h",
+      "bytes": 18956,
+      "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/UiModel.cpp",
+      "bytes": 83993,
+      "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/Session.h",
+      "bytes": 8982,
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/Session.cpp",
+      "bytes": 31176,
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/RegistrationLibrary.h",
+      "bytes": 5982,
+      "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/RegistrationLibrary.cpp",
+      "bytes": 39180,
+      "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_model.cpp",
+      "bytes": 79171,
+      "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_session.cpp",
+      "bytes": 47769,
+      "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_storage.cpp",
+      "bytes": 39345,
+      "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_recall.cpp",
+      "bytes": 44191,
+      "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae",
+      "matches_integrated_receipt": true
+    },
+    {
+      "path": "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "bytes": 34998,
+      "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0",
+      "matches_integrated_receipt": true
+    }
+  ],
+  "additional_review_identities": [
+    {
+      "path": "docs/LIBRARY_MODEL_DESIGN.md",
+      "bytes": 21980,
+      "sha256": "b85e37d18725b8b357460a5a9caaa58f38cb0114573ae7c1c1266ce72b150852"
+    },
+    {
+      "path": "docs/reviews/LIBRARY_MODEL_DESIGN_ADMISSION.md",
+      "bytes": 12216,
+      "sha256": "4244b3ec75daa722e43bf582259cbce521979af29bdfd1a28776461a4a3ddec9"
+    },
+    {
+      "path": "docs/reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md",
+      "bytes": 18915,
+      "sha256": "c690275e0b52c0b0a776123b3bde6a32482c96a0677b805a51d5260375f35ad2"
+    },
+    {
+      "path": "docs/reviews/LIBRARY_RESOLVED_RECEIPT_ADMISSION.md",
+      "bytes": 3091,
+      "sha256": "dffad2b7659e7a3a81e1b365f6196c517b8fe2b0286baa381c8e90dc3f90b56e"
+    },
+    {
+      "path": "apps/standalone/main.cpp",
+      "bytes": 146859,
+      "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+    },
+    {
+      "path": "docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md",
+      "bytes": 18092,
+      "sha256": "81d79a7f4d8a3cd7b8d85849254969264d7c910d03a9f1afba526e8d6cb5ab4b"
+    }
+  ],
+  "execution_evidence": {
+    "attribution": "Executions were performed by root and A32; A41 read retained sources/results and did not rerun them.",
+    "integrated_five": {
+      "passed": 5,
+      "failed": 0,
+      "elapsed_seconds": 0.12,
+      "counts": {
+        "model": {
+          "groups": 32,
+          "assertions": 3250
+        },
+        "recall": {
+          "groups": 9,
+          "assertions": 743728,
+          "invalid_snapshots": 98,
+          "presentation_owner_contexts": 72,
+          "observations": "synthetic"
+        },
+        "roundtrip": {
+          "groups": 4,
+          "checks": 1489,
+          "snapshots": 138,
+          "renders": 20,
+          "posts": 24,
+          "library_reports": 24,
+          "ui_reports": 24,
+          "storage_calls": 7,
+          "authorizer_calls": 7,
+          "Session": "real",
+          "storage": "real"
+        },
+        "session": {
+          "groups": 12,
+          "assertions": 42634
+        },
+        "storage": {
+          "groups": 9,
+          "checks": 1115,
+          "control_proof": "synthetic",
+          "filesystem": "real"
+        }
+      }
+    },
+    "full_first_run": {
+      "independently_parsed_junit": {
+        "tests": 247,
+        "failed": [
+          "python_test_repository_integrity"
+        ],
+        "skipped": [],
+        "library_tests": [
+          {
+            "name": "test_standalone_library_model",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_recall",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_roundtrip",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_session",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_storage",
+            "passed": true
+          }
+        ]
+      },
+      "passed": 246,
+      "ctest_exit_code": 8,
+      "elapsed_seconds": 1005.02,
+      "failure": "A33 note referenced A33-native-next.json before the report existed during concurrent authoring; report now exists. Original full failure remains unchanged; affected repository-integrity rerun belongs to root."
+    },
+    "distinct_headless": {
+      "independently_parsed_junit": {
+        "tests": 12,
+        "failed": [],
+        "skipped": [],
+        "library_tests": [
+          {
+            "name": "test_standalone_library_model",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_recall",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_roundtrip",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_session",
+            "passed": true
+          },
+          {
+            "name": "test_standalone_library_storage",
+            "passed": true
+          }
+        ]
+      },
+      "passed": 12,
+      "failed": 0,
+      "first_build_passed": true,
+      "runtime_attempts": 1,
+      "source_matches": [
+        {
+          "path": "apps/standalone/LibraryModel.h",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/LibraryModel.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/UiModel.h",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/UiModel.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/Session.h",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/Session.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/RegistrationLibrary.h",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/RegistrationLibrary.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/tests/test_standalone_library_model.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/tests/test_standalone_library_session.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/tests/test_standalone_library_storage.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/tests/test_standalone_library_recall.cpp",
+          "matches_headless_identity": true
+        },
+        {
+          "path": "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+          "matches_headless_identity": true
+        }
+      ]
+    },
+    "retained_source_oracle_failure": {
+      "original_groups": 32,
+      "original_assertions": 3225,
+      "original_failed_groups": 1,
+      "meaning": "Original resolved-but-unapplied Awaiting oracle corrected after independent Session review; model implementation unchanged. Corrected result is 32 groups / 3250 assertions / zero failures."
+    },
+    "log_hash_checks": [
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-first-test.log",
+        "sha256_matches_receipt": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-ctest-detail.log",
+        "sha256_matches_receipt": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.xml",
+        "sha256_matches_receipt": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.log",
+        "sha256_matches_receipt": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest-detail.log",
+        "sha256_matches_receipt": true
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-result.json",
+        "bytes": 4857,
+        "sha256": "40356a2591f05c01da66dc899306e397d0cf6587c3541e0bf9c9e4e6a342d060"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-first-test.log",
+        "bytes": 743,
+        "sha256": "d94fb82fd724241e88053b3f29d9a190700c7781f178b054d6d7dff299447389"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-ctest-detail.log",
+        "bytes": 4735,
+        "sha256": "b9ecd02d4e257ddb35f25481834b518b18132654574962553812e7db7c33158d"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-model-first-test-receipt.json",
+        "bytes": 629,
+        "sha256": "6e29eb62917aad77655f0dafd662d32d5570c813ce59485df755fbab8c737a7b"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-model-first-test.log",
+        "bytes": 569,
+        "sha256": "34719ab12dbdb446cf2a4a97e9034ba31b76f6c9ef107d43e74000931827d655"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-model-resolution-result.json",
+        "bytes": 617,
+        "sha256": "f1c299e2f9c910b2c36d5224ee8d101d95643c1d0c0aaea43eb242c69df0f4af"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-session-result.json",
+        "bytes": 375,
+        "sha256": "42cb81d59f9baca05ec86cb9f9f73c19b296ae5073e9314e20629d7e341ced28"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/library-storage-result.json",
+        "bytes": 454,
+        "sha256": "992706ae93247dad9032d71d24e2287a6be8d4943b21bccf5709fd12d0c8a515"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json",
+        "bytes": 1920,
+        "sha256": "c40a47471efb8862f2b6d6ebc921f207b7b99ea5858856bc4c16b9b1c57a6823"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.xml",
+        "bytes": 140936,
+        "sha256": "63cb6f9fffd3c466652ab2d38c32d86d9865d35d222c5ee3fcab88eddbae03c7"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest.log",
+        "bytes": 38319,
+        "sha256": "bbdfff3343bde52dabfb1ce80bb2d14df62514cadadb912fdc1989c522b4df8f"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest-detail.log",
+        "bytes": 424723,
+        "sha256": "419df2387557a54727187a603e3766ea693e15e48952aced8549cbf47884b98b"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A32-headless/qualification.json",
+        "bytes": 24486,
+        "sha256": "81052af68844da6c89414103205acfe437158eb0c82a8905be8ec1a8da35d24e"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A32-headless/qualified-source-identities.json",
+        "bytes": 24034,
+        "sha256": "3cd13ff7e9807b1e7da26f2024a5d0d3e22b09f9498e6e9dcf25b6ba0696de7b"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A32-headless/ctest-first.xml",
+        "bytes": 5728,
+        "sha256": "7ee88d1daf361607c6c25cedb192e547d6a027a7c424e89e6ded2e7ebb4680a4"
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A32-headless/10-first-ctest.stdout.log",
+        "bytes": 20494,
+        "sha256": "f94a12bbb8f9be87e355f83a5d7d2fd6243c5896feb72c63af50f1a4eb36ad37"
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "area": "Same-value intent identity and supersession",
+      "verdict": "covered_at_foundation_boundaries",
+      "source": "LibraryModel.cpp: note_control_intent, submitted, receive; UiModel.cpp: recall_controls, publish_controls",
+      "executed": [
+        "model: same_value_intent_supersedes_without_revival; queued_equal_controls_need_original_newer_proof",
+        "session: equal_recall_waits_for_real_render; same_value_intention_supersedes_real_recall",
+        "recall: clean_equal_requires_its_submission; dirty_equal_supersedes_older_control_sequence",
+        "roundtrip: equal_newer_intent_refuses_old_save_even_after_real_proof"
+      ],
+      "argument": "Each valid complete intent has a new revision; the helper forces one complete command for equal controls. A later equal real intent supersedes an issued Save and cannot repair that old receipt even after its own real proof. Selection, form, current name and operation target remain distinct.",
+      "boundary": "A28 reports 24 real posts once to each model, but those posts are successful; real main direct-MIDI/recovery/disabled-gate routing is not executed."
+    },
+    {
+      "area": "Resolved versus applied and original proof",
+      "verdict": "covered_with_retained_oracle_failure",
+      "source": "LibraryModel.cpp: new_basis, receive, same_basis, proved_now; Session.cpp: render, discard_through",
+      "executed": [
+        "model: queued_equal_controls_need_original_newer_proof; no_startup_unsubmitted_or_unrelated_control_proof; missing_prepost_read_cannot_be_repaired",
+        "session: consumer_discard_cannot_be_recaptured_by_save; waiting_save_keeps_original_consumer_failure_guards; missing_prepost_read_never_creates_acknowledgment"
+      ],
+      "argument": "A newer publication with neither covering sequence stays Awaiting. Resolution without application is terminal Unconfirmed; a later unrelated larger applied sequence cannot revive it. Real consumer discard/recovery increments original guards and prevents recapture. Prepared/default observations alone have no basis.",
+      "boundary": "The isolated resolved-only publication is synthetic; real Session discard cases separately supply actual rejection/discard/recovery counters. Original A16 failure and its reviewed oracle amendment remain separate."
+    },
+    {
+      "area": "Freshness, stale and same-publication observations",
+      "verdict": "covered_with_explicit_source_only_edges",
+      "source": "LibraryModel.cpp: valid_snapshot, same_snapshot, receive",
+      "executed": [
+        "model: failed_old_and_malformed_observations_supply_no_proof; repeated_publication_requires_every_field_equal",
+        "session: equal_recall_waits_for_real_render; missing_prepost_read_never_creates_acknowledgment",
+        "recall: rejected_observation_resolves_without_claiming_application"
+      ],
+      "argument": "Failed, older, odd, impossible or invalid control snapshots do not certify proof. Eighteen conflicting same-publication mutations preserve admitted actual display. A fresh same-publication read can support an already proved Save but cannot newly prove a post.",
+      "boundary": "Source-only review covers bit-distinct signed zero at one publication and larger-publication decreasing counters/fault bits. The API cannot authenticate that callers supplied an actual fresh Session read."
+    },
+    {
+      "area": "Synchronous failure, queue overflow and recovery",
+      "verdict": "covered_by_real_session_and_synthetic_guards",
+      "source": "LibraryModel.cpp: submitted, guards_match, counters_available, receive; Session.cpp: post, render",
+      "executed": [
+        "model: failure_guards_prevent_larger_sequence_substitution; unrelated_synchronous_failures_invalidate_waits; malformed_submission_tokens_fail_closed",
+        "session: queue_overflow_recovers_without_false_receipt; failed_direct_post_cancels_before_publication; consumer_discard_cannot_be_recaptured_by_save"
+      ],
+      "argument": "A real 256-slot overflow and RecoveryPending fail synchronously before publication; recovery discards the pending prefix. Real invalid direct posts and consumer rejection cannot fabricate named proof. Saturated recovery/rejection/discard inputs fail closed.",
+      "boundary": "Saturation and malformed tokens are synthetic. Preserving a newer pending intent after a stale successful token is source-reviewed only. Native callback races, deadlines and OS retirement remain unqualified."
+    },
+    {
+      "area": "Timeout, lifecycle and Start ordering",
+      "verdict": "covered_in_harness_main_integration_open",
+      "source": "LibraryModel.cpp: admit_time, request_time_valid, lifecycle; main.cpp: open_audio",
+      "executed": [
+        "model: monotonic_time_deadline_and_overflow; audio_gates_and_explicit_lifecycle_boundaries; save_name_collision_capacity_and_prepare_admission",
+        "session: lifecycle_and_no_audio_cannot_revive_receipts; real_deadline_precedes_late_publication; stopped_proved_save_emits_one_effect_without_audio",
+        "roundtrip: startup_requires_a_new_post_start_receipt"
+      ],
+      "argument": "At 1999 ms proof may succeed; at 2000 ms timeout wins. Deadline addition is checked through UINT64_MAX. Real Stop/Start without a sampled stopped snapshot cancels waits; Prepare invalidates past proof. A pre-Start accepted restore really applies but cannot authorize Save after Start; a new real post-Start intent can.",
+      "boundary": "A28 proves the rule using a fresh post-Start preset intention; it does not implement or qualify the planned main startup reassertion path or native failed-Start cleanup."
+    },
+    {
+      "area": "All four finite issuance counters",
+      "verdict": "covered_by_injected_limits_and_source_arithmetic",
+      "source": "LibraryModel.cpp: available; operation_id_, desired_revision_, failure_revision_, catalog_generation_ issuance sites",
+      "executed": [
+        "model: operation_id_zero_last_and_exhausted",
+        "model: desired_revision_zero_last_and_exhausted",
+        "model: failure_revision_zero_last_and_exhausted",
+        "model: catalog_generation_zero_last_and_save_reservation"
+      ],
+      "argument": "All four counters exercise zero, last issuable token and attempted exhaustion. Invalid controls consume no desired revision. Catalog limits 1/2 additionally prove reservation refusal before an effect and successful use of the last reserved generation. Source checks counter < limit before increment; zero is never issued.",
+      "boundary": "Injected small limits exercise the branches; literal UINT64_MAX issuance and exhaustion during already-authorized Saving are source-reviewed, not executed. The latter cannot erase the actual matching storage completion."
+    },
+    {
+      "area": "Catalog refresh races, bounds and ambiguous rows",
+      "verdict": "covered_by_copied_catalogs_and_real_storage_scans",
+      "source": "LibraryModel.cpp: valid_complete_catalog, replace_catalog, publish_catalog, request_recall, complete_save",
+      "executed": [
+        "model: catalog_generations_selection_and_failures; complete_catalog_statuses_and_bounds; catalog_row_admission_and_case_ambiguity; revalidation_is_explicit_and_atomic; compound_generation_zero_and_newer_refresh_order",
+        "storage: newer_explicit_refresh_wins_over_compound_generation_zero; copied_catalog_and_selection_leave_disk_untouched"
+      ],
+      "argument": "Only the newest outstanding generation publishes once. Invalid bounds/counts/order and mixed ambiguous usable rows fail admission; a leaf read cannot clear a catalog Ambiguous row. Failed scans retain stale rows; vanished selection clears. Generation-zero compound scans cannot replace a newer explicit scan, and a precommit scan cannot mark a newly committed reference Missing.",
+      "boundary": "Adversarial catalogs are copied fixtures. The refresh race is a deterministic ordering of real scans, not a multithreaded stress experiment."
+    },
+    {
+      "area": "Create-only collision, final permission and committed warning",
+      "verdict": "covered_at_real_filesystem_and_combined_boundaries",
+      "source": "LibraryModel.cpp: take_save_intent, authorize_save, complete_save; RegistrationLibrary.cpp: save_registration_entry_new, publish_new",
+      "executed": [
+        "model: preauthorization_intent_failure_read_and_deadline_changes; authorized_commit_retains_truth_after_later_changes; committed_warning_and_inconsistent_metadata_truth; failed_storage_and_foreign_completions",
+        "storage: existing_or_late_created_target_is_never_replaced; final_authorization_refusals_clean_only_owned_staging; stale_storage_effect_and_duplicate_result_cannot_retarget; committed_refresh_failure_remains_saved_with_warning; unicode_root_and_protected_alias_preserve_existing_reference",
+        "roundtrip: external_late_creator_wins_without_replacement; equal_newer_intent_refuses_old_save_even_after_real_proof"
+      ],
+      "argument": "One effect and one permission bind immutable ID/name/scope/controls. The actual storage callback obtains its final fresh read after staging. Exact-path external winners survive the native no-replace call. Five refusal classes clean owned staging without publication. A genuine committed capacity-warning retains the file and named reference; malformed successful metadata cannot invent a reference. Foreign/duplicate results cannot retarget.",
+      "boundary": "A20 uses synthetic control publications with real files; A28 joins real UiModel/Session/storage. Collision creation is a deterministic seam before the authorizer read. Forged/missing metadata and reported write/flush/close/commit statuses are synthetic, not injected native syscall failures. Windows publication and actual concurrent device behavior are not executed by these Linux tests."
+    },
+    {
+      "area": "Independent named/legacy baselines and original held ownership",
+      "verdict": "covered_in_helper_session_and_combined_harnesses",
+      "source": "UiModel.cpp: recall_controls, publish_controls, load_controls, mark_saved; LibraryModel.cpp: establish_reference, view",
+      "executed": [
+        "recall: retained_baseline_and_legacy_operations; invalid_complete_snapshots_are_atomic; presentation_and_original_owners; active_gestures_survive",
+        "session: paired_recall_preserves_owners_audio_and_running_sources; literal_scopes_use_pending_desired_expression",
+        "roundtrip: scope_recalls_roundtrip_while_original_owners_remain"
+      ],
+      "argument": "Named Recall/Save leave the legacy clean reference unchanged; actual named Modified uses scope, while Pending tracks intent. Registration preserves explicit latest desired expression; Performance restores saved expression. Helper tests cover 98 invalid snapshots and 72 presentation/owner contexts. Real overlapping original keyboard/pointer/external owners release independently; Session audio checks preserve phase/percussion continuity.",
+      "boundary": "A19 compares real Session output with a direct Session and an explicit-event Engine; the 10,101 phase checks inspect the oracle Engine, not hidden Session phases. A27 passes synthetic UI events/observations; A28 uses UI actions without SDL. Browser entry/exit, Space suppression, gesture closure and actual native Ups remain separate."
+    }
+  ],
+  "source_only_reviewed_not_claimed_executed": [
+    "Literal UINT64_MAX issuance for the four model counters; tests use injected finite limits.",
+    "Authorized Saving completion surviving a subsequent issuance exhaustion.",
+    "A stale successful control token preserving a newer pending desired copy.",
+    "Larger-publication counter/fault regression rejection and bit-distinct same-publication signed zero.",
+    "Successful result lacking authorization and unknown result enum refusal; existing synthetic metadata cases do not execute all result branches.",
+    "Windows no-replace syscall body and uncontrolled simultaneous OS creators/device callbacks."
+  ],
+  "new_blockers": [],
+  "remaining_gates": [
+    {
+      "gate": "Main startup/lifecycle/post-result wiring",
+      "concrete_risk": "Current open_audio queues restore before Start. Simply adding Start hooks invalidates that unproved basis; suppressing the hook or inferring proof from equal controls is incorrect. A28 verifies the required new post-Start intention, but main has no LibraryModel hooks. All ordinary/direct-MIDI/recovery/disabled paths need actual exactly-once integration."
+    },
+    {
+      "gate": "Model-owned Save availability",
+      "concrete_risk": "controls_pending=false also describes unproved startup. Freeze and admit a model-owned availability/proof projection before browser enablement; do not duplicate private guards or probe request_save_new during paint."
+    },
+    {
+      "gate": "Dedicated browser input routing",
+      "concrete_risk": "open_overlay currently calls lose_input(FocusLost); UiModel processes Escape before text suppression, and helper preserves parameter drags. Dedicated browser gate/parameter-only closure must preserve original keyboard/Space/pointer/MIDI Ups and prevent modal replay/retrigger."
+    },
+    {
+      "gate": "Native storage adapter and actual device journeys",
+      "concrete_risk": "Final fresh-read callback must avoid observation-triggered dispatch/event pumping until synchronous completion. Actual SDL routing, capture ownership, queued Ups/storage delay, display/DPI, controllers and audio devices remain unexecuted."
+    },
+    {
+      "gate": "Exact-source qualification and delivery",
+      "concrete_risk": "Root owns affected document gate, sanitizer/platform/host qualification, remote reconciliation/publication, release and other owners. Full first run remains 246/247. SDK-free/software results do not establish native accessibility, callback deadline/retirement, physical fidelity or literal whole-interface 1:1."
+    }
+  ],
+  "test_change_decision": "No new tests or production repair proposed: no concrete foundation blocker was found. Further tests should exercise the missing adapter/browser/device boundary, not add redundant existing-foundation cases for count.",
+  "owned_deliverables": [
+    "docs/reviews/LIBRARY_ADVERSARIAL_COVERAGE_ADMISSION.md",
+    "docs/development/2026-11-16-console-completion/reports/A41-coverage.json",
+    "docs/development/2026-11-16-console-completion/notes/A41.md"
+  ]
+}

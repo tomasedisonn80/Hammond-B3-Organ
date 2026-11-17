@@ -53,6 +53,17 @@ HEADER_ASPECT_CASES = (
     ("play-header-wide-1920x820", 1920, 820, "play", "dimensional", 66, "standard"),
     ("play-header-tall-1400x1080", 1400, 1080, "play", "dimensional", 66, "standard"),
 )
+ALL_CASES = tuple((*case, "standard") for case in CASES) + ADDED_CASES + HEADER_ASPECT_CASES
+REPLAY_INPUTS = ROOT / "examples/demos/upper-rack-material-v1/inputs"
+# Frozen original bytes, independently retained before replay scaling existed.
+REPLAY_SHA256 = {
+    "play-dimensional.b3uireplay": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65",
+    "play-flat.b3uireplay": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74",
+    "rotary-dimensional.b3uireplay": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502",
+    "service-dimensional.b3uireplay": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38",
+    "play-dimensional-toolbar-focus.b3uireplay": "b02902d365c32db119b3e845967de35df083eaa5b9a43395476762ee0bbcd719",
+    "play-dimensional-pedal-focus.b3uireplay": "8efb6d0fc894f77fb427690b6f8febcaf3e2176310540ffcc04a340f1cf4889c",
+}
 # Independent literal canonical samples, not imported from the capture utility.
 FOCUS_PROBES = {
     "toolbar-focus": {"top": (1448, 616, 1576, 618), "bottom": (1448, 640, 1576, 642),
@@ -92,6 +103,101 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, message):
             CAPTURE.validate(data, *CASES[0][1:])
 
+    def read_json_text(self, payload):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "evidence.json"
+            path.write_text(payload, encoding="utf-8")
+            return CAPTURE.read_json(path)
+
+    def test_json_rejects_overflow_in_objects_and_arrays(self):
+        tokens = ("1e999", "-1e999", "1E+999", "-1E+999",
+                  "1.7976931348623159e308", "-1.7976931348623159e308",
+                  "9" * 400 + ".0", "-" + "9" * 400 + ".0")
+        for token in tokens:
+            for template in ('{"number":TOKEN}', '{"outer":{"number":TOKEN}}',
+                             '{"outer":[0,{"inner":[true,TOKEN,null]}]}'):
+                with self.subTest(token=token, template=template):
+                    with self.assertRaises(ValueError) as refused:
+                        self.read_json_text(template.replace("TOKEN", token))
+                    self.assertEqual(str(refused.exception), f"non-finite JSON numeric token: {token}")
+
+    def test_json_preserves_finite_float_boundaries_and_exponents(self):
+        cases = (
+            ("1.7976931348623157e308", sys.float_info.max),
+            ("-1.7976931348623157e308", -sys.float_info.max),
+            ("1.7976931348623158e308", sys.float_info.max),
+            ("-1.7976931348623158e308", -sys.float_info.max),
+            ("2.2250738585072014e-308", sys.float_info.min),
+            ("5e-324", float.fromhex("0x0.0000000000001p-1022")),
+            ("-5e-324", -float.fromhex("0x0.0000000000001p-1022")),
+            ("1e-999", 0.0), ("-1e-999", -0.0),
+            ("0e999", 0.0), ("-0e999", -0.0),
+            ("3.25E+2", 325.0), ("-7.5e-2", -0.075), ("1e0", 1.0), ("0.75", 0.75),
+        )
+        for token, expected in cases:
+            with self.subTest(token=token):
+                result = self.read_json_text('{"number":TOKEN,"nested":[TOKEN]}'.replace("TOKEN", token))
+                for actual in (result["number"], result["nested"][0]):
+                    self.assertIs(type(actual), float)
+                    self.assertEqual(actual.hex(), expected.hex())  # Includes the sign of zero.
+
+    def test_json_preserves_other_types_member_scopes_and_object_boundary(self):
+        payload = ('{"integer":' + "1" + "0" * 400 + ',"flags":[true,false,null],'
+                   '"objects":[{"number":1},{"number":2}],'
+                   '"strings":["1e999","-1e999","NaN","Infinity","-Infinity"]}')
+        result = self.read_json_text(payload)
+        self.assertIs(type(result["integer"]), int)
+        self.assertEqual(result["integer"], 10 ** 400)
+        self.assertIs(result["flags"][0], True)
+        self.assertIs(result["flags"][1], False)
+        self.assertIsNone(result["flags"][2])
+        self.assertEqual(result["objects"], [{"number": 1}, {"number": 2}])
+        self.assertEqual(result["strings"], ["1e999", "-1e999", "NaN", "Infinity", "-Infinity"])
+        for payload in ('[]', '1', '1.0', 'true', 'null', '"1e999"'):
+            with self.subTest(payload=payload):
+                with self.assertRaisesRegex(ValueError, "expected a JSON object:"):
+                    self.read_json_text(payload)
+
+    def test_json_retains_duplicate_member_refusal(self):
+        for payload in ('{"number":1.0,"number":2.0}',
+                        '{"outer":[{"number":1.0,"number":2.0}]}',
+                        r'{"number":1.0,"\u006eumber":2.0}'):
+            with self.subTest(payload=payload):
+                with self.assertRaisesRegex(ValueError, "duplicate JSON member: number"):
+                    self.read_json_text(payload)
+
+    def test_json_retains_nonstandard_constant_refusal(self):
+        for token in ("NaN", "Infinity", "-Infinity"):
+            for template in ('{"number":TOKEN}', '{"outer":[{"number":TOKEN}]}'):
+                with self.subTest(token=token, template=template):
+                    with self.assertRaises(ValueError) as refused:
+                        self.read_json_text(template.replace("TOKEN", token))
+                    self.assertEqual(str(refused.exception), f"invalid JSON numeric token: {token}")
+
+    def test_json_rejects_overflow_before_capture_evidence_validation(self):
+        # These inequality-only fields are not copied into the validation result;
+        # a later allow_nan=False writer cannot supply their missing decode guard.
+        cases = (
+            (("runtime", "rendered_images"), "1e999"),
+            (("replay", "before_shutdown", "resolved_sequence"), "1e999"),
+            (("replay", "before_shutdown", "last_applied_sequence"), "1e999"),
+            (("replay", "last_submitted_sequence"), "-1e999"),
+        )
+        marker = "__capture_numeric_overflow__"
+        for keys, token in cases:
+            with self.subTest(field=keys, token=token):
+                data = deepcopy(self.diagnostics[CASES[0][0]])
+                target = data
+                for key in keys[:-1]:
+                    target = target[key]
+                target[keys[-1]] = marker
+                payload = json.dumps(data)
+                self.assertEqual(payload.count(json.dumps(marker)), 1)
+                payload = payload.replace(json.dumps(marker), token)
+                with self.assertRaises(ValueError) as refused:
+                    CAPTURE.validate(self.read_json_text(payload), *CASES[0][1:])
+                self.assertEqual(str(refused.exception), f"non-finite JSON numeric token: {token}")
+
     def test_all_eight_retained_native_diagnostics_pass(self):
         for name, *arguments in CASES:
             with self.subTest(case=name):
@@ -115,7 +221,8 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
         self.assertEqual(len({case[0] for case in combined}), 15)
         self.assertEqual(len({case[1:5] for case in combined}), 13)  # Two existing canonical focus scenes.
 
-    def run_cli_with_mocked_native_and_image_boundaries(self, extra_args):
+    def run_cli_with_mocked_native_and_image_boundaries(self, extra_args, *, validation_timing=MISSING,
+                                                       native_timeout=False, expected_status="passed"):
         """Exercise the real CLI/receipt path without a native process or image."""
         with tempfile.TemporaryDirectory() as temporary:
             base = Path(temporary)
@@ -146,10 +253,20 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                     "--source-qualification", str(qualification), "--expected-exe-sha256", fixture_sha256,
                     "--output", str(output), "--dummy-sdl", *extra_args]
             commands, sizes = [], {}
+            scale = int(extra_args[extra_args.index("--replay-time-scale") + 1]) if "--replay-time-scale" in extra_args else 1
+            timeout = float(extra_args[extra_args.index("--timeout-seconds") + 1]) if "--timeout-seconds" in extra_args else 12.0
+            cases = {case[0]: case for case in ALL_CASES}
+            real_validate = CAPTURE.validate
+
+            def validation_boundary(*arguments):
+                result = real_validate(*arguments)
+                if validation_timing is not MISSING:
+                    result["replay_timing"] = deepcopy(validation_timing)
+                return result
 
             def native_boundary(command, **options):
                 self.assertEqual(command[0], str(executable.resolve()))
-                self.assertEqual(options["timeout"], 12.0)
+                self.assertEqual(options["timeout"], timeout)
                 self.assertIs(options["capture_output"], True)
                 self.assertIs(options["check"], False)
                 self.assertEqual(options["stdin"], CAPTURE.subprocess.DEVNULL)
@@ -157,11 +274,14 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                 self.assertEqual(options["env"]["SDL_AUDIODRIVER"], "dummy")
                 self.assertEqual(options["env"]["SDL_RENDER_DRIVER"], "software")
                 commands.append(command)
+                if native_timeout:
+                    raise CAPTURE.subprocess.TimeoutExpired(command, timeout)
                 bmp = Path(command[command.index("--screenshot") + 1])
                 sizes[bmp.stem] = (int(command[command.index("--width") + 1]),
                                    int(command[command.index("--height") + 1]))
                 bmp.write_bytes(fixture_bytes)
-                Path(command[command.index("--diagnostics") + 1]).write_text("{}\n", encoding="utf-8")
+                data = self.contract_variant(cases[bmp.stem], scale)
+                Path(command[command.index("--diagnostics") + 1]).write_text(json.dumps(data), encoding="utf-8")
                 return SimpleNamespace(returncode=0, stdout=b"", stderr=b"")
 
             class ImageBoundary:
@@ -190,13 +310,14 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                   mock.patch.object(CAPTURE.platform, "platform", return_value="unit-test"),
                   mock.patch.object(CAPTURE, "git_identity", return_value={"head": "unit-test", "committed_tree": "unit-test"}),
                   mock.patch.object(CAPTURE.subprocess, "run", side_effect=native_boundary),
-                  mock.patch.object(CAPTURE, "validate", side_effect=lambda *_: {}) as validation,
+                  mock.patch.object(CAPTURE, "validate", side_effect=validation_boundary) as validation,
                   mock.patch.object(CAPTURE, "validate_focus_pixels", return_value=None),
                   redirect_stdout(io.StringIO()) as stdout):
                 result = CAPTURE.main()
             record = json.loads((output / "provenance.json").read_text(encoding="utf-8"))
             manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
-            self.assertEqual(manifest["status"], "passed")
+            self.assertEqual(manifest["status"], expected_status)
+            self.assertEqual(record["status"], expected_status)
             self.assertIs(record["all_recorded_inputs_unchanged"], True)
             return result, record, json.loads(stdout.getvalue()), commands, validation.call_args_list
 
@@ -212,7 +333,7 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                 self.assertEqual(tuple((case["name"], case["width"], case["height"], case["workspace"],
                                         case["presentation"], case["scene"]) for case in record["cases"]),
                                  tuple((*case[:5], case[-1]) for case in expected))
-                self.assertEqual([call.args[1:] for call in validations], [case[1:] for case in expected])
+                self.assertEqual([call.args[1:] for call in validations], [(*case[1:], 1) for case in expected])
                 self.assertEqual([case["command"] for case in record["cases"]], commands)
                 self.assertTrue(all(case["status"] == "passed" for case in record["cases"]))
                 self.assertEqual(record["capture_contract"], "standalone-interface-capture-v1")
@@ -224,6 +345,66 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                 else:
                     self.assertEqual(record["case_matrix"],
                                      "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection.")
+
+    def test_cli_records_selected_scale_and_exact_input_hashes_with_independent_timeout(self):
+        for scale, timeout in ((1, 12.0), (3, 30.0), (10, 12.0)):
+            with self.subTest(scale=scale, timeout=timeout):
+                options = ["--include-header-aspects", "--replay-time-scale", str(scale)]
+                if timeout != 12.0:
+                    options.extend(("--timeout-seconds", str(timeout)))
+                result, record, summary, commands, validations = self.run_cli_with_mocked_native_and_image_boundaries(options)
+                timing = {"time_scale": scale, "base_duration_ms": 1800, "duration_ms": 1800 * scale}
+                self.assertEqual((result, summary["captures"], len(commands)), (0, 15, 15))
+                self.assertEqual(record["replay_timing"], timing)
+                self.assertEqual([call.args[1:] for call in validations], [(*case[1:], scale) for case in ALL_CASES])
+                for case in record["cases"]:
+                    self.assertEqual(case["timeout_seconds"], timeout)
+                    self.assertEqual(case["validation"]["replay_timing"], timing)
+                    suffix = "" if case["scene"] == "standard" else f"-{case['scene']}"
+                    name = f"inputs/{case['workspace']}-{case['presentation']}{suffix}.b3uireplay"
+                    script, _ = CAPTURE.replay(case["workspace"], case["presentation"], case["scene"], scale)
+                    self.assertEqual(record["inputs"]["before"][name]["sha256"], hashlib.sha256(script.encode("ascii")).hexdigest())
+
+    def test_cli_rejects_validation_provenance_timing_mismatch_without_retry(self):
+        for timing in (None, {}, {"time_scale": 1, "base_duration_ms": 1800, "duration_ms": 5400},
+                       {"time_scale": 3, "base_duration_ms": 1801, "duration_ms": 5400},
+                       {"time_scale": 3, "base_duration_ms": 1800, "duration_ms": 1800},
+                       {"time_scale": 3.0, "base_duration_ms": 1800, "duration_ms": 5400},
+                       {"time_scale": 3, "base_duration_ms": 1800, "duration_ms": 5400.0}):
+            with self.subTest(timing=timing):
+                result, record, summary, commands, validations = self.run_cli_with_mocked_native_and_image_boundaries(
+                    ["--replay-time-scale", "3", "--timeout-seconds", "30"],
+                    validation_timing=timing, expected_status="failed")
+                self.assertEqual((result, summary["captures"], len(commands), len(validations)), (1, 1, 1, 1))
+                self.assertIn("validated replay timing differs from selected provenance", record["failure"])
+                self.assertEqual(record["replay_timing"], {"time_scale": 3, "base_duration_ms": 1800, "duration_ms": 5400})
+
+    def test_cli_preserves_explicit_timeout_failure_and_does_not_retry_or_change_scale(self):
+        result, record, summary, commands, validations = self.run_cli_with_mocked_native_and_image_boundaries(
+            ["--replay-time-scale", "3", "--timeout-seconds", "30"], native_timeout=True, expected_status="failed")
+        self.assertEqual((result, summary["captures"], len(commands), len(validations)), (1, 1, 1, 0))
+        self.assertEqual(record["replay_timing"], {"time_scale": 3, "base_duration_ms": 1800, "duration_ms": 5400})
+        self.assertEqual(record["cases"][0]["timeout_seconds"], 30.0)
+        self.assertIs(record["cases"][0]["timed_out"], True)
+        self.assertIn("timed out after 30.0 seconds", record["failure"])
+
+    def test_cli_rejects_invalid_scales_before_creating_output_or_running_native(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "gallery"
+            for scale in ("0", "-1", "11", "100", "1.5", "3.0", "1e0", "true", "false", "nan", "inf", ""):
+                with self.subTest(scale=scale):
+                    argv = ["capture_standalone_interface.py", "--exe", "unused", "--source-root", "unused",
+                            "--build-root", "unused", "--source-qualification", "unused",
+                            "--expected-exe-sha256", "0" * 64, "--output", str(output), "--dummy-sdl",
+                            "--replay-time-scale", scale]
+                    with (mock.patch.object(sys, "argv", argv), mock.patch.object(CAPTURE.subprocess, "run") as native,
+                          redirect_stderr(io.StringIO()) as stderr):
+                        with self.assertRaises(SystemExit) as rejected:
+                            CAPTURE.main()
+                        self.assertEqual(rejected.exception.code, 2)
+                        self.assertIn("--replay-time-scale", stderr.getvalue())
+                        native.assert_not_called()
+                    self.assertFalse(output.exists())
 
     def test_optional_header_aspects_preserve_dummy_acknowledgment_and_new_directory_refusal(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -255,6 +436,59 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                                  (GALLERY / "inputs" / f"{workspace}-{presentation}.b3uireplay").read_bytes())
                 self.assertEqual(events, expected_events)
 
+    def test_default_and_explicit_scale_one_preserve_all_frozen_replay_bytes_and_hashes(self):
+        seen = set()
+        self.assertEqual(CAPTURE.DURATION_MS, 1800)
+        for case in ALL_CASES:
+            _, _, _, workspace, presentation, events, scene = case
+            suffix = "" if scene == "standard" else f"-{scene}"
+            name = f"{workspace}-{presentation}{suffix}.b3uireplay"
+            original = (REPLAY_INPUTS / name).read_bytes()
+            seen.add(name)
+            with self.subTest(case=case[0]):
+                self.assertEqual(hashlib.sha256(original).hexdigest(), REPLAY_SHA256[name])
+                for arguments in ((workspace, presentation, scene), (workspace, presentation, scene, 1)):
+                    script, count = CAPTURE.replay(*arguments)
+                    self.assertEqual((script.encode("ascii"), count), (original, events))
+        self.assertEqual(seen, set(REPLAY_SHA256))
+
+    def test_all_scales_multiply_every_scheduled_timestamp_and_duration_in_every_scene(self):
+        for case in ALL_CASES:
+            _, _, _, workspace, presentation, events, scene = case
+            suffix = "" if scene == "standard" else f"-{scene}"
+            original = (REPLAY_INPUTS / f"{workspace}-{presentation}{suffix}.b3uireplay").read_text(encoding="ascii")
+            expected = original.splitlines()
+            for scale in range(1, 11):
+                with self.subTest(case=case[0], scale=scale):
+                    script, count = CAPTURE.replay(workspace, presentation, scene, scale)
+                    lines = script.splitlines()
+                    self.assertEqual(len(lines), len(expected))
+                    self.assertEqual(count, events)
+                    self.assertTrue(script.endswith("\n"))
+                    timestamps = []
+                    for before, after in zip(expected, lines):
+                        if before.startswith("duration_ms "):
+                            self.assertEqual(after, f"duration_ms {1800 * scale}")
+                        elif before[0].isdigit():
+                            timestamp, payload = before.split(" ", 1)
+                            self.assertEqual(after, f"{int(timestamp) * scale} {payload}")
+                            timestamps.append(int(after.split(" ", 1)[0]))
+                        else:
+                            self.assertEqual(after, before)
+                    self.assertEqual(len(timestamps), events)
+                    self.assertTrue(all(left < right for left, right in zip(timestamps, timestamps[1:])))
+                    if scene != "standard":
+                        self.assertEqual(1800 * scale - timestamps[-1], 250 * scale)
+
+    def test_programmatic_scale_inputs_require_bounded_integers_without_coercion(self):
+        for scale in (0, -1, 11, 2**64, True, False, None, 1.0, 3.0, float("nan"), float("inf"), "1", "3", [], {}):
+            with self.subTest(scale=scale):
+                for operation in (lambda: CAPTURE.replay_timing(scale),
+                                  lambda: CAPTURE.replay("play", "dimensional", replay_time_scale=scale),
+                                  lambda: CAPTURE.validate({}, *CASES[0][1:], replay_time_scale=scale)):
+                    with self.assertRaisesRegex(ValueError, "replay time scale must be an integer 1..10"):
+                        operation()
+
     def test_focus_replays_retain_original_prefix_and_target_exact_semantic_stops(self):
         original, _ = CAPTURE.replay("play", "dimensional")
         for scene, tabs, expected_events, ending in (
@@ -277,7 +511,7 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                 for key in ("A", "D", "G", "S", "W", "Space"):
                     self.assertFalse(any(f" key_up {key} " in line for line in records))
 
-    def contract_variant(self, case):
+    def contract_variant(self, case, replay_time_scale=1):
         """A dictionary-only validator input, never an observed native capture."""
         _, width, height, workspace, presentation, event_count, scene = case
         source = "flat-minimum-960x700" if presentation == "flat" else "play-reference-1672x941"
@@ -285,15 +519,99 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
         data["runtime"].update(window_width=width, drawable_width=width,
                                window_height=height, drawable_height=height)
         data["replay"].update(scheduled_events=event_count, pushed_events=event_count)
+        data["replay"]["duration_ms"] *= replay_time_scale
+        for item in (*data["replay"]["observations"], *data["presentation"]["observations"]):
+            item["elapsed_ms"] *= replay_time_scale
         for name in ("screenshot", "before_shutdown", "last_painted"):
             data["presentation"][name].update(window_width=width, window_height=height,
                                               workspace=workspace, presentation=presentation)
+            data["presentation"][name]["elapsed_ms"] *= replay_time_scale
         if scene != "standard":
             data["replay"]["accepted_note_on_commands"] = 5
             data["replay"]["before_shutdown"]["pedal_ids"] = [2, 3] if scene == "toolbar-focus" else [3, 25]
             for name in ("screenshot", "before_shutdown", "last_painted"):
                 data["presentation"][name]["held_targets"]["pedals"] = 2
         return data
+
+    def test_validator_requires_exact_selected_duration_and_records_timing_for_every_scene(self):
+        for case in ALL_CASES:
+            for scale in range(1, 11):
+                with self.subTest(case=case[0], scale=scale):
+                    data = self.contract_variant(case, scale)
+                    result = CAPTURE.validate(data, *case[1:], scale)
+                    self.assertEqual(result["replay_timing"],
+                                     {"time_scale": scale, "base_duration_ms": 1800, "duration_ms": 1800 * scale})
+                    self.assertIs(result["complete_control_state_checked"], True)
+                    self.assertEqual(result["ui_events"], case[5])
+                    for wrong_scale in {1, 3, 10} - {scale}:
+                        with self.assertRaisesRegex(ValueError, "replay duration or event delivery differs"):
+                            CAPTURE.validate(data, *case[1:], wrong_scale)
+                    for wrong_duration in (1800 * scale - 1, 1800 * scale + 1, float(1800 * scale), True):
+                        data["replay"]["duration_ms"] = wrong_duration
+                        with self.assertRaisesRegex(ValueError, "replay duration or event delivery differs"):
+                            CAPTURE.validate(data, *case[1:], scale)
+
+    def test_scaled_capture_requires_final_painted_frame_at_or_after_scaled_endpoint(self):
+        for case in ALL_CASES:
+            for scale in (3, 10):
+                with self.subTest(case=case[0], scale=scale):
+                    data = self.contract_variant(case, scale)
+                    for elapsed in (1801, 1800 * scale - 1):
+                        for name in ("screenshot", "before_shutdown", "last_painted"):
+                            data["presentation"][name]["elapsed_ms"] = elapsed
+                        with self.assertRaisesRegex(ValueError, "capture is not the final replay-painted frame"):
+                            CAPTURE.validate(data, *case[1:], scale)
+                    for name in ("screenshot", "before_shutdown", "last_painted"):
+                        data["presentation"][name]["elapsed_ms"] = 1800 * scale
+                    self.assertIs(CAPTURE.validate(data, *case[1:], scale)["passed"], True)
+
+    def test_scaled_replays_retain_intermediate_held_state_and_focus_prefix_assertions(self):
+        for case in ALL_CASES:
+            for scale in (1, 3, 10):
+                with self.subTest(case=case[0], scale=scale):
+                    data = self.contract_variant(case, scale)
+                    data["replay"]["observations"] = [item for item in data["replay"]["observations"]
+                                                       if item["controls"] != CAPTURE.INITIAL_CONTROLS]
+                    with self.assertRaisesRegex(ValueError, "no observed held state before the live drawbar edit"):
+                        CAPTURE.validate(data, *case[1:], scale)
+                    if case[-1] != "standard":
+                        data = self.contract_variant(case, scale)
+                        data["replay"]["observations"] = [item for item in data["replay"]["observations"]
+                                                           if item["controls"] != CAPTURE.FINAL_CONTROLS]
+                        with self.assertRaisesRegex(ValueError, "no observed edited four-owner state"):
+                            CAPTURE.validate(data, *case[1:], scale)
+
+    def test_scaled_replays_preserve_event_delivery_ownership_controls_and_painted_state_checks(self):
+        mutations = (
+            (("replay", "pushed_events"), 0, "replay duration or event delivery differs"),
+            (("replay", "scheduled_events"), 0, "replay duration or event delivery differs"),
+            (("replay", "accepted_note_off_commands"), 1, "held-note ownership, device or observation counts differ"),
+            (("replay", "controls_pending_before_shutdown"), True, "capture endpoint has pending controls/save"),
+            (("replay", "before_shutdown", "manual_notes"), [[60], [67]], "expected Upper/Lower/Pedal holds missing"),
+            (("controls", "expression"), 0.5, "final live control state differs"),
+            (("midi", "active_before_shutdown"), True, "opened/enumerated a native MIDI device"),
+            (("session", "held_after_shutdown"), True, "joined shutdown did not clear owners/running state"),
+        )
+        for case in ALL_CASES:
+            for scale in (3, 10):
+                for path, value, message in mutations:
+                    with self.subTest(case=case[0], scale=scale, mutation=path):
+                        data = self.contract_variant(case, scale)
+                        target = data
+                        for key in path[:-1]:
+                            target = target[key]
+                        target[path[-1]] = value
+                        with self.assertRaisesRegex(ValueError, message):
+                            CAPTURE.validate(data, *case[1:], scale)
+                for field, value, message in (("held_targets", {"upper": 1, "lower": 1, "pedals": 1},
+                                               "actual painted held targets"),
+                                              ("pointer_capture", {**POINTER, "attempts": 1}, "unexpected pointer capture")):
+                    with self.subTest(case=case[0], scale=scale, mutation=field):
+                        data = self.contract_variant(case, scale)
+                        for name in ("screenshot", "before_shutdown", "last_painted"):
+                            data["presentation"][name][field] = deepcopy(value)
+                        with self.assertRaisesRegex(ValueError, message):
+                            CAPTURE.validate(data, *case[1:], scale)
 
     def test_added_scene_contract_variants_reuse_complete_semantic_validation(self):
         for case in (*ADDED_CASES, *HEADER_ASPECT_CASES):

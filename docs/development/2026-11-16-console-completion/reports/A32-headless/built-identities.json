@@ -1,0 +1,427 @@
+{
+  "archives": {
+    "apps/standalone/libhammond_standalone_support.a": {
+      "bytes": 558132,
+      "sha256": "9608fbbe51e00bba1a67a07300f9408fee53c5138fcd242d5611e87bbc422191"
+    },
+    "libhammond_core.a": {
+      "bytes": 460336,
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+    }
+  },
+  "executables": {
+    "test_standalone_external_control": {
+      "bytes": 197032,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_external_control",
+      "sha256": "df558a91c4ffab066015b63dcd8a8af1c2ee09bd13e7c35fbbda9e0bcc1863ad"
+    },
+    "test_standalone_library_model": {
+      "bytes": 511808,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_model",
+      "sha256": "537eb1991309100d47a76030a735fd4cae344fa493b037f7ec1ec7011099fbda"
+    },
+    "test_standalone_library_recall": {
+      "bytes": 183320,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_recall",
+      "sha256": "4e638e36a7fa2f17a91f12a5af986e29e7a652276e5cb4f9e2d41720ea88bdd4"
+    },
+    "test_standalone_library_roundtrip": {
+      "bytes": 522112,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_roundtrip",
+      "sha256": "97279125adffadbccd5ef12a050ae8847d7c8ff7f9d4a295ee53ea484e5bb517"
+    },
+    "test_standalone_library_session": {
+      "bytes": 437192,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_session",
+      "sha256": "c62fd326a419683a77367d5cf971d6fbdd7c45fc4e43f3c01da4ca445fe040b0"
+    },
+    "test_standalone_library_storage": {
+      "bytes": 371304,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_library_storage",
+      "sha256": "3d65bcfc3f34b20cf9bfa488f409d5d0423416ec6e1bd7695788b75d975b3860"
+    },
+    "test_standalone_preset_ui": {
+      "bytes": 220424,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_preset_ui",
+      "sha256": "56da66af6231580f1fa47c1158be724332eb7841b1a70fa53654d29d15fb708a"
+    },
+    "test_standalone_registration_library": {
+      "bytes": 288272,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_registration_library",
+      "sha256": "da339a36da495055bb228b48440db6e444b7cccb5d78d088e6ccba0be3b8eebd"
+    },
+    "test_standalone_session": {
+      "bytes": 207904,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_session",
+      "sha256": "a3f26d003543c94fa5e2813c02045ce5df9eb2891e30018b3b6b2d0960b5066a"
+    },
+    "test_standalone_state_files": {
+      "bytes": 152720,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_state_files",
+      "sha256": "71af31f5ebe911d904a40d64451664ebc37703953baf2c910064cd9caa3873de"
+    },
+    "test_standalone_ui": {
+      "bytes": 309168,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_ui",
+      "sha256": "b0417701fa2209e9f75bdcb38e1de5cf054d7f7333ed969de80568f041839618"
+    },
+    "test_standalone_workspace_continuity": {
+      "bytes": 332776,
+      "path": "/workspace/scratch/21cce69f7784/a32-headless/apps/standalone/test_standalone_workspace_continuity",
+      "sha256": "05a34b349b1b3d7ceadf7aa55210b634f49c57a2976c041cba431f011b29f555"
+    }
+  },
+  "generated_inputs": {},
+  "objects": [
+    {
+      "bytes": 10312,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/ContactBank.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o",
+      "sha256": "e83e37f146c56eac92eb78f408271e230191c1035a2dc08d325547bb85c4022a",
+      "source": "src/ContactBank.cpp"
+    },
+    {
+      "bytes": 7144,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/ControlState.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/ControlState.cpp.o",
+      "sha256": "2f1991a7f0082f45423f22dfd0b82d14683e732831a37c1b8675faae3881b439",
+      "source": "src/ControlState.cpp"
+    },
+    {
+      "bytes": 49864,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/ControlStateIO.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o",
+      "sha256": "eda3d1637766356498a9568ae1562c25247387c02b26148e0635e2e4faba22e1",
+      "source": "src/ControlStateIO.cpp"
+    },
+    {
+      "bytes": 29592,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Engine.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/Engine.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/Engine.cpp.o",
+      "sha256": "17bde547bd928ee906b9d3054fbac57a01d39379d10cd4730e039e3563542ae0",
+      "source": "src/Engine.cpp"
+    },
+    {
+      "bytes": 3688,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/FixedRegistration.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/FixedRegistration.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/FixedRegistration.cpp.o",
+      "sha256": "15327b03f2209b6ac390bb0a39b04906e9d14772585ebf48de19c2f3a09f1e8e",
+      "source": "src/FixedRegistration.cpp"
+    },
+    {
+      "bytes": 16152,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/HostTimeline.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o",
+      "sha256": "144a087ace88dd08df0fbfda8e708e652a33eaf513ea1fab2708ee69e91b5f6b",
+      "source": "src/HostTimeline.cpp"
+    },
+    {
+      "bytes": 2000,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/InputProcessor.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o",
+      "sha256": "e324d13a0de099145f4aebe99cc9830d473af1c89786e23531656256dc37bb89",
+      "source": "src/InputProcessor.cpp"
+    },
+    {
+      "bytes": 29416,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/LeslieCrossover.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/LeslieCrossover.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/LeslieCrossover.cpp.o",
+      "sha256": "a09ed07c942d44b1c70b77c1e4113ac491bf855c9dc18c25ac740ff693d95af8",
+      "source": "src/LeslieCrossover.cpp"
+    },
+    {
+      "bytes": 5184,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/NoteOwnership.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o",
+      "sha256": "56c924a05aa7c75e3f1ce20115643f34c317299309b3f2f9eb514a2f516011a9",
+      "source": "src/NoteOwnership.cpp"
+    },
+    {
+      "bytes": 14160,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/ParameterBridge.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o",
+      "sha256": "ed1eef5dcf77be243fcd377334fc1312647443ffd9082a823a4dcd7be3a447b6",
+      "source": "src/ParameterBridge.cpp"
+    },
+    {
+      "bytes": 4200,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/PedalNoteOwnership.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o",
+      "sha256": "e3404100eb168198ecbae97e963e61841ad8473a8c9fb71ec860edaf77554769",
+      "source": "src/PedalNoteOwnership.cpp"
+    },
+    {
+      "bytes": 5768,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/PedalRouting.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o",
+      "sha256": "11070d377528795e30f0584aa437289b496e0b991cee70f6223f28e38786deea",
+      "source": "src/PedalRouting.cpp"
+    },
+    {
+      "bytes": 2648,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/PedalVoice.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o",
+      "sha256": "81978bd02f613b6455afeaa7dbc435bf7ec375d51435b95428fc3c8d1292483f",
+      "source": "src/PedalVoice.cpp"
+    },
+    {
+      "bytes": 5464,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Percussion.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/Percussion.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/Percussion.cpp.o",
+      "sha256": "d2b25a9bb351a006a4f42027905b72830887959cd774670ba69ec024c4fb8eb7",
+      "source": "src/Percussion.cpp"
+    },
+    {
+      "bytes": 3576,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/PerformanceInput.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o",
+      "sha256": "eab7efe985ea1ac9f0e6574148456365eed91068f099a9a5801d2126dda3b48b",
+      "source": "src/PerformanceInput.cpp"
+    },
+    {
+      "bytes": 56240,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Profile.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/Profile.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/Profile.cpp.o",
+      "sha256": "a78b650302a3ae7a1fa5a5523c2f2ce3adb577773d78d1ed7fcc97182b018707",
+      "source": "src/Profile.cpp"
+    },
+    {
+      "bytes": 7072,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/RotaryHistory.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o",
+      "sha256": "390077c796685f157d983267778c8e3d5d45911049bb557e7ff42d7a970744d5",
+      "source": "src/RotaryHistory.cpp"
+    },
+    {
+      "bytes": 21104,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/RotaryMotion.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o",
+      "sha256": "e7924ad4626bde5e488967d0fdeb90e82bbe041f8aaaa3161302fac22eb0f4b7",
+      "source": "src/RotaryMotion.cpp"
+    },
+    {
+      "bytes": 14792,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/RotaryPropagation.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o",
+      "sha256": "ff2292f5dbd58721b42efef6725a9be0c07a7c2361f5f2c92759eabe99713e56",
+      "source": "src/RotaryPropagation.cpp"
+    },
+    {
+      "bytes": 17200,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/RotaryRenderer.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o",
+      "sha256": "b550f6136036918700ca58786c5abe5ebca7c17ffc59eceb27fe214bc170bd94",
+      "source": "src/RotaryRenderer.cpp"
+    },
+    {
+      "bytes": 11376,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/RotaryStreamingPath.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o",
+      "sha256": "1613014b814e3cc9b081dcffc2581963c12e864e68747aab30b7707c3d38b611",
+      "source": "src/RotaryStreamingPath.cpp"
+    },
+    {
+      "bytes": 24120,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerLine.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/ScannerLine.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/ScannerLine.cpp.o",
+      "sha256": "e7737dbf2ae97cc23a1d5e8f5ac30dab8f8072334e87874eef08bd863b8a7e3b",
+      "source": "src/ScannerLine.cpp"
+    },
+    {
+      "bytes": 28288,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerLineFoh.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/ScannerLineFoh.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/ScannerLineFoh.cpp.o",
+      "sha256": "934f406e874c894a207f7825a4c3c22843bff29d1034cf0cacf9b1e1d55ec686",
+      "source": "src/ScannerLineFoh.cpp"
+    },
+    {
+      "bytes": 7928,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ScannerRotor.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/ScannerRotor.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/ScannerRotor.cpp.o",
+      "sha256": "85f3b67bf5cee70a800638f0aeeb409fd1b213a22cfa1a7fea2d7c9d71957cc5",
+      "source": "src/ScannerRotor.cpp"
+    },
+    {
+      "bytes": 4640,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/SourceLeakage.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/SourceLeakage.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/SourceLeakage.cpp.o",
+      "sha256": "d58e6a8efce84c45d2337f4cb65a96c8bdbc9af9070d3ad5dbc8c15f6b962357",
+      "source": "src/SourceLeakage.cpp"
+    },
+    {
+      "bytes": 41192,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/SourceLeakageIO.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/SourceLeakageIO.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/SourceLeakageIO.cpp.o",
+      "sha256": "af984d8848e64403f71ceec5414e9111d1cfb94360bd163f3287453b28cbdcb4",
+      "source": "src/SourceLeakageIO.cpp"
+    },
+    {
+      "bytes": 6688,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/StateExchange.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o",
+      "sha256": "2e54bec502573222a3c7a6d79f20d3c41068b793eb3735bfec827ee8c2a54016",
+      "source": "src/StateExchange.cpp"
+    },
+    {
+      "bytes": 3640,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/TonewheelBank.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o",
+      "sha256": "756100cb81d592e07eae838d1cc92e1f92c689b448d82b812376f142028e2149",
+      "source": "src/TonewheelBank.cpp"
+    },
+    {
+      "bytes": 6712,
+      "command": "/usr/bin/g++ -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -I/workspace/scratch/21cce69f7784/a32-headless/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/research/CausalContactGrid.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/src/research/CausalContactGrid.cpp",
+      "object": "CMakeFiles/hammond_core.dir/src/research/CausalContactGrid.cpp.o",
+      "sha256": "a624d5a55a3e44db66ab06f7d01c385645333572ef7d8d40d2f9a6194f9f4804",
+      "source": "src/research/CausalContactGrid.cpp"
+    },
+    {
+      "bytes": 18280,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/Session.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/Session.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/Session.cpp.o",
+      "sha256": "3908fc85bfa0f33f1d6a527ca670216857797016658677495df41523192e5d9a",
+      "source": "apps/standalone/Session.cpp"
+    },
+    {
+      "bytes": 90816,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/UiModel.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/UiModel.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/UiModel.cpp.o",
+      "sha256": "6124acfd324dcd68f65047ffe33b772548963bc337e20ad6b33cc993a05e1d51",
+      "source": "apps/standalone/UiModel.cpp"
+    },
+    {
+      "bytes": 48408,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/InspectionModel.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/InspectionModel.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/InspectionModel.cpp.o",
+      "sha256": "67e4b3aa9d0b33969c19820ad6920f2c88d234e9275c4051f312d7fbb67a5963",
+      "source": "apps/standalone/InspectionModel.cpp"
+    },
+    {
+      "bytes": 41336,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/StateFiles.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/StateFiles.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/StateFiles.cpp.o",
+      "sha256": "266ff1e6963aa61aa79bcdbf5b426829f4767f97bb78b2a79decec69bab7979c",
+      "source": "apps/standalone/StateFiles.cpp"
+    },
+    {
+      "bytes": 170728,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/RegistrationLibrary.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/RegistrationLibrary.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/RegistrationLibrary.cpp.o",
+      "sha256": "91d157c9580b1f86455298714387ca428dd3bff6ef983c26b1648bd340250a31",
+      "source": "apps/standalone/RegistrationLibrary.cpp"
+    },
+    {
+      "bytes": 132784,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/LibraryModel.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/LibraryModel.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/LibraryModel.cpp.o",
+      "sha256": "904de3e390482a2e0d8dd3de4f5edbeb6f56d271790a9e9a9631cbcada7b64b5",
+      "source": "apps/standalone/LibraryModel.cpp"
+    },
+    {
+      "bytes": 6144,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/MidiInput.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/MidiInput.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/MidiInput.cpp.o",
+      "sha256": "3f93da362b45d64df7f14084184bbf31f1ab0bdd49107c9c95907ed7dae9be74",
+      "source": "apps/standalone/MidiInput.cpp"
+    },
+    {
+      "bytes": 9400,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/MidiDevice.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/MidiDevice.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/MidiDevice.cpp.o",
+      "sha256": "bb97a46f6253e30de2a23510a99de47788425f42751957c587b8b6931791fbba",
+      "source": "apps/standalone/MidiDevice.cpp"
+    },
+    {
+      "bytes": 26160,
+      "command": "/usr/bin/g++ -DHAMMOND_HAS_RTMIDI=0 -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/hammond_standalone_support.dir/MidiReplay.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/MidiReplay.cpp",
+      "object": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/MidiReplay.cpp.o",
+      "sha256": "4256e83cbe23de203108931f433d7141d239983a084dbc0afb6ad14168e774fa",
+      "source": "apps/standalone/MidiReplay.cpp"
+    },
+    {
+      "bytes": 20920,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_external_control.dir/tests/test_standalone_external_control.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_external_control.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_external_control.dir/tests/test_standalone_external_control.cpp.o",
+      "sha256": "7c98ec4e19a9b334050acc8c2cc0c0ec746bf48abbb71914f750b8a9ca71c572",
+      "source": "apps/standalone/tests/test_standalone_external_control.cpp"
+    },
+    {
+      "bytes": 409088,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_model.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_library_model.dir/tests/test_standalone_library_model.cpp.o",
+      "sha256": "f74890abbe4a384acc61b57d0e4bd090142944753a069931f43bd80990739647",
+      "source": "apps/standalone/tests/test_standalone_library_model.cpp"
+    },
+    {
+      "bytes": 127632,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_recall.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_library_recall.dir/tests/test_standalone_library_recall.cpp.o",
+      "sha256": "f87d1f2170109d4a272afa971b524a7512cda7fafeb320e77203f459fcff5a78",
+      "source": "apps/standalone/tests/test_standalone_library_recall.cpp"
+    },
+    {
+      "bytes": 181032,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_library_roundtrip.dir/tests/test_standalone_library_roundtrip.cpp.o",
+      "sha256": "e207e9bf35887a0c6388757ff3cdc735eabd4bb75e19a5000a22f12aad576804",
+      "source": "apps/standalone/tests/test_standalone_library_roundtrip.cpp"
+    },
+    {
+      "bytes": 159104,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_session.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_library_session.dir/tests/test_standalone_library_session.cpp.o",
+      "sha256": "1535870b03a249497e2a490437f5fcf153061ed849c8816573f402f35d797819",
+      "source": "apps/standalone/tests/test_standalone_library_session.cpp"
+    },
+    {
+      "bytes": 201496,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_library_storage.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_library_storage.dir/tests/test_standalone_library_storage.cpp.o",
+      "sha256": "6876b115c2965c5efd7801876eb750d890a78b3b8b86030cdbf0a7f1093e9d38",
+      "source": "apps/standalone/tests/test_standalone_library_storage.cpp"
+    },
+    {
+      "bytes": 63864,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_preset_ui.dir/tests/test_standalone_preset_ui.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_preset_ui.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_preset_ui.dir/tests/test_standalone_preset_ui.cpp.o",
+      "sha256": "48203e3d2b4ad9704d6e0b8eac0e3150a316266e737f0af742ad56c895ef061d",
+      "source": "apps/standalone/tests/test_standalone_preset_ui.cpp"
+    },
+    {
+      "bytes": 206768,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_registration_library.dir/tests/test_standalone_registration_library.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_registration_library.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_registration_library.dir/tests/test_standalone_registration_library.cpp.o",
+      "sha256": "1000615e8f91ca156e4d7a468e46badd4ca851ac52b00277b015e1686a7c9d06",
+      "source": "apps/standalone/tests/test_standalone_registration_library.cpp"
+    },
+    {
+      "bytes": 166536,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_session.dir/tests/test_standalone_session.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_session.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_session.dir/tests/test_standalone_session.cpp.o",
+      "sha256": "c58eb3d02b66de3a2ac38f0db1d101dd81cf1c6fd5a33945f3275467ce812484",
+      "source": "apps/standalone/tests/test_standalone_session.cpp"
+    },
+    {
+      "bytes": 126312,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_state_files.dir/tests/test_standalone_state_files.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_state_files.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_state_files.dir/tests/test_standalone_state_files.cpp.o",
+      "sha256": "b8ba45050617f20730e6008d95e64298d52ad06afeefb59f87308565fc7cc6f6",
+      "source": "apps/standalone/tests/test_standalone_state_files.cpp"
+    },
+    {
+      "bytes": 225648,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_ui.dir/tests/test_standalone_ui.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_ui.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_ui.dir/tests/test_standalone_ui.cpp.o",
+      "sha256": "20a1d44c7953459a1dbe92353950ce02eed50f015c5a6fa6ff31e934ae568918",
+      "source": "apps/standalone/tests/test_standalone_ui.cpp"
+    },
+    {
+      "bytes": 212552,
+      "command": "/usr/bin/g++ -DHAMMOND_SOURCE_DIR=\\\"/workspace/scratch/21cce69f7784/Hammond-B3-Organ\\\" -DHAMMOND_TEST_PROFILE=\\\"/workspace/scratch/21cce69f7784/a32-headless/nominal.b3p\\\" -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/tests -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/21cce69f7784/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o apps/standalone/CMakeFiles/test_standalone_workspace_continuity.dir/tests/test_standalone_workspace_continuity.cpp.o -c /workspace/scratch/21cce69f7784/Hammond-B3-Organ/apps/standalone/tests/test_standalone_workspace_continuity.cpp",
+      "object": "apps/standalone/CMakeFiles/test_standalone_workspace_continuity.dir/tests/test_standalone_workspace_continuity.cpp.o",
+      "sha256": "67ea1c1a1e9a5bedd387e064e55f635962bf74c224b58664cff7f1ba41542a03",
+      "source": "apps/standalone/tests/test_standalone_workspace_continuity.cpp"
+    }
+  ]
+}

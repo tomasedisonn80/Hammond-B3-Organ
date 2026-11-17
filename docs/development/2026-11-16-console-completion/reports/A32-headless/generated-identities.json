@@ -1,0 +1,29 @@
+{
+  "build_or_test_rerun": false,
+  "files": {
+    "generated/hammond/generated/FixedRegistrationData.h": {
+      "bytes": 2099,
+      "sha256": "66cbb1a23cb5ebf14844afd6f98e13829c9f69c1511b09d5974ca5a4527157c6"
+    },
+    "generated/hammond/generated/PedalRoutingData.h": {
+      "bytes": 13333,
+      "sha256": "efddce2ea3619a7dd9e153382e307928f7aed60bdb8a0318ca6c0e71ee5f6034"
+    },
+    "generated/hammond/generated/ScannerLineData.h": {
+      "bytes": 1104,
+      "sha256": "d508e3856e637a8e107364ad2a8fed09893a2e50ae05d99db3d4b3da37a5a082"
+    },
+    "nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    }
+  },
+  "generator_commands": [
+    "cd /workspace/scratch/21cce69f7784/a32-headless && /workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake -E make_directory /workspace/scratch/21cce69f7784/a32-headless/generated/hammond/generated && /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/scratch/21cce69f7784/Hammond-B3-Organ/tools/compile_fixed_registrations.py --input /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/registrations/atlas-chapel-nominal-v1.json --review-a /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/registrations/review-a-chapel.csv --review-b /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/registrations/review-b-chapel.csv --output /workspace/scratch/21cce69f7784/a32-headless/generated/hammond/generated/FixedRegistrationData.h",
+    "cd /workspace/scratch/21cce69f7784/a32-headless && /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/scratch/21cce69f7784/Hammond-B3-Organ/tools/compile_pedal_routing.py --input /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/pedal-map.json --reference /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/references/factory-table-iii.json --review-a /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/references/review-a-pedal.csv --review-b /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/references/review-b-pedal.csv --output /workspace/scratch/21cce69f7784/a32-headless/generated/hammond/generated/PedalRoutingData.h",
+    "cd /workspace/scratch/21cce69f7784/a32-headless && /workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake -E make_directory /workspace/scratch/21cce69f7784/a32-headless/generated/hammond/generated && /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/scratch/21cce69f7784/Hammond-B3-Organ/tools/compile_scanner_line.py --input /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/scanner/atlas-late-b3-nominal-v1.json --output /workspace/scratch/21cce69f7784/a32-headless/generated/hammond/generated/ScannerLineData.h --format header",
+    "cd /workspace/scratch/21cce69f7784/a32-headless && /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 /workspace/scratch/21cce69f7784/Hammond-B3-Organ/tools/compile_profile.py --input /workspace/scratch/21cce69f7784/Hammond-B3-Organ/data/profiles/nominal-unmeasured-v1.json --output /workspace/scratch/21cce69f7784/a32-headless/nominal.b3p"
+  ],
+  "provenance": "Three generated headers occur in actual compiler dependency groups; nominal.b3p is the actual HAMMOND_TEST_PROFILE compile definition. The supplementary record covers generated outputs omitted by the Ninja inputs-only traversal used in built-identities.json.",
+  "status": "RECORDED_FROM_ACTUAL_BUILT_OUTPUTS"
+}

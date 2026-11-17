@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 r"""Independent bounded H1 preservation and 103-screen comparison.
 
-Freeze this tool and the identical 48-case native fixture before H1 painting.
+Freeze this tool and the 48-case native fixture before H1 painting. The current
+fixture admits only the two exact reversible MSVC source corrections below;
+its case values match the original baseline, while its source bytes differ.
 The support is the independently enumerated union of Original gradient/grain
 and H1 field/grain operations. Candidate colors, helpers and differences never
 select an allowed pixel. All 48 main pairs, 16 uncut companion pairs, history
@@ -69,6 +71,12 @@ FIXTURE = "apps/standalone/native_tests/test_standalone_header_material.cpp"
 EXECUTABLE = "test_standalone_header_material"
 BEFORE_PAINTER_SHA = "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
 BASE_COMMIT = "6047723b595259de355c74342e48a8ae2ee1e228"
+# PINNED[FIXTURE] remains the historical baseline. Current source must pass
+# fixture_portability_transition; replacing a hash alone cannot admit an edit.
+PORTABLE_FIXTURE_SHA = "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d"
+CAST_FIXTURE_SHA = "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+HELPER_ELSE_FIXTURE_SHA = "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+BASELINE_COMPARATOR_SHA = "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760"
 PINNED = {
     CONTRACT: "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
     ADMISSION: "c2e7a216a11d7065262702aaee8f7ec766171a4571cc51c2f9bf7edd021cd6e5",
@@ -1043,6 +1051,54 @@ def inventory(executable,cases,runner):
     return {"record":record,"sha256":sha(payload),"passed":True}
 
 
+def fixture_portability_transition(root):
+    current=(root/FIXTURE).read_bytes()
+    current_sha=sha(current)
+    line_source=current
+    line_source_sha=current_sha
+    helper_else=current_sha==HELPER_ELSE_FIXTURE_SHA
+    if helper_else:
+        original_helper=(b"    if constexpr (h1_fixture_helper_present<Drawer>) {\n"
+            b"        reference_header_h1_material(drawing, bounds, scale);\n"
+            b"        return true;\n    }\n    return false;\n")
+        corrected_helper=(b"    if constexpr (h1_fixture_helper_present<Drawer>) {\n"
+            b"        reference_header_h1_material(drawing, bounds, scale);\n"
+            b"        return true;\n    } else {\n        return false;\n    }\n")
+        require(current.count(corrected_helper)==1 and original_helper not in current,
+                "fixture does not contain exactly the reviewed constexpr else repair")
+        line_source=current.replace(corrected_helper,original_helper,1)
+        require(sha(line_source)==CAST_FIXTURE_SHA,
+                "reversing the constexpr else repair does not reproduce the reviewed cast fixture")
+        line_source_sha=CAST_FIXTURE_SHA
+    original_line=b"            c.width = shape == 0 ? 1920 : 1400; c.height = shape == 0 ? 820 : 1080;\n"
+    repairs={
+        PORTABLE_FIXTURE_SHA:("float-literals",
+            b"            c.width = shape == 0 ? 1920.0F : 1400.0F; c.height = shape == 0 ? 820.0F : 1080.0F;\n"),
+        CAST_FIXTURE_SHA:("explicit-float-casts",
+            b"            c.width = static_cast<float>(shape == 0 ? 1920 : 1400); c.height = static_cast<float>(shape == 0 ? 820 : 1080);\n"),
+    }
+    require(line_source_sha in repairs,"corrected fixture source differs from current pin")
+    repair,corrected_line=repairs[line_source_sha]
+    require(line_source.splitlines(keepends=True).count(corrected_line)==1 and original_line not in line_source and
+            all(line not in line_source for name,line in repairs.values() if name!=repair),
+            "fixture does not contain exactly the reviewed MSVC source repair")
+    require(sha(line_source.replace(corrected_line,original_line,1))==PINNED[FIXTURE],
+            "reversing the sole source repair does not reproduce the genuine baseline fixture")
+    result={"baseline_fixture_sha256":PINNED[FIXTURE],"current_fixture_sha256":current_sha,
+            "current_fixture_repair":repair,
+            "reviewed_current_fixture_sha256":{name:digest for digest,(name,line) in repairs.items()},
+            "baseline_comparator_sha256":BASELINE_COMPARATOR_SHA,"exact_single_line_reversal":True,
+            "case_values_preserved":True,"source_bytes_identical":False,
+            "method":"Four exactly representable dimensions use one of two reviewed complete-line repairs: float literals or explicit float casts; reversing the sole complete source line reproduces the original pinned fixture SHA-256."}
+    if helper_else:
+        result.update({"current_fixture_repair":"explicit-float-casts-and-constexpr-else",
+            "exact_single_line_reversal":False,"exact_helper_branch_reversal":True,
+            "intermediate_fixture_sha256":CAST_FIXTURE_SHA,
+            "method":"The exact reviewed constexpr-else block reverses to the pinned cast fixture; reversing that fixture's sole complete dimension line reproduces the genuine original fixture SHA-256. Both helper branches and every case value are preserved."})
+        result["reviewed_current_fixture_sha256"]["explicit-float-casts-and-constexpr-else"]=HELPER_ELSE_FIXTURE_SHA
+    return result
+
+
 def baseline_inputs(root,receipt_path,receipt_sha256,supplement_path,before,after,before_painter,source_files,baseline_only):
     require(type(receipt_sha256) is str and re.fullmatch(r"[0-9a-f]{64}",receipt_sha256) is not None,
             "baseline-receipt-sha256 must be the root-frozen 64-character lowercase hexadecimal digest")
@@ -1076,12 +1132,13 @@ def baseline_inputs(root,receipt_path,receipt_sha256,supplement_path,before,afte
     supplement=read_json(supplement_path.read_bytes())
     require(supplement["schema"]==1 and supplement["protocol"]==PROTOCOL and
             supplement["base_receipt_sha256"]==receipt_sha256,"supplement is not bound to genuine accepted T3 receipt")
+    transition=fixture_portability_transition(root)
+    require(source_files[FIXTURE]["sha256"]==transition["current_fixture_sha256"],
+            "current fixture identity differs from corrected source pin")
     require(supplement["source_sha256"].get(PAINTER)==BEFORE_PAINTER_SHA and
-            supplement["source_sha256"].get(FIXTURE)==source_files[FIXTURE]["sha256"],
-            "baseline fixture is not the identical frozen harness and actual before painter")
-    comparator="tools/compare_header_material.py"
-    if comparator in supplement["source_sha256"]:
-        require(supplement["source_sha256"][comparator]==source_files[comparator]["sha256"],"frozen comparator bytes changed")
+            supplement["source_sha256"].get(FIXTURE)==PINNED[FIXTURE] and
+            supplement["source_sha256"].get("tools/compare_header_material.py")==BASELINE_COMPARATOR_SHA,
+            "baseline supplement does not name the exact original fixture, comparator and before painter")
     binaries={"before":identity(before),"after":identity(after)}
     require(before!=after and common.typed_equal(binaries["before"],supplement["binary"]),
             "genuine frozen H1 executable differs or both paths are the same")
@@ -1090,14 +1147,15 @@ def baseline_inputs(root,receipt_path,receipt_sha256,supplement_path,before,afte
     for item in [*inputs,supplement["object"]]:
         require(type(item) is dict and identity(item["path"])==item,"retained baseline build input changed")
     input_hashes={row["sha256"] for row in inputs}
-    require({BEFORE_PAINTER_SHA,source_files[FIXTURE]["sha256"]}<=input_hashes,
-            "supplement omits frozen painter or identical fixture input bytes")
+    require({BEFORE_PAINTER_SHA,PINNED[FIXTURE]}<=input_hashes,
+            "supplement omits frozen painter or genuine original fixture input bytes")
     require(type(supplement["commands"]) is list and len(supplement["commands"])==2 and
             all(type(command) in (str,list) and command for command in supplement["commands"]),
             "frozen fixture compile/link ancestry missing")
     return {"receipt":receipt_id,"expected_receipt_sha256":receipt_sha256,"supplement":supplement_id,"baseline_app":app,"before_painter":before_painter,
             "binaries":binaries,"protected_count":213,"source_count":229,"retained_build_inputs":[*inputs,supplement["object"]],
-            "commands":supplement["commands"],"method":"Real pre-H1 executable from the identical fixture and genuine accepted T3 painter; no candidate before switch."}
+            "commands":supplement["commands"],"fixture_portability_transition":transition,
+            "method":"Real pre-H1 executable from the original fixture and genuine accepted T3 painter; the current fixture has only one of the two exact reviewed value-preserving MSVC source repairs, not identical source bytes; no candidate before switch."}
 
 
 def candidate_build_inputs(root,build_dir,after):
@@ -1246,8 +1304,10 @@ def freeze_declarations(root):
 
 
 def static_checks(root):
+    transition=fixture_portability_transition(root)
     for name,digest in PINNED.items():
-        require(identity(root/name)["sha256"]==digest,"pinned source differs: "+name)
+        expected=transition["current_fixture_sha256"] if name==FIXTURE else digest
+        require(identity(root/name)["sha256"]==expected,"pinned source differs: "+name)
     original,_=original_observations(root)
     declaration,cases,uncut,atlases=freeze_declarations(root)
     # Parser refusal probes operate on tiny synthetic byte packets, not native
@@ -1268,6 +1328,7 @@ def static_checks(root):
             rejected+=1
     require(rejected==len(invalid),"malformed-frame parser did not fail closed")
     return {"status":"static-checks-passed","native_executions":0,"candidate_colors_evaluated":0,
+            "fixture_portability_transition":transition,
             "original_scalar_planes":original["scalar_planes_reproduced"],"original_grid_cells_per_image":24,
             "original_numerical_passed":44,"original_numerical_failed":59,"main_cases":len(cases),
             "uncut_companions":len(uncut),"main_output_pixels":sum(c["compared_pixels"] for c in cases),
@@ -1324,7 +1385,9 @@ def main():
                 Path(typography.__file__).resolve()==root/"tools/compare_title_typography.py" and
                 Path(common.__file__).resolve()==root/"tools/compare_footage_typography.py","pinned utility imported from wrong checkout")
         source_files={name:identity(root/name) for name in PINNED}
-        require(all(source_files[name]["sha256"]==digest for name,digest in PINNED.items()),"pinned contract/review/font/fixture/transport changed")
+        transition=fixture_portability_transition(root)
+        require(all(source_files[name]["sha256"]==(transition["current_fixture_sha256"] if name==FIXTURE else digest)
+                    for name,digest in PINNED.items()),"pinned contract/review/font/fixture/transport changed")
         for name in (PAINTER,"tools/compare_header_material.py","CMakeLists.txt","apps/standalone/CMakeLists.txt"):
             source_files[name]=identity(root/name)
         observation_source=read_json((root/OBSERVATIONS).read_bytes())

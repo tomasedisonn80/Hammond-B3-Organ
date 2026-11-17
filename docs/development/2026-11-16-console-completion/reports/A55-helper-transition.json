@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "reviewer": "A55",
+  "actual_worker": "/root/w10_a55",
+  "staffing_wave": 10,
+  "session": "2026-11-16-console-completion",
+  "observed_utc": "2026-11-17T06:15:12.364683+00:00",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "decision": "ADMIT exact helper-fixture source transition and named local qualification only; publication and platform acceptance remain root-owned and open.",
+  "source_blockers": [],
+  "recovery": {
+    "entire_AGENTS_and_PLAN_read": true,
+    "console_readme_checkpoint_and_actual_ledger_read": true,
+    "accepted_workers_at_recovery": 54,
+    "historical_accepted_notes_checked": 54,
+    "historical_note_hash_mismatches": [],
+    "local_combined_commit": "d22fb75862a159c4fe0ff38d7457678d0ddf1cd7",
+    "local_recovery_commit": "3263b177d42e96309dcc23a287c586150ab2378e",
+    "A45_and_A54_admissions_recovered": true,
+    "source_specific_78_passes_transferred": false
+  },
+  "remote_inspection": {
+    "method": "Read-only inspection of immutable root-fetched Git objects; no A55 remote access or fetch.",
+    "commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+    "tree": "c96fe07c4241f5afe423306945508a114506f0c2",
+    "parents": [
+      "03c70c103a4a0dd72b323529416b909c19a4e139"
+    ],
+    "path_count": 131,
+    "added": 117,
+    "modified": 14,
+    "execution_changes": [
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "added_paths_byte_mismatches": []
+  },
+  "fixture_transition": {
+    "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "source_forms": {
+      "genuine_original": {
+        "bytes": 61218,
+        "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+      },
+      "float_literals": {
+        "bytes": 61230,
+        "sha256": "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d"
+      },
+      "explicit_float_casts": {
+        "bytes": 61258,
+        "sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+      },
+      "casts_and_constexpr_else": {
+        "bytes": 61275,
+        "sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+      }
+    },
+    "current_bytes_equal_remote": true,
+    "old_helper_block": "    if constexpr (h1_fixture_helper_present<Drawer>) {\n        reference_header_h1_material(drawing, bounds, scale);\n        return true;\n    }\n    return false;\n",
+    "new_helper_block": "    if constexpr (h1_fixture_helper_present<Drawer>) {\n        reference_header_h1_material(drawing, bounds, scale);\n        return true;\n    } else {\n        return false;\n    }\n",
+    "new_block_occurrences": 1,
+    "old_block_occurrences_in_new_file": 0,
+    "first_reversal_equals_complete_cast_fixture": true,
+    "second_reversal_equals_complete_original_fixture": true,
+    "statistics_source": {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 34239,
+      "sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+    },
+    "statistics_only_pin_reversal": true,
+    "specializations": {
+      "present": "Same dependent predicate, call and arguments; one call followed by true.",
+      "absent": "Same dependent detection; helper call remains in discarded constexpr branch, explicit else returns the same false.",
+      "new_absent_runtime_execution": false,
+      "MSVC_execution_by_A55": false
+    }
+  },
+  "comparator_preservation": {
+    "identity": {
+      "path": "tools/compare_header_material.py",
+      "bytes": 98489,
+      "sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+    },
+    "existing_definition_count": 58,
+    "unchanged_existing_definitions": 57,
+    "changed_existing_definitions": [
+      "fixture_portability_transition"
+    ],
+    "existing_top_level_assignments": 40,
+    "changed_existing_assignments": [],
+    "new_assignments": [
+      "Name(id='HELPER_ELSE_FIXTURE_SHA', ctx=Store())"
+    ],
+    "old_return_dictionary_ast_identical": true,
+    "old_form_admission_and_metadata_preserved_by_source_inspection": true,
+    "new_form_guards": [
+      "whole current helper-file digest",
+      "one exact corrected helper block and no original block",
+      "reversal to complete cast-file digest",
+      "existing exact complete dimension-line/alternate exclusion checks",
+      "reversal to original genuine-baseline digest"
+    ],
+    "new_form_metadata": {
+      "current_fixture_repair": "explicit-float-casts-and-constexpr-else",
+      "exact_single_line_reversal": false,
+      "exact_helper_branch_reversal": true,
+      "intermediate_fixture_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
+    },
+    "baseline_inputs_static_checks_and_main_unchanged": true,
+    "original_fixture_pin": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+    "original_comparator_pin": "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760",
+    "paired_source_boundary": "Old UiModel.cpp, UiModel.h, main.cpp and other protected-source identities remain binding; no integrated-tree full paired admission.",
+    "nonblocking_documentation_limit": "Introductory and generic baseline explanations retain earlier two-correction wording; helper-form nested metadata explicitly states the new two-step reversal."
+  },
+  "regression_review": {
+    "identity": {
+      "path": "tests/test_compare_header_material.py",
+      "bytes": 25550,
+      "sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125"
+    },
+    "prior_methods": 17,
+    "current_methods": 24,
+    "removed_prior_methods": [],
+    "changed_prior_methods": [
+      "FixtureTransitionTests.test_current_checkout_reports_its_actual_admitted_identity",
+      "BaselineTransitionTests.test_original_baseline_identities_are_admitted_with_exact_transition"
+    ],
+    "unchanged_prior_methods": 15,
+    "new_methods": [
+      "FixtureTransitionTests.test_helper_else_reverses_through_exact_cast_and_original",
+      "FixtureTransitionTests.test_helper_else_rejects_all_unreviewed_complete_files",
+      "FixtureTransitionTests.test_repinning_helper_else_cannot_admit_missing_or_malformed_branch",
+      "FixtureTransitionTests.test_repinning_helper_else_cannot_admit_other_changes_or_relocation",
+      "FixtureTransitionTests.test_repinning_both_helper_and_cast_cannot_replace_original",
+      "BaselineTransitionTests.test_helper_else_current_identity_cannot_replace_original_or_other_current",
+      "BaselineTransitionTests.test_helper_else_preserves_original_paired_uimodel_and_main_pins"
+    ],
+    "prior_refusal_method_count": 12,
+    "prior_refusal_method_bodies_all_AST_identical": true,
+    "retained_refusal_cases": 56,
+    "new_refusal_cases_by_method": {
+      "FixtureTransitionTests.test_helper_else_rejects_all_unreviewed_complete_files": 5,
+      "FixtureTransitionTests.test_repinning_helper_else_cannot_admit_missing_or_malformed_branch": 5,
+      "FixtureTransitionTests.test_repinning_helper_else_cannot_admit_other_changes_or_relocation": 4,
+      "FixtureTransitionTests.test_repinning_both_helper_and_cast_cannot_replace_original": 1,
+      "BaselineTransitionTests.test_helper_else_current_identity_cannot_replace_original_or_other_current": 4,
+      "BaselineTransitionTests.test_helper_else_preserves_original_paired_uimodel_and_main_pins": 3
+    },
+    "new_refusal_cases": 22,
+    "total_refusal_cases": 78,
+    "count_basis": "Independent enumeration of finite source cases/loops; no A55 execution.",
+    "historical_binary_identities_simulated_in_tests": true
+  },
+  "fresh_root_execution_review": {
+    "executed_by_A55": false,
+    "status": "passed",
+    "started_utc": "2026-11-17T06:09:46.013860+00:00",
+    "completed_utc": "2026-11-17T06:10:40.931625+00:00",
+    "build": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/21cce69f7784/build-native",
+        "--target",
+        "test_standalone_header_material",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "helper-transition-build.log",
+      "log_sha256": "bb7ad36a70f054796e137050441bee5db0f225147808e616730ba5a8c85dfe28",
+      "seconds": 11.486112665999826
+    },
+    "affected": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/21cce69f7784/build-native",
+        "--output-on-failure",
+        "--parallel",
+        "1",
+        "--no-tests=error",
+        "-R",
+        "^(python_test_compare_header_material|test_standalone_header_material|test_standalone_header_statistics|python_test_repository_integrity)$",
+        "--output-junit",
+        "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/helper-transition-affected.xml"
+      ],
+      "exit_code": 0,
+      "log": "helper-transition-affected.log",
+      "log_sha256": "30c5c1b9332299c7667008eead0792ab8e10731221064b584d1b319092c01e32",
+      "seconds": 43.35874225999942
+    },
+    "raw_log_hashes_match": {
+      "build": true,
+      "affected": true
+    },
+    "junit_unique_tests": 4,
+    "junit_failures": 0,
+    "junit_errors": 0,
+    "junit_skips": 0,
+    "junit_names_equal_receipt": true,
+    "test_cases": [
+      {
+        "name": "python_test_compare_header_material",
+        "seconds": 0.75441,
+        "status": "run"
+      },
+      {
+        "name": "python_test_repository_integrity",
+        "seconds": 6.64838,
+        "status": "run"
+      },
+      {
+        "name": "test_standalone_header_material",
+        "seconds": 35.2944,
+        "status": "run"
+      },
+      {
+        "name": "test_standalone_header_statistics",
+        "seconds": 0.630816,
+        "status": "run"
+      }
+    ],
+    "comparator_methods_from_stdout": 24,
+    "repository_integrity_methods_from_stdout": 41,
+    "default_fixture_record": {
+      "schema": 1,
+      "protocol": "header-material-h1-v1",
+      "status": "passed",
+      "cases": 48,
+      "checks": 10542,
+      "paintings": 163,
+      "clipped_cases": 16,
+      "empty_cases": 2,
+      "inactive_cases": 8,
+      "protected_pixels": 56329523,
+      "deterministic_repaints": 48,
+      "clip_companions": 16,
+      "quiet_clip_pixels": 33462,
+      "history_states": 48,
+      "history_repaints": 1,
+      "fresh_repaints": 1,
+      "helper_present": true,
+      "helper_probes": 95,
+      "backend": "SDL software surface; copied state; no audio/window"
+    },
+    "canonical_statistics": {
+      "criterion_rows": 103,
+      "failed_rows": 0,
+      "summary": {
+        "inequality_count": 103,
+        "evaluated_count": 103,
+        "passed_count": 103,
+        "failed_count": 0,
+        "passed": true,
+        "mean_error_exact": "7620796849/20736000000",
+        "rms_error": 0.3182611192893787,
+        "rms_error_hex": "0x1.45e63e2bbeb4cp-2",
+        "RMS_aggregation": "binary64 sqrt of exact SSE/N, binary64 abs, math.fsum in primary order, /18.0"
+      },
+      "complete_record_differences_vs_combined": [
+        ".identities.frozen_fixture_source_sha256",
+        ".identities.test_source_sha256"
+      ],
+      "identities": {
+        "frozen_fixture_source_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "contract_sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+        "reference_observations_sha256": "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b",
+        "reference_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "reference_decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+        "independent_comparator_sha256": "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b",
+        "reference_origin": "immutable literals from A22 reference observations; no runtime image decode",
+        "test_source_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+        "executable": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/test_standalone_header_material",
+        "executable_sha256": "8ab975b18ef2a4fb8db7f06108a75e3b74e729c6a79ae204fd3db3872f0fb0cc",
+        "header_sha256": "1a7b0b316dc771428f2241eec9fbd25668ba337a6a2232b5787a2014f86eaaac",
+        "rgba_sha256": "56392ccf2d9d3600533d08955879d43c4a916b720463f3c541d1113b4f854fb2"
+      },
+      "resources": {
+        "native_invocations": 1,
+        "canonical_rgba_bytes": 6293408,
+        "header_max_bytes": 524288,
+        "stdout_max_bytes": 6817697,
+        "stderr_max_bytes": 65536,
+        "process_timeout_seconds": 20.0,
+        "cleanup_wait_seconds": 5.0,
+        "retained_frames": 1,
+        "images_persisted": 0
+      },
+      "helper": {
+        "present": true,
+        "invoked": true,
+        "passed": true
+      }
+    },
+    "actual_current_fixture_binary": {
+      "path": "../build-native/apps/standalone/test_standalone_header_material",
+      "bytes": 3830224,
+      "sha256": "8ab975b18ef2a4fb8db7f06108a75e3b74e729c6a79ae204fd3db3872f0fb0cc"
+    },
+    "previous_recorded_fixture_binary_sha256": "8ab975b18ef2a4fb8db7f06108a75e3b74e729c6a79ae204fd3db3872f0fb0cc",
+    "root_reports_preserved_before_and_after_identical": true,
+    "document_gate_precedes_A55_artifacts": true,
+    "new_78_or_251_test_run_claimed": false
+  },
+  "source_application_gallery_preservation": {
+    "prior_recorded_inputs": 587,
+    "unchanged_inputs": 583,
+    "changed_inputs": {
+      "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+        "prior_sha256": "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+        "current_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+      },
+      "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+        "prior_sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+        "current_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3"
+      },
+      "tests/test_compare_header_material.py": {
+        "prior_sha256": "2ef6f296b56cad306012178b05a11555f966d770cfbe23432dcbe05095d168a5",
+        "current_sha256": "60af41d72f3ceca063b6f61a1afc67ef40ebadaf5b7b71cfa1b0a30f77df7125"
+      },
+      "tools/compare_header_material.py": {
+        "prior_sha256": "8c49bad85ff311d0cc598e8bbe1c951f8013661ea123b49abb2d367d969eac5e",
+        "current_sha256": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+      }
+    },
+    "fresh_recorded_inputs": 587,
+    "fresh_source_manifest_sha256": "64a3d1864825ec40046de63aa56fed9f424b28a4ddad602198b762fc0656b460",
+    "fresh_receipt_current_mismatches": [],
+    "root_reported_input_changes_during_qualification": [],
+    "code_domain_diff": [
+      "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "tests/test_compare_header_material.py",
+      "tools/compare_header_material.py"
+    ],
+    "application_source_input_count": 150,
+    "application_source_mismatches": [],
+    "actual_application_binary": {
+      "path": "../build-native/apps/standalone/hammond_standalone",
+      "bytes": 4111800,
+      "sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9"
+    },
+    "recorded_application_binary_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9",
+    "gallery_payload_count": 69,
+    "gallery_payload_bytes": 8570640,
+    "gallery_payload_mismatches": [],
+    "direct_visual_authority": "A48; A55 checked retained identity only, without new capture or image review.",
+    "production_CMake_workflows_unchanged": true
+  },
+  "retained_limits": {
+    "original_246_of_247_failed_run_preserved": true,
+    "pretransition_78_of_78_remains_bound_to_its_source": true,
+    "helper_absent_runtime_not_executed": true,
+    "no_full_paired_timing_capture_or_MSVC_qualification": "Only named root Linux affected execution is admitted.",
+    "root_reported_remote_observation": {
+      "commit": "6287055a111dc4e2747564da3d48edc9b65e2e3e",
+      "windows_job": 133848047271,
+      "reported_result": "failure",
+      "A55_independently_inspected": false,
+      "cause": "Unestablished in this review; root investigation remains open."
+    },
+    "publication_performed_by_A55": false,
+    "postpublication_followup_creates_worker_credit": false,
+    "remaining": [
+      "Final affected documentary check after review artifacts",
+      "Root disposition of remote Windows failure and exact-source hosted results",
+      "Guarded publication and independent commit/tree/parents/content verification",
+      "Native library/browser/main integration",
+      "Physical, device/display/DPI/host, native accessibility, callback and signed-release gates",
+      "Literal whole-interface 1:1 remains unmet and unwaived"
+    ]
+  },
+  "evidence_identities": [
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/A45-header-transition.json",
+      "bytes": 160642,
+      "sha256": "540413b7a91145d8c881d768a20a5acc7791ad7609f8be741d1e373a106a0bdb"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/notes/A45.md",
+      "bytes": 3835,
+      "sha256": "644db48b7f52955f0c4f135b39e5cac911ddab3931e5b4c4f8901f5de5a62035"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/A54-staged-review.json",
+      "bytes": 20350,
+      "sha256": "c0d0e7596f6f096994a9258c614700a2239b52648f0d1a6f7e4afb9e26fd21f7"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/notes/A54.md",
+      "bytes": 2943,
+      "sha256": "8970e398cc847142f7a9ef00b5ce36419383ed63d4e872da57e283d3495441b7"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-qualification.json",
+      "bytes": 82482,
+      "sha256": "5130fecaa1da35ad76bfe1ba1c07d23d9204adfc4e7e390e745c08edbd555d99"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-application-qualification.json",
+      "bytes": 17513,
+      "sha256": "b9d03598b0e41f2ecb2115dcd75d1b8218dc054fb05f3292a6e9d6587baad9c2"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-affected-detail.log",
+      "bytes": 231817,
+      "sha256": "8dab4c2df09c94296bd3afc1f5a6d643bdfa0aa8b0ed520930a95ec7a81cbdcf"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/helper-transition-qualification.json",
+      "bytes": 70473,
+      "sha256": "294b7328a71e884b9831293eb8fd22897f250ba805310d7096b731e26cde072f"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/helper-transition-build.log",
+      "bytes": 258,
+      "sha256": "bb7ad36a70f054796e137050441bee5db0f225147808e616730ba5a8c85dfe28"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/helper-transition-affected.log",
+      "bytes": 826,
+      "sha256": "30c5c1b9332299c7667008eead0792ab8e10731221064b584d1b319092c01e32"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/helper-transition-affected.xml",
+      "bytes": 2928,
+      "sha256": "a0c09a415e2c9ebb14123f0a7870bd0b987c31abc5677cf306311f0db9d7e0a1"
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/helper-transition-affected-detail.log",
+      "bytes": 62261,
+      "sha256": "0e9aa4da7cf25177fb443210a7d9f9ece4dba47d35866f811b8fb340d98f1a80"
+    },
+    {
+      "path": "docs/design/native-gallery-console-combined/manifest.json",
+      "bytes": 11442,
+      "sha256": "6619a40d835e8f90d52e2bec6ab6fa9bfb5cdb39b8c8b15c0f007d7833ee0a8b"
+    },
+    {
+      "path": "docs/design/native-gallery-console-combined/provenance.json",
+      "bytes": 125463,
+      "sha256": "ec1466460908a34decbed4c17f27e11fec725dda74998c69e49ed46bf5da04c2"
+    },
+    {
+      "path": "docs/reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md",
+      "bytes": 9832,
+      "sha256": "d6e84c0be055cf06474338e25ec5869edec4da4a0e3036e17ec1f34669f5a799"
+    }
+  ],
+  "owned_deliverables": [
+    "docs/reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md",
+    "docs/development/2026-11-16-console-completion/reports/A55-helper-transition.json",
+    "docs/development/2026-11-16-console-completion/notes/A55.md"
+  ],
+  "execution_boundary": "Read-only Git, filesystem, byte/hash, AST and retained JSON/XML/log inspection, followed only by the three owned artifact writes. No build, test, native process, capture, benchmark, Git/index/ref mutation, remote operation, other-workspace access or child worker.",
+  "subsequent_source_boundary": {
+    "recorded_utc": "2026-11-17T06:16:56.288313+00:00",
+    "source": "Root follow-up after the frozen A55 inspection.",
+    "excluded_extension": [
+      "Failure-only first-mismatch details in title_density.py",
+      "Failure-only first-mismatch details in apps/standalone/native_tests/test_standalone_header_statistics.py"
+    ],
+    "independent_owner": "A57; root separately qualifies the diagnostic extension.",
+    "A55_reviewed_extension": false,
+    "four_input_and_four_gate_receipt_transferred": false,
+    "frozen_statistics_sha256": "3fb1584f497bd0883362b0f86068cb37625038969875cc1c3214a972117a97d3",
+    "fixture_comparator_regression_changed_since_A55_inspection": false,
+    "meaning": "All current-file source identities and mismatch counts in this receipt describe the original frozen inspection, before the subsequent diagnostic extension. They do not qualify that extension."
+  }
+}

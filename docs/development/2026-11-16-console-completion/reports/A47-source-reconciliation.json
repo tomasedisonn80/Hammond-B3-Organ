@@ -1,0 +1,1899 @@
+{
+  "schema_version": 1,
+  "reviewer": "A47 /root/w08_a47",
+  "wave": 8,
+  "observed_utc": "2026-11-17T05:23:49.804706+00:00",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "decision": "ADMIT exact source composition and exact remote main for integration; fixture-domain support only; combined execution pending",
+  "sources": {
+    "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+    "local_recovery_commit": "3263b177d42e96309dcc23a287c586150ab2378e",
+    "published_remote_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+    "published_remote_tree": "f639acf69061a4b66a0bd3d2219b1ed890e74e42",
+    "painter_views": {
+      "base": {
+        "bytes": 164592,
+        "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+      },
+      "ours": {
+        "bytes": 173069,
+        "sha256": "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927"
+      },
+      "remote": {
+        "bytes": 171413,
+        "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+      },
+      "combined": {
+        "bytes": 179890,
+        "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+      }
+    },
+    "prepared_parent_views_equal_actual_git_blobs": true,
+    "combined_path": "/workspace/scratch/21cce69f7784/reconciliation-prep/InstrumentView-combined.cpp",
+    "working_painter_at_report": {
+      "bytes": 179890,
+      "sha256": "6cf932e7216bcab4b14ab45e1b957281b749bcef068dd9562493652c25767105"
+    }
+  },
+  "method": {
+    "read_complete": [
+      "AGENTS.md",
+      "docs/PLAN.md",
+      "docs/development/2026-11-16-console-completion/README.md",
+      "docs/development/2026-11-16-console-completion/CHECKPOINT.md",
+      "docs/development/2026-11-16-console-completion/assignments.json",
+      "docs/development/2026-11-16-console-completion/reports/atlas-reading-coverage.json"
+    ],
+    "performed": [
+      "read-only Git/blob/source review",
+      "in-memory exact block reversal and byte equality",
+      "AST parsing without importing or running tests",
+      "independent binary32/SDL support arithmetic",
+      "existing in-repository evidence hashing"
+    ],
+    "builds": 0,
+    "test_runs": 0,
+    "native_processes": 0,
+    "captures": 0,
+    "timing_samples": 0,
+    "children": 0,
+    "other_workspaces": 0,
+    "git_mutations": 0
+  },
+  "painter_fragments": {
+    "H1": {
+      "original_view": "remote",
+      "every_fragment_identical_once": true,
+      "fragments": {
+        "helper": {
+          "bytes": 6126,
+          "sha256": "40e0f45461cde891062973073f1da156b2f5eb23947685020ffc042f3d827313"
+        },
+        "scale_guard": {
+          "bytes": 496,
+          "sha256": "8ecc8737324ecb839c876671ca8d300614d5ca839348dd0e45ee27bded7a119a"
+        },
+        "dispatch_branch": {
+          "bytes": 155,
+          "sha256": "59ba948ccacdc5dd6f9dd0aa34e5d6b0571917a466921e2b180e802a78dcd634"
+        },
+        "enum_member": {
+          "bytes": 10,
+          "sha256": "c8e4c57421d2b68a5715408b946ad266b67bcbd26dcefb345f6bde911ff4ab49"
+        },
+        "sole_panel_call": {
+          "bytes": 93,
+          "sha256": "8173254eabc6ec9bfa4483c449e194dbd4515907de740fd9003ae6a1c1b0542f"
+        }
+      },
+      "helper_definitions": 1,
+      "helper_dispatch_calls": 1
+    },
+    "P1": {
+      "original_view": "ours",
+      "every_fragment_identical_once": true,
+      "fragments": {
+        "helper": {
+          "bytes": 7701,
+          "sha256": "87b18ac0fd233c9c8aea34f142157a09f2d475173339628869ef32b08ecbae37"
+        },
+        "scale_guard": {
+          "bytes": 551,
+          "sha256": "37bb212e61fb4ace4bf6f4c2242615acc3eed4483b90769f815f7f60faa92a37"
+        },
+        "dispatch_branch": {
+          "bytes": 165,
+          "sha256": "e61250e9725a4e93893c8a68c9cca3d787d6bc091f4c1b59d205b9d78407c5e3"
+        },
+        "enum_member": {
+          "bytes": 15,
+          "sha256": "291243cfb12f0f1c7805694c98dc6dc746b4335d2b0593dd744ad99b136e5c89"
+        },
+        "sole_panel_call": {
+          "bytes": 108,
+          "sha256": "f05a06d03084130fcb83488496dde283eb54513d0beba428606ac591c2c29ce2"
+        }
+      },
+      "helper_definitions": 1,
+      "helper_dispatch_calls": 1
+    }
+  },
+  "whole_file_reversals": [
+    {
+      "from": "combined",
+      "remove_in_order": [
+        "H1"
+      ],
+      "equals": "ours",
+      "whole_byte_equal": true,
+      "bytes": 173069,
+      "sha256": "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927"
+    },
+    {
+      "from": "combined",
+      "remove_in_order": [
+        "P1"
+      ],
+      "equals": "remote",
+      "whole_byte_equal": true,
+      "bytes": 171413,
+      "sha256": "0bf731a692b7cb7c88c200afea86f4ca14239f20a7000f06be484f2a11ebc20d"
+    },
+    {
+      "from": "combined",
+      "remove_in_order": [
+        "H1",
+        "P1"
+      ],
+      "equals": "base",
+      "whole_byte_equal": true,
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    {
+      "from": "combined",
+      "remove_in_order": [
+        "P1",
+        "H1"
+      ],
+      "equals": "base",
+      "whole_byte_equal": true,
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    {
+      "from": "remote",
+      "remove_in_order": [
+        "H1"
+      ],
+      "equals": "base",
+      "whole_byte_equal": true,
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    {
+      "from": "ours",
+      "remove_in_order": [
+        "P1"
+      ],
+      "equals": "base",
+      "whole_byte_equal": true,
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    }
+  ],
+  "support": {
+    "method": "Old gradient/new field use ceil(edge*renderer_scale-0.5). Old/new grain use binary32 products, truncation, minimum physical extent one. Conservative grain row envelopes include every possible prescribed origin. These independent source-derived actual-operation supports precede colors; no pixel run was performed. Shared viewport translation and clipping cannot create overlap between disjoint row envelopes.",
+    "canonical_H1_box": [
+      76,
+      14,
+      1596,
+      108
+    ],
+    "canonical_P1_box": [
+      76,
+      129,
+      1112,
+      260
+    ],
+    "canonical_gap_rows": 21,
+    "fixture_domains": [
+      {
+        "logical_size": [
+          1400,
+          820
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "H1_rows": {
+          "field": [
+            12,
+            94
+          ],
+          "new_grain_envelope": [
+            13,
+            92
+          ],
+          "old_grain_envelope": [
+            15,
+            87
+          ],
+          "union_envelope": [
+            12,
+            94
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            112,
+            227
+          ],
+          "new_grain_envelope": [
+            114,
+            224
+          ],
+          "old_grain_envelope": [
+            115,
+            222
+          ],
+          "union_envelope": [
+            112,
+            227
+          ]
+        },
+        "empty_rows_between_envelopes": 18,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1400,
+          820
+        ],
+        "renderer_scale": [
+          1.5,
+          1.5
+        ],
+        "H1_rows": {
+          "field": [
+            18,
+            141
+          ],
+          "new_grain_envelope": [
+            20,
+            138
+          ],
+          "old_grain_envelope": [
+            23,
+            130
+          ],
+          "union_envelope": [
+            18,
+            141
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            169,
+            340
+          ],
+          "new_grain_envelope": [
+            171,
+            336
+          ],
+          "old_grain_envelope": [
+            173,
+            333
+          ],
+          "union_envelope": [
+            169,
+            340
+          ]
+        },
+        "empty_rows_between_envelopes": 28,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1400,
+          820
+        ],
+        "renderer_scale": [
+          2.0,
+          2.0
+        ],
+        "H1_rows": {
+          "field": [
+            24,
+            188
+          ],
+          "new_grain_envelope": [
+            27,
+            183
+          ],
+          "old_grain_envelope": [
+            31,
+            173
+          ],
+          "union_envelope": [
+            24,
+            188
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            225,
+            453
+          ],
+          "new_grain_envelope": [
+            228,
+            448
+          ],
+          "old_grain_envelope": [
+            231,
+            443
+          ],
+          "union_envelope": [
+            225,
+            453
+          ]
+        },
+        "empty_rows_between_envelopes": 37,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1400,
+          1080
+        ],
+        "renderer_scale": [
+          0.75,
+          0.75
+        ],
+        "H1_rows": {
+          "field": [
+            12,
+            93
+          ],
+          "new_grain_envelope": [
+            13,
+            91
+          ],
+          "old_grain_envelope": [
+            15,
+            86
+          ],
+          "union_envelope": [
+            12,
+            93
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            111,
+            224
+          ],
+          "new_grain_envelope": [
+            112,
+            222
+          ],
+          "old_grain_envelope": [
+            114,
+            219
+          ],
+          "union_envelope": [
+            111,
+            224
+          ]
+        },
+        "empty_rows_between_envelopes": 18,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1400,
+          1080
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "H1_rows": {
+          "field": [
+            16,
+            124
+          ],
+          "new_grain_envelope": [
+            18,
+            121
+          ],
+          "old_grain_envelope": [
+            20,
+            114
+          ],
+          "union_envelope": [
+            16,
+            124
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            148,
+            298
+          ],
+          "new_grain_envelope": [
+            150,
+            295
+          ],
+          "old_grain_envelope": [
+            152,
+            292
+          ],
+          "union_envelope": [
+            148,
+            298
+          ]
+        },
+        "empty_rows_between_envelopes": 24,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1400,
+          1080
+        ],
+        "renderer_scale": [
+          1.25,
+          1.25
+        ],
+        "H1_rows": {
+          "field": [
+            20,
+            155
+          ],
+          "new_grain_envelope": [
+            22,
+            151
+          ],
+          "old_grain_envelope": [
+            25,
+            143
+          ],
+          "union_envelope": [
+            20,
+            155
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            185,
+            373
+          ],
+          "new_grain_envelope": [
+            187,
+            369
+          ],
+          "old_grain_envelope": [
+            190,
+            365
+          ],
+          "union_envelope": [
+            185,
+            373
+          ]
+        },
+        "empty_rows_between_envelopes": 30,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          0.10000000149011612,
+          0.10000000149011612
+        ],
+        "H1_rows": {
+          "field": [
+            1,
+            11
+          ],
+          "new_grain_envelope": [
+            1,
+            11
+          ],
+          "old_grain_envelope": [
+            1,
+            10
+          ],
+          "union_envelope": [
+            1,
+            11
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            13,
+            26
+          ],
+          "new_grain_envelope": [
+            13,
+            26
+          ],
+          "old_grain_envelope": [
+            13,
+            26
+          ],
+          "union_envelope": [
+            13,
+            26
+          ]
+        },
+        "empty_rows_between_envelopes": 2,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "H1_rows": {
+          "field": [
+            14,
+            108
+          ],
+          "new_grain_envelope": [
+            16,
+            106
+          ],
+          "old_grain_envelope": [
+            18,
+            100
+          ],
+          "union_envelope": [
+            14,
+            108
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            129,
+            260
+          ],
+          "new_grain_envelope": [
+            131,
+            258
+          ],
+          "old_grain_envelope": [
+            133,
+            255
+          ],
+          "union_envelope": [
+            129,
+            260
+          ]
+        },
+        "empty_rows_between_envelopes": 21,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.25,
+          0.75
+        ],
+        "H1_rows": {
+          "field": [
+            10,
+            81
+          ],
+          "new_grain_envelope": [
+            12,
+            79
+          ],
+          "old_grain_envelope": [
+            13,
+            75
+          ],
+          "union_envelope": [
+            10,
+            81
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            97,
+            195
+          ],
+          "new_grain_envelope": [
+            98,
+            193
+          ],
+          "old_grain_envelope": [
+            99,
+            191
+          ],
+          "union_envelope": [
+            97,
+            195
+          ]
+        },
+        "empty_rows_between_envelopes": 16,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.25,
+          1.25
+        ],
+        "H1_rows": {
+          "field": [
+            17,
+            135
+          ],
+          "new_grain_envelope": [
+            20,
+            132
+          ],
+          "old_grain_envelope": [
+            22,
+            124
+          ],
+          "union_envelope": [
+            17,
+            135
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            161,
+            325
+          ],
+          "new_grain_envelope": [
+            163,
+            322
+          ],
+          "old_grain_envelope": [
+            166,
+            318
+          ],
+          "union_envelope": [
+            161,
+            325
+          ]
+        },
+        "empty_rows_between_envelopes": 26,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.5,
+          1.5
+        ],
+        "H1_rows": {
+          "field": [
+            21,
+            162
+          ],
+          "new_grain_envelope": [
+            24,
+            158
+          ],
+          "old_grain_envelope": [
+            27,
+            149
+          ],
+          "union_envelope": [
+            21,
+            162
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            193,
+            390
+          ],
+          "new_grain_envelope": [
+            196,
+            386
+          ],
+          "old_grain_envelope": [
+            199,
+            382
+          ],
+          "union_envelope": [
+            193,
+            390
+          ]
+        },
+        "empty_rows_between_envelopes": 31,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          2.0,
+          2.0
+        ],
+        "H1_rows": {
+          "field": [
+            28,
+            216
+          ],
+          "new_grain_envelope": [
+            32,
+            212
+          ],
+          "old_grain_envelope": [
+            36,
+            200
+          ],
+          "union_envelope": [
+            28,
+            216
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            258,
+            520
+          ],
+          "new_grain_envelope": [
+            262,
+            516
+          ],
+          "old_grain_envelope": [
+            266,
+            510
+          ],
+          "union_envelope": [
+            258,
+            520
+          ]
+        },
+        "empty_rows_between_envelopes": 42,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1672.5,
+          941.25
+        ],
+        "renderer_scale": [
+          1.5,
+          2.0
+        ],
+        "H1_rows": {
+          "field": [
+            28,
+            216
+          ],
+          "new_grain_envelope": [
+            32,
+            212
+          ],
+          "old_grain_envelope": [
+            36,
+            200
+          ],
+          "union_envelope": [
+            28,
+            216
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            258,
+            520
+          ],
+          "new_grain_envelope": [
+            262,
+            516
+          ],
+          "old_grain_envelope": [
+            266,
+            510
+          ],
+          "union_envelope": [
+            258,
+            520
+          ]
+        },
+        "empty_rows_between_envelopes": 42,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1920,
+          820
+        ],
+        "renderer_scale": [
+          0.75,
+          0.75
+        ],
+        "H1_rows": {
+          "field": [
+            9,
+            71
+          ],
+          "new_grain_envelope": [
+            10,
+            69
+          ],
+          "old_grain_envelope": [
+            11,
+            65
+          ],
+          "union_envelope": [
+            9,
+            71
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            84,
+            170
+          ],
+          "new_grain_envelope": [
+            85,
+            168
+          ],
+          "old_grain_envelope": [
+            86,
+            167
+          ],
+          "union_envelope": [
+            84,
+            170
+          ]
+        },
+        "empty_rows_between_envelopes": 13,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1920,
+          820
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "H1_rows": {
+          "field": [
+            12,
+            94
+          ],
+          "new_grain_envelope": [
+            13,
+            92
+          ],
+          "old_grain_envelope": [
+            15,
+            87
+          ],
+          "union_envelope": [
+            12,
+            94
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            112,
+            227
+          ],
+          "new_grain_envelope": [
+            114,
+            224
+          ],
+          "old_grain_envelope": [
+            115,
+            222
+          ],
+          "union_envelope": [
+            112,
+            227
+          ]
+        },
+        "empty_rows_between_envelopes": 18,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1920,
+          820
+        ],
+        "renderer_scale": [
+          1.25,
+          1.25
+        ],
+        "H1_rows": {
+          "field": [
+            15,
+            118
+          ],
+          "new_grain_envelope": [
+            17,
+            115
+          ],
+          "old_grain_envelope": [
+            19,
+            108
+          ],
+          "union_envelope": [
+            15,
+            118
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            141,
+            283
+          ],
+          "new_grain_envelope": [
+            142,
+            280
+          ],
+          "old_grain_envelope": [
+            144,
+            277
+          ],
+          "union_envelope": [
+            141,
+            283
+          ]
+        },
+        "empty_rows_between_envelopes": 23,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1920,
+          1080
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "H1_rows": {
+          "field": [
+            16,
+            124
+          ],
+          "new_grain_envelope": [
+            18,
+            121
+          ],
+          "old_grain_envelope": [
+            20,
+            114
+          ],
+          "union_envelope": [
+            16,
+            124
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            148,
+            298
+          ],
+          "new_grain_envelope": [
+            150,
+            295
+          ],
+          "old_grain_envelope": [
+            152,
+            292
+          ],
+          "union_envelope": [
+            148,
+            298
+          ]
+        },
+        "empty_rows_between_envelopes": 24,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1920,
+          1080
+        ],
+        "renderer_scale": [
+          1.5,
+          1.5
+        ],
+        "H1_rows": {
+          "field": [
+            24,
+            186
+          ],
+          "new_grain_envelope": [
+            27,
+            181
+          ],
+          "old_grain_envelope": [
+            30,
+            171
+          ],
+          "union_envelope": [
+            24,
+            186
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            222,
+            448
+          ],
+          "new_grain_envelope": [
+            225,
+            443
+          ],
+          "old_grain_envelope": [
+            228,
+            438
+          ],
+          "union_envelope": [
+            222,
+            448
+          ]
+        },
+        "empty_rows_between_envelopes": 36,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          1920,
+          1080
+        ],
+        "renderer_scale": [
+          2.0,
+          2.0
+        ],
+        "H1_rows": {
+          "field": [
+            32,
+            248
+          ],
+          "new_grain_envelope": [
+            36,
+            243
+          ],
+          "old_grain_envelope": [
+            41,
+            229
+          ],
+          "union_envelope": [
+            32,
+            248
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            296,
+            597
+          ],
+          "new_grain_envelope": [
+            300,
+            591
+          ],
+          "old_grain_envelope": [
+            305,
+            585
+          ],
+          "union_envelope": [
+            296,
+            597
+          ]
+        },
+        "empty_rows_between_envelopes": 48,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          8192,
+          8192
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "H1_rows": {
+          "field": [
+            122,
+            940
+          ],
+          "new_grain_envelope": [
+            139,
+            922
+          ],
+          "old_grain_envelope": [
+            156,
+            869
+          ],
+          "union_envelope": [
+            122,
+            940
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            1123,
+            2263
+          ],
+          "new_grain_envelope": [
+            1140,
+            2245
+          ],
+          "old_grain_envelope": [
+            1157,
+            2219
+          ],
+          "union_envelope": [
+            1123,
+            2263
+          ]
+        },
+        "empty_rows_between_envelopes": 183,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          8192,
+          8192
+        ],
+        "renderer_scale": [
+          1.5,
+          1.5
+        ],
+        "H1_rows": {
+          "field": [
+            183,
+            1410
+          ],
+          "new_grain_envelope": [
+            208,
+            1384
+          ],
+          "old_grain_envelope": [
+            235,
+            1305
+          ],
+          "union_envelope": [
+            183,
+            1410
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            1685,
+            3395
+          ],
+          "new_grain_envelope": [
+            1710,
+            3369
+          ],
+          "old_grain_envelope": [
+            1736,
+            3329
+          ],
+          "union_envelope": [
+            1685,
+            3395
+          ]
+        },
+        "empty_rows_between_envelopes": 275,
+        "disjoint": true
+      },
+      {
+        "logical_size": [
+          8192,
+          8192
+        ],
+        "renderer_scale": [
+          2.0,
+          2.0
+        ],
+        "H1_rows": {
+          "field": [
+            244,
+            1880
+          ],
+          "new_grain_envelope": [
+            278,
+            1845
+          ],
+          "old_grain_envelope": [
+            313,
+            1740
+          ],
+          "union_envelope": [
+            244,
+            1880
+          ]
+        },
+        "P1_rows": {
+          "field": [
+            2246,
+            4527
+          ],
+          "new_grain_envelope": [
+            2280,
+            4491
+          ],
+          "old_grain_envelope": [
+            2315,
+            4439
+          ],
+          "union_envelope": [
+            2246,
+            4527
+          ]
+        },
+        "empty_rows_between_envelopes": 366,
+        "disjoint": true
+      }
+    ],
+    "fixture_domain_count": 22,
+    "prior_actual_gallery": [
+      {
+        "case": "play-reference-1672x941",
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "a0ba8072258c269177e922323c150fbf7fcf754c893c55ca0964f38d561fbb32"
+      },
+      {
+        "case": "play-default-1280x900",
+        "logical_size": [
+          1280,
+          900
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "532f3f2edab380dbac5b4bb8c9790e0adf1c676c8f8193bb4f70cfb3a664eb5a"
+      },
+      {
+        "case": "play-minimum-960x700",
+        "logical_size": [
+          960,
+          700
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "b47b4f153b2b685262da65d02a48db2d314adc589f6617762c39d1920dd590da"
+      },
+      {
+        "case": "service-reference-1672x941",
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "1f4d8b280ed64ffa4035d945443a26bff5f9c4a02def0cb99393e238e481b1dc"
+      },
+      {
+        "case": "service-minimum-960x700",
+        "logical_size": [
+          960,
+          700
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "17a47fd8ffd2ea7b46ade2887bdb19cd6cf7ed2473fcced92c14096fe92b9be1"
+      },
+      {
+        "case": "rotary-reference-1672x941",
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "bfbed2b04f23ce3e22859805725cd35e88478d574ef26335cf9a8a837cd4ec3d"
+      },
+      {
+        "case": "rotary-minimum-960x700",
+        "logical_size": [
+          960,
+          700
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "a91935f5058ba10adf5535ecf8a547eba1bc5ec470123f8dde2037ad8d9dbe7f"
+      },
+      {
+        "case": "flat-minimum-960x700",
+        "logical_size": [
+          960,
+          700
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "779b9546326923ae49df8ee98f9309fc3e65379e199a170497cfda3225a4e672"
+      },
+      {
+        "case": "play-minimum-active-1400x820",
+        "logical_size": [
+          1400,
+          820
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "74066516762e072fa2cc5e845191ceec4bd590e62b0501267e817788b82c5281"
+      },
+      {
+        "case": "flat-reference-1672x941",
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "7449e1c086725f04ffb8081d98aa3cbd79231755ebb72a64f0a36c597335e461"
+      },
+      {
+        "case": "play-toolbar-focus-1672x941",
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "b7e80f3f50342ec62d8266dd937c61d8eeddfd7729e1e47f8eb8317796a112f4"
+      },
+      {
+        "case": "play-pedal-focus-1672x941",
+        "logical_size": [
+          1672,
+          941
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "4b58a644710b872167668f7042aa43f9b88bd094a67b884e38cae399edd6f9e1"
+      },
+      {
+        "case": "play-wide-1920x1080",
+        "logical_size": [
+          1920,
+          1080
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "7f205ec1a621f897c3039bd3c970c91d126c9927867f340145d4ba8904424219"
+      },
+      {
+        "case": "play-header-wide-1920x820",
+        "logical_size": [
+          1920,
+          820
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "78c1c8082357e6c727db2175bd8fe152b6508035228aa25a62972274dcebfc97"
+      },
+      {
+        "case": "play-header-tall-1400x1080",
+        "logical_size": [
+          1400,
+          1080
+        ],
+        "renderer_scale": [
+          1.0,
+          1.0
+        ],
+        "diagnostics_sha256": "21f5db4ce11a9ec4c5f973e4ef9d6bd0fe6278f9fdce2170871952ce85168798"
+      }
+    ],
+    "prior_gallery_is_combined_evidence": false,
+    "universal_positive_scale_nonoverlap": false,
+    "tiny_scale_counterexample": {
+      "logical_size": [
+        1672,
+        941
+      ],
+      "renderer_scale": [
+        1,
+        0.009999999776482582
+      ],
+      "H1_pair": 18,
+      "H1_mark": "bright",
+      "H1_canonical_origin": [
+        608,
+        100
+      ],
+      "device_pixel": [
+        608,
+        1
+      ],
+      "grain_extent": [
+        1,
+        1
+      ],
+      "H1_field_rows": [
+        0,
+        1
+      ],
+      "P1_field_box": [
+        76,
+        1,
+        1112,
+        3
+      ],
+      "source_only_not_observed_runtime": true
+    },
+    "remaining_limit": "No lower scale bound exists in either guard. Main uses drawable/window ratios. At tiny scales H1 grain and P1 field may overlap, with unchanged deterministic header-before-performance order. No source change, new cutoff, acceptance waiver or universal pixel-preservation claim is admitted."
+  },
+  "compatibility": {
+    "protected_include_src_plugins": 81,
+    "all_base_local_remote_working_bytes_equal": true,
+    "inventory_sha256": "86ef79dd2c92f70abd9ee8fc5d53a96b5be85f316ef9063708ac10faa0be9035",
+    "inventory_matches_A43": true,
+    "A41_foundation_sources": [
+      {
+        "path": "apps/standalone/LibraryModel.h",
+        "bytes": 9993,
+        "sha256": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/LibraryModel.cpp",
+        "bytes": 54280,
+        "sha256": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/UiModel.h",
+        "bytes": 18956,
+        "sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/UiModel.cpp",
+        "bytes": 83993,
+        "sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/Session.h",
+        "bytes": 8982,
+        "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/Session.cpp",
+        "bytes": 31176,
+        "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/RegistrationLibrary.h",
+        "bytes": 5982,
+        "sha256": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/RegistrationLibrary.cpp",
+        "bytes": 39180,
+        "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/tests/test_standalone_library_model.cpp",
+        "bytes": 79171,
+        "sha256": "3229fee7d3cd0154eb27db6b550d3d34aff400156ec475afd68221c56199590d",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/tests/test_standalone_library_session.cpp",
+        "bytes": 47769,
+        "sha256": "1419ac417025600ea40262151a8d9b19a88d15812fb1ce0ee32255ae12237279",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/tests/test_standalone_library_storage.cpp",
+        "bytes": 39345,
+        "sha256": "01143f1a7b0e64f00083bd2c07b0afe0cfbad7f9e044c44eb316e534c01c1793",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/tests/test_standalone_library_recall.cpp",
+        "bytes": 44191,
+        "sha256": "439da8cf79dfc265af512f225de8dee8629fdc35fa9ede58cc68d1b84ac985ae",
+        "matches_A41_and_local_recovery": true
+      },
+      {
+        "path": "apps/standalone/tests/test_standalone_library_roundtrip.cpp",
+        "bytes": 34998,
+        "sha256": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0",
+        "matches_A41_and_local_recovery": true
+      }
+    ],
+    "A43_other_preserved_sources": [
+      {
+        "path": "include/hammond/Types.h",
+        "bytes": 6015,
+        "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "include/hammond/ParameterBridge.h",
+        "bytes": 2952,
+        "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/ParameterBridge.cpp",
+        "bytes": 11334,
+        "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "data/parameter-registry.json",
+        "bytes": 36882,
+        "sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "include/hammond/ControlState.h",
+        "bytes": 5751,
+        "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/ControlState.cpp",
+        "bytes": 7673,
+        "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/ControlStateIO.cpp",
+        "bytes": 13152,
+        "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/Engine.cpp",
+        "bytes": 28448,
+        "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/TonewheelBank.cpp",
+        "bytes": 4390,
+        "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/Percussion.cpp",
+        "bytes": 4837,
+        "sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/NoteOwnership.cpp",
+        "bytes": 8856,
+        "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "src/PedalNoteOwnership.cpp",
+        "bytes": 7419,
+        "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "plugins/vst3/PluginIds.h",
+        "bytes": 746,
+        "sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "apps/standalone/Session.cpp",
+        "bytes": 31176,
+        "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "apps/standalone/Session.h",
+        "bytes": 8982,
+        "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "apps/standalone/RegistrationLibrary.cpp",
+        "bytes": 39180,
+        "sha256": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "apps/standalone/StateFiles.cpp",
+        "bytes": 4844,
+        "sha256": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "data/profiles/nominal-unmeasured-v1.json",
+        "bytes": 19627,
+        "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "data/registrations/atlas-chapel-nominal-v1.json",
+        "bytes": 4298,
+        "sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+        "matches_A43_base_remote": true
+      },
+      {
+        "path": "CMakeLists.txt",
+        "bytes": 30784,
+        "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313",
+        "matches_A43_base_remote": true
+      }
+    ],
+    "UiModel_exact_reversals": [
+      {
+        "path": "apps/standalone/UiModel.h",
+        "block": {
+          "bytes": 409,
+          "sha256": "435d8af677b4c1e65ea2166ac34f12cb70e036f3e6df9210d01a87b9d182832d"
+        },
+        "reversed": {
+          "bytes": 18547,
+          "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1"
+        },
+        "equals_base_and_remote": true
+      },
+      {
+        "path": "apps/standalone/UiModel.cpp",
+        "block": {
+          "bytes": 235,
+          "sha256": "92819dd1ff71a2394bcff46011a7ce591bc3b5fe9c20b86a83afe3f1800d98cf"
+        },
+        "reversed": {
+          "bytes": 83758,
+          "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+        },
+        "equals_base_and_remote": true
+      }
+    ],
+    "preserved": [
+      "47 parameter IDs and meanings",
+      "B3CONTROLS4 and readers1-3",
+      "91 shared free-running sources",
+      "plugin UUIDs",
+      "nominal dry Engine",
+      "musical/note ownership and contact/phase/percussion histories",
+      "four banks, 147 playing keys, 24 presets, 68 controls"
+    ],
+    "native_library_browser_main_integration_added": false
+  },
+  "remote_main": {
+    "base": {
+      "bytes": 146859,
+      "sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+    },
+    "required_remote": {
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    "remote_git_blob": "324fb10f608712c701e4c4e0a8445b44e67a7af8",
+    "working_at_report": {
+      "bytes": 147938,
+      "sha256": "0c02c619bd04e69ed70aa7c50cbb8345cbc41a188619e94ca6b8a56a24547537"
+    },
+    "diff_identity": {
+      "bytes": 3453,
+      "sha256": "1bff52f4f7546c314723693a230ebd21473496d59f90586fed091985f6325cf5"
+    },
+    "diff_fragments": [
+      {
+        "kind": "insert",
+        "base_line": 578,
+        "remote_line": 578,
+        "before_text": "",
+        "after_text": "        const auto dispatch_event = [this](const SDL_Event& event) {\n            const auto workspace = ui_.view().workspace;\n            const auto presentation = ui_.view().presentation;\n            const auto overlay = overlay_;\n            handle_event(event);\n            return !options_.input_script.empty() &&\n                (workspace != ui_.view().workspace ||\n                 presentation != ui_.view().presentation || overlay != overlay_);\n        };\n"
+      },
+      {
+        "kind": "replace",
+        "base_line": 580,
+        "remote_line": 589,
+        "before_text": "            // Gather native input once per main-loop turn. Marker handlers can\n            // append another due replay prefix while this bounded drain runs.\n",
+        "after_text": "            // Gather native input once per main-loop turn. Marker handlers append\n            // due prefixes only after the current semantic view has been painted.\n            // A scripted semantic transition ends this drain so the ordinary\n            // paint runs before another queued event can replace that view.\n"
+      },
+      {
+        "kind": "replace",
+        "base_line": 585,
+        "remote_line": 596,
+        "before_text": "                handle_event(event);\n                for (std::size_t count = 1; count < 256 && running_; ++count) {\n",
+        "after_text": "                bool semantic_transition = dispatch_event(event);\n                for (std::size_t count = 1; count < 256 && running_ && !semantic_transition; ++count) {\n"
+      },
+      {
+        "kind": "replace",
+        "base_line": 596,
+        "remote_line": 607,
+        "before_text": "                    handle_event(event);\n",
+        "after_text": "                    semantic_transition = dispatch_event(event);\n"
+      },
+      {
+        "kind": "replace",
+        "base_line": 2328,
+        "remote_line": 2339,
+        "before_text": "            // Consumed-prefix markers permit the next resize immediately,\n            // within the ordinary bounded 256-event poll budget.\n            if (running_) { const bool pumped = pump_replay(SDL_GetTicks64() - replay_started_); (void)pumped; }\n",
+        "after_text": "            // Paint a changed semantic view before the next synchronous resize.\n            // Resize-only prefixes still share the bounded 256-event drain.\n            const auto& view = ui_.view();\n            const bool semantic_view_painted = last_painted_ &&\n                last_painted_->workspace == view.workspace &&\n                last_painted_->presentation == view.presentation &&\n                last_painted_->overlay == overlay_;\n            if (running_ && semantic_view_painted) {\n                const bool pumped = pump_replay(SDL_GetTicks64() - replay_started_);\n                (void)pumped;\n            }\n"
+      }
+    ],
+    "retain_exact_remote_bytes": true,
+    "review": "Only semantic-transition drain breaking and acknowledged-prefix pumping change. Every dispatched event still calls handle_event exactly once. Scripted workspace/presentation/overlay changes stop the bounded 256-event drain before ordinary observation/MIDI/save/replay/render flow. Marker pumping requires current semantic view to match last_painted; dimensions are deliberately excluded so resize-only prefixes can coalesce. record_painted_presentation still runs only after actual painting and SDL flush. Unscripted event handling, command routes, callbacks, lifecycle, ScriptedInput bounds and 2000-ms replay drain remain unchanged.",
+    "combined_runtime": "pending"
+  },
+  "reviewed_remote_test_sources": {
+    "apps/standalone/native_tests/test_standalone_replay_paint_boundary.py": {
+      "source_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "bytes": 14225,
+      "sha256": "897143ccfa4b607e9935c1cbddf5dcb5aac5d48e4b3cf5ffe74cb01d61f91822",
+      "test_method_count": 0
+    },
+    "apps/standalone/native_tests/test_standalone_semantic_paint_boundary.py": {
+      "source_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "bytes": 16743,
+      "sha256": "8a6ecd4ac9747c3596983d345afb789163ad2fff2e880db198bdcc6e31361048",
+      "test_method_count": 0
+    },
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": {
+      "source_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "bytes": 47128,
+      "sha256": "38808674e491c2224a7b425df55f26ac076e3560c302a6319dbff49e5e1d961b",
+      "test_method_count": 19
+    },
+    "apps/standalone/native_tests/test_standalone_starter_load.py": {
+      "source_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "bytes": 24078,
+      "sha256": "96139c491057d1b3c28e4a79b9ae2b89fb1118b1afcaff4c4dd67c4a0c56f060",
+      "test_method_count": 8
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "source_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "bytes": 34239,
+      "sha256": "5f876087a4fea18acc46db16d4c1e7dba3a50e83d322ee6d835d16dd01e31e4f",
+      "test_method_count": 0
+    },
+    "apps/standalone/native_tests/test_standalone_header_grain_bounds.cpp": {
+      "source_commit": "03c70c103a4a0dd72b323529416b909c19a4e139",
+      "bytes": 10554,
+      "sha256": "254f66fbd3f2ab86b63000d5eb8f59826775c1db61752c0ac4e173029494fc0a"
+    }
+  },
+  "chronology": {
+    "semantic_boundary": "Two initial presentations; twelve timestamp-zero actions require six actual ordered render visits through workspace/presentation/Audio overlay. Retains250-ms duration,2000-ms drain, complete literal controls, empty holds, saved-byte equality and monotone command acknowledgment.",
+    "resize_boundary": "Two initial presentations; six timestamp-zero actions/two resizes require three distinct ordered painted visits before subsequent resize prefixes. Existing state/audio/command/final acknowledgment checks remain.",
+    "workspace": "Fresh matching250-ms startup process supplies positive acknowledged origin. Full journeys retain their first copied origin, exact controls and empty holds; monotone applied/submitted/time fields, exact command deltas, same-sequence musical state and final acknowledgment remain strict. Removes only the<180-ms sampling assumption. Thirteen added pure chronology methods are synthetic.",
+    "starter_load": "Copied startup/edit/restoration must occur in actual order with strictly advancing applied sequences and restoration at final sequence. Startup<750ms and restored>=2200ms remain. Applied edit may first be copied after Load submission; desired state is never accepted as applied. Seven pure oracle methods are synthetic.",
+    "new_execution_by_A47": false
+  },
+  "source_pins": {
+    "P1_comparator": {
+      "bytes": 84566,
+      "sha256": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923"
+    },
+    "unchanged_from_local_recovery": true,
+    "P1_candidate_only": "May measure current canonical62 screens at recorded current source; exact A26 coherent-pair reversal remains required. Does not qualify paired preservation, H1, timing or later inputs.",
+    "P1_original_paired_UiModel": {
+      "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1"
+    },
+    "P1_original_before_executable": "65d0cc74e53faf2d655cba5f6254d5087715c730f22556ec81940195ad18149e",
+    "P1_original_before_painter": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+    "historical_H1_T3_main_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+    "historical_main_UiModel_pins_must_not_be_weakened": true,
+    "header_fixture_static_cast_transition_owner": "A45",
+    "CI_CMake_union_owners": [
+      "A46",
+      "A51"
+    ]
+  },
+  "retained_original_results": [
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/report.json",
+      "bytes": 180107,
+      "sha256": "4895fdbb8f79e07cc4ad2b6d672807433a98e5a08689c323547432ca88725ab7",
+      "unchanged_from_local_recovery": true,
+      "qualifies_combined_source": false
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-paired-v2/report.json",
+      "bytes": 179829,
+      "sha256": "f64b634d5455e69e506730acac036e6b3764804d775ff4bdabb4d0a4e0abe1d4",
+      "unchanged_from_local_recovery": true,
+      "qualifies_combined_source": false
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/p1-timing-summary.json",
+      "bytes": 6310,
+      "sha256": "e4e8066d6a5473756097a2c426a5601ff5a1a566c95d873872ffff94cdeb2a16",
+      "unchanged_from_local_recovery": true,
+      "qualifies_combined_source": false
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json",
+      "bytes": 1920,
+      "sha256": "c40a47471efb8862f2b6d6ebc921f207b7b99ea5858856bc4c16b9b1c57a6823",
+      "unchanged_from_local_recovery": true,
+      "qualifies_combined_source": false
+    },
+    {
+      "path": "docs/development/2026-11-16-console-completion/reports/library-integrated-result.json",
+      "bytes": 4857,
+      "sha256": "40356a2591f05c01da66dc899306e397d0cf6587c3541e0bf9c9e4e6a342d060",
+      "unchanged_from_local_recovery": true,
+      "qualifies_combined_source": false
+    }
+  ],
+  "remaining_gates": [
+    "Root builds coherent combined inputs and runs complete affected native selection, H1 103 and P1 candidate-only62 numerical screens",
+    "Fresh actual combined scale-1 full gallery and independent visual review; real README captures",
+    "Separate H1/P1 paired and timing histories remain bound to original sources; combined timing not inferred",
+    "Tiny-positive drawable-scale composition remains an open domain limitation",
+    "A45 fixture and A46/A51 CI/CMake admissions remain separate",
+    "Native browser integration, display/devices/accessibility, callback deadlines/retirement, physical/host/platform/release and whole-interface1:1 remain open",
+    "Root document integrity, guarded publication and exact-source remote/hosted verification"
+  ],
+  "owned_deliverables": [
+    "docs/reviews/CONSOLE_SOURCE_RECONCILIATION_ADMISSION.md",
+    "docs/development/2026-11-16-console-completion/reports/A47-source-reconciliation.json",
+    "docs/development/2026-11-16-console-completion/notes/A47.md"
+  ]
+}

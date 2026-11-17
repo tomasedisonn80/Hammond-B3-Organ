@@ -1,5 +1,73 @@
 # Project plan: Hammond B-3 and Leslie
 
+<!-- console-plan-current:start -->
+<a id="current-console-continuation--17-november-2026"></a>
+## Current console continuation — 16 November 2026
+
+Recover the [current handoff](CONSOLE_COMPLETION_HANDOFF.md),
+[setup](CONSOLE_SETUP_AND_HANDOFF.md), [session scope](development/2026-11-16-console-completion/README.md),
+[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-console-completion/assignments.json) and
+[root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md).
+Starting source is `9d60dbf462a90fe422fd4e69757fe202264acb7c`; root owns
+`/workspace/scratch/21cce69f7784/Hammond-B3-Organ`, its coordinated
+`../build-native`, acceptance and publication. Every other workspace stays read-only.
+
+The copied-state LibraryModel and `UiModel::recall_controls` foundation are
+implemented, with [five integrated suites](development/2026-11-16-console-completion/reports/library-integrated-result.json)
+and a [developer guide](LIBRARY_MODEL_GUIDE.md). Native browser and `main.cpp`
+library integration remain absent. P1 percussion/expression material is combined
+with published `03c70c1` H1/header and semantic-paint work. The
+[independent source admission](reviews/CONSOLE_SOURCE_RECONCILIATION_ADMISSION.md)
+preserves both painters and the published main. Their supports are separate in
+the qualified fixture and gallery domains; this is not a universal claim at
+arbitrarily tiny positive renderer scales.
+
+The [combined qualification](development/2026-11-16-console-completion/reports/combined-qualification.json)
+passes **46/46 build steps, 78/78 affected CTests and 15/15 captures**, with all
+587 production/test/build inputs unchanged. All 69 gallery payloads are verified.
+The [independent all-frame admission](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md)
+covers the reference and all sixty retained frames; README displays the
+[combined gallery](design/native-gallery-console-combined/manifest.json).
+The original [full-suite result](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json)
+remains **246/247**, including its then-missing report-link failure. The combined
+78-test selection is not a full 251-test rerun. Follow the checkpoint for the
+separate document gate, staged review, publication and exact-source hosted outcomes.
+
+Next implement the [native integration plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+in dependency order: independently admit model-owned Save availability and a new
+post-Start control proof, then browser/main effects and held-input routing.
+Recover existing [owners](#current-ownership-and-source) before shared changes;
+this foundation transfers no unfinished contact/audio, scanner, R4 or release gate.
+
+This request requires **60 actual new distinct workers in ten waves of six**.
+Only its ledger and matching closure evidence establish progress. Its fresh
+[reading receipt](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json)
+covers all 500 pages; the [atlas crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md)
+preserves every [M0–M9 exit](#milestones-and-exit-evidence). Research waves,
+staffing waves and milestones are different structures. Preserve 47 parameter
+identities, `B3CONTROLS4`/readers 1–3, 91 shared sources, UUIDs and the nominal
+dry Engine. **Literal whole-interface 1:1 remains unmet and unwaived**; physical,
+device, accessibility and release acceptance retain their own evidence requirements.
+
+**Latest test-source reconciliation:** Published `6287055` is preserved,
+including its two-file Windows helper repair and all 117 added evidence files.
+The [exact helper transition](reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
+has a separate [4/4 local qualification](development/2026-11-16-console-completion/reports/helper-transition-qualification.json).
+The predecessor's Windows run then exposed two copied-state protocol mismatches
+before title/header numerical evaluation. Its [original log and outcome](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
+remain retained; the differing leaf and cause are not yet known. Independently
+admitted failure-only diagnostics keep every equality predicate, expected value,
+numerical criterion and timeout unchanged. Their [3/3 affected local checks](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
+pass, with 582 of 587 original inputs unchanged and only five test/tool inputs
+changed in total. The actual application and all 150 application source inputs
+remain unchanged. Publication and new exact-source Windows/complete hosted
+qualification are next; no platform repair or all-green claim is made.
+
+<!-- console-plan-current:end -->
+
+> The following heading/header entries retain the published track's original
+> workspace, source identities and observations. They do not assign this checkout.
 <!-- heading-title-plan-current:start -->
 ## Current heading, title and header continuation — 17 November 2026
 
@@ -427,7 +495,8 @@ unfinished owner-local work or permits edits to another checkout.
 
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| **Heading/title/header continuation**, base `113c29b7b14c8fde0859bc405ef8e4141a131ea6` | Current bounded T2/T3/H1 interface and delivery scope; [session](development/2026-11-16-heading-title-continuation/README.md), [checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-heading-title-continuation/assignments.json). Root coordinates the sole writable checkout/build and staged acceptance/publication. Existing manual/rim/cap/browser/contact/scanner owners remain separate. |
+| **Console continuation**, base `9d60dbf462a90fe422fd4e69757fe202264acb7c` | Current root-owned console foundation/P1 and published-source integration in `/workspace/scratch/21cce69f7784/Hammond-B3-Organ`, coordinated `../build-native`; [handoff](CONSOLE_COMPLETION_HANDOFF.md), [setup](CONSOLE_SETUP_AND_HANDOFF.md), [checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md), [ledger](development/2026-11-16-console-completion/assignments.json). Root accepts and publishes; all other workspaces remain read-only. |
+| **Heading/title/header continuation**, base `113c29b7b14c8fde0859bc405ef8e4141a131ea6` | Retained published T2/T3/H1 interface and delivery scope; [session](development/2026-11-16-heading-title-continuation/README.md), [checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-heading-title-continuation/assignments.json). Root coordinates the sole writable checkout/build and staged acceptance/publication. Existing manual/rim/cap/browser/contact/scanner owners remain separate. |
 | **Concurrent UI-delivery continuation** | Preserve its [session](development/2026-11-16-ui-delivery/README.md), [checkpoint](development/2026-11-16-ui-delivery/CHECKPOINT.md) and [ledger](development/2026-11-16-ui-delivery/assignments.json). The [independent reconciliation](reviews/CONCURRENT_UI_DELIVERY_RECONCILIATION.md) retains its published source, stronger title validation, portable tools and original evidence. Other workers and unfinished ownership stay with that session; none counts toward this continuation. |
 | **Portable registrations/reference apron**, base `54df95fe343d417dd89bb7a91f85e4f51c08dfe7` | Retained complementary CLI/render/pack/apron scope; [session](development/2026-11-16-preset-library-continuation/README.md), [checkpoint](development/2026-11-16-preset-library-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-preset-library-continuation/assignments.json). Existing LibraryModel/browser and other app integration retain their prior owner. |
 | Accessibility continuation, base `0865bc1584e4bda569fe2ccacfac87b842b8d906` | Usable numeric values, semantics and drawbar/cap surfaces; [scope](development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](development/2026-11-16-accessibility-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-accessibility-continuation/assignments.json). Semantic inspection does not establish a native accessibility provider. |

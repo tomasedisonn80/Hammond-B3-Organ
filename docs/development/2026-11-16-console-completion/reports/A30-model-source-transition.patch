@@ -1,0 +1,416 @@
+diff --git a/tools/compare_performance_plate.py b/tools/compare_performance_plate.py
+--- a/tools/compare_performance_plate.py
++++ b/tools/compare_performance_plate.py
+@@ -12,6 +12,9 @@
+ The report distinguishes the numerical screen from preservation, timing, visual,
+ physical and whole-interface acceptance. A successful candidate-only exit claims
+ only the frozen canonical 62-screen gate and its canonical fixture validation.
++It admits either the original coherent UiModel source pair or the exact A26
++recall-only addition, with whole-block reversal to the original bytes. Paired
++mode retains the original pair and genuine baseline admission unchanged.
+ 
+ The font sampler follows the pinned SDL 2.32.10 software COPY implementation;
+ its geometry and seven-bit linear filter are derived from the public source.
+@@ -63,6 +66,30 @@
+     "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+     "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+     "docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png": "1df7d50cda9b61640702a4c4b516be1ae1b7be9879aa6bba0feb06c0bf9e5e60",
++}
++# Keep PINNED as the genuine original source identities. Only candidate-only
++# may admit the exact A26 pair below; paired comparisons retain the old pair.
++UI_MODEL_FILES = ("apps/standalone/UiModel.h", "apps/standalone/UiModel.cpp")
++RECALL_SOURCE_TRANSITION = "ui-model-recall-controls-a26-v1"
++RECALL_SOURCE_PATCH = SESSION + "/reports/UiModel-recall-controls.patch"
++RECALL_SOURCE_PATCH_SHA256 = "d4fadc8ae85d9f3dd2aedb6cccc63977fe1c4516dcca47b758a0ec18c7792cf8"
++RECALL_SOURCE_SHA256 = {
++    "apps/standalone/UiModel.h": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
++    "apps/standalone/UiModel.cpp": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
++}
++RECALL_SOURCE_INSERTIONS = {
++    "apps/standalone/UiModel.h": b"""    // Named-library recall validates and emits one copied whole ControlSnapshot
++    // even when unchanged. Unlike legacy file Load, it retains the clean-file
++    // reference. Invalid input emits nothing and preserves state. Presentation
++    // and held-note owners are preserved; normal submission/observation applies.
++    [[nodiscard]] UiActions recall_controls(const ControlSnapshot& controls) noexcept;
++""",
++    "apps/standalone/UiModel.cpp": b"""UiActions UiModel::recall_controls(const ControlSnapshot& controls) noexcept {
++    if (!is_valid_control_snapshot(controls)) return {};
++    return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);
++}
++
++""",
+ }
+ SDL_PINNED = {
+     "src/render/SDL_render.c": "ae904d0fd11c6122c77d78909538b26694b4d57a9b6b722c51e0417d4709be54",
+@@ -1186,6 +1213,66 @@
+     return Path(item["path"])
+ 
+ 
++def admit_ui_model_sources(source_bytes, *, candidate_only):
++    """Admit one coherent pair; reverse exact added blocks, never normalize C++."""
++    require(type(candidate_only) is bool, "UiModel admission mode must be boolean")
++    require(set(source_bytes) == set(UI_MODEL_FILES) and
++            all(type(source_bytes[path]) is bytes for path in UI_MODEL_FILES),
++            "UiModel admission requires exactly both complete byte sources")
++    observed = {path: sha(source_bytes[path]) for path in UI_MODEL_FILES}
++    original = {path: PINNED[path] for path in UI_MODEL_FILES}
++    admission = dict(variant="original-coherent-pair", candidate_only=candidate_only,
++                     original_pinned_sha256=original, observed_sha256=observed,
++                     accepted_sha256=dict(original), transition=None,
++                     claim="Source admission only; coherent build and runtime acceptance remain separate.")
++    if observed == original:
++        return admission
++    require(candidate_only,
++            "paired mode requires original UiModel pair; recall transition is candidate-only")
++    require(not any(observed[path] == original[path] for path in UI_MODEL_FILES),
++            "mixed original/recall UiModel pair is forbidden")
++    reversed_sha256, blocks = {}, {}
++    for path in UI_MODEL_FILES:
++        block = RECALL_SOURCE_INSERTIONS[path]
++        count = source_bytes[path].count(block)
++        require(count == 1, "UiModel recall requires one exact complete inserted block: " + path)
++        restored = source_bytes[path].replace(block, b"", 1)
++        reversed_sha256[path] = sha(restored)
++        require(reversed_sha256[path] == original[path],
++                "UiModel recall reversal does not reconstruct original bytes: " + path)
++        blocks[path] = dict(bytes=len(block), sha256=sha(block), occurrences=count)
++    # Reversal alone would admit relocation of an otherwise exact block. The
++    # complete new pair also pins insertion placement and every source byte.
++    require(observed == RECALL_SOURCE_SHA256,
++            "UiModel recall pair does not match exact admitted placement/source identity")
++    admission.update(variant="a26-recall-controls-coherent-pair",
++                     accepted_sha256=dict(RECALL_SOURCE_SHA256),
++                     transition=dict(id=RECALL_SOURCE_TRANSITION, scope="candidate-only",
++                                     patch=RECALL_SOURCE_PATCH,
++                                     patch_sha256=RECALL_SOURCE_PATCH_SHA256,
++                                     inserted_blocks=blocks, reversed_sha256=reversed_sha256,
++                                     whole_file_reversal_verified=True))
++    return admission
++
++
++def pin_ui_model_sources(inputs, root, *, candidate_only):
++    source_bytes = {}
++    for path in UI_MODEL_FILES:
++        resolved = pin_input(inputs, path, root / path)
++        item = inputs[path]
++        with resolved.open("rb") as stream:
++            source_bytes[path] = stream.read(item["bytes"] + 1)
++        require(len(source_bytes[path]) == item["bytes"] and sha(source_bytes[path]) == item["sha256"],
++                "UiModel source changed while reading registered input: " + path)
++    admission = admit_ui_model_sources(source_bytes, candidate_only=candidate_only)
++    for path in UI_MODEL_FILES:
++        inputs[path]["expected_sha256"] = admission["accepted_sha256"][path]
++        inputs[path]["original_pinned_sha256"] = PINNED[path]
++    if admission["transition"] is not None:
++        pin_input(inputs, "ui_model_recall_patch", root / RECALL_SOURCE_PATCH, RECALL_SOURCE_PATCH_SHA256)
++    return admission
++
++
+ def check_inputs_unchanged(audit, inputs):
+     for label, previous in inputs.items():
+         def verify(previous=previous):
+@@ -1249,7 +1336,7 @@
+                                ("SDL_VIDEODRIVER", "SDL_AUDIODRIVER", "SDL_RENDER_DRIVER", "SDL_RENDER_SCALE_QUALITY",
+                                 "LD_LIBRARY_PATH", "LC_ALL", "LANG")},
+                   source_labels={"before": args.before_source_id, "after": args.after_source_id},
+-                  inputs={}, cases=[], companions=[], commands=runner.commands,
++                  inputs={}, ui_model_source_admission=None, cases=[], companions=[], commands=runner.commands,
+                   limits=dict(header_bytes=MAX_HEADER, frame_bytes=MAX_STREAM, stderr_bytes=MAX_STDERR,
+                               files=MAX_FILES, storage_bytes=MAX_STORAGE, subprocesses=MAX_COMMANDS,
+                               per_process_seconds=args.timeout, total_seconds=args.total_seconds),
+@@ -1259,7 +1346,10 @@
+     frames, retained, witnesses = {}, {}, {}
+     try:
+         for path, expected in PINNED.items():
+-            pin_input(report["inputs"], path, root / path, expected)
++            if path not in UI_MODEL_FILES:
++                pin_input(report["inputs"], path, root / path, expected)
++        report["ui_model_source_admission"] = pin_ui_model_sources(
++            report["inputs"], root, candidate_only=args.candidate_only)
+         pin_input(report["inputs"], "comparator", Path(__file__))
+         after = pin_input(report["inputs"], "after_executable", args.after, args.after_sha256)
+         pin_input(report["inputs"], "after_painter", args.after_painter or root / PAINTER, args.after_painter_sha256)
+diff --git a/tests/test_compare_performance_plate.py b/tests/test_compare_performance_plate.py
+--- a/tests/test_compare_performance_plate.py
++++ b/tests/test_compare_performance_plate.py
+@@ -11,6 +11,7 @@
+ import struct
+ import tempfile
+ import unittest
++from unittest import mock
+ import zlib
+ 
+ 
+@@ -323,5 +324,272 @@
+             self.assertEqual(witness["text_runs"][2]["text"], "REQUIRES UPPER B")
+ 
+ 
++class UiModelSourceTransitionTests(unittest.TestCase):
++    """Real complete source bytes; independent A26 literals and refusal edits."""
++
++    HEADER = "apps/standalone/UiModel.h"
++    IMPLEMENTATION = "apps/standalone/UiModel.cpp"
++    ORIGINAL = {
++        HEADER: "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
++        IMPLEMENTATION: "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
++    }
++    RECALLED = {
++        HEADER: "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
++        IMPLEMENTATION: "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
++    }
++    PATCH = "docs/development/2026-11-16-console-completion/reports/UiModel-recall-controls.patch"
++    PATCH_SHA256 = "d4fadc8ae85d9f3dd2aedb6cccc63977fe1c4516dcca47b758a0ec18c7792cf8"
++    # These bytes are transcribed from A26's frozen proposal, not imported from
++    # the admission implementation. Original and resulting whole files are pinned.
++    ADDITIONS = {
++        HEADER: b"""    // Named-library recall validates and emits one copied whole ControlSnapshot
++    // even when unchanged. Unlike legacy file Load, it retains the clean-file
++    // reference. Invalid input emits nothing and preserves state. Presentation
++    // and held-note owners are preserved; normal submission/observation applies.
++    [[nodiscard]] UiActions recall_controls(const ControlSnapshot& controls) noexcept;
++""",
++        IMPLEMENTATION: b"""UiActions UiModel::recall_controls(const ControlSnapshot& controls) noexcept {
++    if (!is_valid_control_snapshot(controls)) return {};
++    return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);
++}
++
++""",
++    }
++    ANCHORS = {
++        HEADER: b"    // Main-thread external controller edit. Uses the same desired snapshot and\n",
++        IMPLEMENTATION: b"UiActions UiModel::external_parameter(std::uint32_t parameter_id,\n",
++    }
++
++    @classmethod
++    def setUpClass(cls):
++        cls.original, cls.recalled = {}, {}
++        for path, expected in cls.ORIGINAL.items():
++            data = (ROOT / path).read_bytes()
++            if hashlib.sha256(data).hexdigest() == cls.RECALLED[path]:
++                if data.count(cls.ADDITIONS[path]) != 1:
++                    raise AssertionError("frozen recalled source lacks its complete insertion")
++                data = data.replace(cls.ADDITIONS[path], b"", 1)
++            if hashlib.sha256(data).hexdigest() != expected:
++                raise AssertionError("test source is neither exact original nor exact A26 source")
++            if data.count(cls.ANCHORS[path]) != 1:
++                raise AssertionError("original insertion anchor is not unique")
++            cls.original[path] = data
++            cls.recalled[path] = data.replace(cls.ANCHORS[path], cls.ADDITIONS[path] + cls.ANCHORS[path], 1)
++            if hashlib.sha256(cls.recalled[path]).hexdigest() != cls.RECALLED[path]:
++                raise AssertionError("independent A26 insertion does not reproduce its frozen source")
++        cls.patch_bytes = (ROOT / cls.PATCH).read_bytes()
++        if hashlib.sha256(cls.patch_bytes).hexdigest() != cls.PATCH_SHA256:
++            raise AssertionError("frozen A26 patch changed")
++
++    def changed_addition(self, path, old, new):
++        self.assertEqual(self.ADDITIONS[path].count(old), 1)
++        changed = dict(self.recalled)
++        changed[path] = changed[path].replace(self.ADDITIONS[path],
++                                              self.ADDITIONS[path].replace(old, new, 1), 1)
++        return changed
++
++    def write_root(self, directory, sources, *, include_fixed=False, patch_bytes=None):
++        root = Path(directory) / "root"
++        root.mkdir()
++        files = dict(sources)
++        if include_fixed:
++            files.update({path: (ROOT / path).read_bytes() for path in p1.PINNED if path not in sources})
++        files[self.PATCH] = self.patch_bytes if patch_bytes is None else patch_bytes
++        for path, data in files.items():
++            target = root / path
++            target.parent.mkdir(parents=True, exist_ok=True)
++            target.write_bytes(data)
++        return root
++
++    def test_original_pair_and_genuine_baseline_pins_remain_unchanged(self):
++        self.assertEqual({path: p1.PINNED[path] for path in self.ORIGINAL}, self.ORIGINAL)
++        self.assertEqual(p1.BEFORE_EXE_SHA,
++                         "65d0cc74e53faf2d655cba5f6254d5087715c730f22556ec81940195ad18149e")
++        self.assertEqual(p1.BEFORE_PAINTER_SHA,
++                         "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366")
++        self.assertEqual(p1.PINNED[p1.BASELINE_ADMISSION],
++                         "fb3c4bc99d1534222d80f7263a82fef2f883bb584e2c646aae43a7c80c4993ea")
++        for candidate_only in (False, True):
++            with self.subTest(candidate_only=candidate_only):
++                result = p1.admit_ui_model_sources(self.original, candidate_only=candidate_only)
++                self.assertEqual(result["variant"], "original-coherent-pair")
++                self.assertEqual(result["observed_sha256"], self.ORIGINAL)
++                self.assertEqual(result["accepted_sha256"], self.ORIGINAL)
++                self.assertIsNone(result["transition"])
++
++    def test_exact_recall_pair_binds_complete_reversal_and_candidate_scope(self):
++        result = p1.admit_ui_model_sources(self.recalled, candidate_only=True)
++        self.assertEqual(result["variant"], "a26-recall-controls-coherent-pair")
++        self.assertEqual(result["original_pinned_sha256"], self.ORIGINAL)
++        self.assertEqual(result["observed_sha256"], self.RECALLED)
++        self.assertEqual(result["accepted_sha256"], self.RECALLED)
++        transition = result["transition"]
++        self.assertEqual(transition["id"], "ui-model-recall-controls-a26-v1")
++        self.assertEqual(transition["scope"], "candidate-only")
++        self.assertEqual(transition["patch"], self.PATCH)
++        self.assertEqual(transition["patch_sha256"], self.PATCH_SHA256)
++        self.assertEqual(transition["reversed_sha256"], self.ORIGINAL)
++        self.assertTrue(transition["whole_file_reversal_verified"])
++        for path, block in self.ADDITIONS.items():
++            self.assertEqual(transition["inserted_blocks"][path],
++                             {"bytes": len(block), "sha256": hashlib.sha256(block).hexdigest(), "occurrences": 1})
++
++    def test_both_mixed_old_new_pairs_are_refused(self):
++        for path in self.ORIGINAL:
++            changed = dict(self.original)
++            changed[path] = self.recalled[path]
++            with self.subTest(new_path=path), self.assertRaisesRegex(ValueError, "mixed original/recall"):
++                p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_new_pair_is_refused_in_paired_mode(self):
++        with self.assertRaisesRegex(ValueError, "paired mode requires original UiModel pair"):
++            p1.admit_ui_model_sources(self.recalled, candidate_only=False)
++
++    def test_rejects_deleted_inverted_and_weakened_validation_guard(self):
++        guard = b"    if (!is_valid_control_snapshot(controls)) return {};\n"
++        for replacement in (b"", b"    if (is_valid_control_snapshot(controls)) return {};\n",
++                            b"    if (!std::isfinite(controls.expression)) return {};\n"):
++            changed = self.changed_addition(self.IMPLEMENTATION, guard, replacement)
++            with self.subTest(replacement=replacement), self.assertRaisesRegex(ValueError, "one exact complete inserted block"):
++                p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_rejects_changed_force_rebased_saved_reference_and_legacy_load_route(self):
++        publication = b"    return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);\n"
++        for replacement in (publication.replace(b", true);", b", false);"),
++                            b"    saved_controls_ = controls;\n" + publication,
++                            b"    return load_controls(controls);\n"):
++            changed = self.changed_addition(self.IMPLEMENTATION, publication, replacement)
++            with self.subTest(replacement=replacement), self.assertRaisesRegex(ValueError, "one exact complete inserted block"):
++                p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_rejects_changed_declaration_and_public_contract_comment(self):
++        edits = ((b"recall_controls(const ControlSnapshot& controls) noexcept;",
++                  b"recall_controls(const ControlSnapshot& controls);"),
++                 (b"recall_controls(const ControlSnapshot& controls)",
++                  b"recall_controls(ControlSnapshot controls)"),
++                 (b"it retains the clean-file", b"it replaces the clean-file"))
++        for old, new in edits:
++            changed = self.changed_addition(self.HEADER, old, new)
++            with self.subTest(old=old), self.assertRaisesRegex(ValueError, "one exact complete inserted block"):
++                p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_rejects_duplicate_and_removed_inserted_blocks(self):
++        for path, block in self.ADDITIONS.items():
++            for replacement in (block + block, b""):
++                changed = dict(self.recalled)
++                changed[path] = changed[path].replace(block, replacement, 1)
++                with self.subTest(path=path, copies=len(replacement) // len(block)), self.assertRaises(ValueError):
++                    p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_rejects_relocation_even_when_whole_block_reversal_is_original(self):
++        anchors = {
++            self.HEADER: b"    // Called after an off-callback parser has validated the existing file\n",
++            self.IMPLEMENTATION: b"UiActions UiModel::load_controls(const ControlSnapshot& controls) noexcept {\n",
++        }
++        for path, anchor in anchors.items():
++            self.assertEqual(self.original[path].count(anchor), 1)
++            moved = self.original[path].replace(anchor, self.ADDITIONS[path] + anchor, 1)
++            self.assertEqual(moved.replace(self.ADDITIONS[path], b"", 1), self.original[path])
++            changed = {**self.recalled, path: moved}
++            with self.subTest(path=path), self.assertRaisesRegex(ValueError, "exact admitted placement/source identity"):
++                p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_rejects_unrelated_old_method_changes_in_both_variants(self):
++        edits = ((b"    saved_controls_ = controls;\n", b"    saved_controls_ = view_.controls;\n"),
++                 (b"    if (id.kind != UiControlKind::Workspace && valid_workspace(view.workspace) &&\n",
++                  b"    if (valid_workspace(view.workspace) &&\n"),
++                 (b"    view.controls_dirty = !(view.controls == saved);\n", b"    view.controls_dirty = false;\n"))
++        for variant, sources in (("original", self.original), ("recall", self.recalled)):
++            for old, new in edits:
++                self.assertEqual(sources[self.IMPLEMENTATION].count(old), 1)
++                changed = {**sources, self.IMPLEMENTATION: sources[self.IMPLEMENTATION].replace(old, new, 1)}
++                with self.subTest(variant=variant, old=old), self.assertRaises(ValueError):
++                    p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_rejects_class_data_and_old_public_declaration_changes(self):
++        edits = ((b"    UiViewState view_{};\n", b"    UiViewState view_{};\n    std::uint64_t recall_revision_{0};\n"),
++                 (b"load_controls(const ControlSnapshot& controls) noexcept;",
++                  b"load_controls(const ControlSnapshot& controls);"))
++        for variant, sources in (("original", self.original), ("recall", self.recalled)):
++            for old, new in edits:
++                self.assertEqual(sources[self.HEADER].count(old), 1)
++                changed = {**sources, self.HEADER: sources[self.HEADER].replace(old, new, 1)}
++                with self.subTest(variant=variant, old=old), self.assertRaises(ValueError):
++                    p1.admit_ui_model_sources(changed, candidate_only=True)
++
++    def test_original_pinning_needs_no_recall_patch_and_records_old_expectations(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = self.write_root(directory, self.original)
++            (root / self.PATCH).unlink()
++            for candidate_only in (False, True):
++                inputs = {}
++                result = p1.pin_ui_model_sources(inputs, root, candidate_only=candidate_only)
++                self.assertEqual(result["variant"], "original-coherent-pair")
++                self.assertEqual(set(inputs), set(self.ORIGINAL))
++                for path in self.ORIGINAL:
++                    self.assertEqual(inputs[path]["expected_sha256"], self.ORIGINAL[path])
++
++    def test_new_pinning_binds_patch_and_detects_later_source_drift(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = self.write_root(directory, self.recalled)
++            inputs = {}
++            result = p1.pin_ui_model_sources(inputs, root, candidate_only=True)
++            self.assertEqual(result["transition"]["patch_sha256"], self.PATCH_SHA256)
++            self.assertEqual(inputs["ui_model_recall_patch"]["expected_sha256"], self.PATCH_SHA256)
++            for path in self.ORIGINAL:
++                self.assertEqual(inputs[path]["sha256"], self.RECALLED[path])
++                self.assertEqual(inputs[path]["expected_sha256"], self.RECALLED[path])
++                self.assertEqual(inputs[path]["original_pinned_sha256"], self.ORIGINAL[path])
++            audit = p1.Audit()
++            p1.check_inputs_unchanged(audit, inputs)
++            self.assertEqual(audit.failures, [])
++            (root / self.IMPLEMENTATION).write_bytes(self.recalled[self.IMPLEMENTATION] + b"\n")
++            p1.check_inputs_unchanged(audit, inputs)
++            self.assertEqual(len(audit.failures), 1)
++            self.assertEqual(audit.failures[0]["check"], "final-input-stability:" + self.IMPLEMENTATION)
++
++    def test_new_pinning_refuses_changed_a26_patch(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = self.write_root(directory, self.recalled, patch_bytes=self.patch_bytes + b"\n")
++            with self.assertRaisesRegex(ValueError, "reviewed input SHA-256 mismatch: ui_model_recall_patch"):
++                p1.pin_ui_model_sources({}, root, candidate_only=True)
++
++    def test_execute_refuses_bad_sources_before_any_native_launch(self):
++        mixed_header = {**self.original, self.HEADER: self.recalled[self.HEADER]}
++        mixed_cpp = {**self.original, self.IMPLEMENTATION: self.recalled[self.IMPLEMENTATION]}
++        bad_guard = self.changed_addition(self.IMPLEMENTATION,
++                                          b"    if (!is_valid_control_snapshot(controls)) return {};\n", b"")
++        cases = (("mixed-header", mixed_header, True, "mixed original/recall"),
++                 ("mixed-implementation", mixed_cpp, True, "mixed original/recall"),
++                 ("changed-guard", bad_guard, True, "one exact complete inserted block"),
++                 ("paired-new-pair", self.recalled, False, "paired mode requires original UiModel pair"))
++        for name, sources, candidate_only, expected_error in cases:
++            with self.subTest(case=name), tempfile.TemporaryDirectory() as directory:
++                root = self.write_root(directory, sources, include_fixed=True)
++                output = Path(directory) / "report"
++                arguments = ["--root", str(root), "--after", str(root / "unrun-after"), "--output", str(output)]
++                if candidate_only:
++                    arguments.append("--candidate-only")
++                else:
++                    arguments += ["--before", str(root / "unrun-before"),
++                                  "--before-sha256", p1.BEFORE_EXE_SHA, "--after-sha256", "1" * 64,
++                                  "--before-painter", str(root / "unrun-before-painter"),
++                                  "--before-painter-sha256", p1.BEFORE_PAINTER_SHA,
++                                  "--after-painter-sha256", "2" * 64,
++                                  "--before-source-id", "retained-original-only",
++                                  "--after-source-id", "unqualified-recall-source", "--sdl-root", str(root / "unrun-sdl")]
++                args = p1.cli(arguments)
++                with mock.patch.object(p1.Runner, "command", side_effect=AssertionError("native launch forbidden")) as launch, \
++                        mock.patch("builtins.print"):
++                    status = p1.execute(args)
++                launch.assert_not_called()
++                self.assertEqual(status, 1)
++                report = json.loads((output / "report.json").read_bytes())
++                self.assertFalse(report["passed"])
++                self.assertEqual(report["commands"], [])
++                self.assertIsNone(report["ui_model_source_admission"])
++                self.assertTrue(any(expected_error in failure["detail"] for failure in report["failures"]))
++
++
+ if __name__ == "__main__":
+     unittest.main()

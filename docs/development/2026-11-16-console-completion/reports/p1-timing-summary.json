@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "timing_report": {
+    "path": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/p1-timing-v1/report.json",
+    "bytes": 763116,
+    "sha256": "32efc54e5ffd545886ae91a80da5175e3b0677957b681f3265e4227e762bf650"
+  },
+  "same_scene_witness": {
+    "path": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/p1-flat-witness-v2/report.json",
+    "bytes": 28442,
+    "sha256": "6aa697bdfbb27220d7515883cfde520def1822d0cb563e04e3b32bce8f073314"
+  },
+  "timing_status": "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH",
+  "mandatory_cross_witness_gate_passed": true,
+  "flat_results": [
+    {
+      "side": "after",
+      "order": 7,
+      "matched_metadata": {
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "scenario": "mixed-held",
+        "workspace": "Play",
+        "overlay": "none",
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "paired": false,
+        "heap_instrumentation": false,
+        "current_pixels_fnv1a64": "aa58ce2e68f71fbe",
+        "layout_fnv1a64": "9ac2bac0db68cf6f"
+      },
+      "surface_bytes": 6293408
+    },
+    {
+      "side": "before",
+      "order": 8,
+      "matched_metadata": {
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "scenario": "mixed-held",
+        "workspace": "Play",
+        "overlay": "none",
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "paired": false,
+        "heap_instrumentation": false,
+        "current_pixels_fnv1a64": "aa58ce2e68f71fbe",
+        "layout_fnv1a64": "9ac2bac0db68cf6f"
+      },
+      "surface_bytes": 6293408
+    }
+  ],
+  "processes": 8,
+  "total_samples": 2400,
+  "elapsed_seconds": 564.5901890070018,
+  "comparisons": [
+    {
+      "case": "canonical",
+      "median": {
+        "after_ms": "185.499996",
+        "before_ms": "179.826282",
+        "growth_ms": "5.673714",
+        "growth_percent": "3.155108328381053888441067808",
+        "growth_percent_exact_ratio": [
+          1134742800,
+          359652564
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": true
+      },
+      "p95": {
+        "after_ms": "471.078019",
+        "before_ms": "493.530628",
+        "growth_ms": "-22.452609",
+        "growth_percent": "-4.549385129548636645099967332",
+        "growth_percent_exact_ratio": [
+          -2245260900,
+          493530628
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": false
+      },
+      "metadata_equal": true,
+      "status": "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH"
+    },
+    {
+      "case": "minimum-active",
+      "median": {
+        "after_ms": "161.6146045",
+        "before_ms": "154.281369",
+        "growth_ms": "7.3332355",
+        "growth_percent": "4.753156876641404445925029353",
+        "growth_percent_exact_ratio": [
+          1466647100,
+          308562738
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": true
+      },
+      "p95": {
+        "after_ms": "429.172327",
+        "before_ms": "407.865956",
+        "growth_ms": "21.306371",
+        "growth_percent": "5.223865999740365680336409347",
+        "growth_percent_exact_ratio": [
+          2130637100,
+          407865956
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": true
+      },
+      "metadata_equal": true,
+      "status": "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH"
+    },
+    {
+      "case": "wide",
+      "median": {
+        "after_ms": "289.974812",
+        "before_ms": "290.183045",
+        "growth_ms": "-0.208233",
+        "growth_percent": "-0.07175918910079670574826313508",
+        "growth_percent_exact_ratio": [
+          -41646600,
+          580366090
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": false
+      },
+      "p95": {
+        "after_ms": "612.086931",
+        "before_ms": "684.644977",
+        "growth_ms": "-72.558046",
+        "growth_percent": "-10.59790817686814052241268397",
+        "growth_percent_exact_ratio": [
+          -7255804600,
+          684644977
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": false
+      },
+      "metadata_equal": true,
+      "status": "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH"
+    },
+    {
+      "case": "flat-control",
+      "median": {
+        "after_ms": "42.5639765",
+        "before_ms": "54.852951",
+        "growth_ms": "-12.2889745",
+        "growth_percent": "-22.40348837385248425376421407",
+        "growth_percent_exact_ratio": [
+          -2457794900,
+          109705902
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": false
+      },
+      "p95": {
+        "after_ms": "71.116109",
+        "before_ms": "140.093098",
+        "growth_ms": "-68.976989",
+        "growth_percent": "-49.23653626390644883875720987",
+        "growth_percent_exact_ratio": [
+          -6897698900,
+          140093098
+        ],
+        "hold": false,
+        "strictly_greater_than_15percent": false,
+        "strictly_greater_than_2ms": false
+      },
+      "metadata_equal": true,
+      "status": "NO_INVESTIGATION_SIGNAL_IN_THIS_BATCH"
+    }
+  ],
+  "limitation": "One shared-host descriptive batch on frozen pre-helper inputs. No causal, equivalence, display-smoothness, audio deadline, full-domain performance or whole-interface equality claim."
+}

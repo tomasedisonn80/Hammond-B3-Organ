@@ -1,0 +1,1054 @@
+name: Native standalone
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  native:
+    name: Native standalone (${{ matrix.platform }}, MIDI ${{ matrix.midi }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    env:
+      HAMMOND_CI_MIDI: ${{ matrix.midi }}
+      HAMMOND_CI_MIDI_BACKEND: ${{ matrix.midi_backend }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Linux GCC
+            os: ubuntu-24.04
+            c_compiler: gcc
+            cxx_compiler: g++
+            midi: "ON"
+            midi_backend: ALSA
+          - platform: macOS AppleClang
+            os: macos-15
+            c_compiler: clang
+            cxx_compiler: clang++
+            midi: "ON"
+            midi_backend: CoreMIDI
+          - platform: macOS Intel AppleClang
+            os: macos-15-intel
+            c_compiler: clang
+            cxx_compiler: clang++
+            midi: "ON"
+            midi_backend: CoreMIDI
+          - platform: Windows MSVC x64
+            os: windows-2022
+            c_compiler: cl
+            cxx_compiler: cl
+            midi: "ON"
+            midi_backend: WinMM
+          - platform: Linux GCC
+            os: ubuntu-24.04
+            c_compiler: gcc
+            cxx_compiler: g++
+            midi: "OFF"
+            midi_backend: unavailable
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record exact source and dependency identities
+        run: |
+          set -euo pipefail
+          mkdir -p standalone-ci-logs standalone-artifacts build-standalone/.cmake/api/v1/query
+          touch build-standalone/.cmake/api/v1/query/codemodel-v2
+          python - <<'PY'
+          import hashlib, json, os, pathlib, platform, shutil, subprocess
+          git = lambda *args: subprocess.check_output(["git", *args], text=True).strip()
+          revision = git("rev-parse", "HEAD")
+          assert revision == os.environ["GITHUB_SHA"], "checkout differs from the event revision"
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          logs = pathlib.Path("standalone-ci-logs")
+          dependencies = {}
+          source_files = {}
+          def identify(source, expected=None):
+              path = pathlib.Path(source)
+              assert path.is_file() and not path.is_symlink(), source
+              raw = path.read_bytes()
+              identity = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+              if expected:
+                  assert identity["sha256"] == expected["sha256"], source
+                  if "bytes" in expected:
+                      assert identity["bytes"] == expected["bytes"], source
+              source_files[source] = identity
+              return identity
+          for name, source, copied in (
+              ("sdl2", "data/dependencies/sdl2-lock.json", "sdl2-lock.json"),
+              ("rtmidi", "data/dependencies/rtmidi-lock.json", "rtmidi-lock.json"),
+              ("fonts", "assets/standalone/fonts/source-manifest.json", "font-source-manifest.json"),
+              ("font_atlases", "assets/standalone/fonts/atlas-manifest.json", "font-atlas-manifest.json"),
+              ("reference_art", "assets/standalone/reference/manifest.json", "reference-source-manifest.json"),
+              ("reference_apron", "assets/standalone/reference-apron-v1/manifest.json", "reference-apron-manifest.json"),
+              ("atlas_reference", "docs/design/atlas-reference.json", "atlas-reference.json"),
+          ):
+              data = pathlib.Path(source).read_bytes()
+              dependencies[name] = {
+                  "source_path": source, **identify(source),
+                  "identity": json.loads(data),
+              }
+              shutil.copyfile(source, logs / copied)
+          fonts = dependencies["fonts"]["identity"]
+          for font in fonts["fonts"]:
+              identify("assets/standalone/fonts/" + font["file"], font)
+          identify("assets/standalone/fonts/" + fonts["license"]["file"], fonts["license"])
+          atlases = dependencies["font_atlases"]["identity"]
+          assert atlases["source_manifest_sha256"] == dependencies["fonts"]["sha256"]
+          identify(atlases["header"]["file"], atlases["header"])
+          reference = dependencies["reference_art"]["identity"]
+          atlas = dependencies["atlas_reference"]["identity"]
+          identify(reference["source"]["file"], reference["source"])
+          identify(reference["source"]["pdf"], {"sha256": reference["source"]["pdf_sha256"]})
+          assert atlas["sha256"] == reference["source"]["sha256"]
+          assert atlas["source_sha256"] == reference["source"]["pdf_sha256"]
+          for asset in reference["assets"]:
+              identify("assets/standalone/reference/" + asset["file"], asset)
+          apron = dependencies["reference_apron"]["identity"]
+          assert apron["source"]["sha256"] == atlas["sha256"]
+          assert apron["source"]["pdf_sha256"] == atlas["source_sha256"]
+          identify("assets/standalone/reference-apron-v1/" + apron["asset"]["file"], apron["asset"])
+          for source in ("tools/acquire_sdl2.py", "tools/acquire_rtmidi.py",
+                         "tools/compile_reference_art.py", "tools/generate_standalone_font.py",
+                         "assets/standalone/fonts/requirements-authoring.txt",
+                         "assets/standalone/reference/requirements-authoring.txt",
+                         "tools/compile_reference_apron.py",
+                         "assets/standalone/reference-apron-v1/requirements-authoring.txt"):
+              identify(source)
+          record = {
+              "source_commit": revision, "source_tree": git("rev-parse", "HEAD^{tree}"),
+              "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "runner_os": os.environ["RUNNER_OS"], "runner_arch": os.environ["RUNNER_ARCH"],
+              "image_os": os.environ.get("ImageOS"), "image_version": os.environ.get("ImageVersion"),
+              "platform": platform.platform(), "machine": platform.machine(),
+              "python": platform.python_version(), "configuration": "Release",
+              "requested_midi": {"enabled": os.environ["HAMMOND_CI_MIDI"] == "ON",
+                                 "backend": os.environ["HAMMOND_CI_MIDI_BACKEND"]},
+              "dependencies": dependencies, "source_files": source_files,
+          }
+          (logs / "provenance.json").write_text(
+              json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          PY
+          cmake --version 2>&1 | tee standalone-ci-logs/toolchain.log
+          ctest --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          python --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          git --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+
+      - name: Explicitly acquire and locally verify locked external SDL2
+        run: |
+          set -euo pipefail
+          python tools/acquire_sdl2.py --destination "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-ci-logs/sdl-acquisition.log
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-ci-logs/sdl-verification.log
+          python - <<'PY'
+          import os, pathlib, shutil
+          source = pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-sdl2"
+          shutil.copyfile(source / "docs/README-linux.md", "standalone-ci-logs/SDL2-README-linux.md")
+          PY
+
+      - name: Explicitly acquire and locally verify locked external RtMidi
+        if: matrix.midi == 'ON'
+        run: |
+          set -euo pipefail
+          python tools/acquire_rtmidi.py --destination "$RUNNER_TEMP/hammond-rtmidi" \
+            2>&1 | tee standalone-ci-logs/rtmidi-acquisition.log
+          python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" \
+            2>&1 | tee standalone-ci-logs/rtmidi-verification.log
+
+      - name: Install Ubuntu desktop and audio development headers
+        if: runner.os == 'Linux'
+        timeout-minutes: 8
+        run: |
+          set -euo pipefail
+          # Selected from the locked SDL2 docs/README-linux.md; runner setup only.
+          packages=(pkg-config libasound2-dev libpulse-dev libx11-dev libxext-dev
+                    libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev)
+          # Bound stalled mirrors/locks and fail on incomplete repository refreshes.
+          apt_options=(-o Acquire::Retries=3 -o Acquire::http::Timeout=30
+                       -o Acquire::https::Timeout=30 -o DPkg::Lock::Timeout=60
+                       -o APT::Update::Error-Mode=any)
+          printf '%s\n' "${packages[@]}" > standalone-ci-logs/ubuntu-requested-packages.txt
+          printf '%s\n' "${apt_options[@]}" > standalone-ci-logs/ubuntu-apt-options.txt
+          sudo apt-get "${apt_options[@]}" update 2>&1 | tee standalone-ci-logs/apt-update.log
+          sudo apt-get "${apt_options[@]}" install --no-install-recommends -y "${packages[@]}" \
+            2>&1 | tee standalone-ci-logs/apt-install.log
+          dpkg-query -W -f='${binary:Package}\t${Version}\t${Architecture}\n' \
+            | LC_ALL=C sort > standalone-ci-logs/ubuntu-installed-packages.tsv
+
+      - name: Configure native Release on Linux or macOS
+        if: runner.os != 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+          C_COMPILER: ${{ matrix.c_compiler }}
+          CXX_COMPILER: ${{ matrix.cxx_compiler }}
+        run: |
+          set -euo pipefail
+          "$C_COMPILER" --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          "$CXX_COMPILER" --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          cmake -S . -B build-standalone -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+            -DCMAKE_C_COMPILER="$C_COMPILER" -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+            -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            -DHAMMOND_ENABLE_MIDI="$HAMMOND_CI_MIDI" \
+            -DHAMMOND_RTMIDI_ROOT="$RUNNER_TEMP/hammond-rtmidi" \
+            -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
+            2>&1 | tee standalone-ci-logs/configure.log
+
+      - name: Configure native Release on Windows
+        if: runner.os == 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          set -euo pipefail
+          cmake -S . -B build-standalone -G "Visual Studio 17 2022" -A x64 \
+            -DBUILD_TESTING=ON -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+            -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            -DHAMMOND_ENABLE_MIDI="$HAMMOND_CI_MIDI" \
+            -DHAMMOND_RTMIDI_ROOT="$RUNNER_TEMP/hammond-rtmidi" \
+            -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
+            2>&1 | tee standalone-ci-logs/configure.log
+
+      - name: Retain actual compiler identities and require native SDL backends
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os, pathlib, re, shutil
+          build, logs = pathlib.Path("build-standalone"), pathlib.Path("standalone-ci-logs")
+          provenance_path = logs / "provenance.json"
+          provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+          toolchain = {}
+          for language in ("C", "CXX"):
+              candidates = list(build.glob("CMakeFiles/*/CMake" + language + "Compiler.cmake"))
+              assert len(candidates) == 1, (language, candidates)
+              source = candidates[0]
+              shutil.copyfile(source, logs / source.name)
+              text = source.read_text(encoding="utf-8")
+              fields = {}
+              for field in ("COMPILER", "COMPILER_ID", "COMPILER_VERSION", "COMPILER_ARCHITECTURE_ID"):
+                  match = re.search(r'^set\(CMAKE_' + language + "_" + field + r' "([^"]*)"\)', text, re.M)
+                  if match:
+                      fields[field.lower()] = match.group(1)
+              assert fields.get("compiler") and fields.get("compiler_id") and fields.get("compiler_version")
+              toolchain[language] = fields
+          expected_id = {"Linux": "GNU", "macOS": "AppleClang", "Windows": "MSVC"}[os.environ["RUNNER_OS"]]
+          assert all(value["compiler_id"] == expected_id for value in toolchain.values()), toolchain
+          config = build / "_sdl2/include-config-release/SDL2/SDL_config.h"
+          shutil.copyfile(config, logs / "SDL_config-Release.h")
+          macros = dict(re.findall(r"^#define (SDL_(?:AUDIO|VIDEO)_DRIVER_\w+)\s+([^\r\n]+)", config.read_text(), re.M))
+          required = {
+              "Linux": ["SDL_VIDEO_DRIVER_X11", "SDL_AUDIO_DRIVER_ALSA", "SDL_AUDIO_DRIVER_PULSEAUDIO"],
+              "macOS": ["SDL_VIDEO_DRIVER_COCOA", "SDL_AUDIO_DRIVER_COREAUDIO"],
+              "Windows": ["SDL_VIDEO_DRIVER_WINDOWS", "SDL_AUDIO_DRIVER_WASAPI"],
+          }[os.environ["RUNNER_OS"]] + ["SDL_VIDEO_DRIVER_DUMMY", "SDL_AUDIO_DRIVER_DUMMY"]
+          backends = {"required": required, "compiled_macros": macros,
+                      "config_sha256": hashlib.sha256(config.read_bytes()).hexdigest()}
+          (logs / "sdl-backends.json").write_text(json.dumps(backends, sort_keys=True, indent=2) + "\n")
+          provenance.update(toolchain=toolchain, sdl_backends=backends)
+          provenance_path.write_text(json.dumps(provenance, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          missing = [name for name in required if macros.get(name, "").strip() != "1"]
+          assert not missing, "SDL2 did not compile required backends: " + ", ".join(missing)
+          PY
+
+      - name: Build the application and every standalone acceptance input
+        run: |
+          set -euo pipefail
+          cmake --build build-standalone --config Release \
+            --target hammond_standalone_test_inputs --parallel 2 --verbose \
+            2>&1 | tee standalone-ci-logs/build.log
+
+      - name: Verify the compiled MIDI backend and retain prepared identities
+        run: |
+          set -euo pipefail
+          if [[ "$HAMMOND_CI_MIDI" == "ON" ]]; then
+            python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" \
+              --prepare-build-copy build-standalone/apps/standalone/hammond_rtmidi-prepared \
+              2>&1 | tee standalone-ci-logs/rtmidi-prepared-verification.log
+          fi
+          python - <<'PY'
+          import hashlib, json, os, pathlib, shutil
+          build, logs = pathlib.Path("build-standalone"), pathlib.Path("standalone-ci-logs")
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          enabled = os.environ["HAMMOND_CI_MIDI"] == "ON"
+          backend = {"Linux": "ALSA", "macOS": "CoreMIDI", "Windows": "WinMM"}[os.environ["RUNNER_OS"]] if enabled else "unavailable"
+          assert backend == os.environ["HAMMOND_CI_MIDI_BACKEND"]
+          capability_path = build / "generated/standalone-capabilities.json"
+          capability = json.loads(capability_path.read_text(encoding="utf-8"))
+          assert capability["schema_version"] == 1 and capability["component"] == "Standalone"
+          assert capability["midi"]["enabled"] is enabled
+          assert capability["midi"]["backend"] == backend
+          shutil.copyfile(capability_path, logs / "standalone-capabilities.json")
+          reply = build / ".cmake/api/v1/reply"
+          index_path = sorted(reply.glob("index-*.json"))[-1]
+          index = json.loads(index_path.read_text(encoding="utf-8"))
+          model_path = reply / index["reply"]["codemodel-v2"]["jsonFile"]
+          model = json.loads(model_path.read_text(encoding="utf-8"))
+          configurations = [item for item in model["configurations"] if item["name"] == "Release"]
+          assert len(configurations) == 1, "Missing or ambiguous Release codemodel"
+          targets = {item["name"]: item for item in configurations[0]["targets"]}
+          def target(name):
+              path = reply / targets[name]["jsonFile"]
+              shutil.copyfile(path, logs / (name + "-target-Release.json"))
+              return json.loads(path.read_text(encoding="utf-8"))
+          def definitions(value):
+              return {item["define"] for group in value.get("compileGroups", [])
+                      for item in group.get("defines", [])}
+          support_definitions = definitions(target("hammond_standalone_support"))
+          assert {value for value in support_definitions if value.startswith("HAMMOND_HAS_RTMIDI=")} == {
+              "HAMMOND_HAS_RTMIDI=" + ("1" if enabled else "0")}
+          shutil.copyfile(index_path, logs / "cmake-file-api-index.json")
+          shutil.copyfile(model_path, logs / "cmake-codemodel.json")
+          record = {"enabled": enabled, "backend": backend,
+                    "capabilities": capability, "capabilities_sha256": digest(capability_path),
+                    "support_compile_definitions": sorted(support_definitions), "rtmidi": None}
+          prepared = build / "apps/standalone/hammond_rtmidi-prepared"
+          if enabled:
+              rtmidi = target("hammond_rtmidi")
+              assert rtmidi["type"] == "STATIC_LIBRARY"
+              api_definitions = {"__LINUX_ALSA__", "__MACOSX_CORE__", "__WINDOWS_MM__", "__UNIX_JACK__",
+                                 "__RTMIDI_DUMMY__", "__WEB_MIDI_API__", "__WINDOWS_UWP__", "__AMIDI__"}
+              expected_api = {"ALSA": "__LINUX_ALSA__", "CoreMIDI": "__MACOSX_CORE__", "WinMM": "__WINDOWS_MM__"}[backend]
+              actual_definitions = definitions(rtmidi)
+              assert {value.split("=", 1)[0] for value in actual_definitions} & api_definitions == {expected_api}
+              compiled_sources = [item for item in rtmidi["sources"] if "compileGroupIndex" in item]
+              assert len(compiled_sources) == 1
+              source = pathlib.Path(compiled_sources[0]["path"])
+              if not source.is_absolute():
+                  source = pathlib.Path(model["paths"]["source"]) / source
+              assert source.resolve() == (prepared / "RtMidi.cpp").resolve()
+              manifest_path = prepared / "prepared-source.json"
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              lock_path = pathlib.Path("data/dependencies/rtmidi-lock.json")
+              lock = json.loads(lock_path.read_text(encoding="utf-8"))
+              assert manifest["dependency_lock"] == lock
+              assert manifest["preparation_tool"]["sha256"] == digest(pathlib.Path("tools/acquire_rtmidi.py"))
+              for name, identity in manifest["prepared_files"].items():
+                  path = prepared / name
+                  assert path.is_file() and not path.is_symlink()
+                  assert path.stat().st_size == identity["bytes"] and digest(path) == identity["sha256"], name
+              identity = capability["midi"]["rtmidi"]
+              assert identity["version"] == lock["version"] and identity["commit"] == lock["commit"]
+              assert identity["lock_sha256"] == digest(lock_path)
+              assert identity["prepared_manifest_sha256"] == digest(manifest_path)
+              assert identity["prepared_source_sha256"] == digest(prepared / "RtMidi.cpp") == lock["patch"]["prepared_sha256"]
+              assert identity["patch_sha256"] == digest(prepared / "rtmidi-coremidi-zero-init.patch") == lock["patch"]["sha256"]
+              assert identity["license_sha256"] == digest(prepared / "LICENSE") == lock["license"]["sha256"]
+              libraries = []
+              for item in rtmidi["artifacts"]:
+                  path = build / item["path"]
+                  assert path.is_file() and not path.is_symlink() and path.stat().st_size > 0
+                  libraries.append({"path": item["path"], "bytes": path.stat().st_size, "sha256": digest(path)})
+              assert len(libraries) == 1 and pathlib.Path(libraries[0]["path"]).suffix in {".a", ".lib"}
+              for source_name, copied in (("prepared-source.json", "rtmidi-prepared-source.json"),
+                                          ("LICENSE", "LICENSE-RtMidi.txt"),
+                                          ("rtmidi-coremidi-zero-init.patch", "rtmidi-coremidi-zero-init.patch")):
+                  shutil.copyfile(prepared / source_name, logs / copied)
+              record["rtmidi"] = {"prepared_manifest": manifest,
+                                  "compile_definitions": sorted(actual_definitions), "libraries": libraries}
+          else:
+              assert capability["midi"]["rtmidi"] is None
+              assert "hammond_rtmidi" not in targets and not os.path.lexists(prepared)
+              assert not os.path.lexists(pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-rtmidi")
+          (logs / "midi-backend.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          provenance_path = logs / "provenance.json"
+          provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+          provenance["midi"] = record
+          provenance_path.write_text(json.dumps(provenance, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Run all required standalone acceptance tests
+        env:
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
+        run: |
+          set -euo pipefail
+          ctest --test-dir build-standalone -C Release --show-only=json-v1 --no-tests=error \
+            -R '^test_standalone_' > standalone-ci-logs/ctest-discovered.json
+          python - <<'PY'
+          import json, pathlib
+          tests = json.loads(pathlib.Path("standalone-ci-logs/ctest-discovered.json").read_text(encoding="utf-8"))
+          names = {test["name"] for test in tests["tests"]}
+          required = {"test_standalone_midi_cli", "test_standalone_drawing", "test_standalone_install",
+                      "test_standalone_midi_input", "test_standalone_midi_session", "test_standalone_midi_replay",
+                      "test_standalone_native_midi_replay",
+                      "test_standalone_midi_concurrency", "test_standalone_midi_backend",
+                      "test_standalone_midi_backend_quarantine", "test_standalone_midi_discovery",
+                      "test_standalone_workspaces_author", "test_standalone_workspace_acceptance",
+                      "test_standalone_projection", "test_standalone_quad_drawing",
+                      "test_standalone_inspection_author", "test_standalone_inspection_acceptance",
+                      "test_standalone_workspace_replay", "test_standalone_workspace_raster",
+                      "test_standalone_workspace_continuity", "test_standalone_scaled_view",
+                      "test_standalone_reference_layout", "test_standalone_inspection_raster",
+                      "test_standalone_material_acceptance", "test_standalone_waveform_material",
+                      "test_standalone_channel_modes", "test_standalone_expression_calibration",
+                      "test_standalone_channel_acceptance", "test_standalone_product_visual",
+                      "test_standalone_upper_rack_material_raster",
+                      "test_standalone_lower_rack_material_raster",
+                      "test_standalone_footage_typography_raster",
+                      "test_standalone_title_density", "test_standalone_header_material",
+                      "test_standalone_manual_key_material_raster",
+                      "test_standalone_reference_apron_art", "test_standalone_reference_apron_raster",
+                      "test_standalone_reference_apron_unavailable", "test_standalone_starter_load",
+                      "test_standalone_expression_diagnostics", "test_standalone_native_calibration"}
+          assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
+          by_name = {test["name"]: test for test in tests["tests"]}
+          for name in sorted(required):
+              properties = {item["name"]: item["value"] for item in by_name[name].get("properties", [])}
+              assert by_name[name].get("command") and not properties.get("DISABLED", False), name
+          command = by_name["test_standalone_starter_load"]["command"]
+          assert len(command) == 7 and command[1:3] == ["-E", "env"], command
+          executables = dict(value.split("=", 1) for value in command[3:5])
+          assert set(executables) == {"HAMMOND_STANDALONE_EXECUTABLE", "HAMMOND_REGISTRATION_EXECUTABLE"}
+          assert all(pathlib.Path(value).is_file() for value in executables.values()), executables
+          assert pathlib.Path(command[-1]).resolve() == pathlib.Path(
+              "apps/standalone/native_tests/test_standalone_starter_load.py").resolve(), command
+          print("Discovered", len(names), "standalone tests, including required MIDI, calibration, workspace, inspection, apron and actual starter Load gates.", flush=True)
+          PY
+          ctest --test-dir build-standalone -C Release -V --parallel 1 \
+            --no-tests=error --timeout 180 -R '^test_standalone_' \
+            --output-junit "$GITHUB_WORKSPACE/standalone-ci-logs/ctest.xml" \
+            2>&1 | tee standalone-ci-logs/ctest.log
+
+      - name: Reverify source and dependencies after acceptance
+        run: |
+          set -euo pipefail
+          git diff --exit-code --quiet HEAD --
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-ci-logs/sdl-final-verification.log
+          if [[ "$HAMMOND_CI_MIDI" == "ON" ]]; then
+            python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" \
+              --prepare-build-copy build-standalone/apps/standalone/hammond_rtmidi-prepared \
+              2>&1 | tee standalone-ci-logs/rtmidi-final-verification.log
+          fi
+
+      - name: Stage, relocate, smoke and archive the exact installed payload
+        env:
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os, pathlib, shutil, stat, subprocess, tarfile
+          repo = pathlib.Path.cwd().resolve()
+          logs, artifacts = repo / "standalone-ci-logs", repo / "standalone-artifacts"
+          temporary = pathlib.Path(os.environ["RUNNER_TEMP"])
+          staged, moved = temporary / "hammond standalone staged", temporary / "hammond standalone relocated"
+          work = temporary / "hammond-standalone-smoke"
+          assert not os.path.lexists(staged) and not os.path.lexists(moved), "staging needs fresh prefixes"
+          work.mkdir(exist_ok=False)
+          windows = os.environ["RUNNER_OS"] == "Windows"
+          executable = "hammond_standalone" + (".exe" if windows else "")
+          build_binary = repo / "build-standalone/apps/standalone"
+          if windows:
+              build_binary /= "Release"
+          build_binary /= executable
+          enabled = os.environ["HAMMOND_CI_MIDI"] == "ON"
+          capability_path = repo / "build-standalone/generated/standalone-capabilities.json"
+          capability = json.loads(capability_path.read_text(encoding="utf-8"))
+          assert capability["midi"]["enabled"] is enabled
+          assert capability["midi"]["backend"] == os.environ["HAMMOND_CI_MIDI_BACKEND"]
+          metadata = "share/hammond-b3-organ/standalone/"
+          expected = {
+              "bin/" + executable: build_binary,
+              metadata + "STANDALONE_INSTALL.md": repo / "docs/STANDALONE_INSTALL.md",
+              metadata + "STANDALONE_APP.md": repo / "docs/STANDALONE_APP.md",
+              metadata + "STANDALONE_MODEL.md": repo / "docs/STANDALONE_MODEL.md",
+              metadata + "MIDI_UI_RUNBOOK.md": repo / "docs/MIDI_UI_RUNBOOK.md",
+              metadata + "PRESET_RUNBOOK.md": repo / "docs/PRESET_RUNBOOK.md",
+              metadata + "INTERFACE_RUNBOOK.md": repo / "docs/INTERFACE_RUNBOOK.md",
+              metadata + "THIRD_PARTY_NOTICES.md": repo / "THIRD_PARTY_NOTICES.md",
+              metadata + "LICENSE-SDL2.txt": temporary / "hammond-sdl2/LICENSE.txt",
+              metadata + "LICENSE-DejaVu.txt": repo / "assets/standalone/fonts/LICENSE-DejaVu.txt",
+              metadata + "sdl2-lock.json": repo / "data/dependencies/sdl2-lock.json",
+              metadata + "font-source-manifest.json": repo / "assets/standalone/fonts/source-manifest.json",
+              metadata + "reference-source-manifest.json": repo / "assets/standalone/reference/manifest.json",
+              metadata + "reference-apron-manifest.json": repo / "assets/standalone/reference-apron-v1/manifest.json",
+              metadata + "atlas-reference.json": repo / "docs/design/atlas-reference.json",
+              metadata + "standalone-capabilities.json": capability_path,
+              metadata + "MIDI_EXPRESSION_GUIDE.md": repo / "docs/MIDI_EXPRESSION_GUIDE.md",
+          }
+          if enabled:
+              prepared = repo / "build-standalone/apps/standalone/hammond_rtmidi-prepared"
+              expected.update({
+                  metadata + "LICENSE-RtMidi.txt": prepared / "LICENSE",
+                  metadata + "rtmidi-lock.json": repo / "data/dependencies/rtmidi-lock.json",
+                  metadata + "rtmidi-prepared-source.json": prepared / "prepared-source.json",
+                  metadata + "rtmidi-coremidi-zero-init.patch": prepared / "rtmidi-coremidi-zero-init.patch",
+              })
+          assert len(expected) == (21 if enabled else 17)
+          expected_directories = {
+              parent.as_posix() for name in expected
+              for parent in pathlib.PurePosixPath(name).parents if parent.as_posix() != "."
+          }
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          def inventory(prefix):
+              files, directories = [], []
+              def visit(path):
+                  info = path.lstat()
+                  assert not (getattr(info, "st_file_attributes", 0) & 0x400), "reparse point: " + str(path)
+                  relative = path.relative_to(prefix).as_posix()
+                  mode = format(stat.S_IMODE(info.st_mode), "04o")
+                  if stat.S_ISDIR(info.st_mode):
+                      directories.append({"path": relative, "mode": mode})
+                      for child in sorted(path.iterdir()):
+                          visit(child)
+                  else:
+                      assert stat.S_ISREG(info.st_mode), "symlink or special payload: " + str(path)
+                      files.append({"path": relative, "bytes": info.st_size, "sha256": digest(path), "mode": mode})
+              visit(prefix)
+              assert {entry["path"] for entry in files} == set(expected), "unexpected installed file set"
+              assert {entry["path"] for entry in directories} == expected_directories | {"."}, "unexpected directories"
+              for entry in files:
+                  source = expected[entry["path"]]
+                  assert stat.S_ISREG(source.lstat().st_mode), "nonregular source payload"
+                  assert entry["sha256"] == digest(source), "installation changed source bytes: " + entry["path"]
+              return {"files": files, "directories": directories}
+          def run_logged(arguments, name, cwd, timeout):
+              with (logs / name).open("w", encoding="utf-8") as output:
+                  output.write(json.dumps({"command": [str(x) for x in arguments], "cwd": str(cwd)}) + "\n")
+                  output.flush()
+                  result = subprocess.run([str(x) for x in arguments], cwd=cwd, stdout=output,
+                                          stderr=subprocess.STDOUT, timeout=timeout)
+              print((logs / name).read_text(encoding="utf-8", errors="replace"), end="", flush=True)
+              result.check_returncode()
+          run_logged(["cmake", "--install", repo / "build-standalone", "--config", "Release",
+                      "--component", "Standalone", "--prefix", staged], "install.log", repo, 90)
+          before = inventory(staged)
+          (logs / "staged-inventory.json").write_text(json.dumps(before, sort_keys=True, indent=2) + "\n")
+          staged.rename(moved)
+          assert not os.path.lexists(staged) and inventory(moved) == before, "relocation changed the payload"
+          binary = moved / "bin" / executable
+          run_logged([binary, "--help"], "relocated-help.log", work, 15)
+          state, screenshot, diagnostics = work / "absent-controls.b3controls", logs / "relocated-smoke.bmp", logs / "relocated-smoke.json"
+          assert not os.path.lexists(state)
+          run_logged([binary, "--smoke-ms", "600", "--state", state, "--screenshot", screenshot,
+                      "--diagnostics", diagnostics], "relocated-smoke.log", work, 20)
+          report = json.loads(diagnostics.read_text(encoding="utf-8"))
+          assert report["schema_version"] == 3
+          assert report["smoke"]["passed"] is True and report["smoke"]["duration_ms"] == 600
+          assert report["runtime"]["video_driver"] == report["audio"]["driver"] == "dummy"
+          assert report["runtime"]["screenshot_written"] is True and screenshot.read_bytes()[:2] == b"BM"
+          assert report["audio"]["callback_count"] > 0 and report["audio"]["rendered_frames"] > 0
+          midi = report["midi"]
+          assert midi["backend_available"] is enabled and midi["backend"] == capability["midi"]["backend"]
+          assert midi["state_before_shutdown"] == midi["state_after_shutdown"] == ("closed" if enabled else "unavailable")
+          assert not midi["active_before_shutdown"] and not midi["active_after_shutdown"]
+          assert midi["quiescent_after_shutdown"] and midi["diagnostics_stable_after_shutdown"]
+          assert not midi["startup_failed"] and not midi["shutdown_failed"]
+          assert midi["requested_port"] == midi["port_name"] == "" and midi["open_failures"] == 0
+          assert midi["device"]["callback_messages"] == midi["device"]["forwarded_messages"] == 0
+          assert not os.path.lexists(state), "smoke unexpectedly saved musical state"
+          assert inventory(moved) == before, "execution changed installed bytes or modes"
+          revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          assert revision == os.environ["GITHUB_SHA"]
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          provenance = json.loads((logs / "provenance.json").read_text(encoding="utf-8"))
+          assert provenance["source_commit"] == revision
+          assert provenance["midi"]["capabilities_sha256"] == digest(capability_path)
+          assert provenance["midi"]["capabilities"] == capability
+          record = {"schema_version": 1, "provenance": provenance, "payload": before,
+                    "relocated_help_passed": True, "relocated_dummy_smoke_ms": 600,
+                    "smoke_diagnostics_sha256": digest(diagnostics), "screenshot_sha256": digest(screenshot)}
+          inventory_path = artifacts / "inventory.json"
+          inventory_path.write_text(json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          shutil.copyfile(inventory_path, logs / "installed-inventory.json")
+          archive = artifacts / "HammondB3-Standalone-Release.tar.gz"
+          archive_root = "HammondB3-Standalone"
+          with tarfile.open(archive, "x:gz", dereference=False) as output:
+              output.add(moved, arcname=archive_root)
+          with tarfile.open(archive, "r:gz") as check:
+              members = check.getmembers()
+              assert all(member.isfile() or member.isdir() for member in members)
+              archived = {member.name: member for member in members if member.isfile()}
+              assert set(archived) == {archive_root + "/" + name for name in expected}
+              for entry in before["files"]:
+                  member = archived[archive_root + "/" + entry["path"]]
+                  with check.extractfile(member) as stream:
+                      assert hashlib.sha256(stream.read()).hexdigest() == entry["sha256"]
+                  assert member.size == entry["bytes"] and format(member.mode, "04o") == entry["mode"]
+          (artifacts / "SHA256SUMS").write_text(
+              "".join(digest(path) + "  " + path.name + "\n" for path in (archive, inventory_path)), encoding="ascii")
+          print(f"Verified {len(expected)} installed files, MIDI {capability['midi']['backend']}, "
+                "relocated help/dummy smoke, and the archived bytes.", flush=True)
+          PY
+
+      - name: Retain complete source, dependency, build, test and smoke diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: standalone-${{ matrix.os }}-${{ runner.arch }}-midi-${{ matrix.midi }}-release-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            standalone-ci-logs/
+            build-standalone/CMakeCache.txt
+            build-standalone/CMakeFiles/CMakeConfigureLog.yaml
+            build-standalone/CMakeFiles/CMakeOutput.log
+            build-standalone/CMakeFiles/CMakeError.log
+            build-standalone/Testing/Temporary/LastTest.log
+            build-standalone/Testing/Temporary/LastTestsFailed.log
+            build-standalone/install_manifest_Standalone.txt
+            build-standalone/generated/standalone-capabilities.json
+            build-standalone/apps/standalone/hammond_rtmidi-prepared/prepared-source.json
+            build-standalone/apps/standalone/hammond_rtmidi-prepared/rtmidi-coremidi-zero-init.patch
+            build-standalone/apps/standalone/hammond_rtmidi-prepared/LICENSE
+
+      - name: Retain the successful executable package and byte inventory
+        if: ${{ success() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: standalone-${{ matrix.os }}-${{ runner.arch }}-midi-${{ matrix.midi }}-release-package-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: error
+          path: standalone-artifacts/
+
+  native-sanitizers:
+    name: Native standalone (Linux GCC ASan + UBSan + leaks)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+      UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+      LSAN_OPTIONS: exitcode=23
+      SDL_AUDIODRIVER: dummy
+      SDL_VIDEODRIVER: dummy
+      SDL_RENDER_DRIVER: software
+      # CTest names and build targets are distinct: the Python lifecycle suite
+      # launches an instrumented native probe through the real application entry.
+      HAMMOND_SANITIZER_TEST_TARGETS: >-
+        test_standalone_ui=test_standalone_ui
+        test_standalone_preset_ui=test_standalone_preset_ui
+        test_standalone_workspaces_author=test_standalone_workspaces_author
+        test_standalone_workspace_acceptance=test_standalone_workspace_acceptance
+        test_standalone_projection=test_standalone_projection
+        test_standalone_inspection_author=test_standalone_inspection_author
+        test_standalone_inspection_acceptance=test_standalone_inspection_acceptance
+        test_standalone_workspace_continuity=test_standalone_workspace_continuity
+        test_standalone_drawing=test_standalone_drawing
+        test_standalone_quad_drawing=test_standalone_quad_drawing
+        test_standalone_workspace_raster=test_standalone_workspace_raster
+        test_standalone_scaled_view=test_standalone_scaled_view
+        test_standalone_preset_raster=test_standalone_preset_raster
+        test_standalone_reference_layout=test_standalone_reference_layout
+        test_standalone_inspection_raster=test_standalone_inspection_raster
+        test_standalone_material_acceptance=test_standalone_material_acceptance
+        test_standalone_channel_modes=test_standalone_channel_modes
+        test_standalone_expression_calibration=test_standalone_expression_calibration
+        test_standalone_channel_acceptance=test_standalone_channel_acceptance
+        test_standalone_product_visual=test_standalone_product_visual
+        test_standalone_upper_rack_material_raster=test_standalone_upper_rack_material_raster
+        test_standalone_lower_rack_material_raster=test_standalone_lower_rack_material_raster
+        test_standalone_footage_typography_raster=test_standalone_footage_typography_raster
+        test_standalone_title_density=test_standalone_footage_typography_raster
+        test_standalone_header_material=test_standalone_header_material
+        test_standalone_manual_key_material_raster=test_standalone_manual_key_material_raster
+        test_standalone_reference_apron_art=test_standalone_reference_apron_art
+        test_standalone_reference_apron_raster=test_standalone_reference_apron_raster
+        test_standalone_reference_apron_unavailable=test_standalone_reference_apron_unavailable
+        test_standalone_native_calibration=hammond_standalone_calibration_probe
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record the revision, sanitizer policy and tools
+        run: |
+          set -euo pipefail
+          mkdir -p standalone-sanitizer-logs
+          python - <<'PY'
+          import hashlib, json, os, pathlib, platform, re, shutil, subprocess
+          git = lambda *args: subprocess.check_output(["git", *args], text=True).strip()
+          revision = git("rev-parse", "HEAD")
+          assert revision == os.environ["GITHUB_SHA"], "checkout differs from the event revision"
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          logs = pathlib.Path("standalone-sanitizer-logs")
+          pairs = [value.split("=", 1) for value in os.environ["HAMMOND_SANITIZER_TEST_TARGETS"].split()]
+          assert all(len(pair) == 2 and all(re.fullmatch(r"[a-z][a-z0-9_]*", name) for name in pair)
+                     for pair in pairs), pairs
+          test_targets = dict(pairs)
+          assert len(test_targets) == len(pairs) == 30, "Required CTest names must be unique"
+          assert test_targets["test_standalone_title_density"] == "test_standalone_footage_typography_raster"
+          build_targets = sorted(set(test_targets.values()))
+          assert len(build_targets) == 29
+          (logs / "build-targets.txt").write_text(" ".join(build_targets) + "\n")
+          sources = (".github/workflows/standalone.yml", "CMakeLists.txt",
+                     "apps/standalone/CMakeLists.txt", "cmake/VerifySdl2.cmake",
+                     "tools/acquire_sdl2.py", "data/dependencies/sdl2-lock.json",
+                     "apps/standalone/main.cpp", "apps/standalone/MidiDevice.cpp",
+                     "apps/standalone/MidiInput.cpp", "apps/standalone/Session.cpp",
+                     "apps/standalone/InstrumentView.cpp", "apps/standalone/AudioDevice.cpp",
+                     "apps/standalone/Drawing.cpp", "apps/standalone/Drawing.h",
+                     "apps/standalone/ScriptedInput.cpp",
+                     "apps/standalone/tests/test_standalone_channel_modes.cpp",
+                     "apps/standalone/tests/test_standalone_expression_calibration.cpp",
+                     "apps/standalone/tests/test_standalone_channel_acceptance.cpp",
+                     "apps/standalone/native_tests/test_standalone_product_visual.cpp",
+                     "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
+                     "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp",
+                     "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+                     "apps/standalone/native_tests/test_standalone_title_density.py",
+                     "apps/standalone/native_tests/test_standalone_header_material.cpp",
+                     "apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp",
+                     "apps/standalone/native_tests/test_standalone_reference_apron_art.cpp",
+                     "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp",
+                     "apps/standalone/native_tests/reference_apron_unavailable_texture.cpp",
+                     "tools/compile_reference_apron.py",
+                     "assets/standalone/reference-apron-v1/manifest.json",
+                     "assets/standalone/reference-apron-v1/apron.rgba.gz",
+                     "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
+                     "apps/standalone/native_tests/fake_calibration/RtMidi.h",
+                     "apps/standalone/native_tests/test_standalone_native_calibration.py",
+                     "apps/standalone/native_tests/test_standalone_app.py",
+                     "apps/standalone/native_tests/test_standalone_midi_replay.py")
+          record = {
+              "source_commit": revision, "source_tree": git("rev-parse", "HEAD^{tree}"),
+              "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "runner_os": os.environ["RUNNER_OS"], "runner_arch": os.environ["RUNNER_ARCH"],
+              "image_os": os.environ.get("ImageOS"), "image_version": os.environ.get("ImageVersion"),
+              "platform": platform.platform(), "configuration": "Release", "midi_enabled": False,
+              "environment": {name: os.environ[name] for name in
+                              ("ASAN_OPTIONS", "UBSAN_OPTIONS", "LSAN_OPTIONS",
+                               "SDL_AUDIODRIVER", "SDL_VIDEODRIVER", "SDL_RENDER_DRIVER")},
+              "required_tests": list(test_targets), "test_targets": test_targets,
+              "build_targets": build_targets,
+              "source_sha256": {name: hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()
+                                for name in sources},
+          }
+          (logs / "provenance.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
+          shutil.copyfile("data/dependencies/sdl2-lock.json", logs / "sdl2-lock.json")
+          PY
+          cmake --version 2>&1 | tee standalone-sanitizer-logs/toolchain.log
+          ctest --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+          python --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+          gcc --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+          g++ --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+
+      - name: Explicitly acquire and locally verify locked external SDL2
+        run: |
+          set -euo pipefail
+          python tools/acquire_sdl2.py --destination "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-sanitizer-logs/sdl-acquisition.log
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-sanitizer-logs/sdl-verification.log
+          python - <<'PY'
+          import os, pathlib, shutil
+          source = pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-sdl2"
+          shutil.copyfile(source / "docs/README-linux.md", "standalone-sanitizer-logs/SDL2-README-linux.md")
+          PY
+
+      - name: Install Ubuntu desktop and audio development headers
+        timeout-minutes: 8
+        run: |
+          set -euo pipefail
+          # Reuse the Release runner setup; leave SDL's native backend detection enabled.
+          packages=(pkg-config libasound2-dev libpulse-dev libx11-dev libxext-dev
+                    libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev)
+          # Bound stalled mirrors/locks and fail on incomplete repository refreshes.
+          apt_options=(-o Acquire::Retries=3 -o Acquire::http::Timeout=30
+                       -o Acquire::https::Timeout=30 -o DPkg::Lock::Timeout=60
+                       -o APT::Update::Error-Mode=any)
+          printf '%s\n' "${packages[@]}" > standalone-sanitizer-logs/ubuntu-requested-packages.txt
+          printf '%s\n' "${apt_options[@]}" > standalone-sanitizer-logs/ubuntu-apt-options.txt
+          sudo apt-get "${apt_options[@]}" update 2>&1 | tee standalone-sanitizer-logs/apt-update.log
+          sudo apt-get "${apt_options[@]}" install --no-install-recommends -y "${packages[@]}" \
+            2>&1 | tee standalone-sanitizer-logs/apt-install.log
+          dpkg-query -W -f='${binary:Package}\t${Version}\t${Architecture}\n' \
+            | LC_ALL=C sort > standalone-sanitizer-logs/ubuntu-installed-packages.tsv
+
+      - name: Configure native Release with project and SDL sanitizers
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          set -euo pipefail
+          # The project option instruments C++; SDL's separate C targets need these C flags.
+          cmake -S . -B build-standalone-sanitizers -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+            -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_ENABLE_SANITIZERS=ON \
+            -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            '-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' \
+            2>&1 | tee standalone-sanitizer-logs/configure.log
+
+      - name: Build the twenty-nine selected acceptance inputs
+        run: |
+          set -euo pipefail
+          read -r -a targets < standalone-sanitizer-logs/build-targets.txt
+          [[ ${#targets[@]} -eq 29 ]]
+          cmake --build build-standalone-sanitizers --config Release \
+            --target "${targets[@]}" --parallel 2 --verbose \
+            2>&1 | tee standalone-sanitizer-logs/build.log
+
+      - name: Require instrumented SDL C and project C++ objects and linked runtimes
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import collections, hashlib, json, pathlib, re, shlex, shutil, subprocess
+          build, logs = pathlib.Path("build-standalone-sanitizers"), pathlib.Path("standalone-sanitizer-logs")
+          repo = pathlib.Path.cwd().resolve()
+          provenance = json.loads((logs / "provenance.json").read_text())
+          test_targets = provenance["test_targets"]
+          required = provenance["build_targets"]
+          assert len(test_targets) == 30 and len(required) == 29 and set(required) == set(test_targets.values())
+          libraries = {"SDL2-static": "_sdl2/libSDL2.a", "hammond_core": "libhammond_core.a",
+                       "hammond_standalone_support": "apps/standalone/libhammond_standalone_support.a",
+                       "hammond_standalone_drawing": "apps/standalone/libhammond_standalone_drawing.a",
+                       "hammond_standalone_audio": "apps/standalone/libhammond_standalone_audio.a",
+                       "hammond_standalone_replay": "apps/standalone/libhammond_standalone_replay.a"}
+          probe_libraries = {pathlib.Path(path).name for path in libraries.values()}
+          assert len(probe_libraries) == 6
+          libraries["hammond_standalone_drawing_apron_unavailable"] = \
+              "apps/standalone/libhammond_standalone_drawing_apron_unavailable.a"
+          expected = set(required) | set(libraries)
+          commands = json.loads((build / "compile_commands.json").read_text())
+          counts = collections.Counter()
+          compiled_sources = collections.defaultdict(set)
+          probe = "hammond_standalone_calibration_probe"
+          for entry in commands:
+              args = entry.get("arguments") or shlex.split(entry["command"])
+              output = pathlib.Path(entry["directory"]) / args[args.index("-o") + 1]
+              match = re.search(r"CMakeFiles/([^/]+)\.dir/", output.as_posix())
+              if not match or match.group(1) not in expected:
+                  continue
+              assert {"-fsanitize=address,undefined", "-fno-omit-frame-pointer"} <= set(args), entry
+              assert output.is_file() and output.stat().st_size > 0, output
+              target = match.group(1)
+              source = (pathlib.Path(entry["directory"]) / entry["file"]).resolve()
+              relative = source.relative_to(repo).as_posix() if source.is_relative_to(repo) else str(source)
+              compiled_sources[target].add(relative)
+              counts[target] += 1
+              if target == probe:
+                  assert {arg for arg in args if arg.startswith("-DHAMMOND_HAS_RTMIDI=")} == {"-DHAMMOND_HAS_RTMIDI=1"}
+                  fake = "-I" + str(repo / "apps/standalone/native_tests/fake_calibration")
+                  ordinary = "-I" + str(repo / "apps/standalone")
+                  assert fake in args and ordinary in args and args.index(fake) < args.index(ordinary), entry
+              if target == "hammond_standalone_drawing_apron_unavailable":
+                  assert "-DSDL_CreateTexture=hammond_test_create_texture" in args, entry
+          assert set(counts) == expected, "Missing instrumented build inputs: " + str(expected - set(counts))
+          required_sources = {
+              "test_standalone_channel_modes": {"apps/standalone/tests/test_standalone_channel_modes.cpp"},
+              "test_standalone_expression_calibration": {"apps/standalone/tests/test_standalone_expression_calibration.cpp"},
+              "test_standalone_channel_acceptance": {"apps/standalone/tests/test_standalone_channel_acceptance.cpp"},
+              "test_standalone_product_visual": {"apps/standalone/native_tests/test_standalone_product_visual.cpp",
+                                                 "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_upper_rack_material_raster": {
+                  "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_lower_rack_material_raster": {
+                  "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_footage_typography_raster": {
+                  "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_header_material": {
+                  "apps/standalone/native_tests/test_standalone_header_material.cpp"},
+              "test_standalone_manual_key_material_raster": {
+                  "apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_reference_apron_art": {
+                  "apps/standalone/native_tests/test_standalone_reference_apron_art.cpp"},
+              "test_standalone_reference_apron_raster": {
+                  "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_reference_apron_unavailable": {
+                  "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp",
+                  "apps/standalone/native_tests/reference_apron_unavailable_texture.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
+              "hammond_standalone_drawing_apron_unavailable": {"apps/standalone/Drawing.cpp"},
+              probe: {"apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
+                      "apps/standalone/MidiDevice.cpp", "apps/standalone/InstrumentView.cpp"},
+              "hammond_standalone_support": {"apps/standalone/Session.cpp", "apps/standalone/MidiInput.cpp"},
+              "hammond_standalone_audio": {"apps/standalone/AudioDevice.cpp"},
+              "hammond_standalone_replay": {"apps/standalone/ScriptedInput.cpp"},
+          }
+          for target, sources in required_sources.items():
+              assert sources <= compiled_sources[target], (target, sources - compiled_sources[target])
+          driver = repo / "apps/standalone/native_tests/calibration_lifecycle_driver.cpp"
+          assert '#include "../main.cpp"' in driver.read_text().splitlines(), "Probe must compile the real application entry"
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          archives = {}
+          for relative in libraries.values():
+              archive = build / relative
+              symbols = subprocess.check_output(["nm", "-u", str(archive)], text=True)
+              assert "__asan_" in symbols and "__ubsan_" in symbols, relative
+              archives[relative] = {"sha256": digest(archive), "asan_and_ubsan_references": True}
+          executables = {}
+          for name in required:
+              executable = build / "apps/standalone" / name
+              link = build / "apps/standalone/CMakeFiles" / (name + ".dir/link.txt")
+              link_arguments = shlex.split(link.read_text())
+              assert "-fsanitize=address,undefined" in link_arguments, name
+              if name == probe:
+                  assert probe_libraries <= {
+                      pathlib.Path(arg).name for arg in link_arguments}, "Native probe must link all six instrumented archives"
+              if name == "test_standalone_reference_apron_unavailable":
+                  assert "libhammond_standalone_drawing_apron_unavailable.a" in {
+                      pathlib.Path(arg).name for arg in link_arguments}, "Fallback gate must link the instrumented fault seam"
+              runtimes = subprocess.check_output(["ldd", str(executable)], text=True)
+              assert "libasan.so" in runtimes and "libubsan.so" in runtimes, (name, runtimes)
+              (logs / (name + "-runtimes.txt")).write_text(runtimes)
+              executables[name] = {"sha256": digest(executable), "link_command": link.read_text().strip()}
+          config = build / "_sdl2/include-config-release/SDL2/SDL_config.h"
+          shutil.copyfile(config, logs / "SDL_config-Release.h")
+          macros = dict(re.findall(r"^#define (SDL_(?:AUDIO|VIDEO)_DRIVER_\w+)\s+([^\r\n]+)", config.read_text(), re.M))
+          for name in ("SDL_VIDEO_DRIVER_DUMMY", "SDL_AUDIO_DRIVER_DUMMY", "SDL_VIDEO_DRIVER_X11",
+                       "SDL_AUDIO_DRIVER_ALSA", "SDL_AUDIO_DRIVER_PULSEAUDIO"):
+              assert macros.get(name, "").strip() == "1", name
+          record = {"instrumented_objects_by_target": dict(counts), "archives": archives,
+                    "compiled_sources_by_target": {name: sorted(sources) for name, sources in compiled_sources.items()},
+                    "test_targets": test_targets,
+                    "executables": executables, "sdl_backends": macros,
+                    "compile_commands_sha256": digest(build / "compile_commands.json"),
+                    "scope": "Selected project C++ and pinned SDL C, including the real native entry through a substituted MIDI dependency; system libraries are not rebuilt."}
+          (logs / "instrumentation.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
+          PY
+
+      - name: Discover exactly thirty gates and run with leak checking
+        env:
+          HAMMOND_NATIVE_CALIBRATION_EVIDENCE: ${{ github.workspace }}/standalone-sanitizer-logs/native-calibration
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib, re, subprocess
+          logs = pathlib.Path("standalone-sanitizer-logs")
+          provenance = json.loads((logs / "provenance.json").read_text())
+          test_targets = provenance["test_targets"]
+          required = provenance["required_tests"]
+          assert len(required) == len(set(required)) == 30 and set(required) == set(test_targets)
+          selection = "^(" + "|".join(re.escape(name) for name in required) + ")$"
+          (logs / "ctest-filter.txt").write_text(selection + "\n")
+          command = ["ctest", "--test-dir", "build-standalone-sanitizers", "-C", "Release",
+                     "--show-only=json-v1", "--no-tests=error", "-R", selection]
+          with (logs / "ctest-discovered.json").open("w") as output:
+              subprocess.run(command, stdout=output, check=True)
+          discovered = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
+          names = [test["name"] for test in discovered]
+          assert len(names) == len(set(names)) == 30 and set(names) == set(required), names
+          sanitizer_limits = {"test_standalone_workspace_raster": 180,
+                              "test_standalone_scaled_view": 360,
+                              "test_standalone_preset_raster": 300,
+                              "test_standalone_inspection_raster": 60,
+                              "test_standalone_material_acceptance": 60,
+                              "test_standalone_product_visual": 240,
+                              "test_standalone_upper_rack_material_raster": 240,
+                              "test_standalone_lower_rack_material_raster": 240,
+                              "test_standalone_footage_typography_raster": 240,
+                              "test_standalone_title_density": 240,
+                              "test_standalone_header_material": 480,
+                              "test_standalone_manual_key_material_raster": 240,
+                              "test_standalone_reference_apron_art": 30,
+                              "test_standalone_reference_apron_raster": 60,
+                              "test_standalone_reference_apron_unavailable": 60,
+                              "test_standalone_native_calibration": 180}
+          for test in discovered:
+              assert test.get("command"), "Missing built test command: " + test["name"]
+              executable = (pathlib.Path("build-standalone-sanitizers/apps/standalone") /
+                            test_targets[test["name"]]).resolve(strict=True)
+              command = test["command"]
+              if test["name"] == "test_standalone_native_calibration":
+                  script = pathlib.Path("apps/standalone/native_tests/test_standalone_native_calibration.py").resolve(strict=True)
+                  assert len(command) == 6 and command[1:3] == ["-E", "env"], command
+                  assert command[3] == "HAMMOND_STANDALONE_CALIBRATION_PROBE=" + str(executable), command
+                  assert pathlib.Path(command[4]).is_file() and pathlib.Path(command[5]).resolve(strict=True) == script, command
+              elif test["name"] == "test_standalone_title_density":
+                  script = pathlib.Path("apps/standalone/native_tests/test_standalone_title_density.py").resolve(strict=True)
+                  assert len(command) == 5 and command[1] == "-B" and command[3] == "--executable", command
+                  assert pathlib.Path(command[0]).is_file() and pathlib.Path(command[2]).resolve(strict=True) == script, command
+                  assert pathlib.Path(command[4]).resolve(strict=True) == executable, command
+              else:
+                  assert len(command) == 1 and pathlib.Path(command[0]).resolve(strict=True) == executable, command
+              properties = {item["name"]: item["value"] for item in test.get("properties", [])}
+              assert not properties.get("DISABLED", False), "Disabled required gate: " + test["name"]
+              if test["name"] in sanitizer_limits:
+                  assert properties.get("TIMEOUT") == sanitizer_limits[test["name"]], properties
+              overrides = properties.get("ENVIRONMENT", []) + properties.get("ENVIRONMENT_MODIFICATION", []) + command
+              assert not any(value.startswith(("ASAN_OPTIONS=", "UBSAN_OPTIONS=", "LSAN_OPTIONS="))
+                             for value in overrides), (test["name"], overrides)
+          print("Discovered exactly 30 gates from 29 built interface, channel, calibration, product paint, title, header and apron inputs; job sanitizer policy applies to every gate.", flush=True)
+          PY
+          ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \
+            --no-tests=error --timeout 180 -R "$(cat standalone-sanitizer-logs/ctest-filter.txt)" \
+            --output-junit "$GITHUB_WORKSPACE/standalone-sanitizer-logs/ctest.xml" \
+            2>&1 | tee standalone-sanitizer-logs/ctest.log
+          python - <<'PY'
+          import json, pathlib, re
+          logs = pathlib.Path("standalone-sanitizer-logs")
+          summary = json.loads((logs / "native-calibration/summary.json").read_text())
+          instrumentation = json.loads((logs / "instrumentation.json").read_text())
+          assert summary["fixture_id"] == "native-calibration-dependency-v1"
+          assert summary["binary_sha256"] == instrumentation["executables"]["hammond_standalone_calibration_probe"]["sha256"]
+          assert summary["subprocesses"] == 10 and summary["native_lifecycles"] == 7
+          assert summary["deliberately_failed_replays"] == 2
+          assert len(summary["cases"]) == 7 and all(case["common_assertions_passed"] for case in summary["cases"])
+          assert {case["scenario"] for case in summary["cases"]} == {
+              "identical", "calibration", "route", "port", "no-input", "failed-reopen", "fault-retry"}
+          # Two deliberately failed app replays exit 1. Also inspect their
+          # captured stderr so a sanitizer's error exit cannot be mistaken for
+          # the expected application failure after diagnostics were written.
+          for case in summary["cases"]:
+              stderr = (logs / "native-calibration" / case["scenario"] / "stderr.txt").read_text()
+              assert not re.search(r"AddressSanitizer|UndefinedBehaviorSanitizer|LeakSanitizer|runtime error:", stderr), stderr
+          print("Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios.", flush=True)
+          PY
+
+      - name: Reverify source and locked SDL2 after acceptance
+        run: |
+          set -euo pipefail
+          git diff --exit-code --quiet HEAD --
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-sanitizer-logs/sdl-final-verification.log
+
+      - name: Retain native sanitizer diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: standalone-linux-gcc-sanitizers-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            standalone-sanitizer-logs/
+            build-standalone-sanitizers/CMakeCache.txt
+            build-standalone-sanitizers/compile_commands.json
+            build-standalone-sanitizers/CMakeFiles/CMakeConfigureLog.yaml
+            build-standalone-sanitizers/CMakeFiles/CMakeOutput.log
+            build-standalone-sanitizers/CMakeFiles/CMakeError.log
+            build-standalone-sanitizers/Testing/Temporary/LastTest.log
+            build-standalone-sanitizers/Testing/Temporary/LastTestsFailed.log

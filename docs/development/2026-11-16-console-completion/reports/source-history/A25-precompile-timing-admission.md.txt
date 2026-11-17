@@ -1,0 +1,316 @@
+# P1 paint timing — independent prospective protocol admission
+
+Reviewer **A25**, `/root/w05_a25`, wave 5, 17 November 2026 UTC. Scope:
+the unchanged benchmark method in section 6 of the
+[frozen P1 contract](../design/PERFORMANCE_PLATE_P1_CONTRACT.md), A23's exact
+prospective runner and input manifest, the original/reproduced-before ancestry,
+and the Flat-output evidence boundary. Root owns compilation, native execution,
+quiet-interval scheduling, final admission and publication.
+
+## Current decision
+
+**HOLD timing execution pending a source-reviewed, same-scene raw Flat witness.**
+The frozen eight-process timing design, resource limits, statistic calculations
+and source/binary ancestry are adequate for their stated descriptive scope.
+However, equal timing FNV-1a-64 fingerprints plus exact case-21 fixture bytes
+do not establish exact pixel equality for the different `mixed-held` timing
+scene. This review preserves the contract's exact-Flat criterion. No new timing
+sample has been observed or authorized by this review at this stage.
+
+The supplemental capture-only protocol below is fixed before its companion
+source, compilation or output is admitted. Its outcome will be recorded
+separately; the original benchmark source, binaries, eight-process order and
+30/300 timing counts remain unchanged.
+
+## Frozen inputs and independently checked ancestry
+
+| Input | SHA-256 |
+| --- | --- |
+| P1 contract | `20c8839d38229bf24d983eac0baad7381f601c4e6763bbbe556bcdfa6c75ae45` |
+| A23 runner | `d53e5147cce85abb8bec3492dc2c63a9fd383be20d47fbc0ae606a78f0991f40` |
+| A23 prospective protocol | `f8740307f5e5cadf86834bd0cf444c9ae98fe4200aa36ac80566b7a39cec2314` |
+| Preflight result | `bef5a5b76e211efc2207a677b0a6e9d480835754babeeac70813db1b425fd860` |
+| Unchanged benchmark source | `d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338` |
+| Genuine retained before benchmark | `9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f` |
+| Coherent candidate benchmark | `5cf0d9046e05bf10178b70caee1c3996c719956dad364397ad7befbf46544d4e` |
+| Retained before painter source | `10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366` |
+| Candidate painter source | `8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927` |
+| Newly compiled before painter object | `aee8d1b133e3fec7d7217a6d45efa7b02f890f23c448285868898f6cfb30fc72` |
+| Existing candidate painter object | `5d3d7d40efbac24704c81944a70ffa1b3b1c4710a59556e87fdd96feaf59b790` |
+
+The [prospective protocol](../development/2026-11-16-console-completion/reports/p1-timing-prospective-v1/protocol.json)
+binds **1,507 input identities / 83,723,875 input bytes**. A25 independently
+read and rehashed every registered file and checked its resolved path and byte
+extent: no drift was found. The manifest covers sources, actual objects and
+archives, 217 selected compile-command records, recorded Ninja dependencies,
+generated headers, link inputs including system libraries and loader,
+toolchain/configuration, pinned SDL source, original receipts, and retained
+case-21 evidence. Linux x86-64 Release, GCC 14.2.0, SDL 2.32.10, MIDI/VST3 off
+and sanitizer-off configuration are explicit. Compile/link scanning excludes
+the paired and heap-observer macros and sanitizer/profiling flags.
+
+The original before painter object **was not retained**. Root's
+[reproduction receipt](../development/2026-11-16-console-completion/reports/p1-before-reproduction.json)
+records a newly compiled object from the retained original painter, with the
+same painter compile options and current selected link inputs. A25 directly
+compared all **3,756,168 bytes** of the reproduced executable with the genuine
+retained original: they are equal. This is strong supplemental reproducibility
+evidence. It is neither an original-object receipt nor an observation of the
+historical compiler invocation. The timing input remains the genuine retained
+binary, never the reconstructed copy.
+
+The independent before/after source inventory has precisely the reviewed P1
+painter insertion and unrelated header-fixture literal repair. The latter is
+absent from benchmark link inputs. Root's coherent relink receipt records
+unchanged candidate benchmark bytes after adding the unused LibraryModel object
+to the support archive. These facts bound the source argument; hashes alone do
+not prove a build or physical fidelity.
+
+## Fixed timing method
+
+All eight processes run sequentially on **logical CPU 0**, chosen in A23's
+prospective manifest before any new timing. The then-current and independently
+rechecked allowed affinity was CPUs 0–8. Affinity is inherited before each
+child starts and its observed affinity must be exactly `[0]`. CPU 0 must still
+be allowed at execution; choosing a different CPU requires a new prospective
+protocol, never an outcome-driven substitution.
+
+| Order | Case | Side | Fixed arguments |
+| ---: | --- | --- | --- |
+| 1 | Canonical | Before | `1672 941 dimensional mixed-held` |
+| 2 | Canonical | After | `1672 941 dimensional mixed-held` |
+| 3 | Minimum active | After | `1400 820 dimensional mixed-held` |
+| 4 | Minimum active | Before | `1400 820 dimensional mixed-held` |
+| 5 | Wide | Before | `1920 1080 dimensional mixed-held` |
+| 6 | Wide | After | `1920 1080 dimensional mixed-held` |
+| 7 | Flat control | After | `1672 941 flat mixed-held` |
+| 8 | Flat control | Before | `1672 941 flat mixed-held` |
+
+The unchanged benchmark performs **30 warmup draws, 300 measured draws and
+one final fingerprint draw** per process. That final draw is outside the
+300-sample statistical set. There is no paired benchmark build, allocation
+observer, sanitizer or profiler. The benchmark's renderer is software, with
+fixed batching, scale 1, full viewport, no clip, Play workspace and no overlay.
+The runner checks exact expected metadata, `paired:false`,
+`alternating_order:false`, the unchanged scenario name and layout fingerprint;
+it compares the complete emitted metadata across each pair except the expected
+material-dependent pixel fingerprint.
+
+The scene and state argument is the identical benchmark source, arguments,
+model/Drawing dependencies and native before/after paint assertions. The
+unchanged executable does not serialize a complete copied state; it must not
+be described as doing so. It checks applied controls, held keys/pedals and the
+field-wise layout fingerprint. Detailed model/state preservation has its
+separate native matrix. Similarly, the renderer metadata is exact emitted
+metadata with source support, not a new external renderer-state probe.
+
+Child environment is explicitly reduced to PATH, C locale, UTC, dummy SDL
+audio/video, software rendering and batching 1. Parent relevant environment,
+host/kernel/CPU information, boot identity, affinity, load, scheduler/nice,
+UTC bounds and available cgroup observations are retained. Unavailable cgroup
+files are recorded as unavailable. Root must stop its coordinated builds,
+captures and other native workloads and record its actual quiet-interval
+statement. Neither affinity nor that statement establishes shared-host
+isolation, a reserved physical core or causal attribution.
+
+### Statistics and decision
+
+The runner requires all 300 nonnegative integer nanosecond samples and sorts
+them without deleting or weighting any observation. Median is the sum of
+one-based positions **150 and 151**, divided by two; p95 is nearest-rank
+position **285**. Half-nanosecond medians are retained exactly as integer
+twice-median values. Minimum and maximum are independently recomputed.
+Rounded native summaries must agree within their six-decimal millisecond
+printing precision. Supplied paint and flush/present minimum, maximum, median
+and p95 are retained. Component raw samples are unavailable, so those supplied
+summaries are not advertised as independently recomputed.
+
+For **each** case and **each** of total median and total p95, HOLD applies
+exactly when growth is **strictly greater than 2 ms AND strictly greater than
+15%**. Integer cross multiplication decides both tests; rounded display values
+cannot move a boundary. Either metric's signal holds the case. Equality at
+2 ms or 15% does not trigger this investigation screen. Flat receives the same
+timing screen as the three dimensional cases.
+
+A25 independently checked a shuffled 300-value synthetic sample set against
+`statistics.median` and an exact rational nearest-rank oracle, seven threshold
+boundary examples including half-nanosecond median steps, and twelve parser/
+metadata refusal cases. All passed. These were Python-only synthetic checks;
+they are not native timings or observations of future benchmark output.
+
+There is no pooling across cases, trimming, replacement process, adaptive
+order or rerun to obtain a pass. An exclusive execution claim is written
+before the first launch and retained even on failure. A reaped failed process
+does not erase the attempt; the fixed remaining order continues. Source/input
+drift, affinity loss, interruption, unreaped child or batch deadline stops the
+batch with the remaining commands explicitly unattempted. Any later batch
+requires its own prospective reason and independent review.
+
+### Bounds and failures
+
+Each native process has a 180-second deadline; the eight-process launch/run
+budget is 1,500 seconds. Kill/reap handling is bounded by two seconds per
+operation. Stdout is limited to 131,072 bytes and stderr to 65,536 bytes per
+process, at most 1,572,864 retained raw stream bytes across eight processes.
+Ordinary successful or failed output within those ceilings is retained in
+full, with exact identities, errors, exit codes, timestamps and pipe-EOF
+observations. A flood is terminated and its bounded prefix is explicitly
+marked truncated/incomplete; such a batch is invalid and cannot claim complete
+raw output. Raw failures, invalid parses and interrupted attempts are never
+replaced by a later pass.
+
+All registered inputs are checked before and after the complete batch. The
+executable, runner, contract, protocol and admission identities are additionally
+checked around every process. Root must prevent any source/object/dependency
+edit or build during the batch. Endpoint hashes are drift checks, not continuous
+monitoring or proof against an intervening change that is later reversed.
+Full input hashing and final report serialization are outside the stated
+child-run deadline; the runner has no hard whole-program wall-clock promise.
+
+## Exact Flat boundary
+
+The unchanged benchmark's `pixels()` function computes FNV-1a-64 over each
+row's `width*4` bytes; it emits the fingerprint only. Equal fingerprints are
+an identity check with possible collisions, not a comparison of unavailable
+raw bytes.
+
+A25 independently decompressed the original before/after case-21 stdout,
+parsed its native header and directly compared all **1,573,352 pixels /
+6,293,408 RGBA bytes**. They are identical; SHA-256 is
+`70f30d76234c43b44fd77c5f91fd55013766f43845be5605297acab5d8c6f9c6`.
+That evidence remains usable for its particular Flat fixture despite the four
+unrelated original Rotary/Service focus-oracle failures. The original whole
+v1 report remains failed, with all four failures retained.
+
+Case 21 uses all-level-4 banks, expression 0.625, pedals 3/7 and held Upper 24,
+Lower 36 and Pedal 12. The benchmark uses varying banks, expression 0.75,
+pedals 8/0, fixed Upper CSharp, Lower bank A, held Upper 24/25, Lower 0/60 and
+Pedal 3. Therefore case 21 cannot supply missing raw bytes of the benchmark
+scene. A25 also verified that the entire `paint_instrument` source suffix is
+byte-identical and P1 is inactive in Flat. That source argument supports
+preservation but does not convert a different captured scene or digest into
+same-scene raw evidence.
+
+### Supplemental capture-only protocol v1 — frozen before execution
+
+The purpose is exclusively to supply exact raw Flat pixels for the unchanged
+timing scene. It supplies no new timing sample and cannot improve or repeat a
+timing result.
+
+1. Root authors one small companion translation unit that includes the exact
+   unchanged benchmark under a renamed unused entry point. Its capture path
+   copies the benchmark's complete scene/setup block verbatim, retaining all
+   model defaults, controls, held notes, fixed information strings, renderer
+   construction, Drawing initialization and validation. A25 checks the exact
+   source and SHA-256 before compilation. The capture path must never call
+   `Clock::now`, the benchmark's `draw`, `run` or renamed original entry point.
+2. Root compiles the companion with the benchmark's admitted Release options
+   and links two separate capture executables. Only the selected painter object
+   differs: the newly reconstructed before object named above and the existing
+   candidate object named above. All other project and system link inputs must
+   match the reproduction receipt. Record exact source, object, dependency,
+   compiler, commands and resulting executable identities. This before capture
+   uses the reproduced object; it is not called an original-object capture.
+   Neither timing executable is modified or replaced.
+3. Freeze exactly **two** fresh capture processes in **before, after** order,
+   both with `1672 941 flat mixed-held`, CPU 0 and the timing runner's exact
+   child environment. Each process calls the actual selected painter, then
+   `SDL_RenderFlush` and `SDL_RenderPresent`, exactly **331 times**, matching
+   the timing process's 30+300+1 rendering history without reading a clock or
+   collecting durations. No other native capture, retry or selection is part
+   of this supplement.
+4. Export one JSON header no larger than **65,536 bytes**, followed by exactly
+   **6,293,408 pitch-free top-to-bottom RGBA bytes**, row stride 6,688. Require
+   the frozen dimensions, Flat/Play/mixed-held/none metadata, 331 calls,
+   zero timing samples, software renderer, fixed SDL version/batching/transform,
+   copied-state/layout validation and a fingerprint calculated by the existing
+   benchmark's pixel routine. No extra stdout bytes or trailer are allowed.
+5. Bound each process at **180 seconds**, the two-process run at **370 seconds**,
+   each stderr at **65,536 bytes**, and each stdout at the header ceiling plus
+   its newline and exact raw pixel extent. Retain full streams within those
+   bounds, process records, UTC/affinity/environment observations and before/
+   after source/object/dependency identities. Kill/reap and output-overflow
+   refusal follow the timing runner's bounded policy. Explicitly retain any
+   failed or truncated attempt and stop without an automatic retry.
+6. A25 independently checks matching headers/state/layout/renderer evidence,
+   exact raw extents and **direct byte-for-byte equality** of both RGBA payloads.
+   Independently recompute FNV-1a-64 from the retained raw bytes and require it
+   to match both capture headers. Retain SHA-256s for both full streams and
+   their RGBA payloads. A digest comparison cannot substitute for the direct
+   byte comparison.
+7. Bind the accepted companion source/build/process/raw evidence in the final
+   SHA-pinned timing admission. During final timing-result admission, require
+   **both timing Flat fingerprints to match this raw witness's independently
+   recomputed fingerprint** in addition to matching each other. Frozen runner
+   v1 enforces the latter pairwise comparison; the cross-witness check is an
+   explicit independent root/admission gate unless a separately frozen runner
+   revision adds it. Any mismatch is HOLD, with no replacement samples.
+
+The exact same-scene raw observation, source/build linkage and final fingerprint
+cross-check together supplement the existing benchmark method. They do not
+claim that the unchanged timing executable has begun exporting raw bytes.
+Compilation, captures and final witness admission remain unrun in this initial
+protocol review.
+
+## Companion source admission before compilation
+
+**ADMIT source `af2a675a5aeb7925d2a752f9897eca7bf5d70aa0b55aac1c1476d869c0e227ad`
+for root's compilation and exactly two capture processes under the frozen
+supplement above.** This admits no timing process or capture result yet.
+
+The [companion](../../tools/standalone_flat_pixel_capture.cpp) includes the
+unchanged benchmark with only its `main` identifier renamed. Its new entry
+calls only `capture_fixed_flat`, never the original `run`, `draw`, renamed
+entry or `Clock::now`. The capture path rejects every argument combination
+except the frozen Flat scene. Both forbidden benchmark build macros cause a
+compile-time error.
+
+A25 directly compared the marked **3,989-byte setup block** with the original
+benchmark's run prefix: it is identical, SHA-256
+`93cd6e9212287d9dc0c2c439bf19f5c2cb3471a81697b857c69a8d2010a19e02`.
+The **330-byte copied-state/layout preservation assertion** is also identical.
+The direct painter/flush/present loop has 331 iterations, with compile-time
+assertions for the original 30/300 constants. The fingerprint is read after
+the loop and raw bytes are exported from the same unchanged completed surface.
+Rows exclude pitch padding, and output contains no extra render or trailer.
+
+The source-reviewed header records the actual SDL version, software-renderer
+name/flags, surface format, batching, layout and final pixel fingerprints;
+fixed dimensions, transform, Flat/Play/mixed-held/none scene; RGBA packing and
+extent; 331 paints; zero timing samples; no paired/heap mode; and successful
+preservation assertions. A requested precompile metadata addition supplied
+overlay, actual batching/surface format and the preservation-assertion flag.
+The original draft hash `2218f1f494e65f204e8fd30b0aeba61aed685afeedec33afe4745c68e2eeb661`
+was never compiled or executed. The setup, preservation assertion and loop
+were unchanged by that addition.
+
+Root will retain complete stdout losslessly as `.stdout.gz`, with compressed
+and original raw identities, plus complete stderr and process/build receipts.
+Lossless storage does not change the required direct comparison after bounded
+decompression. A truncated/error stream cannot satisfy the witness. The
+original benchmark code remains included but its clock/statistics paths are
+unused by this entry; the companion's binary containing those unused paths
+does not make these capture calls measured samples.
+
+## Remaining gates and next action
+
+Root first supplies the companion source for independent review, then compiles
+and executes the two admitted unmeasured captures. Timing remains on HOLD
+until their exact raw result and final input identities are admitted. Root then
+uses the unchanged prospective protocol, CPU 0 and a fresh output directory,
+with the final admission's exact hash and its real quiet-interval statement.
+The execution command will be recorded with that final admission.
+
+Corrected paired-v2 execution, actual full-frame visual acceptance and affected
+native/platform suites retain their separate owners and outcomes. The original
+62 numerical thresholds, failed v1 focus-oracle report, genuine before binary
+and every original receipt remain intact. A visible regression rejects P1
+regardless of a timing or patch screen.
+
+This batch can provide descriptive comparisons for four fixed scenes only.
+It establishes no confidence interval, equivalence, display smoothness,
+audio deadline, full-domain speed, hardware-device or host behavior. Whole
+interface 1:1, native accessibility, physical fidelity, signed release and all
+M0–M9 exits remain open where previously open. Preserve 47 parameter identities,
+state 4/readers 1–3, 91 shared free-running sources, plugin UUIDs, the nominal
+dry Engine, four banks, 147 playing keys, 24 presets and 68 controls.

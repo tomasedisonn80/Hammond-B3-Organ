@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="3"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="2e92012a1646"
+	time="11"
+	timestamp="2026-11-16T23:18:13"
+	>
+	<testcase name="python_test_repository_integrity" classname="python_test_repository_integrity" time="6.2171" status="run">
+		<properties/>
+		<system-out>.........................................
+----------------------------------------------------------------------
+Ran 41 tests in 6.031s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_title_density" classname="test_standalone_title_density" time="4.68727" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;typography"/>
+		</properties>
+		<system-out>{
+  "schema": 1,
+  "test": "standalone-title-density-v1",
+  "status": "passed",
+  "required_cases": 18,
+  "native_protocol": "footage-typography-v1",
+  "native_fixture_cases": 44,
+  "fixture_source_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+  "logical_size": [
+    1672,
+    941
+  ],
+  "output_size": [
+    1698,
+    975
+  ],
+  "viewport_origin": [
+    13,
+    17
+  ],
+  "roi_xywh": [
+    590,
+    14,
+    490,
+    46
+  ],
+  "bounds_coordinates": "canonical half-open bounds, with integer viewport origin subtracted",
+  "predicate": "2126*R+7152*G+722*B &gt;= threshold*10000; no hue or alpha predicate",
+  "reference_counts": [
+    5639,
+    5415,
+    4991,
+    4502,
+    3785
+  ],
+  "pre_T3_baseline_counts": [
+    4150,
+    3863,
+    3601,
+    3200,
+    2690
+  ],
+  "primary_band": [
+    4500,
+    6000
+  ],
+  "minimum_error_reduction": 0.4,
+  "resources": {
+    "one_frame_at_a_time": true,
+    "process_timeout_seconds": 20,
+    "stdout_max_bytes": 7146489,
+    "stderr_max_bytes": 65536,...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_header_statistics" classname="test_standalone_header_statistics" time="0.597162" status="run">
+		<properties>
+			<property name="cmake_labels" value="material;native;standalone"/>
+		</properties>
+		<system-out>{"schema":1,"test":"standalone-header-statistics-v1","status":"passed","native_protocol":"header-material-h1-v1","case":46,"logical_size":[1672,941],"primary_patch_order":["L","TL","TM","TR","CLT","CL","CR","RT","RU","RF","CM1","CM2","CM3","BL","BC1","BC2","BC3","BR"],"protocol_passed":true,"helper_passed":true,"identities":{"frozen_fixture_source_sha256":"86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6","contract_sha256":"07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282","reference_observations_sha256":"8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b","reference_image_sha256":"9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187","reference_decoded_rgb_sha256":"07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb","independent_comparator_sha256":"098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b","reference_origin":"immutable literals from A22 reference observations; no runtime image decode","test_source_sha256":"455c42c...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

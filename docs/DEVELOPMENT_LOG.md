@@ -1,5 +1,82 @@
 # Development log
 
+## 2026-11-16 — Fresh Windows fixture and diagnostic successor qualified
+
+Root preserves published6287055 and all117new evidence files. A55 independently
+admits exact helper-fixture reversal through the previous cast source to the
+original baseline; all old comparator admission behavior remains intact.
+Four targeted local gates pass with a byte-identical Linux fixture. The completed
+predecessor Windows run compiles, then passes66/68 with two early copied-state
+protocol failures. No differing leaf or cause is proved by its original log.
+A57 admits failure-only scalar/path/type details with all original predicates,
+values, numerical criteria and bounds unchanged; three affected local gates pass.
+Application/source/gallery identities remain unchanged. The [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md)
+records frozen receipts, preserved API recovery objects and pending first console
+publication/new-source hosted outcomes. No all-platform pass is claimed.
+
+## 2026-11-16 — Combined source, gallery and durable recovery admitted
+
+The [combined qualification](development/2026-11-16-console-completion/reports/combined-qualification.json)
+passes 46 build steps, 78 affected tests and fifteen captures with all 587
+production/test/build inputs stable. All 69 payloads are verified; the
+[independent gallery review](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md)
+inspects the reference and all sixty retained frames. The admitted README
+update shows the combined gallery and retains the whole-interface residuals.
+The original 246/247 full run remains failed; the affected document check is
+separate. [Setup](CONSOLE_SETUP_AND_HANDOFF.md) and the
+[current handoff](CONSOLE_COMPLETION_HANDOFF.md) now lead recovery alongside
+the complete plan, exact current checkpoint and actual ledger. The global
+AGENTS recovery sequence and checker point to this console session; old owners
+and dated statements remain historical evidence. Publication and exact-source
+hosted outcomes are still pending at this entry. All 432 immutable recovery
+blobs are SHA-verified; the first large tree request timed out, its subsequent
+GET was 404, and smaller bottom-up tree requests now succeed without moving a ref.
+
+## 2026-11-16 — Reconcile published H1 and replay work with console foundation
+
+A fresh GitHub API read and independent Git fetch observed `03c70c1`, whose
+history preserves starting `9d60dbf` and the separately published heading/header
+track. Local recovery `3263b17` preserves accepted console work before integration.
+Root is combining the independently scoped H1/P1 painters, retaining the exact
+published semantic-paint source and merging all CMake/CI gates. The published
+static-cast Windows fixture repair takes precedence; both exact value-equivalent
+repairs retain original source identities. No combined pass or push is claimed
+at this entry. All previous results remain tied to their original inputs.
+
+## 2026-11-16 — Console foundation and P1 evidence; native integration remains next
+
+The [console continuation](development/2026-11-16-console-completion/README.md)
+starts from `9d60dbf462a90fe422fd4e69757fe202264acb7c` in the
+`21cce69f7784` workspace. Its [actual ledger](development/2026-11-16-console-completion/assignments.json)
+tracks the required sixty new workers/ten waves; no closure is inferred from
+the completed earlier sessions. The [fresh coverage receipt](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json)
+and [M0–M9 crosswalk](reviews/CONSOLE_ATLAS_CROSSWALK.md) preserve every exit.
+
+The copied-state LibraryModel and baseline-preserving UiModel recall helper
+pass [five integrated foundation suites](development/2026-11-16-console-completion/reports/library-integrated-result.json);
+the [fresh SDK-free configuration](reviews/CONSOLE_HEADLESS_ADMISSION.md)
+passes 12/12 selected tests. The strict candidate-only P1 source transition and
+finite-JSON capture repair each pass 45 Python methods. P1 paired v2 passes
+62 screens, 34 pairs and 74,008,097 pixel positions with zero forbidden changes;
+A24 admits the fifteen-view P1 full-frame comparison. One frozen eight-process,
+2,400-sample timing batch has no investigation signal and passes its exact Flat
+cross-witness gate. [Current status](STATUS.md#current-console-continuation--16-november-2026)
+links the separate original receipts, failures and pre-helper capture identities.
+
+The native all-target build passed; the [first full run](development/2026-11-16-console-completion/reports/integrated-first-ctest-result.json)
+is **246/247**, exit 8, with repository integrity failing on A33's then-unwritten
+report. All other registered gates passed. The final integrated capture now
+passes all fifteen views; all 69 manifest entries and production input identities
+are verified, and README displays those actual frames. The [capture receipt](development/2026-11-16-console-completion/reports/integrated-capture-result.json)
+preserves the pre-helper comparison and original capture. Independent final-gallery
+review, the affected document check, publication and hosted outcomes remain root's
+separate duties. The [next native plan](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md)
+requires model-owned Save availability and post-Start proof before browser/main
+wiring. H1/header and other owners retain their scopes and source pins.
+Top-level recovery now leads to the console session and labels older workspace
+instructions as history. Literal whole-interface 1:1 remains unmet; physical,
+device, accessibility and release acceptance remain separate.
+
 ## 2026-11-17 — Published repair and locally qualified constexpr-else correction
 
 The [current verified publication](development/2026-11-16-heading-title-continuation/reports/hosted-repair-publication.json) is

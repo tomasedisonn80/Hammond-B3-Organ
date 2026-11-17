@@ -381,6 +381,11 @@ public:
     // no action and preserves state. Does not resurrect/release notes or change
     // the edited bank. The loaded snapshot becomes the clean-file reference.
     [[nodiscard]] UiActions load_controls(const ControlSnapshot& controls) noexcept;
+    // Named-library recall validates and emits one copied whole ControlSnapshot
+    // even when unchanged. Unlike legacy file Load, it retains the clean-file
+    // reference. Invalid input emits nothing and preserves state. Presentation
+    // and held-note owners are preserved; normal submission/observation applies.
+    [[nodiscard]] UiActions recall_controls(const ControlSnapshot& controls) noexcept;
     // Main-thread external controller edit. Uses the same desired snapshot and
     // acknowledgment path as native gestures, so a pending MIDI edit is retained
     // by subsequent unrelated UI changes. Invalid/unchanged values emit nothing;

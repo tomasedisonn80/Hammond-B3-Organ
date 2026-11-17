@@ -1,0 +1,11 @@
+{
+  "build_or_ctest_rerun_required": false,
+  "correction": "Use the already retained preflight admitted_sources_actual_sha256 value for this existing baseline key, without modifying the original source-before snapshot or any production, tests, CMake, build or runtime result. Read command ordinals 01-14 as the qualification commands; inspector attempts retain their own separate receipts.",
+  "failed_command": "15-inspect-result.json",
+  "failed_stderr": "15-inspect-result.stderr.log",
+  "original_inspector_sha256": "d3cfea2d58b0f54ddc9095e1bb2ec39b8b22d8ef8c246d631c04e48221c66e8d",
+  "original_source": "inspect_result-v1.py.txt",
+  "production_or_test_repairs": false,
+  "reason": "The broad source-before snapshot selected source suffixes and root CMakeLists.txt but omitted apps/standalone/CMakeLists.txt. Its separate actual preconfigure hash is present in preflight.json and matches the root release pin.",
+  "status": "REPORT_INSPECTOR_FAILED_CLOSED_PRODUCT_GATES_UNCHANGED"
+}

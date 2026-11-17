@@ -1,6 +1,22 @@
 # Project guide
 
-## Current continuation — 17 November 2026
+## Current console continuation — 16 November 2026
+
+Start with the [console handoff](CONSOLE_COMPLETION_HANDOFF.md),
+[source-verified setup](CONSOLE_SETUP_AND_HANDOFF.md),
+[checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md),
+[actual ledger](development/2026-11-16-console-completion/assignments.json) and
+[complete M0–M9 plan](PLAN.md). The new console session read all 500 pages,
+implements the copied-state LibraryModel/recall foundation and P1 material,
+and preserves published H1/header and semantic-paint work. The
+[combined result](development/2026-11-16-console-completion/reports/combined-qualification.json)
+passes 46 build steps, 78 affected tests and fifteen captures; README displays
+the independently admitted combined gallery. Native browser/main library wiring
+and literal whole-interface 1:1 remain unfinished. Publication, exact-source
+hosted outcomes and the required sixty new workers/ten waves are established
+only by this session's actual records, not the historical counts below.
+
+## Retained heading/title/header record — 17 November 2026 UTC
 
 The repository provides a nominal dry-organ Engine, offline evidence tools,
 an optional VST3 instrument and a native standalone window. Two 61-key manuals
@@ -85,20 +101,20 @@ requirements.
 | --- | --- |
 | What works and what has actually passed? | [STATUS.md](STATUS.md): current behavior, source-bound local/hosted observations, milestone position and preserved historical results. |
 | What is the complete product roadmap? | [PLAN.md](PLAN.md): all M0–M9 deliverables, dependencies and engineering/physical exits. |
-| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md) and [current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md): retain the complete `03c70c1` terminal record and completed Intel disposition, then publish/verify the locally qualified two-file constexpr-else/hash correction and observe all sixteen new-source families before final recovery publication. Its publication/CI remain pending. Preserve original failures, all 60 accepted records, production, the 35-minute job allowance, both helper specializations and separate physical/accessibility/device gates. |
-| How does a future agent recover this workspace? | [Current checkpoint](development/2026-11-16-heading-title-continuation/CHECKPOINT.md), [session](development/2026-11-16-heading-title-continuation/README.md), [actual ledger](development/2026-11-16-heading-title-continuation/assignments.json), [current setup](STATUS.md#current-workspace-and-setup) and [ownership map](PLAN.md#current-ownership-and-source). Inspect live HEAD/tree/index/dirty files/remote; older workspace labels do not transfer ownership. |
-| How are this session's actual records checked? | The [current checker](development/2026-11-16-heading-title-continuation/check_session.py) validates the [current ledger](development/2026-11-16-heading-title-continuation/assignments.json); run it with `--strict` only for closure of all 60 accepted notes in ten waves. It verifies records, not external dispatch, product quality or publication. Old workers and follow-ups supply no new credit. |
+| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md), the [console handoff](CONSOLE_COMPLETION_HANDOFF.md) and [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md): finish source-bound delivery/record closure, then independently admit Save availability and post-Start proof before native browser/main wiring. Preserve all physical, accessibility, device and release exits. |
+| How does a future agent recover this workspace? | Read all [AGENTS.md](../AGENTS.md), [PLAN.md](PLAN.md), the [console handoff](CONSOLE_COMPLETION_HANDOFF.md), [setup](CONSOLE_SETUP_AND_HANDOFF.md), [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md), [root queue](development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md) and [actual ledger](development/2026-11-16-console-completion/assignments.json); inspect fresh local and remote source before assigning paths. |
+| How are this session’s actual records checked? | Run `python3 -B docs/development/2026-11-16-console-completion/check_session.py`; use `--strict` only for closure after all sixty actual notes are accepted. The [checker](development/2026-11-16-console-completion/check_session.py) validates records, not dispatch, product acceptance or publication. |
 | How do I inspect the isolated causal trajectory? | [Developer guide](CAUSAL_CONTACT_GRID_GUIDE.md), [frozen contract](CAUSAL_CONTACT_GRID_CONTRACT.md), [implementation review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) and [resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md). The finite integer API remains distinct from the later certified conversion and isolated audio work; recover those owners through the current plan. |
 | How do I reproduce the earlier offline contact study? | [Operating guide](CONTACT_SWITCHING_GUIDE.md), [executed results](CONTACT_SWITCHING_RESULTS.md) and [ContactReferenceTools installation](CONTACT_REFERENCE_INSTALL.md). The acausal binary64-input reference and its original 36×4 results remain separate from causal-grid acceptance. |
 | How do I build and play with MIDI/calibration? | [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md), [INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md) and [PRESET_RUNBOOK.md](PRESET_RUNBOOK.md): platform prerequisites, exact options, eleven modal stops, applied-state observations, recovery and Save/Load. |
 | How do I build or install the crossover tools? | [Developer guide](CROSSOVER_DEVELOPER_GUIDE.md), [explicit CrossoverTools installation](CROSSOVER_INSTALL.md), [contract](LESLIE_CROSSOVER_CONTRACT.md) and [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md). The component is separate from Engine and the standalone. |
-| Where is current UI evidence? | [Two current installed-app captures](design/native-heading-final/README.md) and [independent review](reviews/FINAL_INSTALLED_CAPTURE_REVIEW.md) use `1fa2a247…`. The [historical fifteen-view H1 gallery](design/native-gallery-header-h1-v1/README.md) uses `bfe8e36d…`; both retain painter `0bf731a6…`. Source-bound captures, original H1 patch metrics and current runtime qualification remain distinct. |
+| Where is current UI evidence? | [README](../README.md), the [combined gallery](design/native-gallery-console-combined/manifest.json), [source qualification](development/2026-11-16-console-completion/reports/combined-qualification.json) and [all-frame visual admission](reviews/CONSOLE_COMBINED_GALLERY_ADMISSION.md). Current app SHA begins `3bb46f2f`; whole-interface 1:1 remains unmet. |
 | Who owns the other active tracks? | [Current ownership map](PLAN.md#current-ownership-and-source): execution/contact/composition, audio/leakage, playable/harmonic sources, scanner/library, fidelity/crossover/native retirement and waveform/R4 keep distinct recovery authorities. |
 | Who owns R4? | The separate [waveform session](development/2026-11-14-waveform-continuation/README.md) and its [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md). R5 audible policy and R6 runtime/Engine integration have distinct gates. |
 | What prevents a physical or release claim? | [Acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md), [release readiness](RELEASE_READINESS.md), [rights inventory](DEPENDENCIES_AND_RIGHTS.md) and current milestone rows in STATUS/PLAN. |
 | Why did something change, and what failed? | [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md), the owning session's actual notes and original source-bound reports. |
 
-## Current source and evidence map
+## Retained heading/header source and evidence map
 
 The current request starts from `113c29b7b14c8fde0859bc405ef8e4141a131ea6`.
 The verified T2 publication is `6047723b595259de355c74342e48a8ae2ee1e228`, tree

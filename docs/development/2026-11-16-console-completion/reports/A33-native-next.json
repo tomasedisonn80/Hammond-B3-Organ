@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "worker": "A33",
+  "agent": "/root/w06_a33",
+  "wave": 6,
+  "kind": "documentation_source_inspection_only",
+  "date_utc": "2026-11-17",
+  "cwd": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "head": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "written_paths": [
+    "docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md",
+    "docs/development/2026-11-16-console-completion/notes/A33.md",
+    "docs/development/2026-11-16-console-completion/reports/A33-native-next.json"
+  ],
+  "plan": {
+    "path": "docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md",
+    "sha256": "81d79a7f4d8a3cd7b8d85849254969264d7c910d03a9f1afba526e8d6cb5ab4b",
+    "words": 2225,
+    "lines": 234
+  },
+  "source_sha256": {
+    "apps/standalone/main.cpp": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+    "apps/standalone/UiModel.h": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+    "apps/standalone/UiModel.cpp": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
+    "apps/standalone/LibraryModel.h": "4ea94b611e4fdc27ea48c6bad47ddf9ed99761f2e12ae264b7482ac8d3b093e2",
+    "apps/standalone/LibraryModel.cpp": "ae5348c731b0559a6816b75cc190622918ca89d1fe938dd56445d51591904b98",
+    "apps/standalone/Session.h": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+    "apps/standalone/Session.cpp": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+    "apps/standalone/AudioDevice.h": "75ac25e462afb85c64b0298bf4e8c30d4979d3d30f231edec75c8ba41818673a",
+    "apps/standalone/AudioDevice.cpp": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0",
+    "apps/standalone/RegistrationLibrary.h": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+    "apps/standalone/RegistrationLibrary.cpp": "5a446bb7c3fde310fe4351ed891b3911197a4cd407ab548147f992e0b643fffc",
+    "apps/standalone/tests/test_standalone_library_roundtrip.cpp": "e144f9eec03f7a8ecd7e8729084fcf3f4e09820a412e934122e68af9fe1732b0",
+    "docs/REGISTRATION_LIBRARY_CONTRACT.md": "4760d65b27aa154fd86ee09c2cda87bd30f532874cc1a35c62a5b359889703fa",
+    "docs/REGISTRATION_BROWSER_UI_CONTRACT.md": "258a972f2715d200b4bd2b4482b1159feeff4f97c2be3060b05ad237439cc84c",
+    "docs/LIBRARY_MODEL_DESIGN.md": "b85e37d18725b8b357460a5a9caaa58f38cb0114573ae7c1c1266ce72b150852",
+    "docs/reviews/LIBRARY_MODEL_SOURCE_ADMISSION.md": "c690275e0b52c0b0a776123b3bde6a32482c96a0677b805a51d5260375f35ad2",
+    "docs/development/2026-11-16-console-completion/reports/library-integrated-result.json": "40356a2591f05c01da66dc899306e397d0cf6587c3541e0bf9c9e4e6a342d060"
+  },
+  "critical_hooks": {
+    "intents": "main.cpp Application::dispatch, load_startup_state, load_state stopped branch; process_midi -> UiModel::external_parameter",
+    "post_outcomes": "main.cpp Application::dispatch ordinary and recovery loops; post_midi_command including retirement releases and disabled gate",
+    "observations": "main.cpp Application::observe plus fresh reads at request, effect issuance and final storage authorization; failed reads reach LibraryModel with nullopt",
+    "lifecycle": "main.cpp Application::open_audio, run shutdown, destructor, activate_modal, handle_event device removal, monitor_audio; AudioDevice prepare/start/stop/close facts",
+    "startup": "Preserve paused restore; Start notification; fresh running observation; one new ordinary whole-snapshot post; prove its new revision/sequence; no fake default acknowledgement",
+    "availability_gap": "LibraryView has no read-only original-basis or Save availability projection; independent additive API admission required before browser enablement",
+    "input": "UiModel::key Escape ordering, pointer Down gate, close_parameter_gesture, original Up/owner release; dedicated browser open/close",
+    "storage": "RegistrationLibrary.cpp save_registration_entry_new final authorize_commit immediately before publish_new; no main-thread events/posts until result"
+  },
+  "inspected_existing_execution": {
+    "receipt": "docs/development/2026-11-16-console-completion/reports/library-integrated-result.json",
+    "ctests_passed": 5,
+    "ctests_failed": 0,
+    "executed_by": "root",
+    "native_browser_qualified": false
+  },
+  "integrity": {
+    "markdown_local_links_checked": 13,
+    "newlines_and_trailing_whitespace": "pass",
+    "no_index_checks": [
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "/dev/null",
+          "docs/design/LIBRARY_NATIVE_INTEGRATION_NEXT.md"
+        ],
+        "exit_code": 1,
+        "whitespace_diagnostics": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "/dev/null",
+          "docs/development/2026-11-16-console-completion/notes/A33.md"
+        ],
+        "exit_code": 1,
+        "whitespace_diagnostics": false
+      }
+    ]
+  },
+  "not_run_by_A33": [
+    "build",
+    "CTest",
+    "application",
+    "native input or device journey",
+    "benchmark",
+    "sanitizer",
+    "publication"
+  ],
+  "production_test_build_edits": false,
+  "nested_agents": 0,
+  "root_acceptance": "pending"
+}

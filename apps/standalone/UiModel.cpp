@@ -1476,6 +1476,11 @@ UiActions UiModel::load_controls(const ControlSnapshot& controls) noexcept {
     return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);
 }
 
+UiActions UiModel::recall_controls(const ControlSnapshot& controls) noexcept {
+    if (!is_valid_control_snapshot(controls)) return {};
+    return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);
+}
+
 UiActions UiModel::external_parameter(std::uint32_t parameter_id,
                                     double normalized) noexcept {
     if (!std::isfinite(normalized) || normalized < 0.0 || normalized > 1.0) return {};

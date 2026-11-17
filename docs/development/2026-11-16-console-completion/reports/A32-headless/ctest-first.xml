@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-g++"
+	tests="12"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="2e92012a1646"
+	time="5"
+	timestamp="2026-11-16T21:36:16"
+	>
+	<testcase name="test_standalone_external_control" classname="test_standalone_external_control" time="0.00457624" status="run">
+		<properties/>
+		<system-out>External controls preserve shared pending UI intent
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_model" classname="test_standalone_library_model" time="0.00481605" status="run">
+		<properties/>
+		<system-out>Independent LibraryModel contract: 32 groups, 3250 assertions, 0 failed groups
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_recall" classname="test_standalone_library_recall" time="0.016503" status="run">
+		<properties/>
+		<system-out>PASS complete snapshot and copied lifetime
+PASS clean equal recall and sequence
+PASS dirty equal recall and supersession
+PASS retained baseline and legacy Load/Save
+PASS invalid complete snapshot atomicity
+PASS presentation and original UI owners
+PASS active parameter and pointer gestures
+PASS synchronous recall rejection
+PASS resolved rejection and recovery observations
+Standalone named recall: 9 groups, 743728 assertions, 98 invalid snapshots, 72 presentation/owner contexts, 0 failures (synthetic UiModel boundary inputs)
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_roundtrip" classname="test_standalone_library_roundtrip" time="0.0109204" status="run">
+		<properties/>
+		<system-out>library_roundtrip groups=4 checks=1489 snapshots=138 renders=20 posts=24 library_reports=24 ui_reports=24 ordinary_intents=12 recall_dispatches=4 storage_calls=7 authorizer_calls=7 failures=0 Session=real storage=real native_browser=unqualified
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_session" classname="test_standalone_library_session" time="0.0313507" status="run">
+		<properties/>
+		<system-out>Real Session LibraryModel boundary: 12 groups, 42634 assertions, 696 real snapshots, 150 renders, 428 accepted posts, 6252 bit-exact paired stereo samples, 10101 source-phase checks, 60 percussion-history checks, 0 failed groups
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_library_storage" classname="test_standalone_library_storage" time="0.0203951" status="run">
+		<properties/>
+		<system-out>library_storage groups=9 checks=1115 failures=0 control_proof=synthetic filesystem=real
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_ui" classname="test_standalone_preset_ui" time="0.676027" status="run">
+		<properties/>
+		<system-out>Independent preset UI acceptance: 12 layouts, 604618 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_registration_library" classname="test_standalone_registration_library" time="0.0259587" status="run">
+		<properties>
+			<property name="cmake_labels" value="filesystem;library;standalone"/>
+		</properties>
+		<system-out>registration_library checks=195 symlink_unavailable=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_session" classname="test_standalone_session" time="0.318241" status="run">
+		<properties/>
+		<system-out>standalone Session acceptance: 9 rate/partition scores, 4929 successful renders, 157552 bit-exact stereo samples, 6432 partition samples, 15860 coherent snapshots, 5563 accepted posts, 534 rejected posts, 20 rejected renders, 70 future-output probes, 1600 fixed-mode publications
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_state_files" classname="test_standalone_state_files" time="0.0118322" status="run">
+		<properties/>
+		<system-out>TESTED: regular and dangling symbolic-link load/save rejection
+TESTED: failed write under RLIMIT_FSIZE and temporary cleanup
+NOT TESTED: POSIX failed replacement after a complete temporary write; no deterministic non-racing fixture
+Standalone state-file acceptance: 7 scenarios completed; platform exclusions are reported above
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_ui" classname="test_standalone_ui" time="0.155634" status="run">
+		<properties/>
+		<system-out>Standalone UI acceptance: 9 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_continuity" classname="test_standalone_workspace_continuity" time="5.12176" status="run">
+		<properties/>
+		<system-out>case kind=registration variant=0 rate=44100 seed=11740672 frames=8874 commands=20 peak=0.15445317327976227 energy=12.388344111279981 isolated_energy=0 pcm_fnv1a64=6be70c82e36cb701
+case kind=registration variant=1 rate=44100 seed=11740673 frames=8874 commands=20 peak=0.14571726322174072 energy=14.819911340016612 isolated_energy=0 pcm_fnv1a64=465b8523baa45379
+case kind=registration variant=2 rate=44100 seed=11740674 frames=8874 commands=20 peak=0.15826630592346191 energy=14.456555723508712 isolated_energy=0 pcm_fnv1a64=989e678ea6097ae9
+case kind=registration variant=3 rate=44100 seed=11740675 frames=8874 commands=20 peak=0.17036087810993195 energy=12.723127669830598 isolated_energy=0 pcm_fnv1a64=470d5f7b4ac7b6c9
+case kind=registration variant=4 rate=44100 seed=11740676 frames=8874 commands=20 peak=0.1711624413728714 energy=15.243782869395975 isolated_energy=0 pcm_fnv1a64=4a2eb24f02c07619
+case kind=registration variant=5 rate=44100 seed=11740677 frames=8874 commands=20 peak=0.11457514762878418 energy=8.365804732...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

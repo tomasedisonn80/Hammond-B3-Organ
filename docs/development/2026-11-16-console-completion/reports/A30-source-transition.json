@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-16-console-completion",
+  "worker": "A30",
+  "agent": "/root/w05_a30",
+  "wave": 5,
+  "date_utc": "2026-11-17",
+  "status": "SOURCE_READY_PATCH_ONLY_PENDING_ROOT_APPLICATION_AND_EXECUTION",
+  "decision": "Admit exact A26 coherent UiModel pair only to candidate-only source gate; paired mode preserves original pair",
+  "checkout": "/workspace/scratch/21cce69f7784/Hammond-B3-Organ",
+  "base_commit": "9d60dbf462a90fe422fd4e69757fe202264acb7c",
+  "base_tree": "6bfdb87625ea7626e1b7c30ce9e78bad622a5978",
+  "owned_files": [
+    "docs/development/2026-11-16-console-completion/reports/A30-model-source-transition.patch",
+    "docs/development/2026-11-16-console-completion/reports/A30-source-transition.json",
+    "docs/development/2026-11-16-console-completion/notes/A30.md",
+    "docs/reviews/P1_RECALL_SOURCE_TRANSITION_ADMISSION.md"
+  ],
+  "patch": "docs/development/2026-11-16-console-completion/reports/A30-model-source-transition.patch",
+  "patch_sha256": "3aaeed128850dab45c392c4dc24871c097958025b155fcde98b3b737a7b95e5a",
+  "required_original_tool_sha256": {
+    "tools/compare_performance_plate.py": "e7a810e21099e346ec4ab86097cba6552cde497fcfd22be659907efeb2c80344",
+    "tests/test_compare_performance_plate.py": "b368e9277b306c807672acfa1b200c4fc4eda358c03b3e4e9b3bfe90b21af526"
+  },
+  "prospective_patched_tool_sha256": {
+    "tools/compare_performance_plate.py": "57f1127b93e683aacfc67f3cf9904344c3e570e4798dcaacf18928968b52a923",
+    "tests/test_compare_performance_plate.py": "cba6e56cbcf7dd3fe16924e21ae0f1bec2d76215a7df4abcbede600be327bd8c"
+  },
+  "tool_files_remain_original_at_handoff": true,
+  "helper_patch": "docs/development/2026-11-16-console-completion/reports/UiModel-recall-controls.patch",
+  "helper_patch_sha256": "d4fadc8ae85d9f3dd2aedb6cccc63977fe1c4516dcca47b758a0ec18c7792cf8",
+  "transition_id": "ui-model-recall-controls-a26-v1",
+  "original_pinned_model_sha256": {
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+  },
+  "candidate_only_extra_model_sha256": {
+    "apps/standalone/UiModel.h": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+    "apps/standalone/UiModel.cpp": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986"
+  },
+  "pair_policy": {
+    "candidate_only_original_pair": "admit",
+    "candidate_only_exact_a26_pair": "admit only with exact whole-block reversal, exact new pair and pinned helper patch",
+    "candidate_only_mixed_or_other_pair": "refuse before native launch",
+    "paired_original_pair": "admit subject to all unchanged genuine baseline and paired input gates",
+    "paired_a26_mixed_or_other_pair": "refuse before native launch",
+    "future_paired_transition": "requires separate input admission and protocol"
+  },
+  "reversal_source_proof": {
+    "apps/standalone/UiModel.h": {
+      "original_source_snapshot": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-apps__standalone__UiModel.h.txt",
+      "original_sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "accepted_new_sha256": "34337e5db254bfbc4e23ee4fadf76ecc8fe792f003bd13ab5b54d0a302b5bb15",
+      "original_bytes": 18547,
+      "new_bytes": 18956,
+      "whole_inserted_block_bytes": 409,
+      "whole_inserted_block_lines": 5,
+      "whole_inserted_block_sha256": "435d8af677b4c1e65ea2166ac34f12cb70e036f3e6df9210d01a87b9d182832d",
+      "exact_whole_block_occurrences": 1,
+      "reconstructed_sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "complete_reconstructed_bytes_equal_original": true,
+      "live_root_applied_source_equals_exact_prospective": true
+    },
+    "apps/standalone/UiModel.cpp": {
+      "original_source_snapshot": "docs/development/2026-11-16-console-completion/reports/source-history/pre-integration-apps__standalone__UiModel.cpp.txt",
+      "original_sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "accepted_new_sha256": "b4889e0b5d1b6eb0b88b140b8af92815df4bf021158a902994db2c15ed798986",
+      "original_bytes": 83758,
+      "new_bytes": 83993,
+      "whole_inserted_block_bytes": 235,
+      "whole_inserted_block_lines": 5,
+      "whole_inserted_block_sha256": "92819dd1ff71a2394bcff46011a7ce591bc3b5fe9c20b86a83afe3f1800d98cf",
+      "exact_whole_block_occurrences": 1,
+      "reconstructed_sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "complete_reconstructed_bytes_equal_original": true,
+      "live_root_applied_source_equals_exact_prospective": true
+    }
+  },
+  "source_only_inspections": {
+    "method": "in-memory unified-diff application with exact hunk/context checks, direct whole-byte reversal, AST parsing and textual source-slice comparison",
+    "prospective_python_syntax": "parsed; not imported or executed",
+    "all_original_module_assignments_textually_unchanged": true,
+    "changed_existing_comparator_functions_or_classes": [
+      "execute"
+    ],
+    "all_other_original_functions_and_classes_textually_unchanged": true,
+    "all_original_30_test_methods_textually_unchanged": true,
+    "p1_fixture_and_painter_reference_recall_controls": false,
+    "entire_uimodel_private_data_declaration_suffix_unchanged": true,
+    "old_declarations_constructors_and_methods_unchanged_after_exact_reversal": true,
+    "new_member_is_nonvirtual_and_adds_no_data_or_layout_operation": true,
+    "thresholds_matrix_support_pixels_prior_evidence_modified": false
+  },
+  "read_only_patch_applicability": {
+    "command": "git apply --check --whitespace=error-all docs/development/2026-11-16-console-completion/reports/A30-model-source-transition.patch",
+    "exit_code": 0,
+    "limit": "Applicability and whitespace only; no source installation or execution"
+  },
+  "proposed_tests": {
+    "original_methods_retained": 30,
+    "added_methods": 15,
+    "total_methods": 45,
+    "execution_status": "UNRUN_BY_A30",
+    "coverage": [
+      "original coherent pair accepted in either mode with old pins and baseline constants unchanged",
+      "exact new coherent pair reports candidate-only scope and complete block reversal",
+      "both mixed old/new pairs refused",
+      "new coherent pair refused in paired mode",
+      "deleted, inverted and weakened full-snapshot validation guards refused",
+      "disabled forced publication, saved-reference rebasing and legacy Load routing refused",
+      "changed public signature and contract comment refused",
+      "duplicate, removed and relocated whole blocks refused",
+      "unrelated legacy Load, workspace focus and existing publisher changes refused in both variants",
+      "class data and old declaration changes refused in both variants",
+      "original pinning requires no helper patch",
+      "new pinning binds actual/expected/original/patch identities and detects later source drift",
+      "changed helper patch refused even with exact new source pair",
+      "four execute-level setup refusals retain failed report and make zero native calls"
+    ],
+    "root_command_after_application": "python3 -B tests/test_compare_performance_plate.py"
+  },
+  "retained_input_sha256": {
+    "docs/design/PERFORMANCE_PLATE_P1_CONTRACT.md": "20c8839d38229bf24d983eac0baad7381f601c4e6763bbbe556bcdfa6c75ae45",
+    "docs/development/2026-11-16-console-completion/reports/p1-baseline-patch-admission.json": "fb3c4bc99d1534222d80f7263a82fef2f883bb584e2c646aae43a7c80c4993ea",
+    "docs/development/2026-11-16-console-completion/reports/p1-paired-v1/report.json": "4895fdbb8f79e07cc4ad2b6d672807433a98e5a08689c323547432ca88725ab7",
+    "docs/development/2026-11-16-console-completion/reports/p1-paired-v2/report.json": "f64b634d5455e69e506730acac036e6b3764804d775ff4bdabb4d0a4e0abe1d4",
+    "apps/standalone/InstrumentView.cpp": "8ca5c05138ed4cd12fe8ef416ea35a3d78a8a3c4915645f53d8c0c0df2fcf927",
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+  },
+  "inspection_history": [
+    "Original source/tool identities matched before authoring; root timing source freeze was respected.",
+    "Root ended the timing interval, preserved pre-integration sources and applied A26 while A30 retained patch-only ownership.",
+    "An in-memory helper reconstruction expecting the live original stopped on source precondition after that root change; no source was written and no suite/native run occurred.",
+    "Final in-memory reconstruction used the independently hashed preserved originals, proved exact reversal and verified live equality to the exact new pair."
+  ],
+  "production_or_tool_or_test_files_edited_by_a30": false,
+  "python_test_suites_executed_by_a30": 0,
+  "builds_executed_by_a30": 0,
+  "native_processes_executed_by_a30": 0,
+  "timing_processes_executed_by_a30": 0,
+  "subagents_spawned": false,
+  "other_workspace_writes": false,
+  "review": "docs/reviews/P1_RECALL_SOURCE_TRANSITION_ADMISSION.md",
+  "review_sha256": "24293d7f00f94727ea03deab92f69eda04235c40a6c5b298efe47aae781389b6",
+  "note": "docs/development/2026-11-16-console-completion/notes/A30.md",
+  "note_sha256": "34c9381ab48552b27fa2587a31b2e1cb8ed0e9a3dafd55a86a6e6b0af4bacbb4",
+  "remaining_gates": [
+    "Root applies exact A30 patch against required tool/test identities and verifies prospective hashes",
+    "Root runs all 45 Python methods and records actual outcome",
+    "Root coherently rebuilds UiModel and all affected header consumers and P1 fixture",
+    "Fresh candidate-only frozen62 runtime result with exact current source and binary identities",
+    "Separate A27/A28 helper and roundtrip runtime acceptance",
+    "Any future changed-input paired protocol requires independent admission"
+  ],
+  "claim_limit": "Source transition admission only; no final runtime, timing, browser, physical, whole-interface, device, accessibility, host or release acceptance"
+}
