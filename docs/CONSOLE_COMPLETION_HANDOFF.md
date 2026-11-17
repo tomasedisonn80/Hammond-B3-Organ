@@ -1,14 +1,15 @@
 # Console completion: recovery and next work
 
-**A60 documentary handoff, 17 November 2026 UTC.** The
+**Root recovery update, 17 November 2026 UTC.** The
 [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md) and
 [actual ledger](development/2026-11-16-console-completion/assignments.json)
 own subsequent progress, acceptance and publication. This review recovers
 [A53's earlier handoff audit](development/2026-11-16-console-completion/reports/A53-handoff.json)
 and adds the [final documentary admission](reviews/CONSOLE_FINAL_HANDOFF_ADMISSION.md).
-It is provisional for the repair's later hosted results and root's final record
-closure. A60 performed no build, test, capture, remote operation or publication.
-The first publication and later repair must retain different source-bound receipts.
+A60's original documentary receipt is retained unchanged; root has since accepted
+all sixty workers, observed both repaired-source CI matrices and qualified the
+merged Python inputs separately. A60 itself performed no build, test, capture,
+remote operation or publication. Every source retains its distinct receipts.
 
 ## Recover before acting
 
@@ -40,15 +41,30 @@ The first publication and later repair must retain different source-bound receip
    Preserve original evidence and recovery manifests before removing only owned,
    reproducible intermediates. Recreated bytes are not original artifacts.
 
-## Current verified repair; new-source CI pending
+## Published indexed repair and current merge
 
-The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)
-is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
-`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
-`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
-independent API/Git verification and all 587 repaired input identities are recorded.
-**All new-source hosted results are pending at this handoff**; the three workflows
-were triggered, and no first-source pass transfers to this repair.
+The published indexed-fixture source is `54859886268ce83c36f359c43327f7c72a77ae82`,
+with tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a` and parents `d2ed03b9…`
+and `ea02c546…`. The [complete source-specific hosted record](development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json)
+observes **16/16 successful jobs, attempt one, with no cancellations**: Core 6/6,
+native standalone 6/6 and VST3 4/4. Windows native now passes **78/78**;
+the title's 18 cases, header's 103 inequalities and P1's 191 checks / 62 visual
+screens all execute successfully. The strict native sanitizer passes **41/41**.
+These results retain the original failures and qualify only that published source.
+
+Root is finishing a preserving merge with the accepted local evidence and worker
+records. Its [separate merged-source local qualification](development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json)
+passes **3/3 affected native reader CTests**; the
+[merged source-only suites](development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-only-qualification.json)
+pass **71/71 P1 and 41/41 header methods**, first invocation without skips. Five
+Python inputs differ from `5485988`; the other 582/587 inputs, all C++ fixtures,
+production application, workflows, criteria and deadlines remain unchanged.
+Published comparator schemas are preserved, original and active reader identities
+are separate, and P1 failures expose a bounded diagnostic summary. The
+[earlier seven-test qualification](development/2026-11-16-console-completion/reports/array-local-qualification.json)
+and three byte-identical complete Linux fixture streams retain their own source.
+Final document integrity, independent combined admission, guarded publication and
+new-source hosted qualification follow in the [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md).
 
 ## Retained first source and complete original CI
 
@@ -73,7 +89,7 @@ These results qualify `cf87a587` only. All original complete logs, diagnostics,
 failed/skip states and attempts stay retained. Passing numerical and sanitizer
 results are not native device, physical fidelity or callback-deadline evidence.
 
-## Admitted five-file repair and exact next Windows work
+## Retained five-file repair and actual Windows diagnosis
 
 [A59's admission](reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md) covers only the
 P1 fixture, its strict candidate-only comparator transition and regression tests,
@@ -97,10 +113,11 @@ P1 candidate-only numerical. The latter evaluates **191 checks and all 62 screen
 All recorded inputs remain stable, and the Linux fixture/application bytes remain
 unchanged. These results establish no MSVC compilation or Windows execution.
 
-At this A60 review, the repair is independently verified as `d2ed03b…` above,
-while every new-source hosted outcome remains pending. The same A56/A57/A58
-reviewers inspect every new-source family in separate receipts. Do not reuse
-cf87's passes or repeat the completed publication. Use the live checkpoint for
+At A60's original review, `d2ed03b…` was published and its hosted results were
+pending. Root has since retained the complete 15-success/one-failure matrix in
+[repair-ci-complete.json](development/2026-11-16-console-completion/reports/repair-ci-complete.json).
+Core and VST3 pass all ten jobs; Windows native finishes 75/78. Neither those
+results nor the subsequent 5485988 successes rewrite cf87's failures. Use the live checkpoint for
 later completed observations before acting.
 
 The predecessor `6287055` Windows run compiled and passed 66/68; title-density and
@@ -108,10 +125,11 @@ header-statistics rejected copied state before numerical evaluation. Its
 [original log/outcome](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
 and [failure-only diagnostic qualification](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
 remain separate. The first console source's P1 compiler failure prevented the
-new readers from running. **No rejected scalar/path/type/value or cause is yet
-established.** The next Windows run must compile P1, execute both readers and
-preserve any actual first-difference evidence before a cause-specific repair is
-chosen. Core must also reach the formerly failed suites and previously skipped
+new readers from running. The later d2ed03b run identifies `view.controls.drawbars[0][1]`
+and `session.controls.drawbars[0][1]` as empty lists where nine elements are
+required. Its separate P1 failure identity was not retained; do not infer it.
+The indexed source5485988 passes all three checks without changing their criteria.
+Core d2ed03b also reaches the formerly failed suites and previously skipped
 Unicode step. Keep all typed equality, values, numerical screens, deadlines and
 workloads unchanged. Do not retry unchanged failed sources for an aggregate pass.
 

@@ -47,7 +47,7 @@ DEFAULT_TIMEOUT_SECONDS = 20.0
 MAX_TIMEOUT_SECONDS = 60.0
 CLEANUP_TIMEOUT_SECONDS = 5.0
 MAX_ERROR_CHARACTERS = 4096
-FIXTURE_SHA256 = "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+FIXTURE_SHA256 = "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
 CONTRACT_SHA256 = "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282"
 OBSERVATIONS_SHA256 = "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b"
 COMPARATOR_SHA256 = "098398562f1b9134739ff9bd6f015892c10ca7ad707ab4703d84051883299f1b"
@@ -112,6 +112,7 @@ def require(condition, message):
         raise ValueError(message)
 
 
+ORIGINAL_FIXTURE_SHA256 = "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
 INDEXED_FIXTURE_SHA256 = "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
 ARRAY_ORIGINAL_BYTES = b"""template <typename Range, typename Writer>
 void array(std::ostream& out, const Range& values, Writer write) {
@@ -141,15 +142,15 @@ def admit_fixture_bytes(source_bytes):
     """Admit one canonical serializer transition without weakening the protocol."""
     require(type(source_bytes) is bytes, "fixture admission requires complete byte source")
     observed = hashlib.sha256(source_bytes).hexdigest()
-    result = dict(variant="original-fixture", original_sha256=FIXTURE_SHA256,
-                  observed_sha256=observed, reversed_sha256=FIXTURE_SHA256,
+    result = dict(variant="original-fixture", original_sha256=ORIGINAL_FIXTURE_SHA256,
+                  observed_sha256=observed, reversed_sha256=ORIGINAL_FIXTURE_SHA256,
                   candidate_only=True)
-    if observed == FIXTURE_SHA256:
+    if observed == ORIGINAL_FIXTURE_SHA256:
         return result
     require(source_bytes.count(ARRAY_INDEXED_BYTES) == 1 and ARRAY_ORIGINAL_BYTES not in source_bytes,
             "fixture requires one exact indexed array block")
     restored = source_bytes.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
-    require(hashlib.sha256(restored).hexdigest() == FIXTURE_SHA256,
+    require(hashlib.sha256(restored).hexdigest() == ORIGINAL_FIXTURE_SHA256,
             "indexed array reversal does not reconstruct original fixture")
     require(observed == INDEXED_FIXTURE_SHA256,
             "indexed fixture does not match complete admitted identity")

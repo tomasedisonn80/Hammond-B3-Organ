@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "worker": "A56",
+  "continuation": true,
+  "additional_agent_credit": 0,
+  "recorded_utc": "2026-11-17T07:52:56.035126+00:00",
+  "status": "passed-source-only-qualification",
+  "merge_context": {
+    "local_candidate": "4378fff74a3a11de400e3a38b877d170bad6c57e",
+    "published_source": "54859886268ce83c36f359c43327f7c72a77ae82",
+    "merged_commit": null,
+    "scope": "Only the two owned test files were resolved. Complete merge-base, qualified local, published, and initial conflict bytes are retained in this new evidence directory. Root owns staging, merge completion and publication."
+  },
+  "source_retention": [
+    {
+      "path": "tests/test_compare_performance_plate.py",
+      "bytes": 57901,
+      "sha256": "edcf02e99ce66a9910e8f3173d6a66e929390321280581678e91fb277f93a4ba",
+      "method_count": 71,
+      "published_methods": 64,
+      "all_published_method_bodies_ast_identical": true,
+      "published_changes_from_original_methods": [],
+      "added_methods": [
+        "AdditionalArrayAdmissionTests.test_indexed_identity_read_race_is_rejected",
+        "AdditionalArrayAdmissionTests.test_memoryview_and_byte_subclasses_are_not_complete_source_bytes",
+        "AdditionalArrayAdmissionTests.test_public_array_constants_match_independent_reviewed_bytes",
+        "AdditionalArrayAdmissionTests.test_repinning_indexed_and_intermediate_files_cannot_replace_original",
+        "AdditionalArrayAdmissionTests.test_repinning_indexed_source_cannot_admit_relocation_or_other_bytes",
+        "AdditionalArrayAdmissionTests.test_repinning_indexed_source_cannot_admit_structural_mutations",
+        "AdditionalArrayAdmissionTests.test_unrecognized_complete_indexed_pin_is_rejected"
+      ],
+      "published_bytes_sha256": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932",
+      "original_method_count": 54,
+      "original_methods_present": true,
+      "published_method_retention": "All complete published test method ASTs are identical in the resolved file.",
+      "published_additional_methods": [
+        "FixtureSourceTransitionTests.test_exact_candidate_binds_all_bytes_and_complete_reversal",
+        "FixtureSourceTransitionTests.test_exact_helper_only_predecessor_retains_upstream_admission",
+        "FixtureSourceTransitionTests.test_execute_refuses_changed_fixture_before_any_native_launch",
+        "FixtureSourceTransitionTests.test_index_only_and_unrelated_edits_are_refused",
+        "FixtureSourceTransitionTests.test_nonbyte_sources_and_nonboolean_modes_are_refused",
+        "FixtureSourceTransitionTests.test_original_pin_and_both_original_modes_remain",
+        "FixtureSourceTransitionTests.test_portability_source_is_refused_for_paired_comparison",
+        "FixtureSourceTransitionTests.test_registered_fixture_remains_subject_to_final_stability",
+        "FixtureSourceTransitionTests.test_relocated_replacement_is_refused",
+        "FixtureSourceTransitionTests.test_reversal_independently_refuses_outside_change"
+      ]
+    },
+    {
+      "path": "tests/test_compare_header_material.py",
+      "bytes": 47329,
+      "sha256": "b33b44d2a2459a274fad35580e0a9ce08fb6b3df834b388b51fa98e01a1473e4",
+      "method_count": 41,
+      "published_methods": 32,
+      "all_published_method_bodies_ast_identical": true,
+      "published_changes_from_original_methods": [
+        "FixtureTransitionTests.test_current_checkout_reports_its_actual_admitted_identity"
+      ],
+      "added_methods": [
+        "ArrayReaderAdmissionTests.test_bad_source_is_refused_before_executable_or_process_access",
+        "ArrayReaderAdmissionTests.test_complete_byte_source_type_is_required",
+        "ArrayReaderAdmissionTests.test_complete_indexed_pin_is_required_after_exact_reversal",
+        "ArrayReaderAdmissionTests.test_empty_second_bank_and_boolean_substitution_remain_invalid",
+        "ArrayReaderAdmissionTests.test_exact_original_and_indexed_sources_keep_independent_pins",
+        "ArrayReaderAdmissionTests.test_header_readers_agree_on_indexed_source_and_keep_original_pins",
+        "ArrayReaderAdmissionTests.test_indexed_identity_is_stable_and_drift_is_refused_after_mocked_capture",
+        "ArrayReaderAdmissionTests.test_repinning_cannot_admit_missing_duplicate_or_changed_array",
+        "ArrayReaderAdmissionTests.test_repinning_cannot_admit_relocation_or_unrelated_append"
+      ],
+      "published_bytes_sha256": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72",
+      "original_method_count": 24,
+      "original_methods_present": true,
+      "published_method_retention": "All complete published test method ASTs are identical in the resolved file.",
+      "published_additional_methods": [
+        "BaselineTransitionTests.test_indexed_array_current_identity_cannot_replace_actual_or_original",
+        "BaselineTransitionTests.test_indexed_array_keeps_the_exact_genuine_retained_baseline",
+        "BaselineTransitionTests.test_indexed_array_preserves_the_paired_uimodel_and_main_source_pins",
+        "FixtureTransitionTests.test_indexed_array_does_not_admit_unreviewed_complete_files",
+        "FixtureTransitionTests.test_indexed_array_reverses_through_all_exact_predecessors",
+        "FixtureTransitionTests.test_repinning_all_intermediates_cannot_replace_the_historical_baseline",
+        "FixtureTransitionTests.test_repinning_indexed_array_cannot_admit_wrong_traversal_or_duplicate_helper",
+        "FixtureTransitionTests.test_repinning_indexed_array_still_requires_the_exact_helper_else_predecessor"
+      ]
+    }
+  ],
+  "original_method_explanation": {
+    "p1": "All original 54 test method bodies remain AST-identical, and all published 64 method bodies remain AST-identical.",
+    "header": "All original 24 methods remain. Published source intentionally expanded only FixtureTransitionTests.test_current_checkout_reports_its_actual_admitted_identity to accept the indexed hash and exact repair variant; its prior accepted variants and assertions remain. That published expanded body and all 31 other published method bodies are retained AST-identically. The other 23 original method bodies remain AST-identical."
+  },
+  "policy": {
+    "p1": {
+      "public_constants": [
+        "P1_INDEXED_ARRAY_SHA256",
+        "P1_ORIGINAL_ARRAY",
+        "P1_INDEXED_ARRAY"
+      ],
+      "indexed_variant": "p1-helper-constexpr-else-indexed-array",
+      "indexed_candidate_only": true,
+      "indexed_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "transition_intermediate_fixture_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+      "transition_reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "original_and_helper_behavior": "Original source remains accepted in both modes; helper-only and indexed variants remain candidate-only. No former local alias names or local metadata schema are required."
+    },
+    "h1_paired": {
+      "intentional_published_change": "Exact indexed source is admitted by the published paired comparator. The prior local test requiring rejection was replaced with exact cross-reader chain agreement and rejection of an unrelated append even when both current pins are replaced.",
+      "chain_sha256": [
+        "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+        "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+        "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+        "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+      ],
+      "genuine_baseline_required": true,
+      "historical_root_redirection": false
+    },
+    "standalone_readers": {
+      "active_FIXTURE_SHA256": "The published active indexed source identity remains current.",
+      "ORIGINAL_FIXTURE_SHA256": "The historical complete source identity is separately required and verified by whole-file reversal.",
+      "title_original_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+      "header_original_sha256": "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+      "indexed_variants_candidate_only": true,
+      "typed_semantics": "Independent cases preserve nine elements in each drawbar bank and distinguish integer 1 from boolean true."
+    }
+  },
+  "deduplication": {
+    "published_p1_coverage_retained": [
+      "Original and helper admission with genuine original pin",
+      "Exact public indexed variant and reversal metadata",
+      "Candidate-only boundary and paired refusal",
+      "Nonbyte and nonboolean refusal",
+      "Changed, relocated and unrelated bytes",
+      "Final input stability and prelaunch refusal"
+    ],
+    "additional_p1_coverage": [
+      "Independent public array constants and complete identities",
+      "Memoryview and bytes subclass refusal",
+      "Repinned missing, duplicate, mixed, altered or out-of-bounds array blocks",
+      "Repinned relocation and unrelated append",
+      "Simultaneous indexed/intermediate repinning cannot replace genuine original",
+      "Incorrect complete indexed identity",
+      "Identity/read race with a stale captured file identity"
+    ],
+    "additional_header_reader_coverage": [
+      "Independent active/indexed and immutable original identities for both standalone readers",
+      "Strict complete byte types",
+      "Repinned missing, duplicate and changed arrays",
+      "Repinned relocation and unrelated append",
+      "Incorrect complete indexed identity",
+      "Cross-reader indexed H1 agreement and immutable distinct reversal pins",
+      "Refusal before executable/process access",
+      "Source and executable stability after mocked capture",
+      "Empty second drawbar bank and boolean substitution remain invalid"
+    ],
+    "reason": "The published P1 tests already cover overlapping local positive admission, ordinary type/mode, post-pin and prelaunch behavior. The resolved file preserves those published bodies and adds only distinct adversarial cases. All nine local standalone-reader methods remain, adapted to the intentional published API and H1 policy."
+  },
+  "qualification": {
+    "receipt": "source-only-qualification.json",
+    "receipt_sha256": "f20945181697b9c009b59eb77257ad09b79bb0910889e9995a2c2a6f0254baf0",
+    "started_utc": "2026-11-17T07:49:03.489293+00:00",
+    "completed_utc": "2026-11-17T07:49:04.576125+00:00",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "results": [
+      {
+        "path": "tests/test_compare_performance_plate.py",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "tests/test_compare_performance_plate.py",
+          "-v"
+        ],
+        "test_methods": 71,
+        "individual_ok_records": 71,
+        "unittest_seconds": 0.703,
+        "process_seconds": 1.010503019002499,
+        "exit_code": 0,
+        "invocations": 1,
+        "retries": 0,
+        "skips": 0,
+        "stdout": "test_compare_performance_plate.stdout",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "test_compare_performance_plate.stderr",
+        "stderr_sha256": "d46961d28472761e1eeeb63faac686c3beef588d94966a33b3b5750a8d51b825"
+      },
+      {
+        "path": "tests/test_compare_header_material.py",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "tests/test_compare_header_material.py",
+          "-v"
+        ],
+        "test_methods": 41,
+        "individual_ok_records": 41,
+        "unittest_seconds": 0.746,
+        "process_seconds": 1.0831959930001176,
+        "exit_code": 0,
+        "invocations": 1,
+        "retries": 0,
+        "skips": 0,
+        "stdout": "test_compare_header_material.stdout",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "test_compare_header_material.stderr",
+        "stderr_sha256": "086e481caad58cf014042a0e5477c4b928de90dd758b6fb1c9746919f861a295"
+      }
+    ],
+    "all_nine_inputs_identical_before_and_after": true,
+    "all_nine_inputs_still_identical_at_report": true,
+    "source_sha256": {
+      "tests/test_compare_performance_plate.py": "edcf02e99ce66a9910e8f3173d6a66e929390321280581678e91fb277f93a4ba",
+      "tests/test_compare_header_material.py": "b33b44d2a2459a274fad35580e0a9ce08fb6b3df834b388b51fa98e01a1473e4",
+      "tools/compare_performance_plate.py": "aab3b5acb2b4e9ff8d6c9491854d81f02a70f20ba618ef7424ace56cbb9744b5",
+      "tools/compare_header_material.py": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328",
+      "apps/standalone/native_tests/test_standalone_title_density.py": "012cb2ccb260ecb433f53f04049740e6fed687bb94143ee4261bf50e771b2999",
+      "apps/standalone/native_tests/test_standalone_header_statistics.py": "c3b52ee56645e51d4144c296d4fd0b6579c93e13b11b117fb4d67f2a98a9c4bd",
+      "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+      "apps/standalone/native_tests/test_standalone_performance_plate.cpp": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    },
+    "additional_test_execution_during_reporting": false
+  },
+  "evidence": {
+    "retained_inputs": "retained-inputs.json",
+    "source_preparation": "source-preparation.json",
+    "preparation_snapshot_note": "tests_executed=0 records the historical preparation state; the subsequent first executions are recorded separately in source-only-qualification.json.",
+    "patch": "combined-from-published.patch",
+    "all_six_stage_archive_hashes_verified": true,
+    "complete_first_stdout_and_stderr_retained": true
+  },
+  "prior_history": {
+    "records_verified_unchanged": [
+      {
+        "path": "docs/development/2026-11-16-console-completion/notes/A56.md",
+        "bytes": 4221,
+        "sha256": "97789deecdb2530ddd941d84f75b32a83aeec89b232861bb80effb8d28c11259",
+        "matches_prior_frozen_identity": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted.json",
+        "bytes": 71064,
+        "sha256": "4dbf51bc4ba9bf05edd8cf6e91b58c72720908a44eba5611c6b90310dfa51d78",
+        "matches_prior_frozen_identity": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-core-hosted/core-cf87a587-admission.json",
+        "bytes": 68766,
+        "sha256": "04362d2d6f8dc4fda82f26c12abbe62f69a372b3a989a1b1a936ad98b28548d3",
+        "matches_prior_frozen_identity": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-repair-hosted/core-d2ed03b9-admission.json",
+        "bytes": 71292,
+        "sha256": "080beadea8545f13e287b8fce8bfa37a4d1e5087bc5c97b5f2aa5fa045d9eb28",
+        "matches_prior_frozen_identity": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/array-regressions-report.json",
+        "bytes": 17805,
+        "sha256": "f935bc74a290dd7596208f4951396ac4676ecfae741d3e29f52fa6ec60920819",
+        "matches_prior_frozen_identity": true
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-array-regressions/source-only-qualification.json",
+        "bytes": 10522,
+        "sha256": "b2abb130664757c06218653eb4748906d1bbd4788cd213b69ed97ae2519aa928",
+        "matches_prior_frozen_identity": true
+      }
+    ],
+    "interpretation": "Earlier Core failures, Core successor results and local array-regression results remain bound to their original sources. The old local paired-H1 rejection was a prior candidate policy, superseded by the intentional published exact indexed chain. No earlier receipt or accepted A56 note was rewritten."
+  },
+  "scope_and_limits": {
+    "a56_source_edits": [
+      "tests/test_compare_performance_plate.py",
+      "tests/test_compare_header_material.py"
+    ],
+    "a56_evidence_edits": "Only this new A56-combined-indexed-regressions directory.",
+    "production_or_tool_changes_by_a56": false,
+    "staging_commits_or_ref_changes_by_a56": false,
+    "ci_requests_or_retries_by_a56": false,
+    "native_build_or_ctest_execution_by_a56": false,
+    "criteria_or_deadline_changes_by_a56": false,
+    "test_sources_changed_after_execution": false,
+    "qualification_boundary": "These are source-only Python results for the nine frozen inputs. They do not establish native, Windows, sanitizer, hosted CI or any later merged/published-source acceptance. Root owns affected native/integrity qualification and final acceptance.",
+    "independent_review": "A59 was notified of the frozen source preparation and actual first-execution results; any independent review receipt remains separate."
+  }
+}

@@ -19,13 +19,28 @@ All sixty distinct workers are root-accepted in ten waves of six. The
 verifies all 60 note hashes with zero errors. This closes records, not product
 qualification. No follow-up or older worker counts again.
 
-The [current verified repair publication](docs/development/2026-11-16-console-completion/reports/repair-publication.json)
-is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
-`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
-`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
-independent API/Git verification and all 587 repaired input identities are recorded.
-**All new-source hosted results are pending at this handoff**; the three workflows
-were triggered, and no first-source pass transfers to this repair.
+The published indexed-fixture source is `54859886268ce83c36f359c43327f7c72a77ae82`,
+with tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a` and parents `d2ed03b9…`
+and `ea02c546…`. The [complete source-specific hosted record](docs/development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json)
+observes **16/16 successful jobs, attempt one, with no cancellations**: Core 6/6,
+native standalone 6/6 and VST3 4/4. Windows native now passes **78/78**;
+the title's 18 cases, header's 103 inequalities and P1's 191 checks / 62 visual
+screens all execute successfully. The strict native sanitizer passes **41/41**.
+These results retain the original failures and qualify only that published source.
+
+Root is finishing a preserving merge with the accepted local evidence and worker
+records. Its [separate merged-source local qualification](docs/development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json)
+passes **3/3 affected native reader CTests**; the
+[merged source-only suites](docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-only-qualification.json)
+pass **71/71 P1 and 41/41 header methods**, first invocation without skips. Five
+Python inputs differ from `5485988`; the other 582/587 inputs, all C++ fixtures,
+production application, workflows, criteria and deadlines remain unchanged.
+Published comparator schemas are preserved, original and active reader identities
+are separate, and P1 failures expose a bounded diagnostic summary. The
+[earlier seven-test qualification](docs/development/2026-11-16-console-completion/reports/array-local-qualification.json)
+and three byte-identical complete Linux fixture streams retain their own source.
+Final document integrity, independent combined admission, guarded publication and
+new-source hosted qualification follow in the [live checkpoint](docs/development/2026-11-16-console-completion/CHECKPOINT.md).
 
 The [first verified console publication](docs/development/2026-11-16-console-completion/reports/implementation-publication.json)
 is `cf87a587d0002d106e5210b57a39fd1967245a8f`, tree
@@ -46,17 +61,20 @@ affected CTests pass with unchanged Linux fixture/application bytes. Every
 production, CMake, workflow, workload, numerical and timeout boundary is retained.
 The capture newline correction addresses a source-derived latent expectation;
 the original Windows KeyError occurred before any hash comparison. Do not
-claim a newly observed Windows newline failure or repaired Windows qualification.
-The repair publication is verified above; root records all subsequent new-source
-hosted results in the live checkpoint. Older passes do not qualify changed inputs.
+claim a newly observed Windows newline failure or treat that Linux receipt as
+Windows qualification. Actual repaired Windows outcomes are recorded separately
+above; the live checkpoint owns the current merge. Older passes do not qualify
+changed inputs.
 
 Preserve the predecessor `6287055` title/header copied-state protocol failures,
 [A55's exact helper transition](docs/reviews/CONSOLE_HELPER_TRANSITION_ADMISSION.md)
 and [separate failure-only diagnostics](docs/development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json).
-The first console Windows build never reached those readers. No differing leaf
-or cause is established. Observe the new Windows path/type/value evidence before
-choosing a correction; preserve failures and keep strict typed equality, values,
-criteria, deadlines and workloads. No aggregate-only or unchanged-source retry
+The first console Windows build never reached those readers. The later d2ed03b
+run identifies empty drawbar lists at `view.controls.drawbars[0][1]` and
+`session.controls.drawbars[0][1]`, both requiring nine values. Its P1 non-screen
+failure identity remains unavailable. The indexed5485988 source passes all three;
+no exact compiler mechanism is established. Preserve failures and strict typed
+equality, values, criteria, deadlines and workloads. No aggregate-only or unchanged-source retry
 is admitted. Wait for every source-specific job to become terminal before
 another same-ref push; root alone publishes accepted work with a fresh expected
 SHA and no force, then independently verifies remote commit/tree/parents/contents.

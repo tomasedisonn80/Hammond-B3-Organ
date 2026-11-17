@@ -1,5 +1,34 @@
 # Development log
 
+## 2026-11-17 UTC — Indexed fixtures pass Windows; both branches reconciled
+
+The published source `54859886268ce83c36f359c43327f7c72a77ae82` has
+[all sixteen hosted jobs successful](development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json),
+attempt one without cancellations. Windows native passes 78/78, including title 18,
+header 103 and P1's 191 checks/62 screens; strict sanitizer passes 41/41. This is
+separate from d2ed03b's [15-success/one-failure matrix](development/2026-11-16-console-completion/reports/repair-ci-complete.json):
+its title/header readers identify empty nine-element drawbar arrays, while the
+P1 non-screen failure identity remains unavailable. Original failures are retained;
+the precise MSVC mechanism is not established.
+
+Root's independently qualified indexed C++ fixtures are byte-identical to `5485988`'s.
+The preserving merge keeps published H1/P1 reversible fixture admissions, adds
+strict original/active reader identities and bounded failure-only P1 diagnostics,
+and retains every published test body. Its new source-only suites pass 71/71 and
+41/41 on the first invocation; three affected real-reader CTests pass separately.
+[All 587 merged inputs are frozen](development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json):
+five Python files change from `5485988` and 582 inputs remain unchanged. Production,
+application/gallery, workflows, criteria and deadlines are unchanged. Original
+three complete Linux streams remain byte-identical before/after the serializer
+repair at their recorded earlier source. New-source publication/hosted results
+remain distinct follow-up work in the live checkpoint.
+
+All 60 actual workers are root-accepted in ten waves of six; the executed strict
+check verifies every note with zero errors. Current README, plan/status/next steps,
+agent instructions and handoff now recover these source-specific results. Native
+library wiring, physical/device/release gates and literal whole-interface 1:1
+remain open. Storage has more than 40 GiB free; original evidence is preserved.
+
 ## 2026-11-17 — Console repair published; original failures retained and handoff refreshed
 
 The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)

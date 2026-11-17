@@ -9,6 +9,52 @@ the [strict record check](reports/final-worker-strict.json): 60 note hashes veri
 zero running workers and zero errors. This closes worker records; hosted/product
 qualification remains separate. The [ledger](assignments.json) records every review.
 
+## Current reconciled source — 17 November 2026 UTC
+
+Root committed the separately qualified eight-input candidate and accepted worker
+records locally as `4378fff74a3a11de400e3a38b877d170bad6c57e`, tree
+`5248bcfe68f15225060dd09adec1e7d6849d6e20`. Its independently API/Git-verified
+[equivalent immutable object](reports/combined-indexed-object-preparation.json) is
+`8189a49eacab5d4e6ce6c178862e83b03bdec437`; preparing it did not move `main`.
+The remote advanced independently to `54859886268ce83c36f359c43327f7c72a77ae82`,
+tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a`; the preserving merge is in progress.
+The three indexed C++ serializers are byte-identical in both branches. The
+[remote delta review](reports/A59-copied-state-followup/remote-548-source-review.json)
+admits its exact H1/P1 source transitions. The merge keeps those published schemas,
+adds bounded failure-only P1 diagnostics, and separates original/active reader pins.
+
+Source `5485988` now has [all sixteen attempt-one jobs successful](reports/indexed-remote-ci-complete.json),
+with no cancellations: Core 6/6, native 6/6 and VST3 4/4. Windows native passes 78/78,
+including title 18, header 103 and P1's 191 checks/62 screens; strict sanitizer passes 41/41.
+A57 independently retains the complete six-job Native evidence, all deadlines,
+37 instrumented executables and 63 inputs. No result transfers to the merged Python.
+
+The [merged source-only suites](reports/A56-combined-indexed-regressions/source-only-qualification.json)
+pass 71/71 P1 and 41/41 header methods, first invocation without skips; every
+published 64/32 method body is retained. The separate
+[real-reader selection](reports/combined-indexed-local-qualification.json) passes
+3/3 in 9.461962 seconds, with all 587 inputs stable. Five Python inputs change from `5485988`;
+582 inputs, all C++ fixtures, the application, workflows and numerical/deadline
+criteria remain unchanged. The [complete P1 output](reports/combined-indexed-p1-retention.json)
+was copied without reexecution and its temporary originals remain present. Earlier
+[seven-test and byte-identical stream evidence](reports/array-local-qualification.json)
+retains its original source boundary.
+
+Root has refreshed the current README, agent instructions, plan/status/next steps,
+log and handoff. Next: finish document integrity after authoring; accept A56/A57/A59
+follow-up reports; resolve/stage the owned merge; preserve both parents in the
+published commit; use a fresh expected remote SHA without force; independently
+verify commit/tree/parents/content and observe all new-source hosted families.
+All `5485988` jobs are terminal, so they will not be cancelled by the next push.
+All 60 accepted notes and strict record closure remain unchanged. More than 40 GiB
+is free; no original evidence or another workspace requires cleanup.
+
+## Historical checkpoint sequence
+
+The following source-bound entries retain earlier observations and next-action
+wording. The current section above supersedes their workflow status; immutable
+reports and accepted notes remain unchanged.
+
 ## Current verified repair; complete CI and next candidate
 
 The [current verified repair publication](reports/repair-publication.json)

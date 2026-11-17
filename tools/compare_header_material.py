@@ -2,7 +2,7 @@
 r"""Independent bounded H1 preservation and 103-screen comparison.
 
 Freeze this tool and the 48-case native fixture before H1 painting. The current
-fixture admits only the two exact reversible MSVC source corrections below;
+fixture admits only the exact reversible source corrections below;
 its case values match the original baseline, while its source bytes differ.
 The support is the independently enumerated union of Original gradient/grain
 and H1 field/grain operations. Candidate colors, helpers and differences never
@@ -76,6 +76,7 @@ BASE_COMMIT = "6047723b595259de355c74342e48a8ae2ee1e228"
 PORTABLE_FIXTURE_SHA = "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d"
 CAST_FIXTURE_SHA = "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
 HELPER_ELSE_FIXTURE_SHA = "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+INDEXED_ARRAY_FIXTURE_SHA = "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
 BASELINE_COMPARATOR_SHA = "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760"
 PINNED = {
     CONTRACT: "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
@@ -1056,7 +1057,39 @@ def fixture_portability_transition(root):
     current_sha=sha(current)
     line_source=current
     line_source_sha=current_sha
-    helper_else=current_sha==HELPER_ELSE_FIXTURE_SHA
+    indexed_array=current_sha==INDEXED_ARRAY_FIXTURE_SHA
+    if indexed_array:
+        original_array=(
+            b'template <typename Range, typename Writer>\n'
+            b'void array(std::ostream& out, const Range& values, Writer write) {\n'
+            b"    out << '[';\n"
+            b'    bool first = true;\n'
+            b'    for (const auto& value : values) {\n'
+            b"        if (!first) out << ',';\n"
+            b'        first = false;\n'
+            b'        write(out, value);\n'
+            b'    }\n'
+            b"    out << ']';\n"
+            b'}\n'
+        )
+        indexed_array_source=(
+            b'template <typename Range, typename Writer>\n'
+            b'void array(std::ostream& out, const Range& values, Writer write) {\n'
+            b"    out << '[';\n"
+            b'    for (std::size_t index = 0; index < values.size(); ++index) {\n'
+            b"        if (index != 0) out << ',';\n"
+            b'        write(out, values[index]);\n'
+            b'    }\n'
+            b"    out << ']';\n"
+            b'}\n'
+        )
+        require(current.count(indexed_array_source)==1 and original_array not in current,
+                "fixture does not contain exactly the reviewed indexed array repair")
+        line_source=current.replace(indexed_array_source,original_array,1)
+        require(sha(line_source)==HELPER_ELSE_FIXTURE_SHA,
+                "reversing the indexed array repair does not reproduce the reviewed constexpr-else fixture")
+        line_source_sha=HELPER_ELSE_FIXTURE_SHA
+    helper_else=line_source_sha==HELPER_ELSE_FIXTURE_SHA
     if helper_else:
         original_helper=(b"    if constexpr (h1_fixture_helper_present<Drawer>) {\n"
             b"        reference_header_h1_material(drawing, bounds, scale);\n"
@@ -1064,9 +1097,9 @@ def fixture_portability_transition(root):
         corrected_helper=(b"    if constexpr (h1_fixture_helper_present<Drawer>) {\n"
             b"        reference_header_h1_material(drawing, bounds, scale);\n"
             b"        return true;\n    } else {\n        return false;\n    }\n")
-        require(current.count(corrected_helper)==1 and original_helper not in current,
+        require(line_source.count(corrected_helper)==1 and original_helper not in line_source,
                 "fixture does not contain exactly the reviewed constexpr else repair")
-        line_source=current.replace(corrected_helper,original_helper,1)
+        line_source=line_source.replace(corrected_helper,original_helper,1)
         require(sha(line_source)==CAST_FIXTURE_SHA,
                 "reversing the constexpr else repair does not reproduce the reviewed cast fixture")
         line_source_sha=CAST_FIXTURE_SHA
@@ -1096,6 +1129,12 @@ def fixture_portability_transition(root):
             "intermediate_fixture_sha256":CAST_FIXTURE_SHA,
             "method":"The exact reviewed constexpr-else block reverses to the pinned cast fixture; reversing that fixture's sole complete dimension line reproduces the genuine original fixture SHA-256. Both helper branches and every case value are preserved."})
         result["reviewed_current_fixture_sha256"]["explicit-float-casts-and-constexpr-else"]=HELPER_ELSE_FIXTURE_SHA
+    if indexed_array:
+        result.update({"current_fixture_repair":"explicit-float-casts-and-constexpr-else-and-indexed-array",
+            "exact_indexed_array_reversal":True,
+            "indexed_array_reversed_fixture_sha256":HELPER_ELSE_FIXTURE_SHA,
+            "method":"The exact reviewed indexed array helper reverses to the pinned constexpr-else fixture; that exact branch reverses to the pinned cast fixture, whose sole dimension line reproduces the genuine original fixture SHA-256. Element writers, complete case values and every historical pin remain preserved."})
+        result["reviewed_current_fixture_sha256"]["explicit-float-casts-and-constexpr-else-and-indexed-array"]=INDEXED_ARRAY_FIXTURE_SHA
     return result
 
 

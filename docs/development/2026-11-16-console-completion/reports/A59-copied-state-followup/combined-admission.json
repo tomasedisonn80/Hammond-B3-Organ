@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "reviewer": "A59",
+  "continuation": true,
+  "additional_worker_credit": 0,
+  "observed_utc": "2026-11-17T07:55:26.177449+00:00",
+  "decision": "ADMITTED_COMBINED_SOURCE_TESTS_READERS_AND_DOCUMENT_INTEGRITY_HOSTED_PENDING",
+  "scope": "Independent admission of the frozen combined source after reconciling published 548 with preserved local 4378, its recorded source-only suites and three real native reader gates, and the separately executed final document/repository-integrity gate. Earlier source-specific receipts remain immutable.",
+  "published_base": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "published_tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+  "preserved_local_commit": "4378fff74a3a11de400e3a38b877d170bad6c57e",
+  "preserved_local_tree": "5248bcfe68f15225060dd09adec1e7d6849d6e20",
+  "remote_delta_admission": {
+    "path": "docs/development/2026-11-16-console-completion/reports/A59-copied-state-followup/remote-548-source-review.json",
+    "bytes": 10259,
+    "sha256": "3a5445a01c70435d98310fe3b7a3b7cdd82dc8ed6d3e725da0bf18de31af2dab"
+  },
+  "frozen_combined_inputs": {
+    "tests/test_compare_performance_plate.py": {
+      "path": "tests/test_compare_performance_plate.py",
+      "bytes": 57901,
+      "sha256": "edcf02e99ce66a9910e8f3173d6a66e929390321280581678e91fb277f93a4ba"
+    },
+    "tests/test_compare_header_material.py": {
+      "path": "tests/test_compare_header_material.py",
+      "bytes": 47329,
+      "sha256": "b33b44d2a2459a274fad35580e0a9ce08fb6b3df834b388b51fa98e01a1473e4"
+    },
+    "tools/compare_performance_plate.py": {
+      "path": "tools/compare_performance_plate.py",
+      "bytes": 91308,
+      "sha256": "aab3b5acb2b4e9ff8d6c9491854d81f02a70f20ba618ef7424ace56cbb9744b5"
+    },
+    "tools/compare_header_material.py": {
+      "path": "tools/compare_header_material.py",
+      "bytes": 100851,
+      "sha256": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "path": "apps/standalone/native_tests/test_standalone_title_density.py",
+      "bytes": 26844,
+      "sha256": "012cb2ccb260ecb433f53f04049740e6fed687bb94143ee4261bf50e771b2999"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "path": "apps/standalone/native_tests/test_standalone_header_statistics.py",
+      "bytes": 37785,
+      "sha256": "c3b52ee56645e51d4144c296d4fd0b6579c93e13b11b117fb4d67f2a98a9c4bd"
+    },
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "path": "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+      "bytes": 49026,
+      "sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61268,
+      "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "path": "apps/standalone/native_tests/test_standalone_performance_plate.cpp",
+      "bytes": 75580,
+      "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    }
+  },
+  "combined_source_review": {
+    "cpp_fixtures": "All three fixture files are byte-identical to published 548 and the preserved locally qualified indexed candidate. Reconciliation changes no C++ fixture, production, CMake or workflow input.",
+    "header_comparator": "The complete comparator is byte-identical to published 548: SHA-256 9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328. Its exact indexed source admission is intentionally broader than the previous local candidate, while all historical baseline and protected-source requirements remain.",
+    "header_exact_reversal_chain": [
+      "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+      "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+      "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+    ],
+    "header_source_boundary": "The standalone reader original is 86acc (its prior canonical fixture); the paired historical baseline remains a6b65. The exact paired transition passes through 86acc and 96149 before a6b65. These distinct original identities are explicit and never substituted for each other.",
+    "p1_comparator": "Published 548 source admission, variant names and transition metadata are retained. The only extra delta is the previously admitted failure-only bounded summary: at most 8 rows, check labels limited to 160 characters and details limited to 512 characters, omitted count. Successful summary, predicates and results are unchanged.",
+    "p1_exact_reversal_chain": [
+      "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+      "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    ],
+    "p1_paired_boundary": "Indexed/helper-only fixture forms remain candidate-only. Paired P1 still requires the original 4f187 fixture and the unchanged genuine baseline/UiModel/source requirements.",
+    "canonical_readers": "Published active FIXTURE_SHA256 values are retained. New ORIGINAL_FIXTURE_SHA256 constants bind the old title facc85 and header 86acc sources; new INDEXED_FIXTURE_SHA256 constants equal the active pins. Bytes-only, unique exact block, complete reversal hash and exact indexed full hash restrict admission. It runs before native launch; final hash binds the initially observed fixture.",
+    "ast_review": "Against published 548, H1 comparator has no delta. P1 changes only execute for failure diagnostics. Each canonical reader changes only main plus the new admit_fixture_bytes helper and four added constants; every published assignment, including active pins, remains unchanged. All expected state, strict types, geometry/numerical definitions and deadlines are preserved.",
+    "prior_claim_boundary": "The earlier local statement that the H1 paired comparator was unchanged is not transferred to this combined source. The new exact published H1 transition was independently reviewed and is admitted on its own terms."
+  },
+  "source_test_review": {
+    "receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-only-qualification.json",
+      "bytes": 11691,
+      "sha256": "f20945181697b9c009b59eb77257ad09b79bb0910889e9995a2c2a6f0254baf0"
+    },
+    "preparation": {
+      "path": "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-preparation.json",
+      "bytes": 4652,
+      "sha256": "24a09ae53a31f3de82e52269555084762a43c1c5887c8496e286a1ca37fd3634"
+    },
+    "explanatory_report": {
+      "path": "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/combined-indexed-regressions-report.json",
+      "bytes": 17089,
+      "sha256": "e8e0980bf0d9bd2c87cd8adb2a1cd7adf24a341f0139cbceac80cdcc65651302"
+    },
+    "published_relative_patch": {
+      "path": "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/combined-from-published.patch",
+      "bytes": 18301,
+      "sha256": "d8b124eccc86d35ee19d9f6ab6582daeacfeeab180d638cccb26356799eb6ee5"
+    },
+    "all_96_published_method_asts_identical": true,
+    "p1_methods": {
+      "published": 64,
+      "added": 7,
+      "total": 71,
+      "all_method_rows_ok": true,
+      "unittest_seconds": 0.703,
+      "process_seconds": 1.010503019002499
+    },
+    "header_methods": {
+      "published": 32,
+      "added": 9,
+      "total": 41,
+      "all_method_rows_ok": true,
+      "unittest_seconds": 0.746,
+      "process_seconds": 1.0831959930001176
+    },
+    "skips": 0,
+    "first_and_only_invocations_reported": true,
+    "both_exit_codes_zero": true,
+    "all_raw_log_hashes_verified": true,
+    "all_nine_before_after_current_input_hashes_identical": true,
+    "historical_baseline_difference": "The sole expansion of an original d2ed H1 method is the already published current-checkout test accepting exact indexed 8c. Its published body is retained exactly. Original 54 P1 methods are unchanged.",
+    "new_coverage": "Additional source-only tests cover independent public byte literals, strict source types, malformed/duplicate/relocated blocks, adversarial indexed/intermediate repinning, read races and canonical entry/exit stability. The standalone/paired H1 agreement test checks the distinct original identities and exact chain, with unrelated bytes refused even if both new pins are repinned. Empty-bank and bool-versus-int refusals remain.",
+    "setup_boundary": "All published test setups remain; the earlier local historical ROOT redirection is absent. Native/process/frame/numerical mocks in the added source tests isolate admission and stability only; they do not claim native/numerical execution."
+  },
+  "merged_reader_qualification": {
+    "receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json",
+      "bytes": 72526,
+      "sha256": "ce01bb903a8e5bc03803c0e479d44549bf5fc6cc1aa2bd082051c63d842786b4"
+    },
+    "status": "passed",
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/21cce69f7784/build-native",
+      "--output-on-failure",
+      "--parallel",
+      "1",
+      "--no-tests=error",
+      "-R",
+      "^test_standalone_(title_density|header_statistics|performance_plate_numerical)$",
+      "--output-junit",
+      "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/combined-indexed-affected.xml"
+    ],
+    "exit_code": 0,
+    "seconds": 9.461961724002322,
+    "log": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-affected.log",
+      "bytes": 856,
+      "sha256": "2cdce87304f63f27a0a071974ccf137978b4d41fc06179f608c070de6d5cad22"
+    },
+    "xml": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-affected.xml",
+      "bytes": 4408,
+      "sha256": "81d4a85168023fef9095af32684fdbc023e8b385e8401153ac2d972ca2e7db67"
+    },
+    "complete_detail_log": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-affected-detail.log",
+      "bytes": 91654,
+      "sha256": "a9f0b9f2a369b6b6f84ac2178e011d3150b93dbf8241dc1cbf54be9ebdac5be3"
+    },
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "names": [
+        "test_standalone_title_density",
+        "test_standalone_performance_plate_numerical",
+        "test_standalone_header_statistics"
+      ],
+      "skipped": 0,
+      "tests": 3
+    },
+    "all_587_current_source_hashes_independently_match_receipt": true,
+    "published_git_objects_independently_compared": true,
+    "changed_from_published": {
+      "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+        "combined": "c3b52ee56645e51d4144c296d4fd0b6579c93e13b11b117fb4d67f2a98a9c4bd",
+        "published": "000aa38a03402e64a0bb5ef6642294973637fa0b7270659c8c23af60eaf40d18"
+      },
+      "apps/standalone/native_tests/test_standalone_title_density.py": {
+        "combined": "012cb2ccb260ecb433f53f04049740e6fed687bb94143ee4261bf50e771b2999",
+        "published": "d37591ec80910769d61f81cf90e7d937bf4844dcd307ae887ac5099c440a8a79"
+      },
+      "tests/test_compare_header_material.py": {
+        "combined": "b33b44d2a2459a274fad35580e0a9ce08fb6b3df834b388b51fa98e01a1473e4",
+        "published": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+      },
+      "tests/test_compare_performance_plate.py": {
+        "combined": "edcf02e99ce66a9910e8f3173d6a66e929390321280581678e91fb277f93a4ba",
+        "published": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932"
+      },
+      "tools/compare_performance_plate.py": {
+        "combined": "aab3b5acb2b4e9ff8d6c9491854d81f02a70f20ba618ef7424ace56cbb9744b5",
+        "published": "d6fcd559d43cec25fb2d3157a9291cfe2608289465278a1e53c6da5ec2587ca5"
+      }
+    },
+    "unchanged_from_published": 582,
+    "changed_from_prior_local": {
+      "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+        "combined": "c3b52ee56645e51d4144c296d4fd0b6579c93e13b11b117fb4d67f2a98a9c4bd",
+        "prior_local": "c0e18a521d2905af285fdf1e77f868d329381f9430a8dd14d891499b8120ce95"
+      },
+      "apps/standalone/native_tests/test_standalone_title_density.py": {
+        "combined": "012cb2ccb260ecb433f53f04049740e6fed687bb94143ee4261bf50e771b2999",
+        "prior_local": "7be7a351718f0964efbd7407f2403541efe0a00c96095e4f53b09156d237a124"
+      },
+      "tests/test_compare_header_material.py": {
+        "combined": "b33b44d2a2459a274fad35580e0a9ce08fb6b3df834b388b51fa98e01a1473e4",
+        "prior_local": "49fd5a857bdb172991e6e2470921ff822e72b6a39e63e5e1b23042fdad09aee1"
+      },
+      "tests/test_compare_performance_plate.py": {
+        "combined": "edcf02e99ce66a9910e8f3173d6a66e929390321280581678e91fb277f93a4ba",
+        "prior_local": "bdb013403199552b8c7014a186e5a4a6dbe862f1263f7b8ea2fea7a394718725"
+      },
+      "tools/compare_header_material.py": {
+        "combined": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328",
+        "prior_local": "84b6dbd9a0859793f42e351293056bd0b238aa4fbae67240483d2377ba9f2d0f"
+      },
+      "tools/compare_performance_plate.py": {
+        "combined": "aab3b5acb2b4e9ff8d6c9491854d81f02a70f20ba618ef7424ace56cbb9744b5",
+        "prior_local": "7a49551493fae8bffe6764927d51ed1e37a1b6cdbe06b2bfb872670783ac4264"
+      }
+    },
+    "reported_source_changes_during_execution": [],
+    "reported_binary_changes_during_execution": [],
+    "binaries": {
+      "header": {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/test_standalone_header_material",
+        "qualified_sha256": "f0167db881ae0e425f8f590e51cb38ef0f861e52dfb32f8d4b07c16264108743",
+        "sha256": "f0167db881ae0e425f8f590e51cb38ef0f861e52dfb32f8d4b07c16264108743"
+      },
+      "p1": {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/test_standalone_performance_plate",
+        "qualified_sha256": "f9a3f67518233d94d77c53ba137d3b1fc05ee9f55619f24cf654c24cecb027a9",
+        "sha256": "f9a3f67518233d94d77c53ba137d3b1fc05ee9f55619f24cf654c24cecb027a9"
+      },
+      "title": {
+        "path": "/workspace/scratch/21cce69f7784/build-native/apps/standalone/test_standalone_footage_typography_raster",
+        "qualified_sha256": "1a47a42b3965378384fa6827c9bcd0ee059253902ee10d36efa940b665c1bd70",
+        "sha256": "1a47a42b3965378384fa6827c9bcd0ee059253902ee10d36efa940b665c1bd70"
+      }
+    },
+    "all_three_current_fixture_binary_hashes_match_receipt_and_prior_qualified_hashes": true,
+    "application_sha256": "3bb46f2ff0a830935b5f1122116b7ff457f5e8532ed1f7860843c237d09a89e9",
+    "current_application_matches": true,
+    "results": {
+      "title": {
+        "cases": 18,
+        "all_passed": true,
+        "active_pin_and_exact_original_reversal_observed": true
+      },
+      "header": {
+        "protocol_passed": true,
+        "helper_passed": true,
+        "evaluated": 103,
+        "passed": 103,
+        "failed": 0,
+        "active_pin_and_exact_original_reversal_observed": true
+      },
+      "p1": {
+        "checks_evaluated": 191,
+        "failures": 0,
+        "frozen_screens": 62,
+        "all_screens_passed": true
+      }
+    },
+    "detail_scope": "Full retained detail output was parsed for complete title/header/P1 numerical results; JUnit supplies the independent 3/3 zero-failure/skip inventory and truncates large stdout bodies.",
+    "build_scope": "No rebuild was needed or claimed for this Python-only reconciliation. All compiled inputs and three existing qualified fixture binaries are unchanged. The earlier complete-stream and 7-CTest results retain their original source scope."
+  },
+  "p1_complete_retention": {
+    "manifest": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-p1-retention.json",
+      "bytes": 14607,
+      "sha256": "c04a011b3fa8c3be79e54d2f3be2b6112ffea2ca40519291cc4752dfa40fda63"
+    },
+    "report": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-p1-candidate/report.json",
+      "bytes": 50774,
+      "sha256": "2fea89fa1d1d60da47e94b61f27cfdc55c13056d170619100bd36e1bdf22a042"
+    },
+    "files": 5,
+    "total_bytes": 1153779,
+    "all_files_independently_equal_original_temporary_files": true,
+    "all_four_compressed_and_raw_stream_identities_verified": true,
+    "copied_without_reexecution": true,
+    "mode": "candidate-only-frozen62",
+    "passed": true,
+    "checks_evaluated": 191,
+    "failures": [],
+    "candidate_screens": {
+      "all_passed": true,
+      "failed": 0,
+      "passed": 62,
+      "total": 62
+    },
+    "published_fixture_admission": {
+      "accepted_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "candidate_only": true,
+      "claim": "Source admission only; coherent build and runtime acceptance remain separate.",
+      "observed_sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "original_pinned_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+      "transition": {
+        "helper_transition": {
+          "corrected_block_sha256": "ef644e3e10e0ecc9d914f99e1c78a5bb6bdb1209aa0ecc696f86a410b3a60551",
+          "id": "p1-helper-constexpr-else-v1",
+          "original_block_sha256": "e3e8fdad56e8332de33b348d06c8a94ef1176d512b352a2079cd95b0c9ad34d5",
+          "reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+          "scope": "candidate-only",
+          "whole_file_reversal_verified": true
+        },
+        "id": "p1-fixture-constexpr-else-indexed-array-v1",
+        "intermediate_fixture_sha256": "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+        "replacements": {
+          "constexpr-else": {
+            "after_bytes": 184,
+            "after_sha256": "ef644e3e10e0ecc9d914f99e1c78a5bb6bdb1209aa0ecc696f86a410b3a60551",
+            "before_bytes": 167,
+            "before_sha256": "e3e8fdad56e8332de33b348d06c8a94ef1176d512b352a2079cd95b0c9ad34d5",
+            "occurrences": 1
+          },
+          "indexed-array": {
+            "after_bytes": 244,
+            "after_sha256": "0cee193c8b4fe1065ac47d4c062a97f7e68130819f4a060503e02eb59e50a35a",
+            "before_bytes": 251,
+            "before_sha256": "a6e4c73cfb8a7ff7eb3b580af35bf098c2da52b8c4b14c31db0dfe7c42fb73e1",
+            "occurrences": 1
+          }
+        },
+        "reversed_sha256": "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c",
+        "scope": "candidate-only",
+        "whole_file_reversal_verified": true
+      },
+      "variant": "p1-helper-constexpr-else-indexed-array"
+    }
+  },
+  "final_document_gate": {
+    "status": "passed",
+    "receipt": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-document-integrity.json",
+      "bytes": 2938,
+      "sha256": "24e819c01c642a7a7aa8008645f3668e6555d92236385d40312e74762a6aa299"
+    },
+    "command": [
+      "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/21cce69f7784/build-native",
+      "--output-on-failure",
+      "--parallel",
+      "1",
+      "--no-tests=error",
+      "-R",
+      "^python_test_repository_integrity$",
+      "--output-junit",
+      "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/combined-indexed-document-integrity.xml"
+    ],
+    "exit_code": 0,
+    "seconds": 6.616924721995019,
+    "completed_utc": "2026-11-17T07:58:08.172828+00:00",
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 1
+    },
+    "unittest_methods_in_retained_stdout": 41,
+    "unittest_seconds": 6.294,
+    "log": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-document-integrity.log",
+      "bytes": 260,
+      "sha256": "0168d4b7e80c13c8ab6822f8c275260d80208a9457cc90565b46bddb317cb986"
+    },
+    "xml": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-document-integrity.xml",
+      "bytes": 525,
+      "sha256": "8bfdde0f5f66e12495b5487ea3ffba839aad6e12071810a07bc5effdcbdc580b"
+    },
+    "complete_detail_log": {
+      "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-document-integrity-detail.log",
+      "bytes": 1014,
+      "sha256": "7638fa20d07a19f131af7e8b7526eaeae7980995f778003852f77bb1537361f2"
+    },
+    "xml_one_test_zero_failures_zero_skips_verified": true,
+    "raw_log_sha256_verified": true,
+    "qualified_source_receipt_hash_verified": true,
+    "source_file_count": 587,
+    "all_current_qualified_source_hashes_verified": true,
+    "document_count": 12,
+    "all_current_document_hashes_verified": true,
+    "document_sha256": {
+      "AGENTS.md": "fd3cf380ce9713a5db8f3be3418053b911957bed7f43b5d19dda8f0cfb1f5296",
+      "README.md": "0b1e59da2c19de57254741dd9c02a1b499b9491f79c7ca63061a743325ed84c7",
+      "docs/CONSOLE_COMPLETION_HANDOFF.md": "1da901f437bb96de1aef553ecef63c7c956d07dc6ed8e07d0a236ad91da114b4",
+      "docs/DEVELOPMENT_LOG.md": "56d8ad9ac860636cb45b017c99ad9a7d79164678148b879a8ba39d9a6b93146c",
+      "docs/NEXT_STEPS.md": "3852ca1e4c08d7397df6cee761883ea1e875b56bb837b48f96b772a776687abc",
+      "docs/PLAN.md": "0f6fc2192bc002c9489797b46d84a070544785bf60889a1482b4ae225125e848",
+      "docs/PROJECT_GUIDE.md": "92810046b9a6e24b5f5c1f25c225cb9c410efbb77b41c053d1802749bdf65326",
+      "docs/STATUS.md": "0a471ae3d43658f96406ed9ac95913dc5df8dafbbbc9d2c6f922864d058304f1",
+      "docs/development/2026-11-16-console-completion/CHECKPOINT.md": "47ea5ec4fb1b1a00586d9ec71d80ab38b46239131f7e27849b89d6d8003beb0a",
+      "docs/development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md": "5344cad0059a55c03cf082c399159b29b983d15cd06edec3b0dd53854374a30a",
+      "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/README.md": "95583bfd6dfed49941a2046253542be32943885d9d8f1c9e2b3c0942645a8bda",
+      "docs/development/2026-11-16-console-completion/reports/A57-indexed-hosted/admission.md": "33d3ba02b668ec80f06ec644c8e26648b04fb3d9e30aa408da3a7ad5b9975e5a"
+    },
+    "reported_changed_source_inputs": [],
+    "reported_changed_documents": [],
+    "a60_navigation_audit": {
+      "path": "docs/development/2026-11-16-console-completion/reports/A60-indexed-navigation-audit.json",
+      "bytes": 73078,
+      "sha256": "7f86b0e37eb54ef17712ac28aa66bae73a4028d6976617d5b99160af996e8999"
+    },
+    "a60_audit_hash_matches_gate": true,
+    "a60_recorded_status": "CURRENT_NAVIGATION_AUDIT_NO_OPEN_FINDINGS",
+    "a60_recorded_checked_links": 215,
+    "a60_recorded_broken_links_or_anchors": [],
+    "a60_recorded_open_findings": [],
+    "a60_scope": "A59 verified the retained A60 audit identity and its recorded conclusion. A60 owns the separate current-navigation/link audit; A59 did not rerun that audit.",
+    "publication_boundary": "This completes the local source/test/reader/document evidence review. It does not transfer published 548 hosted results to the changed merged source.",
+    "a59_document_mutations": "Only this previously pending JSON record was finalized after the gate. No Markdown was added or edited."
+  },
+  "immutable_prior_followup_records": {
+    "source-admission.json": "21f7f146dec94d5a35f5c1130c1bdaf6a3212090b0e55b73f489dcbe4b0e8d23",
+    "evidence-admission.json": "fad7965247847ebdb9f0514c8b69667a82a6e65362f0dab94e349966adacf9b4",
+    "README.md": "191a361cbb04e3cdd0702ad508a8d006be84ff1129a2d69d1c892c4f13358f46",
+    "remote-548-source-review.json": "3a5445a01c70435d98310fe3b7a3b7cdd82dc8ed6d3e725da0bf18de31af2dab"
+  },
+  "prior_followup_records_rechecked_unchanged": true,
+  "original_accepted_A59_records": {
+    "docs/reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md": "b1ac7bdd13540cde142658c9d9cfb11c7b6cb2ef8c57b97ddacb6ceed31d77b2",
+    "docs/development/2026-11-16-console-completion/reports/A59-windows-repair.json": "b70564f1500a22f6d3b25ba809c07ee0f62570e94161215424a82eed1125fe47",
+    "docs/development/2026-11-16-console-completion/notes/A59.md": "278c2a2e17b177b3e35991f51b46a7fde35c472c7cc2cc558a71046a254dc7da"
+  },
+  "original_accepted_A59_records_rechecked_unchanged": true,
+  "hosted_boundary": "Published 548 hosted results are collected/admitted separately by A57 and are not transferred as a run of this merged source. Final publication-specific hosted qualification remains separate.",
+  "original_failures": "The original 628 and d2ed Windows failures remain retained failed observations. The original d2ed P1 nonnumerical failure was unnamed in retained evidence; no retrospective name or specific compiler mechanism is invented.",
+  "execution_scope": "A59 performed read-only source/AST/Git-object/hash/log/artifact review and authored only new JSON follow-up evidence. No tests, builds, native execution, CI polling/collection, or Git/index/ref mutation by A59.",
+  "remaining_gates": [
+    "Final published combined-source hosted qualification"
+  ],
+  "no_new_worker_credit": true,
+  "finalized_utc": "2026-11-17T08:00:05.931943+00:00"
+}

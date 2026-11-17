@@ -15,15 +15,30 @@ are accepted in ten waves of six. The
 verifies all 60 note hashes with zero errors. Six fresh readers covered
 [all 500 pages](development/2026-11-16-console-completion/reports/atlas-reading-coverage.json).
 
-### Current publication; new-source qualification pending
+### Published indexed repair and current merge
 
-The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)
-is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
-`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
-`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
-independent API/Git verification and all 587 repaired input identities are recorded.
-**All new-source hosted results are pending at this handoff**; the three workflows
-were triggered, and no first-source pass transfers to this repair.
+The published indexed-fixture source is `54859886268ce83c36f359c43327f7c72a77ae82`,
+with tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a` and parents `d2ed03b9…`
+and `ea02c546…`. The [complete source-specific hosted record](development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json)
+observes **16/16 successful jobs, attempt one, with no cancellations**: Core 6/6,
+native standalone 6/6 and VST3 4/4. Windows native now passes **78/78**;
+the title's 18 cases, header's 103 inequalities and P1's 191 checks / 62 visual
+screens all execute successfully. The strict native sanitizer passes **41/41**.
+These results retain the original failures and qualify only that published source.
+
+Root is finishing a preserving merge with the accepted local evidence and worker
+records. Its [separate merged-source local qualification](development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json)
+passes **3/3 affected native reader CTests**; the
+[merged source-only suites](development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-only-qualification.json)
+pass **71/71 P1 and 41/41 header methods**, first invocation without skips. Five
+Python inputs differ from `5485988`; the other 582/587 inputs, all C++ fixtures,
+production application, workflows, criteria and deadlines remain unchanged.
+Published comparator schemas are preserved, original and active reader identities
+are separate, and P1 failures expose a bounded diagnostic summary. The
+[earlier seven-test qualification](development/2026-11-16-console-completion/reports/array-local-qualification.json)
+and three byte-identical complete Linux fixture streams retain their own source.
+Final document integrity, independent combined admission, guarded publication and
+new-source hosted qualification follow in the [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md).
 
 ### Retained first publication and terminal hosted results
 
@@ -66,9 +81,12 @@ At predecessor `6287055`, Windows compiled and passed 66/68 but rejected title a
 header copied state before numerical evaluation. The [original failure](development/2026-11-16-console-completion/reports/prepublication-628-windows-original.json)
 and [failure-only diagnostic qualification](development/2026-11-16-console-completion/reports/copied-state-diagnostic-qualification.json)
 remain distinct. The first console Windows compilation failure prevented those
-new readers from running; the differing path/type/value and cause remain unknown.
-New actual Windows output must determine any next correction. Strict equality,
-expected values, numerical gates and resource bounds remain frozen.
+new readers from running. The later d2ed03b Windows run built successfully but
+finished 75/78: the title/header diagnostics identified empty drawbar lists where
+nine values were required, while P1's single non-screen failure was not identified
+in the retained artifact. The indexed-fixture source above passes all three checks;
+no exact MSVC compiler mechanism or retrospective P1 failure identity is claimed.
+Strict equality, expected values, numerical gates and resource bounds stay frozen.
 
 ### Implemented behavior and retained local evidence
 

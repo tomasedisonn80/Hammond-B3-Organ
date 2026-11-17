@@ -15,6 +15,8 @@ only the frozen canonical 62-screen gate and its canonical fixture validation.
 It admits either the original coherent UiModel source pair or the exact A26
 recall-only addition, with whole-block reversal to the original bytes. Paired
 mode retains the original pair and genuine baseline admission unchanged.
+Candidate-only fixture admission retains the original and exact helper-else
+forms, plus the exact indexed-array successor reversed through that helper form.
 
 The font sampler follows the pinned SDL 2.32.10 software COPY implementation;
 its geometry and seven-bit linear filter are derived from the public source.
@@ -77,29 +79,11 @@ P1_ORIGINAL_HELPER = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n
 P1_ELSE_HELPER = (b"    if constexpr (p1_fixture_helper_present<Drawer>) {\n"
     b"        reference_performance_p1_material(drawing, bounds, scale);\n"
     b"        return true;\n    } else {\n        return false;\n    }\n")
-P1_INDEXED_FIXTURE_SHA256 = "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
-ARRAY_ORIGINAL_BYTES = b"""template <typename Range, typename Writer>
-void array(std::ostream& out, const Range& values, Writer write) {
-    out << '[';
-    bool first = true;
-    for (const auto& value : values) {
-        if (!first) out << ',';
-        first = false;
-        write(out, value);
-    }
-    out << ']';
-}
-"""
-ARRAY_INDEXED_BYTES = b"""template <typename Range, typename Writer>
-void array(std::ostream& out, const Range& values, Writer write) {
-    out << '[';
-    for (std::size_t index = 0; index < values.size(); ++index) {
-        if (index != 0) out << ',';
-        write(out, values[index]);
-    }
-    out << ']';
-}
-"""
+# Exact successor of the admitted helper-else fixture; original and helper-only
+# identities retain their existing behavior. No arbitrary source normalization.
+P1_INDEXED_ARRAY_SHA256 = "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+P1_ORIGINAL_ARRAY = b"void array(std::ostream& out, const Range& values, Writer write) {\n    out << '[';\n    bool first = true;\n    for (const auto& value : values) {\n        if (!first) out << ',';\n        first = false;\n        write(out, value);\n    }\n    out << ']';\n}\n"
+P1_INDEXED_ARRAY = b"void array(std::ostream& out, const Range& values, Writer write) {\n    out << '[';\n    for (std::size_t index = 0; index < values.size(); ++index) {\n        if (index != 0) out << ',';\n        write(out, values[index]);\n    }\n    out << ']';\n}\n"
 RECALL_SOURCE_TRANSITION = "ui-model-recall-controls-a26-v1"
 RECALL_SOURCE_PATCH = SESSION + "/reports/UiModel-recall-controls.patch"
 RECALL_SOURCE_PATCH_SHA256 = "d4fadc8ae85d9f3dd2aedb6cccc63977fe1c4516dcca47b758a0ec18c7792cf8"
@@ -1257,20 +1241,35 @@ def admit_fixture_source(source_bytes, *, candidate_only):
         return result
     require(candidate_only,
             "paired mode requires original fixture; helper else transition is candidate-only")
-    if ARRAY_INDEXED_BYTES in source_bytes or observed == P1_INDEXED_FIXTURE_SHA256:
-        require(source_bytes.count(ARRAY_INDEXED_BYTES) == 1 and ARRAY_ORIGINAL_BYTES not in source_bytes,
-                "fixture requires one exact indexed array block")
-        restored = source_bytes.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
-        require(sha(restored) == P1_HELPER_ELSE_SHA256,
-                "indexed array reversal does not reconstruct admitted helper fixture")
-        require(observed == P1_INDEXED_FIXTURE_SHA256,
-                "indexed fixture does not match complete admitted identity")
-        previous = admit_fixture_source(restored, candidate_only=True)
-        result.update(variant="p1-indexed-array-v1", accepted_sha256=observed,
-                      transition=dict(id="p1-indexed-array-v1", scope="candidate-only",
-                                      reversed_sha256=sha(restored), whole_file_reversal_verified=True,
-                                      original_reversed_sha256=original,
-                                      helper_transition=previous["transition"]))
+    if observed == P1_INDEXED_ARRAY_SHA256:
+        require(source_bytes.count(P1_INDEXED_ARRAY) == 1 and P1_ORIGINAL_ARRAY not in source_bytes,
+                "fixture requires one exact complete indexed array block")
+        helper_source = source_bytes.replace(P1_INDEXED_ARRAY, P1_ORIGINAL_ARRAY, 1)
+        require(sha(helper_source) == P1_HELPER_ELSE_SHA256,
+                "indexed fixture reversal does not reconstruct admitted helper source")
+        helper_admission = admit_fixture_source(helper_source, candidate_only=True)
+        require(helper_admission["variant"] == "p1-helper-constexpr-else" and
+                helper_admission["transition"] is not None,
+                "indexed fixture requires the exact helper-else predecessor")
+        helper_transition = helper_admission["transition"]
+        result.update(variant="p1-helper-constexpr-else-indexed-array", accepted_sha256=observed,
+                      transition=dict(id="p1-fixture-constexpr-else-indexed-array-v1",
+                                      scope="candidate-only",
+                                      intermediate_fixture_sha256=sha(helper_source),
+                                      reversed_sha256=helper_transition["reversed_sha256"],
+                                      whole_file_reversal_verified=True,
+                                      helper_transition=helper_transition,
+                                      replacements={
+                                          "indexed-array": dict(
+                                              before_bytes=len(P1_ORIGINAL_ARRAY),
+                                              before_sha256=sha(P1_ORIGINAL_ARRAY),
+                                              after_bytes=len(P1_INDEXED_ARRAY),
+                                              after_sha256=sha(P1_INDEXED_ARRAY), occurrences=1),
+                                          "constexpr-else": dict(
+                                              before_bytes=len(P1_ORIGINAL_HELPER),
+                                              before_sha256=sha(P1_ORIGINAL_HELPER),
+                                              after_bytes=len(P1_ELSE_HELPER),
+                                              after_sha256=sha(P1_ELSE_HELPER), occurrences=1)}))
         return result
     require(source_bytes.count(P1_ELSE_HELPER) == 1 and P1_ORIGINAL_HELPER not in source_bytes,
             "fixture requires one exact complete constexpr else block")

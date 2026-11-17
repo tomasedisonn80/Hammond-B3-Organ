@@ -13,22 +13,38 @@ published H1/header and semantic-paint work. The
 retains 46 build steps, 78 affected tests and fifteen actual captures; README
 shows the independently admitted combined gallery.
 
-The [current verified repair publication](development/2026-11-16-console-completion/reports/repair-publication.json)
-is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
-`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
-`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
-independent API/Git verification and all 587 repaired input identities are recorded.
-**All new-source hosted results are pending at this handoff**; the three workflows
-were triggered, and no first-source pass transfers to this repair.
+The published indexed-fixture source is `54859886268ce83c36f359c43327f7c72a77ae82`,
+with tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a` and parents `d2ed03b9…`
+and `ea02c546…`. The [complete source-specific hosted record](development/2026-11-16-console-completion/reports/indexed-remote-ci-complete.json)
+observes **16/16 successful jobs, attempt one, with no cancellations**: Core 6/6,
+native standalone 6/6 and VST3 4/4. Windows native now passes **78/78**;
+the title's 18 cases, header's 103 inequalities and P1's 191 checks / 62 visual
+screens all execute successfully. The strict native sanitizer passes **41/41**.
+These results retain the original failures and qualify only that published source.
+
+Root is finishing a preserving merge with the accepted local evidence and worker
+records. Its [separate merged-source local qualification](development/2026-11-16-console-completion/reports/combined-indexed-local-qualification.json)
+passes **3/3 affected native reader CTests**; the
+[merged source-only suites](development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/source-only-qualification.json)
+pass **71/71 P1 and 41/41 header methods**, first invocation without skips. Five
+Python inputs differ from `5485988`; the other 582/587 inputs, all C++ fixtures,
+production application, workflows, criteria and deadlines remain unchanged.
+Published comparator schemas are preserved, original and active reader identities
+are separate, and P1 failures expose a bounded diagnostic summary. The
+[earlier seven-test qualification](development/2026-11-16-console-completion/reports/array-local-qualification.json)
+and three byte-identical complete Linux fixture streams retain their own source.
+Final document integrity, independent combined admission, guarded publication and
+new-source hosted qualification follow in the [live checkpoint](development/2026-11-16-console-completion/CHECKPOINT.md).
 
 The [first verified source](development/2026-11-16-console-completion/reports/implementation-publication.json)
 `cf87a587…` has sixteen terminal jobs: **Core 5/6, native 5/6, VST3 4/4** pass.
 The [current status](STATUS.md#current-console-continuation--17-november-2026)
 links both original Windows failures and the [five-file repair admission](reviews/CONSOLE_WINDOWS_REPAIR_ADMISSION.md).
-Its local Linux passes do not establish new Windows execution. Follow the live
-checkpoint for all subsequent new-source results and final record closure; the first receipt's older worker/pending-CI snapshot remains immutable.
-All sixty actual worker records exist, while root acceptance and the matching
-strict receipt govern closure.
+Its local Linux evidence remains separate from the later actual Windows results
+above. Follow the live checkpoint for the preserving merge and its own hosted
+qualification; the first receipt's older worker/pending-CI snapshot is immutable.
+All sixty actual workers are now root-accepted, and the executed strict receipt
+verifies every accepted note with zero errors.
 
 The next [native integration](design/LIBRARY_NATIVE_INTEGRATION_NEXT.md) starts
 with model-owned Save availability and real post-Start proof, then input,

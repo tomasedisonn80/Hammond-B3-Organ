@@ -1,0 +1,50 @@
+{
+  "a60_current_audit_sha256": "7f86b0e37eb54ef17712ac28aa66bae73a4028d6976617d5b99160af996e8999",
+  "changed_documents": [],
+  "changed_source_inputs": [],
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/21cce69f7784/build-native",
+    "--output-on-failure",
+    "--parallel",
+    "1",
+    "--no-tests=error",
+    "-R",
+    "^python_test_repository_integrity$",
+    "--output-junit",
+    "/workspace/scratch/21cce69f7784/Hammond-B3-Organ/docs/development/2026-11-16-console-completion/reports/combined-indexed-document-integrity.xml"
+  ],
+  "completed_utc": "2026-11-17T07:58:08.172828+00:00",
+  "counts": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 1
+  },
+  "document_sha256": {
+    "AGENTS.md": "fd3cf380ce9713a5db8f3be3418053b911957bed7f43b5d19dda8f0cfb1f5296",
+    "README.md": "0b1e59da2c19de57254741dd9c02a1b499b9491f79c7ca63061a743325ed84c7",
+    "docs/CONSOLE_COMPLETION_HANDOFF.md": "1da901f437bb96de1aef553ecef63c7c956d07dc6ed8e07d0a236ad91da114b4",
+    "docs/DEVELOPMENT_LOG.md": "56d8ad9ac860636cb45b017c99ad9a7d79164678148b879a8ba39d9a6b93146c",
+    "docs/NEXT_STEPS.md": "3852ca1e4c08d7397df6cee761883ea1e875b56bb837b48f96b772a776687abc",
+    "docs/PLAN.md": "0f6fc2192bc002c9489797b46d84a070544785bf60889a1482b4ae225125e848",
+    "docs/PROJECT_GUIDE.md": "92810046b9a6e24b5f5c1f25c225cb9c410efbb77b41c053d1802749bdf65326",
+    "docs/STATUS.md": "0a471ae3d43658f96406ed9ac95913dc5df8dafbbbc9d2c6f922864d058304f1",
+    "docs/development/2026-11-16-console-completion/CHECKPOINT.md": "47ea5ec4fb1b1a00586d9ec71d80ab38b46239131f7e27849b89d6d8003beb0a",
+    "docs/development/2026-11-16-console-completion/ROOT_NEXT_QUEUE.md": "5344cad0059a55c03cf082c399159b29b983d15cd06edec3b0dd53854374a30a",
+    "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/README.md": "95583bfd6dfed49941a2046253542be32943885d9d8f1c9e2b3c0942645a8bda",
+    "docs/development/2026-11-16-console-completion/reports/A57-indexed-hosted/admission.md": "33d3ba02b668ec80f06ec644c8e26648b04fb3d9e30aa408da3a7ad5b9975e5a"
+  },
+  "exit_code": 0,
+  "log": "combined-indexed-document-integrity.log",
+  "log_sha256": "0168d4b7e80c13c8ab6822f8c275260d80208a9457cc90565b46bddb317cb986",
+  "schema_version": 1,
+  "scope": "One existing repository-integrity CTest after all current Markdown authoring and A60 read-only audit; all 587 qualified code inputs and twelve current/added Markdown inputs must remain stable. This is separate from the three native reader gates and earlier historical integrity results.",
+  "seconds": 6.616924721995019,
+  "source_file_count": 587,
+  "source_qualification": "combined-indexed-local-qualification.json",
+  "source_qualification_sha256": "ce01bb903a8e5bc03803c0e479d44549bf5fc6cc1aa2bd082051c63d842786b4",
+  "started_utc": "2026-11-17T07:58:01.503702+00:00",
+  "status": "passed"
+}

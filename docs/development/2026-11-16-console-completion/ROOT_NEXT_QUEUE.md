@@ -8,13 +8,28 @@ workers or follow-ups again.
 
 ## Immediate integration
 
-The [current verified repair publication](reports/repair-publication.json)
-is `d2ed03b94114e35d0caa65968d11afe896a5e9f5`, tree
-`45f3f2bc1bc844061be7d1303b13b10bfaba9938`, sole parent
-`cf87a587d0002d106e5210b57a39fd1967245a8f`. Guarded nonforced publication,
-independent API/Git verification and all 587 repaired input identities are recorded.
-**All new-source hosted results are pending at this handoff**; the three workflows
-were triggered, and no first-source pass transfers to this repair.
+The published indexed-fixture source is `54859886268ce83c36f359c43327f7c72a77ae82`,
+with tree `f5f8f037af301f8b1ff5b9b4a00ff5581647667a` and parents `d2ed03b9…`
+and `ea02c546…`. The [complete source-specific hosted record](reports/indexed-remote-ci-complete.json)
+observes **16/16 successful jobs, attempt one, with no cancellations**: Core 6/6,
+native standalone 6/6 and VST3 4/4. Windows native now passes **78/78**;
+the title's 18 cases, header's 103 inequalities and P1's 191 checks / 62 visual
+screens all execute successfully. The strict native sanitizer passes **41/41**.
+These results retain the original failures and qualify only that published source.
+
+Root is finishing a preserving merge with the accepted local evidence and worker
+records. Its [separate merged-source local qualification](reports/combined-indexed-local-qualification.json)
+passes **3/3 affected native reader CTests**; the
+[merged source-only suites](reports/A56-combined-indexed-regressions/source-only-qualification.json)
+pass **71/71 P1 and 41/41 header methods**, first invocation without skips. Five
+Python inputs differ from `5485988`; the other 582/587 inputs, all C++ fixtures,
+production application, workflows, criteria and deadlines remain unchanged.
+Published comparator schemas are preserved, original and active reader identities
+are separate, and P1 failures expose a bounded diagnostic summary. The
+[earlier seven-test qualification](reports/array-local-qualification.json)
+and three byte-identical complete Linux fixture streams retain their own source.
+Final document integrity, independent combined admission, guarded publication and
+new-source hosted qualification follow in the [live checkpoint](CHECKPOINT.md).
 
 The first console publication `cf87a587d0002d106e5210b57a39fd1967245a8f` is
 independently API/Git verified. All sixteen original jobs are terminal:
@@ -30,24 +45,20 @@ hashes with zero errors. A60's earlier 59-accepted snapshot remains immutable.
 No extra worker or execution credit comes from follow-ups or this documentary audit.
 The [live checkpoint](CHECKPOINT.md) owns later publication/CI and acceptance updates.
 
-1. Recover the completed `d2ed03b…` repair publication and its exact verified
-   inputs. Root has already independently verified commit/tree/parent/contents;
-   do not repeat that completed publication or rewrite either immutable receipt.
-2. The same A56/A57/A58 observe all sixteen new-source families. Windows Core must
-   execute both former Python failures and the Unicode generator; Windows native
-   must compile P1, run the title/header readers and complete required acceptance/
-   package gates. The predecessor's rejected copied-state leaf and cause remain
-   unknown because cf87 failed before those diagnostics. Preserve actual path/type/
-   value output before choosing any separately reviewed correction; keep every
-   strict equality, numerical criterion, workload and deadline.
-3. Wait for all same-ref jobs to be terminal before another push. Preserve original
-   failures, cancellations and unrun gates; no unchanged-source retry or transferred
-   older pass. Accepted follow-ups use new source-bound receipts and no new credit.
-4. Preserve completed A60 acceptance and strict closure. Run final document
-   integrity after all authoring. Publish accepted
-   closure/evidence/navigation, independently verify the final remote and applicable
-   source-specific CI, and leave owned accepted work recoverable without discarding
-   another owner's changes.
+1. Recover both source `5485988` and local `4378fff` / API-equivalent `8189a49` (identical
+   tree `5248bcfe`). All three C++ serializers are identical between them. Preserve
+   both histories, original qualifications and all accepted sixty-worker records.
+2. A56's merged source-only suites pass 71/41 and root's three reader CTests pass.
+   A59 must complete independent combined source/evidence admission after the final
+   document gate. A57 retains `5485988`'s full six-job
+   native success and strict instrumentation evidence. Do not transfer `5485988`'s hosted
+   pass to the merged Python inputs.
+3. Finish documentary integrity, include only accepted files, commit the preserving
+   merge and publish with a freshly observed expected SHA. All `5485988` jobs are terminal;
+   observe every family on the actual new source before another same-ref push.
+4. Preserve completed A60 acceptance and strict closure. Publish final admitted
+   evidence/navigation, independently verify remote commit/tree/parents/contents,
+   and leave setup, source-specific outcomes and concrete next work recoverable.
 5. Next implementation follows [the native library plan](../../design/LIBRARY_NATIVE_INTEGRATION_NEXT.md):
    model-owned Save availability and fresh post-Start proof first; UiModel input/
    gesture/focus, main lifecycle/submission/fresh-read/storage and browser/view hooks

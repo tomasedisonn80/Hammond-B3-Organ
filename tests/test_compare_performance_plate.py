@@ -324,6 +324,153 @@ class IndependentGeometryTests(unittest.TestCase):
             self.assertEqual(witness["text_runs"][2]["text"], "REQUIRES UPPER B")
 
 
+class FixtureSourceTransitionTests(unittest.TestCase):
+    """Bind real whole-file portability edits without weakening historical pairs."""
+
+    ORIGINAL = "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    PORTABLE = "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    HELPER_ELSE = "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d"
+    # Independent byte literals from the reviewed proposal, not imported from
+    # the comparator. Complete whole-file hashes bind their exact placement.
+    REPLACEMENTS = (
+        ('constexpr-else', b'bool p1_fixture_invoke_helper(Drawer& drawing, UiRect bounds, ReferenceCompositionScale scale) {\n    if constexpr (p1_fixture_helper_present<Drawer>) {\n        reference_performance_p1_material(drawing, bounds, scale);\n        return true;\n    }\n    return false;\n}\n', b'bool p1_fixture_invoke_helper(Drawer& drawing, UiRect bounds, ReferenceCompositionScale scale) {\n    if constexpr (p1_fixture_helper_present<Drawer>) {\n        reference_performance_p1_material(drawing, bounds, scale);\n        return true;\n    } else {\n        return false;\n    }\n}\n'),
+        ('indexed-array', b"void array(std::ostream& out, const Range& values, Writer write) {\n    out << '[';\n    bool first = true;\n    for (const auto& value : values) {\n        if (!first) out << ',';\n        first = false;\n        write(out, value);\n    }\n    out << ']';\n}\n", b"void array(std::ostream& out, const Range& values, Writer write) {\n    out << '[';\n    for (std::size_t index = 0; index < values.size(); ++index) {\n        if (index != 0) out << ',';\n        write(out, values[index]);\n    }\n    out << ']';\n}\n"),
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        data = (ROOT / p1.FIXTURE).read_bytes()
+        if hashlib.sha256(data).hexdigest() == cls.PORTABLE:
+            for name, before, after in reversed(cls.REPLACEMENTS):
+                if data.count(after) != 1:
+                    raise AssertionError("portable fixture lacks exact replacement: " + name)
+                data = data.replace(after, before, 1)
+        elif hashlib.sha256(data).hexdigest() == cls.HELPER_ELSE:
+            _, before, after = cls.REPLACEMENTS[0]
+            if data.count(after) != 1:
+                raise AssertionError("helper predecessor lacks its complete replacement")
+            data = data.replace(after, before, 1)
+        if hashlib.sha256(data).hexdigest() != cls.ORIGINAL:
+            raise AssertionError("fixture is neither exact original nor admitted portability source")
+        cls.original = data
+        for name, before, after in cls.REPLACEMENTS:
+            if data.count(before) != 1:
+                raise AssertionError("original fixture replacement is not unique: " + name)
+            data = data.replace(before, after, 1)
+        if hashlib.sha256(data).hexdigest() != cls.PORTABLE:
+            raise AssertionError("independent replacements do not reproduce admitted fixture")
+        cls.portable = data
+
+    def test_original_pin_and_both_original_modes_remain(self):
+        self.assertEqual(p1.PINNED[p1.FIXTURE], self.ORIGINAL)
+        for candidate_only in (False, True):
+            with self.subTest(candidate_only=candidate_only):
+                result = p1.admit_fixture_source(self.original, candidate_only=candidate_only)
+                self.assertEqual(result["variant"], "original-fixture")
+                self.assertEqual(result["accepted_sha256"], self.ORIGINAL)
+                self.assertIsNone(result["transition"])
+
+    def test_exact_helper_only_predecessor_retains_upstream_admission(self):
+        _, before, after = self.REPLACEMENTS[0]
+        helper_source = self.original.replace(before, after, 1)
+        self.assertEqual(hashlib.sha256(helper_source).hexdigest(), self.HELPER_ELSE)
+        result = p1.admit_fixture_source(helper_source, candidate_only=True)
+        self.assertEqual(result["variant"], "p1-helper-constexpr-else")
+        self.assertEqual(result["accepted_sha256"], self.HELPER_ELSE)
+        self.assertEqual(result["transition"]["reversed_sha256"], self.ORIGINAL)
+        indexed = p1.admit_fixture_source(self.portable, candidate_only=True)
+        self.assertEqual(indexed["transition"]["intermediate_fixture_sha256"], self.HELPER_ELSE)
+        self.assertEqual(indexed["transition"]["helper_transition"], result["transition"])
+
+    def test_exact_candidate_binds_all_bytes_and_complete_reversal(self):
+        result = p1.admit_fixture_source(self.portable, candidate_only=True)
+        self.assertEqual(result["variant"], "p1-helper-constexpr-else-indexed-array")
+        self.assertEqual(result["original_pinned_sha256"], self.ORIGINAL)
+        self.assertEqual(result["observed_sha256"], self.PORTABLE)
+        self.assertEqual(result["accepted_sha256"], self.PORTABLE)
+        transition = result["transition"]
+        self.assertEqual(transition["scope"], "candidate-only")
+        self.assertEqual(transition["reversed_sha256"], self.ORIGINAL)
+        self.assertTrue(transition["whole_file_reversal_verified"])
+        self.assertEqual(set(transition["replacements"]), {item[0] for item in self.REPLACEMENTS})
+
+    def test_portability_source_is_refused_for_paired_comparison(self):
+        with self.assertRaisesRegex(ValueError, "paired mode requires original fixture"):
+            p1.admit_fixture_source(self.portable, candidate_only=False)
+
+    def test_index_only_and_unrelated_edits_are_refused(self):
+        _, before, after = self.REPLACEMENTS[1]
+        partial = [self.original.replace(before, after, 1)]
+        edits = partial + [self.original + b"\n", self.portable + b"\n",
+                           self.portable.replace(b"\n", b"\r\n"),
+                           self.portable.replace(b"index < values.size()", b"index <= values.size()", 1),
+                           self.portable.replace(b"main_count = 24", b"main_count = 23", 1)]
+        for data in edits:
+            with self.subTest(sha256=hashlib.sha256(data).hexdigest()), self.assertRaises(ValueError):
+                p1.admit_fixture_source(data, candidate_only=True)
+
+    def test_relocated_replacement_is_refused(self):
+        _, _, block = self.REPLACEMENTS[0]
+        moved = self.portable.replace(block, b"", 1) + block
+        with self.assertRaisesRegex(ValueError, "fixture helper reversal"):
+            p1.admit_fixture_source(moved, candidate_only=True)
+
+    def test_reversal_independently_refuses_outside_change(self):
+        changed = self.portable.replace(b"main_count = 24", b"main_count = 23", 1)
+        self.assertNotEqual(changed, self.portable)
+        with mock.patch.object(p1, "P1_INDEXED_ARRAY_SHA256", hashlib.sha256(changed).hexdigest()), \
+                self.assertRaisesRegex(ValueError, "reversal does not reconstruct admitted helper source"):
+            p1.admit_fixture_source(changed, candidate_only=True)
+
+    def test_nonbyte_sources_and_nonboolean_modes_are_refused(self):
+        for data, mode in ((self.portable.decode(), True), (bytearray(self.portable), True),
+                           (self.portable, 1), (self.original, None)):
+            with self.subTest(data_type=type(data).__name__, mode=mode), self.assertRaises(ValueError):
+                p1.admit_fixture_source(data, candidate_only=mode)
+
+    def test_registered_fixture_remains_subject_to_final_stability(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / p1.FIXTURE
+            path.parent.mkdir(parents=True)
+            path.write_bytes(self.portable)
+            inputs = {}
+            result = p1.pin_fixture_source(inputs, root, candidate_only=True)
+            self.assertEqual(result["accepted_sha256"], self.PORTABLE)
+            self.assertEqual(inputs[p1.FIXTURE]["expected_sha256"], self.PORTABLE)
+            self.assertEqual(inputs[p1.FIXTURE]["original_pinned_sha256"], self.ORIGINAL)
+            audit = p1.Audit()
+            p1.check_inputs_unchanged(audit, inputs)
+            self.assertEqual(audit.failures, [])
+            path.write_bytes(self.portable + b"\n")
+            p1.check_inputs_unchanged(audit, inputs)
+            self.assertEqual(len(audit.failures), 1)
+            self.assertEqual(audit.failures[0]["check"], "final-input-stability:" + p1.FIXTURE)
+
+    def test_execute_refuses_changed_fixture_before_any_native_launch(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "root"
+            for relative in (*p1.PINNED, p1.RECALL_SOURCE_PATCH):
+                path = root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes((ROOT / relative).read_bytes())
+            (root / p1.FIXTURE).write_bytes(self.portable + b"\n")
+            output = Path(directory) / "report"
+            args = p1.cli(["--root", str(root), "--candidate-only",
+                           "--after", str(root / "unrun-after"), "--output", str(output)])
+            with mock.patch.object(p1.Runner, "command", side_effect=AssertionError("native launch forbidden")) as launch, \
+                    mock.patch("builtins.print"):
+                status = p1.execute(args)
+            launch.assert_not_called()
+            self.assertEqual(status, 1)
+            report = json.loads((output / "report.json").read_bytes())
+            self.assertFalse(report["passed"])
+            self.assertEqual(report["commands"], [])
+            self.assertIsNone(report["fixture_source_admission"])
+            self.assertTrue(any("fixture helper reversal" in failure["detail"]
+                                for failure in report["failures"]))
+
+
 class UiModelSourceTransitionTests(unittest.TestCase):
     """Real complete source bytes; independent A26 literals and refusal edits."""
 
@@ -590,32 +737,6 @@ class UiModelSourceTransitionTests(unittest.TestCase):
                 self.assertIsNone(report["ui_model_source_admission"])
                 self.assertTrue(any(expected_error in failure["detail"] for failure in report["failures"]))
 
-# Independent complete serializer blocks from the reviewed source transition.
-ARRAY_ORIGINAL_BYTES = b"""template <typename Range, typename Writer>
-void array(std::ostream& out, const Range& values, Writer write) {
-    out << '[';
-    bool first = true;
-    for (const auto& value : values) {
-        if (!first) out << ',';
-        first = false;
-        write(out, value);
-    }
-    out << ']';
-}
-"""
-ARRAY_INDEXED_BYTES = b"""template <typename Range, typename Writer>
-void array(std::ostream& out, const Range& values, Writer write) {
-    out << '[';
-    for (std::size_t index = 0; index < values.size(); ++index) {
-        if (index != 0) out << ',';
-        write(out, values[index]);
-    }
-    out << ']';
-}
-"""
-
-P1_ARRAY_INDEXED_SHA = "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
-
 
 class FixtureHelperTransitionTests(unittest.TestCase):
     ORIGINAL_SHA = "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
@@ -630,12 +751,13 @@ class FixtureHelperTransitionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         current = (ROOT / p1.FIXTURE).read_bytes()
-        if hashlib.sha256(current).hexdigest() == P1_ARRAY_INDEXED_SHA:
-            if current.count(ARRAY_INDEXED_BYTES) != 1 or ARRAY_ORIGINAL_BYTES in current:
-                raise AssertionError("indexed fixture lacks the exact reviewed array block")
-            current = current.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
+        if hashlib.sha256(current).hexdigest() == FixtureSourceTransitionTests.PORTABLE:
+            _, before, after = FixtureSourceTransitionTests.REPLACEMENTS[1]
+            if current.count(after) != 1:
+                raise AssertionError("indexed fixture lacks its complete array replacement")
+            current = current.replace(after, before, 1)
             if hashlib.sha256(current).hexdigest() != cls.REPAIRED_SHA:
-                raise AssertionError("array reversal did not recover the helper-only fixture")
+                raise AssertionError("indexed fixture does not recover the exact helper predecessor")
         if hashlib.sha256(current).hexdigest() == cls.REPAIRED_SHA:
             cls.original = current.replace(cls.REPAIRED_BLOCK, cls.ORIGINAL_BLOCK, 1)
         else:
@@ -758,123 +880,77 @@ class FixtureHelperTransitionTests(unittest.TestCase):
             self.assertTrue(any("fixture helper reversal" in failure["detail"] for failure in report["failures"]))
 
 
-class FixtureArrayTransitionTests(unittest.TestCase):
-    """Independent whole-source checks for the indexed serializer transition."""
+class AdditionalArrayAdmissionTests(unittest.TestCase):
+    """Additional repinning/race risks beyond the complete published suite."""
 
     @classmethod
     def setUpClass(cls):
         cls.indexed = (ROOT / p1.FIXTURE).read_bytes()
-        if hashlib.sha256(cls.indexed).hexdigest() != P1_ARRAY_INDEXED_SHA:
-            raise AssertionError("checkout is not the exact indexed P1 fixture")
-        cls.helper = cls.indexed.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
-        cls.original = cls.helper.replace(FixtureHelperTransitionTests.REPAIRED_BLOCK,
-                                          FixtureHelperTransitionTests.ORIGINAL_BLOCK, 1)
-        if hashlib.sha256(cls.helper).hexdigest() != FixtureHelperTransitionTests.REPAIRED_SHA:
-            raise AssertionError("array reversal did not recover the helper-only fixture")
-        if hashlib.sha256(cls.original).hexdigest() != FixtureHelperTransitionTests.ORIGINAL_SHA:
-            raise AssertionError("combined reversal did not recover the genuine original")
+        _, cls.original_array, cls.indexed_array = FixtureSourceTransitionTests.REPLACEMENTS[1]
+        cls.helper = cls.indexed.replace(cls.indexed_array, cls.original_array, 1)
+        if hashlib.sha256(cls.indexed).hexdigest() != FixtureSourceTransitionTests.PORTABLE:
+            raise AssertionError("fixture is not the complete published indexed source")
+        if hashlib.sha256(cls.helper).hexdigest() != FixtureSourceTransitionTests.HELPER_ELSE:
+            raise AssertionError("array reversal did not recover the exact helper predecessor")
 
-    def test_indexed_admission_preserves_original_and_intermediate_identities(self):
-        self.assertEqual(p1.ARRAY_ORIGINAL_BYTES, ARRAY_ORIGINAL_BYTES)
-        self.assertEqual(p1.ARRAY_INDEXED_BYTES, ARRAY_INDEXED_BYTES)
-        self.assertEqual(p1.P1_INDEXED_FIXTURE_SHA256, P1_ARRAY_INDEXED_SHA)
-        self.assertEqual(p1.PINNED[p1.FIXTURE], FixtureHelperTransitionTests.ORIGINAL_SHA)
-        result = p1.admit_fixture_source(self.indexed, candidate_only=True)
-        self.assertEqual(result["variant"], "p1-indexed-array-v1")
-        self.assertEqual(result["accepted_sha256"], P1_ARRAY_INDEXED_SHA)
-        self.assertEqual(result["observed_sha256"], P1_ARRAY_INDEXED_SHA)
-        self.assertEqual(result["original_pinned_sha256"], FixtureHelperTransitionTests.ORIGINAL_SHA)
-        self.assertEqual(result["transition"]["reversed_sha256"], FixtureHelperTransitionTests.REPAIRED_SHA)
-        self.assertEqual(result["transition"]["original_reversed_sha256"], FixtureHelperTransitionTests.ORIGINAL_SHA)
-        self.assertEqual(result["transition"]["helper_transition"]["reversed_sha256"], FixtureHelperTransitionTests.ORIGINAL_SHA)
-        self.assertTrue(result["transition"]["whole_file_reversal_verified"])
-        with self.assertRaisesRegex(ValueError, "paired mode requires original fixture"):
-            p1.admit_fixture_source(self.indexed, candidate_only=False)
+    def test_public_array_constants_match_independent_reviewed_bytes(self):
+        self.assertEqual(p1.P1_INDEXED_ARRAY_SHA256, FixtureSourceTransitionTests.PORTABLE)
+        self.assertEqual(p1.P1_ORIGINAL_ARRAY, self.original_array)
+        self.assertEqual(p1.P1_INDEXED_ARRAY, self.indexed_array)
+        self.assertEqual(p1.PINNED[p1.FIXTURE], FixtureSourceTransitionTests.ORIGINAL)
 
-    def test_indexed_source_and_mode_types_are_not_coerced(self):
-        for value in (bytearray(self.indexed), memoryview(self.indexed), self.indexed.decode(), None):
-            with self.subTest(type=type(value)), self.assertRaises(ValueError):
-                p1.admit_fixture_source(value, candidate_only=True)
-        for mode in (0, 1, None, "candidate"):
-            with self.subTest(mode=mode), self.assertRaises(ValueError):
-                p1.admit_fixture_source(self.indexed, candidate_only=mode)
+    def test_memoryview_and_byte_subclasses_are_not_complete_source_bytes(self):
+        class BytesSubclass(bytes):
+            pass
+        for payload in (memoryview(self.indexed), BytesSubclass(self.indexed)):
+            with self.subTest(type=type(payload)), self.assertRaisesRegex(ValueError, "complete byte source"):
+                p1.admit_fixture_source(payload, candidate_only=True)
 
     def test_repinning_indexed_source_cannot_admit_structural_mutations(self):
         cases = {
-            "missing": self.indexed.replace(ARRAY_INDEXED_BYTES, b"", 1),
-            "duplicate": self.indexed + ARRAY_INDEXED_BYTES,
-            "old-block-added": self.indexed + ARRAY_ORIGINAL_BYTES,
+            "missing": self.indexed.replace(self.indexed_array, b"", 1),
+            "duplicate": self.indexed + self.indexed_array,
+            "old-block-added": self.indexed + self.original_array,
             "changed-element": self.indexed.replace(b"write(out, values[index]);", b"write(out, values[0]);", 1),
             "changed-bound": self.indexed.replace(b"index < values.size()", b"index <= values.size()", 1),
         }
         for name, payload in cases.items():
-            with self.subTest(name=name), mock.patch.object(p1, "P1_INDEXED_FIXTURE_SHA256", p1.sha(payload)):
-                with self.assertRaises(ValueError):
+            with self.subTest(name=name), mock.patch.object(p1, "P1_INDEXED_ARRAY_SHA256", p1.sha(payload)):
+                with self.assertRaisesRegex(ValueError, "one exact complete indexed array block"):
                     p1.admit_fixture_source(payload, candidate_only=True)
 
     def test_repinning_indexed_source_cannot_admit_relocation_or_other_bytes(self):
         cases = {"append": self.indexed + b"// unrelated\n",
-                 "relocation": self.indexed.replace(ARRAY_INDEXED_BYTES, b"", 1) + ARRAY_INDEXED_BYTES}
+                 "relocation": self.indexed.replace(self.indexed_array, b"", 1) + self.indexed_array}
         for name, payload in cases.items():
-            with self.subTest(name=name), mock.patch.object(p1, "P1_INDEXED_FIXTURE_SHA256", p1.sha(payload)):
-                with self.assertRaisesRegex(ValueError, "array reversal"):
+            with self.subTest(name=name), mock.patch.object(p1, "P1_INDEXED_ARRAY_SHA256", p1.sha(payload)):
+                with self.assertRaisesRegex(ValueError, "reversal does not reconstruct admitted helper source"):
                     p1.admit_fixture_source(payload, candidate_only=True)
 
     def test_repinning_indexed_and_intermediate_files_cannot_replace_original(self):
         payload = self.indexed + b"// unrelated\n"
-        intermediate = payload.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
-        with mock.patch.object(p1, "P1_INDEXED_FIXTURE_SHA256", p1.sha(payload)), \
+        intermediate = payload.replace(self.indexed_array, self.original_array, 1)
+        with mock.patch.object(p1, "P1_INDEXED_ARRAY_SHA256", p1.sha(payload)), \
                 mock.patch.object(p1, "P1_HELPER_ELSE_SHA256", p1.sha(intermediate)):
             with self.assertRaisesRegex(ValueError, "does not reconstruct original bytes"):
                 p1.admit_fixture_source(payload, candidate_only=True)
 
-    def test_complete_indexed_hash_is_required_after_exact_reversal(self):
-        with mock.patch.object(p1, "P1_INDEXED_FIXTURE_SHA256", "0" * 64):
-            with self.assertRaisesRegex(ValueError, "complete admitted identity"):
+    def test_unrecognized_complete_indexed_pin_is_rejected(self):
+        with mock.patch.object(p1, "P1_INDEXED_ARRAY_SHA256", "0" * 64):
+            with self.assertRaises(ValueError):
                 p1.admit_fixture_source(self.indexed, candidate_only=True)
 
-    def test_indexed_input_records_both_pins_and_rejects_drift(self):
+    def test_indexed_identity_read_race_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             path = root / p1.FIXTURE
             path.parent.mkdir(parents=True)
             path.write_bytes(self.indexed)
-            inputs = {}
-            p1.pin_fixture_source(inputs, root, candidate_only=True)
-            self.assertEqual(inputs[p1.FIXTURE]["expected_sha256"], P1_ARRAY_INDEXED_SHA)
-            self.assertEqual(inputs[p1.FIXTURE]["original_pinned_sha256"], FixtureHelperTransitionTests.ORIGINAL_SHA)
-            audit = p1.Audit()
-            p1.check_inputs_unchanged(audit, inputs)
-            self.assertEqual(audit.failures, [])
+            claimed = p1.identity(path)
             path.write_bytes(self.indexed + b"\n")
-            p1.check_inputs_unchanged(audit, inputs)
-            self.assertEqual(len(audit.failures), 1)
-            claimed = dict(inputs[p1.FIXTURE])
             with mock.patch.object(p1, "identity", return_value=claimed):
                 with self.assertRaisesRegex(ValueError, "source changed while reading"):
                     p1.pin_fixture_source({}, root, candidate_only=True)
-
-    def test_execute_refuses_bad_indexed_source_before_native_launch(self):
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            for name in (*p1.PINNED, p1.RECALL_SOURCE_PATCH):
-                path = root / name
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_bytes((ROOT / name).read_bytes())
-            (root / p1.FIXTURE).write_bytes(self.indexed + b"// unrelated\n")
-            output = root / "report"
-            args = p1.cli(["--root", str(root), "--candidate-only", "--after", str(root / "unrun"),
-                           "--output", str(output)])
-            with mock.patch.object(p1.Runner, "command", side_effect=AssertionError("native launch forbidden")) as launch, \
-                    mock.patch("builtins.print"):
-                result = p1.execute(args)
-            launch.assert_not_called()
-            self.assertEqual(result, 1)
-            report = json.loads((output / "report.json").read_bytes())
-            self.assertFalse(report["passed"])
-            self.assertEqual(report["commands"], [])
-            self.assertIsNone(report["fixture_source_admission"])
-            self.assertTrue(any("indexed array reversal" in row["detail"] for row in report["failures"]))
 
 
 if __name__ == "__main__":

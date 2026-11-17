@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "reviewer": "A59",
+  "continuation": true,
+  "additional_worker_credit": 0,
+  "observed_utc": "2026-11-17T07:43:21.787730+00:00",
+  "decision": "REMOTE_SOURCE_DELTA_ADMITTED_FOR_RECONCILIATION_COMBINED_SOURCE_PENDING",
+  "base_commit": "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+  "remote_commit": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "remote_tree": "f5f8f037af301f8b1ff5b9b4a00ff5581647667a",
+  "remote_parents": [
+    "d2ed03b94114e35d0caa65968d11afe896a5e9f5",
+    "ea02c5465b6c6a896cbbc83b55479d6f62bbf8c9"
+  ],
+  "preserved_local_candidate_commit": "4378fff74a3a11de400e3a38b877d170bad6c57e",
+  "preserved_local_candidate_tree": "5248bcfe68f15225060dd09adec1e7d6849d6e20",
+  "remote_changed_files": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49026,
+      "sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61268,
+      "sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
+    },
+    "apps/standalone/native_tests/test_standalone_header_statistics.py": {
+      "bytes": 35747,
+      "sha256": "000aa38a03402e64a0bb5ef6642294973637fa0b7270659c8c23af60eaf40d18"
+    },
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": {
+      "bytes": 75580,
+      "sha256": "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 24838,
+      "sha256": "d37591ec80910769d61f81cf90e7d937bf4844dcd307ae887ac5099c440a8a79"
+    },
+    "tests/test_compare_header_material.py": {
+      "bytes": 34446,
+      "sha256": "2f376e5505975e3ecc60ea16949e2562e2c90c74b2a359d8ca3bb0abab520b72"
+    },
+    "tests/test_compare_performance_plate.py": {
+      "bytes": 53469,
+      "sha256": "3e0915d50fbfd1ed32f14e424006d6343f05dc835ceea07a08793053b84f9932"
+    },
+    "tools/compare_header_material.py": {
+      "bytes": 100851,
+      "sha256": "9cbaea0e495a0ad07276095dd81f0fcd126fee2aef1f5e9607de4740eb600328"
+    },
+    "tools/compare_performance_plate.py": {
+      "bytes": 90994,
+      "sha256": "d6fcd559d43cec25fb2d3157a9291cfe2608289465278a1e53c6da5ec2587ca5"
+    }
+  },
+  "remote_cpp_equals_preserved_locally_qualified_cpp": {
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": true,
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": true,
+    "apps/standalone/native_tests/test_standalone_performance_plate.cpp": true
+  },
+  "scope_observation": "The immutable remote delta changes exactly nine fixture/reader/comparator/test files. It changes no production source, CMake file or workflow. Three fixture C++ files are identical to the already locally qualified source.",
+  "header_comparator": {
+    "published_behavior": "Adds exact indexed-array source admission to the H1 paired comparator. This intentionally differs from the earlier local candidate, whose H1 paired comparator was unchanged.",
+    "exact_reversal_chain": [
+      "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+      "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6",
+      "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809",
+      "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+    ],
+    "independent_byte_reversal_verified": true,
+    "each_replaced_block_occurs_once": true,
+    "guards": "The current full hash chooses the indexed variant. The unique exact new helper and absence of the old helper are checked. Array reversal must reproduce the full helper-else pin; its exact helper reversal must reproduce the full cast pin; the existing exact dimension-line reversal must reproduce the genuine original baseline pin.",
+    "all_41_prior_top_level_assignments_unchanged": true,
+    "original_definitions": 58,
+    "changed_original_definitions": [
+      "fixture_portability_transition"
+    ],
+    "added_assignments": [
+      "INDEXED_ARRAY_FIXTURE_SHA"
+    ],
+    "baseline_boundary": "The original baseline fixture and comparator identities remain mandatory. Candidate/intermediate fixture hashes cannot replace retained baseline identities. Existing paired UiModel/main protected-source checks, numerical oracles and other baseline/build checks are unchanged."
+  },
+  "p1_comparator": {
+    "published_variant": "p1-helper-constexpr-else-indexed-array",
+    "published_transition_id": "p1-fixture-constexpr-else-indexed-array-v1",
+    "exact_reversal_chain": [
+      "026489d127d586c8c18384f7064e13f068f400cf08b87099d8c7f03066fe3ec5",
+      "a446f44bf67768aa9d9885084c1809c99102cb24413c7e640485ad17d5b3888d",
+      "4f1875270af71d08c27372944a4a9c8e4c10b6c31dbeb85b3841b6965915956c"
+    ],
+    "independent_byte_reversal_verified": true,
+    "each_replaced_block_occurs_once": true,
+    "candidate_only": true,
+    "guards": "Strict Boolean mode and bytes payload remain. The exact current full hash selects indexed admission; one exact indexed function body and no original body are required. Complete reversal must equal the helper-only hash. Existing helper admission must return its precise predecessor variant and a nonempty transition, preserving full reversal to original. Paired mode continues to require the original fixture. Registered-read and final-input stability are unchanged.",
+    "all_43_prior_top_level_assignments_unchanged": true,
+    "original_definitions": 73,
+    "changed_original_definitions": [
+      "admit_fixture_source"
+    ],
+    "published_metadata": "intermediate_fixture_sha256 is helper-only a446; reversed_sha256 is original4f. Replacement metadata records exact helper/array sizes, hashes and occurrence count. The combined source should retain these published names and meanings."
+  },
+  "canonical_readers": {
+    "remote_change": "Only FIXTURE_SHA256 advances to the exact indexed source in each reader.",
+    "title_active_sha256": "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb",
+    "header_active_sha256": "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa",
+    "all_original_definitions_unchanged": true,
+    "all_other_original_assignments_unchanged": true,
+    "combined_design": "Retain the published active FIXTURE_SHA256 values and add distinct ORIGINAL_FIXTURE_SHA256 constants for the historical title facc85 and header86 sources. Exact reversible candidate admission must use the original constants for original acceptance/reversal and active constants for current full-file identity. Final source stability and strict canonical state/numerical checks remain required."
+  },
+  "published_tests": {
+    "p1": {
+      "original_methods": 54,
+      "published_methods": 64,
+      "all_original_method_asts_unchanged": true,
+      "added_methods": 10
+    },
+    "header": {
+      "original_methods": 24,
+      "published_methods": 32,
+      "unchanged_original_method_asts": 23,
+      "intentionally_changed_original_method": "FixtureTransitionTests.test_current_checkout_reports_its_actual_admitted_identity",
+      "change_reason": "Accepts the separately pinned indexed source and published transition label in the actual-checkout test.",
+      "added_methods": 8
+    },
+    "reviewed_coverage": "New H1 tests bind the entire exact predecessor chain, reject partial sources and altered traversal/case values, reject duplicate or relocated helpers, and preserve original baseline even when all intermediate hashes are adversarially repinned. They reject intermediate/candidate identities as retained baseline and retain paired UiModel/main protection. New P1 tests preserve original modes/helper-only admission, enforce candidate-only indexed admission, reject partial/relocated/CRLF/unrelated sources and incorrect input types, and enforce final stability/prelaunch refusal.",
+    "union_requirement": "Preserve every published method body. Adapt the earlier local indexed-H1-refusal test to the newly published exact H1 admission; do not silently keep the obsolete rejection policy. Preserve local additional reader admission/stability/type checks with the distinct original/active constants."
+  },
+  "reconciliation_design_admitted": [
+    "Keep the identical published C++ fixture bytes.",
+    "Keep the published H1 comparator transition and published P1 admission schema/variant names.",
+    "Retain the local bounded failure-only P1 summary without changing successful results or predicates.",
+    "Add exact standalone reader reversal with separate historical ORIGINAL_FIXTURE_SHA256 and published active FIXTURE_SHA256.",
+    "Union source-only tests while preserving all published methods and explicitly documenting the H1 behavior change."
+  ],
+  "immutable_prior_receipts": [
+    {
+      "path": "source-admission.json",
+      "sha256": "21f7f146dec94d5a35f5c1130c1bdaf6a3212090b0e55b73f489dcbe4b0e8d23"
+    },
+    {
+      "path": "evidence-admission.json",
+      "sha256": "fad7965247847ebdb9f0514c8b69667a82a6e65362f0dab94e349966adacf9b4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "191a361cbb04e3cdd0702ad508a8d006be84ff1129a2d69d1c892c4f13358f46"
+    }
+  ],
+  "prior_receipt_scope": "Earlier local-candidate source/test/runtime receipts remain unchanged and apply to that preserved candidate only. Their statement that the paired H1 comparator was unchanged is not transferred to the combined candidate.",
+  "execution_scope": "Read-only immutable Git source, AST, hash and exact-byte reversal inspection. No test/build/native execution, CI collection or Git/index/ref mutation by A59.",
+  "remaining_gates": [
+    "Final combined source freeze and independent source admission",
+    "A56 test union freeze and recorded qualification",
+    "Root source-bound affected qualification as applicable",
+    "Terminal remote hosted evidence collected by A57 and final publication-specific qualification"
+  ],
+  "limitations": [
+    "No runtime pass for the combined source is claimed by this report.",
+    "No particular compiler cause is inferred.",
+    "Remote hosted status is owned by A57; this report does not independently poll or qualify CI.",
+    "No additional worker credit."
+  ]
+}

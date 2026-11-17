@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-17T08:01:01.372Z",
+  "decision": "ACCEPT_RECONCILED_SOURCE_AND_EVIDENCE_FOR_GUARDED_PUBLICATION",
+  "local_parent": "4378fff74a3a11de400e3a38b877d170bad6c57e",
+  "mapped_api_parent": "8189a49eacab5d4e6ce6c178862e83b03bdec437",
+  "remote_merge_parent": "54859886268ce83c36f359c43327f7c72a77ae82",
+  "root_reviews": [
+    {
+      "worker": "A56",
+      "accepted_scope": "combined indexed source-only test reconciliation",
+      "report_path": "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/combined-indexed-regressions-report.json",
+      "report_sha256": "e8e0980bf0d9bd2c87cd8adb2a1cd7adf24a341f0139cbceac80cdcc65651302",
+      "inventory_sha256": "8057f17872576173475ff9e6c8035dca3ac19d943bb2e4e2e1d58f050e38523c",
+      "inventory_payloads_verified": 18,
+      "payload_bytes": 196385,
+      "current_inputs_verified": 9,
+      "prior_records_verified": 6,
+      "results": [
+        71,
+        41
+      ],
+      "root_verified_utc": "2026-11-17T07:54:16.283198+00:00"
+    },
+    {
+      "worker": "A57",
+      "accepted_scope": "Native six hosted families at published548 only",
+      "report_path": "docs/development/2026-11-16-console-completion/reports/A57-indexed-hosted/report.json",
+      "report_sha256": "d55cb7a0cb8b66224367d0fee3c8cefe4a420213e70240a4b6a592579a0cc746",
+      "admission_sha256": "33d3ba02b668ec80f06ec644c8e26648b04fb3d9e30aa408da3a7ad5b9975e5a",
+      "inventory_sha256": "8f73afce7f3bbcc3482ce5adc9cc5773fc5a3942f3c99e65f40a5c0f96b4e574",
+      "inventory_payloads_verified": 40,
+      "payload_bytes": 4734751,
+      "jobs": 6,
+      "ctests_passed": 431,
+      "method_subcase_skips": 1,
+      "root_verified_utc": "2026-11-17T07:55:13.090486+00:00"
+    },
+    {
+      "worker": "A59",
+      "accepted_scope": "combined source/tests/readers/finaldocumentintegrity",
+      "report_path": "docs/development/2026-11-16-console-completion/reports/A59-copied-state-followup/combined-admission.json",
+      "report_sha256": "67a899b5f2780f3603693268aa3838872907f95493902a98eda5b46eb1b4ae58",
+      "referenced_payload_identities_verified": 28,
+      "immutable_prior_records_verified": 7,
+      "decision": "ADMITTED_COMBINED_SOURCE_TESTS_READERS_AND_DOCUMENT_INTEGRITY_HOSTED_PENDING",
+      "remaining_gates": [
+        "Final published combined-source hosted qualification"
+      ],
+      "root_verified_utc": "2026-11-17T08:01:01.185404+00:00"
+    },
+    {
+      "worker": "A60",
+      "accepted_scope": "current navigation read-only audit",
+      "report_path": "docs/development/2026-11-16-console-completion/reports/A60-indexed-navigation-audit.json",
+      "report_sha256": "7f86b0e37eb54ef17712ac28aa66bae73a4028d6976617d5b99160af996e8999",
+      "navigation_inputs_verified": 11,
+      "historical_and_evidence_identities_verified": 9,
+      "links_reviewed": 215,
+      "open_findings": 0,
+      "resolved_findings": 3,
+      "root_verified_utc": "2026-11-17T07:59:53.723035+00:00"
+    }
+  ],
+  "qualification": {
+    "native_reader_ctests": "3/3",
+    "source_only_methods": {
+      "p1": 71,
+      "header": 41
+    },
+    "document_integrity_ctests": "1/1",
+    "document_integrity_methods": 41,
+    "strict_worker_records": "60 accepted / 10 waves of 6 / 60 immutable notes verified",
+    "source_inputs": 587,
+    "changed_from_published": 5,
+    "unchanged_from_published": 582,
+    "cpp_production_application_workflow_criteria_deadlines_unchanged": true
+  },
+  "source_boundaries": [
+    "Published548 has16/16 successful jobs; complete Native431/431 and strict instrumentation independently retained.",
+    "Original root8-file candidate has its own7/7 local gates and byte-identical complete Linux streams.",
+    "Merged five Python changes have their own71/41 source suites,3 reader CTests and final document integrity; no published548 hosted pass is transferred.",
+    "Final merged-source hosted qualification remains pending after publication."
+  ],
+  "pending": [
+    "Guarded nonforced main publication with fresh expected548 lease unless remote advances",
+    "Independent API/Git verification of commit/tree/ordered mapped parents and all587 source identities",
+    "Every actual final published-source hosted family",
+    "Final source-specific CI/evidence and current navigation closure"
+  ],
+  "product_limits": [
+    "Native browser/main library wiring and --library remain absent",
+    "Literal whole-interface1:1 remains unmet and unwaived",
+    "No physical fidelity, device/DAW/DPI/accessibility/callback-lifetime or signed-release completion claim"
+  ],
+  "additional_worker_credit": 0,
+  "staged_diff_check": {
+    "full_command": [
+      "git",
+      "diff",
+      "--check",
+      "--cached"
+    ],
+    "full_exit_code": 2,
+    "full_diagnostics": [
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/combined-from-published.patch",
+        "lines": [
+          5,
+          6,
+          87,
+          94,
+          95
+        ],
+        "diagnostic": "trailing whitespace",
+        "classification": "Exact retained unified diff context represents blank source lines with the required leading space; do not normalize frozen evidence."
+      },
+      {
+        "path": "docs/development/2026-11-16-console-completion/reports/combined-indexed-affected-detail.log",
+        "lines": [
+          1235
+        ],
+        "diagnostic": "new blank line at EOF",
+        "classification": "Exact original CTest LastTest log bytes; preserve source-bound raw output."
+      }
+    ],
+    "scoped_command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)docs/development/2026-11-16-console-completion/reports/A56-combined-indexed-regressions/combined-from-published.patch",
+      ":(exclude)docs/development/2026-11-16-console-completion/reports/combined-indexed-affected-detail.log"
+    ],
+    "scoped_exit_code": 0,
+    "source_and_markdown_clean": true,
+    "raw_evidence_normalized": false,
+    "scope": "The original full check remains recorded. Only the two identified immutable evidence payloads are excluded from the separate whitespace check; no source/test/numerical gate is excluded."
+  }
+}

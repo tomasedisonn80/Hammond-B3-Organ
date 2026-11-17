@@ -29,7 +29,7 @@ import sys
 import threading
 
 
-FIXTURE_SHA256 = "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
+FIXTURE_SHA256 = "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"
 PROTOCOL = "footage-typography-v1"
 CASE_COUNT = 18
 FIXTURE_CASE_COUNT = 44
@@ -60,6 +60,7 @@ def require(condition, message):
         raise ValueError(message)
 
 
+ORIGINAL_FIXTURE_SHA256 = "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
 INDEXED_FIXTURE_SHA256 = "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"
 ARRAY_ORIGINAL_BYTES = b"""template <typename Range, typename Writer>
 void array(std::ostream& out, const Range& values, Writer write) {
@@ -89,15 +90,15 @@ def admit_fixture_bytes(source_bytes):
     """Admit one canonical serializer transition without weakening the protocol."""
     require(type(source_bytes) is bytes, "fixture admission requires complete byte source")
     observed = hashlib.sha256(source_bytes).hexdigest()
-    result = dict(variant="original-fixture", original_sha256=FIXTURE_SHA256,
-                  observed_sha256=observed, reversed_sha256=FIXTURE_SHA256,
+    result = dict(variant="original-fixture", original_sha256=ORIGINAL_FIXTURE_SHA256,
+                  observed_sha256=observed, reversed_sha256=ORIGINAL_FIXTURE_SHA256,
                   candidate_only=True)
-    if observed == FIXTURE_SHA256:
+    if observed == ORIGINAL_FIXTURE_SHA256:
         return result
     require(source_bytes.count(ARRAY_INDEXED_BYTES) == 1 and ARRAY_ORIGINAL_BYTES not in source_bytes,
             "fixture requires one exact indexed array block")
     restored = source_bytes.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
-    require(hashlib.sha256(restored).hexdigest() == FIXTURE_SHA256,
+    require(hashlib.sha256(restored).hexdigest() == ORIGINAL_FIXTURE_SHA256,
             "indexed array reversal does not reconstruct original fixture")
     require(observed == INDEXED_FIXTURE_SHA256,
             "indexed fixture does not match complete admitted identity")

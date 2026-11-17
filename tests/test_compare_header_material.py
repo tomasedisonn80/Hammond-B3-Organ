@@ -27,6 +27,7 @@ ORIGINAL_SHA = "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2
 CORRECTED_SHA = "1e5ced9f7644506863a514ee06b452601b3861ab2e581c6dff7e67c5cf7c275d"
 CAST_SHA = "96149cf482ad0a57512257a519b89198113f21b06c33b073b2861e13349d1809"
 HELPER_ELSE_SHA = "86acc068fa23826fb39f245f9327e919c076660f315bed5d57f63e586d6d3ac6"
+INDEXED_ARRAY_SHA = "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
 ORIGINAL_COMPARATOR_SHA = "ff3e9015364c1a773bfb8ea90a0138eb9df5f2b03075e49dc8ea4457b76b5760"
 OLD_LINE = b"            c.width = shape == 0 ? 1920 : 1400; c.height = shape == 0 ? 820 : 1080;\n"
 NEW_LINE = b"            c.width = shape == 0 ? 1920.0F : 1400.0F; c.height = shape == 0 ? 820.0F : 1080.0F;\n"
@@ -38,31 +39,30 @@ ELSE_HELPER = (b"    if constexpr (h1_fixture_helper_present<Drawer>) {\n"
     b"        reference_header_h1_material(drawing, bounds, scale);\n"
     b"        return true;\n    } else {\n        return false;\n    }\n")
 
-# Independent complete serializer blocks from the reviewed source transition.
-ARRAY_ORIGINAL_BYTES = b"""template <typename Range, typename Writer>
-void array(std::ostream& out, const Range& values, Writer write) {
-    out << '[';
-    bool first = true;
-    for (const auto& value : values) {
-        if (!first) out << ',';
-        first = false;
-        write(out, value);
-    }
-    out << ']';
-}
-"""
-ARRAY_INDEXED_BYTES = b"""template <typename Range, typename Writer>
-void array(std::ostream& out, const Range& values, Writer write) {
-    out << '[';
-    for (std::size_t index = 0; index < values.size(); ++index) {
-        if (index != 0) out << ',';
-        write(out, values[index]);
-    }
-    out << ']';
-}
-"""
-
-INDEXED_HEADER_SHA = "8c8226b04931569cdbff78cddcfd6241fd334c1f15c764a04d016d958bc912aa"
+ORIGINAL_ARRAY=(
+    b'template <typename Range, typename Writer>\n'
+    b'void array(std::ostream& out, const Range& values, Writer write) {\n'
+    b"    out << '[';\n"
+    b'    bool first = true;\n'
+    b'    for (const auto& value : values) {\n'
+    b"        if (!first) out << ',';\n"
+    b'        first = false;\n'
+    b'        write(out, value);\n'
+    b'    }\n'
+    b"    out << ']';\n"
+    b'}\n'
+)
+INDEXED_ARRAY=(
+    b'template <typename Range, typename Writer>\n'
+    b'void array(std::ostream& out, const Range& values, Writer write) {\n'
+    b"    out << '[';\n"
+    b'    for (std::size_t index = 0; index < values.size(); ++index) {\n'
+    b"        if (index != 0) out << ',';\n"
+    b'        write(out, values[index]);\n'
+    b'    }\n'
+    b"    out << ']';\n"
+    b'}\n'
+)
 
 # The comparator has optional authoring dependencies. Import its actual source
 # with nonfunctional image placeholders so this small gate remains stdlib-only.
@@ -79,17 +79,15 @@ def digest(data):
 
 
 def fixture_sources():
-    """Recover original and dimension-only forms from any exact valid checkout."""
+    """Recover original and dimension-only forms from every exact reviewed source."""
     current = (ROOT / HEADER.FIXTURE).read_bytes()
-    if digest(current) == INDEXED_HEADER_SHA:
-        if current.count(ARRAY_INDEXED_BYTES) != 1 or ARRAY_ORIGINAL_BYTES in current:
-            raise AssertionError("indexed checkout lacks the exact reviewed array block")
-        current = current.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
-        if digest(current) != HELPER_ELSE_SHA:
-            raise AssertionError("array reversal did not recover the historical paired fixture")
     line_source = current
-    if digest(current) == HELPER_ELSE_SHA:
-        line_source = current.replace(ELSE_HELPER, ORIGINAL_HELPER, 1)
+    if digest(line_source) == INDEXED_ARRAY_SHA:
+        line_source = line_source.replace(INDEXED_ARRAY, ORIGINAL_ARRAY, 1)
+        if digest(line_source) != HELPER_ELSE_SHA:
+            raise AssertionError("array reversal did not recover the helper-else source")
+    if digest(line_source) == HELPER_ELSE_SHA:
+        line_source = line_source.replace(ELSE_HELPER, ORIGINAL_HELPER, 1)
         if digest(line_source) != CAST_SHA:
             raise AssertionError("helper reversal did not recover the cast source")
     lines = {CORRECTED_SHA: NEW_LINE, CAST_SHA: CAST_LINE}
@@ -107,21 +105,7 @@ class FixtureTransitionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.current, cls.original, cls.corrected, cls.cast = fixture_sources()
         cls.helper_else = cls.cast.replace(ORIGINAL_HELPER, ELSE_HELPER, 1)
-
-    def setUp(self):
-        # The paired comparator intentionally does not admit indexed fixtures.
-        # Exercise its unchanged historical-checkout test on actual temporary
-        # bytes, without mocking source admission or changing any test body.
-        if self._testMethodName == "test_current_checkout_reports_its_actual_admitted_identity":
-            directory = tempfile.TemporaryDirectory()
-            self.addCleanup(directory.cleanup)
-            root = Path(directory.name)
-            path = root / HEADER.FIXTURE
-            path.parent.mkdir(parents=True)
-            path.write_bytes(self.current)
-            patcher = mock.patch.dict(globals(), {"ROOT": root})
-            patcher.start()
-            self.addCleanup(patcher.stop)
+        cls.indexed_array = cls.helper_else.replace(ORIGINAL_ARRAY, INDEXED_ARRAY, 1)
 
     def check_temporary_source(self, payload):
         with tempfile.TemporaryDirectory() as directory:
@@ -163,11 +147,12 @@ class FixtureTransitionTests(unittest.TestCase):
     def test_current_checkout_reports_its_actual_admitted_identity(self):
         transition = HEADER.fixture_portability_transition(ROOT)
         current_sha = digest(self.current)
-        self.assertIn(current_sha, (CORRECTED_SHA, CAST_SHA, HELPER_ELSE_SHA))
+        self.assertIn(current_sha, (CORRECTED_SHA, CAST_SHA, HELPER_ELSE_SHA, INDEXED_ARRAY_SHA))
         self.assertEqual(transition["current_fixture_sha256"], current_sha)
         self.assertEqual(transition["current_fixture_repair"],
                          {CORRECTED_SHA: "float-literals", CAST_SHA: "explicit-float-casts",
-                          HELPER_ELSE_SHA: "explicit-float-casts-and-constexpr-else"}[current_sha])
+                          HELPER_ELSE_SHA: "explicit-float-casts-and-constexpr-else",
+                          INDEXED_ARRAY_SHA: "explicit-float-casts-and-constexpr-else-and-indexed-array"}[current_sha])
 
     def test_helper_else_reverses_through_exact_cast_and_original(self):
         self.assertEqual(HEADER.HELPER_ELSE_FIXTURE_SHA, HELPER_ELSE_SHA)
@@ -224,6 +209,84 @@ class FixtureTransitionTests(unittest.TestCase):
         intermediate = payload.replace(ELSE_HELPER, ORIGINAL_HELPER, 1)
         with mock.patch.object(HEADER, "HELPER_ELSE_FIXTURE_SHA", digest(payload)), \
                 mock.patch.object(HEADER, "CAST_FIXTURE_SHA", digest(intermediate)):
+            with self.assertRaisesRegex(ValueError, "does not reproduce the genuine baseline"):
+                self.check_temporary_source(payload)
+
+    def test_indexed_array_reverses_through_all_exact_predecessors(self):
+        self.assertEqual(HEADER.INDEXED_ARRAY_FIXTURE_SHA, INDEXED_ARRAY_SHA)
+        self.assertEqual(digest(self.indexed_array), INDEXED_ARRAY_SHA)
+        self.assertEqual(self.indexed_array.count(INDEXED_ARRAY), 1)
+        self.assertNotIn(ORIGINAL_ARRAY, self.indexed_array)
+        self.assertEqual(self.indexed_array.replace(INDEXED_ARRAY, ORIGINAL_ARRAY, 1), self.helper_else)
+        result = self.check_temporary_source(self.indexed_array)
+        self.assertEqual(result["current_fixture_sha256"], INDEXED_ARRAY_SHA)
+        self.assertEqual(result["indexed_array_reversed_fixture_sha256"], HELPER_ELSE_SHA)
+        self.assertEqual(result["intermediate_fixture_sha256"], CAST_SHA)
+        self.assertEqual(result["baseline_fixture_sha256"], ORIGINAL_SHA)
+        self.assertEqual(result["baseline_comparator_sha256"], ORIGINAL_COMPARATOR_SHA)
+        self.assertEqual(result["current_fixture_repair"],
+                         "explicit-float-casts-and-constexpr-else-and-indexed-array")
+        self.assertEqual(result["reviewed_current_fixture_sha256"], {
+            "float-literals": CORRECTED_SHA, "explicit-float-casts": CAST_SHA,
+            "explicit-float-casts-and-constexpr-else": HELPER_ELSE_SHA,
+            "explicit-float-casts-and-constexpr-else-and-indexed-array": INDEXED_ARRAY_SHA})
+        self.assertTrue(result["exact_indexed_array_reversal"])
+        self.assertTrue(result["exact_helper_branch_reversal"])
+        self.assertTrue(result["case_values_preserved"])
+        self.assertFalse(result["exact_single_line_reversal"])
+        self.assertFalse(result["source_bytes_identical"])
+
+    def test_indexed_array_does_not_admit_unreviewed_complete_files(self):
+        cases = {
+            "historical-with-array": self.original.replace(ORIGINAL_ARRAY, INDEXED_ARRAY, 1),
+            "float-literals-with-array": self.corrected.replace(ORIGINAL_ARRAY, INDEXED_ARRAY, 1),
+            "casts-without-else": self.cast.replace(ORIGINAL_ARRAY, INDEXED_ARRAY, 1),
+            "changed-case-value": self.indexed_array.replace(CAST_LINE, CAST_LINE.replace(b"820", b"821"), 1),
+            "unrelated-append": self.indexed_array + b"// unrelated source change\n",
+        }
+        for name, payload in cases.items():
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, "current pin"):
+                self.check_temporary_source(payload)
+
+    def test_repinning_indexed_array_cannot_admit_wrong_traversal_or_duplicate_helper(self):
+        def helper_edit(before, after):
+            self.assertEqual(INDEXED_ARRAY.count(before), 1)
+            return self.indexed_array.replace(INDEXED_ARRAY, INDEXED_ARRAY.replace(before, after, 1), 1)
+
+        cases = {
+            "missing": self.indexed_array.replace(INDEXED_ARRAY, b"", 1),
+            "duplicate": self.indexed_array + INDEXED_ARRAY,
+            "old-helper-added": self.indexed_array + ORIGINAL_ARRAY,
+            "skip-first": helper_edit(b"index = 0;", b"index = 1;"),
+            "skip-elements": helper_edit(b"++index)", b"index += 2)"),
+            "wrong-element": helper_edit(b"write(out, values[index]);", b"write(out, values[0]);"),
+            "missing-writer": helper_edit(b"        write(out, values[index]);\n", b""),
+            "wrong-comma": helper_edit(b"if (index != 0)", b"if (index == 0)"),
+        }
+        for name, payload in cases.items():
+            with self.subTest(name=name), mock.patch.object(HEADER, "INDEXED_ARRAY_FIXTURE_SHA", digest(payload)):
+                with self.assertRaisesRegex(ValueError, "exactly the reviewed indexed array"):
+                    self.check_temporary_source(payload)
+
+    def test_repinning_indexed_array_still_requires_the_exact_helper_else_predecessor(self):
+        cases = {
+            "unrelated-append": self.indexed_array + b"// unrelated source change\n",
+            "relocated-helper": self.indexed_array.replace(INDEXED_ARRAY, b"", 1) + INDEXED_ARRAY,
+            "cast-without-else": self.cast.replace(ORIGINAL_ARRAY, INDEXED_ARRAY, 1),
+            "changed-case-value": self.indexed_array.replace(CAST_LINE, CAST_LINE.replace(b"820", b"821"), 1),
+        }
+        for name, payload in cases.items():
+            with self.subTest(name=name), mock.patch.object(HEADER, "INDEXED_ARRAY_FIXTURE_SHA", digest(payload)):
+                with self.assertRaisesRegex(ValueError, "does not reproduce the reviewed constexpr-else"):
+                    self.check_temporary_source(payload)
+
+    def test_repinning_all_intermediates_cannot_replace_the_historical_baseline(self):
+        payload = self.indexed_array + b"// unrelated source change\n"
+        helper_else = payload.replace(INDEXED_ARRAY, ORIGINAL_ARRAY, 1)
+        cast = helper_else.replace(ELSE_HELPER, ORIGINAL_HELPER, 1)
+        with mock.patch.object(HEADER, "INDEXED_ARRAY_FIXTURE_SHA", digest(payload)), \
+                mock.patch.object(HEADER, "HELPER_ELSE_FIXTURE_SHA", digest(helper_else)), \
+                mock.patch.object(HEADER, "CAST_FIXTURE_SHA", digest(cast)):
             with self.assertRaisesRegex(ValueError, "does not reproduce the genuine baseline"):
                 self.check_temporary_source(payload)
 
@@ -308,6 +371,7 @@ class BaselineTransitionTests(unittest.TestCase):
     def setUp(self):
         self.current, self.original, self.corrected, self.cast = fixture_sources()
         self.helper_else = self.cast.replace(ORIGINAL_HELPER, ELSE_HELPER, 1)
+        self.indexed_array = self.helper_else.replace(ORIGINAL_ARRAY, INDEXED_ARRAY, 1)
         self.current_sha = digest(self.current)
         self.receipt_path = ROOT / HEADER.BASELINE
         self.receipt = json.loads(self.receipt_path.read_bytes())
@@ -330,8 +394,7 @@ class BaselineTransitionTests(unittest.TestCase):
         for row in [*self.supplement["inputs"], self.supplement["object"]]:
             self.identities[str(Path(row["path"]))] = deepcopy(row)
         self.source_files = {
-            HEADER.FIXTURE: {"path": str(ROOT / HEADER.FIXTURE),
-                             "bytes": len(self.current), "sha256": digest(self.current)},
+            HEADER.FIXTURE: HEADER.identity(ROOT / HEADER.FIXTURE),
             HEADER.PAINTER: HEADER.identity(ROOT / HEADER.PAINTER),
             COMPARATOR: HEADER.identity(ROOT / COMPARATOR),
         }
@@ -343,8 +406,6 @@ class BaselineTransitionTests(unittest.TestCase):
         return deepcopy(result) if result is not None else self.real_identity(path)
 
     def admit(self, supplement=None, source_files=None, fixture_payload=None):
-        if fixture_payload is None:
-            fixture_payload = self.current
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "supplement.json"
             path.write_text(json.dumps(self.supplement if supplement is None else supplement), encoding="utf-8")
@@ -403,6 +464,38 @@ class BaselineTransitionTests(unittest.TestCase):
             with self.subTest(path=name), mock.patch.dict(self.identities, {key: changed}):
                 with self.assertRaisesRegex(ValueError, "protected pre/post-H1 source differs"):
                     self.admit(fixture_payload=self.helper_else)
+
+    def test_indexed_array_keeps_the_exact_genuine_retained_baseline(self):
+        result = self.admit(fixture_payload=self.indexed_array)
+        transition = result["fixture_portability_transition"]
+        self.assertEqual(transition["current_fixture_sha256"], INDEXED_ARRAY_SHA)
+        self.assertEqual(transition["indexed_array_reversed_fixture_sha256"], HELPER_ELSE_SHA)
+        self.assertEqual(transition["intermediate_fixture_sha256"], CAST_SHA)
+        self.assertEqual(transition["baseline_fixture_sha256"], ORIGINAL_SHA)
+        self.assertEqual(transition["baseline_comparator_sha256"], ORIGINAL_COMPARATOR_SHA)
+        retained = {row["sha256"] for row in result["retained_build_inputs"]}
+        self.assertIn(ORIGINAL_SHA, retained)
+        self.assertTrue(retained.isdisjoint((CORRECTED_SHA, CAST_SHA, HELPER_ELSE_SHA, INDEXED_ARRAY_SHA)))
+
+    def test_indexed_array_current_identity_cannot_replace_actual_or_original(self):
+        for wrong in (ORIGINAL_SHA, CORRECTED_SHA, CAST_SHA, HELPER_ELSE_SHA):
+            sources = deepcopy(self.source_files)
+            sources[HEADER.FIXTURE]["sha256"] = wrong
+            with self.subTest(wrong=wrong), self.assertRaisesRegex(ValueError, "current fixture identity"):
+                self.admit(source_files=sources, fixture_payload=self.indexed_array)
+        supplement = deepcopy(self.supplement)
+        supplement["source_sha256"][HEADER.FIXTURE] = INDEXED_ARRAY_SHA
+        with self.assertRaisesRegex(ValueError, "exact original"):
+            self.admit(supplement=supplement, fixture_payload=self.indexed_array)
+
+    def test_indexed_array_preserves_the_paired_uimodel_and_main_source_pins(self):
+        for name in ("apps/standalone/UiModel.cpp", "apps/standalone/UiModel.h", "apps/standalone/main.cpp"):
+            key = str(ROOT / name)
+            changed = deepcopy(self.identities[key])
+            changed["sha256"] = "0" * 64
+            with self.subTest(path=name), mock.patch.dict(self.identities, {key: changed}):
+                with self.assertRaisesRegex(ValueError, "protected pre/post-H1 source differs"):
+                    self.admit(fixture_payload=self.indexed_array)
 
     def test_both_fixture_forms_keep_the_genuine_original_baseline(self):
         for payload, expected in ((self.corrected, CORRECTED_SHA), (self.cast, CAST_SHA)):
@@ -485,14 +578,14 @@ class ArrayReaderAdmissionTests(unittest.TestCase):
              "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
              "9e3a8fb643194e8ce4dcefb8059e82fef2b0140183c9175449098bf8941a2ecb"),
             ("header", "test_standalone_header_statistics.py", "test_standalone_header_material.cpp",
-             HELPER_ELSE_SHA, INDEXED_HEADER_SHA),
+             HELPER_ELSE_SHA, INDEXED_ARRAY_SHA),
         ):
             source = ROOT / "apps/standalone/native_tests" / filename
             spec = importlib.util.spec_from_file_location(name + "_array_reader", source)
             reader = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(reader)
             indexed = source.with_name(fixture).read_bytes()
-            original = indexed.replace(ARRAY_INDEXED_BYTES, ARRAY_ORIGINAL_BYTES, 1)
+            original = indexed.replace(INDEXED_ARRAY, ORIGINAL_ARRAY, 1)
             if digest(indexed) != indexed_sha or digest(original) != original_sha:
                 raise AssertionError("standalone fixture does not reverse to its exact original")
             cls.readers.append(dict(name=name, reader=reader, source=source, fixture=fixture,
@@ -503,10 +596,11 @@ class ArrayReaderAdmissionTests(unittest.TestCase):
         for item in self.readers:
             reader = item["reader"]
             with self.subTest(reader=item["name"]):
-                self.assertEqual(reader.FIXTURE_SHA256, item["original_sha"])
+                self.assertEqual(reader.FIXTURE_SHA256, item["indexed_sha"])
+                self.assertEqual(reader.ORIGINAL_FIXTURE_SHA256, item["original_sha"])
                 self.assertEqual(reader.INDEXED_FIXTURE_SHA256, item["indexed_sha"])
-                self.assertEqual(reader.ARRAY_ORIGINAL_BYTES, ARRAY_ORIGINAL_BYTES)
-                self.assertEqual(reader.ARRAY_INDEXED_BYTES, ARRAY_INDEXED_BYTES)
+                self.assertEqual(reader.ARRAY_ORIGINAL_BYTES, ORIGINAL_ARRAY)
+                self.assertEqual(reader.ARRAY_INDEXED_BYTES, INDEXED_ARRAY)
             for variant in ("original", "indexed"):
                 with self.subTest(reader=item["name"], variant=variant):
                     result = reader.admit_fixture_bytes(item[variant])
@@ -530,9 +624,9 @@ class ArrayReaderAdmissionTests(unittest.TestCase):
     def test_repinning_cannot_admit_missing_duplicate_or_changed_array(self):
         for item in self.readers:
             source = item["indexed"]
-            cases = {"missing": source.replace(ARRAY_INDEXED_BYTES, b"", 1),
-                     "duplicate": source + ARRAY_INDEXED_BYTES,
-                     "old-block-added": source + ARRAY_ORIGINAL_BYTES,
+            cases = {"missing": source.replace(INDEXED_ARRAY, b"", 1),
+                     "duplicate": source + INDEXED_ARRAY,
+                     "old-block-added": source + ORIGINAL_ARRAY,
                      "element": source.replace(b"write(out, values[index]);", b"write(out, values[0]);", 1),
                      "bound": source.replace(b"index < values.size()", b"index <= values.size()", 1)}
             for name, payload in cases.items():
@@ -545,7 +639,7 @@ class ArrayReaderAdmissionTests(unittest.TestCase):
         for item in self.readers:
             source = item["indexed"]
             for name, payload in (("append", source + b"// unrelated\n"),
-                                  ("relocated", source.replace(ARRAY_INDEXED_BYTES, b"", 1) + ARRAY_INDEXED_BYTES)):
+                                  ("relocated", source.replace(INDEXED_ARRAY, b"", 1) + INDEXED_ARRAY)):
                 with self.subTest(reader=item["name"], case=name), \
                         mock.patch.object(item["reader"], "INDEXED_FIXTURE_SHA256", digest(payload)):
                     with self.assertRaisesRegex(ValueError, "does not reconstruct original fixture"):
@@ -558,17 +652,30 @@ class ArrayReaderAdmissionTests(unittest.TestCase):
                     item["reader"].admit_fixture_bytes(item["indexed"])
                 self.assertEqual(item["reader"].admit_fixture_bytes(item["original"])["observed_sha256"], item["original_sha"])
 
-    def test_indexed_header_does_not_replace_original_paired_admission(self):
+    def test_header_readers_agree_on_indexed_source_and_keep_original_pins(self):
         item = next(x for x in self.readers if x["name"] == "header")
-        self.assertEqual(HEADER.PINNED[HEADER.FIXTURE], ORIGINAL_SHA)
-        self.assertEqual(HEADER.HELPER_ELSE_FIXTURE_SHA, HELPER_ELSE_SHA)
+        standalone = item["reader"].admit_fixture_bytes(item["indexed"])
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             path = root / HEADER.FIXTURE
             path.parent.mkdir(parents=True)
             path.write_bytes(item["indexed"])
-            with self.assertRaisesRegex(ValueError, "current pin"):
-                HEADER.fixture_portability_transition(root)
+            paired = HEADER.fixture_portability_transition(root)
+            self.assertEqual(paired["current_fixture_sha256"], standalone["observed_sha256"])
+            self.assertEqual(paired["indexed_array_reversed_fixture_sha256"], standalone["original_sha256"])
+            self.assertEqual(paired["indexed_array_reversed_fixture_sha256"], HELPER_ELSE_SHA)
+            self.assertEqual(paired["intermediate_fixture_sha256"], CAST_SHA)
+            self.assertEqual(paired["baseline_fixture_sha256"], ORIGINAL_SHA)
+            self.assertEqual(HEADER.PINNED[HEADER.FIXTURE], ORIGINAL_SHA)
+            self.assertNotEqual(standalone["original_sha256"], paired["baseline_fixture_sha256"])
+            changed = item["indexed"] + b"// unrelated\n"
+            path.write_bytes(changed)
+            with mock.patch.object(HEADER, "INDEXED_ARRAY_FIXTURE_SHA", digest(changed)), \
+                    mock.patch.object(item["reader"], "INDEXED_FIXTURE_SHA256", digest(changed)):
+                with self.assertRaisesRegex(ValueError, "does not reconstruct original fixture"):
+                    item["reader"].admit_fixture_bytes(changed)
+                with self.assertRaisesRegex(ValueError, "does not reproduce the reviewed constexpr-else"):
+                    HEADER.fixture_portability_transition(root)
 
     def test_bad_source_is_refused_before_executable_or_process_access(self):
         for item in self.readers:
