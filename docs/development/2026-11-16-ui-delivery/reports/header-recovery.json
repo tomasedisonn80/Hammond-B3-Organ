@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w02_a08_header_review",
+  "base_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "scope": "Fresh independent protocol recovery review, not implementation or candidate acceptance.",
+  "original_workspace": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+  "copied_exact": [
+    {
+      "path": "docs/design/HEADER_MATERIAL_H1_CONTRACT.md",
+      "bytes": 26099,
+      "sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282"
+    },
+    {
+      "path": "docs/reviews/HEADER_MATERIAL_H1_ADMISSION.md",
+      "bytes": 13062,
+      "sha256": "c2e7a216a11d7065262702aaee8f7ec766171a4571cc51c2f9bf7edd021cd6e5"
+    }
+  ],
+  "observation_report": {
+    "path": "docs/development/2026-11-16-heading-title-continuation/reports/a22-header-observations.json",
+    "bytes": 223280,
+    "sha256": "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b"
+  },
+  "decoder": {
+    "python": "3.12.14",
+    "pillow": "13.0.0",
+    "libjpeg_turbo": "3.2.0"
+  },
+  "independent_checks": {
+    "count": 1618,
+    "errors": [],
+    "method": "Ordinary-coordinate covariance planes recomputed from source RGB with exact Fraction means/slopes/SSE and binary64 sqrt; all25 rectangles/two images/RGB+Y; all24 excluded grid cells;103 baseline screens; literal knot table; ordered grain and binary32 maximum mapping. No candidate colors evaluated.",
+    "scalar_planes": 200,
+    "before_screens": 103,
+    "before_passed": 44,
+    "before_failed": 59,
+    "primary_area": 21856,
+    "grid_retained_pixels": 48409,
+    "grid_empty_cells": 4,
+    "equal_patch_mean_error_exact": "846310429693/228096000000",
+    "equal_patch_rms_error": 1.6673172881480465,
+    "grain_count": 16384,
+    "grain_unique_origins": 15438,
+    "grain_ordered_xy_sha256": "afd3639f16f5ae4ce396ea0a91d7bb4192cb0c7cc6139daa2ee0eb45a1f6a0e6",
+    "endpoint_device_rows": [
+      244,
+      1880
+    ],
+    "endpoint_row_count": 1636,
+    "conservative_rows": 1638,
+    "conservative_primitives": 437350,
+    "canonical_primitives": 40542,
+    "initial_inline_result": {
+      "count": 1614,
+      "errors": [
+        "empty grid",
+        "empty grid",
+        "empty grid",
+        "empty grid"
+      ],
+      "reason": "Review script incorrectly expected the entire empty-cell record to be null; source correctly retains zero sums with null means."
+    },
+    "empty_cell_followup": [
+      {
+        "box": [
+          596,
+          18,
+          852,
+          40
+        ],
+        "image": "reference",
+        "passed": true
+      },
+      {
+        "box": [
+          596,
+          18,
+          852,
+          40
+        ],
+        "image": "t2_canonical",
+        "passed": true
+      },
+      {
+        "box": [
+          596,
+          40,
+          852,
+          60
+        ],
+        "image": "reference",
+        "passed": true
+      },
+      {
+        "box": [
+          596,
+          40,
+          852,
+          60
+        ],
+        "image": "t2_canonical",
+        "passed": true
+      },
+      {
+        "box": [
+          1364,
+          40,
+          1588,
+          60
+        ],
+        "image": "reference",
+        "passed": true
+      },
+      {
+        "box": [
+          1364,
+          40,
+          1588,
+          60
+        ],
+        "image": "t2_canonical",
+        "passed": true
+      },
+      {
+        "box": [
+          1364,
+          60,
+          1588,
+          84
+        ],
+        "image": "reference",
+        "passed": true
+      },
+      {
+        "box": [
+          1364,
+          60,
+          1588,
+          84
+        ],
+        "image": "t2_canonical",
+        "passed": true
+      }
+    ]
+  },
+  "review_script_failure_retained": "The first inline analysis stopped with Fraction(0,0) on a fully excluded descriptive grid cell. No files were written by that attempt. Corrected analysis checks explicit empty-cell status and reproduces all nonempty cells; no product source or threshold changed. The first completed analysis then incorrectly expected four whole empty-cell records to be null. Eight explicit follow-up checks confirm zero RGB sums and null means for both images; the four erroneous expectations are retained in initial_inline_result.",
+  "missing_linked_artifacts_for_root": [
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/inputs/HEADER_MATERIAL_H1_PROPOSAL_v1.md",
+      "available_in_original_checkout": true,
+      "bytes": 25083,
+      "sha256": "d818189557308c6d8624ec1e1f855a730f3a8aac0ac2abefd0f8e2520bdd99cc"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a22-header-observations.json",
+      "available_in_original_checkout": true,
+      "bytes": 223280,
+      "sha256": "8f591b6d80bb6934a955ac2eb4b0005b78c4c164434510bc7125b4c511856c7b"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/h1-arithmetic-clarification.json",
+      "available_in_original_checkout": true,
+      "bytes": 702,
+      "sha256": "2fca33bd30acbbaff573b842ee98fbe6a32adf5dd6c6db4cae1f3790559b4b3d"
+    },
+    {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/t3-v1-rejection.json",
+      "available_in_original_checkout": true,
+      "bytes": 2528,
+      "sha256": "8c7fc7da821baade0e61269358edb6486a86611f95a3b139985b4a9bd00b65e0"
+    }
+  ],
+  "decision": "Admit recovered H1 revision1.1 protocol subject to accepted T3, genuine fresh baseline with exact18-patch equality, independent fixture/comparator and root ownership. No painter permission or candidate acceptance.",
+  "next_actions": [
+    "Preserve missing linked originals at exact relative paths.",
+    "Accept T3 and freeze immediate pre-H1 source/app/48-case fixture binaries.",
+    "Review/qualify independent fixture and comparator; reproduce baseline44pass59fail.",
+    "Implement exact HeaderH1 after prerequisites; retain103 thresholds and all child/state/support/timing/full-frame gates."
+  ],
+  "status": "protocol_review_passed"
+}

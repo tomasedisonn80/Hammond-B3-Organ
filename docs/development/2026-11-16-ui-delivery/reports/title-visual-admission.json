@@ -1,0 +1,2292 @@
+{
+  "schema_version": 1,
+  "reviewer": "A20 /root/w04_a20_title_visual",
+  "wave": 4,
+  "reviewed_at_utc": "2026-11-17T01:39:59.283907+00:00",
+  "working_directory": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+  "decision": "ADMIT_T3_REVISION_2_VISUAL_COMPONENT",
+  "blocking_visual_findings": [],
+  "decision_scope": "Independent retained full-frame visual and file-identity review only. Root retains combined candidate acceptance; this is not H1, real-display/DPI, accessibility, physical, platform or release acceptance.",
+  "literal_whole_interface_1_to_1": "unmet_and_unwaived",
+  "method": {
+    "read": "Complete AGENTS.md and docs/PLAN.md; current session README/CHECKPOINT/assignments; T3 contract, revision 2 and admissions; current implementation/capture/source-review notes and retained evidence.",
+    "visual": "Direct tools.view_image calls on the original reference, every one of 15 current PNGs and every one of 13 genuine baseline PNGs. Images were opened individually or in bounded sequential before/after pairs, without edited or generated substitutes.",
+    "image_integrity": "Read-only Python hashlib plus Pillow decoding of original retained files; no image was modified.",
+    "controls_hash_definition": "SHA-256 of diagnostics.controls serialized with json.dumps(sort_keys=True,separators=(comma,colon),ensure_ascii=True), UTF-8; derived comparison identity, not a saved-state format.",
+    "not_executed": [
+      "native build",
+      "native application",
+      "new capture",
+      "CTest",
+      "full paired matrix",
+      "git",
+      "subagent"
+    ]
+  },
+  "reference": {
+    "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/atlas-cover-reference.jpg",
+    "bytes": 412664,
+    "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+  },
+  "reference_provenance": {
+    "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/atlas-reference.json",
+    "bytes": 811,
+    "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+  },
+  "source_identity": {
+    "base_commit_recorded": "6047723b595259de355c74342e48a8ae2ee1e228",
+    "baseline_painter_sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db",
+    "current_painter": {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    "genuine_baseline_painter": {
+      "path": "/workspace/scratch/66b061effd9e/baseline-native/InstrumentView.cpp",
+      "bytes": 164300,
+      "sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db"
+    },
+    "current_author_qualification": {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/source-qualification.json",
+      "bytes": 38213,
+      "sha256": "8448d60fd700b67b4577bcac9ffb6ddc1ee1fe073198ef58c28701824c11ea76"
+    },
+    "baseline_author_qualification": {
+      "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/source-qualification.json",
+      "bytes": 38236,
+      "sha256": "967a2f67c3600ae4ae9007483363efb553ad1d60c7fcf5219f04c6cbb3ea6c5e"
+    },
+    "current_capture_source_files_independently_hashed": 148,
+    "source_mismatches": [],
+    "current_author_source_files_independently_hashed": 229,
+    "author_source_mismatches": [],
+    "production_source_changes_between_recorded_galleries": [
+      "apps/standalone/InstrumentView.cpp"
+    ],
+    "protected_count": 213,
+    "protected_mismatches": [],
+    "drawing_sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a",
+    "font_data_sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+    "main_replay_repair_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+    "original_contract": {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/TITLE_T3_CONTRACT.md",
+      "bytes": 10221,
+      "sha256": "6e45c095331e4d2a32cb111ebe2be74b7fad3dd7f6fb89a675d68c4a0310cae7"
+    },
+    "revision_2": {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/TITLE_T3_REVISION_2.md",
+      "bytes": 8228,
+      "sha256": "e06ddb46f48a4d75c5c305474699223b41a0febc3e3db7d077048841356554e9"
+    }
+  },
+  "gallery_integrity": [
+    {
+      "gallery": "current",
+      "manifest": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/manifest.json",
+        "bytes": 11442,
+        "sha256": "78bb8e16abee45fd7c979a0f33b063d0fb2a19b065384c6384a913aba30880f7"
+      },
+      "provenance": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/provenance.json",
+        "bytes": 132442,
+        "sha256": "538c1eca336f7ccbb73a0b9bf4c9dcf330c50f4c59491f9f8e2315856646b5bd"
+      },
+      "manifest_files_checked": 69,
+      "all_file_sizes_and_sha256_match": true,
+      "executable": {
+        "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "bytes": 4094560,
+        "sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3"
+      },
+      "executable_matches_capture_before_and_after": true,
+      "recorded_inputs_stable": true,
+      "recorded_source_inventory_sha256": "2ffff631b9916b7cb62e240f959c455aa43cf3cebf768c19eec792b675e83d47",
+      "recorded_source_inventory_stable": true,
+      "source_file_count": 148,
+      "author_report_source_count": 229,
+      "capture_tool_recorded": {
+        "after": {
+          "bytes": 39296,
+          "sha256": "eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a"
+        },
+        "before": {
+          "bytes": 39296,
+          "sha256": "eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a"
+        },
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/capture_standalone_interface.py"
+      },
+      "environment": {
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/bin:/usr/bin",
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "capture_started_at_utc": "2026-11-17T01:26:59.655028+00:00",
+      "capture_finished_at_utc": "2026-11-17T01:27:43.754029+00:00"
+    },
+    {
+      "gallery": "baseline",
+      "manifest": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/manifest.json",
+        "bytes": 10128,
+        "sha256": "cd51c067181ec9e0afd407ad37804e1bd48ffc93294741195a05657b6aab9889"
+      },
+      "provenance": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/provenance.json",
+        "bytes": 121567,
+        "sha256": "83648e1d7863fd715636b588920ebb6b92ed11d656649e1e2c5d9ea52a7ab0da"
+      },
+      "manifest_files_checked": 61,
+      "all_file_sizes_and_sha256_match": true,
+      "executable": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-native/hammond_standalone",
+        "bytes": 4094520,
+        "sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a"
+      },
+      "executable_matches_capture_before_and_after": true,
+      "recorded_inputs_stable": true,
+      "recorded_source_inventory_sha256": "cd1040f230d8df5fecc78a7b3765d1b9eb0593ff2050c0d696583270a0b95cec",
+      "recorded_source_inventory_stable": true,
+      "source_file_count": 148,
+      "author_report_source_count": 229,
+      "capture_tool_recorded": {
+        "after": {
+          "bytes": 38457,
+          "sha256": "371d25b50fed8f7c73608c2a8581375fae377cb814afb73666b09ccc16a62152"
+        },
+        "before": {
+          "bytes": 38457,
+          "sha256": "371d25b50fed8f7c73608c2a8581375fae377cb814afb73666b09ccc16a62152"
+        },
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/capture_standalone_interface.py"
+      },
+      "environment": {
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/bin:/usr/bin",
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "capture_started_at_utc": "2026-11-17T01:15:57.309416+00:00",
+      "capture_finished_at_utc": "2026-11-17T01:16:35.360839+00:00"
+    }
+  ],
+  "state_and_replay_inputs": [
+    {
+      "relative_path": "inputs/controls.b3controls",
+      "current": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "bytes": 456,
+        "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+      },
+      "baseline": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/controls.b3controls",
+        "bytes": 456,
+        "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+      },
+      "byte_equal": true
+    },
+    {
+      "relative_path": "inputs/play-dimensional-pedal-focus.b3uireplay",
+      "current": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional-pedal-focus.b3uireplay",
+        "bytes": 3960,
+        "sha256": "8efb6d0fc894f77fb427690b6f8febcaf3e2176310540ffcc04a340f1cf4889c"
+      },
+      "baseline": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/play-dimensional-pedal-focus.b3uireplay",
+        "bytes": 3960,
+        "sha256": "8efb6d0fc894f77fb427690b6f8febcaf3e2176310540ffcc04a340f1cf4889c"
+      },
+      "byte_equal": true
+    },
+    {
+      "relative_path": "inputs/play-dimensional-toolbar-focus.b3uireplay",
+      "current": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional-toolbar-focus.b3uireplay",
+        "bytes": 3728,
+        "sha256": "b02902d365c32db119b3e845967de35df083eaa5b9a43395476762ee0bbcd719"
+      },
+      "baseline": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/play-dimensional-toolbar-focus.b3uireplay",
+        "bytes": 3728,
+        "sha256": "b02902d365c32db119b3e845967de35df083eaa5b9a43395476762ee0bbcd719"
+      },
+      "byte_equal": true
+    },
+    {
+      "relative_path": "inputs/play-dimensional.b3uireplay",
+      "current": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "bytes": 1690,
+        "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+      },
+      "baseline": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/play-dimensional.b3uireplay",
+        "bytes": 1690,
+        "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+      },
+      "byte_equal": true
+    },
+    {
+      "relative_path": "inputs/play-flat.b3uireplay",
+      "current": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-flat.b3uireplay",
+        "bytes": 1734,
+        "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+      },
+      "baseline": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/play-flat.b3uireplay",
+        "bytes": 1734,
+        "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+      },
+      "byte_equal": true
+    },
+    {
+      "relative_path": "inputs/rotary-dimensional.b3uireplay",
+      "current": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/rotary-dimensional.b3uireplay",
+        "bytes": 1690,
+        "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+      },
+      "baseline": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/rotary-dimensional.b3uireplay",
+        "bytes": 1690,
+        "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+      },
+      "byte_equal": true
+    },
+    {
+      "relative_path": "inputs/service-dimensional.b3uireplay",
+      "current": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/service-dimensional.b3uireplay",
+        "bytes": 1690,
+        "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+      },
+      "baseline": {
+        "path": "/workspace/scratch/66b061effd9e/baseline-gallery/inputs/service-dimensional.b3uireplay",
+        "bytes": 1690,
+        "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+      },
+      "byte_equal": true
+    }
+  ],
+  "frame_count": 15,
+  "baseline_frame_count": 13,
+  "reference_images_inspected": 1,
+  "actual_view_image_inspection_count": 29,
+  "all_current_and_baseline_pixels_match_recorded_decoded_sha256": true,
+  "all_13_matched_complete_controls_equal": true,
+  "frames": [
+    {
+      "name": "play-reference-1672x941",
+      "width": 1672,
+      "height": 941,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": true,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png",
+        "bytes": 769204,
+        "sha256": "1df7d50cda9b61640702a4c4b516be1ae1b7be9879aa6bba0feb06c0bf9e5e60"
+      },
+      "decoded_rgba_sha256": "8ab2c69f9bdcafa901c621a98666f23ba156ef53756aad7a75eaa57155aa321d",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-reference-1672x941.json",
+        "bytes": 19910,
+        "sha256": "9a7537a9ae9d33d76b35fc9c7292cc1df7cf1038735750d31e57bdd03576b833"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-reference-1672x941.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1816,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 78848,
+          "publication_revision": 312,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 20,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Stronger, brighter title strokes than the genuine before frame; open O/A counters, distinct serifs, restrained edge highlight and no broad halo. NOMINAL DRY ORGAN stays separate and legible; workspace tabs and all utility controls remain clear. Cyan upper drawbar focus is visible.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-reference-1672x941.png",
+          "bytes": 767912,
+          "sha256": "689180c1d4f7d84ba65da90bc958b85b698723551777f2397d7102c34f010b24"
+        },
+        "decoded_rgba_sha256": "2137242037a37e3fe1d705351131b088caaea0c648be6e0e5dfd7df68362ad0e",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/play-reference-1672x941.json",
+          "bytes": 21459,
+          "sha256": "e4c44c9a8c58fe6b1e4a98db7b96334d551daed56456bd329c54c5c9494ccd48"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "play-default-1280x900",
+      "width": 1280,
+      "height": 900,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-default-1280x900.png",
+        "bytes": 177399,
+        "sha256": "2b5e0c332f0114b70cc320e885de84290f2cec9e8443e97b8233a53b6fb60f6d"
+      },
+      "decoded_rgba_sha256": "ff7fde735d350f6a30d8e67da53af5d0ca5ed07c73e0b08cba753b2dab998017",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-default-1280x900.json",
+        "bytes": 23052,
+        "sha256": "32789c967f853de0083e9364c1b07e39034aba03bb244dc63db043f30f40734a"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-default-1280x900.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-default-1280x900.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1858,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 83456,
+          "publication_revision": 330,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 29,
+        "window_height": 900,
+        "window_width": 1280,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive compact layout retains its lighter title, small separate caption, full manuals/pedals and clear cyan upper drawbar focus. No new clipping or overlap; decoded full frame equals the before frame.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-default-1280x900.png",
+          "bytes": 177399,
+          "sha256": "2b5e0c332f0114b70cc320e885de84290f2cec9e8443e97b8233a53b6fb60f6d"
+        },
+        "decoded_rgba_sha256": "ff7fde735d350f6a30d8e67da53af5d0ca5ed07c73e0b08cba753b2dab998017",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/play-default-1280x900.json",
+          "bytes": 23027,
+          "sha256": "8e7ac65383c4fff66182fa7572e0cf2690999e87b7156911a4946a8f7f23f6ee"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": true,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "play-minimum-960x700",
+      "width": 960,
+      "height": 700,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-minimum-960x700.png",
+        "bytes": 143240,
+        "sha256": "ce469505d49c7191ef7a8b8a8104e33968a67b76154f2f2eadbde3e4832e88f0"
+      },
+      "decoded_rgba_sha256": "ce5da58269012f95f3bb972715d96692880b9551bf50fab8b78e5a9798b8fe1b",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-minimum-960x700.json",
+        "bytes": 23038,
+        "sha256": "075cb49d780db5692d5288370291ccd6fa4307692206a4b9d1f1f7ffcb2875fb"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-minimum-960x700.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1986,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 77824,
+          "publication_revision": 308,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 37,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive minimum compact layout retains the lighter title and readable separated caption. Drawbar and bank controls, compressed manuals and pedalboard remain within their panels; small labels remain a display-size limitation.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-minimum-960x700.png",
+          "bytes": 143242,
+          "sha256": "608b71f032b0ec0ae05769e88ec5c8a3c24249f36b9229d9c6a615d9571ed895"
+        },
+        "decoded_rgba_sha256": "4e8b40672cf34aead5bce1ac54bde93c7b1ea4dc441aac3c7f839d9faef13344",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/play-minimum-960x700.json",
+          "bytes": 23014,
+          "sha256": "b442ac83d2ccb123257e5c9c60c4615913b8972c39a188a1ab6034b3d3365ab1"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "service-reference-1672x941",
+      "width": 1672,
+      "height": 941,
+      "workspace": "service",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/service-reference-1672x941.png",
+        "bytes": 412442,
+        "sha256": "511cf2b58ac7fad50115b3ffd7b839bd11b11562fdffb8dd4ce2983c2f275e57"
+      },
+      "decoded_rgba_sha256": "e301ea66b005f33aa1e932b988c3872f6be9323c98d876bf26942ff8fe66aaa9",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/service-reference-1672x941.json",
+        "bytes": 22263,
+        "sha256": "facf6a18b2041e675d8bc9895f17bd7aa795b1cf4738c9884e2f4ac9d648699e"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/service-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/service-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/service-reference-1672x941.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1830,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 65024,
+          "publication_revision": 258,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 20,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "service"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive Service title and caption retain their appearance. Cyan Service-tab focus and six diagnostic panels remain visible; read-only nominal/not-connected disclosures are legible. Snapshot counter values differ between captures.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/service-reference-1672x941.png",
+          "bytes": 412339,
+          "sha256": "ed81b5d0c83d001fd3075819345c27ae1653c903055bc1a23776b0113b9f31ef"
+        },
+        "decoded_rgba_sha256": "a936c8e59e0e95e76c1acd072e466df03e984a35e308a7aaf8fb4a325f992bad",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/service-reference-1672x941.json",
+          "bytes": 23814,
+          "sha256": "486389d7bb8600a9d4dcd287c375286de9efef6f0cce9cb63124037237c9ad79"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "service-minimum-960x700",
+      "width": 960,
+      "height": 700,
+      "workspace": "service",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/service-minimum-960x700.png",
+        "bytes": 175293,
+        "sha256": "187204afdacf73c027a482a62d64f19311492e15b4ab70bfba75a5a527c51df9"
+      },
+      "decoded_rgba_sha256": "e80049fa3086b2dbf4274289a0f784a338e5766ff4fc2d05eb8139f03e56a16e",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/service-minimum-960x700.json",
+        "bytes": 23827,
+        "sha256": "212cc5883476bf149c207b45f26067227e7e3bb90f42818864fefb6441baa89e"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/service-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/service-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/service-minimum-960x700.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1801,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 78336,
+          "publication_revision": 310,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 35,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "service"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive minimum Service layout retains the header and cyan Service-tab focus. Dense panel text wraps within cards with no observed new clipping; small diagnostic type remains a real-display readability consideration.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/service-minimum-960x700.png",
+          "bytes": 175140,
+          "sha256": "44aff90500294308028eb900c45842a9e117b46fd342a13c0292bb1a833f93a7"
+        },
+        "decoded_rgba_sha256": "d58c06325d7bda58f8fa01644840529bd91045c27c6ff87aba9c62bbe5e733a9",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/service-minimum-960x700.json",
+          "bytes": 23804,
+          "sha256": "d1f274bb0416441664b393f315f3e2674579f83021a9ac2509908999bda4121c"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "rotary-reference-1672x941",
+      "width": 1672,
+      "height": 941,
+      "workspace": "rotary",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/rotary-reference-1672x941.png",
+        "bytes": 774632,
+        "sha256": "ce87cf5cd599a611a76dc95ab9d2a4d20650675ae61456d7e19849c14d41763c"
+      },
+      "decoded_rgba_sha256": "6a41a39e9b9ceb49fa585083b3a726972197fd30414d3ad149fc697c6cfe7847",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/rotary-reference-1672x941.json",
+        "bytes": 21490,
+        "sha256": "6048890435d4cb6b33c3b923177e2ff4515410fd8b407fe7c6d44aadcab71931"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/rotary-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/rotary-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/rotary-reference-1672x941.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1803,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 78336,
+          "publication_revision": 310,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 14,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "rotary"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive Rotary title and caption retain their appearance. Cyan Rotary-tab focus, cabinet art and read-only availability/not-connected disclosures remain visible. Snapshot counter values differ between captures.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/rotary-reference-1672x941.png",
+          "bytes": 774773,
+          "sha256": "364a8a5884e0ead6b54610ecfc9e631de42483b593e1e6638687c25b0595845e"
+        },
+        "decoded_rgba_sha256": "40dfb37a271312288c430871ef129028a653b52390ed257ef27ac5ee2d364bfb",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/rotary-reference-1672x941.json",
+          "bytes": 19884,
+          "sha256": "ec03420132ccd9bfee5c759810bb94ec3bf3d7a8d1ce73d1ce9a70bcc9a760dc"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "rotary-minimum-960x700",
+      "width": 960,
+      "height": 700,
+      "workspace": "rotary",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/rotary-minimum-960x700.png",
+        "bytes": 317304,
+        "sha256": "d9c43edf5655699da622f62278f2e1092d41975b7f544d0f59d484bed5075017"
+      },
+      "decoded_rgba_sha256": "94f329c417c8ff14d2e2339c09cfa04601bfa3141dda641a35c307baa0ea3f69",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/rotary-minimum-960x700.json",
+        "bytes": 21485,
+        "sha256": "943cc9b626bd7d48828e877abb4d3e10f75beda6e8742e12b1077333abed1883"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/rotary-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/rotary-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/rotary-minimum-960x700.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1844,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 66560,
+          "publication_revision": 264,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 31,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "rotary"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive minimum Rotary view retains a separated title/caption, visible cyan tab focus and legible primary disclosures. The cabinet illustration and wrapped explanatory text remain contained.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/rotary-minimum-960x700.png",
+          "bytes": 317404,
+          "sha256": "7a1c45cad2f6b04d5c510d2c89a27d638528996c42ad5d6dec9cf66843342f9b"
+        },
+        "decoded_rgba_sha256": "aecbb8445380ee5f1a3e2b32814eee37d6f0015730eee241379009a534351552",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/rotary-minimum-960x700.json",
+          "bytes": 22233,
+          "sha256": "76fa595e483b88b5b177ad998105870737628ffa7ba2465172272f3294ddf682"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "flat-minimum-960x700",
+      "width": 960,
+      "height": 700,
+      "workspace": "play",
+      "presentation": "flat",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/flat-minimum-960x700.png",
+        "bytes": 49561,
+        "sha256": "1375afec1244e39dae1c87b4701b19e0b4fc25b867adf86d9a0228f365c3eda1"
+      },
+      "decoded_rgba_sha256": "9720e1b75b39decf4bda3cc175d1bf9a89ab719f8fe66b3b56aa41b9b8633770",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/flat-minimum-960x700.json",
+        "bytes": 22222,
+        "sha256": "c43cce2e302813a18fb1de1eda252caed03b7509b53315e5a2fa3e5b9bfac417"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-flat.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/flat-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/flat-minimum-960x700.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1823,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 79360,
+          "publication_revision": 314,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "rendered_image": 59,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive minimum Flat view retains the lighter title, separate caption, simple flat controls and cyan upper drawbar focus. No new overlap or clipping observed.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/flat-minimum-960x700.png",
+          "bytes": 49561,
+          "sha256": "e9296d553afed67d965378c898c5bf64de1c4d823c8563bc16c043300aacd8b6"
+        },
+        "decoded_rgba_sha256": "ccb4db557194556101c07735543f2536e9dfd0da5cdb9c3ca033c4fe6c0464aa",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/flat-minimum-960x700.json",
+          "bytes": 22200,
+          "sha256": "687c17a13e6442afdb108ea34c7487e3d5feb5bc829b50a504836eada02af0ab"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "play-minimum-active-1400x820",
+      "width": 1400,
+      "height": 820,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": true,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-minimum-active-1400x820.png",
+        "bytes": 585495,
+        "sha256": "c2e602279814bab473afdf66b9e8a10f787e3bb6dfe87039600388c497f7a062"
+      },
+      "decoded_rgba_sha256": "881624453c36351d9766c21fdbe71e3d4063c67f034bd4fa729a38a28b62cf0c",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-minimum-active-1400x820.json",
+        "bytes": 21483,
+        "sha256": "92d9ae17afa80295f2325798a88e07331f9f287e56fda25c8319e9689db8cfd2"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1400",
+        "--height",
+        "820",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-minimum-active-1400x820.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-minimum-active-1400x820.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1854,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 73728,
+          "publication_revision": 292,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 23,
+        "window_height": 820,
+        "window_width": 1400,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Revised title remains fully visible at the failed-v1 boundary size. Counters and interletter spaces stay open; weight is visibly stronger than before without a muddy rim. Caption stays distinct, and neither tabs nor small utility controls are touched.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-minimum-active-1400x820.png",
+          "bytes": 585063,
+          "sha256": "bf6812b31c3c959516834cf57d1430e582e4d0e67beb1bcb1571536c01b5ef68"
+        },
+        "decoded_rgba_sha256": "ee40337f2778c7f7e6bc569b31f32637ece963539ce7a19167bb660bc4086449",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/play-minimum-active-1400x820.json",
+          "bytes": 21462,
+          "sha256": "001e6c23bf98816f31e0d5533afa4f24d0f77301706de3a6d107bb2486a69a04"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "flat-reference-1672x941",
+      "width": 1672,
+      "height": 941,
+      "workspace": "play",
+      "presentation": "flat",
+      "scene": "standard",
+      "t3_active": false,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/flat-reference-1672x941.png",
+        "bytes": 355450,
+        "sha256": "f1f3aacf81169d38869fb525f3725c3afaa1d2d99cac0485b319eb09c50716eb"
+      },
+      "decoded_rgba_sha256": "aab34a813d568ce861a9d68e182054f29e7858dd0904dedab028521b360604e8",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/flat-reference-1672x941.json",
+        "bytes": 22230,
+        "sha256": "db9b6bea11508a861c6648153e506dd9a003e9af3ae76585b56c4c9af07a83af"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-flat.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/flat-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/flat-reference-1672x941.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1807,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 77312,
+          "publication_revision": 306,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "rendered_image": 24,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Inactive canonical Flat view retains its lighter title and separate caption. Simple cap/key shapes, cabinet disclosure, bank controls and cyan drawbar focus remain visually stable.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/flat-reference-1672x941.png",
+          "bytes": 355450,
+          "sha256": "f6ee3bb99bb8ce51cf3b7bd8f7ea29cc2b1d62e8ddd88067aef5cdb39a38a84a"
+        },
+        "decoded_rgba_sha256": "6fa228351e2cf5e2803fd3d5b180f3de75ac75d71bfc978a8ac0b188641adcee",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/flat-reference-1672x941.json",
+          "bytes": 22204,
+          "sha256": "0ac8200de625b02036a5548ee4e422f2e0f780d26bf85de4e87e3235bd616768"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "play-toolbar-focus-1672x941",
+      "width": 1672,
+      "height": 941,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "toolbar-focus",
+      "t3_active": true,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-toolbar-focus-1672x941.png",
+        "bytes": 768779,
+        "sha256": "9adf8a50fe096671b39bced460681981218ff6332e66ffdfb7ea2178854a695c"
+      },
+      "decoded_rgba_sha256": "40961eabb8ddb737e45230e69d5ac82ac6cbb3d4faf2e217590802c64f57a854",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-toolbar-focus-1672x941.json",
+        "bytes": 25434,
+        "sha256": "5162ef08c511995f795cbe46845d9e7c7bc6f0c0f344f8df4eb085497fe896c1"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional-toolbar-focus.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-toolbar-focus-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-toolbar-focus-1672x941.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1811,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 2,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 78848,
+          "publication_revision": 312,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 17,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Revised title matches the canonical treatment. Cyan outline around the selected PEDALS toolbar button remains distinct; pedal-octave text and footer focus caption remain visible, with no title/control collision.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-toolbar-focus-1672x941.png",
+          "bytes": 767482,
+          "sha256": "570b7c801abc8b9827a3291d2f87f57d70600fd098dd35dfa9aa2f8cbf496d69"
+        },
+        "decoded_rgba_sha256": "9b766a4313de6c9e2c0e2fbaa3f231cf8a71605b50cf4fad0e74dba729102e26",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/play-toolbar-focus-1672x941.json",
+          "bytes": 23842,
+          "sha256": "295c1852f9e12b4cf7758592eadbc171cc0a9e8752a26c1b9e9988ea8201dcc1"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "play-pedal-focus-1672x941",
+      "width": 1672,
+      "height": 941,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "pedal-focus",
+      "t3_active": true,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-pedal-focus-1672x941.png",
+        "bytes": 769319,
+        "sha256": "53fd8fb8b30c30eb081bb12dfb15ca0501390568e867a35e0752665a18ff20c4"
+      },
+      "decoded_rgba_sha256": "d17f5cc92acba9ce7c50d2b2c3b383754ad1f2d89a1bb0813fa78c69fd99c8da",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-pedal-focus-1672x941.json",
+        "bytes": 23872,
+        "sha256": "5d4a4603353b4ec0911387ed83141a4129cbe7d30c52c61560e66fc7e3cb0de3"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional-pedal-focus.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-pedal-focus-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-pedal-focus-1672x941.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1825,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 2,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 78848,
+          "publication_revision": 312,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 16,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Revised title and caption remain clear. Cyan outline around the rightmost pedal key remains contained and visible; the footer identifies Pedal 25 of 25. No visible focus loss or overlay.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-pedal-focus-1672x941.png",
+          "bytes": 768016,
+          "sha256": "76adb2f5220f9f5c8ad7bde7fc18e6230e05012aa06e225f4a80159f58c323d2"
+        },
+        "decoded_rgba_sha256": "031c5859873080a2da22d0afaa745bce91c8a41fc55382548f8dc26b55639924",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/play-pedal-focus-1672x941.json",
+          "bytes": 23840,
+          "sha256": "9341387db2a80d83357784e3adee6db6a06f9ebbd52796d156709b3262ec9463"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "play-wide-1920x1080",
+      "width": 1920,
+      "height": 1080,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": true,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-wide-1920x1080.png",
+        "bytes": 915355,
+        "sha256": "589698541195f5d6642d73b4351611f52543f5ff2d3e5923f98b023c2a90f858"
+      },
+      "decoded_rgba_sha256": "609e0192f7e3ba5308f337733163ac9bf19a93eee3ba6b9bc4594fc0cccf2d67",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-wide-1920x1080.json",
+        "bytes": 21491,
+        "sha256": "c2d5250a8eb05da3e6666f50d4559805e9a44dcb50a694f627bbaa1c030781ec"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1920",
+        "--height",
+        "1080",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-wide-1920x1080.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-wide-1920x1080.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1824,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 79872,
+          "publication_revision": 316,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 14,
+        "window_height": 1080,
+        "window_width": 1920,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Revised title scales coherently, with open counters and visible restrained relief. It is prominent but does not overpower the illuminated Play control or manuals. Caption, tabs and tools remain separate.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": {
+        "image": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-wide-1920x1080.png",
+          "bytes": 914842,
+          "sha256": "3abbff6d947d78e3eb41e394f0585a900f8de784b935736827150dffdcb39fdd"
+        },
+        "decoded_rgba_sha256": "1ee3f27396a4aa69dea4f2a157ebd82f7fc7badd900754702a6a9e44300a1998",
+        "diagnostics": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/diagnostics/play-wide-1920x1080.json",
+          "bytes": 23039,
+          "sha256": "c25dd06f98e987a5bdb1dd2e68d78bbbf268f3fce03587056489b0ed86f12e4d"
+        },
+        "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+        "complete_controls_equal_to_current": true,
+        "decoded_whole_frame_equal_to_current": false,
+        "visually_inspected_with_view_image": true
+      }
+    },
+    {
+      "name": "play-header-wide-1920x820",
+      "width": 1920,
+      "height": 820,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": true,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-header-wide-1920x820.png",
+        "bytes": 683709,
+        "sha256": "e9c2e4a9d50c2d6c407b1d67aa87d19e843537f605cd44ad2895a19854c323d6"
+      },
+      "decoded_rgba_sha256": "2aa141717f01870a2ce80119b444b751a8ff71a3435198935c4acb2f51cf43a3",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-header-wide-1920x820.json",
+        "bytes": 21481,
+        "sha256": "a290f137937402cf3d2cfa9a90b4b0458170301ca31609014d64c16fc6c77f08"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1920",
+        "--height",
+        "820",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-header-wide-1920x820.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-header-wide-1920x820.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1865,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 78336,
+          "publication_revision": 310,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 18,
+        "window_height": 820,
+        "window_width": 1920,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Unequal wide/short layout keeps a compact undistorted title centered between the control groups, with clear subtitle separation. Relief does not become a stretched halo. Cabinet art is narrower within a wider panel; no same-size before PNG is present in the 13-frame baseline gallery.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": null
+    },
+    {
+      "name": "play-header-tall-1400x1080",
+      "width": 1400,
+      "height": 1080,
+      "workspace": "play",
+      "presentation": "dimensional",
+      "scene": "standard",
+      "t3_active": true,
+      "image": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-header-tall-1400x1080.png",
+        "bytes": 642127,
+        "sha256": "71020cb38eb3d5aafb48e01377879c86510eae559a7cd0fd61b91cefcd76b2c0"
+      },
+      "decoded_rgba_sha256": "a9aa5ec3ac5554f0f198272b872b5ba7c283068ca84e9b038ea15e62a75436d5",
+      "decoded_pixels_and_dimensions_verified": true,
+      "diagnostics": {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-header-tall-1400x1080.json",
+        "bytes": 23064,
+        "sha256": "ad0e1da17333e1d53563c45168f834f8b21b80736d9ee24b7ce537654b28fd4c"
+      },
+      "command": [
+        "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1400",
+        "--height",
+        "1080",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-header-tall-1400x1080.bmp",
+        "--diagnostics",
+        "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/diagnostics/play-header-tall-1400x1080.json"
+      ],
+      "capture_status": "passed",
+      "capture_exit_code": 0,
+      "complete_control_state_checked": true,
+      "actual_painted_view": {
+        "elapsed_ms": 1829,
+        "expression_calibration": {
+          "active": null,
+          "configured": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "model": "midi-expression-endpoints-v1",
+          "pending": null,
+          "reconnect_pending": false,
+          "release_pending": false,
+          "selected": {
+            "inverted": false,
+            "maximum": 127,
+            "minimum": 0
+          },
+          "selected_valid": true
+        },
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 77824,
+          "publication_revision": 308,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "modal_focus": 0,
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 17,
+        "window_height": 1080,
+        "window_width": 1400,
+        "workspace": "play"
+      },
+      "controls_canonical_json_sha256": "4280d1f857040fb515f1dd103d0d63bf40961b9b3f61df234f269e2bc4a50d79",
+      "replay_passed": true,
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "joined_shutdown_clear": true,
+      "diagnostic_error_count": 0,
+      "visually_inspected_with_view_image": true,
+      "visual_observation": "Unequal narrow/tall layout keeps title strokes and counters clear. The greater vertical subtitle gap follows the taller layout and remains readable; no overlap or clipping. A large dark gap under the cabinet art is a broader layout residual. No same-size before PNG is present in the 13-frame baseline gallery.",
+      "visual_decision": "admit_within_T3_scope",
+      "baseline": null
+    }
+  ],
+  "independent_canonical_image_statistics": {
+    "roi_half_open_xywh": [
+      590,
+      14,
+      490,
+      46
+    ],
+    "predicate": "2126*R + 7152*G + 722*B >= threshold*10000; RGB decode; no hue predicate or resampling",
+    "observations": {
+      "reference": [
+        {
+          "threshold": 80,
+          "pixels": 5639,
+          "half_open_bounds": [
+            603,
+            20,
+            1067,
+            53
+          ]
+        },
+        {
+          "threshold": 100,
+          "pixels": 5415,
+          "half_open_bounds": [
+            603,
+            20,
+            1067,
+            53
+          ]
+        },
+        {
+          "threshold": 120,
+          "pixels": 4991,
+          "half_open_bounds": [
+            603,
+            20,
+            1067,
+            53
+          ]
+        },
+        {
+          "threshold": 140,
+          "pixels": 4502,
+          "half_open_bounds": [
+            603,
+            20,
+            1066,
+            53
+          ]
+        },
+        {
+          "threshold": 160,
+          "pixels": 3785,
+          "half_open_bounds": [
+            603,
+            21,
+            1066,
+            53
+          ]
+        }
+      ],
+      "genuine_before": [
+        {
+          "threshold": 80,
+          "pixels": 4150,
+          "half_open_bounds": [
+            602,
+            20,
+            1066,
+            53
+          ]
+        },
+        {
+          "threshold": 100,
+          "pixels": 3863,
+          "half_open_bounds": [
+            602,
+            20,
+            1065,
+            53
+          ]
+        },
+        {
+          "threshold": 120,
+          "pixels": 3601,
+          "half_open_bounds": [
+            602,
+            20,
+            1065,
+            53
+          ]
+        },
+        {
+          "threshold": 140,
+          "pixels": 3200,
+          "half_open_bounds": [
+            603,
+            20,
+            1065,
+            53
+          ]
+        },
+        {
+          "threshold": 160,
+          "pixels": 2690,
+          "half_open_bounds": [
+            603,
+            20,
+            1065,
+            53
+          ]
+        }
+      ],
+      "current": [
+        {
+          "threshold": 80,
+          "pixels": 5774,
+          "half_open_bounds": [
+            602,
+            19,
+            1067,
+            53
+          ]
+        },
+        {
+          "threshold": 100,
+          "pixels": 5512,
+          "half_open_bounds": [
+            602,
+            19,
+            1066,
+            53
+          ]
+        },
+        {
+          "threshold": 120,
+          "pixels": 5304,
+          "half_open_bounds": [
+            602,
+            19,
+            1066,
+            53
+          ]
+        },
+        {
+          "threshold": 140,
+          "pixels": 5029,
+          "half_open_bounds": [
+            602,
+            19,
+            1066,
+            53
+          ]
+        },
+        {
+          "threshold": 160,
+          "pixels": 4694,
+          "half_open_bounds": [
+            602,
+            19,
+            1066,
+            53
+          ]
+        }
+      ]
+    },
+    "primary_band_inclusive": [
+      4500,
+      6000
+    ],
+    "current_primary_passes": true,
+    "boundary": "Image statistics corroborate visible weight; they do not establish physical luminance, exact font/material equality or whole-interface fidelity."
+  },
+  "retained_numerical_evidence_read_not_rerun": {
+    "report": {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired/report.json",
+      "bytes": 364171,
+      "sha256": "204b862f4d42873f6809e84c259630d48f8bdab2cf7c6be5cca942d9e9918664"
+    },
+    "status": "passed",
+    "coverage": {
+      "allowed_pixels": 1308542,
+      "attempted_pairs": 158,
+      "canonical_original_18_density_pairs": 18,
+      "canonical_warm_geometry_pairs": 35,
+      "canonical_zero_origin_density_pairs": 17,
+      "changed_pixels": 679863,
+      "clip_assertion_runs_passed": 2,
+      "compared_pixels": 383790445,
+      "complete_model_pairs": 92,
+      "complete_tool_acceptance": true,
+      "completed_pairs": 158,
+      "declared_pairs": 158,
+      "empty_or_disjoint_clip_pairs": 8,
+      "full_t3_matrix_complete": true,
+      "inactive_pairs": 39,
+      "inputs_unchanged": true,
+      "material_assertion_runs_passed": 1,
+      "outside_pixels": 0,
+      "partial_title_clip_pairs": 8,
+      "protected_inputs": 213,
+      "rack_heading_preservation_clip_pairs": 24,
+      "required_pairs": 158,
+      "required_suites": {
+        "clips": 48,
+        "percussion": 66,
+        "typography": 44
+      },
+      "whole_frame_exact_pairs": 90
+    },
+    "independent_numerical_admission_owner": "A19/root",
+    "limits": "This visual report does not replace independent source, numeric, material, input or platform gates."
+  },
+  "residual_visual_differences": [
+    "The reference title has more sculpted and spatially varied brass lighting; the five-pass live title remains a simpler, more uniform raster treatment.",
+    "The header is smoother and more evenly shaded than the textured, directionally lit reference panel. H1 remains separate.",
+    "Visible side wood and horizontal rims have different texture scale, blur and highlight profiles from the reference.",
+    "Key fronts, cap profiles, dark edges and inter-control shadows remain more regular and simplified than the reference.",
+    "Truthful live controls, bank/preset keys, pedalboard, utility tools, NOMINAL DRY ORGAN caption and unconnected-model labels differ from the concept control arrangement.",
+    "At 1400x1080 the cabinet panel has a large dark gap below its image; compact and Service labels are small at their native pixel sizes."
+  ],
+  "limitations": [
+    "Two appended unequal-aspect current images have no same-size before PNG in the 13-frame baseline gallery; no paired visual equality is asserted for them.",
+    "Separate application runs carry live meter and snapshot-counter differences. Only play-default-1280x900 is byte/pixel identical as a whole to its gallery before frame. Gallery visual stability is not the deterministic inactive-pair equality gate.",
+    "PNG bytes and decoded pixels were independently verified. Original BMP removal follows the capture utility lossless-conversion receipts; this review did not recapture or independently reexecute the original conversion.",
+    "Software dummy-SDL captures do not establish real-display/DPI/input, accessibility or callback/device behavior."
+  ],
+  "next_work": [
+    "Root combines this visual component with A19 numerical/source admission and affected coherent gates before final T3 candidate acceptance.",
+    "After root acceptance, retain exact T3 source/binaries/gallery and freeze the pre-H1 baseline; require the admitted H1 baseline-only evidence before header paint.",
+    "Any H1 paint needs its own actual-frame review, including title/contrast reinspection, and root-owned README capture refresh.",
+    "Preserve the rejected T3 v1 evidence and all genuine before identities; whole-interface 1:1 and separate product/release gates remain open."
+  ],
+  "owned_paths": [
+    "docs/development/2026-11-16-ui-delivery/notes/A20.md",
+    "docs/development/2026-11-16-ui-delivery/reports/title-visual-admission.json",
+    "docs/reviews/TITLE_T3_REVISION_2_VISUAL_ADMISSION.md"
+  ]
+}

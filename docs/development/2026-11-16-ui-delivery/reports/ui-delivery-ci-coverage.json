@@ -1,0 +1,732 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-16-ui-delivery",
+  "worker": "/root/w05_a26_ci_coverage",
+  "worker_id": "A26",
+  "wave": 5,
+  "narrative_date": "2026-11-16",
+  "narrative_timezone": "America/Halifax",
+  "supplied_base_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "working_directory": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+  "decision": "The smallest missing native sanitizer coverage repair is implemented and statically verified; exact-source hosted execution remains required.",
+  "authority": {
+    "initial": "Static workflow/CMake/test review; notes/A26.md, reports/ui-delivery-ci-coverage.json and docs/reviews/UI_DELIVERY_CI_COVERAGE.md only.",
+    "subsequent_root_assignment": "Exclusive .github/workflows/standalone.yml coverage repair, after root confirmed the genuine pre-H1 baseline demonstration finished; retain every existing gate, policy and timeout.",
+    "written_files": [
+      ".github/workflows/standalone.yml",
+      "docs/development/2026-11-16-ui-delivery/notes/A26.md",
+      "docs/development/2026-11-16-ui-delivery/reports/ui-delivery-ci-coverage.json",
+      "docs/reviews/UI_DELIVERY_CI_COVERAGE.md"
+    ],
+    "native_builds": 0,
+    "native_runs": 0,
+    "captures": 0,
+    "external_reruns": 0,
+    "git_operations": 0,
+    "subagents": 0
+  },
+  "reviewed_inputs": [
+    "Complete AGENTS.md and complete docs/PLAN.md",
+    "Current session README.md, CHECKPOINT.md and assignments.json",
+    "All three actual workflow YAML files and CMake presets",
+    "Root and standalone CMake build/test registration and sanitizer configuration",
+    "New title-density and header fixture source, original footage fixture, renderer-admission and capture extension sources",
+    "Existing generated CTest registrations read without running CTest",
+    "Retained delivery-recovery.json and initial-remote.json; earlier evidence remains source-specific"
+  ],
+  "source_identities": {
+    ".github/workflows/ci.yml": {
+      "bytes": 20374,
+      "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+    },
+    ".github/workflows/standalone.yml": {
+      "bytes": 68503,
+      "sha256": "59423f01dc5811d2f8146e06cb939fd9f96295c0e818a74c387519f7fe824e9c"
+    },
+    ".github/workflows/native-vst3.yml": {
+      "bytes": 8367,
+      "sha256": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734"
+    },
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 41243,
+      "sha256": "246acf9b259824d07a9aa9fc8a5177734b65e0e89de3b8f378bd7de609b0d897"
+    },
+    "CMakePresets.json": {
+      "bytes": 1711,
+      "sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8"
+    },
+    ".gitattributes": {
+      "bytes": 1788,
+      "sha256": "cf3b4abf5a14565327f0dda04ff385525a890794ae8fa25e02fdfb66eb798c43"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 23467,
+      "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61218,
+      "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+    },
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49033,
+      "sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
+    },
+    "tests/test_render_controls_admission.py": {
+      "bytes": 18812,
+      "sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e"
+    },
+    "tools/capture_standalone_interface.py": {
+      "bytes": 39296,
+      "sha256": "eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a"
+    },
+    "tests/test_capture_standalone_interface.py": {
+      "bytes": 36666,
+      "sha256": "7a3c19ad6cba0477120c0602159ea27210ec371fb6c9cef6f01261047db19cb1"
+    },
+    "data/dependencies/sdl2-lock.json": {
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    "data/dependencies/rtmidi-lock.json": {
+      "bytes": 1161,
+      "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+    },
+    "data/dependencies/vst3-sdk-lock.json": {
+      "bytes": 3796,
+      "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+    },
+    "docs/development/2026-11-16-ui-delivery/reports/delivery-recovery.json": {
+      "bytes": 14727,
+      "sha256": "04b7693dca05a578200596205fe64cb827e803a37733ae80315e111b4763ef3f"
+    },
+    "docs/development/2026-11-16-ui-delivery/reports/initial-remote.json": {
+      "bytes": 696,
+      "sha256": "32cd1bb0908316eb9ef887428e9b5899c6f88b335a66edf595010a10a9ff02ef"
+    }
+  },
+  "required_hosted_job_count": 16,
+  "required_hosted_jobs": [
+    {
+      "workflow_file": ".github/workflows/ci.yml",
+      "workflow_name": "CI",
+      "job_id": "release",
+      "name": "Release (Linux GCC)",
+      "runner": "ubuntu-24.04",
+      "matrix": {
+        "platform": "Linux GCC",
+        "os": "ubuntu-24.04",
+        "compiler": "g++"
+      },
+      "timeout_minutes": 20
+    },
+    {
+      "workflow_file": ".github/workflows/ci.yml",
+      "workflow_name": "CI",
+      "job_id": "release",
+      "name": "Release (macOS AppleClang)",
+      "runner": "macos-15",
+      "matrix": {
+        "platform": "macOS AppleClang",
+        "os": "macos-15",
+        "compiler": "clang++"
+      },
+      "timeout_minutes": 20
+    },
+    {
+      "workflow_file": ".github/workflows/ci.yml",
+      "workflow_name": "CI",
+      "job_id": "release",
+      "name": "Release (macOS Intel AppleClang)",
+      "runner": "macos-15-intel",
+      "matrix": {
+        "platform": "macOS Intel AppleClang",
+        "os": "macos-15-intel",
+        "compiler": "clang++"
+      },
+      "timeout_minutes": 20
+    },
+    {
+      "workflow_file": ".github/workflows/ci.yml",
+      "workflow_name": "CI",
+      "job_id": "release",
+      "name": "Release (Windows MSVC)",
+      "runner": "windows-2022",
+      "matrix": {
+        "platform": "Windows MSVC",
+        "os": "windows-2022",
+        "compiler": "cl"
+      },
+      "timeout_minutes": 20
+    },
+    {
+      "workflow_file": ".github/workflows/ci.yml",
+      "workflow_name": "CI",
+      "job_id": "rotary-waveform",
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "runner": "ubuntu-24.04",
+      "matrix": {},
+      "timeout_minutes": 35
+    },
+    {
+      "workflow_file": ".github/workflows/ci.yml",
+      "workflow_name": "CI",
+      "job_id": "sanitizers",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "runner": "ubuntu-24.04",
+      "matrix": {},
+      "timeout_minutes": 25
+    },
+    {
+      "workflow_file": ".github/workflows/standalone.yml",
+      "workflow_name": "Native standalone",
+      "job_id": "native",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "runner": "ubuntu-24.04",
+      "matrix": {
+        "platform": "Linux GCC",
+        "os": "ubuntu-24.04",
+        "c_compiler": "gcc",
+        "cxx_compiler": "g++",
+        "midi": "ON",
+        "midi_backend": "ALSA"
+      },
+      "timeout_minutes": 40
+    },
+    {
+      "workflow_file": ".github/workflows/standalone.yml",
+      "workflow_name": "Native standalone",
+      "job_id": "native",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "runner": "macos-15",
+      "matrix": {
+        "platform": "macOS AppleClang",
+        "os": "macos-15",
+        "c_compiler": "clang",
+        "cxx_compiler": "clang++",
+        "midi": "ON",
+        "midi_backend": "CoreMIDI"
+      },
+      "timeout_minutes": 40
+    },
+    {
+      "workflow_file": ".github/workflows/standalone.yml",
+      "workflow_name": "Native standalone",
+      "job_id": "native",
+      "name": "Native standalone (macOS Intel AppleClang, MIDI ON)",
+      "runner": "macos-15-intel",
+      "matrix": {
+        "platform": "macOS Intel AppleClang",
+        "os": "macos-15-intel",
+        "c_compiler": "clang",
+        "cxx_compiler": "clang++",
+        "midi": "ON",
+        "midi_backend": "CoreMIDI"
+      },
+      "timeout_minutes": 40
+    },
+    {
+      "workflow_file": ".github/workflows/standalone.yml",
+      "workflow_name": "Native standalone",
+      "job_id": "native",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "runner": "windows-2022",
+      "matrix": {
+        "platform": "Windows MSVC x64",
+        "os": "windows-2022",
+        "c_compiler": "cl",
+        "cxx_compiler": "cl",
+        "midi": "ON",
+        "midi_backend": "WinMM"
+      },
+      "timeout_minutes": 40
+    },
+    {
+      "workflow_file": ".github/workflows/standalone.yml",
+      "workflow_name": "Native standalone",
+      "job_id": "native",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "runner": "ubuntu-24.04",
+      "matrix": {
+        "platform": "Linux GCC",
+        "os": "ubuntu-24.04",
+        "c_compiler": "gcc",
+        "cxx_compiler": "g++",
+        "midi": "OFF",
+        "midi_backend": "unavailable"
+      },
+      "timeout_minutes": 40
+    },
+    {
+      "workflow_file": ".github/workflows/standalone.yml",
+      "workflow_name": "Native standalone",
+      "job_id": "native-sanitizers",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "runner": "ubuntu-24.04",
+      "matrix": {},
+      "timeout_minutes": 20
+    },
+    {
+      "workflow_file": ".github/workflows/native-vst3.yml",
+      "workflow_name": "Native VST3",
+      "job_id": "native",
+      "name": "Native VST3 (Linux GCC)",
+      "runner": "ubuntu-24.04",
+      "matrix": {
+        "platform": "Linux GCC",
+        "os": "ubuntu-24.04",
+        "compiler": "g++"
+      },
+      "timeout_minutes": 35
+    },
+    {
+      "workflow_file": ".github/workflows/native-vst3.yml",
+      "workflow_name": "Native VST3",
+      "job_id": "native",
+      "name": "Native VST3 (macOS AppleClang)",
+      "runner": "macos-15",
+      "matrix": {
+        "platform": "macOS AppleClang",
+        "os": "macos-15",
+        "compiler": "clang++"
+      },
+      "timeout_minutes": 35
+    },
+    {
+      "workflow_file": ".github/workflows/native-vst3.yml",
+      "workflow_name": "Native VST3",
+      "job_id": "native",
+      "name": "Native VST3 (macOS Intel AppleClang)",
+      "runner": "macos-15-intel",
+      "matrix": {
+        "platform": "macOS Intel AppleClang",
+        "os": "macos-15-intel",
+        "compiler": "clang++"
+      },
+      "timeout_minutes": 35
+    },
+    {
+      "workflow_file": ".github/workflows/native-vst3.yml",
+      "workflow_name": "Native VST3",
+      "job_id": "native",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "runner": "windows-2022",
+      "matrix": {
+        "platform": "Windows MSVC x64",
+        "os": "windows-2022",
+        "compiler": "cl"
+      },
+      "timeout_minutes": 35
+    }
+  ],
+  "job_count_by_workflow": {
+    "CI": 6,
+    "Native standalone": 6,
+    "Native VST3": 4
+  },
+  "hosted_status": {
+    "current_changed_source_pass": false,
+    "observation_scope": "Local static inspection only; no fresh external CI query or rerun.",
+    "retained_base_evidence": "initial-remote.json records three successful workflow aggregates at the supplied 6047723b base; these do not qualify changed tests, workflow or painter.",
+    "retained_renderer_failure": {
+      "run_id": 43986430633,
+      "attempt": 1,
+      "job_id": 133715652514,
+      "conclusion": "failure",
+      "reason": "Original 15-second post-SIGCONT completion guard expired.",
+      "source": "docs/development/2026-11-16-ui-delivery/reports/delivery-recovery.json"
+    },
+    "retained_unchanged_source_retry": {
+      "run_id": 43986430633,
+      "attempt": 2,
+      "job_id": 133729308448,
+      "conclusion": "success",
+      "limitation": "Unchanged-base-source retry; does not execute the newly changed 45-second source."
+    },
+    "completion_requirement": "Observe all sixteen jobs and workflow conclusions at the exact accepted published source; retain runner/architecture, source/tree, discovered inventories, logs and failures separately. Queued, cancelled, or unacquired runners are not execution."
+  },
+  "coverage": {
+    "title_density": {
+      "ctest": "test_standalone_title_density",
+      "registration_conditions": [
+        "BUILD_TESTING=ON",
+        "HAMMOND_BUILD_STANDALONE=ON"
+      ],
+      "command_shape": [
+        "configured Python3 interpreter",
+        "-B",
+        "apps/standalone/native_tests/test_standalone_title_density.py",
+        "--executable",
+        "$<TARGET_FILE:test_standalone_footage_typography_raster>"
+      ],
+      "native_target": "test_standalone_footage_typography_raster",
+      "build_dependency": "Existing target is appended to HAMMOND_STANDALONE_TEST_TARGETS, hence to hammond_standalone_test_inputs.",
+      "ordinary_native_jobs": 5,
+      "previous_native_sanitizer": "Fixture was built and its original CTest ran; density's Python CTest was excluded.",
+      "repaired_native_sanitizer": "Explicit CTest maps to the same already-instrumented footage fixture and now enters the exact 30-name filter.",
+      "core_release_or_core_sanitizer": "Not registered: HAMMOND_BUILD_STANDALONE defaults OFF in these configurations.",
+      "python_dependencies": "Standard library only; subprocess inherits unchanged sanitizer environment.",
+      "limits_seconds": {
+        "ordinary_suite": 90,
+        "sanitizer_suite": 240,
+        "child": 20,
+        "cleanup_wait": 5
+      },
+      "scope": "Checks the exact 44-case inventory, renders 18 canonical frames, and grades frozen title density; does not render the other 26 cases or establish whole-interface parity."
+    },
+    "header_material": {
+      "ctest_and_target": "test_standalone_header_material",
+      "registration_conditions": [
+        "BUILD_TESTING=ON",
+        "HAMMOND_BUILD_STANDALONE=ON"
+      ],
+      "direct_translation_unit": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "included_painter": "../InstrumentView.cpp included exactly once by the fixture; CMake correctly does not compile it separately for this target.",
+      "build_dependency": "Appended to HAMMOND_STANDALONE_TEST_TARGETS and included in hammond_standalone_test_inputs.",
+      "ordinary_native_jobs": 5,
+      "previous_native_sanitizer": "CTest registered by configuration but target neither selected for build nor selected for execution.",
+      "repaired_native_sanitizer": "New executable target enters build, source/compile-object instrumentation checks, runtime-link checks, provenance and exact CTest selection.",
+      "core_release_or_core_sanitizer": "Not registered without the native standalone option.",
+      "limits_seconds": {
+        "ordinary_suite": 180,
+        "sanitizer_suite": 480
+      },
+      "scope": "Default 48-case preservation/repaint/clip/history fixture; independent before/after material comparison and visual admission remain separate."
+    },
+    "renderer_completion_guard": {
+      "ctest": "python_test_render_controls_admission",
+      "source_glob": "tests/test_*.py registered by root CMake",
+      "release_jobs": 4,
+      "core_sanitizer_jobs": 1,
+      "changed_body_executed_by": [
+        "Release (Linux GCC)",
+        "Linux GCC ASan + UBSan + leaks"
+      ],
+      "platform_skips": "Two Linux inotify/publication methods explicitly skip on macOS and Windows; their suite's other methods remain selected.",
+      "limits_seconds": {
+        "completion_after_SIGCONT": 45,
+        "ctest_suite": 90,
+        "staging_observation": 5,
+        "stop_confirmation": 2,
+        "ordinary_render": 15,
+        "final_drain": 5
+      },
+      "preserved_workload": {
+        "frames": 1200000,
+        "block_frames": 1,
+        "sample_rate_hz": 48000,
+        "seed": 191,
+        "contacts": "ideal"
+      },
+      "native_workflow_selection": "Not selected by standalone or VST3 workflow filters."
+    },
+    "native_app_scheduling": {
+      "ctest": "test_standalone_app",
+      "CMake_RUN_SERIAL": true,
+      "CMake_timeout_seconds": 60,
+      "workload_ms": 600,
+      "ordinary_native_jobs": 5,
+      "hosted_native_parallelism": 1,
+      "coverage_limit": "Hosted native jobs already run serially, so these executions do not demonstrate competing-test scheduling. Existing generated CTest registration contains RUN_SERIAL TRUE; root's retained local parallel selection owns that observation.",
+      "native_sanitizer_selection": "Existing explicit subset excludes test_standalone_app; the existing native calibration probe remains selected."
+    },
+    "optional_fifteen_view_capture": {
+      "option": "--include-header-aspects",
+      "unchanged_default_count": 13,
+      "extended_count": 15,
+      "added_views": [
+        {
+          "name": "play-header-wide-1920x820",
+          "logical_size": [
+            1920,
+            820
+          ]
+        },
+        {
+          "name": "play-header-tall-1400x1080",
+          "logical_size": [
+            1400,
+            1080
+          ]
+        }
+      ],
+      "unit_ctest": "python_test_capture_standalone_interface",
+      "current_unit_method_count": 28,
+      "selected_by": "All four core Release jobs and the Linux core sanitizer job through the full Python test glob.",
+      "actual_native_gallery_in_hosted_jobs": false,
+      "dependencies": "Unit suite mocks native/Image boundaries using the standard library; actual gallery utility requires optional Pillow and a genuine executable/source qualification.",
+      "limits_seconds": {
+        "per_capture_default": 12,
+        "per_capture_allowed_minimum": 4,
+        "per_capture_allowed_maximum": 60
+      },
+      "remaining": "Root-owned actual fifteen-view capture, immutable provenance and independent visual admission remain mandatory for the accepted H1 source."
+    },
+    "other_workflows": {
+      "full_R4": "Builds/runs check_rotary_waveform_full with standalone OFF; unrelated source-specific regression gate remains required.",
+      "native_VST3": "Builds hammond_vst3_test_inputs and selects ^(hammond_vst3_validator|test_native_); does not run the new UI gates or changed root Python suites."
+    }
+  },
+  "repaired_gap": {
+    "original_sanitizer_tests": 28,
+    "original_distinct_targets": 28,
+    "revised_sanitizer_tests": 30,
+    "revised_distinct_targets": 29,
+    "revised_test_to_target_map": {
+      "test_standalone_ui": "test_standalone_ui",
+      "test_standalone_preset_ui": "test_standalone_preset_ui",
+      "test_standalone_workspaces_author": "test_standalone_workspaces_author",
+      "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+      "test_standalone_projection": "test_standalone_projection",
+      "test_standalone_inspection_author": "test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+      "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+      "test_standalone_drawing": "test_standalone_drawing",
+      "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+      "test_standalone_scaled_view": "test_standalone_scaled_view",
+      "test_standalone_preset_raster": "test_standalone_preset_raster",
+      "test_standalone_reference_layout": "test_standalone_reference_layout",
+      "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+      "test_standalone_channel_modes": "test_standalone_channel_modes",
+      "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+      "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+      "test_standalone_product_visual": "test_standalone_product_visual",
+      "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+      "test_standalone_lower_rack_material_raster": "test_standalone_lower_rack_material_raster",
+      "test_standalone_footage_typography_raster": "test_standalone_footage_typography_raster",
+      "test_standalone_title_density": "test_standalone_footage_typography_raster",
+      "test_standalone_header_material": "test_standalone_header_material",
+      "test_standalone_manual_key_material_raster": "test_standalone_manual_key_material_raster",
+      "test_standalone_reference_apron_art": "test_standalone_reference_apron_art",
+      "test_standalone_reference_apron_raster": "test_standalone_reference_apron_raster",
+      "test_standalone_reference_apron_unavailable": "test_standalone_reference_apron_unavailable",
+      "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
+    },
+    "ordinary_required_names_before": 39,
+    "ordinary_required_names_after": 41,
+    "new_provenance_sources": [
+      "apps/standalone/native_tests/test_standalone_title_density.py",
+      "apps/standalone/native_tests/test_standalone_header_material.cpp"
+    ],
+    "density_command_validation": "Require five arguments, interpreter file, -B, exact Python script, --executable and exact built footage target; map assertions require reuse of the original fixture.",
+    "existing_CI_contract_tests_requiring_edits": [],
+    "contract_test_search_scope": "rg searched workflow/native-sanitizers/HAMMOND_SANITIZER_TEST_TARGETS and old-count terms in tests, tools, cmake and apps/standalone; no fixture or CI-contract assertion references this inventory.",
+    "shared_CMake_changes": false,
+    "threshold_or_budget_changes": false
+  },
+  "dependencies": {
+    "python": "Every workflow sets up Python 3.12; project requires Python >=3.10.",
+    "SDL": {
+      "version": "2.32.10",
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "acquisition": "Explicit locked acquisition and verification in both standalone jobs; static SDL, native and dummy backends required."
+    },
+    "RtMidi": {
+      "version": "6.0.0",
+      "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "acquisition": "Only native MIDI-ON matrix entries; normal Linux OFF and native sanitizer OFF do not require it."
+    },
+    "VST3": {
+      "version": "3.8.1",
+      "commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+      "acquisition": "Separate locked SDK and submodules in native VST3 workflow; no dependency on the new UI gates."
+    },
+    "native_sanitizer_policy": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "native_sanitizer_flags": "Project C++ uses HAMMOND_ENABLE_SANITIZERS=ON; SDL C receives -fsanitize=address,undefined -fno-omit-frame-pointer; unchanged nm/ldd and object checks require both runtimes.",
+    "image_authoring": "No workflow installs Pillow/NumPy. Density/header native gates require neither. Actual capture and paired-image tools remain separate authoring work.",
+    "current_remote_acquisition_tested": false
+  },
+  "portability_and_resource_limits": [
+    {
+      "topic": "Windows raw bytes",
+      "finding": ".gitattributes applies * text=auto eol=lf; exact pinned fixture SHA therefore is not intentionally rewritten to CRLF. Both native frame emitters have checked _setmode(...,_O_BINARY) paths."
+    },
+    {
+      "topic": "MSVC",
+      "finding": "New fixture/test text is ASCII and the native target uses existing C++20 /W4 /WX /permissive- configuration. Target-file generator expressions select Release executables. Actual new-fixture compilation and execution remain unobserved in hosted MSVC."
+    },
+    {
+      "topic": "Unicode",
+      "finding": "Existing Windows Unicode checkout step builds/runs only the starter generator with standalone OFF. It does not qualify native density/header build roots or actual fifteen-view utility paths. No native Unicode claim is made."
+    },
+    {
+      "topic": "macOS",
+      "finding": "Both macos-15 and macos-15-intel are explicit separate runner entries in all three platform matrices. Static analysis and earlier base execution cannot establish the changed header C++20 helper lookup, warning cleanliness, floating-point/raster behavior or live Cocoa/device operation."
+    },
+    {
+      "topic": "Time budget",
+      "finding": "Native sanitizer job remains 20 minutes including dependencies/build/serial testing. New density/header properties remain 240/480 seconds, existing child guards remain binding, and no actual new sanitizer elapsed time is established. Observe fit without weakening test workloads or leak checks."
+    },
+    {
+      "topic": "Capture scope",
+      "finding": "Hosted native jobs use dummy drivers; ordinary app smoke is selected but the optional fifteen-view utility is not. Full actual H1 captures, paired comparison and independent visual review remain root-owned acceptance."
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "method": "static YAML, Bash and Python syntax plus preserved-gate invariants; no workflow or native test executed",
+    "python": "3.12.14",
+    "pyyaml": "6.0.3",
+    "before_sha256": "4cbc0be05c635f71becc73650d99ec6a9855293607c546bf10aac8f761d1bf57",
+    "after_sha256": "59423f01dc5811d2f8146e06cb939fd9f96295c0e818a74c387519f7fe824e9c",
+    "old_test_count": 28,
+    "old_target_count": 28,
+    "new_test_count": 30,
+    "new_target_count": 29,
+    "added_mappings": {
+      "test_standalone_title_density": "test_standalone_footage_typography_raster",
+      "test_standalone_header_material": "test_standalone_header_material"
+    },
+    "preserved_existing_test_mappings": 28,
+    "native_required_before": 39,
+    "native_required_after": 41,
+    "preserved_sanitizer_limits": 14,
+    "added_sanitizer_limits": {
+      "test_standalone_title_density": 240,
+      "test_standalone_header_material": 480
+    },
+    "bash_blocks": 20,
+    "python_blocks": 11,
+    "syntax_checks": [
+      {
+        "job": "native",
+        "step": "Record exact source and dependency identities",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native",
+        "step": "Explicitly acquire and locally verify locked external SDL2",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native",
+        "step": "Explicitly acquire and locally verify locked external RtMidi",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native",
+        "step": "Install Ubuntu desktop and audio development headers",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native",
+        "step": "Configure native Release on Linux or macOS",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native",
+        "step": "Configure native Release on Windows",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native",
+        "step": "Retain actual compiler identities and require native SDL backends",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native",
+        "step": "Build the application and every standalone acceptance input",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native",
+        "step": "Verify the compiled MIDI backend and retain prepared identities",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native",
+        "step": "Run all required standalone acceptance tests",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native",
+        "step": "Reverify source and dependencies after acceptance",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native",
+        "step": "Stage, relocate, smoke and archive the exact installed payload",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Record the revision, sanitizer policy and tools",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Explicitly acquire and locally verify locked external SDL2",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Install Ubuntu desktop and audio development headers",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Configure native Release with project and SDL sanitizers",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Build the twenty-nine selected acceptance inputs",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Require instrumented SDL C and project C++ objects and linked runtimes",
+        "bash_syntax": "passed",
+        "python_blocks": 1
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Discover exactly thirty gates and run with leak checking",
+        "bash_syntax": "passed",
+        "python_blocks": 2
+      },
+      {
+        "job": "native-sanitizers",
+        "step": "Reverify source and locked SDL2 after acceptance",
+        "bash_syntax": "passed",
+        "python_blocks": 0
+      }
+    ],
+    "actionlint_available": false,
+    "diff": "--- before/standalone.yml\n+++ after/standalone.yml\n@@ -414,6 +414,7 @@\n                       \"test_standalone_upper_rack_material_raster\",\n                       \"test_standalone_lower_rack_material_raster\",\n                       \"test_standalone_footage_typography_raster\",\n+                      \"test_standalone_title_density\", \"test_standalone_header_material\",\n                       \"test_standalone_manual_key_material_raster\",\n                       \"test_standalone_reference_apron_art\", \"test_standalone_reference_apron_raster\",\n                       \"test_standalone_reference_apron_unavailable\", \"test_standalone_starter_load\",\n@@ -667,6 +668,8 @@\n         test_standalone_upper_rack_material_raster=test_standalone_upper_rack_material_raster\n         test_standalone_lower_rack_material_raster=test_standalone_lower_rack_material_raster\n         test_standalone_footage_typography_raster=test_standalone_footage_typography_raster\n+        test_standalone_title_density=test_standalone_footage_typography_raster\n+        test_standalone_header_material=test_standalone_header_material\n         test_standalone_manual_key_material_raster=test_standalone_manual_key_material_raster\n         test_standalone_reference_apron_art=test_standalone_reference_apron_art\n         test_standalone_reference_apron_raster=test_standalone_reference_apron_raster\n@@ -700,9 +703,10 @@\n           assert all(len(pair) == 2 and all(re.fullmatch(r\"[a-z][a-z0-9_]*\", name) for name in pair)\n                      for pair in pairs), pairs\n           test_targets = dict(pairs)\n-          assert len(test_targets) == len(pairs) == 28, \"Required CTest names must be unique\"\n+          assert len(test_targets) == len(pairs) == 30, \"Required CTest names must be unique\"\n+          assert test_targets[\"test_standalone_title_density\"] == \"test_standalone_footage_typography_raster\"\n           build_targets = sorted(set(test_targets.values()))\n-          assert len(build_targets) == 28\n+          assert len(build_targets) == 29\n           (logs / \"build-targets.txt\").write_text(\" \".join(build_targets) + \"\\n\")\n           sources = (\".github/workflows/standalone.yml\", \"CMakeLists.txt\",\n                      \"apps/standalone/CMakeLists.txt\", \"cmake/VerifySdl2.cmake\",\n@@ -719,6 +723,8 @@\n                      \"apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp\",\n                      \"apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp\",\n                      \"apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp\",\n+                     \"apps/standalone/native_tests/test_standalone_title_density.py\",\n+                     \"apps/standalone/native_tests/test_standalone_header_material.cpp\",\n                      \"apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp\",\n                      \"apps/standalone/native_tests/test_standalone_reference_apron_art.cpp\",\n                      \"apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp\",\n@@ -802,11 +808,11 @@\n             '-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' \\\n             2>&1 | tee standalone-sanitizer-logs/configure.log\n \n-      - name: Build only the twenty-eight selected acceptance inputs\n+      - name: Build the twenty-nine selected acceptance inputs\n         run: |\n           set -euo pipefail\n           read -r -a targets < standalone-sanitizer-logs/build-targets.txt\n-          [[ ${#targets[@]} -eq 28 ]]\n+          [[ ${#targets[@]} -eq 29 ]]\n           cmake --build build-standalone-sanitizers --config Release \\\n             --target \"${targets[@]}\" --parallel 2 --verbose \\\n             2>&1 | tee standalone-sanitizer-logs/build.log\n@@ -821,7 +827,7 @@\n           provenance = json.loads((logs / \"provenance.json\").read_text())\n           test_targets = provenance[\"test_targets\"]\n           required = provenance[\"build_targets\"]\n-          assert len(test_targets) == len(required) == 28 and set(required) == set(test_targets.values())\n+          assert len(test_targets) == 30 and len(required) == 29 and set(required) == set(test_targets.values())\n           libraries = {\"SDL2-static\": \"_sdl2/libSDL2.a\", \"hammond_core\": \"libhammond_core.a\",\n                        \"hammond_standalone_support\": \"apps/standalone/libhammond_standalone_support.a\",\n                        \"hammond_standalone_drawing\": \"apps/standalone/libhammond_standalone_drawing.a\",\n@@ -872,6 +878,8 @@\n               \"test_standalone_footage_typography_raster\": {\n                   \"apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp\",\n                   \"apps/standalone/InstrumentView.cpp\"},\n+              \"test_standalone_header_material\": {\n+                  \"apps/standalone/native_tests/test_standalone_header_material.cpp\"},\n               \"test_standalone_manual_key_material_raster\": {\n                   \"apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp\",\n                   \"apps/standalone/InstrumentView.cpp\"},\n@@ -933,7 +941,7 @@\n           (logs / \"instrumentation.json\").write_text(json.dumps(record, sort_keys=True, indent=2) + \"\\n\")\n           PY\n \n-      - name: Discover exactly twenty-eight gates and run with leak checking\n+      - name: Discover exactly thirty gates and run with leak checking\n         env:\n           HAMMOND_NATIVE_CALIBRATION_EVIDENCE: ${{ github.workspace }}/standalone-sanitizer-logs/native-calibration\n         run: |\n@@ -944,7 +952,7 @@\n           provenance = json.loads((logs / \"provenance.json\").read_text())\n           test_targets = provenance[\"test_targets\"]\n           required = provenance[\"required_tests\"]\n-          assert len(required) == len(set(required)) == 28 and set(required) == set(test_targets)\n+          assert len(required) == len(set(required)) == 30 and set(required) == set(test_targets)\n           selection = \"^(\" + \"|\".join(re.escape(name) for name in required) + \")$\"\n           (logs / \"ctest-filter.txt\").write_text(selection + \"\\n\")\n           command = [\"ctest\", \"--test-dir\", \"build-standalone-sanitizers\", \"-C\", \"Release\",\n@@ -953,7 +961,7 @@\n               subprocess.run(command, stdout=output, check=True)\n           discovered = json.loads((logs / \"ctest-discovered.json\").read_text())[\"tests\"]\n           names = [test[\"name\"] for test in discovered]\n-          assert len(names) == len(set(names)) == 28 and set(names) == set(required), names\n+          assert len(names) == len(set(names)) == 30 and set(names) == set(required), names\n           sanitizer_limits = {\"test_standalone_workspace_raster\": 180,\n                               \"test_standalone_scaled_view\": 360,\n                               \"test_standalone_preset_raster\": 300,\n@@ -963,6 +971,8 @@\n                               \"test_standalone_upper_rack_material_raster\": 240,\n                               \"test_standalone_lower_rack_material_raster\": 240,\n                               \"test_standalone_footage_typography_raster\": 240,\n+                              \"test_standalone_title_density\": 240,\n+                              \"test_standalone_header_material\": 480,\n                               \"test_standalone_manual_key_material_raster\": 240,\n                               \"test_standalone_reference_apron_art\": 30,\n                               \"test_standalone_reference_apron_raster\": 60,\n@@ -978,6 +988,11 @@\n                   assert len(command) == 6 and command[1:3] == [\"-E\", \"env\"], command\n                   assert command[3] == \"HAMMOND_STANDALONE_CALIBRATION_PROBE=\" + str(executable), command\n                   assert pathlib.Path(command[4]).is_file() and pathlib.Path(command[5]).resolve(strict=True) == script, command\n+              elif test[\"name\"] == \"test_standalone_title_density\":\n+                  script = pathlib.Path(\"apps/standalone/native_tests/test_standalone_title_density.py\").resolve(strict=True)\n+                  assert len(command) == 5 and command[1] == \"-B\" and command[3] == \"--executable\", command\n+                  assert pathlib.Path(command[0]).is_file() and pathlib.Path(command[2]).resolve(strict=True) == script, command\n+                  assert pathlib.Path(command[4]).resolve(strict=True) == executable, command\n               else:\n                   assert len(command) == 1 and pathlib.Path(command[0]).resolve(strict=True) == executable, command\n               properties = {item[\"name\"]: item[\"value\"] for item in test.get(\"properties\", [])}\n@@ -987,7 +1002,7 @@\n               overrides = properties.get(\"ENVIRONMENT\", []) + properties.get(\"ENVIRONMENT_MODIFICATION\", []) + command\n               assert not any(value.startswith((\"ASAN_OPTIONS=\", \"UBSAN_OPTIONS=\", \"LSAN_OPTIONS=\"))\n                              for value in overrides), (test[\"name\"], overrides)\n-          print(\"Discovered exactly 28 built interface, channel, calibration, product paint and apron gates; job sanitizer policy applies to every gate.\", flush=True)\n+          print(\"Discovered exactly 30 gates from 29 built interface, channel, calibration, product paint, title, header and apron inputs; job sanitizer policy applies to every gate.\", flush=True)\n           PY\n           ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \\\n             --no-tests=error --timeout 180 -R \"$(cat standalone-sanitizer-logs/ctest-filter.txt)\" \\\n"
+  },
+  "remaining_actions": [
+    "Root reviews and integrates this exact workflow repair with the accepted source and affected coherent qualification.",
+    "Preserve root's genuine pre-H1 demonstration and separately obtain required candidate numerical, timing, capture and visual admissions.",
+    "Publish accepted contents with the authorized guarded nonforced flow, verify remote source/tree/parent, and observe all sixteen exact-source jobs.",
+    "Require discovered new CTest names and built instrumented header/footage inputs in hosted artifacts; retain source-bound failures/timeouts and cancellations separately.",
+    "Keep Unicode native checkout, real devices/DPI/input/accessibility, callback deadlines, physical fidelity and literal whole-interface 1:1 claims outside this static CI-wiring admission."
+  ],
+  "handoff": "All four assigned paths are released to root."
+}

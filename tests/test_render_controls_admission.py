@@ -363,7 +363,11 @@ class RenderControlsAdmissionTests(unittest.TestCase):
             original = output.stat()
             os.kill(process.pid, signal.SIGCONT)
             stopped = False
-            stdout, stderr = process.communicate(timeout=15)
+            # Publication follows the full 1.2M-frame/block-1 render. A measured
+            # Debug ASan/UBSan completion exceeded 16s, so reserve 45s here;
+            # the suite retains its 90s CTest bound and separate staging,
+            # stop-confirmation, small-render and cleanup guards.
+            stdout, stderr = process.communicate(timeout=45)
             self.assertEqual(process.returncode, 1, stdout + stderr)
             self.assertEqual(stdout, b"")
             self.assertIn(b"Cannot publish WAV without overwriting", stderr)

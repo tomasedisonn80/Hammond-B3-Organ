@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "reviewer": {
+    "id": "A24",
+    "agent": "/root/w04_a24_smoke_scheduling",
+    "wave": 4,
+    "narrative_date": "2026-11-16",
+    "narrative_timezone": "America/Halifax",
+    "repo": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+    "base_commit": "6047723b595259de355c74342e48a8ae2ee1e228"
+  },
+  "decision": "admit_scheduling_only_response",
+  "conclusion": "The unchanged short correctness smoke is susceptible to missing its note-on window when UI turns are delayed. RUN_SERIAL is justified as CTest isolation; the observed three-test order verifies that isolation. Contention is supported, not causally proved.",
+  "owned_and_released_paths": [
+    "docs/development/2026-11-16-ui-delivery/notes/A24.md",
+    "docs/development/2026-11-16-ui-delivery/reports/app-smoke-scheduling-admission.json",
+    "docs/reviews/NATIVE_SMOKE_SCHEDULING_ADMISSION.md"
+  ],
+  "reviewer_actions": {
+    "read_complete": [
+      "AGENTS.md",
+      "docs/PLAN.md",
+      "docs/development/2026-11-16-ui-delivery/README.md",
+      "docs/development/2026-11-16-ui-delivery/CHECKPOINT.md",
+      "docs/development/2026-11-16-ui-delivery/assignments.json"
+    ],
+    "inspection_methods": [
+      "cat/sed/rg source and retained logs",
+      "Python standard-library JSON parsing, SHA-256 calculation, literal generated-property checks and observed-order parsing",
+      "Two read-only git show comparisons, specifically authorized by root after initial no-git assignment"
+    ],
+    "native_executions": 0,
+    "builds": 0,
+    "captures": 0,
+    "product_edits": 0,
+    "subagents": 0
+  },
+  "input_sha256": {
+    "docs/development/2026-11-16-ui-delivery/reports/title-affected-tests.log": "08522b84469759512105291052179ecc9a41dc99d9d3107c71987a867118f6a7",
+    "docs/development/2026-11-16-ui-delivery/reports/title-affected-ctest-raw.log.gz": "3dfab89f4cf4a8f75018c55ad2eca0fe3efb9c176419079bea36271c808b3816",
+    "docs/development/2026-11-16-ui-delivery/reports/title-affected-selection.json": "5e4b9e66f05b294c1264068609809fc4dcdf435f222a320c886ba3b6e3787704",
+    "docs/development/2026-11-16-ui-delivery/reports/title-app-isolated.json": "69bce41f6792ab908a0097447a1b1e86f0ca9a510006993a616d9a96bcc110b3",
+    "docs/development/2026-11-16-ui-delivery/reports/title-app-isolated.log": "610f592152de298f0c8a296b62a6cebd8fe054c9a03cb26cc85fa4f72e2a9869",
+    "docs/development/2026-11-16-ui-delivery/reports/title-app-isolated-ctest-raw.log.gz": "9dda8e82d7d4d8b2f816f6f4a07abcdd804e156ba789b0760c52386c72ad026d",
+    "docs/development/2026-11-16-ui-delivery/reports/app-smoke-scheduling.json": "5f556dd1d89e24bc22d749dd35027812e608f140a79e7d23ccde3f338aec4d4d",
+    "docs/development/2026-11-16-ui-delivery/reports/app-smoke-configure.log": "2a3f912d0d8907bc6ffb57512ec0047c6f7efc03751c2390e94b621eff6691b8",
+    "docs/development/2026-11-16-ui-delivery/reports/app-smoke-build.log": "91c54e7b60a6a5e38bf7cd9af1dc0d34fcd356af12c4c31bce51217a39d0c745",
+    "docs/development/2026-11-16-ui-delivery/reports/app-smoke-scheduling-check.json": "b7094e6227aedc4ed2737c0dd8a417e452a880187c10199d992cfaf5deeb98a1",
+    "docs/development/2026-11-16-ui-delivery/reports/app-smoke-scheduling-check.log": "9f77d37ede8f4db07baf439484b3048d1f9ba23e717bdf1ca8408b7ec6d7afc8",
+    "docs/development/2026-11-16-ui-delivery/reports/baseline-identity.json": "967a2f67c3600ae4ae9007483363efb553ad1d60c7fcf5219f04c6cbb3ea6c5e",
+    "docs/development/2026-11-16-ui-delivery/reports/title-build-identity.json": "8448d60fd700b67b4577bcac9ffb6ddc1ee1fe073198ef58c28701824c11ea76"
+  },
+  "source_sha256": {
+    "apps/standalone/CMakeLists.txt": "246acf9b259824d07a9aa9fc8a5177734b65e0e89de3b8f378bd7de609b0d897",
+    "apps/standalone/main.cpp": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+    "apps/standalone/native_tests/test_standalone_app.py": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "apps/standalone/InstrumentView.cpp": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+  },
+  "committed_source_comparison": {
+    "commands": [
+      [
+        "git",
+        "show",
+        "HEAD:apps/standalone/native_tests/test_standalone_app.py"
+      ],
+      [
+        "git",
+        "show",
+        "HEAD:apps/standalone/main.cpp"
+      ]
+    ],
+    "results": [
+      {
+        "path": "apps/standalone/native_tests/test_standalone_app.py",
+        "committed_sha256": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+        "current_sha256": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+        "byte_identical": true
+      },
+      {
+        "path": "apps/standalone/main.cpp",
+        "committed_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+        "current_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4",
+        "byte_identical": true
+      }
+    ],
+    "main_also_matches_baseline_and_title_identity": true,
+    "read_only_predecessor_comparison": {
+      "root": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ",
+      "same_two_paths_byte_identical": true
+    }
+  },
+  "source_mechanism": {
+    "smoke_ms": 600,
+    "note_on_window_ms": {
+      "inclusive_start": 30,
+      "exclusive_end": 300
+    },
+    "note_on_prerequisites": [
+      "audio_.is_running()",
+      "snapshot_.running",
+      "!ui_.view().controls_pending"
+    ],
+    "restore_path": "open_audio queues the restore before audio start; UiModel::submitted marks the ControlSnapshot pending; UiModel::observe clears pending when the sequence is resolved. Original failures have zero recovery count.",
+    "note_off_earliest_ms": 400,
+    "event_delivery": "advance_smoke pushes SDL key events; subsequent loop input processing and snapshot observation must witness held and released state.",
+    "loop_order": [
+      "observe",
+      "advance_smoke",
+      "render_frame",
+      "600 ms completion check"
+    ],
+    "assertions_unchanged": true,
+    "python_subprocess_timeout_seconds": 8.0,
+    "ctest_timeout_seconds": 60,
+    "title_inactive_argument": "All three failures are width 1280; reference_composition_active requires width >= 1400, height >= 820, Dimensional Play. The revised five title calls occur only in reference_header on this active path."
+  },
+  "original_affected_result": {
+    "passed": 42,
+    "total": 43,
+    "ctest_seconds": 144.39,
+    "app_test_seconds": 17.54,
+    "app_methods": 21,
+    "app_subprocesses": 184,
+    "app_failures": 3,
+    "requested_parallelism": 3,
+    "failure_diagnostics": [
+      {
+        "case": "default_audition_1280x900",
+        "width": 1280,
+        "height": 900,
+        "rendered_images": 3,
+        "duration_ms": 600,
+        "first_observed_controls_not_pending_ms": 356,
+        "smoke": {
+          "requested": true,
+          "duration_ms": 600,
+          "completed": true,
+          "note_on_sent": false,
+          "note_off_sent": false,
+          "held_observed": false,
+          "release_observed": false,
+          "passed": false
+        },
+        "callback_count": 74,
+        "rendered_audio_frames": 37888,
+        "audio_fault_counts": {
+          "render_failures": 0,
+          "format_failures": 0,
+          "nonfinite_failures": 0,
+          "overrange_failures": 0
+        },
+        "session_fault_flags": 0,
+        "session_recovery_count": 0,
+        "held_after_shutdown": false
+      },
+      {
+        "case": "legacy_reader_1_unicode",
+        "width": 1280,
+        "height": 900,
+        "rendered_images": 3,
+        "duration_ms": 600,
+        "first_observed_controls_not_pending_ms": 470,
+        "smoke": {
+          "requested": true,
+          "duration_ms": 600,
+          "completed": true,
+          "note_on_sent": false,
+          "note_off_sent": false,
+          "held_observed": false,
+          "release_observed": false,
+          "passed": false
+        },
+        "callback_count": 52,
+        "rendered_audio_frames": 26624,
+        "audio_fault_counts": {
+          "render_failures": 0,
+          "format_failures": 0,
+          "nonfinite_failures": 0,
+          "overrange_failures": 0
+        },
+        "session_fault_flags": 0,
+        "session_recovery_count": 0,
+        "held_after_shutdown": false
+      },
+      {
+        "case": "legacy_reader_3_unicode",
+        "width": 1280,
+        "height": 900,
+        "rendered_images": 3,
+        "duration_ms": 600,
+        "first_observed_controls_not_pending_ms": 416,
+        "smoke": {
+          "requested": true,
+          "duration_ms": 600,
+          "completed": true,
+          "note_on_sent": false,
+          "note_off_sent": false,
+          "held_observed": false,
+          "release_observed": false,
+          "passed": false
+        },
+        "callback_count": 88,
+        "rendered_audio_frames": 45056,
+        "audio_fault_counts": {
+          "render_failures": 0,
+          "format_failures": 0,
+          "nonfinite_failures": 0,
+          "overrange_failures": 0
+        },
+        "session_fault_flags": 0,
+        "session_recovery_count": 0,
+        "held_after_shutdown": false
+      }
+    ],
+    "observed_overlap": [
+      "test_standalone_workspace_raster",
+      "test_standalone_preset_raster",
+      "test_standalone_footage_typography_raster",
+      "test_standalone_keyboard_rim_raster"
+    ],
+    "original_log_preserved": true,
+    "replacement_full_43_of_43_claimed": false
+  },
+  "isolated_result": {
+    "root_receipt": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "../build-native",
+        "-R",
+        "^test_standalone_app$",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "1"
+      ],
+      "exit_code": 0,
+      "seconds": 15.4329219680003,
+      "exe_sha256_before": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3",
+      "exe_sha256_after": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3",
+      "purpose": "Unchanged-byte isolated diagnostic following the retained 42/43 parallel affected run; not a replacement for its failures."
+    },
+    "ctest_passed": 1,
+    "ctest_total": 1,
+    "ctest_app_seconds": 15.41,
+    "ctest_wall_seconds": 15.42,
+    "role": "Separate unchanged-byte diagnostic; original failure remains."
+  },
+  "configure_and_build": {
+    "configure_log_completed": true,
+    "build_log_reached_100_percent": true,
+    "pinned_sdl_version": "2.32.10",
+    "pinned_sdl_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+    "sdl_root": "/workspace/scratch/3edffb787db3/SDL2",
+    "app_sha256_after_build": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3",
+    "claim": "Reviewed root logs and recorded executable identities; reviewer did not configure or build."
+  },
+  "generated_ctest": {
+    "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/CTestTestfile.cmake",
+    "sha256": "1343a2a6305f7205c3c287f680011e7851616052b8b22b5f2f0db52c61a388b5",
+    "test": "test_standalone_app",
+    "RUN_SERIAL": true,
+    "TIMEOUT_seconds": 60,
+    "labels": [
+      "standalone",
+      "native"
+    ],
+    "literal_property_line": "set_tests_properties([=[test_standalone_app]=] PROPERTIES  LABELS \"standalone;native\" RUN_SERIAL \"TRUE\" TIMEOUT \"60\" _BACKTRACE_TRIPLES \"/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/CMakeLists.txt;490;add_test;/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/CMakeLists.txt;0;\")"
+  },
+  "scheduling_check": {
+    "root_receipt": {
+      "command": [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "../build-native",
+        "-R",
+        "^(test_standalone_app|test_standalone_product_visual|test_standalone_scaled_view)$",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "3"
+      ],
+      "exit_code": 0,
+      "seconds": 43.19508224200035,
+      "purpose": "Verify RUN_SERIAL isolates the unchanged 600ms app smoke from two heavy software-raster fixtures under requested parallelism3. Original42/43failure retained.",
+      "exe_sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3",
+      "cmake_sha256": "246acf9b259824d07a9aa9fc8a5177734b65e0e89de3b8f378bd7de609b0d897"
+    },
+    "passed": 3,
+    "total": 3,
+    "ctest_wall_seconds": 43.19,
+    "requested_parallelism": 3,
+    "observed_order": [
+      {
+        "event": "start",
+        "test": "test_standalone_product_visual"
+      },
+      {
+        "event": "start",
+        "test": "test_standalone_scaled_view"
+      },
+      {
+        "event": "pass",
+        "test": "test_standalone_scaled_view",
+        "seconds": 21.72
+      },
+      {
+        "event": "pass",
+        "test": "test_standalone_product_visual",
+        "seconds": 27.48
+      },
+      {
+        "event": "start",
+        "test": "test_standalone_app"
+      },
+      {
+        "event": "pass",
+        "test": "test_standalone_app",
+        "seconds": 15.69
+      }
+    ],
+    "app_started_after_both_raster_tests_finished": true,
+    "app_overlapped_other_selected_ctests": false,
+    "same_app_bytes_as_original_failure_and_isolated_pass": true
+  },
+  "inference_limits": [
+    "No scheduler trace or controlled repeated before/after contention experiment identifies the exact causal contribution of competing raster work, rendering cost, or unrelated host load.",
+    "Inactive-title failures argue against a fault in the revised title path; they do not prove absence of every title-related performance effect.",
+    "One isolated pass and one three-test scheduling pass do not establish statistical reliability or worst-case timing.",
+    "RUN_SERIAL excludes concurrent tests within this CTest invocation; it does not reserve the machine or constrain external processes or other CTest invocations.",
+    "No post-change complete 43-test replacement or full final integrated qualification was observed in this review.",
+    "This dummy-SDL/software-renderer evidence does not qualify real displays, input/audio devices, callback deadlines, OS retirement, other platforms, hosted CI, publication, physical fidelity, native accessibility, or whole-interface 1:1."
+  ],
+  "next_owner_action": "Root retains fresh integrated qualification and source-specific publication/hosted acceptance; preserve the original 42/43, isolated 1/1 and scheduling 3/3 as distinct observations."
+}

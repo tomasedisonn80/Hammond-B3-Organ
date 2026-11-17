@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "../build-native",
+    "-R",
+    "^(test_standalone_app|test_standalone_product_visual|test_standalone_scaled_view)$",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "3"
+  ],
+  "exit_code": 0,
+  "seconds": 43.19508224200035,
+  "purpose": "Verify RUN_SERIAL isolates the unchanged 600ms app smoke from two heavy software-raster fixtures under requested parallelism3. Original42/43failure retained.",
+  "exe_sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3",
+  "cmake_sha256": "246acf9b259824d07a9aa9fc8a5177734b65e0e89de3b8f378bd7de609b0d897"
+}

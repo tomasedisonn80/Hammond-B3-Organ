@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Capture thirteen real native interface views into a new, bounded gallery.
 
+--include-header-aspects appends two unequal-aspect Dimensional Play views,
+1920x820 and 1400x1080, for a fifteen-view gallery. The default stays thirteen.
+
 Requires Python 3.10+, Pillow, an already built standalone and a source/build
 qualification JSON with ``binary_sha256`` and ``source_sha256`` members. The
 qualification is checked, not treated as an independent build attestation.
@@ -41,6 +44,10 @@ CASES = (
     ("play-toolbar-focus-1672x941", 1672, 941, "play", "dimensional"),
     ("play-pedal-focus-1672x941", 1672, 941, "play", "dimensional"),
     ("play-wide-1920x1080", 1920, 1080, "play", "dimensional"),
+)
+HEADER_ASPECT_CASES = (
+    ("play-header-wide-1920x820", 1920, 820, "play", "dimensional"),
+    ("play-header-tall-1400x1080", 1400, 1080, "play", "dimensional"),
 )
 CASE_SCENES = {
     "play-toolbar-focus-1672x941": "toolbar-focus",
@@ -432,8 +439,11 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True, help="new directory; an existing empty directory is refused")
     parser.add_argument("--dummy-sdl", action="store_true", required=True,
                         help="acknowledge dummy audio/video and software rendering; no physical device claim")
+    parser.add_argument("--include-header-aspects", action="store_true",
+                        help="append full-frame 1920x820 and 1400x1080 Dimensional Play views (15 total; default 13)")
     parser.add_argument("--timeout-seconds", type=float, default=12.0)
     args = parser.parse_args()
+    cases = CASES + HEADER_ASPECT_CASES if args.include_header_aspects else CASES
     require(math.isfinite(args.timeout_seconds) and 4 <= args.timeout_seconds <= 60, "timeout must be finite, 4..60 seconds")
     require(not os.path.lexists(args.output), "output already exists; refusing to overwrite any gallery")
     exe, source, build, report_path = (p.resolve(strict=True) for p in
@@ -458,7 +468,11 @@ def main() -> int:
         (output / name).mkdir()
     record = {
         "schema_version": 1, "capture_contract": "standalone-interface-capture-v1", "status": "incomplete",
-        "case_matrix": "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection.",
+        "case_matrix": (
+            "Original thirteen views retained in order; play-header-wide-1920x820 and "
+            "play-header-tall-1400x1080 appended for header aspect inspection (15 views)."
+            if args.include_header_aspects else
+            "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection."),
         "started_at_utc": datetime.now(timezone.utc).isoformat(), "command": [sys.executable, *sys.argv],
         "output_directory_at_capture": str(output), "platform": platform.platform(),
         "python": platform.python_version(), "pillow": pillow_version,
@@ -483,7 +497,7 @@ def main() -> int:
         state.write_text(STATE, encoding="ascii")
         plans = {}
         for workspace, presentation, scene in sorted(set(
-                (c[3], c[4], CASE_SCENES.get(c[0], "standard")) for c in CASES)):
+                (c[3], c[4], CASE_SCENES.get(c[0], "standard")) for c in cases)):
             script, events = replay(workspace, presentation, scene)
             suffix = "" if scene == "standard" else f"-{scene}"
             path = output / "inputs" / f"{workspace}-{presentation}{suffix}.b3uireplay"
@@ -497,7 +511,7 @@ def main() -> int:
             if key in os.environ:
                 environment[key] = os.environ[key]
         record["environment"] = environment
-        for name, width, height, workspace, presentation in CASES:
+        for name, width, height, workspace, presentation in cases:
             # Detect drift before launching another process as well as after the
             # complete matrix. A change invalidates the whole gallery.
             require(identity(exe) == executable_before and inventory(production_paths(source), source) == source_before,

@@ -1,0 +1,257 @@
+{
+  "agent": "/root/w05_a25_fixture_portability",
+  "ci_coverage": {
+    "aggregate_target": "hammond_standalone_test_inputs",
+    "concurrent_workflow_boundary": "A26 may modify this shared workflow; the report-time identity is an observation, not acceptance of that repair.",
+    "initial_observation": "Both names matched the ordinary filter but were absent from required-name assertions and the explicit sanitizer map.",
+    "new_tests": [
+      "test_standalone_header_material",
+      "test_standalone_title_density"
+    ],
+    "ordinary_filter": "^test_standalone_",
+    "repair_acceptance_claimed": false,
+    "separate_repair_owner": "A26; .github/workflows/standalone.yml only, coordinated by root",
+    "workflow_identity_at_report_only": {
+      "bytes": 68503,
+      "sha256": "59423f01dc5811d2f8146e06cb939fd9f96295c0e818a74c387519f7fe824e9c"
+    },
+    "workflow_occurrences_at_report_only": {
+      "test_standalone_header_material": 7,
+      "test_standalone_title_density": 7
+    }
+  },
+  "claim_limits": [
+    "No H1 painter acceptance",
+    "No Windows/macOS/Linux runtime pass claimed by this review",
+    "No historical job qualifies changed test inputs",
+    "No real display/DPI/device/accessibility acceptance",
+    "Literal whole-interface 1:1 remains unmet and unwaived"
+  ],
+  "decision": "source_review_complete_exact_source_execution_pending",
+  "definite_new_compilation_blocker_identified": false,
+  "execution": {
+    "builds": 0,
+    "captures": 0,
+    "git_operations": 0,
+    "native_invocations": 0,
+    "source_edits": 0,
+    "subagents": 0
+  },
+  "fixture_pin": {
+    "checkout_line_endings": "* text=auto eol=lf",
+    "expected_sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f",
+    "matches_inspected_bytes": true
+  },
+  "method": "Static source inspection and local SHA-256 identification only",
+  "narrative_date": "2026-11-16",
+  "narrative_timezone": "America/Halifax",
+  "painter_at_review": {
+    "candidate_helper_execution": "not established; no H1 painter at assignment",
+    "h1_helper_defined": false
+  },
+  "remaining_exact_source_gates": [
+    {
+      "gate": "native_platform_matrix",
+      "jobs": [
+        "Linux GCC MIDI ON (ALSA)",
+        "Linux GCC MIDI OFF",
+        "macOS AppleClang ARM MIDI ON (CoreMIDI)",
+        "macOS Intel AppleClang MIDI ON (CoreMIDI)",
+        "Windows MSVC x64 MIDI ON (WinMM)"
+      ],
+      "requirement": "Build coherent Release native inputs and run every registered standalone test with --no-tests=error. Observe both new tests by exact name at the published source; retain compiler logs and JUnit/CTest output.",
+      "state": "not_observed_by_A25"
+    },
+    {
+      "gate": "native_sanitizers",
+      "requirement": "Retain all prior selected gates; select both new tests, instrument the included H1 painter and footage subprocess target, verify build/source dependencies and run Linux GCC ASan+UBSan+leaks without suppressions.",
+      "state": "pending_A26_integration_and_execution"
+    },
+    {
+      "gate": "capture_unit_matrix",
+      "jobs": [
+        "Release Linux GCC",
+        "Release macOS AppleClang ARM",
+        "Release macOS Intel AppleClang",
+        "Release Windows MSVC"
+      ],
+      "requirement": "Run the exact changed capture extension unit suite in each core Release job; retained gallery diagnostics and mocked native/image boundaries remain unit evidence.",
+      "state": "not_observed_by_A25",
+      "test": "python_test_capture_standalone_interface"
+    },
+    {
+      "gate": "h1_binary_export_protocol",
+      "requirement": "Perform the P03 raw export gate on each platform, especially Windows _O_BINARY. No default-test pass alone qualifies this branch.",
+      "state": "not_covered_by_default_H1_CTest"
+    },
+    {
+      "gate": "actual_platform_capture_extension",
+      "requirement": "For any cross-platform gallery claim, retain real fifteen-frame runs with pinned executable/source hashes, Pillow identity, exact dimensions and semantic checks. Address or disclose P06/P07; mock CLI passes alone do not qualify native captures.",
+      "state": "unrun_by_A25"
+    }
+  ],
+  "review": "UI delivery native test portability",
+  "reviewed_sources": {
+    ".gitattributes": {
+      "bytes": 1788,
+      "sha256": "cf3b4abf5a14565327f0dda04ff385525a890794ae8fa25e02fdfb66eb798c43"
+    },
+    "CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 41243,
+      "sha256": "246acf9b259824d07a9aa9fc8a5177734b65e0e89de3b8f378bd7de609b0d897"
+    },
+    "apps/standalone/Drawing.cpp": {
+      "bytes": 22378,
+      "sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a"
+    },
+    "apps/standalone/Drawing.h": {
+      "bytes": 2617,
+      "sha256": "36663f449abfbf01c755b8ab718b2a75252709b68ed38df9452d446ea82289f3"
+    },
+    "apps/standalone/FontData.h": {
+      "bytes": 204816,
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    "apps/standalone/UiModel.h": {
+      "bytes": 18547,
+      "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1"
+    },
+    "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp": {
+      "bytes": 49033,
+      "sha256": "facc85f516454964ed55e406f95db4046923d7a2441fdf72e65719b3685fec4f"
+    },
+    "apps/standalone/native_tests/test_standalone_header_material.cpp": {
+      "bytes": 61218,
+      "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2"
+    },
+    "apps/standalone/native_tests/test_standalone_title_density.py": {
+      "bytes": 23467,
+      "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2"
+    },
+    "cmake/VerifySdl2.cmake": {
+      "bytes": 1334,
+      "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e"
+    },
+    "data/dependencies/sdl2-lock.json": {
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    "tests/test_capture_standalone_interface.py": {
+      "bytes": 36666,
+      "sha256": "7a3c19ad6cba0477120c0602159ea27210ec371fb6c9cef6f01261047db19cb1"
+    },
+    "tools/capture_standalone_interface.py": {
+      "bytes": 39296,
+      "sha256": "eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a"
+    }
+  },
+  "schema_version": 1,
+  "source_findings": [
+    {
+      "evidence": [
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:35-49",
+        "apps/standalone/CMakeLists.txt:369-384",
+        "CMakeLists.txt:39-45"
+      ],
+      "finding": "H1 includes InstrumentView.cpp once. Its CMake target has only the fixture source, and drawing/support libraries do not compile InstrumentView.cpp. Common configuration requires C++20 and strict warnings for GCC/Clang/MSVC. requires and bit_cast are covered by that language contract.",
+      "id": "P01",
+      "status": "established_by_inspection",
+      "subject": "One painter and C++20"
+    },
+    {
+      "evidence": [
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:60-61",
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:487-551",
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:596-676",
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:688-719"
+      ],
+      "finding": "Binary32 and four-byte Pixel are asserted. Frozen finite geometry bounds explicit float-to-int conversions and stream sizes. Glyph/clip/enum conversions are explicit. SDL getters receive appropriate float, byte and SDL enum types. Physical/logical clip and viewport, both scales and blend are checked; helper probes also check color. RGBA32 and row pitch determine byte transport.",
+      "id": "P02",
+      "maximum_declared_frame_bytes": 33928016,
+      "status": "established_by_inspection",
+      "subject": "Representation and SDL state"
+    },
+    {
+      "evidence": [
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:895-901",
+        "apps/standalone/native_tests/test_standalone_header_material.cpp:921-947",
+        "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp:828-840"
+      ],
+      "finding": "Both frame producers switch stdout to _O_BINARY on Windows before --case output. One JSON line precedes exact RGBA bytes; diagnostics go to stderr. H1 default CTest has no arguments and does not enter its binary export branch.",
+      "id": "P03",
+      "remaining_gate": "Exercise H1 --list plus all 48 --case exports, 16 --uncut companions, and case 46 --after-all/--fresh with a bounded byte reader on each target platform. Require exact declared length, no trailing bytes, valid state records and unchanged finite inventory; Windows mode-switch execution must be observed.",
+      "status": "source_guard_present_execution_pending",
+      "subject": "Windows stdout and frame protocol"
+    },
+    {
+      "evidence": [
+        "apps/standalone/native_tests/test_standalone_title_density.py:86-185",
+        "apps/standalone/native_tests/test_standalone_title_density.py:384-396",
+        "apps/standalone/native_tests/test_standalone_title_density.py:449-462"
+      ],
+      "finding": "Rejects duplicate members, non-JSON constants, overflowing exponents, oversized numeric tokens/depth/headers/pipes, incorrect types/inventory and incorrect payload length. Uses one canonical frame at a time, bounded wait/cleanup, argument-list subprocesses and __file__-relative source checks. No Pillow requirement.",
+      "id": "P04",
+      "status": "established_by_inspection",
+      "subject": "Title reader bounds and numeric parsing"
+    },
+    {
+      "evidence": [
+        "CMakeLists.txt:18",
+        "apps/standalone/CMakeLists.txt:75-156",
+        "apps/standalone/CMakeLists.txt:346-385",
+        "apps/standalone/CMakeLists.txt:579-585",
+        "cmake/VerifySdl2.cmake",
+        "data/dependencies/sdl2-lock.json"
+      ],
+      "finding": "Native registrations require BUILD_TESTING and HAMMOND_BUILD_STANDALONE. Aggregate native inputs build both H1 and footage targets. Quoted TARGET_FILE resolves the actual configuration and executable suffix. Required dependencies include pinned SDL 2.32.10, generated reference art/apron, checked-in FontData, core/support and Python 3.10+. MIDI SDK dependencies follow the chosen configuration.",
+      "id": "P05",
+      "status": "established_by_inspection",
+      "subject": "Build dependencies and executable paths"
+    },
+    {
+      "evidence": [
+        "tools/capture_standalone_interface.py:181-197"
+      ],
+      "finding": "build_paths lists libhammond_core.a and single-directory *.a patterns. It does not collect MSVC .lib archives or configuration subdirectories. Binary/source hashes still bind captures, but recorded build-input stability does not cover those archives.",
+      "id": "P06",
+      "remaining_gate": "Before claiming Windows build-archive coverage, derive actual configuration artifacts (for example from CMake codemodel) or explicitly retain this narrower evidence boundary. No source fix or Windows capture was performed.",
+      "status": "inherited_capture_evidence_limit",
+      "subject": "Windows build-input provenance"
+    },
+    {
+      "evidence": [
+        "tools/capture_standalone_interface.py:139-154",
+        "tools/capture_standalone_interface.py:293-294",
+        "tools/capture_standalone_interface.py:389-390",
+        "tools/capture_standalone_interface.py:134-137"
+      ],
+      "finding": "read_json has parse_constant rejection but no finite parse_float. A numeric token such as 1e999 becomes infinity; positive callback/render-frame predicates can accept that value. Those values are retained in the result and allow_nan=False then rejects receipt serialization. This is a source-derived failure path, not an observed malformed input or native capture failure.",
+      "id": "P07",
+      "remaining_gate": "Use finite float parsing before validation and verify exponent-overflow rejection without weakening the capture contract; separate root-owned follow-up.",
+      "status": "inherited_capture_protocol_gap",
+      "subject": "Capture JSON exponent overflow"
+    },
+    {
+      "evidence": [
+        "tools/capture_standalone_interface.py:47-50",
+        "tools/capture_standalone_interface.py:442-446",
+        "tests/test_capture_standalone_interface.py:112-240"
+      ],
+      "finding": "Optional 1920x820 and 1400x1080 Dimensional Play scenes append to the unchanged thirteen-case order and reuse existing replay, paths and validation. Actual image conversion requires Pillow; mocked orchestration does not establish real platform captures.",
+      "id": "P08",
+      "status": "extension_source_scope_confirmed",
+      "subject": "Fifteen-view capture extension"
+    }
+  ],
+  "wave": 5,
+  "worker": "A25",
+  "workspace": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ"
+}

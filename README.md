@@ -2,8 +2,40 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The playable instrument is a **nominal dry organ** with a native standalone application, an offline renderer and an optional VST3 adapter. Its musical core has 91 continuously running sources, two 61-key manuals, 25 pedals, eighteen documentary fixed registrations, four retained drawbar banks, percussion and shared expression.
 
+<!-- ui-delivery-summary:start -->
+## Current development: reference title, header and reliable qualification
+
+The [UI delivery session](docs/development/2026-11-16-ui-delivery/README.md)
+has freshly read **all 500 atlas pages**. Its own requested **60 distinct agents
+in ten waves** are recorded as they actually work in the
+[ledger](docs/development/2026-11-16-ui-delivery/assignments.json); the
+[checkpoint](docs/development/2026-11-16-ui-delivery/CHECKPOINT.md) identifies
+accepted work, remaining gates and the next assignment.
+
+**T3 revision 2 is implemented:** the live title has stronger brass strokes and
+restrained relief, with its existing position, fitting, caption and controls
+preserved. The [158-pair comparison](docs/development/2026-11-16-ui-delivery/reports/title-paired/report.json)
+checks 383,790,445 pixel positions with zero changes outside the declared title
+support. Independent [numerical/source](docs/reviews/TITLE_T3_REVISION_2_NATIVE_ADMISSION.md)
+and [15-view visual](docs/reviews/TITLE_T3_REVISION_2_VISUAL_ADMISSION.md) reviews
+are retained. The [current interface](#current-native-interface) shows actual
+application output beside the unchanged reference.
+
+The next material step is the separately admitted
+[H1 header interior](docs/design/HEADER_MATERIAL_H1_CONTRACT.md), using a genuine
+accepted-T3 baseline, fixed numerical criteria and independent full-frame review.
+A renderer test completion guard and [isolated native smoke scheduling](docs/reviews/NATIVE_SMOKE_SCHEDULING_ADMISSION.md)
+preserve their workloads and assertions while addressing observed qualification
+failures. Original failed runs remain in the session records.
+
+**Literal whole-interface 1:1 remains the target and is not yet achieved.** The
+[complete M0–M9 plan](docs/PLAN.md) still separates software implementation,
+measured instrument fidelity, connected scanner/AO-28/Leslie audio, native
+accessibility and platform/device release qualification.
+<!-- ui-delivery-summary:end -->
+
 <!-- heading-title-continuation-summary:start -->
-## Current continuation: reference typography and reliable replay
+## Previous continuation: reference typography and reliable replay
 
 The [new continuation](docs/development/2026-11-16-heading-title-continuation/README.md)
 has freshly read all 500 atlas pages. Its requested sixty distinct workers in
@@ -411,42 +443,47 @@ The functional inventory remains **68 ordinary controls, including 24 reversed p
 
 ### Current native interface
 
-**The latest captured painter stage is T2 live rack typography at 1672×941.**
-The [complete capture manifest](docs/design/native-gallery-heading-t2-v1/manifest.json)
-and [capture provenance](docs/design/native-gallery-heading-t2-v1/provenance.json)
-bind all thirteen actual views to executable
-`e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a`.
-The [genuine baseline](docs/design/native-gallery-heading-baseline-v1/provenance.json)
-is retained separately. The unchanged reference appears below for direct comparison.
+**The latest admitted captured stage is T3 revision 2: live brass title over the
+retained T2 rack typography.** The [manifest](docs/design/native-gallery-ui-delivery-title/manifest.json)
+and [provenance](docs/design/native-gallery-ui-delivery-title/provenance.json)
+bind all **15 actual application views** to executable
+`010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3`.
+The [previous T2 gallery](docs/design/native-gallery-heading-t2-v1/manifest.json)
+remains available; the unchanged reference appears immediately below.
 
-![Actual native Play at 1672×941 with live T2 rack headings](docs/design/native-gallery-heading-t2-v1/images/play-reference-1672x941.png)
+![Actual native Play at 1672×941 with the T3 brass title](docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png)
 
 ![Unmodified atlas cover/page-409 concept at 1672×941](docs/design/atlas-cover-reference.jpg)
 
 | Design evidence | View |
 | --- | --- |
 | Original concept | [Unmodified image and provenance](docs/design/atlas-reference.json) |
-| Current T2 stage | [1672×941](docs/design/native-gallery-heading-t2-v1/images/play-reference-1672x941.png) · [1400×820 minimum active](docs/design/native-gallery-heading-t2-v1/images/play-minimum-active-1400x820.png) · [1920×1080](docs/design/native-gallery-heading-t2-v1/images/play-wide-1920x1080.png) |
-| Current auxiliary views | [Compact, Flat, Rotary, Service and focus capture manifest](docs/design/native-gallery-heading-t2-v1/manifest.json) |
-| Retained material/type stages | [T1 typography](examples/demos/footage-typography-v1/README.md) · [Lower v2](examples/demos/lower-rack-material-v2/README.md) · [Upper](examples/demos/upper-rack-material-v1/README.md) |
+| Current T3 stage | [1672×941](docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png) · [1400×820 minimum active](docs/design/native-gallery-ui-delivery-title/images/play-minimum-active-1400x820.png) · [1920×1080](docs/design/native-gallery-ui-delivery-title/images/play-wide-1920x1080.png) |
+| Unequal-aspect header views | [1920×820](docs/design/native-gallery-ui-delivery-title/images/play-header-wide-1920x820.png) · [1400×1080](docs/design/native-gallery-ui-delivery-title/images/play-header-tall-1400x1080.png) |
+| Current auxiliary views | [Compact, Flat, Rotary, Service and focus manifest](docs/design/native-gallery-ui-delivery-title/manifest.json) |
+| Retained material/type stages | [T2 headings](docs/design/native-gallery-heading-t2-v1/manifest.json) · [T1 footage](examples/demos/footage-typography-v1/README.md) · [Lower v2](examples/demos/lower-rack-material-v2/README.md) · [Upper](examples/demos/upper-rack-material-v1/README.md) |
 | Retained MIDI dialog | [960×700 calibration view](examples/demos/standalone-product-preview-v1/midi-overlay/images/midi-minimum-960x700.png) |
 
-The app captures use dummy SDL audio/video, software rendering and a
-MIDI-disabled build. They are actual application pixels; the reference is
-generated concept art. Original BMP bytes are unavailable after recorded
-lossless PNG conversion. Runtime counters vary; deterministic paired fixtures
-supply preservation evidence. Stills do not newly qualify native input, displays,
-DPI, audio devices or semantic accessibility.
+These are actual application pixels from dummy SDL audio/video and software
+rendering in a MIDI-disabled build. The reference is generated concept art.
+Original BMP files were converted losslessly to PNG and their recorded hashes
+are retained. Runtime counters vary; deterministic paired fixtures supply
+preservation evidence. Stills do not qualify native display/DPI, audio devices
+or semantic accessibility.
 
-**Literal whole-interface 1:1 remains unmet and unwaived.** The independent
-[whole-interface review](docs/reviews/WHOLE_INTERFACE_DELIVERY_ADMISSION.md)
-records the previous stage. The [latest T2 review](docs/reviews/RACK_HEADING_T2_VISUAL.md)
-confirms improved heading placement while retaining lighter title/rack strokes, small
-compressed legends, harder wells and cap bevels, shallower manual fronts,
-different panel/wood lighting and rims, and a prominent opaque footer. Correct
-footage, 0–8 travel, 24 real presets, expression/pedals, utility controls and
-truthful unconnected-model labels also differ from the concept. Apron equality
-does not waive any of these differences or qualify physical audio fidelity.
+The [independent T3 visual review](docs/reviews/TITLE_T3_REVISION_2_VISUAL_ADMISSION.md)
+finds stronger strokes, open counters, a readable separated caption and no scoped
+clipping, halo or control-overlap blocker across the 15 views. The two new
+unequal-aspect views have no corresponding before PNG in the thirteen-frame
+baseline and are not claimed as paired visual equality.
+
+**Literal whole-interface 1:1 remains unmet and unwaived.** Remaining differences
+include header lighting/texture, panel and wood transitions, key perspective and
+bevels, cap shadows, small legends and the opaque footer. The functional controls
+also differ: correct footage, 0–8 travel, 24 real presets, expression/pedals,
+utility controls and truthful unconnected-model labels replace inaccuracies or
+unimplemented controls in the illustration. T3 and narrow apron equality do not
+close those gaps or establish physical audio fidelity.
 
 ### Retained T1 manual footage typography
 

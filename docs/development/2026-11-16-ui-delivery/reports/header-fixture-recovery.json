@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-16-ui-delivery",
+  "worker": "A17",
+  "agent": "/root/w03_a17_header_fixture",
+  "wave": 3,
+  "recorded_at_utc": "2026-11-17T01:29:46.764564+00:00",
+  "scope": "Recover exact prior fixture and independently review its complete source against admitted H1 section 7; no native execution or build mutation.",
+  "working_directory": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+  "head": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "committed_tree": "8bb162b1d5bd153436649339cf9253eaee5c28eb",
+  "decision": "preserve exact corrected fixture; no concrete remaining fixture defect found by source review",
+  "fresh_native_acceptance": false,
+  "fixture": {
+    "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "destination": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+    "bytes": 61218,
+    "lines": 1016,
+    "byte_identical": true,
+    "reviewed_complete_source": true,
+    "source_edits_after_recovery": false,
+    "protocol": "header-material-h1-v1",
+    "schema": 1,
+    "real_painter_inclusions": 1,
+    "candidate_switch": false,
+    "baseline_helper_absence_permitted": true,
+    "candidate_helper_signature": "reference_header_h1_material(Drawing&, UiRect already_inset, ReferenceCompositionScale)",
+    "candidate_helper_presence_and_eligible_invocation_required_by_comparator": true
+  },
+  "matrix_review": [
+    {
+      "ids": "0-8",
+      "finding": "Three fixed logical sizes, three renderer scales, positive origin, scale-indexed bank/level/pending/held/focus overrides match the contract."
+    },
+    {
+      "ids": "9-14",
+      "finding": "Unequal aspect sizes, 0.75/1.25 scales, fractional dimensions, unequal renderer scales and negative origin match the contract."
+    },
+    {
+      "ids": "15-29",
+      "finding": "All twelve physical/logical edge clips, disjoint clip, enabled-empty physical clip and enabled-empty logical NONE-blend clip match the contract."
+    },
+    {
+      "ids": "30-35",
+      "finding": "Three 8192-square logical resource cases use 64-square outputs and independently derived negative inset origins; both >2-scale fallbacks and NONE blend are retained."
+    },
+    {
+      "ids": "36-43",
+      "finding": "Four threshold/compact inactive layouts plus Flat/Rotary/Service/Flat minimum-active cases are retained."
+    },
+    {
+      "ids": "44-47",
+      "finding": "Cancel/pending A, fixed D/pending B, drawbar-4 numerical-screen focus and negative-origin top-left clip match the contract."
+    }
+  ],
+  "preservation_review": {
+    "state_setup": "Real UiModel and ControlState apply common expression, mixtures, percussion, four raw banks, Upper/Lower routing, edited banks, held arrays, copied clocks/status and ordinary focus traversal; pending desired state remains distinct from applied state.",
+    "complete_serialization": [
+      "every ControlSnapshot field",
+      "every SessionSnapshot field",
+      "every public UiViewState field",
+      "every UiLayout field",
+      "all 68 control records",
+      "all 147 playing-key bounds/hit/top/front records",
+      "five hit-test probes per stored control and playing key",
+      "fixed InstrumentViewInfo and SDL backend/version/format records"
+    ],
+    "renderer": "Bit-exact scales; physical and logical viewport/clip; clip-enabled; blend; incoming/outgoing color. Physical observations use temporary scale one without reconstructing the caller rectangles.",
+    "helper": "Sentinel RGBA [17,23,31,127] surrounds the direct private-helper call; exact renderer state and color are required before/after. Empty/disjoint and NONE-blend eligible cases remain probed on a candidate. Probe pixels are cleared by the real painter.",
+    "whole_paint": "Full model/session/hit serialization and transform state are compared before/after; established outgoing draw color is recorded and paired, not incorrectly required to match incoming color.",
+    "companions": "All 16 clipped cases have uncut companions. Quiet field pixels require exact RGBA with nonempty partial probes. Source-derived glyph-copy destination exclusions implement pinned SDL clipped-copy semantics and confer no material allowance.",
+    "repeats": "48 deterministic main repaints plus case 46 after all 48 copied states and on a fresh renderer; repeated RGBA, state, transforms and helper observations are exact.",
+    "transport": "Bounded JSON inventory and one JSON line followed by exact RGBA32 byte length; float/double max_digits10, strict bounded case/variant parsing, Windows binary stdout, no candidate-derived mask.",
+    "child_oracle_boundary": "Mandatory independent paired child checks belong to compare_header_material.py. A18 confirmed ten opaque surfaces, two exact rules, opaque cores/final ink, 29 strong title/caption glyphs, exact cyan positions/counts and applicable T3 density/warm geometry remain enforced. This fixture alone does not establish child preservation."
+  },
+  "prior_fixes_review": {
+    "fixture_initial_sha256": "2add953440d6c1fe64dccdd8ad3526ea845a40d3bfe92e3cbecdaed72098cff1",
+    "fixture_correction": "Complete original/latest diff is one source hunk: replace false non-Play control_count==10 expectation with 68 stored controls, 147 playing keys and 24 presets in every workspace, then separately require 68 Play or 10 non-Play visible controls.",
+    "source_basis": "UiModel valid_layout/make_ui_layout retain full storage; ui_control_visible filters common controls in Rotary/Service. No case, support, pixel threshold or production code changes.",
+    "checker_corrections": "Reviewed historical correction admission: utility order Save/Load/Help and Audio/MIDI/Panic; inherited whole-ROI warm geometry applies to BLEND. NONE retains density improvement, strong glyphs, cores, literal RGBA, controls, focus, rules, state and support requirements.",
+    "original_failures_retained_read_only": true,
+    "new_fix_required": false
+  },
+  "historical_baseline_observation": {
+    "classification": "Read-only historical evidence; not a new run and not fresh current-session acceptance.",
+    "summary": {
+      "schema": 1,
+      "protocol": "header-material-h1-v1",
+      "status": "passed",
+      "cases": 48,
+      "checks": 10447,
+      "paintings": 163,
+      "clipped_cases": 16,
+      "empty_cases": 2,
+      "inactive_cases": 8,
+      "protected_pixels": 56329523,
+      "deterministic_repaints": 48,
+      "clip_companions": 16,
+      "quiet_clip_pixels": 33462,
+      "history_states": 48,
+      "history_repaints": 1,
+      "fresh_repaints": 1,
+      "helper_present": false,
+      "helper_probes": 0,
+      "backend": "SDL software surface; copied state; no audio/window"
+    },
+    "execution": {
+      "schema": 1,
+      "command": [
+        "/workspace/scratch/5a28c3564dbf/build-native/apps/standalone/test_standalone_header_material"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 29.343485,
+      "timeout_seconds": 180,
+      "fixture_sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+      "binary_sha256": "c598ff864f4a9024f717563c002f7742baf8eae4c277aea4390de3b66f7658e1",
+      "stdout": "docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-baseline-corrected-default.json",
+      "stderr": "docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-baseline-corrected-default.stderr.log"
+    }
+  },
+  "static_identity_checks": {
+    "expected_source_hash_bytes_and_line_count": true,
+    "single_real_painter_include": true,
+    "literal_48_case_count": true,
+    "dependent_baseline_compatible_helper_detection": true,
+    "recovered_source_is_byte_identical": true,
+    "fixture_target_absent_from_current_cmake_at_review": true,
+    "current_painter_drawing_font_model_snapshot_headers_match_prior_inputs": true
+  },
+  "root_integration": {
+    "cmake_file": "apps/standalone/CMakeLists.txt",
+    "registration": "        # The fixture includes the real painter to inspect the private material\n        # helper without adding a production test API or a before-image switch.\n        add_executable(test_standalone_header_material\n            native_tests/test_standalone_header_material.cpp)\n        target_link_libraries(test_standalone_header_material PRIVATE\n            hammond_standalone_drawing hammond_standalone_support)\n        target_compile_definitions(test_standalone_header_material PRIVATE SDL_MAIN_HANDLED)\n        hammond_configure_target(test_standalone_header_material)\n        add_test(NAME test_standalone_header_material\n            COMMAND test_standalone_header_material)\n        set_tests_properties(test_standalone_header_material PROPERTIES\n            TIMEOUT 180 LABELS \"standalone;native;material;geometry\")\n        if(HAMMOND_ENABLE_SANITIZERS)\n            set_tests_properties(test_standalone_header_material PROPERTIES TIMEOUT 480)\n        endif()\n        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_header_material)\n",
+    "source_inclusion_rule": "Do not also add InstrumentView.cpp to this target: the fixture includes it exactly once.",
+    "current_build_type": "Release",
+    "current_sanitizers": false,
+    "commands_after_root_registration_and_accepted_t3": [
+      [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "-S",
+        ".",
+        "-B",
+        "../build-native"
+      ],
+      [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "../build-native",
+        "--target",
+        "test_standalone_header_material",
+        "-j",
+        "2"
+      ],
+      [
+        "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "../build-native",
+        "-R",
+        "^test_standalone_header_material$",
+        "--output-on-failure",
+        "--no-tests=error"
+      ]
+    ],
+    "direct_default_baseline_invocation": [
+      "../build-native/apps/standalone/test_standalone_header_material"
+    ],
+    "next_required_evidence": "Root preserves a fresh successful pre-H1 binary plus coherent source/object/library/compile/link/dependency identities; A18 comparator then validates full baseline transport/state/support/children and original 44-pass/59-fail numerical outcome. Existing title comparison must finish before build registration/mutation.",
+    "candidate_expected_helper_probes_in_default": 95
+  },
+  "unrun_here": [
+    "CMake configure",
+    "build/compile",
+    "native fixture default and stream variants",
+    "paired comparator baseline",
+    "candidate helper execution",
+    "candidate material statistics",
+    "captures/visual review",
+    "timing",
+    "platform qualification"
+  ],
+  "writes": [
+    "apps/standalone/native_tests/test_standalone_header_material.cpp",
+    "docs/development/2026-11-16-ui-delivery/notes/A17.md",
+    "docs/development/2026-11-16-ui-delivery/reports/header-fixture-recovery.json"
+  ],
+  "no_writes": [
+    "production source",
+    "existing tests",
+    "CMake",
+    "build tree",
+    "prior workspace",
+    "index/commits"
+  ],
+  "input_identities": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 22037,
+      "sha256": "97d1deda4b9caaf797b5b3d4f8e1aaa18acb05b8a57c5bbacefb4d0d49bf48fb",
+      "same_as_prior_workspace": false
+    },
+    {
+      "path": "docs/PLAN.md",
+      "bytes": 47310,
+      "sha256": "71068511d318a84797c692da25a38bec76b4cfc940f29d5c3e3938949945901f",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "docs/development/2026-11-16-ui-delivery/README.md",
+      "bytes": 1798,
+      "sha256": "aaced3d78abe1bcf5ca7bf78fe7c7e63e78a8a56d108e9d8d8af01440358537c",
+      "same_as_prior_workspace": false
+    },
+    {
+      "path": "docs/design/HEADER_MATERIAL_H1_CONTRACT.md",
+      "bytes": 26099,
+      "sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "docs/reviews/HEADER_MATERIAL_H1_ADMISSION.md",
+      "bytes": 13062,
+      "sha256": "c2e7a216a11d7065262702aaee8f7ec766171a4571cc51c2f9bf7edd021cd6e5",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_header_material.cpp",
+      "bytes": 61218,
+      "sha256": "a6b65d06067d8941e44ef8680f309433a3c82ce1d6bd54d6f3f5bf8d4bde82d2",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/InstrumentView.h",
+      "bytes": 2407,
+      "sha256": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/UiModel.h",
+      "bytes": 18547,
+      "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/UiModel.cpp",
+      "bytes": 83758,
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/Drawing.h",
+      "bytes": 2617,
+      "sha256": "36663f449abfbf01c755b8ab718b2a75252709b68ed38df9452d446ea82289f3",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/Drawing.cpp",
+      "bytes": 22378,
+      "sha256": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/FontData.h",
+      "bytes": 204816,
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/Session.h",
+      "bytes": 8982,
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "include/hammond/ControlState.h",
+      "bytes": 5751,
+      "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "same_as_prior_workspace": true
+    },
+    {
+      "path": "apps/standalone/CMakeLists.txt",
+      "bytes": 41066,
+      "sha256": "2e75d26ed0803c449e5c3cd32e51b37d9382c914ee9fc97b411122c4f20c0851",
+      "same_as_prior_workspace": false
+    }
+  ],
+  "historical_read_only_input_identities": [
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/notes/A32.md",
+      "bytes": 15137,
+      "sha256": "d94a5297d89fbce8934c2fec79dc004f8c09d73efe2b7b127b9399ca1c302251"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/notes/A33.md",
+      "bytes": 17585,
+      "sha256": "723bc7a6203a255d616a2ea1d57c55270ef0f7c31c5a05f5b905eaaff0e494fd"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/inputs/test_standalone_header_material-initial.cpp",
+      "bytes": 60834,
+      "sha256": "2add953440d6c1fe64dccdd8ad3526ea845a40d3bfe92e3cbecdaed72098cff1"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-initial-rejection.json",
+      "bytes": 891,
+      "sha256": "57c8a145c9b43c084c88a18660be183461d688fdebe0beb631b44c9e20f16697"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-baseline-corrected-default.json",
+      "bytes": 430,
+      "sha256": "9e07b8b4a33c71fa438c9c113834ba2e552455b322467bd59a11d8bfc213fbbb"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-baseline-corrected-execution.json",
+      "bytes": 636,
+      "sha256": "38c6d00ae4dc42598f24ec6084c1dc348030cb664c99faebe5e330d429bfd29c"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/h1-fixture-baseline-identity.json",
+      "bytes": 5859,
+      "sha256": "82164ea2cee28477564d73d652f762844080134bf0c6b5bf0a4f8c3809513d48"
+    },
+    {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/reviews/HEADER_H1_CHECKER_CORRECTION_ADMISSION.md",
+      "bytes": 7812,
+      "sha256": "0f3470119d8c641572a8547dd1871871343febd5cbdefac5397f9571e19d3342"
+    }
+  ],
+  "remaining_boundary": "Literal whole-interface 1:1 remains unmet and unwaived; source recovery is not native, performance, physical, device, accessibility or platform acceptance."
+}

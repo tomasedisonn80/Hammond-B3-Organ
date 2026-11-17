@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+  "command": [
+    "python3",
+    "-B",
+    "tools/compare_header_material.py",
+    "--before",
+    "../pre-header-native/test_standalone_header_material",
+    "--after",
+    "../build-native/apps/standalone/test_standalone_header_material",
+    "--before-painter",
+    "../pre-header-native/InstrumentView.cpp",
+    "--baseline-receipt",
+    "docs/development/2026-11-16-ui-delivery/reports/h1-baseline-identity.json",
+    "--baseline-receipt-sha256",
+    "eaf89814ff181b2c8559fccc00c1f001d25fa8d8a81d1021d38aca00530dc2d2",
+    "--fixture-baseline-receipt",
+    "docs/development/2026-11-16-ui-delivery/reports/h1-fixture-baseline-identity.json",
+    "--build-dir",
+    "../build-native",
+    "--output",
+    "docs/development/2026-11-16-ui-delivery/reports/h1-baseline-demonstration",
+    "--baseline-only"
+  ],
+  "environment": "Inherited environment; no overrides",
+  "exit_code": 0,
+  "elapsed_seconds": 266.545,
+  "status": "baseline-demonstrated",
+  "report_sha256": "c779d7baf0a8c6a940b77c13ef292ef075e0ee8c9a01a0bcf80f97e0a26509a5",
+  "log_sha256": "b324c2fa5aa3ca9bd0b49a66945097031b4bd5f3a89d8ecb7f76b1e6f982eddd"
+}

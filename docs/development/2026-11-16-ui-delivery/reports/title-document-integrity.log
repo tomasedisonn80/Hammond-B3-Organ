@@ -1,0 +1,28 @@
+Test project /workspace/scratch/66b061effd9e/build-native
+    Start 151: python_test_repository_integrity
+1/1 Test #151: python_test_repository_integrity ...***Failed   13.23 sec
+F........................................
+======================================================================
+FAIL: test_current_source_tree_and_supplied_pdf (__main__.RealRepositorySmokeTests.test_current_source_tree_and_supplied_pdf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tests/test_repository_integrity.py", line 384, in test_current_source_tree_and_supplied_pdf
+    self.assertEqual(result["status"], "passed", result["errors"])
+AssertionError: 'failed' != 'passed'
+- failed
++ passed
+ : [{'check': 'markdown_links', 'message': "README.md:451: docs/design/native-gallery-heading-t2-v1/README.md: [Errno 2] No such file or directory: '/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-heading-t2-v1/README.md'"}, {'check': 'markdown_links', 'message': "README.md:464: docs/design/native-gallery-heading-t2-v1/README.md: [Errno 2] No such file or directory: '/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-heading-t2-v1/README.md'"}]
+
+----------------------------------------------------------------------
+Ran 41 tests in 12.946s
+
+FAILED (failures=1)
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =  13.25 sec
+
+The following tests FAILED:
+	151 - python_test_repository_integrity (Failed)
+Errors while running CTest

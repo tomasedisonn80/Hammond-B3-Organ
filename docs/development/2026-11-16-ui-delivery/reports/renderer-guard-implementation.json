@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w04_a21_renderer_guard",
+  "wave": 4,
+  "base_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "base_tree": "8bb162b1d5bd153436649339cf9253eaee5c28eb",
+  "decision": "Applied exactly the independently admitted correctness-harness completion guard and passed the existing five-method suite against unchanged root Release binaries. Exact changed-source hosted ASan/UBSan/leak acceptance remains pending.",
+  "owned_paths": [
+    "tests/test_render_controls_admission.py",
+    "docs/development/2026-11-16-ui-delivery/notes/A21.md",
+    "docs/development/2026-11-16-ui-delivery/reports/renderer-guard-implementation.json",
+    "docs/development/2026-11-16-ui-delivery/reports/renderer-guard-affected-tests.log"
+  ],
+  "reads": {
+    "complete_agents_and_plan": true,
+    "current_session_readme_checkpoint_assignments": true,
+    "full_current_test": true,
+    "delivery_recovery_and_a09": true
+  },
+  "admission": {
+    "report": "docs/development/2026-11-16-ui-delivery/reports/delivery-recovery.json",
+    "sha256": "04b7693dca05a578200596205fe64cb827e803a37733ae80315e111b4763ef3f",
+    "note": "docs/development/2026-11-16-ui-delivery/notes/A09.md",
+    "note_sha256": "06d9ff9b7c2b24fd5a7f29a40cc173b959f478531cd9a754b4847aaaddaadd3a"
+  },
+  "source": {
+    "path": "tests/test_render_controls_admission.py",
+    "before_sha256": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411",
+    "after_sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e",
+    "recovered_read_only_path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tests/test_render_controls_admission.py",
+    "exact_recovered_bytes": true,
+    "diff": "--- HEAD/tests/test_render_controls_admission.py\n+++ tests/test_render_controls_admission.py\n@@ -363,7 +363,11 @@\n             original = output.stat()\n             os.kill(process.pid, signal.SIGCONT)\n             stopped = False\n-            stdout, stderr = process.communicate(timeout=15)\n+            # Publication follows the full 1.2M-frame/block-1 render. A measured\n+            # Debug ASan/UBSan completion exceeded 16s, so reserve 45s here;\n+            # the suite retains its 90s CTest bound and separate staging,\n+            # stop-confirmation, small-render and cleanup guards.\n+            stdout, stderr = process.communicate(timeout=45)\n             self.assertEqual(process.returncode, 1, stdout + stderr)\n             self.assertEqual(stdout, b\"\")\n             self.assertIn(b\"Cannot publish WAV without overwriting\", stderr)\n"
+  },
+  "inspection": {
+    "normalized_ast_equal": true,
+    "normalization": "Exactly one post-SIGCONT process.communicate timeout constant changed from 45 back to 15; complete module ast.dump(include_attributes=False) equals HEAD. Comments are additionally exact recovered bytes.",
+    "normalization_lines": [
+      370
+    ],
+    "test_methods": [
+      "test_all_restored_fixed_modes_match_literal_rows_and_retained_banks",
+      "test_replacing_every_saved_field_at_zero_keeps_initial_provenance",
+      "test_empty_score_restores_no_held_notes_or_percussion_history",
+      "test_invalid_inputs_precede_even_temporary_output_mutation",
+      "test_destination_appearing_after_preflight_is_never_replaced"
+    ],
+    "change": "One timeout literal 15 to 45 plus four explanatory comment lines; no other source change in this assigned test.",
+    "unchanged_workload": {
+      "frames": 1200000,
+      "block_frames": 1,
+      "sample_rate_hz": 48000,
+      "seed": 191,
+      "contacts": "ideal"
+    },
+    "guards_seconds": {
+      "staging_event": 5,
+      "stopped_child": 2,
+      "ordinary_render": 15,
+      "post_sigcont_completion": 45,
+      "final_child_drain": 5,
+      "ctest_suite": 90
+    },
+    "all_correctness_assertions_and_cleanup_preserved": true,
+    "workflow_sources_equal_head": {
+      ".github/workflows/native-vst3.yml": true,
+      ".github/workflows/standalone.yml": true,
+      ".github/workflows/ci.yml": true
+    },
+    "root_cmake_source_equal_head": true,
+    "protected_baseline_input_count": 213,
+    "protected_baseline_input_mismatches": []
+  },
+  "qualification": {
+    "kind": "Existing Python suite executed directly with the exact registered CTest command, working directory and environment, with an outer 90-second completion cap; this is not a new CTest aggregate run.",
+    "registered_test": "python_test_render_controls_admission",
+    "registered_selection_count": 1,
+    "metadata_path": "/workspace/scratch/66b061effd9e/build-native/CTestTestfile.cmake",
+    "registered_command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tests/test_render_controls_admission.py"
+    ],
+    "registered_working_directory": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+    "registered_environment": [
+      "PYTHONDONTWRITEBYTECODE=1",
+      "HAMMOND_TEST_PROFILE=/workspace/scratch/66b061effd9e/build-native/nominal.b3p",
+      "HAMMOND_SOURCE_DIR=/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_scanner_line_probe",
+      "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_scanner_line_foh_probe",
+      "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_render",
+      "HAMMOND_CONSOLE_TRACE_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_console_trace",
+      "HAMMOND_PEDAL_TRACE_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_pedal_trace",
+      "HAMMOND_REGISTRATION_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_registration",
+      "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_render",
+      "HAMMOND_STARTER_GENERATOR_EXECUTABLE=/workspace/scratch/66b061effd9e/build-native/hammond_generate_starter_registrations",
+      "HAMMOND_TEST_PROFILE=/workspace/scratch/66b061effd9e/build-native/nominal.b3p"
+    ],
+    "registered_timeout_seconds": 90,
+    "outer_execution_timeout_seconds": 90,
+    "started_utc": "2026-11-17T01:37:34.460600+00:00",
+    "finished_utc": "2026-11-17T01:37:38.080699+00:00",
+    "returncode": 0,
+    "external_wall_seconds": 3.6200623120003,
+    "reported_suite_seconds": 3.501,
+    "methods_passed": 5,
+    "methods_skipped": 0,
+    "actual_cli_invocations": 45,
+    "log": "docs/development/2026-11-16-ui-delivery/reports/renderer-guard-affected-tests.log",
+    "log_bytes": 167,
+    "log_sha256": "a61800d923dde0efe95433f5972aa4ca502893fe769c82be9576a0f4037f640d"
+  },
+  "build": {
+    "root_build_path": "/workspace/scratch/66b061effd9e/build-native",
+    "configuration": "Release",
+    "sanitizers_enabled": false,
+    "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+    "python": "Python 3.12.14",
+    "flags": "# CMAKE generated file: DO NOT EDIT!\n# Generated by \"Unix Makefiles\" Generator, CMake Version 4.0\n\n# compile CXX with /usr/bin/c++\nCXX_DEFINES = \n\nCXX_INCLUDES = -I/workspace/scratch/66b061effd9e/Hammond-B3-Organ/include -I/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools\n\nCXX_FLAGS = -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror\n\n",
+    "link_command": "/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/hammond_render.dir/link.d CMakeFiles/hammond_render.dir/tools/render.cpp.o -o hammond_render  libhammond_core.a libhammond_control_file_input.a libhammond_core.a",
+    "configure_or_build_performed": false
+  },
+  "protected_before": {
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/render.cpp": {
+      "bytes": 50112,
+      "sha256": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/.github/workflows/ci.yml": {
+      "bytes": 20374,
+      "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/.github/workflows/native-vst3.yml": {
+      "bytes": 8367,
+      "sha256": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/.github/workflows/standalone.yml": {
+      "bytes": 67150,
+      "sha256": "4cbc0be05c635f71becc73650d99ec6a9855293607c546bf10aac8f761d1bf57"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/hammond_render": {
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/libhammond_core.a": {
+      "bytes": 460336,
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/libhammond_control_file_input.a": {
+      "bytes": 20490,
+      "sha256": "5ee3bc3f59784a57fc13fe182b9fc04b9d5127f8b113af701527868ac3d9bc11"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeFiles/hammond_render.dir/tools/render.cpp.o": {
+      "bytes": 118944,
+      "sha256": "34c9970accb1a7930e97085808ab0797f69e8b32f6acbbec9c17d51d511f6138"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeFiles/hammond_render.dir/link.txt": {
+      "bytes": 221,
+      "sha256": "01461e3ffd2f1e7151acc0edfc1979890a18177738e202bc2eb1b4773ce1654e"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeFiles/hammond_render.dir/flags.make": {
+      "bytes": 389,
+      "sha256": "83ca71fc31bb56839d3e72b8b0d36e7cef453eeca2af2c1a7400c1c16ff4154b"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeCache.txt": {
+      "bytes": 48557,
+      "sha256": "cc08bccbc62681e4a1ab160bc52da5b031ad8ba7fe7cc53ab4cd43a958dcdd61"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CTestTestfile.cmake": {
+      "bytes": 160887,
+      "sha256": "da54349ad9b2c48fcdb6b7a84fd4e13138dbd21238755518997c49609a890004"
+    },
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tests/test_render_controls_admission.py": {
+      "bytes": 18812,
+      "sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e"
+    }
+  },
+  "protected_after": {
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/render.cpp": {
+      "bytes": 50112,
+      "sha256": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/CMakeLists.txt": {
+      "bytes": 30784,
+      "sha256": "87f5905c34c3dafcd6a113f9d362d5e135c5777751a1364370652b8fcfaf0313"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/.github/workflows/ci.yml": {
+      "bytes": 20374,
+      "sha256": "d35b85df082bfa51d0fb71ba698d0cd16819b5cab0858f78cb03c34df68e7daa"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/.github/workflows/native-vst3.yml": {
+      "bytes": 8367,
+      "sha256": "6bc30e3fcb880d456a5ec4af98e2d2950d5c340285948cd01dc230ba3625d734"
+    },
+    "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/.github/workflows/standalone.yml": {
+      "bytes": 67150,
+      "sha256": "4cbc0be05c635f71becc73650d99ec6a9855293607c546bf10aac8f761d1bf57"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/hammond_render": {
+      "bytes": 212888,
+      "sha256": "671375f6f9d393295bca148bcb546a1eb387dd865e994e755f16933389a16263"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/libhammond_core.a": {
+      "bytes": 460336,
+      "sha256": "afbde61ccfad209c74c140d8f76e4752ae3ac7c4eef44667f9fb5be9367e4b1c"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/libhammond_control_file_input.a": {
+      "bytes": 20490,
+      "sha256": "5ee3bc3f59784a57fc13fe182b9fc04b9d5127f8b113af701527868ac3d9bc11"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeFiles/hammond_render.dir/tools/render.cpp.o": {
+      "bytes": 118944,
+      "sha256": "34c9970accb1a7930e97085808ab0797f69e8b32f6acbbec9c17d51d511f6138"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeFiles/hammond_render.dir/link.txt": {
+      "bytes": 221,
+      "sha256": "01461e3ffd2f1e7151acc0edfc1979890a18177738e202bc2eb1b4773ce1654e"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeFiles/hammond_render.dir/flags.make": {
+      "bytes": 389,
+      "sha256": "83ca71fc31bb56839d3e72b8b0d36e7cef453eeca2af2c1a7400c1c16ff4154b"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CMakeCache.txt": {
+      "bytes": 48557,
+      "sha256": "cc08bccbc62681e4a1ab160bc52da5b031ad8ba7fe7cc53ab4cd43a958dcdd61"
+    },
+    "/workspace/scratch/66b061effd9e/build-native/CTestTestfile.cmake": {
+      "bytes": 160887,
+      "sha256": "da54349ad9b2c48fcdb6b7a84fd4e13138dbd21238755518997c49609a890004"
+    },
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tests/test_render_controls_admission.py": {
+      "bytes": 18812,
+      "sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e"
+    }
+  },
+  "protected_before_after_equal": true,
+  "retained_evidence": {
+    "original_hosted_failure_job": 133715652514,
+    "unchanged_source_retry_success_job": 133729308448,
+    "source_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+    "authority": "A09 delivery-recovery.json; no hosted query, rerun, log modification or new sanitizer execution by A21.",
+    "earlier_workspace_untouched": true
+  },
+  "remaining_gates": [
+    "Root independent acceptance and integration",
+    "Observe ASan plus UBSan plus leak-checking job at the exact published changed source",
+    "Full source-specific publication and matrix qualification remain root-owned"
+  ],
+  "limits": [
+    "Correctness-harness completion bound only; no product throughput or realtime deadline relaxation",
+    "No hosted sanitizer acceptance inferred from this local Release run",
+    "No physical fidelity, device deadline, native accessibility or literal whole-interface 1:1 acceptance",
+    "No configure, build, binary modification, other source/docs edit, commit or subagent dispatch"
+  ],
+  "handoff": "All four owned paths released to root after final inspection; other workers and historical evidence remain untouched.",
+  "final_integrity": {
+    "source_log_json_and_note_links": "pass",
+    "protected_hashes_match_before_and_after": "pass",
+    "git_diff_check_assigned_test": "pass",
+    "documentary_correction": {
+      "initial_check": "failed",
+      "reason": "A21 note initially transcribed Python 3.12.12; observed interpreter and report correctly said 3.12.14.",
+      "repair": "Corrected only the A21 note to Python 3.12.14.",
+      "recheck": "pass",
+      "affected_suite_rerun_required": false,
+      "affected_suite_original_pass_log_unchanged": true
+    }
+  }
+}

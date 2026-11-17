@@ -1,0 +1,622 @@
+{
+  "schema": "header-h1-timing-protocol-v1",
+  "session": "2026-11-16-ui-delivery",
+  "worker": "A23",
+  "wave": 4,
+  "agent": "/root/w04_a23_header_timing",
+  "date": "2026-11-17",
+  "status": "independently-admitted-pre-candidate-procedure",
+  "measurement_status": "not-run",
+  "candidate_admitted": false,
+  "h1_contract_numeric_timing_budget": null,
+  "existing_obligations": "Source-bound representative before/after timing and rejection of visible performance regression. No prior H1 numeric allowance or frame deadline is claimed.",
+  "reviewed_input_identities": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 22037,
+      "sha256": "97d1deda4b9caaf797b5b3d4f8e1aaa18acb05b8a57c5bbacefb4d0d49bf48fb"
+    },
+    {
+      "path": "docs/PLAN.md",
+      "bytes": 47310,
+      "sha256": "71068511d318a84797c692da25a38bec76b4cfc940f29d5c3e3938949945901f"
+    },
+    {
+      "path": "docs/development/2026-11-16-ui-delivery/README.md",
+      "bytes": 1798,
+      "sha256": "aaced3d78abe1bcf5ca7bf78fe7c7e63e78a8a56d108e9d8d8af01440358537c"
+    },
+    {
+      "path": "docs/development/2026-11-16-ui-delivery/CHECKPOINT.md",
+      "bytes": 4621,
+      "sha256": "eb982ab308adc20e1bfc206b4c07f2a3df4bfd8079569612dbcc29ab4e3fc4de"
+    },
+    {
+      "path": "docs/design/HEADER_MATERIAL_H1_CONTRACT.md",
+      "bytes": 26099,
+      "sha256": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282"
+    },
+    {
+      "path": "docs/reviews/HEADER_MATERIAL_H1_ADMISSION.md",
+      "bytes": 13062,
+      "sha256": "c2e7a216a11d7065262702aaee8f7ec766171a4571cc51c2f9bf7edd021cd6e5"
+    },
+    {
+      "path": "tools/standalone_paint_benchmark.cpp",
+      "bytes": 30354,
+      "sha256": "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338"
+    },
+    {
+      "path": "docs/REFERENCE_REFINEMENT_MATERIALS.md",
+      "bytes": 9186,
+      "sha256": "c038b324284f3c36207045094975d3c9abcd1183a58464c736efc86b0f73aaa9"
+    },
+    {
+      "path": "docs/WAVEFORM_UI_DESIGN.md",
+      "bytes": 11177,
+      "sha256": "08b714237679e6a4a95bac4f5d1243dd0b1b3ce6fd36db82ee9a42a39847c2be"
+    },
+    {
+      "path": "docs/reviews/WAVEFORM_MATERIAL_TIMING.md",
+      "bytes": 9844,
+      "sha256": "11678c8b9df7954a273bfafe0ea51ceeea1d62e80ccbd3acbcee5ab1e906c071"
+    },
+    {
+      "path": "docs/reviews/PRODUCT_CONTINUATION_CODE_REVIEW.md",
+      "bytes": 14964,
+      "sha256": "5742c9e84d201e88ede2e22d319aa24a74d9bcac6b57b8dd620efdf1465a7c9e"
+    },
+    {
+      "path": "docs/development/2026-11-15-product-continuation/notes/A27-paint-performance.md",
+      "bytes": 3063,
+      "sha256": "d5fe12583e97aa6d33c24a47acb3c20c1dc9cdd8be28b2b6e62de852586b93e6"
+    }
+  ],
+  "baseline": {
+    "receipt": {
+      "path": "docs/development/2026-11-16-ui-delivery/reports/h1-baseline-identity.json",
+      "bytes": 38893,
+      "sha256": "eaf89814ff181b2c8559fccc00c1f001d25fa8d8a81d1021d38aca00530dc2d2"
+    },
+    "timing_supplement": {
+      "path": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-baseline-identity.json",
+      "bytes": 5254,
+      "sha256": "fac2b11bc19df2480a5d247209fe287a93cb7a13d40e4bca6587cf8e4485f622"
+    },
+    "fixture_supplement": {
+      "path": "docs/development/2026-11-16-ui-delivery/reports/h1-fixture-baseline-identity.json",
+      "bytes": 6077,
+      "sha256": "7ca076951bb48ec62dfda051f816a4b6be8c8049405335167b3a7838a289f420"
+    },
+    "benchmark": {
+      "path": "../pre-header-native/hammond_standalone_paint_benchmark",
+      "bytes": 3756168,
+      "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+    },
+    "painter": {
+      "path": "../pre-header-native/InstrumentView.cpp",
+      "bytes": 164592,
+      "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+    },
+    "verification": "All 25 concrete path/size/SHA-256 records across timing and fixture supplement chains independently matched actual bytes. Both supplement digests and immutable base binding matched. No executable was launched.",
+    "original_source_inventory_count": 229,
+    "benchmark_source_inventory_correction": "Benchmark source is separately pinned by timing supplement; original receipt and inventory remain immutable.",
+    "forbidden_substitute": "../baseline-native contains the genuine pre-T3 executable, not the immediately-pre-H1 painter."
+  },
+  "candidate": {
+    "path": "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+    "sha256": null,
+    "status": "Pending coherent H1 build and root-frozen source/build/executable identity receipt."
+  },
+  "prerequisites": [
+    "Root must admit T3 and the immediate pre-H1 baseline under their independent procedures before H1 implementation.",
+    "Freeze this protocol before H1 painter work; bind results to this exact protocol digest without editing the protocol after observation.",
+    "Record and verify both executable hashes, benchmark source/object, painter source/object, compiler, compile/link commands, SDL, shared archives, generated assets and target dependencies before and after all runs.",
+    "Use the pinned genuine baseline; require unchanged benchmark source and non-painter target inputs. The admitted H1 InstrumentView.cpp change is the only allowed difference among paint inputs.",
+    "Reject stale/mixed objects, benchmark source changes, HAMMOND_PAINT_BASELINE, HAMMOND_PAINT_ALLOCATIONS, sanitizer/profiler instrumentation, or an unfrozen candidate identity.",
+    "Run no build/configure, CTest, capture, rendering study, heavy worker job or source/dependency mutation during the reserved interval."
+  ],
+  "execution": {
+    "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+    "serial": true,
+    "blocks": 2,
+    "total_processes": 20,
+    "block_1": {
+      "case_order": [
+        "canonical",
+        "minimum-active",
+        "wide",
+        "compact-control",
+        "flat-control"
+      ],
+      "side_order": [
+        "before",
+        "after"
+      ]
+    },
+    "block_2": {
+      "case_order": [
+        "flat-control",
+        "compact-control",
+        "wide",
+        "minimum-active",
+        "canonical"
+      ],
+      "side_order": [
+        "after",
+        "before"
+      ]
+    },
+    "warmups_per_process": 30,
+    "measured_draws_per_process": 300,
+    "total_warmups": 600,
+    "total_measured_draws": 6000,
+    "samples_per_side_per_case": 600,
+    "final_untimed_fingerprint_draws_per_process": 1,
+    "affinity": "Choose one allowed logical CPU before the first process, record it, and make every child inherit that same singleton affinity; no machine-wide scheduling or governor change.",
+    "environment_record": [
+      "UTC start/end",
+      "hostname",
+      "OS/kernel/architecture",
+      "CPU model",
+      "available and actual CPU affinity",
+      "Release toolchain/configuration",
+      "relevant SDL and instrumentation variables",
+      "load at block boundaries",
+      "known concurrent workload"
+    ],
+    "preservation": "Create a new output directory, never overwrite an earlier attempt. Retain every raw stdout/stderr, exit/signal, command, order and external process wall time. Hash outputs outside timed child execution.",
+    "extra_repeats": "None pre-authorized by this protocol; the reverse-order second block is mandatory. A further experiment requires a separately reviewed reason and retained original evidence.",
+    "cases": [
+      {
+        "id": "canonical",
+        "width": 1672,
+        "height": 941,
+        "presentation": "dimensional",
+        "h1_active": true,
+        "scenario": "mixed-held",
+        "arguments": [
+          "1672",
+          "941",
+          "dimensional",
+          "mixed-held"
+        ]
+      },
+      {
+        "id": "minimum-active",
+        "width": 1400,
+        "height": 820,
+        "presentation": "dimensional",
+        "h1_active": true,
+        "scenario": "mixed-held",
+        "arguments": [
+          "1400",
+          "820",
+          "dimensional",
+          "mixed-held"
+        ]
+      },
+      {
+        "id": "wide",
+        "width": 1920,
+        "height": 1080,
+        "presentation": "dimensional",
+        "h1_active": true,
+        "scenario": "mixed-held",
+        "arguments": [
+          "1920",
+          "1080",
+          "dimensional",
+          "mixed-held"
+        ]
+      },
+      {
+        "id": "compact-control",
+        "width": 960,
+        "height": 700,
+        "presentation": "dimensional",
+        "h1_active": false,
+        "scenario": "mixed-held",
+        "arguments": [
+          "960",
+          "700",
+          "dimensional",
+          "mixed-held"
+        ]
+      },
+      {
+        "id": "flat-control",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "h1_active": false,
+        "scenario": "mixed-held",
+        "arguments": [
+          "1672",
+          "941",
+          "flat",
+          "mixed-held"
+        ]
+      }
+    ],
+    "runs": [
+      {
+        "sequence": 1,
+        "block": 1,
+        "case": "canonical",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/01-block1-canonical-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/01-block1-canonical-before.stderr"
+      },
+      {
+        "sequence": 2,
+        "block": 1,
+        "case": "canonical",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/02-block1-canonical-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/02-block1-canonical-after.stderr"
+      },
+      {
+        "sequence": 3,
+        "block": 1,
+        "case": "minimum-active",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1400",
+          "820",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/03-block1-minimum-active-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/03-block1-minimum-active-before.stderr"
+      },
+      {
+        "sequence": 4,
+        "block": 1,
+        "case": "minimum-active",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1400",
+          "820",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/04-block1-minimum-active-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/04-block1-minimum-active-after.stderr"
+      },
+      {
+        "sequence": 5,
+        "block": 1,
+        "case": "wide",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1920",
+          "1080",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/05-block1-wide-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/05-block1-wide-before.stderr"
+      },
+      {
+        "sequence": 6,
+        "block": 1,
+        "case": "wide",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1920",
+          "1080",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/06-block1-wide-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/06-block1-wide-after.stderr"
+      },
+      {
+        "sequence": 7,
+        "block": 1,
+        "case": "compact-control",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "960",
+          "700",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/07-block1-compact-control-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/07-block1-compact-control-before.stderr"
+      },
+      {
+        "sequence": 8,
+        "block": 1,
+        "case": "compact-control",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "960",
+          "700",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/08-block1-compact-control-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/08-block1-compact-control-after.stderr"
+      },
+      {
+        "sequence": 9,
+        "block": 1,
+        "case": "flat-control",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "flat",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/09-block1-flat-control-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/09-block1-flat-control-before.stderr"
+      },
+      {
+        "sequence": 10,
+        "block": 1,
+        "case": "flat-control",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "flat",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/10-block1-flat-control-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/10-block1-flat-control-after.stderr"
+      },
+      {
+        "sequence": 11,
+        "block": 2,
+        "case": "flat-control",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "flat",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/11-block2-flat-control-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/11-block2-flat-control-after.stderr"
+      },
+      {
+        "sequence": 12,
+        "block": 2,
+        "case": "flat-control",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "flat",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/12-block2-flat-control-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/12-block2-flat-control-before.stderr"
+      },
+      {
+        "sequence": 13,
+        "block": 2,
+        "case": "compact-control",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "960",
+          "700",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/13-block2-compact-control-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/13-block2-compact-control-after.stderr"
+      },
+      {
+        "sequence": 14,
+        "block": 2,
+        "case": "compact-control",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "960",
+          "700",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/14-block2-compact-control-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/14-block2-compact-control-before.stderr"
+      },
+      {
+        "sequence": 15,
+        "block": 2,
+        "case": "wide",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1920",
+          "1080",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/15-block2-wide-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/15-block2-wide-after.stderr"
+      },
+      {
+        "sequence": 16,
+        "block": 2,
+        "case": "wide",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1920",
+          "1080",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/16-block2-wide-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/16-block2-wide-before.stderr"
+      },
+      {
+        "sequence": 17,
+        "block": 2,
+        "case": "minimum-active",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1400",
+          "820",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/17-block2-minimum-active-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/17-block2-minimum-active-after.stderr"
+      },
+      {
+        "sequence": 18,
+        "block": 2,
+        "case": "minimum-active",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1400",
+          "820",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/18-block2-minimum-active-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/18-block2-minimum-active-before.stderr"
+      },
+      {
+        "sequence": 19,
+        "block": 2,
+        "case": "canonical",
+        "side": "after",
+        "argv": [
+          "../build-native/apps/standalone/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/19-block2-canonical-after.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/19-block2-canonical-after.stderr"
+      },
+      {
+        "sequence": 20,
+        "block": 2,
+        "case": "canonical",
+        "side": "before",
+        "argv": [
+          "../pre-header-native/hammond_standalone_paint_benchmark",
+          "1672",
+          "941",
+          "dimensional",
+          "mixed-held"
+        ],
+        "stdout": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/20-block2-canonical-before.json",
+        "stderr": "docs/development/2026-11-16-ui-delivery/reports/h1-timing-v1/20-block2-canonical-before.stderr"
+      }
+    ]
+  },
+  "expected_output": {
+    "schema": "standalone-paired-paint-v1",
+    "paired": false,
+    "alternating_order": false,
+    "before": null,
+    "before_pixels_fnv1a64": null,
+    "warmup_each": 30,
+    "samples_each": 300,
+    "measurement": "software-paint-flush-surface-present",
+    "heap_instrumentation": false,
+    "clock": "std::chrono::steady_clock",
+    "renderer": "software",
+    "sdl_version": "2.32.10",
+    "render_batching": "1",
+    "scale": [
+      1,
+      1
+    ],
+    "clip": null,
+    "workspace": "Play",
+    "overlay": "none",
+    "scenario": "mixed-held",
+    "case_metadata": "Exact CLI width/height/presentation; viewport [0,0,width,height]; 4-byte RGBA32 backing surface. Renderer flags, format, bytes and clock period must agree across each case.",
+    "raw_total_samples": "Exactly 300 finite positive integer nanosecond values in current.samples_total_ns; no trimming.",
+    "matching_layout": "layout_fnv1a64 must agree across before/after and both blocks for each case.",
+    "matching_pixels": "current_pixels_fnv1a64 must repeat exactly for each executable/case; compact-control and flat-control must also match before/after. Active hashes may differ. Hash observations do not replace the independent 48-case H1 raster comparator.",
+    "successful_process": "Exit zero, empty stderr, one complete JSON object; missing, duplicate, nonfinite, contradictory or malformed observations invalidate comparison."
+  },
+  "aggregation": {
+    "primary_samples": "current.samples_total_ns only, representing paint + SDL_RenderFlush + offscreen SDL_RenderPresent.",
+    "per_process_total": "Sort all 300 samples; median = (s[149]+s[150])/2; p95 = s[284]; report min/max and verify emitted totals within half of one printed 0.000001 ms unit.",
+    "per_case_pooled": "Concatenate both runs for a side/case, sort all 600; median = (s[299]+s[300])/2; p95 = s[569]. Preserve each block alongside this descriptive pooled summary.",
+    "delta": "For each block and pooled case, delta_ns = after_statistic - before_statistic; percent = 100 * delta_ns / before_statistic. Baseline statistic must be positive.",
+    "additional_reporting": [
+      "Per-process paint median/p95/min/max",
+      "Per-process flush_and_surface_present median/p95/min/max",
+      "Total min/max",
+      "Each block and pooled total median/p95 changes in ms and percent"
+    ],
+    "restrictions": "Do not average p95s, pool distinct cases, subtract samples by frame index across separate processes, discard warmup-independent outliers, omit a failed state, claim a sample-paired delta or infer statistical equivalence from two process runs. Paint/flush raw samples are not emitted and cannot be reconstructed."
+  },
+  "investigation_screens": [
+    {
+      "statistic": "total median",
+      "source": "Existing tools/standalone_paint_benchmark.cpp paired-build investigation condition; applied externally here because genuine binaries are unpaired.",
+      "condition": "delta_ns > 2000000 AND 100 * delta_ns > 15 * before_ns"
+    },
+    {
+      "statistic": "total p95",
+      "source": "docs/REFERENCE_REFINEMENT_MATERIALS.md acceptance item 5 and docs/WAVEFORM_UI_DESIGN.md timing section; prospectively retained here as a separate tail-cost screen.",
+      "condition": "delta_ns > 2000000 AND 100 * delta_ns > 15 * before_ns"
+    }
+  ],
+  "decision_rules": {
+    "evaluation_scope": "Evaluate both strict conjunctions on each ordered block and each pooled case; never let a pooled result suppress a block trigger.",
+    "any_trigger": "Hold timing admission for investigation; this is not automatic permission below a newly invented H1 numeric budget.",
+    "persistent_active_growth": "If the same active case/statistic triggers in both blocks while neither inactive control triggers either statistic in either block or pooled, reject scoped H1 timing admission as a reproducible software-paint regression signal.",
+    "one_block_or_control_signal": "Inconclusive: retain the signal and hold. A control regression or order-sensitive result prevents attributing the change to H1; do not invent a host-load cause.",
+    "no_trigger": "Report no flagged regression in this bounded software-paint experiment; independent reviewer still evaluates the full distributions and visual evidence. This is not a deadline, display-FPS or cross-device pass.",
+    "visible_regression": "Reject candidate admission for an observed visible performance regression regardless of the numeric screens.",
+    "invalid_comparison": "Wrong source/binary, drift, missing/mismatched metadata, changed layout, inactive pixel mismatch, unstable repeated pixels, process/JSON/sample failure or concurrent prohibited work invalidates timing acceptance; retain raw evidence and cause.",
+    "remaining_gates": "H1 resource/state/raster/appearance requirements, real display/DPI/input and physical/audio/platform qualification remain independently binding."
+  },
+  "scope_limits": [
+    "Only scale-1 Play/None, fixed mixed-held state and these five dimensions; no timing qualification of other musical states, overlays, Rotary/Service, unequal scales, high DPI or maximal 8192 domain.",
+    "Software surface presentation has no physical display, vsync, audio device or live Engine. SDL may perform backend work during paint, so final flush time is not all backend cost.",
+    "No claim of visible smoothness, real FPS, input latency, audio callback deadline, all-heap allocation freedom, physical fidelity or literal whole-interface 1:1.",
+    "Twenty process launches and 6000 measured draws bound the experiment; no historical CTest wall-time/completion budget is reused as a UI timing threshold."
+  ],
+  "performed_by_A23": {
+    "native_runs": 0,
+    "builds": 0,
+    "captures": 0,
+    "benchmark_or_production_edits": 0,
+    "file_identity_verification": true,
+    "protocol_integrity_check": "JSON parsed; 20 unique ordered commands, five twice-per-side cases, exact 30/300 counts and reviewed receipt pins checked before handoff."
+  }
+}

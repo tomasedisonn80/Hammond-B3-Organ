@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w02_a09_delivery_review",
+  "wave": 2,
+  "base_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "decision": "Admit the recovered single post-SIGCONT completion timeout change from 15 to 45 seconds for implementation and fresh qualification; no product acceptance or changed-source hosted pass is claimed.",
+  "scope": "Read-only review. Wrote only this report and notes/A09.md; no build, test execution, production/test/workflow edit, rerun, commit or push.",
+  "source": {
+    "current_test": {
+      "path": "tests/test_render_controls_admission.py",
+      "sha256": "337c2396bddf564f38ac682ac1361ef7d50282385a5dc0d7179f9c99384cc411"
+    },
+    "recovered_test": {
+      "path": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tests/test_render_controls_admission.py",
+      "sha256": "db5a60c091098c3f140d8704a50938ef75efd3b3058acae88370676b7a8a247e"
+    },
+    "renderer_sha256": "eee9b565f0ca2ca1e780ba6cd8bd118967728f2246b0023f609da89408739928",
+    "prior_review_sha256": "7aadd7fc350974450ae483b4d426ef5008efa720b325fa028572cf9eb5af346f",
+    "prior_a31_receipt_sha256": "32ce4fda7a5394fc030b78c2bb93664bc7107ebdd8ddb0ba4b1db18d6e92a5eb",
+    "prior_hosted_investigation_sha256": "49c0e5d6ca51b748bdc2f03ff02733224d84e36f0f7e7c27f5fab8616f2a9607",
+    "retained_original_hosted_log": {
+      "representation": "gzip+base64 nested in prior t2-core-sanitizer-investigation.json; independently decoded and hashed",
+      "bytes": 465655,
+      "sha256": "058cd0f6dc6bbb94ececb420f825cb4dad0cac6807d0e50639deb7573107c320"
+    }
+  },
+  "inspection": {
+    "full_rules_and_plan_read": true,
+    "full_current_test_read": true,
+    "full_prior_review_read": true,
+    "normalized_ast_equal": true,
+    "normalization": "Exactly one Constant 45 used by process.communicate is replaced with 15. ast.dump(include_attributes=False) then equals the complete current module.",
+    "candidate_difference": "One timeout literal and four explanatory comment lines only.",
+    "unchanged_workload": {
+      "frames": 1200000,
+      "block_frames": 1,
+      "sample_rate_hz": 48000,
+      "seed": 191,
+      "contacts": "ideal"
+    },
+    "unchanged_guards_seconds": {
+      "staging_event": 5,
+      "stopped_child": 2,
+      "ordinary_render": 15,
+      "final_child_drain": 5,
+      "ctest_suite": 90
+    },
+    "proposed_completion_guard_seconds": 45,
+    "preserved_checks": [
+      "Observe actual inotify staging after preflight",
+      "Confirm SIGSTOP/WIFSTOPPED",
+      "Assert destination absent while stopped",
+      "Create sentinel with exclusive xb",
+      "Resume with SIGCONT",
+      "Require child exit 1 and empty stdout",
+      "Require no-overwrite refusal diagnostic",
+      "Preserve exact sentinel bytes and device/inode",
+      "Preserve full input snapshot and remove staging",
+      "Retain finally resume/kill/drain"
+    ],
+    "renderer_order": [
+      "Validate inputs",
+      "Create staging",
+      "Render full requested workload",
+      "Flush and close WAV",
+      "Publish via create-only hard link"
+    ],
+    "reason": "Staging observation is early in the full render. The existing completion wait can expire before the publication/refusal assertions. This is a correctness harness bound, not a declared renderer speed/deadline acceptance threshold."
+  },
+  "prior_execution_evidence": {
+    "provenance": "Inspected prior receipt and complete modified-source logs; these executions belong to the earlier workspace and were not rerun by A09.",
+    "original_asan_ubsan_leaks_timeout_seconds": 15,
+    "longer_diagnostic_with_leaks": {
+      "completion_seconds": 15.501138,
+      "returncode": 23,
+      "result": "Publication refusal followed by fatal local LeakSanitizer runtime error; not a pass or a reported leak finding."
+    },
+    "longer_diagnostic_without_local_lsan": {
+      "completion_seconds": 16.474323,
+      "returncode": 1,
+      "test_passed": true,
+      "limitation": "ASan/UBSan retained, local LSan disabled only for this diagnostic; not full sanitizer qualification."
+    },
+    "modified_suite_release": {
+      "methods": 5,
+      "invocations": 45,
+      "seconds": 4.253,
+      "log_sha256": "f87864a3bf56b21231dd89ac141c9e85c82b4d853f53c178786d671b43f82bc9"
+    },
+    "modified_suite_local_asan_ubsan_no_lsan": {
+      "methods": 5,
+      "invocations": 45,
+      "seconds": 20.095,
+      "log_sha256": "210e5dd7ceef88934421c879053136863e8e07783b927f17da5680dddd886db3"
+    },
+    "completion_margin_ratio": 2.7315234744395873,
+    "phase_maximum_sum_seconds": 57,
+    "remaining_ctest_envelope_seconds": 33,
+    "caveat": "The 90-second CTest limit remains independently binding; 33 seconds is not a guarantee covering every combination of other timeouts."
+  },
+  "independently_observed_remote": [
+    {
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633",
+      "summary": {
+        "id": 43986430633,
+        "name": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "run_attempt": 2,
+        "head_sha": "6047723b595259de355c74342e48a8ae2ee1e228",
+        "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633"
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/attempts/1/jobs?per_page=100",
+      "summary": {
+        "total_count": 6,
+        "jobs": [
+          {
+            "id": 133715652514,
+            "name": "Linux GCC ASan + UBSan + leaks",
+            "status": "completed",
+            "conclusion": "failure",
+            "run_attempt": 1,
+            "started_at": "2026-11-17T00:17:34Z",
+            "completed_at": "2026-11-17T00:26:58Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133715652514",
+            "steps": [
+              {
+                "name": "Run every registered test with leak checking",
+                "conclusion": "failure"
+              }
+            ]
+          },
+          {
+            "id": 133715652801,
+            "name": "Release (Linux GCC)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 1,
+            "started_at": "2026-11-17T00:17:34Z",
+            "completed_at": "2026-11-17T00:21:25Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133715652801",
+            "steps": []
+          },
+          {
+            "id": 133715652839,
+            "name": "Release (macOS Intel AppleClang)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 1,
+            "started_at": "2026-11-17T00:17:35Z",
+            "completed_at": "2026-11-17T00:31:14Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133715652839",
+            "steps": []
+          },
+          {
+            "id": 133715652941,
+            "name": "Release (Windows MSVC)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 1,
+            "started_at": "2026-11-17T00:17:35Z",
+            "completed_at": "2026-11-17T00:27:10Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133715652941",
+            "steps": []
+          },
+          {
+            "id": 133715653001,
+            "name": "Complete R4 waveform qualification (Linux GCC)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 1,
+            "started_at": "2026-11-17T00:17:35Z",
+            "completed_at": "2026-11-17T00:27:24Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133715653001",
+            "steps": []
+          },
+          {
+            "id": 133715653105,
+            "name": "Release (macOS AppleClang)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 1,
+            "started_at": "2026-11-17T00:25:45Z",
+            "completed_at": "2026-11-17T00:31:15Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133715653105",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/attempts/2/jobs?per_page=100",
+      "summary": {
+        "total_count": 6,
+        "jobs": [
+          {
+            "id": 133729308448,
+            "name": "Linux GCC ASan + UBSan + leaks",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 2,
+            "started_at": "2026-11-17T00:47:18Z",
+            "completed_at": "2026-11-17T00:54:29Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133729308448",
+            "steps": []
+          },
+          {
+            "id": 133729310551,
+            "name": "Release (Linux GCC)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 2,
+            "started_at": "2026-11-17T00:17:34Z",
+            "completed_at": "2026-11-17T00:21:25Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133729310551",
+            "steps": []
+          },
+          {
+            "id": 133729311857,
+            "name": "Release (macOS AppleClang)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 2,
+            "started_at": "2026-11-17T00:25:45Z",
+            "completed_at": "2026-11-17T00:31:15Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133729311857",
+            "steps": []
+          },
+          {
+            "id": 133729311989,
+            "name": "Release (Windows MSVC)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 2,
+            "started_at": "2026-11-17T00:17:35Z",
+            "completed_at": "2026-11-17T00:27:10Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133729311989",
+            "steps": []
+          },
+          {
+            "id": 133729353518,
+            "name": "Release (macOS Intel AppleClang)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 2,
+            "started_at": "2026-11-17T00:17:35Z",
+            "completed_at": "2026-11-17T00:31:14Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133729353518",
+            "steps": []
+          },
+          {
+            "id": 133729354773,
+            "name": "Complete R4 waveform qualification (Linux GCC)",
+            "status": "completed",
+            "conclusion": "success",
+            "run_attempt": 2,
+            "started_at": "2026-11-17T00:17:35Z",
+            "completed_at": "2026-11-17T00:27:24Z",
+            "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43986430633/job/133729354773",
+            "steps": []
+          }
+        ]
+      }
+    }
+  ],
+  "hosted_log_excerpts": [
+    {
+      "job_id": 133715652514,
+      "source": "GitHub connector fetch_workflow_job_logs; complete decoded log retrieved",
+      "decoded_character_count": 465653,
+      "instrumentation_active": [
+        "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS=print_stacktrace=1:halt_on_error=1",
+        "LSAN_OPTIONS=exitcode=23"
+      ],
+      "excerpts": [
+        "2026-11-17T00:24:12.1929298Z         Start 149: python_test_render_controls_admission",
+        "2026-11-17T00:24:29.2389368Z 149/202 Test #149: python_test_render_controls_admission .............***Failed   17.05 sec",
+        "2026-11-17T00:24:29.2405673Z     stdout, stderr = process.communicate(timeout=15)",
+        "2026-11-17T00:24:29.2414763Z     raise TimeoutExpired(",
+        "2026-11-17T00:24:29.2418085Z subprocess.TimeoutExpired: Command '['/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/hammond_render', '--profile', '/tmp/hammond-controls-admission-x6kxy2xa/nominal profile.b3p', '--output', '/tmp/hammond-controls-admission-x6kxy2xa/output 2.wav', '--frames', '1200000', '--sample-rate', '48000', '--block-size', '1', '--seed', '191', '--contacts', 'ideal', '--controls', '/tmp/hammond-controls-admission-x6kxy2xa/input 1.b3controls']' timed out after 15 seconds",
+        "2026-11-17T00:24:29.2422277Z Ran 5 tests in 16.900s",
+        "2026-11-17T00:24:29.2423538Z saved-controls independent admission: 45 actual CLI invocations",
+        "2026-11-17T00:26:54.4828459Z 99% tests passed, 1 tests failed out of 202",
+        "2026-11-17T00:26:54.4859091Z Total Test time (real) = 408.26 sec",
+        "2026-11-17T00:26:54.4860160Z \t149 - python_test_render_controls_admission (Failed)    offline registration"
+      ]
+    },
+    {
+      "job_id": 133729308448,
+      "source": "GitHub connector fetch_workflow_job_logs; complete decoded log retrieved",
+      "decoded_character_count": 462876,
+      "instrumentation_active": [
+        "ASAN_OPTIONS=detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS=print_stacktrace=1:halt_on_error=1",
+        "LSAN_OPTIONS=exitcode=23"
+      ],
+      "excerpts": [
+        "2026-11-17T00:52:19.8047220Z         Start 149: python_test_render_controls_admission",
+        "2026-11-17T00:52:32.9399959Z 149/202 Test #149: python_test_render_controls_admission .............   Passed   13.14 sec",
+        "2026-11-17T00:54:25.7792486Z 100% tests passed, 0 tests failed out of 202",
+        "2026-11-17T00:54:25.7810928Z Total Test time (real) = 312.10 sec"
+      ]
+    }
+  ],
+  "acceptance_required": [
+    "Apply only the reviewed literal/comment change",
+    "Retain every correctness assertion and workload",
+    "Fresh coherent Release run of python_test_render_controls_admission with nonempty selection",
+    "Observe ASan+UBSan+leak-checking job at the exact published changed source",
+    "Preserve original failure and successful unchanged-source rerun separately"
+  ],
+  "forbidden_shortcuts": [
+    "No workload/frame reduction",
+    "No Linux-body skip",
+    "No broadened exit-code acceptance",
+    "No hosted leak-check disabling",
+    "No unrelated production/workflow changes"
+  ],
+  "remaining_scope": "No claim about renderer performance percentile, realtime deadline, global memory safety, native devices, physical fidelity or whole-interface 1:1."
+}

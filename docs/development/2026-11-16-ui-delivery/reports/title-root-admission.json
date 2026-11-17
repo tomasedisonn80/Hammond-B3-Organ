@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "decision": "Accept the exact T3 revision 2 title implementation as the genuine immediate pre-H1 baseline. Overall product, whole-interface 1:1, real display and platform acceptance remain separate.",
+  "painter_sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366",
+  "app_sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3",
+  "evidence": [
+    {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/reviews/TITLE_T3_REVISION_2_NATIVE_ADMISSION.md",
+      "bytes": 4007,
+      "sha256": "2ac02cb1a87c2c790319c21c1a0aeab2cd9708c6ea9d76b0ae12433e6b14ab12"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/reviews/TITLE_T3_REVISION_2_VISUAL_ADMISSION.md",
+      "bytes": 4795,
+      "sha256": "096fd3c35df1aa34057a4f0b86f321550883843d24b4a85564f0dbe5709ca936"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-source-review.json",
+      "bytes": 65527,
+      "sha256": "ed96dbc4f5d191507e17224bc6de8a1b5261a5638c54755be05f4a7ece578378"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired/report.json",
+      "bytes": 364171,
+      "sha256": "204b862f4d42873f6809e84c259630d48f8bdab2cf7c6be5cca942d9e9918664"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-app-isolated.json",
+      "bytes": 621,
+      "sha256": "69bce41f6792ab908a0097447a1b1e86f0ca9a510006993a616d9a96bcc110b3"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/app-smoke-scheduling-check.json",
+      "bytes": 707,
+      "sha256": "b7094e6227aedc4ed2737c0dd8a417e452a880187c10199d992cfaf5deeb98a1"
+    }
+  ],
+  "qualification": "158/158 paired title cases, separate density and 15-frame capture passes, independent numerical/source and full-frame visual admissions. Affected run42/43 is retained; same-byte isolated native-app1/1 and scheduling-check3/3 close this local functional gate without rewriting the original failure. The scheduling-only CMake change remains subject to A24 independent review and final integrated qualification.",
+  "retained_failure": "docs/development/2026-11-16-ui-delivery/reports/title-affected-tests.log",
+  "no_h1_paint": true
+}

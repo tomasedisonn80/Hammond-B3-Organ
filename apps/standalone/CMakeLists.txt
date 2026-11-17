@@ -344,6 +344,15 @@ if(HAMMOND_BUILD_STANDALONE)
             set_tests_properties(test_standalone_footage_typography_raster PROPERTIES TIMEOUT 240)
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_footage_typography_raster)
+        add_test(NAME test_standalone_title_density
+            COMMAND "${Python3_EXECUTABLE}" -B
+                "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_title_density.py"
+                --executable "$<TARGET_FILE:test_standalone_footage_typography_raster>")
+        set_tests_properties(test_standalone_title_density PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;typography")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_title_density PROPERTIES TIMEOUT 240)
+        endif()
         add_executable(test_standalone_typography_clips
             native_tests/test_standalone_typography_clips.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_typography_clips PRIVATE
@@ -358,6 +367,21 @@ if(HAMMOND_BUILD_STANDALONE)
             set_tests_properties(test_standalone_typography_clips PROPERTIES TIMEOUT 240)
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_typography_clips)
+        # Include the real painter once to inspect the private material helper
+        # without a production test API or a switch that fabricates a baseline.
+        add_executable(test_standalone_header_material
+            native_tests/test_standalone_header_material.cpp)
+        target_link_libraries(test_standalone_header_material PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_header_material PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_header_material)
+        add_test(NAME test_standalone_header_material COMMAND test_standalone_header_material)
+        set_tests_properties(test_standalone_header_material PROPERTIES
+            TIMEOUT 180 LABELS "standalone;native;material;geometry")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_header_material PROPERTIES TIMEOUT 480)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_header_material)
         add_executable(test_standalone_manual_key_material_raster
             native_tests/test_standalone_manual_key_material_raster.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_manual_key_material_raster PRIVATE
@@ -467,7 +491,10 @@ if(HAMMOND_BUILD_STANDALONE)
             COMMAND "${CMAKE_COMMAND}" -E env
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_app.py")
-        set_tests_properties(test_standalone_app PROPERTIES TIMEOUT 60 LABELS "standalone;native")
+        # The 600 ms smoke observes note-on/held/release windows. Keep other
+        # CPU-heavy software-raster CTests from starving those windows.
+        set_tests_properties(test_standalone_app PROPERTIES
+            TIMEOUT 60 RUN_SERIAL TRUE LABELS "standalone;native")
         add_test(NAME test_standalone_midi_cli
             COMMAND "${CMAKE_COMMAND}" -E env
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"

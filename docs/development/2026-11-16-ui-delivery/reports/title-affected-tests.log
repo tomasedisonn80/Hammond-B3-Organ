@@ -1,0 +1,239 @@
+Test project /workspace/scratch/66b061effd9e/build-native
+      Start 233: test_standalone_workflows
+      Start 234: test_standalone_workspace_replay
+      Start 232: test_standalone_native_midi_replay
+ 1/43 Test #232: test_standalone_native_midi_replay ...........   Passed   41.96 sec
+      Start 213: test_standalone_product_visual
+ 2/43 Test #234: test_standalone_workspace_replay .............   Passed   50.04 sec
+      Start 214: test_standalone_percussion_raster
+ 3/43 Test #233: test_standalone_workflows ....................   Passed   65.52 sec
+      Start 215: test_standalone_upper_rack_material_raster
+ 4/43 Test #214: test_standalone_percussion_raster ............   Passed   20.87 sec
+      Start 223: test_standalone_scaled_view
+ 5/43 Test #213: test_standalone_product_visual ...............   Passed   30.35 sec
+      Start 216: test_standalone_lower_rack_material_raster
+ 6/43 Test #215: test_standalone_upper_rack_material_raster ...   Passed   16.53 sec
+      Start 224: test_standalone_preset_raster
+ 7/43 Test #216: test_standalone_lower_rack_material_raster ...   Passed   18.92 sec
+      Start 209: test_standalone_workspace_raster
+ 8/43 Test #223: test_standalone_scaled_view ..................   Passed   26.15 sec
+      Start 228: test_standalone_app
+ 9/43 Test #209: test_standalone_workspace_raster .............   Passed   14.21 sec
+      Start 217: test_standalone_footage_typography_raster
+10/43 Test #224: test_standalone_preset_raster ................   Passed   27.64 sec
+      Start 222: test_standalone_keyboard_rim_raster
+11/43 Test #228: test_standalone_app ..........................***Failed   17.54 sec
+Native executable SHA-256: 010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3
+test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+ok
+test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+test_invalid_workspaces_reject_before_device_or_output (__main__.NativeAppAcceptance.test_invalid_workspaces_reject_before_device_or_output) ... ok
+test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... 
+  test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=1280, height=900, rate=48000, buffer=512) ... FAIL
+test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... 
+  test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) (version=1) ... FAIL
+  test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) (version=3) ... FAIL
+test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+test_workspace_and_flat_startup_preserve_controls_and_actual_painted_view (__main__.NativeAppAcceptance.test_workspace_and_flat_startup_preserve_controls_and_actual_painted_view) ... ok
+test_workspace_shortcuts_paint_views_preserve_holds_and_respect_modal_gate (__main__.NativeAppAcceptance.test_workspace_shortcuts_paint_views_preserve_holds_and_respect_modal_gate) ... ok
+Actual native application subprocesses: 184
+
+======================================================================
+FAIL: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=1280, height=900, rate=48000, buffer=512)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 908, in test_reference_minimum_and_extreme_audio_smokes
+    run = self.invoke(self.smoke_arguments(state, diagnostics, screenshot, extra))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 519, in invoke
+    self.assertEqual(process.returncode, expected,
+AssertionError: 1 != 0 : Arguments: ['--state', '/tmp/hammond-native-app-gq_q2_ro/absent-0.b3controls', '--smoke-ms', '600', '--diagnostics', '/tmp/hammond-native-app-gq_q2_ro/copied-0.json', '--screenshot', '/tmp/hammond-native-app-gq_q2_ro/held-0.bmp']
+Elapsed: 0.895s
+stdout: Native SDL smoke failed: callbacks=74, frames=37888, images=3, driver=dummy
+
+stderr: hammond_standalone: Native smoke failed; inspect the copied diagnostics
+
+Copied diagnostics:
+{
+  "schema_version":3,
+  "application":"hammond_standalone",
+  "profile":{"id":"nominal-unmeasured-v1","authoring_sha256":"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83"},
+  "runtime":{"video_driver":"dummy","renderer":"software","sdl_version":"2.32.10","window_width":1280,"window_height":900,"drawable_width":1280,"drawable_height":900,"rendered_images":3,"screenshot_written":true,"screenshot_while_held":false},
+  "audio":{"driver":"dummy","device_name":"Default output","requested_device":"","requested_sample_rate":48000,"requested_buffer_frames":512,"sample_rate":48000,"buffer_frames":512,"channels":2,"sample_format":33056,"native_float32_format":33056,"buffer_bytes":4096,"open_before_shutdown":true,"running_before_shutdown":true,"callback_count":74,"rendered_frames":37888,"render_failures":0,"format_failures":0,"overrange_failures":0,"overrange_samples":0,"nonfinite_failures":0,"nonfinite_samples":0,"last_render_status":"ok","last_lifecycle_status":"ok"},
+  "midi":{"source":"none","backend_available":false,"backend":"unavailable","requested_port":"","port_name":"","opened_port_index":0,"generation":0,"state_before_shutdown":"unavailable","state_after_shutdown":"unavailable","active_before_shutdown":false,"active_after_shutdown":false,"quiescent_after_shutdown":true,"diagnostics_stable_after_shutdown":true,"shutdown_failed":false,"startup_failed":false,"channels":{"upper":1,"lower":2,"pedals":3},"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null,"pre_shutdown_active":null},"drain_budget":32,"maximum_drained_per_turn":0,"timing_policy":"arrival_order_next_callback_boundary","arrival_time_unit":"steady_clock_nanoseconds","arrival_time_source":"none","arrival_time_is_sample_time":false,"retirements":0,"fault_retirements":0,"session_recoveries_observed":0,"open_failures":0,"submit_failures":0,"release_batches":0,"release_commands_accepted":0,"release_sequence":0,"release_pending":false,"parameter_messages":0,"retired_fault_bits":0,"last_submit_status":"ok","status":"MIDI backend unavailable in this build.","discovery":{"requests":0,"started":0,"completed":0,"discarded_results":0,"failures":0,"pending_before_shutdown":false,"shutdown_join_performed":false,"pending_after_shutdown":false},"device":{"callback_messages":0,"forwarded_messages":0,"filtered_messages":0,"admission_failures":0,"backend_errors":0,"callback_contentions":0,"disconnects":0,"close_errors":0,"last_arrival_ns":0},"inbox":{"capacity":256,"pending_packets":0,"received_packets":0,"accepted_packets":0,"invalid_size_packets":0,"faulted_packets":0,"overflow_events":0,"popped_packets":0,"discarded_packets":0,"resets":0,"fault_bits":0},"decoder":{"packets":0,"actions":0,"unsupported":0,"unmapped_channels":0,"out_of_range":0,"malformed":0,"inactive":0,"timestamp_regressions":0,"epochs":0}},
+  "presentation":{"initial_workspace":"play","initial_presentation":"dimensional","observation_capacity":512,"observations_truncated":false,"last_painted":{"elapsed_ms":788,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":34816,"publication_revision":140},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"screenshot":{"elapsed_ms":788,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":34816,"publication_revision":140},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"before_shutdown":{"elapsed_ms":788,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":34816,"publication_revision":140},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"observations":[{"elapsed_ms":0,"rendered_image":1,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":true,"frame_clock":0,"publication_revision":4},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},{"elapsed_ms":356,"rendered_image":2,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":15360,"publication_revision":64},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}}]},
+  "session":{"snapshot_available":true,"prepared":true,"running_after_shutdown":false,"sample_rate":48000,"frame_clock":37888,"publication_revision":154,"resolved_sequence":4,"last_applied_sequence":3,"recovery_count":0,"queue_overflows":0,"rejected_commands":0,"discarded_commands":1,"fault_flags":0,"held_after_shutdown":false,"maximum_observed_peak":0},
+  "controls":{"manual_drawbars":[[[0,0,0,0,0,0,0,0,0],[8,8,8,0,0,0,0,0,0]],[[0,0,0,0,0,0,0,0,0],[0,0,8,0,0,0,0,0,0]]],"selected_banks":[1,1],"fixed_registrations":[0,0],"preset_selections":[11,11],"route_enabled":[true,true],"expression":1,"pedal_drawbars":[8,0],"percussion":{"enabled":false,"harmonic":0,"volume":0,"decay":0}},
+  "smoke":{"requested":true,"duration_ms":600,"completed":true,"note_on_sent":false,"note_off_sent":false,"held_observed":false,"release_observed":false,"passed":false},
+  "state_path":"/tmp/hammond-native-app-gq_q2_ro/absent-0.b3controls",
+  "status":"Native smoke failed; inspect the copied diagnostics",
+  "errors":{"count":1,"last":"Native smoke failed; inspect the copied diagnostics"}
+}
+
+
+======================================================================
+FAIL: test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) (version=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 935, in test_saved_controls_and_legacy_startup_on_unicode_paths
+    run = self.invoke(self.smoke_arguments(state, diagnostics, screenshot))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 519, in invoke
+    self.assertEqual(process.returncode, expected,
+AssertionError: 1 != 0 : Arguments: ['--state', '/tmp/hammond-native-app-el_iq7pt/état 音 registration files/保存 controls version 1.b3controls', '--smoke-ms', '600', '--diagnostics', '/tmp/hammond-native-app-el_iq7pt/état 音 registration files/copied état 1.json', '--screenshot', '/tmp/hammond-native-app-el_iq7pt/état 音 registration files/held 音 1.bmp']
+Elapsed: 0.817s
+stdout: Native SDL smoke failed: callbacks=52, frames=26624, images=3, driver=dummy
+
+stderr: hammond_standalone: Native smoke failed; inspect the copied diagnostics
+
+Copied diagnostics:
+{
+  "schema_version":3,
+  "application":"hammond_standalone",
+  "profile":{"id":"nominal-unmeasured-v1","authoring_sha256":"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83"},
+  "runtime":{"video_driver":"dummy","renderer":"software","sdl_version":"2.32.10","window_width":1280,"window_height":900,"drawable_width":1280,"drawable_height":900,"rendered_images":3,"screenshot_written":true,"screenshot_while_held":false},
+  "audio":{"driver":"dummy","device_name":"Default output","requested_device":"","requested_sample_rate":48000,"requested_buffer_frames":512,"sample_rate":48000,"buffer_frames":512,"channels":2,"sample_format":33056,"native_float32_format":33056,"buffer_bytes":4096,"open_before_shutdown":true,"running_before_shutdown":true,"callback_count":52,"rendered_frames":26624,"render_failures":0,"format_failures":0,"overrange_failures":0,"overrange_samples":0,"nonfinite_failures":0,"nonfinite_samples":0,"last_render_status":"ok","last_lifecycle_status":"ok"},
+  "midi":{"source":"none","backend_available":false,"backend":"unavailable","requested_port":"","port_name":"","opened_port_index":0,"generation":0,"state_before_shutdown":"unavailable","state_after_shutdown":"unavailable","active_before_shutdown":false,"active_after_shutdown":false,"quiescent_after_shutdown":true,"diagnostics_stable_after_shutdown":true,"shutdown_failed":false,"startup_failed":false,"channels":{"upper":1,"lower":2,"pedals":3},"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null,"pre_shutdown_active":null},"drain_budget":32,"maximum_drained_per_turn":0,"timing_policy":"arrival_order_next_callback_boundary","arrival_time_unit":"steady_clock_nanoseconds","arrival_time_source":"none","arrival_time_is_sample_time":false,"retirements":0,"fault_retirements":0,"session_recoveries_observed":0,"open_failures":0,"submit_failures":0,"release_batches":0,"release_commands_accepted":0,"release_sequence":0,"release_pending":false,"parameter_messages":0,"retired_fault_bits":0,"last_submit_status":"ok","status":"MIDI backend unavailable in this build.","discovery":{"requests":0,"started":0,"completed":0,"discarded_results":0,"failures":0,"pending_before_shutdown":false,"shutdown_join_performed":false,"pending_after_shutdown":false},"device":{"callback_messages":0,"forwarded_messages":0,"filtered_messages":0,"admission_failures":0,"backend_errors":0,"callback_contentions":0,"disconnects":0,"close_errors":0,"last_arrival_ns":0},"inbox":{"capacity":256,"pending_packets":0,"received_packets":0,"accepted_packets":0,"invalid_size_packets":0,"faulted_packets":0,"overflow_events":0,"popped_packets":0,"discarded_packets":0,"resets":0,"fault_bits":0},"decoder":{"packets":0,"actions":0,"unsupported":0,"unmapped_channels":0,"out_of_range":0,"malformed":0,"inactive":0,"timestamp_regressions":0,"epochs":0}},
+  "presentation":{"initial_workspace":"play","initial_presentation":"dimensional","observation_capacity":512,"observations_truncated":false,"last_painted":{"elapsed_ms":600,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":23040,"publication_revision":94},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"screenshot":{"elapsed_ms":600,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":23040,"publication_revision":94},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"before_shutdown":{"elapsed_ms":600,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":23040,"publication_revision":94},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"observations":[{"elapsed_ms":0,"rendered_image":1,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":true,"frame_clock":0,"publication_revision":4},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},{"elapsed_ms":470,"rendered_image":2,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":19456,"publication_revision":80},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}}]},
+  "session":{"snapshot_available":true,"prepared":true,"running_after_shutdown":false,"sample_rate":48000,"frame_clock":26624,"publication_revision":110,"resolved_sequence":4,"last_applied_sequence":3,"recovery_count":0,"queue_overflows":0,"rejected_commands":0,"discarded_commands":1,"fault_flags":0,"held_after_shutdown":false,"maximum_observed_peak":0},
+  "controls":{"manual_drawbars":[[[0,1,2,3,4,5,6,7,8],[8,7,6,5,4,3,2,1,0]],[[1,3,5,7,0,2,4,6,8],[8,6,4,2,0,7,5,3,1]]],"selected_banks":[0,1],"fixed_registrations":[0,0],"preset_selections":[0,11],"route_enabled":[false,true],"expression":0.375,"pedal_drawbars":[0,0],"percussion":{"enabled":false,"harmonic":0,"volume":0,"decay":0}},
+  "smoke":{"requested":true,"duration_ms":600,"completed":true,"note_on_sent":false,"note_off_sent":false,"held_observed":false,"release_observed":false,"passed":false},
+  "state_path":"/tmp/hammond-native-app-el_iq7pt/état 音 registration files/保存 controls version 1.b3controls",
+  "status":"Native smoke failed; inspect the copied diagnostics",
+  "errors":{"count":1,"last":"Native smoke failed; inspect the copied diagnostics"}
+}
+
+
+======================================================================
+FAIL: test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) (version=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 935, in test_saved_controls_and_legacy_startup_on_unicode_paths
+    run = self.invoke(self.smoke_arguments(state, diagnostics, screenshot))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py", line 519, in invoke
+    self.assertEqual(process.returncode, expected,
+AssertionError: 1 != 0 : Arguments: ['--state', '/tmp/hammond-native-app-el_iq7pt/état 音 registration files/保存 controls version 3.b3controls', '--smoke-ms', '600', '--diagnostics', '/tmp/hammond-native-app-el_iq7pt/état 音 registration files/copied état 3.json', '--screenshot', '/tmp/hammond-native-app-el_iq7pt/état 音 registration files/held 音 3.bmp']
+Elapsed: 1.222s
+stdout: Native SDL smoke failed: callbacks=88, frames=45056, images=3, driver=dummy
+
+stderr: hammond_standalone: Native smoke failed; inspect the copied diagnostics
+
+Copied diagnostics:
+{
+  "schema_version":3,
+  "application":"hammond_standalone",
+  "profile":{"id":"nominal-unmeasured-v1","authoring_sha256":"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83"},
+  "runtime":{"video_driver":"dummy","renderer":"software","sdl_version":"2.32.10","window_width":1280,"window_height":900,"drawable_width":1280,"drawable_height":900,"rendered_images":3,"screenshot_written":true,"screenshot_while_held":false},
+  "audio":{"driver":"dummy","device_name":"Default output","requested_device":"","requested_sample_rate":48000,"requested_buffer_frames":512,"sample_rate":48000,"buffer_frames":512,"channels":2,"sample_format":33056,"native_float32_format":33056,"buffer_bytes":4096,"open_before_shutdown":true,"running_before_shutdown":true,"callback_count":88,"rendered_frames":45056,"render_failures":0,"format_failures":0,"overrange_failures":0,"overrange_samples":0,"nonfinite_failures":0,"nonfinite_samples":0,"last_render_status":"ok","last_lifecycle_status":"ok"},
+  "midi":{"source":"none","backend_available":false,"backend":"unavailable","requested_port":"","port_name":"","opened_port_index":0,"generation":0,"state_before_shutdown":"unavailable","state_after_shutdown":"unavailable","active_before_shutdown":false,"active_after_shutdown":false,"quiescent_after_shutdown":true,"diagnostics_stable_after_shutdown":true,"shutdown_failed":false,"startup_failed":false,"channels":{"upper":1,"lower":2,"pedals":3},"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null,"pre_shutdown_active":null},"drain_budget":32,"maximum_drained_per_turn":0,"timing_policy":"arrival_order_next_callback_boundary","arrival_time_unit":"steady_clock_nanoseconds","arrival_time_source":"none","arrival_time_is_sample_time":false,"retirements":0,"fault_retirements":0,"session_recoveries_observed":0,"open_failures":0,"submit_failures":0,"release_batches":0,"release_commands_accepted":0,"release_sequence":0,"release_pending":false,"parameter_messages":0,"retired_fault_bits":0,"last_submit_status":"ok","status":"MIDI backend unavailable in this build.","discovery":{"requests":0,"started":0,"completed":0,"discarded_results":0,"failures":0,"pending_before_shutdown":false,"shutdown_join_performed":false,"pending_after_shutdown":false},"device":{"callback_messages":0,"forwarded_messages":0,"filtered_messages":0,"admission_failures":0,"backend_errors":0,"callback_contentions":0,"disconnects":0,"close_errors":0,"last_arrival_ns":0},"inbox":{"capacity":256,"pending_packets":0,"received_packets":0,"accepted_packets":0,"invalid_size_packets":0,"faulted_packets":0,"overflow_events":0,"popped_packets":0,"discarded_packets":0,"resets":0,"fault_bits":0},"decoder":{"packets":0,"actions":0,"unsupported":0,"unmapped_channels":0,"out_of_range":0,"malformed":0,"inactive":0,"timestamp_regressions":0,"epochs":0}},
+  "presentation":{"initial_workspace":"play","initial_presentation":"dimensional","observation_capacity":512,"observations_truncated":false,"last_painted":{"elapsed_ms":623,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":26624,"publication_revision":108},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"screenshot":{"elapsed_ms":623,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":26624,"publication_revision":108},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"before_shutdown":{"elapsed_ms":623,"rendered_image":3,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":26624,"publication_revision":108},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},"observations":[{"elapsed_ms":0,"rendered_image":1,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":true,"frame_clock":0,"publication_revision":4},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}},{"elapsed_ms":416,"rendered_image":2,"workspace":"play","presentation":"dimensional","overlay":"none","window_width":1280,"window_height":900,"inspection":{"snapshot_available":true,"snapshot_read_succeeded":true,"snapshot_state":"current","controls_pending":false,"frame_clock":18432,"publication_revision":76},"held_targets":{"upper":0,"lower":0,"pedals":0},"pointer_capture":{"sdl_captured":false,"ui_captured":false,"attempts":0,"successes":0,"losses":0,"release_calls":0},"modal_focus":0,"expression_calibration":{"model":"midi-expression-endpoints-v1","configured":{"minimum":0,"maximum":127,"inverted":false},"selected":{"minimum":0,"maximum":127,"inverted":false},"selected_valid":true,"active":null,"reconnect_pending":false,"release_pending":false,"pending":null}}]},
+  "session":{"snapshot_available":true,"prepared":true,"running_after_shutdown":false,"sample_rate":48000,"frame_clock":45056,"publication_revision":182,"resolved_sequence":4,"last_applied_sequence":3,"recovery_count":0,"queue_overflows":0,"rejected_commands":0,"discarded_commands":1,"fault_flags":0,"held_after_shutdown":false,"maximum_observed_peak":0},
+  "controls":{"manual_drawbars":[[[0,1,2,3,4,5,6,7,8],[8,7,6,5,4,3,2,1,0]],[[1,3,5,7,0,2,4,6,8],[8,6,4,2,0,7,5,3,1]]],"selected_banks":[0,1],"fixed_registrations":[0,0],"preset_selections":[0,11],"route_enabled":[false,true],"expression":0.375,"pedal_drawbars":[2,7],"percussion":{"enabled":true,"harmonic":1,"volume":1,"decay":1}},
+  "smoke":{"requested":true,"duration_ms":600,"completed":true,"note_on_sent":false,"note_off_sent":false,"held_observed":false,"release_observed":false,"passed":false},
+  "state_path":"/tmp/hammond-native-app-el_iq7pt/état 音 registration files/保存 controls version 3.b3controls",
+  "status":"Native smoke failed; inspect the copied diagnostics",
+  "errors":{"count":1,"last":"Native smoke failed; inspect the copied diagnostics"}
+}
+
+
+----------------------------------------------------------------------
+Ran 21 tests in 17.348s
+
+FAILED (failures=3)
+
+      Start 212: test_standalone_waveform_material
+12/43 Test #222: test_standalone_keyboard_rim_raster ..........   Passed   15.56 sec
+      Start 237: test_standalone_starter_load
+13/43 Test #212: test_standalone_waveform_material ............   Passed   11.47 sec
+      Start 211: test_standalone_material_acceptance
+14/43 Test #217: test_standalone_footage_typography_raster ....   Passed   22.37 sec
+      Start 219: test_standalone_typography_clips
+15/43 Test #219: test_standalone_typography_clips .............   Passed    3.94 sec
+      Start 199: test_standalone_workspace_continuity
+16/43 Test #211: test_standalone_material_acceptance ..........   Passed   10.04 sec
+      Start 235: test_standalone_replay_boundaries
+17/43 Test #199: test_standalone_workspace_continuity .........   Passed    4.83 sec
+      Start 221: test_standalone_manual_key_material_raster
+18/43 Test #237: test_standalone_starter_load .................   Passed   11.98 sec
+      Start 230: test_standalone_expression_diagnostics
+19/43 Test #230: test_standalone_expression_diagnostics .......   Passed    3.13 sec
+      Start 225: test_standalone_audio_device
+20/43 Test #235: test_standalone_replay_boundaries ............   Passed    5.85 sec
+      Start 190: test_standalone_preset_ui
+21/43 Test #221: test_standalone_manual_key_material_raster ...   Passed    5.92 sec
+      Start 227: test_standalone_callback_allocation
+22/43 Test #190: test_standalone_preset_ui ....................   Passed    0.63 sec
+      Start  69: test_tonewheel
+23/43 Test #225: test_standalone_audio_device .................   Passed    2.93 sec
+      Start 194: test_standalone_session
+24/43 Test  #69: test_tonewheel ...............................   Passed    0.72 sec
+      Start  18: test_host_timeline
+25/43 Test #227: test_standalone_callback_allocation ..........   Passed    0.95 sec
+      Start 226: test_standalone_device_removal
+26/43 Test #194: test_standalone_session ......................   Passed    0.34 sec
+      Start  12: test_engine
+27/43 Test #226: test_standalone_device_removal ...............   Passed    0.23 sec
+      Start 197: test_standalone_whole_reference
+28/43 Test  #12: test_engine ..................................   Passed    0.23 sec
+      Start   9: test_controls
+29/43 Test #197: test_standalone_whole_reference ..............   Passed    0.18 sec
+      Start 207: test_standalone_drawing
+30/43 Test #207: test_standalone_drawing ......................   Passed    0.12 sec
+      Start 196: test_standalone_ui
+31/43 Test #196: test_standalone_ui ...........................   Passed    0.07 sec
+      Start  41: test_performance_input
+32/43 Test   #9: test_controls ................................   Passed    0.26 sec
+      Start   8: test_control_io
+33/43 Test  #41: test_performance_input .......................   Passed    0.10 sec
+      Start 192: test_standalone_reference_layout
+34/43 Test #192: test_standalone_reference_layout .............   Passed    0.05 sec
+      Start 198: test_standalone_workspace_acceptance
+35/43 Test   #8: test_control_io ..............................   Passed    0.12 sec
+      Start  68: test_state_exchange
+36/43 Test  #68: test_state_exchange ..........................   Passed    0.04 sec
+      Start 238: test_standalone_input_replay
+37/43 Test #198: test_standalone_workspace_acceptance .........   Passed    0.06 sec
+      Start  26: test_parameter_bridge
+38/43 Test  #26: test_parameter_bridge ........................   Passed    0.01 sec
+      Start 195: test_standalone_state_files
+39/43 Test #195: test_standalone_state_files ..................   Passed    0.03 sec
+      Start 208: test_standalone_quad_drawing
+40/43 Test #208: test_standalone_quad_drawing .................   Passed    0.01 sec
+      Start 180: test_standalone_external_control
+41/43 Test #180: test_standalone_external_control .............   Passed    0.02 sec
+42/43 Test  #18: test_host_timeline ...........................   Passed    1.04 sec
+43/43 Test #238: test_standalone_input_replay .................   Passed    0.10 sec
+
+98% tests passed, 1 tests failed out of 43
+
+Label Time Summary:
+geometry        = 170.18 sec*proc (12 tests)
+material        =  93.23 sec*proc (6 tests)
+midi            =  45.10 sec*proc (2 tests)
+native          = 420.36 sec*proc (23 tests)
+percussion      =  20.87 sec*proc (1 test)
+registration    =  11.98 sec*proc (1 test)
+rim             =  15.56 sec*proc (1 test)
+standalone      = 420.36 sec*proc (23 tests)
+typography      =  26.31 sec*proc (2 tests)
+workspace       =  90.40 sec*proc (3 tests)
+
+Total Test time (real) = 144.39 sec
+
+The following tests FAILED:
+	228 - test_standalone_app (Failed)                      native standalone
+Errors while running CTest

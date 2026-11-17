@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "worker": "A10",
+  "wave": 2,
+  "observed_at_utc": "2026-11-17T01:21:39.853146+00:00",
+  "scope": "Independent read-only source/hash and actual-image audit. No build, test execution, render, production edit or candidate acceptance.",
+  "head_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "instructions_read": [
+    "AGENTS.md",
+    "docs/PLAN.md",
+    "docs/development/2026-11-16-ui-delivery/README.md"
+  ],
+  "receipts": {
+    "fresh": {
+      "path": "docs/development/2026-11-16-ui-delivery/reports/baseline-identity.json",
+      "sha256": "967a2f67c3600ae4ae9007483363efb553ad1d60c7fcf5219f04c6cbb3ea6c5e",
+      "base_commit": "6047723b595259de355c74342e48a8ae2ee1e228"
+    },
+    "historical": {
+      "path": "docs/development/2026-11-16-heading-title-continuation/reports/a09-compatibility-baseline.json",
+      "sha256": "7cdfb46aea8c3682b688ef965840af5ff76f46275add323f4aac783fcdbbf2c6",
+      "source_commit": "113c29b7b14c8fde0859bc405ef8e4141a131ea6"
+    }
+  },
+  "inventory_verification": {
+    "method": "SHA-256 of every current file; compare all 229 source entries to git show BASE:path and fresh receipt; compare 213 protected entries to the historical receipt and identical path sets; hash five retained binaries.",
+    "fresh_source_count": 229,
+    "protected_count": 213,
+    "historical_protected_count": 213,
+    "protected_path_sets_identical": true,
+    "group_counts": {
+      "core_headers": 31,
+      "core_sources": 30,
+      "plugin": 20,
+      "authoring_data": 98,
+      "assets": 16,
+      "ui_state_drawing": 15,
+      "reference": 3
+    },
+    "all229_current_matches": 229,
+    "current_source_differences": [],
+    "current_protected_differences": [],
+    "all229_base_commit_differences": [],
+    "historical_protected_matches": 212,
+    "historical_protected_differences": [
+      {
+        "path": "apps/standalone/main.cpp",
+        "historical_sha256": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+        "fresh_sha256": "89b24fdeae438b77309904d12c32e3e2ae5e964e99968a8656c5b0a710e237c4"
+      }
+    ],
+    "historical_exception_explanation": "6047723 adds bounded event-time UI overlay/modal-focus observations in main.cpp without relaxing the musical restore-acknowledgment guard; this same accepted repair is present in fresh baseline and current sources. It is not a new T3/H1 exception.",
+    "editable_painter": {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "fresh_sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db",
+      "current_sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db",
+      "protected": false
+    },
+    "retained_binary_checks": [
+      {
+        "path": "../baseline-native/hammond_standalone",
+        "sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a",
+        "matches_receipt": true
+      },
+      {
+        "path": "../baseline-native/test_standalone_footage_typography_raster",
+        "sha256": "3c93ad1067f430c864f38028226f1eac776cea8227471ddd9ced9ce2cf282054",
+        "matches_receipt": true
+      },
+      {
+        "path": "../baseline-native/test_standalone_percussion_raster",
+        "sha256": "68be70fe8bf25c3f09d3814ba600783b2c835a6ce2ebe0ac660fcee67f87e918",
+        "matches_receipt": true
+      },
+      {
+        "path": "../baseline-native/test_standalone_typography_clips",
+        "sha256": "dce14f63096cf6bb46aaf2e7dda2d8be520bcd6ddcf27110ed739c223142154d",
+        "matches_receipt": true
+      },
+      {
+        "path": "../baseline-native/hammond_standalone_paint_benchmark",
+        "sha256": "3ee7e1c9da57b376bba60415f550944ff7f4f0cdf5ea088eefed854f0b9a4202",
+        "matches_receipt": true
+      }
+    ]
+  },
+  "preservation_contract": {
+    "model": {
+      "source_count": 91,
+      "manual_key_counts": [
+        61,
+        61
+      ],
+      "pedals": 25,
+      "drawbar_banks": 4,
+      "sources": [
+        "include/hammond/Types.h",
+        "include/hammond/TonewheelBank.h",
+        "include/hammond/Engine.h",
+        "include/hammond/ConsoleModel.h"
+      ],
+      "requirements": [
+        "Free-running shared source phases advance during silence; note events do not reset them.",
+        "Positive note velocity does not scale sustained amplitude or select a motion curve.",
+        "Preserve dry nominal model identity, routes, percussion, contacts and profile provenance; decorative rotary art does not connect audio."
+      ]
+    },
+    "parameters_and_state": {
+      "parameter_count": 47,
+      "registry_schema": 4,
+      "writer": "B3CONTROLS4",
+      "readers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "sources": [
+        "include/hammond/ParameterBridge.h",
+        "src/ParameterBridge.cpp",
+        "include/hammond/ControlStateIO.h",
+        "src/ControlStateIO.cpp",
+        "plugins/vst3/PluginIds.h"
+      ],
+      "requirements": [
+        "Stable parameter IDs/descriptors and plugin UUIDs.",
+        "Save all musical banks/routes/percussion/pedal mixtures/fixed registrations; preserve catalog binding and historical migrations.",
+        "Never serialize held notes, owners, contact trajectories, readiness, phases, clocks or UI focus."
+      ]
+    },
+    "ui_and_input": {
+      "playing_key_count": 147,
+      "preset_controls": 24,
+      "controls_including_presets": 68,
+      "play_focus_stops": 71,
+      "other_workspace_focus_stops": 10,
+      "startup_size": [
+        1280,
+        900
+      ],
+      "minimum_size": [
+        960,
+        700
+      ],
+      "maximum_dimension": 8192,
+      "active_reference_predicate": "Play + Dimensional + width >= 1400 + height >= 820 within supported maxima",
+      "sources": [
+        "apps/standalone/UiModel.h",
+        "apps/standalone/UiModel.cpp",
+        "apps/standalone/tests/test_standalone_reference_layout.cpp",
+        "apps/standalone/tests/test_standalone_whole_reference.cpp"
+      ],
+      "requirements": [
+        "Single semantic layout continues to own painting and hit geometry; accidental keys retain input priority.",
+        "Edited bank and sounding route remain distinct. Desired and applied state retain their acknowledgment semantics.",
+        "Workspace/presentation/focus/resize never publish musical actions; resizing closes drags while preserving held-note ownership.",
+        "Continuous drag capture and retained parameter identities, focus traversal, keyboard ownership, modal and panic/release behavior remain unchanged."
+      ]
+    }
+  },
+  "required_gates": {
+    "execution_status": "Not executed by A10; names verified in genuine baseline generated CTestTestfile.cmake and source CMake registrations.",
+    "existing_exact_ctest_names": {
+      "t3_paired_fixtures_158_cases": [
+        "test_standalone_footage_typography_raster",
+        "test_standalone_percussion_raster",
+        "test_standalone_typography_clips"
+      ],
+      "drawing_and_material": [
+        "test_standalone_drawing",
+        "test_standalone_quad_drawing",
+        "test_standalone_material_acceptance",
+        "test_standalone_scaled_view",
+        "test_standalone_product_visual",
+        "test_standalone_upper_rack_material_raster",
+        "test_standalone_lower_rack_material_raster",
+        "test_standalone_manual_key_material_raster",
+        "test_standalone_keyboard_rim_raster",
+        "test_standalone_preset_raster",
+        "test_standalone_workspace_raster",
+        "test_standalone_waveform_material"
+      ],
+      "geometry_ui_and_input": [
+        "test_standalone_ui",
+        "test_standalone_reference_layout",
+        "test_standalone_whole_reference",
+        "test_standalone_workspace_continuity",
+        "test_standalone_workspace_acceptance",
+        "test_standalone_preset_ui",
+        "test_standalone_input_replay",
+        "test_standalone_workspace_replay",
+        "test_standalone_replay_boundaries",
+        "test_standalone_workflows",
+        "test_standalone_starter_load"
+      ],
+      "musical_state_and_adapter": [
+        "test_control_io",
+        "test_parameter_bridge",
+        "test_controls",
+        "test_state_exchange",
+        "test_engine",
+        "test_tonewheel",
+        "test_host_timeline",
+        "test_performance_input",
+        "test_standalone_session",
+        "test_standalone_state_files",
+        "test_standalone_external_control"
+      ],
+      "native_callback_and_lifecycle": [
+        "test_standalone_app",
+        "test_standalone_audio_device",
+        "test_standalone_device_removal",
+        "test_standalone_callback_allocation",
+        "test_standalone_native_midi_replay",
+        "test_standalone_expression_diagnostics"
+      ]
+    },
+    "all_existing_names_registered": true,
+    "proposed_additional_names": {
+      "test_standalone_title_density": "T3-specific proposed/recovered fixture; not registered in inspected baseline.",
+      "test_standalone_header_material": "H1-specific proposed/recovered fixture; not registered in inspected baseline."
+    },
+    "t3": [
+      "Build coherent matching source/harness inputs; run unchanged bounds, ink-density and caption/control-containment assertions.",
+      "Independently compare 44 footage + 66 percussion + 48 clip cases (158 pairs) to genuine pre-T3 binaries with exact revised per-glyph support.",
+      "Retain all original inactive/fallback equality, transforms, resource bounds, renderer-state and source-identity assertions.",
+      "Independent actual-frame before/after/reference review must reject filled counters, halos, clipping, muddy strokes or lost subtitle."
+    ],
+    "h1": [
+      "Accept T3 first, then freeze a separately retained genuine pre-H1 baseline with the identical independent 48-case harness.",
+      "Run exact support, child exclusion, renderer-state, clipped/uncut, repeat/fresh-renderer, inactive/fallback whole-frame equality and 103 frozen statistical screens.",
+      "Re-run existing affected material, geometry/input, typography, preset/percussion, manual/rack and waveform suites; unchanged pixels outside header remain exact.",
+      "Retain timing evidence and independent whole-header/full-frame review; local statistical success cannot override visible seams, banding, speckles, muddy title or weak contrast."
+    ],
+    "runner": "Root alone builds and runs CTest with --no-tests=error; preserve failing evidence and do not claim gallery screenshots are exact-state fixture proof."
+  },
+  "actual_image_review": {
+    "reference": {
+      "path": "docs/design/atlas-cover-reference.jpg",
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "inspection": "Viewed full original JPEG via view_image."
+    },
+    "capture_provenance": {
+      "path": "../baseline-gallery/provenance.json",
+      "sha256": "83648e1d7863fd715636b588920ebb6b92ed11d656649e1e2c5d9ea52a7ab0da",
+      "status": "passed",
+      "image_count": 13,
+      "executable_sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a",
+      "all_recorded_inputs_unchanged": true,
+      "environment": "SDL dummy audio/video, software renderer"
+    },
+    "images": [
+      {
+        "case": "play-reference-1672x941",
+        "path": "../baseline-gallery/images/play-reference-1672x941.png",
+        "bytes": 767912,
+        "sha256": "689180c1d4f7d84ba65da90bc958b85b698723551777f2397d7102c34f010b24",
+        "manifest_matches": true,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "presentation": "dimensional",
+        "capture_status": "passed",
+        "visual_inspection": "Viewed actual complete PNG via view_image; no new rendering or image edits."
+      },
+      {
+        "case": "play-minimum-active-1400x820",
+        "path": "../baseline-gallery/images/play-minimum-active-1400x820.png",
+        "bytes": 585063,
+        "sha256": "bf6812b31c3c959516834cf57d1430e582e4d0e67beb1bcb1571536c01b5ef68",
+        "manifest_matches": true,
+        "dimensions": [
+          1400,
+          820
+        ],
+        "presentation": "dimensional",
+        "capture_status": "passed",
+        "visual_inspection": "Viewed actual complete PNG via view_image; no new rendering or image edits."
+      },
+      {
+        "case": "flat-reference-1672x941",
+        "path": "../baseline-gallery/images/flat-reference-1672x941.png",
+        "bytes": 355450,
+        "sha256": "f6ee3bb99bb8ce51cf3b7bd8f7ea29cc2b1d62e8ddd88067aef5cdb39a38a84a",
+        "manifest_matches": true,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "presentation": "flat",
+        "capture_status": "passed",
+        "visual_inspection": "Viewed actual complete PNG via view_image; no new rendering or image edits."
+      }
+    ],
+    "residuals": [
+      "Title has thinner/flatter brass strokes and less embossed relief than the reference; header field and edge transitions remain flatter. T3/H1 address bounded portions only.",
+      "Live header has Save/Load/Help/Audio/MIDI/Panic/Flat rather than the illustrated preset selector/arrows/gear; caption is truthful NOMINAL DRY ORGAN rather than VIRTUAL ORGAN CONCEPT.",
+      "Nominal expression/pedal mixtures occupy the illustrated vibrato/chorus region; the reference six switches are absent because those processors are not connected.",
+      "Real 61-key manuals, 12 presets per manual, edited/sounding-bank text, 25-key pedalboard and device/status controls differ from simplified illustrated keyboards and cheek selectors.",
+      "Cabinet artwork is close to the original image, but its live lower region has keyboard targeting/status/pedalboard instead of the reference mic-position knobs and Stop/Slow/Fast controls.",
+      "Wood contour/grain/curved corners, panel joins, keyboard perspective and bevel/highlight detail, switch/cap shadows, status footer and focus cyan remain visibly different.",
+      "The 1400x820 active layout preserves the same structure at reduced scale but has small utility/control labels; screenshot inspection does not establish real-display readability or DPI/accessibility.",
+      "Flat is a distinctly simplified functioning presentation with rectangular controls and keyboards; it is intentionally outside Dimensional material edits and must remain exact in inactive fixtures.",
+      "Held-note highlights, focus and registration positions are live scenario state, not artwork-matched state; runtime counter drift is not a basis for exact preservation claims."
+    ],
+    "whole_interface_1to1": "Unmet and unwaived; no source audit, local pixel screen or functional inventory preservation constitutes literal reference parity.",
+    "unobserved": [
+      "Physical device/audio/MIDI validation",
+      "Real-display/DPI and native accessibility",
+      "DAW/platform and signed release qualification",
+      "Measured instrument/model qualification"
+    ]
+  },
+  "next_step": "Root performs admitted T3 with exact gates; only after T3 acceptance freeze pre-H1 and attempt H1. Independently repeat protected-source hashes after each candidate and retain residuals in README/status."
+}

@@ -2305,8 +2305,11 @@ void reference_header(Drawing& drawing, const UiLayout& layout, ReferenceComposi
     const float width = drawing.text_width(title, size, TextFace::Serif);
     const float x = std::clamp(middle - width / 2.0F, title_left, std::max(title_left, title_right - width));
     const float y = 11.5F * scale.sy;
-    drawing.text(title, x + scale.sx, y + 2.0F * scale.sy, size, {4, 5, 4}, TextFace::Serif);
-    drawing.text(title, x, y, size, kUiBrass, TextFace::Serif);
+    drawing.text(title, x + scale.sx, y + 2.0F * scale.sy, size, {4, 5, 4, 255}, TextFace::Serif);
+    drawing.text(title, x + scale.f, y + scale.f, size, {100, 65, 28, 255}, TextFace::Serif);
+    drawing.text(title, x, y - 0.125F * scale.f, size, {255, 231, 184, 255}, TextFace::Serif);
+    drawing.text(title, x + scale.f, y, size, {212, 171, 103, 255}, TextFace::Serif);
+    drawing.text(title, x, y, size, {226, 192, 135, 255}, TextFace::Serif);
     drawing.rect(reference_composition_rect({528.0F, 40.0F, 50.0F, 1.0F}, scale), kMetalEdge);
     drawing.rect(reference_composition_rect({1094.0F, 40.0F, 108.0F, 1.0F}, scale), kMetalEdge);
     constexpr std::string_view caption = "NOMINAL DRY ORGAN";

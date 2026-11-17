@@ -6,17 +6,25 @@ exist only in copied Python dictionaries; no native process or image is edited.
 All three final painted records are changed together so the new checks cannot
 pass merely because the existing painted-record equality guard rejects them.
 
-The five added scenes use explicitly synthetic in-memory contract variants and
-pixel buffers to test admission rules. They are never written as captures and
-do not qualify the new application; root must run the thirteen-case native suite.
+The five default extensions and two optional header-aspect scenes use explicitly
+synthetic in-memory contract variants and pixel buffers to test admission rules.
+CLI orchestration tests mock native/image boundaries and use temporary non-image
+byte placeholders. None of these tests creates native capture evidence; root
+must run the selected thirteen- or fifteen-case native suite.
 """
 
+from contextlib import redirect_stderr, redirect_stdout
 from copy import deepcopy
 import hashlib
 import importlib.util
+import io
 import json
 from pathlib import Path
+import sys
+import tempfile
+from types import SimpleNamespace
 import unittest
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,6 +48,10 @@ ADDED_CASES = (
     ("play-toolbar-focus-1672x941", 1672, 941, "play", "dimensional", 151, "toolbar-focus"),
     ("play-pedal-focus-1672x941", 1672, 941, "play", "dimensional", 161, "pedal-focus"),
     ("play-wide-1920x1080", 1920, 1080, "play", "dimensional", 66, "standard"),
+)
+HEADER_ASPECT_CASES = (
+    ("play-header-wide-1920x820", 1920, 820, "play", "dimensional", 66, "standard"),
+    ("play-header-tall-1400x1080", 1400, 1080, "play", "dimensional", 66, "standard"),
 )
 # Independent literal canonical samples, not imported from the capture utility.
 FOCUS_PROBES = {
@@ -96,6 +108,144 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
         })
         self.assertEqual(len({case[0] for case in CAPTURE.CASES}), 13)
 
+    def test_optional_header_aspects_are_exact_distinct_dimensional_play_views(self):
+        self.assertEqual(CAPTURE.HEADER_ASPECT_CASES, tuple(case[:5] for case in HEADER_ASPECT_CASES))
+        combined = CAPTURE.CASES + CAPTURE.HEADER_ASPECT_CASES
+        self.assertEqual(len(combined), 15)
+        self.assertEqual(len({case[0] for case in combined}), 15)
+        self.assertEqual(len({case[1:5] for case in combined}), 13)  # Two existing canonical focus scenes.
+
+    def run_cli_with_mocked_native_and_image_boundaries(self, extra_args):
+        """Exercise the real CLI/receipt path without a native process or image."""
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            source, build, output = (base / name for name in ("source", "build", "gallery"))
+            source.mkdir()
+            build.mkdir()
+            fixture_bytes = b"Unit-test fixture only; never an application or image.\n"
+            fixture_sha256 = hashlib.sha256(fixture_bytes).hexdigest()
+            executable = base / "native-stub"
+            executable.write_bytes(fixture_bytes)
+            executable.chmod(0o700)
+            qualified_sources = {}
+            for name in CAPTURE.REQUIRED_QUALIFIED_SOURCES:
+                path = source / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(fixture_bytes)
+                qualified_sources[name] = fixture_sha256
+            qualification = base / "qualification.json"
+            qualification.write_text(json.dumps({"binary_sha256": fixture_sha256,
+                                                  "source_sha256": qualified_sources}), encoding="utf-8")
+            for name in ("EmbeddedProfile.h", "ReferenceArtData.h", "ReferenceApronData.h"):
+                path = build / "apps/standalone/generated" / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(fixture_bytes)
+            (build / "CMakeCache.txt").write_text("HAMMOND_BUILD_STANDALONE:BOOL=ON\n", encoding="utf-8")
+            argv = [str(ROOT / "tools/capture_standalone_interface.py"),
+                    "--exe", str(executable), "--source-root", str(source), "--build-root", str(build),
+                    "--source-qualification", str(qualification), "--expected-exe-sha256", fixture_sha256,
+                    "--output", str(output), "--dummy-sdl", *extra_args]
+            commands, sizes = [], {}
+
+            def native_boundary(command, **options):
+                self.assertEqual(command[0], str(executable.resolve()))
+                self.assertEqual(options["timeout"], 12.0)
+                self.assertIs(options["capture_output"], True)
+                self.assertIs(options["check"], False)
+                self.assertEqual(options["stdin"], CAPTURE.subprocess.DEVNULL)
+                self.assertEqual(options["env"]["SDL_VIDEODRIVER"], "dummy")
+                self.assertEqual(options["env"]["SDL_AUDIODRIVER"], "dummy")
+                self.assertEqual(options["env"]["SDL_RENDER_DRIVER"], "software")
+                commands.append(command)
+                bmp = Path(command[command.index("--screenshot") + 1])
+                sizes[bmp.stem] = (int(command[command.index("--width") + 1]),
+                                   int(command[command.index("--height") + 1]))
+                bmp.write_bytes(fixture_bytes)
+                Path(command[command.index("--diagnostics") + 1]).write_text("{}\n", encoding="utf-8")
+                return SimpleNamespace(returncode=0, stdout=b"", stderr=b"")
+
+            class ImageBoundary:
+                mode = "RGB"
+
+                def __init__(self, path):
+                    self.size = sizes[Path(path).stem]
+
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *_):
+                    return False
+
+                def load(self):
+                    pass
+
+                def tobytes(self):
+                    return fixture_bytes
+
+                def save(self, path, **_):
+                    path.write_bytes(fixture_bytes)
+
+            pillow = SimpleNamespace(Image=SimpleNamespace(open=ImageBoundary), __version__="unit-test-stub")
+            with (mock.patch.object(sys, "argv", argv), mock.patch.dict(sys.modules, {"PIL": pillow}),
+                  mock.patch.object(CAPTURE.platform, "platform", return_value="unit-test"),
+                  mock.patch.object(CAPTURE, "git_identity", return_value={"head": "unit-test", "committed_tree": "unit-test"}),
+                  mock.patch.object(CAPTURE.subprocess, "run", side_effect=native_boundary),
+                  mock.patch.object(CAPTURE, "validate", side_effect=lambda *_: {}) as validation,
+                  mock.patch.object(CAPTURE, "validate_focus_pixels", return_value=None),
+                  redirect_stdout(io.StringIO()) as stdout):
+                result = CAPTURE.main()
+            record = json.loads((output / "provenance.json").read_text(encoding="utf-8"))
+            manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["status"], "passed")
+            self.assertIs(record["all_recorded_inputs_unchanged"], True)
+            return result, record, json.loads(stdout.getvalue()), commands, validation.call_args_list
+
+    def test_cli_selects_exact_default_or_extended_matrix_and_records_actual_count(self):
+        original = tuple((*case, "standard") for case in CASES) + ADDED_CASES
+        for options, expected in (([], original), (["--include-header-aspects"], original + HEADER_ASPECT_CASES)):
+            with self.subTest(options=options):
+                result, record, summary, commands, validations = self.run_cli_with_mocked_native_and_image_boundaries(options)
+                self.assertEqual(result, 0)
+                self.assertEqual(record["status"], "passed")
+                self.assertEqual(summary["captures"], len(expected))
+                self.assertEqual(len(commands), len(expected))
+                self.assertEqual(tuple((case["name"], case["width"], case["height"], case["workspace"],
+                                        case["presentation"], case["scene"]) for case in record["cases"]),
+                                 tuple((*case[:5], case[-1]) for case in expected))
+                self.assertEqual([call.args[1:] for call in validations], [case[1:] for case in expected])
+                self.assertEqual([case["command"] for case in record["cases"]], commands)
+                self.assertTrue(all(case["status"] == "passed" for case in record["cases"]))
+                self.assertEqual(record["capture_contract"], "standalone-interface-capture-v1")
+                if options:
+                    self.assertIn("15 views", record["case_matrix"])
+                    self.assertIn("Original thirteen views retained in order", record["case_matrix"])
+                    for case in HEADER_ASPECT_CASES:
+                        self.assertIn(case[0], record["case_matrix"])
+                else:
+                    self.assertEqual(record["case_matrix"],
+                                     "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection.")
+
+    def test_optional_header_aspects_preserve_dummy_acknowledgment_and_new_directory_refusal(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            sentinel = output / "retained.txt"
+            sentinel.write_bytes(b"retain these bytes")
+            argv = ["capture_standalone_interface.py", "--exe", "unused", "--source-root", "unused",
+                    "--build-root", "unused", "--source-qualification", "unused",
+                    "--expected-exe-sha256", "0" * 64, "--output", str(output), "--include-header-aspects"]
+            with (mock.patch.object(sys, "argv", argv), mock.patch.object(CAPTURE.subprocess, "run") as native,
+                  redirect_stderr(io.StringIO()) as stderr):
+                with self.assertRaises(SystemExit) as missing_ack:
+                    CAPTURE.main()
+                self.assertEqual(missing_ack.exception.code, 2)
+                self.assertIn("--dummy-sdl", stderr.getvalue())
+                argv.append("--dummy-sdl")
+                with self.assertRaisesRegex(ValueError, "output already exists; refusing to overwrite"):
+                    CAPTURE.main()
+                native.assert_not_called()
+            self.assertEqual(list(output.iterdir()), [sentinel])
+            self.assertEqual(sentinel.read_bytes(), b"retain these bytes")
+
     def test_original_replay_and_state_bytes_match_immutable_gallery(self):
         self.assertEqual(CAPTURE.STATE.encode("ascii"), (GALLERY / "inputs/controls.b3controls").read_bytes())
         for _, _, _, workspace, presentation, expected_events in CASES:
@@ -146,7 +296,7 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
         return data
 
     def test_added_scene_contract_variants_reuse_complete_semantic_validation(self):
-        for case in ADDED_CASES:
+        for case in (*ADDED_CASES, *HEADER_ASPECT_CASES):
             with self.subTest(case=case[0]):
                 data = self.contract_variant(case)
                 result = CAPTURE.validate(data, *case[1:])
@@ -164,7 +314,7 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                     self.assertNotIn("focus_scene", result)
 
     def test_added_cases_reject_wrong_dimensions_and_painted_presentation(self):
-        for case in ADDED_CASES:
+        for case in (*ADDED_CASES, *HEADER_ASPECT_CASES):
             for field in ("window_width", "window_height", "drawable_width", "drawable_height"):
                 with self.subTest(case=case[0], field=field):
                     data = self.contract_variant(case)
@@ -180,7 +330,7 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                         CAPTURE.validate(data, *case[1:])
 
     def test_added_cases_reject_changed_controls_and_loss_of_original_holds(self):
-        for case in ADDED_CASES:
+        for case in (*ADDED_CASES, *HEADER_ASPECT_CASES):
             with self.subTest(case=case[0], mutation="controls"):
                 data = self.contract_variant(case)
                 for controls in (data["controls"], data["replay"]["desired_controls_before_shutdown"],

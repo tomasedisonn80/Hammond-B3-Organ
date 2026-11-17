@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "base_receipt": {
+    "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/h1-baseline-identity.json",
+    "bytes": 38893,
+    "sha256": "eaf89814ff181b2c8559fccc00c1f001d25fa8d8a81d1021d38aca00530dc2d2"
+  },
+  "painter": {
+    "path": "/workspace/scratch/66b061effd9e/pre-header-native/InstrumentView.cpp",
+    "bytes": 164592,
+    "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+  },
+  "benchmark": {
+    "path": "/workspace/scratch/66b061effd9e/pre-header-native/hammond_standalone_paint_benchmark",
+    "bytes": 3756168,
+    "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+  },
+  "source_sha256": {
+    "tools/standalone_paint_benchmark.cpp": "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338"
+  },
+  "retained_inputs": [
+    {
+      "path": "/workspace/scratch/66b061effd9e/pre-header-native/h1-timing-inputs/standalone_paint_benchmark.cpp",
+      "bytes": 30354,
+      "sha256": "d81eb9412d6d885807e57b4657c58519309a3e2b830c904ff1b36d6b40569338"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/pre-header-native/h1-timing-inputs/object-0.o",
+      "bytes": 42512,
+      "sha256": "fc20ab5daa4e8878604268c46547f0de85c15e512ae7ce940f4aaca2e3f57a39"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/pre-header-native/h1-timing-inputs/object-1.o",
+      "bytes": 287152,
+      "sha256": "aee8d1b133e3fec7d7217a6d45efa7b02f890f23c448285868898f6cfb30fc72"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/pre-header-native/h1-timing-inputs/link.txt",
+      "bytes": 433,
+      "sha256": "43afb7662b85fedb76fa5fda80691ee13b24e1791d1776739842695e728ca94b"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/pre-header-native/h1-timing-inputs/flags.make",
+      "bytes": 625,
+      "sha256": "22f313b7b36eee6f68e6968ccd449c33b1dc0bb426533b9ca276cdae74efcc03"
+    },
+    {
+      "path": "/workspace/scratch/66b061effd9e/pre-header-native/h1-timing-inputs/DependInfo.cmake",
+      "bytes": 1322,
+      "sha256": "962f9d32fed4fe70eb0563790c2af46dba5925108bd1b8e6988b09d67c277e06"
+    }
+  ],
+  "compile_commands": [
+    {
+      "directory": "/workspace/scratch/66b061effd9e/build-native/apps/standalone",
+      "command": "/usr/bin/c++ -DSDL_MAIN_HANDLED -I/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/66b061effd9e/Hammond-B3-Organ/include -I/workspace/scratch/66b061effd9e/build-native/_sdl2/include -I/workspace/scratch/66b061effd9e/build-native/_sdl2/include/SDL2 -I/workspace/scratch/66b061effd9e/build-native/_sdl2/include-config-release/SDL2 -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_standalone_paint_benchmark.dir/__/__/tools/standalone_paint_benchmark.cpp.o -c /workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/standalone_paint_benchmark.cpp",
+      "file": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/standalone_paint_benchmark.cpp",
+      "output": "apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/__/__/tools/standalone_paint_benchmark.cpp.o"
+    },
+    {
+      "directory": "/workspace/scratch/66b061effd9e/build-native/apps/standalone",
+      "command": "/usr/bin/c++ -DSDL_MAIN_HANDLED -I/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone -I/workspace/scratch/66b061effd9e/Hammond-B3-Organ/include -I/workspace/scratch/66b061effd9e/build-native/_sdl2/include -I/workspace/scratch/66b061effd9e/build-native/_sdl2/include/SDL2 -I/workspace/scratch/66b061effd9e/build-native/_sdl2/include-config-release/SDL2 -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o -c /workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "file": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "output": "apps/standalone/CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o"
+    }
+  ],
+  "link_command": "/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/hammond_standalone_paint_benchmark.dir/link.d CMakeFiles/hammond_standalone_paint_benchmark.dir/__/__/tools/standalone_paint_benchmark.cpp.o CMakeFiles/hammond_standalone_paint_benchmark.dir/InstrumentView.cpp.o -o hammond_standalone_paint_benchmark  libhammond_standalone_drawing.a libhammond_standalone_support.a ../../_sdl2/libSDL2.a -lm -pthread ../../libhammond_core.a",
+  "link_directory": "/workspace/scratch/66b061effd9e/build-native/apps/standalone",
+  "shared_libraries": "Exact frozen shared libraries are retained and identified in the separately bound h1-fixture-baseline-identity.json.",
+  "fixture_supplement": {
+    "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/h1-fixture-baseline-identity.json",
+    "bytes": 6077,
+    "sha256": "7ca076951bb48ec62dfda051f816a4b6be8c8049405335167b3a7838a289f420"
+  },
+  "method": "Supplemental genuine pre-H1 benchmark ancestry frozen before any H1 painter edit; leaves original229-source receipt unchanged."
+}

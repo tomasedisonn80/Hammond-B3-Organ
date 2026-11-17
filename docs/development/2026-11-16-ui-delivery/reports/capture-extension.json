@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-16-ui-delivery",
+  "agent": "A15",
+  "actual_agent": "/root/w03_a15_captures",
+  "wave": 3,
+  "status": "passed",
+  "qualification": "Fresh Python unit and source-preservation audit of recovered capture tooling only. No native application, build, capture, image manipulation or visual acceptance was performed.",
+  "recorded_at_utc": "2026-11-17T01:24:41.845161+00:00",
+  "read_inputs_sha256": {
+    "AGENTS.md": "97d1deda4b9caaf797b5b3d4f8e1aaa18acb05b8a57c5bbacefb4d0d49bf48fb",
+    "docs/PLAN.md": "71068511d318a84797c692da25a38bec76b4cfc940f29d5c3e3938949945901f",
+    "docs/development/2026-11-16-ui-delivery/README.md": "aaced3d78abe1bcf5ca7bf78fe7c7e63e78a8a56d108e9d8d8af01440358537c",
+    "docs/design/HEADER_MATERIAL_H1_CONTRACT.md": "07d64498a14431b64742d79e7fbe4d2ac71d77fe51d09f71c638f52594fd9282",
+    "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/notes/A36.md": "fe15cf1a54ddc005ed4c2cf8536f0b412aa44220e15ffc4500ac2b6d047c30d3"
+  },
+  "source_context": {
+    "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+    "head": "6047723b595259de355c74342e48a8ae2ee1e228",
+    "committed_tree": "8bb162b1d5bd153436649339cf9253eaee5c28eb",
+    "python": "3.12.14",
+    "boundary": "HEAD identifies the baseline only; the delivered tooling is an uncommitted overlay with hashes below. Other workers own concurrent source changes."
+  },
+  "owned_files": [
+    "tools/capture_standalone_interface.py",
+    "tests/test_capture_standalone_interface.py",
+    "docs/development/2026-11-16-ui-delivery/notes/A15.md",
+    "docs/development/2026-11-16-ui-delivery/reports/capture-extension.json"
+  ],
+  "recovery": {
+    "tools/capture_standalone_interface.py": {
+      "before_sha256": "371d25b50fed8f7c73608c2a8581375fae377cb814afb73666b09ccc16a62152",
+      "recovered_sha256": "eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a",
+      "original_source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tools/capture_standalone_interface.py",
+      "bytes": 39296
+    },
+    "tests/test_capture_standalone_interface.py": {
+      "before_sha256": "fcf13a4acf15b12fdae6c0afe20a635beb8b3808f5da6e6c473e6ebbdfe5bc19",
+      "recovered_sha256": "7a3c19ad6cba0477120c0602159ea27210ec371fb6c9cef6f01261047db19cb1",
+      "original_source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/tests/test_capture_standalone_interface.py",
+      "bytes": 36666
+    }
+  },
+  "old_workspace_writes": false,
+  "recovered_byte_for_byte": true,
+  "selected_matrix": {
+    "default_case_count": 13,
+    "default_cases_and_order_unchanged": true,
+    "flag": "--include-header-aspects",
+    "optional_case_count": 15,
+    "appended_cases": [
+      {
+        "name": "play-header-wide-1920x820",
+        "width": 1920,
+        "height": 820,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "scene": "standard",
+        "replay_events": 66
+      },
+      {
+        "name": "play-header-tall-1400x1080",
+        "width": 1400,
+        "height": 1080,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "scene": "standard",
+        "replay_events": 66
+      }
+    ],
+    "capture_contract_unchanged": "standalone-interface-capture-v1",
+    "default_matrix_description_unchanged": "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection.",
+    "final_count_uses_actual_selected_cases": true
+  },
+  "preservation_audit": {
+    "status": "passed",
+    "changed_existing_tool_functions": [
+      "main"
+    ],
+    "unchanged_existing_tool_functions": [
+      "require",
+      "identity",
+      "inventory",
+      "inventory_digest",
+      "write_json",
+      "read_json",
+      "git_identity",
+      "production_paths",
+      "build_paths",
+      "configuration",
+      "qualification",
+      "replay",
+      "validate",
+      "validate_focus_pixels"
+    ],
+    "all_existing_tool_assignments_unchanged": true,
+    "original_test_methods_retained": 25,
+    "total_test_methods": 28,
+    "original_assertion_calls_retained": 60,
+    "extended_existing_test_loops": [
+      "test_added_scene_contract_variants_reuse_complete_semantic_validation",
+      "test_added_cases_reject_wrong_dimensions_and_painted_presentation",
+      "test_added_cases_reject_changed_controls_and_loss_of_original_holds"
+    ],
+    "new_test_methods": [
+      "test_cli_selects_exact_default_or_extended_matrix_and_records_actual_count",
+      "test_optional_header_aspects_are_exact_distinct_dimensional_play_views",
+      "test_optional_header_aspects_preserve_dummy_acknowledgment_and_new_directory_refusal"
+    ],
+    "sha256": {
+      "tools/capture_standalone_interface.py": "eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a",
+      "tests/test_capture_standalone_interface.py": "7a3c19ad6cba0477120c0602159ea27210ec371fb6c9cef6f01261047db19cb1"
+    },
+    "checked_unchanged_guards": [
+      "Complete desired/live/copied controls, original Upper/Lower/Pedal holds, note ownership and clean joined shutdown.",
+      "Painted dimensions/workspace/presentation, current acknowledged copied snapshot, actual rendered/audio progress and zero fault counters.",
+      "Compiled MIDI backend consistency, no enumeration/device activity, clean quiescent MIDI shutdown.",
+      "Existing canonical toolbar/pedal focus replays and exact cyan edge checks.",
+      "Source, executable, generated build inputs, configuration, tool, author qualification report and replay/state identity checks.",
+      "Explicit dummy-SDL acknowledgment, expected executable SHA-256, 4..60-second finite timeout and refusal of existing output paths.",
+      "Native BMP dimensions, exact decoded mode/size/pixel equality after lossless PNG encoding and retained failure provenance."
+    ],
+    "production_change_boundary": "Only optional case constants, argparse option, selected tuple, selected-matrix provenance text and the two loops that consume the selected tuple changed. Existing state/replay/validator/focus/identity/refusal functions and constants are unchanged."
+  },
+  "verification": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "tests/test_capture_standalone_interface.py"
+      ],
+      "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "exit_code": 0,
+      "tool_wall_seconds": 0.572031495,
+      "combined_output": ".........................\n----------------------------------------------------------------------\nRan 25 tests in 0.484s\n\nOK\n",
+      "phase": "before_recovery",
+      "test_methods": 25
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "tests/test_capture_standalone_interface.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "exit_code": 0,
+      "tool_wall_seconds": 0.836283347,
+      "combined_output": "test_added_cases_reject_changed_controls_and_loss_of_original_holds (__main__.InterfaceCaptureValidationTests.test_added_cases_reject_changed_controls_and_loss_of_original_holds) ... ok\ntest_added_cases_reject_wrong_dimensions_and_painted_presentation (__main__.InterfaceCaptureValidationTests.test_added_cases_reject_wrong_dimensions_and_painted_presentation) ... ok\ntest_added_scene_contract_variants_reuse_complete_semantic_validation (__main__.InterfaceCaptureValidationTests.test_added_scene_contract_variants_reuse_complete_semantic_validation) ... ok\ntest_all_eight_retained_native_diagnostics_pass (__main__.InterfaceCaptureValidationTests.test_all_eight_retained_native_diagnostics_pass) ... ok\ntest_both_midi_states_must_match_the_compiled_backend (__main__.InterfaceCaptureValidationTests.test_both_midi_states_must_match_the_compiled_backend) ... ok\ntest_cli_selects_exact_default_or_extended_matrix_and_records_actual_count (__main__.InterfaceCaptureValidationTests.test_cli_selects_exact_default_or_extended_matrix_and_records_actual_count) ... ok\ntest_consistent_compiled_backend_facts_choose_the_exact_inert_state (__main__.InterfaceCaptureValidationTests.test_consistent_compiled_backend_facts_choose_the_exact_inert_state) ... ok\ntest_device_and_discovery_facts_must_be_complete_typed_and_inert (__main__.InterfaceCaptureValidationTests.test_device_and_discovery_facts_must_be_complete_typed_and_inert) ... ok\ntest_each_focus_edge_rejects_even_one_missing_or_wrong_color_pixel (__main__.InterfaceCaptureValidationTests.test_each_focus_edge_rejects_even_one_missing_or_wrong_color_pixel) ... ok\ntest_focus_pixel_checks_reject_wrong_size_mode_or_truncated_bytes (__main__.InterfaceCaptureValidationTests.test_focus_pixel_checks_reject_wrong_size_mode_or_truncated_bytes) ... ok\ntest_focus_pixel_receipts_check_all_four_edges_and_bind_decoded_bytes (__main__.InterfaceCaptureValidationTests.test_focus_pixel_receipts_check_all_four_edges_and_bind_decoded_bytes) ... ok\ntest_focus_replays_retain_original_prefix_and_target_exact_semantic_stops (__main__.InterfaceCaptureValidationTests.test_focus_replays_retain_original_prefix_and_target_exact_semantic_stops) ... ok\ntest_focus_scenes_require_exact_fifth_owner_and_zero_releases (__main__.InterfaceCaptureValidationTests.test_focus_scenes_require_exact_fifth_owner_and_zero_releases) ... ok\ntest_focus_scenes_require_observed_edited_four_owner_prefix (__main__.InterfaceCaptureValidationTests.test_focus_scenes_require_observed_edited_four_owner_prefix) ... ok\ntest_midi_shutdown_remains_strict_in_both_backend_modes (__main__.InterfaceCaptureValidationTests.test_midi_shutdown_remains_strict_in_both_backend_modes) ... ok\ntest_missing_malformed_or_contradictory_backend_facts_are_rejected (__main__.InterfaceCaptureValidationTests.test_missing_malformed_or_contradictory_backend_facts_are_rejected) ... ok\ntest_missing_or_extra_capture_facts_are_rejected (__main__.InterfaceCaptureValidationTests.test_missing_or_extra_capture_facts_are_rejected) ... ok\ntest_missing_or_extra_painted_holds_are_rejected (__main__.InterfaceCaptureValidationTests.test_missing_or_extra_painted_holds_are_rejected) ... ok\ntest_neither_backend_mode_allows_port_or_device_activity (__main__.InterfaceCaptureValidationTests.test_neither_backend_mode_allows_port_or_device_activity) ... ok\ntest_optional_header_aspects_are_exact_distinct_dimensional_play_views (__main__.InterfaceCaptureValidationTests.test_optional_header_aspects_are_exact_distinct_dimensional_play_views) ... ok\ntest_optional_header_aspects_preserve_dummy_acknowledgment_and_new_directory_refusal (__main__.InterfaceCaptureValidationTests.test_optional_header_aspects_preserve_dummy_acknowledgment_and_new_directory_refusal) ... ok\ntest_original_replay_and_state_bytes_match_immutable_gallery (__main__.InterfaceCaptureValidationTests.test_original_replay_and_state_bytes_match_immutable_gallery) ... ok\ntest_painted_hold_counts_require_integers_without_boolean_coercion (__main__.InterfaceCaptureValidationTests.test_painted_hold_counts_require_integers_without_boolean_coercion) ... ok\ntest_pointer_capture_activity_is_rejected_for_keyboard_only_replay (__main__.InterfaceCaptureValidationTests.test_pointer_capture_activity_is_rejected_for_keyboard_only_replay) ... ok\ntest_pointer_flags_and_counters_preserve_boolean_and_integer_types (__main__.InterfaceCaptureValidationTests.test_pointer_flags_and_counters_preserve_boolean_and_integer_types) ... ok\ntest_thirteen_case_matrix_preserves_original_identities_and_adds_required_views (__main__.InterfaceCaptureValidationTests.test_thirteen_case_matrix_preserves_original_identities_and_adds_required_views) ... ok\ntest_unknown_or_inapplicable_focus_scenes_are_rejected (__main__.InterfaceCaptureValidationTests.test_unknown_or_inapplicable_focus_scenes_are_rejected) ... ok\ntest_wrong_painted_hold_counts_are_rejected_despite_valid_endpoint (__main__.InterfaceCaptureValidationTests.test_wrong_painted_hold_counts_are_rejected_despite_valid_endpoint) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 0.617s\n\nOK\n",
+      "phase": "after_recovery",
+      "test_methods": 28
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "tools/capture_standalone_interface.py",
+        "--help"
+      ],
+      "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "exit_code": 0,
+      "tool_wall_seconds": 0.050879258,
+      "combined_output": "usage: capture_standalone_interface.py [-h] --exe EXE --source-root\n                                       SOURCE_ROOT --build-root BUILD_ROOT\n                                       --source-qualification\n                                       SOURCE_QUALIFICATION\n                                       --expected-exe-sha256\n                                       EXPECTED_EXE_SHA256 --output OUTPUT\n                                       --dummy-sdl [--include-header-aspects]\n                                       [--timeout-seconds TIMEOUT_SECONDS]\n\nCapture thirteen real native interface views into a new, bounded gallery.\n--include-header-aspects appends two unequal-aspect Dimensional Play views,\n1920x820 and 1400x1080, for a fifteen-view gallery. The default stays\nthirteen. Requires Python 3.10+, Pillow, an already built standalone and a\nsource/build qualification JSON with ``binary_sha256`` and ``source_sha256``\nmembers. The qualification is checked, not treated as an independent build\nattestation. SDL dummy audio/video and the software renderer must be\nexplicitly admitted. This utility never builds, changes application sources,\nsaves controls, uses image generation, overwrites a gallery, or substitutes\nartwork for app pixels.\n\noptions:\n  -h, --help            show this help message and exit\n  --exe EXE\n  --source-root SOURCE_ROOT\n  --build-root BUILD_ROOT\n  --source-qualification SOURCE_QUALIFICATION\n                        author report with binary_sha256 and source_sha256;\n                        every listed digest must match\n  --expected-exe-sha256 EXPECTED_EXE_SHA256\n  --output OUTPUT       new directory; an existing empty directory is refused\n  --dummy-sdl           acknowledge dummy audio/video and software rendering;\n                        no physical device claim\n  --include-header-aspects\n                        append full-frame 1920x820 and 1400x1080 Dimensional\n                        Play views (15 total; default 13)\n  --timeout-seconds TIMEOUT_SECONDS\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "tools/capture_standalone_interface.py",
+        "tests/test_capture_standalone_interface.py"
+      ],
+      "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "exit_code": 0,
+      "tool_wall_seconds": 0.000041881,
+      "combined_output": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-"
+      ],
+      "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "exit_code": 0,
+      "tool_wall_seconds": 0.226907592,
+      "combined_output": "{\n  \"status\": \"passed\",\n  \"changed_existing_tool_functions\": [\n    \"main\"\n  ],\n  \"unchanged_existing_tool_functions\": [\n    \"require\",\n    \"identity\",\n    \"inventory\",\n    \"inventory_digest\",\n    \"write_json\",\n    \"read_json\",\n    \"git_identity\",\n    \"production_paths\",\n    \"build_paths\",\n    \"configuration\",\n    \"qualification\",\n    \"replay\",\n    \"validate\",\n    \"validate_focus_pixels\"\n  ],\n  \"all_existing_tool_assignments_unchanged\": true,\n  \"original_test_methods_retained\": 25,\n  \"total_test_methods\": 28,\n  \"original_assertion_calls_retained\": 60,\n  \"extended_existing_test_loops\": [\n    \"test_added_scene_contract_variants_reuse_complete_semantic_validation\",\n    \"test_added_cases_reject_wrong_dimensions_and_painted_presentation\",\n    \"test_added_cases_reject_changed_controls_and_loss_of_original_holds\"\n  ],\n  \"new_test_methods\": [\n    \"test_cli_selects_exact_default_or_extended_matrix_and_records_actual_count\",\n    \"test_optional_header_aspects_are_exact_distinct_dimensional_play_views\",\n    \"test_optional_header_aspects_preserve_dummy_acknowledgment_and_new_directory_refusal\"\n  ],\n  \"sha256\": {\n    \"tools/capture_standalone_interface.py\": \"eb0af1ab5cc03d47f5bdb3490cf2f2d23786c9baf9f68cd3a09af0bc2b15975a\",\n    \"tests/test_capture_standalone_interface.py\": \"7a3c19ad6cba0477120c0602159ea27210ec371fb6c9cef6f01261047db19cb1\"\n  }\n}\n",
+      "audit_definition": "Compared ASTs against git show HEAD for both owned code files. All prior tool assignments remain equal; only main changes among existing tool functions. All 25 prior test methods remain, their 60 unittest assertion-call ASTs retain exact order/content, and the only three changed prior method bodies differ solely by iterating over (*ADDED_CASES, *HEADER_ASPECT_CASES)."
+    }
+  ],
+  "test_evidence_boundary": {
+    "retained_native_diagnostics": "Eight immutable v3 diagnostics are validated as existing evidence.",
+    "added_size_variants": "Synthetic in-memory dictionary mutations exercise the same validator for both optional sizes; they are not observed captures.",
+    "cli_orchestration": "Standard-library mocks replace subprocess/image boundaries using temporary non-image byte placeholders. Both real CLI selection/receipt paths, native command counts, validation arguments, case order and final counts are checked.",
+    "refusal_checks": "Missing --dummy-sdl and existing output directory are rejected before a child launch, preserving the sentinel directory bytes.",
+    "native_capture_count_this_assignment": 0,
+    "image_manipulation": false
+  },
+  "retained_historical_failure": {
+    "source": "/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/notes/A36.md",
+    "meaning": "The original first mocked orchestration attempt failed when platform.platform invoked uname; A36 records its platform-boundary mock correction. That source and failure note remain unchanged. It is not a new failure observed here."
+  },
+  "unrun_gates": [
+    "Native configure/build/CTest and source-to-binary qualification.",
+    "Actual thirteen- or fifteen-view native capture run, state/pixel admission and visual review.",
+    "T3/H1 candidate comparison, full-frame acceptance, real display/DPI/input, native accessibility and physical fidelity.",
+    "Commit, push and source-specific hosted qualification."
+  ],
+  "root_handoff": [
+    "Treat the delivered tool hash as frozen during capture.",
+    "Build coherent current source, retain matching source/binary/build qualification, then run the tool with --include-header-aspects, --dummy-sdl, expected executable SHA-256 and a fresh output directory.",
+    "Retain the complete fifteen-case provenance and images; require independent whole-frame review against the genuine qualified immediately-before application and atlas reference.",
+    "Literal whole-interface 1:1 remains unmet and unwaived."
+  ]
+}

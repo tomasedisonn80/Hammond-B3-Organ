@@ -1,0 +1,815 @@
+{
+  "schema_version": 1,
+  "worker": "A19",
+  "agent": "/root/w04_a19_title_evidence",
+  "wave": 4,
+  "decision": "ADMIT_RETAINED_NUMERICAL_AND_SOURCE_EVIDENCE",
+  "candidate_acceptance": "PENDING_SEPARATE_FULL_FRAME_VISUAL_AND_CURRENT_AFFECTED_GATE_RECEIPTS",
+  "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+  "base_commit": "6047723b595259de355c74342e48a8ae2ee1e228",
+  "scope": "Independent read-only evidence/source/mask audit of root's actual native run; no new native execution or claim of a second pixel comparison.",
+  "owned_paths": [
+    "docs/development/2026-11-16-ui-delivery/notes/A19.md",
+    "docs/development/2026-11-16-ui-delivery/reports/title-evidence-admission.json",
+    "docs/reviews/TITLE_T3_REVISION_2_NATIVE_ADMISSION.md"
+  ],
+  "path_ownership_released": true,
+  "commands": {
+    "independent_verification": "python3 -B - <<'PY'\nimport collections, datetime, difflib, hashlib, json, pathlib, re, struct\nfrom PIL import Image\nroot=pathlib.Path.cwd()\nsession=root/'docs/development/2026-11-16-ui-delivery'\npaired=session/'reports/title-paired'\nread=lambda p:json.loads(pathlib.Path(p).read_text())\ndigest=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()\nidentity=lambda p:dict(path=str(p),bytes=pathlib.Path(p).stat().st_size,sha256=digest(p))\nreport=read(paired/'report.json')\ndecl=read(paired/'mask-declaration.json')\nbaseline=read(session/'reports/baseline-identity.json')\nbuilt=read(session/'reports/title-build-identity.json')\nreview=read(session/'reports/title-source-review.json')\ndensity=read(session/'reports/title-density.json')\ninventories=read(paired/'fixture-inventories.json')\nexpected={(s,n) for s,count in [('typography',44),('percussion',66),('clips',48)] for n in range(count)}\nrows=report['results']; cases=decl['cases']\nassert len(rows)==len(cases)==len(expected)==158\nassert {(r['suite'],r['case']) for r in rows}=={(c['suite'],c['case']) for c in cases}==expected\nassert report['inputs']==read(paired/'input-identities.json')\nassert report['clip_fixture_assertions']==read(paired/'clip-fixture-assertions.json')\nassert report['inputs']['mask_declaration']['sha256']==digest(paired/'mask-declaration.json')\nlookup={(c['suite'],c['case']):c for c in cases}\nfor r in rows:\n c=lookup[(r['suite'],r['case'])]\n assert r['passed'] and not r['metadata_errors'] and r['metadata_error_count']==0 and r['metadata_equal']\n assert r['before_header_sha256']==r['after_header_sha256']\n assert r['before_model_sha256']==r['after_model_sha256']\n assert r['complete_model_available']==(r['suite'] in ['typography','clips'])\n assert (r['before_model_sha256'] is not None)==r['complete_model_available']\n assert r['metrics']['passed'] and r['metrics']['outside_pixels']==r['metrics']['outside_channels']==0 and r['metrics']['outside_box'] is None\n assert r['allowed_pixels']==c['allowed_pixels'] and r['protected_pixels']==c['protected_pixels']\n assert r['allowance_sha256']==c['allowance_sha256']\n assert r['whole_frame_equality_required']==c['whole_frame_equality_required'] and r['whole_frame_equality_passed']\n assert r['density']['passed'] and all(v['passed'] for v in r['warm_geometry'].values())\n assert all(v['passed'] for v in r['caller_clip_preservation'].values())\n if r['whole_frame_equality_required']:\n  assert r['before_rgba_sha256']==r['after_rgba_sha256'] and r['metrics']['different_pixels']==0\n if not r['active']: assert c['allowed_pixels']==0\nobserved=dict(pairs=len(rows),compared_pixels=sum(c['output_size'][0]*c['output_size'][1] for c in cases),\n allowed_pixels=sum(c['allowed_pixels'] for c in cases),protected_pixels=sum(c['protected_pixels'] for c in cases),\n changed_pixels=sum(r['metrics']['different_pixels'] for r in rows),outside_pixels=sum(r['metrics']['outside_pixels'] for r in rows),\n inactive_pairs=sum(not r['active'] for r in rows),exact_frame_pairs=sum(r['whole_frame_equality_required'] for r in rows),\n complete_model_pairs=sum(r['complete_model_available'] for r in rows))\nassert observed==dict(pairs=158,compared_pixels=383790445,allowed_pixels=1308542,protected_pixels=382481903,\n changed_pixels=679863,outside_pixels=0,inactive_pairs=39,exact_frame_pairs=90,complete_model_pairs=92)\nassert all(report['coverage'][k]==observed[k] for k in ['compared_pixels','allowed_pixels','changed_pixels','outside_pixels','inactive_pairs','complete_model_pairs'])\nfor suite,item in inventories.items():\n assert item['before']==item['after'] and item['before']['record']['cases']==sum(c['suite']==suite for c in cases)\n for row in item['before']['record'].get('inventory',[]):\n  c=lookup[(suite,row['case'])]\n  for k,v in row.items():\n   wanted=c['active'] if k=='active_typography' else ([0,0] if c['resource_crop'] else c['viewport'][:2]) if k=='origin' else c[k]\n   if k=='logical_size':\n    assert [struct.pack('<f',z) for z in v]==[struct.pack('<f',z) for z in wanted]\n   else: assert v==wanted,(suite,row['case'],k,v,wanted)\nlog=(session/'reports/title-paired.log').read_text()\nlogged=re.findall(r'^(typography|percussion|clips) (\\d+): passed$',log,re.M)\nassert len(logged)==158 and {(s,int(n)) for s,n in logged}==expected and 'FAILED' not in log\nassert json.loads(log.splitlines()[-1])['status']=='passed'\n# Independently derive all masks from literal revision-2 rules, raw atlas metrics and binary32.\n# No comparator, fixture, painter helper, native program or candidate pixels are imported/executed.\nF=lambda n:struct.unpack('<f',struct.pack('<f',n))[0]\nfont=(root/'apps/standalone/FontData.h').read_text()\nblock=font.split('kSerifGlyphs{{',1)[1].split('}};',1)[0]\nglyphs={chr(int(code)):tuple(map(int,fields.split(','))) for fields,code in re.findall(r'\\{(-?\\d+(?:,\\s*-?\\d+){6})\\},\\s*// ASCII (\\d+)',block)}\nassert len(glyphs)==95\ntitle='TONEWHEEL ATLAS'\ndef intersect(a,b):\n l,t=max(a[0],b[0]),max(a[1],b[1])\n return [l,t,max(l,min(a[2],b[2])),max(t,min(a[3],b[3]))]\ndef xywh(r):return [r[0],r[1],r[0]+r[2],r[1]+r[3]]\ndef title_args(w,h):\n sx,sy=F(w/1672),F(h/941); f=min(sx,sy)\n service_left=F(380*sx); service_width=F(F(510*sx)-service_left)\n left=F(F(service_left+service_width)+F(12*sx)); right=F(F(1312*sx)-F(12*sx))\n mid=F(836*sx); half=max(0,min(F(mid-left),F(right-mid))); left,right=F(mid-half),F(mid+half)\n def text_width(size):\n  q=F(size/40); width=0.\n  for ch in title:width=F(width+F(F(glyphs[ch][6]*q)/64))\n  return width\n size=F(42.75*f); natural=text_width(size); available=F(right-left)\n if natural>available:size=F(size*F(available/natural))\n width=text_width(size); x=min(max(F(mid-F(width/2)),left),max(left,F(right-width))); y=F(11.5*sy)\n old=[(F(x+sx),F(y+F(2*sy)),[4,5,4,255]),(x,y,[214,182,124,255])]\n new=[old[0],(F(x+f),F(y+f),[100,65,28,255]),(x,F(y-F(.125*f)),[255,231,184,255]),(F(x+f),y,[212,171,103,255]),(x,y,[226,192,135,255])]\n return size,old,new\nmatched_operations=0\nfor c in cases:\n w,h=c['output_size']; origin=c['viewport'][:2]; scale=c['scale']\n visible=intersect([0,0,w,h],xywh(c['viewport']))\n if c['clip_enabled']:\n  clip=xywh(c['clip']);clip=[v+origin[i%2] for i,v in enumerate(clip)];visible=intersect(visible,clip)\n assert visible==c['visible_device_box']\n rects=set()\n if c['active']:\n  size,old,new=title_args(*c['logical_size'])\n  for phase,runs in [('before',old),('after',new)]:\n   assert len(c['title'][phase])==len(runs)\n   count=0\n   for (x,top,rgba),run in zip(runs,c['title'][phase]):\n    assert run['text']==title and [run['x'],run['top'],run['size'],run['rgba']]==[x,top,size,rgba]\n    q=F(size/40); y=F(top+F(38*q)); operations=[]\n    for index,ch in enumerate(title):\n     ax,ay,gw,gh,bx,by,adv=glyphs[ch]\n     if gw and gh:\n      px=2 if F(gw*q)<1 else 0; py=2 if F(gh*q)<1 else 0\n      target=[F(x+F((bx-px)*q)),F(y+F((by-py)*q)),F((gw+2*px)*q),F((gh+2*py)*q)]\n      dx,dy,dw,dh=[int(F(v*s)) for v,s in zip(target,scale+scale)]\n      device=[dx+origin[0],dy+origin[1],dx+origin[0]+max(dw,0),dy+origin[1]+max(dh,0)]\n      cut=intersect(device,visible)\n      operations.append(dict(index=index,character=ch,atlas_xywh=[ax-px,ay-py,gw+2*px,gh+2*py],target_binary32=target,device_box=device,visible_box=cut))\n      if cut[2]>cut[0] and cut[3]>cut[1]:rects.add(tuple(cut))\n     x=F(x+F(F(adv*q)/64))\n    assert operations==run['copies'],(c['suite'],c['case'],phase,run['purpose'])\n    count+=len(operations)\n   assert count=={'before':28,'after':70}[phase];matched_operations+=count\n else:assert c['title'] is None\n assert [list(r) for r in sorted(rects)]==c['allowed_rectangles']\n mask=bytearray(w*h)\n for l,t,r,b in rects:\n  line=b'\\xff'*(r-l)\n  for y in range(t,b):mask[y*w+l:y*w+r]=line\n count=mask.count(255)\n bounds=[min(r[0] for r in rects),min(r[1] for r in rects),max(r[2] for r in rects),max(r[3] for r in rects)] if rects else None\n assert count==c['allowed_pixels'] and w*h-count==c['protected_pixels']\n assert hashlib.sha256(mask).hexdigest()==c['allowance_sha256'] and bounds==c['allowance_bounds']\n# Validate exact source transition and protected inputs without git.\npainter='apps/standalone/InstrumentView.cpp'\nold=(root.parent/'baseline-native/InstrumentView.cpp').read_bytes()\ncurrent=(root/painter).read_bytes()\nv1=(root/'docs/development/2026-11-16-heading-title-continuation/inputs/InstrumentView-t3-v1.cpp').read_bytes()\nneedle=b'    drawing.text(title, x + scale.sx, y + 2.0F * scale.sy, size, {4, 5, 4}, TextFace::Serif);\\n    drawing.text(title, x, y, size, kUiBrass, TextFace::Serif);'\nstart=current.index(b'    drawing.text(title, x + scale.sx, y + 2.0F * scale.sy, size, {4, 5, 4, 255}, TextFace::Serif);')\nend=current.index(b'    drawing.rect(',start)\nreplacement=current[start:end].rstrip(b'\\n')\nassert old.count(needle)==1 and old.replace(needle,replacement)==current\nassert v1.count(b'y - 0.5F * scale.f')==1 and v1.replace(b'y - 0.5F * scale.f',b'y - 0.125F * scale.f')==current\nprotected=baseline['protected_paths']\nassert len(protected)==len(set(protected))==213 and protected==built['protected_paths']\nhistorical=read(root/'docs/development/2026-11-16-heading-title-continuation/reports/a09-compatibility-baseline.json')\nhistoric={p:v for group in historical['groups'].values() for p,v in group['files'].items()}\nassert set(historic)==set(protected)\nfor name in protected:\n actual=digest(root/name)\n assert actual==baseline['source_sha256'][name]==built['source_sha256'][name]\n if name!='apps/standalone/main.cpp':assert actual==historic[name]['sha256']\nassert len(built['source_sha256'])==229\nassert all(digest(root/name)==expected for name,expected in built['source_sha256'].items())\nchanged=[name for name,h in baseline['source_sha256'].items() if h!=built['source_sha256'][name]]\nassert changed==[painter]\nbinaries=[]\nfor label,receipt,directory in [('genuine_pre_T3',baseline,root.parent/'baseline-native'),('revision_2',built,root.parent/'build-native/apps/standalone')]:\n for name,record in receipt['files'].items():\n  got=identity(directory/name)\n  assert all(got[k]==record[k] for k in ['bytes','sha256'])\n  binaries.append(dict(stage=label,**got))\nwatch=[*report['inputs']['sources'].values(),*report['inputs']['build']['files'],*report['inputs']['material_check']['files']]\nwatch.extend(v for pair in report['inputs']['baseline']['binaries'].values() for v in pair.values())\nwatch.extend(report['inputs']['baseline'][k] for k in ['baseline_app','before_painter','receipt'])\nunique={r['path']:r for r in watch};drift=[]\nfor path,record in unique.items():\n got=identity(path)\n if got!=record:drift.append(dict(recorded=record,current=got))\nmaterial=report['native_material_acceptance']\nassert material['passed'] and material['record']['checks']==1317 and material['record']['failures']==0\nassert material['record']['checks']==material['record']['legacy_checks']+material['record']['header_checks']+material['record']['calibration_modal']['checks']\nassert [(r['size'],r['scale'],r['workspace']) for r in material['record']['headers']]==[(list(size),s,ws) for size in [(1400,820),(1672,941)] for s in [1,1.25,1.5,2] for ws in range(3)]\nfor phase in ['before','after']:\n x=report['clip_fixture_assertions'][phase]\n assert x['passed']\n for k,v in dict(cases=48,checks=4064,paintings=99,clipped_cases=40,empty_or_disjoint_cases=8,deterministic_repaints=48,history_repaints=2).items():assert x['record'][k]==v\ndensity_rows=[r['density'] for r in rows if r['density']['applicable']]\nassert len(density_rows)==35\nfor r in density_rows:\n assert [x['pixels'] for x in r['before']]==[4150,3863,3601,3200,2690]\n assert r['before'][1]['bounds']==[602,20,1065,53]\n assert [x['pixels'] for x in r['after']]==[5774,5512,5304,5029,4694]\n assert r['after'][1]['bounds']==[602,19,1066,53]\n assert r['primary_band']==[4500,6000] and r['candidate_absolute_count_error']==97 and r['original_absolute_count_error']==1552\n assert r['error_reduction_fraction']==.9375 and r['minimum_error_reduction']==.4 and r['passed']\nassert density['status']=='passed' and len(density['cases'])==density['required_cases']==18\nassert density['executable_sha256']==built['files']['test_standalone_footage_typography_raster']['sha256']\nfor r in density['cases']:assert r['passed'] and r['thresholds']==density_rows[0]['after']\n# Decode retained reference and genuine/current application title ROIs without resampling.\nimage_checks=[]\nfor label,path in [('reference',root/'docs/design/atlas-cover-reference.jpg'),('genuine_before',root.parent/'baseline-gallery/images/play-reference-1672x941.png'),('candidate',root/'docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png')]:\n im=Image.open(path).convert('RGB');assert im.size==(1672,941)\n samples=[(x,y,im.getpixel((x,y))) for y in range(14,60) for x in range(590,1080)]\n counts=[]\n for th in [80,100,120,140,160]:\n  pts=[(x,y) for x,y,(r,g,b) in samples if 2126*r+7152*g+722*b>=th*10000]\n  counts.append(dict(threshold=th,pixels=len(pts),bounds=[min(x for x,y in pts),min(y for x,y in pts),max(x for x,y in pts)+1,max(y for x,y in pts)+1]))\n wanted={'reference':[5639,5415,4991,4502,3785],'genuine_before':[4150,3863,3601,3200,2690],'candidate':[5774,5512,5304,5029,4694]}[label]\n assert [r['pixels'] for r in counts]==wanted\n if label=='candidate':assert counts==density_rows[0]['after']\n image_checks.append(dict(stage=label,identity=identity(path),thresholds=counts))\nhistorical_rejection=read(root/'docs/development/2026-11-16-heading-title-continuation/reports/t3-v1-rejection.json')\nassert historical_rejection['status']=='rejected' and historical_rejection['material_test_failures']==2\nrejected=[]\nfor name,record in historical_rejection['files'].items():\n got=identity(pathlib.Path(historical_rejection['frozen_binaries'])/name)\n assert all(got[k]==record[k] for k in ['bytes','sha256']);rejected.append(got)\nkey_paths=[session/'reports/title-paired.log',session/'reports/title-build.log',session/'reports/title-build-identity.json',session/'reports/title-density.json',session/'reports/title-source-review.json',session/'reports/title-density-header-fixture.log',session/'reports/title-checker-recovery.json',session/'reports/baseline-identity.json',root/'docs/design/TITLE_T3_CONTRACT.md',root/'docs/design/TITLE_T3_REVISION_2.md',root/'docs/reviews/TITLE_T3_ADMISSION.md',root/'docs/reviews/TITLE_T3_REVISION_2_ADMISSION.md',root/'tools/compare_title_typography.py',root/'tools/compare_heading_typography.py',root/'tools/compare_footage_typography.py',root/'apps/standalone/native_tests/test_standalone_title_density.py',root/painter,root.parent/'baseline-native/InstrumentView.cpp',root/'docs/development/2026-11-16-heading-title-continuation/reports/t3-v1-rejection.json',root/'docs/development/2026-11-16-heading-title-continuation/reports/t3-affected-tests.log',root/'docs/development/2026-11-16-heading-title-continuation/inputs/InstrumentView-t3-v1.cpp',root/'docs/development/2026-11-16-heading-title-continuation/inputs/compare_title_typography-v1.py']\nkey_paths+=[paired/name for name in ['report.json','input-identities.json','mask-declaration.json','fixture-inventories.json','clip-fixture-assertions.json']]\nprint(json.dumps(dict(observed_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),\n summary=observed,suite_counts=dict(collections.Counter(r['suite'] for r in rows)),\n mask_rederivation=dict(cases=158,independent_binary32_glyph_copy_operations=matched_operations,all_masks_and_bounds_and_rectangles_equal=True,\n raw_metrics=95,method='Independent raw-atlas/literal-rule binary32 calculation; bytearray row union; no comparator imports or native execution.'),\n declaration_sizes=sorted(set(tuple(c['logical_size']) for c in cases)),declaration_scales=sorted(set(tuple(c['scale']) for c in cases)),\n protected_verified=213,current_build_sources_verified=229,baseline_source_differences=changed,\n watched_unique_inputs=len(unique),current_drift_from_paired_receipt=drift,source_transition_exact=True,v1_to_revision2_exact=True,\n material_counts={k:v for k,v in material['record'].items() if type(v) is int},material_execution_seconds=material['elapsed_seconds'],\n minimum_active_headers=[r for r in material['record']['headers'] if r['size']==[1400,820] and r['workspace']==0],\n density_pairs=35,standalone_density_cases=18,independently_decoded_rois=image_checks,\n report_seconds=report['elapsed_seconds'],binaries=binaries,material_binary=report['inputs']['material_check']['binary'],\n rejected_binaries_preserved=rejected,reviewed_files=[identity(p) for p in key_paths],\n native_execution_count=0,build_count=0,capture_count=0,git_command_count=0,subagent_count=0),indent=2))\nPY",
+    "independent_command_classification": "Executed by A19; reads only. Successful output is retained in verification.",
+    "root_native_comparison": {
+      "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "command": "python3 -B tools/compare_title_typography.py --before ../baseline-native/test_standalone_footage_typography_raster --after ../build-native/apps/standalone/test_standalone_footage_typography_raster --before-percussion ../baseline-native/test_standalone_percussion_raster --after-percussion ../build-native/apps/standalone/test_standalone_percussion_raster --before-clips ../baseline-native/test_standalone_typography_clips --after-clips ../build-native/apps/standalone/test_standalone_typography_clips --baseline-receipt docs/development/2026-11-16-ui-delivery/reports/baseline-identity.json --before-painter ../baseline-native/InstrumentView.cpp --build-dir ../build-native --output docs/development/2026-11-16-ui-delivery/reports/title-paired",
+      "nondefault_environment_or_options": "None, per root",
+      "provenance": "Exact executed invocation supplied directly by root; log, inputs, source, masks and result identities independently inspected by A19."
+    },
+    "root_build": {
+      "cwd": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ",
+      "command": "/workspace/scratch/3edffb787db3/build-tools/cmake/data/bin/cmake --build ../build-native --parallel 3",
+      "stdout": "docs/development/2026-11-16-ui-delivery/reports/title-build.log",
+      "provenance": "Exact executed invocation supplied by root; A19 reviewed retained log and independently hashed the resulting source/binaries."
+    },
+    "supplemental_material_compile_row_check": "python3 -B - <<'PY'\nimport json,pathlib\nr=json.loads(pathlib.Path('docs/development/2026-11-16-ui-delivery/reports/title-paired/report.json').read_text())\ncurrent=json.loads(pathlib.Path('../build-native/compile_commands.json').read_text())\nprint('Material compile rows identical after registration:',all(current.count(row)==1 for row in r['inputs']['material_check']['compile_commands']))\nPY",
+    "source_inspection": "cat/sed/rg reads of complete AGENTS.md, PLAN.md, current README/CHECKPOINT/assignments, T3 contracts/reviews, comparator, pinned harness functions, Drawing, native assertions, title density reader, and pinned SDL software COPY sources. No git or native execution."
+  },
+  "reviewer_script_correction": {
+    "first_attempt_exit_code": 1,
+    "failure": "AssertionError: ('clips', 44, 'logical_size', [1399.99988, 941], [1399.9998779296875, 941])",
+    "cause": "Reviewer compared serialized max-digits logical dimensions using binary64 equality.",
+    "correction": "Compare binary32 bytes for logical_size; no tolerance or product criterion changed. Corrected density-reader path to its actual apps/standalone/native_tests location before completing the script.",
+    "effects": "No report write, production change, native invocation or image generation occurred in the failed reviewer-script attempt."
+  },
+  "verification": {
+    "observed_at_utc": "2026-11-17T01:38:18.147297+00:00",
+    "summary": {
+      "pairs": 158,
+      "compared_pixels": 383790445,
+      "allowed_pixels": 1308542,
+      "protected_pixels": 382481903,
+      "changed_pixels": 679863,
+      "outside_pixels": 0,
+      "inactive_pairs": 39,
+      "exact_frame_pairs": 90,
+      "complete_model_pairs": 92
+    },
+    "suite_counts": {
+      "typography": 44,
+      "percussion": 66,
+      "clips": 48
+    },
+    "mask_rederivation": {
+      "cases": 158,
+      "independent_binary32_glyph_copy_operations": 11662,
+      "all_masks_and_bounds_and_rectangles_equal": true,
+      "raw_metrics": 95,
+      "method": "Independent raw-atlas/literal-rule binary32 calculation; bytearray row union; no comparator imports or native execution."
+    },
+    "declaration_sizes": [
+      [
+        960,
+        700
+      ],
+      [
+        1280,
+        900
+      ],
+      [
+        1399,
+        820
+      ],
+      [
+        1399.9998779296875,
+        941
+      ],
+      [
+        1400,
+        819
+      ],
+      [
+        1400,
+        820
+      ],
+      [
+        1400,
+        1080
+      ],
+      [
+        1400.25,
+        820.75
+      ],
+      [
+        1672,
+        819.9999389648438
+      ],
+      [
+        1672,
+        933.25
+      ],
+      [
+        1672,
+        933.5
+      ],
+      [
+        1672,
+        941
+      ],
+      [
+        1672.5,
+        941.25
+      ],
+      [
+        1920,
+        820
+      ],
+      [
+        1920,
+        1080
+      ],
+      [
+        8192,
+        8192
+      ]
+    ],
+    "declaration_scales": [
+      [
+        0.75,
+        0.75
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1.25,
+        1.25
+      ],
+      [
+        1.5,
+        1.5
+      ],
+      [
+        1.5,
+        2
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "protected_verified": 213,
+    "current_build_sources_verified": 229,
+    "baseline_source_differences": [
+      "apps/standalone/InstrumentView.cpp"
+    ],
+    "watched_unique_inputs": 267,
+    "current_drift_from_paired_receipt": [
+      {
+        "recorded": {
+          "bytes": 39476,
+          "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/CMakeLists.txt",
+          "sha256": "b7fab5fb01b1457f28bc72c6b754202d0e204fdf482d84368f86035fb36366d7"
+        },
+        "current": {
+          "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/CMakeLists.txt",
+          "bytes": 41066,
+          "sha256": "2e75d26ed0803c449e5c3cd32e51b37d9382c914ee9fc97b411122c4f20c0851"
+        }
+      },
+      {
+        "recorded": {
+          "bytes": 368821,
+          "path": "/workspace/scratch/66b061effd9e/build-native/compile_commands.json",
+          "sha256": "9cac0a9b350471bff7e7cdff962d11fecb70bfca1fa4cb91b4b35d66cd9e5d02"
+        },
+        "current": {
+          "path": "/workspace/scratch/66b061effd9e/build-native/compile_commands.json",
+          "bytes": 369857,
+          "sha256": "abd03706420c1e1add104439844d240f4a444a88c981f019d7b5eb00f7223427"
+        }
+      }
+    ],
+    "source_transition_exact": true,
+    "v1_to_revision2_exact": true,
+    "material_counts": {
+      "checks": 1317,
+      "clip_frames": 117,
+      "cut_clips": 4,
+      "failures": 0,
+      "focused_keys": 24,
+      "frames": 117,
+      "header_checks": 194,
+      "held_keys": 588,
+      "last_row_ink_pixels": 2048,
+      "legacy_checks": 901,
+      "outside_pixels": 13420605,
+      "overlay_buttons": 60,
+      "overlay_panels": 12,
+      "sloped_corners": 8,
+      "state_checks": 117,
+      "status_frames": 4,
+      "status_ink_pixels": 10246,
+      "surfaces": 72
+    },
+    "material_execution_seconds": 9.417,
+    "minimum_active_headers": [
+      {
+        "caption": [
+          544,
+          61,
+          311,
+          10
+        ],
+        "caption_letters": 15,
+        "scale": 1,
+        "size": [
+          1400,
+          820
+        ],
+        "title": [
+          504,
+          17,
+          389,
+          27
+        ],
+        "workspace": 0
+      },
+      {
+        "caption": [
+          544,
+          61.6,
+          311.2,
+          9.6
+        ],
+        "caption_letters": 15,
+        "scale": 1.25,
+        "size": [
+          1400,
+          820
+        ],
+        "title": [
+          504,
+          16.8,
+          388.8,
+          27.2
+        ],
+        "workspace": 0
+      },
+      {
+        "caption": [
+          544.667,
+          61.3333,
+          310,
+          10
+        ],
+        "caption_letters": 15,
+        "scale": 1.5,
+        "size": [
+          1400,
+          820
+        ],
+        "title": [
+          504,
+          16.6667,
+          389.333,
+          28
+        ],
+        "workspace": 0
+      },
+      {
+        "caption": [
+          544.5,
+          61.5,
+          310.5,
+          10
+        ],
+        "caption_letters": 15,
+        "scale": 2,
+        "size": [
+          1400,
+          820
+        ],
+        "title": [
+          504,
+          17,
+          389.5,
+          27.5
+        ],
+        "workspace": 0
+      }
+    ],
+    "density_pairs": 35,
+    "standalone_density_cases": 18,
+    "independently_decoded_rois": [
+      {
+        "stage": "reference",
+        "identity": {
+          "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/atlas-cover-reference.jpg",
+          "bytes": 412664,
+          "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+        },
+        "thresholds": [
+          {
+            "threshold": 80,
+            "pixels": 5639,
+            "bounds": [
+              603,
+              20,
+              1067,
+              53
+            ]
+          },
+          {
+            "threshold": 100,
+            "pixels": 5415,
+            "bounds": [
+              603,
+              20,
+              1067,
+              53
+            ]
+          },
+          {
+            "threshold": 120,
+            "pixels": 4991,
+            "bounds": [
+              603,
+              20,
+              1067,
+              53
+            ]
+          },
+          {
+            "threshold": 140,
+            "pixels": 4502,
+            "bounds": [
+              603,
+              20,
+              1066,
+              53
+            ]
+          },
+          {
+            "threshold": 160,
+            "pixels": 3785,
+            "bounds": [
+              603,
+              21,
+              1066,
+              53
+            ]
+          }
+        ]
+      },
+      {
+        "stage": "genuine_before",
+        "identity": {
+          "path": "/workspace/scratch/66b061effd9e/baseline-gallery/images/play-reference-1672x941.png",
+          "bytes": 767912,
+          "sha256": "689180c1d4f7d84ba65da90bc958b85b698723551777f2397d7102c34f010b24"
+        },
+        "thresholds": [
+          {
+            "threshold": 80,
+            "pixels": 4150,
+            "bounds": [
+              602,
+              20,
+              1066,
+              53
+            ]
+          },
+          {
+            "threshold": 100,
+            "pixels": 3863,
+            "bounds": [
+              602,
+              20,
+              1065,
+              53
+            ]
+          },
+          {
+            "threshold": 120,
+            "pixels": 3601,
+            "bounds": [
+              602,
+              20,
+              1065,
+              53
+            ]
+          },
+          {
+            "threshold": 140,
+            "pixels": 3200,
+            "bounds": [
+              603,
+              20,
+              1065,
+              53
+            ]
+          },
+          {
+            "threshold": 160,
+            "pixels": 2690,
+            "bounds": [
+              603,
+              20,
+              1065,
+              53
+            ]
+          }
+        ]
+      },
+      {
+        "stage": "candidate",
+        "identity": {
+          "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/native-gallery-ui-delivery-title/images/play-reference-1672x941.png",
+          "bytes": 769204,
+          "sha256": "1df7d50cda9b61640702a4c4b516be1ae1b7be9879aa6bba0feb06c0bf9e5e60"
+        },
+        "thresholds": [
+          {
+            "threshold": 80,
+            "pixels": 5774,
+            "bounds": [
+              602,
+              19,
+              1067,
+              53
+            ]
+          },
+          {
+            "threshold": 100,
+            "pixels": 5512,
+            "bounds": [
+              602,
+              19,
+              1066,
+              53
+            ]
+          },
+          {
+            "threshold": 120,
+            "pixels": 5304,
+            "bounds": [
+              602,
+              19,
+              1066,
+              53
+            ]
+          },
+          {
+            "threshold": 140,
+            "pixels": 5029,
+            "bounds": [
+              602,
+              19,
+              1066,
+              53
+            ]
+          },
+          {
+            "threshold": 160,
+            "pixels": 4694,
+            "bounds": [
+              602,
+              19,
+              1066,
+              53
+            ]
+          }
+        ]
+      }
+    ],
+    "report_seconds": 144.632,
+    "binaries": [
+      {
+        "stage": "genuine_pre_T3",
+        "path": "/workspace/scratch/66b061effd9e/baseline-native/hammond_standalone",
+        "bytes": 4094520,
+        "sha256": "e44eefc4fe37c879d2145e085f46f914f1703331aa32c72343f28a53d81eb56a"
+      },
+      {
+        "stage": "genuine_pre_T3",
+        "path": "/workspace/scratch/66b061effd9e/baseline-native/test_standalone_footage_typography_raster",
+        "bytes": 3800376,
+        "sha256": "3c93ad1067f430c864f38028226f1eac776cea8227471ddd9ced9ce2cf282054"
+      },
+      {
+        "stage": "genuine_pre_T3",
+        "path": "/workspace/scratch/66b061effd9e/baseline-native/test_standalone_percussion_raster",
+        "bytes": 3761000,
+        "sha256": "68be70fe8bf25c3f09d3814ba600783b2c835a6ce2ebe0ac660fcee67f87e918"
+      },
+      {
+        "stage": "genuine_pre_T3",
+        "path": "/workspace/scratch/66b061effd9e/baseline-native/test_standalone_typography_clips",
+        "bytes": 3779776,
+        "sha256": "dce14f63096cf6bb46aaf2e7dda2d8be520bcd6ddcf27110ed739c223142154d"
+      },
+      {
+        "stage": "genuine_pre_T3",
+        "path": "/workspace/scratch/66b061effd9e/baseline-native/hammond_standalone_paint_benchmark",
+        "bytes": 3752032,
+        "sha256": "3ee7e1c9da57b376bba60415f550944ff7f4f0cdf5ea088eefed854f0b9a4202"
+      },
+      {
+        "stage": "revision_2",
+        "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone",
+        "bytes": 4094560,
+        "sha256": "010d43dc764d627733b29093cc8436010fba6922a98a547cc8a1ad69006dc8e3"
+      },
+      {
+        "stage": "revision_2",
+        "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/test_standalone_footage_typography_raster",
+        "bytes": 3800416,
+        "sha256": "8ca1d9edf78e2aa7a9f6f2b91b5e463c3edab698d7c1d733d618e7f97e1e3ac6"
+      },
+      {
+        "stage": "revision_2",
+        "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/test_standalone_percussion_raster",
+        "bytes": 3761040,
+        "sha256": "dcbfd8ef92d8d79eb3dfff626b0866c86ce05d3ee333f7bc678113318ae65121"
+      },
+      {
+        "stage": "revision_2",
+        "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/test_standalone_typography_clips",
+        "bytes": 3779808,
+        "sha256": "e9bd7a03dcece00d374c887f85d1b1d8ebc91baf453f16325b40bde522de1ebb"
+      },
+      {
+        "stage": "revision_2",
+        "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/hammond_standalone_paint_benchmark",
+        "bytes": 3756168,
+        "sha256": "9f8b2eff710db91a1bb786e1093e6bf3c9df4f70160c76619447750db28a196f"
+      }
+    ],
+    "material_binary": {
+      "bytes": 3834808,
+      "path": "/workspace/scratch/66b061effd9e/build-native/apps/standalone/test_standalone_material_acceptance",
+      "sha256": "19bc53944f1575bed1bd7395ae3ed72e30b63630565556bd4113bb1676884375"
+    },
+    "rejected_binaries_preserved": [
+      {
+        "path": "/workspace/scratch/5a28c3564dbf/t3-rejected-native/hammond_standalone",
+        "bytes": 4094560,
+        "sha256": "7c5aab61f8a4e3711e8a96d4f35949455aead2b76a6f8806837a270efe92293d"
+      },
+      {
+        "path": "/workspace/scratch/5a28c3564dbf/t3-rejected-native/test_standalone_footage_typography_raster",
+        "bytes": 3800416,
+        "sha256": "5666fa228cd0cd8bb4677de8af4eeec49610999bc5c91426baf1d2fb7c02dc99"
+      },
+      {
+        "path": "/workspace/scratch/5a28c3564dbf/t3-rejected-native/test_standalone_percussion_raster",
+        "bytes": 3761040,
+        "sha256": "b9e0b9fb93badbbf7eb806b6e848c842c568bc4062db954804e2f7ccfdb3990d"
+      },
+      {
+        "path": "/workspace/scratch/5a28c3564dbf/t3-rejected-native/test_standalone_typography_clips",
+        "bytes": 3779808,
+        "sha256": "119b27d54497dde43ae0c93b0302e81bef92b2eac8cbf84fa469ea40142b7989"
+      },
+      {
+        "path": "/workspace/scratch/5a28c3564dbf/t3-rejected-native/hammond_standalone_paint_benchmark",
+        "bytes": 3756168,
+        "sha256": "b00f2e78169bfbedc64943e6fe4ada16accd0879b13c481a21c56da463304750"
+      },
+      {
+        "path": "/workspace/scratch/5a28c3564dbf/t3-rejected-native/test_standalone_material_acceptance",
+        "bytes": 3834808,
+        "sha256": "153582cdaf911b2bdb8907365661ce2364771e64b3cb492073271535f9cdf66d"
+      }
+    ],
+    "reviewed_files": [
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired.log",
+        "bytes": 4341,
+        "sha256": "e35e93f11632a71e46fbcc778947524960cb92c4a4ce6613a1c140e218f513be"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-build.log",
+        "bytes": 10706,
+        "sha256": "bae8dbd8e77a11f5553c83b8004a68d646f4c921ee6ef3519b3ce9e799ff5d60"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-build-identity.json",
+        "bytes": 38213,
+        "sha256": "8448d60fd700b67b4577bcac9ffb6ddc1ee1fe073198ef58c28701824c11ea76"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-density.json",
+        "bytes": 22290,
+        "sha256": "a56a2d055d5fe058950cc359741d5a835594b0b9947dd94275c59d9162867fcf"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-source-review.json",
+        "bytes": 65527,
+        "sha256": "ed96dbc4f5d191507e17224bc6de8a1b5261a5638c54755be05f4a7ece578378"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-density-header-fixture.log",
+        "bytes": 603,
+        "sha256": "31dcdcdd558a2e00d6fdf44ae1f2db36ce0db833c81c6cdd5d7fbe1a0978372a"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-checker-recovery.json",
+        "bytes": 7488,
+        "sha256": "504685a041119811070a30d0526b934b8d0268f14c5dcd24f3a1899ef5935282"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/baseline-identity.json",
+        "bytes": 38236,
+        "sha256": "967a2f67c3600ae4ae9007483363efb553ad1d60c7fcf5219f04c6cbb3ea6c5e"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/TITLE_T3_CONTRACT.md",
+        "bytes": 10221,
+        "sha256": "6e45c095331e4d2a32cb111ebe2be74b7fad3dd7f6fb89a675d68c4a0310cae7"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/design/TITLE_T3_REVISION_2.md",
+        "bytes": 8228,
+        "sha256": "e06ddb46f48a4d75c5c305474699223b41a0febc3e3db7d077048841356554e9"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/reviews/TITLE_T3_ADMISSION.md",
+        "bytes": 6662,
+        "sha256": "9ccc570fd333b404a0774b0398d437b534011cd312dfae4468831dc50cf2b425"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/reviews/TITLE_T3_REVISION_2_ADMISSION.md",
+        "bytes": 7590,
+        "sha256": "135daa0b6bea3bb9ecd011ce7729cab289f47f515c8d89baa0d4d805d229f458"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/compare_title_typography.py",
+        "bytes": 55125,
+        "sha256": "a3e6d7f6dcb6b11b1281b69c866e2b044f76eacffc05b5375b4936c77650704c"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/compare_heading_typography.py",
+        "bytes": 52528,
+        "sha256": "e809a3e052efa5916e1ce6f20b1ef0a5560fc50b423f0759ba705d0650aaf886"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/tools/compare_footage_typography.py",
+        "bytes": 41804,
+        "sha256": "768ad4a5c022038c75414527961d5437bc3990a11d80772ce6fed6fc5a1534a1"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_title_density.py",
+        "bytes": 23467,
+        "sha256": "9abe3ba03b00efeb3665aa691d36715cebb2f9d708d37eae90cdcd778de171e2"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+        "bytes": 164592,
+        "sha256": "10865a6bad39bc0a254b8b3f4cf6b013bef48770a2b39c7e9f9a70f438d56366"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/baseline-native/InstrumentView.cpp",
+        "bytes": 164300,
+        "sha256": "94186192085435a756f9e1854e3aefe807407befa49e1cc978c07968436ca5db"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/t3-v1-rejection.json",
+        "bytes": 2528,
+        "sha256": "8c7fc7da821baade0e61269358edb6486a86611f95a3b139985b4a9bd00b65e0"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/reports/t3-affected-tests.log",
+        "bytes": 10197,
+        "sha256": "cca6c4f90bad8b90446f28c1b180f078219ad6b802e430efcc8dccff96ace671"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/inputs/InstrumentView-t3-v1.cpp",
+        "bytes": 164590,
+        "sha256": "40de44893f3b88fef04732bf5a7607d4ce7db3cd4206f3712a5b71fa070a9029"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-heading-title-continuation/inputs/compare_title_typography-v1.py",
+        "bytes": 38241,
+        "sha256": "ee6d10dcaa166115369a518a4f04bd27ddd4d1f1db200ff929258f986dd7c805"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired/report.json",
+        "bytes": 364171,
+        "sha256": "204b862f4d42873f6809e84c259630d48f8bdab2cf7c6be5cca942d9e9918664"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired/input-identities.json",
+        "bytes": 67890,
+        "sha256": "976e9760994cee4fd8de9125cb9b73ad167256a8801051a0e6a201b76120bd19"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired/mask-declaration.json",
+        "bytes": 2782858,
+        "sha256": "b0268ae31099cec9bd2c574092a40dea23edc89c0a1e86c39493fe72ef79cc0f"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired/fixture-inventories.json",
+        "bytes": 63623,
+        "sha256": "382349f670414efed8e23503ae9f9335aec17d14252b5e613536e5c4dccbc263"
+      },
+      {
+        "path": "/workspace/scratch/66b061effd9e/Hammond-B3-Organ/docs/development/2026-11-16-ui-delivery/reports/title-paired/clip-fixture-assertions.json",
+        "bytes": 843,
+        "sha256": "b1d22ed310dfa440e197117457f33d64a1244d872d38bb7317456eaa4d556e72"
+      }
+    ],
+    "native_execution_count": 0,
+    "build_count": 0,
+    "capture_count": 0,
+    "git_command_count": 0,
+    "subagent_count": 0
+  },
+  "supplemental_check": {
+    "material_compile_rows_identical_after_registration": true
+  },
+  "comparator_review": {
+    "required_suites": {
+      "typography": 44,
+      "percussion": 66,
+      "clips": 48
+    },
+    "declaration_precedes_all_native_calls": true,
+    "candidate_pixels_define_allowance": false,
+    "rejected_v1_destinations_included": false,
+    "exact_title_passes": {
+      "before": 2,
+      "after": 5,
+      "nonempty_glyphs": 14,
+      "before_copies": 28,
+      "after_copies": 70,
+      "added_copies": 42,
+      "highlight_coefficient": 0.125
+    },
+    "material_gate_runs_before_pairs": true,
+    "original_geometry_thresholds": "warm ink R>=130,G>=105,R>=G,10B<=9R; width464*f +/-3,height33*f +/-1,top11.5*sy+8.5*f +/-1,centerwidth/2-f +/-2,>1000 title pixels; caption geometry/separation,15 letters,zero control/header escapes",
+    "original_density_thresholds": {
+      "roi_xywh": [
+        590,
+        14,
+        490,
+        46
+      ],
+      "predicate": "2126R+7152G+722B >= threshold*10000; no hue predicate",
+      "thresholds": [
+        80,
+        100,
+        120,
+        140,
+        160
+      ],
+      "band_inclusive": [
+        4500,
+        6000
+      ],
+      "minimum_error_reduction": 0.4
+    },
+    "complete_model_pairs": 92,
+    "limited_metadata_percussion_pairs": 66,
+    "maximum_size_cases": "Two 8192x8192 logical fixtures produce only64x64 rack crops with no title. Exact crop preservation does not qualify full-window title rendering or containment.",
+    "unchanged_default_clip_runs": {
+      "runs": 2,
+      "checks_each": 4064,
+      "paintings_each": 99,
+      "deterministic_repaints_each": 48,
+      "history_repaints_each": 2
+    },
+    "raw_paired_frames_retained": 0,
+    "current_registration_drift": "Standalone CMake and compile_commands changed after the retained run. All candidate source records, native binaries, material compile rows, relevant objects/libraries still match. Bind later registrations in root's separate current receipt."
+  },
+  "historical_failures": {
+    "title_v1": "Still rejected: two1400x820 warm-top failures at scales1/1.25, observed16 vs expected17.1384792328 +/-1. Original source/log/receipt and six binaries remain preserved.",
+    "baseline_link_integrity": "Earlier baseline235/236 observation and separate repaired41-method integrity pass retain their own source and failure history; no rewrite.",
+    "other_model_and_delivery_gates": "No change to scanner G5 failure, other owners' unfinished scopes, physical acquisition, whole-interface or release gates."
+  },
+  "blockers_in_this_bounded_scope": [],
+  "remaining_gates": [
+    "Independent actual full-frame visual admission with reference and genuine-before frames at canonical/minimum/wide/unequal layouts and compact/Flat preservation; inspect counters, halos, muddy strokes, clipping, subtitle and disproportionate brightness.",
+    "Root's separate current affected-gate admission: retain42/43 combined failure and unchanged-byte isolated1/1 pass; resolve scheduling/qualification at exact current source and registration identities.",
+    "Root final actual README captures, coherent current qualification, source-specific platform/host results and verified publication.",
+    "Literal whole-interface1:1 remains unmet and unwaived; real display/DPI/input, native accessibility, hardware/audio/host journeys, physical calibration/models, callback deadlines and signed release stay separate."
+  ],
+  "density_caution": "Primary threshold100 count error reduces93.75%; candidate threshold160 count4694 exceeds reference3785 by909. This is an image-count observation and leaves full-frame brightness judgment open.",
+  "root_supplied_affected_gate_update": {
+    "classification": "Root-supplied subsequent observations; not independently re-executed or admitted by A19.",
+    "combined": {
+      "passed": 42,
+      "required": 43,
+      "seconds": 144.39,
+      "sole_failure": "native_app: three short600ms smokes, including1280 inactive-title and legacy1/3 cases; root reports three renderedframes and missing timely note-on during three-way software raster load."
+    },
+    "isolated": {
+      "passed": 1,
+      "required": 1,
+      "seconds": 15.43,
+      "unchanged_binary": true,
+      "receipt": "docs/development/2026-11-16-ui-delivery/reports/title-app-isolated.json",
+      "log": "docs/development/2026-11-16-ui-delivery/reports/title-app-isolated.log"
+    },
+    "disposition": "Original combined failure retained. Root's bounded scheduling/qualification review remains pending; no overall title candidate acceptance is claimed."
+  }
+}

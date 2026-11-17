@@ -5,6 +5,25 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
+**UI delivery continuation, 16 November 2026**, base
+`6047723b595259de355c74342e48a8ae2ee1e228`: this request owns
+`/workspace/scratch/66b061effd9e/Hammond-B3-Organ` and root's single
+`../build-native`. Read the [current session](docs/development/2026-11-16-ui-delivery/README.md),
+[checkpoint](docs/development/2026-11-16-ui-delivery/CHECKPOINT.md) and
+[actual assignments](docs/development/2026-11-16-ui-delivery/assignments.json)
+first. All 500 PDF pages received fresh coverage in wave 1. This request has
+its own 60 distinct agents in ten waves, at most three workers concurrently.
+Older workers and unfinished results do not count toward it. Recovered title,
+header and test candidates need fresh independent review and execution here;
+their original sources and failures remain untouched in earlier workspaces.
+Every future session must document setup, current implementation, tested and
+unrun gates, remaining visual differences and concrete next work; update README
+with actual app captures after UI changes; then commit and push accepted work
+and verify the remote commit and its source-specific CI. The complete plan,
+compatibility obligations and literal 1:1 target below remain in force.
+
+### Previous heading/title continuation
+
 **Heading/title and delivery continuation, 16 November 2026**, base
 `113c29b7b14c8fde0859bc405ef8e4141a131ea6`: the writable checkout for this
 request is `/workspace/scratch/5a28c3564dbf/Hammond-B3-Organ`. Read its
